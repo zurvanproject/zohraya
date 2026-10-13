@@ -9,6 +9,24 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'adaptive-test':
+        from . import test_adaptive_memory
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_adaptive_memory)
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if r.wasSuccessful() else 1
+    if command == 'predictive-benchmark':
+        from .predictive_benchmark import run_benchmark
+        report = run_benchmark(args['output_dir'])
+        print(json.dumps({'success':report['success'], 'test_mae':report['evaluation']['test']['mae'],
+                          'improvement_percent':report['improvement_percent']},sort_keys=True))
+        return 0
+    if command == 'adaptive':
+        from .adaptive_memory import AdaptiveMemory
+        with BodyLoop(args['session']) as loop:
+            result = AdaptiveMemory(loop).run_goal(args['goal_id'],target_cycles=args['target_cycles'],
+                                                  time_budget_s=args['timeout_seconds'])
+        print(json.dumps(result,ensure_ascii=False,sort_keys=True))
+        return 0 if result['status']=='completed' else 1
     if command == 'test':
         from . import test_body_loop, test_self_maintenance
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
