@@ -47,6 +47,33 @@ jobs:
           .ci-env/bin/python -m examples.nasuraya_body_loop api-test
       - name: Regenerate and verify all committed motion samples
         run: python3 -m unittest examples.nasuraya_body_mirror.test_mirror -v
+      - name: Verify persistent self-maintenance and identity across restart
+        run: |
+          python3 -m examples.nasuraya_body_loop start --session /tmp/nasuraya-maintenance.sqlite --fixture sleep --max-actions 3
+          python3 -m examples.nasuraya_body_loop maintain --session /tmp/nasuraya-maintenance.sqlite --goal-id ci-self-v01 --target-cycles 2 > /tmp/nasuraya-maint-result.json
+          python3 -m examples.nasuraya_body_loop maintain --session /tmp/nasuraya-maintenance.sqlite --goal-id ci-self-v01 --target-cycles 2 > /tmp/nasuraya-maint-resume.json
+          python3 - <<'PY'
+          import json
+          first = json.load(open('/tmp/nasuraya-maint-result.json'))
+          replay = json.load(open('/tmp/nasuraya-maint-resume.json'))
+          assert first['status'] == replay['status'] == 'completed'
+          assert first['completed_cycles'] == replay['completed_cycles'] == 2
+          assert first['body_actions_remaining'] == replay['body_actions_remaining'] == 1
+          assert all(x['identity_principles_retained'] for x in first['history'])
+          assert first['external_model_api_used'] is False
+          PY
+      - name: Frozen paired comparison with cold process restart
+        run: |
+          python3 -m examples.nasuraya_body_loop benchmark --output-dir /tmp/nasu-frozen-paired
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          record = json.loads(Path('/tmp/nasu-frozen-paired/paired_report.json').read_text())
+          assert record['api_calls'] == 0
+          assert record['difference_in_veto_count_sleep'] >= 1
+          assert record['no_duplicate_effect_after_restart']
+          assert len(record['scenarios']) == 2
+          PY
       - name: Execute actual local body cycles
         run: |
           python3 -m examples.nasuraya_body_loop demo --fixture sleep --steps 3 --max-actions 12 --output-dir /tmp/nasuraya-body-demo
