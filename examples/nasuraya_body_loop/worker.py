@@ -9,6 +9,17 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'closed-loop-test':
+        from . import test_closed_loop
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_closed_loop)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'closed-loop-benchmark':
+        from .closed_loop_benchmark import run_benchmark
+        result = run_benchmark(args['output_dir'])
+        print(json.dumps({k:result[k] for k in ('success','improvement_percent','protocol_sha256')}))
+        print(json.dumps(result['splits']['test']['paired_mae_on_both_paths']))
+        return 0
     if command == 'adaptive-test':
         from . import test_adaptive_memory
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_adaptive_memory)

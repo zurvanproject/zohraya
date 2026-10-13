@@ -28,7 +28,7 @@ def verified_sources():
 
 def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'maintain', 'benchmark', 'adaptive', 'adaptive-test', 'predictive-benchmark'])
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'maintain', 'benchmark', 'adaptive', 'adaptive-test', 'predictive-benchmark', 'closed-loop-test', 'closed-loop-benchmark'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
@@ -47,9 +47,9 @@ def main(argv=None):
     p.add_argument('--max-calls', type=int, default=40)
     p.add_argument('--timeout-seconds', type=float, default=30)
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'benchmark', 'test', 'api-test', 'adaptive-test', 'predictive-benchmark'] and args.session is None:
+    if args.command not in ['demo', 'benchmark', 'test', 'api-test', 'adaptive-test', 'predictive-benchmark', 'closed-loop-test', 'closed-loop-benchmark'] and args.session is None:
         p.error('--session required')
-    if args.command in ('demo', 'benchmark', 'predictive-benchmark') and args.output_dir is None:
+    if args.command in ('demo', 'benchmark', 'predictive-benchmark', 'closed-loop-benchmark') and args.output_dir is None:
         p.error('--output-dir required')
     if args.command == 'api' and (args.output_dir is None or not args.model):
         p.error('--output-dir and --model required for explicit live API')

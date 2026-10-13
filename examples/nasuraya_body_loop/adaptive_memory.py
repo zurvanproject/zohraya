@@ -243,6 +243,9 @@ class AdaptiveMemory:
         if record is None or record['status'] != 'complete':
             raise MaintenanceBlocked('unknown action outcome; automatic replay forbidden')
         receipt = self.loop.receipt(record, replayed=False)
+        physical = (record.get('actual_outcome') or {}).get('body_receipt', {}).get('owner', {})
+        if physical.get('physical_model_valid') is not True:
+            raise MaintenanceBlocked('native physical model invalid; outcome not eligible for learning')
         request = record['request']
         if (receipt['status'] != 'complete' or receipt['actual_action'] not in ('walk','observe','protect')
                 or request['execution']['duration_s'] != .1):
@@ -308,6 +311,8 @@ class AdaptiveMemory:
         if self.db.execute('SELECT COUNT(*) FROM nasu_experiences').fetchone()[0] >= MAX_EPISODES:
             raise MaintenanceBlocked('experience storage budget exhausted')
         snapshot = self.loop.observe()
+        if state(snapshot)['posture'] == 'failed':
+            raise MaintenanceBlocked('native physical model invalid before action')
         # Changing body outside the last confirmed episode is not silently accepted.
         last = self.db.execute('SELECT result FROM nasu_experiences WHERE result IS NOT NULL ORDER BY rowid DESC LIMIT 1').fetchone()
         if last and json.loads(last[0])['receipt']['self_model_after']['checkpoint_sha256'] != snapshot['checkpoint_sha256']:

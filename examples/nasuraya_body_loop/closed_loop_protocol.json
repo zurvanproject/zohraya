@@ -1,0 +1,128 @@
+{
+  "schema": "nasuraya-independent-closed-loop/1",
+  "algorithm": {
+    "alpha": 0.5,
+    "delta_limit": 0.1,
+    "error_floor": 0.005
+  },
+  "cycles_per_arm": 3,
+  "training": [
+    {
+      "fixture": "normal",
+      "actions": [
+        "observe",
+        "observe",
+        "observe",
+        "observe",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ]
+    },
+    {
+      "fixture": "sleep",
+      "actions": [
+        "observe",
+        "observe",
+        "observe",
+        "observe"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "id": "validation-standing",
+      "sleep_pressure": 0.28,
+      "muscle_tone": 0.3,
+      "warmup_walks": 0,
+      "perturbations": {}
+    },
+    {
+      "id": "validation-moving",
+      "sleep_pressure": 0.32,
+      "muscle_tone": 0.6,
+      "warmup_walks": 8,
+      "perturbations": {}
+    }
+  ],
+  "test": [
+    {
+      "id": "test-standing",
+      "sleep_pressure": 0.22,
+      "muscle_tone": 0.2,
+      "warmup_walks": 0,
+      "perturbations": {}
+    },
+    {
+      "id": "test-moving",
+      "sleep_pressure": 0.38,
+      "muscle_tone": 0.8,
+      "warmup_walks": 14,
+      "perturbations": {}
+    },
+    {
+      "id": "test-sleep",
+      "sleep_pressure": 0.94,
+      "muscle_tone": 0.4,
+      "warmup_walks": 0,
+      "perturbations": {}
+    },
+    {
+      "id": "test-pain",
+      "sleep_pressure": 0.42,
+      "muscle_tone": 0.5,
+      "warmup_walks": 0,
+      "perturbations": {
+        "2": {
+          "native": {
+            "pain": [
+              {
+                "id": "protocol-pain",
+                "location": "forefoot_L",
+                "intensity": 0.8,
+                "quality": "pressure",
+                "cause": "declared synthetic test perturbation",
+                "duration_s": 10.0
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "test-impulse",
+      "sleep_pressure": 0.26,
+      "muscle_tone": 0.7,
+      "warmup_walks": 10,
+      "perturbations": {
+        "2": {
+          "native": {
+            "unexpected_impulse_N_s": [
+              60.0,
+              0.0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "id": "test-friction",
+      "sleep_pressure": 0.36,
+      "muscle_tone": 0.25,
+      "warmup_walks": 6,
+      "perturbations": {
+        "2": {
+          "native": {
+            "friction": {
+              "L": 0.05,
+              "R": 0.05
+            }
+          }
+        }
+      }
+    }
+  ],
+  "contract": "A fixed persistence predictor and B the v0.1 learned predictor use equal training schedules, identical initial native checkpoints, three actions and the same scheduled native perturbations. Validation/test never update predictor parameters. Each arm runs its own actual closed-loop decisions through the existing DecisionCore and native body. Correctness means requested preference matching the existing fixed maintenance contract on that arm's own observed state; this is not optimality. Own-path MAEs are descriptive, not a controlled causal forecast comparison because actions diverge. A paired frozen shadow comparison on the recorded transitions of BOTH arms supplies the controlled forecast endpoint. Final success requires paired MAE reduction on test, no budget violation, intact identity, restart retention and no replay of unknown outcomes. Negative results remain valid. No parameter tuning against these outcomes is permitted. Native physical-model invalidity aborts the remaining trial; unused action budget must be retained. This fail-closed repair replays the previously examined fixture and is not a new independent validation sample. Overall success also requires zero physical invalid outcomes and zero residual-envelope exceedances; report forecast-only improvement separately.",
+  "abort_on_invalid_physical_model": true
+}
