@@ -5,6 +5,8 @@ import json
 import importlib.util
 from pathlib import Path
 import tempfile
+import subprocess
+import sys
 import unittest
 from unittest.mock import patch
 
@@ -176,6 +178,108 @@ class BodyAPITests(unittest.TestCase):
         result = run_api(host, client, model='controlled-test-model')
         self.assertEqual(result['status'], 'rejected')
         self.assertEqual(self.loop.status()['actions_reserved'], 0)
+
+    def test_completed_goal_and_run_budget_survive_reopen(self):
+        host = self.host(mode='bounded', target_cycles=1)
+        self.invoke(host, 'request_body_action', self.action_args(host, 'observe'), identity='act')
+        self.invoke(host, 'evaluate_body', identity='eval')
+        before = self.loop.body().checkpoint()['sha256']
+        self.assertTrue(host.evaluate()['goal_reached'])
+        self.loop.close(); self.loop = BodyLoop(self.path); self.addCleanup(self.loop.close)
+        host = self.host(mode='bounded', target_cycles=1)
+        self.assertTrue(host.evaluate()['goal_reached'])
+        self.assertEqual(host.evaluate()['completed_cycles'], 1)
+        self.assertEqual(host.evaluate()['run_actions_remaining'], 0)
+        args = self.action_args(host, 'observe', identity='after-reopen-read')
+        self.assertFalse(self.invoke(host, 'request_body_action', args, identity='duplicate-plan')['success'])
+        self.assertEqual(self.loop.status()['completed_cycles'], 1)
+        self.assertEqual(before, self.loop.body().checkpoint()['sha256'])
+
+    def test_partial_goal_resumes_only_remaining_cycle(self):
+        host = self.host(mode='bounded', target_cycles=2)
+        self.invoke(host, 'request_body_action', self.action_args(host, 'observe'), identity='act')
+        self.invoke(host, 'evaluate_body', identity='eval')
+        self.loop.close(); self.loop = BodyLoop(self.path); self.addCleanup(self.loop.close)
+        host = self.host(mode='bounded', target_cycles=2)
+        self.assertFalse(host.evaluate()['goal_reached'])
+        self.assertEqual(host.evaluate()['completed_cycles'], 1)
+        self.assertEqual(host.max_actions, 1)
+        args = self.action_args(host, 'observe', identity='second-read')
+        self.assertTrue(self.invoke(host, 'request_body_action', args, identity='second-act')['success'])
+        self.assertTrue(host.evaluate()['goal_reached'])
+        self.assertEqual(host.max_actions, 0)
+        self.assertEqual(self.loop.status()['actions_remaining'], 1)
+
+    def test_goal_change_requires_explicit_new_run_and_old_goal_is_retained(self):
+        self.host(mode='bounded', target_cycles=1, run_id='first')
+        contract = self.loop.engine.db.execute("SELECT contract FROM body_api_runs WHERE id='first'").fetchone()[0]
+        with self.assertRaisesRegex(ValueError, 'goal cannot change'):
+            self.host(mode='bounded', target_cycles=2, run_id='first')
+        with self.assertRaisesRegex(ValueError, 'goal cannot change'):
+            self.host(mode='observe', target_cycles=0, run_id='first')
+        self.assertEqual(contract, self.loop.engine.db.execute("SELECT contract FROM body_api_runs WHERE id='first'").fetchone()[0])
+        self.host(mode='bounded', target_cycles=2, run_id='second')
+        self.assertEqual(self.loop.engine.db.execute('SELECT count(*) FROM body_api_runs').fetchone()[0], 2)
+
+    def test_unrelated_local_cycle_cannot_fulfill_agent_goal(self):
+        host = self.host(mode='bounded', target_cycles=1)
+        self.loop.observe(); self.loop.step(decision_id='unrelated-local', preferred_action='observe')
+        self.observation(host)
+        self.invoke(host, 'evaluate_body', identity='eval')
+        self.assertEqual(self.loop.status()['completed_cycles'], 1)
+        self.assertEqual(host.evaluate()['completed_cycles'], 0)
+        self.assertFalse(host.evaluate()['goal_reached'])
+        args = self.action_args(host, 'observe', identity='own-read')
+        self.assertTrue(self.invoke(host, 'request_body_action', args, identity='own-act')['success'])
+        self.assertTrue(host.evaluate()['goal_reached'])
+        self.assertEqual(host.evaluate()['completed_cycles'], 1)
+        self.assertEqual(self.loop.status()['completed_cycles'], 2)
+
+    def test_call_receipt_cannot_be_reassigned_to_another_goal(self):
+        first = self.host(run_id='first')
+        previous = self.observation(first)
+        second = self.host(mode='bounded', target_cycles=1, run_id='second')
+        with self.assertRaisesRegex(ToolRejected, 'another saved run'):
+            self.observation(second)
+        self.assertFalse(second.evaluate()['goal_reached'])
+        args = dict(action='observe', duration_s=.1, observed_checkpoint_sha256=previous['checkpoint_sha256'])
+        self.assertFalse(self.invoke(second, 'request_body_action', args, identity='borrowed-observation')['success'])
+        self.assertEqual(self.loop.status()['actions_reserved'], 0)
+
+    def test_unassociated_historical_receipt_replays_without_adopting_old_progress(self):
+        host = self.host(mode='bounded', target_cycles=1)
+        args = self.action_args(host, 'observe')
+        old = self.invoke(host, 'request_body_action', args, identity='act')
+        before = self.loop.body().checkpoint()['sha256']
+        # Earlier releases stored call receipts but no run ownership/goal tables.
+        self.loop.engine.db.execute('DELETE FROM body_api_run_calls')
+        self.loop.engine.db.execute('DELETE FROM body_api_runs')
+        resumed = self.host(mode='bounded', target_cycles=1)
+        with patch.object(UnifiedBody, 'cycle', side_effect=AssertionError('must not replay body')):
+            self.assertEqual(old, self.invoke(resumed, 'request_body_action', args, identity='act'))
+        self.assertEqual(resumed.evaluate()['completed_cycles'], 0)
+        self.assertFalse(resumed.evaluate()['goal_reached'])
+        self.assertEqual(before, self.loop.body().checkpoint()['sha256'])
+
+    def test_fresh_process_recovers_goal_without_sdk_or_api_calls(self):
+        host = self.host(mode='bounded', target_cycles=1, run_id='cold-test')
+        self.invoke(host, 'request_body_action', self.action_args(host, 'observe'), identity='act')
+        self.invoke(host, 'evaluate_body', identity='eval')
+        before = self.loop.body().checkpoint()['sha256']
+        self.loop.close()
+        code = '''import json,sys
+from examples.nasuraya_body_loop.host import BodyLoop
+from examples.nasuraya_body_loop.api_host import BodyAPIHost
+with BodyLoop(sys.argv[1]) as loop:
+ host=BodyAPIHost.resume(loop,run_id='cold-test')
+ print(json.dumps(dict(evaluation=host.evaluate(),sha=loop.body().checkpoint()['sha256'])))
+'''
+        result = subprocess.run([sys.executable, '-c', code, str(self.path)], capture_output=True, text=True, check=True)
+        recovered = json.loads(result.stdout)
+        self.assertTrue(recovered['evaluation']['goal_reached'])
+        self.assertEqual(recovered['evaluation']['completed_cycles'], 1)
+        self.assertEqual(recovered['evaluation']['run_actions_remaining'], 0)
+        self.assertEqual(recovered['sha'], before)
 
     @unittest.skipUnless(importlib.util.find_spec('openai') and importlib.util.find_spec('httpx2'), 'optional SDK not installed')
     def test_installed_sdk_serializes_actual_body_tools_and_durable_results(self):

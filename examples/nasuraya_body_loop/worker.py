@@ -25,13 +25,20 @@ def main(args):
         output.mkdir(mode=0o700, parents=True, exist_ok=False)
         with BodyLoop(args['session']) as loop:
             host = BodyAPIHost(loop, mode=args['api_mode'], target_cycles=args['target_cycles'],
-                               max_calls=args['max_calls'], journal=Journal(output / 'events.jsonl'))
+                               max_calls=args['max_calls'], journal=Journal(output / 'events.jsonl'), run_id=args['run_id'])
             with make_client() as client:
                 summary = run_api(host, client, model=args['model'], max_calls=args['max_calls'],
                                   timeout_seconds=args['timeout_seconds'], live_service=True)
         (output / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0 if summary['status'] == 'completed' else 1
+    if command == 'run-status':
+        from .api_host import BodyAPIHost
+        with BodyLoop(args['session']) as loop:
+            host = BodyAPIHost.resume(loop, run_id=args['run_id'])
+            print(json.dumps(dict(run_id=host.run_id, evaluation=host.evaluate(),
+                                 self_model=host.snapshot()), ensure_ascii=False, sort_keys=True))
+        return 0
     if command == 'demo':
         output = Path(args['output_dir'])
         if type(args['steps']) is not int or not 0 <= args['steps'] <= args['max_actions'] <= 100:
