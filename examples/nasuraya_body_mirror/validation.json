@@ -1,0 +1,22 @@
+{
+  "native_checks": {
+    "source_manifest_verified": true,
+    "24_complete_samples": true,
+    "normal_step_executed": true,
+    "sleep_veto_then_recall": true,
+    "all_sample_coordinates_verified": true,
+    "tampered_checkpoint_rejected": true
+  },
+  "dom_interactions": {
+    "native_step": true,
+    "fixture_and_veto": true,
+    "recall": true,
+    "finite_playback": true,
+    "responsive_svg_geometry": true
+  },
+  "validation_scope": "Native checkpoint verification and Node DOM harness; SVG geometry rendered and inspected at 288 px. Full browser layout not tested: Chromium unavailable and download did not supply executable bytes.",
+  "sample_counts": {
+    "normal": 12,
+    "sleep": 12
+  }
+}
