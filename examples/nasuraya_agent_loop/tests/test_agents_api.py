@@ -57,13 +57,13 @@ class FakeSessions:
         self.stream_object.events = [{"type": "agent.session.created", "session": {"id": "sess-1"}}] + self.stream_object.events
         return self.stream_object
 
-    def stream(self, session_id):
+    def stream(self, session_id, **kwargs):
         return self.stream_object
 
-    def send(self, session_id, *, events):
+    def send(self, session_id, *, events, **kwargs):
         self.sent.extend(events)
 
-    def delete(self, session_id):
+    def delete(self, session_id, **kwargs):
         if self.cleanup_fails:
             raise RuntimeError("secret sentinel")
         self.deleted.append(session_id)

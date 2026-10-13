@@ -14,8 +14,10 @@ def main(args):
         r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))
         return 0 if r.wasSuccessful() else 1
     if command == 'api-test':
-        from . import test_api_host
-        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_api_host))
+        from . import test_api_host, test_api_recovery
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
+                                   for m in (test_api_host, test_api_recovery))
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command == 'api':
         from examples.nasuraya_agent_loop.agents_api import make_client, run_api
@@ -28,7 +30,8 @@ def main(args):
                                max_calls=args['max_calls'], journal=Journal(output / 'events.jsonl'), run_id=args['run_id'])
             with make_client() as client:
                 summary = run_api(host, client, model=args['model'], max_calls=args['max_calls'],
-                                  timeout_seconds=args['timeout_seconds'], live_service=True)
+                                  timeout_seconds=args['timeout_seconds'], live_service=True,
+                                  recovery=args['api_recovery'], max_reconnects=args['max_reconnects'])
         (output / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0 if summary['status'] == 'completed' else 1

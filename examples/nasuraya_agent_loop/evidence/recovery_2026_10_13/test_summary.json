@@ -1,0 +1,39 @@
+{
+  "schema": "nasuraya-api-recovery-evidence/1",
+  "source_commit": "3f7a60c257df7dcba51d1cba3388063be8886332",
+  "branch": "nasuraya/agent-loop-v03",
+  "recorded_utc": "2026-10-13T16:51:48.538813+00:00",
+  "sdk": "openai==3.29.0",
+  "suites": {
+    "agent": 60,
+    "body_api": 41,
+    "body_loop": 16
+  },
+  "total_tests": 117,
+  "new_recovery_tests": 21,
+  "failures": 0,
+  "skipped": 0,
+  "live_api_verified": false,
+  "real_api_key_used": false,
+  "model_api_cost": 0,
+  "transport": [
+    "injected_simulator",
+    "real_sdk_with_httpx2_mock_transport"
+  ],
+  "verified": [
+    "logical_goal_continuity",
+    "same_session_reconnect_in_simulator",
+    "new_python_process_resume",
+    "fresh_session_with_saved_goal_in_simulator",
+    "duplicate_receipt_no_body_reexecution",
+    "committed_effect_receipt_reconciliation",
+    "unknown_effect_blocks_resume_and_fresh",
+    "unknown_creation_blocks_recreation"
+  ],
+  "live_checks_remaining": [
+    "paid_model_turn",
+    "real_remote_reconnect_and_items_turn_retrieval",
+    "server_idempotency_after_lost_ack",
+    "remote_session_cleanup"
+  ]
+}

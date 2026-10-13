@@ -56,6 +56,9 @@ class BodyAPIHost:
             observed INTEGER NOT NULL DEFAULT 0, evaluated INTEGER NOT NULL DEFAULT 0);
             CREATE TABLE IF NOT EXISTS body_api_run_calls(
             identity TEXT PRIMARY KEY, run_id TEXT NOT NULL);
+            CREATE TABLE IF NOT EXISTS body_api_call_routes(
+            identity TEXT PRIMARY KEY, session_id TEXT NOT NULL,
+            turn_id TEXT NOT NULL, call_id TEXT NOT NULL);
             CREATE INDEX IF NOT EXISTS body_api_run_lookup ON body_api_run_calls(run_id);''')
         contract = canonical(dict(schema='nasuraya-agent-run/1', mode=mode,
                                   target_cycles=target_cycles, max_calls=max_calls))
@@ -137,7 +140,7 @@ class BodyAPIHost:
                     initial_state=self.journal.events[0]['initial_state'], final_state=self.snapshot(),
                     evaluation=self.evaluate(), actions_used=self.run_progress()['actions_reserved'],
                     actions_this_process=self.loop.status()['actions_reserved'] - self.opening_reserved,
-                    run_id=self.run_id, continuity_scope='saved logical goal; remote stream is not auto-resumed',
+                    run_id=self.run_id, continuity_scope='saved logical goal; API recovery reported separately',
                     event_count=len(self.journal.events), live_api_verified=False,
                     sharing_scope='reduced generated fixture only; no private ledger or full checkpoint')
 
@@ -184,6 +187,8 @@ class BodyAPIHost:
                 raise ToolRejected('call identity belongs to another saved run')
             if row['fingerprint'] != fingerprint:
                 raise ToolRejected('call identity reused with different body payload')
+            db.execute('INSERT OR IGNORE INTO body_api_call_routes VALUES(?,?,?,?)',
+                       (identity, session_id, action['turn_id'], action['call_id']))
             if row['status'] == 'complete':
                 result = json.loads(row['result'])
                 if owner is not None:
@@ -205,6 +210,8 @@ class BodyAPIHost:
         with self.loop.engine.transaction():
             db.execute('INSERT INTO body_api_calls VALUES(?,?,?,?,NULL)', (identity, fingerprint, tool, 'pending'))
             db.execute('INSERT INTO body_api_run_calls VALUES(?,?)', (identity, self.run_id))
+            db.execute('INSERT INTO body_api_call_routes VALUES(?,?,?,?)',
+                       (identity, session_id, action['turn_id'], action['call_id']))
         result = dict(type='agent.session.input.tool_result', turn_id=action['turn_id'], call_id=action['call_id'])
         try:
             name, args = action['name'], action.get('arguments')
@@ -238,6 +245,28 @@ class BodyAPIHost:
             result.update(success=False, error='body request rejected; inspect host budgets and fresh observation')
         self._finish(identity, result)
         return result
+
+    def reconcile_receipts(self):
+        """Finalize only committed decisions; never invoke a body action or infer an effect.
+
+        Routes contain identifiers only. Legacy pending calls without routes remain
+        blocked until their original required action can be inspected explicitly.
+        """
+        db = self.loop.engine.db
+        rows = list(db.execute('''SELECT c.identity,q.turn_id,q.call_id FROM body_api_calls c
+            JOIN body_api_run_calls r ON r.identity=c.identity
+            JOIN body_api_call_routes q ON q.identity=c.identity
+            WHERE r.run_id=? AND c.status='pending' AND c.tool='request_body_action' ''', (self.run_id,)))
+        recovered = 0
+        for row in rows:
+            record = self.loop.engine.get('body-api-' + row['identity'])
+            if record is None or record['status'] != 'complete':
+                continue
+            preferred = max(record['request']['actions'], key=lambda a: a['score']['respect'])['id']
+            action = dict(turn_id=row['turn_id'], call_id=row['call_id'], arguments={'action': preferred})
+            self._finish(row['identity'], self._receipt_result(action, self.loop.receipt(record, replayed=True)))
+            recovered += 1
+        return dict(recovered_receipts=recovered, unresolved=self.evaluate()['unresolved'])
 
     def _receipt_result(self, action, receipt):
         result = dict(type='agent.session.input.tool_result', turn_id=action['turn_id'], call_id=action['call_id'])

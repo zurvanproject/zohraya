@@ -40,6 +40,8 @@ def main(argv=None):
     p.add_argument('--api-mode', choices=['observe', 'bounded'], default='observe')
     p.add_argument('--target-cycles', type=int, default=0)
     p.add_argument('--run-id', default='main')
+    p.add_argument('--api-recovery', choices=['resume', 'fresh'], default='resume')
+    p.add_argument('--max-reconnects', type=int, default=1)
     p.add_argument('--model')
     p.add_argument('--max-calls', type=int, default=40)
     p.add_argument('--timeout-seconds', type=float, default=30)

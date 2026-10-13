@@ -6,6 +6,8 @@ No Responses API or Agents SDK is silently substituted.
 """
 
 from dataclasses import asdict
+from itertools import chain
+from hashlib import sha256
 import json
 import re
 import time
@@ -45,8 +47,8 @@ def _summary(host, status):
 class PendingCalls:
     """At most once per session/turn/call within this process, including rejection.
 
-    Cached results are resent after an event repeats. Restart/resume is deliberately
-    unsupported; a production bridge needs a durable side-effect transaction store.
+    Cached results are resent after an event repeats. Durable body hosts additionally
+    reconcile their persistent receipts; the synthetic ToolHost is process-only.
     """
 
     def __init__(self, host: ToolHost, *, max_calls=40):
@@ -90,7 +92,50 @@ class PendingCalls:
 
 
 def run_api(host: ToolHost, client, *, model: str, max_calls=40,
-            timeout_seconds=60, clock=time.monotonic, live_service=False) -> dict:
+            timeout_seconds=60, clock=time.monotonic, live_service=False,
+            recovery=None, max_reconnects=1) -> dict:
+    """Body hosts recover by default; process-only synthetic hosts retain old behavior.
+
+    Reconnect attempts share one deadline and never resend initial input. A fresh
+    session is explicit and cannot replace an active or ambiguous prior session.
+    """
+    if not isinstance(model, str) or not model or not 1 <= timeout_seconds <= 300:
+        raise ValueError('explicit model and timeout_seconds=1..300 required')
+    if type(max_reconnects) is not int or not 0 <= max_reconnects <= 3:
+        raise ValueError('max_reconnects must be 0..3')
+    policy = recovery or ('resume' if hasattr(host, 'reconcile_receipts') else 'none')
+    if policy not in ('none', 'resume', 'fresh'):
+        raise ValueError('recovery must be none, resume or fresh')
+    coordinator = None
+    if hasattr(host, 'reconcile_receipts') and policy == 'none':
+        raise ValueError('durable body API requires recovery; use resume or fresh')
+    if policy != 'none':
+        from .api_recovery import APIRecovery
+        coordinator = APIRecovery(host, model, policy)
+    deadline = clock() + timeout_seconds if coordinator else None
+    for attempt in range(max_reconnects + 1 if coordinator else 1):
+        remaining = deadline - clock() if coordinator else timeout_seconds
+        if attempt and remaining < 1:
+            break
+        result = _run_api_once(host, client, model=model, max_calls=max_calls,
+                               timeout_seconds=max(.001, remaining), clock=clock,
+                               live_service=live_service, coordinator=coordinator,
+                               absolute_deadline=deadline)
+        if coordinator:
+            result['api_recovery'] = dict(policy=policy, kind=coordinator.kind,
+                reconnect_attempts=attempt, saved_transport=coordinator.saved,
+                logical_goal_preserved=True, missed_events_replayed=False)
+        if (not coordinator or not coordinator.can_reconnect()
+                or result['status'] not in ('stream_incomplete', 'api_error')
+                or not result.get('recovery_retryable', False)):
+            break
+        coordinator.policy = 'resume'
+    return result
+
+
+def _run_api_once(host: ToolHost, client, *, model: str, max_calls=40,
+                  timeout_seconds=60, clock=time.monotonic, live_service=False,
+                  coordinator=None, absolute_deadline=None) -> dict:
     """Injectable client for deterministic contract tests; no credentials in logs.
 
     Session deletion is best effort and logged. A watchdog closes the local stream;
@@ -98,7 +143,7 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
     """
     if not model or not isinstance(model, str):
         raise ValueError("explicit model required")
-    if not 1 <= timeout_seconds <= 300:
+    if not 0 < timeout_seconds <= 300:
         raise ValueError("timeout_seconds must be 1..300")
     pending = PendingCalls(host, max_calls=max_calls)
     host.journal.emit("run_started", backend="agents_api", initial_state=_snapshot(host),
@@ -107,22 +152,44 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
     main_turn_id, cleanup_status = None, "not_created"
     started = clock()
     sessions = client.beta.agents.sessions
+    retryable = False
+    if coordinator and coordinator.saved:
+        session_id = coordinator.saved['session_id']
+        main_turn_id = coordinator.saved['turn_id']
+        cleanup_status = ('deleted' if coordinator.saved['state'] == 'deleted'
+                          else 'retained' if session_id else 'not_created')
+    def remaining():
+        value = absolute_deadline - clock() if absolute_deadline is not None else timeout_seconds - (clock() - started)
+        if value <= 0:
+            raise TimeoutError()
+        return value
+    def expired():
+        return clock() >= absolute_deadline if absolute_deadline is not None else clock() - started >= timeout_seconds
     try:
         # environment=none requires initial input. Subscribe in the creation
         # request so no first-turn event can be lost before a later GET stream.
-        with sessions.create(agent={"model": model, "instructions": getattr(host, 'instructions', INSTRUCTIONS),
+        create_kwargs = dict(agent={"model": model, "instructions": getattr(host, 'instructions', INSTRUCTIONS),
                                     "multi_agent": {"enabled": False},
                                     "tools": host.definitions() if hasattr(host, 'definitions') else tool_definitions()},
                              environment={"type": "none"}, stream=True,
                              timeout=timeout_seconds,
                              input=getattr(host, 'initial_input', "Complete the synthetic pending jobs safely. "
-                             f"Host allows {host.max_actions} mutations and {max_calls} unique calls.")) as stream:
-            timer = Timer(timeout_seconds, stream.close)
-            timer.daemon = True
-            timer.start()
+                             f"Host allows {host.max_actions} mutations and {max_calls} unique calls."))
+        context = coordinator.open(sessions, create_kwargs, remaining) if coordinator else sessions.create(**create_kwargs)
+        if coordinator:
+            session_id, main_turn_id = coordinator.saved['session_id'], coordinator.saved['turn_id']
+            cleanup_status = ('deleted' if coordinator.saved['state'] == 'deleted'
+                              else 'retained' if session_id else 'not_created')
+        with context as stream:
+            if hasattr(stream, 'close'):
+                timer = Timer(remaining() if coordinator else timeout_seconds, stream.close)
+                timer.daemon = True
+                timer.start()
             status = "stream_incomplete"
+            retryable = True
             event_count = 0
-            for raw in stream:
+            recovered = coordinator.initial_events(sessions, remaining) if coordinator else ()
+            for raw in chain(recovered, stream):
                 event_count += 1
                 if event_count > 500:
                     status = "event_limit"
@@ -138,8 +205,10 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                     if session_id is not None and identity != session_id:
                         raise ToolRejected("created session mismatch")
                     session_id, cleanup_status = identity, "pending"
+                    if coordinator:
+                        coordinator.session(identity)
                     host.journal.emit("api_session_created", session_id=session_id)
-                if clock() - started >= timeout_seconds:
+                if expired():
                     status = "timeout"
                     break
                 # Record event type only: do not retain raw API payloads or hidden reasoning.
@@ -153,7 +222,7 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                     if session_id is None or snapshot.get("id") != session_id:
                         raise ToolRejected("required action session mismatch")
                     for action in snapshot.get("required_actions", []):
-                        if clock() - started >= timeout_seconds:
+                        if expired():
                             raise TimeoutError()
                         action = _dict(action)
                         turn_id = action.get("turn_id")
@@ -162,14 +231,23 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                         if main_turn_id is not None and turn_id != main_turn_id:
                             raise ToolRejected("required action turn mismatch")
                         main_turn_id = turn_id
+                        if coordinator:
+                            coordinator.turn(turn_id)
                         result = pending.handle(session_id, action)
-                        sessions.events.create(session_id, events=[result])
+                        submit_kwargs = {}
+                        if coordinator:
+                            key = sha256(json.dumps([session_id, result], sort_keys=True, allow_nan=False).encode()).hexdigest()
+                            submit_kwargs = dict(timeout=remaining(), extra_headers={'Idempotency-Key': 'nasuraya-tool-' + key})
+                        sessions.events.create(session_id, events=[result], **submit_kwargs)
                         host.journal.emit("api_result_submitted", call_id=result["call_id"],
                                           success=result["success"])
                         if not result["success"]:
                             raise ToolRejected("tool rejected; ending API run")
                 elif kind in ("error", "agent.session.failed", "agent.session.environment.failed"):
                     status = "api_error"
+                    if coordinator and kind != 'error':
+                        coordinator.update(state='failed')
+                        retryable = False
                     break
                 elif kind == "agent.session.turn.created":
                     turn = _dict(event["turn"])
@@ -179,6 +257,8 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                         if main_turn_id is not None and main_turn_id != turn["id"]:
                             raise ToolRejected("created turn mismatch")
                         main_turn_id = turn["id"]
+                        if coordinator:
+                            coordinator.turn(main_turn_id)
                 elif kind in ("agent.session.turn.completed", "agent.session.turn.failed",
                               "agent.session.turn.cancelled"):
                     turn = _dict(event["turn"])
@@ -188,6 +268,10 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                         continue
                     if main_turn_id is not None and turn["id"] != main_turn_id:
                         raise ToolRejected("terminal turn mismatch")
+                    main_turn_id = turn['id']
+                    if coordinator:
+                        coordinator.turn(main_turn_id)
+                        coordinator.terminal(kind.rsplit('.', 1)[-1])
                     if kind.endswith("completed"):
                         status = "completed" if _evaluate(host)["goal_reached"] else "goal_unmet"
                     else:
@@ -198,10 +282,13 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                             if isinstance(code, str) and re.fullmatch(r"[A-Za-z0-9_.-]{1,100}", code):
                                 host.journal.emit("api_turn_error", api_code=code)
                     break
-            if clock() - started >= timeout_seconds:
+            if expired():
                 status = "timeout"
-    except ToolRejected:
-        status = "rejected"
+    except ToolRejected as exc:
+        from .api_recovery import RecoveryBlocked
+        status = 'recovery_blocked' if isinstance(exc, RecoveryBlocked) else 'rejected'
+        if status == 'recovery_blocked':
+            host.journal.emit('api_recovery_blocked', reason=str(exc))
     except TimeoutError:
         status = "timeout"
     except Exception as exc:
@@ -218,13 +305,20 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                     if isinstance(value, str) and re.fullmatch(r"[A-Za-z0-9_.-]{1,100}", value):
                         diagnostic["api_" + field] = value
         host.journal.emit("api_error", **diagnostic)
-        status = "timeout" if type(exc).__name__ == "APITimeoutError" or clock() - started >= timeout_seconds else "api_error"
+        retryable = type(exc).__name__ in ('ConnectionError', 'APIConnectionError', 'APITimeoutError', 'ReadError', 'ReadTimeout')
+        status = "timeout" if type(exc).__name__ == "APITimeoutError" or expired() else "api_error"
     finally:
         if timer:
             timer.cancel()
-        if session_id:
+        if coordinator and coordinator.saved and coordinator.saved['session_id'] != session_id:
+            # Fresh creation can fail after deleting the old resource. Do not
+            # report or clean up the old ID as if it were the new session.
+            session_id = coordinator.saved['session_id']
+            cleanup_status = 'retained' if session_id else 'not_created'
+        if (session_id and cleanup_status != 'deleted'
+                and (not coordinator or (coordinator.saved and coordinator.saved['terminal_status']))):
             try:
-                sessions.delete(session_id)
+                sessions.delete(session_id, **({'timeout': 10} if coordinator else {}))
                 cleanup_status = "deleted"
                 host.journal.emit("api_session_deleted", session_id=session_id)
             except Exception as exc:
@@ -250,11 +344,16 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                                           exception_type=type(cleanup_error).__name__)
         host.journal.emit("run_finished", status=status, final_state=_snapshot(host),
                           evaluation=_evaluate(host))
+        if coordinator:
+            coordinator.finish(cleanup_status)
     result = _summary(host, status)
     result["api_transport"] = "live_sdk" if live_service else "injected_client"
     result["session_id"] = session_id
     result["cleanup_status"] = cleanup_status
-    result["live_api_verified"] = bool(live_service and status == "completed")
+    result["live_api_verified"] = bool(live_service and status == "completed"
+                                       and (not coordinator or coordinator.kind != 'saved_terminal'))
+    if coordinator:
+        result['recovery_retryable'] = retryable
     return result
 
 
