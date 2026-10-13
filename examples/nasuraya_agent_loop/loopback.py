@@ -102,7 +102,12 @@ def local_fixture(scenario):
             if self.path == "/v1/agents/sessions":
                 assert body["environment"] == {"type":"none"}
                 assert body["agent"]["multi_agent"] == {"enabled":False}
-                self.respond(200,{"id":"sess-loopback"})
+                if body.get("stream") is not True or not body.get("input"):
+                    self.respond(400,{"error":{"code":"missing_initial_input"}})
+                    return
+                fixture.queue.put({"type":"agent.session.created", "session":{"id":"sess-loopback"}})
+                fixture.accept({"type":"agent.session.input.message"})
+                self.stream_events()
             elif self.path == "/v1/agents/sessions/sess-loopback/events":
                 for event in body["events"]:
                     fixture.accept(event)
@@ -115,6 +120,9 @@ def local_fixture(scenario):
             if self.path != "/v1/agents/sessions/sess-loopback/events":
                 self.respond(404)
                 return
+            self.stream_events()
+
+        def stream_events(self):
             self.send_response(200)
             self.send_header("Content-Type","text/event-stream")
             self.send_header("Connection","close")

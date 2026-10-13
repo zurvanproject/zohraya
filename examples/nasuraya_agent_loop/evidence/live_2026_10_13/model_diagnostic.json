@@ -1,0 +1,10 @@
+{
+  "backend": "responses_api_diagnostic",
+  "model": "gpt-6-astra",
+  "agent_loop_verified": false,
+  "status": "failed",
+  "exception_type": "RateLimitError",
+  "http_status": 429,
+  "code": "billing_not_active",
+  "type": "billing_not_active"
+}

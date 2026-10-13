@@ -32,8 +32,9 @@ class InstalledSDKTests(unittest.TestCase):
         import httpx2
         from openai import OpenAI
         captured = []
+        creation = {"type": "agent.session.created", "session": {"id": "sess-sdk-test"}}
         stream_body = "".join("event: " + event["type"] + "\ndata: " + json.dumps(event) + "\n\n"
-                              for event in events).encode()
+                              for event in [creation] + events).encode()
 
         def respond(request):
             body = json.loads(request.content) if request.content else None
@@ -42,8 +43,11 @@ class InstalledSDKTests(unittest.TestCase):
             if request.method == "POST" and request.url.path == "/v1/agents/sessions":
                 if create_status != 200:
                     return httpx2.Response(create_status, json={"error": {
-                        "message": "sensitive sentinel", "type": "authentication_error"}})
-                return httpx2.Response(200, json={"id": "sess-sdk-test"})
+                        "message": "sensitive sentinel", "type": "authentication_error",
+                        "code": "invalid_api_key"}})
+                if body.get("stream") is not True or not body.get("input"):
+                    return httpx2.Response(400, json={"error": {"code": "missing_initial_input"}})
+                return httpx2.Response(200, headers={"content-type": "text/event-stream"}, content=stream_body)
             if request.method == "GET" and request.url.path.endswith("/events"):
                 return httpx2.Response(200, headers={"content-type": "text/event-stream"}, content=stream_body)
             if request.method == "POST" and request.url.path.endswith("/events"):
@@ -73,9 +77,11 @@ class InstalledSDKTests(unittest.TestCase):
         self.assertFalse(result["live_api_verified"])
         self.assertTrue(all(request["beta"] == "agents=v1" for request in captured))
         self.assertEqual(captured[0]["body"]["environment"], {"type": "none"})
-        self.assertEqual((captured[1]["method"], captured[2]["method"]), ("GET", "POST"))
+        self.assertTrue(captured[0]["body"]["stream"])
+        self.assertTrue(captured[0]["body"]["input"])
+        self.assertFalse(any(r["method"] == "GET" for r in captured))
         outputs = [r["body"]["events"][0] for r in captured
-                   if r["method"] == "POST" and r["path"].endswith("/events")][1:]
+                   if r["method"] == "POST" and r["path"].endswith("/events")]
         self.assertEqual(len(outputs), 10)
         self.assertTrue(all(r["type"] == "agent.session.input.tool_result" and r["success"] for r in outputs))
         self.assertEqual(captured[-1]["method"], "DELETE")
@@ -95,6 +101,9 @@ class InstalledSDKTests(unittest.TestCase):
         self.assertEqual(result["status"], "api_error")
         self.assertEqual(len(captured), 1)
         self.assertNotIn("sensitive sentinel", json.dumps(host.journal.events))
+        error = next(e for e in host.journal.events if e["kind"] == "api_error")
+        self.assertEqual(error["http_status"], 401)
+        self.assertEqual(error["api_code"], "invalid_api_key")
 
     def test_real_sdk_closed_idle_stream_does_not_report_success(self):
         _, result, captured = self.execute([{"type": "agent.session.idle"}])

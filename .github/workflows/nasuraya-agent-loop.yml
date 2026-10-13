@@ -37,7 +37,7 @@ jobs:
           result = unittest.TextTestRunner(verbosity=2).run(suite)
           expected_skips = 0 if os.environ['TEST_ENVIRONMENT'] == 'sdk' else 10
           assert result.wasSuccessful()
-          assert result.testsRun == 57, result.testsRun
+          assert result.testsRun == 58, result.testsRun
           assert len(result.skipped) == expected_skips, result.skipped
           PY
       - name: Run synthetic demo and state grid

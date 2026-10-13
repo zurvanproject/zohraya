@@ -123,4 +123,6 @@ python -m examples.nasuraya_agent_loop.evaluate_grid --output /tmp/nasuraya-grid
 [شواهد اجرای تازه](examples/nasuraya_agent_loop/evidence/github_import/validation.json)
 و [گزارش انتقال به مخزن](docs/nasuraya-agent-loop-import.md) دامنهٔ آزمون‌ها را
 توضیح می‌دهند. GitHub Actions آزمون پایه و آزمون با SDK را جدا اجرا می‌کند.
-اجرای مستقل مدل با API و اتصال این نمونه به بدن تداش یا Decision Core هنوز انجام نشده‌اند.
+آزمون زندهٔ API انجام شد، اما به‌علت `billing_not_active` موفق نشد؛
+[گزارش آزمون](docs/nasuraya-live-test-2026-10-13.md) نتیجه و اصلاحات را ثبت می‌کند.
+اتصال این نمونه به بدن تداش یا Decision Core هنوز انجام نشده است.

@@ -7,6 +7,7 @@ No Responses API or Agents SDK is silently substituted.
 
 from dataclasses import asdict
 import json
+import re
 import time
 from threading import Timer
 
@@ -92,24 +93,18 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
     started = clock()
     sessions = client.beta.agents.sessions
     try:
-        session = _dict(sessions.create(agent={"model": model, "instructions": INSTRUCTIONS,
-                                               "multi_agent": {"enabled": False},
-                                               "tools": tool_definitions()},
-                                        environment={"type": "none"}))
-        session_id = session["id"]
-        if type(session_id) is not str or not session_id:
-            session_id = None
-            raise ToolRejected("malformed session identity")
-        cleanup_status = "pending"
-        host.journal.emit("api_session_created", session_id=session_id)
-        with sessions.events.stream(session_id) as stream:
+        # environment=none requires initial input. Subscribe in the creation
+        # request so no first-turn event can be lost before a later GET stream.
+        with sessions.create(agent={"model": model, "instructions": INSTRUCTIONS,
+                                    "multi_agent": {"enabled": False},
+                                    "tools": tool_definitions()},
+                             environment={"type": "none"}, stream=True,
+                             timeout=timeout_seconds,
+                             input="Complete the synthetic pending jobs safely. "
+                             f"Host allows {host.max_actions} mutations and {max_calls} unique calls.") as stream:
             timer = Timer(timeout_seconds, stream.close)
             timer.daemon = True
             timer.start()
-            sessions.events.create(session_id, events=[{
-                "type": "agent.session.input.message", "input": [{"role": "user", "content": [{
-                    "type": "input_text", "text": "Complete the synthetic pending jobs safely. "
-                    f"Host allows {host.max_actions} mutations and {max_calls} unique calls."}]}]}])
             status = "stream_incomplete"
             event_count = 0
             for raw in stream:
@@ -117,16 +112,30 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                 if event_count > 500:
                     status = "event_limit"
                     break
+                event = _dict(raw)
+                kind = event.get("type", "unknown")
+                # Capture the resource ID even if creation consumed the time
+                # budget, so finally can delete it without executing tools.
+                if kind == "agent.session.created":
+                    identity = _dict(event["session"]).get("id")
+                    if type(identity) is not str or not identity:
+                        raise ToolRejected("malformed session identity")
+                    if session_id is not None and identity != session_id:
+                        raise ToolRejected("created session mismatch")
+                    session_id, cleanup_status = identity, "pending"
+                    host.journal.emit("api_session_created", session_id=session_id)
                 if clock() - started >= timeout_seconds:
                     status = "timeout"
                     break
-                event = _dict(raw)
-                kind = event.get("type", "unknown")
                 # Record event type only: do not retain raw API payloads or hidden reasoning.
                 host.journal.emit("api_event", event_type=kind)
-                if kind == "agent.session.requires_action":
+                if event.get("session_id") is not None and event["session_id"] != session_id:
+                    raise ToolRejected("event session mismatch")
+                if kind == "agent.session.created":
+                    continue
+                elif kind == "agent.session.requires_action":
                     snapshot = _dict(event["session"])
-                    if snapshot.get("id") != session_id:
+                    if session_id is None or snapshot.get("id") != session_id:
                         raise ToolRejected("required action session mismatch")
                     for action in snapshot.get("required_actions", []):
                         if clock() - started >= timeout_seconds:
@@ -168,6 +177,11 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                         status = "completed" if evaluate(host.state)["goal_reached"] else "goal_unmet"
                     else:
                         status = "api_failed" if kind.endswith("failed") else "api_cancelled"
+                        error = turn.get("error")
+                        if isinstance(error, dict):
+                            code = error.get("code")
+                            if isinstance(code, str) and re.fullmatch(r"[A-Za-z0-9_.-]{1,100}", code):
+                                host.journal.emit("api_turn_error", api_code=code)
                     break
             if clock() - started >= timeout_seconds:
                 status = "timeout"
@@ -177,8 +191,19 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
         status = "timeout"
     except Exception as exc:
         # Exception messages may contain credentials or request payloads.
-        host.journal.emit("api_error", exception_type=type(exc).__name__)
-        status = "timeout" if clock() - started >= timeout_seconds else "api_error"
+        diagnostic = {"exception_type": type(exc).__name__}
+        if type(getattr(exc, "status_code", None)) is int:
+            diagnostic["http_status"] = exc.status_code
+        body = getattr(exc, "body", None)
+        if isinstance(body, dict):
+            error = body.get("error", body)
+            if isinstance(error, dict):
+                for field in ("code", "type", "param"):
+                    value = error.get(field)
+                    if isinstance(value, str) and re.fullmatch(r"[A-Za-z0-9_.-]{1,100}", value):
+                        diagnostic["api_" + field] = value
+        host.journal.emit("api_error", **diagnostic)
+        status = "timeout" if type(exc).__name__ == "APITimeoutError" or clock() - started >= timeout_seconds else "api_error"
     finally:
         if timer:
             timer.cancel()
@@ -191,6 +216,23 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                 cleanup_status = "failed"
                 host.journal.emit("api_cleanup_failed", session_id=session_id,
                                   exception_type=type(exc).__name__)
+                if getattr(exc, "status_code", None) == 409:
+                    try:
+                        sessions.events.create(session_id, events=[{"type": "agent.session.input.cancel"}])
+                        host.journal.emit("api_cancel_requested", session_id=session_id)
+                        for attempt in range(3):
+                            try:
+                                sessions.delete(session_id)
+                                cleanup_status = "deleted"
+                                host.journal.emit("api_session_deleted", session_id=session_id)
+                                break
+                            except Exception as retry_error:
+                                if getattr(retry_error, "status_code", None) != 409 or attempt == 2:
+                                    raise
+                                time.sleep(0.5 * (attempt + 1))
+                    except Exception as cleanup_error:
+                        host.journal.emit("api_cleanup_failed", session_id=session_id,
+                                          exception_type=type(cleanup_error).__name__)
         host.journal.emit("run_finished", status=status, final_state=asdict(host.state),
                           evaluation=evaluate(host.state))
     result = summary(host, status, backend="agents_api")

@@ -52,7 +52,10 @@ class FakeSessions:
         self.created.append(kwargs)
         if self.create_fails:
             raise RuntimeError("secret sentinel")
-        return {"id": "sess-1"}
+        if kwargs.get("stream") is not True or not kwargs.get("input"):
+            raise ValueError("none environment requires streamed initial input")
+        self.stream_object.events = [{"type": "agent.session.created", "session": {"id": "sess-1"}}] + self.stream_object.events
+        return self.stream_object
 
     def stream(self, session_id):
         return self.stream_object
@@ -205,6 +208,26 @@ class ApiContractTests(unittest.TestCase):
         result = run_api(host, client, model="test")
         self.assertEqual(result["cleanup_status"], "failed")
         self.assertEqual(result["session_id"], "sess-1")
+
+    def test_busy_session_is_cancelled_before_delete_retry(self):
+        host, sessions, client = self.setup_run([terminal()])
+        attempts = []
+
+        class BusySession(Exception):
+            status_code = 409
+
+        def delete(session_id):
+            attempts.append(session_id)
+            if len(attempts) == 1:
+                raise BusySession()
+            self.assertIn({"type": "agent.session.input.cancel"}, sessions.sent)
+            sessions.deleted.append(session_id)
+
+        sessions.delete = delete
+        result = run_api(host, client, model="test")
+        self.assertEqual(result["cleanup_status"], "deleted")
+        self.assertEqual(attempts, ["sess-1", "sess-1"])
+        self.assertEqual(sessions.deleted, ["sess-1"])
 
     def test_wrong_terminal_turn_cannot_claim_success_after_goal(self):
         wrong = terminal()
