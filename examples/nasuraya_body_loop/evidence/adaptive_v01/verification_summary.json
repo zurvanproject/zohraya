@@ -1,0 +1,39 @@
+{
+  "accepted_protocol_sha256": "45104c6a06f98c7a6344c8fa7f1cd5a0a6f7c52123f8ea918f9b7398d4d26cf2",
+  "adaptive_cli_cold_replay": {
+    "cycles": 2,
+    "equal": true,
+    "remaining": 1,
+    "version": 3
+  },
+  "api_calls": 0,
+  "discarded_overlap_draft": true,
+  "grid_cases": 484,
+  "grid_violations": 0,
+  "native_equations_changed": false,
+  "native_scenarios": 12,
+  "old_paired_reproduced": true,
+  "old_sleep_veto_difference": 1,
+  "previous_ci": {
+    "agent_pr_runs": [
+      38434171156,
+      38434171233
+    ],
+    "all_completed_success": true,
+    "identity_pr_run": 38445960481
+  },
+  "skipped_in_count": 0,
+  "source_heads": {
+    "agent_loop": "601653d9acc302563e98b0a8f4fa9e6ed15011d5",
+    "identity": "748d5a44f9e5bf0f21bede97a7c16653edd90964"
+  },
+  "test_counts": {
+    "adaptive_tests.log": 19,
+    "agent_sdk_tests.log": 60,
+    "body_api_sdk_tests.log": 41,
+    "body_original.log": 26,
+    "mirror_original.log": 3,
+    "native_original.log": 99
+  },
+  "unique_passed_tests": 248
+}

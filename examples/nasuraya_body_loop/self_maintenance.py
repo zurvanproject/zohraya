@@ -77,11 +77,14 @@ class IdentityContinuity:
     """
     def __init__(self, db):
         self.db = db
+        existed = db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='nasu_identity_versions'").fetchone()
         db.execute("""CREATE TABLE IF NOT EXISTS nasu_identity_versions (
             version INTEGER PRIMARY KEY, parent_hash TEXT NOT NULL,
             document TEXT NOT NULL, rationale TEXT NOT NULL,
             evidence TEXT NOT NULL, record_hash TEXT NOT NULL)""")
         if not db.execute('SELECT 1 FROM nasu_identity_versions LIMIT 1').fetchone():
+            if existed:
+                raise MaintenanceBlocked('identity history missing; implicit reset forbidden')
             doc = {'schema': SCHEMA, 'principles': list(PRINCIPLES), 'beliefs': {}}
             self._append(doc, 'initial explicit project constitution', 'design://nasuraya/identity-v01')
         self.verify()
@@ -113,7 +116,7 @@ class IdentityContinuity:
     def revise_belief(self, key, value, *, reason, evidence):
         if not isinstance(key, str) or not re.fullmatch(r'[a-z][a-z0-9_]{0,47}', key):
             raise ValueError('belief key must be bounded and canonical')
-        if key in ('principles', 'schema'):
+        if key in ('principles', 'schema') or key in PRINCIPLES:
             raise MaintenanceBlocked('core principle mutation forbidden')
         if not isinstance(value, (str, int, float, bool, type(None))) or (
                 isinstance(value, float) and not math.isfinite(value)):

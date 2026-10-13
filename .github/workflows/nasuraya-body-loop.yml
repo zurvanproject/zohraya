@@ -40,6 +40,23 @@ jobs:
         run: python3 run_tests.py --reflection --output /tmp/nasuraya-native-check
       - name: Verify bounded bridge and cold recovery
         run: python3 -m examples.nasuraya_body_loop test
+      - name: Verify adaptive memory and actual process interruptions
+        run: python3 -m examples.nasuraya_body_loop adaptive-test
+      - name: Measure frozen independent predictive comparison
+        run: |
+          python3 -m examples.nasuraya_body_loop predictive-benchmark --output-dir /tmp/nasuraya-predictive-check
+          python3 - <<'PY'
+          import json
+          r = json.load(open('/tmp/nasuraya-predictive-check/predictive_report.json'))
+          assert r['api_calls'] == 0
+          assert r['input_action_fingerprints_disjoint']
+          assert r['held_out_parameters_unchanged']
+          assert not r['test_used_for_training']
+          assert all(x['parameters_equal'] for x in r['cold_recovery'])
+          assert all(x['all_budgets_preserved'] for x in r['evaluation'].values())
+          # Correct execution and honest reporting are required even if MAE worsens.
+          assert r['success'] == (r['evaluation']['test']['mae']['B'] < r['evaluation']['test']['mae']['A'])
+          PY
       - name: Verify persistent API body tools without live service
         run: |
           python3 -m venv .ci-env
