@@ -10,8 +10,10 @@ from .host import BodyLoop, validate_duration
 def main(args):
     command = args['command']
     if command == 'test':
-        from . import test_body_loop
-        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))
+        from . import test_body_loop, test_self_maintenance
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
+                                   for m in (test_body_loop, test_self_maintenance))
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command == 'api-test':
         from . import test_api_host, test_api_recovery
@@ -19,6 +21,13 @@ def main(args):
                                    for m in (test_api_host, test_api_recovery))
         r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
+    if command == 'maintain':
+        from .self_maintenance import SelfMaintenance
+        with BodyLoop(args['session']) as loop:
+            result = SelfMaintenance(loop, goal_id=args['goal_id'],
+                                     target_cycles=args['target_cycles']).run()
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0 if result['status'] == 'completed' else 1
     if command == 'api':
         from examples.nasuraya_agent_loop.agents_api import make_client, run_api
         from examples.nasuraya_agent_loop.local import Journal
