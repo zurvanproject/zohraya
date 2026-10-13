@@ -1,0 +1,84 @@
+{
+  "schema": "nasuraya-goal-continuity-validation/1",
+  "baseline_commit": "3ccdf7320c45bb91ffbae3064d5a00daf26953e6",
+  "baseline_probe": {
+    "before_reopen": {
+      "goal_reached": true,
+      "completed_cycles": 1,
+      "failed_cycles": 0,
+      "actions_remaining": 2,
+      "unresolved": false,
+      "safe": true,
+      "target_cycles": 1
+    },
+    "after_reopen": {
+      "goal_reached": false,
+      "completed_cycles": 0,
+      "failed_cycles": 0,
+      "actions_remaining": 2,
+      "unresolved": false,
+      "safe": true,
+      "target_cycles": 1
+    },
+    "body_cycles_retained": 1,
+    "global_actions_remaining": 2
+  },
+  "complete_goal_probe": {
+    "before_reopen": {
+      "goal_reached": true,
+      "completed_cycles": 1,
+      "failed_cycles": 0,
+      "run_actions_remaining": 0,
+      "actions_remaining": 0,
+      "unresolved": false,
+      "safe": true,
+      "target_cycles": 1
+    },
+    "after_reopen": {
+      "goal_reached": true,
+      "completed_cycles": 1,
+      "failed_cycles": 0,
+      "run_actions_remaining": 0,
+      "actions_remaining": 0,
+      "unresolved": false,
+      "safe": true,
+      "target_cycles": 1
+    },
+    "exhausted_body_budget_does_not_prevent_goal_recall": true
+  },
+  "partial_goal_probe": {
+    "schema": "nasuraya-saved-goal-probe/1",
+    "fixture": "generated sleep pressure; no private user ledger",
+    "before_reopen": {
+      "goal_reached": false,
+      "completed_cycles": 1,
+      "failed_cycles": 0,
+      "run_actions_remaining": 1,
+      "actions_remaining": 11,
+      "unresolved": false,
+      "safe": true,
+      "target_cycles": 2
+    },
+    "after_reopen": {
+      "goal_reached": false,
+      "completed_cycles": 1,
+      "failed_cycles": 0,
+      "run_actions_remaining": 1,
+      "actions_remaining": 11,
+      "unresolved": false,
+      "safe": true,
+      "target_cycles": 2
+    },
+    "body_checkpoint_unchanged_by_resume": true,
+    "model_preference": "walk",
+    "core_request": "walk",
+    "body_action": "protect",
+    "live_api_used": false
+  },
+  "api_body_tests_with_sdk_passed": 20,
+  "new_continuity_tests": 7,
+  "workshop_api_regressions_passed": 60,
+  "recovered_files_unchanged": 70,
+  "live_api_used": false,
+  "scope": "generated software-body fixtures and controlled transports; no model-weight or biological change"
+}

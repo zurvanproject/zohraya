@@ -1,0 +1,27 @@
+{
+  "backend": "offline",
+  "status": "completed",
+  "initial_state": {
+    "energy": 45,
+    "heat": 50,
+    "pending_jobs": 3,
+    "completed_jobs": 0,
+    "tick": 0
+  },
+  "final_state": {
+    "energy": 25,
+    "heat": 70,
+    "pending_jobs": 0,
+    "completed_jobs": 3,
+    "tick": 5
+  },
+  "evaluation": {
+    "goal_reached": true,
+    "safe": true,
+    "pending_jobs": 0,
+    "completed_jobs": 3
+  },
+  "actions_used": 5,
+  "event_count": 52,
+  "live_api_verified": false
+}

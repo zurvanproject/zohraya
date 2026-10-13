@@ -1,0 +1,108 @@
+{
+  "review_date_asia_tehran": "2026-10-13",
+  "base_commit": "162fde201570e928a1a213047dbf395bfc083c3a",
+  "test_command": "python -m unittest discover -s examples/nasuraya_agent_loop/tests -v",
+  "observed_tests_passed": 57,
+  "observed_failures": 0,
+  "observed_errors": 0,
+  "offline_execution": {
+    "command": "python -m examples.nasuraya_agent_loop --output-dir examples/nasuraya_agent_loop/evidence/offline",
+    "exit_code": 0,
+    "status": "completed",
+    "mutations": 5,
+    "completed_jobs": 3,
+    "events": 52,
+    "trace": "offline/events.jsonl",
+    "report": "offline/report.md"
+  },
+  "api_verification": {
+    "scope": "real installed SDK serialization, headers and SSE decoding against in-memory responses; plus injected client tests",
+    "live_service_invoked": false,
+    "installed_sdk_compatibility_tested": true,
+    "account_access_tested": false,
+    "live_blocker": "OPENAI_API_KEY absent; no secure key-injection capability available in this session"
+  },
+  "acceptance_evidence": {
+    "observe_choose_execute_evaluate": "offline trace and completion test",
+    "repeatability": "independent full traces compared for equality",
+    "bounded_tools": "input rejection, observation prerequisite, observe mode and budget tests",
+    "reviewable_report": "disk JSONL compared to memory and Markdown checked",
+    "api_separation": "38 tests pass without the SDK; 4 optional SDK transport tests skip",
+    "original_files_preserved": "change scope restricted to examples/nasuraya_agent_loop/"
+  },
+  "remaining_requirements_for_production": [
+    "live service smoke test with an available model and authorized key; SDK contract now verified locally",
+    "durable idempotency and transaction recovery across process restart",
+    "explicit integration contracts with independently developed project components",
+    "Independent agent deployment is not active; work occurs during authorized chat turns"
+  ],
+  "publication": {
+    "remote_branch_created": false,
+    "pull_request_created": false,
+    "observed_error": "GitHub 403 Resource not accessible by integration during create_branch",
+    "delivery": "source bundle and git format-patch",
+    "recheck": {
+      "installed_plugin": true,
+      "visible_installations": 0,
+      "visible_installed_accounts": 0,
+      "permission_endpoint_status": 403,
+      "repair_capability_available": false
+    }
+  },
+  "revision": "0.3",
+  "test_environment": {
+    "python": "3.12",
+    "sdk": "openai 3.29.0",
+    "proxy_dependency": "socksio 1.0.0"
+  },
+  "sdk_tests": {
+    "passed": 4,
+    "transport": "httpx2.MockTransport, in-memory SSE",
+    "network_requests": 0,
+    "live_inference": false,
+    "log": "sdk/test-results.txt"
+  },
+  "without_sdk": {
+    "passed": 47,
+    "skipped_optional_sdk_tests": 10,
+    "failed": 0
+  },
+  "guided_execution": {
+    "selection": "assistant selected each action in this conversation",
+    "initial_state": {
+      "energy": 29,
+      "heat": 78,
+      "pending_jobs": 3
+    },
+    "status": "completed",
+    "actions": 4,
+    "events": 42,
+    "external_model_api_used": false,
+    "checkpoint": "chat_guided/checkpoint.json"
+  },
+  "local_http_execution": {
+    "sdk": "openai 3.29.0",
+    "endpoint": "127.0.0.1 only",
+    "selection": "scripted fixture",
+    "scenarios_tested": 6,
+    "reference_requests": 19,
+    "reference_mutations": 5,
+    "reference_cleanup": "deleted",
+    "external_service_requests": 0
+  },
+  "grid_evaluation": {
+    "selection": "FixturePolicy",
+    "cases": 484,
+    "completed": 484,
+    "violations": 0,
+    "maximum_actions_observed": 7,
+    "data": "in_chat/grid.json"
+  },
+  "new_changes": [
+    "Disable subagent tools in API session configuration",
+    "Validate primary turn identity before action execution and completion",
+    "Expose cleanup status and session identity independently from goal success",
+    "Persist serial guided synthetic execution between commands with checkpoint validation"
+  ],
+  "runtime_tests_log": "in_chat/tests.txt"
+}

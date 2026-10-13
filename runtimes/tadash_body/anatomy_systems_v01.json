@@ -1,0 +1,2001 @@
+{
+  "schema": "tadash-twelve-system-anatomy/0.1",
+  "baseline_contract": {
+    "source_library_id": "synthetic-local-source",
+    "source_library_version": 23,
+    "source_internal_version": "0.15",
+    "source_sha256": "56b881268b69609545acb79940f1e9f1673c74cdc1a1e868d057e089b57d35b9",
+    "phenotype_contract": {
+      "fingers_per_hand": 5,
+      "toes_per_foot": 3,
+      "horns": 2,
+      "digitigrade": true,
+      "sacral_tail": true,
+      "resonan_sensor_at_horn_roots": true,
+      "azarine_left_flank": true,
+      "high_energy_core_in_head": false,
+      "external_converter_default_active": false,
+      "spandar_on_thymic_capsule": true,
+      "spandar_name_fa": "سپندار",
+      "spandar_color": "deep violet with amber veining",
+      "external_silhouette_unchanged_v02": true,
+      "external_feminine_delicate_form": true,
+      "visible_masculine_muscle_bulking_for_strength": false
+    },
+    "appearance_contract": {
+      "status": "explicit_user_constraint",
+      "date_tehran": "2026-10-03",
+      "user_instruction_fa": "شکل عضلات مردانه نشود؛ بدن زنانه و ظریف باشد.",
+      "external_style": "feminine and delicate",
+      "visible_muscle_bulking_for_strength": false,
+      "strength_strategy": "internal architecture, material requirements, load paths, energy and control under the established feminine contour",
+      "review_criteria_fa": [
+        "خطِ بیرونیِ آشنای بدن، چهره و شاخ‌ها حفظ شود.",
+        "تقویتِ گردن، شانه و بازو نباید به برجستگیِ عضلاتِ مردانه در این شخصیت بینجامد.",
+        "اگر ساختارِ قدرت در همان فرم جا نشود، ساختار یا هدفِ قدرت بازطراحی شود.",
+        "حجمِ واقعیِ عضله و فضای عصب، رگ و حرکت باید در اطلس بعدی سنجیده شود."
+      ],
+      "contour_geometry_verified": false,
+      "reference_to_latest_strength_checkpoint": "Tadash_Strength_Resilience_V04_2026-10-03.zip",
+      "mass_target_is_provisional_for_fit": true
+    },
+    "adult_scale": {
+      "ground_to_crown_cm": 250,
+      "mass_target_kg": 195,
+      "mass_design_range_kg": [
+        180,
+        210
+      ]
+    },
+    "original_unresolved": [
+      "کاریوتیپ، توالی و جایگاه فیزیکی ژن‌ها",
+      "شبکهٔ تنظیمیِ دقیقِ ویژگی‌های دیوگونه",
+      "چگونگی رشد محفظه و فیزیک مبدل پرانرژی",
+      "کالیبراسیون ژنوتیپ به اندازه‌های اطلس و تصویر مرجع",
+      "اندازه‌گیریِ فاصلهٔ سپندار از تیموس، جناغ، وریدهای براکیوسفالیک، قوس، نای و پریکارد در چند وضعیتِ تنفس",
+      "سنجشِ اثرِ کپسولِ بلوری بر خون‌رسانی، تخلیهٔ لنف، گزینشِ T و تحملِ خودی",
+      "هندسه، عصب‌گیری و آزمونِ خشک/خیسِ پدهایِ انتخابیِ پنج انگشت",
+      "افزودنِ حرکت و جرم جسم، نرمی پد و تخمینِ اصطکاکِ نویزی برای سنجش پیامدِ کمبود نیروی ۰٫۳۸ ثانیه‌ای",
+      "وارسی سه‌بعدی مسیر عصب و عروق گردن–شانه در چرخش سر، بالا بردن بازو و دم بیشینه",
+      "continuous 3D mesh collision and deformation",
+      "intestinal loop geometry and mesenteric vessel routing",
+      "blood-flow resistances and portal/renal circulation",
+      "renal function and electrolyte/water ledger calibration",
+      "bladder compliance, ureter flow and detrusor/outlet timing",
+      "bowel motion and pelvic floor dynamics",
+      "reproductive tissue geometry and endocrine physiology",
+      "sacral foramina, bilateral nerves and tail joint loads",
+      "azarine fascia, heat-exit and material supply in moving anatomy"
+    ],
+    "original_modules": [
+      {
+        "id": "G00",
+        "name": "پایهٔ سلولی و تنظیم بیان",
+        "first_phase": "S0",
+        "territory": "همهٔ بافت‌ها",
+        "needs": [],
+        "outcome": "رشد، ترمیم، ترجمهٔ پروتئین و پاسخ به مواد و محیط؛ حاملِ توالی مشخص نشده است.",
+        "atlas_anchors": [],
+        "evidence_tier": "اصل زیستی",
+        "failure_if_uncoupled": "بدون پایداری سلولی، هیچ عضو دیگری معنی ندارد."
+      },
+      {
+        "id": "G01",
+        "name": "محور سر تا دم و قطعه‌بندی",
+        "first_phase": "S0",
+        "territory": "محور جنینی و مهره‌ها",
+        "needs": [
+          "G00"
+        ],
+        "outcome": "جایگاه سر، سینه، لگن و انتهای دمی را با زمان‌بندیِ ناحیه‌ای تعیین می‌کند.",
+        "atlas_anchors": [
+          "spine",
+          "pelvic_ring"
+        ],
+        "evidence_tier": "قیاس رشد مهره‌داران",
+        "failure_if_uncoupled": "اگر مرز لگن و دم جابه‌جا شود، عصب و اتصال دم از هم می‌گسلند."
+      },
+      {
+        "id": "G02",
+        "name": "چهره، جمجمه و پایهٔ شاخ",
+        "first_phase": "S1",
+        "territory": "سر، پوست و استخوان پیشانی",
+        "needs": [
+          "G01"
+        ],
+        "outcome": "بینیِ برجسته و یگانه، چشم‌های نامتقارنِ شخصیت‌دار و دو جوانهٔ شاخِ کوتاه و متوازن.",
+        "atlas_anchors": [
+          "head",
+          "nose",
+          "eye_l",
+          "eye_r",
+          "horn_l",
+          "horn_r"
+        ],
+        "evidence_tier": "طراحی داستانی بر پایهٔ رشد",
+        "failure_if_uncoupled": "شاخ بدون ریشهٔ استخوانی و عروقی یا با فشار روی مغز پذیرفته نیست."
+      },
+      {
+        "id": "G03",
+        "name": "الگوی انگشتِ دست و پا",
+        "first_phase": "S1",
+        "territory": "دو جوانهٔ دست و دو جوانهٔ پا",
+        "needs": [
+          "G01"
+        ],
+        "outcome": "هر دست پنج انگشت؛ هر پا سه انگشتِ جدا، با تمایز مکانی و زمانیِ اندام جلو/عقب.",
+        "atlas_anchors": [
+          "finger_l_1",
+          "finger_l_2",
+          "finger_l_3",
+          "finger_l_4",
+          "finger_l_5",
+          "toe_l_1",
+          "toe_l_2",
+          "toe_l_3"
+        ],
+        "evidence_tier": "قیاس تنظیم‌گرهای واقعی؛ خروجی داستانی",
+        "failure_if_uncoupled": "کم‌وزیادشدن انگشت یا جوش‌خوردن آنها قرارداد ظاهر را می‌شکند."
+      },
+      {
+        "id": "G04",
+        "name": "پای پنجه‌رو و زنجیرهٔ تحمل وزن",
+        "first_phase": "S2",
+        "territory": "ران تا پنجه و تاندون‌ها",
+        "needs": [
+          "G03",
+          "G07"
+        ],
+        "outcome": "زانو جلو، مفصل خرگوشی عقب، کف کشیده و اتکا بر بالشتک و سه انگشت؛ حس عمقی و خون‌رسانی همگام.",
+        "atlas_anchors": [
+          "knee_l",
+          "hock_l",
+          "metatarsal_l",
+          "ball_l"
+        ],
+        "evidence_tier": "طراحی بیومکانیکی داستانی",
+        "failure_if_uncoupled": "سه انگشت بدون تاندون، عضله و توزیع بار، راه‌رفتن پایدار نمی‌سازد."
+      },
+      {
+        "id": "G05",
+        "name": "دم خاجیِ عضلانی",
+        "first_phase": "S1",
+        "territory": "محور دمی، ساکروم و فاسیای سرینی",
+        "needs": [
+          "G01",
+          "G07"
+        ],
+        "outcome": "مهره‌های دمی، اتصال پهن به لگن، عضله، عروق و شاخهٔ عصبی تا پرز سبک انتهایی.",
+        "atlas_anchors": [
+          "tail",
+          "sacral",
+          "pelvic_ring"
+        ],
+        "evidence_tier": "قیاس رشد محور خلفی؛ فرم داستانی",
+        "failure_if_uncoupled": "دمِ بی‌اتصال یا بی‌عصب صرفاً آویز پوستی خواهد بود."
+      },
+      {
+        "id": "G06",
+        "name": "مغز، نخاع و حلقهٔ حس و حرکت",
+        "first_phase": "S1",
+        "territory": "جملهٔ عصبی مرکزی و محیطی",
+        "needs": [
+          "G01"
+        ],
+        "outcome": "مغز و ساقه، نخاع، واگ، شبکهٔ بازویی، خاجی و پودندال با بازخوردِ بدن‌مندی.",
+        "atlas_anchors": [
+          "brain",
+          "brainstem",
+          "vagus_l",
+          "brachial_l",
+          "sciatic_l",
+          "pudendal"
+        ],
+        "evidence_tier": "اصل زیستی با سازمان داستانی",
+        "failure_if_uncoupled": "فرمان حرکت بدون بازخورد حس عمقی، درد و وضعیت در مدل پذیرفته نیست."
+      },
+      {
+        "id": "G07",
+        "name": "گردش خون، تنفس و احشای پایه",
+        "first_phase": "S1",
+        "territory": "سینه و شکم",
+        "needs": [
+          "G01",
+          "G00"
+        ],
+        "outcome": "قلب، دو ریه، دیافراگم، کبد، معده، روده و کلیه‌ها پیش از بارهای ویژهٔ رزنان پایدار می‌شوند.",
+        "atlas_anchors": [
+          "heart",
+          "lung_l",
+          "lung_r",
+          "diaphragm",
+          "liver",
+          "stomach",
+          "kidney_l"
+        ],
+        "evidence_tier": "اصل زیستی با مختصات پیشنهادی",
+        "failure_if_uncoupled": "اندام ویژه نباید قلب، راه هوایی یا گردش خون را جابه‌جا یا از کار بیندازد."
+      },
+      {
+        "id": "G08",
+        "name": "لگن، دستگاه تناسلی و خودکار",
+        "first_phase": "S2",
+        "territory": "لگن و دیوارهٔ سینه",
+        "needs": [
+          "G01",
+          "G06",
+          "G07"
+        ],
+        "outcome": "مثانه و رحم، مسیرهای خودکار/پودندال و رشد پستان در این فنوتیپ، با فضای کافی برای ریشهٔ دم.",
+        "atlas_anchors": [
+          "uterus",
+          "bladder",
+          "pudendal",
+          "breast_l"
+        ],
+        "evidence_tier": "طراحی کالبدی داستانی",
+        "failure_if_uncoupled": "دم و کف لگن نباید مسیرهای عصبی یا احشای لگنی را قطع کنند."
+      },
+      {
+        "id": "G09",
+        "name": "پوست، مو و زیورِ انتخابی",
+        "first_phase": "S3",
+        "territory": "پوست، مو، شاخ و نوک دم",
+        "needs": [
+          "G02",
+          "G05"
+        ],
+        "outcome": "موی سرخ، رگهٔ مسیِ شاخ و پرزِ سبکِ دم؛ زیبایی هدف مستقل در محدودهٔ بارِ قابل تحمل است.",
+        "atlas_anchors": [
+          "hair",
+          "horn_filament_l",
+          "tail_tuft"
+        ],
+        "evidence_tier": "انتخاب زیبایی‌شناختی کانن",
+        "failure_if_uncoupled": "رگه و پرز نباید راه حس، میدان دید یا تعادل را مختل کنند."
+      },
+      {
+        "id": "G10",
+        "name": "جوانه و پلِ حسگر رزنان",
+        "first_phase": "S2",
+        "territory": "دو ریشهٔ شاخ و سطح بیرونی سقف سر",
+        "needs": [
+          "G02",
+          "G06",
+          "G07"
+        ],
+        "outcome": "دو لوب حسگرِ زیر شاخ، پل بیرونی و رابطِ حسی/تعادلی؛ هیچ راکتور پرانرژی در جمجمه نیست.",
+        "atlas_anchors": [
+          "resonan_l",
+          "resonan_r",
+          "resonan_bridge",
+          "trigeminal_l"
+        ],
+        "evidence_tier": "اندام داستانی با قید کالبدی",
+        "failure_if_uncoupled": "حسگرِ بی‌پل عصبی فقط بافت است؛ بار انرژی بالا کنار مغز ممنوع است."
+      },
+      {
+        "id": "G11",
+        "name": "آذرینه و بافر کم‌انرژی",
+        "first_phase": "S3",
+        "territory": "پهلوی چپ پشت قوس دنده‌ای",
+        "needs": [
+          "G07",
+          "G06",
+          "G10",
+          "G13"
+        ],
+        "outcome": "بافت لوبولیِ کوچک با خون‌رسانی، پایش دما و ذخیرهٔ محدود؛ کنار طحال و کلیه بدون هم‌پوشانی.",
+        "atlas_anchors": [
+          "azarine",
+          "spleen",
+          "kidney_l"
+        ],
+        "evidence_tier": "اندام داستانی با حساب انرژی",
+        "failure_if_uncoupled": "گرما یا ورودی نامشخص به توقف می‌انجامد، نه برداشت نامحدود."
+      },
+      {
+        "id": "G12",
+        "name": "برنامهٔ محفظهٔ بیرونی",
+        "first_phase": "S4",
+        "territory": "ساختار پیرامونیِ جدا از بدن",
+        "needs": [
+          "G06",
+          "G07",
+          "G10",
+          "G11",
+          "G13"
+        ],
+        "outcome": "فقط الگوی رشدِ داربست، رابط و مراقبت را تعریف می‌کند؛ اصل فیزیکیِ تبدیل پرانرژی هنوز حل نشده و پیش‌فرض غیرفعال است.",
+        "atlas_anchors": [
+          "converter",
+          "converter_tether"
+        ],
+        "evidence_tier": "فرضیهٔ دورِ داستانی",
+        "failure_if_uncoupled": "بدون خنک‌سازی، مهار، خوراک و فرمان قطع، دروازهٔ تبدیل بسته می‌ماند."
+      },
+      {
+        "id": "G13",
+        "name": "ترمیم و پایش یکپارچگی",
+        "first_phase": "S2",
+        "territory": "بافت‌های ویژه و معمول",
+        "needs": [
+          "G00",
+          "G06",
+          "G07"
+        ],
+        "outcome": "آسیب، دما، خون‌رسانی و در دسترس بودن مواد را پایش می‌کند؛ ترمیم زمان و ماده می‌خواهد.",
+        "atlas_anchors": [
+          "azarine",
+          "converter"
+        ],
+        "evidence_tier": "اصل زیستی + نگهبان داستانی",
+        "failure_if_uncoupled": "آسیب باز، کمبود ماده یا قطع حس، رشد یا فعالیت را متوقف می‌کند."
+      },
+      {
+        "id": "G14",
+        "name": "کپسولِ تیموس و زیست‌بلورِ سپندار",
+        "first_phase": "S3",
+        "territory": "مدیاستنِ فوقانی/قدامی، کپسولِ پیشین–بالاییِ تیموس",
+        "needs": [
+          "G00",
+          "G07",
+          "G13"
+        ],
+        "outcome": "تیموسِ دارای قشر و مغزِ کارآمد در بلوغ؛ بلورِ لایه‌ایِ ارغوانی با رگهٔ کهربایی بر کپسول، پشتِ دستهٔ جناغ، با ابعادِ آغازین ۳۲×۲۲×۸ میلی‌متر، بدون ورود به پارانشیم. خواندنِ کندِ وضعیتِ موضعی و پیامِ بازبینی‌پذیر، بدون فرمان مستقیم به انتخابِ T یا قلب.",
+        "atlas_anchors": [
+          "thymus",
+          "manubrium",
+          "brachiocephalic_veins",
+          "trachea",
+          "aortic_arch",
+          "pericardium"
+        ],
+        "evidence_tier": "قیاسِ تیموسِ انسان و زیست‌معدنیِ صدف؛ عضوِ داستانی",
+        "failure_if_uncoupled": "فشردنِ تیموس، ورید، نای، فرنیک یا پریکارد؛ رسوبِ نابجا و ادعای انرژی/ایمنیِ نامحدود طرح را رد می‌کند."
+      },
+      {
+        "id": "G15",
+        "name": "پوستِ موزاییکی و ترمیمِ محدودِ دیوگونه",
+        "first_phase": "S2",
+        "territory": "پشت، پهلو، دنده، کتف و پوستِ اندام‌ها",
+        "needs": [
+          "G00",
+          "G07",
+          "G13"
+        ],
+        "outcome": "ریزجزیره‌هایِ کراتینیِ لایه‌ای در نواحیِ محافظ، چین‌های نرمِ مفاصل و مسیرِ عرق/حس؛ بازسازیِ بهترِ پوستِ سطحی با حفظِ هموستاز و بودجهٔ ماده.",
+        "atlas_anchors": [
+          "skin",
+          "rib_cage",
+          "scapula",
+          "hand_palm"
+        ],
+        "evidence_tier": "الهام از فلسِ پانگولین و ترمیمِ پوستِ اکسولوتل؛ ترکیبِ داستانی",
+        "failure_if_uncoupled": "اگر تنفس، دفعِ گرما، حسِ درد یا ترمیمِ رگ/عصب مختل شود، لایهٔ سخت یا سرعتِ ترمیم پذیرفته نیست."
+      },
+      {
+        "id": "G16",
+        "name": "سامانهٔ حسیِ پنهانِ سر و تنظیمِ قامت",
+        "first_phase": "S2",
+        "territory": "چشم، گوش، بینی، پوستِ صورت، گردن و شبکهٔ فشار",
+        "needs": [
+          "G02",
+          "G06",
+          "G07",
+          "G10"
+        ],
+        "outcome": "جهت‌دهیِ مستقلِ گوش، بازیابیِ بخشی از رطوبتِ بازدم، حسِ دقیق‌ترِ صورت و پاسخِ وضعیتیِ گردن؛ رنگِ چشم، بینی، شاخ و چهره ثابت می‌مانند.",
+        "atlas_anchors": [
+          "ear_l",
+          "ear_r",
+          "nose",
+          "eye_l",
+          "eye_r",
+          "neck",
+          "carotid"
+        ],
+        "evidence_tier": "قیاسِ خفاش، گوزنِ شمالی، موشِ کور و زرافه؛ ترکیبِ داستانی",
+        "failure_if_uncoupled": "نویزِ رزنان به‌جای حسِ واقعی، مقاومتِ راهِ هوا یا افتِ پرفیوژنِ مغز، ادعای مزیت را رد می‌کند."
+      },
+      {
+        "id": "G17",
+        "name": "دستِ پنج‌انگشتیِ قدرتی–ظریف",
+        "first_phase": "S2",
+        "territory": "بازو، ساعد، کف و پنج انگشتِ هر دست",
+        "needs": [
+          "G03",
+          "G06",
+          "G07",
+          "G13"
+        ],
+        "outcome": "همان شست و چهار انگشت با اپوزیسیون، تاندون/قرقرهٔ سازگار، گیرندهٔ نوکِ انگشت و ریزپدِ تماسِ خشکِ انتخابی؛ گرفتنِ ظریف، قدرتی و رهاکردنِ حفاظتی با عصب و عروقِ مستقل.",
+        "atlas_anchors": [
+          "hand_l",
+          "hand_r",
+          "finger_l_1",
+          "finger_l_2",
+          "finger_l_3",
+          "finger_l_4",
+          "finger_l_5"
+        ],
+        "evidence_tier": "قیاسِ گیرندهٔ موشِ کور و مویچهٔ ژکو؛ هندسه و کنترلِ داستانی",
+        "failure_if_uncoupled": "انگشتِ اضافه، بی‌حسی، سندرمِ فشاریِ مچ، چسبندگیِ ناخواسته یا ناتوانیِ رهاکردنِ بار طرح را رد می‌کند."
+      },
+      {
+        "id": "G18",
+        "name": "هماهنگی گردن، شانه، لمس و مهار نیرو",
+        "first_phase": "S3",
+        "territory": "گردن، کمربند شانه، دو دست و رابط پایش آهستهٔ تنه",
+        "needs": [
+          "G06",
+          "G07",
+          "G14",
+          "G16",
+          "G17"
+        ],
+        "outcome": "پنج انگشت هر دست با بازخورد تماس و سقف نیروی وابسته به جسم کار می‌کنند؛ راهِ نفس و مسیر گردن–شبکهٔ بازویی دروازهٔ حرکت‌اند؛ دادهٔ سپندار و رزنان در کانال قابل جداسازی به توجه می‌رسند.",
+        "atlas_anchors": [
+          "neck",
+          "scapula_l",
+          "scapula_r",
+          "brachial_l",
+          "brachial_r",
+          "hand_l",
+          "hand_r",
+          "thymus"
+        ],
+        "evidence_tier": "طراحی داستانی و نمونهٔ محاسباتی کنترل؛ هندسه و فیزیولوژی سنجیده نشده",
+        "failure_if_uncoupled": "فشارِ بیش از تحمل جسم، بلندکردن با نیروی ناکافی، مصرف سهم حیاتی، افزایش کورِ نیرو با قطع حس یا انتقال خرابی سپندار به فرمان فوری دست."
+      },
+      {
+        "id": "G19",
+        "name": "قلمرو شکم و احشای لگنی",
+        "first_phase": "S2",
+        "territory": "زیر دیافراگم، پشت‌صفاق و لگن",
+        "needs": [
+          "G00",
+          "G06",
+          "G07",
+          "G08"
+        ],
+        "outcome": "صفاق و مزانتری، مسیر کامل گوارش، پورت و خون کبدی، دو کلیه و حالب، مثانه، دستگاه رحمی و راست‌روده با شبکه‌های مستقل و اتصال قابل رهگیری.",
+        "atlas_anchors": [
+          "abdomen",
+          "diaphragm",
+          "liver",
+          "stomach",
+          "spleen",
+          "intestine",
+          "kidney_l",
+          "kidney_r",
+          "bladder",
+          "uterus",
+          "azarine"
+        ],
+        "evidence_tier": "طراحی داستانیِ کالبد و فیزیولوژی؛ وارسیِ مقدماتی چند حجم هندسی",
+        "failure_if_uncoupled": "حجم‌های احشایی، مسیر پورت/کاوا یا ادرار با هم ادغام شوند؛ بار آذرینه یا دیواره باعثِ تنگیِ راه‌ها شود."
+      },
+      {
+        "id": "G20",
+        "name": "خاجی، کف لگن و ریشهٔ مستقل دم",
+        "first_phase": "S2",
+        "territory": "حلقه لگنی، فضای پیش‌خاجی و ناحیه پشتی ریشه دم",
+        "needs": [
+          "G01",
+          "G05",
+          "G06",
+          "G07",
+          "G08"
+        ],
+        "outcome": "بار دم از اتصال استخوانی و فاسیای پشتی به حلقه لگن می‌رود؛ مسیر عصبی دمی از هیپوگاستریک، اسپلانکنیک لگنی و پودندال جدا می‌ماند.",
+        "atlas_anchors": [
+          "pelvic_ring",
+          "spine",
+          "sacral",
+          "pudendal",
+          "tail"
+        ],
+        "evidence_tier": "قیاس عصبی انسان و انتخابِ کالبدی داستانی",
+        "failure_if_uncoupled": "چرخش دم عصب یا راه خروج مثانه/راست‌روده را بکشد؛ فضای پیش‌خاجی یا سوراخ‌های عصبی زیر بست دم بسته شوند."
+      },
+      {
+        "id": "G21",
+        "name": "لگن و پاها؛ انتقال بار و تماس مستقل پنجه",
+        "first_phase": "S2",
+        "needs": [
+          "G01",
+          "G05",
+          "G06",
+          "G07",
+          "G20"
+        ],
+        "outcome": "حلقهٔ لگن، ران، زانو، مچ پنجه‌رو و چهار تماس مستقل هر پا به یک زنجیرهٔ بار و بازخورد وصل می‌شوند.",
+        "evidence_tier": "طراحی داستانی؛ قیاس کالبدی و مدل ایستای فرضی",
+        "failure_if_uncoupled": "تماس انگشت از دست برود ولی بار ثابت بماند؛ ظرفیت پنجه یا شرط اصطکاک نقض شود."
+      },
+      {
+        "id": "G22",
+        "name": "تنظیم بالغِ دائویی و پیوند حس، معنا، انتخاب و عمل",
+        "first_phase": "S3",
+        "module_kind": "learned_adult_regulatory_design",
+        "needs": [
+          "G06",
+          "G07",
+          "G10",
+          "G11",
+          "G13",
+          "G15",
+          "G20",
+          "G21"
+        ],
+        "outcome": "در طرحم دریافت را از برداشت جدا می‌کنم؛ کوچک‌ترین اقدام کافی را پس از قیود بدن انتخاب می‌کنم؛ بازیابی تکیه و حفاظتِ معتبرِ ازقبل‌فعال می‌توانند هم‌زمان ادامه یابند.",
+        "evidence_tier": "استنتاج از مطالعهٔ متن؛ قید طراحی و نمونهٔ محاسباتی، بدون ادعای ژنتیک زیستی",
+        "failure_if_uncoupled": "مکث به تأخیر حفاظتی بدل شود؛ نشانهٔ مبهم به قطعیت بدل شود؛ فلسفه هزینهٔ نیرو، ماده یا حق انتخاب را حذف کند.",
+        "inherited_philosophical_knowledge_claimed": false
+      },
+      {
+        "id": "G23",
+        "name": "حالت عاطفی، حافظهٔ رابطه و انتخابِ تنظیم‌شده",
+        "first_phase": "S3",
+        "territory": "لایهٔ محاسباتیِ معنا، حافظه و تصمیم در مدل تداش",
+        "needs": [
+          "G06",
+          "G22"
+        ],
+        "outcome": "۴۴ حالت عاطفی مستقل و ترکیب‌هایشان، از دوست داشتن و دلبستگی تا سوگ، شرم، حسادت و حیرت، به ارزیابی رویداد، حافظه و برنامه وصل می‌شوند؛ ۱۰ متغیر حس بدنی ورودی شبیه‌سازی‌اند. پوشش کامل تجربهٔ انسانی یا تغییر مدل زبانی ادعا نمی‌شود.",
+        "atlas_anchors": [],
+        "evidence_tier": "نمونهٔ مهندسی بیرونی الهام‌گرفته از پژوهش؛ پارامترهای پیشنهادی",
+        "failure_if_uncoupled": "حالتِ بی‌اثر بر تصمیم، حافظهٔ بی‌منشأ، فشار رابطه‌ای یا ادعای احساسِ اثبات‌شده پذیرفته نیست."
+      }
+    ],
+    "spandar_inspiration": {
+      "schema": "tadash-spandar-eldunari-inspiration/0.1",
+      "date_tehran": "2026-10-03",
+      "user_statement_fa": "الدوناری را در کتاب‌های کریستوفر پائولینی جست‌وجو کن؛ سپندار شبیه چنین چیزی است.",
+      "source_title": "Dragons, Their Mythology, and the Inheritance Cycle",
+      "source_url": "https://www.paolini.net/2014/10/29/dragons-mythology-inheritance-cycle/",
+      "source_author": "Christopher Paolini",
+      "fictional_reference_summary_fa": "اِلدوناری یا قلبِ قلب‌ها در داستان، بلوری درونی است که اژدها می‌تواند آگاهی خود را به آن منتقل کند و پس از مرگ بدن در آن ادامه یابد. بیرون‌آوردن آن پیوند را حفظ می‌کند، اما صاحبش را آسیب‌پذیر می‌سازد.",
+      "user_directed_narrative_inspiration": "Spandar as a personal identity-continuity crystal, analogous in story function to an Eldunari",
+      "existing_name_location_geometry_and_runtime_preserved": true,
+      "current_implemented_function": "fictional slow body-state monitor; no consciousness transfer implemented",
+      "not_asserted": [
+        "actual consciousness storage",
+        "biological survival after death",
+        "new genetic mechanism",
+        "physical chromosome or DNA sequence"
+      ]
+    }
+  },
+  "systems": [
+    {
+      "stage": 1,
+      "name_fa": "تنظیم هورمونی",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "hypothalamus",
+        "pituitary",
+        "thyroid",
+        "parathyroids",
+        "adrenal_cortex",
+        "adrenal_medulla",
+        "pancreatic_islets"
+      ],
+      "feedback_loops": [
+        "بازخورد منفی تیروئید–هیپوفیز",
+        "ذخیره/آزادسازی سوخت با انسولین/گلوکاگون قراردادی",
+        "درخواست حفظ آب با ADH",
+        "EPO کلیوی به مغز استخوان",
+        "بازخورد مرکزی–تخمدانی"
+      ],
+      "unresolved": [
+        "غلظت، نیمه‌عمر و گیرندهٔ واقعی هورمون‌ها",
+        "فیزیولوژی کامل محور GH/IGF و کورتکس/مدولا",
+        "جزئیات عروقی هیپوفیز و پاراتیروئید"
+      ]
+    },
+    {
+      "stage": 2,
+      "name_fa": "خون و خون‌سازی",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "marrow",
+        "rbc_pool",
+        "wbc_pool",
+        "platelet_pool",
+        "vascular_endothelium"
+      ],
+      "feedback_loops": [
+        "کسری اکسیژن ← درخواست EPO ← تولید محدود",
+        "پلاکت و بستن موضعی زخم",
+        "ماده و انرژی مشترک برای خون‌سازی"
+      ],
+      "unresolved": [
+        "ریزساختار مغز استخوان و هموگلوبین",
+        "آبشار انعقاد، فیبرینولیز و عمر واقعی سلول‌ها",
+        "تفکیک حجم پلاسما، جرم گلبول و هماتوکریت"
+      ]
+    },
+    {
+      "stage": 3,
+      "name_fa": "کلیه، آب، مواد معدنی و گرما",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "kidney_l",
+        "kidney_r",
+        "ureter_l",
+        "ureter_r",
+        "bladder",
+        "urethra",
+        "sweat_glands",
+        "body_water"
+      ],
+      "feedback_loops": [
+        "ADH و کمبود آب ← کاهش ادرار",
+        "نمک و آب با دفترهای مستقل",
+        "تولید ادرار → مثانه → تخلیه",
+        "دفع گرما با آب و محیط"
+      ],
+      "unresolved": [
+        "نفرون واقعی، الکترولیت‌های جدا و اسید–باز کالیبره",
+        "مقاومت جریان حالب و کمپلیانس مثانه",
+        "انتقال حرارت واقعی و دفع عرق"
+      ]
+    },
+    {
+      "stage": 4,
+      "name_fa": "ایمنی، لنف و ترمیم پوست",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "thymus",
+        "spleen",
+        "lymph_nodes",
+        "lymph_collectors",
+        "skin_barrier"
+      ],
+      "feedback_loops": [
+        "ورود عامل نمادین → دفاع محدود → کاهش بار",
+        "باقی‌ماندن التهاب با آسیب یا بار دفاعی",
+        "بسته‌شدن موضعی زخم پیش از ترمیم",
+        "رفع ادم با ظرفیت تخلیهٔ لنف"
+      ],
+      "unresolved": [
+        "آنتی‌ژن، تحمل خودی و انواع واقعی سلول‌های دفاعی",
+        "خواص پوست، بازسازی عروق و اعصاب",
+        "هندسهٔ کامل شبکهٔ لنف"
+      ]
+    },
+    {
+      "stage": 5,
+      "name_fa": "قلب، ریه و گردش خون",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "ra",
+        "rv",
+        "pulmonary_artery",
+        "alveoli",
+        "pulmonary_veins",
+        "la",
+        "lv",
+        "aorta",
+        "ivc",
+        "svc",
+        "trachea",
+        "bronchi",
+        "diaphragm"
+      ],
+      "feedback_loops": [
+        "ظرفیتِ پمپ، راه هوا و گلبول قرمز ← سقف فعالیت",
+        "درخواست تهویه از بار CO2 قراردادی",
+        "کسریِ تأمین اکسیژن به صورت نیاز باقی‌مانده"
+      ],
+      "unresolved": [
+        "هندسهٔ دریچه‌ها، کرونر، بافت هدایت و میوکارد",
+        "منحنی فشار–حجم، انتشار گاز و V/Q",
+        "بار هیدرواستاتیک بدن بلند و برگشت وریدی"
+      ]
+    },
+    {
+      "stage": 6,
+      "name_fa": "گوارش، کبد و صفرا",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "esophagus",
+        "stomach",
+        "duodenum",
+        "small_bowel",
+        "mesentery",
+        "colon",
+        "rectum",
+        "portal_vein",
+        "liver",
+        "hepatic_veins",
+        "gallbladder",
+        "bile_duct",
+        "pancreatic_exocrine",
+        "pancreatic_duct"
+      ],
+      "feedback_loops": [
+        "دهان → معده → روده → جذب به دفتر ماده/سوخت",
+        "کاهش جذب با اختلال روده یا مسیر پورت",
+        "باقی‌ماندن غذای هضم‌نشده و دفع آن"
+      ],
+      "unresolved": [
+        "حلقه‌های واقعی روده و حرکت موجی",
+        "ترشحات، جذب مواد جدا و میکروبیوم",
+        "بیوشیمی کبد و تنظیم صفرا"
+      ]
+    },
+    {
+      "stage": 7,
+      "name_fa": "چشم، گوش و حواس",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "retina",
+        "optic_nerve",
+        "ear_drum",
+        "cochlea",
+        "vestibular",
+        "auditory_nerve",
+        "olfactory",
+        "taste"
+      ],
+      "feedback_loops": [
+        "ادغامِ ورودی تازه با ظرفیت هر حس",
+        "تعارض ورودی‌ها → کاهش اعتمادِ عملیاتی",
+        "قطع حس عادی → توقف حرکت اختیاریِ وابسته"
+      ],
+      "unresolved": [
+        "اپتیک، شبکهٔ شبکیه و کدگذاری صوت",
+        "فرکانس، تفکیک مکانی و آستانهٔ واقعی حواس",
+        "بویایی/چشایی فعلاً در طرح، بدون مدل گیرنده"
+      ]
+    },
+    {
+      "stage": 8,
+      "name_fa": "دهان، دندان، بلع و صدا",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "jaw",
+        "teeth",
+        "tongue",
+        "salivary",
+        "pharynx",
+        "larynx",
+        "vocal_folds"
+      ],
+      "feedback_loops": [
+        "غذا در دهان → بلع مجاز → انتقال به معده",
+        "تقدم بلع بر آواسازی هم‌زمان",
+        "هوا و ظرفیت حنجره → اجازهٔ صدا"
+      ],
+      "unresolved": [
+        "هندسهٔ دندان، TMJ و فشار جویدن",
+        "حرکت واقعی زبان/اپی‌گلوت و خطر آسپیراسیون",
+        "موج صوتی و صدای واقعی ساخته نشده"
+      ]
+    },
+    {
+      "stage": 9,
+      "name_fa": "قلمرو زنانه، تولیدمثل و پستان",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "ovary_l",
+        "ovary_r",
+        "uterine_tubes",
+        "uterus",
+        "cervix",
+        "vagina",
+        "breasts",
+        "pelvic_floor"
+      ],
+      "feedback_loops": [
+        "بازخورد آهستهٔ مرکزی–تخمدانیِ قراردادی",
+        "فضای لگن و حمایت مستقل از ریشهٔ دم",
+        "قید فرم مستقل از بالا/پایین‌رفتن یک هورمون"
+      ],
+      "unresolved": [
+        "چرخهٔ تخمدانی، باروری، بارداری و شیردهی مدل نشده",
+        "هندسهٔ سه‌بعدی و شبکهٔ عروق/اعصاب",
+        "فرم زنانه به یک غلظت هورمون تقلیل داده نشده"
+      ]
+    },
+    {
+      "stage": 10,
+      "name_fa": "عضله، استخوان، مفصل و دم",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "bone",
+        "tendon",
+        "muscle",
+        "hand_contacts",
+        "foot_contacts",
+        "sacrum",
+        "tail_root",
+        "tail"
+      ],
+      "feedback_loops": [
+        "ظرفیت خون/اکسیژن + خستگی + تاندون → سقف حرکت",
+        "استراحت و ماده → بازیابی محدود",
+        "تقویتِ عملکرد بدون افزایش حجم بیرونی"
+      ],
+      "unresolved": [
+        "مقطع استخوان/عضله/تاندون و تنش واقعی",
+        "تماس نرم، لغزش، دینامیک راه‌رفتن و دم",
+        "هندسهٔ کامل مفصل و بارگذاری زمان‌مند"
+      ]
+    },
+    {
+      "stage": 11,
+      "name_fa": "مغز، نخاع و اعصاب",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "brainstem",
+        "cerebellum",
+        "cortex",
+        "spinal_cord",
+        "vagus",
+        "brachial",
+        "sciatic",
+        "pudendal",
+        "caudal_nerve"
+      ],
+      "feedback_loops": [
+        "مشاهدهٔ تازه با منشأ → توجه → اجازهٔ حرکت",
+        "خستگی و کسری حیاتی → کاهش کار اختیاری",
+        "ذخیرهٔ وضعیت برای تداوم دقیق"
+      ],
+      "unresolved": [
+        "سیناپس، هدایت، بافت عصبی و معماری آکسونی واقعی",
+        "این مدل جای بستهٔ شناختی پیشین را نمی‌گیرد",
+        "موارد پژوهشی ۵، ۶ و ۷ همچنان خارج‌اند"
+      ]
+    },
+    {
+      "stage": 12,
+      "name_fa": "سپندار، رزنان و آذرینه",
+      "status": "regional_anatomy_and_executed_control_fixture",
+      "organs": [
+        "spandar",
+        "resonan_l",
+        "resonan_r",
+        "azarine",
+        "external_converter"
+      ],
+      "feedback_loops": [
+        "پایش آهسته بدون فرمان مستقیم به قلب/دست",
+        "دادهٔ کهنه یا اشباع → جداسازی کانال",
+        "فعالیت ویژه با برداشت از دفتر مشترک"
+      ],
+      "unresolved": [
+        "ماهیت مولکولی/فیزیکی اندام‌های داستانی",
+        "فاصلهٔ واقعی از عصب، رگ، نای و پریکارد",
+        "انتقال آگاهی به بلور اجرا نشده"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "hypothalamus",
+      "name_fa": "هیپوتالاموس",
+      "system_stage": 1,
+      "region": "سر",
+      "role_fa": "هماهنگی وضعیت درونی و درخواست‌های آهسته",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "pituitary",
+      "name_fa": "هیپوفیز",
+      "system_stage": 1,
+      "region": "قاعدهٔ جمجمه",
+      "role_fa": "تفکیک بخش قدامی از انتقال پیام‌های بخش خلفی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "thyroid",
+      "name_fa": "تیروئید",
+      "system_stage": 1,
+      "region": "گردن",
+      "role_fa": "تنظیم سوخت‌وساز با بازخورد مرکزی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "parathyroids",
+      "name_fa": "پاراتیروئیدها",
+      "system_stage": 1,
+      "region": "پشت تیروئید",
+      "role_fa": "تنظیم معدنی در کنار کلیه و استخوان",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "adrenal_cortex",
+      "name_fa": "قشر فوق‌کلیه",
+      "system_stage": 1,
+      "region": "پشت‌صفاق",
+      "role_fa": "پاسخ آهستهٔ فشار و تنظیم نمک",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "adrenal_medulla",
+      "name_fa": "مدولای فوق‌کلیه",
+      "system_stage": 1,
+      "region": "پشت‌صفاق",
+      "role_fa": "رابط پاسخ خودکار؛ جدا از قشر",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "pancreatic_islets",
+      "name_fa": "جزایر پانکراس",
+      "system_stage": 1,
+      "region": "شکم بالایی",
+      "role_fa": "ذخیره و آزادسازی سوخت از مخزن محدود",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "marrow",
+      "name_fa": "مغز استخوان",
+      "system_stage": 2,
+      "region": "اسکلت مرکزی و بخش‌های منتخب استخوان بلند",
+      "role_fa": "سه مخزن مستقل گلبول قرمز، سفید و پلاکت",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "rbc_pool",
+      "name_fa": "مخزن گلبول قرمز",
+      "system_stage": 2,
+      "region": "گردش خون",
+      "role_fa": "ظرفیت قراردادی حمل اکسیژن",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "wbc_pool",
+      "name_fa": "مخزن گلبول سفید",
+      "system_stage": 2,
+      "region": "خون و بافت",
+      "role_fa": "پاسخ دفاعی وابسته به ذخیره",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "platelet_pool",
+      "name_fa": "مخزن پلاکت",
+      "system_stage": 2,
+      "region": "گردش خون",
+      "role_fa": "بستن موضعی آسیب همراه با هزینه",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "vascular_endothelium",
+      "name_fa": "اندوتلیوم عروقی",
+      "system_stage": 2,
+      "region": "بدن",
+      "role_fa": "مرز گردش و تبادل؛ مهار لختهٔ نابجا در طرح",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "kidney_l",
+      "name_fa": "کلیهٔ چپ",
+      "system_stage": 3,
+      "region": "پشت‌صفاق چپ",
+      "role_fa": "فیلتراسیون/بازجذبِ مفهومی، بدون ادغام با آذرینه",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "kidney_r",
+      "name_fa": "کلیهٔ راست",
+      "system_stage": 3,
+      "region": "پشت‌صفاق راست",
+      "role_fa": "مسیر مستقل کلیهٔ دوم",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "ureter_l",
+      "name_fa": "حالب چپ",
+      "system_stage": 3,
+      "region": "پشت‌صفاق تا لگن",
+      "role_fa": "انتقال به مثانه، جدا از رگ",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "ureter_r",
+      "name_fa": "حالب راست",
+      "system_stage": 3,
+      "region": "پشت‌صفاق تا لگن",
+      "role_fa": "انتقال مستقل به مثانه",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "bladder",
+      "name_fa": "مثانه",
+      "system_stage": 3,
+      "region": "جلوی لگن",
+      "role_fa": "مخزن داخلی؛ تولید ادرار با خروج از بدن یکی نیست",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "urethra",
+      "name_fa": "پیشابراه",
+      "system_stage": 3,
+      "region": "خروجی قدامی کف لگن",
+      "role_fa": "تخلیهٔ کنترل‌شده",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "sweat_glands",
+      "name_fa": "غدد عرق",
+      "system_stage": 3,
+      "region": "پوستِ بدون انسدادِ جزیره‌های محافظ",
+      "role_fa": "دفع گرما با برداشت از آب",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "body_water",
+      "name_fa": "مخزن آبِ بدن",
+      "system_stage": 3,
+      "region": "بدن",
+      "role_fa": "حساب مستقل آب و نمک",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "thymus",
+      "name_fa": "تیموس",
+      "system_stage": 4,
+      "region": "مدیاستن قدامی/فوقانی",
+      "role_fa": "قشر و مغز محفوظ؛ سپندار جای آن را نمی‌گیرد",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "spleen",
+      "name_fa": "طحال",
+      "system_stage": 4,
+      "region": "بالای شکم چپ",
+      "role_fa": "قلمرو مستقل خونی و ایمنی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "lymph_nodes",
+      "name_fa": "گره‌های لنفی ناحیه‌ای",
+      "system_stage": 4,
+      "region": "گردن، زیربغل، شکم و لگن",
+      "role_fa": "گردآوری ناحیه‌ای؛ بدون یکسان‌کردن همهٔ لنف",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "lymph_collectors",
+      "name_fa": "جمع‌کننده‌های لنفی",
+      "system_stage": 4,
+      "region": "بدن",
+      "role_fa": "بازگشت مایع بین‌بافتی به گردش",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "skin_barrier",
+      "name_fa": "سد پوست موزاییکی",
+      "system_stage": 4,
+      "region": "سطح بدن",
+      "role_fa": "جزیرهٔ محافظ با چین نرم، حس و راه دفع گرما",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "ra",
+      "name_fa": "دهلیز راست",
+      "system_stage": 5,
+      "region": "سینه",
+      "role_fa": "ورود خون وریدی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "rv",
+      "name_fa": "بطن راست",
+      "system_stage": 5,
+      "region": "سینه",
+      "role_fa": "مسیر پمپ ریوی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "pulmonary_artery",
+      "name_fa": "شریان ریوی",
+      "system_stage": 5,
+      "region": "سینه",
+      "role_fa": "از بطن راست به ریه",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "alveoli",
+      "name_fa": "آلوئول و مویرگ ریوی",
+      "system_stage": 5,
+      "region": "دو ریه",
+      "role_fa": "تبادل گازِ مفهومی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "pulmonary_veins",
+      "name_fa": "وریدهای ریوی",
+      "system_stage": 5,
+      "region": "سینه",
+      "role_fa": "بازگشت به دهلیز چپ",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "la",
+      "name_fa": "دهلیز چپ",
+      "system_stage": 5,
+      "region": "سینه",
+      "role_fa": "ورود خون ریوی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "lv",
+      "name_fa": "بطن چپ",
+      "system_stage": 5,
+      "region": "سینه",
+      "role_fa": "مسیر پمپ عمومی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "aorta",
+      "name_fa": "آئورت",
+      "system_stage": 5,
+      "region": "سینه و شکم",
+      "role_fa": "توزیع شریانی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "ivc",
+      "name_fa": "ورید اجوف تحتانی",
+      "system_stage": 5,
+      "region": "شکم و سینه",
+      "role_fa": "بازگشت کلیه و احشای زیرین",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "svc",
+      "name_fa": "ورید اجوف فوقانی",
+      "system_stage": 5,
+      "region": "سینه",
+      "role_fa": "بازگشت قلمروهای بالایی و لنف",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "trachea",
+      "name_fa": "نای",
+      "system_stage": 5,
+      "region": "گردن و سینه",
+      "role_fa": "راه هوایی از حنجره",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "bronchi",
+      "name_fa": "برونش‌ها",
+      "system_stage": 5,
+      "region": "ریه",
+      "role_fa": "شاخه‌بندی راه هوا",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "diaphragm",
+      "name_fa": "دیافراگم",
+      "system_stage": 5,
+      "region": "مرز سینه و شکم",
+      "role_fa": "فضای حرکت محفوظ در دم",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "esophagus",
+      "name_fa": "مری",
+      "system_stage": 6,
+      "region": "گردن و سینه",
+      "role_fa": "مسیر غذا مستقل از نای",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "stomach",
+      "name_fa": "معده",
+      "system_stage": 6,
+      "region": "شکم بالا چپ",
+      "role_fa": "مخزن با تخلیهٔ مرحله‌ای",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "duodenum",
+      "name_fa": "دوازدهه",
+      "system_stage": 6,
+      "region": "شکم بالا",
+      "role_fa": "ورود صفرا و ترشحات پانکراس",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "small_bowel",
+      "name_fa": "رودهٔ باریک",
+      "system_stage": 6,
+      "region": "مرکز شکم با مزانتری",
+      "role_fa": "عبور و جذب محدود",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "mesentery",
+      "name_fa": "مزانتری",
+      "system_stage": 6,
+      "region": "شکم",
+      "role_fa": "نگهداری رگ، عصب و لنف در حرکت",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "colon",
+      "name_fa": "کولون",
+      "system_stage": 6,
+      "region": "پیرامون شکم تا لگن",
+      "role_fa": "محتوای باقی‌مانده و خروج",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "rectum",
+      "name_fa": "راست‌روده",
+      "system_stage": 6,
+      "region": "پشت لگن",
+      "role_fa": "خروجی مستقل از دم",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "portal_vein",
+      "name_fa": "ورید پورت",
+      "system_stage": 6,
+      "region": "شکم",
+      "role_fa": "ورود وریدی روده به کبد",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "liver",
+      "name_fa": "کبد",
+      "system_stage": 6,
+      "region": "شکم بالا راست",
+      "role_fa": "پردازش ورودی و مخزن محدود سوخت",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "hepatic_veins",
+      "name_fa": "وریدهای کبدی",
+      "system_stage": 6,
+      "region": "کبد تا کاوا",
+      "role_fa": "خروج کبدی مستقل از پورت",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "gallbladder",
+      "name_fa": "کیسهٔ صفرا",
+      "system_stage": 6,
+      "region": "زیر کبد",
+      "role_fa": "مسیر صفرا مستقل از خون",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "bile_duct",
+      "name_fa": "مجرای صفرا",
+      "system_stage": 6,
+      "region": "شکم بالا",
+      "role_fa": "ورود به دوازدهه",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "pancreatic_exocrine",
+      "name_fa": "پانکراس برون‌ریز",
+      "system_stage": 6,
+      "region": "پشت معده",
+      "role_fa": "مجرای ترشحی جدا از جزایر",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "pancreatic_duct",
+      "name_fa": "مجرای پانکراس",
+      "system_stage": 6,
+      "region": "شکم بالا",
+      "role_fa": "ورود ترشح به دوازدهه",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "retina",
+      "name_fa": "شبکیه",
+      "system_stage": 7,
+      "region": "چشم‌ها",
+      "role_fa": "ورودی بینایی مستقل از رزنان",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "optic_nerve",
+      "name_fa": "عصب بینایی",
+      "system_stage": 7,
+      "region": "چشم تا سر",
+      "role_fa": "رابط بینایی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "ear_drum",
+      "name_fa": "پرده و استخوانچه‌های گوش",
+      "system_stage": 7,
+      "region": "گوش میانی",
+      "role_fa": "مسیر مکانیکی صوت",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "cochlea",
+      "name_fa": "حلزون",
+      "system_stage": 7,
+      "region": "گوش داخلی",
+      "role_fa": "رابط تبدیل صوت",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "vestibular",
+      "name_fa": "دستگاه دهلیزی",
+      "system_stage": 7,
+      "region": "گوش داخلی",
+      "role_fa": "ورودی مستقل تعادل",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "auditory_nerve",
+      "name_fa": "عصب شنوایی–دهلیزی",
+      "system_stage": 7,
+      "region": "گوش تا ساقه",
+      "role_fa": "رابط شنوایی و تعادل",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "olfactory",
+      "name_fa": "مخاط و مسیر بویایی",
+      "system_stage": 7,
+      "region": "بینی و سر",
+      "role_fa": "قلمرو بویایی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "taste",
+      "name_fa": "گیرندهٔ چشایی",
+      "system_stage": 7,
+      "region": "زبان و حلق",
+      "role_fa": "قلمرو چشایی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "jaw",
+      "name_fa": "فک و مفصل گیجگاهی",
+      "system_stage": 8,
+      "region": "صورت",
+      "role_fa": "گرفتن و خردکردن غذا؛ دامنهٔ حرکت هنوز فرضی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "teeth",
+      "name_fa": "دندان‌ها",
+      "system_stage": 8,
+      "region": "فک",
+      "role_fa": "طرح جویدن با حفظ چهره",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "tongue",
+      "name_fa": "زبان",
+      "system_stage": 8,
+      "region": "دهان",
+      "role_fa": "جابه‌جایی غذا و رابط آواسازی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "salivary",
+      "name_fa": "غدد بزاقی",
+      "system_stage": 8,
+      "region": "دهان و پیرامون",
+      "role_fa": "راه ترشحی جدا از راه هوا",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "pharynx",
+      "name_fa": "حلق",
+      "system_stage": 8,
+      "region": "گردن",
+      "role_fa": "تقاطع کنترل‌شدهٔ غذا و هوا",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "larynx",
+      "name_fa": "حنجره",
+      "system_stage": 8,
+      "region": "گردن",
+      "role_fa": "دروازهٔ حفاظتی و آواسازی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "vocal_folds",
+      "name_fa": "چین‌های صوتی",
+      "system_stage": 8,
+      "region": "حنجره",
+      "role_fa": "درخواست صدای وابسته به هوا",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "ovary_l",
+      "name_fa": "تخمدان چپ",
+      "system_stage": 9,
+      "region": "لگن",
+      "role_fa": "رابط هورمونیِ مفهومی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "ovary_r",
+      "name_fa": "تخمدان راست",
+      "system_stage": 9,
+      "region": "لگن",
+      "role_fa": "رابط مستقل",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "uterine_tubes",
+      "name_fa": "لوله‌های رحمی",
+      "system_stage": 9,
+      "region": "لگن",
+      "role_fa": "مسیرهای جانبی رحم",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "uterus",
+      "name_fa": "رحم",
+      "system_stage": 9,
+      "region": "میانهٔ لگن",
+      "role_fa": "فضای مستقل از مثانه، راست‌روده و دم",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "cervix",
+      "name_fa": "گردن رحم",
+      "system_stage": 9,
+      "region": "لگن",
+      "role_fa": "مسیر رحمی–واژینال",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "vagina",
+      "name_fa": "واژن",
+      "system_stage": 9,
+      "region": "لگن و پرینه",
+      "role_fa": "مسیر مستقل و حمایت فاسیایی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "breasts",
+      "name_fa": "پستان‌ها",
+      "system_stage": 9,
+      "region": "دیوارهٔ سینه",
+      "role_fa": "طرح بافت، عروق و لنف با حفظ فرم",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "pelvic_floor",
+      "name_fa": "کف لگن",
+      "system_stage": 9,
+      "region": "کف حفرهٔ لگن",
+      "role_fa": "حمایت و شل‌شدن هدفمند، نه انقباض دائمی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "bone",
+      "name_fa": "اسکلت و حلقهٔ لگن",
+      "system_stage": 10,
+      "region": "محور و اندام‌ها",
+      "role_fa": "انتقال بار بدون ادغام با کف لگن",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "tendon",
+      "name_fa": "تاندون و رباط",
+      "system_stage": 10,
+      "region": "اندام‌ها",
+      "role_fa": "ظرفیتِ قراردادی انتقال نیرو",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "muscle",
+      "name_fa": "عضلات داخلی",
+      "system_stage": 10,
+      "region": "بدن",
+      "role_fa": "فعالیت و خستگی در فرم محفوظ",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "hand_contacts",
+      "name_fa": "تماس پنج انگشت دست",
+      "system_stage": 10,
+      "region": "دست‌ها",
+      "role_fa": "لمس و سقف نیرو؛ هندسهٔ واقعی هنوز باز",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "foot_contacts",
+      "name_fa": "بالشتک و سه انگشت پا",
+      "system_stage": 10,
+      "region": "پاها",
+      "role_fa": "چهار تماسِ مفهومیِ مستقل هر پا",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "sacrum",
+      "name_fa": "خاجی",
+      "system_stage": 10,
+      "region": "پشت لگن",
+      "role_fa": "پایهٔ انتقال بار",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "tail_root",
+      "name_fa": "ریشهٔ استخوانی/عضلانی دم",
+      "system_stage": 10,
+      "region": "پشت خاجی",
+      "role_fa": "بار و مسیر عصبی مستقل از احشا",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "tail",
+      "name_fa": "دم",
+      "system_stage": 10,
+      "region": "قلمرو دمی",
+      "role_fa": "حرکت محدود به بودجه و تکیه",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "brainstem",
+      "name_fa": "ساقهٔ مغز",
+      "system_stage": 11,
+      "region": "سر",
+      "role_fa": "حلقه‌های پایه و دریافت وضعیت بدن",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "cerebellum",
+      "name_fa": "مخچه",
+      "system_stage": 11,
+      "region": "سر",
+      "role_fa": "رابط هماهنگیِ حرکت",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "cortex",
+      "name_fa": "قشر و شبکه‌های حافظه/انتخاب",
+      "system_stage": 11,
+      "region": "سر",
+      "role_fa": "مدلِ توجه و ردّ منبعِ مشاهده",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "spinal_cord",
+      "name_fa": "نخاع",
+      "system_stage": 11,
+      "region": "ستون",
+      "role_fa": "مسیرهای حسی/حرکتی و حلقهٔ محلی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "vagus",
+      "name_fa": "واگ",
+      "system_stage": 11,
+      "region": "گردن، سینه و شکم",
+      "role_fa": "رابط خودکار مستقل",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "brachial",
+      "name_fa": "شبکهٔ بازویی",
+      "system_stage": 11,
+      "region": "گردن و شانه تا دست",
+      "role_fa": "مسیر حسی/حرکتی دست",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "sciatic",
+      "name_fa": "شبکهٔ خاجی و سیاتیک",
+      "system_stage": 11,
+      "region": "لگن تا پا",
+      "role_fa": "مسیر اندام تحتانی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "pudendal",
+      "name_fa": "پودندال",
+      "system_stage": 11,
+      "region": "لگن و پرینه",
+      "role_fa": "مسیر خروجی/حس پرینه، جدا از دم",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "caudal_nerve",
+      "name_fa": "راه عصبی دمیِ پیشنهادی",
+      "system_stage": 11,
+      "region": "قلمرو پشتی خاجی",
+      "role_fa": "مسیر ویژهٔ داستانیِ دم",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "spandar",
+      "name_fa": "سپندار",
+      "system_stage": 12,
+      "region": "سطح قدامی/بالایی کپسول تیموس",
+      "role_fa": "پایش آهسته؛ الهام الدوناری فقط در روایت",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "resonan_l",
+      "name_fa": "رزنان چپ",
+      "system_stage": 12,
+      "region": "ریشهٔ شاخ چپ",
+      "role_fa": "رابط ویژهٔ محدود و قابل جداسازی",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "resonan_r",
+      "name_fa": "رزنان راست",
+      "system_stage": 12,
+      "region": "ریشهٔ شاخ راست",
+      "role_fa": "رابط مستقلِ راست",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "azarine",
+      "name_fa": "آذرینه",
+      "system_stage": 12,
+      "region": "پاکتِ پهلوی چپِ ثبت‌شده",
+      "role_fa": "بافرِ داستانی با موجودی و گرمای محدود",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    },
+    {
+      "id": "external_converter",
+      "name_fa": "محفظهٔ بیرونی",
+      "system_stage": 12,
+      "region": "بیرون بدن",
+      "role_fa": "همواره غیرفعال در این اجرا",
+      "geometry_status": "regional assignment; no new 3D mesh or measured clearance"
+    }
+  ],
+  "routes": [
+    {
+      "kind": "blood",
+      "path": [
+        "ivc",
+        "ra",
+        "rv",
+        "pulmonary_artery",
+        "alveoli",
+        "pulmonary_veins",
+        "la",
+        "lv",
+        "aorta"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "blood",
+      "path": [
+        "svc",
+        "ra"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "blood",
+      "path": [
+        "aorta",
+        "kidney_l",
+        "ivc"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "blood",
+      "path": [
+        "aorta",
+        "kidney_r",
+        "ivc"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "blood",
+      "path": [
+        "aorta",
+        "small_bowel",
+        "portal_vein",
+        "liver",
+        "hepatic_veins",
+        "ivc"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "blood",
+      "path": [
+        "aorta",
+        "liver",
+        "hepatic_veins",
+        "ivc"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "food",
+      "path": [
+        "tongue",
+        "pharynx",
+        "esophagus",
+        "stomach",
+        "duodenum",
+        "small_bowel",
+        "colon",
+        "rectum"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "air",
+      "path": [
+        "pharynx",
+        "larynx",
+        "trachea",
+        "bronchi",
+        "alveoli"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "urine",
+      "path": [
+        "kidney_l",
+        "ureter_l",
+        "bladder",
+        "urethra"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "urine",
+      "path": [
+        "kidney_r",
+        "ureter_r",
+        "bladder",
+        "urethra"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "bile",
+      "path": [
+        "liver",
+        "bile_duct",
+        "duodenum"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "bile",
+      "path": [
+        "gallbladder",
+        "bile_duct"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "digestive_secretion",
+      "path": [
+        "pancreatic_exocrine",
+        "pancreatic_duct",
+        "duodenum"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "lymph",
+      "path": [
+        "small_bowel",
+        "lymph_nodes",
+        "lymph_collectors",
+        "svc"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "lymph",
+      "path": [
+        "breasts",
+        "lymph_nodes",
+        "lymph_collectors",
+        "svc"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "neural",
+      "path": [
+        "retina",
+        "optic_nerve",
+        "cortex"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "mechanosensory",
+      "path": [
+        "ear_drum",
+        "cochlea",
+        "auditory_nerve",
+        "brainstem"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "neural",
+      "path": [
+        "vestibular",
+        "auditory_nerve",
+        "brainstem",
+        "cerebellum"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "neural",
+      "path": [
+        "cortex",
+        "spinal_cord",
+        "brachial",
+        "hand_contacts"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "neural",
+      "path": [
+        "spinal_cord",
+        "sciatic",
+        "foot_contacts"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "neural",
+      "path": [
+        "spinal_cord",
+        "pudendal",
+        "pelvic_floor"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "neural",
+      "path": [
+        "spinal_cord",
+        "caudal_nerve",
+        "tail_root",
+        "tail"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "autonomic",
+      "path": [
+        "brainstem",
+        "vagus",
+        "stomach",
+        "small_bowel"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "hormonal",
+      "path": [
+        "hypothalamus",
+        "pituitary",
+        "thyroid",
+        "hypothalamus"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "hormonal",
+      "path": [
+        "hypothalamus",
+        "pituitary",
+        "ovary_l",
+        "hypothalamus"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "hormonal",
+      "path": [
+        "kidney_l",
+        "marrow",
+        "rbc_pool"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "hormonal",
+      "path": [
+        "pancreatic_islets",
+        "liver"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "reproductive",
+      "path": [
+        "ovary_l",
+        "uterine_tubes",
+        "uterus",
+        "cervix",
+        "vagina"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "slow_monitor_only",
+      "path": [
+        "spandar",
+        "cortex"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "slow_monitor_only",
+      "path": [
+        "resonan_l",
+        "cortex"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    },
+    {
+      "kind": "slow_monitor_only",
+      "path": [
+        "resonan_r",
+        "cortex"
+      ],
+      "scope": "anatomical/functional route specification, not a measured conduit"
+    }
+  ],
+  "shared_contracts": [
+    "feminine delicate form retained",
+    "no extra digits or horns",
+    "no cranial high-energy reactor",
+    "no DNA sequence or physical chromosome assignment",
+    "ordinary sensory feedback independent of slow crystal monitors"
+  ],
+  "geometry_scope": "Regional/topological map only. Original atlas is retained; complete meshes, vessel calibre, tissue deformation and mechanical collisions remain unresolved.",
+  "research_sources": [
+    {
+      "title": "Your Kidneys & How They Work — NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/kidney-disease/kidneys-how-they-work",
+      "use": "Kidney water/mineral/acid role and separate arterial, venous and urine routes; constants not fitted"
+    },
+    {
+      "title": "World Blood Donor Day — NHLBI",
+      "url": "https://www.nhlbi.nih.gov/news/2021/world-blood-donor-day",
+      "use": "Separate RBC, WBC and platelet functions; no human-volume assumption imported"
+    },
+    {
+      "title": "Thyroid Tests — NIDDK",
+      "url": "https://www.niddk.nih.gov/health-information/diagnostic-tests/thyroid",
+      "use": "Pituitary-thyroid negative feedback; no diagnostic thresholds imported"
+    },
+    {
+      "title": "Overview of the Immune System — NIAID",
+      "url": "https://www.niaid.nih.gov/research/immune-system-overview",
+      "use": "Regional lymphoid anatomy; not actual antigen-specific immunology"
+    },
+    {
+      "title": "What Breathing Does for the Body — NHLBI",
+      "url": "https://www.nhlbi.nih.gov/health/lungs/breathing-benefits",
+      "use": "Cardiopulmonary route and O2/CO2 roles; no gas-exchange calibration"
+    },
+    {
+      "title": "How Do We Hear? — NIDCD",
+      "url": "https://www.nidcd.nih.gov/health/how-do-we-hear",
+      "use": "Ear-to-brain route; not a calibrated cochlear model"
+    }
+  ]
+}

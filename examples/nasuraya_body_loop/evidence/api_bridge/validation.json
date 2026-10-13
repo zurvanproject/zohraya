@@ -1,0 +1,24 @@
+{
+  "schema": "nasuraya-api-body-bridge-validation/1",
+  "agent_regressions_passed": 60,
+  "body_bridge_regressions_passed": 16,
+  "api_body_tests_passed_with_sdk": 13,
+  "recovered_files_unchanged": 70,
+  "test_scope": "generated fixture + controlled clients and SDK transport; not live model validation",
+  "live_read_only": {
+    "status": "timeout",
+    "session_created": true,
+    "cleanup_status": "deleted",
+    "actions_used": 0,
+    "body_checkpoint_unchanged": true,
+    "live_api_verified": false
+  },
+  "separate_model_diagnostic": {
+    "model": "gpt-6-astra",
+    "live_response_verified": false,
+    "exception_type": "RateLimitError",
+    "http_status": 429,
+    "code": "billing_not_active",
+    "type": "billing_not_active"
+  }
+}

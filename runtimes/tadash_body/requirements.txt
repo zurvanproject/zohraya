@@ -1,0 +1,3 @@
+# This isolated body bundle uses the Python standard library only.
+# Linux / Python 3.11+ is required (fcntl, zoneinfo, datetime, dataclasses).
+# The repository's separate core_mechanics.py may require torch; it is not imported here.

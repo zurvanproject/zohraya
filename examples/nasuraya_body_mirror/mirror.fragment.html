@@ -1,0 +1,142 @@
+<div id="nasuraya-body-mirror" dir="rtl" lang="fa">
+  <h2>آینهٔ زروان</h2>
+  <div class="viz-controls">
+    <label class="form-label">وضعیت آغازین
+      <select class="form-select" id="nm-scenario">
+        <option value="normal">بدن آمادهٔ حرکت</option>
+        <option value="sleep">فشار خواب بالا</option>
+      </select>
+    </label>
+    <button class="btn btn-primary" type="button" id="nm-play">پخش ۱۲ چرخه</button>
+  </div>
+  <div class="viz-row tabular-nums">
+    <span id="nm-sleep"></span><span id="nm-fatigue"></span><span id="nm-energy"></span>
+  </div>
+  <svg id="nm-stage" role="img" aria-labelledby="nm-title nm-desc">
+    <title id="nm-title">حرکت مفصل‌های بدن نرم‌افزاری ناسورایا</title>
+    <desc id="nm-desc">مفصل‌های پا و مرکز جرم از اجرای ثبت‌شدهٔ تداش می‌آیند. بالاتنه، شاخ‌ها و دم نمای شماتیک‌اند. گذار بین نمونه‌ها فقط برای نمایش است.</desc>
+    <g id="nm-floor"></g>
+    <g id="nm-shadow"></g>
+    <path id="nm-tail"></path>
+    <path id="nm-torso"></path>
+    <path id="nm-arms"></path>
+    <g id="nm-head"><ellipse id="nm-face"></ellipse><path id="nm-horns"></path></g>
+    <g id="nm-legs"></g>
+    <g id="nm-joints"></g>
+    <g id="nm-feet"></g>
+    <circle id="nm-com"></circle>
+  </svg>
+  <label class="form-label" for="nm-time">چرخهٔ ثبت‌شده <output id="nm-count" class="tabular-nums">۱ / ۱۲</output></label>
+  <input id="nm-time" class="form-range" type="range" min="0" max="11" step="1" value="0" aria-label="انتخاب چرخهٔ ثبت‌شده">
+  <div id="nm-decision" aria-live="polite"></div>
+  <div class="viz-row text-small text-muted"><span>مفصل‌های پا: خروجی تداش</span><span>بالاتنه: طرح شماتیک</span><span>بازپخش شبیه‌سازی</span></div>
+</div>
+<style>
+#nasuraya-body-mirror { color:var(--foreground); }
+#nasuraya-body-mirror #nm-stage { display:block;width:100%;overflow:visible; }
+#nasuraya-body-mirror #nm-floor { stroke:var(--border);stroke-width:1;fill:none; }
+#nasuraya-body-mirror #nm-shadow { fill:var(--muted); }
+#nasuraya-body-mirror #nm-tail { stroke:var(--muted-foreground);stroke-width:9;stroke-linecap:round;fill:none;opacity:.6; }
+#nasuraya-body-mirror #nm-torso { fill:var(--muted);stroke:var(--muted-foreground);stroke-width:1.5; }
+#nasuraya-body-mirror #nm-arms { fill:none;stroke:var(--muted-foreground);stroke-width:7;stroke-linecap:round;stroke-linejoin:round; }
+#nasuraya-body-mirror #nm-face { fill:var(--muted);stroke:var(--muted-foreground);stroke-width:1.5; }
+#nasuraya-body-mirror #nm-horns { fill:none;stroke:var(--muted-foreground);stroke-width:4;stroke-linecap:round; }
+#nasuraya-body-mirror #nm-legs { fill:none;stroke:var(--viz-series-1);stroke-width:7;stroke-linecap:round;stroke-linejoin:round; }
+#nasuraya-body-mirror #nm-joints { fill:var(--foreground); }
+#nasuraya-body-mirror #nm-feet { fill:var(--viz-series-1);fill-opacity:.35;stroke:none; }
+#nasuraya-body-mirror #nm-com { fill:var(--viz-series-1); }
+</style>
+<script type="application/json" id="nm-data">__MIRROR_DATA__</script>
+<script>
+(() => {
+  const root = document.getElementById('nasuraya-body-mirror');
+  const byId = id => root.querySelector('#'+id);
+  const data = JSON.parse(document.getElementById('nm-data').textContent);
+  const stage = byId('nm-stage'), control = byId('nm-time'), scenario = byId('nm-scenario'), play = byId('nm-play');
+  const ns = 'http://www.w3.org/2000/svg';
+  const fa = new Intl.NumberFormat('fa-IR', {maximumFractionDigits:1});
+  const words = {walk:'راه‌رفتن',protect:'حفاظت',observe:'مشاهده',rest:'استراحت',slow_breath:'تنفس آرام'};
+  let index = 0, timer = null, animation = null, current = null;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const frames = () => data.scenarios[scenario.value].frames;
+  function element(tag, attrs) {
+    const el = document.createElementNS(ns, tag);
+    Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k,String(v)));
+    return el;
+  }
+  function geometry(frame) {
+    const w = root.getBoundingClientRect().width, h = w < 420 ? 320 : 370;
+    stage.setAttribute('viewBox', `0 0 ${w} ${h}`);
+    stage.style.height = h+'px';
+    const scale = Math.min((h-48)/2.85, w/3.2), floor = h-28, ox=w*.51;
+    const p = q => [ox-scale*q[0]+scale*.45*q[1], floor-scale*q[2]-scale*.24*q[1]];
+    const join = q => q.map(pt => p(pt).join(',')).join(' ');
+    byId('nm-floor').replaceChildren();
+    for(let k=-4;k<=4;k++) {
+      byId('nm-floor').append(element('polyline',{points:join([[k*.25,-.4,0],[k*.25,.6,0]])}));
+      byId('nm-floor').append(element('polyline',{points:join([[-1,k*.12,0],[1,k*.12,0]])}));
+    }
+    byId('nm-shadow').replaceChildren();
+    byId('nm-legs').replaceChildren();byId('nm-joints').replaceChildren();byId('nm-feet').replaceChildren();
+    for(const side of ['L','R']) {
+      const j=frame.joints_m[side], chain=['hip','knee','ankle','foot_anchor'].map(k=>j[k]);
+      const foot=j.foot_anchor, ground=p([foot[0],foot[1],0]);
+      byId('nm-shadow').append(element('ellipse',{cx:ground[0],cy:ground[1],rx:scale*.13,ry:scale*.04,opacity:Math.max(.1,.6-foot[2]*3)}));
+      byId('nm-legs').append(element('polyline',{points:join(chain)}));
+      chain.slice(0,3).forEach(q=>{const [cx,cy]=p(q);byId('nm-joints').append(element('circle',{cx,cy,r:3.5}));});
+      for(const patch of data.design.patches) {
+        const [cx,cy]=p([foot[0]+patch.xy[0],foot[1]+patch.xy[1],foot[2]]);
+        const radius=Math.sqrt(patch.area_m2/Math.PI)*scale;
+        byId('nm-feet').append(element('ellipse',{cx,cy,rx:Math.max(3,radius),ry:Math.max(2,radius*.35)}));
+      }
+    }
+    const cx=frame.com_m[0],cy=frame.com_m[1];
+    const pt=(x,y,z)=>p([cx+x,cy+y,z]), [hipX,hipY]=pt(0,0,1.42), [chX,chY]=pt(0,0,2.02);
+    const [neckX,neckY]=pt(0,0,2.23), [headX,headY]=pt(0,0,2.43), r=scale*.16;
+    byId('nm-torso').setAttribute('d',`M ${hipX-scale*.18} ${hipY} Q ${hipX-scale*.1} ${chY+scale*.3} ${chX-scale*.28} ${chY} Q ${chX} ${chY-scale*.12} ${chX+scale*.28} ${chY} Q ${hipX+scale*.1} ${chY+scale*.3} ${hipX+scale*.18} ${hipY} Z`);
+    byId('nm-arms').setAttribute('d',`M ${chX-scale*.29} ${chY} L ${chX-scale*.39} ${chY+scale*.35} L ${hipX-scale*.29} ${hipY-scale*.02} M ${chX+scale*.29} ${chY} L ${chX+scale*.39} ${chY+scale*.35} L ${hipX+scale*.29} ${hipY-scale*.02} M ${neckX} ${neckY} L ${chX} ${chY}`);
+    const face=byId('nm-face');face.setAttribute('cx',headX);face.setAttribute('cy',headY);face.setAttribute('rx',r);face.setAttribute('ry',r*1.3);
+    byId('nm-horns').setAttribute('d',`M ${headX-r*.8} ${headY-r} Q ${headX-r*2} ${headY-r*1.2} ${headX-r*1.8} ${headY-r*2.2} M ${headX+r*.8} ${headY-r} Q ${headX+r*2} ${headY-r*1.2} ${headX+r*1.8} ${headY-r*2.2}`);
+    const tail=frame.tail_angle_rad[0], [tx,ty]=pt(-.12,-.04,1.42);
+    byId('nm-tail').setAttribute('d',`M ${tx} ${ty} C ${tx+scale*.75} ${ty+scale*.15} ${tx+scale*.9} ${ty+scale*.7} ${tx+scale*.55} ${ty+scale*(.85+tail*.1)}`);
+    const c=p([cx,cy,data.design.com_height_m]);byId('nm-com').setAttribute('cx',c[0]);byId('nm-com').setAttribute('cy',c[1]);byId('nm-com').setAttribute('r',5);
+    current=frame;
+  }
+  function status(frame) {
+    byId('nm-sleep').textContent='فشار خواب '+fa.format(frame.state.sleep_pressure*100)+'٪';
+    byId('nm-fatigue').textContent='خستگی '+fa.format(frame.state.fatigue*100)+'٪';
+    byId('nm-energy').textContent='انرژی '+fa.format(frame.state.energy*100)+'٪';
+    byId('nm-count').textContent=fa.format(index+1)+' / '+fa.format(frames().length);
+    byId('nm-decision').textContent='خواست: '+(words[frame.requested]||frame.requested)+' · اجرا: '+(words[frame.actual]||frame.actual)+' · یادآوری: '+fa.format(frame.recalled)+' · گام کامل: '+fa.format(frame.walk_steps);
+    stage.dataset.actual=frame.actual;stage.dataset.revision=frame.revision;stage.dataset.checkpoint=frame.checkpoint_sha256;
+  }
+  function stop() {if(timer!==null)clearTimeout(timer);timer=null;play.textContent='پخش ۱۲ چرخه';}
+  function blend(a,b,t) {
+    const f=JSON.parse(JSON.stringify(b)), mix=(x,y)=>x.map((v,k)=>v+(y[k]-v)*t);
+    f.com_m=mix(a.com_m,b.com_m);f.tail_angle_rad=mix(a.tail_angle_rad,b.tail_angle_rad);
+    for(const side of ['L','R'])for(const name of Object.keys(f.joints_m[side]))f.joints_m[side][name]=mix(a.joints_m[side][name],b.joints_m[side][name]);
+    return f;
+  }
+  function select(next, transition=true) {
+    if(animation!==null)cancelAnimationFrame(animation);
+    index=next;control.value=String(index);const target=frames()[index], prior=current;
+    if(!transition||reducedMotion||!prior){geometry(target);status(target);return;}
+    const start=performance.now();
+    const tick=now=>{
+      const t=Math.min(1,(now-start)/360),ease=t*t*(3-2*t);
+      geometry(blend(prior,target,ease));
+      if(t<1)animation=requestAnimationFrame(tick);else {animation=null;geometry(target);status(target);}
+    };animation=requestAnimationFrame(tick);
+  }
+  scenario.addEventListener('change',()=>{stop();select(0,false);});
+  control.addEventListener('input',()=>{stop();select(Number(control.value),false);});
+  play.addEventListener('click',()=>{
+    if(timer!==null){stop();return;}
+    select(0,false);play.textContent='توقف';
+    const advance=()=>{if(index>=frames().length-1){stop();return;}select(index+1);timer=setTimeout(advance,650);};
+    timer=setTimeout(advance,650);
+  });
+  new ResizeObserver(()=>{if(current)geometry(current);}).observe(root);
+  select(0,false);
+})();
+</script>

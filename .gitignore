@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.ci-env/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.sqlite.lock

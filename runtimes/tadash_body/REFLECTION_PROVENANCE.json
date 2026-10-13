@@ -1,0 +1,170 @@
+{
+  "schema": "tadash-reflection-source-audit/1",
+  "created_at": "2026-10-12T18:05:33+03:30",
+  "authority_scope": "latest relevant snapshots recovered from searched Library; not a verified live repository mirror",
+  "sources": [
+    {
+      "filename": "Tadash_Special_Coordination_2026-10-12.zip",
+      "library_file_id": "libfile_fb0d99d81b908191b4d60ad15fbc3deb",
+      "sha256": "40e78f082e1f52042ded4408beb3ab6878ce39f714c4342d5d5237780e33648a"
+    },
+    {
+      "filename": "Tadash_Privacy_Recovery_2026-10-12.zip",
+      "library_file_id": "libfile_959b2cede54881919d1180fd2193ffc3",
+      "sha256": "a6d3cc5856cfa6a89d056c490d5884858aa59ca96516cffdac746d5927a5af7a"
+    },
+    {
+      "filename": "Tadash_Endurance_2026-10-12.zip",
+      "library_file_id": "libfile_38f9711dc6148191921eca0d0733a034",
+      "sha256": "535de36393f7c6706748d46de6b6e69e6abe1dd0553ebfa9a0e131459f5ad0d3"
+    },
+    {
+      "filename": "Decision_Core_v0.1.patch",
+      "library_file_id": "libfile_bb6c694a27588191a4ea629ce38485ce",
+      "sha256": "9a5cfa7902285a55c044c05f3451ea5917b2ee2e661332225c1a612b2b49cb52"
+    },
+    {
+      "filename": "nasuraya_decision_core_v1.py",
+      "library_file_id": "libfile_2bff2dfab19c8191bfabf69e3d4bf45e",
+      "sha256": "1aa21714cda555dfb910276ee87836f78cc3952616e7ef2449955362d7225435"
+    },
+    {
+      "filename": "nasuraya_integrated_runtime_v01.py",
+      "library_file_id": "libfile_38026084b1088191bd43ed1c672f63c6",
+      "sha256": "59e42f3cc756ab9f44ae1957ee5567b641737c1c90502f352fc994597d0ab436"
+    },
+    {
+      "filename": "Zohraya_Runtime_Fixes.zip",
+      "library_file_id": "libfile_a7b79a531bd8819190bf578963037992",
+      "sha256": "ed63ef4d6ad64f1825345657a6f2f7073bc139390475042a1aa6ae0ce81ca9ec"
+    },
+    {
+      "filename": "Zohraya_Documentation_Correction.zip",
+      "library_file_id": "libfile_91e98394f1cc8191962c1b751aea376d",
+      "sha256": "6388ecec907f4ac8026f854d2360f1fdc57ba474b9b5453530e786b1494bb2df"
+    },
+    {
+      "filename": "Nasuraya_Continuity_Lab_v1.zip",
+      "library_file_id": "libfile_f41be0a50430819198df59a60646b86f",
+      "sha256": "27e4ee7dcdf88bf43533d7b41db4ecbc3cc7683ee3d5d721e78daf53943e3abe"
+    },
+    {
+      "filename": "Nasuraya_Selfmodel_Tadash_Pilot_2026-10-05.zip",
+      "library_file_id": "libfile_e0478399330c8191811eae0fd1524346",
+      "sha256": "1e0cc9314ea988945250b40bffebdd6436212ada4b72e07af005f541059d91e8"
+    },
+    {
+      "filename": "Tadash_Decision_Sensitivity_2026-10-09.zip",
+      "library_file_id": "libfile_bebcf8f34418819183b48f7e843f3d9c",
+      "sha256": "ec358bb4b23ecee8aed46c19e66a8ef20f0b41bd0efbc6c9378366a9bfbc231e"
+    }
+  ],
+  "classification": [
+    {
+      "component": "UnifiedBody v2, PersistentEmbodiment, DurableMemory v0.8",
+      "status": "implemented_and_freshly_executed",
+      "scope": "latest recovered public body code snapshot; synthetic runs only",
+      "evidence": "58 original baseline unit tests; 81 body/reflection tests in final combined run; native equations unchanged"
+    },
+    {
+      "component": "DecisionCore v0.1",
+      "status": "implemented_and_freshly_executed",
+      "scope": "recovered standalone patch applied additively in tadash_body",
+      "evidence": "10 original unit tests, identical core source and paired scenario evaluation"
+    },
+    {
+      "component": "Nasuraya Decision Core v1",
+      "status": "source_reviewed_not_connected",
+      "scope": "retained independent JSON state machine with four self-model axes; source is present but is not called by UnifiedBody.cycle",
+      "evidence": "source definitions and search of existing whole-body call path"
+    },
+    {
+      "component": "Nasuraya Cognitive Core v0.1 / WorldModel",
+      "status": "full_source_read_execution_not_retested",
+      "scope": "Library libfile_58d5e0608078819189d3cb468f4a3349, 483 lines; contains beliefs, revision ledger, goal selection and bounded counterfactual planning",
+      "evidence": "full Library text read; depends on nasuraya_nbi_v01; not connected to this intervention"
+    },
+    {
+      "component": "nasuraya_integrated_runtime_v01.py internal VERSION 0.7",
+      "status": "source_reviewed_execution_not_verified",
+      "scope": "independent older coordinator imports several modules not materialized in this audit; no claim of execution here",
+      "evidence": "materialized source, imports and internal version inspected"
+    },
+    {
+      "component": "Continuity Lab memory",
+      "status": "recovered_data_integrity_verified_runtime_partially_missing",
+      "scope": "original SQLite stores opened read-only; byte hashes preserved",
+      "evidence": "PRAGMA integrity_check ok; prediction_audit.py, causal_observation.py, bounded_local_learning.py and self_model.py absent from this partially recovered archive"
+    },
+    {
+      "component": "Continuity Lab circuit and attention code",
+      "status": "present_not_retested_in_this_task",
+      "scope": "neural_circuit.py and circuit_body_exercise.py are present; their old reported tests are historical",
+      "evidence": "archive inventory and START_HERE_FA recovery qualification"
+    },
+    {
+      "component": "Zohraya halting protocol",
+      "status": "implemented_and_freshly_executed",
+      "scope": "stored Runtime Fixes snapshot; BoomerangLoss source exists but torch-dependent execution not tested here",
+      "evidence": "8 standard-library halting tests passed"
+    },
+    {
+      "component": "Whole physical Tadash body and proposed anatomy",
+      "status": "design_or_reduced_simulation",
+      "scope": "12 aggregate systems and 97 regional projections are software models; physical embodiment and anatomical completion are not established",
+      "evidence": "UnifiedBody documentation and source"
+    },
+    {
+      "component": "Live GitHub HEAD and private canonical whole-body checkpoint",
+      "status": "not_verified",
+      "scope": "public GitHub fetch returned DisabledError; latest public source bundle does not supply the private canonical state",
+      "evidence": "retrieval failure and supplied archive contents"
+    },
+    {
+      "component": "Reflection protocol 0.1",
+      "status": "retrieved_instruction_then_implemented_in_this_task",
+      "scope": "registered protocol became source-linked request/feedback ledger and explicit body adapter",
+      "evidence": "ReflectionCycle, ReflectiveBody and final validation"
+    }
+  ],
+  "original_public_manifest_verified": true,
+  "original_runtime_files_changed": [
+    "run_tests.py"
+  ],
+  "native_body_equations_modified": false,
+  "old_source_provenance": "SOURCE_PROVENANCE.json retained as historical snapshot; new provenance is here",
+  "new_state_scope": "retrospective source-qualified manuscript correction plus explicitly synthetic body executions; no old private checkpoint overwritten",
+  "memory_audit": [
+    {
+      "path": "work/extracted/Nasuraya_Continuity_Lab_v1/nasuraya_continuity_lab/artifacts/nasuraya.db",
+      "sha256": "7fca1949f4c922254fb31569096688d42be16ac612620dc75ce4be86ad2f43f3",
+      "integrity_check": "ok",
+      "table_names": [
+        "checkpoints",
+        "evidence",
+        "triage_events",
+        "sqlite_sequence",
+        "episodic_memory",
+        "initiative_events",
+        "belief_evidence",
+        "belief_revisions"
+      ],
+      "modified": false,
+      "runtime_available_for_restoration": false
+    },
+    {
+      "path": "work/extracted/Nasuraya_Continuity_Lab_v1/nasuraya_continuity_lab/artifacts/prediction_audit/self_model.sqlite",
+      "sha256": "3010a15bb896ae91862d08ef2d8040c2aafc73cdc538073073353246604b0b4b",
+      "integrity_check": "ok",
+      "table_names": [
+        "episodic_memory",
+        "checkpoints",
+        "evidence",
+        "triage_events",
+        "sqlite_sequence"
+      ],
+      "modified": false,
+      "runtime_available_for_restoration": false
+    }
+  ]
+}

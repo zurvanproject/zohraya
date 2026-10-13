@@ -1,0 +1,199 @@
+{
+  "schema": "tadash-public-provenance/1",
+  "runtime_files": [
+    {
+      "path": "actuated_breath_v1.py",
+      "recovered_sha256": "e572c3d9efef4c6bff15440cbb71869d4e15235db805abfdb4d1be0174b042c1",
+      "public_sha256": "e572c3d9efef4c6bff15440cbb71869d4e15235db805abfdb4d1be0174b042c1",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/renal_audit_v09.py",
+      "recovered_sha256": "5360da71cefd8b9c71e52a834e61b7a95c223f6dcf6e84d248950092170618d6",
+      "public_sha256": "5360da71cefd8b9c71e52a834e61b7a95c223f6dcf6e84d248950092170618d6",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/renal_body_v09.py",
+      "recovered_sha256": "e79d5a161cf1a9f5a0d218024eb628064d249f1b18fcaa977697fb29cd784dea",
+      "public_sha256": "e79d5a161cf1a9f5a0d218024eb628064d249f1b18fcaa977697fb29cd784dea",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/renal_coupling_v09.py",
+      "recovered_sha256": "255c464ff96330a65bb75d8ef84aca9799e2d4b5f9cf65ddb0e25dc869c9f43f",
+      "public_sha256": "255c464ff96330a65bb75d8ef84aca9799e2d4b5f9cf65ddb0e25dc869c9f43f",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/renal_physiology_v09.py",
+      "recovered_sha256": "36ad0162b54f24a5cac98fbc02f86495967c1ce22f2c815214354ddece03a66c",
+      "public_sha256": "36ad0162b54f24a5cac98fbc02f86495967c1ce22f2c815214354ddece03a66c",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/motion/sections.py",
+      "recovered_sha256": "1f10a05e6f144a5568599b37e44978c3954e48d4c8ff9d44976dcd92cc2b7141",
+      "public_sha256": "1f10a05e6f144a5568599b37e44978c3954e48d4c8ff9d44976dcd92cc2b7141",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/pain/pain.py",
+      "recovered_sha256": "d5fa304fd73d4359c02a753fa225c46112aff156d37191f91c7ed42f94b8e60a",
+      "public_sha256": "d5fa304fd73d4359c02a753fa225c46112aff156d37191f91c7ed42f94b8e60a",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/bilateral_sections.py",
+      "recovered_sha256": "e998f091615cac6ae996c0d6276da32a8a9c2a5a3e633eaa2810fb1c1519afbc",
+      "public_sha256": "e998f091615cac6ae996c0d6276da32a8a9c2a5a3e633eaa2810fb1c1519afbc",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/body_loop_v06.py",
+      "recovered_sha256": "214f5abf09c634ed3d3935043e40711d513c8980200eb97591ca4fbb70574e2c",
+      "public_sha256": "214f5abf09c634ed3d3935043e40711d513c8980200eb97591ca4fbb70574e2c",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/breath_motion_v06.py",
+      "recovered_sha256": "76f45f733f80fc021950395ec123079fe6f6c55d7f63e911b0d698a51dad23a1",
+      "public_sha256": "76f45f733f80fc021950395ec123079fe6f6c55d7f63e911b0d698a51dad23a1",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/contacts.py",
+      "recovered_sha256": "12eda407e4718bdef844cd81259d95ad321ed87d7733746f2264666bf65646e6",
+      "public_sha256": "12eda407e4718bdef844cd81259d95ad321ed87d7733746f2264666bf65646e6",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/pain_resilience_v04.py",
+      "recovered_sha256": "6fd130ba928b1404f2b32107c6528d2c0750eb73924b9e400577ea40451ef54f",
+      "public_sha256": "6fd130ba928b1404f2b32107c6528d2c0750eb73924b9e400577ea40451ef54f",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/posture_step.py",
+      "recovered_sha256": "02b845bc9184dd62b8ab17c4661bd17e7ea8e340e2022f4c47428ce748531c06",
+      "public_sha256": "02b845bc9184dd62b8ab17c4661bd17e7ea8e340e2022f4c47428ce748531c06",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/resource_audit_v06.py",
+      "recovered_sha256": "d4dac28a30cc827f3dea90004da09f1a81ec51b4e3f2de5bb46aecdb80bd7d23",
+      "public_sha256": "d4dac28a30cc827f3dea90004da09f1a81ec51b4e3f2de5bb46aecdb80bd7d23",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/run_balance_checks.py",
+      "recovered_sha256": "707eb2f5b8bf40bf15a2dfcbe23ee62a9d8001b40527d4b865740fdf2a30086c",
+      "public_sha256": "707eb2f5b8bf40bf15a2dfcbe23ee62a9d8001b40527d4b865740fdf2a30086c",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/brain_body_loop_v07.py",
+      "recovered_sha256": "b0392b813f31f015d277521e06ad337ec4df82bca6f4bd891a319e815e429482",
+      "public_sha256": "b0392b813f31f015d277521e06ad337ec4df82bca6f4bd891a319e815e429482",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/cognitive_workspace_v07.py",
+      "recovered_sha256": "e46fcde014022b3db61e566b259e59471c2afc9a75c9eecf39b13d2731dd8eaa",
+      "public_sha256": "e46fcde014022b3db61e566b259e59471c2afc9a75c9eecf39b13d2731dd8eaa",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/durable_memory_v08.py",
+      "recovered_sha256": "3580445893fe3bc4105bdaa235d0ce47eac3c029960911806e7d4b92ca39ca47",
+      "public_sha256": "3580445893fe3bc4105bdaa235d0ce47eac3c029960911806e7d4b92ca39ca47",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/interoception_v07.py",
+      "recovered_sha256": "f4ce82b17e106819d459dc7dd09508552328feaa2bd44575b7eaa58388cf2510",
+      "public_sha256": "f4ce82b17e106819d459dc7dd09508552328feaa2bd44575b7eaa58388cf2510",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/memory_body_loop_v08.py",
+      "recovered_sha256": "656a082629148f29bd6a3e4531b2cb177473c7c55d20959a0a37906a1cade302",
+      "public_sha256": "656a082629148f29bd6a3e4531b2cb177473c7c55d20959a0a37906a1cade302",
+      "change": "byte-identical"
+    },
+    {
+      "path": "persistent_embodiment_v1.py",
+      "recovered_sha256": "4aac5c4d8934f296b705c24880a139f3da812f646ad93c4825b4990a3e40acc4",
+      "public_sha256": "9e0f226f9fb507238ed92ebb75a2718c127c47efdc4b53c72d78ee13b40db6b6",
+      "change": "private provenance identifiers removed; restore receipt cache in revision order",
+      "previous_public_sha256": "855884c69bd4772a64588bcbd8c0371f5d603dd9630c1f2f879b8a972e854f5a"
+    },
+    {
+      "path": "retained_extensions/nasuraya_affective_layer_v01.py",
+      "recovered_sha256": "8354b663a4df8eaf8e62b15aa07a300bb4cf91885e176fe97947d7d6ab5c909f",
+      "public_sha256": "8354b663a4df8eaf8e62b15aa07a300bb4cf91885e176fe97947d7d6ab5c909f",
+      "change": "byte-identical"
+    },
+    {
+      "path": "retained_extensions/nasuraya_decision_core_v1.py",
+      "recovered_sha256": "1aa21714cda555dfb910276ee87836f78cc3952616e7ef2449955362d7225435",
+      "public_sha256": "1aa21714cda555dfb910276ee87836f78cc3952616e7ef2449955362d7225435",
+      "change": "byte-identical"
+    },
+    {
+      "path": "retained_extensions/nasuraya_emotion_spectrum_v01.py",
+      "recovered_sha256": "d29835759d1ec0ce16555b6805fe2bf008f97245a3ad76ac3e080da60299ac91",
+      "public_sha256": "d29835759d1ec0ce16555b6805fe2bf008f97245a3ad76ac3e080da60299ac91",
+      "change": "byte-identical"
+    },
+    {
+      "path": "retained_extensions/neural_circuit.py",
+      "recovered_sha256": "bd5d3da73d403055e7c0066420d16f6e2f0ccb8d48904738c404057edcda87e0",
+      "public_sha256": "bd5d3da73d403055e7c0066420d16f6e2f0ccb8d48904738c404057edcda87e0",
+      "change": "byte-identical"
+    },
+    {
+      "path": "unified_body_v2.py",
+      "recovered_sha256": "94bc748814d1f5fd04b5ed5850f9c1f6464e7355fac8cf707b42a5247cb92da3",
+      "public_sha256": "8a6f3036fc4b68e9e6d806896e666e07c921bf1d52b467e33f1be77227b91275",
+      "change": "private provenance identifiers removed; restore receipt cache in revision order",
+      "previous_public_sha256": "91fc51745bc112f7f94d4a328a68c55a822942a9dbcfc01b21480655d3c5e13e"
+    },
+    {
+      "path": "audit_self_model.py",
+      "recovered_sha256": "4e48afbfead5ed48f7002db26c5ee96aa1e7b874851fa2eafa531fe6d08cbd02",
+      "public_sha256": "4e48afbfead5ed48f7002db26c5ee96aa1e7b874851fa2eafa531fe6d08cbd02",
+      "change": "byte-identical"
+    },
+    {
+      "path": "anatomy_systems_v01.json",
+      "recovered_sha256": "320fc77b16967e12bfa8bcdb29b28dfc9464ed26793fabcf7c349be1ee171989",
+      "public_sha256": "f0a8f47de3b23d15f257b56767308b82cb4f41cd765232599e9343631397b64b",
+      "change": "private provenance identifiers removed"
+    },
+    {
+      "path": "phenotype_v1.json",
+      "recovered_sha256": "66f9d873f93c801b0d8f197b1f37747929d69dbb1f06b4da4ff06e544dc1c620",
+      "public_sha256": "2dc8906c57de807f7adfeebdae21d2f3049accc75b4a65f5effafd127e6e3d37",
+      "change": "private provenance identifiers removed"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/hydraulic_table_v03.json",
+      "recovered_sha256": "97cb0945ef5f9a08f1e2ce4cfb91d08849ddb2130cc99d6cf43009a090f29c88",
+      "public_sha256": "97cb0945ef5f9a08f1e2ce4cfb91d08849ddb2130cc99d6cf43009a090f29c88",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/contact_design_v06.json",
+      "recovered_sha256": "f92436e77bc1b5fe4449cb94bbefd9e3c8624fc14d4719458bf10d8ddb191a6a",
+      "public_sha256": "f92436e77bc1b5fe4449cb94bbefd9e3c8624fc14d4719458bf10d8ddb191a6a",
+      "change": "byte-identical"
+    },
+    {
+      "path": "base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/pain/regions.json",
+      "recovered_sha256": "0ddcca51b93a3c54388b9865251fd01fee9e9b432a8ffedba1e8ccad474f9dae",
+      "public_sha256": "0ddcca51b93a3c54388b9865251fd01fee9e9b432a8ffedba1e8ccad474f9dae",
+      "change": "byte-identical"
+    }
+  ]
+}
