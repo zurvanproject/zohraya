@@ -22,11 +22,14 @@ jobs:
         environment: [offline, sdk]
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
       - name: Prepare isolated Python environment
         run: python3 -m venv .ci-env
       - name: Install optional SDK
         if: matrix.environment == 'sdk'
-        run: .ci-env/bin/python -m pip install -r examples/nasuraya_agent_loop/requirements-api.txt
+        run: .ci-env/bin/python -m pip install -r examples/nasuraya_agent_loop/requirements-api.lock.txt
       - name: Verify tests and expected coverage
         env:
           TEST_ENVIRONMENT: ${{ matrix.environment }}
@@ -37,7 +40,7 @@ jobs:
           result = unittest.TextTestRunner(verbosity=2).run(suite)
           expected_skips = 0 if os.environ['TEST_ENVIRONMENT'] == 'sdk' else 10
           assert result.wasSuccessful()
-          assert result.testsRun == 58, result.testsRun
+          assert result.testsRun == 60, result.testsRun
           assert len(result.skipped) == expected_skips, result.skipped
           PY
       - name: Run synthetic demo and state grid

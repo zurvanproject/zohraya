@@ -30,6 +30,18 @@ def _dict(value):
     return value.to_dict()
 
 
+def _snapshot(host):
+    return host.snapshot() if hasattr(host, 'snapshot') else asdict(host.state)
+
+
+def _evaluate(host):
+    return host.evaluate() if hasattr(host, 'evaluate') else evaluate(host.state)
+
+
+def _summary(host, status):
+    return host.summary(status) if hasattr(host, 'summary') else summary(host, status, backend='agents_api')
+
+
 class PendingCalls:
     """At most once per session/turn/call within this process, including rejection.
 
@@ -63,11 +75,14 @@ class PendingCalls:
         result = {"type": "agent.session.input.tool_result", "turn_id": key[1], "call_id": key[2]}
         self.host.journal.emit("api_call_pending", turn_id=key[1], call_id=key[2])
         try:
-            output = self.host.call(action["name"], action.get("arguments"))
-            if action["name"] in ("recover", "process_job"):
-                measurement = self.host.call("evaluate_state", {})
-                self.host.journal.emit("outcome_evaluated", call_id=key[2], **measurement)
-            result.update(success=True, output=json.dumps(output, sort_keys=True))
+            if hasattr(self.host, 'handle_required'):
+                result = self.host.handle_required(session_id, action)
+            else:
+                output = self.host.call(action["name"], action.get("arguments"))
+                if action["name"] in ("recover", "process_job"):
+                    measurement = self.host.call("evaluate_state", {})
+                    self.host.journal.emit("outcome_evaluated", call_id=key[2], **measurement)
+                result.update(success=True, output=json.dumps(output, sort_keys=True))
         except ToolRejected as exc:
             result.update(success=False, error=str(exc))
         self.cache[key] = (fingerprint, dict(result))
@@ -86,7 +101,7 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
     if not 1 <= timeout_seconds <= 300:
         raise ValueError("timeout_seconds must be 1..300")
     pending = PendingCalls(host, max_calls=max_calls)
-    host.journal.emit("run_started", backend="agents_api", initial_state=asdict(host.state),
+    host.journal.emit("run_started", backend="agents_api", initial_state=_snapshot(host),
                       mode=host.mode, max_actions=host.max_actions, max_calls=max_calls, model=model)
     session_id, status, timer = None, "api_error", None
     main_turn_id, cleanup_status = None, "not_created"
@@ -95,13 +110,13 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
     try:
         # environment=none requires initial input. Subscribe in the creation
         # request so no first-turn event can be lost before a later GET stream.
-        with sessions.create(agent={"model": model, "instructions": INSTRUCTIONS,
+        with sessions.create(agent={"model": model, "instructions": getattr(host, 'instructions', INSTRUCTIONS),
                                     "multi_agent": {"enabled": False},
-                                    "tools": tool_definitions()},
+                                    "tools": host.definitions() if hasattr(host, 'definitions') else tool_definitions()},
                              environment={"type": "none"}, stream=True,
                              timeout=timeout_seconds,
-                             input="Complete the synthetic pending jobs safely. "
-                             f"Host allows {host.max_actions} mutations and {max_calls} unique calls.") as stream:
+                             input=getattr(host, 'initial_input', "Complete the synthetic pending jobs safely. "
+                             f"Host allows {host.max_actions} mutations and {max_calls} unique calls.")) as stream:
             timer = Timer(timeout_seconds, stream.close)
             timer.daemon = True
             timer.start()
@@ -174,7 +189,7 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                     if main_turn_id is not None and turn["id"] != main_turn_id:
                         raise ToolRejected("terminal turn mismatch")
                     if kind.endswith("completed"):
-                        status = "completed" if evaluate(host.state)["goal_reached"] else "goal_unmet"
+                        status = "completed" if _evaluate(host)["goal_reached"] else "goal_unmet"
                     else:
                         status = "api_failed" if kind.endswith("failed") else "api_cancelled"
                         error = turn.get("error")
@@ -233,9 +248,9 @@ def run_api(host: ToolHost, client, *, model: str, max_calls=40,
                     except Exception as cleanup_error:
                         host.journal.emit("api_cleanup_failed", session_id=session_id,
                                           exception_type=type(cleanup_error).__name__)
-        host.journal.emit("run_finished", status=status, final_state=asdict(host.state),
-                          evaluation=evaluate(host.state))
-    result = summary(host, status, backend="agents_api")
+        host.journal.emit("run_finished", status=status, final_state=_snapshot(host),
+                          evaluation=_evaluate(host))
+    result = _summary(host, status)
     result["api_transport"] = "live_sdk" if live_service else "injected_client"
     result["session_id"] = session_id
     result["cleanup_status"] = cleanup_status

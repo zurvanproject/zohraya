@@ -27,8 +27,8 @@ def verified_sources():
 
 
 def main(argv=None):
-    p = argparse.ArgumentParser(description='Verified local Tadash body loop; no API calls')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test'])
+    p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
@@ -37,11 +37,18 @@ def main(argv=None):
     p.add_argument('--steps', type=int, default=3)
     p.add_argument('--decision-id')
     p.add_argument('--duration-s', type=float, default=.1)
+    p.add_argument('--api-mode', choices=['observe', 'bounded'], default='observe')
+    p.add_argument('--target-cycles', type=int, default=0)
+    p.add_argument('--model')
+    p.add_argument('--max-calls', type=int, default=40)
+    p.add_argument('--timeout-seconds', type=float, default=30)
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test'] and args.session is None:
         p.error('--session required')
     if args.command == 'demo' and args.output_dir is None:
         p.error('--output-dir required')
+    if args.command == 'api' and (args.output_dir is None or not args.model):
+        p.error('--output-dir and --model required for explicit live API')
     payload = vars(args)
     for key in ('session', 'output_dir'):
         if payload[key] is not None:
@@ -55,6 +62,20 @@ def main(argv=None):
             shutil.copyfile(SOURCE / name, dest)
         env = dict(os.environ)
         env.pop('OPENAI_API_KEY', None)
+        if args.command == 'api':
+            # The user-approved ignored file is read only for this explicit
+            # command. The key is inherited by the worker, never serialized.
+            key = os.environ.get('OPENAI_API_KEY')
+            local = ROOT / '.env.local'
+            if not key and local.is_file() and not local.is_symlink():
+                if local.stat().st_mode & 0o077:
+                    raise ValueError('API key file must be private')
+                for line in local.read_text().splitlines():
+                    if line.startswith('OPENAI_API_KEY='):
+                        key = line.partition('=')[2].strip()
+            if not key:
+                raise ValueError('explicit live API requires the approved local key')
+            env['OPENAI_API_KEY'] = key
         env['PYTHONPATH'] = str(work) + os.pathsep + str(ROOT)
         return subprocess.run([sys.executable, '-m', 'examples.nasuraya_body_loop.worker'],
                               cwd=work, env=env, input=json.dumps(payload), text=True).returncode

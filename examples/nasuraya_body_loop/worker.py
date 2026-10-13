@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 import unittest
 
-from .host import BodyLoop
+from .host import BodyLoop, validate_duration
 
 
 def main(args):
@@ -13,11 +13,31 @@ def main(args):
         from . import test_body_loop
         r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))
         return 0 if r.wasSuccessful() else 1
+    if command == 'api-test':
+        from . import test_api_host
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_api_host))
+        return 0 if r.wasSuccessful() else 1
+    if command == 'api':
+        from examples.nasuraya_agent_loop.agents_api import make_client, run_api
+        from examples.nasuraya_agent_loop.local import Journal
+        from .api_host import BodyAPIHost
+        output = Path(args['output_dir'])
+        output.mkdir(mode=0o700, parents=True, exist_ok=False)
+        with BodyLoop(args['session']) as loop:
+            host = BodyAPIHost(loop, mode=args['api_mode'], target_cycles=args['target_cycles'],
+                               max_calls=args['max_calls'], journal=Journal(output / 'events.jsonl'))
+            with make_client() as client:
+                summary = run_api(host, client, model=args['model'], max_calls=args['max_calls'],
+                                  timeout_seconds=args['timeout_seconds'], live_service=True)
+        (output / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n')
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0 if summary['status'] == 'completed' else 1
     if command == 'demo':
         output = Path(args['output_dir'])
         if type(args['steps']) is not int or not 0 <= args['steps'] <= args['max_actions'] <= 100:
             raise ValueError('steps must fit the declared action budget')
-        output.mkdir(parents=True, exist_ok=False)
+        validate_duration(args['duration_s'])
+        output.mkdir(mode=0o700, parents=True, exist_ok=False)
         with BodyLoop.start(output / 'session.sqlite', fixture=args['fixture'],
                             mode=args['mode'], max_actions=args['max_actions']) as loop:
             rows = []
@@ -25,8 +45,11 @@ def main(args):
                 observation = loop.observe()
                 result = loop.step(duration_s=args['duration_s'])
                 rows.append({'before': observation, 'outcome': result})
+                if result['status'] != 'complete':
+                    break
             summary = loop.status()
-            summary['status'] = 'completed' if summary['completed_cycles'] == args['steps'] else 'incomplete'
+            summary['status'] = ('failed' if summary['failed_cycles'] else
+                                 'completed' if summary['completed_cycles'] == args['steps'] else 'incomplete')
             (output / 'events.jsonl').write_text(''.join(json.dumps(row,ensure_ascii=False,sort_keys=True)+'\n' for row in rows))
             (output / 'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
             (output / 'decisions.json').write_text(json.dumps(loop.engine.export(),ensure_ascii=False,indent=2)+'\n')
@@ -40,6 +63,10 @@ def main(args):
             elif command == 'step': summary = loop.step(decision_id=args['decision_id'], duration_s=args['duration_s'])
             else: summary = loop.status()
     print(json.dumps(summary,ensure_ascii=False,sort_keys=True))
+    if command == 'demo':
+        return 0 if summary['status'] == 'completed' else 1
+    if command == 'step':
+        return 0 if summary['status'] == 'complete' else 1
     return 0
 
 

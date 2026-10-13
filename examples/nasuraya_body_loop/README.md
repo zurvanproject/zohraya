@@ -62,3 +62,66 @@ python3 -m examples.nasuraya_body_loop status --session /tmp/nasuraya-body.sqlit
 
 ۱۱ آزمون تازهٔ اتصال و ۹۹ آزمون اصلیِ بستهٔ بازیابی‌شده گذشتند. گزارش و شواهد
 در `evidence/` و `docs/nasuraya-body-loop-2026-10-13.md` قرار دارند.
+
+## اصلاحات بازبینی مستقل
+
+آزمون‌های اتصال اکنون ۱۶ موردند. شمار چرخهٔ کامل فقط اجرای برگشتیِ بدن با
+رسید و checkpoint را می‌شمارد؛ شکست اجرا جدا گزارش می‌شود و فرمان `step` یا
+`demo` در آن حالت کد خروج غیرصفر دارد. تلاش شکست‌خورده بودجه را مصرف می‌کند و
+تکرار شناسهٔ آن، رسید شکست را بدون اجرای دوباره برمی‌گرداند. وتوی محافظ بدن
+همچنان یک چرخهٔ موفق اجراست، حتی اگر با اقدام درخواستی تطابق نداشته باشد.
+
+مدت باید بین ۰٫۱ و ۱ ثانیه و مضربی از ۰٫۱ باشد؛ شناسهٔ تصمیم حداکثر ۱۰۹
+نویسه دارد تا پیشوند رویداد از سقف ۱۲۰ نویسهٔ بدن تجاوز نکند. ورودی نامعتبر
+پیش از مصرف مشاهده یا بودجه رد می‌شود. قفل اکنون روی خود inode پایگاه است؛
+hard link رد می‌شود چون فایل‌های WAL در SQLite به نام مسیر وابسته‌اند.
+پایگاه با مجوز ۰۶۰۰ و پوشهٔ خروجی تازه با ۰۷۰۰ ساخته می‌شود. مجوز پایگاه موجود
+فقط پس از تأیید نشانگر این حلقه محدود می‌شود؛ دفترِ غیرمرتبط دست‌نخورده می‌ماند.
+
+## اتصال عامل API به بدن
+
+فرمان صریح `api` از همان Agents API موجود در نمونهٔ عامل استفاده می‌کند.
+میزبان `BodyAPIHost` سه ابزار محدود دارد: `observe_body`، `evaluate_body` و
+در حالت bounded، `request_body_action`. ابزار سوم فقط ترجیح «walk» یا
+«observe» را به گزینه‌های هستهٔ تصمیم می‌دهد؛ بازخورد می‌تواند ترجیح را عوض
+کند و حفاظت بومی بدن می‌تواند اقدام را وتو کند. مدل به checkpoint کامل،
+حافظهٔ خصوصی، ورودی دلخواه بدن، shell، فایل یا شبکه ابزار دسترسی ندارد.
+
+خلاصهٔ ارسالی فقط شمارهٔ نسخه، هش checkpoint، ساعت شبیه‌سازی و هشت متغیر
+کمینهٔ fixture تولیدشده است. نتیجهٔ فراخوانی با هویت session/turn/call در
+همان SQLite ذخیره می‌شود. تغییر payload با هویت یکسان رد می‌شود؛ سقف
+فراخوانی‌ها پس از restart ثابت می‌ماند. مشاهده به همان session و turn بسته
+است. نتیجهٔ بدنی که commit شده ولی پاسخ ابزارش ثبت نشده از تصمیمِ کامل
+بازیابی می‌شود؛ درخواستِ حل‌نشده دوباره اجرا نمی‌شود و اقدام تازه را مسدود
+می‌کند. خود جریان رویداد API در این نسخه پس از قطع اتصال خودکار resume نمی‌شود.
+
+آزمون‌های بدون سرویس زنده:
+
+```sh
+python3 -m examples.nasuraya_body_loop api-test
+.ci-env/bin/python -m examples.nasuraya_body_loop api-test
+```
+
+آزمون دوم SDK نصب‌شده و transport کنترل‌شده را نیز بررسی می‌کند. این دو
+فرمان کلید نمی‌خوانند و API زنده مصرف نمی‌کنند. فرمان `api` فقط در انتخاب
+صریح کاربر کلید را از محیط یا `.env.local` خصوصیِ کنار مخزن می‌خواند؛ کلید
+داخل payload، گزارش یا کنترل نسخه قرار نمی‌گیرد. فایل کلید باید 0600 باشد.
+
+شروع فقط‌خواندنی در یک session تازه و خروجی تازه:
+
+```sh
+python3 -m examples.nasuraya_body_loop start --fixture sleep --mode observe --max-actions 0 --session /tmp/new-body-observe.sqlite
+python3 -m examples.nasuraya_body_loop api --session /tmp/new-body-observe.sqlite --api-mode observe --model gpt-6-astra --target-cycles 0 --output-dir /tmp/new-body-observe-report
+```
+
+برای درخواست یک چرخه از fixture تازه با بودجهٔ محدود:
+
+```sh
+python3 -m examples.nasuraya_body_loop start --fixture normal --mode bounded --max-actions 3 --session /tmp/new-body-api.sqlite
+python3 -m examples.nasuraya_body_loop api --session /tmp/new-body-api.sqlite --api-mode bounded --model gpt-6-astra --target-cycles 1 --output-dir /tmp/new-body-api-report
+```
+
+این فرمان‌ها به SDK اختیاری و صورتحساب فعال API نیاز دارند. در بررسی ۱۳ اکتبر،
+جلسهٔ زنده ساخته شد ولی پیش از هر ابزار با خطای داخلی/پایان مهلت متوقف و حذف
+شد؛ یک درخواست تشخیصی مستقل `billing_not_active` داد. پس اتصال کد و اجرای
+بدن در آزمون کنترل‌شده تأیید شده‌اند؛ موفقیت مدل زنده هنوز تأیید نشده است.

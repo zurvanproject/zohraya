@@ -1,13 +1,18 @@
 """Behavioral checks of the new bridge, run inside the verified source worker."""
 from copy import deepcopy
+from contextlib import redirect_stdout
+import io
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
-from .host import BodyLoop, InterruptedExecution
+from .host import BodyLoop, InterruptedExecution, UnifiedBody
+from . import worker
 from reflection_cycle import ReflectionCycle
 
 
@@ -125,6 +130,76 @@ with BodyLoop(sys.argv[1]) as loop:
             loop.engine.db.execute('UPDATE meta SET value=? WHERE key=?', (json.dumps(snapshot), 'body-loop-observation'))
             with self.assertRaisesRegex(ValueError, 'stale'): loop.step()
             self.assertEqual(loop.status()['actions_reserved'], 0)
+
+    def test_invalid_duration_and_identity_preserve_observation_and_budget(self):
+        with BodyLoop.start(self.path) as loop:
+            before = loop.observe()['checkpoint_sha256']
+            for value in (.001, .05, .15, 1.1, float('nan'), float('inf'), True):
+                with self.subTest(duration=value), self.assertRaises(ValueError):
+                    loop.step(duration_s=value)
+            for value in ('', ' ', 'x' * 110, 3):
+                with self.subTest(identity=value), self.assertRaises(ValueError):
+                    loop.step(decision_id=value)
+            self.assertEqual(loop.status()['actions_reserved'], 0)
+            self.assertEqual(before, loop.status()['self_model']['checkpoint_sha256'])
+            self.assertEqual(loop.step(duration_s=.3)['status'], 'complete')
+
+    def test_callback_failure_is_not_a_completed_cycle_and_replay_never_retries(self):
+        with BodyLoop.start(self.path, max_actions=1) as loop:
+            before = loop.observe()['checkpoint_sha256']
+            with patch.object(UnifiedBody, 'cycle', side_effect=RuntimeError('PRIVATE-SENTINEL')) as callback:
+                first = loop.step(decision_id='failed')
+                second = loop.step(decision_id='failed')
+            self.assertEqual(callback.call_count, 1)
+            self.assertEqual(first['status'], 'executor_failed')
+            self.assertTrue(second['replayed'])
+            self.assertEqual(loop.status()['completed_cycles'], 0)
+            self.assertEqual(loop.status()['failed_cycles'], 1)
+            self.assertEqual(loop.status()['actions_remaining'], 0)
+            self.assertEqual(before, loop.status()['self_model']['checkpoint_sha256'])
+            self.assertNotIn('PRIVATE-SENTINEL', json.dumps(loop.engine.export()))
+
+    def test_failed_demo_exits_nonzero_and_retains_failed_receipt(self):
+        output = Path(self.temp.name) / 'demo'
+        args = dict(command='demo', output_dir=str(output), steps=2, max_actions=2,
+                    fixture='normal', mode='bounded', duration_s=.1)
+        # Patch the adapter after fixture creation, not the native warm-up.
+        from reflection_cycle import ReflectiveBody
+        original = ReflectiveBody.cycle
+        def fail_body(adapter, *args, **kwargs):
+            with patch.object(UnifiedBody, 'cycle', side_effect=RuntimeError('PRIVATE-SENTINEL')):
+                return original(adapter, *args, **kwargs)
+        with patch.object(ReflectiveBody, 'cycle', fail_body), redirect_stdout(io.StringIO()):
+            code = worker.main(args)
+        summary = json.loads((output / 'summary.json').read_text())
+        self.assertEqual(code, 1)
+        self.assertEqual(summary['status'], 'failed')
+        self.assertEqual(summary['completed_cycles'], 0)
+        self.assertEqual(summary['failed_cycles'], 1)
+        self.assertEqual(summary['actions_reserved'], 1)
+        self.assertEqual(len((output / 'events.jsonl').read_text().splitlines()), 1)
+        self.assertNotIn('PRIVATE-SENTINEL', (output / 'decisions.json').read_text())
+
+    def test_hardlink_alias_is_rejected_before_sqlite_can_open_another_wal(self):
+        with BodyLoop.start(self.path) as loop:
+            alias = self.path.with_name('alias.sqlite')
+            os.link(self.path, alias)
+            before = self.path.read_bytes()
+            with self.assertRaisesRegex(ValueError, 'without hard links'):
+                BodyLoop(alias)
+            self.assertEqual(before, self.path.read_bytes())
+            self.assertFalse(Path(str(alias) + '-wal').exists())
+            alias.unlink()
+
+    def test_session_and_sqlite_sidecars_are_private_even_with_permissive_umask(self):
+        old = os.umask(0)
+        try:
+            with BodyLoop.start(self.path) as loop:
+                loop.observe()
+                for path in self.path.parent.glob('session.sqlite*'):
+                    self.assertEqual(path.stat().st_mode & 0o777, 0o600, str(path))
+        finally:
+            os.umask(old)
 
 
 if __name__ == '__main__': unittest.main()

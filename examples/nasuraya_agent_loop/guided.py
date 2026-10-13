@@ -5,13 +5,48 @@ process restart for this synthetic world; it is NOT recovery of API side effects
 """
 
 import argparse
+from contextlib import contextmanager
 from dataclasses import asdict
+import fcntl
+from functools import wraps
 import json
 import os
 from pathlib import Path
+import stat
 import tempfile
 
 from .local import Journal, State, ToolHost, ToolRejected, evaluate, summary, write_report
+
+
+@contextmanager
+def _session_lock(path):
+    fd = os.open(str(path) + '.lock', os.O_RDWR | os.O_CREAT | os.O_NOFOLLOW | os.O_NONBLOCK, 0o600)
+    try:
+        info = os.fstat(fd)
+        if not stat.S_ISREG(info.st_mode) or info.st_uid != os.getuid() or info.st_nlink != 1:
+            raise ValueError('owned regular session lock required')
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        try:
+            session = path.lstat()
+        except FileNotFoundError:
+            pass
+        else:
+            if not stat.S_ISREG(session.st_mode) or session.st_uid != os.getuid() or session.st_nlink != 1:
+                raise ValueError('owned regular session without links required')
+        yield
+    finally:
+        os.close(fd)
+
+
+def _serialized(function):
+    @wraps(function)
+    def command(path, *args, **kwargs):
+        path = Path(path)
+        if function.__name__ == 'start':
+            path.parent.mkdir(parents=True, exist_ok=True)
+        with _session_lock(path):
+            return function(path, *args, **kwargs)
+    return command
 
 
 def _write(path: Path, data: dict):
@@ -24,6 +59,11 @@ def _write(path: Path, data: dict):
             handle.flush()
             os.fsync(handle.fileno())
         os.replace(temporary, path)
+        directory = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(directory)
+        finally:
+            os.close(directory)
     finally:
         if os.path.exists(temporary):
             os.unlink(temporary)
@@ -69,6 +109,7 @@ def _load(path: Path) -> tuple[ToolHost, bool]:
     return host, data["closed"]
 
 
+@_serialized
 def start(path: Path, state=State(), *, max_actions=8):
     path.parent.mkdir(parents=True, exist_ok=True)
     host = ToolHost(state, Journal(), max_actions=max_actions)
@@ -76,12 +117,13 @@ def start(path: Path, state=State(), *, max_actions=8):
                       mode="bounded", max_actions=max_actions,
                       selection_source="caller_selected_actions")
     # Reserve the name without overwriting another checkpoint.
-    with path.open("x", encoding="utf-8"):
-        pass
+    descriptor = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, 0o600)
+    os.close(descriptor)
     _save(path, host)
     return {"status": "started", "state": asdict(state), "max_actions": max_actions}
 
 
+@_serialized
 def observe(path: Path):
     host, closed = _load(path)
     if closed:
@@ -93,6 +135,7 @@ def observe(path: Path):
             "actions_remaining": host.max_actions - host.actions_used}
 
 
+@_serialized
 def act(path: Path, name: str, arguments: dict, reason: str):
     host, closed = _load(path)
     if closed:
@@ -114,11 +157,12 @@ def act(path: Path, name: str, arguments: dict, reason: str):
     return {"state": result, "evaluation": measurement, "actions_used": host.actions_used}
 
 
+@_serialized
 def finish(path: Path, output_dir: Path):
     host, closed = _load(path)
     if closed:
         raise ValueError("guided session is closed")
-    output_dir.mkdir(parents=True, exist_ok=False)
+    output_dir.mkdir(mode=0o700, parents=True, exist_ok=False)
     status = "completed" if evaluate(host.state)["goal_reached"] else "goal_unmet"
     host.journal.emit("run_finished", status=status, final_state=asdict(host.state),
                       evaluation=evaluate(host.state))

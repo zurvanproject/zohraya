@@ -3,12 +3,22 @@ on:
   pull_request:
     paths:
       - 'examples/nasuraya_body_loop/**'
+      - 'examples/nasuraya_body_mirror/**'
+      - 'examples/nasuraya_agent_loop/agents_api.py'
+      - 'examples/nasuraya_agent_loop/local.py'
+      - 'examples/nasuraya_agent_loop/tests/test_agents_api.py'
+      - 'examples/nasuraya_agent_loop/requirements-api*'
       - 'runtimes/tadash_body/**'
       - '.github/workflows/nasuraya-body-loop.yml'
   push:
     branches: [main, 'nasuraya/**']
     paths:
       - 'examples/nasuraya_body_loop/**'
+      - 'examples/nasuraya_body_mirror/**'
+      - 'examples/nasuraya_agent_loop/agents_api.py'
+      - 'examples/nasuraya_agent_loop/local.py'
+      - 'examples/nasuraya_agent_loop/tests/test_agents_api.py'
+      - 'examples/nasuraya_agent_loop/requirements-api*'
       - 'runtimes/tadash_body/**'
       - '.github/workflows/nasuraya-body-loop.yml'
   workflow_dispatch:
@@ -20,11 +30,21 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
       - name: Reproduce source-pinned native body regressions
         working-directory: runtimes/tadash_body
         run: python3 run_tests.py --reflection --output /tmp/nasuraya-native-check
       - name: Verify bounded bridge and cold recovery
         run: python3 -m examples.nasuraya_body_loop test
+      - name: Verify persistent API body tools without live service
+        run: |
+          python3 -m venv .ci-env
+          .ci-env/bin/python -m pip install -r examples/nasuraya_agent_loop/requirements-api.lock.txt
+          .ci-env/bin/python -m examples.nasuraya_body_loop api-test
+      - name: Regenerate and verify all committed motion samples
+        run: python3 -m unittest examples.nasuraya_body_mirror.test_mirror -v
       - name: Execute actual local body cycles
         run: |
           python3 -m examples.nasuraya_body_loop demo --fixture sleep --steps 3 --max-actions 12 --output-dir /tmp/nasuraya-body-demo
