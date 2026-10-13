@@ -8,6 +8,8 @@ import math
 import re
 import time
 
+from .native_preflight import preview as native_preview, validate as validate_preflight
+
 from .self_maintenance import (IdentityContinuity, MaintenanceBlocked, PRINCIPLES,
                                canonical, digest, plan, unit)
 
@@ -153,6 +155,8 @@ class AdaptiveMemory:
             result TEXT, result_hash TEXT)''')
         self.db.execute('''CREATE TABLE IF NOT EXISTS nasu_adaptive_goals (
             id TEXT PRIMARY KEY, contract TEXT NOT NULL, hash TEXT NOT NULL)''')
+        self.db.execute('''CREATE TABLE IF NOT EXISTS nasu_preflight_refusals (
+            id TEXT PRIMARY KEY, record TEXT NOT NULL, hash TEXT NOT NULL)''')
         if not self.db.execute('SELECT 1 FROM nasu_predictor_versions').fetchone():
             if existed:
                 raise MaintenanceBlocked('model history missing; implicit reset forbidden')
@@ -173,6 +177,18 @@ class AdaptiveMemory:
 
     def verify(self):
         self.identity.verify()
+        refusals = self.db.execute('SELECT * FROM nasu_preflight_refusals').fetchall()
+        if len(refusals) > MAX_EPISODES:
+            raise MaintenanceBlocked('preflight refusal budget exhausted')
+        for id_, raw, h in refusals:
+            try:
+                r = json.loads(raw)
+                p = r['preflight']
+                validate_preflight(p, p['before_sha'], r['action'])
+                if r['id'] != id_ or digest(r) != h or p['physical_model_valid'] is not False:
+                    raise MaintenanceBlocked('corrupt preflight refusal')
+            except (ValueError, KeyError, TypeError) as exc:
+                raise MaintenanceBlocked('corrupt preflight refusal') from exc
         parent, expected, model = 'GENESIS', 1, None
         versions, experiences = {}, {}
         for v, prev, raw, h in self.db.execute('SELECT * FROM nasu_predictor_versions ORDER BY version'):
@@ -193,6 +209,10 @@ class AdaptiveMemory:
             try:
                 intent = json.loads(raw)
                 state(intent['before'])
+                if 'native_preflight' in intent:
+                    p = validate_preflight(intent['native_preflight'], intent['before']['checkpoint_sha256'], intent['action'])
+                    if p['physical_model_valid'] is not True:
+                        raise MaintenanceBlocked('unsafe preflight cannot authorize experience')
                 if digest(intent) != h or intent['id'] != id_:
                     raise MaintenanceBlocked('corrupt experience intent')
                 pv = intent['prediction']['model_version']
@@ -295,6 +315,12 @@ class AdaptiveMemory:
         if action not in ('walk','observe') or not isinstance(goal, str) or not 1 <= len(goal) <= 200:
             raise ValueError('bounded authorized action and goal required')
         self.verify()
+        refusal = self.db.execute('SELECT record FROM nasu_preflight_refusals WHERE id=?', (id_,)).fetchone()
+        if refusal:
+            old = json.loads(refusal[0])
+            if old['action'] != action or old['goal'] != goal:
+                raise MaintenanceBlocked('conflicting preflight replay')
+            raise MaintenanceBlocked('native preflight predicts invalid physical model; action not executed')
         row = self.db.execute('SELECT intent,result FROM nasu_experiences WHERE id=?', (id_,)).fetchone()
         if row:
             intent = json.loads(row[0])
@@ -319,12 +345,20 @@ class AdaptiveMemory:
             raise MaintenanceBlocked('body changed outside adaptive contract')
         if self.loop.engine.get(id_) is not None:
             raise MaintenanceBlocked('native decision id already owned by another request')
+        preflight = validate_preflight(native_preview(self.loop.body(), action), snapshot['checkpoint_sha256'], action)
+        if preflight['physical_model_valid'] is not True:
+            if self.db.execute('SELECT COUNT(*) FROM nasu_preflight_refusals').fetchone()[0] >= MAX_EPISODES:
+                raise MaintenanceBlocked('preflight refusal budget exhausted')
+            refusal = {'id': id_, 'action': action, 'goal': goal, 'preflight': preflight}
+            self.db.execute('INSERT INTO nasu_preflight_refusals VALUES (?,?,?)',
+                            (id_, canonical(refusal), digest(refusal)))
+            raise MaintenanceBlocked('native preflight predicts invalid physical model; action not executed')
         prediction = self.predict(snapshot, action)
         intent = {'id': id_, 'before': snapshot, 'action': action, 'goal': goal,
                   'reason': 'explicit bounded experimental action through existing DecisionCore',
                   'decision_evidence': {'fixed_safety_plan': plan(snapshot),
                                         'selection_kind': 'fixed predictive policy' if goal == 'bounded predictive self-maintenance' else 'explicit experiment contract'},
-                  'prediction': prediction}
+                  'prediction': prediction, 'native_preflight': preflight}
         self.db.execute('INSERT INTO nasu_experiences VALUES (?,?,?,NULL,NULL)', (id_, canonical(intent), digest(intent)))
         if fault:
             fault('after_intent')

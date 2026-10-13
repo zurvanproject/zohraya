@@ -9,6 +9,15 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'preflight-test':
+        from . import test_native_preflight
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_native_preflight)
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if r.wasSuccessful() else 1
+    if command == 'support-diagnostic':
+        from .support_diagnostic import run_diagnostic
+        print(json.dumps(run_diagnostic(args['output_dir'])['summary'], sort_keys=True))
+        return 0
     if command == 'closed-loop-test':
         from . import test_closed_loop
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_closed_loop)
