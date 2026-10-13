@@ -28,7 +28,7 @@ def verified_sources():
 
 def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status'])
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'maintain'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
@@ -40,6 +40,7 @@ def main(argv=None):
     p.add_argument('--api-mode', choices=['observe', 'bounded'], default='observe')
     p.add_argument('--target-cycles', type=int, default=0)
     p.add_argument('--run-id', default='main')
+    p.add_argument('--goal-id', default='self-maintenance-v01')
     p.add_argument('--api-recovery', choices=['resume', 'fresh'], default='resume')
     p.add_argument('--max-reconnects', type=int, default=1)
     p.add_argument('--model')
