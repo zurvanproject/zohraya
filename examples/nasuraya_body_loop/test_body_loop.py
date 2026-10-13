@@ -8,6 +8,7 @@ import tempfile
 import unittest
 
 from .host import BodyLoop, InterruptedExecution
+from reflection_cycle import ReflectionCycle
 
 
 class BodyLoopTests(unittest.TestCase):
@@ -95,6 +96,14 @@ with BodyLoop(sys.argv[1]) as loop:
             loop.observe(); loop.step()
         before = self.path.read_bytes()
         with self.assertRaises(FileExistsError): BodyLoop.start(self.path)
+        self.assertEqual(before, self.path.read_bytes())
+
+    def test_unrelated_old_ledger_is_rejected_without_migration(self):
+        with ReflectionCycle(self.path) as engine:
+            engine.db.execute("UPDATE meta SET value='old-index-version' WHERE key='feedback_index_version'")
+        before = self.path.read_bytes()
+        with self.assertRaisesRegex(ValueError, 'original ledger left unchanged'):
+            BodyLoop(self.path)
         self.assertEqual(before, self.path.read_bytes())
 
     def test_unresolved_operation_blocks_all_new_execution(self):

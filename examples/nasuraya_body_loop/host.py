@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 import fcntl
 import hashlib
 import json
+import sqlite3
 from pathlib import Path
 
 from reflection_cycle import ReflectionCycle, ReflectiveBody, InterruptedExecution, canonical
@@ -28,7 +29,8 @@ def describe(body):
 class BodyLoop:
     def __init__(self, path):
         self.path = Path(path)
-        self.path.parent.mkdir(parents=True, exist_ok=True)
+        if not self.path.is_file() or self.path.is_symlink():
+            raise ValueError('existing regular body-loop session required; use start')
         self.lock = self.path.with_suffix(self.path.suffix + '.lock').open('a+')
         # Reject concurrent writers instead of sharing mutable body orchestration.
         try:
@@ -37,11 +39,15 @@ class BodyLoop:
             self.lock.close()
             raise
         try:
+            # Validate our own marker read-only before the legacy engine can
+            # create tables or migrate its derived feedback index.
+            with sqlite3.connect(self.path.resolve().as_uri() + '?mode=ro', uri=True) as probe:
+                names = {r[0] for r in probe.execute("SELECT name FROM sqlite_master WHERE type='table'")}
+                row = probe.execute('SELECT value FROM meta WHERE key=?', (SCHEMA,)).fetchone() if 'meta' in names else None
+                if row is None:
+                    raise ValueError('not a body-loop session; original ledger left unchanged')
+                self.config = json.loads(row[0])
             self.engine = ReflectionCycle(self.path)
-            row = self.engine.db.execute('SELECT value FROM meta WHERE key=?', (SCHEMA,)).fetchone()
-            if row is None:
-                raise ValueError('not a body-loop session; use start on a new file')
-            self.config = json.loads(row[0])
             self.adapter = ReflectiveBody(self.engine, key=KEY)
         except BaseException:
             if hasattr(self, 'engine'): self.engine.close()
