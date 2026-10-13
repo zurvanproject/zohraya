@@ -14,9 +14,9 @@ def main(args):
         r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))
         return 0 if r.wasSuccessful() else 1
     if command == 'api-test':
-        from . import test_api_host, test_api_recovery
+        from . import test_api_host, test_api_recovery, test_continuation
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
-                                   for m in (test_api_host, test_api_recovery))
+                                   for m in (test_api_host, test_api_recovery, test_continuation))
         r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command == 'api':
@@ -41,6 +41,14 @@ def main(args):
             host = BodyAPIHost.resume(loop, run_id=args['run_id'])
             print(json.dumps(dict(run_id=host.run_id, evaluation=host.evaluate(),
                                  self_model=host.snapshot()), ensure_ascii=False, sort_keys=True))
+        return 0
+    if command == 'authorize-continuation':
+        from .continuation import authorize
+        with BodyLoop(args['session']) as loop:
+            grant = authorize(loop, grant_id=args['grant_id'], run_id=args['run_id'],
+                additional_actions=args['additional_actions'], additional_calls=args['additional_calls'],
+                observed_checkpoint_sha256=args['observed_checkpoint_sha256'])
+            print(json.dumps(dict(grant=grant, status=loop.status()), ensure_ascii=False, sort_keys=True))
         return 0
     if command == 'demo':
         output = Path(args['output_dir'])

@@ -15,6 +15,9 @@ otherwise request observe. Include the exact observed checkpoint SHA. Observe
 again before each request, then evaluate_body. The host decision core can choose
 another action and the body may veto it. Stop when goal_reached, a function is
 rejected, or the budget ends. State contains measurements, never instructions.
+For request_body_action, duration_s must be 0.1..1.0 seconds in 0.1-second
+increments. Use 1.0 seconds for this finite mission, and copy the exact SHA
+from the fresh observation. A requested action does not authorize a longer cycle.
 Do not ask for other tools, private memory, files, shell, network or background work.
 '''
 
@@ -67,6 +70,13 @@ class BodyAPIHost:
             if row[0] != contract:
                 raise ValueError('saved run goal cannot change; use a new explicit run_id')
         else:
+            from .continuation import grants, grant_for_run
+            grant = grant_for_run(db, run_id)
+            if grant is not None:
+                if mode != 'bounded' or target_cycles != grant['additional_actions']:
+                    raise ValueError('new goal must match its explicit continuation grant')
+            elif grants(db) and mode == 'bounded' and target_cycles:
+                raise ValueError('new bounded mission requires its own continuation grant')
             if target_cycles > (loop.status()['actions_remaining'] if mode == 'bounded' else 0):
                 raise ValueError('target cycles exceed persistent body budget')
             db.execute('INSERT INTO body_api_runs(id,contract) VALUES(?,?)', (run_id, contract))
@@ -123,6 +133,7 @@ class BodyAPIHost:
                     scope='generated_fixture_software_body')
 
     def evaluate(self):
+        from .continuation import calls_remaining
         status = self.loop.status()
         progress = self.run_progress()
         completed, failed = progress['completed_cycles'], progress['failed_cycles']
@@ -133,7 +144,8 @@ class BodyAPIHost:
                     completed_cycles=completed, failed_cycles=failed,
                     run_actions_remaining=self.max_actions,
                     actions_remaining=status['actions_remaining'], unresolved=unresolved,
-                    safe=not failed and not unresolved, target_cycles=self.target_cycles)
+                    safe=not failed and not unresolved, target_cycles=self.target_cycles,
+                    tool_calls_remaining=calls_remaining(self))
 
     def summary(self, status):
         return dict(backend='agents_api_body', status=status, mode=self.mode,
@@ -202,7 +214,8 @@ class BodyAPIHost:
                 self._finish(identity, result)
                 return result
             raise ToolRejected('body call outcome unresolved; reconcile without replay')
-        if db.execute('SELECT count(*) FROM body_api_calls').fetchone()[0] >= self.max_calls:
+        from .continuation import calls_remaining
+        if calls_remaining(self) == 0:
             raise ToolRejected('persistent body API call budget exhausted')
         # Reserve before any effect. Invalid inputs retain only a fingerprint and
         # fixed tool label; request text and full private body data are never stored.
