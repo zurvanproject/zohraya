@@ -62,6 +62,18 @@ jobs:
           assert all(x['identity_principles_retained'] for x in first['history'])
           assert first['external_model_api_used'] is False
           PY
+      - name: Frozen paired comparison with cold process restart
+        run: |
+          python3 -m examples.nasuraya_body_loop benchmark --output-dir /tmp/nasu-frozen-paired
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          record = json.loads(Path('/tmp/nasu-frozen-paired/paired_report.json').read_text())
+          assert record['api_calls'] == 0
+          assert record['difference_in_veto_count_sleep'] >= 1
+          assert record['no_duplicate_effect_after_restart']
+          assert len(record['scenarios']) == 2
+          PY
       - name: Execute actual local body cycles
         run: |
           python3 -m examples.nasuraya_body_loop demo --fixture sleep --steps 3 --max-actions 12 --output-dir /tmp/nasuraya-body-demo
