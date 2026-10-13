@@ -21,6 +21,11 @@ def main(args):
                                    for m in (test_api_host, test_api_recovery))
         r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
+    if command == 'benchmark':
+        from .paired_benchmark import run_benchmark
+        report = run_benchmark(args['output_dir'])
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0
     if command == 'maintain':
         from .self_maintenance import SelfMaintenance
         with BodyLoop(args['session']) as loop:
