@@ -1,0 +1,30 @@
+{
+  "backend": "chat_guided",
+  "status": "completed",
+  "initial_state": {
+    "completed_jobs": 0,
+    "energy": 29,
+    "heat": 78,
+    "pending_jobs": 3,
+    "tick": 0
+  },
+  "final_state": {
+    "energy": 29,
+    "heat": 78,
+    "pending_jobs": 0,
+    "completed_jobs": 3,
+    "tick": 6
+  },
+  "evaluation": {
+    "goal_reached": true,
+    "safe": true,
+    "pending_jobs": 0,
+    "completed_jobs": 3
+  },
+  "actions_used": 4,
+  "event_count": 42,
+  "live_api_verified": false,
+  "selection_source": "caller_selected_actions",
+  "external_model_api_used": false,
+  "checkpoint_recovery_scope": "synthetic state only"
+}

@@ -1,0 +1,95 @@
+{"backend": "agents_api", "initial_state": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "run_started", "max_actions": 5, "max_calls": 40, "mode": "bounded", "model": "scripted-protocol-fixture", "seq": 1}
+{"kind": "api_session_created", "seq": 2, "session_id": "sess-loopback"}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 3}
+{"call_id": "call-1", "kind": "api_call_pending", "seq": 4, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "tool_call", "name": "observe_state", "seq": 5}
+{"after": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "seq": 6}
+{"call_id": "call-1", "kind": "api_result_submitted", "seq": 7, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 8}
+{"call_id": "call-2", "kind": "api_call_pending", "seq": 9, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "tool_call", "name": "process_job", "seq": 10}
+{"after": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_result", "name": "process_job", "result": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "seq": 11}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_call", "name": "evaluate_state", "seq": 12}
+{"after": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 13}
+{"call_id": "call-2", "completed_jobs": 1, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 2, "safe": true, "seq": 14}
+{"call_id": "call-2", "kind": "api_result_submitted", "seq": 15, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 16}
+{"call_id": "call-3", "kind": "api_call_pending", "seq": 17, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_call", "name": "evaluate_state", "seq": 18}
+{"after": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 19}
+{"call_id": "call-3", "kind": "api_result_submitted", "seq": 20, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 21}
+{"call_id": "call-4", "kind": "api_call_pending", "seq": 22, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_call", "name": "observe_state", "seq": 23}
+{"after": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "seq": 24}
+{"call_id": "call-4", "kind": "api_result_submitted", "seq": 25, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 26}
+{"call_id": "call-5", "kind": "api_call_pending", "seq": 27, "turn_id": "turn-loopback"}
+{"arguments": {"ticks": 1}, "before": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_call", "name": "recover", "seq": 28}
+{"after": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_result", "name": "recover", "result": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "seq": 29}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_call", "name": "evaluate_state", "seq": 30}
+{"after": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 31}
+{"call_id": "call-5", "completed_jobs": 1, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 2, "safe": true, "seq": 32}
+{"call_id": "call-5", "kind": "api_result_submitted", "seq": 33, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 34}
+{"call_id": "call-6", "kind": "api_call_pending", "seq": 35, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_call", "name": "evaluate_state", "seq": 36}
+{"after": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 37}
+{"call_id": "call-6", "kind": "api_result_submitted", "seq": 38, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 39}
+{"call_id": "call-7", "kind": "api_call_pending", "seq": 40, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_call", "name": "observe_state", "seq": 41}
+{"after": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "seq": 42}
+{"call_id": "call-7", "kind": "api_result_submitted", "seq": 43, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 44}
+{"call_id": "call-8", "kind": "api_call_pending", "seq": 45, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_call", "name": "process_job", "seq": 46}
+{"after": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_result", "name": "process_job", "result": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "seq": 47}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_call", "name": "evaluate_state", "seq": 48}
+{"after": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 49}
+{"call_id": "call-8", "completed_jobs": 2, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 1, "safe": true, "seq": 50}
+{"call_id": "call-8", "kind": "api_result_submitted", "seq": 51, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 52}
+{"call_id": "call-9", "kind": "api_call_pending", "seq": 53, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_call", "name": "evaluate_state", "seq": 54}
+{"after": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 55}
+{"call_id": "call-9", "kind": "api_result_submitted", "seq": 56, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 57}
+{"call_id": "call-10", "kind": "api_call_pending", "seq": 58, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_call", "name": "observe_state", "seq": 59}
+{"after": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "seq": 60}
+{"call_id": "call-10", "kind": "api_result_submitted", "seq": 61, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 62}
+{"call_id": "call-11", "kind": "api_call_pending", "seq": 63, "turn_id": "turn-loopback"}
+{"arguments": {"ticks": 1}, "before": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_call", "name": "recover", "seq": 64}
+{"after": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_result", "name": "recover", "result": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "seq": 65}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_call", "name": "evaluate_state", "seq": 66}
+{"after": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 67}
+{"call_id": "call-11", "completed_jobs": 2, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 1, "safe": true, "seq": 68}
+{"call_id": "call-11", "kind": "api_result_submitted", "seq": 69, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 70}
+{"call_id": "call-12", "kind": "api_call_pending", "seq": 71, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_call", "name": "evaluate_state", "seq": 72}
+{"after": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 73}
+{"call_id": "call-12", "kind": "api_result_submitted", "seq": 74, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 75}
+{"call_id": "call-13", "kind": "api_call_pending", "seq": 76, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_call", "name": "observe_state", "seq": 77}
+{"after": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "seq": 78}
+{"call_id": "call-13", "kind": "api_result_submitted", "seq": 79, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 80}
+{"call_id": "call-14", "kind": "api_call_pending", "seq": 81, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_call", "name": "process_job", "seq": 82}
+{"after": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "tool_result", "name": "process_job", "result": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "seq": 83}
+{"arguments": {}, "before": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "tool_call", "name": "evaluate_state", "seq": 84}
+{"after": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 3, "goal_reached": true, "pending_jobs": 0, "safe": true}, "seq": 85}
+{"call_id": "call-14", "completed_jobs": 3, "goal_reached": true, "kind": "outcome_evaluated", "pending_jobs": 0, "safe": true, "seq": 86}
+{"call_id": "call-14", "kind": "api_result_submitted", "seq": 87, "success": true}
+{"event_type": "agent.session.requires_action", "kind": "api_event", "seq": 88}
+{"call_id": "call-15", "kind": "api_call_pending", "seq": 89, "turn_id": "turn-loopback"}
+{"arguments": {}, "before": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "tool_call", "name": "evaluate_state", "seq": 90}
+{"after": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 3, "goal_reached": true, "pending_jobs": 0, "safe": true}, "seq": 91}
+{"call_id": "call-15", "kind": "api_result_submitted", "seq": 92, "success": true}
+{"event_type": "agent.session.turn.completed", "kind": "api_event", "seq": 93}
+{"kind": "api_session_deleted", "seq": 94, "session_id": "sess-loopback"}
+{"evaluation": {"completed_jobs": 3, "goal_reached": true, "pending_jobs": 0, "safe": true}, "final_state": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "run_finished", "seq": 95, "status": "completed"}

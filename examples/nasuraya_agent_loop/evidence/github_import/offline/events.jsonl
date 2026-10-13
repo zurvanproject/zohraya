@@ -1,0 +1,52 @@
+{"backend": "offline", "initial_state": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "run_started", "max_actions": 12, "max_steps": 12, "mode": "bounded", "seq": 1}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "tool_call", "name": "observe_state", "seq": 2}
+{"after": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "seq": 3}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "tool_call", "name": "evaluate_state", "seq": 4}
+{"after": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 0, "goal_reached": false, "pending_jobs": 3, "safe": true}, "seq": 5}
+{"kind": "action_selected", "name": "process_job", "reason": "one pending job is feasible", "seq": 6, "step": 1}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 45, "heat": 50, "pending_jobs": 3, "tick": 0}, "kind": "tool_call", "name": "process_job", "seq": 7}
+{"after": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_result", "name": "process_job", "result": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "seq": 8}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_call", "name": "evaluate_state", "seq": 9}
+{"after": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 10}
+{"completed_jobs": 1, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 2, "safe": true, "seq": 11, "step": 1}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_call", "name": "observe_state", "seq": 12}
+{"after": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "seq": 13}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_call", "name": "evaluate_state", "seq": 14}
+{"after": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 15}
+{"kind": "action_selected", "name": "recover", "reason": "energy or heat requires recovery", "seq": 16, "step": 2}
+{"arguments": {"ticks": 1}, "before": {"completed_jobs": 1, "energy": 25, "heat": 70, "pending_jobs": 2, "tick": 1}, "kind": "tool_call", "name": "recover", "seq": 17}
+{"after": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_result", "name": "recover", "result": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "seq": 18}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_call", "name": "evaluate_state", "seq": 19}
+{"after": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 20}
+{"completed_jobs": 1, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 2, "safe": true, "seq": 21, "step": 2}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_call", "name": "observe_state", "seq": 22}
+{"after": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "seq": 23}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_call", "name": "evaluate_state", "seq": 24}
+{"after": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 25}
+{"kind": "action_selected", "name": "process_job", "reason": "one pending job is feasible", "seq": 26, "step": 3}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 45, "heat": 50, "pending_jobs": 2, "tick": 2}, "kind": "tool_call", "name": "process_job", "seq": 27}
+{"after": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_result", "name": "process_job", "result": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "seq": 28}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_call", "name": "evaluate_state", "seq": 29}
+{"after": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 30}
+{"completed_jobs": 2, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 1, "safe": true, "seq": 31, "step": 3}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_call", "name": "observe_state", "seq": 32}
+{"after": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "seq": 33}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_call", "name": "evaluate_state", "seq": 34}
+{"after": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 35}
+{"kind": "action_selected", "name": "recover", "reason": "energy or heat requires recovery", "seq": 36, "step": 4}
+{"arguments": {"ticks": 1}, "before": {"completed_jobs": 2, "energy": 25, "heat": 70, "pending_jobs": 1, "tick": 3}, "kind": "tool_call", "name": "recover", "seq": 37}
+{"after": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_result", "name": "recover", "result": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "seq": 38}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_call", "name": "evaluate_state", "seq": 39}
+{"after": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 40}
+{"completed_jobs": 2, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 1, "safe": true, "seq": 41, "step": 4}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_call", "name": "observe_state", "seq": 42}
+{"after": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "seq": 43}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_call", "name": "evaluate_state", "seq": 44}
+{"after": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 45}
+{"kind": "action_selected", "name": "process_job", "reason": "one pending job is feasible", "seq": 46, "step": 5}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 45, "heat": 50, "pending_jobs": 1, "tick": 4}, "kind": "tool_call", "name": "process_job", "seq": 47}
+{"after": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "tool_result", "name": "process_job", "result": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "seq": 48}
+{"arguments": {}, "before": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "tool_call", "name": "evaluate_state", "seq": 49}
+{"after": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 3, "goal_reached": true, "pending_jobs": 0, "safe": true}, "seq": 50}
+{"completed_jobs": 3, "goal_reached": true, "kind": "outcome_evaluated", "pending_jobs": 0, "safe": true, "seq": 51, "step": 5}
+{"evaluation": {"completed_jobs": 3, "goal_reached": true, "pending_jobs": 0, "safe": true}, "final_state": {"completed_jobs": 3, "energy": 25, "heat": 70, "pending_jobs": 0, "tick": 5}, "kind": "run_finished", "seq": 52, "status": "completed"}

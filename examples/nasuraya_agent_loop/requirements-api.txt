@@ -1,0 +1,4 @@
+# Optional, tested SDK environment; not needed for the offline loop.
+openai==3.29.0
+# Required when the execution environment uses a SOCKS proxy.
+socksio==1.0.0

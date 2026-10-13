@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-10-13T03:41:42.313018+03:30",
+  "python": "3.12.14",
+  "tests_run": 57,
+  "passed": 57,
+  "skipped": 0,
+  "errors": 0,
+  "failures": 0,
+  "source": "Nasuraya_Agent_Loop_v03.zip",
+  "base_commit": "162fde201570e928a1a213047dbf395bfc083c3a",
+  "preflight": {
+    "key_present": false,
+    "sdk_available": true,
+    "sdk_version": "3.29.0",
+    "sdk_contract_available": true,
+    "network_requests": 0,
+    "blockers": [
+      "missing_api_key"
+    ],
+    "ready_for_live_run": false
+  },
+  "scope": "Offline synthetic loop, controlled SDK responses and local loopback HTTP; no live external model invocation"
+}

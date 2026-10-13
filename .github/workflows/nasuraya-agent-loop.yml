@@ -1,0 +1,54 @@
+name: Nasuraya agent loop
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_agent_loop/**'
+      - '.github/workflows/nasuraya-agent-loop.yml'
+  push:
+    branches: [main, 'nasuraya/**']
+    paths:
+      - 'examples/nasuraya_agent_loop/**'
+      - '.github/workflows/nasuraya-agent-loop.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        environment: [offline, sdk]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Prepare isolated Python environment
+        run: python3 -m venv .ci-env
+      - name: Install optional SDK
+        if: matrix.environment == 'sdk'
+        run: .ci-env/bin/python -m pip install -r examples/nasuraya_agent_loop/requirements-api.txt
+      - name: Verify tests and expected coverage
+        env:
+          TEST_ENVIRONMENT: ${{ matrix.environment }}
+        run: |
+          .ci-env/bin/python - <<'PY'
+          import os, unittest
+          suite = unittest.defaultTestLoader.discover('examples/nasuraya_agent_loop/tests')
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          expected_skips = 0 if os.environ['TEST_ENVIRONMENT'] == 'sdk' else 10
+          assert result.wasSuccessful()
+          assert result.testsRun == 57, result.testsRun
+          assert len(result.skipped) == expected_skips, result.skipped
+          PY
+      - name: Run synthetic demo and state grid
+        run: |
+          .ci-env/bin/python -m examples.nasuraya_agent_loop --output-dir /tmp/nasuraya-ci-demo
+          .ci-env/bin/python -m examples.nasuraya_agent_loop.evaluate_grid --output /tmp/nasuraya-ci-grid.json
+          .ci-env/bin/python - <<'PY'
+          import json
+          from pathlib import Path
+          demo = json.loads(Path('/tmp/nasuraya-ci-demo/summary.json').read_text())
+          grid = json.loads(Path('/tmp/nasuraya-ci-grid.json').read_text())
+          assert demo['status'] == 'completed' and demo['evaluation']['safe']
+          assert grid['cases'] == grid['completed'] == 484 and grid['violations'] == 0
+          PY

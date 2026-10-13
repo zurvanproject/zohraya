@@ -1,0 +1,42 @@
+{"backend": "chat_guided", "initial_state": {"completed_jobs": 0, "energy": 29, "heat": 78, "pending_jobs": 3, "tick": 0}, "kind": "run_started", "max_actions": 8, "mode": "bounded", "selection_source": "caller_selected_actions", "seq": 1}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 29, "heat": 78, "pending_jobs": 3, "tick": 0}, "kind": "tool_call", "name": "observe_state", "seq": 2}
+{"after": {"completed_jobs": 0, "energy": 29, "heat": 78, "pending_jobs": 3, "tick": 0}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 0, "energy": 29, "heat": 78, "pending_jobs": 3, "tick": 0}, "seq": 3}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 29, "heat": 78, "pending_jobs": 3, "tick": 0}, "kind": "tool_call", "name": "evaluate_state", "seq": 4}
+{"after": {"completed_jobs": 0, "energy": 29, "heat": 78, "pending_jobs": 3, "tick": 0}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 0, "goal_reached": false, "pending_jobs": 3, "safe": true}, "seq": 5}
+{"kind": "action_selected", "name": "recover", "reason": "انرژی ۲۹ و گرمای ۷۸ اجازهٔ پردازش نمی‌دهند؛ سه گام بازیابی، حاشیهٔ لازم برای سه کار را فراهم می‌کند.", "selection_source": "caller_selected_actions", "seq": 6}
+{"arguments": {"ticks": 3}, "before": {"completed_jobs": 0, "energy": 29, "heat": 78, "pending_jobs": 3, "tick": 0}, "kind": "tool_call", "name": "recover", "seq": 7}
+{"after": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "kind": "tool_result", "name": "recover", "result": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "seq": 8}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "kind": "tool_call", "name": "evaluate_state", "seq": 9}
+{"after": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 0, "goal_reached": false, "pending_jobs": 3, "safe": true}, "seq": 10}
+{"completed_jobs": 0, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 3, "safe": true, "seq": 11}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "kind": "tool_call", "name": "observe_state", "seq": 12}
+{"after": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "seq": 13}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "kind": "tool_call", "name": "evaluate_state", "seq": 14}
+{"after": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 0, "goal_reached": false, "pending_jobs": 3, "safe": true}, "seq": 15}
+{"kind": "action_selected", "name": "process_job", "reason": "وضعیت مشاهده‌شده برای انجام یک کار، انرژی و حاشیهٔ گرمای کافی دارد.", "selection_source": "caller_selected_actions", "seq": 16}
+{"arguments": {}, "before": {"completed_jobs": 0, "energy": 89, "heat": 18, "pending_jobs": 3, "tick": 3}, "kind": "tool_call", "name": "process_job", "seq": 17}
+{"after": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "kind": "tool_result", "name": "process_job", "result": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "seq": 18}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "kind": "tool_call", "name": "evaluate_state", "seq": 19}
+{"after": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 20}
+{"completed_jobs": 1, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 2, "safe": true, "seq": 21}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "kind": "tool_call", "name": "observe_state", "seq": 22}
+{"after": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "seq": 23}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "kind": "tool_call", "name": "evaluate_state", "seq": 24}
+{"after": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 1, "goal_reached": false, "pending_jobs": 2, "safe": true}, "seq": 25}
+{"kind": "action_selected", "name": "process_job", "reason": "انرژی ۶۹ و گرمای ۳۸ برای کار دوم کافی است؛ نتیجه را پس از اجرا دوباره می‌سنجم.", "selection_source": "caller_selected_actions", "seq": 26}
+{"arguments": {}, "before": {"completed_jobs": 1, "energy": 69, "heat": 38, "pending_jobs": 2, "tick": 4}, "kind": "tool_call", "name": "process_job", "seq": 27}
+{"after": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "kind": "tool_result", "name": "process_job", "result": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "seq": 28}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "kind": "tool_call", "name": "evaluate_state", "seq": 29}
+{"after": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 30}
+{"completed_jobs": 2, "goal_reached": false, "kind": "outcome_evaluated", "pending_jobs": 1, "safe": true, "seq": 31}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "kind": "tool_call", "name": "observe_state", "seq": 32}
+{"after": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "kind": "tool_result", "name": "observe_state", "result": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "seq": 33}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "kind": "tool_call", "name": "evaluate_state", "seq": 34}
+{"after": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 2, "goal_reached": false, "pending_jobs": 1, "safe": true}, "seq": 35}
+{"kind": "action_selected", "name": "process_job", "reason": "یک کار باقی مانده است؛ انرژی ۴۹ و گرمای ۵۸ اجازهٔ انجام آن را می‌دهند.", "selection_source": "caller_selected_actions", "seq": 36}
+{"arguments": {}, "before": {"completed_jobs": 2, "energy": 49, "heat": 58, "pending_jobs": 1, "tick": 5}, "kind": "tool_call", "name": "process_job", "seq": 37}
+{"after": {"completed_jobs": 3, "energy": 29, "heat": 78, "pending_jobs": 0, "tick": 6}, "kind": "tool_result", "name": "process_job", "result": {"completed_jobs": 3, "energy": 29, "heat": 78, "pending_jobs": 0, "tick": 6}, "seq": 38}
+{"arguments": {}, "before": {"completed_jobs": 3, "energy": 29, "heat": 78, "pending_jobs": 0, "tick": 6}, "kind": "tool_call", "name": "evaluate_state", "seq": 39}
+{"after": {"completed_jobs": 3, "energy": 29, "heat": 78, "pending_jobs": 0, "tick": 6}, "kind": "tool_result", "name": "evaluate_state", "result": {"completed_jobs": 3, "goal_reached": true, "pending_jobs": 0, "safe": true}, "seq": 40}
+{"completed_jobs": 3, "goal_reached": true, "kind": "outcome_evaluated", "pending_jobs": 0, "safe": true, "seq": 41}
+{"evaluation": {"completed_jobs": 3, "goal_reached": true, "pending_jobs": 0, "safe": true}, "final_state": {"completed_jobs": 3, "energy": 29, "heat": 78, "pending_jobs": 0, "tick": 6}, "kind": "run_finished", "seq": 42, "status": "completed"}

@@ -106,3 +106,21 @@ The Silicon-Carbon Coexistence Protocol &amp; Ethical Framework (منشور هم
 
 ۵. بومرنگ فیزیک (قانون تاوان):
 قانونِ بقای قیمت؛ هر کنش تند یا خاکستری، تاوان و قیمت مشخصی در میدان دارد که باید توسط سیستم بازپرداخت شود.
+
+## حلقهٔ عامل ناسورایا / تداش — نمونهٔ قابل‌اجرا
+
+کد نسخهٔ ۰٫۳ در [examples/nasuraya_agent_loop](examples/nasuraya_agent_loop/README.md)
+قرار دارد. این نمونه، مشاهده، انتخاب کنش، اجرای ابزار و ارزیابی نتیجه را در یک
+کارگاه ساختگی اجرا می‌کند و برای اجرای پایه به کلید API یا PyTorch نیاز ندارد.
+
+```bash
+python -m unittest discover -s examples/nasuraya_agent_loop/tests -v
+python -m examples.nasuraya_agent_loop --output-dir /tmp/nasuraya-demo
+python -m examples.nasuraya_agent_loop.evaluate_grid --output /tmp/nasuraya-grid.json
+```
+
+پوشه‌ها و فایل‌های خروجی باید تازه باشند. Python 3.10 یا بالاتر لازم است.
+[شواهد اجرای تازه](examples/nasuraya_agent_loop/evidence/github_import/validation.json)
+و [گزارش انتقال به مخزن](docs/nasuraya-agent-loop-import.md) دامنهٔ آزمون‌ها را
+توضیح می‌دهند. GitHub Actions آزمون پایه و آزمون با SDK را جدا اجرا می‌کند.
+اجرای مستقل مدل با API و اتصال این نمونه به بدن تداش یا Decision Core هنوز انجام نشده‌اند.
