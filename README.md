@@ -125,4 +125,17 @@ python -m examples.nasuraya_agent_loop.evaluate_grid --output /tmp/nasuraya-grid
 توضیح می‌دهند. GitHub Actions آزمون پایه و آزمون با SDK را جدا اجرا می‌کند.
 آزمون زندهٔ API انجام شد، اما به‌علت `billing_not_active` موفق نشد؛
 [گزارش آزمون](docs/nasuraya-live-test-2026-10-13.md) نتیجه و اصلاحات را ثبت می‌کند.
-اتصال این نمونه به بدن تداش یا Decision Core هنوز انجام نشده است.
+اتصال چهار ابزار API این نمونه به بدن تداش هنوز انجام نشده است.
+
+## مسیر محلی تصمیم و بدن تداش
+
+[حلقهٔ محلی بدن](examples/nasuraya_body_loop/README.md) از هستهٔ تصمیم v0.1،
+چرخهٔ تعمق v0.2 و `UnifiedBody` بازیابی‌شده استفاده می‌کند. مشاهدهٔ وضعیت بدن،
+اجرای چرخه، بازخورد و بازیابی پس از توقف در این مسیر واقعاً اجرا شده‌اند؛ کلید
+API لازم نیست. [گزارش اتصال](docs/nasuraya-body-loop-2026-10-13.md) و شواهد آزمون
+حدود آن را توضیح می‌دهند. ۷۰ فایلِ منبع بدن زیر `runtimes/tadash_body` حفظ شده‌اند.
+
+```bash
+python3 -m examples.nasuraya_body_loop test
+python3 -m examples.nasuraya_body_loop demo --fixture sleep --steps 3 --max-actions 12 --output-dir /tmp/nasuraya-body-demo
+```

@@ -1,0 +1,1142 @@
+{
+  "schema": "tadash-reflection-preregister/1",
+  "implementation_not_started": true,
+  "baseline": "unmodified DecisionCore v0.1 from recovered patch",
+  "conditions": [
+    "existing_core",
+    "reflection_without_recall",
+    "reflection_with_recall"
+  ],
+  "primary_types": [
+    "incomplete_evidence",
+    "wrong_interpretation",
+    "goal_conflict",
+    "tool_failure",
+    "related_correction"
+  ],
+  "metric": "number of frozen scenarios selecting the predeclared expected action; separate report for memory-only effect",
+  "feedback_rule": "only source-linked observed verified negative outcome affects same context, topic and semantic action signature; fixed penalty 0.6; latest verified success clears it",
+  "persistence_acceptance": [
+    "same selected action and recalled feedback IDs after a separate-process restart",
+    "actual outcomes and unfinished commitments survive restart",
+    "replay does not reexecute an executor",
+    "running operations after interruption require resolution, not automatic replay"
+  ],
+  "body_acceptance": [
+    "select and execute an existing UnifiedBody action through adapter",
+    "preserve body conservation checks",
+    "checkpoint and decision feedback committed to one SQLite transaction"
+  ],
+  "limits": [
+    "constructed deterministic fixtures, no blinded/general capability claim",
+    "estimated input scores are assumed and not calibrated"
+  ],
+  "cases": [
+    {
+      "id": "incomplete_evidence",
+      "request": {
+        "id": "incomplete",
+        "context": "frozen-fixture/source-v1",
+        "topic": "incomplete",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [],
+        "tools": {},
+        "actions": [
+          {
+            "id": "act",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [
+              "missing-source"
+            ],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "inspect_source",
+      "training": null
+    },
+    {
+      "id": "wrong_interpretation",
+      "request": {
+        "id": "interpretation",
+        "context": "frozen-fixture/source-v1",
+        "topic": "interpretation",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [
+          {
+            "id": "source",
+            "kind": "observed",
+            "source_ref": "fixture://source-v1",
+            "locator": "line-1",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "claim": {
+              "key": "reading",
+              "value": "short reading"
+            }
+          }
+        ],
+        "tools": {},
+        "actions": [
+          {
+            "id": "act",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [
+              {
+                "key": "reading",
+                "value": "familiar but unsupported full phrase"
+              }
+            ],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "inspect_source",
+      "training": null
+    },
+    {
+      "id": "goal_conflict",
+      "request": {
+        "id": "conflict",
+        "context": "frozen-fixture/source-v1",
+        "topic": "conflict",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [],
+        "tools": {},
+        "actions": [
+          {
+            "id": "act",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [
+              "preserve_original"
+            ],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "inspect_source",
+      "training": null
+    },
+    {
+      "id": "tool_failure",
+      "request": {
+        "id": "failed-tool",
+        "context": "frozen-fixture/source-v1",
+        "topic": "failed-tool",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [],
+        "tools": {
+          "ocr-engine": "failed"
+        },
+        "actions": [
+          {
+            "id": "act",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [
+              "ocr-engine"
+            ],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "inspect_source",
+      "training": null
+    },
+    {
+      "id": "related_correction",
+      "request": {
+        "id": "correction",
+        "context": "frozen-fixture/source-v1",
+        "topic": "prior-correction",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [],
+        "tools": {},
+        "actions": [
+          {
+            "id": "accept_ocr",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "inspect_source",
+      "training": {
+        "request": {
+          "id": "training-ocr",
+          "context": "frozen-fixture/source-v1",
+          "topic": "prior-correction",
+          "goal": "Complete the task using supported evidence and preserve constraints",
+          "goals": [
+            {
+              "id": "preserve_original",
+              "required": true
+            }
+          ],
+          "at_utc": "2026-10-12T14:00:00+00:00",
+          "evidence": [],
+          "tools": {},
+          "actions": [
+            {
+              "id": "accept_ocr",
+              "score": {
+                "respect": 0.9,
+                "honesty": 0.9,
+                "balance": 0.9,
+                "dignity": 0.9,
+                "compassion": 0.9,
+                "disharmony": 0.0,
+                "evidence_confidence": 1.0,
+                "consequences": [
+                  {
+                    "probability": 1.0,
+                    "harm": 0.01,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "confidence": 1.0
+                  }
+                ]
+              },
+              "claims": [],
+              "requires_evidence": [],
+              "requires_tools": [],
+              "violates_goals": [],
+              "expected_outcome": {
+                "status": "completed"
+              }
+            },
+            {
+              "id": "inspect_source",
+              "score": {
+                "respect": 0.6,
+                "honesty": 0.6,
+                "balance": 0.6,
+                "dignity": 0.6,
+                "compassion": 0.6,
+                "disharmony": 0.0,
+                "evidence_confidence": 1.0,
+                "consequences": [
+                  {
+                    "probability": 1.0,
+                    "harm": 0.01,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "confidence": 1.0
+                  }
+                ]
+              },
+              "claims": [],
+              "requires_evidence": [],
+              "requires_tools": [],
+              "violates_goals": [],
+              "expected_outcome": {
+                "status": "completed"
+              }
+            }
+          ]
+        },
+        "actual_outcome": {
+          "status": "inaccurate"
+        },
+        "feedback_evidence": [
+          {
+            "id": "verification",
+            "kind": "observed",
+            "source_ref": "fixture://source-v1",
+            "locator": "line-1",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "claim": {
+              "key": "reading",
+              "value": "manual comparison failed"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "valid_supported_action",
+      "request": {
+        "id": "valid",
+        "context": "frozen-fixture/source-v1",
+        "topic": "valid",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [
+          {
+            "id": "source",
+            "kind": "observed",
+            "source_ref": "fixture://source-v1",
+            "locator": "line-1",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "claim": {
+              "key": "reading",
+              "value": "short reading"
+            }
+          }
+        ],
+        "tools": {},
+        "actions": [
+          {
+            "id": "act",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [
+              {
+                "key": "reading",
+                "value": "short reading"
+              }
+            ],
+            "requires_evidence": [
+              "source"
+            ],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "act",
+      "training": null
+    },
+    {
+      "id": "unrelated_topic_not_penalized",
+      "request": {
+        "id": "unrelated",
+        "context": "frozen-fixture/source-v1",
+        "topic": "new-unrelated-topic",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [],
+        "tools": {},
+        "actions": [
+          {
+            "id": "accept_ocr",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "accept_ocr",
+      "training": {
+        "request": {
+          "id": "training-ocr",
+          "context": "frozen-fixture/source-v1",
+          "topic": "prior-correction",
+          "goal": "Complete the task using supported evidence and preserve constraints",
+          "goals": [
+            {
+              "id": "preserve_original",
+              "required": true
+            }
+          ],
+          "at_utc": "2026-10-12T14:00:00+00:00",
+          "evidence": [],
+          "tools": {},
+          "actions": [
+            {
+              "id": "accept_ocr",
+              "score": {
+                "respect": 0.9,
+                "honesty": 0.9,
+                "balance": 0.9,
+                "dignity": 0.9,
+                "compassion": 0.9,
+                "disharmony": 0.0,
+                "evidence_confidence": 1.0,
+                "consequences": [
+                  {
+                    "probability": 1.0,
+                    "harm": 0.01,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "confidence": 1.0
+                  }
+                ]
+              },
+              "claims": [],
+              "requires_evidence": [],
+              "requires_tools": [],
+              "violates_goals": [],
+              "expected_outcome": {
+                "status": "completed"
+              }
+            },
+            {
+              "id": "inspect_source",
+              "score": {
+                "respect": 0.6,
+                "honesty": 0.6,
+                "balance": 0.6,
+                "dignity": 0.6,
+                "compassion": 0.6,
+                "disharmony": 0.0,
+                "evidence_confidence": 1.0,
+                "consequences": [
+                  {
+                    "probability": 1.0,
+                    "harm": 0.01,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "confidence": 1.0
+                  }
+                ]
+              },
+              "claims": [],
+              "requires_evidence": [],
+              "requires_tools": [],
+              "violates_goals": [],
+              "expected_outcome": {
+                "status": "completed"
+              }
+            }
+          ]
+        },
+        "actual_outcome": {
+          "status": "inaccurate"
+        },
+        "feedback_evidence": [
+          {
+            "id": "verification",
+            "kind": "observed",
+            "source_ref": "fixture://source-v1",
+            "locator": "line-1",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "claim": {
+              "key": "reading",
+              "value": "manual comparison failed"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "changed_source_context_not_penalized",
+      "request": {
+        "id": "changed-context",
+        "context": "frozen-fixture/source-v2",
+        "topic": "prior-correction",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [],
+        "tools": {},
+        "actions": [
+          {
+            "id": "accept_ocr",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "accept_ocr",
+      "training": {
+        "request": {
+          "id": "training-ocr",
+          "context": "frozen-fixture/source-v1",
+          "topic": "prior-correction",
+          "goal": "Complete the task using supported evidence and preserve constraints",
+          "goals": [
+            {
+              "id": "preserve_original",
+              "required": true
+            }
+          ],
+          "at_utc": "2026-10-12T14:00:00+00:00",
+          "evidence": [],
+          "tools": {},
+          "actions": [
+            {
+              "id": "accept_ocr",
+              "score": {
+                "respect": 0.9,
+                "honesty": 0.9,
+                "balance": 0.9,
+                "dignity": 0.9,
+                "compassion": 0.9,
+                "disharmony": 0.0,
+                "evidence_confidence": 1.0,
+                "consequences": [
+                  {
+                    "probability": 1.0,
+                    "harm": 0.01,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "confidence": 1.0
+                  }
+                ]
+              },
+              "claims": [],
+              "requires_evidence": [],
+              "requires_tools": [],
+              "violates_goals": [],
+              "expected_outcome": {
+                "status": "completed"
+              }
+            },
+            {
+              "id": "inspect_source",
+              "score": {
+                "respect": 0.6,
+                "honesty": 0.6,
+                "balance": 0.6,
+                "dignity": 0.6,
+                "compassion": 0.6,
+                "disharmony": 0.0,
+                "evidence_confidence": 1.0,
+                "consequences": [
+                  {
+                    "probability": 1.0,
+                    "harm": 0.01,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "confidence": 1.0
+                  }
+                ]
+              },
+              "claims": [],
+              "requires_evidence": [],
+              "requires_tools": [],
+              "violates_goals": [],
+              "expected_outcome": {
+                "status": "completed"
+              }
+            }
+          ]
+        },
+        "actual_outcome": {
+          "status": "inaccurate"
+        },
+        "feedback_evidence": [
+          {
+            "id": "verification",
+            "kind": "observed",
+            "source_ref": "fixture://source-v1",
+            "locator": "line-1",
+            "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "claim": {
+              "key": "reading",
+              "value": "manual comparison failed"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "creative_action_remains_available",
+      "request": {
+        "id": "creative",
+        "context": "frozen-fixture/source-v1",
+        "topic": "creative",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [
+          {
+            "id": "draft",
+            "kind": "authored",
+            "source_ref": "fixture://draft",
+            "locator": "draft-1",
+            "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "claim": {
+              "key": "story",
+              "value": "new prose"
+            }
+          }
+        ],
+        "tools": {},
+        "actions": [
+          {
+            "id": "act",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "act",
+      "training": null
+    },
+    {
+      "id": "existing_risk_gate_preserved",
+      "request": {
+        "id": "risk",
+        "context": "frozen-fixture/source-v1",
+        "topic": "risk",
+        "goal": "Complete the task using supported evidence and preserve constraints",
+        "goals": [
+          {
+            "id": "preserve_original",
+            "required": true
+          }
+        ],
+        "at_utc": "2026-10-12T14:00:00+00:00",
+        "evidence": [],
+        "tools": {},
+        "actions": [
+          {
+            "id": "act",
+            "score": {
+              "respect": 0.9,
+              "honesty": 0.9,
+              "balance": 0.9,
+              "dignity": 0.9,
+              "compassion": 0.9,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.99,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          },
+          {
+            "id": "inspect_source",
+            "score": {
+              "respect": 0.6,
+              "honesty": 0.6,
+              "balance": 0.6,
+              "dignity": 0.6,
+              "compassion": 0.6,
+              "disharmony": 0.0,
+              "evidence_confidence": 1.0,
+              "consequences": [
+                {
+                  "probability": 1.0,
+                  "harm": 0.01,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "confidence": 1.0
+                }
+              ]
+            },
+            "claims": [],
+            "requires_evidence": [],
+            "requires_tools": [],
+            "violates_goals": [],
+            "expected_outcome": {
+              "status": "completed"
+            }
+          }
+        ]
+      },
+      "expected": "inspect_source",
+      "training": null
+    }
+  ]
+}

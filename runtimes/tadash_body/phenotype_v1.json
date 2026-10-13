@@ -1,0 +1,297 @@
+{
+  "phenotype_contract": {
+    "fingers_per_hand": 5,
+    "toes_per_foot": 3,
+    "horns": 2,
+    "digitigrade": true,
+    "sacral_tail": true,
+    "resonan_sensor_at_horn_roots": true,
+    "azarine_left_flank": true,
+    "high_energy_core_in_head": false,
+    "external_converter_default_active": false,
+    "spandar_on_thymic_capsule": true,
+    "spandar_name_fa": "سپندار",
+    "spandar_color": "deep violet with amber veining",
+    "external_silhouette_unchanged_v02": true,
+    "external_feminine_delicate_form": true,
+    "visible_masculine_muscle_bulking_for_strength": false
+  },
+  "adult_scale": {
+    "status": "working_design_user_requested",
+    "height_definition": "ground_to_crown_excluding_horns",
+    "ground_to_crown_cm": 250,
+    "ground_to_horn_tip_cm": 268,
+    "mass_target_kg": 195,
+    "mass_design_range_kg": [
+      180,
+      210
+    ],
+    "reference_scale_cm": 175,
+    "reference_mass_kg": 70,
+    "geometric_mass_reference_kg": 204.1,
+    "landmarks_z_cm": {
+      "horn_tip": 268,
+      "crown": 250,
+      "shoulder": 206,
+      "hip": 142,
+      "knee": 85,
+      "hock": 38
+    },
+    "feet": {
+      "toes_per_foot": 3,
+      "length_cm": 52,
+      "spread_width_cm": 26,
+      "contact_area_each_cm2": 450,
+      "pad_layers": [
+        "pressure_sensing",
+        "viscoelastic_damping",
+        "vascular_thermal"
+      ]
+    },
+    "hands": {
+      "fingers_per_hand": 5,
+      "independent_fine_grip": true
+    },
+    "tail": {
+      "centerline_cm": 120,
+      "mass_range_kg": [
+        8,
+        12
+      ],
+      "sacral_bone_muscle_vessels_nerves": true
+    },
+    "horns": {
+      "count": 2,
+      "arc_length_cm_range": [
+        27,
+        31
+      ],
+      "rise_cm": 18,
+      "paired_root_sensor": true,
+      "atlas_arc_length_cm": 30.8,
+      "tissue_layers": [
+        "cranial bony core",
+        "vascular and innervated root bed",
+        "protective keratin sheath"
+      ],
+      "sensor_location": "mechanosensory low-energy lobes at root bed, not an innervated keratin sheath",
+      "thermal_coupling": "bounded vascular exchange at the base, separate from brain thermal protection"
+    },
+    "cardiorespiratory_fixture": {
+      "blood_volume_l_range": [
+        13,
+        14
+      ],
+      "rest_cardiac_output_l_min": 10.5,
+      "rest_heart_rate_bpm": 60,
+      "calculated_stroke_volume_ml": 175,
+      "rest_tidal_l": 1.1,
+      "rest_breaths_min": 11,
+      "calculated_minute_ventilation_l_min": 12.1,
+      "heart_brain_vertical_m": 0.65,
+      "hydrostatic_drop_mmHg_approx": 50,
+      "lung_total_capacity_l_range": [
+        12,
+        15
+      ],
+      "hydrostatic_gradient_mmHg_per_m_approx": 78,
+      "posture_scenarios": [
+        {
+          "name": "upright_head",
+          "height_relative_to_heart_m": 0.65,
+          "pressure_relative_to_heart_mmHg_approx": -51
+        },
+        {
+          "name": "upright_forefoot",
+          "height_relative_to_heart_m": -1.55,
+          "pressure_relative_to_heart_mmHg_approx": 121
+        },
+        {
+          "name": "head_lowered",
+          "height_relative_to_heart_m": -0.3,
+          "pressure_relative_to_heart_mmHg_approx": 23
+        }
+      ],
+      "heart_brain_vertical_m_interpretation": "conservative high-head scenario; neutral atlas center-to-center about 0.60 m",
+      "head_level_arterial_guard_fixture_mmHg": 65,
+      "height_sensitivity_heart_level_map_mmHg": [
+        {
+          "brain_above_heart_m": 0.55,
+          "heart_level_map_for_guard_mmHg_approx": 108
+        },
+        {
+          "brain_above_heart_m": 0.6,
+          "heart_level_map_for_guard_mmHg_approx": 112
+        },
+        {
+          "brain_above_heart_m": 0.65,
+          "heart_level_map_for_guard_mmHg_approx": 116
+        },
+        {
+          "brain_above_heart_m": 0.7,
+          "heart_level_map_for_guard_mmHg_approx": 120
+        }
+      ],
+      "head_down_guard_fixture": {
+        "relative_brain_height_m_below": -0.2,
+        "head_level_arterial_mmHg_above": 135,
+        "action": "stabilize_posture_and_check_venous_drainage"
+      }
+    },
+    "mechanical_fixture": {
+      "gravity_m_s2": 9.81,
+      "weight_newton_approx": 1913,
+      "both_feet_contact_m2": 0.09,
+      "static_mean_pressure_kpa_approx": 21.25,
+      "toe_load_fraction_nominal": [
+        0.275,
+        0.45,
+        0.275
+      ],
+      "sensitivity_mass_kg": [
+        {
+          "mass_kg": 180,
+          "static_two_feet_kpa": 19.6,
+          "hypothetical_2_5x_one_foot_kpa": 98.1
+        },
+        {
+          "mass_kg": 195,
+          "static_two_feet_kpa": 21.3,
+          "hypothetical_2_5x_one_foot_kpa": 106.3
+        },
+        {
+          "mass_kg": 210,
+          "static_two_feet_kpa": 22.9,
+          "hypothetical_2_5x_one_foot_kpa": 114.5
+        }
+      ]
+    },
+    "metabolic_fixture": {
+      "comparative_mammal_bmr_kcal_day_approx": 3653,
+      "use": "planning_prior_only"
+    },
+    "integrated_control_priority": [
+      "footing_and_protective_step",
+      "autonomic_stabilization",
+      "resonan_attention",
+      "fine_motor_or_ritual"
+    ],
+    "symbolic_learning": [
+      "observe_before_reaction",
+      "pause_for_verification",
+      "release_with_minimum_force",
+      "return_and_check_outcome"
+    ],
+    "design_note": "Proposed fictional whole-body model, not a biological measurement or clinical vital-sign target.",
+    "report_filename": "TADASH_BODY_PHYSIOLOGY_250CM_V03_FA.md",
+    "mass_compartments_kg": {
+      "head_and_horns": 11,
+      "trunk": 88,
+      "both_arms": 22,
+      "both_legs_and_feet": 64,
+      "tail": 10
+    },
+    "center_of_mass_fixture_cm": 131.4,
+    "tail_shift_fixture_cm": 3.1,
+    "thermal_fixture": {
+      "bmr_heat_w_approx": 177,
+      "human_formula_surface_area_m2_approx": 3.7,
+      "status": "comparative starting estimate",
+      "photosynthetic_auxiliary_peak_w_approx": 15,
+      "photosynthetic_assumptions": {
+        "surface_area_m2": 3.7,
+        "exposed_fraction": 0.2,
+        "incident_sun_w_m2": 1000,
+        "fictional_conversion_efficiency": 0.02,
+        "night_output_w_approx": 0
+      }
+    },
+    "internal_couplings": {
+      "stand_up": [
+        "cerebral_perfusion_sensor",
+        "baroreflex",
+        "leg_venous_pump",
+        "vision_stability"
+      ],
+      "slip": [
+        "toe_pressure",
+        "proprioception",
+        "spinal_and_brainstem_protective_step",
+        "free_breathing",
+        "tail_assist"
+      ],
+      "heat": [
+        "skin_and_core_temperature",
+        "cutaneous_flow",
+        "ventilation",
+        "water_ledger",
+        "behavioral_shade"
+      ],
+      "horn_signal": [
+        "paired_root_mechanosensors",
+        "hearing_and_vision_crosscheck",
+        "self_motion_noise_rejection",
+        "attention_only"
+      ],
+      "wound": [
+        "pain",
+        "perfusion",
+        "immune_response",
+        "material_energy_cost",
+        "staged_repair"
+      ],
+      "abdomen_pelvis": [
+        "diaphragm",
+        "abdominal_wall",
+        "pelvic_floor",
+        "portal_and_renal_flow",
+        "bowel_and_bladder_state",
+        "independent_tail_control"
+      ]
+    },
+    "schematic_filename": "TADASH_250CM_ANATOMY_V03.svg",
+    "computational_model_filename": "tadash_body_v03.py",
+    "example_replay": {
+      "stand_before_compensation": "stabilize_posture",
+      "stand_stable": "observe",
+      "slip_and_horn_motion": "protective_step",
+      "recover_and_verify": "observe",
+      "warm_after_walk": "cool_and_rehydrate",
+      "head_below_heart": "stabilize_posture"
+    },
+    "atlas_filename": "nasuraya_body_atlas_v03_250cm.json",
+    "atlas_part_count": 107,
+    "neutral_brain_heart_separation_m_approx": 0.6,
+    "growth_and_maintenance": {
+      "S0_S1": "axis, pelvic ring, caudal buds, separate five-hand and three-foot digit patterns",
+      "S2": "vascular, neural, mechanical coupling before major mass increase; foot pads and tendons mature under load",
+      "S3": "paired horn roots and low-energy resonan sensors after skull integrity; azarine remains bounded",
+      "S4": "external converter conditional and inactive by default",
+      "adult_adaptation": [
+        "bone responds to loading",
+        "tendon adaptation",
+        "blood volume and heat-water budget",
+        "motor memory updates from verified outcomes"
+      ],
+      "repair_gate": [
+        "material",
+        "perfusion",
+        "nerve continuity",
+        "time",
+        "thermal budget"
+      ]
+    },
+    "interactive_atlas_filename": "nasuraya_body_atlas_v03_250cm.html",
+    "azarine_position_revision": {
+      "center_m": [
+        0.125,
+        -0.05,
+        1.515
+      ],
+      "status": "selected schematic candidate; moving fascia and full mesh unvalidated",
+      "design_filename": "NASURAYA_ABDOMEN_SACRUM_V01.json"
+    }
+  },
+  "source_library_file_id": "synthetic-local-source",
+  "source_version": 35
+}

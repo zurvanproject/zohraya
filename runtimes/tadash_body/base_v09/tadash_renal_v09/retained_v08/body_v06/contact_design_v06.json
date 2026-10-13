@@ -1,0 +1,69 @@
+{
+  "schema": "tadash-contact-design/0.6",
+  "axes": "+X left; +Y forward; +Z up",
+  "mass_kg": 195.0,
+  "gravity_m_s2": 9.81,
+  "com_height_m": 1.314,
+  "hip_height_m": 1.42,
+  "hip_half_width_m": 0.14,
+  "hock_height_m": 0.38,
+  "foot_half_spacing_m": 0.196,
+  "patches": [
+    {
+      "id": "ball",
+      "xy": [
+        0.0,
+        -0.09299999999999997
+      ],
+      "area_m2": 0.03389099889210211
+    },
+    {
+      "id": "toe_1",
+      "xy": [
+        -0.0504,
+        0.08536000000000005
+      ],
+      "area_m2": 0.0015763255298652146
+    },
+    {
+      "id": "toe_2",
+      "xy": [
+        0.0,
+        0.10300000000000004
+      ],
+      "area_m2": 0.002222865297973994
+    },
+    {
+      "id": "toe_3",
+      "xy": [
+        0.0504,
+        0.08536000000000005
+      ],
+      "area_m2": 0.0015763255298652146
+    }
+  ],
+  "pressure_ceiling_kpa": 300.0,
+  "leg_lengths_m": [
+    0.5997275261316592,
+    0.5244099541389351,
+    0.42922274124281906
+  ],
+  "tail_length_m": 1.2,
+  "tail_mass_kg": 10.0,
+  "tail_inertia_kg_m2": 4.8,
+  "tail_torque_limit_Nm": 60.0,
+  "tail_angle_limit_rad": 0.65,
+  "tail_speed_limit_rad_s": 1.4,
+  "swing_time_s": 1.0,
+  "swing_height_m": 0.12,
+  "max_step_length_m": 0.55,
+  "walk_step_length_m": 0.12,
+  "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+  "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+  "new_assumptions": [
+    "hip half width",
+    "tail equivalent flywheel inertia and motion limits",
+    "timing and controller gains",
+    "point-centre pressure-constrained contact model; no deformable mesh"
+  ]
+}

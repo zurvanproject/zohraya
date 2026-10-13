@@ -5,3 +5,6 @@ __pycache__/
 .env
 .env.*
 !.env.example
+*.sqlite
+*.sqlite-*
+*.sqlite.lock

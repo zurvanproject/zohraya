@@ -1,0 +1,28 @@
+{
+  "native_tests": 99,
+  "bridge_tests": 10,
+  "bridge_tests_passed": true,
+  "native_tests_passed": true,
+  "source_files_verified": 70,
+  "completed_cycles": 3,
+  "remaining_action_budget": 9,
+  "actions": [
+    [
+      "walk",
+      "protect"
+    ],
+    [
+      "observe",
+      "observe"
+    ],
+    [
+      "observe",
+      "observe"
+    ]
+  ],
+  "external_model_api_used": false,
+  "private_canonical_state_loaded": false,
+  "checkpoint_sha256": "aa4ccf0be72cbea05a7b5794cfdbb1781c4d0ffacbbf425b007fac5dc157b58c",
+  "checkpoint_integrity": "ok",
+  "method": "source-pinned synthetic body; explicitly authored action preferences; scoped contract feedback"
+}

@@ -1,0 +1,50 @@
+{
+  "0.5": {
+    "hydration_proxy": 0.5,
+    "flow_L_min": 27.5,
+    "head_pressure_proxy_mmHg": 23.12028935479551,
+    "pump_mechanical_W": 3.9223534296036773,
+    "pump_extra_metabolic_W": 2.689413718414709,
+    "node_balance_error_L_min": 4.330757974457811e-12
+  },
+  "0.6": {
+    "hydration_proxy": 0.6,
+    "flow_L_min": 33.0,
+    "head_pressure_proxy_mmHg": 35.792347225754604,
+    "pump_mechanical_W": 5.648188938629295,
+    "pump_extra_metabolic_W": 9.592755754517182,
+    "node_balance_error_L_min": 2.382677388723664e-12
+  },
+  "0.7": {
+    "hydration_proxy": 0.7,
+    "flow_L_min": 38.5,
+    "head_pressure_proxy_mmHg": 48.46440509671371,
+    "pump_mechanical_W": 7.687812722023209,
+    "pump_extra_metabolic_W": 17.751250888092837,
+    "node_balance_error_L_min": 3.4681701954752953e-12
+  },
+  "0.8": {
+    "hydration_proxy": 0.8,
+    "flow_L_min": 44.0,
+    "head_pressure_proxy_mmHg": 61.136462967672806,
+    "pump_mechanical_W": 10.041224779785413,
+    "pump_extra_metabolic_W": 27.16489911914165,
+    "node_balance_error_L_min": 4.426681243785424e-12
+  },
+  "0.9": {
+    "hydration_proxy": 0.9,
+    "flow_L_min": 49.5,
+    "head_pressure_proxy_mmHg": 73.80852083863189,
+    "pump_mechanical_W": 12.708425111915917,
+    "pump_extra_metabolic_W": 37.83370044766367,
+    "node_balance_error_L_min": 4.3664516446995094e-12
+  },
+  "1.0": {
+    "hydration_proxy": 1.0,
+    "flow_L_min": 51.41034040381595,
+    "head_pressure_proxy_mmHg": 78.20996522961138,
+    "pump_mechanical_W": 13.708258806635099,
+    "pump_extra_metabolic_W": 41.833035226540396,
+    "node_balance_error_L_min": 4.536593323223315e-12
+  }
+}

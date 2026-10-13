@@ -1,0 +1,1626 @@
+{
+  "LV_anterior": {
+    "name_fa": "دیوارهٔ قدامی بطن چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": "chest_wall_L"
+  },
+  "LV_lateral": {
+    "name_fa": "دیوارهٔ جانبی بطن چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": "chest_wall_L"
+  },
+  "septum": {
+    "name_fa": "سپتوم بطنی",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "LV_inferior": {
+    "name_fa": "دیوارهٔ تحتانی بطن چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": "chest_wall_L"
+  },
+  "RV_wall": {
+    "name_fa": "میوکارد بطن راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "atria": {
+    "name_fa": "میوکارد دهلیزها",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "SA_node": {
+    "name_fa": "گره سینوسی",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "AV_node": {
+    "name_fa": "گره دهلیزی‌بطنی",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "LV_anterolateral": {
+    "name_fa": "میوکارد قدامی‌جانبی",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": "chest_wall_L"
+  },
+  "LV_posterolateral": {
+    "name_fa": "میوکارد خلفی‌جانبی",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": "chest_wall_L"
+  },
+  "cerebral_anterior_L": {
+    "name_fa": "قشر پیشانی و جداری داخلی چپ",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "cerebral_middle_L": {
+    "name_fa": "قشر جانبی و راه‌های عمقی چپ",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "deep_brain_L": {
+    "name_fa": "بستر عمقی مغز چپ",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "retina_L": {
+    "name_fa": "شبکیه چپ",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "orbit_L": {
+    "name_fa": "کاسهٔ چشم چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "face_L": {
+    "name_fa": "صورت و لب چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "scalp_L": {
+    "name_fa": "پوست سر چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tongue_L": {
+    "name_fa": "زبان و کف دهان چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "jaw_L": {
+    "name_fa": "فک و دندان‌ها چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pharynx_L": {
+    "name_fa": "حلق و لوزه چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "thyroid_L": {
+    "name_fa": "تیروئید چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "parathyroid_L": {
+    "name_fa": "پاراتیروئید چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "neck_muscle_L": {
+    "name_fa": "عضلات عمقی گردن چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "nasal_mucosa_L": {
+    "name_fa": "بینی و مخاط بویایی چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "salivary_L": {
+    "name_fa": "غدد بزاقی چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "external_ear_L": {
+    "name_fa": "گوش خارجی چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "horn_root_L": {
+    "name_fa": "ریشهٔ شاخ و رابط رزنان چپ",
+    "region": "special",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "shoulder_L": {
+    "name_fa": "کتف و شانه چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "upper_arm_L": {
+    "name_fa": "عضلات بازو چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "forearm_L": {
+    "name_fa": "عضلات ساعد چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "hand_intrinsic_L": {
+    "name_fa": "عضلات ظریف دست چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "arm_skin_L": {
+    "name_fa": "پوست دست و بازو چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "humeral_head_L": {
+    "name_fa": "سر استخوان بازو چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "posterior_forearm_L": {
+    "name_fa": "عضلات پشت ساعد چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_L_1": {
+    "name_fa": "انگشت 1 دست چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_L_2": {
+    "name_fa": "انگشت 2 دست چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_L_3": {
+    "name_fa": "انگشت 3 دست چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_L_4": {
+    "name_fa": "انگشت 4 دست چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_L_5": {
+    "name_fa": "انگشت 5 دست چپ",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "breast_L": {
+    "name_fa": "پستان چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "diaphragm_L": {
+    "name_fa": "دیافراگم چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "chest_wall_L": {
+    "name_fa": "جدار سینه چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "cerebral_anterior_R": {
+    "name_fa": "قشر پیشانی و جداری داخلی راست",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "cerebral_middle_R": {
+    "name_fa": "قشر جانبی و راه‌های عمقی راست",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "deep_brain_R": {
+    "name_fa": "بستر عمقی مغز راست",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "retina_R": {
+    "name_fa": "شبکیه راست",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "orbit_R": {
+    "name_fa": "کاسهٔ چشم راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "face_R": {
+    "name_fa": "صورت و لب راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "scalp_R": {
+    "name_fa": "پوست سر راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tongue_R": {
+    "name_fa": "زبان و کف دهان راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "jaw_R": {
+    "name_fa": "فک و دندان‌ها راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pharynx_R": {
+    "name_fa": "حلق و لوزه راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "thyroid_R": {
+    "name_fa": "تیروئید راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "parathyroid_R": {
+    "name_fa": "پاراتیروئید راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "neck_muscle_R": {
+    "name_fa": "عضلات عمقی گردن راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "nasal_mucosa_R": {
+    "name_fa": "بینی و مخاط بویایی راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "salivary_R": {
+    "name_fa": "غدد بزاقی راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "external_ear_R": {
+    "name_fa": "گوش خارجی راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "horn_root_R": {
+    "name_fa": "ریشهٔ شاخ و رابط رزنان راست",
+    "region": "special",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "shoulder_R": {
+    "name_fa": "کتف و شانه راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "upper_arm_R": {
+    "name_fa": "عضلات بازو راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "forearm_R": {
+    "name_fa": "عضلات ساعد راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "hand_intrinsic_R": {
+    "name_fa": "عضلات ظریف دست راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "arm_skin_R": {
+    "name_fa": "پوست دست و بازو راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "humeral_head_R": {
+    "name_fa": "سر استخوان بازو راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "posterior_forearm_R": {
+    "name_fa": "عضلات پشت ساعد راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_R_1": {
+    "name_fa": "انگشت 1 دست راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_R_2": {
+    "name_fa": "انگشت 2 دست راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_R_3": {
+    "name_fa": "انگشت 3 دست راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_R_4": {
+    "name_fa": "انگشت 4 دست راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "finger_R_5": {
+    "name_fa": "انگشت 5 دست راست",
+    "region": "arm",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "breast_R": {
+    "name_fa": "پستان راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "diaphragm_R": {
+    "name_fa": "دیافراگم راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "chest_wall_R": {
+    "name_fa": "جدار سینه راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "inner_ear_L": {
+    "name_fa": "حلزون و دهلیز L",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "cerebral_posterior_L": {
+    "name_fa": "قشر پس‌سری و گیجگاهی L",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "cerebellum_L": {
+    "name_fa": "مخچه L",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "brainstem_L": {
+    "name_fa": "ساقهٔ مغز L",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "inner_ear_R": {
+    "name_fa": "حلزون و دهلیز R",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "cerebral_posterior_R": {
+    "name_fa": "قشر پس‌سری و گیجگاهی R",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "cerebellum_R": {
+    "name_fa": "مخچه R",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "brainstem_R": {
+    "name_fa": "ساقهٔ مغز R",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pituitary": {
+    "name_fa": "هیپوفیز و بستر پورت موضعیِ تجمیعی",
+    "region": "head",
+    "direct_nociception_proxy": 0,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "thymus": {
+    "name_fa": "تیموس",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "spandar": {
+    "name_fa": "کپسول سپندار",
+    "region": "special",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "stomach": {
+    "name_fa": "معده",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "duodenum": {
+    "name_fa": "دوازدهه",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pancreas": {
+    "name_fa": "پانکراس",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "spleen": {
+    "name_fa": "طحال",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "gallbladder": {
+    "name_fa": "کیسهٔ صفرا",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "jejunum": {
+    "name_fa": "ژژنوم",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "ileum": {
+    "name_fa": "ایلئوم",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "cecum": {
+    "name_fa": "سکوم و آپاندیس",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "ascending_colon": {
+    "name_fa": "کولون صعودی",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "transverse_colon": {
+    "name_fa": "کولون عرضی",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "descending_colon": {
+    "name_fa": "کولون نزولی",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "sigmoid": {
+    "name_fa": "سیگموئید",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "upper_rectum": {
+    "name_fa": "راست‌رودهٔ فوقانی",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "liver": {
+    "name_fa": "کبد با ورودی شریانی و پورت",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "kidney_cortex_L": {
+    "name_fa": "قشر کلیه چپ",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "kidney_medulla_L": {
+    "name_fa": "مدولای کلیه و وازارکتا چپ",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "adrenal_L": {
+    "name_fa": "فوق‌کلیه چپ",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "posterior_chest_L_1": {
+    "name_fa": "بستر بین‌دنده‌ای 1 چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "posterior_chest_L_2": {
+    "name_fa": "بستر بین‌دنده‌ای 2 چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "posterior_chest_L_3": {
+    "name_fa": "بستر بین‌دنده‌ای 3 چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lumbar_wall_L": {
+    "name_fa": "جدار و عضلات کمری چپ",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "abdomen_skin_L": {
+    "name_fa": "پوست و جدار قدامی شکم چپ",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "kidney_cortex_R": {
+    "name_fa": "قشر کلیه راست",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "kidney_medulla_R": {
+    "name_fa": "مدولای کلیه و وازارکتا راست",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "adrenal_R": {
+    "name_fa": "فوق‌کلیه راست",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "posterior_chest_R_1": {
+    "name_fa": "بستر بین‌دنده‌ای 1 راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "posterior_chest_R_2": {
+    "name_fa": "بستر بین‌دنده‌ای 2 راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "posterior_chest_R_3": {
+    "name_fa": "بستر بین‌دنده‌ای 3 راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lumbar_wall_R": {
+    "name_fa": "جدار و عضلات کمری راست",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "abdomen_skin_R": {
+    "name_fa": "پوست و جدار قدامی شکم راست",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "cervical_cord": {
+    "name_fa": "نخاع گردنی",
+    "region": "thorax",
+    "direct_nociception_proxy": 0,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "thoracic_cord": {
+    "name_fa": "نخاع سینه‌ای",
+    "region": "thorax",
+    "direct_nociception_proxy": 0,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lumbar_cord_roots": {
+    "name_fa": "مخروط نخاعی و ریشه‌های کمری",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "ovary_L": {
+    "name_fa": "تخمدان چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "uterus_L": {
+    "name_fa": "نیمهٔ رحم چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "vagina_L": {
+    "name_fa": "واژن و گردن رحم چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "bladder_L": {
+    "name_fa": "مثانه چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "perineum_L": {
+    "name_fa": "پرینه چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "external_genital_L": {
+    "name_fa": "بستر تناسلی خارجی چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lower_rectum_L": {
+    "name_fa": "راست‌رودهٔ تحتانی چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pelvic_floor_L": {
+    "name_fa": "کف لگن چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "gluteal_L": {
+    "name_fa": "عضلات سرینی چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "hip_joint_L": {
+    "name_fa": "مفصل ران چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "thigh_L": {
+    "name_fa": "عضلات ران چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "knee_L": {
+    "name_fa": "مفصل زانو چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "anterior_leg_L": {
+    "name_fa": "عضلات جلوی ساق چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "calf_L": {
+    "name_fa": "ساق و آشیل چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lateral_leg_L": {
+    "name_fa": "عضلات کناری ساق چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "forefoot_L": {
+    "name_fa": "عضلات پنجه چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pad_L": {
+    "name_fa": "بالشتک پنجه چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "leg_skin_L": {
+    "name_fa": "پوست پا چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lateral_thigh_L": {
+    "name_fa": "عضلات کناری ران چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "hip_wall_L": {
+    "name_fa": "جدار و ستیغ لگن چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "adductors_L": {
+    "name_fa": "عضلات نزدیک‌کنندهٔ ران چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "leg_marrow_L": {
+    "name_fa": "مغز استخوان پا چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "toe_L_1": {
+    "name_fa": "انگشت 1 پنجهٔ چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "toe_L_2": {
+    "name_fa": "انگشت 2 پنجهٔ چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "toe_L_3": {
+    "name_fa": "انگشت 3 پنجهٔ چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "dorsal_foot_L": {
+    "name_fa": "پشت پنجه چپ",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tail_L_1": {
+    "name_fa": "قطعهٔ 1 عضله و پوست دم چپ",
+    "region": "tail",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tail_L_2": {
+    "name_fa": "قطعهٔ 2 عضله و پوست دم چپ",
+    "region": "tail",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tail_L_3": {
+    "name_fa": "قطعهٔ 3 عضله و پوست دم چپ",
+    "region": "tail",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tail_L_4": {
+    "name_fa": "قطعهٔ 4 عضله و پوست دم چپ",
+    "region": "tail",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pelvic_marrow_L": {
+    "name_fa": "مغز استخوان لگن چپ",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "ureter_L": {
+    "name_fa": "حالب چپ",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "ovary_R": {
+    "name_fa": "تخمدان راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "uterus_R": {
+    "name_fa": "نیمهٔ رحم راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "vagina_R": {
+    "name_fa": "واژن و گردن رحم راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "bladder_R": {
+    "name_fa": "مثانه راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "perineum_R": {
+    "name_fa": "پرینه راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "external_genital_R": {
+    "name_fa": "بستر تناسلی خارجی راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lower_rectum_R": {
+    "name_fa": "راست‌رودهٔ تحتانی راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pelvic_floor_R": {
+    "name_fa": "کف لگن راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "gluteal_R": {
+    "name_fa": "عضلات سرینی راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "hip_joint_R": {
+    "name_fa": "مفصل ران راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "thigh_R": {
+    "name_fa": "عضلات ران راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "knee_R": {
+    "name_fa": "مفصل زانو راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "anterior_leg_R": {
+    "name_fa": "عضلات جلوی ساق راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "calf_R": {
+    "name_fa": "ساق و آشیل راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lateral_leg_R": {
+    "name_fa": "عضلات کناری ساق راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "forefoot_R": {
+    "name_fa": "عضلات پنجه راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pad_R": {
+    "name_fa": "بالشتک پنجه راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "leg_skin_R": {
+    "name_fa": "پوست پا راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lateral_thigh_R": {
+    "name_fa": "عضلات کناری ران راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "hip_wall_R": {
+    "name_fa": "جدار و ستیغ لگن راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "adductors_R": {
+    "name_fa": "عضلات نزدیک‌کنندهٔ ران راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "leg_marrow_R": {
+    "name_fa": "مغز استخوان پا راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "toe_R_1": {
+    "name_fa": "انگشت 1 پنجهٔ راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "toe_R_2": {
+    "name_fa": "انگشت 2 پنجهٔ راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "toe_R_3": {
+    "name_fa": "انگشت 3 پنجهٔ راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "dorsal_foot_R": {
+    "name_fa": "پشت پنجه راست",
+    "region": "leg",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tail_R_1": {
+    "name_fa": "قطعهٔ 1 عضله و پوست دم راست",
+    "region": "tail",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tail_R_2": {
+    "name_fa": "قطعهٔ 2 عضله و پوست دم راست",
+    "region": "tail",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tail_R_3": {
+    "name_fa": "قطعهٔ 3 عضله و پوست دم راست",
+    "region": "tail",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tail_R_4": {
+    "name_fa": "قطعهٔ 4 عضله و پوست دم راست",
+    "region": "tail",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pelvic_marrow_R": {
+    "name_fa": "مغز استخوان لگن راست",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "ureter_R": {
+    "name_fa": "حالب راست",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "sacral_roots": {
+    "name_fa": "ریشه‌های خاجی و بستر پیش‌خاجی",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "azarine": {
+    "name_fa": "آذرینه",
+    "region": "special",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lung_L_upper": {
+    "name_fa": "لوب upper ریهٔ چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lung_L_lower": {
+    "name_fa": "لوب lower ریهٔ چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "bronchial_wall_L": {
+    "name_fa": "دیوارهٔ برونش چپ",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lung_R_upper": {
+    "name_fa": "لوب upper ریهٔ راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lung_R_middle": {
+    "name_fa": "لوب middle ریهٔ راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "lung_R_lower": {
+    "name_fa": "لوب lower ریهٔ راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "bronchial_wall_R": {
+    "name_fa": "دیوارهٔ برونش راست",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "trachea": {
+    "name_fa": "نای",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "esophagus": {
+    "name_fa": "مری",
+    "region": "thorax",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "larynx": {
+    "name_fa": "حنجره",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminal_or_upper_cervical",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "common_bile_duct": {
+    "name_fa": "مجرای صفرا",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "pancreatic_duct": {
+    "name_fa": "مجرای پانکراس",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "urethra": {
+    "name_fa": "پیشابراه",
+    "region": "pelvis",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "tail_skeleton": {
+    "name_fa": "مهره‌ها و بست دم",
+    "region": "tail",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "enteric_network": {
+    "name_fa": "شبکهٔ عصبی روده",
+    "region": "abdomen",
+    "direct_nociception_proxy": 1,
+    "route": "segmental_spinal_proxy",
+    "status": "monitoring compartment; composite tissue proxy, not receptor-density atlas",
+    "referred_to": null
+  },
+  "dura_L": {
+    "name_fa": "سخت‌شامهٔ چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminocervical_proxy",
+    "status": "added schematic compartment",
+    "referred_to": "face_L"
+  },
+  "dura_R": {
+    "name_fa": "سخت‌شامهٔ راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminocervical_proxy",
+    "status": "added schematic compartment",
+    "referred_to": "face_R"
+  },
+  "meningeal_vessels_L": {
+    "name_fa": "عروق مننژی چپ",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminocervical_proxy",
+    "status": "added schematic compartment",
+    "referred_to": "face_L"
+  },
+  "meningeal_vessels_R": {
+    "name_fa": "عروق مننژی راست",
+    "region": "head",
+    "direct_nociception_proxy": 1,
+    "route": "trigeminocervical_proxy",
+    "status": "added schematic compartment",
+    "referred_to": "face_R"
+  }
+}
