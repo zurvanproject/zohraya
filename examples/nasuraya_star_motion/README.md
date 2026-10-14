@@ -21,8 +21,9 @@ Prediction is a rollout of the same model, not independent empirical evidence.
 
 The waypoint cursor now advances only after a matching native walk touchdown.
 A cancelled swing retains its target. This avoids silently skipping star points.
-The algorithm is specifically a landing governor; it is not a general fall
-recovery controller, and zero friction remains a declared physical failure.
+The governor covers landings and native `stand` commands, including closure
+after leaving `settle`. It is not a general fall recovery controller, and zero
+friction remains a declared physical failure.
 
 ## Run and persist
 
@@ -77,3 +78,35 @@ energy-efficiency improvement. The lower-friction check stayed valid through
 58 s with 4 landings; the reverse route failed during closure at 56 s and is
 not accepted as a general capability. Seven targeted tests passed across
 focused runs, plus a separate cancellation check.
+
+## Reverse closure investigation
+
+The historical reverse failure was reproduced exactly from the private waking
+practice database: all result rows and the final native checkpoint hash match.
+The first invalid tick was at elapsed 55.2 s (native time 64.2 s), during the
+second closure second. `settle` had changed to `double_support` one tick earlier,
+so the old landing-only prediction gate no longer ran. Left ankle demand was
+1959.349 N versus 1925.527 N delivered under the unchanged regional guard.
+Both feet had contacted the floor, but required normal load was still entirely
+on the left. Friction was unsaturated; postural energy priority was 1.0.
+
+The bounded correction keeps the same one-tick search active for `stand`,
+without changing any candidate scales or native limits. From the same saved
+pre-closure state, four seconds of closure now remain physically valid and end
+in double support. Replaying the complete reverse driver reaches its 58-second
+bound with valid support but only two confirmed route landings. This establishes
+a safe stop for this fixture, not completion of the reverse route. The 48-second
+movement budget was insufficient; native arbitration also cancelled two swings
+before closure. Extending the budget alone is not demonstrated to solve that.
+
+Six additional tests cover the recorded failure/correction, cold restore,
+single owner charging/replay, prediction scope and genuine zero-friction and
+regional-guard failures. Supply the private pre-closure fixture externally:
+
+```
+NASURAYA_NATIVE_ROOT=/path/to/runtimes/tadash_body NASURAYA_REVERSE_FIXTURE=/path/to/reverse_054_body.json python -m unittest discover -s examples/nasuraya_star_motion -p test_reverse_closure.py -v
+```
+
+Historical extension envelopes retain their original fingerprints and are not
+silently migrated. This investigation restores the native saved state and
+explicitly attaches the revised overlay to a copy.

@@ -1,7 +1,8 @@
-"""One-tick landing governor with confirmed star-waypoint feedback.
+"""One-tick landing/stop governor with confirmed star-waypoint feedback.
 
 Native pressure, force, friction, tail, gas and energy limits are untouched.
-Near landing, candidate accelerations are tried on isolated native clones;
+Near landing or during native stand/closure commands, candidate accelerations
+are tried on isolated native clones;
 the chosen command is then integrated once by the real owner.
 """
 from copy import deepcopy
@@ -34,9 +35,14 @@ class CoordinatedSupport(PostureLoop):
                         cursor[side]+=1
         return frame
 
-    def step(self,e):
+    def _needs_support_prediction(self,e):
         q=self.state.swing
-        near_landing=self.state.phase=='settle' or (q is not None and q['kind']=='walk' and q['progress']>.85)
+        # A stop may leave settle within this tick. Continue prediction through
+        # lower and double support rather than dropping it at that boundary.
+        return e.command=='stand' or self.state.phase=='settle' or (q is not None and q['kind']=='walk' and q['progress']>.85)
+
+    def step(self,e):
+        near_landing=self._needs_support_prediction(e)
         selected=None;diagnostic=None
         if near_landing and self.state.phase!='failed':
             trial=deepcopy(self);predicted=trial._integrate_once(e)
