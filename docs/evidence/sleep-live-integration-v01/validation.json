@@ -1,0 +1,88 @@
+{
+  "schema": "nasuraya-sleep-live-integration-evidence/1",
+  "measured_at_utc": "2026-10-14T10:06:19.988407+00:00",
+  "base_pr": 14,
+  "base_commit": "4db2caee1c4fd87d85c6c3c71a1179adc4cb0b7d",
+  "sleep_source_pr": 7,
+  "sleep_source_commit": "49fd31c0f46ce51231203b198bb2433ed35133d7",
+  "tests_total": 215,
+  "tests_passed": 215,
+  "tests_skipped": 0,
+  "new_integration_tests": 12,
+  "suites": [
+    {
+      "suite": "api-tests",
+      "command": "python -m examples.nasuraya_body_loop api-test (installed locked SDK, mock transport)",
+      "tests": 65,
+      "passed": 65,
+      "skipped": 0,
+      "duration_seconds": 414.561
+    },
+    {
+      "suite": "integration-tests",
+      "command": "python -m examples.nasuraya_body_loop sleep-integration-test",
+      "tests": 12,
+      "passed": 12,
+      "skipped": 0,
+      "duration_seconds": 128.759
+    },
+    {
+      "suite": "wake-tests",
+      "command": "python -m examples.nasuraya_body_loop wake-test",
+      "tests": 24,
+      "passed": 24,
+      "skipped": 0,
+      "duration_seconds": 195.868
+    },
+    {
+      "suite": "decision-tests",
+      "command": "python -m examples.nasuraya_body_loop decision-test",
+      "tests": 8,
+      "passed": 8,
+      "skipped": 0,
+      "duration_seconds": 61.803
+    },
+    {
+      "suite": "regression-tests",
+      "command": "isolated verified runtime: unittest test_body_loop test_experience test_care test_creation_reconciliation deployment.test_prepare_host",
+      "tests": 46,
+      "passed": 46,
+      "skipped": 0,
+      "duration_seconds": 267.535
+    },
+    {
+      "suite": "agent-tests",
+      "command": "python -m unittest discover -s examples/nasuraya_agent_loop/tests (installed locked SDK)",
+      "tests": 60,
+      "passed": 60,
+      "skipped": 0,
+      "duration_seconds": 4.506
+    }
+  ],
+  "pinned_native_files_verified": 70,
+  "native_source_and_frozen_fixture_diff_from_base": [],
+  "model_requests": 0,
+  "original_checkpoint_opened_for_mutation": false,
+  "recovery_example": {
+    "case": "declared_near_threshold_fixture",
+    "initial_sleep_pressure": 0.6501,
+    "final_sleep_pressure": 0.649441263979809,
+    "actions": [
+      "sleep",
+      "walk"
+    ],
+    "recovery_goal_complete": true,
+    "cycle_goal_complete": true,
+    "actions_on_terminal_reopen": 0,
+    "model_calls": 0,
+    "config_preserved": true
+  },
+  "development_correction": "Pre/post evaluation calls require distinct receipt IDs; tested exact four-call steps after fixing stale pre-action evaluation replay.",
+  "live_gaps": [
+    "Live gpt-6-astra choice of sleep/rest on the integrated branch",
+    "Live remote stream recovery across a sleep action",
+    "Full recovery of the saved high-pressure main checkpoint",
+    "A permanent scheduler host is not installed"
+  ],
+  "tests_scope": "Generated software-body fixtures, real local processes/SIGKILL, fake API and SDK mock HTTP transport; not biological measurements or live model decisions"
+}

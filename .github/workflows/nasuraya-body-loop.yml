@@ -48,6 +48,8 @@ jobs:
         run: python3 -m examples.nasuraya_body_loop experience-test
       - name: Verify saved goal, action intent and unknown-outcome stops
         run: python3 -m examples.nasuraya_body_loop decision-test
+      - name: Verify bounded sleep with scheduled wakeups, crashes and memory
+        run: python3 -m examples.nasuraya_body_loop sleep-integration-test
       - name: Verify explicit host review of orphan API creation
         run: python3 -m examples.nasuraya_body_loop creation-test
       - name: Verify prepared persistent-host units without installation

@@ -59,8 +59,8 @@ def register(loop, *, wake_id, run_id, due_at, expires_at, model, backend='synth
     due, expiry = timestamp(due_at), timestamp(expires_at)
     if due >= expiry:
         raise ValueError('due time must precede expiry')
-    if backend not in ('synthetic', 'api', 'care'):
-        raise ValueError('explicit synthetic, care or api backend required')
+    if backend not in ('synthetic', 'api', 'care', 'recovery'):
+        raise ValueError('explicit synthetic, care, recovery or api backend required')
     if not isinstance(model, str) or not re.fullmatch('[A-Za-z0-9_.-]{1,100}', model):
         raise ValueError('bounded fixed model required')
     if type(max_attempts) is not int or not 1 <= max_attempts <= 3:
@@ -225,6 +225,9 @@ def tick(path, *, wake_id, clock=utcnow, runner=None):
         if contract['backend'] == 'care':
             from .care import runner as care_runner
             execute = runner or care_runner
+        elif contract['backend'] == 'recovery':
+            from .recovery import runner as recovery_runner
+            execute = runner or recovery_runner
         else:
             execute = runner or (api_runner if contract['backend'] == 'api' else synthetic_runner)
         try:
