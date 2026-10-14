@@ -1,7 +1,7 @@
-"""One-tick landing/stop governor with confirmed star-waypoint feedback.
+"""One-tick landing/transfer/stop governor with confirmed waypoint feedback.
 
 Native pressure, force, friction, tail, gas and energy limits are untouched.
-Near landing or during native stand/closure commands, candidate accelerations
+Near landing, walking weight transfer or native stand/closure, accelerations
 are tried on isolated native clones;
 the chosen command is then integrated once by the real owner.
 """
@@ -37,9 +37,10 @@ class CoordinatedSupport(PostureLoop):
 
     def _needs_support_prediction(self,e):
         q=self.state.swing
-        # A stop may leave settle within this tick. Continue prediction through
-        # lower and double support rather than dropping it at that boundary.
-        return e.command=='stand' or self.state.phase=='settle' or (q is not None and q['kind']=='walk' and q['progress']>.85)
+        # Both stopping and walking can leave settle within this tick. Keep
+        # prediction through the subsequent braking/weight-transfer phase.
+        transfer=e.command=='walk' and self.state.phase in ('double_support','shift')
+        return e.command=='stand' or transfer or self.state.phase=='settle' or (q is not None and q['kind']=='walk' and q['progress']>.85)
 
     def step(self,e):
         near_landing=self._needs_support_prediction(e)

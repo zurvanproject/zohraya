@@ -1,0 +1,29 @@
+name: Nasuraya star motion synthetic guards
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_star_motion/**'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-star-motion.yml'
+  push:
+    branches: [main, 'nasuraya/**']
+    paths:
+      - 'examples/nasuraya_star_motion/**'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-star-motion.yml'
+permissions:
+  contents: read
+jobs:
+  synthetic-guards:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify public synthetic contracts without private checkpoints
+        working-directory: examples/nasuraya_star_motion
+        env:
+          NASURAYA_NATIVE_ROOT: ${{ github.workspace }}/runtimes/tadash_body
+        run: python3 -m unittest test_reverse_closure.PredictionScopeTests test_reverse_transfer.TransferPolicyTests -v

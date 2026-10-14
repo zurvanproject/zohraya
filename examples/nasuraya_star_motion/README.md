@@ -12,7 +12,7 @@ postural demand was 1933.811 N against 1921.880 N delivered under its current
 regional guard. Postural energy priority was 1.0; the raw force cap was 2500 N.
 An instrumented replay reproduced the original final checkpoint exactly.
 
-Near touchdown or native settling, the accepted controller predicts one native
+Near touchdown, settling, walking weight transfer or stopping, the controller predicts one native
 0.1 s tick on a private copy. If ordinary dynamics predict insufficient joint
 support, it tries reduced centroidal acceleration commands at 0.75/0.5/0.25/0.
 The first physically valid candidate is integrated once by the owning body.
@@ -21,8 +21,8 @@ Prediction is a rollout of the same model, not independent empirical evidence.
 
 The waypoint cursor now advances only after a matching native walk touchdown.
 A cancelled swing retains its target. This avoids silently skipping star points.
-The governor covers landings and native `stand` commands, including closure
-after leaving `settle`. It is not a general fall recovery controller, and zero
+The governor covers landings, walking `shift`/`double_support` and native `stand`
+commands, including transitions after leaving `settle`. It is not a general fall recovery controller, and zero
 friction remains a declared physical failure.
 
 ## Run and persist
@@ -92,8 +92,8 @@ on the left. Friction was unsaturated; postural energy priority was 1.0.
 
 The bounded correction keeps the same one-tick search active for `stand`,
 without changing any candidate scales or native limits. From the same saved
-pre-closure state, four seconds of closure now remain physically valid and end
-in double support. Replaying the complete reverse driver reaches its 58-second
+pre-closure state, four seconds of closure remained physically valid and ended
+in double support. With the stop-only revision (PR #17), the reverse driver reached its 58-second
 bound with valid support but only two confirmed route landings. This establishes
 a safe stop for this fixture, not completion of the reverse route. The 48-second
 movement budget was insufficient; native arbitration also cancelled two swings
