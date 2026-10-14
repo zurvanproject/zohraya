@@ -200,3 +200,52 @@ context بعدی، هدف حفظ‌شده، پیشرفت، وضعیت کاهش�
 ترکیب مصنوعیِ تجربهٔ ورودی، قاعدهٔ ثابت و بازخورد هسته می‌سنجد؛ پیشنهاددهندهٔ
 آن قطعی است و آزمایش GPT نیست. بستهٔ systemd قابل‌آماده‌سازی است؛ نصب نشده.
 [طراحی، نتایج و محدودیت آزمون زنده](../../docs/nasuraya-goal-memory-eval-v01.md).
+## بازیابی و بازگشت به حرکت
+
+ابزار `request_body_action` اکنون `sleep` و `rest` را نیز به همان DecisionCore،
+ReflectionCycle و بدن بومی می‌رساند. سقف هر اقدام همچنان یک ثانیه است؛ بودجه‌ها،
+مشاهدهٔ تازه، جلوگیری از تکرار و حق وتوی بدن حفظ می‌شوند. دستور مدل درخواست خواب
+را برای فشار خواب بیش از ۰٫۶۵، استراحت را برای خستگی بیش از ۰٫۴۵ و سپس حرکت را
+پیشنهاد می‌کند. پیشنهاد، تضمین انتخاب یا اجرای بدن نیست.
+
+`recovery_step()` یک کنترل‌گر محلی و محدود است: مشاهدهٔ تازه، حداکثر یک درخواست
+اقدام و ارزیابی. هیچ مدل زبانی، شبکه یا بودجهٔ تازه‌ای را خودکار فراخوانی نمی‌کند.
+هدف بازگشت به یک چرخهٔ حرکت بومی به صورت قرارداد ذخیره می‌شود؛ پیشرفت از رسیدهای
+واقعاً ثبت‌شده بازسازی می‌شود. تمام‌شدن بودجه یا هدف شمارشیِ دورها، به معنی
+بازیابی کامل نیست. تاریخچهٔ وتو در وضعیت خواب‌آلود نگه داشته می‌شود؛ پس از خواب
+یا استراحتِ ثبت‌شده و مشاهدهٔ آمادگی، حرکت در زمینهٔ شواهد `optional-motion/ready`
+بررسی می‌شود تا وتوی وضعیت پیشین بی‌انتها به وضعیت تغییرکرده تعمیم نیابد.
+
+دو اجرای محلیِ قابل بازتولید، از ریشهٔ مخزن و با Linux/Python 3.11+:
+
+```bash
+PYTHONPATH="$PWD/runtimes/tadash_body:$PWD" python -m examples.nasuraya_body_loop.recovery_demo --output-dir /tmp/nasuraya-recovery-ready
+PYTHONPATH="$PWD/runtimes/tadash_body:$PWD" python -m examples.nasuraya_body_loop.recovery_demo --source-session /path/to/completed/session.sqlite --output-dir /tmp/nasuraya-recovery-continuation
+```
+
+اجرای نخست، یک fixture تازه و صریحاً نزدیک آستانهٔ خواب می‌سازد: یک خواب، سپس
+توقف فرایند، بازیابی هدف در فرایندی تازه و یک چرخهٔ حرکت بومی. این fixture شاهدِ
+درمان وضعیت ذخیره‌شدهٔ کاربر نیست. اجرای دوم، از SQLite موجود پشتیبان خصوصی
+می‌گیرد و با یک مجوز میزبان برای سه اقدام و دوازده فراخوانی ابزار ادامه می‌دهد؛
+تمام هدف‌های پیشین باید کامل و بودجهٔ قبلی تمام شده باشد. فایل مبدأ، تنظیم اولیه،
+تصمیم‌ها و قرارداد هدف‌های قبلی حفظ می‌شوند. بازخوانی نهایی صفر اقدام اجرا می‌کند.
+
+آزمون‌ها از فرمان `python -m examples.nasuraya_body_loop api-test` اجرا می‌شوند.
+`--preferred-action sleep` یا `rest` برای فرمان‌های محلی `step` و `demo` نیز
+در دسترس است. فرمان‌ها با همان بودجه و محدودیت‌های قبلی اجرا می‌شوند.
+
+معادلات و manifest هفتاد فایل بدن بومی تغییر نکرده‌اند. افت فشار خواب، اثر یک
+معادلهٔ شبیه‌ساز است؛ رفع کامل خستگی عضلانی یا افزایش توان عمومی از آن نتیجه
+گرفته نمی‌شود. خواب، استراحت، مشاهده و بازگشت به حرکت جداگانه در رسیدها ثبت
+می‌شوند؛ عبور زمان و بازکردن پایگاه، خوابِ انجام‌شده محسوب نمی‌شوند.
+
+### Sleep on the PR #14 lineage
+
+The integrated contract includes sleep/rest in tools, host next-decision context
+and reduced experience packets. A new explicit host-only `recovery` wake backend
+performs one bounded recovery action per tick; unchanged grants, windows and
+locks govern it. Existing care-policy v1 schedules and memories keep their
+original meaning. Run `python3 -m examples.nasuraya_body_loop sleep-integration-test`
+for synthetic crash/wakeup/memory/transport checks. See
+[`nasuraya-sleep-live-integration-v01.md`](../../docs/nasuraya-sleep-live-integration-v01.md)
+for the contract comparison, evidence and remaining live checks.

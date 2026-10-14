@@ -28,14 +28,15 @@ def verified_sources():
 
 def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; live API requires explicit api or allowed API wakeup')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'schedule', 'wake', 'wake-watch', 'wake-status', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'care-memory', 'experience-test', 'experience-live-check', 'memory-ablation', 'decision-test', 'intent-status', 'creation-test', 'reconcile-api-creation', 'terminal-replay-check'])
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'schedule', 'wake', 'wake-watch', 'wake-status', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'care-memory', 'experience-test', 'experience-live-check', 'memory-ablation', 'decision-test', 'intent-status', 'creation-test', 'reconcile-api-creation', 'terminal-replay-check', 'sleep-integration-test'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
-    p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
+    p.add_argument('--fixture', choices=['normal', 'sleep', 'recovery-ready'], default='normal')
     p.add_argument('--mode', choices=['observe', 'bounded'], default='bounded')
     p.add_argument('--max-actions', type=int, default=3)
     p.add_argument('--steps', type=int, default=3)
     p.add_argument('--decision-id')
+    p.add_argument('--preferred-action', choices=['walk', 'observe', 'sleep', 'rest'], default='walk')
     p.add_argument('--duration-s', type=float, default=.1)
     p.add_argument('--api-mode', choices=['observe', 'bounded'], default='observe')
     p.add_argument('--target-cycles', type=int, default=0)
@@ -52,7 +53,7 @@ def main(argv=None):
     p.add_argument('--wake-id')
     p.add_argument('--due-at')
     p.add_argument('--expires-at')
-    p.add_argument('--wake-backend', choices=['synthetic', 'api', 'care'], default='synthetic')
+    p.add_argument('--wake-backend', choices=['synthetic', 'api', 'care', 'recovery'], default='synthetic')
     p.add_argument('--wake-attempts', type=int, default=3)
     p.add_argument('--retry-delay-seconds', type=float, default=30)
     p.add_argument('--watch-ticks', type=int, default=60)
@@ -61,7 +62,7 @@ def main(argv=None):
     p.add_argument('--confirm-finished-create', action='store_true')
     p.add_argument('--confirm-exclusive-project-writer', action='store_true')
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'experience-test', 'memory-ablation', 'decision-test', 'creation-test'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'experience-test', 'memory-ablation', 'decision-test', 'creation-test', 'sleep-integration-test'] and args.session is None:
         p.error('--session required')
     if args.command in ('demo', 'wake-demo', 'care-demo', 'experience-live-check', 'memory-ablation', 'terminal-replay-check') and args.output_dir is None:
         p.error('--output-dir required')

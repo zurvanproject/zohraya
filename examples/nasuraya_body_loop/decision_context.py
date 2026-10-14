@@ -2,6 +2,7 @@
 import json
 from reflection_cycle import canonical
 from .host import executed_body
+from .recovery import recommended_action
 
 
 def context(host):
@@ -16,12 +17,9 @@ def context(host):
     transport_unknown=bool(transport and transport['session_id'] is None)
     transport_blocked=bool(transport and transport['state'] in ('failed','deleted')
                            and transport['terminal_status']!='completed')
-    if values['sleep_pressure']>.65:
-        preference,reason='observe','sleep_pressure_high'
-    elif values['fatigue']>.45:
-        preference,reason='observe','fatigue_high'
-    else:
-        preference,reason='walk','fixed_motion_thresholds_clear'
+    preference = recommended_action(values)
+    reason = {'sleep': 'sleep_pressure_high', 'rest': 'fatigue_high',
+              'walk': 'fixed_motion_thresholds_clear'}[preference]
     if transport_unknown:
         step,reason='stop','api_creation_outcome_unknown'
     elif transport_blocked:

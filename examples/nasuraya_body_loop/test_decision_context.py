@@ -29,7 +29,7 @@ class DecisionTests(unittest.TestCase):
             self.assertEqual(c['completed_cycles'],1)
             self.assertEqual(c['cycles_remaining'],1)
             self.assertEqual(c['reason_code'],'sleep_pressure_high')
-            self.assertEqual(c['preferred_action'],'observe')
+            self.assertEqual(c['preferred_action'],'sleep')
             self.assertEqual(c,packet(host)['next_decision'])
             saved=records(loop,'next')[0]
             self.assertEqual(saved['intent']['cycles_remaining'],2)

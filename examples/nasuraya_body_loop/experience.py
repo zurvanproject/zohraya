@@ -2,7 +2,7 @@
 import re
 from reflection_cycle import canonical
 from .api_host import digest
-from .host import executed_body
+from .host import executed_body, BODY_ACTIONS
 from persistent_embodiment_v1 import ACTIONS
 
 
@@ -22,7 +22,7 @@ def packet(host, *, limit=3):
         preference=max(record['request']['actions'],key=lambda a:a['score']['respect'])['id']
         actual=record['actual_outcome']['selected_action']
         selected=record['selected_action']
-        if preference not in ('walk','observe') or selected not in ('walk','observe') or actual not in ACTIONS:
+        if preference not in BODY_ACTIONS or selected not in BODY_ACTIONS or actual not in ACTIONS:
             raise ValueError('observed experience action outside native vocabulary')
         before=next(e for e in record['request']['evidence'] if e['id']=='body')
         # Revision comes from the source-linked observation and actual returned
