@@ -129,6 +129,10 @@ class BodyAPIHost:
         from .experience import continuation_input
         return continuation_input(self)
 
+    def decision_context(self):
+        from .decision_context import context
+        return context(self)
+
     def snapshot(self):
         body = self.loop.status()['self_model']
         return dict(revision=body['revision'], checkpoint_sha256=body['checkpoint_sha256'],
@@ -221,6 +225,7 @@ class BodyAPIHost:
         from .continuation import calls_remaining
         if calls_remaining(self) == 0:
             raise ToolRejected('persistent body API call budget exhausted')
+        intent_before = self.decision_context() if action['name'] == 'request_body_action' else None
         # Reserve before any effect. Invalid inputs retain only a fingerprint and
         # fixed tool label; request text and full private body data are never stored.
         tool = action['name'] if action['name'] in ('observe_body', 'evaluate_body', 'request_body_action') else 'unknown'
@@ -242,7 +247,7 @@ class BodyAPIHost:
                 self.observed = True
             elif name == 'evaluate_body':
                 self.evaluated = True
-                output = self.evaluate()
+                output = self.evaluate() | {'next_decision': self.decision_context()}
             else:
                 if self.run_progress()['actions_reserved'] >= self.target_cycles:
                     raise ToolRejected('this run body action budget exhausted')
@@ -252,6 +257,8 @@ class BodyAPIHost:
                 observation = json.loads(observation[0]) if observation else None
                 if observation != dict(binding=binding, run_id=self.run_id, checkpoint_sha256=args['observed_checkpoint_sha256']):
                     raise ToolRejected('fresh observation from this run, session and turn required')
+                from .decision_context import save_intent
+                save_intent(self, identity, decision_id, args['action'], intent_before)
                 receipt = self.loop.step(decision_id=decision_id, duration_s=args['duration_s'], preferred_action=args['action'])
                 db.execute("DELETE FROM meta WHERE key='body-api-observation'")
                 result = self._receipt_result(action, receipt)

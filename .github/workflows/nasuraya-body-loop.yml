@@ -46,6 +46,10 @@ jobs:
         run: python3 -m examples.nasuraya_body_loop care-test
       - name: Verify reduced experience in API input without a live service
         run: python3 -m examples.nasuraya_body_loop experience-test
+      - name: Verify saved goal, action intent and unknown-outcome stops
+        run: python3 -m examples.nasuraya_body_loop decision-test
+      - name: Verify prepared persistent-host units without installation
+        run: python3 -m unittest examples.nasuraya_body_loop.deployment.test_prepare_host -v
       - name: Verify persistent API body tools without live service
         run: |
           python3 -m venv .ci-env

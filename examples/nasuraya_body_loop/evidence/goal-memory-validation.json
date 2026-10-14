@@ -1,0 +1,47 @@
+{
+  "schema": "nasuraya-goal-memory-validation/1",
+  "base_commit": "72e5cb4573e7b7ae5d239fae881123e1af701a27",
+  "suites": [
+    {
+      "suite": "decision_context",
+      "passed": 8,
+      "seconds": 43.075,
+      "skipped": 0
+    },
+    {
+      "suite": "experience",
+      "passed": 8,
+      "seconds": 48.484,
+      "skipped": 0
+    },
+    {
+      "suite": "api_sdk",
+      "passed": 55,
+      "seconds": 242.697,
+      "skipped": 0
+    },
+    {
+      "suite": "scheduler",
+      "passed": 24,
+      "seconds": 141.216,
+      "skipped": 0
+    },
+    {
+      "suite": "host_preparation",
+      "passed": 2,
+      "seconds": 0.002,
+      "skipped": 0
+    }
+  ],
+  "total_passed": 97,
+  "synthetic_ablation_conditions": 32,
+  "synthetic_ablation_cases": 4,
+  "real_language_model_ablation": false,
+  "new_live_api_verified": false,
+  "new_live_tool_calls": 0,
+  "new_live_actions": 0,
+  "blocked_goal_read_api_requests": 0,
+  "persistent_host_installed": false,
+  "body_revision_retained": 4,
+  "remaining_live_input": "explicit disclosure approval and reconciliation of unknown API creation outcome"
+}

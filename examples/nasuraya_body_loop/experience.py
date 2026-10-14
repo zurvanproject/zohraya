@@ -42,9 +42,9 @@ def packet(host, *, limit=3):
             recalled_feedback_ids=[identifier(i) for i in record['recalled_feedback_ids'][-3:]],
             verification_scope='committed software-body result with source-linked feedback'))
     recent.sort(key=lambda row:(row['after_revision'],row['decision_id']))
-    value=dict(schema='nasuraya-api-experience/1',scope='generated fixture software-body history',
+    value=dict(schema='nasuraya-api-experience/2',scope='generated fixture software-body history',
                maximum_records=limit,records=recent[-limit:] if limit else [],
-               replay_permission=False)
+               replay_permission=False,next_decision=host.decision_context())
     if len(canonical(value).encode())>4096:
         raise ValueError('experience packet exceeds 4096-byte limit')
     return value
