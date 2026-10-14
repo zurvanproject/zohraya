@@ -28,7 +28,7 @@ def verified_sources():
 
 def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; live API requires explicit api or allowed API wakeup')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'schedule', 'wake', 'wake-watch', 'wake-status', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'care-memory', 'experience-test', 'experience-live-check', 'memory-ablation', 'decision-test', 'intent-status'])
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'schedule', 'wake', 'wake-watch', 'wake-status', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'care-memory', 'experience-test', 'experience-live-check', 'memory-ablation', 'decision-test', 'intent-status', 'creation-test', 'reconcile-api-creation', 'terminal-replay-check'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
@@ -58,10 +58,12 @@ def main(argv=None):
     p.add_argument('--watch-ticks', type=int, default=60)
     p.add_argument('--poll-seconds', type=float, default=1)
     p.add_argument('--allow-live-wakeup', action='store_true')
+    p.add_argument('--confirm-finished-create', action='store_true')
+    p.add_argument('--confirm-exclusive-project-writer', action='store_true')
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'experience-test', 'memory-ablation', 'decision-test'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'experience-test', 'memory-ablation', 'decision-test', 'creation-test'] and args.session is None:
         p.error('--session required')
-    if args.command in ('demo', 'wake-demo', 'care-demo', 'experience-live-check', 'memory-ablation') and args.output_dir is None:
+    if args.command in ('demo', 'wake-demo', 'care-demo', 'experience-live-check', 'memory-ablation', 'terminal-replay-check') and args.output_dir is None:
         p.error('--output-dir required')
     if args.command == 'api' and (args.output_dir is None or not args.model):
         p.error('--output-dir and --model required for explicit live API')
@@ -88,7 +90,7 @@ def main(argv=None):
             shutil.copyfile(SOURCE / name, dest)
         env = dict(os.environ)
         env.pop('OPENAI_API_KEY', None)
-        if args.command in ('api', 'experience-live-check') or (args.command in ('wake', 'wake-watch') and args.allow_live_wakeup):
+        if args.command in ('api', 'experience-live-check', 'reconcile-api-creation') or (args.command in ('wake', 'wake-watch') and args.allow_live_wakeup):
             # The approved ignored file is read only for an explicit live
             # command. The key is inherited by the worker, never serialized.
             key = os.environ.get('OPENAI_API_KEY')
