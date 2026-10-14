@@ -9,6 +9,24 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'terminal-replay-check':
+        from .terminal_replay_check import check
+        return check(args['session'], args['run_id'], args['output_dir'], fresh_process=True)
+    if command == 'creation-test':
+        from . import test_creation_reconciliation
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_creation_reconciliation))
+        return 0 if r.wasSuccessful() else 1
+    if command == 'reconcile-api-creation':
+        from .api_host import BodyAPIHost
+        from .creation_reconciliation import resolve_empty_project
+        from examples.nasuraya_agent_loop.agents_api import make_client
+        with BodyLoop(args['session']) as loop, make_client() as client:
+            host = BodyAPIHost.resume(loop, run_id=args['run_id'])
+            result = resolve_empty_project(host, client.beta.agents.sessions,
+                previous_request_finished=args['confirm_finished_create'],
+                exclusive_project_writer=args['confirm_exclusive_project_writer'])
+        print(json.dumps(result, sort_keys=True))
+        return 0
     if command == 'memory-ablation':
         from .memory_ablation import run
         return run(args['output_dir'])

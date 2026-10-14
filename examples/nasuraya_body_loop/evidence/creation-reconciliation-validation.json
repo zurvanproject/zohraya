@@ -1,0 +1,19 @@
+{
+  "schema": "nasuraya-creation-reconciliation-validation/1",
+  "base_commit": "b9830fcf46b7b5191b97b91a004d924efb9dc3e5",
+  "base_github_ci": "success",
+  "base_workflow_run": 38508090910,
+  "new_synthetic_tests_passed": 10,
+  "additional_existing_recovery_tests_passed": 21,
+  "sdk_version": "3.29.0",
+  "live_model": "gpt-6-astra",
+  "live_goal_completed": true,
+  "live_body_actions": 1,
+  "live_model_tool_calls": 5,
+  "authorized_model_tool_calls": 6,
+  "cold_replay_api_requests": 0,
+  "cold_replay_new_actions": 0,
+  "scheduler_contract_extended": false,
+  "new_grants_issued": 0,
+  "permanent_host_installed": false
+}
