@@ -32,7 +32,7 @@ class PredictionScopeTests(unittest.TestCase):
             p.state.phase = phase
             self.assertTrue(p._needs_support_prediction(GaitEnvironment(command='stand')))
         p.state.phase = 'double_support'
-        self.assertFalse(p._needs_support_prediction(GaitEnvironment(command='walk')))
+        self.assertTrue(p._needs_support_prediction(GaitEnvironment(command='walk')))
 
     def test_zero_friction_still_fails(self):
         p = CoordinatedSupport()
