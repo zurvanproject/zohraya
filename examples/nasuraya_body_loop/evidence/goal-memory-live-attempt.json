@@ -1,0 +1,58 @@
+{
+  "schema": "nasuraya-growth-live-attempt/1",
+  "live_api_verified": false,
+  "body_revision_before": 4,
+  "body_revision_after": 4,
+  "completed_new_cycles": 0,
+  "remaining_actions": 1,
+  "remaining_calls": 6,
+  "model": "gpt-6-astra",
+  "grant_action_limit": 1,
+  "grant_call_limit": 6,
+  "context": {
+    "body": {
+      "checkpoint_sha256": "9b4fcc51b41b95cb59608023bef6388f73c5edc97db409c8fc7efc88003a8951",
+      "revision": 4,
+      "values": {
+        "HR": 62.4761691604279,
+        "RR": 14.40147611166193,
+        "energy": 0.9992207607503952,
+        "fatigue": 0.01268649869211461,
+        "hydration": 0.9999833012516637,
+        "pain": 0.11648001776198037,
+        "sleep_pressure": 0.9503805934859065,
+        "temperature": 37.00005625118433
+      }
+    },
+    "completed_cycles": 0,
+    "cycles_remaining": 1,
+    "goal_reached": false,
+    "goal_source": "body_api_runs/contract",
+    "next_step": "stop",
+    "preferred_action": "observe",
+    "reason_code": "api_creation_outcome_unknown",
+    "reason_scope": "host fixed rule; not model hidden reasoning",
+    "run_actions_remaining": 1,
+    "run_id": "growth-live-20261014",
+    "safe": false,
+    "schema": "nasuraya-next-decision/1",
+    "target_cycles": 1,
+    "tool_calls_remaining": 6
+  },
+  "api_errors": [
+    {
+      "exception_type": "APIConnectionError"
+    }
+  ],
+  "automatic_approval_review": "rejected live test; explicit destination/payload disclosure approval required",
+  "remote_creation_outcome": "unknown; reserved creating state without known session ID",
+  "existing_checkpoint_preserved": true,
+  "retry_or_fresh_session_attempted": false,
+  "cold_blocked_replay": {
+    "status": "recovery_blocked",
+    "api_requests": 0,
+    "new_actions": 0,
+    "budgets_preserved": true,
+    "unknown_outcome_not_promoted": true
+  }
+}

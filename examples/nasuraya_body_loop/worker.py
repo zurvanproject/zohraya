@@ -9,6 +9,19 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'memory-ablation':
+        from .memory_ablation import run
+        return run(args['output_dir'])
+    if command == 'decision-test':
+        from . import test_decision_context
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_decision_context))
+        return 0 if r.wasSuccessful() else 1
+    if command == 'intent-status':
+        from .decision_context import records
+        with BodyLoop(args['session']) as loop:
+            result = records(loop,args['run_id'])
+        print(json.dumps(result,ensure_ascii=False,sort_keys=True))
+        return 0
     if command == 'experience-live-check':
         from .experience_live_check import check
         return check(args['session'],args['wake_id'],args['output_dir'])
@@ -107,7 +120,7 @@ def main(args):
         with BodyLoop(args['session']) as loop:
             host = BodyAPIHost.resume(loop, run_id=args['run_id'])
             print(json.dumps(dict(run_id=host.run_id, evaluation=host.evaluate(),
-                                 self_model=host.snapshot()), ensure_ascii=False, sort_keys=True))
+                                 self_model=host.snapshot(), next_decision=host.decision_context()), ensure_ascii=False, sort_keys=True))
         return 0
     if command == 'authorize-continuation':
         from .continuation import authorize
