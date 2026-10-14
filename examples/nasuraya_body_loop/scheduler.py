@@ -59,8 +59,8 @@ def register(loop, *, wake_id, run_id, due_at, expires_at, model, backend='synth
     due, expiry = timestamp(due_at), timestamp(expires_at)
     if due >= expiry:
         raise ValueError('due time must precede expiry')
-    if backend not in ('synthetic', 'api'):
-        raise ValueError('explicit synthetic or api backend required')
+    if backend not in ('synthetic', 'api', 'care'):
+        raise ValueError('explicit synthetic, care or api backend required')
     if not isinstance(model, str) or not re.fullmatch('[A-Za-z0-9_.-]{1,100}', model):
         raise ValueError('bounded fixed model required')
     if type(max_attempts) is not int or not 1 <= max_attempts <= 3:
@@ -184,6 +184,12 @@ def tick(path, *, wake_id, clock=utcnow, runner=None):
             return save('blocked', 'grant_binding_changed')
         host = BodyAPIHost.resume(loop, run_id=contract['run_id'])
         host.reconcile_receipts()  # Existing recovery; no new effect or API request.
+        if contract['backend'] == 'care':
+            from .care import reconcile
+            try:
+                reconcile(host)
+            except ValueError:
+                return save('blocked', 'care_memory_source_conflict')
         evaluation = host.evaluate()
         names = {r[0] for r in loop.engine.db.execute("SELECT name FROM sqlite_master WHERE type='table'")}
         transport = (loop.engine.db.execute('SELECT * FROM body_api_transport WHERE run_id=?',
@@ -216,7 +222,11 @@ def tick(path, *, wake_id, clock=utcnow, runner=None):
             loop.engine.db.execute("UPDATE body_wakeups SET state='running',attempts=attempts+1,"
                 "last_checked_at=?,last_status='claimed' WHERE id=?", (now.isoformat(), wake_id))
         guarded = WindowHost(host, contract, clock=clock)
-        execute = runner or (api_runner if contract['backend'] == 'api' else synthetic_runner)
+        if contract['backend'] == 'care':
+            from .care import runner as care_runner
+            execute = runner or care_runner
+        else:
+            execute = runner or (api_runner if contract['backend'] == 'api' else synthetic_runner)
         try:
             result = execute(guarded, contract, min(contract['timeout_seconds'], remaining))
         except Exception as exc:
@@ -238,6 +248,6 @@ def tick(path, *, wake_id, clock=utcnow, runner=None):
             return save('completed', 'completed', attempted=True)
         if now >= timestamp(contract['expires_at_utc']) or guarded.monotonic() >= guarded.deadline:
             return save('expired', 'window_closed', attempted=True)
-        if status in ('stream_incomplete', 'timeout', 'api_error'):
+        if status in ('stream_incomplete', 'timeout', 'api_error', 'yielded'):
             return save('pending', status, attempted=True)
         return save('blocked', status, attempted=True)

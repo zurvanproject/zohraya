@@ -1,0 +1,259 @@
+{
+  "schema": "nasuraya-care-continuity-demo/1",
+  "status": "completed",
+  "generated_fixture": true,
+  "real_host_clock_polling": true,
+  "separate_cli_processes": true,
+  "live_model_execution": false,
+  "api_network_requests": 0,
+  "permanent_service_installed": false,
+  "seed_body_action": "protect",
+  "seed_requested_action": "walk",
+  "initial_revision": 1,
+  "final_revision": 3,
+  "grant": {
+    "grant_id": "care-grant",
+    "run_id": "care-goal",
+    "additional_actions": 2,
+    "additional_calls": 8,
+    "observed_checkpoint_sha256": "a91e20f1ad6bf2ed99ff1572fa9d39e791d395ca89ab743f48d457b188bc4af7",
+    "schema": "nasuraya-body-continuation-grant/1",
+    "authorized_at_utc": "2026-10-14T02:44:57.120332+00:00",
+    "previous_completed_cycles": 1,
+    "previous_action_limit": 1,
+    "previous_run_ids": [
+      "care-old"
+    ],
+    "base_api_call_limit": 8
+  },
+  "schedule": {
+    "backend": "care",
+    "due_at_utc": "2026-10-14T02:44:59.120546+00:00",
+    "expires_at_utc": "2026-10-14T02:46:59.120546+00:00",
+    "grant_id": "care-grant",
+    "grant_sha256": "24b622d6803a625576a25b72d34872bef10895dbe780e60a8e536fd2f38b1082",
+    "max_attempts": 3,
+    "model": "deterministic-fixture",
+    "retry_delay_seconds": 1,
+    "run_id": "care-goal",
+    "schema": "nasuraya-scheduled-wakeup/1",
+    "timeout_seconds": 60,
+    "wake_id": "care-wake"
+  },
+  "checks": [
+    {
+      "at_utc": "2026-10-14T02:44:57.343610+00:00",
+      "dispatcher_pid": 7,
+      "state": "pending",
+      "attempts": 0,
+      "status": null,
+      "execution_started": false
+    },
+    {
+      "at_utc": "2026-10-14T02:44:59.166741+00:00",
+      "dispatcher_pid": 9,
+      "state": "pending",
+      "attempts": 1,
+      "status": "yielded",
+      "execution_started": true
+    },
+    {
+      "at_utc": "2026-10-14T02:45:02.418948+00:00",
+      "dispatcher_pid": 11,
+      "state": "completed",
+      "attempts": 2,
+      "status": "completed",
+      "execution_started": true
+    }
+  ],
+  "evaluation": {
+    "goal_reached": true,
+    "completed_cycles": 2,
+    "failed_cycles": 0,
+    "run_actions_remaining": 0,
+    "actions_remaining": 0,
+    "unresolved": false,
+    "safe": true,
+    "target_cycles": 2,
+    "tool_calls_remaining": 0
+  },
+  "episodes": [
+    {
+      "body_actual": "observe",
+      "core_selected": "observe",
+      "decision_id": "body-api-6035dbdd37fa3ff213a0436b81815a2fa545664484755c55263d25ca7b78d6bf",
+      "decision_sha256": "fad5c7ec78c3395142e3d9260cc19452e56d06749fd1ffe6030b67154cdd2392",
+      "delta": {
+        "HR": 0.033557022079406806,
+        "RR": 0.020002842663423337,
+        "energy": -9.58606513234983e-06,
+        "fatigue": 0.00015284938183270612,
+        "hydration": -2.070963415201632e-07,
+        "pain": 0.00017443973706016136,
+        "sleep_pressure": 4.585465628537122e-06,
+        "temperature": 6.694541809793009e-09
+      },
+      "evidence_scope": "derived from stored observation and committed body receipt; not a new effect",
+      "expected_outcome_matched": true,
+      "observed_after": {
+        "checkpoint_sha256": "a7702ead0a704a7f9a09234aaf8c0e421a7134375fb6bf1a37b082e982cc89bb",
+        "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+        "minimum_state": {
+          "HR": 62.12159481403049,
+          "RR": 14.207644449385326,
+          "arousal": 0.3301920429540373,
+          "balance": 1.0,
+          "breath_depth": 1.527231263132158,
+          "energy": 0.9993262794912033,
+          "fatigue": 0.011005155491954842,
+          "hydration": 0.9999855807728313,
+          "muscle_tone": 0.2705258940500191,
+          "pain": 0.11502062335003267,
+          "parasympathetic": 0.6134635297814512,
+          "posture": "double_support",
+          "sleep_pressure": 0.9503301535252557,
+          "sympathetic": 0.24629028698951158,
+          "temperature": 37.00005618206671,
+          "valence": 0.0014814052783000383
+        },
+        "revision": 2,
+        "scope": "existing software body; generated fixture, not biological measurement",
+        "self_location": {
+          "dominant_homeostatic_need": "sleep",
+          "energy": 0.9993262794912033,
+          "evidence_level": "B",
+          "next_move_prediction": "available by forecast(action, duration, inputs)",
+          "pose": "double_support",
+          "position_m": [
+            0.0,
+            0.0,
+            1.314
+          ],
+          "strongest_interoceptive_region": "head_state",
+          "where": "Tadash computational world: X left, Y forward, Z up; metres"
+        },
+        "simulated_wall_utc": "2026-01-01T00:00:07.200000+00:00"
+      },
+      "observed_before": {
+        "checkpoint_sha256": "a91e20f1ad6bf2ed99ff1572fa9d39e791d395ca89ab743f48d457b188bc4af7",
+        "minimum_state": {
+          "HR": 62.08803779195108,
+          "RR": 14.187641606721902,
+          "energy": 0.9993358655563357,
+          "fatigue": 0.010852306110122136,
+          "hydration": 0.9999857878691728,
+          "pain": 0.11484618361297251,
+          "sleep_pressure": 0.9503255680596272,
+          "temperature": 37.000056175372166
+        },
+        "revision": 1,
+        "scope": "generated_fixture_software_body",
+        "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+      },
+      "policy": {
+        "duration_s": 0.1,
+        "preferred_action": "observe",
+        "reasons": [
+          "sleep_pressure_high"
+        ],
+        "schema": "nasuraya-fixture-care-policy/1",
+        "scope": "authored deterministic fixture policy; native guards retain control"
+      },
+      "recalled_feedback_ids": [
+        "body-api-2f8af110dc3cd94f2f8d8106139bb62863e96195f017a7a2dbe20d55ea94b715"
+      ],
+      "run_id": "care-goal",
+      "schema": "nasuraya-care-episode/1"
+    },
+    {
+      "body_actual": "observe",
+      "core_selected": "observe",
+      "decision_id": "body-api-da5f997c0458ce9496c7e9043721632f7c09a431ccbefbdd3dd8fcedac7742af",
+      "decision_sha256": "9e2905d32904242d9136cea89f3720f7d0d6ae5079be6742af2bdff3bd335490",
+      "delta": {
+        "HR": 0.03335054381422253,
+        "RR": 0.01958175404107898,
+        "energy": -9.58719541033215e-06,
+        "fatigue": 0.00015284938183270612,
+        "hydration": -2.0711911619120116e-07,
+        "pain": 0.00016593351003582613,
+        "sleep_pressure": 4.585465628537122e-06,
+        "temperature": 6.624340187499911e-09
+      },
+      "evidence_scope": "derived from stored observation and committed body receipt; not a new effect",
+      "expected_outcome_matched": true,
+      "observed_after": {
+        "checkpoint_sha256": "397c4d1018c336fac412809598136bf524c956bc0618597680e3056116560600",
+        "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+        "minimum_state": {
+          "HR": 62.15494535784471,
+          "RR": 14.227226203426405,
+          "arousal": 0.3301950677745717,
+          "balance": 1.0,
+          "breath_depth": 1.5298445642205536,
+          "energy": 0.999316692295793,
+          "fatigue": 0.011158004873787548,
+          "hydration": 0.9999853736537151,
+          "muscle_tone": 0.2709178180051839,
+          "pain": 0.1151865568600685,
+          "parasympathetic": 0.6135579232795288,
+          "posture": "double_support",
+          "sleep_pressure": 0.9503347389908843,
+          "sympathetic": 0.24673301645108084,
+          "temperature": 37.00005618869105,
+          "valence": 0.0022083349367506915
+        },
+        "revision": 3,
+        "scope": "existing software body; generated fixture, not biological measurement",
+        "self_location": {
+          "dominant_homeostatic_need": "sleep",
+          "energy": 0.999316692295793,
+          "evidence_level": "B",
+          "next_move_prediction": "available by forecast(action, duration, inputs)",
+          "pose": "double_support",
+          "position_m": [
+            0.0,
+            0.0,
+            1.314
+          ],
+          "strongest_interoceptive_region": "head_state",
+          "where": "Tadash computational world: X left, Y forward, Z up; metres"
+        },
+        "simulated_wall_utc": "2026-01-01T00:00:07.300000+00:00"
+      },
+      "observed_before": {
+        "checkpoint_sha256": "a7702ead0a704a7f9a09234aaf8c0e421a7134375fb6bf1a37b082e982cc89bb",
+        "minimum_state": {
+          "HR": 62.12159481403049,
+          "RR": 14.207644449385326,
+          "energy": 0.9993262794912033,
+          "fatigue": 0.011005155491954842,
+          "hydration": 0.9999855807728313,
+          "pain": 0.11502062335003267,
+          "sleep_pressure": 0.9503301535252557,
+          "temperature": 37.00005618206671
+        },
+        "revision": 2,
+        "scope": "generated_fixture_software_body",
+        "simulated_wall_utc": "2026-01-01T00:00:07.200000+00:00"
+      },
+      "policy": {
+        "duration_s": 0.1,
+        "preferred_action": "observe",
+        "reasons": [
+          "sleep_pressure_high"
+        ],
+        "schema": "nasuraya-fixture-care-policy/1",
+        "scope": "authored deterministic fixture policy; native guards retain control"
+      },
+      "recalled_feedback_ids": [
+        "body-api-2f8af110dc3cd94f2f8d8106139bb62863e96195f017a7a2dbe20d55ea94b715",
+        "body-api-6035dbdd37fa3ff213a0436b81815a2fa545664484755c55263d25ca7b78d6bf"
+      ],
+      "run_id": "care-goal",
+      "schema": "nasuraya-care-episode/1"
+    }
+  ],
+  "terminal_replay_execution_started": false,
+  "history_preserved_on_terminal_replay": true
+}
