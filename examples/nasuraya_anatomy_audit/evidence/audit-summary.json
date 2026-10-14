@@ -1,0 +1,353 @@
+{
+  "schema": "nasuraya-anatomy-motion-audit/1",
+  "geometry": {
+    "evidence_level": "declared uncalibrated model parameters",
+    "height_excluding_horns_cm": 250,
+    "mass_kg": 195.0,
+    "landmarks_z_cm": {
+      "horn_tip": 268,
+      "crown": 250,
+      "shoulder": 206,
+      "hip": 142,
+      "knee": 85,
+      "hock": 38
+    },
+    "leg_lengths_cm": [
+      59.97275261316592,
+      52.44099541389351,
+      42.922274124281905
+    ],
+    "leg_segment_fractions": [
+      0.3860839989499374,
+      0.3375971309655471,
+      0.27631887008451544
+    ],
+    "foot_external_design_cm": {
+      "toes_per_foot": 3,
+      "length_cm": 52,
+      "spread_width_cm": 26,
+      "contact_area_each_cm2": 450,
+      "pad_layers": [
+        "pressure_sensing",
+        "viscoelastic_damping",
+        "vascular_thermal"
+      ]
+    },
+    "loaded_contact_area_each_cm2": 392.66515249806537,
+    "loaded_area_equals_external_target": false,
+    "hip_joint_spacing_cm": 28.000000000000004,
+    "tail_length_cm": 120.0,
+    "tail_mass_kg": 10.0,
+    "horns": {
+      "count": 2,
+      "arc_length_cm_range": [
+        27,
+        31
+      ],
+      "rise_cm": 18,
+      "paired_root_sensor": true,
+      "atlas_arc_length_cm": 30.8,
+      "tissue_layers": [
+        "cranial bony core",
+        "vascular and innervated root bed",
+        "protective keratin sheath"
+      ],
+      "sensor_location": "mechanosensory low-energy lobes at root bed, not an innervated keratin sheath",
+      "thermal_coupling": "bounded vascular exchange at the base, separate from brain thermal protection"
+    },
+    "separate_horn_mass_kg": null,
+    "measured_head_neck_shoulder_width_cm": null,
+    "actual_muscle_volume_cm3": null,
+    "collision_mesh_available": false,
+    "rotating_contact_patches": false,
+    "coordinate_scope": "3D joint points and fixed planar contact centres; no body surface mesh"
+  },
+  "paired_trials": [
+    {
+      "case": "standing",
+      "summary": {
+        "frames": 20,
+        "simulated_s": 2.0,
+        "valid_throughout": true,
+        "failure": null,
+        "phase": "double_support",
+        "visited_phases": [
+          "double_support"
+        ],
+        "new_walk_touchdowns": 0,
+        "single_support_reached": false,
+        "fuel_used_J": 786.2578724228383,
+        "peak_pressure_kpa": 92.01407884080554,
+        "peak_joint_force_N": 1015.6434006073804,
+        "min_support_fraction": 1.0,
+        "max_segment_length_error_m": 2.220446049250313e-16,
+        "max_tail_torque_norm_Nm": 0.26624130922251305,
+        "slipped_distance_m": null,
+        "collision_clearance_m": null
+      },
+      "paired_exact": true
+    },
+    {
+      "case": "left_support_and_return",
+      "summary": {
+        "frames": 150,
+        "simulated_s": 15.0,
+        "valid_throughout": true,
+        "failure": null,
+        "phase": "double_support",
+        "visited_phases": [
+          "double_support",
+          "lift",
+          "lower",
+          "settle",
+          "shift",
+          "single_support"
+        ],
+        "new_walk_touchdowns": 0,
+        "single_support_reached": true,
+        "fuel_used_J": 7114.4343334900495,
+        "peak_pressure_kpa": 300.0,
+        "peak_joint_force_N": 1911.7191501813572,
+        "min_support_fraction": 1.0,
+        "max_segment_length_error_m": 4.440892098500626e-16,
+        "max_tail_torque_norm_Nm": 6.367728427237568,
+        "slipped_distance_m": null,
+        "collision_clearance_m": null
+      },
+      "paired_exact": true
+    },
+    {
+      "case": "right_support_and_return",
+      "summary": {
+        "frames": 150,
+        "simulated_s": 15.0,
+        "valid_throughout": true,
+        "failure": null,
+        "phase": "double_support",
+        "visited_phases": [
+          "double_support",
+          "lift",
+          "lower",
+          "settle",
+          "shift",
+          "single_support"
+        ],
+        "new_walk_touchdowns": 0,
+        "single_support_reached": true,
+        "fuel_used_J": 7084.961156092061,
+        "peak_pressure_kpa": 300.0,
+        "peak_joint_force_N": 1911.7191501775858,
+        "min_support_fraction": 1.0,
+        "max_segment_length_error_m": 3.3306690738754696e-16,
+        "max_tail_torque_norm_Nm": 6.367728427237673,
+        "slipped_distance_m": null,
+        "collision_clearance_m": null
+      },
+      "paired_exact": true
+    },
+    {
+      "case": "walking_and_stopping",
+      "summary": {
+        "frames": 280,
+        "simulated_s": 28.0,
+        "valid_throughout": true,
+        "failure": null,
+        "phase": "double_support",
+        "visited_phases": [
+          "double_support",
+          "settle",
+          "shift",
+          "walk_swing"
+        ],
+        "new_walk_touchdowns": 4,
+        "single_support_reached": false,
+        "fuel_used_J": 15103.543219310648,
+        "peak_pressure_kpa": 300.0,
+        "peak_joint_force_N": 1911.6538658217232,
+        "min_support_fraction": 1.0,
+        "max_segment_length_error_m": 3.3306690738754696e-16,
+        "max_tail_torque_norm_Nm": 5.06648572046749,
+        "slipped_distance_m": null,
+        "collision_clearance_m": null
+      },
+      "paired_exact": true
+    },
+    {
+      "case": "impulse_tail_enabled",
+      "summary": {
+        "frames": 40,
+        "simulated_s": 4.0,
+        "valid_throughout": true,
+        "failure": null,
+        "phase": "double_support",
+        "visited_phases": [
+          "double_support"
+        ],
+        "new_walk_touchdowns": 0,
+        "single_support_reached": false,
+        "fuel_used_J": 1547.1598445875454,
+        "peak_pressure_kpa": 107.69567329922566,
+        "peak_joint_force_N": 1060.3267026129183,
+        "min_support_fraction": 1.0,
+        "max_segment_length_error_m": 3.3306690738754696e-16,
+        "max_tail_torque_norm_Nm": 0.2662413092225164,
+        "slipped_distance_m": null,
+        "collision_clearance_m": null
+      },
+      "paired_exact": true
+    },
+    {
+      "case": "impulse_tail_disabled",
+      "summary": {
+        "frames": 40,
+        "simulated_s": 4.0,
+        "valid_throughout": true,
+        "failure": null,
+        "phase": "double_support",
+        "visited_phases": [
+          "double_support"
+        ],
+        "new_walk_touchdowns": 0,
+        "single_support_reached": false,
+        "fuel_used_J": 1547.1246129586418,
+        "peak_pressure_kpa": 107.6784677913902,
+        "peak_joint_force_N": 1059.8940028855193,
+        "min_support_fraction": 1.0,
+        "max_segment_length_error_m": 3.3306690738754696e-16,
+        "max_tail_torque_norm_Nm": 0.0,
+        "slipped_distance_m": null,
+        "collision_clearance_m": null
+      },
+      "paired_exact": true
+    },
+    {
+      "case": "zero_friction_negative_control",
+      "summary": {
+        "frames": 1,
+        "simulated_s": 0.1,
+        "valid_throughout": false,
+        "failure": "friction_limit_exceeded",
+        "phase": "failed",
+        "visited_phases": [
+          "failed"
+        ],
+        "new_walk_touchdowns": 0,
+        "single_support_reached": false,
+        "fuel_used_J": 42.844012156352626,
+        "peak_pressure_kpa": 93.88755932583626,
+        "peak_joint_force_N": 1053.742563502868,
+        "min_support_fraction": 1.0,
+        "max_segment_length_error_m": 1.1102230246251565e-16,
+        "max_tail_torque_norm_Nm": 0.26624130922251305,
+        "slipped_distance_m": null,
+        "collision_clearance_m": null
+      },
+      "paired_exact": true
+    },
+    {
+      "case": "known_regional_danger",
+      "summary": {
+        "frames": 1,
+        "simulated_s": 0.1,
+        "valid_throughout": false,
+        "failure": "insufficient_joint_or_energy_support",
+        "phase": "failed",
+        "visited_phases": [
+          "failed"
+        ],
+        "new_walk_touchdowns": 0,
+        "single_support_reached": false,
+        "fuel_used_J": 32.7181715964701,
+        "peak_pressure_kpa": 0.0,
+        "peak_joint_force_N": 1015.6434006073804,
+        "min_support_fraction": 0.0,
+        "max_segment_length_error_m": 1.1102230246251565e-16,
+        "max_tail_torque_norm_Nm": 0.26624130922251305,
+        "slipped_distance_m": null,
+        "collision_clearance_m": null
+      },
+      "paired_exact": true
+    }
+  ],
+  "original_checkpoints_unchanged": true,
+  "current_live_goal_revision": 5,
+  "star_practice_revision": 215,
+  "new_full_body_mission": false,
+  "live_API_calls": 0,
+  "unsupported_commands": [
+    {
+      "command": "turn",
+      "rejected": true,
+      "state_unchanged": true
+    },
+    {
+      "command": "squat",
+      "rejected": true,
+      "state_unchanged": true
+    },
+    {
+      "command": "stair",
+      "rejected": true,
+      "state_unchanged": true
+    }
+  ],
+  "saved_sleep_walk_veto": {
+    "source_revision": 5,
+    "requested": "walk",
+    "selected": "protect",
+    "physical_valid": true,
+    "source_ledger_changed": false
+  },
+  "accessory_head_check": {
+    "before": {
+      "elbow_L": 1.119528004891435,
+      "elbow_R": 1.119528004891435,
+      "head_pitch": -0.01952800489143574,
+      "head_yaw": 0.0,
+      "shoulder_L": 0.26952800489143575,
+      "shoulder_R": 0.26952800489143575
+    },
+    "after": {
+      "elbow_L": 1.119528004891435,
+      "elbow_R": 1.119528004891435,
+      "head_pitch": 0.010901917166516657,
+      "head_yaw": 0.030429922057952394,
+      "shoulder_L": 0.26952800489143575,
+      "shoulder_R": 0.26952800489143575
+    },
+    "paid_work_J": 0.9128976617385719,
+    "physical_valid": true,
+    "scope": "bounded accessory angle/energy proxy; head mesh and neck reaction forces absent"
+  },
+  "runtime_manifest_sha256": "b3b95a88885d903f638efbc26ed693bf7a211460a5adae6dd9abfa12ac7720ef",
+  "runtime_verified_files": 70,
+  "visual_revision": {
+    "schema": "nasuraya-visual-leg-revision/1",
+    "native_geometry_changed": false,
+    "mass_changed": false,
+    "force_limits_changed": false,
+    "modifications": [
+      "short fine fur following the muscle contour",
+      "smooth calf-to-ankle transition without boot-like fur cuff",
+      "longer-looking instep aligned with the retained hock-to-anchor segment",
+      "three smoothly integrated broad toes with short rounded nails",
+      "preserve the plantar pad and load-bearing width; do not shrink the foot"
+    ],
+    "mechanical_geometry_source": "unchanged contact_design_v06.json",
+    "status": "authored rendering specification; no deformable 3D mesh"
+  },
+  "measured_mechanical_improvement": false,
+  "mesh_validation": false,
+  "interpretation": "paired equality preserves the reduced mechanics; beauty and mesh geometry remain authored",
+  "source_commits": {
+    "motion": "14410b0ae2748ba51bf84d360b9189665c435974",
+    "live_continuity": "4db2caee1c4fd87d85c6c3c71a1179adc4cb0b7d"
+  },
+  "verified_main_continuity_ci_run": 38510459003,
+  "verified_main_continuity_ci_result": "success",
+  "new_regression_tests_passed": 5,
+  "case_count": 8,
+  "paired_run_count": 16,
+  "native_physical_substeps": 1364,
+  "aggregate_physical_trial_seconds": 136.4
+}
