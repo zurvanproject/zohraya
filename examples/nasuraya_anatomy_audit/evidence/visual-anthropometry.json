@@ -1,0 +1,73 @@
+{
+  "schema": "nasuraya-visual-anthropometry/1",
+  "source": "exec-65106cc2-d115-4269-9f33-f1f6cff80d40.png",
+  "source_sha256": "7ee1879afcc03e1b48d70729cc9b45fa05d5ef1d22fe377ca8dfde9ad6a9eef1",
+  "method": "manual approximate 2D landmarks, not automated pose estimation or measured anatomy",
+  "image_size_px": [
+    1145,
+    1374
+  ],
+  "landmarks": {
+    "crown": {
+      "y_px": 55,
+      "uncertainty_px": 20
+    },
+    "chin": {
+      "y_px": 230,
+      "uncertainty_px": 12
+    },
+    "shoulder": {
+      "y_px": 285,
+      "uncertainty_px": 15
+    },
+    "hip_proxy": {
+      "y_px": 610,
+      "uncertainty_px": 40
+    },
+    "knee": {
+      "y_px": 877,
+      "uncertainty_px": 15
+    },
+    "hock_side_proxy": {
+      "y_px": 1140,
+      "uncertainty_px": 30
+    },
+    "ground": {
+      "y_px": 1280,
+      "uncertainty_px": 8
+    }
+  },
+  "head_units_estimate": 7.0,
+  "normalized_height_estimates": {
+    "crown": 1.0,
+    "shoulder": 0.8122448979591836,
+    "hip_proxy": 0.5469387755102041,
+    "knee": 0.3289795918367347,
+    "hock_side_proxy": 0.11428571428571428
+  },
+  "model_normalized_heights": {
+    "crown": 1.0,
+    "shoulder": 0.824,
+    "hip": 0.568,
+    "knee": 0.34,
+    "hock": 0.152
+  },
+  "observed_visual_limits": [
+    "hip position inferred through fitted shorts",
+    "cranial crown obscured by hair",
+    "hock partly hidden by fur",
+    "no actual centimetre scale",
+    "no source rear-view image",
+    "muscle volume and foot underside unmeasured"
+  ],
+  "unknown_dimensions": [
+    "true head size",
+    "neck length",
+    "bony shoulder width",
+    "bony pelvic width",
+    "chest and waist circumference",
+    "actual muscle volume",
+    "foot plantar contact area"
+  ],
+  "revision_reason": "reduce paw-like rounded toe bulbs, coarse fur cuffs and large claws; show a continuous instep and rounded short nails"
+}
