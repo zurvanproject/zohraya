@@ -14,9 +14,9 @@ def main(args):
         r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))
         return 0 if r.wasSuccessful() else 1
     if command == 'api-test':
-        from . import test_api_host, test_api_recovery, test_continuation
+        from . import test_api_host, test_api_recovery, test_continuation, test_recovery
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
-                                   for m in (test_api_host, test_api_recovery, test_continuation))
+                                   for m in (test_api_host, test_api_recovery, test_continuation, test_recovery))
         r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command == 'api':
@@ -61,7 +61,7 @@ def main(args):
             rows = []
             for i in range(args['steps']):
                 observation = loop.observe()
-                result = loop.step(duration_s=args['duration_s'])
+                result = loop.step(duration_s=args['duration_s'], preferred_action=args.get('preferred_action', 'walk'))
                 rows.append({'before': observation, 'outcome': result})
                 if result['status'] != 'complete':
                     break
@@ -78,7 +78,7 @@ def main(args):
             loop = BodyLoop(args['session'])
         with loop:
             if command == 'observe': summary = loop.observe()
-            elif command == 'step': summary = loop.step(decision_id=args['decision_id'], duration_s=args['duration_s'])
+            elif command == 'step': summary = loop.step(decision_id=args['decision_id'], duration_s=args['duration_s'], preferred_action=args.get('preferred_action', 'walk'))
             else: summary = loop.status()
     print(json.dumps(summary,ensure_ascii=False,sort_keys=True))
     if command == 'demo':

@@ -17,6 +17,7 @@ from synthetic_fixture import prepare_defaults, synthetic_body
 
 KEY = 'nasuraya-body-loop'
 SCHEMA = 'nasuraya-bounded-body-loop/1'
+BODY_ACTIONS = ('walk', 'observe', 'sleep', 'rest')
 
 
 def session_lock(path, *, create=False):
@@ -86,7 +87,7 @@ class BodyLoop:
 
     @classmethod
     def start(cls, path, *, fixture='normal', mode='bounded', max_actions=3):
-        if fixture not in ('normal', 'sleep') or mode not in ('observe', 'bounded'):
+        if fixture not in ('normal', 'sleep', 'recovery-ready') or mode not in ('observe', 'bounded'):
             raise ValueError('explicit fixture and bounded mode required')
         if type(max_actions) is not int or not 0 <= max_actions <= 100:
             raise ValueError('max_actions must be 0..100')
@@ -96,7 +97,11 @@ class BodyLoop:
         lock = session_lock(path, create=True)
         try:
             prepare_defaults()
-            body = sleep_fixture() if fixture == 'sleep' else synthetic_body()
+            if fixture == 'recovery-ready':
+                from .recovery import recovery_ready_fixture
+                body = recovery_ready_fixture()
+            else:
+                body = sleep_fixture() if fixture == 'sleep' else synthetic_body()
             config = {'fixture': fixture, 'mode': mode, 'max_actions': max_actions,
                       'context': 'bounded-body-loop/' + fixture,
                       'initial_checkpoint_sha256': body.checkpoint()['sha256']}
@@ -147,7 +152,7 @@ class BodyLoop:
                     'source_sha256': snapshot['checkpoint_sha256'],
                     'claim': {'key': 'body_revision', 'value': snapshot['revision']}, 'expires_at': at}
         actions = []
-        for action in ('walk', 'observe'):
+        for action in BODY_ACTIONS:
             preference = .9 if action == preferred_action else .6
             actions.append({'id': action, 'body_action': action,
                 'score': dict(respect=preference, honesty=preference, balance=preference,
@@ -158,15 +163,23 @@ class BodyLoop:
                 'claims': [], 'requires_evidence': ['body'],
                 'requires_tools': ['body_cycle'], 'violates_goals': [],
                 'expected_outcome': {'status': 'completed', 'selected_action': action}})
-        return {'id': decision_id, 'context': self.config['context'], 'topic': 'optional-motion',
+        # A high-sleep veto belongs to recovery-needed motion. Once a fresh
+        # observation is ready for work, do not apply that stale condition's
+        # penalty to the changed context. Existing sleepy ledgers retain recall.
+        from .recovery import recommended_action
+        recovered = recommended_action(snapshot['minimum_state']) == 'walk' and any(
+            executed_body(r) and r['actual_outcome']['selected_action'] in ('sleep', 'rest')
+            for r in self.records())
+        topic = 'optional-motion/ready' if recovered else 'optional-motion'
+        return {'id': decision_id, 'context': self.config['context'], 'topic': topic,
                 'goal': 'Exercise local body decisions while preserving its native protection',
                 'goals': [{'id': 'native_protection', 'required': True}],
                 'at_utc': at, 'evidence': [evidence], 'tools': {'body_cycle': 'ok'}, 'actions': actions}
 
     def step(self, *, decision_id=None, duration_s=.1, preferred_action='walk'):
         validate_duration(duration_s)
-        if preferred_action not in ('walk', 'observe'):
-            raise ValueError('preferred_action must be walk or observe')
+        if preferred_action not in BODY_ACTIONS:
+            raise ValueError('preferred_action must be walk, observe, sleep or rest')
         records = self.records()
         if decision_id is None:
             decision_id = 'body-loop-step-' + str(len(records) + 1)
