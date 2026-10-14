@@ -1,0 +1,26 @@
+{
+  "schema": "nasuraya-care-continuity-validation/1",
+  "base_commit": "6114d8fb6c6e6e61307b80386787e72c36c8c534",
+  "suites": [
+    {
+      "suite": "care",
+      "command": "python -m examples.nasuraya_body_loop care-test",
+      "passed": 10,
+      "seconds": 73.718,
+      "skipped": 0
+    },
+    {
+      "suite": "wake_regressions",
+      "command": "python -m examples.nasuraya_body_loop wake-test",
+      "passed": 24,
+      "seconds": 124.52,
+      "skipped": 0
+    }
+  ],
+  "new_care_tests": 10,
+  "total_fresh_tests_passed": 34,
+  "live_api_executed": false,
+  "separate_process_real_clock_fixture_demo": "care-continuity-demo.json",
+  "cold_memory_cli_matched_saved_evidence": true,
+  "native_body_and_authorization_modified": false
+}

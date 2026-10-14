@@ -9,6 +9,21 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'care-memory':
+        from .care import reconcile
+        from .api_host import BodyAPIHost
+        with BodyLoop(args['session']) as loop:
+            host = BodyAPIHost.resume(loop, run_id=args['run_id'])
+            result = reconcile(host)
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0
+    if command == 'care-test':
+        from . import test_care
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_care))
+        return 0 if r.wasSuccessful() else 1
+    if command == 'care-demo':
+        from .care_demo import demo
+        return demo(args['output_dir'])
     if command == 'wake-demo':
         from .wake_demo import demo
         return demo(args['output_dir'])

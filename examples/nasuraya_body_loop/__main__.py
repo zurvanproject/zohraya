@@ -28,7 +28,7 @@ def verified_sources():
 
 def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; live API requires explicit api or allowed API wakeup')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'schedule', 'wake', 'wake-watch', 'wake-status', 'wake-test', 'wake-demo'])
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'schedule', 'wake', 'wake-watch', 'wake-status', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'care-memory'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
@@ -52,16 +52,16 @@ def main(argv=None):
     p.add_argument('--wake-id')
     p.add_argument('--due-at')
     p.add_argument('--expires-at')
-    p.add_argument('--wake-backend', choices=['synthetic', 'api'], default='synthetic')
+    p.add_argument('--wake-backend', choices=['synthetic', 'api', 'care'], default='synthetic')
     p.add_argument('--wake-attempts', type=int, default=3)
     p.add_argument('--retry-delay-seconds', type=float, default=30)
     p.add_argument('--watch-ticks', type=int, default=60)
     p.add_argument('--poll-seconds', type=float, default=1)
     p.add_argument('--allow-live-wakeup', action='store_true')
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test', 'wake-test', 'wake-demo'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test', 'wake-test', 'wake-demo', 'care-test', 'care-demo'] and args.session is None:
         p.error('--session required')
-    if args.command in ('demo', 'wake-demo') and args.output_dir is None:
+    if args.command in ('demo', 'wake-demo', 'care-demo') and args.output_dir is None:
         p.error('--output-dir required')
     if args.command == 'api' and (args.output_dir is None or not args.model):
         p.error('--output-dir and --model required for explicit live API')
