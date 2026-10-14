@@ -125,6 +125,10 @@ class BodyAPIHost:
                      parameters=dict(type='object', properties=props, required=list(props), additionalProperties=False))
                 for name, description, props in specs]
 
+    def continuation_input(self):
+        from .experience import continuation_input
+        return continuation_input(self)
+
     def snapshot(self):
         body = self.loop.status()['self_model']
         return dict(revision=body['revision'], checkpoint_sha256=body['checkpoint_sha256'],

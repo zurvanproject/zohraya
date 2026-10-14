@@ -9,6 +9,13 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'experience-live-check':
+        from .experience_live_check import check
+        return check(args['session'],args['wake_id'],args['output_dir'])
+    if command == 'experience-test':
+        from . import test_experience
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_experience))
+        return 0 if r.wasSuccessful() else 1
     if command == 'care-memory':
         from .care import reconcile
         from .api_host import BodyAPIHost
