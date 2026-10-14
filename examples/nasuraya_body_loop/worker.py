@@ -9,6 +9,51 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'wake-demo':
+        from .wake_demo import demo
+        return demo(args['output_dir'])
+    if command == 'wake-test':
+        from . import test_scheduler
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_scheduler))
+        return 0 if r.wasSuccessful() else 1
+    if command == 'schedule':
+        from .scheduler import register
+        with BodyLoop(args['session']) as loop:
+            result = register(loop, wake_id=args['wake_id'], run_id=args['run_id'],
+                due_at=args['due_at'], expires_at=args['expires_at'], model=args['model'],
+                backend=args['wake_backend'], max_attempts=args['wake_attempts'],
+                timeout_seconds=args['timeout_seconds'], retry_delay_seconds=args['retry_delay_seconds'])
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0
+    if command in ('wake', 'wake-watch', 'wake-status'):
+        import time
+        from .scheduler import schedules, tick, TERMINAL
+        try:
+            with BodyLoop(args['session']) as loop:
+                rows = schedules(loop)
+        except BlockingIOError:
+            rows = None
+        if command == 'wake-status':
+            print(json.dumps(dict(state='busy') if rows is None else rows, ensure_ascii=False, sort_keys=True))
+            return 0
+        selected = next((r for r in rows or [] if r['id'] == args['wake_id']), None)
+        if rows is not None and selected is None:
+            raise ValueError('saved wakeup required')
+        if selected and selected['contract']['backend'] == 'api' and not args['allow_live_wakeup']:
+            raise ValueError('saved API wakeup requires explicit --allow-live-wakeup')
+        if rows is None:
+            # Do not dispatch an uninspected live schedule while another host owns it.
+            print(json.dumps(dict(state='busy', execution_started=False)))
+            return 0
+        count = args['watch_ticks'] if command == 'wake-watch' else 1
+        for i in range(count):
+            result = tick(args['session'], wake_id=args['wake_id'])
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True), flush=True)
+            if result['state'] in TERMINAL:
+                return 0 if result['state'] == 'completed' else 1
+            if i + 1 < count:
+                time.sleep(args['poll_seconds'])
+        return 0
     if command == 'test':
         from . import test_body_loop
         r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))

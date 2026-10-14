@@ -40,6 +40,8 @@ jobs:
         run: python3 run_tests.py --reflection --output /tmp/nasuraya-native-check
       - name: Verify bounded bridge and cold recovery
         run: python3 -m examples.nasuraya_body_loop test
+      - name: Verify host wakeups, real process crashes and exclusive execution
+        run: python3 -m examples.nasuraya_body_loop wake-test
       - name: Verify persistent API body tools without live service
         run: |
           python3 -m venv .ci-env

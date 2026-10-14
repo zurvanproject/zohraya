@@ -1,0 +1,12 @@
+# Template only. Polling never grants/renews anything; SQLite owns the due time.
+[Unit]
+Description=Check one saved Nasuraya wakeup once a minute
+
+[Timer]
+OnCalendar=*-*-* *:*:00
+Persistent=true
+AccuracySec=1s
+Unit=nasuraya-wake.service
+
+[Install]
+WantedBy=timers.target

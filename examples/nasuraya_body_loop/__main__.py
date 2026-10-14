@@ -27,8 +27,8 @@ def verified_sources():
 
 
 def main(argv=None):
-    p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation'])
+    p = argparse.ArgumentParser(description='Verified Tadash body loop; live API requires explicit api or allowed API wakeup')
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'schedule', 'wake', 'wake-watch', 'wake-status', 'wake-test', 'wake-demo'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
@@ -49,16 +49,32 @@ def main(argv=None):
     p.add_argument('--model')
     p.add_argument('--max-calls', type=int, default=40)
     p.add_argument('--timeout-seconds', type=float, default=30)
+    p.add_argument('--wake-id')
+    p.add_argument('--due-at')
+    p.add_argument('--expires-at')
+    p.add_argument('--wake-backend', choices=['synthetic', 'api'], default='synthetic')
+    p.add_argument('--wake-attempts', type=int, default=3)
+    p.add_argument('--retry-delay-seconds', type=float, default=30)
+    p.add_argument('--watch-ticks', type=int, default=60)
+    p.add_argument('--poll-seconds', type=float, default=1)
+    p.add_argument('--allow-live-wakeup', action='store_true')
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test', 'wake-test', 'wake-demo'] and args.session is None:
         p.error('--session required')
-    if args.command == 'demo' and args.output_dir is None:
+    if args.command in ('demo', 'wake-demo') and args.output_dir is None:
         p.error('--output-dir required')
     if args.command == 'api' and (args.output_dir is None or not args.model):
         p.error('--output-dir and --model required for explicit live API')
     if args.command == 'authorize-continuation' and any(v is None for v in
             (args.grant_id, args.observed_checkpoint_sha256, args.additional_actions, args.additional_calls)):
         p.error('explicit grant, checkpoint, action count and call count required')
+    if args.command in ('schedule', 'wake', 'wake-watch') and not args.wake_id:
+        p.error('--wake-id required')
+    if args.command == 'schedule' and not all((args.due_at, args.expires_at, args.model)):
+        p.error('--due-at, --expires-at and fixed --model required')
+    if args.command == 'wake-watch' and not (1 <= args.watch_ticks <= 86400 and
+            1 <= args.poll_seconds <= 60 and args.watch_ticks * args.poll_seconds <= 86400):
+        p.error('finite watch up to one day, with polling every 1..60 seconds required')
     payload = vars(args)
     for key in ('session', 'output_dir'):
         if payload[key] is not None:
@@ -72,8 +88,8 @@ def main(argv=None):
             shutil.copyfile(SOURCE / name, dest)
         env = dict(os.environ)
         env.pop('OPENAI_API_KEY', None)
-        if args.command == 'api':
-            # The user-approved ignored file is read only for this explicit
+        if args.command == 'api' or (args.command in ('wake', 'wake-watch') and args.allow_live_wakeup):
+            # The approved ignored file is read only for an explicit live
             # command. The key is inherited by the worker, never serialized.
             key = os.environ.get('OPENAI_API_KEY')
             local = ROOT / '.env.local'
