@@ -29,7 +29,7 @@ def outcome_source():
     return hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 
 
-def validate_outcome(before, request, candidate):
+def validate_outcome(before, request, candidate, goal_type=MotionGoal):
     """Validate a locally recorded result without simulating a native action.
 
     Reuse MotionGoal's original bookkeeping with a receipt-only cycle adapter.
@@ -45,8 +45,10 @@ def validate_outcome(before, request, candidate):
         raise ValueError('outcome source/version')
     if p['before_sha'] != before['sha256'] or p['request'] != request:
         raise ValueError('outcome intent mismatch')
-    prior = MotionGoal.restore(before)
-    after = MotionGoal.restore(p['after'])
+    prior = goal_type.restore(before)
+    after = goal_type.restore(p['after'])
+    if hasattr(prior, 'prepare_receipt_replay'):
+        prior.prepare_receipt_replay(p['after'], request)
     if prior.request() != request:
         raise ValueError('stored intent differs from current goal')
     receipt = p['receipt']
@@ -75,6 +77,8 @@ def validate_outcome(before, request, candidate):
 
 
 class MotionJournal:
+    goal_type = MotionGoal
+
     def __init__(self, path):
         self.path = Path(path).resolve()
         if not self.path.is_file():
@@ -146,7 +150,7 @@ class MotionJournal:
         if head != pending[1] or before['sha256'] != head:
             raise ValueError('outcome prior head mismatch')
         request = json.loads(pending[0])
-        goal, receipt = validate_outcome(before, request, json.loads(row[0]))
+        goal, receipt = validate_outcome(before, request, json.loads(row[0]), self.goal_type)
         self._publish(db, head, goal.checkpoint(), request, receipt)
         return dict(status='recovered', event_id=request['event_id'],
                     receipt_sha256=digest(receipt), native_actions_executed=0)
@@ -171,7 +175,7 @@ class MotionJournal:
             saved = json.loads(raw)
             if saved['sha256'] != head:
                 raise ValueError('journal head mismatch')
-            return MotionGoal.restore(saved)
+            return self.goal_type.restore(saved)
 
     def step(self, *, event_id, expected_head, hook=None):
         """Deduplicate an explicit caller token; never turn a retry into next tick.
@@ -193,17 +197,18 @@ class MotionJournal:
             saved = json.loads(raw)
             if saved['sha256'] != head:
                 raise ValueError('journal head mismatch')
-            goal = MotionGoal.restore(saved)
+            goal = self.goal_type.restore(saved)
             request = goal.request()
             if event_id != request['event_id']:
                 raise ValueError('unexpected motion event')
             with db:
                 db.execute('INSERT INTO intent VALUES (1,?,?)', (encode(request), head))
             hook('prepared', goal)
+            before_elapsed = goal.task['elapsed']
             receipt = goal.step()
             hook('executed', goal)
             after = goal.checkpoint()
-            if receipt['event_id'] != event_id or goal.task['elapsed'] != saved['payload']['task']['elapsed'] + 1:
+            if receipt['event_id'] != event_id or goal.task['elapsed'] != before_elapsed + 1:
                 raise ValueError('motion receipt transition mismatch')
             payload = dict(schema='nasuraya-local-motion-outcome/1', source=outcome_source(),
                 before_sha=head, request=request, after=after, receipt=receipt)

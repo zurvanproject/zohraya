@@ -77,3 +77,47 @@ each of four authorized probes, records predictions before outcomes and learns
 from committed native receipts. It demonstrates the gate before and after
 practice and saves the advanced goal plus the self-model. Private inputs and
 generated states stay outside Git. Nothing starts running in the background.
+
+## Choose a bounded next action while retaining the goal
+
+`regulation.py` adds an opt-in session around an existing accumulated
+`MotionGoal`. It retains the route, goal ID, native clock, energy, fatigue,
+landing history and all remaining motion budgets. A session permits at most
+12 owner ticks, three observations and three recovery requests. Its default
+subgoal is one additional confirmed landing; reaching that subgoal pauses the
+session without declaring the full route complete.
+
+Before each owner tick it inspects the saved self-model and simulates the
+available walk, observe and rest/sleep requests on private copies of the whole
+body. These counterfactuals do not advance the owner. A fixed policy prefers
+bounded recovery for current body need, one observation for an uncertain
+context, then a move admitted by the fresh native forecast. Weak historical
+admission estimates alone need not leave the goal permanently paused. Only the
+actual native receipt updates the session's knowledge. The selected predicted
+receipt must exactly match the owner receipt. This is same-model planning,
+not an independent physical measurement or learned action-selection policy.
+
+Every deliberate observation/recovery spends one second from the original
+phase budget. Such requests preserve the current walk-veto streak; only an
+admitted walk clears it. Three actual vetoes of intended walks still close the
+route. The 220-second route limit and native action guards remain in force.
+When no valid candidate fits the remaining budgets, execution stops with a
+recorded block; it does not force a movement request.
+
+`RegulationJournal` uses the existing durable motion intent/outcome protocol.
+A repeated committed event returns its stored receipt. A complete saved outcome
+can be verified and published without any native simulation or execution;
+an intent with no verifiable outcome remains blocked. The generic journal now
+accepts a goal wrapper; ordinary `MotionGoal` remains its default.
+
+```
+python3 -m unittest examples.nasuraya_self_model.test_regulation -v
+python3 -m examples.nasuraya_self_model.run_regulation start --source /private/advanced_goal.json --model /private/self_model.sqlite --max-ticks 12 --output /private/NEW-regulation
+```
+
+The driver copies the private inputs, commits two decisions, terminates that
+worker with exit code 75, then resumes in a fresh Python worker. The saved
+SQLite journal, decisions and final session preserve the next continuation.
+The input files remain unchanged. Session learning is retained inside that
+session; it does not overwrite the input self-model database. No live model API
+or official body-state publication is part of this driver.
