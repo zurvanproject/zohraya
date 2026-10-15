@@ -14,11 +14,11 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.12'
-      - run: python3 -m unittest examples.nasuraya_self_model.test_monitor examples.nasuraya_self_model.test_goal_bridge examples.nasuraya_self_model.test_regulation -v
+      - run: python3 -m unittest examples.nasuraya_self_model.test_monitor examples.nasuraya_self_model.test_goal_bridge examples.nasuraya_self_model.test_regulation examples.nasuraya_self_model.test_planning -v
       - run: python3 -m examples.nasuraya_self_model.evaluate evaluate --output /tmp/self-model-evaluation

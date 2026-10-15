@@ -68,6 +68,36 @@ def update_knowledge(state,decision,receipt):
     return state
 
 
+def advance_motion(goal,request):
+    """Shared one-tick bookkeeping; all native guards remain authoritative."""
+    q=request;t=goal.task;p=goal.body.owner.physical
+    phase=t['phase'];before_time=p.state.time_s;cursor=deepcopy(p.star_started)
+    receipt=goal.body.cycle(**q);p=goal.body.owner.physical
+    new=[deepcopy(e) for e in p.state.events if e['name']=='touchdown' and e.get('kind')=='walk' and e['t_s']>before_time+1e-8]
+    if len(new)!=sum(p.star_started[s]-cursor[s] for s in ('L','R')):raise ValueError('native landing mismatch')
+    t['landings'].extend(new);t['counts'][phase]+=1;t['elapsed']+=1
+    if not receipt['owner']['physical_model_valid']:
+        t.update(phase='done',status='physical_failure',stop_reason=p.state.failed_reason);p.star_enabled=False
+    elif phase=='prelude' and t['counts']['prelude']==LIMITS['prelude']:
+        t['phase']='route';p.star_enabled=True
+    elif phase=='route':
+        # Intentional observation/recovery preserves the native walk-veto
+        # streak; only an admitted walk clears it. No three-veto bypass.
+        if q['requested']=='walk':t['vetoes']=t['vetoes']+1 if receipt['owner']['selected_action']!='walk' else 0
+        complete=all(p.star_started[s]==len(t['plan'][s]) for s in ('L','R'))
+        if complete or t['vetoes']>=3 or t['counts']['route']==LIMITS['route']:
+            t['phase']='closure';p.star_enabled=False
+            if not complete:t['stop_reason']='three consecutive native vetoes' if t['vetoes']>=3 else 'movement budget exhausted'
+    elif phase=='closure' and t['counts']['closure']==LIMITS['closure']:
+        complete=all(p.star_started[s]==len(t['plan'][s]) for s in ('L','R'))
+        home=max(math.dist(p.state.feet_m[s],t['home'][s]) for s in ('L','R'))
+        ok=complete and home<1e-9 and p.state.phase=='double_support'
+        t.update(phase='done',status='completed' if ok else 'incomplete')
+        if not ok and t['stop_reason'] is None:t['stop_reason']='home or closure contract'
+    goal.validate()
+    return receipt
+
+
 class RegulatedGoal:
     def __init__(self,goal,session):
         self.goal=goal;self.session=deepcopy(session);self._prepared=None;self.validate()
@@ -194,32 +224,9 @@ class RegulatedGoal:
 
     def step(self):
         q=self.request();d=deepcopy(self._prepared);t=self.task;p=self.body.owner.physical
-        phase=t['phase'];before_time=p.state.time_s;cursor=deepcopy(p.star_started)
-        receipt=self.body.cycle(**q);p=self.body.owner.physical
-        new=[deepcopy(e) for e in p.state.events if e['name']=='touchdown' and e.get('kind')=='walk' and e['t_s']>before_time+1e-8]
-        if len(new)!=sum(p.star_started[s]-cursor[s] for s in ('L','R')):raise ValueError('native landing mismatch')
+        receipt=advance_motion(self.goal,q)
         if digest(receipt)!=d['candidates'][q['requested']]['receipt_sha256']:
             raise ValueError('owner result differs from selected counterfactual')
-        t['landings'].extend(new);t['counts'][phase]+=1;t['elapsed']+=1
-        if not receipt['owner']['physical_model_valid']:
-            t.update(phase='done',status='physical_failure',stop_reason=p.state.failed_reason);p.star_enabled=False
-        elif phase=='prelude' and t['counts']['prelude']==LIMITS['prelude']:
-            t['phase']='route';p.star_enabled=True
-        elif phase=='route':
-            # Intentional observation/recovery preserves the native walk-veto
-            # streak; only an admitted walk clears it. No three-veto bypass.
-            if q['requested']=='walk':t['vetoes']=t['vetoes']+1 if receipt['owner']['selected_action']!='walk' else 0
-            complete=all(p.star_started[s]==len(t['plan'][s]) for s in ('L','R'))
-            if complete or t['vetoes']>=3 or t['counts']['route']==LIMITS['route']:
-                t['phase']='closure';p.star_enabled=False
-                if not complete:t['stop_reason']='three consecutive native vetoes' if t['vetoes']>=3 else 'movement budget exhausted'
-        elif phase=='closure' and t['counts']['closure']==LIMITS['closure']:
-            complete=all(p.star_started[s]==len(t['plan'][s]) for s in ('L','R'))
-            home=max(math.dist(p.state.feet_m[s],t['home'][s]) for s in ('L','R'))
-            ok=complete and home<1e-9 and p.state.phase=='double_support'
-            t.update(phase='done',status='completed' if ok else 'incomplete')
-            if not ok and t['stop_reason'] is None:t['stop_reason']='home or closure contract'
-        self.goal.validate()
         self.session['records'].append(dict(decision=d,receipt=deepcopy(receipt),after_goal_sha=self.goal.checkpoint()['sha256']))
         if t['status']!='running':self.session['status']='goal_finished'
         elif self.session['target_new_landings']>0 and len(t['landings'])-self.session['initial_landings']>=self.session['target_new_landings']:

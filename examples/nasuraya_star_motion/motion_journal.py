@@ -177,7 +177,7 @@ class MotionJournal:
                 raise ValueError('journal head mismatch')
             return self.goal_type.restore(saved)
 
-    def step(self, *, event_id, expected_head, hook=None):
+    def step(self, *, event_id, expected_head, hook=None, current_goal=None):
         """Deduplicate an explicit caller token; never turn a retry into next tick.
 
         hook is a local fault-injection seam for subprocess crash regression.
@@ -197,7 +197,14 @@ class MotionJournal:
             saved = json.loads(raw)
             if saved['sha256'] != head:
                 raise ValueError('journal head mismatch')
-            goal = self.goal_type.restore(saved)
+            if current_goal is None:
+                goal = self.goal_type.restore(saved)
+            else:
+                # A process-local owner may avoid another expensive restore.
+                # Verify the complete state while holding the same owner lock.
+                if type(current_goal) is not self.goal_type or current_goal.checkpoint() != saved:
+                    raise ValueError('cached goal differs from committed head; reload required')
+                goal = current_goal
             request = goal.request()
             if event_id != request['event_id']:
                 raise ValueError('unexpected motion event')

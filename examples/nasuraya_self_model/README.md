@@ -1,5 +1,8 @@
 # Evidence-linked functional self-model
 
+For progress prediction, time/fuel cost correction and continuation through
+the remaining route, see [PLANNING.md](PLANNING.md).
+
 This opt-in layer asks a narrow self-knowledge question: **when I request this
 action, does my existing software body actually admit it?** It keeps observed
 body state, inferred self-efficacy, unknowns, requested actions and native effects
