@@ -1,5 +1,17 @@
 # Nasuraya: 48-chromosome computational genome v0.1
 
+**Current design values (v0.2):** aesthetics is an independent value judged by
+the user. A functionally neutral appearance option is retained for aesthetic
+review, not rejected for lacking a performance gain. The historical v0.1
+functional experiment below is preserved unchanged; its rejection label is not
+an aesthetic verdict. Current review:
+
+```sh
+python3 -m examples.nasuraya_genome.design_value_review --output /tmp/design-values-review.json
+```
+
+See [the value clarification](../../docs/nasuraya-design-values-v02-fa.md).
+
 The existing dosage design is retained. A versioned genotype-to-phenotype
 prototype now adds four bounded limb-design loci, a closed contract for every
 chromosome, JSON Schema, atomic in-memory edit batches and recomputed cold
@@ -42,7 +54,7 @@ a coherent geometric proposal. Tail-off, zero-friction and cosmetic controls
 retain their outcomes. Source-bound sandbox checkpoints are not exported to
 production state. All 70 original native source files remain unchanged.
 
-The expanded suite has 55 passing local tests. See the
+The expanded suite includes 59 tests. See the
 [Persian experiment report](../../docs/nasuraya-genome-physics-v01-fa.md) and
 [committed experiment evidence](evidence/physics-v0.1/results.json).
 
@@ -98,6 +110,8 @@ identical cosmetic-only fixture. Four candidate observations therefore represent
 three distinct physical-fixture observations, with only one fresh experiment.
 Memory changes the choice from baseline retention to a +2% **proposal** in this
 exact context; the cosmetic-only mutation has no measured functional gain.
+Under the current v0.2 value review it awaits the user's aesthetic verdict;
+its historical v0.1 functional ranking is retained for audit.
 Disabling memory or requesting an unseen context retains baseline. Neither this
 module nor its selected checkpoint applies a genotype to the owner body or
 starts a live API agent. Experience stays outside inherited alleles.
