@@ -51,6 +51,13 @@ def executed_body(record):
             and 'body_receipt' in actual and 'body_checkpoint' in actual)
 
 
+def deferred_body(record):
+    actual = record.get('actual_outcome') or {}
+    return (record['status'] == 'complete' and actual.get('status') == 'deferred'
+            and actual.get('native_executed') is False
+            and 'body_receipt' not in actual and 'body_checkpoint' not in actual)
+
+
 def describe(body):
     return {'checkpoint_sha256': body.checkpoint()['sha256'], 'revision': body.revision,
             'simulated_wall_utc': body.owner.wall_utc,
@@ -80,6 +87,10 @@ class BodyLoop:
             os.fchmod(self.lock.fileno(), 0o600)
             self.engine = ReflectionCycle(self.path)
             self.adapter = ReflectiveBody(self.engine, key=KEY)
+            self.metacognition = None
+            if self.engine.db.execute("SELECT 1 FROM meta WHERE key='nasuraya-api-metacognition'").fetchone():
+                from .metacognition import attach
+                attach(self)
         except BaseException:
             if hasattr(self, 'engine'): self.engine.close()
             self.lock.close()
@@ -131,13 +142,17 @@ class BodyLoop:
         records = self.records()
         reserved = sum(r['selected_action'] is not None for r in records)
         maximum = action_limit(self)
-        return {'schema': SCHEMA, 'fixture': self.config['fixture'], 'mode': self.config['mode'],
+        result = {'schema': SCHEMA, 'fixture': self.config['fixture'], 'mode': self.config['mode'],
                 'max_actions': maximum, 'actions_reserved': reserved,
                 'actions_remaining': max(0, maximum - reserved),
                 'completed_cycles': sum(executed_body(r) for r in records),
-                'failed_cycles': sum(r['status'] == 'complete' and not executed_body(r) for r in records),
+                'failed_cycles': sum(r['status'] == 'complete' and not executed_body(r) and not deferred_body(r) for r in records),
                 'unresolved_running': [r['id'] for r in records if r['status'] == 'running'],
                 'self_model': describe(self.body()), 'external_model_api_used': False}
+        if self.metacognition:
+            result.update(metacognition=self.metacognition.overview(),
+                          deferred_cycles=sum(deferred_body(r) for r in records))
+        return result
 
     def observe(self):
         snapshot = describe(self.body())
@@ -180,6 +195,8 @@ class BodyLoop:
         validate_duration(duration_s)
         if preferred_action not in BODY_ACTIONS:
             raise ValueError('preferred_action must be walk, observe, sleep or rest')
+        if self.metacognition:
+            self.metacognition.reconcile(strict=True)
         records = self.records()
         if decision_id is None:
             decision_id = 'body-loop-step-' + str(len(records) + 1)
@@ -219,10 +236,14 @@ class BodyLoop:
         receipt = actual.get('body_receipt', {})
         recorded_body = UnifiedBody.restore(actual['body_checkpoint']) if 'body_checkpoint' in actual else self.body()
         status = record['status'] if executed_body(record) else actual.get('status', record['status'])
-        return {'decision_id': record['id'], 'status': status, 'ledger_status': record['status'], 'replayed': replayed,
+        result = {'decision_id': record['id'], 'status': status, 'ledger_status': record['status'], 'replayed': replayed,
                 'requested_action': record['selected_action'], 'actual_action': actual.get('selected_action'),
                 'expected_outcome_matched': (record.get('feedback') or {}).get('success'),
                 'recalled_feedback_ids': record['recalled_feedback_ids'],
                 'body_audit': receipt.get('whole_body_audit'),
                 'prediction_scope': 'declared outcome contract; exact action match, not calibrated forecasting',
                 'self_model_after': describe(recorded_body)}
+        if self.metacognition:
+            result['metacognition'] = self.metacognition.public_record(record['id'])
+            result['native_executed'] = executed_body(record)
+        return result

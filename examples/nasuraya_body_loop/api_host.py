@@ -5,7 +5,7 @@ import re
 
 from examples.nasuraya_agent_loop.local import Journal, ToolRejected
 from reflection_cycle import canonical
-from .host import validate_duration, executed_body, BODY_ACTIONS
+from .host import validate_duration, executed_body, deferred_body, BODY_ACTIONS
 
 FIELDS = ('energy', 'hydration', 'temperature', 'fatigue', 'pain', 'sleep_pressure', 'HR', 'RR')
 INSTRUCTIONS = '''You control only a generated software-body fixture, not a biological body.
@@ -45,6 +45,17 @@ class BodyAPIHost:
         self.observed, self.evaluated = False, False
         self.journal = journal or Journal()
         self.instructions = INSTRUCTIONS
+        if loop.metacognition:
+            self.instructions += '''\nMetacognition is enabled. After observe_body and before a body request, call
+assess_body_action with the proposed action, duration_s and the observed SHA.
+The forecast describes that exact action/duration, before the existing core
+chooses. The host reassesses the core's actual choice before native execution.
+In shadow mode these are explicitly authorized calibration probes: estimates
+are advisory, and you may request the bounded action despite low sample counts.
+In enforce mode, if the walk recommendation is defer, stop and report the
+deferral without claiming a body cycle or goal completion. A returned deferred
+status is non-execution, not a failed walk. Never change the requested duration
+to evade a gate. Original body guards and budgets always apply.\n'''
         db = loop.engine.db
         db.execute('''CREATE TABLE IF NOT EXISTS body_api_calls(
             identity TEXT PRIMARY KEY, fingerprint TEXT NOT NULL, tool TEXT NOT NULL,
@@ -104,9 +115,12 @@ class BodyAPIHost:
             JOIN decisions d ON d.id='body-api-' || c.identity
             WHERE r.run_id=? AND c.tool='request_body_action' ''', (self.run_id,))
         records = [json.loads(r[0]) for r in rows]
-        return dict(actions_reserved=sum(r['selected_action'] is not None for r in records),
+        result = dict(actions_reserved=sum(r['selected_action'] is not None for r in records),
                     completed_cycles=sum(executed_body(r) for r in records),
-                    failed_cycles=sum(r['status'] == 'complete' and not executed_body(r) for r in records))
+                    failed_cycles=sum(r['status'] == 'complete' and not executed_body(r) and not deferred_body(r) for r in records))
+        if self.loop.metacognition:
+            result['deferred_cycles'] = sum(deferred_body(r) for r in records)
+        return result
 
     @property
     def max_actions(self):
@@ -122,16 +136,39 @@ class BodyAPIHost:
                 'action': {'type': 'string', 'enum': list(BODY_ACTIONS)},
                 'duration_s': {'type': 'number', 'minimum': .1, 'maximum': 1., 'multipleOf': .1},
                 'observed_checkpoint_sha256': {'type': 'string', 'pattern': '^[0-9a-f]{64}$'}}))
+        if self.loop.metacognition:
+            specs.append(('assess_body_action', 'Read an exact-action admission estimate; no body cycle or learning.', {
+                'action': {'type': 'string', 'enum': list(BODY_ACTIONS)},
+                'duration_s': {'type': 'number', 'minimum': .1, 'maximum': 1., 'multipleOf': .1},
+                'observed_checkpoint_sha256': {'type': 'string', 'pattern': '^[0-9a-f]{64}$'}}))
         return [dict(type='function', name=name, description=description,
                      parameters=dict(type='object', properties=props, required=list(props), additionalProperties=False))
                 for name, description, props in specs]
 
     def snapshot(self):
         body = self.loop.status()['self_model']
-        return dict(revision=body['revision'], checkpoint_sha256=body['checkpoint_sha256'],
+        result = dict(revision=body['revision'], checkpoint_sha256=body['checkpoint_sha256'],
                     simulated_wall_utc=body['simulated_wall_utc'],
                     minimum_state={k: body['minimum_state'][k] for k in FIELDS},
                     scope='generated_fixture_software_body')
+        if self.loop.metacognition:
+            result['metacognition'] = self.loop.metacognition.overview()
+        return result
+
+    @staticmethod
+    def canonical_duration(duration_s):
+        validate_duration(duration_s)
+        # JSON may encode the same one-second request as 1 or 1.0. Normalize
+        # only at this API boundary; do not invalidate old SelfModel ledgers.
+        return int(duration_s) if float(duration_s).is_integer() else float(duration_s)
+
+    def admission_assessment(self, action, duration_s, observed_checkpoint_sha256):
+        if not self.loop.metacognition or action not in BODY_ACTIONS:
+            raise ToolRejected('metacognitive assessment unavailable')
+        body = self.loop.body()
+        if body.checkpoint()['sha256'] != observed_checkpoint_sha256:
+            raise ToolRejected('current body observation required')
+        return self.loop.metacognition.assessment(body, action, self.canonical_duration(duration_s))
 
     def evaluate(self):
         from .continuation import calls_remaining
@@ -141,12 +178,17 @@ class BodyAPIHost:
         saved = self.loop.engine.db.execute('SELECT observed,evaluated FROM body_api_runs WHERE id=?', (self.run_id,)).fetchone()
         unresolved = bool(status['unresolved_running']) or bool(self.loop.engine.db.execute(
             "SELECT 1 FROM body_api_calls WHERE status='pending' AND tool='request_body_action'").fetchone())
-        return dict(goal_reached=(self.observed or bool(saved[0])) and (self.evaluated or bool(saved[1])) and completed >= self.target_cycles and not failed and not unresolved,
+        if self.loop.metacognition:
+            unresolved = unresolved or bool(status['metacognition']['pending_outcomes'])
+        result = dict(goal_reached=(self.observed or bool(saved[0])) and (self.evaluated or bool(saved[1])) and completed >= self.target_cycles and not failed and not unresolved,
                     completed_cycles=completed, failed_cycles=failed,
                     run_actions_remaining=self.max_actions,
                     actions_remaining=status['actions_remaining'], unresolved=unresolved,
                     safe=not failed and not unresolved, target_cycles=self.target_cycles,
                     tool_calls_remaining=calls_remaining(self))
+        if self.loop.metacognition:
+            result['deferred_cycles'] = progress['deferred_cycles']
+        return result
 
     def summary(self, status):
         return dict(backend='agents_api_body', status=status, mode=self.mode,
@@ -159,17 +201,20 @@ class BodyAPIHost:
 
     @staticmethod
     def public_receipt(receipt, preferred):
-        return {k: receipt[k] for k in ('decision_id', 'status', 'requested_action', 'actual_action',
+        result = {k: receipt[k] for k in ('decision_id', 'status', 'requested_action', 'actual_action',
                 'expected_outcome_matched', 'body_audit')} | {
                     'model_preference': preferred, 'revision': receipt['self_model_after']['revision'],
                     'checkpoint_sha256': receipt['self_model_after']['checkpoint_sha256']}
+        if 'metacognition' in receipt:
+            result.update(metacognition=receipt['metacognition'], native_executed=receipt['native_executed'])
+        return result
 
     def _validate(self, name, args):
         if name not in {tool['name'] for tool in self.definitions()}:
             raise ToolRejected('body tool unavailable')
         if type(args) is not dict:
             raise ToolRejected('body arguments must be an object')
-        if name != 'request_body_action':
+        if name not in ('request_body_action', 'assess_body_action'):
             if args: raise ToolRejected('body read tool accepts no arguments')
         else:
             if set(args) != {'action', 'duration_s', 'observed_checkpoint_sha256'}:
@@ -220,7 +265,7 @@ class BodyAPIHost:
             raise ToolRejected('persistent body API call budget exhausted')
         # Reserve before any effect. Invalid inputs retain only a fingerprint and
         # fixed tool label; request text and full private body data are never stored.
-        tool = action['name'] if action['name'] in ('observe_body', 'evaluate_body', 'request_body_action') else 'unknown'
+        tool = action['name'] if action['name'] in ('observe_body', 'evaluate_body', 'request_body_action', 'assess_body_action') else 'unknown'
         with self.loop.engine.transaction():
             db.execute('INSERT INTO body_api_calls VALUES(?,?,?,?,NULL)', (identity, fingerprint, tool, 'pending'))
             db.execute('INSERT INTO body_api_run_calls VALUES(?,?)', (identity, self.run_id))
@@ -240,6 +285,14 @@ class BodyAPIHost:
             elif name == 'evaluate_body':
                 self.evaluated = True
                 output = self.evaluate()
+            elif name == 'assess_body_action':
+                observation = db.execute("SELECT value FROM meta WHERE key='body-api-observation'").fetchone()
+                observation = json.loads(observation[0]) if observation else None
+                if (observation != dict(binding=binding, run_id=self.run_id,
+                                        checkpoint_sha256=args['observed_checkpoint_sha256']) or
+                        self.loop.body().checkpoint()['sha256'] != args['observed_checkpoint_sha256']):
+                    raise ToolRejected('fresh observation from this run, session and turn required')
+                output = self.admission_assessment(args['action'], args['duration_s'], args['observed_checkpoint_sha256'])
             else:
                 if self.run_progress()['actions_reserved'] >= self.target_cycles:
                     raise ToolRejected('this run body action budget exhausted')
@@ -249,7 +302,8 @@ class BodyAPIHost:
                 observation = json.loads(observation[0]) if observation else None
                 if observation != dict(binding=binding, run_id=self.run_id, checkpoint_sha256=args['observed_checkpoint_sha256']):
                     raise ToolRejected('fresh observation from this run, session and turn required')
-                receipt = self.loop.step(decision_id=decision_id, duration_s=args['duration_s'], preferred_action=args['action'])
+                duration = self.canonical_duration(args['duration_s']) if self.loop.metacognition else args['duration_s']
+                receipt = self.loop.step(decision_id=decision_id, duration_s=duration, preferred_action=args['action'])
                 db.execute("DELETE FROM meta WHERE key='body-api-observation'")
                 result = self._receipt_result(action, receipt)
                 self._finish(identity, result)
@@ -284,7 +338,7 @@ class BodyAPIHost:
 
     def _receipt_result(self, action, receipt):
         result = dict(type='agent.session.input.tool_result', turn_id=action['turn_id'], call_id=action['call_id'])
-        if receipt['status'] == 'complete':
+        if receipt['status'] in ('complete', 'deferred'):
             result.update(success=True, output=canonical(self.public_receipt(receipt, action['arguments']['action'])))
         else:
             result.update(success=False, error='body execution failed; effect will not be retried')
