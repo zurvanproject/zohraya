@@ -1,11 +1,16 @@
 from copy import deepcopy
 import json
 import unittest
+from pathlib import Path
+from types import SimpleNamespace
+import tempfile
+from unittest.mock import Mock,patch
 
 from .energy import EnergyCalibration,features
 from . import planning as base
 from .decision_relevance import assess,verify
-from .run_decision_survey import cases,make_goal,pause,choose_followups,comparable
+from .run_decision_survey import cases,make_goal,pause,choose_followups,comparable,advance,trial_summary
+from .route_trial import RouteTrial
 from .evaluate import prepare_defaults
 from .monitor import digest
 
@@ -97,6 +102,38 @@ class FixtureTests(unittest.TestCase):
         self.assertEqual(g.task['counts']['route'],4);self.assertEqual(g.task['counts']['closure'],0)
         self.assertEqual(g.task['plan'],targets);self.assertEqual(g.task['status'],'running')
         self.assertTrue(all(r['receipt']['owner']['physical_model_valid'] for r in rows))
+
+
+class SafeHaltTests(unittest.TestCase):
+    def test_refusal_before_first_action_has_no_invented_error_or_progress(self):
+        prepare_defaults();g=make_goal(dict(id='zero-unit',fatigue=.08,sleep_pressure=.47,direction='forward'))
+        _,_,model=example(False)
+        trial=RouteTrial.start(g,'old',model,dict(counts={},pending=[],episodes=0,last=None))
+        with tempfile.TemporaryDirectory() as tmp,patch.object(trial,'prepare',side_effect=base.NoSafeChoice('no admission')):
+            self.assertTrue(advance(trial,32,Path(tmp)));s=trial_summary(trial)
+        self.assertEqual(s['owner_ticks'],0);self.assertEqual(s['fuel_used_J'],0.)
+        self.assertEqual(s['new_landings'],0);self.assertIsNone(s['active_fuel_mae_J'])
+        self.assertEqual(s['goal_status'],'running')
+
+    def test_no_safe_choice_is_a_durable_refusal_and_cannot_retry(self):
+        body_goal=SimpleNamespace(checkpoint=lambda:dict(sha256='unchanged'))
+        g=SimpleNamespace(session=dict(status='running',records=[],initial_goal_sha='unchanged'),goal=body_goal,
+            prepare=Mock(side_effect=base.NoSafeChoice('budget exhausted')),step=Mock(side_effect=AssertionError('native action')))
+        with tempfile.TemporaryDirectory() as tmp:
+            out=Path(tmp);self.assertTrue(advance(g,1,out));self.assertTrue(advance(g,1,out))
+            self.assertEqual(g.prepare.call_count,1);g.step.assert_not_called()
+            self.assertFalse(json.loads((out/'halt.json').read_text())['native_action_executed'])
+
+    def test_real_high_fatigue_halt_preserves_resolved_goal(self):
+        prepare_defaults();g=make_goal(dict(id='halt-unit',fatigue=.58,sleep_pressure=.47,direction='forward'))
+        _,_,model=example(False)
+        trial=RouteTrial.start(g,'old',model,dict(counts={},pending=[],episodes=0,last=None))
+        with tempfile.TemporaryDirectory() as tmp:
+            out=Path(tmp);self.assertTrue(advance(trial,32,out));before=trial.checkpoint()
+            with patch.object(trial,'prepare',side_effect=AssertionError('prepare after refusal')):
+                self.assertTrue(advance(trial,1,out))
+            self.assertEqual(trial.checkpoint(),before)
+            RouteTrial.restore(before)
 
 
 if __name__=='__main__':unittest.main()

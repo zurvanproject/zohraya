@@ -36,7 +36,8 @@ def make_goal(case):
     body.owner._record(before,body.owner.body(),'external_input',
         'declared synthetic initial channel fatigue; not accumulated work, not a reset of saved user state',0.)
     attach(body,dict(star_enabled=False,star_started=dict(L=0,R=0),star_targets=dict(L=[],R=[]),cursor_semantics='confirmed'))
-    goal=MotionGoal.start(body,case['direction'],'decision-'+case['id'])
+    label='-'+case['execution_epoch'] if case.get('execution_epoch') else ''
+    goal=MotionGoal.start(body,case['direction'],'decision-'+case['id']+label)
     for _ in range(6):
         if goal.task['status']!='running':break
         goal.step()
@@ -45,22 +46,44 @@ def make_goal(case):
 
 
 def advance(goal,count,out):
-    audits=[]
+    halt=out/'halt.json'
+    if halt.exists():
+        saved=json.loads(halt.read_text())
+        if saved['goal_sha256']!=goal.goal.checkpoint()['sha256']:raise ValueError('stale safe halt')
+        return True
     for _ in range(count):
         if goal.session['status']!='running':break
-        d=goal.prepare()
+        before=goal.session['records'][-1]['after_goal_sha'] if goal.session['records'] else goal.session['initial_goal_sha']
+        try:d=goal.prepare()
+        except base.NoSafeChoice as e:
+            # Preparation uses private projections. A refusal must leave the
+            # authoritative owner unchanged and must never cause a native retry.
+            if goal.goal.checkpoint()['sha256']!=before:raise ValueError('safe refusal changed the owner')
+            atomic_json(halt,dict(kind='no_safe_choice',reason=str(e),goal_sha256=before,
+                recorded_owner_ticks=len(goal.session['records']),native_action_executed=False))
+            return True
         if d['offset']==0:
             a=assess(d['plan'],base.counts(goal.session['records']),goal.model,goal.session['mode'])
-            audits.append(a)
             with (out/'assessments.jsonl').open('a') as log:
                 log.write(json.dumps(a,allow_nan=False)+'\n');log.flush();os.fsync(log.fileno())
         goal.step()
-    return audits
+    return False
+
+
+def trial_summary(trial):
+    if trial.session['records']:return summary(trial)
+    initial=trial.session['initial'];final=base.state(trial.goal)
+    return dict(mode=trial.session['mode'],initial=initial,final=final,goal_status=trial.task['status'],
+        owner_ticks=0,fuel_used_J=0.,new_landings=0,confirmed_landings=trial.task['landings'],
+        counts=trial.task['counts'],remaining_ticks=230-final['elapsed'],requested={},actual={},
+        all_receipts_valid=True,measured_receipts=0,raw_fuel_mae_J=None,active_fuel_mae_J=None,
+        final_goal_sha256=trial.goal.checkpoint()['sha256'],final_trial_sha256=trial.checkpoint()['sha256'],
+        model_sha256=trial.model.checkpoint()['sha256'],official_state_advanced=False,model_api_calls=0)
 
 
 def screen_case(args):
     case,output,model_path,ticks=args;out=Path(output)/case['id'];out.mkdir(exist_ok=False)
-    goal=make_goal(case);initial=goal.checkpoint();atomic_json(out/'initial_goal.json',initial)
+    goal=make_goal({**case,'execution_epoch':Path(output).name});initial=goal.checkpoint();atomic_json(out/'initial_goal.json',initial)
     if goal.task['status']!='running':
         result=dict(case=case,initial_goal_sha256=initial['sha256'],fixture_unavailable=True,
             status=goal.task['status'],requests_differ=False,first_requested_difference=None,
@@ -71,9 +94,9 @@ def screen_case(args):
     for mode in ('old','calibrated'):
         arm=out/mode;arm.mkdir()
         trial=RouteTrial.start(MotionGoal.restore(initial),mode,EnergyCalibration.restore(frozen),dict(counts={},pending=[],episodes=0,last=None))
-        advance(trial,ticks,arm);assert trial.model.checkpoint()==frozen
-        atomic_json(arm/'screen_trial.json',trial.checkpoint());s=summary(trial);atomic_json(arm/'screen_summary.json',s)
-        result['arms'][mode]=dict(summary=s,requested=[r['decision']['request']['requested'] for r in trial.session['records']])
+        halted=advance(trial,ticks,arm);assert trial.model.checkpoint()==frozen
+        atomic_json(arm/'screen_trial.json',trial.checkpoint());s=trial_summary(trial);atomic_json(arm/'screen_summary.json',s)
+        result['arms'][mode]=dict(summary=s,halted_no_safe_choice=halted,requested=[r['decision']['request']['requested'] for r in trial.session['records']])
     a=result['arms']['old'];b=result['arms']['calibrated']
     result['requests_differ']=a['requested']!=b['requested']
     result['first_requested_difference']=next((i+1 for i,(x,y) in enumerate(itertools.zip_longest(a['requested'],b['requested'])) if x!=y),None)
@@ -103,9 +126,9 @@ def followup_case(args):
         arm=out/mode;trial=RouteTrial.restore(json.loads((arm/'screen_trial.json').read_text()))
         while (trial.session['status']=='running' and len(trial.task['landings'])<protocol['followup_landings'] and
                len(trial.session['records'])<min(protocol['followup_policy_tick_limit'],trial.session['max_ticks'])):
-            advance(trial,1,arm)
-        atomic_json(arm/'final_trial.json',trial.checkpoint());policy_summary=summary(trial)
-        paused=MotionGoal.restore(trial.goal.checkpoint());rows=pause(paused,protocol['pause_ticks'])
+            if advance(trial,1,arm):break
+        atomic_json(arm/'final_trial.json',trial.checkpoint());policy_summary=trial_summary(trial)
+        paused=MotionGoal.restore(trial.goal.checkpoint());rows=[] if (arm/'halt.json').exists() else pause(paused,protocol['pause_ticks'])
         atomic_json(arm/'pause_receipts.json',rows);atomic_json(arm/'paused_goal.json',paused.checkpoint())
         p=paused.body.owner.physical;final=base.state(paused)
         result['arms'][mode]=dict(policy_summary=policy_summary,final=final,
@@ -133,7 +156,7 @@ def run(output,model_path,workers):
     model_path=Path(model_path).resolve();model_file_sha=hashlib.sha256(model_path.read_bytes()).hexdigest()
     model=EnergyCalibration.restore(json.loads(model_path.read_text()))
     frozen_sources=sources();driver_sha=hashlib.sha256(Path(__file__).read_bytes()).hexdigest();protocol_sha=hashlib.sha256(path.read_bytes()).hexdigest()
-    atomic_json(out/'frozen_protocol.json',dict(protocol=protocol,cases=cohort,sources=frozen_sources,
+    atomic_json(out/'frozen_protocol.json',dict(protocol=protocol,cases=cohort,execution_epoch=out.name,sources=frozen_sources,
         driver_sha256=driver_sha,
         protocol_sha256=protocol_sha,model_sha256=model.checkpoint()['sha256'],model_file_sha256=model_file_sha))
     prepare_defaults();screen=[]
@@ -166,7 +189,7 @@ def audit(output,model_path):
     assert model.checkpoint()['sha256']==contract['model_sha256']
     survey=json.loads((out/'survey.json').read_text())
     assert survey['selected_followups']==choose_followups(survey['screen'],contract['protocol']['followup_max_cases'])
-    n=0;changed=0;guarded=0;unseen=0;actual_ticks=0;traces=set()
+    n=0;changed=0;guarded=0;unseen=0;actual_ticks=0;safe_halts=0;traces=set()
     with patch.object(UnifiedBody,'cycle',side_effect=AssertionError('native execution during audit')), \
          patch.object(base,'rollout',side_effect=AssertionError('forecast during audit')):
         for case in contract['cases']:
@@ -179,13 +202,17 @@ def audit(output,model_path):
                 trial=RouteTrial.restore(json.loads((arm/('final_trial.json' if followed else 'screen_trial.json')).read_text()))
                 assert trial.session['initial_goal_sha']==initial.checkpoint()['sha256'] and trial.model.checkpoint()==model.checkpoint()
                 rows=trial.session['records'];plans=[(i,r['decision']['plan']) for i,r in enumerate(rows) if r['decision']['offset']==0]
-                evidence=[json.loads(line) for line in (arm/'assessments.jsonl').read_text().splitlines()]
+                if (arm/'halt.json').exists():
+                    halted=json.loads((arm/'halt.json').read_text())
+                    assert halted['goal_sha256']==trial.goal.checkpoint()['sha256'] and not halted['native_action_executed']
+                    safe_halts+=1
+                evidence=[json.loads(line) for line in (arm/'assessments.jsonl').read_text().splitlines()] if (arm/'assessments.jsonl').exists() else []
                 assert len(evidence)==len(plans)
                 for item,(i,plan) in zip(evidence,plans):
                     verify(item,plan,base.counts(rows[:i]),model,mode);p=item['payload']
                     n+=1;changed+=p['choice_changed'];guarded+=p['selection_constraint']=='current_body_need'
                     unseen+=sum(v['unseen_steps'] for v in p['coverage'].values())
-                traces.add(base.digest([(r['decision']['request']['requested'],r['receipt']['owner']['selected_action'],
+                if rows:traces.add(base.digest([(r['decision']['request']['requested'],r['receipt']['owner']['selected_action'],
                     r['after']['fuel_J'],r['after']['minimum']['fatigue'],r['after']['landings']) for r in rows]))
                 actual_ticks+=len(rows)
                 if followed:
@@ -200,7 +227,7 @@ def audit(output,model_path):
                     actual_ticks+=len(receipts)
     result=dict(assessments_verified=n,choice_relevant_assessments=changed,body_need_determined_assessments=guarded,
         unseen_context_forecast_steps=unseen,distinct_executed_traces=len(traces),measured_owner_ticks=actual_ticks,
-        cold_audit_valid=True,native_actions_executed=0,new_forecasts_executed=0)
+        safe_halted_arms=safe_halts,cold_audit_valid=True,native_actions_executed=0,new_forecasts_executed=0)
     atomic_json(out/'audit.json',result);print(json.dumps(result,indent=2),flush=True)
 
 

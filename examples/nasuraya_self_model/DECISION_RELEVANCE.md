@@ -36,6 +36,14 @@ time include the pause. Different progress or unstable endpoints cannot be
 counted as a win. No full-route completion/efficiency claim follows from this
 bounded experiment.
 
+`NoSafeChoice` is recorded as a resolved safety refusal before an action. The
+owner hash must stay unchanged, the complete trial is saved, and a later call
+cannot prepare or execute another tick after that halt. Followup applies no
+pause action to a halted arm. This differs from an unknown action outcome;
+neither case authorizes a retry. Each measurement epoch gives fresh synthetic
+goals unique IDs; a failed earlier in-memory measurement is retained as aborted
+and is not represented as recovered execution.
+
 ```bash
 python3 -m unittest examples.nasuraya_self_model.test_decision_relevance -v
 python3 -m examples.nasuraya_self_model.run_decision_survey --model /path/model.json --output /tmp/new-survey --workers 4
