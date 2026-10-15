@@ -1,0 +1,14 @@
+{
+  "schema": "nasuraya-metacognitive-validation/1",
+  "tests": 89,
+  "new_controller_tests": 17,
+  "existing_regression_tests": 72,
+  "duration_s": 401.71,
+  "status": "passed",
+  "log_sha256": "28a1edd0536ec831835f87ebb332730d255475beec463c2f365e2766f81e6434",
+  "test_source_sha256": "4c00e75ebc1590c18522d83a94294ac7f34da85c8a72c9d41dac6d363fbfe013",
+  "held_out_cases": 32,
+  "paired_policy_trials": 128,
+  "native_tracked_files_unchanged": 72,
+  "live_model_api_calls": 0
+}

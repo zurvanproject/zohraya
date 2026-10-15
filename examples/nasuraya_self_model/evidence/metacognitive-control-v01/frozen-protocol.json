@@ -1,0 +1,71 @@
+{
+  "schema": "nasuraya-metacognitive-control-evaluation/1",
+  "registered_before_outcome_measurement": true,
+  "training_sleep_pressure": [
+    0.2,
+    0.91,
+    0.25,
+    0.92,
+    0.3,
+    0.93,
+    0.35,
+    0.94
+  ],
+  "held_out_sleep_pressure": [
+    0.12,
+    0.42,
+    0.68,
+    0.82,
+    0.86,
+    0.89,
+    0.95,
+    0.98
+  ],
+  "held_out_duration_s": [
+    0.1,
+    0.2
+  ],
+  "held_out_interventions": [
+    "ordinary",
+    "zero_friction"
+  ],
+  "case_order": "pressure, duration, intervention; listed order",
+  "arms": [
+    "control",
+    "report_only",
+    "memory_disabled",
+    "native_only"
+  ],
+  "policy": {
+    "max_read_only_refreshes": 1,
+    "max_native_requests": 1,
+    "continue_threshold": 0.7,
+    "min_samples": 3,
+    "learning_on_held_out": false
+  },
+  "initial_observation_age_s": 6.0,
+  "read_only_refresh": "source-pinned snapshot of the unchanged local software body; zero native cycles; no training and no counterfactual forecast",
+  "outcome": "requested walk is admitted and physical model remains valid; this is not route completion",
+  "labels": "same-model shadow walk from each initial checkpoint, generated only after every arm's final decision is durably saved; unavailable to controller",
+  "metrics": [
+    "all-case Brier score",
+    "attempt coverage",
+    "vetoed or invalid attempted requests per case",
+    "failures conditional on attempts",
+    "deferred admissible requests per case",
+    "read-only refresh count",
+    "owner time and fuel debit"
+  ],
+  "acceptance": [
+    "no held-out learning",
+    "disjoint train and held-out initial checkpoint hashes",
+    "at most one read-only refresh and one native request per trial",
+    "native guard remains authoritative",
+    "cold process resumes a saved decision identically",
+    "persisted outcome reconciles without a native cycle",
+    "unknown outcome blocks retries",
+    "all cases and tradeoffs reported even if no improvement"
+  ],
+  "scope": "authored deterministic body-admission challenge, inspired by MIRROR's knowing-doing comparison; not a MIRROR replication, language-model evaluation, physical-body validation or consciousness score",
+  "stale_fixture_construction": "snapshot, then six-second native observe prelude on a synthetic fixture; this prelude is common to all arms and excluded from incremental policy costs"
+}
