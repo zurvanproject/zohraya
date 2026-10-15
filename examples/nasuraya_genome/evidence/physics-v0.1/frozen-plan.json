@@ -1,0 +1,479 @@
+{
+  "schema": "nasuraya.genome.physics-trial/0.1",
+  "cases": [
+    {
+      "id": "stand",
+      "frames": 20,
+      "command": "stand",
+      "impulse": [
+        0.0,
+        0.0
+      ],
+      "tail": true,
+      "friction": 0.6
+    },
+    {
+      "id": "tail_displacement",
+      "frames": 40,
+      "command": "stand",
+      "impulse": [
+        0.0,
+        0.0
+      ],
+      "tail": true,
+      "friction": 0.6,
+      "tail_angle": [
+        0.1,
+        -0.05
+      ],
+      "tail_speed": [
+        0.2,
+        -0.1
+      ]
+    },
+    {
+      "id": "impulse",
+      "frames": 40,
+      "command": "stand",
+      "impulse": [
+        8.0,
+        4.0
+      ],
+      "tail": true,
+      "friction": 0.6
+    },
+    {
+      "id": "impulse_tail_off",
+      "frames": 40,
+      "command": "stand",
+      "impulse": [
+        8.0,
+        4.0
+      ],
+      "tail": false,
+      "friction": 0.6
+    },
+    {
+      "id": "zero_friction",
+      "frames": 10,
+      "command": "stand",
+      "impulse": [
+        8.0,
+        4.0
+      ],
+      "tail": true,
+      "friction": 0.0
+    },
+    {
+      "id": "walk",
+      "frames": 60,
+      "command": "walk",
+      "impulse": [
+        0.0,
+        0.0
+      ],
+      "tail": true,
+      "friction": 0.6
+    }
+  ],
+  "dt_s": 0.1,
+  "max_frames_per_case": 60,
+  "variants": {
+    "baseline": {
+      "schema": "nasuraya.genome.physics-trial/0.1",
+      "genotype_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+      "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+      "reasons": [],
+      "purpose": "genotype_candidate_with_declared_inertia_closure",
+      "status": "sandbox_only",
+      "native_apply_allowed": false,
+      "assumptions": [
+        "equivalent uniform slender rod about its root: I = m L^2 / 3",
+        "tail mass fixed at 10 kg; effective actuator lever and force/torque ceilings fixed",
+        "whole-body mass, COM, contact patches, leg links and controller gains fixed",
+        "no anatomical mass redistribution, mesh collision or tail-ground contact solved",
+        "parameters vary only in private fixture copies; no original equation is changed"
+      ],
+      "native_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "design": {
+        "schema": "tadash-contact-design/0.6",
+        "axes": "+X left; +Y forward; +Z up",
+        "mass_kg": 195.0,
+        "gravity_m_s2": 9.81,
+        "com_height_m": 1.314,
+        "hip_height_m": 1.42,
+        "hip_half_width_m": 0.14,
+        "hock_height_m": 0.38,
+        "foot_half_spacing_m": 0.196,
+        "patches": [
+          {
+            "id": "ball",
+            "xy": [
+              0.0,
+              -0.09299999999999997
+            ],
+            "area_m2": 0.03389099889210211
+          },
+          {
+            "id": "toe_1",
+            "xy": [
+              -0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          },
+          {
+            "id": "toe_2",
+            "xy": [
+              0.0,
+              0.10300000000000004
+            ],
+            "area_m2": 0.002222865297973994
+          },
+          {
+            "id": "toe_3",
+            "xy": [
+              0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          }
+        ],
+        "pressure_ceiling_kpa": 300.0,
+        "leg_lengths_m": [
+          0.5997275261316592,
+          0.5244099541389351,
+          0.42922274124281906
+        ],
+        "tail_length_m": 1.2,
+        "tail_mass_kg": 10.0,
+        "tail_inertia_kg_m2": 4.8,
+        "tail_torque_limit_Nm": 60.0,
+        "tail_angle_limit_rad": 0.65,
+        "tail_speed_limit_rad_s": 1.4,
+        "swing_time_s": 1.0,
+        "swing_height_m": 0.12,
+        "max_step_length_m": 0.55,
+        "walk_step_length_m": 0.12,
+        "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+        "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+        "new_assumptions": [
+          "hip half width",
+          "tail equivalent flywheel inertia and motion limits",
+          "timing and controller gains",
+          "point-centre pressure-constrained contact model; no deformable mesh"
+        ]
+      },
+      "changes": {},
+      "sandbox_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5"
+    },
+    "tail_short": {
+      "schema": "nasuraya.genome.physics-trial/0.1",
+      "genotype_sha256": "ca49ef796f76b48b6bfded18ead26b64870c626ac2a606ab7950145641d81cd8",
+      "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+      "reasons": [],
+      "purpose": "genotype_candidate_with_declared_inertia_closure",
+      "status": "sandbox_only",
+      "native_apply_allowed": false,
+      "assumptions": [
+        "equivalent uniform slender rod about its root: I = m L^2 / 3",
+        "tail mass fixed at 10 kg; effective actuator lever and force/torque ceilings fixed",
+        "whole-body mass, COM, contact patches, leg links and controller gains fixed",
+        "no anatomical mass redistribution, mesh collision or tail-ground contact solved",
+        "parameters vary only in private fixture copies; no original equation is changed"
+      ],
+      "native_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "design": {
+        "schema": "tadash-contact-design/0.6",
+        "axes": "+X left; +Y forward; +Z up",
+        "mass_kg": 195.0,
+        "gravity_m_s2": 9.81,
+        "com_height_m": 1.314,
+        "hip_height_m": 1.42,
+        "hip_half_width_m": 0.14,
+        "hock_height_m": 0.38,
+        "foot_half_spacing_m": 0.196,
+        "patches": [
+          {
+            "id": "ball",
+            "xy": [
+              0.0,
+              -0.09299999999999997
+            ],
+            "area_m2": 0.03389099889210211
+          },
+          {
+            "id": "toe_1",
+            "xy": [
+              -0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          },
+          {
+            "id": "toe_2",
+            "xy": [
+              0.0,
+              0.10300000000000004
+            ],
+            "area_m2": 0.002222865297973994
+          },
+          {
+            "id": "toe_3",
+            "xy": [
+              0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          }
+        ],
+        "pressure_ceiling_kpa": 300.0,
+        "leg_lengths_m": [
+          0.5997275261316592,
+          0.5244099541389351,
+          0.42922274124281906
+        ],
+        "tail_length_m": 1.176,
+        "tail_mass_kg": 10.0,
+        "tail_inertia_kg_m2": 4.609919999999999,
+        "tail_torque_limit_Nm": 60.0,
+        "tail_angle_limit_rad": 0.65,
+        "tail_speed_limit_rad_s": 1.4,
+        "swing_time_s": 1.0,
+        "swing_height_m": 0.12,
+        "max_step_length_m": 0.55,
+        "walk_step_length_m": 0.12,
+        "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+        "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+        "new_assumptions": [
+          "hip half width",
+          "tail equivalent flywheel inertia and motion limits",
+          "timing and controller gains",
+          "point-centre pressure-constrained contact model; no deformable mesh"
+        ]
+      },
+      "changes": {
+        "tail_length_m": {
+          "before": 1.2,
+          "after": 1.176
+        },
+        "tail_inertia_kg_m2": {
+          "before": 4.8,
+          "after": 4.609919999999999
+        }
+      },
+      "sandbox_design_sha256": "594896586d1939489302148933f7065b936f55b946cc9ae96a077325216f3d99"
+    },
+    "tail_long": {
+      "schema": "nasuraya.genome.physics-trial/0.1",
+      "genotype_sha256": "5ea48b4dac1b117094661829e96745b0c1c0803086de3c6c4060425f4fba7eb7",
+      "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+      "reasons": [],
+      "purpose": "genotype_candidate_with_declared_inertia_closure",
+      "status": "sandbox_only",
+      "native_apply_allowed": false,
+      "assumptions": [
+        "equivalent uniform slender rod about its root: I = m L^2 / 3",
+        "tail mass fixed at 10 kg; effective actuator lever and force/torque ceilings fixed",
+        "whole-body mass, COM, contact patches, leg links and controller gains fixed",
+        "no anatomical mass redistribution, mesh collision or tail-ground contact solved",
+        "parameters vary only in private fixture copies; no original equation is changed"
+      ],
+      "native_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "design": {
+        "schema": "tadash-contact-design/0.6",
+        "axes": "+X left; +Y forward; +Z up",
+        "mass_kg": 195.0,
+        "gravity_m_s2": 9.81,
+        "com_height_m": 1.314,
+        "hip_height_m": 1.42,
+        "hip_half_width_m": 0.14,
+        "hock_height_m": 0.38,
+        "foot_half_spacing_m": 0.196,
+        "patches": [
+          {
+            "id": "ball",
+            "xy": [
+              0.0,
+              -0.09299999999999997
+            ],
+            "area_m2": 0.03389099889210211
+          },
+          {
+            "id": "toe_1",
+            "xy": [
+              -0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          },
+          {
+            "id": "toe_2",
+            "xy": [
+              0.0,
+              0.10300000000000004
+            ],
+            "area_m2": 0.002222865297973994
+          },
+          {
+            "id": "toe_3",
+            "xy": [
+              0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          }
+        ],
+        "pressure_ceiling_kpa": 300.0,
+        "leg_lengths_m": [
+          0.5997275261316592,
+          0.5244099541389351,
+          0.42922274124281906
+        ],
+        "tail_length_m": 1.224,
+        "tail_mass_kg": 10.0,
+        "tail_inertia_kg_m2": 4.99392,
+        "tail_torque_limit_Nm": 60.0,
+        "tail_angle_limit_rad": 0.65,
+        "tail_speed_limit_rad_s": 1.4,
+        "swing_time_s": 1.0,
+        "swing_height_m": 0.12,
+        "max_step_length_m": 0.55,
+        "walk_step_length_m": 0.12,
+        "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+        "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+        "new_assumptions": [
+          "hip half width",
+          "tail equivalent flywheel inertia and motion limits",
+          "timing and controller gains",
+          "point-centre pressure-constrained contact model; no deformable mesh"
+        ]
+      },
+      "changes": {
+        "tail_length_m": {
+          "before": 1.2,
+          "after": 1.224
+        },
+        "tail_inertia_kg_m2": {
+          "before": 4.8,
+          "after": 4.99392
+        }
+      },
+      "sandbox_design_sha256": "a580f8d050c495216d55432d89f96eb03b7072065b5f7292addb672a2a0b2668"
+    },
+    "length_only_ablation": {
+      "schema": "nasuraya.genome.physics-trial/0.1",
+      "genotype_sha256": "5ea48b4dac1b117094661829e96745b0c1c0803086de3c6c4060425f4fba7eb7",
+      "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+      "reasons": [],
+      "purpose": "diagnostic_length_descriptor_only; not a coherent geometric candidate",
+      "status": "sandbox_only",
+      "native_apply_allowed": false,
+      "assumptions": [
+        "tail length descriptor varies while inertia stays fixed; diagnostic ablation only"
+      ],
+      "native_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "design": {
+        "schema": "tadash-contact-design/0.6",
+        "axes": "+X left; +Y forward; +Z up",
+        "mass_kg": 195.0,
+        "gravity_m_s2": 9.81,
+        "com_height_m": 1.314,
+        "hip_height_m": 1.42,
+        "hip_half_width_m": 0.14,
+        "hock_height_m": 0.38,
+        "foot_half_spacing_m": 0.196,
+        "patches": [
+          {
+            "id": "ball",
+            "xy": [
+              0.0,
+              -0.09299999999999997
+            ],
+            "area_m2": 0.03389099889210211
+          },
+          {
+            "id": "toe_1",
+            "xy": [
+              -0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          },
+          {
+            "id": "toe_2",
+            "xy": [
+              0.0,
+              0.10300000000000004
+            ],
+            "area_m2": 0.002222865297973994
+          },
+          {
+            "id": "toe_3",
+            "xy": [
+              0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          }
+        ],
+        "pressure_ceiling_kpa": 300.0,
+        "leg_lengths_m": [
+          0.5997275261316592,
+          0.5244099541389351,
+          0.42922274124281906
+        ],
+        "tail_length_m": 1.224,
+        "tail_mass_kg": 10.0,
+        "tail_inertia_kg_m2": 4.8,
+        "tail_torque_limit_Nm": 60.0,
+        "tail_angle_limit_rad": 0.65,
+        "tail_speed_limit_rad_s": 1.4,
+        "swing_time_s": 1.0,
+        "swing_height_m": 0.12,
+        "max_step_length_m": 0.55,
+        "walk_step_length_m": 0.12,
+        "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+        "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+        "new_assumptions": [
+          "hip half width",
+          "tail equivalent flywheel inertia and motion limits",
+          "timing and controller gains",
+          "point-centre pressure-constrained contact model; no deformable mesh"
+        ]
+      },
+      "changes": {
+        "tail_length_m": {
+          "before": 1.2,
+          "after": 1.224
+        }
+      },
+      "sandbox_design_sha256": "cd792fb95d8a49d9390b4b9f25ac83a5714769b647d86121b6f660e189568353"
+    }
+  },
+  "assumptions": [
+    "equivalent uniform slender rod about its root: I = m L^2 / 3",
+    "tail mass fixed at 10 kg; effective actuator lever and force/torque ceilings fixed",
+    "whole-body mass, COM, contact patches, leg links and controller gains fixed",
+    "no anatomical mass redistribution, mesh collision or tail-ground contact solved",
+    "parameters vary only in private fixture copies; no original equation is changed"
+  ],
+  "experiment_sources_sha256": {
+    "physics_trial.py": "95d593652373436ec54ace3109401054731b230ea62d10c2abc28da508217986",
+    "traits.py": "b8273f197f0c43781ed5905246cd26645d836f8cf38547104b7b3b2b4c6aea09",
+    "chromosomes.py": "c107da1d89a92b8080423d0e9e50865e7db6c2ba1cb0cc019cff7e7334b7eef1",
+    "genome48.json": "584015ce7ed4fe251c3d823ef74468f28f5e816be40776d0771bec34e85a0a5d",
+    "contract-v0.1.json": "45376c0bb2e8db568d7ed39c7cefc87fda9ed555e282c195c63aa1d44bb1fcbd"
+  },
+  "criteria": {
+    "expected_failure": {
+      "zero_friction": "friction_limit_exceeded"
+    },
+    "other_cases_expected_valid": true,
+    "numerical_error_ceiling": 1e-12,
+    "enforce_fixture_tail_and_pressure_limits": true
+  },
+  "source_manifest_sha256": "720eb52147b287d3f122a3fabd19c3085242c72b2038fc0d8d19c68e6aa0a702",
+  "native_apply_allowed": false,
+  "acceptance": "reproducible bounded sensitivity, not phenotype improvement or production approval"
+}

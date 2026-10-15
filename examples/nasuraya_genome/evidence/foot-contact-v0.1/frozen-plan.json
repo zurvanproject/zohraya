@@ -1,0 +1,1386 @@
+{
+  "schema": "nasuraya.foot-contact-trial/0.1",
+  "cases": [
+    {
+      "id": "stand",
+      "command": "stand",
+      "frames": 20,
+      "impulse": [
+        0.0,
+        0.0
+      ],
+      "friction": 0.6
+    },
+    {
+      "id": "walk",
+      "command": "walk",
+      "frames": 60,
+      "impulse": [
+        0.0,
+        0.0
+      ],
+      "friction": 0.6
+    },
+    {
+      "id": "impulse",
+      "command": "stand",
+      "frames": 40,
+      "impulse": [
+        8.0,
+        4.0
+      ],
+      "friction": 0.6
+    },
+    {
+      "id": "zero_friction",
+      "command": "stand",
+      "frames": 10,
+      "impulse": [
+        8.0,
+        4.0
+      ],
+      "friction": 0.0
+    }
+  ],
+  "dt_s": 0.1,
+  "plans": {
+    "baseline": {
+      "schema": "nasuraya.foot-contact-hypothesis/0.1",
+      "genotype": {
+        "schema": "nasuraya.genotype",
+        "version": "0.1.0",
+        "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+        "revision": 0,
+        "parent_sha256": null,
+        "chromosomes": {
+          "P01A": {
+            "P01.L000": 1
+          },
+          "P01B": {
+            "P01.L000": 1
+          },
+          "P02A": {
+            "P02.L000": 1
+          },
+          "P02B": {
+            "P02.L000": 1
+          },
+          "P03A": {
+            "P03.L000": 1
+          },
+          "P03B": {
+            "P03.L000": 1
+          },
+          "P04A": {
+            "P04.L000": 1
+          },
+          "P04B": {
+            "P04.L000": 1
+          },
+          "P05A": {
+            "P05.L000": 1
+          },
+          "P05B": {
+            "P05.L000": 1
+          },
+          "P06A": {
+            "P06.L000": 1
+          },
+          "P06B": {
+            "P06.L000": 1
+          },
+          "P07A": {
+            "P07.L000": 1,
+            "P07.L010": 1.0,
+            "P07.L011": 1.0
+          },
+          "P07B": {
+            "P07.L000": 1,
+            "P07.L010": 1.0,
+            "P07.L011": 1.0
+          },
+          "P08A": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P08B": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P09A": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P09B": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P10A": {
+            "P10.L000": 1
+          },
+          "P10B": {
+            "P10.L000": 1
+          },
+          "P11A": {
+            "P11.L000": 1
+          },
+          "P11B": {
+            "P11.L000": 1
+          },
+          "P12A": {
+            "P12.L000": 1
+          },
+          "P12B": {
+            "P12.L000": 1
+          },
+          "P13A": {
+            "P13.L000": 1
+          },
+          "P13B": {
+            "P13.L000": 1
+          },
+          "P14A": {
+            "P14.L000": 1
+          },
+          "P14B": {
+            "P14.L000": 1
+          },
+          "P15A": {
+            "P15.L000": 1
+          },
+          "P15B": {
+            "P15.L000": 1
+          },
+          "P16A": {
+            "P16.L000": 1
+          },
+          "P16B": {
+            "P16.L000": 1
+          },
+          "P17A": {
+            "P17.L000": 1
+          },
+          "P17B": {
+            "P17.L000": 1
+          },
+          "P18A": {
+            "P18.L000": 1
+          },
+          "P18B": {
+            "P18.L000": 1
+          },
+          "P19A": {
+            "P19.L000": 1
+          },
+          "P19B": {
+            "P19.L000": 1
+          },
+          "P20A": {
+            "P20.L000": 1
+          },
+          "P20B": {
+            "P20.L000": 1
+          },
+          "P21A": {
+            "P21.L000": 1
+          },
+          "P21B": {
+            "P21.L000": 1
+          },
+          "P22A": {
+            "P22.L000": 1
+          },
+          "P22B": {
+            "P22.L000": 1
+          },
+          "P23A": {
+            "P23.L000": 1
+          },
+          "P23B": {
+            "P23.L000": 1
+          },
+          "P24A": {
+            "P24.L000": 1
+          },
+          "P24B": {
+            "P24.L000": 1
+          }
+        }
+      },
+      "mode": "affine",
+      "status": "conditional_sandbox_hypothesis",
+      "native_apply_allowed": false,
+      "mesh_sha256": "a24dd828f612b2b70b5c85697c137bc11abd5bf9c91c2696215c3d9aadcbaa00",
+      "geometry": {
+        "patches": 4,
+        "toes": 3,
+        "triangles": 1024,
+        "nonoverlapping": true,
+        "inside_envelope": true,
+        "integrated_area_each_foot_cm2": 392.6257305722875,
+        "analytic_area_each_foot_cm2": 392.66515249806537,
+        "maximum_relative_area_error": 0.00010039578385923065,
+        "centroid_error_m": 2.5001442559942033e-16,
+        "geometric_checks_passed": true,
+        "anatomical_validation": false
+      },
+      "design": {
+        "schema": "tadash-contact-design/0.6",
+        "axes": "+X left; +Y forward; +Z up",
+        "mass_kg": 195.0,
+        "gravity_m_s2": 9.81,
+        "com_height_m": 1.314,
+        "hip_height_m": 1.42,
+        "hip_half_width_m": 0.14,
+        "hock_height_m": 0.38,
+        "foot_half_spacing_m": 0.196,
+        "patches": [
+          {
+            "id": "ball",
+            "xy": [
+              0.0,
+              -0.09299999999999997
+            ],
+            "area_m2": 0.03389099889210211
+          },
+          {
+            "id": "toe_1",
+            "xy": [
+              -0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          },
+          {
+            "id": "toe_2",
+            "xy": [
+              0.0,
+              0.10300000000000004
+            ],
+            "area_m2": 0.002222865297973994
+          },
+          {
+            "id": "toe_3",
+            "xy": [
+              0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          }
+        ],
+        "pressure_ceiling_kpa": 300.0,
+        "leg_lengths_m": [
+          0.5997275261316592,
+          0.5244099541389351,
+          0.42922274124281906
+        ],
+        "tail_length_m": 1.2,
+        "tail_mass_kg": 10.0,
+        "tail_inertia_kg_m2": 4.8,
+        "tail_torque_limit_Nm": 60.0,
+        "tail_angle_limit_rad": 0.65,
+        "tail_speed_limit_rad_s": 1.4,
+        "swing_time_s": 1.0,
+        "swing_height_m": 0.12,
+        "max_step_length_m": 0.55,
+        "walk_step_length_m": 0.12,
+        "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+        "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+        "new_assumptions": [
+          "hip half width",
+          "tail equivalent flywheel inertia and motion limits",
+          "timing and controller gains",
+          "point-centre pressure-constrained contact model; no deformable mesh"
+        ]
+      },
+      "design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "original_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "interpretation": "affine pad hypothesis",
+      "exclusions": [
+        "whole-foot shape",
+        "soft tissue",
+        "ground adaptation",
+        "friction law changes",
+        "pressure-dependent loaded area",
+        "collision clearance",
+        "strength increase"
+      ],
+      "external_contact_target_cm2": 450
+    },
+    "affine": {
+      "schema": "nasuraya.foot-contact-hypothesis/0.1",
+      "genotype": {
+        "schema": "nasuraya.genotype",
+        "version": "0.1.0",
+        "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+        "revision": 1,
+        "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+        "chromosomes": {
+          "P01A": {
+            "P01.L000": 1
+          },
+          "P01B": {
+            "P01.L000": 1
+          },
+          "P02A": {
+            "P02.L000": 1
+          },
+          "P02B": {
+            "P02.L000": 1
+          },
+          "P03A": {
+            "P03.L000": 1
+          },
+          "P03B": {
+            "P03.L000": 1
+          },
+          "P04A": {
+            "P04.L000": 1
+          },
+          "P04B": {
+            "P04.L000": 1
+          },
+          "P05A": {
+            "P05.L000": 1
+          },
+          "P05B": {
+            "P05.L000": 1
+          },
+          "P06A": {
+            "P06.L000": 1
+          },
+          "P06B": {
+            "P06.L000": 1
+          },
+          "P07A": {
+            "P07.L000": 1,
+            "P07.L010": 1.02,
+            "P07.L011": 1.02
+          },
+          "P07B": {
+            "P07.L000": 1,
+            "P07.L010": 1.02,
+            "P07.L011": 1.02
+          },
+          "P08A": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P08B": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P09A": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P09B": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P10A": {
+            "P10.L000": 1
+          },
+          "P10B": {
+            "P10.L000": 1
+          },
+          "P11A": {
+            "P11.L000": 1
+          },
+          "P11B": {
+            "P11.L000": 1
+          },
+          "P12A": {
+            "P12.L000": 1
+          },
+          "P12B": {
+            "P12.L000": 1
+          },
+          "P13A": {
+            "P13.L000": 1
+          },
+          "P13B": {
+            "P13.L000": 1
+          },
+          "P14A": {
+            "P14.L000": 1
+          },
+          "P14B": {
+            "P14.L000": 1
+          },
+          "P15A": {
+            "P15.L000": 1
+          },
+          "P15B": {
+            "P15.L000": 1
+          },
+          "P16A": {
+            "P16.L000": 1
+          },
+          "P16B": {
+            "P16.L000": 1
+          },
+          "P17A": {
+            "P17.L000": 1
+          },
+          "P17B": {
+            "P17.L000": 1
+          },
+          "P18A": {
+            "P18.L000": 1
+          },
+          "P18B": {
+            "P18.L000": 1
+          },
+          "P19A": {
+            "P19.L000": 1
+          },
+          "P19B": {
+            "P19.L000": 1
+          },
+          "P20A": {
+            "P20.L000": 1
+          },
+          "P20B": {
+            "P20.L000": 1
+          },
+          "P21A": {
+            "P21.L000": 1
+          },
+          "P21B": {
+            "P21.L000": 1
+          },
+          "P22A": {
+            "P22.L000": 1
+          },
+          "P22B": {
+            "P22.L000": 1
+          },
+          "P23A": {
+            "P23.L000": 1
+          },
+          "P23B": {
+            "P23.L000": 1
+          },
+          "P24A": {
+            "P24.L000": 1
+          },
+          "P24B": {
+            "P24.L000": 1
+          }
+        }
+      },
+      "mode": "affine",
+      "status": "conditional_sandbox_hypothesis",
+      "native_apply_allowed": false,
+      "mesh_sha256": "58ef879256ea33faf16431311b8cd9131e1bfc8d85ee65be0f3dcee7e443b1e1",
+      "geometry": {
+        "patches": 4,
+        "toes": 3,
+        "triangles": 1024,
+        "nonoverlapping": true,
+        "inside_envelope": true,
+        "integrated_area_each_foot_cm2": 408.487810087407,
+        "analytic_area_each_foot_cm2": 408.52882465898716,
+        "maximum_relative_area_error": 0.00010039578385823145,
+        "centroid_error_m": 9.813077866773594e-17,
+        "geometric_checks_passed": true,
+        "anatomical_validation": false
+      },
+      "design": {
+        "schema": "tadash-contact-design/0.6",
+        "axes": "+X left; +Y forward; +Z up",
+        "mass_kg": 195.0,
+        "gravity_m_s2": 9.81,
+        "com_height_m": 1.314,
+        "hip_height_m": 1.42,
+        "hip_half_width_m": 0.14,
+        "hock_height_m": 0.38,
+        "foot_half_spacing_m": 0.196,
+        "patches": [
+          {
+            "id": "ball",
+            "xy": [
+              0.0,
+              -0.09485999999999997
+            ],
+            "area_m2": 0.035260195247343036
+          },
+          {
+            "id": "toe_1",
+            "xy": [
+              -0.051408,
+              0.08706720000000005
+            ],
+            "area_m2": 0.0016400090812717693
+          },
+          {
+            "id": "toe_2",
+            "xy": [
+              0.0,
+              0.10506000000000004
+            ],
+            "area_m2": 0.0023126690560121435
+          },
+          {
+            "id": "toe_3",
+            "xy": [
+              0.051408,
+              0.08706720000000005
+            ],
+            "area_m2": 0.0016400090812717693
+          }
+        ],
+        "pressure_ceiling_kpa": 300.0,
+        "leg_lengths_m": [
+          0.5997275261316592,
+          0.5244099541389351,
+          0.42922274124281906
+        ],
+        "tail_length_m": 1.2,
+        "tail_mass_kg": 10.0,
+        "tail_inertia_kg_m2": 4.8,
+        "tail_torque_limit_Nm": 60.0,
+        "tail_angle_limit_rad": 0.65,
+        "tail_speed_limit_rad_s": 1.4,
+        "swing_time_s": 1.0,
+        "swing_height_m": 0.12,
+        "max_step_length_m": 0.55,
+        "walk_step_length_m": 0.12,
+        "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+        "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+        "new_assumptions": [
+          "hip half width",
+          "tail equivalent flywheel inertia and motion limits",
+          "timing and controller gains",
+          "point-centre pressure-constrained contact model; no deformable mesh"
+        ]
+      },
+      "design_sha256": "20003e2f7fb59334f64aee027980d14aadcb4ff2ee2f8f88f6a0f5b68507d6f7",
+      "original_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "interpretation": "affine pad hypothesis",
+      "exclusions": [
+        "whole-foot shape",
+        "soft tissue",
+        "ground adaptation",
+        "friction law changes",
+        "pressure-dependent loaded area",
+        "collision clearance",
+        "strength increase"
+      ],
+      "external_contact_target_cm2": 450
+    },
+    "area_only": {
+      "schema": "nasuraya.foot-contact-hypothesis/0.1",
+      "genotype": {
+        "schema": "nasuraya.genotype",
+        "version": "0.1.0",
+        "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+        "revision": 1,
+        "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+        "chromosomes": {
+          "P01A": {
+            "P01.L000": 1
+          },
+          "P01B": {
+            "P01.L000": 1
+          },
+          "P02A": {
+            "P02.L000": 1
+          },
+          "P02B": {
+            "P02.L000": 1
+          },
+          "P03A": {
+            "P03.L000": 1
+          },
+          "P03B": {
+            "P03.L000": 1
+          },
+          "P04A": {
+            "P04.L000": 1
+          },
+          "P04B": {
+            "P04.L000": 1
+          },
+          "P05A": {
+            "P05.L000": 1
+          },
+          "P05B": {
+            "P05.L000": 1
+          },
+          "P06A": {
+            "P06.L000": 1
+          },
+          "P06B": {
+            "P06.L000": 1
+          },
+          "P07A": {
+            "P07.L000": 1,
+            "P07.L010": 1.02,
+            "P07.L011": 1.02
+          },
+          "P07B": {
+            "P07.L000": 1,
+            "P07.L010": 1.02,
+            "P07.L011": 1.02
+          },
+          "P08A": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P08B": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P09A": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P09B": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P10A": {
+            "P10.L000": 1
+          },
+          "P10B": {
+            "P10.L000": 1
+          },
+          "P11A": {
+            "P11.L000": 1
+          },
+          "P11B": {
+            "P11.L000": 1
+          },
+          "P12A": {
+            "P12.L000": 1
+          },
+          "P12B": {
+            "P12.L000": 1
+          },
+          "P13A": {
+            "P13.L000": 1
+          },
+          "P13B": {
+            "P13.L000": 1
+          },
+          "P14A": {
+            "P14.L000": 1
+          },
+          "P14B": {
+            "P14.L000": 1
+          },
+          "P15A": {
+            "P15.L000": 1
+          },
+          "P15B": {
+            "P15.L000": 1
+          },
+          "P16A": {
+            "P16.L000": 1
+          },
+          "P16B": {
+            "P16.L000": 1
+          },
+          "P17A": {
+            "P17.L000": 1
+          },
+          "P17B": {
+            "P17.L000": 1
+          },
+          "P18A": {
+            "P18.L000": 1
+          },
+          "P18B": {
+            "P18.L000": 1
+          },
+          "P19A": {
+            "P19.L000": 1
+          },
+          "P19B": {
+            "P19.L000": 1
+          },
+          "P20A": {
+            "P20.L000": 1
+          },
+          "P20B": {
+            "P20.L000": 1
+          },
+          "P21A": {
+            "P21.L000": 1
+          },
+          "P21B": {
+            "P21.L000": 1
+          },
+          "P22A": {
+            "P22.L000": 1
+          },
+          "P22B": {
+            "P22.L000": 1
+          },
+          "P23A": {
+            "P23.L000": 1
+          },
+          "P23B": {
+            "P23.L000": 1
+          },
+          "P24A": {
+            "P24.L000": 1
+          },
+          "P24B": {
+            "P24.L000": 1
+          }
+        }
+      },
+      "mode": "area_only",
+      "status": "conditional_sandbox_hypothesis",
+      "native_apply_allowed": false,
+      "mesh_sha256": "58ef879256ea33faf16431311b8cd9131e1bfc8d85ee65be0f3dcee7e443b1e1",
+      "geometry": {
+        "patches": 4,
+        "toes": 3,
+        "triangles": 1024,
+        "nonoverlapping": true,
+        "inside_envelope": true,
+        "integrated_area_each_foot_cm2": 408.487810087407,
+        "analytic_area_each_foot_cm2": 408.52882465898716,
+        "maximum_relative_area_error": 0.00010039578385823145,
+        "centroid_error_m": 9.813077866773594e-17,
+        "geometric_checks_passed": true,
+        "anatomical_validation": false
+      },
+      "design": {
+        "schema": "tadash-contact-design/0.6",
+        "axes": "+X left; +Y forward; +Z up",
+        "mass_kg": 195.0,
+        "gravity_m_s2": 9.81,
+        "com_height_m": 1.314,
+        "hip_height_m": 1.42,
+        "hip_half_width_m": 0.14,
+        "hock_height_m": 0.38,
+        "foot_half_spacing_m": 0.196,
+        "patches": [
+          {
+            "id": "ball",
+            "xy": [
+              0.0,
+              -0.09299999999999997
+            ],
+            "area_m2": 0.035260195247343036
+          },
+          {
+            "id": "toe_1",
+            "xy": [
+              -0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0016400090812717693
+          },
+          {
+            "id": "toe_2",
+            "xy": [
+              0.0,
+              0.10300000000000004
+            ],
+            "area_m2": 0.0023126690560121435
+          },
+          {
+            "id": "toe_3",
+            "xy": [
+              0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0016400090812717693
+          }
+        ],
+        "pressure_ceiling_kpa": 300.0,
+        "leg_lengths_m": [
+          0.5997275261316592,
+          0.5244099541389351,
+          0.42922274124281906
+        ],
+        "tail_length_m": 1.2,
+        "tail_mass_kg": 10.0,
+        "tail_inertia_kg_m2": 4.8,
+        "tail_torque_limit_Nm": 60.0,
+        "tail_angle_limit_rad": 0.65,
+        "tail_speed_limit_rad_s": 1.4,
+        "swing_time_s": 1.0,
+        "swing_height_m": 0.12,
+        "max_step_length_m": 0.55,
+        "walk_step_length_m": 0.12,
+        "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+        "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+        "new_assumptions": [
+          "hip half width",
+          "tail equivalent flywheel inertia and motion limits",
+          "timing and controller gains",
+          "point-centre pressure-constrained contact model; no deformable mesh"
+        ]
+      },
+      "design_sha256": "6b984ac3fe777b8844a405ab5ff0d9943f85b7c0519d41b085a5d45c02fbd579",
+      "original_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "interpretation": "diagnostic ablation; not a complete geometric proposal",
+      "exclusions": [
+        "whole-foot shape",
+        "soft tissue",
+        "ground adaptation",
+        "friction law changes",
+        "pressure-dependent loaded area",
+        "collision clearance",
+        "strength increase"
+      ],
+      "external_contact_target_cm2": 450
+    },
+    "centres_only": {
+      "schema": "nasuraya.foot-contact-hypothesis/0.1",
+      "genotype": {
+        "schema": "nasuraya.genotype",
+        "version": "0.1.0",
+        "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+        "revision": 1,
+        "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+        "chromosomes": {
+          "P01A": {
+            "P01.L000": 1
+          },
+          "P01B": {
+            "P01.L000": 1
+          },
+          "P02A": {
+            "P02.L000": 1
+          },
+          "P02B": {
+            "P02.L000": 1
+          },
+          "P03A": {
+            "P03.L000": 1
+          },
+          "P03B": {
+            "P03.L000": 1
+          },
+          "P04A": {
+            "P04.L000": 1
+          },
+          "P04B": {
+            "P04.L000": 1
+          },
+          "P05A": {
+            "P05.L000": 1
+          },
+          "P05B": {
+            "P05.L000": 1
+          },
+          "P06A": {
+            "P06.L000": 1
+          },
+          "P06B": {
+            "P06.L000": 1
+          },
+          "P07A": {
+            "P07.L000": 1,
+            "P07.L010": 1.02,
+            "P07.L011": 1.02
+          },
+          "P07B": {
+            "P07.L000": 1,
+            "P07.L010": 1.02,
+            "P07.L011": 1.02
+          },
+          "P08A": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P08B": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P09A": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P09B": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P10A": {
+            "P10.L000": 1
+          },
+          "P10B": {
+            "P10.L000": 1
+          },
+          "P11A": {
+            "P11.L000": 1
+          },
+          "P11B": {
+            "P11.L000": 1
+          },
+          "P12A": {
+            "P12.L000": 1
+          },
+          "P12B": {
+            "P12.L000": 1
+          },
+          "P13A": {
+            "P13.L000": 1
+          },
+          "P13B": {
+            "P13.L000": 1
+          },
+          "P14A": {
+            "P14.L000": 1
+          },
+          "P14B": {
+            "P14.L000": 1
+          },
+          "P15A": {
+            "P15.L000": 1
+          },
+          "P15B": {
+            "P15.L000": 1
+          },
+          "P16A": {
+            "P16.L000": 1
+          },
+          "P16B": {
+            "P16.L000": 1
+          },
+          "P17A": {
+            "P17.L000": 1
+          },
+          "P17B": {
+            "P17.L000": 1
+          },
+          "P18A": {
+            "P18.L000": 1
+          },
+          "P18B": {
+            "P18.L000": 1
+          },
+          "P19A": {
+            "P19.L000": 1
+          },
+          "P19B": {
+            "P19.L000": 1
+          },
+          "P20A": {
+            "P20.L000": 1
+          },
+          "P20B": {
+            "P20.L000": 1
+          },
+          "P21A": {
+            "P21.L000": 1
+          },
+          "P21B": {
+            "P21.L000": 1
+          },
+          "P22A": {
+            "P22.L000": 1
+          },
+          "P22B": {
+            "P22.L000": 1
+          },
+          "P23A": {
+            "P23.L000": 1
+          },
+          "P23B": {
+            "P23.L000": 1
+          },
+          "P24A": {
+            "P24.L000": 1
+          },
+          "P24B": {
+            "P24.L000": 1
+          }
+        }
+      },
+      "mode": "centres_only",
+      "status": "conditional_sandbox_hypothesis",
+      "native_apply_allowed": false,
+      "mesh_sha256": "58ef879256ea33faf16431311b8cd9131e1bfc8d85ee65be0f3dcee7e443b1e1",
+      "geometry": {
+        "patches": 4,
+        "toes": 3,
+        "triangles": 1024,
+        "nonoverlapping": true,
+        "inside_envelope": true,
+        "integrated_area_each_foot_cm2": 408.487810087407,
+        "analytic_area_each_foot_cm2": 408.52882465898716,
+        "maximum_relative_area_error": 0.00010039578385823145,
+        "centroid_error_m": 9.813077866773594e-17,
+        "geometric_checks_passed": true,
+        "anatomical_validation": false
+      },
+      "design": {
+        "schema": "tadash-contact-design/0.6",
+        "axes": "+X left; +Y forward; +Z up",
+        "mass_kg": 195.0,
+        "gravity_m_s2": 9.81,
+        "com_height_m": 1.314,
+        "hip_height_m": 1.42,
+        "hip_half_width_m": 0.14,
+        "hock_height_m": 0.38,
+        "foot_half_spacing_m": 0.196,
+        "patches": [
+          {
+            "id": "ball",
+            "xy": [
+              0.0,
+              -0.09485999999999997
+            ],
+            "area_m2": 0.03389099889210211
+          },
+          {
+            "id": "toe_1",
+            "xy": [
+              -0.051408,
+              0.08706720000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          },
+          {
+            "id": "toe_2",
+            "xy": [
+              0.0,
+              0.10506000000000004
+            ],
+            "area_m2": 0.002222865297973994
+          },
+          {
+            "id": "toe_3",
+            "xy": [
+              0.051408,
+              0.08706720000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          }
+        ],
+        "pressure_ceiling_kpa": 300.0,
+        "leg_lengths_m": [
+          0.5997275261316592,
+          0.5244099541389351,
+          0.42922274124281906
+        ],
+        "tail_length_m": 1.2,
+        "tail_mass_kg": 10.0,
+        "tail_inertia_kg_m2": 4.8,
+        "tail_torque_limit_Nm": 60.0,
+        "tail_angle_limit_rad": 0.65,
+        "tail_speed_limit_rad_s": 1.4,
+        "swing_time_s": 1.0,
+        "swing_height_m": 0.12,
+        "max_step_length_m": 0.55,
+        "walk_step_length_m": 0.12,
+        "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+        "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+        "new_assumptions": [
+          "hip half width",
+          "tail equivalent flywheel inertia and motion limits",
+          "timing and controller gains",
+          "point-centre pressure-constrained contact model; no deformable mesh"
+        ]
+      },
+      "design_sha256": "1a7aa6d92c92d32e16e4e21d65d78b15c897072e54f29bc4c76161706be03885",
+      "original_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "interpretation": "diagnostic ablation; not a complete geometric proposal",
+      "exclusions": [
+        "whole-foot shape",
+        "soft tissue",
+        "ground adaptation",
+        "friction law changes",
+        "pressure-dependent loaded area",
+        "collision clearance",
+        "strength increase"
+      ],
+      "external_contact_target_cm2": 450
+    },
+    "descriptor_only": {
+      "schema": "nasuraya.foot-contact-hypothesis/0.1",
+      "genotype": {
+        "schema": "nasuraya.genotype",
+        "version": "0.1.0",
+        "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+        "revision": 1,
+        "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+        "chromosomes": {
+          "P01A": {
+            "P01.L000": 1
+          },
+          "P01B": {
+            "P01.L000": 1
+          },
+          "P02A": {
+            "P02.L000": 1
+          },
+          "P02B": {
+            "P02.L000": 1
+          },
+          "P03A": {
+            "P03.L000": 1
+          },
+          "P03B": {
+            "P03.L000": 1
+          },
+          "P04A": {
+            "P04.L000": 1
+          },
+          "P04B": {
+            "P04.L000": 1
+          },
+          "P05A": {
+            "P05.L000": 1
+          },
+          "P05B": {
+            "P05.L000": 1
+          },
+          "P06A": {
+            "P06.L000": 1
+          },
+          "P06B": {
+            "P06.L000": 1
+          },
+          "P07A": {
+            "P07.L000": 1,
+            "P07.L010": 1.02,
+            "P07.L011": 1.02
+          },
+          "P07B": {
+            "P07.L000": 1,
+            "P07.L010": 1.02,
+            "P07.L011": 1.02
+          },
+          "P08A": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P08B": {
+            "P08.L000": 1,
+            "P08.L010": 3.0
+          },
+          "P09A": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P09B": {
+            "P09.L000": 1,
+            "P09.L010": 1.0
+          },
+          "P10A": {
+            "P10.L000": 1
+          },
+          "P10B": {
+            "P10.L000": 1
+          },
+          "P11A": {
+            "P11.L000": 1
+          },
+          "P11B": {
+            "P11.L000": 1
+          },
+          "P12A": {
+            "P12.L000": 1
+          },
+          "P12B": {
+            "P12.L000": 1
+          },
+          "P13A": {
+            "P13.L000": 1
+          },
+          "P13B": {
+            "P13.L000": 1
+          },
+          "P14A": {
+            "P14.L000": 1
+          },
+          "P14B": {
+            "P14.L000": 1
+          },
+          "P15A": {
+            "P15.L000": 1
+          },
+          "P15B": {
+            "P15.L000": 1
+          },
+          "P16A": {
+            "P16.L000": 1
+          },
+          "P16B": {
+            "P16.L000": 1
+          },
+          "P17A": {
+            "P17.L000": 1
+          },
+          "P17B": {
+            "P17.L000": 1
+          },
+          "P18A": {
+            "P18.L000": 1
+          },
+          "P18B": {
+            "P18.L000": 1
+          },
+          "P19A": {
+            "P19.L000": 1
+          },
+          "P19B": {
+            "P19.L000": 1
+          },
+          "P20A": {
+            "P20.L000": 1
+          },
+          "P20B": {
+            "P20.L000": 1
+          },
+          "P21A": {
+            "P21.L000": 1
+          },
+          "P21B": {
+            "P21.L000": 1
+          },
+          "P22A": {
+            "P22.L000": 1
+          },
+          "P22B": {
+            "P22.L000": 1
+          },
+          "P23A": {
+            "P23.L000": 1
+          },
+          "P23B": {
+            "P23.L000": 1
+          },
+          "P24A": {
+            "P24.L000": 1
+          },
+          "P24B": {
+            "P24.L000": 1
+          }
+        }
+      },
+      "mode": "descriptor_only",
+      "status": "conditional_sandbox_hypothesis",
+      "native_apply_allowed": false,
+      "mesh_sha256": "58ef879256ea33faf16431311b8cd9131e1bfc8d85ee65be0f3dcee7e443b1e1",
+      "geometry": {
+        "patches": 4,
+        "toes": 3,
+        "triangles": 1024,
+        "nonoverlapping": true,
+        "inside_envelope": true,
+        "integrated_area_each_foot_cm2": 408.487810087407,
+        "analytic_area_each_foot_cm2": 408.52882465898716,
+        "maximum_relative_area_error": 0.00010039578385823145,
+        "centroid_error_m": 9.813077866773594e-17,
+        "geometric_checks_passed": true,
+        "anatomical_validation": false
+      },
+      "design": {
+        "schema": "tadash-contact-design/0.6",
+        "axes": "+X left; +Y forward; +Z up",
+        "mass_kg": 195.0,
+        "gravity_m_s2": 9.81,
+        "com_height_m": 1.314,
+        "hip_height_m": 1.42,
+        "hip_half_width_m": 0.14,
+        "hock_height_m": 0.38,
+        "foot_half_spacing_m": 0.196,
+        "patches": [
+          {
+            "id": "ball",
+            "xy": [
+              0.0,
+              -0.09299999999999997
+            ],
+            "area_m2": 0.03389099889210211
+          },
+          {
+            "id": "toe_1",
+            "xy": [
+              -0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          },
+          {
+            "id": "toe_2",
+            "xy": [
+              0.0,
+              0.10300000000000004
+            ],
+            "area_m2": 0.002222865297973994
+          },
+          {
+            "id": "toe_3",
+            "xy": [
+              0.0504,
+              0.08536000000000005
+            ],
+            "area_m2": 0.0015763255298652146
+          }
+        ],
+        "pressure_ceiling_kpa": 300.0,
+        "leg_lengths_m": [
+          0.5997275261316592,
+          0.5244099541389351,
+          0.42922274124281906
+        ],
+        "tail_length_m": 1.2,
+        "tail_mass_kg": 10.0,
+        "tail_inertia_kg_m2": 4.8,
+        "tail_torque_limit_Nm": 60.0,
+        "tail_angle_limit_rad": 0.65,
+        "tail_speed_limit_rad_s": 1.4,
+        "swing_time_s": 1.0,
+        "swing_height_m": 0.12,
+        "max_step_length_m": 0.55,
+        "walk_step_length_m": 0.12,
+        "source": "existing adult_scale_v03 and pelvis_legs_v06; no change to approved foot appearance",
+        "contact_area_note": "392.665 cm2 loaded-patch fixture retained from pelvis_legs_v06; separate from 450 cm2 adult design target",
+        "new_assumptions": [
+          "hip half width",
+          "tail equivalent flywheel inertia and motion limits",
+          "timing and controller gains",
+          "point-centre pressure-constrained contact model; no deformable mesh"
+        ]
+      },
+      "design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "original_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+      "interpretation": "diagnostic ablation; not a complete geometric proposal",
+      "exclusions": [
+        "whole-foot shape",
+        "soft tissue",
+        "ground adaptation",
+        "friction law changes",
+        "pressure-dependent loaded area",
+        "collision clearance",
+        "strength increase"
+      ],
+      "external_contact_target_cm2": 450
+    }
+  },
+  "source_manifest_sha256": "720eb52147b287d3f122a3fabd19c3085242c72b2038fc0d8d19c68e6aa0a702",
+  "experiment_sources_sha256": {
+    "foot_contact.py": "c659b44ddb07787d6a6cb0b62318731545c4154dc5ba19ffe4487df85229268f",
+    "foot_trial.py": "fc1ffe56e96e0cdbb9f8f823ccbf9e53d1167c0507bbf4fa72870300d851084f",
+    "physics_trial.py": "95d593652373436ec54ace3109401054731b230ea62d10c2abc28da508217986",
+    "traits.py": "b8273f197f0c43781ed5905246cd26645d836f8cf38547104b7b3b2b4c6aea09"
+  },
+  "assumptions": [
+    "authored nonoverlapping ellipse pad shapes matching old patch areas",
+    "affine scaling about a fixed foot anchor; areas use exact determinant",
+    "native support polygon still uses patch centres, not mesh edges",
+    "mass, leg skeleton, forces, pressure ceiling and friction law fixed"
+  ],
+  "criteria": {
+    "area_error_relative_max": 0.000101,
+    "centroid_error_m": 1e-12,
+    "force_error_N": 1e-07,
+    "moment_error_Nm": 1e-07,
+    "negative_friction_failure": "friction_limit_exceeded",
+    "over_capacity_expected_feasible": false
+  },
+  "native_apply_allowed": false,
+  "claim": "conditional geometric/solver consistency; no anatomical or clinical validation"
+}
