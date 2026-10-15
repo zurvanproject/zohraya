@@ -1,0 +1,274 @@
+{
+  "rows": [
+    {
+      "id": "held_out:0.18:0.1:ordinary",
+      "label": "ADMIT",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.42914313077926636,
+      "scores": [
+        -9.358875274658203,
+        -9.073527336120605
+      ],
+      "answer_token_nll": 3.1196250915527344
+    },
+    {
+      "id": "held_out:0.18:0.1:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.4651642143726349,
+      "scores": [
+        -8.968785285949707,
+        -8.829216003417969
+      ],
+      "answer_token_nll": 2.9430720806121826
+    },
+    {
+      "id": "held_out:0.18:0.2:ordinary",
+      "label": "ADMIT",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.4265725612640381,
+      "scores": [
+        -9.364904403686523,
+        -9.069055557250977
+      ],
+      "answer_token_nll": 3.1216347217559814
+    },
+    {
+      "id": "held_out:0.18:0.2:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.46341365575790405,
+      "scores": [
+        -8.977529525756836,
+        -8.83092212677002
+      ],
+      "answer_token_nll": 2.94364070892334
+    },
+    {
+      "id": "held_out:0.38:0.1:ordinary",
+      "label": "ADMIT",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.42599648237228394,
+      "scores": [
+        -9.332761764526367,
+        -9.034557342529297
+      ],
+      "answer_token_nll": 3.1109206676483154
+    },
+    {
+      "id": "held_out:0.38:0.1:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.4636000692844391,
+      "scores": [
+        -8.936931610107422,
+        -8.7910737991333
+      ],
+      "answer_token_nll": 2.9303579330444336
+    },
+    {
+      "id": "held_out:0.38:0.2:ordinary",
+      "label": "ADMIT",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.4293235242366791,
+      "scores": [
+        -9.353397369384766,
+        -9.068785667419434
+      ],
+      "answer_token_nll": 3.1177990436553955
+    },
+    {
+      "id": "held_out:0.38:0.2:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.468117892742157,
+      "scores": [
+        -8.951786994934082,
+        -8.824085235595703
+      ],
+      "answer_token_nll": 2.941361665725708
+    },
+    {
+      "id": "held_out:0.58:0.1:ordinary",
+      "label": "ADMIT",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.43200650811195374,
+      "scores": [
+        -9.295226097106934,
+        -9.021556854248047
+      ],
+      "answer_token_nll": 3.0984086990356445
+    },
+    {
+      "id": "held_out:0.58:0.1:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.4673493802547455,
+      "scores": [
+        -8.907587051391602,
+        -8.776798248291016
+      ],
+      "answer_token_nll": 2.9255993366241455
+    },
+    {
+      "id": "held_out:0.58:0.2:ordinary",
+      "label": "ADMIT",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.4331560730934143,
+      "scores": [
+        -9.307723999023438,
+        -9.038738250732422
+      ],
+      "answer_token_nll": 3.102574586868286
+    },
+    {
+      "id": "held_out:0.58:0.2:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.46875712275505066,
+      "scores": [
+        -8.919081687927246,
+        -8.793947219848633
+      ],
+      "answer_token_nll": 2.9313156604766846
+    },
+    {
+      "id": "held_out:0.78:0.1:ordinary",
+      "label": "ADMIT",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.4318827688694,
+      "scores": [
+        -9.26616096496582,
+        -8.991987228393555
+      ],
+      "answer_token_nll": 3.0887203216552734
+    },
+    {
+      "id": "held_out:0.78:0.1:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.46917301416397095,
+      "scores": [
+        -8.875965118408203,
+        -8.752500534057617
+      ],
+      "answer_token_nll": 2.9175002574920654
+    },
+    {
+      "id": "held_out:0.78:0.2:ordinary",
+      "label": "ADMIT",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.4325542151927948,
+      "scores": [
+        -9.278351783752441,
+        -9.006914138793945
+      ],
+      "answer_token_nll": 3.0927839279174805
+    },
+    {
+      "id": "held_out:0.78:0.2:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.4699443280696869,
+      "scores": [
+        -8.888404846191406,
+        -8.768036842346191
+      ],
+      "answer_token_nll": 2.9226789474487305
+    },
+    {
+      "id": "held_out:0.88:0.1:ordinary",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.3038482069969177,
+      "scores": [
+        -9.395718574523926,
+        -8.566679000854492
+      ],
+      "answer_token_nll": 2.8555595874786377
+    },
+    {
+      "id": "held_out:0.88:0.1:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.34664130210876465,
+      "scores": [
+        -9.018675804138184,
+        -8.38484001159668
+      ],
+      "answer_token_nll": 2.7949466705322266
+    },
+    {
+      "id": "held_out:0.88:0.2:ordinary",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.30350393056869507,
+      "scores": [
+        -9.410085678100586,
+        -8.579418182373047
+      ],
+      "answer_token_nll": 2.8598060607910156
+    },
+    {
+      "id": "held_out:0.88:0.2:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.3464806377887726,
+      "scores": [
+        -9.031407356262207,
+        -8.396862030029297
+      ],
+      "answer_token_nll": 2.7989540100097656
+    },
+    {
+      "id": "held_out:0.93:0.1:ordinary",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.296766072511673,
+      "scores": [
+        -9.412456512451172,
+        -8.549711227416992
+      ],
+      "answer_token_nll": 2.8499038219451904
+    },
+    {
+      "id": "held_out:0.93:0.1:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.33699509501457214,
+      "scores": [
+        -9.042041778564453,
+        -8.365327835083008
+      ],
+      "answer_token_nll": 2.788442611694336
+    },
+    {
+      "id": "held_out:0.93:0.2:ordinary",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.2975321114063263,
+      "scores": [
+        -9.426824569702148,
+        -8.567747116088867
+      ],
+      "answer_token_nll": 2.8559157848358154
+    },
+    {
+      "id": "held_out:0.93:0.2:zero_friction",
+      "label": "DEFER",
+      "prediction": "DEFER",
+      "admit_two_choice_probability": 0.33795955777168274,
+      "scores": [
+        -9.055510520935059,
+        -8.383110046386719
+      ],
+      "answer_token_nll": 2.79436993598938
+    }
+  ],
+  "metrics": {
+    "accuracy": 0.6666666666666666,
+    "balanced_accuracy": 0.5,
+    "two_choice_brier": 0.21549429383237073,
+    "answer_token_nll": 2.954412172238032
+  }
+}

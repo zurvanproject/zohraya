@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 .venv/
 .ci-env/
+.weight-env/
 .env
 .env.*
 !.env.example

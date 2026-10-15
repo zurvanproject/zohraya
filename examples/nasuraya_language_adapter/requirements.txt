@@ -1,0 +1,6 @@
+# Install the CPU torch wheel first from https://download.pytorch.org/whl/cpu
+torch==2.8.0+cpu
+transformers==4.57.1
+peft==0.17.1
+safetensors==0.6.2
+numpy==2.3.3
