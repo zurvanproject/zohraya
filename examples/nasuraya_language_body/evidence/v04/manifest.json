@@ -1,0 +1,29 @@
+{
+  "sources": {
+    "examples/nasuraya_language_transfer/test_transfer.py": "3afd3efa875f33aede1685b272b911d62adab4d35dfd561a4e32208a32c519a9",
+    "examples/nasuraya_language_transfer/__init__.py": "151fbd856242e9a04e154b18e51bcdb2a6736b1c65bd3dc5165f0bd7d22b0b7b",
+    "examples/nasuraya_language_transfer/evaluate.py": "40dfe968fe1cc1a156543f4c835a5e36d18ab9bdcd551d6c038f5319e544c517",
+    "examples/nasuraya_language_adapter/test_adapter.py": "a2d256c14a1663d4b56b936bb5bbcdc15ca66d830242bc5c0299e747e3390458",
+    "examples/nasuraya_language_adapter/__init__.py": "365e50b99b18eccf1015116551226f008fd9bc220dc562a5ad0a882b69b62e51",
+    "examples/nasuraya_language_adapter/data.py": "b5f05a6d37e0783eb103e1f9ce846c09ed24194ddd68e123d5084d0f1a523550",
+    "examples/nasuraya_language_adapter/download_base.py": "bcde36182c59c8e87254426c6de700fe7ce876f0ff4b189627ec7b78e7bb2aa5",
+    "examples/nasuraya_language_adapter/train.py": "7bb74d84f15580c79c5585f2f0dc8be4caacee743de822b1e24a9178df00e5c1",
+    "examples/nasuraya_language_choice/experiment.py": "6547e1bef61b7ff49b746298fb17ac4ce69cbba97a22a2dabebe0a1a86e182a0",
+    "examples/nasuraya_language_choice/advisor.py": "3a542b49e053dee6d753d87bd2c00f91d7afe2352925bd1e18a4a94eae6eeace",
+    "examples/nasuraya_self_model/monitor.py": "9009dba256a6a1465d6a6494bb34776578089b9e95de1deed9316c4725debe37",
+    "examples/nasuraya_self_model/evaluate.py": "cfde3a50f2f067a94c32ac8e0e6a684b8887f3248fa767c4ed7020714a5f57d6",
+    "examples/nasuraya_language_body/__init__.py": "f79b8f39376f02cd80dd93389910c481a0a11602d404c5d225ff18cc935dc366",
+    "examples/nasuraya_language_body/experiment.py": "2b36a98fea1f3085fea7db12a3dfd9fa05c679a47991f0670d39a9b39890adb5",
+    "examples/nasuraya_language_body/data.py": "44b737266726bcc84e3d9df80305cacc3943618067b9dfd34c89efa19ef9261c",
+    "examples/nasuraya_language_body/test_body_language.py": "860d7fdaad6f1814a2769dbc1648dfe196e5c29494d100f2e9788daf203de4c7"
+  },
+  "protocol_sha256": "7112016a5732e0391b62bd252d6e303e760a7fbe8c841ff9aebae90d41176d47",
+  "plans_sha256": "3c08247e5f599ccde3c54ec81b39204f7d0d75fdb8a9324b1e0dfe29cde53d61",
+  "base_protocol_sha256": "6f81cf3baade857c15190acfeeaf79c4e80ab7e548b741373e1db975f1360a78",
+  "ancestry_sha256": "60e3815ede5aafddbf2b71c5187cd87b926111a977765c31e238200fd798b857",
+  "models": {
+    "parent": "c1b88b4a842b7c78d7b53072228514b45389a3abb714d9592e82339c469149bf",
+    "choice": "aaf0c1f85dad3f3cc6985132de715c52d69d4a2de18d96a7ace70450560d7525"
+  },
+  "labels_generated": false
+}
