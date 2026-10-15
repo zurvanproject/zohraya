@@ -1,0 +1,14 @@
+{
+  "schema": "nasuraya-language-choice-validation/2",
+  "unit_tests_passed": 13,
+  "api_regression_passed": 78,
+  "native_files_unchanged": 72,
+  "primary_accuracy": 1.0,
+  "parent_calibrated_accuracy": 1.0,
+  "fresh_cases": 24,
+  "live_sessions": 2,
+  "live_sessions_deleted": true,
+  "tested_live_walk_predictions": 1,
+  "original_memory_unchanged": true,
+  "remote_ci": "pending publication"
+}
