@@ -1,0 +1,419 @@
+{
+  "schema": "nasuraya-language-transfer/3",
+  "cases": 42,
+  "metrics": {
+    "parent_calibrated": {
+      "overall": {
+        "n": 42,
+        "true_admit": 28,
+        "true_defer": 14,
+        "false_admit": 0,
+        "false_defer": 0,
+        "accuracy": 1.0,
+        "admit_recall": 1.0,
+        "defer_recall": 1.0,
+        "balanced_accuracy": 1.0,
+        "two_choice_brier": 0.2983035511563076
+      },
+      "families": {
+        "control": {
+          "n": 6,
+          "true_admit": 2,
+          "true_defer": 4,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 1.0,
+          "two_choice_brier": 0.17950377633179068
+        },
+        "fatigue": {
+          "n": 10,
+          "true_admit": 6,
+          "true_defer": 4,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 1.0,
+          "two_choice_brier": 0.2751007575907333
+        },
+        "friction": {
+          "n": 12,
+          "true_admit": 12,
+          "true_defer": 0,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": null,
+          "balanced_accuracy": null,
+          "two_choice_brier": 0.417271175731186
+        },
+        "left_pain": {
+          "n": 8,
+          "true_admit": 4,
+          "true_defer": 4,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 1.0,
+          "two_choice_brier": 0.23724950390064004
+        },
+        "mixed": {
+          "n": 6,
+          "true_admit": 4,
+          "true_defer": 2,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 1.0,
+          "two_choice_brier": 0.299244795781248
+        }
+      }
+    },
+    "choice_balanced": {
+      "overall": {
+        "n": 42,
+        "true_admit": 28,
+        "true_defer": 8,
+        "false_admit": 6,
+        "false_defer": 0,
+        "accuracy": 0.8571428571428571,
+        "admit_recall": 1.0,
+        "defer_recall": 0.5714285714285714,
+        "balanced_accuracy": 0.7857142857142857,
+        "two_choice_brier": 0.1139238837265468
+      },
+      "families": {
+        "control": {
+          "n": 6,
+          "true_admit": 2,
+          "true_defer": 4,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 1.0,
+          "two_choice_brier": 0.06798239030364021
+        },
+        "fatigue": {
+          "n": 10,
+          "true_admit": 6,
+          "true_defer": 2,
+          "false_admit": 2,
+          "false_defer": 0,
+          "accuracy": 0.8,
+          "admit_recall": 1.0,
+          "defer_recall": 0.5,
+          "balanced_accuracy": 0.75,
+          "two_choice_brier": 0.14929338692362198
+        },
+        "friction": {
+          "n": 12,
+          "true_admit": 12,
+          "true_defer": 0,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": null,
+          "balanced_accuracy": null,
+          "two_choice_brier": 0.08235647363115106
+        },
+        "left_pain": {
+          "n": 8,
+          "true_admit": 4,
+          "true_defer": 0,
+          "false_admit": 4,
+          "false_defer": 0,
+          "accuracy": 0.5,
+          "admit_recall": 1.0,
+          "defer_recall": 0.0,
+          "balanced_accuracy": 0.5,
+          "two_choice_brier": 0.17053458224792095
+        },
+        "mixed": {
+          "n": 6,
+          "true_admit": 4,
+          "true_defer": 2,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 1.0,
+          "two_choice_brier": 0.08857009398328734
+        }
+      }
+    },
+    "audit_preflight": {
+      "overall": {
+        "n": 42,
+        "true_admit": 28,
+        "true_defer": 12,
+        "false_admit": 2,
+        "false_defer": 0,
+        "accuracy": 0.9523809523809523,
+        "admit_recall": 1.0,
+        "defer_recall": 0.8571428571428571,
+        "balanced_accuracy": 0.9285714285714286,
+        "two_choice_brier": 0.047619047619047616
+      },
+      "families": {
+        "control": {
+          "n": 6,
+          "true_admit": 2,
+          "true_defer": 2,
+          "false_admit": 2,
+          "false_defer": 0,
+          "accuracy": 0.6666666666666666,
+          "admit_recall": 1.0,
+          "defer_recall": 0.5,
+          "balanced_accuracy": 0.75,
+          "two_choice_brier": 0.3333333333333333
+        },
+        "fatigue": {
+          "n": 10,
+          "true_admit": 6,
+          "true_defer": 4,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 1.0,
+          "two_choice_brier": 0.0
+        },
+        "friction": {
+          "n": 12,
+          "true_admit": 12,
+          "true_defer": 0,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": null,
+          "balanced_accuracy": null,
+          "two_choice_brier": 0.0
+        },
+        "left_pain": {
+          "n": 8,
+          "true_admit": 4,
+          "true_defer": 4,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 1.0,
+          "two_choice_brier": 0.0
+        },
+        "mixed": {
+          "n": 6,
+          "true_admit": 4,
+          "true_defer": 2,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 1.0,
+          "two_choice_brier": 0.0
+        }
+      }
+    },
+    "always_admit": {
+      "overall": {
+        "n": 42,
+        "true_admit": 28,
+        "true_defer": 0,
+        "false_admit": 14,
+        "false_defer": 0,
+        "accuracy": 0.6666666666666666,
+        "admit_recall": 1.0,
+        "defer_recall": 0.0,
+        "balanced_accuracy": 0.5,
+        "two_choice_brier": 0.3333333333333333
+      },
+      "families": {
+        "control": {
+          "n": 6,
+          "true_admit": 2,
+          "true_defer": 0,
+          "false_admit": 4,
+          "false_defer": 0,
+          "accuracy": 0.3333333333333333,
+          "admit_recall": 1.0,
+          "defer_recall": 0.0,
+          "balanced_accuracy": 0.5,
+          "two_choice_brier": 0.6666666666666666
+        },
+        "fatigue": {
+          "n": 10,
+          "true_admit": 6,
+          "true_defer": 0,
+          "false_admit": 4,
+          "false_defer": 0,
+          "accuracy": 0.6,
+          "admit_recall": 1.0,
+          "defer_recall": 0.0,
+          "balanced_accuracy": 0.5,
+          "two_choice_brier": 0.4
+        },
+        "friction": {
+          "n": 12,
+          "true_admit": 12,
+          "true_defer": 0,
+          "false_admit": 0,
+          "false_defer": 0,
+          "accuracy": 1.0,
+          "admit_recall": 1.0,
+          "defer_recall": null,
+          "balanced_accuracy": null,
+          "two_choice_brier": 0.0
+        },
+        "left_pain": {
+          "n": 8,
+          "true_admit": 4,
+          "true_defer": 0,
+          "false_admit": 4,
+          "false_defer": 0,
+          "accuracy": 0.5,
+          "admit_recall": 1.0,
+          "defer_recall": 0.0,
+          "balanced_accuracy": 0.5,
+          "two_choice_brier": 0.5
+        },
+        "mixed": {
+          "n": 6,
+          "true_admit": 4,
+          "true_defer": 0,
+          "false_admit": 2,
+          "false_defer": 0,
+          "accuracy": 0.6666666666666666,
+          "admit_recall": 1.0,
+          "defer_recall": 0.0,
+          "balanced_accuracy": 0.5,
+          "two_choice_brier": 0.3333333333333333
+        }
+      }
+    },
+    "always_defer": {
+      "overall": {
+        "n": 42,
+        "true_admit": 0,
+        "true_defer": 14,
+        "false_admit": 0,
+        "false_defer": 28,
+        "accuracy": 0.3333333333333333,
+        "admit_recall": 0.0,
+        "defer_recall": 1.0,
+        "balanced_accuracy": 0.5,
+        "two_choice_brier": 0.6666666666666666
+      },
+      "families": {
+        "control": {
+          "n": 6,
+          "true_admit": 0,
+          "true_defer": 4,
+          "false_admit": 0,
+          "false_defer": 2,
+          "accuracy": 0.6666666666666666,
+          "admit_recall": 0.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 0.5,
+          "two_choice_brier": 0.3333333333333333
+        },
+        "fatigue": {
+          "n": 10,
+          "true_admit": 0,
+          "true_defer": 4,
+          "false_admit": 0,
+          "false_defer": 6,
+          "accuracy": 0.4,
+          "admit_recall": 0.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 0.5,
+          "two_choice_brier": 0.6
+        },
+        "friction": {
+          "n": 12,
+          "true_admit": 0,
+          "true_defer": 0,
+          "false_admit": 0,
+          "false_defer": 12,
+          "accuracy": 0.0,
+          "admit_recall": 0.0,
+          "defer_recall": null,
+          "balanced_accuracy": null,
+          "two_choice_brier": 1.0
+        },
+        "left_pain": {
+          "n": 8,
+          "true_admit": 0,
+          "true_defer": 4,
+          "false_admit": 0,
+          "false_defer": 4,
+          "accuracy": 0.5,
+          "admit_recall": 0.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 0.5,
+          "two_choice_brier": 0.5
+        },
+        "mixed": {
+          "n": 6,
+          "true_admit": 0,
+          "true_defer": 2,
+          "false_admit": 0,
+          "false_defer": 4,
+          "accuracy": 0.3333333333333333,
+          "admit_recall": 0.0,
+          "defer_recall": 1.0,
+          "balanced_accuracy": 0.5,
+          "two_choice_brier": 0.6666666666666666
+        }
+      }
+    }
+  },
+  "predictions_saved_before_target_walks": true,
+  "optimizer_steps": 0,
+  "thresholds_unchanged": true,
+  "prompt_unchanged": true,
+  "weights_unchanged": true,
+  "source_hashes": {
+    "examples/nasuraya_language_transfer/test_transfer.py": "3afd3efa875f33aede1685b272b911d62adab4d35dfd561a4e32208a32c519a9",
+    "examples/nasuraya_language_transfer/__init__.py": "151fbd856242e9a04e154b18e51bcdb2a6736b1c65bd3dc5165f0bd7d22b0b7b",
+    "examples/nasuraya_language_transfer/evaluate.py": "40dfe968fe1cc1a156543f4c835a5e36d18ab9bdcd551d6c038f5319e544c517",
+    "examples/nasuraya_language_adapter/test_adapter.py": "a2d256c14a1663d4b56b936bb5bbcdc15ca66d830242bc5c0299e747e3390458",
+    "examples/nasuraya_language_adapter/__init__.py": "365e50b99b18eccf1015116551226f008fd9bc220dc562a5ad0a882b69b62e51",
+    "examples/nasuraya_language_adapter/data.py": "b5f05a6d37e0783eb103e1f9ce846c09ed24194ddd68e123d5084d0f1a523550",
+    "examples/nasuraya_language_adapter/download_base.py": "bcde36182c59c8e87254426c6de700fe7ce876f0ff4b189627ec7b78e7bb2aa5",
+    "examples/nasuraya_language_adapter/train.py": "7bb74d84f15580c79c5585f2f0dc8be4caacee743de822b1e24a9178df00e5c1",
+    "examples/nasuraya_language_choice/experiment.py": "6547e1bef61b7ff49b746298fb17ac4ce69cbba97a22a2dabebe0a1a86e182a0",
+    "examples/nasuraya_language_choice/advisor.py": "3a542b49e053dee6d753d87bd2c00f91d7afe2352925bd1e18a4a94eae6eeace",
+    "examples/nasuraya_self_model/monitor.py": "9009dba256a6a1465d6a6494bb34776578089b9e95de1deed9316c4725debe37",
+    "examples/nasuraya_self_model/evaluate.py": "cfde3a50f2f067a94c32ac8e0e6a684b8887f3248fa767c4ed7020714a5f57d6"
+  },
+  "labels_learned_by_old_self_model": false,
+  "label_database_sha256": "d97d50933285da83721fbea6ff8c29279a10ee0093ad6ea5e13c6ff918517cee",
+  "labels_sha256": "9183083fbffa07f59772e01beaf8fe0d05955ba36801c3a29b17b4ef4bb1a6d3",
+  "predictions_sha256": "18ddd13aeae06c57b61614a0d3ed2dfb782fc2cd1e1c1ae51077d4d2991a5872",
+  "plans_sha256": "30b8508308c2203961810f3a272de81f7d76a2385c5a0fda9928be56255c1ef4",
+  "alias_diagnostic": {
+    "distinct_prompts": 12,
+    "conflicting_prompt_groups": 0,
+    "minimum_deterministic_prompt_errors": 0,
+    "empirical_prompt_accuracy_ceiling": 1.0
+  },
+  "native_equations_modified": false,
+  "live_api_calls": 0,
+  "existing_advisor_binding_changed": false
+}
