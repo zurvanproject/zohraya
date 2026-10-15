@@ -1,0 +1,702 @@
+{
+  "schema": "nasuraya.foot-contact-trial/0.1",
+  "frozen_plan_sha256": "305a4a3c2edc461563889a3d4ccbd33e45d85c32b05292dca9422bda571c5e47",
+  "checks": {
+    "all_mesh_checks_passed": true,
+    "all_equations_unchanged": true,
+    "forces_and_moments_balanced": true,
+    "descriptor_only_matches_baseline": true,
+    "friction_failure_preserved": true,
+    "over_capacity_failure_preserved": true,
+    "pressure_ceiling_respected": true,
+    "all_exercised_cold_restores_equal": true,
+    "source_manifest_unchanged": true
+  },
+  "results": {
+    "baseline": {
+      "static": [
+        {
+          "case": "nominal_single_support",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.0
+          ],
+          "target_error_m": 0.0,
+          "achieved_normal_N": 1912.9499999999998,
+          "force_error_N": 2.2737367544323206e-13,
+          "moment_error_Nm": 5.684341886080802e-14,
+          "pressures_kpa": {
+            "L_ball": 28.169697138511044,
+            "L_toe_1": 178.24705982933125,
+            "L_toe_2": 178.28342715336777,
+            "L_toe_3": 178.24705982933125
+          },
+          "area_each_foot_cm2": 392.66515249806537
+        },
+        {
+          "case": "forward_edge_request",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.09
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.06351038052480552
+          ],
+          "target_error_m": 0.026489619475194473,
+          "achieved_normal_N": 1912.95,
+          "force_error_N": 0.0,
+          "moment_error_Nm": 5.684341886080802e-14,
+          "pressures_kpa": {
+            "L_ball": 8.860614986436813,
+            "L_toe_1": 300.0,
+            "L_toe_2": 300.0,
+            "L_toe_3": 299.9999999999998
+          },
+          "area_each_foot_cm2": 392.66515249806537
+        },
+        {
+          "case": "over_capacity_negative_control",
+          "feasible": false,
+          "requested_normal_N": 12957.950032436158,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": null,
+          "target_error_m": null,
+          "achieved_normal_N": 0.0,
+          "force_error_N": null,
+          "moment_error_Nm": null,
+          "pressures_kpa": {},
+          "area_each_foot_cm2": 392.66515249806537
+        }
+      ],
+      "dynamic": [
+        {
+          "case": "stand",
+          "frames": 20,
+          "replay_frames": 10,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 89.14171357668388,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "fuel_used_J": 745.8149683341107,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "f8ed12e28c33fadc9b02ac4ab058167ca41e697770e04f174e335bfa455406d9"
+        },
+        {
+          "case": "walk",
+          "frames": 60,
+          "replay_frames": 30,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "shift",
+          "walk_touchdowns": 1,
+          "peak_pressure_kpa": 300.0,
+          "minimum_capture_margin_m": 0.012261124162892933,
+          "fuel_used_J": 3151.4537770359825,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "0f7c23e54ec8f7195689dd5337d2b530210555eb5f9a242b87360720c1dedd09"
+        },
+        {
+          "case": "impulse",
+          "frames": 40,
+          "replay_frames": 20,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 109.99497358138241,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "d5de475224029372a1b93239cb0d0e5b973efaaf9aa5d53ccf5f6d4c5e1e5346"
+        },
+        {
+          "case": "zero_friction",
+          "frames": 1,
+          "replay_frames": 0,
+          "valid_throughout": false,
+          "failure": "friction_limit_exceeded",
+          "final_phase": "failed",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 109.99497358138241,
+          "minimum_capture_margin_m": 0.0901513214966996,
+          "fuel_used_J": 40.29751297750206,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": false,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "4c9d8cd5db3339fdea45e272ce0900b82b9426cd2ae3662c87ba02a5e29a3526"
+        }
+      ],
+      "original_equations_retained_in_copy": true
+    },
+    "affine": {
+      "static": [
+        {
+          "case": "nominal_single_support",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.0
+          ],
+          "target_error_m": 0.0,
+          "achieved_normal_N": 1912.95,
+          "force_error_N": 0.0,
+          "moment_error_Nm": 5.684341886080802e-14,
+          "pressures_kpa": {
+            "L_ball": 27.075833466465827,
+            "L_toe_1": 171.32550925541256,
+            "L_toe_2": 171.36046439193368,
+            "L_toe_3": 171.32550925541256
+          },
+          "area_each_foot_cm2": 408.52882465898716
+        },
+        {
+          "case": "forward_edge_request",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.09
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.07123006789596782
+          ],
+          "target_error_m": 0.018769932104032175,
+          "achieved_normal_N": 1912.9499999999996,
+          "force_error_N": 4.547473508864641e-13,
+          "moment_error_Nm": 1.1368683772161603e-13,
+          "pressures_kpa": {
+            "L_ball": 6.668818274652475,
+            "L_toe_1": 299.99999999999966,
+            "L_toe_2": 300.0,
+            "L_toe_3": 299.99999999999994
+          },
+          "area_each_foot_cm2": 408.52882465898716
+        },
+        {
+          "case": "over_capacity_negative_control",
+          "feasible": false,
+          "requested_normal_N": 12957.950032436158,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": null,
+          "target_error_m": null,
+          "achieved_normal_N": 0.0,
+          "force_error_N": null,
+          "moment_error_Nm": null,
+          "pressures_kpa": {},
+          "area_each_foot_cm2": 408.52882465898716
+        }
+      ],
+      "dynamic": [
+        {
+          "case": "stand",
+          "frames": 20,
+          "replay_frames": 10,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 85.68023219596684,
+          "minimum_capture_margin_m": 0.09485999999999997,
+          "fuel_used_J": 745.8149683341107,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "2682a5a6bb936b5b6c802f79b5d73b741fb400eb5fb5db2cd738977c68facede"
+        },
+        {
+          "case": "walk",
+          "frames": 60,
+          "replay_frames": 30,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "shift",
+          "walk_touchdowns": 1,
+          "peak_pressure_kpa": 299.99999999999994,
+          "minimum_capture_margin_m": 0.01302373376766236,
+          "fuel_used_J": 3152.6332402382554,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "f9ee1a51a584df26850a6423cacea4026276ffeb3c1099087d12b271c66a2dd0"
+        },
+        {
+          "case": "impulse",
+          "frames": 40,
+          "replay_frames": 20,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 105.4067063458534,
+          "minimum_capture_margin_m": 0.09485971670063309,
+          "fuel_used_J": 1501.3127193932544,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "e0b9250ed320182ed16f4591e7a70ee813978082f9ecc371050fc86b32046adc"
+        },
+        {
+          "case": "zero_friction",
+          "frames": 1,
+          "replay_frames": 0,
+          "valid_throughout": false,
+          "failure": "friction_limit_exceeded",
+          "final_phase": "failed",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 105.4067063458534,
+          "minimum_capture_margin_m": 0.09261130058703257,
+          "fuel_used_J": 40.303741502684275,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": false,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "f538994fd2dcc7fb8b5d2ed08230b0c7dd57d97c99d37159fd0b7d51b991a266"
+        }
+      ],
+      "original_equations_retained_in_copy": true
+    },
+    "area_only": {
+      "static": [
+        {
+          "case": "nominal_single_support",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.0
+          ],
+          "target_error_m": 0.0,
+          "achieved_normal_N": 1912.95,
+          "force_error_N": 0.0,
+          "moment_error_Nm": 5.684341886080802e-14,
+          "pressures_kpa": {
+            "L_ball": 27.075833466465827,
+            "L_toe_1": 171.32550925541256,
+            "L_toe_2": 171.3604643919337,
+            "L_toe_3": 171.32550925541256
+          },
+          "area_each_foot_cm2": 408.52882465898716
+        },
+        {
+          "case": "forward_edge_request",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.09
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.06983339989800766
+          ],
+          "target_error_m": 0.020166600101992338,
+          "achieved_normal_N": 1912.9499999999987,
+          "force_error_N": 1.3642420526593924e-12,
+          "moment_error_Nm": 3.979039320256561e-13,
+          "pressures_kpa": {
+            "L_ball": 6.668818274652482,
+            "L_toe_1": 299.99999999999994,
+            "L_toe_2": 300.0,
+            "L_toe_3": 299.999999999999
+          },
+          "area_each_foot_cm2": 408.52882465898716
+        },
+        {
+          "case": "over_capacity_negative_control",
+          "feasible": false,
+          "requested_normal_N": 12957.950032436158,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": null,
+          "target_error_m": null,
+          "achieved_normal_N": 0.0,
+          "force_error_N": null,
+          "moment_error_Nm": null,
+          "pressures_kpa": {},
+          "area_each_foot_cm2": 408.52882465898716
+        }
+      ],
+      "dynamic": [
+        {
+          "case": "stand",
+          "frames": 20,
+          "replay_frames": 10,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 85.68023219596685,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "fuel_used_J": 745.8149683341107,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "469aef47525a127fe180741d6e445c431e49e192dc919937129a8fd941c6a54f"
+        },
+        {
+          "case": "walk",
+          "frames": 60,
+          "replay_frames": 30,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "shift",
+          "walk_touchdowns": 1,
+          "peak_pressure_kpa": 299.99999999999994,
+          "minimum_capture_margin_m": 0.012764480391370986,
+          "fuel_used_J": 3151.1500984657655,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "ba7f1c973115739cf73b46f9e6fcccb7da6eca1406dbf2c6c4dc5d15f755acce"
+        },
+        {
+          "case": "impulse",
+          "frames": 40,
+          "replay_frames": 20,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 105.72373469952176,
+          "minimum_capture_margin_m": 0.09299971670063309,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "68a0a804c7066ad8fb588b257198bd52d96ccb58d23b2ae4fd819099055a6f60"
+        },
+        {
+          "case": "zero_friction",
+          "frames": 1,
+          "replay_frames": 0,
+          "valid_throughout": false,
+          "failure": "friction_limit_exceeded",
+          "final_phase": "failed",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 105.72373469952176,
+          "minimum_capture_margin_m": 0.09064818914879495,
+          "fuel_used_J": 40.297512977502066,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": false,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "72d92ca67ba030f8b596678e9f07937baa6675a291854a6bd4f4c62e3c81b6d4"
+        }
+      ],
+      "original_equations_retained_in_copy": true
+    },
+    "centres_only": {
+      "static": [
+        {
+          "case": "nominal_single_support",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.0
+          ],
+          "target_error_m": 0.0,
+          "achieved_normal_N": 1912.9499999999998,
+          "force_error_N": 2.2737367544323206e-13,
+          "moment_error_Nm": 5.684341886080802e-14,
+          "pressures_kpa": {
+            "L_ball": 28.169697138511044,
+            "L_toe_1": 178.24705982933125,
+            "L_toe_2": 178.28342715336777,
+            "L_toe_3": 178.24705982933125
+          },
+          "area_each_foot_cm2": 392.66515249806537
+        },
+        {
+          "case": "forward_edge_request",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.09
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.06478058813530164
+          ],
+          "target_error_m": 0.02521941186469835,
+          "achieved_normal_N": 1912.9499999999998,
+          "force_error_N": 2.2737367544323206e-13,
+          "moment_error_Nm": 1.1368683772161603e-13,
+          "pressures_kpa": {
+            "L_ball": 8.860614986436806,
+            "L_toe_1": 299.9999999999997,
+            "L_toe_2": 300.0,
+            "L_toe_3": 300.0
+          },
+          "area_each_foot_cm2": 392.66515249806537
+        },
+        {
+          "case": "over_capacity_negative_control",
+          "feasible": false,
+          "requested_normal_N": 12957.950032436158,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": null,
+          "target_error_m": null,
+          "achieved_normal_N": 0.0,
+          "force_error_N": null,
+          "moment_error_Nm": null,
+          "pressures_kpa": {},
+          "area_each_foot_cm2": 392.66515249806537
+        }
+      ],
+      "dynamic": [
+        {
+          "case": "stand",
+          "frames": 20,
+          "replay_frames": 10,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 89.14171357668388,
+          "minimum_capture_margin_m": 0.09485999999999997,
+          "fuel_used_J": 745.8149683341107,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "60489904964464edc935bd0c8fc48430917f35d78024649bb1daed553a20e638"
+        },
+        {
+          "case": "walk",
+          "frames": 60,
+          "replay_frames": 30,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "shift",
+          "walk_touchdowns": 1,
+          "peak_pressure_kpa": 300.0,
+          "minimum_capture_margin_m": 0.012510310414614756,
+          "fuel_used_J": 3152.9118444347514,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "7d890f094dba94dd1b4251a1405afd954136c6e699bb201d65e06af6934a5dcc"
+        },
+        {
+          "case": "impulse",
+          "frames": 40,
+          "replay_frames": 20,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 109.66513728222587,
+          "minimum_capture_margin_m": 0.09485971670063309,
+          "fuel_used_J": 1501.3127193932544,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "c40bcedbb22716ec132d3fbf9af912d826e8f53ea8b646ffaea38b1260ab9158"
+        },
+        {
+          "case": "zero_friction",
+          "frames": 1,
+          "replay_frames": 0,
+          "valid_throughout": false,
+          "failure": "friction_limit_exceeded",
+          "final_phase": "failed",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 109.66513728222587,
+          "minimum_capture_margin_m": 0.09210449558189532,
+          "fuel_used_J": 40.303741502684275,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": false,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "e86b279ee14899ecde2d722af2b963ebd8d1164ef359b3f1e0e6f746f452f3ba"
+        }
+      ],
+      "original_equations_retained_in_copy": true
+    },
+    "descriptor_only": {
+      "static": [
+        {
+          "case": "nominal_single_support",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.0
+          ],
+          "target_error_m": 0.0,
+          "achieved_normal_N": 1912.9499999999998,
+          "force_error_N": 2.2737367544323206e-13,
+          "moment_error_Nm": 5.684341886080802e-14,
+          "pressures_kpa": {
+            "L_ball": 28.169697138511044,
+            "L_toe_1": 178.24705982933125,
+            "L_toe_2": 178.28342715336777,
+            "L_toe_3": 178.24705982933125
+          },
+          "area_each_foot_cm2": 392.66515249806537
+        },
+        {
+          "case": "forward_edge_request",
+          "feasible": true,
+          "requested_normal_N": 1912.95,
+          "requested_cop_m": [
+            0.196,
+            0.09
+          ],
+          "achieved_cop_m": [
+            0.196,
+            0.06351038052480552
+          ],
+          "target_error_m": 0.026489619475194473,
+          "achieved_normal_N": 1912.95,
+          "force_error_N": 0.0,
+          "moment_error_Nm": 5.684341886080802e-14,
+          "pressures_kpa": {
+            "L_ball": 8.860614986436813,
+            "L_toe_1": 300.0,
+            "L_toe_2": 300.0,
+            "L_toe_3": 299.9999999999998
+          },
+          "area_each_foot_cm2": 392.66515249806537
+        },
+        {
+          "case": "over_capacity_negative_control",
+          "feasible": false,
+          "requested_normal_N": 12957.950032436158,
+          "requested_cop_m": [
+            0.196,
+            0.0
+          ],
+          "achieved_cop_m": null,
+          "target_error_m": null,
+          "achieved_normal_N": 0.0,
+          "force_error_N": null,
+          "moment_error_Nm": null,
+          "pressures_kpa": {},
+          "area_each_foot_cm2": 392.66515249806537
+        }
+      ],
+      "dynamic": [
+        {
+          "case": "stand",
+          "frames": 20,
+          "replay_frames": 10,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 89.14171357668388,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "fuel_used_J": 745.8149683341107,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "f8ed12e28c33fadc9b02ac4ab058167ca41e697770e04f174e335bfa455406d9"
+        },
+        {
+          "case": "walk",
+          "frames": 60,
+          "replay_frames": 30,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "shift",
+          "walk_touchdowns": 1,
+          "peak_pressure_kpa": 300.0,
+          "minimum_capture_margin_m": 0.012261124162892933,
+          "fuel_used_J": 3151.4537770359825,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "0f7c23e54ec8f7195689dd5337d2b530210555eb5f9a242b87360720c1dedd09"
+        },
+        {
+          "case": "impulse",
+          "frames": 40,
+          "replay_frames": 20,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 109.99497358138241,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "d5de475224029372a1b93239cb0d0e5b973efaaf9aa5d53ccf5f6d4c5e1e5346"
+        },
+        {
+          "case": "zero_friction",
+          "frames": 1,
+          "replay_frames": 0,
+          "valid_throughout": false,
+          "failure": "friction_limit_exceeded",
+          "final_phase": "failed",
+          "walk_touchdowns": 0,
+          "peak_pressure_kpa": 109.99497358138241,
+          "minimum_capture_margin_m": 0.0901513214966996,
+          "fuel_used_J": 40.29751297750206,
+          "minimum_support_fraction": 1.0,
+          "cold_restore_exercised": false,
+          "cold_restore_equal": true,
+          "physical_trace_sha256": "4c9d8cd5db3339fdea45e272ce0900b82b9426cd2ae3662c87ba02a5e29a3526"
+        }
+      ],
+      "original_equations_retained_in_copy": true
+    }
+  },
+  "dynamic_run_count": 20,
+  "static_query_count": 15,
+  "primary_simulated_s": 60.5,
+  "cold_replay_simulated_s": 30.0,
+  "candidate_reduced_model_passed": true,
+  "native_apply_allowed": false,
+  "true_anatomical_contact_validated": false,
+  "source_live_state_loaded": false,
+  "API_calls": 0,
+  "interpretation": "larger affine pads are a declared hypothesis, not inferred from appearance alone"
+}

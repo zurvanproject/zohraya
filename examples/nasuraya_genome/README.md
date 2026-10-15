@@ -42,9 +42,33 @@ a coherent geometric proposal. Tail-off, zero-friction and cosmetic controls
 retain their outcomes. Source-bound sandbox checkpoints are not exported to
 production state. All 70 original native source files remain unchanged.
 
-The expanded suite has 36 passing local tests. See the
+The expanded suite has 45 passing local tests. See the
 [Persian experiment report](../../docs/nasuraya-genome-physics-v01-fa.md) and
 [committed experiment evidence](evidence/physics-v0.1/results.json).
+
+## Conditional foot-contact hypothesis
+
+`foot_contact.py` adds four authored, nonoverlapping planar contact islands:
+an elliptical forepad and three circular toe pads. Their centres and continuum
+areas calibrate to the native fixture; their shapes are not measured anatomy.
+Each island has 256 triangles. Independent integration, centroid, envelope,
+orientation, separation and refinement checks test the geometry. The solver
+still uses the original conservative centre-contact polygon, not mesh edges.
+
+`foot_trial.py` compares an affine pad-growth hypothesis with baseline,
+area-only, centre-only and descriptor-only controls. Only patch centres/areas
+change in copied fixtures; equations, skeleton, mass and pressure limits stay
+fixed. This is a separate conditional sandbox path. The original
+`physics_trial.compile_candidate` still rejects foot changes for live use.
+Neither path grants native application permission or anatomical validation.
+
+```sh
+python3 -m examples.nasuraya_genome.foot_trial --output /tmp/new-foot-contact-trial
+```
+
+See the [Persian foot-contact report](../../docs/nasuraya-genome-foot-contact-v01-fa.md),
+[plan and results](evidence/foot-contact-v0.1/results.json) and
+[exact planar comparison](evidence/foot-contact-v0.1/contact-comparison.svg).
 
 `mutate(..., expected_revision=...)` returns a new valid genotype or rejects
 the entire edit batch. `checkpoint`, `save` and `restore` round-trip that genotype
