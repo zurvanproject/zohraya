@@ -75,5 +75,5 @@ if __name__=='__main__':
     p.add_argument('--marker',required=True)
     p.add_argument('--event-id')
     p.add_argument('--expected-head')
-    p.add_argument('--fault',choices=('none','prepared','mid_native','after_body','executed','writing','committed'),required=True)
+    p.add_argument('--fault',choices=('none','prepared','mid_native','after_body','executed','outcome_saved','writing','committed'),required=True)
     run(p.parse_args())

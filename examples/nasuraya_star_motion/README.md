@@ -149,19 +149,27 @@ stale writers and conflicting retry tokens reject. SQLite uses synchronous FULL;
 the database and lock belong on a local filesystem with working SQLite/flock
 semantics. These tests model process loss, not power loss or storage corruption.
 
-If a process dies with a pending intent, `load()` and `step()` both raise
-`UnknownMotionOutcome`. `inspect()` returns the pending request and prior head
-without acting. There is deliberately no automatic retry, intent-clear or
-reconciliation API: authoritative receipt/state validation is a separate future
-integration requirement. Even an intent whose worker died before starting is
-treated conservatively. This blocks progress rather than guessing an outcome.
-An external actuator/API is not part of this local simulator transaction.
+After completing the goal tick, the journal now commits a separate full outcome
+record before publishing its final state. If publication is interrupted,
+`recover()`, `load()` or a repeated `step()` validate that record and publish the
+existing result without invoking a native cycle or prediction. Validation checks
+the journal source, intent, prior head, pinned goal/body sources, cached native
+request/receipt and the exact goal transition. Original `MotionGoal.step()`
+bookkeeping is reused with a receipt-only adapter, not a simulated action.
+
+If a process dies before a complete outcome is durably recorded, `load()` and
+`step()` still raise `UnknownMotionOutcome`. `inspect()` reports metadata without
+recovery. There is no intent-clear operation and no retry of an unknown effect.
+Corrupt, mismatched, partial or orphan outcomes fail closed. An external
+actuator/API is not part of this local simulator transaction. Schema 2 applies
+to newly created journals; schema 1 stores reject rather than silently migrate.
 
 Public synthetic regression covers crashes after durable intent, inside the
 third *actual* native substep (excluding forecast clones), after native cycle
 but before goal bookkeeping, after the complete tick, inside the SQLite commit,
-and after commit but before response. It also checks duplicate/concurrent
-callers, stale writers, corrupted goals and non-overwriting creation:
+after durable outcome recording, and after commit but before response. It also
+checks duplicate/concurrent callers and recovery owners, altered outcomes,
+stale writers, corrupted goals and non-overwriting creation:
 
 ```
 python -m unittest test_motion_recovery.RecoveryTests -v
@@ -171,3 +179,14 @@ NASURAYA_RECOVERY_SOURCE=/private/mid_goal.json python -m unittest test_motion_r
 The second suite uses the supplied recorded body; private inputs and generated
 full-state evidence stay out of Git. The original goal/controller/native source
 files are unchanged, so their saved source fingerprints remain valid.
+
+`compare_outcome_recovery.py` compares the previous journal at commit `3e704eb`
+with the new journal on the same recorded goal. Supply the two baseline Python
+files from that commit in a separate directory. Both worker processes exit
+inside final publication. The old journal blocks; the new one validates and
+publishes the saved outcome with native integration explicitly forbidden, then
+continues two more ticks and compares all three against an uninterrupted copy.
+
+```
+python compare_outcome_recovery.py --native-root /path/to/runtimes/tadash_body --baseline-root /path/to/two-baseline-files --source /private/stopped_after_nine_goal.json --output /private/new-outcome-comparison
+```

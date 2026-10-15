@@ -8,6 +8,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 NATIVE=Path(os.environ.get('NASURAYA_NATIVE_ROOT',str(Path(__file__).resolve().parents[2]/'runtimes/tadash_body'))).resolve()
 sys.path.insert(0,str(NATIVE))
@@ -97,10 +98,66 @@ class RecoveryTests(unittest.TestCase):
 
     def test_crash_inside_commit_rolls_back_goal_and_keeps_intent(self):
         self.crash('writing')
-        self.blocked_without_another_cycle()
         with sqlite3.connect(self.store.path) as db:
             saved=json.loads(db.execute('SELECT goal FROM state').fetchone()[0])
         self.assertEqual(saved,self.origin)
+        self.recovered_without_native_action()
+
+    def recovered_without_native_action(self):
+        from unified_body_v2 import UnifiedBody
+        from coordinated_support import CoordinatedSupport
+        expected=self.goal.step()
+        # Recovery must reuse a receipt; a native cycle or model rollout fails
+        # this test even if its final checkpoint would coincidentally match.
+        with patch.object(UnifiedBody,'cycle',side_effect=AssertionError('native replay during recovery')), \
+             patch.object(CoordinatedSupport,'step',side_effect=AssertionError('model rollout during recovery')):
+            result=self.store.recover()
+            self.assertEqual(result['status'],'recovered')
+            self.assertEqual(result['native_actions_executed'],0)
+            self.assertEqual(result['receipt_sha256'],digest(expected))
+            self.assertEqual(self.store.load().checkpoint(),self.goal.checkpoint())
+            self.assertEqual(self.store.step(event_id=self.event,expected_head=self.head),expected)
+            self.assertEqual(self.store.recover(),dict(status='clean'))
+        self.assertEqual(self.store.inspect()['receipts'],1)
+        self.assertFalse(self.store.inspect()['durable_outcome'])
+        self.assertIsNone(self.store.inspect()['pending'])
+
+    def test_crash_after_durable_outcome_recovers_without_native_replay(self):
+        self.crash('outcome_saved')
+        self.assertTrue(self.store.inspect()['durable_outcome'])
+        self.recovered_without_native_action()
+
+    def test_load_automatically_validates_and_publishes_saved_outcome(self):
+        self.crash('outcome_saved')
+        self.goal.step()
+        from unified_body_v2 import UnifiedBody
+        with patch.object(UnifiedBody,'cycle',side_effect=AssertionError('native replay')):
+            self.assertEqual(MotionJournal(self.store.path).load().checkpoint(),self.goal.checkpoint())
+
+    def test_corrupt_or_conflicting_durable_outcomes_stay_blocked(self):
+        self.crash('outcome_saved')
+        before=self.store.inspect()
+        with sqlite3.connect(self.store.path) as db:
+            original=json.loads(db.execute('SELECT candidate FROM outcome').fetchone()[0])
+        for case in ('checksum','request','receipt','goal_transition','source'):
+            candidate=deepcopy(original)
+            p=candidate['payload']
+            if case=='checksum':candidate['sha256']='0'*64
+            elif case=='request':p['request']['event_id']='unrelated'
+            elif case=='receipt':p['receipt']['owner_ticks']=999
+            elif case=='source':p['source']='0'*64
+            else:
+                p['after']['payload']['task']['stop_reason']='invented transition'
+                p['after']['sha256']=digest(p['after']['payload'])
+            if case!='checksum':candidate['sha256']=digest(p)
+            with sqlite3.connect(self.store.path) as db:
+                db.execute('UPDATE outcome SET candidate=?',(json.dumps(candidate),))
+            with self.subTest(case=case),self.assertRaises(ValueError):self.store.recover()
+            self.assertEqual(self.store.inspect(),before)
+
+    def test_two_fresh_writers_recover_one_outcome_without_another_tick(self):
+        self.crash('outcome_saved')
+        self._two_writers_expect_one_tick()
 
     def test_crash_after_commit_before_response_deduplicates(self):
         self.crash('committed')
@@ -121,6 +178,9 @@ class RecoveryTests(unittest.TestCase):
         self.assertIsNone(self.store.inspect()['pending'])
 
     def test_two_fresh_writers_same_token_execute_only_once(self):
+        self._two_writers_expect_one_tick()
+
+    def _two_writers_expect_one_tick(self):
         cmd=[sys.executable,str(Path(__file__).with_name('recovery_fault_worker.py')),
             '--native-root',str(NATIVE),'--journal',str(self.store.path),
             '--marker',str(self.root/'unused.json'),'--fault','none',
