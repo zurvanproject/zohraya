@@ -21,6 +21,31 @@ Contracts and examples are generated deterministically with
 `python3 -m examples.nasuraya_genome.generate_contract`; regeneration after source
 drift requires explicit review and an appropriate version/migration decision.
 
+## Independent physics experiment
+
+`physics_trial.py` maps the tail-length proposal into an explicitly declared
+fixed-mass uniform-rod inertia proxy, then runs unchanged native equations in
+private copied fixture trees and isolated subprocesses. This is parameter
+sensitivity, not a validated anatomical tail or a live-body change. The mapping
+refuses changed foot dimensions (no mesh/contact mapping) and dosage deviations.
+It rechecks the parameter allowlist and closure before each worker executes.
+
+```sh
+python3 -m examples.nasuraya_genome.physics_trial --output /tmp/new-genome-physics-trial
+```
+
+The output directory must be new. Four conditions across six frozen cases
+give 24 primary trials (80.4 simulated seconds), plus 20 cold-restoration
+branches (40 additional simulated seconds). A descriptor-only diagnostic
+holds inertia fixed to identify which parameter the solver consumes. It is not
+a coherent geometric proposal. Tail-off, zero-friction and cosmetic controls
+retain their outcomes. Source-bound sandbox checkpoints are not exported to
+production state. All 70 original native source files remain unchanged.
+
+The expanded suite has 36 passing local tests. See the
+[Persian experiment report](../../docs/nasuraya-genome-physics-v01-fa.md) and
+[committed experiment evidence](evidence/physics-v0.1/results.json).
+
 `mutate(..., expected_revision=...)` returns a new valid genotype or rejects
 the entire edit batch. `checkpoint`, `save` and `restore` round-trip that genotype
 and recompute its phenotype. Checksums detect accidental corruption and drift;

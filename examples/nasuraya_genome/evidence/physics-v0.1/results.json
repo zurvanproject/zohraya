@@ -1,0 +1,3058 @@
+{
+  "schema": "nasuraya.genome.physics-trial/0.1",
+  "frozen_plan_sha256": "d72fe2fed9e1dfa25280bf70e65873171cc03cb4ba31e130e7413938790c6bc2",
+  "checks": {
+    "all_equations_unchanged": true,
+    "all_exercised_cold_restores_equal": true,
+    "variant_rejects_baseline_checkpoint": true,
+    "cosmetic_has_identical_native_design": true,
+    "foot_change_blocked": true,
+    "tail_off_trajectories_equal": true,
+    "zero_friction_failure_preserved": true,
+    "declared_valid_cases_preserved": true,
+    "tail_response_changes": true,
+    "descriptor_only_matches_baseline": true,
+    "integration_consistent": true,
+    "fixture_limits_respected": true,
+    "source_manifest_unchanged": true
+  },
+  "results": {
+    "baseline": {
+      "cases": [
+        {
+          "case": "stand",
+          "frames": 20,
+          "simulated_s": 2.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.084848569255522,
+              "L_toe_1": 89.12352991466562,
+              "L_toe_2": 89.14171357668388,
+              "L_toe_3": 89.12352991466562,
+              "R_ball": 14.084848569255522,
+              "R_toe_1": 89.12352991466562,
+              "R_toe_2": 89.14171357668388,
+              "R_toe_3": 89.12352991466562
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.26567272286426,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.084848569255522,
+              "L_toe_1": 89.12352991466562,
+              "L_toe_2": 89.14171357668388,
+              "L_toe_3": 89.12352991466562,
+              "R_ball": 14.084848569255522,
+              "R_toe_1": 89.12352991466562,
+              "R_toe_2": 89.14171357668388,
+              "R_toe_3": 89.12352991466562
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.31593329635408,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 89.14171357668388,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 745.8149683341107,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 10,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "f8ed12e28c33fadc9b02ac4ab058167ca41e697770e04f174e335bfa455406d9"
+        },
+        {
+          "case": "tail_displacement",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.115625,
+              -0.0578125
+            ],
+            "tail_speed": [
+              0.11249999999999999,
+              -0.056249999999999994
+            ],
+            "tail_torque": [
+              -4.2,
+              2.1
+            ],
+            "tail_energy_J": 0.03796874999999999,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.522724203655349,
+              "L_toe_1": 88.32347532077141,
+              "L_toe_2": 88.29592262382664,
+              "L_toe_3": 88.4630625885516,
+              "R_ball": 13.979884828954683,
+              "R_toe_1": 87.92022321385092,
+              "R_toe_2": 87.75308324912598,
+              "R_toe_3": 87.78063594607073
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.57652695985548,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0006306433470159732,
+              -0.0003153216735079866
+            ],
+            "tail_speed": [
+              0.0007959538650561322,
+              -0.0003979769325280661
+            ],
+            "tail_torque": [
+              -0.02532723209087488,
+              0.01266361604543744
+            ],
+            "tail_energy_J": 1.9006276658933863e-06,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.087489087783947,
+              "L_toe_1": 89.11870535076444,
+              "L_toe_2": 89.1366132091212,
+              "L_toe_3": 89.1195471029378,
+              "R_ball": 14.084215607109872,
+              "R_toe_1": 89.1162736222637,
+              "R_toe_2": 89.13333972844711,
+              "R_toe_3": 89.11543187009038
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36571128044652,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 89.34012803216272,
+          "peak_tail_speed_rad_s": 0.12519102989178113,
+          "peak_tail_angle_rad": 0.1245777587890625,
+          "peak_tail_torque_Nm": 4.695742752749559,
+          "fuel_used_J": 1493.7132671728698,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "19103a2a3cffe491c4df233a1f8bd7644887135b8b95bc8e65e6ea5b8b9bd6e0"
+        },
+        {
+          "case": "impulse",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.002915357389030087,
+              0.0014576786945150436
+            ],
+            "velocity": [
+              0.01764381183861693,
+              0.008821905919308466
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09297234112400664,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              3.1813640939870604e-07,
+              1.5906820469935302e-07
+            ],
+            "velocity": [
+              -8.88778054411738e-07,
+              -4.44389027205869e-07
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999642852667,
+            "pressure_kpa": {
+              "L_ball": 14.084847774279348,
+              "L_toe_1": 89.12352080104071,
+              "L_toe_2": 89.14170305945174,
+              "L_toe_3": 89.12351974383226,
+              "R_ball": 14.0848518856455,
+              "R_toe_1": 89.12352385519843,
+              "R_toe_2": 89.1417071708179,
+              "R_toe_3": 89.12352491240688
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36660588158377,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "d5de475224029372a1b93239cb0d0e5b973efaaf9aa5d53ccf5f6d4c5e1e5346"
+        },
+        {
+          "case": "impulse_tail_off",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.002915357389030087,
+              0.0014576786945150436
+            ],
+            "velocity": [
+              0.01764381183861693,
+              0.008821905919308466
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              0.0,
+              0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09297234112400664,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              3.1813640939870604e-07,
+              1.5906820469935302e-07
+            ],
+            "velocity": [
+              -8.88778054411738e-07,
+              -4.44389027205869e-07
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              0.0,
+              0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999642852667,
+            "pressure_kpa": {
+              "L_ball": 14.084847774279348,
+              "L_toe_1": 89.12352080104071,
+              "L_toe_2": 89.14170305945174,
+              "L_toe_3": 89.12351974383226,
+              "R_ball": 14.0848518856455,
+              "R_toe_1": 89.12352385519843,
+              "R_toe_2": 89.1417071708179,
+              "R_toe_3": 89.12352491240688
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36660588158377,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "f765a9de7d267549cbbe586fc9faca89acef0d39572b3abe3db7c8d573991922"
+        },
+        {
+          "case": "zero_friction",
+          "frames": 1,
+          "simulated_s": 0.1,
+          "valid_throughout": false,
+          "failure": "friction_limit_exceeded",
+          "final_phase": "failed",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": false,
+            "phase": "failed",
+            "failure": "friction_limit_exceeded",
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.041025641025641026,
+              0.020512820512820513
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.0901513214966996,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": false,
+            "phase": "failed",
+            "failure": "friction_limit_exceeded",
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.041025641025641026,
+              0.020512820512820513
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.0901513214966996,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 40.29751297750206,
+          "minimum_capture_margin_m": 0.0901513214966996,
+          "cold_restore_exercised": false,
+          "cold_restore_equal": true,
+          "replay_frames": 0,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "4c9d8cd5db3339fdea45e272ce0900b82b9426cd2ae3662c87ba02a5e29a3526"
+        },
+        {
+          "case": "walk",
+          "frames": 60,
+          "simulated_s": 6.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "shift",
+          "walk_touchdowns": 1,
+          "first": {
+            "valid": true,
+            "phase": "shift",
+            "failure": null,
+            "com": [
+              0.0004528066340146724,
+              0.0
+            ],
+            "velocity": [
+              0.009112405076272801,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 12.594580001617464,
+              "L_toe_1": 88.0164732644202,
+              "L_toe_2": 87.65144500904586,
+              "L_toe_3": 87.25004942963493,
+              "R_ball": 15.57511713689358,
+              "R_toe_1": 90.23058656491104,
+              "R_toe_2": 90.63198214432195,
+              "R_toe_3": 90.99701039969632
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.542210346888346,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "shift",
+            "failure": null,
+            "com": [
+              0.02656609469341397,
+              0.05186721843015596
+            ],
+            "velocity": [
+              -0.09587224518345729,
+              0.029349494891279578
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.12,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              -0.0017452000211102966,
+              -2.376486458793501e-18
+            ],
+            "tail_speed": [
+              -0.010492189348825329,
+              4.3208844705336375e-18
+            ],
+            "tail_torque": [
+              0.18007665917139276,
+              0.0
+            ],
+            "tail_energy_J": 0.0002642064895958488,
+            "capture_margin_m": 0.08892660246142554,
+            "pressure_kpa": {
+              "L_ball": 17.976168609712072,
+              "L_toe_1": 91.92371114619701,
+              "L_toe_2": 92.93953069959493,
+              "L_toe_3": 93.9358134541145,
+              "R_ball": 10.217777998009177,
+              "R_toe_1": 86.17742284241159,
+              "R_toe_2": 85.18114008789203,
+              "R_toe_3": 84.16532053449411
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 46.79512375275468,
+            "walk_steps": 1
+          },
+          "peak_pressure_kpa": 300.0,
+          "peak_tail_speed_rad_s": 0.15513118065559178,
+          "peak_tail_angle_rad": 0.048389753570120556,
+          "peak_tail_torque_Nm": 5.066033859925991,
+          "fuel_used_J": 3151.4537770359825,
+          "minimum_capture_margin_m": 0.012261124162892933,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 30,
+          "tail_integration_and_energy_max_error": 3.469446951953614e-18,
+          "physical_trace_sha256": "0f7c23e54ec8f7195689dd5337d2b530210555eb5f9a242b87360720c1dedd09"
+        }
+      ],
+      "foreign_checkpoint_rejected": null,
+      "equation_files_unchanged": true,
+      "fixture_only_changed": true,
+      "sandbox_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5"
+    },
+    "tail_short": {
+      "cases": [
+        {
+          "case": "stand",
+          "frames": 20,
+          "simulated_s": 2.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.084848569255522,
+              "L_toe_1": 89.12352991466562,
+              "L_toe_2": 89.14171357668388,
+              "L_toe_3": 89.12352991466562,
+              "R_ball": 14.084848569255522,
+              "R_toe_1": 89.12352991466562,
+              "R_toe_2": 89.14171357668388,
+              "R_toe_3": 89.12352991466562
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.26567272286426,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.084848569255522,
+              "L_toe_1": 89.12352991466562,
+              "L_toe_2": 89.14171357668388,
+              "L_toe_3": 89.12352991466562,
+              "R_ball": 14.084848569255522,
+              "R_toe_1": 89.12352991466562,
+              "R_toe_2": 89.14171357668388,
+              "R_toe_3": 89.12352991466562
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.31593329635408,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 89.14171357668388,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 745.8149683341107,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 10,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "f8ed12e28c33fadc9b02ac4ab058167ca41e697770e04f174e335bfa455406d9"
+        },
+        {
+          "case": "tail_displacement",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.11544460641399418,
+              -0.05772230320699709
+            ],
+            "tail_speed": [
+              0.10889212827988337,
+              -0.054446064139941686
+            ],
+            "tail_torque": [
+              -4.2,
+              2.1
+            ],
+            "tail_energy_J": 0.0341638163265306,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.522724203655349,
+              "L_toe_1": 88.32347532077141,
+              "L_toe_2": 88.29592262382664,
+              "L_toe_3": 88.4630625885516,
+              "R_ball": 13.979884828954683,
+              "R_toe_1": 87.92022321385092,
+              "R_toe_2": 87.75308324912598,
+              "R_toe_3": 87.78063594607073
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.57336961591496,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0005280128677062029,
+              -0.00026400643385310145
+            ],
+            "tail_speed": [
+              0.0005267179757934728,
+              -0.0002633589878967364
+            ],
+            "tail_torque": [
+              -0.019594919392335725,
+              0.009797459696167863
+            ],
+            "tail_energy_J": 7.993365771402721e-07,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.086891459198362,
+              "L_toe_1": 89.1197972943616,
+              "L_toe_2": 89.1377675753639,
+              "L_toe_3": 89.12044853275694,
+              "R_ball": 14.08435886543878,
+              "R_toe_1": 89.11791593899734,
+              "R_toe_2": 89.13523498160431,
+              "R_toe_3": 89.11726470060202
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36564923868015,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 89.33496394174787,
+          "peak_tail_speed_rad_s": 0.1256517834595994,
+          "peak_tail_angle_rad": 0.1233532770476902,
+          "peak_tail_torque_Nm": 4.695742752749559,
+          "fuel_used_J": 1493.668484783739,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 1.0842021724855044e-19,
+          "physical_trace_sha256": "649cb8a3545f698b086b7f430c0daa1809d60f0f03ffe7eb57bd0037e2bd2a1a"
+        },
+        {
+          "case": "impulse",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.002915357389030087,
+              0.0014576786945150436
+            ],
+            "velocity": [
+              0.01764381183861693,
+              0.008821905919308466
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09297234112400664,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              3.1813640939870604e-07,
+              1.5906820469935302e-07
+            ],
+            "velocity": [
+              -8.88778054411738e-07,
+              -4.44389027205869e-07
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999642852667,
+            "pressure_kpa": {
+              "L_ball": 14.084847774279348,
+              "L_toe_1": 89.12352080104071,
+              "L_toe_2": 89.14170305945174,
+              "L_toe_3": 89.12351974383226,
+              "R_ball": 14.0848518856455,
+              "R_toe_1": 89.12352385519843,
+              "R_toe_2": 89.1417071708179,
+              "R_toe_3": 89.12352491240688
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36660588158377,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "d5de475224029372a1b93239cb0d0e5b973efaaf9aa5d53ccf5f6d4c5e1e5346"
+        },
+        {
+          "case": "impulse_tail_off",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.002915357389030087,
+              0.0014576786945150436
+            ],
+            "velocity": [
+              0.01764381183861693,
+              0.008821905919308466
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              0.0,
+              0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09297234112400664,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              3.1813640939870604e-07,
+              1.5906820469935302e-07
+            ],
+            "velocity": [
+              -8.88778054411738e-07,
+              -4.44389027205869e-07
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              0.0,
+              0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999642852667,
+            "pressure_kpa": {
+              "L_ball": 14.084847774279348,
+              "L_toe_1": 89.12352080104071,
+              "L_toe_2": 89.14170305945174,
+              "L_toe_3": 89.12351974383226,
+              "R_ball": 14.0848518856455,
+              "R_toe_1": 89.12352385519843,
+              "R_toe_2": 89.1417071708179,
+              "R_toe_3": 89.12352491240688
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36660588158377,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "f765a9de7d267549cbbe586fc9faca89acef0d39572b3abe3db7c8d573991922"
+        },
+        {
+          "case": "zero_friction",
+          "frames": 1,
+          "simulated_s": 0.1,
+          "valid_throughout": false,
+          "failure": "friction_limit_exceeded",
+          "final_phase": "failed",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": false,
+            "phase": "failed",
+            "failure": "friction_limit_exceeded",
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.041025641025641026,
+              0.020512820512820513
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.0901513214966996,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": false,
+            "phase": "failed",
+            "failure": "friction_limit_exceeded",
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.041025641025641026,
+              0.020512820512820513
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.0901513214966996,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 40.29751297750206,
+          "minimum_capture_margin_m": 0.0901513214966996,
+          "cold_restore_exercised": false,
+          "cold_restore_equal": true,
+          "replay_frames": 0,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "4c9d8cd5db3339fdea45e272ce0900b82b9426cd2ae3662c87ba02a5e29a3526"
+        },
+        {
+          "case": "walk",
+          "frames": 60,
+          "simulated_s": 6.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "shift",
+          "walk_touchdowns": 1,
+          "first": {
+            "valid": true,
+            "phase": "shift",
+            "failure": null,
+            "com": [
+              0.0004528066340146724,
+              0.0
+            ],
+            "velocity": [
+              0.009112405076272801,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 12.594580001617464,
+              "L_toe_1": 88.0164732644202,
+              "L_toe_2": 87.65144500904586,
+              "L_toe_3": 87.25004942963493,
+              "R_ball": 15.57511713689358,
+              "R_toe_1": 90.23058656491104,
+              "R_toe_2": 90.63198214432195,
+              "R_toe_3": 90.99701039969632
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.542210346888346,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "shift",
+            "failure": null,
+            "com": [
+              0.02656609469341397,
+              0.05186721843015596
+            ],
+            "velocity": [
+              -0.09587224518345729,
+              0.029349494891279578
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.12,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              -0.0017685727278694155,
+              -2.4744756963697406e-18
+            ],
+            "tail_speed": [
+              -0.009329304896577233,
+              4.49904672067226e-18
+            ],
+            "tail_torque": [
+              0.16726913196528562,
+              0.0
+            ],
+            "tail_energy_J": 0.00020061433687466217,
+            "capture_margin_m": 0.08892660246142554,
+            "pressure_kpa": {
+              "L_ball": 17.976684746832937,
+              "L_toe_1": 91.92598797742063,
+              "L_toe_2": 92.9424197201754,
+              "L_toe_3": 93.93888754502906,
+              "R_ball": 10.216646466567969,
+              "R_toe_1": 86.17884926476411,
+              "R_toe_2": 85.18238143991044,
+              "R_toe_3": 84.16594969715567
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 46.79498614393472,
+            "walk_steps": 1
+          },
+          "peak_pressure_kpa": 300.0,
+          "peak_tail_speed_rad_s": 0.16152767665097023,
+          "peak_tail_angle_rad": 0.04929759557359845,
+          "peak_tail_torque_Nm": 5.066033859925991,
+          "fuel_used_J": 3151.4714801435207,
+          "minimum_capture_margin_m": 0.012261124162892933,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 30,
+          "tail_integration_and_energy_max_error": 8.673617379884035e-19,
+          "physical_trace_sha256": "a11898f89dda798e250a5c117404dddc3eb47cab8bad00e10842d8b776b5c87e"
+        }
+      ],
+      "foreign_checkpoint_rejected": true,
+      "equation_files_unchanged": true,
+      "fixture_only_changed": true,
+      "sandbox_design_sha256": "594896586d1939489302148933f7065b936f55b946cc9ae96a077325216f3d99"
+    },
+    "tail_long": {
+      "cases": [
+        {
+          "case": "stand",
+          "frames": 20,
+          "simulated_s": 2.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.084848569255522,
+              "L_toe_1": 89.12352991466562,
+              "L_toe_2": 89.14171357668388,
+              "L_toe_3": 89.12352991466562,
+              "R_ball": 14.084848569255522,
+              "R_toe_1": 89.12352991466562,
+              "R_toe_2": 89.14171357668388,
+              "R_toe_3": 89.12352991466562
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.26567272286426,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.084848569255522,
+              "L_toe_1": 89.12352991466562,
+              "L_toe_2": 89.14171357668388,
+              "L_toe_3": 89.12352991466562,
+              "R_ball": 14.084848569255522,
+              "R_toe_1": 89.12352991466562,
+              "R_toe_2": 89.14171357668388,
+              "R_toe_3": 89.12352991466562
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.31593329635408,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 89.14171357668388,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 745.8149683341107,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 10,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "f8ed12e28c33fadc9b02ac4ab058167ca41e697770e04f174e335bfa455406d9"
+        },
+        {
+          "case": "tail_displacement",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.11579488658208383,
+              -0.05789744329104191
+            ],
+            "tail_speed": [
+              0.11589773164167629,
+              -0.05794886582083814
+            ],
+            "tail_torque": [
+              -4.2,
+              2.1
+            ],
+            "tail_energy_J": 0.04192484544405998,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.522724203655349,
+              "L_toe_1": 88.32347532077141,
+              "L_toe_2": 88.29592262382664,
+              "L_toe_3": 88.4630625885516,
+              "R_ball": 13.979884828954683,
+              "R_toe_1": 87.92022321385092,
+              "R_toe_2": 87.75308324912598,
+              "R_toe_3": 87.78063594607073
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.579500404635695,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.000728433170559809,
+              -0.0003642165852799045
+            ],
+            "tail_speed": [
+              0.0011590355251549522,
+              -0.0005795177625774761
+            ],
+            "tail_torque": [
+              -0.03205992879873203,
+              0.016029964399366017
+            ],
+            "tail_energy_J": 4.192905683560478e-06,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.088191012508274,
+              "L_toe_1": 89.11742284482864,
+              "L_toe_2": 89.13525738674885,
+              "L_toe_3": 89.11848835860631,
+              "R_ball": 14.084047347817307,
+              "R_toe_1": 89.11434469391534,
+              "R_toe_2": 89.13111372205789,
+              "R_toe_3": 89.11327918013765
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.3657850689618,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 89.34537954553274,
+          "peak_tail_speed_rad_s": 0.12439116179583576,
+          "peak_tail_angle_rad": 0.12574707195774865,
+          "peak_tail_torque_Nm": 4.695742752749559,
+          "fuel_used_J": 1493.7549718993612,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 4.336808689942018e-19,
+          "physical_trace_sha256": "1560cf54c84b6b15b2c74116cce163aa1ce4d70b4fdfdd74afee362d22cf58a7"
+        },
+        {
+          "case": "impulse",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.002915357389030087,
+              0.0014576786945150436
+            ],
+            "velocity": [
+              0.01764381183861693,
+              0.008821905919308466
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09297234112400664,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              3.1813640939870604e-07,
+              1.5906820469935302e-07
+            ],
+            "velocity": [
+              -8.88778054411738e-07,
+              -4.44389027205869e-07
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999642852667,
+            "pressure_kpa": {
+              "L_ball": 14.084847774279348,
+              "L_toe_1": 89.12352080104071,
+              "L_toe_2": 89.14170305945174,
+              "L_toe_3": 89.12351974383226,
+              "R_ball": 14.0848518856455,
+              "R_toe_1": 89.12352385519843,
+              "R_toe_2": 89.1417071708179,
+              "R_toe_3": 89.12352491240688
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36660588158377,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "d5de475224029372a1b93239cb0d0e5b973efaaf9aa5d53ccf5f6d4c5e1e5346"
+        },
+        {
+          "case": "impulse_tail_off",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.002915357389030087,
+              0.0014576786945150436
+            ],
+            "velocity": [
+              0.01764381183861693,
+              0.008821905919308466
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              0.0,
+              0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09297234112400664,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              3.1813640939870604e-07,
+              1.5906820469935302e-07
+            ],
+            "velocity": [
+              -8.88778054411738e-07,
+              -4.44389027205869e-07
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              0.0,
+              0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999642852667,
+            "pressure_kpa": {
+              "L_ball": 14.084847774279348,
+              "L_toe_1": 89.12352080104071,
+              "L_toe_2": 89.14170305945174,
+              "L_toe_3": 89.12351974383226,
+              "R_ball": 14.0848518856455,
+              "R_toe_1": 89.12352385519843,
+              "R_toe_2": 89.1417071708179,
+              "R_toe_3": 89.12352491240688
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36660588158377,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "f765a9de7d267549cbbe586fc9faca89acef0d39572b3abe3db7c8d573991922"
+        },
+        {
+          "case": "zero_friction",
+          "frames": 1,
+          "simulated_s": 0.1,
+          "valid_throughout": false,
+          "failure": "friction_limit_exceeded",
+          "final_phase": "failed",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": false,
+            "phase": "failed",
+            "failure": "friction_limit_exceeded",
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.041025641025641026,
+              0.020512820512820513
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.0901513214966996,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": false,
+            "phase": "failed",
+            "failure": "friction_limit_exceeded",
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.041025641025641026,
+              0.020512820512820513
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.0901513214966996,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 40.29751297750206,
+          "minimum_capture_margin_m": 0.0901513214966996,
+          "cold_restore_exercised": false,
+          "cold_restore_equal": true,
+          "replay_frames": 0,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "4c9d8cd5db3339fdea45e272ce0900b82b9426cd2ae3662c87ba02a5e29a3526"
+        },
+        {
+          "case": "walk",
+          "frames": 60,
+          "simulated_s": 6.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "shift",
+          "walk_touchdowns": 1,
+          "first": {
+            "valid": true,
+            "phase": "shift",
+            "failure": null,
+            "com": [
+              0.0004528066340146724,
+              0.0
+            ],
+            "velocity": [
+              0.009112405076272801,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 12.594580001617464,
+              "L_toe_1": 88.0164732644202,
+              "L_toe_2": 87.65144500904586,
+              "L_toe_3": 87.25004942963493,
+              "R_ball": 15.57511713689358,
+              "R_toe_1": 90.23058656491104,
+              "R_toe_2": 90.63198214432195,
+              "R_toe_3": 90.99701039969632
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.542210346888346,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "shift",
+            "failure": null,
+            "com": [
+              0.02656609469341397,
+              0.05186721843015596
+            ],
+            "velocity": [
+              -0.09587224518345729,
+              0.029349494891279578
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.12,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              -0.0016641575917383086,
+              -2.2842045932271283e-18
+            ],
+            "tail_speed": [
+              -0.011703229902269985,
+              4.153099260412954e-18
+            ],
+            "tail_torque": [
+              0.19200472598812132,
+              0.0
+            ],
+            "tail_energy_J": 0.00034199759996942383,
+            "capture_margin_m": 0.08892660246142554,
+            "pressure_kpa": {
+              "L_ball": 17.975687914417406,
+              "L_toe_1": 91.92159065919516,
+              "L_toe_2": 92.93684006072576,
+              "L_toe_3": 93.93295045322137,
+              "R_ball": 10.218831830058003,
+              "R_toe_1": 86.17609436886195,
+              "R_toe_2": 85.17998397636633,
+              "R_toe_3": 84.16473457483576
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 46.79526895098505,
+            "walk_steps": 1
+          },
+          "peak_pressure_kpa": 300.0,
+          "peak_tail_speed_rad_s": 0.14910724784274487,
+          "peak_tail_angle_rad": 0.04773529525431824,
+          "peak_tail_torque_Nm": 5.066033859925991,
+          "fuel_used_J": 3151.437692377194,
+          "minimum_capture_margin_m": 0.012261124162892933,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 30,
+          "tail_integration_and_energy_max_error": 8.673617379884035e-19,
+          "physical_trace_sha256": "66ca4232d8f500af3bd6ad5f51bb5ba40d77998aa13043e3052a7f7c8183158d"
+        }
+      ],
+      "foreign_checkpoint_rejected": true,
+      "equation_files_unchanged": true,
+      "fixture_only_changed": true,
+      "sandbox_design_sha256": "a580f8d050c495216d55432d89f96eb03b7072065b5f7292addb672a2a0b2668"
+    },
+    "length_only_ablation": {
+      "cases": [
+        {
+          "case": "stand",
+          "frames": 20,
+          "simulated_s": 2.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.084848569255522,
+              "L_toe_1": 89.12352991466562,
+              "L_toe_2": 89.14171357668388,
+              "L_toe_3": 89.12352991466562,
+              "R_ball": 14.084848569255522,
+              "R_toe_1": 89.12352991466562,
+              "R_toe_2": 89.14171357668388,
+              "R_toe_3": 89.12352991466562
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.26567272286426,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.084848569255522,
+              "L_toe_1": 89.12352991466562,
+              "L_toe_2": 89.14171357668388,
+              "L_toe_3": 89.12352991466562,
+              "R_ball": 14.084848569255522,
+              "R_toe_1": 89.12352991466562,
+              "R_toe_2": 89.14171357668388,
+              "R_toe_3": 89.12352991466562
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.31593329635408,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 89.14171357668388,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 745.8149683341107,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 10,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "f8ed12e28c33fadc9b02ac4ab058167ca41e697770e04f174e335bfa455406d9"
+        },
+        {
+          "case": "tail_displacement",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.115625,
+              -0.0578125
+            ],
+            "tail_speed": [
+              0.11249999999999999,
+              -0.056249999999999994
+            ],
+            "tail_torque": [
+              -4.2,
+              2.1
+            ],
+            "tail_energy_J": 0.03796874999999999,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.522724203655349,
+              "L_toe_1": 88.32347532077141,
+              "L_toe_2": 88.29592262382664,
+              "L_toe_3": 88.4630625885516,
+              "R_ball": 13.979884828954683,
+              "R_toe_1": 87.92022321385092,
+              "R_toe_2": 87.75308324912598,
+              "R_toe_3": 87.78063594607073
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.57652695985548,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.0,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0006306433470159732,
+              -0.0003153216735079866
+            ],
+            "tail_speed": [
+              0.0007959538650561322,
+              -0.0003979769325280661
+            ],
+            "tail_torque": [
+              -0.02532723209087488,
+              0.01266361604543744
+            ],
+            "tail_energy_J": 1.9006276658933863e-06,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 14.087489087783947,
+              "L_toe_1": 89.11870535076444,
+              "L_toe_2": 89.1366132091212,
+              "L_toe_3": 89.1195471029378,
+              "R_ball": 14.084215607109872,
+              "R_toe_1": 89.1162736222637,
+              "R_toe_2": 89.13333972844711,
+              "R_toe_3": 89.11543187009038
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36571128044652,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 89.34012803216272,
+          "peak_tail_speed_rad_s": 0.12519102989178113,
+          "peak_tail_angle_rad": 0.1245777587890625,
+          "peak_tail_torque_Nm": 4.695742752749559,
+          "fuel_used_J": 1493.7132671728698,
+          "minimum_capture_margin_m": 0.09299999999999997,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "19103a2a3cffe491c4df233a1f8bd7644887135b8b95bc8e65e6ea5b8b9bd6e0"
+        },
+        {
+          "case": "impulse",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.002915357389030087,
+              0.0014576786945150436
+            ],
+            "velocity": [
+              0.01764381183861693,
+              0.008821905919308466
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09297234112400664,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              3.1813640939870604e-07,
+              1.5906820469935302e-07
+            ],
+            "velocity": [
+              -8.88778054411738e-07,
+              -4.44389027205869e-07
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999642852667,
+            "pressure_kpa": {
+              "L_ball": 14.084847774279348,
+              "L_toe_1": 89.12352080104071,
+              "L_toe_2": 89.14170305945174,
+              "L_toe_3": 89.12351974383226,
+              "R_ball": 14.0848518856455,
+              "R_toe_1": 89.12352385519843,
+              "R_toe_2": 89.1417071708179,
+              "R_toe_3": 89.12352491240688
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36660588158377,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "d5de475224029372a1b93239cb0d0e5b973efaaf9aa5d53ccf5f6d4c5e1e5346"
+        },
+        {
+          "case": "impulse_tail_off",
+          "frames": 40,
+          "simulated_s": 4.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "double_support",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              0.002915357389030087,
+              0.0014576786945150436
+            ],
+            "velocity": [
+              0.01764381183861693,
+              0.008821905919308466
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              0.0,
+              0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09297234112400664,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "double_support",
+            "failure": null,
+            "com": [
+              3.1813640939870604e-07,
+              1.5906820469935302e-07
+            ],
+            "velocity": [
+              -8.88778054411738e-07,
+              -4.44389027205869e-07
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              0.0,
+              0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999642852667,
+            "pressure_kpa": {
+              "L_ball": 14.084847774279348,
+              "L_toe_1": 89.12352080104071,
+              "L_toe_2": 89.14170305945174,
+              "L_toe_3": 89.12351974383226,
+              "R_ball": 14.0848518856455,
+              "R_toe_1": 89.12352385519843,
+              "R_toe_2": 89.1417071708179,
+              "R_toe_3": 89.12352491240688
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.36660588158377,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 1501.3047777684137,
+          "minimum_capture_margin_m": 0.09297234112400664,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 20,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "f765a9de7d267549cbbe586fc9faca89acef0d39572b3abe3db7c8d573991922"
+        },
+        {
+          "case": "zero_friction",
+          "frames": 1,
+          "simulated_s": 0.1,
+          "valid_throughout": false,
+          "failure": "friction_limit_exceeded",
+          "final_phase": "failed",
+          "walk_touchdowns": 0,
+          "first": {
+            "valid": false,
+            "phase": "failed",
+            "failure": "friction_limit_exceeded",
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.041025641025641026,
+              0.020512820512820513
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.0901513214966996,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": false,
+            "phase": "failed",
+            "failure": "friction_limit_exceeded",
+            "com": [
+              0.0,
+              0.0
+            ],
+            "velocity": [
+              0.041025641025641026,
+              0.020512820512820513
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.0901513214966996,
+            "pressure_kpa": {
+              "L_ball": 15.661104052173245,
+              "L_toe_1": 107.19375854175732,
+              "L_toe_2": 109.99497358138241,
+              "L_toe_3": 109.2899604830504,
+              "R_ball": 7.509207613811226,
+              "R_toe_1": 101.13806404468839,
+              "R_toe_2": 101.84307714302041,
+              "R_toe_3": 99.04186210339527
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 40.29751297750206,
+            "walk_steps": 0
+          },
+          "peak_pressure_kpa": 109.99497358138241,
+          "peak_tail_speed_rad_s": 0.0,
+          "peak_tail_angle_rad": 0.0,
+          "peak_tail_torque_Nm": 0.0,
+          "fuel_used_J": 40.29751297750206,
+          "minimum_capture_margin_m": 0.0901513214966996,
+          "cold_restore_exercised": false,
+          "cold_restore_equal": true,
+          "replay_frames": 0,
+          "tail_integration_and_energy_max_error": 0.0,
+          "physical_trace_sha256": "4c9d8cd5db3339fdea45e272ce0900b82b9426cd2ae3662c87ba02a5e29a3526"
+        },
+        {
+          "case": "walk",
+          "frames": 60,
+          "simulated_s": 6.0,
+          "valid_throughout": true,
+          "failure": null,
+          "final_phase": "shift",
+          "walk_touchdowns": 1,
+          "first": {
+            "valid": true,
+            "phase": "shift",
+            "failure": null,
+            "com": [
+              0.0004528066340146724,
+              0.0
+            ],
+            "velocity": [
+              0.009112405076272801,
+              0.0
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.0,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              0.0,
+              0.0
+            ],
+            "tail_speed": [
+              0.0,
+              0.0
+            ],
+            "tail_torque": [
+              -0.0,
+              -0.0
+            ],
+            "tail_energy_J": 0.0,
+            "capture_margin_m": 0.09299999999999997,
+            "pressure_kpa": {
+              "L_ball": 12.594580001617464,
+              "L_toe_1": 88.0164732644202,
+              "L_toe_2": 87.65144500904586,
+              "L_toe_3": 87.25004942963493,
+              "R_ball": 15.57511713689358,
+              "R_toe_1": 90.23058656491104,
+              "R_toe_2": 90.63198214432195,
+              "R_toe_3": 90.99701039969632
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 37.542210346888346,
+            "walk_steps": 0
+          },
+          "final": {
+            "valid": true,
+            "phase": "shift",
+            "failure": null,
+            "com": [
+              0.02656609469341397,
+              0.05186721843015596
+            ],
+            "velocity": [
+              -0.09587224518345729,
+              0.029349494891279578
+            ],
+            "feet": {
+              "L": [
+                0.196,
+                0.0,
+                0.0
+              ],
+              "R": [
+                -0.196,
+                0.12,
+                0.0
+              ]
+            },
+            "tail_angle": [
+              -0.0017452000211102966,
+              -2.376486458793501e-18
+            ],
+            "tail_speed": [
+              -0.010492189348825329,
+              4.3208844705336375e-18
+            ],
+            "tail_torque": [
+              0.18007665917139276,
+              0.0
+            ],
+            "tail_energy_J": 0.0002642064895958488,
+            "capture_margin_m": 0.08892660246142554,
+            "pressure_kpa": {
+              "L_ball": 17.976168609712072,
+              "L_toe_1": 91.92371114619701,
+              "L_toe_2": 92.93953069959493,
+              "L_toe_3": 93.9358134541145,
+              "R_ball": 10.217777998009177,
+              "R_toe_1": 86.17742284241159,
+              "R_toe_2": 85.18114008789203,
+              "R_toe_3": 84.16532053449411
+            },
+            "support_fraction": 1.0,
+            "fuel_used_J": 46.79512375275468,
+            "walk_steps": 1
+          },
+          "peak_pressure_kpa": 300.0,
+          "peak_tail_speed_rad_s": 0.15513118065559178,
+          "peak_tail_angle_rad": 0.048389753570120556,
+          "peak_tail_torque_Nm": 5.066033859925991,
+          "fuel_used_J": 3151.4537770359825,
+          "minimum_capture_margin_m": 0.012261124162892933,
+          "cold_restore_exercised": true,
+          "cold_restore_equal": true,
+          "replay_frames": 30,
+          "tail_integration_and_energy_max_error": 3.469446951953614e-18,
+          "physical_trace_sha256": "0f7c23e54ec8f7195689dd5337d2b530210555eb5f9a242b87360720c1dedd09"
+        }
+      ],
+      "foreign_checkpoint_rejected": true,
+      "equation_files_unchanged": true,
+      "fixture_only_changed": true,
+      "sandbox_design_sha256": "cd792fb95d8a49d9390b4b9f25ac83a5714769b647d86121b6f660e189568353"
+    }
+  },
+  "unsupported_foot_plan": {
+    "schema": "nasuraya.genome.physics-trial/0.1",
+    "genotype_sha256": "0504809a157026649879e41d494a80480426c5bbc373576e82754274fc40c127",
+    "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+    "reasons": [
+      "foot_dimensions_have_no_validated_mesh_to_contact_mapping"
+    ],
+    "purpose": "genotype_candidate_with_declared_inertia_closure",
+    "status": "blocked",
+    "native_apply_allowed": false,
+    "assumptions": [
+      "equivalent uniform slender rod about its root: I = m L^2 / 3",
+      "tail mass fixed at 10 kg; effective actuator lever and force/torque ceilings fixed",
+      "whole-body mass, COM, contact patches, leg links and controller gains fixed",
+      "no anatomical mass redistribution, mesh collision or tail-ground contact solved",
+      "parameters vary only in private fixture copies; no original equation is changed"
+    ],
+    "native_design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5"
+  },
+  "cases_per_variant": 6,
+  "native_run_count": 24,
+  "simulated_s": 80.4,
+  "cold_replay_simulated_s": 40.0,
+  "cold_restore_branches": 20,
+  "original_live_state_loaded": false,
+  "API_calls": 0,
+  "native_apply_allowed": false,
+  "physical_model_scope": "fixed COM reduced flywheel sensitivity; no anatomical validation",
+  "demonstrated_physical_improvement": false
+}
