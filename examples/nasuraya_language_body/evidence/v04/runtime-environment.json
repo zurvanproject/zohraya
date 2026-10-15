@@ -1,0 +1,13 @@
+{
+  "python": "3.12.14",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "packages": {
+    "torch": "2.8.0+cpu",
+    "transformers": "4.57.1",
+    "peft": "0.17.1",
+    "safetensors": "0.6.2",
+    "numpy": "2.3.3"
+  },
+  "accelerator": "CPU only",
+  "live_api_calls": 0
+}
