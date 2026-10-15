@@ -21,3 +21,4 @@ jobs:
       - run: python3 -m examples.nasuraya_genome.traits --output /tmp/genome-traits-demo.json
       - run: python3 -m examples.nasuraya_genome.physics_trial --output /tmp/genome-physics-trial
       - run: python3 -m examples.nasuraya_genome.foot_trial --output /tmp/genome-foot-contact-trial
+      - run: python3 -m examples.nasuraya_genome.run_design_cycle --output /tmp/genome-design-cycle

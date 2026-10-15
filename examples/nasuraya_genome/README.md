@@ -42,7 +42,7 @@ a coherent geometric proposal. Tail-off, zero-friction and cosmetic controls
 retain their outcomes. Source-bound sandbox checkpoints are not exported to
 production state. All 70 original native source files remain unchanged.
 
-The expanded suite has 45 passing local tests. See the
+The expanded suite has 55 passing local tests. See the
 [Persian experiment report](../../docs/nasuraya-genome-physics-v01-fa.md) and
 [committed experiment evidence](evidence/physics-v0.1/results.json).
 
@@ -69,6 +69,41 @@ python3 -m examples.nasuraya_genome.foot_trial --output /tmp/new-foot-contact-tr
 See the [Persian foot-contact report](../../docs/nasuraya-genome-foot-contact-v01-fa.md),
 [plan and results](evidence/foot-contact-v0.1/results.json) and
 [exact planar comparison](evidence/foot-contact-v0.1/contact-comparison.svg).
+
+## Decision and external design experience
+
+`design_decision.py` compares baseline, +1% foot dimensions, +2% foot dimensions
+and a cosmetic-only mutation using a frozen authored policy. Hard fixture,
+progress, restoration and energy-budget checks precede utility. Scores combine
+relative nominal pressure reduction, walking capture-margin change and fuel cost;
+they are engineering defaults, not inferred user preferences or learned weights.
+
+`design_memory.py` follows the intent/result and SQLite validation pattern used
+by `nasuraya_self_model.monitor`, but uses a separate design ledger. The existing
+SelfModel learns action admission and cannot receive these synthetic design
+comparisons as live-body episodes. No native planning or physiological state is
+overwritten. A completed trial replays without a callback; an unresolved one
+blocks retries until reconciliation. Historical decisions replay against their
+original evidence prefix. A portable JSON checkpoint restores the full history
+into a fresh SQLite store and reproduces the recommendation in a new process.
+Checksums assume a trusted host; they are not physical measurement signatures.
+
+```sh
+python3 -m examples.nasuraya_genome.run_design_cycle --output /tmp/new-design-cycle
+```
+
+The cycle reuses source-matching committed baseline and +2% receipts, measures
+the +1% candidate once, and explicitly transfers baseline evidence to the
+identical cosmetic-only fixture. Four candidate observations therefore represent
+three distinct physical-fixture observations, with only one fresh experiment.
+Memory changes the choice from baseline retention to a +2% **proposal** in this
+exact context; the cosmetic-only mutation has no measured functional gain.
+Disabling memory or requesting an unseen context retains baseline. Neither this
+module nor its selected checkpoint applies a genotype to the owner body or
+starts a live API agent. Experience stays outside inherited alleles.
+
+See the [Persian decision-cycle report](../../docs/nasuraya-genome-design-cycle-v01-fa.md)
+and [portable experience and results](evidence/design-cycle-v0.1/results.json).
 
 `mutate(..., expected_revision=...)` returns a new valid genotype or rejects
 the entire edit batch. `checkpoint`, `save` and `restore` round-trip that genotype
