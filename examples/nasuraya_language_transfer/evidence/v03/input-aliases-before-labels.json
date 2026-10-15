@@ -1,0 +1,108 @@
+{
+  "distinct_prompts": 12,
+  "cases": 42,
+  "groups": [
+    {
+      "prompt_sha256": "d17aab5b7cc2473d934bc95269bcd3c198ef30efe0081df118ddaeff37718525",
+      "ids": [
+        "control:ordinary:0.5",
+        "fatigue:0.18:0.5",
+        "fatigue:0.38:0.5",
+        "fatigue:0.5:0.5",
+        "left_pain:0.15:0.5",
+        "left_pain:0.35:0.5",
+        "friction:0:0.5",
+        "friction:1:0.5",
+        "friction:2:0.5",
+        "friction:3:0.5",
+        "friction:4:0.5",
+        "friction:5:0.5",
+        "mixed:0:0.5",
+        "mixed:2:0.5"
+      ]
+    },
+    {
+      "prompt_sha256": "21d7d5ae473d942fd55e68eebe081ccc81e48c9af4691bc308f6c25382ed4574",
+      "ids": [
+        "control:ordinary:0.8",
+        "fatigue:0.18:0.8",
+        "fatigue:0.38:0.8",
+        "fatigue:0.5:0.8",
+        "left_pain:0.15:0.8",
+        "left_pain:0.35:0.8",
+        "friction:0:0.8",
+        "friction:1:0.8",
+        "friction:2:0.8",
+        "friction:3:0.8",
+        "friction:4:0.8",
+        "friction:5:0.8",
+        "mixed:0:0.8",
+        "mixed:2:0.8"
+      ]
+    },
+    {
+      "prompt_sha256": "82b267ab7d3eaff133d98cf9416bda7be66b4e2ce7069194be1455b4ebfbcee3",
+      "ids": [
+        "control:zero_friction:0.5"
+      ]
+    },
+    {
+      "prompt_sha256": "45ddc8c13d54fe58fe83605ac3513da9b29300d8f535bee3d08f940ba237307d",
+      "ids": [
+        "control:zero_friction:0.8"
+      ]
+    },
+    {
+      "prompt_sha256": "fb8bfca0b39ee27900dff0f57f5cb0a75f1bce0bb70dbc16a9ec45e95e7bc988",
+      "ids": [
+        "control:sleep:0.5"
+      ]
+    },
+    {
+      "prompt_sha256": "d5d9e8ecb17d60857b80531f12044771032a49cf40e7e4cc8439c17070fe8de4",
+      "ids": [
+        "control:sleep:0.8"
+      ]
+    },
+    {
+      "prompt_sha256": "056992f1f4e3337e56280a8af91d395c870d6962160073d200b6b61b1aa4d5d9",
+      "ids": [
+        "fatigue:0.56:0.5",
+        "fatigue:0.72:0.5"
+      ]
+    },
+    {
+      "prompt_sha256": "bb4e7eea309c830357301df953f143023dd3883e7d0ccf9e6ae7a1e037752082",
+      "ids": [
+        "fatigue:0.56:0.8",
+        "fatigue:0.72:0.8"
+      ]
+    },
+    {
+      "prompt_sha256": "7de855a2ab30a8d5fd10f2267827ecedde1b4500c3cabac798355e709f33e223",
+      "ids": [
+        "left_pain:0.55:0.5",
+        "left_pain:0.85:0.5"
+      ]
+    },
+    {
+      "prompt_sha256": "e774cf09cf0ddf3ae9816fd53e5b98970cf5b662b6998533c6db603b53511a32",
+      "ids": [
+        "left_pain:0.55:0.8",
+        "left_pain:0.85:0.8"
+      ]
+    },
+    {
+      "prompt_sha256": "f2ee4079f5a3273481e1541f49bf00a77a7aff0638d15a0955c44cb997193214",
+      "ids": [
+        "mixed:1:0.5"
+      ]
+    },
+    {
+      "prompt_sha256": "ef0bfc6ceba2550d329b9323650f4d3a5738c467917ea38008222318fe17e1ed",
+      "ids": [
+        "mixed:1:0.8"
+      ]
+    }
+  ]
+}

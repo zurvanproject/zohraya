@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/e045c22ac582/zohraya/examples/nasuraya_language_transfer/evaluate.py", line 232, in <module>
+    if args.command=='prepare':prepare(args.output,args.primary,args.parent)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/examples/nasuraya_language_transfer/evaluate.py", line 116, in prepare
+    body=initialize(bases[case.get('sleep_pressure',config['ordinary_sleep_pressure'])],case,config['left_pain_region'])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/examples/nasuraya_language_transfer/evaluate.py", line 59, in initialize
+    return UnifiedBody.restore(body.checkpoint())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/unified_body_v2.py", line 547, in restore
+    obj=cls(CoupledEmbodiment.restore(p["owner"]),p["modules"],p["affect"],p["migration"],disabled=p["disabled"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/persistent_embodiment_v1.py", line 664, in restore
+    obj=cls(RenalMemoryLoop.restore(p['owner']),p['auxiliary'],p['wall_utc'],p['migration'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/base_v09/tadash_renal_v09/renal_coupling_v09.py", line 148, in restore
+    obj = cls(MemoryBodyLoop.restore(p['legacy_resource_and_cognitive_snapshot']),
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/memory_body_loop_v08.py", line 162, in restore
+    loop=BrainBodyLoop.restore(p['loop']);memory=DurableMemory.restore(p['memory'])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/brain_body_loop_v07.py", line 163, in restore
+    obj.sensory=SensoryRoutes.restore(p['sensory'],obj.physical)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/interoception_v07.py", line 100, in restore
+    if obj.raw!=cls._owner_values(physical):raise ValueError('sensory owner values differ')
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: sensory owner values differ

@@ -1,0 +1,10 @@
+{
+  "failed_attempt": "before any model prediction or target walk outcome",
+  "failure": "sensory owner values differ",
+  "cause": "authored initial fatigue changed physical stocks without refreshing cached sensory raw readout",
+  "correction": "native sensory constructor supplies current raw; clear stale last realized-frame claim; retain clocks, lowpass filters and frame counts",
+  "native_equations_modified": false,
+  "initial_test_result": "6 passed, 1 error",
+  "corrected_contract_result": "20 passed",
+  "failed_frozen_protocol_sha256": "59b881adc5976a7945693bac41d48ca57ef8bcdb214d9769437f13425d64a93a"
+}
