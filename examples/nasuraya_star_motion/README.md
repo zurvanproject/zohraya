@@ -110,3 +110,64 @@ NASURAYA_NATIVE_ROOT=/path/to/runtimes/tadash_body NASURAYA_REVERSE_FIXTURE=/pat
 Historical extension envelopes retain their original fingerprints and are not
 silently migrated. This investigation restores the native saved state and
 explicitly attaches the revised overlay to a copy.
+
+## Full saved-boundary restart and uncertain actions
+
+`evaluate_recovery.py` starts two independent processes from one source-pinned
+`MotionGoal` practice checkpoint. One runs its entire remaining route without
+interruption. The other advances to the requested confirmed-landing boundary,
+fsyncs its full goal and exits with code 75 without Python cleanup. A third
+Python process restores that saved goal and finishes the route. The comparison
+checks every request/receipt hash, confirmed landing, clock, stock, fatigue,
+phase budget and final native/goal digest. An existing uninterrupted endpoint
+can also be supplied for exact historical comparison. Outputs must be new paths.
+
+```
+python evaluate_recovery.py run --native-root /path/to/runtimes/tadash_body --source /private/mid_goal.json --stop-landings 9 --reference /private/final_goal.json --output /private/new-recovery-evidence
+```
+
+This verifies a complete remaining route after a deliberate saved boundary.
+It does not make bare `MotionGoal.step()` crash-safe. Callers that need durable
+intent and receipt handling can explicitly opt into `MotionJournal`:
+
+```python
+from motion_journal import MotionJournal
+
+store = MotionJournal.create('/private/new-practice.sqlite', goal)
+goal = store.load()
+head = goal.checkpoint()['sha256']
+event_id = goal.request()['event_id']
+receipt = store.step(event_id=event_id, expected_head=head)
+# If the response was lost, retry this SAME event_id and head, not a new token.
+```
+
+The journal commits an intent *before* invoking the native simulator. Its final
+SQLite transaction publishes the whole goal, event receipt and removal of the
+intent together. A filesystem owner lock serializes processes. A duplicate
+committed caller token returns the stored receipt without a new tick or debit;
+stale writers and conflicting retry tokens reject. SQLite uses synchronous FULL;
+the database and lock belong on a local filesystem with working SQLite/flock
+semantics. These tests model process loss, not power loss or storage corruption.
+
+If a process dies with a pending intent, `load()` and `step()` both raise
+`UnknownMotionOutcome`. `inspect()` returns the pending request and prior head
+without acting. There is deliberately no automatic retry, intent-clear or
+reconciliation API: authoritative receipt/state validation is a separate future
+integration requirement. Even an intent whose worker died before starting is
+treated conservatively. This blocks progress rather than guessing an outcome.
+An external actuator/API is not part of this local simulator transaction.
+
+Public synthetic regression covers crashes after durable intent, inside the
+third *actual* native substep (excluding forecast clones), after native cycle
+but before goal bookkeeping, after the complete tick, inside the SQLite commit,
+and after commit but before response. It also checks duplicate/concurrent
+callers, stale writers, corrupted goals and non-overwriting creation:
+
+```
+python -m unittest test_motion_recovery.RecoveryTests -v
+NASURAYA_RECOVERY_SOURCE=/private/mid_goal.json python -m unittest test_motion_recovery.RecordedRecoveryTests -v
+```
+
+The second suite uses the supplied recorded body; private inputs and generated
+full-state evidence stay out of Git. The original goal/controller/native source
+files are unchanged, so their saved source fingerprints remain valid.
