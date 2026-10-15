@@ -4,6 +4,7 @@ on:
     paths:
       - 'examples/nasuraya_body_loop/**'
       - 'examples/nasuraya_body_mirror/**'
+      - 'examples/nasuraya_self_model/**'
       - 'examples/nasuraya_agent_loop/agents_api.py'
       - 'examples/nasuraya_agent_loop/api_recovery.py'
       - 'examples/nasuraya_agent_loop/local.py'
@@ -16,6 +17,7 @@ on:
     paths:
       - 'examples/nasuraya_body_loop/**'
       - 'examples/nasuraya_body_mirror/**'
+      - 'examples/nasuraya_self_model/**'
       - 'examples/nasuraya_agent_loop/agents_api.py'
       - 'examples/nasuraya_agent_loop/api_recovery.py'
       - 'examples/nasuraya_agent_loop/local.py'
@@ -40,11 +42,6 @@ jobs:
         run: python3 run_tests.py --reflection --output /tmp/nasuraya-native-check
       - name: Verify bounded bridge and cold recovery
         run: python3 -m examples.nasuraya_body_loop test
-      - name: Verify persistent API body tools without live service
-        run: |
-          python3 -m venv .ci-env
-          .ci-env/bin/python -m pip install -r examples/nasuraya_agent_loop/requirements-api.lock.txt
-          .ci-env/bin/python -m examples.nasuraya_body_loop api-test
       - name: Regenerate and verify all committed motion samples
         run: python3 -m unittest examples.nasuraya_body_mirror.test_mirror -v
       - name: Execute actual local body cycles
@@ -61,3 +58,16 @@ jobs:
           assert [(r['outcome']['requested_action'], r['outcome']['actual_action']) for r in rows] == [('walk','protect'),('observe','observe'),('observe','observe')]
           assert all(abs(r['outcome']['body_audit']['energy_error_J']) < 1e-6 for r in rows)
           PY
+  api-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify persistent API body tools and metacognition without live service
+        run: |
+          python3 -m venv .ci-env
+          .ci-env/bin/python -m pip install -r examples/nasuraya_agent_loop/requirements-api.lock.txt
+          .ci-env/bin/python -m examples.nasuraya_body_loop api-test

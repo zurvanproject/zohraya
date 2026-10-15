@@ -14,9 +14,9 @@ def main(args):
         r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))
         return 0 if r.wasSuccessful() else 1
     if command == 'api-test':
-        from . import test_api_host, test_api_recovery, test_continuation, test_recovery
+        from . import test_api_host, test_api_recovery, test_continuation, test_recovery, test_metacognition
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
-                                   for m in (test_api_host, test_api_recovery, test_continuation, test_recovery))
+                                   for m in (test_api_host, test_api_recovery, test_continuation, test_recovery, test_metacognition))
         r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command == 'api':
@@ -41,6 +41,13 @@ def main(args):
             host = BodyAPIHost.resume(loop, run_id=args['run_id'])
             print(json.dumps(dict(run_id=host.run_id, evaluation=host.evaluate(),
                                  self_model=host.snapshot()), ensure_ascii=False, sort_keys=True))
+        return 0
+    if command == 'configure-metacognition':
+        from .metacognition import configure
+        with BodyLoop(args['session']) as loop:
+            result = configure(loop, memory_path=args['self_model'], mode=args['metacognition_mode'],
+                expected_checkpoint=args['observed_checkpoint_sha256'], create_memory=args['create_self_model'])
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
         return 0
     if command == 'authorize-continuation':
         from .continuation import authorize
