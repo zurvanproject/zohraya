@@ -28,7 +28,7 @@ def verified_sources():
 
 def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'configure-metacognition'])
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'configure-metacognition', 'configure-language-advisor'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep', 'recovery-ready'], default='normal')
@@ -48,6 +48,8 @@ def main(argv=None):
     p.add_argument('--self-model', type=Path)
     p.add_argument('--metacognition-mode', choices=['shadow', 'enforce'])
     p.add_argument('--create-self-model', action='store_true')
+    p.add_argument('--advisor-run',type=Path)
+    p.add_argument('--advisor-base',type=Path)
     p.add_argument('--api-recovery', choices=['resume', 'fresh'], default='resume')
     p.add_argument('--max-reconnects', type=int, default=1)
     p.add_argument('--model')
@@ -66,8 +68,11 @@ def main(argv=None):
     if args.command == 'configure-metacognition' and any(v is None for v in
             (args.self_model, args.metacognition_mode, args.observed_checkpoint_sha256)):
         p.error('explicit self-model path, mode and checkpoint required')
+    if args.command == 'configure-language-advisor' and any(v is None for v in
+            (args.advisor_run,args.advisor_base,args.observed_checkpoint_sha256)):
+        p.error('explicit advisor run, base and current checkpoint required')
     payload = vars(args)
-    for key in ('session', 'output_dir', 'self_model'):
+    for key in ('session', 'output_dir', 'self_model','advisor_run','advisor_base'):
         if payload[key] is not None:
             payload[key] = str(payload[key].resolve())
     manifest = verified_sources()

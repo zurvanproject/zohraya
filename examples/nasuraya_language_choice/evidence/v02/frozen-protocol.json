@@ -1,0 +1,63 @@
+{
+  "schema": "nasuraya-language-choice/2",
+  "seed": 20261016,
+  "steps": 52,
+  "batch_size": 4,
+  "learning_rate": 0.0005,
+  "max_length": 192,
+  "cpu_threads": 4,
+  "parent_dataset_sha256": "88b1c86b383326779553485c97851a0663446ae4ac2b449d8cdf6387f0bcc675",
+  "parent_weights": "the pinned v0.1 final adapter; identical warm start for every arm",
+  "arms": [
+    "ce_original",
+    "ce_balanced",
+    "choice_original",
+    "choice_balanced",
+    "choice_shuffled"
+  ],
+  "primary_arm": "choice_balanced",
+  "choice_loss": "cross entropy over log likelihoods of ADMIT and DEFER label tokens only, excluding EOS",
+  "ce_loss": "original v0.1 answer-token plus EOS causal LM loss",
+  "balanced_batch": "two examples from each class, cycling deterministic shuffled pools; no new labels",
+  "shuffled_control": "fixed seed permutation of training targets; validated native labels retained separately",
+  "fresh_sleep_pressure": [
+    0.17,
+    0.37,
+    0.57,
+    0.77,
+    0.89,
+    0.97
+  ],
+  "fresh_duration_s": [
+    0.3,
+    0.4
+  ],
+  "fresh_interventions": [
+    "ordinary",
+    "zero_friction"
+  ],
+  "fresh_labels": "generated from native receipts only AFTER all arm weights and fresh predictions are durably saved",
+  "evaluation": "same two label-token likelihoods without EOS for every arm; fixed 0.5 cutoff",
+  "calibration_comparator": "parent threshold selected only on old training rows, then frozen before fresh labels",
+  "promotion": {
+    "balanced_accuracy_min": 0.9,
+    "admit_recall_min": 0.875,
+    "defer_recall_min": 0.9375,
+    "gain_over_raw_parent_min": 0.2
+  },
+  "holdout_policy": "old held-out cases are now development evidence; fresh labels cannot select arms, steps or hyperparameters; retain all results without retries",
+  "live_advisory": {
+    "runs": 2,
+    "fixtures": [
+      "normal",
+      "sleep"
+    ],
+    "model": "gpt-6-astra",
+    "max_actions_per_run": 1,
+    "max_tool_calls_per_run": 16,
+    "duration_s": 0.1,
+    "timeout_s": 120,
+    "authority": "read-only walk estimate; existing core, metacognitive gate and native guards retain all authority"
+  },
+  "scope": "one deterministic software fixture family, not free generation, other bodies or consciousness"
+}

@@ -22,11 +22,11 @@ def main(args):
     if command == 'api':
         from examples.nasuraya_agent_loop.agents_api import make_client, run_api
         from examples.nasuraya_agent_loop.local import Journal
-        from .api_host import BodyAPIHost
+        from .language_advisor import host_type
         output = Path(args['output_dir'])
         output.mkdir(mode=0o700, parents=True, exist_ok=False)
         with BodyLoop(args['session']) as loop:
-            host = BodyAPIHost(loop, mode=args['api_mode'], target_cycles=args['target_cycles'],
+            host = host_type(loop)(loop, mode=args['api_mode'], target_cycles=args['target_cycles'],
                                max_calls=args['max_calls'], journal=Journal(output / 'events.jsonl'), run_id=args['run_id'])
             with make_client() as client:
                 summary = run_api(host, client, model=args['model'], max_calls=args['max_calls'],
@@ -36,11 +36,18 @@ def main(args):
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0 if summary['status'] == 'completed' else 1
     if command == 'run-status':
-        from .api_host import BodyAPIHost
+        from .language_advisor import host_type
         with BodyLoop(args['session']) as loop:
-            host = BodyAPIHost.resume(loop, run_id=args['run_id'])
+            host = host_type(loop).resume(loop, run_id=args['run_id'])
             print(json.dumps(dict(run_id=host.run_id, evaluation=host.evaluate(),
                                  self_model=host.snapshot()), ensure_ascii=False, sort_keys=True))
+        return 0
+    if command == 'configure-language-advisor':
+        from examples.nasuraya_language_choice.advisor import configure
+        with BodyLoop(args['session']) as loop:
+            result=configure(loop,run=args['advisor_run'],base=args['advisor_base'],
+                             expected_checkpoint=args['observed_checkpoint_sha256'])
+            print(json.dumps(result,sort_keys=True))
         return 0
     if command == 'configure-metacognition':
         from .metacognition import configure

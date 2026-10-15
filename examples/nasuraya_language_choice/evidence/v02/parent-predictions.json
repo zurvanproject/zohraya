@@ -1,0 +1,691 @@
+{
+  "train": [
+    {
+      "id": "train:0.15:0.1:ordinary",
+      "scores": [
+        -1.0289785861968994,
+        -0.4700324833393097
+      ],
+      "admit_probability": 0.3637913465499878,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.15:0.1:zero_friction",
+      "scores": [
+        -1.2108423709869385,
+        -0.37609949707984924
+      ],
+      "admit_probability": 0.3026431202888489,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.15:0.2:ordinary",
+      "scores": [
+        -1.0335346460342407,
+        -0.4674810469150543
+      ],
+      "admit_probability": 0.3621479272842407,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.15:0.2:zero_friction",
+      "scores": [
+        -1.211403250694275,
+        -0.37588751316070557
+      ],
+      "admit_probability": 0.3024800717830658,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.25:0.1:ordinary",
+      "scores": [
+        -1.0150468349456787,
+        -0.4785977900028229
+      ],
+      "admit_probability": 0.3690139949321747,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.25:0.1:zero_friction",
+      "scores": [
+        -1.1985994577407837,
+        -0.3818254768848419
+      ],
+      "admit_probability": 0.30644887685775757,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.25:0.2:ordinary",
+      "scores": [
+        -1.0126221179962158,
+        -0.4799904525279999
+      ],
+      "admit_probability": 0.3699032962322235,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.25:0.2:zero_friction",
+      "scores": [
+        -1.200883150100708,
+        -0.38073745369911194
+      ],
+      "admit_probability": 0.30573272705078125,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.35:0.1:ordinary",
+      "scores": [
+        -1.0215849876403809,
+        -0.47478529810905457
+      ],
+      "admit_probability": 0.3666072189807892,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.35:0.1:zero_friction",
+      "scores": [
+        -1.2046856880187988,
+        -0.3790947198867798
+      ],
+      "admit_probability": 0.30457812547683716,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.35:0.2:ordinary",
+      "scores": [
+        -1.0049805641174316,
+        -0.4848842918872833
+      ],
+      "admit_probability": 0.37282970547676086,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.35:0.2:zero_friction",
+      "scores": [
+        -1.1893634796142578,
+        -0.3861306309700012
+      ],
+      "admit_probability": 0.309334397315979,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.45:0.1:ordinary",
+      "scores": [
+        -1.01054048538208,
+        -0.48115408420562744
+      ],
+      "admit_probability": 0.3706600069999695,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.45:0.1:zero_friction",
+      "scores": [
+        -1.1961325407028198,
+        -0.3827570378780365
+      ],
+      "admit_probability": 0.30717164278030396,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.45:0.2:ordinary",
+      "scores": [
+        -0.9982530474662781,
+        -0.48877501487731934
+      ],
+      "admit_probability": 0.3753158748149872,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.45:0.2:zero_friction",
+      "scores": [
+        -1.1864207983016968,
+        -0.3872908353805542
+      ],
+      "admit_probability": 0.3102116584777832,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.55:0.1:ordinary",
+      "scores": [
+        -1.0192164182662964,
+        -0.47576743364334106
+      ],
+      "admit_probability": 0.3673856258392334,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.55:0.1:zero_friction",
+      "scores": [
+        -1.2055732011795044,
+        -0.3784145414829254
+      ],
+      "admit_probability": 0.304246187210083,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.55:0.2:ordinary",
+      "scores": [
+        -1.0110499858856201,
+        -0.48079344630241394
+      ],
+      "admit_probability": 0.37045708298683167,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.55:0.2:zero_friction",
+      "scores": [
+        -1.1996351480484009,
+        -0.3811761140823364
+      ],
+      "admit_probability": 0.3060908913612366,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.65:0.1:ordinary",
+      "scores": [
+        -1.0174347162246704,
+        -0.4767659306526184
+      ],
+      "admit_probability": 0.3680320382118225,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.65:0.1:zero_friction",
+      "scores": [
+        -1.1997621059417725,
+        -0.3809524178504944
+      ],
+      "admit_probability": 0.3060164153575897,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.65:0.2:ordinary",
+      "scores": [
+        -1.0105478763580322,
+        -0.48103126883506775
+      ],
+      "admit_probability": 0.3706296384334564,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.65:0.2:zero_friction",
+      "scores": [
+        -1.1947685480117798,
+        -0.3833054304122925
+      ],
+      "admit_probability": 0.30757880210876465,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.75:0.1:ordinary",
+      "scores": [
+        -1.0141894817352295,
+        -0.47879621386528015
+      ],
+      "admit_probability": 0.36925989389419556,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.75:0.1:zero_friction",
+      "scores": [
+        -1.1948397159576416,
+        -0.3832857608795166
+      ],
+      "admit_probability": 0.30755943059921265,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.75:0.2:ordinary",
+      "scores": [
+        -1.0061283111572266,
+        -0.4837910234928131
+      ],
+      "admit_probability": 0.37230587005615234,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.75:0.2:zero_friction",
+      "scores": [
+        -1.1890760660171509,
+        -0.38601261377334595
+      ],
+      "admit_probability": 0.30937060713768005,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.81:0.1:ordinary",
+      "scores": [
+        -1.0683742761611938,
+        -0.44807949662208557
+      ],
+      "admit_probability": 0.3497144281864166,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.81:0.1:zero_friction",
+      "scores": [
+        -1.2374932765960693,
+        -0.36462855339050293
+      ],
+      "admit_probability": 0.2946585714817047,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.81:0.2:ordinary",
+      "scores": [
+        -1.0570341348648071,
+        -0.45444244146347046
+      ],
+      "admit_probability": 0.35375097393989563,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.81:0.2:zero_friction",
+      "scores": [
+        -1.2297824621200562,
+        -0.36799630522727966
+      ],
+      "admit_probability": 0.2969663143157959,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.86:0.1:ordinary",
+      "scores": [
+        -1.6636420488357544,
+        -0.23045922815799713
+      ],
+      "admit_probability": 0.1926032453775406,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.86:0.1:zero_friction",
+      "scores": [
+        -1.8422611951828003,
+        -0.1896161437034607
+      ],
+      "admit_probability": 0.16075177490711212,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.86:0.2:ordinary",
+      "scores": [
+        -1.657789707183838,
+        -0.23200134932994843
+      ],
+      "admit_probability": 0.19375574588775635,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.86:0.2:zero_friction",
+      "scores": [
+        -1.8396800756454468,
+        -0.19019177556037903
+      ],
+      "admit_probability": 0.1611781269311905,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.9:0.1:ordinary",
+      "scores": [
+        -1.6795969009399414,
+        -0.22665947675704956
+      ],
+      "admit_probability": 0.18954990804195404,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.9:0.1:zero_friction",
+      "scores": [
+        -1.8478164672851562,
+        -0.18863292038440704
+      ],
+      "admit_probability": 0.1598716378211975,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.9:0.2:ordinary",
+      "scores": [
+        -1.6734797954559326,
+        -0.22821606695652008
+      ],
+      "admit_probability": 0.19073154032230377,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.9:0.2:zero_friction",
+      "scores": [
+        -1.843657374382019,
+        -0.1894994080066681
+      ],
+      "admit_probability": 0.16054777801036835,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.94:0.1:ordinary",
+      "scores": [
+        -1.7170794010162354,
+        -0.2182137817144394
+      ],
+      "admit_probability": 0.18259477615356445,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.94:0.1:zero_friction",
+      "scores": [
+        -1.8788504600524902,
+        -0.18294470012187958
+      ],
+      "admit_probability": 0.1550007313489914,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.94:0.2:ordinary",
+      "scores": [
+        -1.710017204284668,
+        -0.2199077010154724
+      ],
+      "admit_probability": 0.18390530347824097,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.94:0.2:zero_friction",
+      "scores": [
+        -1.874990701675415,
+        -0.18371357023715973
+      ],
+      "admit_probability": 0.15560795366764069,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.98:0.1:ordinary",
+      "scores": [
+        -1.68253755569458,
+        -0.22633881866931915
+      ],
+      "admit_probability": 0.18904940783977509,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.98:0.1:zero_friction",
+      "scores": [
+        -1.846706509590149,
+        -0.18915404379367828
+      ],
+      "admit_probability": 0.160090833902359,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.98:0.2:ordinary",
+      "scores": [
+        -1.675406813621521,
+        -0.22814522683620453
+      ],
+      "admit_probability": 0.1904233694076538,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "train:0.98:0.2:zero_friction",
+      "scores": [
+        -1.8424656391143799,
+        -0.19004376232624054
+      ],
+      "admit_probability": 0.16078190505504608,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "live:0",
+      "scores": [
+        -1.0051075220108032,
+        -0.48482170701026917
+      ],
+      "admit_probability": 0.37278538942337036,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "live:1",
+      "scores": [
+        -1.0051075220108032,
+        -0.48482170701026917
+      ],
+      "admit_probability": 0.37278538942337036,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "live:2",
+      "scores": [
+        -1.0051075220108032,
+        -0.48482170701026917
+      ],
+      "admit_probability": 0.37278538942337036,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "live:3",
+      "scores": [
+        -1.0051075220108032,
+        -0.48482170701026917
+      ],
+      "admit_probability": 0.37278538942337036,
+      "prediction": "DEFER"
+    }
+  ],
+  "fresh": [
+    {
+      "id": "fresh:0.17:0.3:ordinary",
+      "scores": [
+        -1.0333421230316162,
+        -0.467519611120224
+      ],
+      "admit_probability": 0.3622013330459595,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.17:0.3:zero_friction",
+      "scores": [
+        -1.2197500467300415,
+        -0.37211814522743225
+      ],
+      "admit_probability": 0.2999298572540283,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.17:0.4:ordinary",
+      "scores": [
+        -1.0104225873947144,
+        -0.48107466101646423
+      ],
+      "admit_probability": 0.3706689774990082,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.17:0.4:zero_friction",
+      "scores": [
+        -1.1966091394424438,
+        -0.38245096802711487
+      ],
+      "admit_probability": 0.3070051074028015,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.37:0.3:ordinary",
+      "scores": [
+        -1.0225354433059692,
+        -0.47401273250579834
+      ],
+      "admit_probability": 0.36620721220970154,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.37:0.3:zero_friction",
+      "scores": [
+        -1.2123085260391235,
+        -0.3755221664905548
+      ],
+      "admit_probability": 0.30221202969551086,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.37:0.4:ordinary",
+      "scores": [
+        -1.010662317276001,
+        -0.4810716211795807
+      ],
+      "admit_probability": 0.37061232328414917,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.37:0.4:zero_friction",
+      "scores": [
+        -1.1956570148468018,
+        -0.3829749524593353
+      ],
+      "admit_probability": 0.3073192536830902,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.57:0.3:ordinary",
+      "scores": [
+        -1.0079998970031738,
+        -0.48257383704185486
+      ],
+      "admit_probability": 0.37158435583114624,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.57:0.3:zero_friction",
+      "scores": [
+        -1.1976971626281738,
+        -0.38196176290512085
+      ],
+      "admit_probability": 0.306669682264328,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.57:0.4:ordinary",
+      "scores": [
+        -0.979867696762085,
+        -0.49994561076164246
+      ],
+      "admit_probability": 0.38227054476737976,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.57:0.4:zero_friction",
+      "scores": [
+        -1.1678805351257324,
+        -0.3957411050796509
+      ],
+      "admit_probability": 0.3160165250301361,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.77:0.3:ordinary",
+      "scores": [
+        -1.0077970027923584,
+        -0.48251840472221375
+      ],
+      "admit_probability": 0.37161877751350403,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.77:0.3:zero_friction",
+      "scores": [
+        -1.193071722984314,
+        -0.3839237093925476
+      ],
+      "admit_probability": 0.3080720901489258,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.77:0.4:ordinary",
+      "scores": [
+        -0.9809700846672058,
+        -0.4990920126438141
+      ],
+      "admit_probability": 0.3818087577819824,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.77:0.4:zero_friction",
+      "scores": [
+        -1.1653395891189575,
+        -0.3968254029750824
+      ],
+      "admit_probability": 0.31680062413215637,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.89:0.3:ordinary",
+      "scores": [
+        -1.6815578937530518,
+        -0.2262609750032425
+      ],
+      "admit_probability": 0.18918770551681519,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.89:0.3:zero_friction",
+      "scores": [
+        -1.845003366470337,
+        -0.18916359543800354
+      ],
+      "admit_probability": 0.16032123565673828,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.89:0.4:ordinary",
+      "scores": [
+        -1.6461095809936523,
+        -0.23504438996315002
+      ],
+      "admit_probability": 0.19606609642505646,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.89:0.4:zero_friction",
+      "scores": [
+        -1.8124407529830933,
+        -0.19576334953308105
+      ],
+      "admit_probability": 0.16566359996795654,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.97:0.3:ordinary",
+      "scores": [
+        -1.6847846508026123,
+        -0.22542352974414825
+      ],
+      "admit_probability": 0.18856506049633026,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.97:0.3:zero_friction",
+      "scores": [
+        -1.8605097532272339,
+        -0.18614424765110016
+      ],
+      "admit_probability": 0.15784300863742828,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.97:0.4:ordinary",
+      "scores": [
+        -1.6535706520080566,
+        -0.23307529091835022
+      ],
+      "admit_probability": 0.194583922624588,
+      "prediction": "DEFER"
+    },
+    {
+      "id": "fresh:0.97:0.4:zero_friction",
+      "scores": [
+        -1.8289028406143188,
+        -0.1923961639404297
+      ],
+      "admit_probability": 0.16294094920158386,
+      "prediction": "DEFER"
+    }
+  ],
+  "train_only_threshold": 0.3299630433320999
+}
