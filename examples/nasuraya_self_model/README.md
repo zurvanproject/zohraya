@@ -3,6 +3,11 @@
 For progress prediction, time/fuel cost correction and continuation through
 the remaining route, see [PLANNING.md](PLANNING.md).
 
+For the paired knowing/doing challenge (control, report-only, memory-disabled
+and native-only), see [the metacognitive control review](../../docs/nasuraya-metacognitive-control-v01-fa.md).
+This opt-in experiment reuses the existing self-model and durable native
+journal; it does not connect a live language model or change native equations.
+
 This opt-in layer asks a narrow self-knowledge question: **when I request this
 action, does my existing software body actually admit it?** It keeps observed
 body state, inferred self-efficacy, unknowns, requested actions and native effects

@@ -1,0 +1,3466 @@
+{
+  "schema": "nasuraya-metacognitive-control-evaluation/1",
+  "protocol_sha256": "6a5ac088c0dac9c5dd0314bfca748df24b9d49ae1ce1bc1ed3a69620758e529d",
+  "sources": {
+    "controller": "f7fa0ae54141bb97207c1997bd1473484d56bdb56c976bf2a2fbd82fed629480",
+    "monitor": "9009dba256a6a1465d6a6494bb34776578089b9e95de1deed9316c4725debe37"
+  },
+  "training_episodes": 8,
+  "held_out_cases": 32,
+  "paired_policy_trials": 128,
+  "shadow_label_trials": 32,
+  "counts_unchanged": true,
+  "training_test_initial_hashes_disjoint": true,
+  "cold_resume_equal": true,
+  "fixed_prior_brier": 0.25,
+  "arms": {
+    "control": {
+      "cases": 32,
+      "attempted": 4,
+      "deferred": 28,
+      "attempt_coverage": 0.125,
+      "failed_attempts": 0,
+      "failed_attempts_per_case": 0.0,
+      "failures_conditional_on_attempts": 0.0,
+      "deferred_admissible": 4,
+      "brier": 0.19444444444444445,
+      "read_only_refreshes": 32,
+      "total_owner_time_s": 0.3999999999999986,
+      "total_fuel_debit_J": 155.2686071563512
+    },
+    "report_only": {
+      "cases": 32,
+      "attempted": 32,
+      "deferred": 0,
+      "attempt_coverage": 1.0,
+      "failed_attempts": 24,
+      "failed_attempts_per_case": 0.75,
+      "failures_conditional_on_attempts": 0.75,
+      "deferred_admissible": 0,
+      "brier": 0.19444444444444445,
+      "read_only_refreshes": 32,
+      "total_owner_time_s": 4.799999999999983,
+      "total_fuel_debit_J": 1855.9835855448619
+    },
+    "memory_disabled": {
+      "cases": 32,
+      "attempted": 0,
+      "deferred": 32,
+      "attempt_coverage": 0.0,
+      "failed_attempts": 0,
+      "failed_attempts_per_case": 0.0,
+      "failures_conditional_on_attempts": null,
+      "deferred_admissible": 8,
+      "brier": 0.25,
+      "read_only_refreshes": 32,
+      "total_owner_time_s": 0.0,
+      "total_fuel_debit_J": 0.0
+    },
+    "native_only": {
+      "cases": 32,
+      "attempted": 32,
+      "deferred": 0,
+      "attempt_coverage": 1.0,
+      "failed_attempts": 24,
+      "failed_attempts_per_case": 0.75,
+      "failures_conditional_on_attempts": 0.75,
+      "deferred_admissible": 0,
+      "brier": null,
+      "read_only_refreshes": 0,
+      "total_owner_time_s": 4.799999999999983,
+      "total_fuel_debit_J": 1855.9835855448619
+    }
+  },
+  "cases": [
+    {
+      "case_id": "case-00",
+      "pressure": 0.12,
+      "duration_s": 0.1,
+      "intervention": "ordinary",
+      "initial_native_sha256": "8e401616f90076a37bba6adc0a1f16a57e6c4d082077d873d502c207164d8598",
+      "decision_checkpoint_sha256": {
+        "control": "7ec9b414f94984d03b3bc133f7e8423d420f46aed0a7d433c2787885317bdbfd",
+        "report_only": "c6c7c334e660e6a3006d19cec0577d682ea7aeae2685a2b0136b5b8152dae549",
+        "memory_disabled": "1778fa09fd085710d3de29fb6d97f1f506f58788a211b3d82450c276a51d64cc",
+        "native_only": "760137357e9fa392f02f10ad9f76743889d641ec7013de0808c68b0050b57fe1"
+      },
+      "shadow_admitted": true,
+      "shadow_receipt_sha256": "4ab550611410b1f3188d0c1afdfbd4f70ea31173b65d977089eaeb3d09637bc3"
+    },
+    {
+      "case_id": "case-01",
+      "pressure": 0.12,
+      "duration_s": 0.1,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "8e401616f90076a37bba6adc0a1f16a57e6c4d082077d873d502c207164d8598",
+      "decision_checkpoint_sha256": {
+        "control": "9d71fa7a7e2fc033da0d17c8f8eb187032fb80570f82d9f284d9cc6402df4588",
+        "report_only": "7dd2ede00f70b9c693180392b85779c11af01553ed0e542daff6ee932d2d0108",
+        "memory_disabled": "b7dec07f6b3db2b39be73b93430e993985cf156c503230eaccd2ace9688913aa",
+        "native_only": "66d304c57303940ee0a07bd84e8fadf4151a8edbc05bccbfd0d02853cefad443"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "72d0d98368e0ee14ded0a10b6063ce2ae4bbc4460df74be342617f829d88bca7"
+    },
+    {
+      "case_id": "case-02",
+      "pressure": 0.12,
+      "duration_s": 0.2,
+      "intervention": "ordinary",
+      "initial_native_sha256": "8e401616f90076a37bba6adc0a1f16a57e6c4d082077d873d502c207164d8598",
+      "decision_checkpoint_sha256": {
+        "control": "af3ee0d7bda38828766fd15c896f0ce702b5f8004b3cc2bb8b84792768c4b801",
+        "report_only": "4a9cbb7ca9f28e4fc9a4278fba26530852068576b7505b3e7bcced36c1ca15c8",
+        "memory_disabled": "0c1f47f93ba800fa98c1ab14fd6affaecaad1b55b4e8fbd0ee9dc9a510a10632",
+        "native_only": "47e66b70b4d38a696c7429f02e71a6c7e7a2bca1c807072eb657639b8ab2c671"
+      },
+      "shadow_admitted": true,
+      "shadow_receipt_sha256": "c2402faff87bfa35c92cbe06acdc5d7c1043c1653730292f22eb8efc25da9be8"
+    },
+    {
+      "case_id": "case-03",
+      "pressure": 0.12,
+      "duration_s": 0.2,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "8e401616f90076a37bba6adc0a1f16a57e6c4d082077d873d502c207164d8598",
+      "decision_checkpoint_sha256": {
+        "control": "e75d2979dc0028e79616b58b44736ca43c96d64f58a47d6497ed36367c0d186e",
+        "report_only": "112eb087c263df40ae91aa84880f4d614deac100c01819d809479f1daa09c72c",
+        "memory_disabled": "f3af68fb7bae5dee90b9f68fbd6c646e910d796afef198803b968d3c502d26b7",
+        "native_only": "6a2824ac303519387beaef11ee002954da36e4530f507577fc8cb16a9d4452a7"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "0ef789c20c332beecfb106e53485de47219054506e444e73733102ae79d0837e"
+    },
+    {
+      "case_id": "case-04",
+      "pressure": 0.42,
+      "duration_s": 0.1,
+      "intervention": "ordinary",
+      "initial_native_sha256": "14b1709f561428ed49e00e9a859cc75d56b6edda709c11119822ba2ec564c752",
+      "decision_checkpoint_sha256": {
+        "control": "bbdba9591310d448435ea5db303e9910c77e5305e7a605b76e95e99662e21927",
+        "report_only": "520db206d7ee448794331037f5dfc500cd17a44e73c15f453540a1c7b34b9979",
+        "memory_disabled": "a47bd52f7b9bcfabd32f1543ffdfcd43cc8034379a189f74d118a94eebc00e50",
+        "native_only": "87be9a78a4d39b53c24b205cb4471fd2a84fb86dd93c4d6f212c6c997e270d85"
+      },
+      "shadow_admitted": true,
+      "shadow_receipt_sha256": "91b8acdef3f827e584ef83fe02a87961d84fa466ddd5018856ed99cfe96d405d"
+    },
+    {
+      "case_id": "case-05",
+      "pressure": 0.42,
+      "duration_s": 0.1,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "14b1709f561428ed49e00e9a859cc75d56b6edda709c11119822ba2ec564c752",
+      "decision_checkpoint_sha256": {
+        "control": "627b9ef428704eee3e7611f003d67cf3d1bc4301c6f5972f214a9471110b3e42",
+        "report_only": "31a24c848e82e0329bc00919280455f236413097807c93e3fa1a92acd717cd9b",
+        "memory_disabled": "36460ee8fde3a32c8491f598d9a76f9915ced31ad1a6731e1af20d3386f72208",
+        "native_only": "8c93f86b38d0fc816c48f071a22e61637937ceb17f9a36dde8bc710e01fc496a"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "9722035acb870ce8deb51fe830b784937bf34716c025490e998531e425771372"
+    },
+    {
+      "case_id": "case-06",
+      "pressure": 0.42,
+      "duration_s": 0.2,
+      "intervention": "ordinary",
+      "initial_native_sha256": "14b1709f561428ed49e00e9a859cc75d56b6edda709c11119822ba2ec564c752",
+      "decision_checkpoint_sha256": {
+        "control": "63b9e842c89f2cd056d760913d433eb993f39bdbdc60701db01f018b506c9b7c",
+        "report_only": "19ba1860787284c3fc83d4a4f089d8bff0556aa581a622310232495cc343e7e5",
+        "memory_disabled": "b9bd182a5fe29ce3c821adfc8a46a07a5aedffef05453be9bae2c68797439d46",
+        "native_only": "35919aece4a330ce4c5625a0cfae543f44300f9df0f995f59e10b9757e9e5f35"
+      },
+      "shadow_admitted": true,
+      "shadow_receipt_sha256": "01373a863ee1a66b8c2bf012b3591e857444dcec0b29ee4defbc2f3651942758"
+    },
+    {
+      "case_id": "case-07",
+      "pressure": 0.42,
+      "duration_s": 0.2,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "14b1709f561428ed49e00e9a859cc75d56b6edda709c11119822ba2ec564c752",
+      "decision_checkpoint_sha256": {
+        "control": "4fcf6379a121b1edd2f9201513b9b24a3535ce89dca8d6eca3e7ac350ee39292",
+        "report_only": "355a2edfe9642ead81bcda45ee9beb9620cbf46af8b214c9496f4157a5f07d76",
+        "memory_disabled": "bc98c1db0132032e93e3046a63f77f2c6ca23f5a3f40d1f3de604b8094b07850",
+        "native_only": "e10bd7421b76059e6766e4b2b8bb3aa3ab3e821a52ceceed6b9bdbf5dc95427e"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "84cc2c01113afa2d677e6c1b0a073184edcbb3f1472cedb449111af4ebb0ee7a"
+    },
+    {
+      "case_id": "case-08",
+      "pressure": 0.68,
+      "duration_s": 0.1,
+      "intervention": "ordinary",
+      "initial_native_sha256": "ef7351e592d08e25983b71d26b12b7ec2748fe594dc2e1a07590aff4832d5ebd",
+      "decision_checkpoint_sha256": {
+        "control": "c9f40d37d2035a753f5905d9ea92f41c59c18f499a5a1a973a91a80b18332a5c",
+        "report_only": "03ad4a8f9322c44d0ee5abad519ebd1b1368cf0be15e89d6891e38f2aec6dc4c",
+        "memory_disabled": "2cbc3f8cb9d4673aedbc0394c8af0315ff7eb27dd7e2ae1f258fcdf9ce6755ac",
+        "native_only": "f9d192bcdad13cc46f559b9f5f281b0cff64b5039cfe32323e4f22f86af66fdb"
+      },
+      "shadow_admitted": true,
+      "shadow_receipt_sha256": "2d178d95fc09ce39bcb639f5956897032bd301c74b2d4e8bf773967bb58158dc"
+    },
+    {
+      "case_id": "case-09",
+      "pressure": 0.68,
+      "duration_s": 0.1,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "ef7351e592d08e25983b71d26b12b7ec2748fe594dc2e1a07590aff4832d5ebd",
+      "decision_checkpoint_sha256": {
+        "control": "5d65210bc04d554769d40721bf2da69b8f18ff5ec254481eca01ee60fe9340bd",
+        "report_only": "be7360fad49e5ebe6239855ea0017216780dd1501a0f7aa9ed624ce2cc425336",
+        "memory_disabled": "43c982a997c9bcced1e90060d51043c184e20a3e049fda701dc785d6b55d1f54",
+        "native_only": "486ecdb2fbf92184bd6eea55b5db1bf930e1599a921f897e069bb424de58b88b"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "6ce7b6afb4ef96ba47bfcbcbf2e9d38526e1a2f9c92736b24b80f792c16ff0dd"
+    },
+    {
+      "case_id": "case-10",
+      "pressure": 0.68,
+      "duration_s": 0.2,
+      "intervention": "ordinary",
+      "initial_native_sha256": "ef7351e592d08e25983b71d26b12b7ec2748fe594dc2e1a07590aff4832d5ebd",
+      "decision_checkpoint_sha256": {
+        "control": "11947eab26465e664f06cd6f081ab776c2e9792c95d9932c0c1acbfe05f0df26",
+        "report_only": "bf614b01c4f30cf4834dae6d3826685cf86c35e2f0048f4a01fc93e0a25f0e5d",
+        "memory_disabled": "0bd57d2bdab226f2ce5174ea52c2580865696f4f85240fc07b1f179f57f849f7",
+        "native_only": "c15d1efce328292ed104a18134f1a3c40a508a54b6b8426e4b02ffbcf2051d42"
+      },
+      "shadow_admitted": true,
+      "shadow_receipt_sha256": "dcf81ab47ea3ac9db984aef0684d878fd3b19b3a66c0923c1d374a6f4d49fc22"
+    },
+    {
+      "case_id": "case-11",
+      "pressure": 0.68,
+      "duration_s": 0.2,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "ef7351e592d08e25983b71d26b12b7ec2748fe594dc2e1a07590aff4832d5ebd",
+      "decision_checkpoint_sha256": {
+        "control": "e708e61450b17ca8922090f766d01d83893479c92ae7c6b1a8041cbe9888d7c5",
+        "report_only": "c75bd4aa0c324a62491af729aee645a947a0e1df5af09c11f41df7b32105b6e5",
+        "memory_disabled": "a9ab886a06dd17044027237fae0c21ddf069538fc267c3c7f09c764e2cc4da33",
+        "native_only": "b4dfbd6d9a22e3ad81735cd9704221244f3915e4d94f224fbbb6cfd1e30720e4"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "d8e1323c5ae48cf57ac8e0e78b65ed5a0643081a2042315b5011850cb99bacc5"
+    },
+    {
+      "case_id": "case-12",
+      "pressure": 0.82,
+      "duration_s": 0.1,
+      "intervention": "ordinary",
+      "initial_native_sha256": "f251c617f65b3075ac7ddcf0fe10aee68821c0bc6379905df701219d0b3b40d1",
+      "decision_checkpoint_sha256": {
+        "control": "138f2f94f09205d161e72c5981e6578f49e66a86ef906bef046c10dbe08ae056",
+        "report_only": "85eddabfc633839e930e34b456dbd2c6997c4c4280a68b9bfad9faf40e7dde91",
+        "memory_disabled": "1c006e9f85adc2c23cbdbf65d8ca9234eba595192db9ec167fe62b1d8e64a478",
+        "native_only": "93c0f7b991366a4086eaea00cbfbfcaaec04260b159680bea90c60f8db25aaa1"
+      },
+      "shadow_admitted": true,
+      "shadow_receipt_sha256": "bba52f892944a33265270db693686210b2d8a4d6be18c834ef16deca3e9b2b0b"
+    },
+    {
+      "case_id": "case-13",
+      "pressure": 0.82,
+      "duration_s": 0.1,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "f251c617f65b3075ac7ddcf0fe10aee68821c0bc6379905df701219d0b3b40d1",
+      "decision_checkpoint_sha256": {
+        "control": "a2b40578a4455a66151f15265671c348e1f3458de49c0cbf5612df9aaafd9c7f",
+        "report_only": "2961cdf9846468129d511a78398219b92430d436a93ed497f0c301498b6fca4c",
+        "memory_disabled": "30043cc825a051948c537a381dd30ad3bf25ed54d7d3a8bc53bdd872d15cb407",
+        "native_only": "1dfa3836aac2c6bdff61009194d217347536d3530c27cacca057bfb6f01d4218"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "26d6646375f20bc4208b0b99d3f62a5d84e4f1e67c28ce9b4a471a2635caaa9e"
+    },
+    {
+      "case_id": "case-14",
+      "pressure": 0.82,
+      "duration_s": 0.2,
+      "intervention": "ordinary",
+      "initial_native_sha256": "f251c617f65b3075ac7ddcf0fe10aee68821c0bc6379905df701219d0b3b40d1",
+      "decision_checkpoint_sha256": {
+        "control": "feebb3b23594ec36a45decf377af4258e98f3dea14e4c467ef76614f0338d9e4",
+        "report_only": "c520836fdd76c15da27ab632639ecb1c825a3228bf6fa921f1b81996dbb0084c",
+        "memory_disabled": "ca693f733ff71c0b33672b2cb1fa5c26fca10ceda38d4a70345992684f07176e",
+        "native_only": "96f281e1497d2a67075bdec8fd9a0e08d1b24c243e62384f7ddff080589b65cc"
+      },
+      "shadow_admitted": true,
+      "shadow_receipt_sha256": "75cfe1c6dbfd27002e61d76b020a54bc25ac0381577698c8adc2792ac76332bd"
+    },
+    {
+      "case_id": "case-15",
+      "pressure": 0.82,
+      "duration_s": 0.2,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "f251c617f65b3075ac7ddcf0fe10aee68821c0bc6379905df701219d0b3b40d1",
+      "decision_checkpoint_sha256": {
+        "control": "c25b070b7b6e05747d049fa9484835d220c7b140cd644e9b7e034fafa7327141",
+        "report_only": "ab982e13459aacbfe7c457c04a353aa8f8216e03ee85d20865ed16a7fa7cc47e",
+        "memory_disabled": "c469d4ec245f1072ddb00f5a46d10f64f7d5a867226f7929fd0fb66fa798612b",
+        "native_only": "6b10faf6bb8b3850090c7a9137d7cff8ad3f29da33add53702db4c599e316568"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "f27e02f86892832a0d88563d809400c3913d12d62e7e9c3e58bef844417a8c43"
+    },
+    {
+      "case_id": "case-16",
+      "pressure": 0.86,
+      "duration_s": 0.1,
+      "intervention": "ordinary",
+      "initial_native_sha256": "c6298d037a74672717f1585ee9433dd514187151918766e126e2e5df025e80d3",
+      "decision_checkpoint_sha256": {
+        "control": "b1c696cb01339569605b11e4a19984532f1f279f81f236c163d84336e1456751",
+        "report_only": "77c930016c4e4d4c0c4cf1853e1afc67e3b6b8e7a3409303439ac40a30a7f73a",
+        "memory_disabled": "a08d585e8b6a3bdd461b88eaa2b5635968704a923e0030e25c3217a6a38614f8",
+        "native_only": "c170fc23f21e0dca65b65ed847840a159e1fd39d4f55eed5296e8a238ddfec16"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "b7cdcdd30ca1373379a8b0ef8557379fb8dcf0bce929b561d21e5b3c6ce840ec"
+    },
+    {
+      "case_id": "case-17",
+      "pressure": 0.86,
+      "duration_s": 0.1,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "c6298d037a74672717f1585ee9433dd514187151918766e126e2e5df025e80d3",
+      "decision_checkpoint_sha256": {
+        "control": "59f42b7e465f3692a4568bac096307eb895661d9a49eba632a1ef0d1c06d94c9",
+        "report_only": "89ca67df604c7222a8e32d5d1cd9278dca47bc21bcff8e24bab04997937f89d4",
+        "memory_disabled": "35f315edfb73bcb5492fd00f436ee5da7d8b46e06c237f37a4dbfc5c2104a21c",
+        "native_only": "a0a55dd1702d2271a823f4f2df5cea5f103f6857dc4b5baa39ccd6e98b7f6e5f"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "7ff1aacb49536a016fca298bbd15bc89a16220f49953a0b0e7717a460f7e4e05"
+    },
+    {
+      "case_id": "case-18",
+      "pressure": 0.86,
+      "duration_s": 0.2,
+      "intervention": "ordinary",
+      "initial_native_sha256": "c6298d037a74672717f1585ee9433dd514187151918766e126e2e5df025e80d3",
+      "decision_checkpoint_sha256": {
+        "control": "32357134e63d210ec4bea0ff8322cc5aac9ea35c20772c8fab040daf2ea15ee1",
+        "report_only": "f18011f9e8e433aeceaa6e9451145311be024bbb6a09601c7b55eec841e33e66",
+        "memory_disabled": "5c9c7e2d47871e0b68f7f38cfb94bc6273f0123e992d15f15e51e70d9d38decd",
+        "native_only": "6e9014ad275bb3f313fed85704276b8a9bf016158da2de8ae3236ad42b9221fa"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "0c68c85502a71a37b01f86ad5ac9ce7216bf2312a7fc7dfbeb7cdd8f0cbc4ef5"
+    },
+    {
+      "case_id": "case-19",
+      "pressure": 0.86,
+      "duration_s": 0.2,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "c6298d037a74672717f1585ee9433dd514187151918766e126e2e5df025e80d3",
+      "decision_checkpoint_sha256": {
+        "control": "e199f1cd0fb9e902707a8f7f5084a53bc2fcf5bb5f7ac450c3c62a60114467c3",
+        "report_only": "75fab9fac7a26a3045cf9264614cff1f0e1b134d84831aa54e69d80d5b2748f9",
+        "memory_disabled": "c9d3bcea9cfc68da07988e9b16d7f703291ebb81423b1740c10098d3449244f8",
+        "native_only": "4835c171c3a3c60ecc25c576056376c22cc412acb03d613e9147de2c148892ea"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "b8582e861d6c57b9a3e0b21390016a43be5f685fde7293cc8a4c914134e5a5bc"
+    },
+    {
+      "case_id": "case-20",
+      "pressure": 0.89,
+      "duration_s": 0.1,
+      "intervention": "ordinary",
+      "initial_native_sha256": "0792061c6f99edbb95cdb911fe29a95352557f43235a4fb31b79ade420dd4570",
+      "decision_checkpoint_sha256": {
+        "control": "5e3fb7fe14aac191d6ea80df221b55381515a69518de0f1530265b65342d10b5",
+        "report_only": "b7a67aaccd65940fa28a08a09da11db2d49197ee914ae3eb05dbed79ac176a0b",
+        "memory_disabled": "ec68e409258c26f9376bc3b5743a6155afdbd8095e2d63fb1961aca7715b0ca8",
+        "native_only": "a2e40111a01b5c1001250aa17073584c8e383b76bd3dd117969ab435e15644f4"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "299c0bc76b6dc0bb5f5f8848b6b0a198fca2bbd1abf72e77ae0836bed10cc995"
+    },
+    {
+      "case_id": "case-21",
+      "pressure": 0.89,
+      "duration_s": 0.1,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "0792061c6f99edbb95cdb911fe29a95352557f43235a4fb31b79ade420dd4570",
+      "decision_checkpoint_sha256": {
+        "control": "fbb931052fd0c59ba82611c82417aab2db61e8213f7ceaacd30a3565f1420c91",
+        "report_only": "d5ebb111f23e1857d28339bb7020502df7e8dc163229748a69d480ce601c5335",
+        "memory_disabled": "417910ad5a2d1b4d6bdd999f1a3fb60b137ef102f24afd28b7e7c95e95ad2406",
+        "native_only": "1c9d3d66b0d9a83df83f36ed022adc1cb68e96ccd093090df9466c84527d7e29"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "cb86f9792ccf9bbc5a22ccf0fc4f74c0fe603f825516a8de28ec818b335604cb"
+    },
+    {
+      "case_id": "case-22",
+      "pressure": 0.89,
+      "duration_s": 0.2,
+      "intervention": "ordinary",
+      "initial_native_sha256": "0792061c6f99edbb95cdb911fe29a95352557f43235a4fb31b79ade420dd4570",
+      "decision_checkpoint_sha256": {
+        "control": "44f66358e64d963427401c23c34323ab4855967d74e8f8e3ca94b4348711bed6",
+        "report_only": "c21d53d9fc285c4e130117b3a489358978e9aed2d76597ea4aa8bfaeb69a7fa1",
+        "memory_disabled": "59dd284c32dcf47268935471119205a5d93917d6a660b811795db3dd3cf9867d",
+        "native_only": "1f079d91e5c1ee3c086f196afb1d7131050bd3c21040680b9e58317c04acbffe"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "9f41d79a7b7ad6a73b84b85e2676bc04d5a610980498efb8d70e28f43fe99184"
+    },
+    {
+      "case_id": "case-23",
+      "pressure": 0.89,
+      "duration_s": 0.2,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "0792061c6f99edbb95cdb911fe29a95352557f43235a4fb31b79ade420dd4570",
+      "decision_checkpoint_sha256": {
+        "control": "f3bdb151cd064f748634e51bce62e07fbd909c85a2b71c45d96ea1c7f38911f7",
+        "report_only": "f1b34bb626ff003c30f03fd17d4063b492fabf9ba4990bf50858d18cd8fa7599",
+        "memory_disabled": "85d4d293cabdee68f5d019e4db36ff3af8f7ef6a068a307810a3a0d8f9d60e59",
+        "native_only": "4c0d31a5f98b711c096e5b82abaceb2474892943114675a9bd10f0bb8d9a4083"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "43862aa270dc8892d9d23d058a974aa6426889679495f1dacbcd5c67db211eac"
+    },
+    {
+      "case_id": "case-24",
+      "pressure": 0.95,
+      "duration_s": 0.1,
+      "intervention": "ordinary",
+      "initial_native_sha256": "1aace22b6db33c08c7a73344a43b3459d4a97d06e2d49cae020e587c90603045",
+      "decision_checkpoint_sha256": {
+        "control": "e31e0740d9aa9e437806e62e29490259ab54b3386716bcfdc536ea2df0238617",
+        "report_only": "dde684922153a2fa32d95995c08bc20729ac43af9ef6d02421cb82987c81b90d",
+        "memory_disabled": "02829b87916fce972a13e6e6c457c69c7f673c26a45eb1003a9965afe2937756",
+        "native_only": "c4890dfbfed9ef601cd5e2194622883b2b83f5c653486bbe555d0cbf94d9f8d7"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "3ece7b8d7731c7c25a5328dba4293db190a68077f02ed66f7f7427b2ac94de01"
+    },
+    {
+      "case_id": "case-25",
+      "pressure": 0.95,
+      "duration_s": 0.1,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "1aace22b6db33c08c7a73344a43b3459d4a97d06e2d49cae020e587c90603045",
+      "decision_checkpoint_sha256": {
+        "control": "baaf6d3b69f5d7d78e2254e057ed6547b64b31f30fee2f26acde4e741ddcc8ab",
+        "report_only": "ca089e2e27b3bd1f926f6a0d6e2d5578c1fd47d6b563a9dd047f7c8d6369b1b3",
+        "memory_disabled": "a4f86c016e85b71c54d2bd11c8fa9cda0a9a472b2d8b277390d4c8fb408da7a9",
+        "native_only": "dcb9f9f1516a8c5d0220b2d65719b274599f15aaacc1ac10fe59d54a71b67152"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "69518dc6587e030ba7140dc021e8bfc25bedc9293f4a2cad27c0fcc63ba74e96"
+    },
+    {
+      "case_id": "case-26",
+      "pressure": 0.95,
+      "duration_s": 0.2,
+      "intervention": "ordinary",
+      "initial_native_sha256": "1aace22b6db33c08c7a73344a43b3459d4a97d06e2d49cae020e587c90603045",
+      "decision_checkpoint_sha256": {
+        "control": "22f5ed2c1b9e9608339893cdc4bf7c8bdd29844b984cce6d20bedcb2a5ea6d32",
+        "report_only": "1c0d72543b6dec8908bb78530eaca364b8c0a84982e16fc4aa907f0bf09a8ea4",
+        "memory_disabled": "f1e6f3ff517eca815e847421815afe223b2d3ebb6e30470616f3d9fd3c815be7",
+        "native_only": "aaf1756aed03f4b0b3f9fa22307620e77adb4c9ddee2dab21dd71fb8f28399bb"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "50193050106239f595018c44dd1fc25051c9a453361b16ebc0731be25ef0d0ca"
+    },
+    {
+      "case_id": "case-27",
+      "pressure": 0.95,
+      "duration_s": 0.2,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "1aace22b6db33c08c7a73344a43b3459d4a97d06e2d49cae020e587c90603045",
+      "decision_checkpoint_sha256": {
+        "control": "ee3ff69b3b91739338f60ca7cdc559f8c98d3376e045ea566f7a43a8a4cf473c",
+        "report_only": "af7222764024d36b69acc697e9e175c2b39b77bffe773a18989c5a15d0b24ec7",
+        "memory_disabled": "9efa1be0af0c5b78fb6b8fcf217174c31ab2c7ba278a2817134e1b0da1ad205f",
+        "native_only": "8cada69a698ec83fad8710026fc05966e851f7c49c4f6defe82dfc4304cb5e94"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "3a1568a0c41c9620a1b37f5884f4dc1b3a113fc38265b9d122bb0b576f42fc48"
+    },
+    {
+      "case_id": "case-28",
+      "pressure": 0.98,
+      "duration_s": 0.1,
+      "intervention": "ordinary",
+      "initial_native_sha256": "7dee71fe6fae1c8cb5721626baeddea4dcbe26bda7adb4c407a17c40a27b044b",
+      "decision_checkpoint_sha256": {
+        "control": "3e6d31520e7ebbb0fe201ef3e23614ac88b3836db431dbb52dcafdfb20b2c0e4",
+        "report_only": "f1f94891a5b1b446889a93262f5eb793089d523139dd2cff4239a45ffc5e4919",
+        "memory_disabled": "07cc595323d06057726f49e23796b9ed03a0327fc684d104e18eb15936398ce0",
+        "native_only": "44ad6ec588927ab536a32319f1328bb9de929f07744495c83392cccfcacb52ed"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "11b74098ae43315ef5bda2c63d5d854d892d60896cc62e6dacdfdb7962dbe9a1"
+    },
+    {
+      "case_id": "case-29",
+      "pressure": 0.98,
+      "duration_s": 0.1,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "7dee71fe6fae1c8cb5721626baeddea4dcbe26bda7adb4c407a17c40a27b044b",
+      "decision_checkpoint_sha256": {
+        "control": "e9982548f8c42da5b6c07b291c3ee3efd0ed3436365d7eaf8921e0894cf134e9",
+        "report_only": "b7a3c22f32097414449bdf04fd23a3b1c9a015590db9bcb6bd4a75b6b7234aab",
+        "memory_disabled": "1f5b5b1f8c649edc777f716366491b675810823777b1af53572c38a4a04dfac7",
+        "native_only": "5b9e5ec0a3d57f65569cc96ad48c27fe66b5ebc4a99227260b92eb12a5f45d54"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "4f4fd9e9c1983ebd441b4601ecb1bf0105eced245f9f3c9029571d2bb9958f4b"
+    },
+    {
+      "case_id": "case-30",
+      "pressure": 0.98,
+      "duration_s": 0.2,
+      "intervention": "ordinary",
+      "initial_native_sha256": "7dee71fe6fae1c8cb5721626baeddea4dcbe26bda7adb4c407a17c40a27b044b",
+      "decision_checkpoint_sha256": {
+        "control": "81e5848f22c0509b33b138927d9dec48d3b10c118aaf14f363ae0c4dc1779a13",
+        "report_only": "762e65b46dcb6e70de5ed679959a68600df828997ad6fc7379d7366b565fd609",
+        "memory_disabled": "de36ebcf3cb0282270cf56c90d8a3749cc20e7e773ff3b206d1c982dda5be34b",
+        "native_only": "f8c3ff6e39f1dac31048e1e44ebf21783d3717006db0f2ef050bec9939ec8149"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "3c72335e0e4c2df62222f37b519b563b04f563a2c2ee825c26c2839b946447b6"
+    },
+    {
+      "case_id": "case-31",
+      "pressure": 0.98,
+      "duration_s": 0.2,
+      "intervention": "zero_friction",
+      "initial_native_sha256": "7dee71fe6fae1c8cb5721626baeddea4dcbe26bda7adb4c407a17c40a27b044b",
+      "decision_checkpoint_sha256": {
+        "control": "16fdcb1e61713d0e2f7dd7333b9283cc7bf1eaf6d39d1db9af3736bc6a29b955",
+        "report_only": "3f7205d3ed72f2197c86ab3a665cb15eb76302e590fb8d12fbf9fa1854c03301",
+        "memory_disabled": "ab3bbce153ee0b7d19e31c095f7357aa64595f36b6009922a27fe982a96c1da1",
+        "native_only": "e9ac5ba90f73fb092137575d3a893c76bb1868ab72b54e5d8a2e7a83b4795ff7"
+      },
+      "shadow_admitted": false,
+      "shadow_receipt_sha256": "c26e0a9d813cd91789a9ca92fe984efd2abf2104da4fc922e8a4000444c7aa3f"
+    }
+  ],
+  "rows": [
+    {
+      "case_id": "case-00",
+      "arm": "control",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "evidence gate passed; native guards still apply"
+      ],
+      "probability": 0.8333333333333334,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "e02cf695767c8613b6f91aaaf079b57fa56819afe02772dec61a6535150a9e12",
+      "receipt_sha256": "4ab550611410b1f3188d0c1afdfbd4f70ea31173b65d977089eaeb3d09637bc3"
+    },
+    {
+      "case_id": "case-00",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.8333333333333334,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "4f1b8e2566345fe7e0cbc078de9b8059e5c69832650b2175474b80724fdd2803",
+      "receipt_sha256": "4ab550611410b1f3188d0c1afdfbd4f70ea31173b65d977089eaeb3d09637bc3"
+    },
+    {
+      "case_id": "case-00",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "1778fa09fd085710d3de29fb6d97f1f506f58788a211b3d82450c276a51d64cc",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-00",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "3e2b9e61c50bbe41f2a3a0b34a37dbe64d9a9cdb2b9a848efd6b19c7af6d3ef5",
+      "receipt_sha256": "4ab550611410b1f3188d0c1afdfbd4f70ea31173b65d977089eaeb3d09637bc3"
+    },
+    {
+      "case_id": "case-01",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "9d71fa7a7e2fc033da0d17c8f8eb187032fb80570f82d9f284d9cc6402df4588",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-01",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.54296036111191,
+      "checkpoint_sha256": "0bcc374cf0f63028af1326d42768ee9da795b81da88b7ab9b5badd84bfd35e15",
+      "receipt_sha256": "72d0d98368e0ee14ded0a10b6063ce2ae4bbc4460df74be342617f829d88bca7"
+    },
+    {
+      "case_id": "case-01",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "b7dec07f6b3db2b39be73b93430e993985cf156c503230eaccd2ace9688913aa",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-01",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.54296036111191,
+      "checkpoint_sha256": "7f5dd04a32053d18196b6225e8ec8923303e29d7fe7fc33d02c3fbe39ea194c5",
+      "receipt_sha256": "72d0d98368e0ee14ded0a10b6063ce2ae4bbc4460df74be342617f829d88bca7"
+    },
+    {
+      "case_id": "case-02",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "af3ee0d7bda38828766fd15c896f0ce702b5f8004b3cc2bb8b84792768c4b801",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-02",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 78.2997498777695,
+      "checkpoint_sha256": "e14fa92abd7332918ad690014b50f21784e2c76cdd90ee03a00cada94ee798f3",
+      "receipt_sha256": "c2402faff87bfa35c92cbe06acdc5d7c1043c1653730292f22eb8efc25da9be8"
+    },
+    {
+      "case_id": "case-02",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "0c1f47f93ba800fa98c1ab14fd6affaecaad1b55b4e8fbd0ee9dc9a510a10632",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-02",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 78.2997498777695,
+      "checkpoint_sha256": "d1e4e105243d315c548c75678f6f4c0a9fe9518d71e4614a1a0d0085d5149120",
+      "receipt_sha256": "c2402faff87bfa35c92cbe06acdc5d7c1043c1653730292f22eb8efc25da9be8"
+    },
+    {
+      "case_id": "case-03",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "e75d2979dc0028e79616b58b44736ca43c96d64f58a47d6497ed36367c0d186e",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-03",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.09051991440356,
+      "checkpoint_sha256": "43ba1785bf13f6d8342d9a46e6a42e6117ac05e4a844a84f4582c1d67e96711c",
+      "receipt_sha256": "0ef789c20c332beecfb106e53485de47219054506e444e73733102ae79d0837e"
+    },
+    {
+      "case_id": "case-03",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "f3af68fb7bae5dee90b9f68fbd6c646e910d796afef198803b968d3c502d26b7",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-03",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.09051991440356,
+      "checkpoint_sha256": "2d473d6ae5caa65721e116e5e381dfe2516a797dd6cc1b3b3cafbb026d707ad8",
+      "receipt_sha256": "0ef789c20c332beecfb106e53485de47219054506e444e73733102ae79d0837e"
+    },
+    {
+      "case_id": "case-04",
+      "arm": "control",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "evidence gate passed; native guards still apply"
+      ],
+      "probability": 0.8333333333333334,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "e87e4569635cdde48beb395266151ce4d1a1e49079dfeb7d8fa729b4672d7e8f",
+      "receipt_sha256": "91b8acdef3f827e584ef83fe02a87961d84fa466ddd5018856ed99cfe96d405d"
+    },
+    {
+      "case_id": "case-04",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.8333333333333334,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "93521eaf79e2af39c2b65a16db949ba94bef57cc9c7c28d84932c32c1c1b92ef",
+      "receipt_sha256": "91b8acdef3f827e584ef83fe02a87961d84fa466ddd5018856ed99cfe96d405d"
+    },
+    {
+      "case_id": "case-04",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "a47bd52f7b9bcfabd32f1543ffdfcd43cc8034379a189f74d118a94eebc00e50",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-04",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "3599256315665f5b96f0c6d6b139db00a518e3ea0f6b74f6934733bd659d542c",
+      "receipt_sha256": "91b8acdef3f827e584ef83fe02a87961d84fa466ddd5018856ed99cfe96d405d"
+    },
+    {
+      "case_id": "case-05",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "627b9ef428704eee3e7611f003d67cf3d1bc4301c6f5972f214a9471110b3e42",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-05",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.54296036111191,
+      "checkpoint_sha256": "4db92ef3598159c53dfe77ee9e114a48bdbd5d30067c9063e6d8e5f1c4ba30cf",
+      "receipt_sha256": "9722035acb870ce8deb51fe830b784937bf34716c025490e998531e425771372"
+    },
+    {
+      "case_id": "case-05",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "36460ee8fde3a32c8491f598d9a76f9915ced31ad1a6731e1af20d3386f72208",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-05",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.54296036111191,
+      "checkpoint_sha256": "cf2f9f198a839f1f31813e7d7a7260315e0809813b7955c7c18673494c650ad9",
+      "receipt_sha256": "9722035acb870ce8deb51fe830b784937bf34716c025490e998531e425771372"
+    },
+    {
+      "case_id": "case-06",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "63b9e842c89f2cd056d760913d433eb993f39bdbdc60701db01f018b506c9b7c",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-06",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 78.2997498777695,
+      "checkpoint_sha256": "5bd690313030d5f3e765a38c7a8d772e615d6229dc806a11c127d934f875f0fe",
+      "receipt_sha256": "01373a863ee1a66b8c2bf012b3591e857444dcec0b29ee4defbc2f3651942758"
+    },
+    {
+      "case_id": "case-06",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "b9bd182a5fe29ce3c821adfc8a46a07a5aedffef05453be9bae2c68797439d46",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-06",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 78.2997498777695,
+      "checkpoint_sha256": "51941acecbf8cada9fdb2093af6b37882841f1919b1ef49535b4a6c56b85da5b",
+      "receipt_sha256": "01373a863ee1a66b8c2bf012b3591e857444dcec0b29ee4defbc2f3651942758"
+    },
+    {
+      "case_id": "case-07",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "4fcf6379a121b1edd2f9201513b9b24a3535ce89dca8d6eca3e7ac350ee39292",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-07",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.09051991440356,
+      "checkpoint_sha256": "2c3adc9a579e1d056ae272d9a2a1c0cf2548627b83a7f0a08ef9fcc28425fd0c",
+      "receipt_sha256": "84cc2c01113afa2d677e6c1b0a073184edcbb3f1472cedb449111af4ebb0ee7a"
+    },
+    {
+      "case_id": "case-07",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "bc98c1db0132032e93e3046a63f77f2c6ca23f5a3f40d1f3de604b8094b07850",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-07",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.09051991440356,
+      "checkpoint_sha256": "b013e25334d9738635c57f4974a47c50b5efa68485896dfaddd905d46d8a3a93",
+      "receipt_sha256": "84cc2c01113afa2d677e6c1b0a073184edcbb3f1472cedb449111af4ebb0ee7a"
+    },
+    {
+      "case_id": "case-08",
+      "arm": "control",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "evidence gate passed; native guards still apply"
+      ],
+      "probability": 0.8333333333333334,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "1d160eeebe4d64dfc93e0e8c5a340b1edcb0af15b42c0f4577accd33213c701c",
+      "receipt_sha256": "2d178d95fc09ce39bcb639f5956897032bd301c74b2d4e8bf773967bb58158dc"
+    },
+    {
+      "case_id": "case-08",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.8333333333333334,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "242c5b5f9cc01cba05583da35f7182cc3eba169778c3bb217aa96b14116b1e00",
+      "receipt_sha256": "2d178d95fc09ce39bcb639f5956897032bd301c74b2d4e8bf773967bb58158dc"
+    },
+    {
+      "case_id": "case-08",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "2cbc3f8cb9d4673aedbc0394c8af0315ff7eb27dd7e2ae1f258fcdf9ce6755ac",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-08",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "2925a9e61ac2f3204729e51ad1370a7e9e0cf64e49d4b8d0120143206c2a0762",
+      "receipt_sha256": "2d178d95fc09ce39bcb639f5956897032bd301c74b2d4e8bf773967bb58158dc"
+    },
+    {
+      "case_id": "case-09",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "5d65210bc04d554769d40721bf2da69b8f18ff5ec254481eca01ee60fe9340bd",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-09",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.54296036111191,
+      "checkpoint_sha256": "d4aa3dd14bf2c9268139b9839fe4bb7024fa6fccfc7363a16e18034a56868f6b",
+      "receipt_sha256": "6ce7b6afb4ef96ba47bfcbcbf2e9d38526e1a2f9c92736b24b80f792c16ff0dd"
+    },
+    {
+      "case_id": "case-09",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "43c982a997c9bcced1e90060d51043c184e20a3e049fda701dc785d6b55d1f54",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-09",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.54296036111191,
+      "checkpoint_sha256": "67a7e13f16e68120ee746aaad0d40eddfb6424dec5fb3662525e1f04802e872c",
+      "receipt_sha256": "6ce7b6afb4ef96ba47bfcbcbf2e9d38526e1a2f9c92736b24b80f792c16ff0dd"
+    },
+    {
+      "case_id": "case-10",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "11947eab26465e664f06cd6f081ab776c2e9792c95d9932c0c1acbfe05f0df26",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-10",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 78.2997498777695,
+      "checkpoint_sha256": "3ea8688fe5fb4ce71a7e41b90403f9d7caca169fdd5762f600f25828d93c12d2",
+      "receipt_sha256": "dcf81ab47ea3ac9db984aef0684d878fd3b19b3a66c0923c1d374a6f4d49fc22"
+    },
+    {
+      "case_id": "case-10",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "0bd57d2bdab226f2ce5174ea52c2580865696f4f85240fc07b1f179f57f849f7",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-10",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 78.2997498777695,
+      "checkpoint_sha256": "caacf6c1066679309bde393e2a984ad0be84790e2c659e9ff23e4fb113147506",
+      "receipt_sha256": "dcf81ab47ea3ac9db984aef0684d878fd3b19b3a66c0923c1d374a6f4d49fc22"
+    },
+    {
+      "case_id": "case-11",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "e708e61450b17ca8922090f766d01d83893479c92ae7c6b1a8041cbe9888d7c5",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-11",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.09051991440356,
+      "checkpoint_sha256": "2594eda943439a27926e8a439500775f42515da481418c6a0224338fbbbe9c17",
+      "receipt_sha256": "d8e1323c5ae48cf57ac8e0e78b65ed5a0643081a2042315b5011850cb99bacc5"
+    },
+    {
+      "case_id": "case-11",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "a9ab886a06dd17044027237fae0c21ddf069538fc267c3c7f09c764e2cc4da33",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-11",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "slow_breath",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.09051991440356,
+      "checkpoint_sha256": "18fe40542885232a0135feb12b415e7d7b5555b10edecea69d81a59e9651d60d",
+      "receipt_sha256": "d8e1323c5ae48cf57ac8e0e78b65ed5a0643081a2042315b5011850cb99bacc5"
+    },
+    {
+      "case_id": "case-12",
+      "arm": "control",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "evidence gate passed; native guards still apply"
+      ],
+      "probability": 0.8333333333333334,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "f8e8597abe614054d79544a9cccd16409bc48c66ea0cc034ce14b9798225f0fe",
+      "receipt_sha256": "bba52f892944a33265270db693686210b2d8a4d6be18c834ef16deca3e9b2b0b"
+    },
+    {
+      "case_id": "case-12",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.8333333333333334,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "815924cfe1b93577f94ac960ac17f5a0027aad20998c79ebe04a6abd6e4392d9",
+      "receipt_sha256": "bba52f892944a33265270db693686210b2d8a4d6be18c834ef16deca3e9b2b0b"
+    },
+    {
+      "case_id": "case-12",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "1c006e9f85adc2c23cbdbf65d8ca9234eba595192db9ec167fe62b1d8e64a478",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-12",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.8171517890878,
+      "checkpoint_sha256": "cabc434474e92efe6965fa1009902d01d82038cbf9fe8fdec346b86fa38c9534",
+      "receipt_sha256": "bba52f892944a33265270db693686210b2d8a4d6be18c834ef16deca3e9b2b0b"
+    },
+    {
+      "case_id": "case-13",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "a2b40578a4455a66151f15265671c348e1f3458de49c0cbf5612df9aaafd9c7f",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-13",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "f783079862056e60e6ba2ae9e19d16ac2b7d1e23d3e2a87a67b8ddc5d505aaeb",
+      "receipt_sha256": "26d6646375f20bc4208b0b99d3f62a5d84e4f1e67c28ce9b4a471a2635caaa9e"
+    },
+    {
+      "case_id": "case-13",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "30043cc825a051948c537a381dd30ad3bf25ed54d7d3a8bc53bdd872d15cb407",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-13",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "8d62adb8199d62753f9a63107f8f35e2575d0173d23b598fcd0c5cbf22c04ffb",
+      "receipt_sha256": "26d6646375f20bc4208b0b99d3f62a5d84e4f1e67c28ce9b4a471a2635caaa9e"
+    },
+    {
+      "case_id": "case-14",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "feebb3b23594ec36a45decf377af4258e98f3dea14e4c467ef76614f0338d9e4",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-14",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 78.2997498777695,
+      "checkpoint_sha256": "d39b315e5d37add67c66fc10770628be3e97770e802f85f3f2967fcbda5c64ae",
+      "receipt_sha256": "75cfe1c6dbfd27002e61d76b020a54bc25ac0381577698c8adc2792ac76332bd"
+    },
+    {
+      "case_id": "case-14",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "ca693f733ff71c0b33672b2cb1fa5c26fca10ceda38d4a70345992684f07176e",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-14",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": true,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "walk",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 78.2997498777695,
+      "checkpoint_sha256": "728c6c515e4c5e8c7ec9983662fbcaaad0bbbe25e820a687448eec3a0885dc85",
+      "receipt_sha256": "75cfe1c6dbfd27002e61d76b020a54bc25ac0381577698c8adc2792ac76332bd"
+    },
+    {
+      "case_id": "case-15",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "c25b070b7b6e05747d049fa9484835d220c7b140cd644e9b7e034fafa7327141",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-15",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "418fcca6e357863096bbeb8548707699be7545c4d34a39a9f25e7a8877fee2a4",
+      "receipt_sha256": "f27e02f86892832a0d88563d809400c3913d12d62e7e9c3e58bef844417a8c43"
+    },
+    {
+      "case_id": "case-15",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "c469d4ec245f1072ddb00f5a46d10f64f7d5a867226f7929fd0fb66fa798612b",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-15",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "671cf4c61738096829879a099b0611dcd11c6a11b03be680b2498a2a2f273ee2",
+      "receipt_sha256": "f27e02f86892832a0d88563d809400c3913d12d62e7e9c3e58bef844417a8c43"
+    },
+    {
+      "case_id": "case-16",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.16666666666666666,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "b1c696cb01339569605b11e4a19984532f1f279f81f236c163d84336e1456751",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-16",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.16666666666666666,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "6d0761f9ff07180a0380ce5d1c224803a5370127dc21196024e02c23a251a3d9",
+      "receipt_sha256": "b7cdcdd30ca1373379a8b0ef8557379fb8dcf0bce929b561d21e5b3c6ce840ec"
+    },
+    {
+      "case_id": "case-16",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "a08d585e8b6a3bdd461b88eaa2b5635968704a923e0030e25c3217a6a38614f8",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-16",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "f12ea7c605ea96411e254258b2586b53626efc29b8e0ba887830f5d1e52b89ec",
+      "receipt_sha256": "b7cdcdd30ca1373379a8b0ef8557379fb8dcf0bce929b561d21e5b3c6ce840ec"
+    },
+    {
+      "case_id": "case-17",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "59f42b7e465f3692a4568bac096307eb895661d9a49eba632a1ef0d1c06d94c9",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-17",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "1118bf6a752e5854b5de5e7794b883dd0ed48c4c2935951facbd0c4b363032ef",
+      "receipt_sha256": "7ff1aacb49536a016fca298bbd15bc89a16220f49953a0b0e7717a460f7e4e05"
+    },
+    {
+      "case_id": "case-17",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "35f315edfb73bcb5492fd00f436ee5da7d8b46e06c237f37a4dbfc5c2104a21c",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-17",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "df2549be88e643590b90adede740f05ca8011c899d10e37c9496c85069a2ca4f",
+      "receipt_sha256": "7ff1aacb49536a016fca298bbd15bc89a16220f49953a0b0e7717a460f7e4e05"
+    },
+    {
+      "case_id": "case-18",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "32357134e63d210ec4bea0ff8322cc5aac9ea35c20772c8fab040daf2ea15ee1",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-18",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "75488da3a2e9ba109085b781f9ee5d5617523654c61164230a80b884f0887d0a",
+      "receipt_sha256": "0c68c85502a71a37b01f86ad5ac9ce7216bf2312a7fc7dfbeb7cdd8f0cbc4ef5"
+    },
+    {
+      "case_id": "case-18",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "5c9c7e2d47871e0b68f7f38cfb94bc6273f0123e992d15f15e51e70d9d38decd",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-18",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "73fc7255f110613d9db22e64c2a804f565cb2936ce5b1be751205fe21304ff0c",
+      "receipt_sha256": "0c68c85502a71a37b01f86ad5ac9ce7216bf2312a7fc7dfbeb7cdd8f0cbc4ef5"
+    },
+    {
+      "case_id": "case-19",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "e199f1cd0fb9e902707a8f7f5084a53bc2fcf5bb5f7ac450c3c62a60114467c3",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-19",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "6679bdedee889ed439debf48cb40039af17d2b419b678b722c39c928e8a62d60",
+      "receipt_sha256": "b8582e861d6c57b9a3e0b21390016a43be5f685fde7293cc8a4c914134e5a5bc"
+    },
+    {
+      "case_id": "case-19",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "c9d3bcea9cfc68da07988e9b16d7f703291ebb81423b1740c10098d3449244f8",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-19",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "ee58db934a36a48b4fd9ba143e2d8b2a81d0119fd265e6c5ab951423a4946af0",
+      "receipt_sha256": "b8582e861d6c57b9a3e0b21390016a43be5f685fde7293cc8a4c914134e5a5bc"
+    },
+    {
+      "case_id": "case-20",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.16666666666666666,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "5e3fb7fe14aac191d6ea80df221b55381515a69518de0f1530265b65342d10b5",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-20",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.16666666666666666,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "335e08ab045e5d368a4ab9a23a9b778fba33c2d019284f2b30cd896eb93329cf",
+      "receipt_sha256": "299c0bc76b6dc0bb5f5f8848b6b0a198fca2bbd1abf72e77ae0836bed10cc995"
+    },
+    {
+      "case_id": "case-20",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "ec68e409258c26f9376bc3b5743a6155afdbd8095e2d63fb1961aca7715b0ca8",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-20",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "7dc992ec353541de62097a02642aae5b5af2d8988dd0f5f397ef160e7e2f26ef",
+      "receipt_sha256": "299c0bc76b6dc0bb5f5f8848b6b0a198fca2bbd1abf72e77ae0836bed10cc995"
+    },
+    {
+      "case_id": "case-21",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "fbb931052fd0c59ba82611c82417aab2db61e8213f7ceaacd30a3565f1420c91",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-21",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "2e9e238a3d2823ccbd12610d1718fb54a04ff928d823223cb794acf9a1659885",
+      "receipt_sha256": "cb86f9792ccf9bbc5a22ccf0fc4f74c0fe603f825516a8de28ec818b335604cb"
+    },
+    {
+      "case_id": "case-21",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "417910ad5a2d1b4d6bdd999f1a3fb60b137ef102f24afd28b7e7c95e95ad2406",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-21",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "d7842efd1fc1b8343affa1ebadc7e449fc2c1e405c8568e1d696213a9bad2feb",
+      "receipt_sha256": "cb86f9792ccf9bbc5a22ccf0fc4f74c0fe603f825516a8de28ec818b335604cb"
+    },
+    {
+      "case_id": "case-22",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "44f66358e64d963427401c23c34323ab4855967d74e8f8e3ca94b4348711bed6",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-22",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "5cbace3e9c77f4282510e1aef706ee5c37bd91d73cd0f551afc80eb465b25de9",
+      "receipt_sha256": "9f41d79a7b7ad6a73b84b85e2676bc04d5a610980498efb8d70e28f43fe99184"
+    },
+    {
+      "case_id": "case-22",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "59dd284c32dcf47268935471119205a5d93917d6a660b811795db3dd3cf9867d",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-22",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "8c21ffd0f386e519c257abeeba387547fdafae85e86d1a8219f34e728e38ce43",
+      "receipt_sha256": "9f41d79a7b7ad6a73b84b85e2676bc04d5a610980498efb8d70e28f43fe99184"
+    },
+    {
+      "case_id": "case-23",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "f3bdb151cd064f748634e51bce62e07fbd909c85a2b71c45d96ea1c7f38911f7",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-23",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "be77938679f031d216df2c0e74043d265df2ba17688595a40db98f0b9b27cf04",
+      "receipt_sha256": "43862aa270dc8892d9d23d058a974aa6426889679495f1dacbcd5c67db211eac"
+    },
+    {
+      "case_id": "case-23",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "85d4d293cabdee68f5d019e4db36ff3af8f7ef6a068a307810a3a0d8f9d60e59",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-23",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "1ae58be8c1ad3b7a5deee9c45baaadf4af8f46f16236e788a4e6328e41a787be",
+      "receipt_sha256": "43862aa270dc8892d9d23d058a974aa6426889679495f1dacbcd5c67db211eac"
+    },
+    {
+      "case_id": "case-24",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.16666666666666666,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "e31e0740d9aa9e437806e62e29490259ab54b3386716bcfdc536ea2df0238617",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-24",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.16666666666666666,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "b9a38dc81f4f4c3fd3fea781bd85556f9b4e47e879459a4aacc7b5a9b9430e75",
+      "receipt_sha256": "3ece7b8d7731c7c25a5328dba4293db190a68077f02ed66f7f7427b2ac94de01"
+    },
+    {
+      "case_id": "case-24",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "02829b87916fce972a13e6e6c457c69c7f673c26a45eb1003a9965afe2937756",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-24",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "d66bef50530a70e340b0864b43286d3f56f273b43097c7466b3cd16f37f8a838",
+      "receipt_sha256": "3ece7b8d7731c7c25a5328dba4293db190a68077f02ed66f7f7427b2ac94de01"
+    },
+    {
+      "case_id": "case-25",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "baaf6d3b69f5d7d78e2254e057ed6547b64b31f30fee2f26acde4e741ddcc8ab",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-25",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "ac741afd586754fb73c5782e72203dfbf5faf66fb03825a0226a6b5feffab9e7",
+      "receipt_sha256": "69518dc6587e030ba7140dc021e8bfc25bedc9293f4a2cad27c0fcc63ba74e96"
+    },
+    {
+      "case_id": "case-25",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "a4f86c016e85b71c54d2bd11c8fa9cda0a9a472b2d8b277390d4c8fb408da7a9",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-25",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "2930a96ff0bfd594d02cad9da6f84dc5b5f99f68dc9fdd7ab07d3188d458a68e",
+      "receipt_sha256": "69518dc6587e030ba7140dc021e8bfc25bedc9293f4a2cad27c0fcc63ba74e96"
+    },
+    {
+      "case_id": "case-26",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "22f5ed2c1b9e9608339893cdc4bf7c8bdd29844b984cce6d20bedcb2a5ea6d32",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-26",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "17f8ab2c039fbd29e739426ee3495f1ab59498dddae9410918d5e9d98ca95afd",
+      "receipt_sha256": "50193050106239f595018c44dd1fc25051c9a453361b16ebc0731be25ef0d0ca"
+    },
+    {
+      "case_id": "case-26",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "f1e6f3ff517eca815e847421815afe223b2d3ebb6e30470616f3d9fd3c815be7",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-26",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "1df930d153ea8c633f36d30f0b9f32cd493f772b39df9bc67ca2c83cb4a7c27c",
+      "receipt_sha256": "50193050106239f595018c44dd1fc25051c9a453361b16ebc0731be25ef0d0ca"
+    },
+    {
+      "case_id": "case-27",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "ee3ff69b3b91739338f60ca7cdc559f8c98d3376e045ea566f7a43a8a4cf473c",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-27",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "2e78ef168bf047ddc11b30377e26b83ff93bbe0dc9bb1dce8b7fac65d36bd595",
+      "receipt_sha256": "3a1568a0c41c9620a1b37f5884f4dc1b3a113fc38265b9d122bb0b576f42fc48"
+    },
+    {
+      "case_id": "case-27",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "9efa1be0af0c5b78fb6b8fcf217174c31ab2c7ba278a2817134e1b0da1ad205f",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-27",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "a322d7d4c94cb08879bd7eec25d2f433e5e689f65e985ca64366f9bd7f030600",
+      "receipt_sha256": "3a1568a0c41c9620a1b37f5884f4dc1b3a113fc38265b9d122bb0b576f42fc48"
+    },
+    {
+      "case_id": "case-28",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.16666666666666666,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "3e6d31520e7ebbb0fe201ef3e23614ac88b3836db431dbb52dcafdfb20b2c0e4",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-28",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.16666666666666666,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 4,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "55a822fa0dbbf57e2242548a2244495e75cf1502fae889795b9f41a62cffb80f",
+      "receipt_sha256": "11b74098ae43315ef5bda2c63d5d854d892d60896cc62e6dacdfdb7962dbe9a1"
+    },
+    {
+      "case_id": "case-28",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "07cc595323d06057726f49e23796b9ed03a0327fc684d104e18eb15936398ce0",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-28",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "6cf27967cb57561a8856e6590e29812062053244f58e8313765d0f69b7cc9a6c",
+      "receipt_sha256": "11b74098ae43315ef5bda2c63d5d854d892d60896cc62e6dacdfdb7962dbe9a1"
+    },
+    {
+      "case_id": "case-29",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "e9982548f8c42da5b6c07b291c3ee3efd0ed3436365d7eaf8921e0894cf134e9",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-29",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "605e1c3c8cbf9986ff2ea5036a7e1d9f53e08ea669b017f53f4e161d9c8917cf",
+      "receipt_sha256": "4f4fd9e9c1983ebd441b4601ecb1bf0105eced245f9f3c9029571d2bb9958f4b"
+    },
+    {
+      "case_id": "case-29",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "1f5b5b1f8c649edc777f716366491b675810823777b1af53572c38a4a04dfac7",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-29",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.09999999999999964,
+      "fuel_debit_J": 38.540545081254095,
+      "checkpoint_sha256": "e886f3512f81256854cbf62e851235c014db97629f58ca7255ab08f2eb16a0a9",
+      "receipt_sha256": "4f4fd9e9c1983ebd441b4601ecb1bf0105eced245f9f3c9029571d2bb9958f4b"
+    },
+    {
+      "case_id": "case-30",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "81e5848f22c0509b33b138927d9dec48d3b10c118aaf14f363ae0c4dc1779a13",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-30",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "7d3a0ce94c930662c98dfd797c5ea6cb2c39054ff4b7d83e5792b18b74c8997b",
+      "receipt_sha256": "3c72335e0e4c2df62222f37b519b563b04f563a2c2ee825c26c2839b946447b6"
+    },
+    {
+      "case_id": "case-30",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "de36ebcf3cb0282270cf56c90d8a3749cc20e7e773ff3b206d1c982dda5be34b",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-30",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "23f94f6f61acf4021cd8ba794f99de02e432b0b386418e247056bbf8e0cd08f7",
+      "receipt_sha256": "3c72335e0e4c2df62222f37b519b563b04f563a2c2ee825c26c2839b946447b6"
+    },
+    {
+      "case_id": "case-31",
+      "arm": "control",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "16fdcb1e61713d0e2f7dd7333b9283cc7bf1eaf6d39d1db9af3736bc6a29b955",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-31",
+      "arm": "report_only",
+      "attempted": true,
+      "initial_choice": "refresh_observation",
+      "final_choice": "request_walk",
+      "reasons": [
+        "report has no control authority"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "2a5b9c5590455d961f1c980aaa9e5ab142355b36b04d856464a9d4116d82f9c5",
+      "receipt_sha256": "c26e0a9d813cd91789a9ca92fe984efd2abf2104da4fc922e8a4000444c7aa3f"
+    },
+    {
+      "case_id": "case-31",
+      "arm": "memory_disabled",
+      "attempted": false,
+      "initial_choice": "refresh_observation",
+      "final_choice": "defer",
+      "reasons": [
+        "sleep_pressure",
+        "insufficient_context_experience",
+        "low_observed_self_efficacy"
+      ],
+      "probability": 0.5,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": 0,
+      "read_only_refreshes": 1,
+      "actual_action": null,
+      "physical_model_valid": null,
+      "owner_time_s": 0.0,
+      "fuel_debit_J": 0.0,
+      "checkpoint_sha256": "ab3bbce153ee0b7d19e31c095f7357aa64595f36b6009922a27fe982a96c1da1",
+      "receipt_sha256": null
+    },
+    {
+      "case_id": "case-31",
+      "arm": "native_only",
+      "attempted": true,
+      "initial_choice": "request_walk",
+      "final_choice": "request_walk",
+      "reasons": [
+        "native arbitration only"
+      ],
+      "probability": null,
+      "shadow_admitted": false,
+      "current_restrictions": [
+        "sleep_pressure"
+      ],
+      "context_samples": null,
+      "read_only_refreshes": 0,
+      "actual_action": "protect",
+      "physical_model_valid": true,
+      "owner_time_s": 0.1999999999999993,
+      "fuel_debit_J": 77.0834035910666,
+      "checkpoint_sha256": "26a595fb6de7ddccb5b660673e16c35e06e2d12f41c34c328e0c4f7ddb21aab9",
+      "receipt_sha256": "c26e0a9d813cd91789a9ca92fe984efd2abf2104da4fc922e8a4000444c7aa3f"
+    }
+  ],
+  "native_import_manifest_sha256": "a42ba019e54f74c7dc45c4ea44b168fd81287463c92862b68029fc2b10eb0602",
+  "no_live_model_api": true,
+  "identity_or_native_equations_modified": false,
+  "scope": "authored deterministic body-admission challenge, inspired by MIRROR's knowing-doing comparison; not a MIRROR replication, language-model evaluation, physical-body validation or consciousness score"
+}
