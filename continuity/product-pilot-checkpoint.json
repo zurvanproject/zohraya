@@ -1,0 +1,18 @@
+{
+  "schema": "nasuraya-product-pilot-checkpoint/1",
+  "date": "2026-10-16",
+  "source_commit": "f5d4aaaccfa2afab451b3969574b92d3466ef095",
+  "pull_request": "https://github.com/zurvanproject/zohraya/pull/32",
+  "product": "nasuraya-continuity-kit",
+  "version": "0.1.0",
+  "local_tests_passed": 27,
+  "fresh_process_cli_invocations": 11,
+  "offline_install_passed": true,
+  "reproducible_wheel_builds": true,
+  "wheel_sha256": "88ab8e9e2b3715ae27ad629af1e3815fe97d209edc3e5b8648464adc17cc2410",
+  "commercial_release": false,
+  "host_application_sent": false,
+  "financial_account_created": false,
+  "payments_enabled": false,
+  "next": "Inspect PR32 CI and address one concrete pilot gap within existing budgets; financial onboarding remains unresolved"
+}
