@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools==78.1.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nasuraya-continuity-kit"
+version = "0.1.0"
+description = "Offline durable admission records for bounded, operator-authorized jobs"
+readme = "nasuraya_continuity_kit/README.md"
+requires-python = ">=3.11"
+dependencies = []
+classifiers = ["Private :: Do Not Upload"]
+
+[project.scripts]
+nasuraya-continuity = "nasuraya_continuity_kit.cli:main"
+
+[tool.setuptools]
+packages = ["continuity", "nasuraya_continuity_kit"]
+include-package-data = false
