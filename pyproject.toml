@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nasuraya-continuity-kit"
-version = "0.1.0"
-description = "Offline durable admission records for bounded, operator-authorized jobs"
+version = "0.2.0"
+description = "Offline durable admission and bounded local integrity reports"
 readme = "nasuraya_continuity_kit/README.md"
 requires-python = ">=3.11"
 dependencies = []
