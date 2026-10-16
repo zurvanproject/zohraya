@@ -7,7 +7,7 @@ from unittest.mock import patch
 from .monitor import SelfModel, snapshot, digest
 from .evaluate import fixture, request, prepare_defaults
 from .duration_transfer import DurationMemory
-from unified_body_v2 import UnifiedBody
+from unified_body_v2 import UnifiedBody, PersistentEmbodiment
 
 
 class TransferTests(unittest.TestCase):
@@ -94,6 +94,17 @@ class TransferTests(unittest.TestCase):
         obs,q=self.query()
         with self.assertRaisesRegex(ValueError,'invalid physical'):
             DurationMemory(self.model).predict(obs,q)
+
+    def test_cold_inspection_reuses_saved_observation_without_hidden_owner_warmup(self):
+        from .run_duration_transfer import cold
+        obs,q=self.query()
+        saved=self.path.parent/'held-interpolate-normal-02-before.json'
+        saved.write_text(json.dumps(dict(observation=obs,request=q)))
+        with patch.object(UnifiedBody,'cycle',side_effect=AssertionError('no body action')), \
+             patch.object(PersistentEmbodiment,'cycle',side_effect=AssertionError('no hidden warmup')):
+            result=cold(self.path)
+        self.assertEqual(result['prediction']['probability'],.5)
+        self.assertEqual(result['advice']['action'],'observe')
 
 
 if __name__=='__main__':

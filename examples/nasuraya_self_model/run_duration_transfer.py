@@ -152,7 +152,10 @@ def evaluate(output):
 
 def cold(path):
     model=SelfModel(path); memory=DurationMemory(model)
-    b=fixture(.62);q=dict(request(b,'cold-probe',.2),external={});obs=snapshot(b)
+    # Reuse a persisted observation: synthetic fixture construction itself has
+    # an internal owner warm-up and is not a zero-action inspection operation.
+    saved=json.loads((model.path.parent/'held-interpolate-normal-02-before.json').read_text())
+    obs,q=saved['observation'],saved['request']
     return dict(memory=memory.state(),prediction=memory.predict(obs,q),advice=memory.advise(obs,q))
 
 

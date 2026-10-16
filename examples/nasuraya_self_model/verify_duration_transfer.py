@@ -8,14 +8,15 @@ from .monitor import SelfModel, digest
 from .duration_transfer import DurationMemory
 from .run_duration_transfer import forecasts, cold, ARMS
 from .evaluate import prepare_defaults
-from unified_body_v2 import UnifiedBody
+from unified_body_v2 import UnifiedBody, PersistentEmbodiment
 
 
 def verify(output):
     root=Path(output); result=json.loads((root/'results.json').read_text())
     protocol=json.loads((root/'frozen-protocol.json').read_text())
     native=0; held_scores=[]
-    with patch.object(UnifiedBody,'cycle',side_effect=AssertionError('offline verification cannot act')):
+    with patch.object(UnifiedBody,'cycle',side_effect=AssertionError('offline verification cannot act')), \
+         patch.object(PersistentEmbodiment,'cycle',side_effect=AssertionError('offline verification cannot warm up owner')):
         for seed in protocol['seeds']:
             folder=root/str(seed)
             models={a:SelfModel(folder/(a+'.sqlite')) for a in ('B','C')}
