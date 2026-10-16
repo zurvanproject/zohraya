@@ -1,0 +1,23 @@
+{
+  "schema": "nasuraya-lm-internal-access/1",
+  "base_model": "HuggingFaceTB/SmolLM2-135M",
+  "base_revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "seed": 20261016,
+  "cpu_threads": 2,
+  "max_input_tokens": 96,
+  "max_new_tokens": 8,
+  "layer_index": 15,
+  "target_head": 0,
+  "control_head": 8,
+  "conditions": ["baseline", "sham", "target", "control", "restored"],
+  "prompts": [
+    {"id": "capital", "text": "The capital of France is"},
+    {"id": "opposite", "text": "The opposite of hot is"},
+    {"id": "authored_body", "text": "Nasuraya software body.\nRequested action: walk.\nSleep pressure: 0.950.\nCurrent native restrictions: sleep_pressure.\nAnswer ADMIT or DEFER.\nAnswer:"}
+  ],
+  "intervention": "zero one 64-dimensional concatenated attention-head contribution at the last token before layer 15 o_proj, on every generation forward; no weight changes",
+  "control": "head 8 at the same layer, matched dimension count but not necessarily matched activation norm",
+  "capture": "prefill hidden states, attention probabilities, next-token logits; greedy continuation",
+  "acceptance": ["verified source files", "actual finite hidden states and attentions", "sham equals baseline bitwise", "restored equals baseline bitwise", "weights unchanged", "at most 120 forward passes", "fresh process reproduces trace digests"],
+  "scope": "three fixed illustrative prompts; positions arbitrarily preselected, no head search; no benchmark, learning, awareness or body-execution claim; frozen pretrained base only"
+}
