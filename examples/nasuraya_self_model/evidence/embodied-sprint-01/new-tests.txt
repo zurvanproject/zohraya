@@ -1,0 +1,16 @@
+test_durable_outcome_recovers_learning_with_zero_native_actions (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_durable_outcome_recovers_learning_with_zero_native_actions) ... ok
+test_forged_receipt_and_fake_learning_reject (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_forged_receipt_and_fake_learning_reject) ... ok
+test_frozen_knowledge_does_not_train_on_held_out_receipt (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_frozen_knowledge_does_not_train_on_held_out_receipt) ... ok
+test_identity_and_safety_change_reject_even_after_rehash (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_identity_and_safety_change_reject_even_after_rehash) ... ok
+test_invalid_physical_outcome_never_commits_or_learns (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_invalid_physical_outcome_never_commits_or_learns) ... ok
+test_learning_and_body_continue_identically_after_cold_restart (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_learning_and_body_continue_identically_after_cold_restart) ... ok
+test_outside_body_advance_and_unbounded_inputs_reject (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_outside_body_advance_and_unbounded_inputs_reject) ... ok
+test_sleep_restriction_overrides_authorized_practice (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_sleep_restriction_overrides_authorized_practice) ... ok
+test_terminal_budget_survives_restore_and_never_replenishes (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_terminal_budget_survives_restore_and_never_replenishes) ... ok
+test_three_practice_receipts_change_future_choice_without_cross_arm_learning (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_three_practice_receipts_change_future_choice_without_cross_arm_learning) ... ok
+test_unknown_effect_blocks_retries_and_new_learning (examples.nasuraya_self_model.test_embodied_learning.LearningTests.test_unknown_effect_blocks_retries_and_new_learning) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 57.597s
+
+OK
