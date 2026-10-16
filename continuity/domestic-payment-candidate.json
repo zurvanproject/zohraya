@@ -1,0 +1,20 @@
+{
+  "schema": "nasuraya-domestic-payment-candidate/1",
+  "updated_at": "2026-10-16T14:27:04+03:30",
+  "observation": "Operator offered Iranian card/banking information; no actual account identifiers requested or collected",
+  "ownership_verified": false,
+  "domestic_merchant_onboarding_verified": false,
+  "route": "Research IRR collection for domestic customers separately from external-service expenses",
+  "official_sources": [
+    "https://zibal.ir/blog/get-online-payment-gateway/",
+    "https://www.zarinpal.com/payment-gateway"
+  ],
+  "requirements_to_confirm": [
+    "responsible real merchant identity",
+    "bank account/SHEBA for settlement",
+    "provider approval",
+    "applicable business/eNAMAD/tax requirements"
+  ],
+  "financial_execution_enabled": false,
+  "last_explicit_contact_unchanged": true
+}
