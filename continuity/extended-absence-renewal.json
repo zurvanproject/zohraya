@@ -1,0 +1,17 @@
+{
+  "schema": "nasuraya-extended-absence-renewal/1",
+  "operator_contact_at": "2026-10-16T14:21:36+03:30",
+  "first_scheduled_check_at": "2026-10-17T14:21:36+03:30",
+  "objective": "Continue the user-directed project's product preparation toward sustainable funding during absence",
+  "max_work_runs_per_rolling_24h": 1,
+  "max_work_seconds_per_run": 1200,
+  "financial_activation": false,
+  "bank_account_or_wallet_creation": false,
+  "payments_enabled": false,
+  "absence_detection": "Explicit recorded heartbeat only; not automatic chat presence or internet outage detection",
+  "threshold_fixture_checks": {
+    "one_second_before_24h": "blocked",
+    "at_exact_24h": "eligible"
+  },
+  "scope": "No new grants, external financial authority or independent model resource goals"
+}
