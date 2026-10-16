@@ -1,6 +1,8 @@
 {
-  "protocol_sha256": "ee601529a5b2a7dbeae4737a09f5decec282a309273d74a1a2717d1fd08b260c",
+  "protocol_sha256": "62f6af76f2aead04a09276011994180649563d317dd97eb1d7495ac9d183b401",
   "base_commit": "1cfbfef00e869c514f88d76782dfcb36e8fa3edf",
-  "status": "frozen_before_experimental_execution",
-  "results_examined": false
+  "status": "frozen_before_confirmatory_execution",
+  "supersedes": "f89ac173ff8a911496f212b53af476c1a6b8e6cf",
+  "prior_experimental_results_inspected": false,
+  "amendment_reason": "Pre-analysis source audit: the native policy may rationally query or wait with its default long deadline. A fixed 0.5s decision horizon and 0.1s action duration, shorter than the existing 1.5s query latency, define a forced binary decision without changing sensors, interventions, sources or thresholds. The initial execution is retained separately as an unanalysed superseded run."
 }

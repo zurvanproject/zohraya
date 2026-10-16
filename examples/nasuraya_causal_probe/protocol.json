@@ -1,25 +1,68 @@
 {
   "schema": "nasuraya-causal-access-probe/1",
-  "seeds": [101, 307, 911],
+  "seeds": [
+    101,
+    307,
+    911
+  ],
   "workspace": {
     "image_side": 10,
-    "noise_probabilities": [0.05, 0.2, 0.4, 0.49],
-    "classes": [0, 1],
-    "arms": ["intact", "broadcast_cut", "offpath_control"],
-    "phases": ["encode", "delay", "restore_encode", "restore_delay"],
+    "noise_probabilities": [
+      0.05,
+      0.2,
+      0.4,
+      0.49
+    ],
+    "classes": [
+      0,
+      1
+    ],
+    "arms": [
+      "intact",
+      "broadcast_cut",
+      "offpath_control"
+    ],
+    "phases": [
+      "encode",
+      "delay",
+      "restore_encode",
+      "restore_delay"
+    ],
     "target": "existing EnvironmentBrain.config.broadcast",
     "control": "existing EnvironmentBrain.config.correlation disabled; all observations have independent acquisition IDs",
     "primary": "paired delayed planner correct-decision rate versus independent stimulus class",
-    "secondary": ["sensor accuracy", "world-belief Brier", "declared work units", "physical validity", "restoration"],
+    "secondary": [
+      "sensor accuracy",
+      "world-belief Brier",
+      "declared work units",
+      "physical validity",
+      "restoration"
+    ],
     "disconfirmation": "A cut must not be called selective if basic sensory output changes or offpath intervention causes a comparable planning loss. An identical consumer_ids list is not independent module evidence.",
     "body_ticks_per_arm": 4,
     "training": false,
-    "confidence_is": "native declared environment belief, not introspective confidence"
+    "confidence_is": "native declared environment belief, not introspective confidence",
+    "decision_deadline_horizon_s": 0.5,
+    "action_duration_s": 0.1,
+    "query_latency_s": 1.5
   },
   "circuit": {
-    "arms": ["intact", "recurrent_cut", "offpath_control", "feedforward_cut"],
-    "currents_pa": [180, 240, 400, 800],
-    "pulse_duration_ms": [10, 40],
+    "arms": [
+      "intact",
+      "recurrent_cut",
+      "offpath_control",
+      "feedforward_cut"
+    ],
+    "currents_pa": [
+      180,
+      240,
+      400,
+      800
+    ],
+    "pulse_duration_ms": [
+      10,
+      40
+    ],
     "dt_ms": 0.5,
     "duration_ms": 320,
     "first_pulse_start_ms": 20,
@@ -35,9 +78,14 @@
     "feedforward_edge": "seat_to_attention",
     "learning": false,
     "learned_forward_weight_ns": 12.0,
-    "voltage_difference_epsilon_mv": 0.000001,
+    "voltage_difference_epsilon_mv": 1e-06,
     "primary": "change in downstream spiking after recurrent intervention versus offpath control",
-    "secondary": ["pulse-input preservation", "causal voltage spread from an actual injected pulse", "recovery response", "same neuron/synapse update counts"],
+    "secondary": [
+      "pulse-input preservation",
+      "causal voltage spread from an actual injected pulse",
+      "recovery response",
+      "same neuron/synapse update counts"
+    ],
     "disconfirmation": "No reproducible downstream change means recurrence relevance is not demonstrated at these preselected inputs. Absence of spikes limits discrimination. Complexity alone is not evidence of consciousness."
   },
   "analysis": {
