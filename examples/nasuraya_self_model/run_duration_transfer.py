@@ -31,6 +31,8 @@ def probe(out, model, pressure, duration, ident, *, learn, vision=None):
     pred = model.begin(b, q)  # prospective durable intent
     atomic_json(out/(ident+'-before.json'), dict(observation=obs, request=q, prediction=pred))
     receipt = b.cycle(**q)
+    if not receipt['owner']['physical_model_valid']:
+        raise ValueError('invalid native effect remains unresolved, never learned')
     result = model.finish(ident, b, receipt, learn=learn)
     atomic_json(out/(ident+'-after.json'), dict(body=b.checkpoint(), receipt=receipt))
     return obs, q, result
@@ -65,6 +67,7 @@ def evaluate(output):
                 preview=fixture(pressure)
                 before=forecasts(models['C'],models['B'],snapshot(preview),
                                  dict(request(preview,'preview',duration),external={}))
+                atomic_json(root/(stage+'-'+str(i)+'-all-arm-prospective.json'),before)
                 for arm in ('B','C') if stage=='warmup' else ('C',):
                     obs, q, result = probe(root,models[arm],pressure,duration,
                                           f'{stage}-{arm}-{i}',learn=True)
@@ -109,6 +112,8 @@ def evaluate(output):
                     prediction=policy_model.begin(b,query)
                     atomic_json(root/(query['event_id']+'-prospective.json'),dict(request=query,prediction=prediction))
                     receipt=b.cycle(**query)
+                    if not receipt['owner']['physical_model_valid']:
+                        raise ValueError('invalid native policy effect')
                     effect=policy_model.finish(query['event_id'],b,receipt,learn=False)
                     atomic_json(root/(query['event_id']+'-after.json'),dict(body=b.checkpoint(),receipt=receipt))
                     after=snapshot(b)

@@ -40,6 +40,8 @@ class DurationMemory:
                 i, r = json.loads(intent), json.loads(result)
                 if not r['learned']:
                     continue
+                if not r['receipt']['owner']['physical_model_valid']:
+                    raise ValueError('invalid physical effects cannot support transfer')
                 key = family(i['before'], i['request'])
                 g = groups.setdefault(key, dict(success=0, failure=0, durations=[]))
                 g['success' if r['admitted'] else 'failure'] += 1

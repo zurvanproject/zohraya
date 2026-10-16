@@ -65,6 +65,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python3 -m examples.nasuraya_self_model.run_duration_transfer evaluate --output /tmp/duration-transfer
+      - run: python3 -m examples.nasuraya_self_model.verify_duration_transfer --output /tmp/duration-transfer
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: duration-transfer-evidence
