@@ -1,4 +1,4 @@
-# Nasuraya Continuity Kit 0.1.0 — private pilot
+# Nasuraya Continuity Kit 0.2.0 — private pilot
 
 An offline command-line tool for durable admission records for bounded,
 operator-authorized jobs. It reuses the repository's existing `continuity.gate`
@@ -11,8 +11,9 @@ request returns its stored receipt after restart. Reusing its ID with changed
 parameters is rejected. An unresolved claim remains blocked until explicit
 resolution; it is not automatically retried after a timeout.
 
-This tool **does not execute jobs** or authorize new external actions. It has
-no scheduler daemon, network, API client, payment function or credentials.
+Version 0.2 adds **one executed local job**: a bounded deterministic integrity
+report published only in this same SQLite database. It has no general job
+callbacks, scheduler daemon, network, API client, payments or credentials.
 Claim idempotency is not exactly-once execution of a real-world effect.
 It does not replace the existing body scheduler or the live GitHub control
 branch. The private pilot's SQLite database is separate from canonical state.
@@ -24,7 +25,7 @@ dependencies. From an unpacked delivery bundle:
 
 ```bash
 python3 -m venv /tmp/nasuraya-kit
-/tmp/nasuraya-kit/bin/python -m pip install --no-index --no-deps nasuraya_continuity_kit-0.1.0-py3-none-any.whl
+/tmp/nasuraya-kit/bin/python -m pip install --no-index --no-deps nasuraya_continuity_kit-0.2.0-py3-none-any.whl
 /tmp/nasuraya-kit/bin/nasuraya-continuity --help
 ```
 
@@ -68,8 +69,8 @@ already installed, build without network or dependency resolution:
 
 ```bash
 SOURCE_DATE_EPOCH=1792159200 python -m pip wheel --no-index --no-deps --no-build-isolation . --wheel-dir /tmp/kit-dist
-python -m unittest nasuraya_continuity_kit.test_store continuity.test_gate project_fund.test_planner -v
-python -m nasuraya_continuity_kit.verify_install --wheel /tmp/kit-dist/nasuraya_continuity_kit-0.1.0-py3-none-any.whl --output /tmp/kit-verify-new
+python -m unittest nasuraya_continuity_kit.test_local_job nasuraya_continuity_kit.test_store continuity.test_gate project_fund.test_planner -v
+python -m nasuraya_continuity_kit.verify_install --wheel /tmp/kit-dist/nasuraya_continuity_kit-0.2.0-py3-none-any.whl --output /tmp/kit-verify-new
 ```
 
 The verifier creates a fresh virtual environment, installs only this wheel
@@ -78,6 +79,81 @@ restart, exact replay, early rejection, unresolved claims and rolling budgets.
 The wheel bundles the canonical gate source at build time, not a separately
 maintained implementation. Control JSON, automation IDs, test fixtures,
 financial journal and body runtime are excluded.
+
+## Execute a bounded local job (0.2)
+
+`run-local` is an explicit one-shot invocation on the trusted host. It does not
+start itself during an outage. The existing enabled/24-hour/daily/unresolved gate
+remains authoritative. The CLI uses actual UTC by default; the following times
+are **injected fixtures**, for a new disposable database, not elapsed waiting:
+
+```bash
+printf '["abc", "", "سلام"]' > /tmp/integrity-input.json
+nasuraya-continuity init --db /tmp/local-job.sqlite --now 2026-10-16T10:22:23Z
+nasuraya-continuity run-local --db /tmp/local-job.sqlite --request-id request1 --run-id run1 --now 2026-10-17T10:22:23Z --input /tmp/integrity-input.json
+nasuraya-continuity inspect-local --db /tmp/local-job.sqlite --run-id run1
+```
+
+The input must be a regular local file: at most 65,536 bytes containing a JSON
+list of at most 256 strings, each at most 256 Unicode characters with valid
+UTF-8 encoding. This bounds both stored input and computation. No output path or
+command is accepted. The report contains SHA-256 of the exact input bytes, each
+string in order, record count and byte counts. It measures integrity fingerprints;
+it does not assert authenticity or compare against an external trusted manifest.
+
+Claim, input snapshot, request binding and `running` job commit atomically using
+the existing admission/receipt adapter. The winning invocation computes a report.
+Report publication, `completed` and the existing `finish` receipt commit atomically
+in the same database. Input is retained so a separate reader can verify the result.
+The optional job table is additive; no canonical body/control state is imported.
+
+Repeat the **exact run-local command**, including timestamp and file bytes, to
+retrieve a completed or abandoned record without computing the report again.
+Changing any bound parameter fails. A legacy `claim` receipt cannot be upgraded
+into execution authority. Competing identical requests have only one executing
+invocation. This guarantee concerns report publication in one local SQLite file;
+it is not a guarantee for arbitrary effects, backup rollback or cross-host workers.
+
+### Process termination and host review
+
+- Before claim transaction commits: no admitted work or budget consumption.
+- After claim, including after computation but before result commit: `running`
+  means unresolved, even if computation might have finished. Exact retries and
+  new work stay blocked indefinitely. The generic `finish` command refuses it.
+- After result/finish commit, including before stdout is delivered: cold replay
+  returns the stored report and does not execute again.
+
+After inspecting the database and confirming the worker has stopped, the host
+can explicitly abandon an unresolved run. The following is a host attestation,
+not automatic process discovery or authentication:
+
+```bash
+nasuraya-continuity abandon-local --db /tmp/local-job.sqlite --request-id review1 --run-id run1 --operator host-name --evidence 'PID was stopped and reaped; no result committed' --worker-stopped
+```
+
+Abandonment retains input, history and the review note, stores **no successful
+result**, never reruns the task and never refunds the rolling daily allowance.
+A late worker cannot publish after abandonment. A new job needs a new ID and a
+fresh gate admission. All writers must use this upgraded adapter; an old binary
+or direct SQL can bypass application-level guards under the trusted-host model.
+
+### Independent offline/crash verification
+
+On Linux with `libseccomp.so.2` installed (a **verifier-only** prerequisite):
+
+```bash
+python -m nasuraya_continuity_kit.verify_local_job --wheel /tmp/kit-dist/nasuraya_continuity_kit-0.2.0-py3-none-any.whl --output /tmp/local-job-verify-new
+```
+
+The verifier denies network syscalls in the kernel, checks EPERM in parent and
+child, installs the wheel with `--no-index --no-deps` into a fresh virtualenv,
+then invokes the installed CLI outside the source checkout. Four workers are
+actually killed with SIGKILL: after claim, after computation, during the result
+transaction and after commit. Replays run with report computation forbidden.
+An independent SQLite/hash reader checks stored inputs, reports and receipts.
+Injected fault hooks are verification code only; the CLI has no crash switches.
+This verifies offline computation without pulling an internet cable or simulating
+a multi-day outage. There is no persistent background execution after this demo.
 
 ## Commercial and financial status
 

@@ -54,35 +54,45 @@ class Store:
                     run_count=self.db.execute('SELECT count(*) FROM runs').fetchone()[0])
 
     def apply(self, operation, request_id, now, run_id=None):
+        with self.db:
+            self.db.execute('BEGIN IMMEDIATE')
+            return self._apply_in_transaction(operation, request_id, now, run_id)
+
+    def _apply_in_transaction(self, operation, request_id, now, run_id=None):
+        """Internal composition point; caller must own the write transaction."""
+        if not self.db.in_transaction:
+            raise ValueError('write transaction required')
         if not isinstance(request_id, str) or not 0 < len(request_id) <= 80:
             raise ValueError('request id required, at most 80 characters')
         if operation not in ('claim', 'finish', 'heartbeat', 'pause'):
             raise ValueError('unknown operation')
         payload = dict(operation=operation, now=now, run_id=run_id)
         digest = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
-        with self.db:
-            self.db.execute('BEGIN IMMEDIATE')
-            previous = self.db.execute('SELECT digest,receipt FROM requests WHERE id=?', (request_id,)).fetchone()
-            if previous:
-                if previous[0] != digest:
-                    raise ValueError('request id already bound to different parameters')
-                return json.loads(previous[1])
-            state = json.loads(self.db.execute('SELECT payload FROM control WHERE singleton=1').fetchone()[0])
-            if operation == 'claim':
-                updated = claim(state, now, run_id)
-                if self.db.execute('SELECT 1 FROM runs WHERE id=?', (run_id,)).fetchone():
-                    raise ValueError('run id cannot be reused, including historical completed runs')
-                self.db.execute('INSERT INTO runs VALUES(?,?,NULL)', (run_id, timestamp(now).isoformat()))
-            elif operation == 'finish':
-                updated = finish(state, now, run_id)
-                if not self.db.execute('SELECT 1 FROM runs WHERE id=?', (run_id,)).fetchone():
-                    raise ValueError('claimed run history missing')
-                self.db.execute('UPDATE runs SET finished_at=? WHERE id=?', (timestamp(now).isoformat(), run_id))
-            else:
-                if run_id is not None:
-                    raise ValueError('run id is only accepted for claim or finish')
-                updated = operator_contact(state, now, pause=operation == 'pause')
-            receipt = dict(request_id=request_id, operation=operation, state_after=updated)
-            self.db.execute('UPDATE control SET payload=? WHERE singleton=1', (json.dumps(updated),))
-            self.db.execute('INSERT INTO requests VALUES(?,?,?)', (request_id, digest, json.dumps(receipt)))
-            return receipt
+        previous = self.db.execute('SELECT digest,receipt FROM requests WHERE id=?', (request_id,)).fetchone()
+        if previous:
+            if previous[0] != digest:
+                raise ValueError('request id already bound to different parameters')
+            return json.loads(previous[1])
+        state = json.loads(self.db.execute('SELECT payload FROM control WHERE singleton=1').fetchone()[0])
+        if operation == 'claim':
+            updated = claim(state, now, run_id)
+            if self.db.execute('SELECT 1 FROM runs WHERE id=?', (run_id,)).fetchone():
+                raise ValueError('run id cannot be reused, including historical completed runs')
+            self.db.execute('INSERT INTO runs VALUES(?,?,NULL)', (run_id, timestamp(now).isoformat()))
+        elif operation == 'finish':
+            if self.db.execute("SELECT 1 FROM sqlite_master WHERE name='local_jobs'").fetchone():
+                job = self.db.execute('SELECT status FROM local_jobs WHERE run_id=?', (run_id,)).fetchone()
+                if job and job[0] not in ('completed', 'abandoned'):
+                    raise ValueError('local job unresolved; host reconciliation required')
+            updated = finish(state, now, run_id)
+            if not self.db.execute('SELECT 1 FROM runs WHERE id=?', (run_id,)).fetchone():
+                raise ValueError('claimed run history missing')
+            self.db.execute('UPDATE runs SET finished_at=? WHERE id=?', (timestamp(now).isoformat(), run_id))
+        else:
+            if run_id is not None:
+                raise ValueError('run id is only accepted for claim or finish')
+            updated = operator_contact(state, now, pause=operation == 'pause')
+        receipt = dict(request_id=request_id, operation=operation, state_after=updated)
+        self.db.execute('UPDATE control SET payload=? WHERE singleton=1', (json.dumps(updated),))
+        self.db.execute('INSERT INTO requests VALUES(?,?,?)', (request_id, digest, json.dumps(receipt)))
+        return receipt
