@@ -7,7 +7,9 @@
   "schedule": "BEGIN:VEVENT\nDTSTART;TZID=Asia/Tehran:20261017T135223\nRRULE:FREQ=HOURLY\nEND:VEVENT",
   "timing_mode": "condition_watch",
   "registered_at": "2026-10-16T10:26:21.152177+00:00",
+  "updated_at": "2026-10-16T10:35:18.091425+00:00",
   "immutable_gate_commit": "5767787d3a1ba17f50b9aba5d6b01c830f38a377",
+  "project_fund_commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
   "execution_observed": false,
-  "scope": "cloud task registered; future execution not yet demonstrated"
+  "scope": "Enabled cloud task updated for bounded product preparation; future execution not yet demonstrated; payments disabled"
 }
