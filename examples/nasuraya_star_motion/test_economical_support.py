@@ -1,4 +1,5 @@
 from copy import deepcopy
+import json
 from pathlib import Path
 import sys
 import unittest
@@ -22,9 +23,9 @@ class EconomicalChecks(unittest.TestCase):
     def test_exact_cold_continuation(self):
         b=EconomicalSupport()
         b.step(GaitEnvironment(body=Inputs(dt_s=.1),external_impulse_N_s=[2.,0.]))
-        saved=checkpoint(b)
+        saved=json.loads(json.dumps(checkpoint(b)))
         c=restore(deepcopy(saved))
-        self.assertEqual(checkpoint(c),saved)
+        self.assertEqual(json.loads(json.dumps(checkpoint(c))),saved)
         e=GaitEnvironment(body=Inputs(dt_s=.1))
         self.assertEqual(b.step(e),c.step(e))
         self.assertEqual(checkpoint(b),checkpoint(c))

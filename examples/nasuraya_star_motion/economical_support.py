@@ -61,21 +61,36 @@ class EconomicalSupport(CoordinatedSupport):
 
 
 def source_hash():
-    return hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    root=Path(__file__).parent
+    return checksum({name:hashlib.sha256((root/name).read_bytes()).hexdigest()
+                     for name in ('economical_support.py','coordinated_support.py')})
 
 
 def checkpoint(body):
     payload = dict(schema='nasuraya-economical-support/1', source=source_hash(),
-                   policy=deepcopy(POLICY), native=body.checkpoint())
+                   policy=deepcopy(POLICY), native=body.checkpoint(),
+                   controller={key:deepcopy(getattr(body,key)) for key in
+                     ('support_searches','support_adjustments','last_support_adjustment')
+                     if hasattr(body,key)})
     return dict(payload=payload, sha256=checksum(payload))
 
 
 def restore(envelope):
+    if not isinstance(envelope,dict) or set(envelope)!={'payload','sha256'}:
+        raise ValueError('malformed economical envelope')
     p = envelope['payload']
-    if (set(envelope) != {'payload', 'sha256'} or envelope['sha256'] != checksum(p)
+    if (not isinstance(p,dict) or set(p)!={'schema','source','policy','native','controller'}
+            or envelope['sha256'] != checksum(p)
             or p['schema'] != 'nasuraya-economical-support/1'
             or p['source'] != source_hash() or p['policy'] != POLICY):
         raise ValueError('economical controller integrity/source/policy mismatch')
+    if not isinstance(p['controller'],dict) or set(p['controller'])-{'support_searches','support_adjustments','last_support_adjustment'}:
+        raise ValueError('economical controller fields')
+    for name in ('support_searches','support_adjustments'):
+        if name in p['controller'] and (type(p['controller'][name]) is not int or p['controller'][name]<0):
+            raise ValueError('invalid economical controller counter')
     body = PostureLoop.restore(p['native'])
     body.__class__ = EconomicalSupport
+    for name,value in p['controller'].items():
+        setattr(body,name,deepcopy(value))
     return body

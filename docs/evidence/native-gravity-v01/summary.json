@@ -1,0 +1,338 @@
+{
+  "schema": "nasuraya-native-gravity-comparison/1",
+  "protocol_sha256": "88c69e7f6ad6fb507754b014abff9f25e30db49309ce6cc54a175080306bafe3",
+  "mean_fuel_saving": -2.247017375256455e-05,
+  "all_valid": true,
+  "all_terminal_contracts": true,
+  "accepted": false,
+  "native_owner_ticks": 1440,
+  "canonical_cycles": 0,
+  "api_calls": 0,
+  "limitations": [
+    "native posture layer only, not whole-body arbitration",
+    "authored deterministic cases; not blinded or human/robot measurements",
+    "constant-height model has no flight and no vertical running bounce",
+    "fuel is native model bookkeeping; CPU prediction cost is separate"
+  ],
+  "cases": [
+    {
+      "case": {
+        "impulse": [
+          0.0,
+          0.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "native": {
+          "valid": true,
+          "fuel_J": 2240.412825508567,
+          "motor_J": 909.3953817904946,
+          "terminal_position_m": 0.0,
+          "terminal_speed_m_s": 0.0,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "coordinated": {
+          "valid": true,
+          "fuel_J": 2240.412825508567,
+          "motor_J": 909.3953817904946,
+          "terminal_position_m": 0.0,
+          "terminal_speed_m_s": 0.0,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "economical": {
+          "valid": true,
+          "fuel_J": 2240.412825508567,
+          "motor_J": 909.3953817904946,
+          "terminal_position_m": 0.0,
+          "terminal_speed_m_s": 0.0,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          2.0,
+          0.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "native": {
+          "valid": true,
+          "fuel_J": 2241.7263502782866,
+          "motor_J": 910.6984414898625,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "coordinated": {
+          "valid": true,
+          "fuel_J": 2241.7263502782866,
+          "motor_J": 910.6984414898625,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "economical": {
+          "valid": true,
+          "fuel_J": 2241.7250902468318,
+          "motor_J": 910.6972464841938,
+          "terminal_position_m": 7.63454537590772e-10,
+          "terminal_speed_m_s": 2.133668606662003e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          -2.0,
+          0.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "native": {
+          "valid": true,
+          "fuel_J": 2241.7263502782866,
+          "motor_J": 910.6984414898625,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "coordinated": {
+          "valid": true,
+          "fuel_J": 2241.7263502782866,
+          "motor_J": 910.6984414898625,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "economical": {
+          "valid": true,
+          "fuel_J": 2241.7250902468318,
+          "motor_J": 910.6972464841938,
+          "terminal_position_m": 7.63454537590772e-10,
+          "terminal_speed_m_s": 2.133668606662003e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          0.0,
+          2.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "native": {
+          "valid": true,
+          "fuel_J": 2244.0257409380865,
+          "motor_J": 912.9795485107684,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "coordinated": {
+          "valid": true,
+          "fuel_J": 2244.0257409380865,
+          "motor_J": 912.9795485107684,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "economical": {
+          "valid": true,
+          "fuel_J": 2244.2417523764334,
+          "motor_J": 913.1941962494674,
+          "terminal_position_m": 2.8716174509948188e-09,
+          "terminal_speed_m_s": 8.025080699500689e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          0.0,
+          -2.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "native": {
+          "valid": true,
+          "fuel_J": 2242.5663041727717,
+          "motor_J": 911.5317461583987,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "coordinated": {
+          "valid": true,
+          "fuel_J": 2242.5663041727717,
+          "motor_J": 911.5317461583987,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "economical": {
+          "valid": true,
+          "fuel_J": 2242.5317933097076,
+          "motor_J": 911.4975416028738,
+          "terminal_position_m": 3.995204527441534e-10,
+          "terminal_speed_m_s": 1.1165718911421221e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          6.0,
+          0.0
+        ],
+        "friction": 0.3
+      },
+      "arms": {
+        "native": {
+          "valid": true,
+          "fuel_J": 2244.287577850266,
+          "motor_J": 913.2393375041042,
+          "terminal_position_m": 8.906144369186889e-10,
+          "terminal_speed_m_s": 2.489079211608489e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "coordinated": {
+          "valid": true,
+          "fuel_J": 2244.287577850266,
+          "motor_J": 913.2393375041042,
+          "terminal_position_m": 8.906144369186889e-10,
+          "terminal_speed_m_s": 2.489079211608489e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "economical": {
+          "valid": true,
+          "fuel_J": 2244.2776493877204,
+          "motor_J": 913.2299101328279,
+          "terminal_position_m": 7.703455878952005e-09,
+          "terminal_speed_m_s": 2.1528413139502087e-08,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          0.0,
+          6.0
+        ],
+        "friction": 0.3
+      },
+      "arms": {
+        "native": {
+          "valid": true,
+          "fuel_J": 2251.241652990073,
+          "motor_J": 920.1386203162938,
+          "terminal_position_m": 8.906144369186889e-10,
+          "terminal_speed_m_s": 2.489079211608489e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "coordinated": {
+          "valid": true,
+          "fuel_J": 2251.241652990073,
+          "motor_J": 920.1386203162938,
+          "terminal_position_m": 8.906144369186889e-10,
+          "terminal_speed_m_s": 2.489079211608489e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "economical": {
+          "valid": true,
+          "fuel_J": 2251.898717519489,
+          "motor_J": 920.7915040157964,
+          "terminal_position_m": 9.234659234908987e-09,
+          "terminal_speed_m_s": 2.5807200612633326e-08,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          4.0,
+          -4.0
+        ],
+        "friction": 0.3
+      },
+      "arms": {
+        "native": {
+          "valid": true,
+          "fuel_J": 2245.135131880849,
+          "motor_J": 914.0802421290401,
+          "terminal_position_m": 8.396793436904579e-10,
+          "terminal_speed_m_s": 2.3467263859184374e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "coordinated": {
+          "valid": true,
+          "fuel_J": 2245.135131880849,
+          "motor_J": 914.0802421290401,
+          "terminal_position_m": 8.396793436904579e-10,
+          "terminal_speed_m_s": 2.3467263859184374e-09,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        },
+        "economical": {
+          "valid": true,
+          "fuel_J": 2244.7143265319196,
+          "motor_J": 913.6633528937788,
+          "terminal_position_m": 6.308959176009574e-09,
+          "terminal_speed_m_s": 1.763143899426691e-08,
+          "actual_ticks": 60,
+          "minimum_support": 1.0
+        }
+      }
+    }
+  ],
+  "validation": {
+    "new_unit_tests_passed": 6,
+    "first_and_final_physical_rows_equal": true,
+    "cold_process_canonical_json_restore_with_all_step_methods_forbidden": true,
+    "restore_ticks": 0,
+    "native_source_and_design_files_unchanged": 61,
+    "native_changed": [],
+    "legacy_balance_suite": {
+      "passed_before_block": 9,
+      "complete": false,
+      "block": "ModuleNotFoundError: breath_motion in historical v05 migration check; dependency absent from pinned repository."
+    },
+    "independent_audit_ticks": 120,
+    "canonical_state_advanced": false
+  }
+}
