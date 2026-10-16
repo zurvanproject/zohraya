@@ -1,0 +1,25 @@
+test_severe_regional_guard_still_fails (test_reverse_closure.PredictionScopeTests.test_severe_regional_guard_still_fails) ... ok
+test_stand_keeps_prediction_in_double_support_and_lower (test_reverse_closure.PredictionScopeTests.test_stand_keeps_prediction_in_double_support_and_lower) ... ok
+test_zero_friction_still_fails (test_reverse_closure.PredictionScopeTests.test_zero_friction_still_fails) ... ok
+test_feasible_nominal_transfer_is_not_changed (test_reverse_transfer.TransferPolicyTests.test_feasible_nominal_transfer_is_not_changed) ... ok
+test_routes_have_identical_home_radius_and_reverse_order (test_reverse_transfer.TransferPolicyTests.test_routes_have_identical_home_radius_and_reverse_order) ... ok
+test_committed_retry_does_not_charge_or_move (test_motion_recovery.RecoveryTests.test_committed_retry_does_not_charge_or_move) ... ok
+test_corrupt_or_conflicting_durable_outcomes_stay_blocked (test_motion_recovery.RecoveryTests.test_corrupt_or_conflicting_durable_outcomes_stay_blocked) ... ok
+test_crash_after_body_before_goal_bookkeeping_blocks (test_motion_recovery.RecoveryTests.test_crash_after_body_before_goal_bookkeeping_blocks) ... ok
+test_crash_after_commit_before_response_deduplicates (test_motion_recovery.RecoveryTests.test_crash_after_commit_before_response_deduplicates) ... ok
+test_crash_after_durable_outcome_recovers_without_native_replay (test_motion_recovery.RecoveryTests.test_crash_after_durable_outcome_recovers_without_native_replay) ... ok
+test_crash_after_goal_before_commit_blocks (test_motion_recovery.RecoveryTests.test_crash_after_goal_before_commit_blocks) ... ok
+test_crash_after_intent_before_action_blocks (test_motion_recovery.RecoveryTests.test_crash_after_intent_before_action_blocks) ... ok
+test_crash_in_actual_native_substep_blocks (test_motion_recovery.RecoveryTests.test_crash_in_actual_native_substep_blocks) ... ok
+test_crash_inside_commit_rolls_back_goal_and_keeps_intent (test_motion_recovery.RecoveryTests.test_crash_inside_commit_rolls_back_goal_and_keeps_intent) ... ok
+test_existing_destination_never_overwritten (test_motion_recovery.RecoveryTests.test_existing_destination_never_overwritten) ... ok
+test_load_automatically_validates_and_publishes_saved_outcome (test_motion_recovery.RecoveryTests.test_load_automatically_validates_and_publishes_saved_outcome) ... ok
+test_stale_writer_and_conflicting_retry_reject (test_motion_recovery.RecoveryTests.test_stale_writer_and_conflicting_retry_reject) ... ok
+test_tampered_goal_fails_before_intent_or_action (test_motion_recovery.RecoveryTests.test_tampered_goal_fails_before_intent_or_action) ... ok
+test_two_fresh_writers_recover_one_outcome_without_another_tick (test_motion_recovery.RecoveryTests.test_two_fresh_writers_recover_one_outcome_without_another_tick) ... ok
+test_two_fresh_writers_same_token_execute_only_once (test_motion_recovery.RecoveryTests.test_two_fresh_writers_same_token_execute_only_once) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 28.097s
+
+OK

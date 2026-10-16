@@ -129,3 +129,23 @@ SQLite journal, decisions and final session preserve the next continuation.
 The input files remain unchanged. Session learning is retained inside that
 session; it does not overwrite the input self-model database. No live model API
 or official body-state publication is part of this driver.
+
+
+## Bounded experiential sessions (Sprint 01)
+
+See [the Persian integration report](../../docs/nasuraya-evolution-sprint-01-integration-fa.md).
+`LearningSession` reuses the verified source model, native actions and
+`MotionJournal` to atomically preserve body, prospective decisions and receipt-based
+experience. Three explicitly granted practice probes can precede self-selected
+walk/observe/recovery actions. The fixed identity core and 12-tick maximum cannot
+be changed through learning. Unknown effects block continuation.
+
+```
+python3 -m unittest examples.nasuraya_self_model.test_embodied_learning -v
+python3 -m examples.nasuraya_self_model.run_sprint evaluate --output /tmp/NEW-sprint
+python3 -m examples.nasuraya_self_model.session_cli resume --journal /private/session.sqlite
+```
+
+The experiment separates unused memory, frozen retrieved memory and adaptive
+receipt-count learning. Held-out common-action probes disable updates. This
+measures software action admission, not completed gait or phenomenal consciousness.
