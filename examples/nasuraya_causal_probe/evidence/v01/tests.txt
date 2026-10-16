@@ -1,0 +1,15 @@
+test_broadcast_intervention_really_changes_native_packet_and_restores (examples.nasuraya_causal_probe.test_study.ProbeTests.test_broadcast_intervention_really_changes_native_packet_and_restores) ... ok
+test_frozen_protocol_digest_and_fixed_bounds (examples.nasuraya_causal_probe.test_study.ProbeTests.test_frozen_protocol_digest_and_fixed_bounds) ... ok
+test_modified_raw_receipt_is_rejected (examples.nasuraya_causal_probe.test_study.ProbeTests.test_modified_raw_receipt_is_rejected) ... ok
+test_neural_probe_resets_only_granted_edge_and_never_trains (examples.nasuraya_causal_probe.test_study.ProbeTests.test_neural_probe_resets_only_granted_edge_and_never_trains) ... ok
+test_original_fixture_and_native_source_not_mutated (examples.nasuraya_causal_probe.test_study.ProbeTests.test_original_fixture_and_native_source_not_mutated) ... ok
+test_private_edge_intervention_preserves_state_and_rejects_bad_edge (examples.nasuraya_causal_probe.test_study.ProbeTests.test_private_edge_intervention_preserves_state_and_rejects_bad_edge) ... ok
+test_sensor_uses_pixels_without_ground_truth_or_arm (examples.nasuraya_causal_probe.test_study.ProbeTests.test_sensor_uses_pixels_without_ground_truth_or_arm) ... ok
+test_unknown_arms_cannot_execute (examples.nasuraya_causal_probe.test_study.ProbeTests.test_unknown_arms_cannot_execute) ... ok
+test_work_quotas_and_safety_gates_remain_native (examples.nasuraya_causal_probe.test_study.ProbeTests.test_work_quotas_and_safety_gates_remain_native) ... ok
+test_workspace_real_owner_steps_are_bounded_and_cold_restore_exact (examples.nasuraya_causal_probe.test_study.ProbeTests.test_workspace_real_owner_steps_are_bounded_and_cold_restore_exact) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.442s
+
+OK

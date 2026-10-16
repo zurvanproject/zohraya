@@ -64,6 +64,26 @@ class ProbeTests(unittest.TestCase):
         self.assertEqual(result['plan']['command'],'stand')
         self.assertLessEqual(result['work_units'],result['work_quota'])
 
+    def test_modified_raw_receipt_is_rejected(self):
+        import gzip
+        from .verify import read_raw
+        with tempfile.TemporaryDirectory() as d:
+            p=Path(d)/'receipt.json.gz'
+            p.write_bytes(gzip.compress(b'{"value":1}'))
+            h=hashlib.sha256(p.read_bytes()).hexdigest()
+            self.assertEqual(read_raw(Path(d),p.name,h),{'value':1})
+            p.write_bytes(gzip.compress(b'{"value":2}'))
+            with self.assertRaises(ValueError):read_raw(Path(d),p.name,h)
+
+    def test_neural_probe_resets_only_granted_edge_and_never_trains(self):
+        p=protocol()['circuit']
+        r=circuit_trial(dict(current_pa=421.,duration_ms=20.),'recurrent_cut',p)
+        self.assertEqual(r['final']['tick'],640)
+        self.assertFalse(r['plasticity'])
+        self.assertEqual(r['final']['connections']['association_to_attention']['weight_ns'],1.)
+        self.assertTrue(all(not x['plastic'] for x in r['final']['synapses']))
+        self.assertEqual(r['update_counts'],dict(neuron_updates=3840,synapse_updates=5760))
+
     def test_unknown_arms_cannot_execute(self):
         p=protocol()
         with patch.object(BrainBodyLoop,'step',side_effect=AssertionError('must reject first')):
