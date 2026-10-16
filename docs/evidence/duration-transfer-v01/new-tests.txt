@@ -1,0 +1,12 @@
+test_frozen_and_reopened_ledgers_predict_identically_with_no_actions (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_frozen_and_reopened_ledgers_predict_identically_with_no_actions) ... ok
+test_invalid_physical_label_rejects_even_with_repaired_ledger_hash (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_invalid_physical_label_rejects_even_with_repaired_ledger_hash) ... ok
+test_never_extrapolates_or_pools_sensory_and_action_contexts (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_never_extrapolates_or_pools_sensory_and_action_contexts) ... ok
+test_only_completed_learned_receipts_can_supply_transfer_evidence (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_only_completed_learned_receipts_can_supply_transfer_evidence) ... ok
+test_pending_and_invalid_duration_fail_closed (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_pending_and_invalid_duration_fail_closed) ... ok
+test_safety_regime_and_source_identity_never_share_counts (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_safety_regime_and_source_identity_never_share_counts) ... ok
+test_transfer_changes_unseen_duration_advice_without_exact_retrieval (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_transfer_changes_unseen_duration_advice_without_exact_retrieval) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 53.546s
+
+OK

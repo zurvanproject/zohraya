@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.12'
-      - run: python3 -m unittest examples.nasuraya_self_model.test_monitor examples.nasuraya_self_model.test_goal_bridge examples.nasuraya_self_model.test_regulation examples.nasuraya_self_model.test_planning examples.nasuraya_self_model.test_energy examples.nasuraya_self_model.test_route_trial examples.nasuraya_self_model.test_decision_relevance examples.nasuraya_self_model.test_metacognitive_control examples.nasuraya_self_model.test_experiential_sprint examples.nasuraya_self_model.test_embodied_learning -v
+      - run: python3 -m unittest examples.nasuraya_self_model.test_monitor examples.nasuraya_self_model.test_goal_bridge examples.nasuraya_self_model.test_regulation examples.nasuraya_self_model.test_planning examples.nasuraya_self_model.test_energy examples.nasuraya_self_model.test_route_trial examples.nasuraya_self_model.test_decision_relevance examples.nasuraya_self_model.test_metacognitive_control examples.nasuraya_self_model.test_experiential_sprint examples.nasuraya_self_model.test_embodied_learning examples.nasuraya_self_model.test_duration_transfer -v
       - run: python3 -m examples.nasuraya_self_model.evaluate evaluate --output /tmp/self-model-evaluation
   metacognitive-challenge:
     runs-on: ubuntu-latest
@@ -55,3 +55,18 @@ jobs:
             /tmp/experiential-body-trial/results.json
             /tmp/experiential-body-trial/frozen-protocol.json
             /tmp/experiential-body-trial/cold-*.json
+
+  duration-transfer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - run: python3 -m examples.nasuraya_self_model.run_duration_transfer evaluate --output /tmp/duration-transfer
+      - run: python3 -m examples.nasuraya_self_model.verify_duration_transfer --output /tmp/duration-transfer
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: duration-transfer-evidence
+          path: /tmp/duration-transfer

@@ -1,5 +1,27 @@
 # Evidence-linked functional self-model
 
+For opt-in, receipt-verified transfer between previously untested **intermediate
+durations**, see [the duration-transfer review](../../docs/nasuraya-duration-transfer-v01-fa.md).
+`DurationMemory` reconstructs bounded pooled admission counts from the existing
+`SelfModel` SQLite ledger; it creates no alternate memory store or action grant.
+Exact context retrieval remains the default everywhere else. The native model,
+all saved contracts and canonical body checkpoints remain unchanged.
+
+```
+python3 -m unittest examples.nasuraya_self_model.test_duration_transfer -v
+python3 -m examples.nasuraya_self_model.run_duration_transfer evaluate --output /private/NEW-transfer
+python3 -m examples.nasuraya_self_model.verify_duration_transfer --output /private/NEW-transfer
+```
+
+The five comparisons are a fixed prior (A), frozen exact retrieval (B), adaptive
+bounded pooling (C), exact retrieval on the **same adaptive data** (`C_exact`),
+and pooling on frozen warmup data (`C_frozen_pool`). All holdout predictions use
+the same prospective walk request. Policy effects use separate native body
+instances; holdout and policy outcomes never update either training ledger.
+Interpolation assumes duration invariance within a fixed source/action/body
+regime and input context. It refuses conflicting labels, unseen families and
+extrapolation. This assumption is authored, not autonomously discovered.
+
 For progress prediction, time/fuel cost correction and continuation through
 the remaining route, see [PLANNING.md](PLANNING.md).
 
