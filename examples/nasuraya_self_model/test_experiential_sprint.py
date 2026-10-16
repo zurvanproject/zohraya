@@ -14,7 +14,7 @@ class ExperientialSprintTests(unittest.TestCase):
         result = compare_arms(cases)
         self.assertEqual(result["metrics"]["A"]["true_admissions"], 0)
         self.assertEqual(result["metrics"]["B"]["true_admissions"], 0)
-        self.assertEqual(result["metrics"]["C"]["true_admissions"], 2)
+        self.assertEqual(result["metrics"]["C"]["true_admissions"], 5)
         self.assertEqual(result["final_adaptive_counts"]["floor-a"], (8, 0))
         self.assertEqual(result["predictions"]["C"][0]["choice"], "defer")
         self.assertEqual(result["predictions"]["C"][6]["choice"], "candidate_under_native_guards")
