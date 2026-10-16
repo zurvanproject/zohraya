@@ -1,0 +1,101 @@
+name: Nasuraya defense sentinel
+on:
+  push:
+    branches: ['nasuraya/defense-visual-v02']
+    paths:
+      - 'examples/nasuraya_security/**'
+      - 'examples/nasuraya_star_motion/**'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-defense-sentinel.yml'
+  pull_request:
+    paths:
+      - 'examples/nasuraya_security/**'
+      - 'examples/nasuraya_star_motion/**'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-defense-sentinel.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  defense:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify trusted source baseline before importing project code
+        run: |
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path,PurePosixPath
+          root=Path.cwd()
+          baseline=root/'examples/nasuraya_security/source_baseline.json'
+          expected='e477c0da0685fbedc01c5881d49c6e0842aea889a5ec54007070af4943467b93'
+          data=baseline.read_bytes()
+          assert len(data)<=128*1024 and hashlib.sha256(data).hexdigest()==expected,'unreviewed baseline'
+          manifest=json.loads(data)
+          assert len(manifest)==68
+          for name,h in manifest.items():
+              relative=PurePosixPath(name)
+              assert not relative.is_absolute() and '..' not in relative.parts
+              path=root
+              for part in relative.parts:
+                  path=path/part
+                  assert not path.is_symlink()
+              assert path.is_file() and path.stat().st_size<=3*1024*1024
+              assert hashlib.sha256(path.read_bytes()).hexdigest()==h, 'source drift: '+name
+          print('68 pinned source files verified')
+          visual=root/'examples/nasuraya_security/visual_source_baseline.json'
+          data=visual.read_bytes()
+          assert hashlib.sha256(data).hexdigest()=='d88e37796ad7b61da0d3e3f54cab6b6ba1036c96966c8db4b9d645bf7e577351','unreviewed visual baseline'
+          entries=json.loads(data)
+          assert len(entries)==4
+          for name,h in entries.items():
+              relative=PurePosixPath(name)
+              assert not relative.is_absolute() and '..' not in relative.parts
+              path=root
+              for part in relative.parts:
+                  path=path/part
+                  assert not path.is_symlink()
+              assert path.is_file() and path.stat().st_size<=128*1024
+              assert hashlib.sha256(path.read_bytes()).hexdigest()==h,'visual source drift: '+name
+          print('4 visual observer/test files verified; original guard baseline unchanged')
+          PY
+      - name: Exercise defense and existing evidence-reuse contracts
+        run: |
+          python3 -m unittest discover -s examples/nasuraya_security -p 'test_*.py' -v
+          python3 -m unittest discover -s examples/nasuraya_star_motion -p test_time_mining.py -v
+          node examples/nasuraya_security/test_visual_console.cjs
+      - name: Verify guarded entry point across fresh processes
+        run: |
+          python3 - <<'PY'
+          import json,subprocess,sys,tempfile
+          from pathlib import Path
+          root=Path.cwd()
+          with tempfile.TemporaryDirectory() as directory:
+              p=Path(directory)
+              request={'kind':'get','task':{'impulse':[0.,0.],'friction':.6,'seconds':.1,'dt':.1}}
+              (p/'request.json').write_text(json.dumps(request))
+              command=[sys.executable,'examples/nasuraya_security/guarded_run.py','--repo-root',str(root),
+                  '--manifest','examples/nasuraya_security/source_baseline.json',
+                  '--expected-manifest-sha256','e477c0da0685fbedc01c5881d49c6e0842aea889a5ec54007070af4943467b93',
+                  '--cache',str(p/'cache'),'--alerts',str(p/'alerts.sqlite'),'--request',str(p/'request.json')]
+              results=[subprocess.run(command,check=True,capture_output=True,text=True) for _ in range(2)]
+              first,second=[json.loads(r.stdout) for r in results]
+              assert first['allowed'] and second['allowed']
+              assert first['actual_ticks']==1 and second['actual_ticks']==0
+              assert first['receipt_sha256']==second['receipt_sha256']
+              print('guarded first execution and cold-process reuse verified')
+              before=(p/'alerts.sqlite').read_bytes()
+              subprocess.run([sys.executable,'examples/nasuraya_security/visual_status.py',
+                  '--repo-root',str(root),'--manifest','examples/nasuraya_security/source_baseline.json',
+                  '--expected-manifest-sha256','e477c0da0685fbedc01c5881d49c6e0842aea889a5ec54007070af4943467b93',
+                  '--alerts',str(p/'alerts.sqlite'),'--output',str(p/'visual')],check=True)
+              snapshot=json.loads((p/'visual/status.json').read_text())
+              assert snapshot['state']=='healthy' and snapshot['audit']['events']==4
+              assert (p/'alerts.sqlite').read_bytes()==before
+              assert (p/'visual/index.html').is_file()
+              print('read-only visual export verified against actual guarded execution')
+          PY
