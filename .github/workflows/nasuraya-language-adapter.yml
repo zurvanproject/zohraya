@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'examples/nasuraya_language_adapter/**'
+      - 'examples/nasuraya_lm_internals/**'
       - 'examples/nasuraya_language_choice/**'
       - 'examples/nasuraya_language_transfer/**'
       - 'examples/nasuraya_language_body/**'
@@ -14,6 +15,7 @@ on:
     branches: [main, 'nasuraya/**']
     paths:
       - 'examples/nasuraya_language_adapter/**'
+      - 'examples/nasuraya_lm_internals/**'
       - 'examples/nasuraya_language_choice/**'
       - 'examples/nasuraya_language_transfer/**'
       - 'examples/nasuraya_language_body/**'
@@ -39,4 +41,4 @@ jobs:
           .weight-env/bin/python -m pip install 'torch==2.8.0+cpu' --index-url https://download.pytorch.org/whl/cpu
           .weight-env/bin/python -m pip install -r examples/nasuraya_language_adapter/requirements.lock.txt
           .weight-env/bin/python -m pip install -r examples/nasuraya_agent_loop/requirements-api.lock.txt
-          .weight-env/bin/python -m unittest examples.nasuraya_language_adapter.test_adapter examples.nasuraya_language_choice.test_choice examples.nasuraya_language_transfer.test_transfer examples.nasuraya_language_body.test_body_language -v
+          .weight-env/bin/python -m unittest examples.nasuraya_lm_internals.test_probe examples.nasuraya_language_adapter.test_adapter examples.nasuraya_language_choice.test_choice examples.nasuraya_language_transfer.test_transfer examples.nasuraya_language_body.test_body_language -v
