@@ -1,0 +1,24 @@
+{
+  "schema": "nasuraya-payment-route-research/1",
+  "requested_at": "2026-10-16T14:26:34+03:30",
+  "status": "queued_in_existing_absence_task",
+  "objective": "Find a lawful project receipt/payment route without the founder opening a foreign personal bank account",
+  "declared_constraint": "Founder in Iran; no financial host presently nominated",
+  "scope": "Independent primary-source research, eligibility comparison and unsent inquiry preparation only",
+  "candidate_fields": [
+    "provider",
+    "official_sources_and_date",
+    "Iran_residency_eligibility",
+    "accepted_revenue_types",
+    "direct_vendor_payment_support",
+    "fees_and_currencies",
+    "responsible_human_onboarding",
+    "setup_required_before_outage",
+    "next_verification_step"
+  ],
+  "financial_execution_enabled": false,
+  "host_application_authorized": false,
+  "account_or_wallet_creation_authorized": false,
+  "contact_timestamp_unchanged": true,
+  "schedule_unchanged": true
+}
