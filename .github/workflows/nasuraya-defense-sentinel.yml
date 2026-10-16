@@ -1,7 +1,7 @@
 name: Nasuraya defense sentinel
 on:
   push:
-    branches: ['nasuraya/defense-visual-v02']
+    branches: ['nasuraya/defense-visual-v02', 'nasuraya/guarded-cycle-v03']
     paths:
       - 'examples/nasuraya_security/**'
       - 'examples/nasuraya_star_motion/**'
@@ -62,12 +62,33 @@ jobs:
               assert path.is_file() and path.stat().st_size<=128*1024
               assert hashlib.sha256(path.read_bytes()).hexdigest()==h,'visual source drift: '+name
           print('4 visual observer/test files verified; original guard baseline unchanged')
+          combined=root/'examples/nasuraya_security/cycle_source_baseline.json'
+          data=combined.read_bytes()
+          assert len(data)<=128*1024
+          assert hashlib.sha256(data).hexdigest()=='da47ef2eb214c249764433fd2d8f7649adf110bca08d6d64329f8ec0786d7a68','unreviewed cycle baseline'
+          entries=json.loads(data)
+          assert len(entries)==77
+          for name,h in entries.items():
+              relative=PurePosixPath(name)
+              assert not relative.is_absolute() and '..' not in relative.parts
+              path=root
+              for part in relative.parts:
+                  path=path/part
+                  assert not path.is_symlink()
+              assert path.is_file() and path.stat().st_size<=3*1024*1024
+              assert hashlib.sha256(path.read_bytes()).hexdigest()==h,'cycle source drift: '+name
+          print('77 combined source/config/test files verified; previous manifests preserved')
           PY
       - name: Exercise defense and existing evidence-reuse contracts
         run: |
           python3 -m unittest discover -s examples/nasuraya_security -p 'test_*.py' -v
           python3 -m unittest discover -s examples/nasuraya_star_motion -p test_time_mining.py -v
           node examples/nasuraya_security/test_visual_console.cjs
+      - name: Exercise existing decision and experience engines
+        working-directory: runtimes/tadash_body
+        run: |
+          python3 -m unittest discover -s tests -p test_decision_core.py -v
+          python3 -m unittest test_reflection_cycle.ReflectionTests -v
       - name: Verify guarded entry point across fresh processes
         run: |
           python3 - <<'PY'
@@ -98,4 +119,16 @@ jobs:
               assert (p/'alerts.sqlite').read_bytes()==before
               assert (p/'visual/index.html').is_file()
               print('read-only visual export verified against actual guarded execution')
+          PY
+      - name: Verify guarded decision-tool-experience integration and paired timing
+        run: |
+          python3 - <<'PY'
+          import subprocess,sys,tempfile
+          from pathlib import Path
+          root=Path.cwd()
+          with tempfile.TemporaryDirectory() as directory:
+              subprocess.run([sys.executable,'examples/nasuraya_security/run_cycle_demo.py',
+                  '--repo-root',str(root),'--manifest','examples/nasuraya_security/cycle_source_baseline.json',
+                  '--expected-manifest-sha256','da47ef2eb214c249764433fd2d8f7649adf110bca08d6d64329f8ec0786d7a68',
+                  '--output',str(Path(directory)/'evidence')],check=True)
           PY

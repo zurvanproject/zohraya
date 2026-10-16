@@ -1,0 +1,42 @@
+
+test_abstention_and_no_evidence (test_decision_core.DecisionCoreTests.test_abstention_and_no_evidence) ... ok
+test_budget_unknown_tail (test_decision_core.DecisionCoreTests.test_budget_unknown_tail) ... ok
+test_config_changes_cost_tradeoff (test_decision_core.DecisionCoreTests.test_config_changes_cost_tradeoff) ... ok
+test_future_harm_not_discounted_out_of_gate (test_decision_core.DecisionCoreTests.test_future_harm_not_discounted_out_of_gate) ... ok
+test_high_benefit_cannot_override_gate (test_decision_core.DecisionCoreTests.test_high_benefit_cannot_override_gate) ... ok
+test_invalid_inputs (test_decision_core.DecisionCoreTests.test_invalid_inputs) ... ok
+test_missing_ethics_visible (test_decision_core.DecisionCoreTests.test_missing_ethics_visible) ... ok
+test_order_and_ties_repeatable (test_decision_core.DecisionCoreTests.test_order_and_ties_repeatable) ... ok
+test_three_scenarios (test_decision_core.DecisionCoreTests.test_three_scenarios) ... ok
+test_uncertainty_increases_risk_and_reduces_score (test_decision_core.DecisionCoreTests.test_uncertainty_increases_risk_and_reduces_score) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK
+test_atomic_runtime_feedback_update_rejects_stale_snapshot (test_reflection_cycle.ReflectionTests.test_atomic_runtime_feedback_update_rejects_stale_snapshot) ... ok
+test_backup_survives_original_database_removal (test_reflection_cycle.ReflectionTests.test_backup_survives_original_database_removal) ... ok
+test_caught_executor_failure_is_recorded_and_retrievable (test_reflection_cycle.ReflectionTests.test_caught_executor_failure_is_recorded_and_retrievable) ... ok
+test_changed_action_semantics_not_penalized (test_reflection_cycle.ReflectionTests.test_changed_action_semantics_not_penalized) ... ok
+test_commitment_cannot_complete_early_or_change_target (test_reflection_cycle.ReflectionTests.test_commitment_cannot_complete_early_or_change_target) ... ok
+test_conflicting_feedback_does_not_change_ledger (test_reflection_cycle.ReflectionTests.test_conflicting_feedback_does_not_change_ledger) ... ok
+test_conflicting_request_does_not_change_ledger (test_reflection_cycle.ReflectionTests.test_conflicting_request_does_not_change_ledger) ... ok
+test_contradictory_observations_do_not_hide_behind_matching_one (test_reflection_cycle.ReflectionTests.test_contradictory_observations_do_not_hide_behind_matching_one) ... ok
+test_expired_observation_is_not_current_support (test_reflection_cycle.ReflectionTests.test_expired_observation_is_not_current_support) ... ok
+test_foreign_database_is_not_adopted (test_reflection_cycle.ReflectionTests.test_foreign_database_is_not_adopted) ... ok
+test_frozen_contract_cases (test_reflection_cycle.ReflectionTests.test_frozen_contract_cases) ... ok
+test_identical_execution_replay_is_not_reexecuted (test_reflection_cycle.ReflectionTests.test_identical_execution_replay_is_not_reexecuted) ... ok
+test_inference_and_authored_evidence_do_not_authorize_factual_claim (test_reflection_cycle.ReflectionTests.test_inference_and_authored_evidence_do_not_authorize_factual_claim) ... ok
+test_interruption_requires_explicit_outcome_resolution (test_reflection_cycle.ReflectionTests.test_interruption_requires_explicit_outcome_resolution) ... ok
+test_invalid_feedback_is_rejected_before_executor_runs (test_reflection_cycle.ReflectionTests.test_invalid_feedback_is_rejected_before_executor_runs) ... ok
+test_new_process_recalls_feedback_and_commitment (test_reflection_cycle.ReflectionTests.test_new_process_recalls_feedback_and_commitment) ... ok
+test_no_eligible_action_abstains_without_execution (test_reflection_cycle.ReflectionTests.test_no_eligible_action_abstains_without_execution) ... ok
+test_permutation_keeps_selection (test_reflection_cycle.ReflectionTests.test_permutation_keeps_selection) ... ok
+test_two_connections_share_execution_receipt (test_reflection_cycle.ReflectionTests.test_two_connections_share_execution_receipt) ... ok
+test_unverified_feedback_cannot_change_preference (test_reflection_cycle.ReflectionTests.test_unverified_feedback_cannot_change_preference) ... ok
+test_verified_success_supersedes_previous_negative (test_reflection_cycle.ReflectionTests.test_verified_success_supersedes_previous_negative) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.127s
+
+OK
