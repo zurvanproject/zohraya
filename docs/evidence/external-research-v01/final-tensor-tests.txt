@@ -1,0 +1,15 @@
+test_fixed_seed_model_training_is_reproducible (examples.nasuraya_research.test_adapters.TensorChecks.test_fixed_seed_model_training_is_reproducible) ... ok
+test_invalid_frame_yaw_rejected (examples.nasuraya_research.test_adapters.TensorChecks.test_invalid_frame_yaw_rejected) ... /workspace/scratch/cd8d12945291/research-env/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+ok
+test_json_weight_restore_preserves_inference_and_rejects_damage (examples.nasuraya_research.test_adapters.TensorChecks.test_json_weight_restore_preserves_inference_and_rejects_damage) ... ok
+test_mjlab_coordinate_conversion_has_independent_known_rotation (examples.nasuraya_research.test_adapters.TensorChecks.test_mjlab_coordinate_conversion_has_independent_known_rotation) ... ok
+test_predictive_limits_and_invalid_sensor_values (examples.nasuraya_research.test_adapters.TensorChecks.test_predictive_limits_and_invalid_sensor_values) ... ok
+test_predvla_training_and_latent_inference_have_no_actuation (examples.nasuraya_research.test_adapters.TensorChecks.test_predvla_training_and_latent_inference_have_no_actuation) ... ok
+test_sensory_sample_has_no_future_label_and_cannot_advance_body (examples.nasuraya_research.test_adapters.TensorChecks.test_sensory_sample_has_no_future_label_and_cannot_advance_body) ... ok
+test_zero_delta_pose_uses_mjlab_fix_without_nan (examples.nasuraya_research.test_adapters.TensorChecks.test_zero_delta_pose_uses_mjlab_fix_without_nan) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 16.735s
+
+OK

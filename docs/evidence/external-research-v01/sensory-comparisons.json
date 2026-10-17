@@ -1,0 +1,752 @@
+[
+  {
+    "improved_reconstruction": true,
+    "measures": [
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 2.32947277254425e-05,
+              "q_mse": 0.023237168788909912
+            },
+            {
+              "geometry_mse": 1.2193915608804673e-05,
+              "q_mse": 0.028871819376945496
+            },
+            {
+              "geometry_mse": 7.354366971412674e-06,
+              "q_mse": 0.02863001637160778
+            },
+            {
+              "geometry_mse": 4.611275926436065e-06,
+              "q_mse": 0.02944227121770382
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 1.1863571558023978e-05,
+          "mean_q_mse": 0.027545318938791752,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 1.2801689990737941e-05,
+              "q_mse": 0.027927646413445473
+            },
+            {
+              "geometry_mse": 7.589035249111475e-06,
+              "q_mse": 0.030751502141356468
+            },
+            {
+              "geometry_mse": 8.363207598449662e-06,
+              "q_mse": 0.030603723600506783
+            },
+            {
+              "geometry_mse": 6.097170626162551e-06,
+              "q_mse": 0.030704736709594727
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 8.712775866115408e-06,
+          "mean_q_mse": 0.029996902216225863,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      },
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 8.87166697793873e-06,
+              "q_mse": 0.0014834109460934997
+            },
+            {
+              "geometry_mse": 8.14587838249281e-06,
+              "q_mse": 0.002469642786309123
+            },
+            {
+              "geometry_mse": 4.595810878527118e-06,
+              "q_mse": 0.002529794117435813
+            },
+            {
+              "geometry_mse": 4.290122888050973e-06,
+              "q_mse": 0.00258993380703032
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 6.475869781752408e-06,
+          "mean_q_mse": 0.002268195414217189,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 1.2801689990737941e-05,
+              "q_mse": 0.002074946416541934
+            },
+            {
+              "geometry_mse": 7.589035249111475e-06,
+              "q_mse": 0.002880287356674671
+            },
+            {
+              "geometry_mse": 8.363207598449662e-06,
+              "q_mse": 0.0028471986297518015
+            },
+            {
+              "geometry_mse": 6.097170626162551e-06,
+              "q_mse": 0.00287598161958158
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 8.712775866115408e-06,
+          "mean_q_mse": 0.0026696035056374967,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      },
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 1.1443552466516849e-05,
+              "q_mse": 0.011887218803167343
+            },
+            {
+              "geometry_mse": 1.0329807992093265e-05,
+              "q_mse": 0.011706613004207611
+            },
+            {
+              "geometry_mse": 1.0544437827775255e-05,
+              "q_mse": 0.01171733345836401
+            },
+            {
+              "geometry_mse": 7.125316187739372e-06,
+              "q_mse": 0.011790074408054352
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 9.860778618531185e-06,
+          "mean_q_mse": 0.011775309918448329,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 1.2801689990737941e-05,
+              "q_mse": 0.014271341264247894
+            },
+            {
+              "geometry_mse": 7.589035249111475e-06,
+              "q_mse": 0.012385335750877857
+            },
+            {
+              "geometry_mse": 8.363207598449662e-06,
+              "q_mse": 0.012505167163908482
+            },
+            {
+              "geometry_mse": 6.097170626162551e-06,
+              "q_mse": 0.012437635101377964
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 8.712775866115408e-06,
+          "mean_q_mse": 0.01289986982010305,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      },
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 1.6381383829866536e-05,
+              "q_mse": 0.029713928699493408
+            },
+            {
+              "geometry_mse": 1.2736690223391633e-05,
+              "q_mse": 0.029763968661427498
+            },
+            {
+              "geometry_mse": 1.2772744412359316e-05,
+              "q_mse": 0.029683096334338188
+            },
+            {
+              "geometry_mse": 8.780003554420546e-06,
+              "q_mse": 0.029863467440009117
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 1.2667705505009508e-05,
+          "mean_q_mse": 0.029756115283817053,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 1.2801689990737941e-05,
+              "q_mse": 0.03408323973417282
+            },
+            {
+              "geometry_mse": 7.589035249111475e-06,
+              "q_mse": 0.031120656058192253
+            },
+            {
+              "geometry_mse": 8.363207598449662e-06,
+              "q_mse": 0.03130084276199341
+            },
+            {
+              "geometry_mse": 6.097170626162551e-06,
+              "q_mse": 0.031193504109978676
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 8.712775866115408e-06,
+          "mean_q_mse": 0.03192456066608429,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      }
+    ],
+    "posterior_mean_q_mse": 0.01783623488881858,
+    "prior_mean_q_mse": 0.019372734052012675,
+    "training": {
+      "action_head_frozen": true,
+      "action_head_sha256": "acc116d0b41da9c2d9027452f22c802440bd76c5ba56e1ff4f894e081ba6e532",
+      "action_loss_weight": 0.0,
+      "features": [
+        "energy",
+        "hydration",
+        "fatigue",
+        "pain",
+        "sleep_pressure",
+        "balance"
+      ],
+      "loss_before": 0.7049657106399536,
+      "loss_last": 0.014517624862492085,
+      "scope": "native synthetic sensory observer adaptation, not original PredVLA model",
+      "seed": 17,
+      "steps": 64,
+      "weight_sha256": "f566e4b8b66e73538274f96281de7b765691a0c52df67b8c699856b825645dad"
+    }
+  },
+  {
+    "improved_reconstruction": true,
+    "measures": [
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 3.2585874123469694e-06,
+              "q_mse": 0.02622384764254093
+            },
+            {
+              "geometry_mse": 3.6521435049508e-06,
+              "q_mse": 0.027099361643195152
+            },
+            {
+              "geometry_mse": 2.23884808292496e-06,
+              "q_mse": 0.027360158041119576
+            },
+            {
+              "geometry_mse": 2.31569651987229e-06,
+              "q_mse": 0.02736731804907322
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 2.866318880023755e-06,
+          "mean_q_mse": 0.02701267134398222,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 5.7214310800191015e-06,
+              "q_mse": 0.027787158265709877
+            },
+            {
+              "geometry_mse": 4.5286274144018535e-06,
+              "q_mse": 0.02741745114326477
+            },
+            {
+              "geometry_mse": 2.1924040538578993e-06,
+              "q_mse": 0.027454843744635582
+            },
+            {
+              "geometry_mse": 2.2682493181491736e-06,
+              "q_mse": 0.027471521869301796
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 3.677677966607007e-06,
+          "mean_q_mse": 0.027532743755728006,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      },
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 3.5776058666669996e-06,
+              "q_mse": 0.0017660051817074418
+            },
+            {
+              "geometry_mse": 3.5727271097130142e-06,
+              "q_mse": 0.0018706540577113628
+            },
+            {
+              "geometry_mse": 1.9496490040182834e-06,
+              "q_mse": 0.0018891282379627228
+            },
+            {
+              "geometry_mse": 2.2504432308778632e-06,
+              "q_mse": 0.0018939146539196372
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 2.83760630281904e-06,
+          "mean_q_mse": 0.0018549255328252912,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 5.7214310800191015e-06,
+              "q_mse": 0.0020182922016829252
+            },
+            {
+              "geometry_mse": 4.5286274144018535e-06,
+              "q_mse": 0.001886241720058024
+            },
+            {
+              "geometry_mse": 2.1924040538578993e-06,
+              "q_mse": 0.0018968806834891438
+            },
+            {
+              "geometry_mse": 2.2682493181491736e-06,
+              "q_mse": 0.0019018525490537286
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 3.677677966607007e-06,
+          "mean_q_mse": 0.0019258167885709554,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      },
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 3.4251950182806468e-06,
+              "q_mse": 0.013027547858655453
+            },
+            {
+              "geometry_mse": 5.704293926100945e-06,
+              "q_mse": 0.014415044337511063
+            },
+            {
+              "geometry_mse": 1.5246702105287113e-06,
+              "q_mse": 0.014473085291683674
+            },
+            {
+              "geometry_mse": 1.908330432343064e-06,
+              "q_mse": 0.014460808597505093
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 3.1406223968133418e-06,
+          "mean_q_mse": 0.01409412152133882,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 5.7214310800191015e-06,
+              "q_mse": 0.014326467178761959
+            },
+            {
+              "geometry_mse": 4.5286274144018535e-06,
+              "q_mse": 0.014511290937662125
+            },
+            {
+              "geometry_mse": 2.1924040538578993e-06,
+              "q_mse": 0.014486261643469334
+            },
+            {
+              "geometry_mse": 2.2682493181491736e-06,
+              "q_mse": 0.014475624077022076
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 3.677677966607007e-06,
+          "mean_q_mse": 0.014449910959228873,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      },
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 3.137395424346323e-06,
+              "q_mse": 0.031055137515068054
+            },
+            {
+              "geometry_mse": 7.09618734617834e-06,
+              "q_mse": 0.034293320029973984
+            },
+            {
+              "geometry_mse": 1.5054391724333982e-06,
+              "q_mse": 0.03441964462399483
+            },
+            {
+              "geometry_mse": 1.7277085362366051e-06,
+              "q_mse": 0.03440101817250252
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 3.3666826197986666e-06,
+          "mean_q_mse": 0.033542280085384846,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 5.7214310800191015e-06,
+              "q_mse": 0.0341830737888813
+            },
+            {
+              "geometry_mse": 4.5286274144018535e-06,
+              "q_mse": 0.034494657069444656
+            },
+            {
+              "geometry_mse": 2.1924040538578993e-06,
+              "q_mse": 0.0344555601477623
+            },
+            {
+              "geometry_mse": 2.2682493181491736e-06,
+              "q_mse": 0.034438829869031906
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 3.677677966607007e-06,
+          "mean_q_mse": 0.03439303021878004,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      }
+    ],
+    "posterior_mean_q_mse": 0.019125999620882794,
+    "prior_mean_q_mse": 0.01957537543057697,
+    "training": {
+      "action_head_frozen": true,
+      "action_head_sha256": "000d666420f8f5cd2f566b3861503d3deae9cde3a914b0b634b194e9f35d0c2b",
+      "action_loss_weight": 0.0,
+      "features": [
+        "energy",
+        "hydration",
+        "fatigue",
+        "pain",
+        "sleep_pressure",
+        "balance"
+      ],
+      "loss_before": 0.6724493503570557,
+      "loss_last": 0.014354649931192398,
+      "scope": "native synthetic sensory observer adaptation, not original PredVLA model",
+      "seed": 31,
+      "steps": 64,
+      "weight_sha256": "fedbcede4dedc1d539b73c2fb634f385f619f11ebedf625636aa2e7bb31de2a0"
+    }
+  },
+  {
+    "improved_reconstruction": true,
+    "measures": [
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 7.476632163161412e-06,
+              "q_mse": 0.027976663783192635
+            },
+            {
+              "geometry_mse": 3.954571184294764e-06,
+              "q_mse": 0.027481568977236748
+            },
+            {
+              "geometry_mse": 4.516088665695861e-06,
+              "q_mse": 0.02754334546625614
+            },
+            {
+              "geometry_mse": 8.759612683206797e-06,
+              "q_mse": 0.027579279616475105
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 6.176726174089708e-06,
+          "mean_q_mse": 0.027645214460790157,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 1.0919019587163348e-05,
+              "q_mse": 0.02868424542248249
+            },
+            {
+              "geometry_mse": 4.617736067302758e-06,
+              "q_mse": 0.027948902919888496
+            },
+            {
+              "geometry_mse": 5.3156563808443025e-06,
+              "q_mse": 0.028443412855267525
+            },
+            {
+              "geometry_mse": 1.1547253052412998e-05,
+              "q_mse": 0.02835785411298275
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 8.099916271930852e-06,
+          "mean_q_mse": 0.028358603827655315,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      },
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 7.654603905393742e-06,
+              "q_mse": 0.0023199834395200014
+            },
+            {
+              "geometry_mse": 4.084472038812237e-06,
+              "q_mse": 0.002124236663803458
+            },
+            {
+              "geometry_mse": 4.20332844441873e-06,
+              "q_mse": 0.0021243065129965544
+            },
+            {
+              "geometry_mse": 8.383602107642218e-06,
+              "q_mse": 0.0021218943875283003
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 6.081501624066732e-06,
+          "mean_q_mse": 0.0021726052509620786,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 1.0919019587163348e-05,
+              "q_mse": 0.0023686906788498163
+            },
+            {
+              "geometry_mse": 4.617736067302758e-06,
+              "q_mse": 0.0021425948943942785
+            },
+            {
+              "geometry_mse": 5.3156563808443025e-06,
+              "q_mse": 0.002196882851421833
+            },
+            {
+              "geometry_mse": 1.1547253052412998e-05,
+              "q_mse": 0.002171032363548875
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 8.099916271930852e-06,
+          "mean_q_mse": 0.0022198001970537007,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      },
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 7.806339453964029e-06,
+              "q_mse": 0.013351312838494778
+            },
+            {
+              "geometry_mse": 4.289643129595788e-06,
+              "q_mse": 0.01349986344575882
+            },
+            {
+              "geometry_mse": 3.743600018424331e-06,
+              "q_mse": 0.013452778570353985
+            },
+            {
+              "geometry_mse": 7.80284153734101e-06,
+              "q_mse": 0.01346439216285944
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 5.9106060348312894e-06,
+          "mean_q_mse": 0.013442086754366755,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 1.0919019587163348e-05,
+              "q_mse": 0.013947947882115841
+            },
+            {
+              "geometry_mse": 4.617736067302758e-06,
+              "q_mse": 0.0144008444622159
+            },
+            {
+              "geometry_mse": 5.3156563808443025e-06,
+              "q_mse": 0.013868170790374279
+            },
+            {
+              "geometry_mse": 1.1547253052412998e-05,
+              "q_mse": 0.013921935111284256
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 8.099916271930852e-06,
+          "mean_q_mse": 0.014034724561497569,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      },
+      {
+        "posterior": {
+          "errors": [
+            {
+              "geometry_mse": 7.838886631361675e-06,
+              "q_mse": 0.03259971737861633
+            },
+            {
+              "geometry_mse": 4.341125077189645e-06,
+              "q_mse": 0.03282451257109642
+            },
+            {
+              "geometry_mse": 3.7112988593435148e-06,
+              "q_mse": 0.032739873975515366
+            },
+            {
+              "geometry_mse": 7.70038241171278e-06,
+              "q_mse": 0.032745007425546646
+            }
+          ],
+          "iterations": 10,
+          "mean_geometry_mse": 5.897923244901904e-06,
+          "mean_q_mse": 0.03272727783769369,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        },
+        "prior": {
+          "errors": [
+            {
+              "geometry_mse": 1.0919019587163348e-05,
+              "q_mse": 0.033512990921735764
+            },
+            {
+              "geometry_mse": 4.617736067302758e-06,
+              "q_mse": 0.03423748537898064
+            },
+            {
+              "geometry_mse": 5.3156563808443025e-06,
+              "q_mse": 0.033470477908849716
+            },
+            {
+              "geometry_mse": 1.1547253052412998e-05,
+              "q_mse": 0.03355671092867851
+            }
+          ],
+          "iterations": 0,
+          "mean_geometry_mse": 8.099916271930852e-06,
+          "mean_q_mse": 0.03369441628456116,
+          "native_actions_executed": 0,
+          "scope": "current sensory reconstruction; not future forecasting or policy success",
+          "upstream_action_output_used": false,
+          "weights_unchanged": true
+        }
+      }
+    ],
+    "posterior_mean_q_mse": 0.01899679607595317,
+    "prior_mean_q_mse": 0.019576886217691936,
+    "training": {
+      "action_head_frozen": true,
+      "action_head_sha256": "f19f563bb1c59627ffe4f1327207a14ba19bd4573f53d475de05226034432c01",
+      "action_loss_weight": 0.0,
+      "features": [
+        "energy",
+        "hydration",
+        "fatigue",
+        "pain",
+        "sleep_pressure",
+        "balance"
+      ],
+      "loss_before": 0.5361604690551758,
+      "loss_last": 0.014406783506274223,
+      "scope": "native synthetic sensory observer adaptation, not original PredVLA model",
+      "seed": 53,
+      "steps": 64,
+      "weight_sha256": "129679f2833e4e3d1fc148c418b709cc8f6481ffb94bba041023d979d2ef4c81"
+    }
+  }
+]
