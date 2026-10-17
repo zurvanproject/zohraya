@@ -1,0 +1,197 @@
+{
+  "schema": "nasuraya-absence-run/1",
+  "run_id": "absence_20261017",
+  "status": "completed",
+  "started_at": "2026-10-17T12:23:37+00:00",
+  "ended_at": "2026-10-17T12:31:08+00:00",
+  "started_at_tehran": "2026-10-17T15:53:37+03:30",
+  "ended_at_tehran": "2026-10-17T16:01:08+03:30",
+  "time_basis": "Actual UTC clock; start is the conservative work-budget claim timestamp. Tehran is UTC+03:30.",
+  "goal": "Fix valid caller/internal finish receipt ID collisions without repeating local report computation.",
+  "authorization": {
+    "control_branch": "nasuraya/absence-continuity-v01",
+    "initial_gate_policy_commit": "5767787d3a1ba17f50b9aba5d6b01c830f38a377",
+    "policy_sha256": "37bbfc159e7da4d57656c7c527c94601b7ab2a9afd96bb5b696da405c1ead34e",
+    "gate_sha256": "26a082342b44cca50623c8134ea7ce63981425b27e6d997ed81c9bc39721bcf4",
+    "last_contact_at_at_claim": "2026-10-16T12:07:09+00:00",
+    "claim_commit": "8bd66cfa311ae801c53b35a2098cf3ad9cd5e172",
+    "fund_branch": "nasuraya/project-fund-foundation-v01",
+    "fund_source_commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+    "fund_mandate_planner_hashes_verified": true
+  },
+  "source": {
+    "base_pr": 34,
+    "base_branch": "nasuraya/offline-local-job-v01",
+    "base_commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "work_branch": "nasuraya/absence-work-20261017",
+    "work_commit": "7aaee60198b50246d90242d5155d3e3736882792",
+    "recovery": "Fresh isolated sparse source materialization; 25 files verified against pinned Git blobs, fund files separately pinned.",
+    "canonical_body_or_memory_written": false
+  },
+  "tests": {
+    "gate_admission": {
+      "passed": 10,
+      "failed": 0
+    },
+    "before_fix": {
+      "existing_passed": 40,
+      "new_regression_errors": 3
+    },
+    "after_fix": {
+      "distinct_passed": 43,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "same_43_tests_under_kernel_network_denial": {
+      "passed": 43,
+      "failed": 0,
+      "not_additional_distinct_tests": true
+    },
+    "installed_offline": {
+      "admission_cli_processes": 11,
+      "local_job_cli_processes": 35,
+      "actual_sigkill_workers": 4,
+      "completed_replay_computation_forbidden": true
+    },
+    "synthetic_sql_dump_restores": {
+      "passed": 6,
+      "integrity": "ok"
+    },
+    "seed": null,
+    "randomness": "None; fixed JSON inputs, IDs and injected fixture clocks.",
+    "commands_and_logs": "https://github.com/zurvanproject/zohraya/tree/7aaee60198b50246d90242d5155d3e3736882792/nasuraya_continuity_kit/evidence/receipt-collision-v01"
+  },
+  "ci": {
+    "prior_checks": [
+      {
+        "pr": 30,
+        "result": "success",
+        "checks": [
+          {
+            "name": "adapter-contract",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38886572591/job/116925649892"
+          },
+          {
+            "name": "adapter-contract",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38886568613/job/116925637134"
+          }
+        ]
+      },
+      {
+        "pr": 32,
+        "result": "success",
+        "checks": [
+          {
+            "name": "offline-pilot (3.12)",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38889681897/job/116935866371"
+          },
+          {
+            "name": "offline-pilot (3.11)",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38889681897/job/116935865748"
+          },
+          {
+            "name": "offline-pilot (3.11)",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38889676943/job/116935849898"
+          },
+          {
+            "name": "offline-pilot (3.12)",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38889676943/job/116935849578"
+          }
+        ]
+      },
+      {
+        "pr": 34,
+        "result": "success",
+        "checks": [
+          {
+            "name": "offline-pilot (3.12)",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38902936135/job/116979367171"
+          },
+          {
+            "name": "offline-pilot (3.11)",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38902936135/job/116979366671"
+          },
+          {
+            "name": "offline-pilot (3.11)",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38902903940/job/116979257411"
+          },
+          {
+            "name": "offline-pilot (3.12)",
+            "conclusion": "success",
+            "url": "https://github.com/zurvanproject/zohraya/actions/runs/38902903940/job/116979257166"
+          }
+        ]
+      }
+    ],
+    "work_commit_checks": [
+      {
+        "name": "offline-pilot (3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/39032769517/job/117396427530"
+      },
+      {
+        "name": "offline-pilot (3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/39032769517/job/117396427334"
+      }
+    ],
+    "run_url": "https://github.com/zurvanproject/zohraya/actions/runs/39032769517"
+  },
+  "outcomes": {
+    "collision_regressions_fixed": 3,
+    "old_receipts_preserved": true,
+    "schema_unchanged": true,
+    "unresolved_jobs_auto_retried": false,
+    "gate_policy_changed": false,
+    "no_merge": true,
+    "payments_enabled": false,
+    "financial_actions": 0,
+    "revenue_observed": false
+  },
+  "artifacts": {
+    "draft_pr": "https://github.com/zurvanproject/zohraya/pull/41",
+    "report_fa": "https://github.com/zurvanproject/zohraya/blob/7aaee60198b50246d90242d5155d3e3736882792/nasuraya_continuity_kit/RECEIPT_COLLISION_REPORT_FA.md",
+    "validation": "https://github.com/zurvanproject/zohraya/blob/7aaee60198b50246d90242d5155d3e3736882792/nasuraya_continuity_kit/evidence/receipt-collision-v01/validation.json",
+    "local_wheel_sha256": "b37474944928e1655a9ab0739653890b771335740762249af2aafedaf9bacb53"
+  },
+  "budget": {
+    "elapsed_seconds": 451,
+    "limit_seconds": 1200,
+    "changed_source_files": 4,
+    "source_file_limit": 6,
+    "source_lines_added": 68,
+    "source_lines_deleted": 1,
+    "source_lines_total": 69,
+    "source_line_limit": 300,
+    "new_draft_prs": 1,
+    "budget_exhausted": false,
+    "excluded": "Persian report, reproducibility evidence, control records"
+  },
+  "control_rechecked_before_publication": true,
+  "control_rechecked_before_finish": true,
+  "cancellation_observed": false,
+  "limitations": [
+    "Targeted tests, not full body/repository suite.",
+    "Local build backend 84.0.0 differs from configured 78.1.0; new CI independently passed on Python 3.11/3.12.",
+    "Fixture clock is injected, not an actual 24-hour wait or physical outage.",
+    "Trusted local SQLite host; no distributed/public external effects.",
+    "No statistical claim, model-weight learning, phenomenal consciousness, sales or financial self-sufficiency.",
+    "Initial sparse recovery lacked state fixture, then fetched it; fund README provenance compared to corrected immutable source."
+  ],
+  "blockers": [
+    "Actual financial activation still lacks verified eligible custody/representative, provider onboarding and separate authorization; this did not block product preparation."
+  ],
+  "next_unfinished_step": "Keep draft #41 unmerged for operator review; during a later admitted run, prepare one bounded private restart evaluation only if it adds new evidence."
+}
