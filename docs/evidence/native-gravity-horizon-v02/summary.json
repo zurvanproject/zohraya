@@ -1,0 +1,1235 @@
+{
+  "schema": "nasuraya-native-gravity-horizon/2",
+  "protocol_sha256": "bd94eecfd69db3fe09cf86fb1c7dc0365d2c74e7ae47aeeac0472c3afbc48b8d",
+  "source_sha256": {
+    "horizon_support.py": "cecf870035739934d9808847ba00a0a779aee00a10bde7e12f8b31be407d930d",
+    "economical_support.py": "cc30c2222d9e73d2ae6c91147f4b0a1379517126a3f882ab43d220b38623f9e7",
+    "coordinated_support.py": "99fd9ee4e5daac57fa5074d33feaa8bb7271e17f3f392649c14b6fcd58f7fecb",
+    "evaluate_horizon.py": "0c5c624789864ac12b071edf1dc59452585a8f1459d1a06ff34b456dac10c9f1"
+  },
+  "mean_fuel_saving": {
+    "coordinated": -0.0001893667964144724,
+    "greedy": -0.0001669300902273907
+  },
+  "all_valid": true,
+  "terminal_contracts": true,
+  "accepted": false,
+  "owner_ticks": 1440,
+  "canonical_cycles": 0,
+  "api_calls": 0,
+  "wall_seconds": 75.60826356799953,
+  "cases": [
+    {
+      "case": {
+        "impulse": [
+          0.0,
+          0.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "coordinated": {
+          "fuel_J": 2240.412825508567,
+          "motor_J": 909.3953817904946,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 0,
+          "terminal_position_m": 0.0,
+          "terminal_speed_m_s": 0.0,
+          "cpu_wall_seconds": 0.7877000110020163,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.862645149230957e-09,
+                "water_L": 1.480501918976751e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.0,
+              "water_loss_L": 0.0013573994698734013
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.1102230246251565e-15,
+              "max_co2_error_L": 1.3877787807814457e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 7.105427357601002e-15,
+                "momentum_N_s": 0.0,
+                "capture_m": 0.0,
+                "segment_length_m": 1.1102230246251565e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "greedy": {
+          "fuel_J": 2240.412825508567,
+          "motor_J": 909.3953817904946,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 300,
+          "terminal_position_m": 0.0,
+          "terminal_speed_m_s": 0.0,
+          "cpu_wall_seconds": 4.1369761009991635,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.862645149230957e-09,
+                "water_L": 1.480501918976751e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.0,
+              "water_loss_L": 0.0013573994698734013
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.1102230246251565e-15,
+              "max_co2_error_L": 1.3877787807814457e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 7.105427357601002e-15,
+                "momentum_N_s": 0.0,
+                "capture_m": 0.0,
+                "segment_length_m": 1.1102230246251565e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "horizon": {
+          "fuel_J": 2240.412825508567,
+          "motor_J": 909.3953817904946,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 0,
+          "terminal_position_m": 0.0,
+          "terminal_speed_m_s": 0.0,
+          "cpu_wall_seconds": 0.6782435179993627,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.862645149230957e-09,
+                "water_L": 1.480501918976751e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.0,
+              "water_loss_L": 0.0013573994698734013
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.1102230246251565e-15,
+              "max_co2_error_L": 1.3877787807814457e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 7.105427357601002e-15,
+                "momentum_N_s": 0.0,
+                "capture_m": 0.0,
+                "segment_length_m": 1.1102230246251565e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          2.0,
+          0.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "coordinated": {
+          "fuel_J": 2241.7263502782866,
+          "motor_J": 910.6984414898625,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 0,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "cpu_wall_seconds": 0.6672548650021781,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.862645149230957e-09,
+                "water_L": 1.0467104613609557e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.3839130262901463,
+              "water_loss_L": 0.0013578835673707427
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.5543122344752192e-15,
+              "max_co2_error_L": 8.326672684688674e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.8245492696057223e-14,
+                "momentum_N_s": 1.734723475976807e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "greedy": {
+          "fuel_J": 2241.7250902468318,
+          "motor_J": 910.6972464841938,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 5,
+          "forecast_candidates": 300,
+          "terminal_position_m": 7.63454537590772e-10,
+          "terminal_speed_m_s": 2.133668606662003e-09,
+          "cpu_wall_seconds": 4.0239133709983435,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 9.313225746154785e-10,
+                "water_L": 1.952377062103272e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.38390683392302377,
+              "water_loss_L": 0.0013578829121845876
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 6.661338147750939e-16,
+              "max_co2_error_L": 5.551115123125783e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.812139898115268e-14,
+                "momentum_N_s": 5.421010862427522e-20,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "horizon": {
+          "fuel_J": 2241.725946756408,
+          "motor_J": 910.6980452180725,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 1,
+          "forecast_candidates": 24,
+          "terminal_position_m": 3.264445506287452e-10,
+          "terminal_speed_m_s": 9.123424622092144e-10,
+          "cpu_wall_seconds": 2.2912834890012164,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 9.313225746154785e-10,
+                "water_L": 1.427994007763278e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.38391060817148903,
+              "water_loss_L": 0.0013578833583103547
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 8.881784197001252e-16,
+              "max_co2_error_L": 5.551115123125783e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.565937913534544e-14,
+                "momentum_N_s": 3.469446951953614e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          -2.0,
+          0.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "coordinated": {
+          "fuel_J": 2241.7263502782866,
+          "motor_J": 910.6984414898625,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 0,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "cpu_wall_seconds": 0.6836432240015711,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.862645149230957e-09,
+                "water_L": 1.0467104613609557e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.3839130262901463,
+              "water_loss_L": 0.0013578835673707427
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.5543122344752192e-15,
+              "max_co2_error_L": 8.326672684688674e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.8245492696057223e-14,
+                "momentum_N_s": 1.734723475976807e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "greedy": {
+          "fuel_J": 2241.7250902468318,
+          "motor_J": 910.6972464841938,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 5,
+          "forecast_candidates": 300,
+          "terminal_position_m": 7.63454537590772e-10,
+          "terminal_speed_m_s": 2.133668606662003e-09,
+          "cpu_wall_seconds": 4.755652054998791,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 9.313225746154785e-10,
+                "water_L": 1.952377062103272e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.38390683392302377,
+              "water_loss_L": 0.0013578829121845876
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 6.661338147750939e-16,
+              "max_co2_error_L": 5.551115123125783e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.812139898115268e-14,
+                "momentum_N_s": 5.421010862427522e-20,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "horizon": {
+          "fuel_J": 2241.725946756408,
+          "motor_J": 910.6980452180725,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 1,
+          "forecast_candidates": 24,
+          "terminal_position_m": 3.264445506287452e-10,
+          "terminal_speed_m_s": 9.123424622092144e-10,
+          "cpu_wall_seconds": 2.6210511660028715,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 9.313225746154785e-10,
+                "water_L": 1.427994007763278e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.38391060817148903,
+              "water_loss_L": 0.0013578833583103547
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 8.881784197001252e-16,
+              "max_co2_error_L": 5.551115123125783e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.565937913534544e-14,
+                "momentum_N_s": 3.469446951953614e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          0.0,
+          2.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "coordinated": {
+          "fuel_J": 2244.0257409380865,
+          "motor_J": 912.9795485107684,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 0,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "cpu_wall_seconds": 0.6888757990018348,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 4.656612873077393e-10,
+                "water_L": 1.5114168597230027e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.8397278183780051,
+              "water_loss_L": 0.001358843633733438
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 6.661338147750939e-16,
+              "max_co2_error_L": 1.3877787807814457e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.874150211389822e-14,
+                "momentum_N_s": 1.734723475976807e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "greedy": {
+          "fuel_J": 2244.2417523764334,
+          "motor_J": 913.1941962494674,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 12,
+          "forecast_candidates": 300,
+          "terminal_position_m": 2.8716174509948188e-09,
+          "terminal_speed_m_s": 8.025080699500689e-09,
+          "cpu_wall_seconds": 4.36357222499646,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 9.313225746154785e-10,
+                "water_L": 1.7007359062737315e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.8397034907687425,
+              "water_loss_L": 0.0013589561269493496
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.5543122344752192e-15,
+              "max_co2_error_L": 1.3877787807814457e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 1.5987211554602254e-14,
+                "momentum_N_s": 4.336808689942018e-19,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "horizon": {
+          "fuel_J": 2244.033663646824,
+          "motor_J": 912.987416863639,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 1,
+          "forecast_candidates": 24,
+          "terminal_position_m": 3.264445506287452e-10,
+          "terminal_speed_m_s": 9.123424622092144e-10,
+          "cpu_wall_seconds": 2.8194133719953243,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 2.3283064365386963e-09,
+                "water_L": 1.5015462831446946e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.8397219892474052,
+              "water_loss_L": 0.0013588477622841735
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 6.661338147750939e-16,
+              "max_co2_error_L": 8.326672684688674e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 1.839313918457642e-14,
+                "momentum_N_s": 3.469446951953614e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          0.0,
+          -2.0
+        ],
+        "friction": 0.6
+      },
+      "arms": {
+        "coordinated": {
+          "fuel_J": 2242.5663041727717,
+          "motor_J": 911.5317461583987,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 0,
+          "terminal_position_m": 2.9687147897289625e-10,
+          "terminal_speed_m_s": 8.29693070536163e-10,
+          "cpu_wall_seconds": 0.7522391210004571,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.3969838619232178e-09,
+                "water_L": 1.6482128162298437e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.8443358540842147,
+              "water_loss_L": 0.0013580811899146037
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.1102230246251565e-15,
+              "max_co2_error_L": 1.6653345369377348e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 1.680611840226606e-14,
+                "momentum_N_s": 1.734723475976807e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 4.440892098500626e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "greedy": {
+          "fuel_J": 2242.5317933097076,
+          "motor_J": 911.4975416028738,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 2,
+          "forecast_candidates": 300,
+          "terminal_position_m": 3.995204527441534e-10,
+          "terminal_speed_m_s": 1.1165718911421221e-09,
+          "cpu_wall_seconds": 4.601913275997504,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 9.313225746154785e-10,
+                "water_L": 1.8921322841869426e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.8443227639286558,
+              "water_loss_L": 0.0013580632230132707
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 4.440892098500626e-16,
+              "max_co2_error_L": 8.326672684688674e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 1.4654943925052066e-14,
+                "momentum_N_s": 3.469446951953614e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "horizon": {
+          "fuel_J": 2242.642312636846,
+          "motor_J": 911.6071727759689,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 2,
+          "forecast_candidates": 24,
+          "terminal_position_m": 3.802787848066963e-10,
+          "terminal_speed_m_s": 1.0627969575644624e-09,
+          "cpu_wall_seconds": 2.4804476559947943,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 9.313225746154785e-10,
+                "water_L": 1.7725621317965512e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 0.8778705045056069,
+              "water_loss_L": 0.0013581033061523342
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 6.661338147750939e-16,
+              "max_co2_error_L": 5.551115123125783e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 1.865174681370263e-14,
+                "momentum_N_s": 3.469446951953614e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          6.0,
+          0.0
+        ],
+        "friction": 0.3
+      },
+      "arms": {
+        "coordinated": {
+          "fuel_J": 2244.287577850266,
+          "motor_J": 913.2393375041042,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 0,
+          "terminal_position_m": 8.906144369186889e-10,
+          "terminal_speed_m_s": 2.489079211608489e-09,
+          "cpu_wall_seconds": 0.6382073339991621,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.3969838619232178e-09,
+                "water_L": 1.0897229299478006e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 1.145031082123202,
+              "water_loss_L": 0.0013588209778487004
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.3322676295501878e-15,
+              "max_co2_error_L": 1.1102230246251565e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 3.0913077273767714e-14,
+                "momentum_N_s": 4.440892098500626e-16,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "greedy": {
+          "fuel_J": 2244.2776493877204,
+          "motor_J": 913.2299101328279,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 11,
+          "forecast_candidates": 300,
+          "terminal_position_m": 7.703455878952005e-09,
+          "terminal_speed_m_s": 2.1528413139502087e-08,
+          "cpu_wall_seconds": 3.891574468005274,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 9.313225746154785e-10,
+                "water_L": 1.5345537340838433e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 1.1449675648234456,
+              "water_loss_L": 0.0013588158262336728
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 4.440892098500626e-16,
+              "max_co2_error_L": 1.6653345369377348e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.4259836760992526e-14,
+                "momentum_N_s": 4.440892098500626e-16,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "horizon": {
+          "fuel_J": 2244.2764362043085,
+          "motor_J": 913.2287397011453,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 13,
+          "forecast_candidates": 66,
+          "terminal_position_m": 9.368059959629638e-09,
+          "terminal_speed_m_s": 2.6179965238081075e-08,
+          "cpu_wall_seconds": 5.557241572001658,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.3969838619232178e-09,
+                "water_L": 1.7035027902179145e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 1.1449582330653203,
+              "water_loss_L": 0.0013588151984860607
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 6.661338147750939e-16,
+              "max_co2_error_L": 5.551115123125783e-17
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.2047413807818605e-14,
+                "momentum_N_s": 4.440892098500626e-16,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          0.0,
+          6.0
+        ],
+        "friction": 0.3
+      },
+      "arms": {
+        "coordinated": {
+          "fuel_J": 2251.241652990073,
+          "motor_J": 920.1386203162938,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 0,
+          "terminal_position_m": 8.906144369186889e-10,
+          "terminal_speed_m_s": 2.489079211608489e-09,
+          "cpu_wall_seconds": 0.6749952980026137,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 4.656612873077393e-10,
+                "water_L": 1.6021580763470045e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 2.5139125556316024,
+              "water_loss_L": 0.0013617295453268836
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 6.661338147750939e-16,
+              "max_co2_error_L": 1.3877787807814457e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 1.5088706823893254e-14,
+                "momentum_N_s": 4.440892098500626e-16,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "greedy": {
+          "fuel_J": 2251.898717519489,
+          "motor_J": 920.7915040157964,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 13,
+          "forecast_candidates": 300,
+          "terminal_position_m": 9.234659234908987e-09,
+          "terminal_speed_m_s": 2.5807200612633326e-08,
+          "cpu_wall_seconds": 3.8375346710017766,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.3969838619232178e-09,
+                "water_L": 2.0091805823241327e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 2.5136965673541196,
+              "water_loss_L": 0.0013620718010704757
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 6.661338147750939e-16,
+              "max_co2_error_L": 1.942890293094024e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 1.699725429848975e-14,
+                "momentum_N_s": 4.440892098500626e-16,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "horizon": {
+          "fuel_J": 2251.900326453085,
+          "motor_J": 920.7931058849064,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 13,
+          "forecast_candidates": 66,
+          "terminal_position_m": 9.368059959629638e-09,
+          "terminal_speed_m_s": 2.6179965238081075e-08,
+          "cpu_wall_seconds": 5.408836127004179,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.3969838619232178e-09,
+                "water_L": 1.490602346415626e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 2.5136945785301297,
+              "water_loss_L": 0.001362072639842739
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 8.881784197001252e-16,
+              "max_co2_error_L": 1.942890293094024e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 1.687538997430238e-14,
+                "momentum_N_s": 4.440892098500626e-16,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "case": {
+        "impulse": [
+          4.0,
+          -4.0
+        ],
+        "friction": 0.3
+      },
+      "arms": {
+        "coordinated": {
+          "fuel_J": 2245.135131880849,
+          "motor_J": 914.0802421290401,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 0,
+          "forecast_candidates": 0,
+          "terminal_position_m": 8.396793436904579e-10,
+          "terminal_speed_m_s": 2.3467263859184374e-09,
+          "cpu_wall_seconds": 0.7779991860006703,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 2.3283064365386963e-09,
+                "water_L": 1.786040933204891e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 1.81968729459949,
+              "water_loss_L": 0.0013589109769976651
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.3322676295501878e-15,
+              "max_co2_error_L": 1.3877787807814457e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.4868995751603507e-14,
+                "momentum_N_s": 3.469446951953614e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "greedy": {
+          "fuel_J": 2244.7143265319196,
+          "motor_J": 913.6633528937788,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 10,
+          "forecast_candidates": 300,
+          "terminal_position_m": 6.308959176009574e-09,
+          "terminal_speed_m_s": 1.763143899426691e-08,
+          "cpu_wall_seconds": 4.6254603499983205,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.862645149230957e-09,
+                "water_L": 1.8682277946879822e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 1.8194909019105103,
+              "water_loss_L": 0.0013586919166850833
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.3322676295501878e-15,
+              "max_co2_error_L": 1.3877787807814457e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 2.6201263381153694e-14,
+                "momentum_N_s": 8.673617379884035e-19,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        },
+        "horizon": {
+          "fuel_J": 2247.807409425701,
+          "motor_J": 916.7529830658472,
+          "valid": true,
+          "actual_ticks": 60,
+          "adjusted_ticks": 53,
+          "forecast_candidates": 180,
+          "terminal_position_m": 0.0007105259671207309,
+          "terminal_speed_m_s": 0.0017672856733489985,
+          "cpu_wall_seconds": 13.843664256994089,
+          "audits": {
+            "resource": {
+              "passed": true,
+              "frames": 60,
+              "max_errors": {
+                "energy_J": 1.3969838619232178e-09,
+                "water_L": 1.8202648589815684e-13,
+                "material_kg": 0.0,
+                "wound_kg": 0.0,
+                "force_N": 0.0
+              },
+              "mechanical_work_J": 4.892329656573527,
+              "water_loss_L": 0.0013586334525230225
+            },
+            "gas": {
+              "passed": true,
+              "frames": 60,
+              "max_o2_error_L": 1.3322676295501878e-15,
+              "max_co2_error_L": 1.3877787807814457e-16
+            },
+            "physics": {
+              "passed": true,
+              "frames": 60,
+              "valid_frames": 60,
+              "declared_failure_frames": 0,
+              "max_errors": {
+                "normal_N": 2.2737367544323206e-13,
+                "cop_Nm": 3.019806626980426e-14,
+                "momentum_N_s": 6.938893903907228e-18,
+                "capture_m": 0.0,
+                "segment_length_m": 3.3306690738754696e-16,
+                "tail_work_J": 0.0
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "validation": {
+    "new_tests_passed": 6,
+    "corruptions_rejected": 3,
+    "native_files_unchanged": 61,
+    "audited_actual_owner_ticks": 1440,
+    "all_native_audits_passed": true,
+    "legacy_full_suite_not_rerun": "previous run blocked at missing historical breath_motion dependency"
+  },
+  "offline_verification": {
+    "verified": true,
+    "cold_restores": 24,
+    "saved_owner_ticks": 1440,
+    "verification_native_ticks": 0,
+    "api_calls": 0,
+    "mean_fuel_saving": {
+      "coordinated": -0.0001893667964144724,
+      "greedy": -0.0001669300902273907
+    },
+    "accepted": false
+  }
+}

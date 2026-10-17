@@ -1,0 +1,22 @@
+{
+  "schema": "nasuraya-metacognitive-retained-fixture/1",
+  "scope": "synthetic case-00 only; not user body state",
+  "files": {
+    "control-before.json.gz": {
+      "gzip_sha256": "2a21cb559be77fea4a08119d5205338c5579f8e5a4964004409888161504bdf5",
+      "raw_sha256": "889366b8acfcaba82f2f4e826ffb62df67cc2dd933af069c5afe1f4fa91725b7",
+      "raw_bytes": 1324905
+    },
+    "control-journal.sqlite.gz": {
+      "gzip_sha256": "2815be35fe0a870f9205df5e501dec38181b8c344b70350eab4addc53917a80e",
+      "raw_sha256": "6e0fd919b352a0d30fc56b8c7b6ae416aa91a100c10d4e16c4540a4ee9010264",
+      "raw_bytes": 1822720
+    },
+    "self-model.sqlite.gz": {
+      "gzip_sha256": "ca26b15112d2134c0f7de439e4d32f8aab634240c54c995a3cbd34b713aa0b05",
+      "raw_sha256": "22565771b44c9e6ab65f503389f9a8ee7a4b31b3fe21978f3faa9b6e8fda15fe",
+      "raw_bytes": 147456
+    }
+  },
+  "retained_after_sha256": "e02cf695767c8613b6f91aaaf079b57fa56819afe02772dec61a6535150a9e12"
+}

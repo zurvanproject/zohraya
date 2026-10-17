@@ -28,18 +28,26 @@ def verified_sources():
 
 def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status'])
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'authorize-continuation', 'configure-metacognition'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
-    p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
+    p.add_argument('--fixture', choices=['normal', 'sleep', 'recovery-ready'], default='normal')
     p.add_argument('--mode', choices=['observe', 'bounded'], default='bounded')
     p.add_argument('--max-actions', type=int, default=3)
     p.add_argument('--steps', type=int, default=3)
     p.add_argument('--decision-id')
+    p.add_argument('--preferred-action', choices=['walk', 'observe', 'sleep', 'rest'], default='walk')
     p.add_argument('--duration-s', type=float, default=.1)
     p.add_argument('--api-mode', choices=['observe', 'bounded'], default='observe')
     p.add_argument('--target-cycles', type=int, default=0)
     p.add_argument('--run-id', default='main')
+    p.add_argument('--grant-id')
+    p.add_argument('--observed-checkpoint-sha256')
+    p.add_argument('--additional-actions', type=int)
+    p.add_argument('--additional-calls', type=int)
+    p.add_argument('--self-model', type=Path)
+    p.add_argument('--metacognition-mode', choices=['shadow', 'enforce'])
+    p.add_argument('--create-self-model', action='store_true')
     p.add_argument('--api-recovery', choices=['resume', 'fresh'], default='resume')
     p.add_argument('--max-reconnects', type=int, default=1)
     p.add_argument('--model')
@@ -52,8 +60,14 @@ def main(argv=None):
         p.error('--output-dir required')
     if args.command == 'api' and (args.output_dir is None or not args.model):
         p.error('--output-dir and --model required for explicit live API')
+    if args.command == 'authorize-continuation' and any(v is None for v in
+            (args.grant_id, args.observed_checkpoint_sha256, args.additional_actions, args.additional_calls)):
+        p.error('explicit grant, checkpoint, action count and call count required')
+    if args.command == 'configure-metacognition' and any(v is None for v in
+            (args.self_model, args.metacognition_mode, args.observed_checkpoint_sha256)):
+        p.error('explicit self-model path, mode and checkpoint required')
     payload = vars(args)
-    for key in ('session', 'output_dir'):
+    for key in ('session', 'output_dir', 'self_model'):
         if payload[key] is not None:
             payload[key] = str(payload[key].resolve())
     manifest = verified_sources()

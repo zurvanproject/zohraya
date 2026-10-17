@@ -1,0 +1,41 @@
+{
+  "schema": "nasuraya-research-validation/1",
+  "base_pr": 40,
+  "base_commit": "e41f71070323368922d8211f2b73566e8404f83e",
+  "unique_tests": {
+    "new": 19,
+    "existing_self_model": 42,
+    "native_and_core": 99,
+    "total": 160
+  },
+  "passed": true,
+  "followup_checks": [
+    "8 tensor tests after action-head freeze",
+    "JSON restoration check after fixed-head integrity validation",
+    "three-seed fresh-process frozen-weight inference"
+  ],
+  "implementation_sha256": {
+    "examples/nasuraya_research/predictive.py": "e93603b2e68bb47036b49177656a486e2c230efbd16c23bb6c4aab5cc9f79194",
+    "examples/nasuraya_research/evaluate.py": "de743cfbf71b29df373b7688615a65252ce46a5bc1d55d49f0ef0efd81c7a5f8",
+    "examples/nasuraya_research/refit.py": "aac2b9221e1a675ccb133e2253d2e4c7337223c8ef9da8d48c5890c6efe41749",
+    "examples/nasuraya_research/test_adapters.py": "14117f1e3a64b468d8d81d524f80062e349fd3ae88d2df62704540b14476b4c5",
+    "examples/nasuraya_research/integrity.py": "ece867303c59b1ccc4913768bdbc110377ae20aa7e1b0f505af095c035f213cf",
+    "examples/nasuraya_research/__init__.py": "3751f50f8cba02ccac182c69d7f69e3941f1495ae12f479d157dead0e8121870",
+    "examples/nasuraya_research/adapters.py": "0dde37c2405a875b291af6aa38b22031ab018831044538ab5fe1dee6e180dce8"
+  },
+  "upstream_files_verified": 9,
+  "upstream_projects": 4,
+  "quantitative_native_cases": 32,
+  "paired_policy_trials": 128,
+  "sensory_source_native_cycles": 32,
+  "initial_sensor_attempt_accepted": false,
+  "initial_sensor_attempt_reason": "action head was not explicitly frozen; sensory gradients could reach it despite zero direct action loss",
+  "final_sensor_method": "fresh training with frozen action head on exactly reused recorded inputs; no new native cycles during refit",
+  "external_model_api_calls": 0,
+  "canonical_user_state_used": false,
+  "automatic_activation": false,
+  "ci": {
+    "initial_code_run": "https://github.com/zurvanproject/zohraya/actions/runs/39071453054",
+    "final_revision_status": "pending"
+  }
+}

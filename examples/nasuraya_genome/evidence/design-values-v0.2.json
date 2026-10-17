@@ -1,0 +1,200 @@
+{
+  "payload": {
+    "schema": "nasuraya.design-value-review/0.2",
+    "values": {
+      "schema": "nasuraya.design-values/0.2",
+      "source": "direct user clarification, 2026-10-16 00:45:46 Asia/Tehran",
+      "functional_changes": {
+        "may_retain_beneficial_design_changes": true,
+        "foot_enlargement_is_an_allowed_example": true,
+        "specific_final_anatomical_dimensions_approved": null
+      },
+      "aesthetic_changes": {
+        "independent_design_value": true,
+        "evaluator": "user",
+        "lack_of_functional_gain_is_not_aesthetic_rejection": true,
+        "specific_fur_length_preference": null,
+        "default_verdict": "awaiting_user_aesthetic_review"
+      },
+      "source_interpretation": "The user permits retaining functional improvements and gives beauty independent value. No preference for longer or shorter foot fur is inferred.",
+      "preserve": [
+        "fixed_face",
+        "identity_covenant",
+        "three_toes",
+        "native_mechanical_guards"
+      ],
+      "native_apply_allowed": false
+    },
+    "source_sha256": {
+      "design-values-v0.2.json": "83d7ad549753c716a5d7682a5cbe635346d32d0d850416842dff895b0019caca",
+      "design_value_review.py": "d35621289ec094f64775688f151ecdce6edb6c6ddafb0406f5d8c74ee73bd7ac"
+    },
+    "prior_checkpoint_sha256": "105f01a80b0f760791a47cc41529f90df7588e1cbf48386af3d958576c5daeee",
+    "prior_experience_head_sha256": "09514937c65779b03c50898cc537e44c11b0613f03f41ae21a6da91063658fe4",
+    "prior_checkpoint_file_sha256": "fbecb0c056e9fc12b80f1a8ed3446f7caaf6d59ccaa16a026615076b150d0f0b",
+    "functional_recommendation": "foot_plus_2_percent",
+    "candidates": {
+      "baseline": {
+        "status": "functional_proposal_retained",
+        "functional_assessment": {
+          "status": "baseline_reference",
+          "reasons": [],
+          "gains": {
+            "pressure": 0.0,
+            "capture_margin": 0.0,
+            "fuel": -0.0
+          },
+          "utility": 0.0,
+          "metrics": {
+            "all_ordinary_cases_valid": true,
+            "all_ordinary_horizons_complete": true,
+            "capture_margin_m": 0.012261124162892933,
+            "cold_restores_equal": true,
+            "fuel_J": 3151.4537770359825,
+            "minimum_support_fraction": 1.0,
+            "overload_failure_retained": true,
+            "peak_dynamic_pressure_kpa": 300.0,
+            "peak_static_pressure_kpa": 300.0,
+            "pressure_kpa": 178.28342715336777,
+            "static_conservation_valid": true,
+            "static_nominal_feasible": true,
+            "walk_frames": 60,
+            "walk_touchdowns": 1,
+            "zero_friction_failure_retained": true
+          }
+        },
+        "aesthetic_assessment": {
+          "verdict": "unrated",
+          "source": null,
+          "evaluator": "user"
+        },
+        "aesthetic_rejected_for_lack_of_function": false,
+        "functional_guard_reasons": [],
+        "native_apply_allowed": false
+      },
+      "cosmetic_only": {
+        "status": "awaiting_user_aesthetic_review",
+        "functional_assessment": {
+          "status": "rejected",
+          "reasons": [
+            "no_sufficient_measured_net_gain"
+          ],
+          "gains": {
+            "pressure": 0.0,
+            "capture_margin": 0.0,
+            "fuel": -0.0
+          },
+          "utility": -0.001,
+          "metrics": {
+            "all_ordinary_cases_valid": true,
+            "all_ordinary_horizons_complete": true,
+            "capture_margin_m": 0.012261124162892933,
+            "cold_restores_equal": true,
+            "fuel_J": 3151.4537770359825,
+            "minimum_support_fraction": 1.0,
+            "overload_failure_retained": true,
+            "peak_dynamic_pressure_kpa": 300.0,
+            "peak_static_pressure_kpa": 300.0,
+            "pressure_kpa": 178.28342715336777,
+            "static_conservation_valid": true,
+            "static_nominal_feasible": true,
+            "walk_frames": 60,
+            "walk_touchdowns": 1,
+            "zero_friction_failure_retained": true
+          }
+        },
+        "aesthetic_assessment": {
+          "verdict": "unrated",
+          "source": null,
+          "evaluator": "user"
+        },
+        "aesthetic_rejected_for_lack_of_function": false,
+        "functional_guard_reasons": [],
+        "native_apply_allowed": false
+      },
+      "foot_plus_1_percent": {
+        "status": "functional_proposal_retained",
+        "functional_assessment": {
+          "status": "eligible_proposal",
+          "reasons": [],
+          "gains": {
+            "pressure": 0.01970395059307888,
+            "capture_margin": 0.03079078440569664,
+            "fuel": -0.0001819829702519705
+          },
+          "utility": 0.018607155714828925,
+          "metrics": {
+            "all_ordinary_cases_valid": true,
+            "all_ordinary_horizons_complete": true,
+            "capture_margin_m": 0.012638653793564048,
+            "cold_restores_equal": true,
+            "fuel_J": 3152.0272879549393,
+            "minimum_support_fraction": 1.0,
+            "overload_failure_retained": true,
+            "peak_dynamic_pressure_kpa": 300.0,
+            "peak_static_pressure_kpa": 300.0,
+            "pressure_kpa": 174.77053931317303,
+            "static_conservation_valid": true,
+            "static_nominal_feasible": true,
+            "walk_frames": 60,
+            "walk_touchdowns": 1,
+            "zero_friction_failure_retained": true
+          }
+        },
+        "aesthetic_assessment": {
+          "verdict": "unrated",
+          "source": null,
+          "evaluator": "user"
+        },
+        "aesthetic_rejected_for_lack_of_function": false,
+        "functional_guard_reasons": [],
+        "native_apply_allowed": false
+      },
+      "foot_plus_2_percent": {
+        "status": "functional_proposal_retained",
+        "functional_assessment": {
+          "status": "eligible_proposal",
+          "reasons": [],
+          "gains": {
+            "pressure": 0.03883121876201446,
+            "capture_margin": 0.06219736417623012,
+            "fuel": -0.0003742600354374357
+          },
+          "utility": 0.038168273897499556,
+          "metrics": {
+            "all_ordinary_cases_valid": true,
+            "all_ordinary_horizons_complete": true,
+            "capture_margin_m": 0.01302373376766236,
+            "cold_restores_equal": true,
+            "fuel_J": 3152.6332402382554,
+            "minimum_support_fraction": 1.0,
+            "overload_failure_retained": true,
+            "peak_dynamic_pressure_kpa": 299.99999999999994,
+            "peak_static_pressure_kpa": 300.0,
+            "pressure_kpa": 171.36046439193368,
+            "static_conservation_valid": true,
+            "static_nominal_feasible": true,
+            "walk_frames": 60,
+            "walk_touchdowns": 1,
+            "zero_friction_failure_retained": true
+          }
+        },
+        "aesthetic_assessment": {
+          "verdict": "unrated",
+          "source": null,
+          "evaluator": "user"
+        },
+        "aesthetic_rejected_for_lack_of_function": false,
+        "functional_guard_reasons": [],
+        "native_apply_allowed": false
+      }
+    },
+    "retained_foot_design": "foot_plus_2_percent",
+    "specific_fur_length_preference": null,
+    "native_apply_allowed": false,
+    "body_trials_performed": 0,
+    "prior_history_preserved": true,
+    "scope": "current interpretation of design value; no invented aesthetic rating or anatomical activation"
+  },
+  "sha256": "2c5dcd973882dfd22634c0e21065cdcb67429f88c36f5583abb0431ed0cad684"
+}

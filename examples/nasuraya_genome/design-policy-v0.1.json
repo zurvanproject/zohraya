@@ -1,0 +1,13 @@
+{
+  "schema": "nasuraya.design-selection-policy/0.1",
+  "authorship": "engineering defaults for this software experiment; not user-specified preferences",
+  "mission": "compare equal-progress foot proposals in the frozen native sandbox",
+  "weights": {"pressure": 0.45, "capture_margin": 0.35, "fuel": 0.20},
+  "maximum_relative_fuel_increase": 0.01,
+  "minimum_net_gain": 0.001,
+  "change_penalty": 0.001,
+  "minimum_support_fraction": 0.999,
+  "max_events": 64,
+  "native_apply_allowed": false,
+  "statistical_confidence": "not estimated; one deterministic trial per design and context"
+}

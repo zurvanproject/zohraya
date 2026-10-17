@@ -1,0 +1,60 @@
+{
+  "schema": "nasuraya-defense-demo/1",
+  "normal_requests": 4,
+  "normal_receipts_equal": true,
+  "false_blocks_on_clean_fixtures": 0,
+  "bare_seconds": 2.1232432550023077,
+  "protected_seconds": 2.3311703430008492,
+  "bare_owner_ticks": 180,
+  "protected_owner_ticks": 180,
+  "healthy_status": {
+    "latched": false,
+    "audit_chain_valid": true,
+    "source_valid": true,
+    "events": 8,
+    "monitor": "on guarded request only; no background daemon",
+    "visual_state": "green"
+  },
+  "local_corruption_fixtures": [
+    {
+      "fixture": "self_rehashed_false_receipt",
+      "allowed": false,
+      "alarm": {
+        "code": "receipt_integrity",
+        "severity": "high",
+        "latched": true
+      }
+    },
+    {
+      "fixture": "untrusted_baseline_digest",
+      "allowed": false,
+      "alarm": {
+        "code": "source_integrity",
+        "severity": "critical",
+        "latched": true
+      }
+    },
+    {
+      "fixture": "unsupported_command_from_data",
+      "allowed": false,
+      "alarm": {
+        "code": "invalid_request",
+        "severity": "warning",
+        "latched": false
+      }
+    }
+  ],
+  "native_ticks_in_blocked_fixtures": 0,
+  "canonical_cycles": 0,
+  "network_calls": 0,
+  "scope": "one guarded local evidence-reuse entry point; no background monitoring or global security guarantee",
+  "validation": {
+    "final_new_tests_passed": 14,
+    "initial_tests_passed_before_hardening": 11,
+    "native_files_unchanged": 61,
+    "clean_cli_reused_without_new_ticks": true,
+    "persisted_high_alert_seen_by_fresh_process": true,
+    "baseline_source_files": 68
+  },
+  "additional_wall_seconds": 0.20792708799854154
+}

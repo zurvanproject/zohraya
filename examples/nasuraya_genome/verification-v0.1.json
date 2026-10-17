@@ -1,0 +1,22 @@
+{
+  "schema": "nasuraya.genome.verification",
+  "version": "0.1.0",
+  "date_local": "2026-10-15",
+  "timezone": "Asia/Tehran",
+  "base_commit": "a3493720a1d163b129d23ec16a45b75fd9bf085e",
+  "test_command": "python -m unittest discover -s examples/nasuraya_genome -t . -v",
+  "local_tests_passed": 29,
+  "prior_tests": 16,
+  "new_tests": 13,
+  "dosage_survey_conditions": 114,
+  "native_manifest_files_verified": 70,
+  "paired_native_stand_substeps_per_copy": 10,
+  "dt_s": 0.1,
+  "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+  "demo_sha256": "585ac4108977fad2b40930d1ad45db54bb340208ec4ff86a6ee97846f44700e4",
+  "native_sources_changed": false,
+  "live_state_advanced": false,
+  "API_calls": 0,
+  "remote_ci_status": "not evaluated in this local record",
+  "independent_physical_validation_of_new_dimensions": false
+}

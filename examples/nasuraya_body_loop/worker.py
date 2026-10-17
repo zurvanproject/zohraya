@@ -14,9 +14,9 @@ def main(args):
         r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))
         return 0 if r.wasSuccessful() else 1
     if command == 'api-test':
-        from . import test_api_host, test_api_recovery
+        from . import test_api_host, test_api_recovery, test_continuation, test_recovery, test_metacognition
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
-                                   for m in (test_api_host, test_api_recovery))
+                                   for m in (test_api_host, test_api_recovery, test_continuation, test_recovery, test_metacognition))
         r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command == 'api':
@@ -42,6 +42,21 @@ def main(args):
             print(json.dumps(dict(run_id=host.run_id, evaluation=host.evaluate(),
                                  self_model=host.snapshot()), ensure_ascii=False, sort_keys=True))
         return 0
+    if command == 'configure-metacognition':
+        from .metacognition import configure
+        with BodyLoop(args['session']) as loop:
+            result = configure(loop, memory_path=args['self_model'], mode=args['metacognition_mode'],
+                expected_checkpoint=args['observed_checkpoint_sha256'], create_memory=args['create_self_model'])
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0
+    if command == 'authorize-continuation':
+        from .continuation import authorize
+        with BodyLoop(args['session']) as loop:
+            grant = authorize(loop, grant_id=args['grant_id'], run_id=args['run_id'],
+                additional_actions=args['additional_actions'], additional_calls=args['additional_calls'],
+                observed_checkpoint_sha256=args['observed_checkpoint_sha256'])
+            print(json.dumps(dict(grant=grant, status=loop.status()), ensure_ascii=False, sort_keys=True))
+        return 0
     if command == 'demo':
         output = Path(args['output_dir'])
         if type(args['steps']) is not int or not 0 <= args['steps'] <= args['max_actions'] <= 100:
@@ -53,7 +68,7 @@ def main(args):
             rows = []
             for i in range(args['steps']):
                 observation = loop.observe()
-                result = loop.step(duration_s=args['duration_s'])
+                result = loop.step(duration_s=args['duration_s'], preferred_action=args.get('preferred_action', 'walk'))
                 rows.append({'before': observation, 'outcome': result})
                 if result['status'] != 'complete':
                     break
@@ -70,7 +85,7 @@ def main(args):
             loop = BodyLoop(args['session'])
         with loop:
             if command == 'observe': summary = loop.observe()
-            elif command == 'step': summary = loop.step(decision_id=args['decision_id'], duration_s=args['duration_s'])
+            elif command == 'step': summary = loop.step(decision_id=args['decision_id'], duration_s=args['duration_s'], preferred_action=args.get('preferred_action', 'walk'))
             else: summary = loop.status()
     print(json.dumps(summary,ensure_ascii=False,sort_keys=True))
     if command == 'demo':

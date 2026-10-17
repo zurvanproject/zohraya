@@ -1,0 +1,86 @@
+{
+  "schema": "nasuraya-upstream-lock/1",
+  "files": [
+    {
+      "local_path": "vendor/predvla/model.py",
+      "repository": "hiroki-oist/PredVLA",
+      "commit": "bba1d038e2fadb8904423cf8f65bb80d70fd17d4",
+      "upstream_path": "predvla/model.py",
+      "git_blob_sha": "f98794fced888ac4208b606c9d01d6cd7067d2bc",
+      "license": "MIT",
+      "sha256": "a18d603221cff43c206be1456c9dc973f965357e62a591a4221ac0341ef89dcb"
+    },
+    {
+      "local_path": "vendor/predvla/er.py",
+      "repository": "hiroki-oist/PredVLA",
+      "commit": "bba1d038e2fadb8904423cf8f65bb80d70fd17d4",
+      "upstream_path": "predvla/er.py",
+      "git_blob_sha": "3e926f0483dcdc90a2126eae33c044d31f2412a2",
+      "license": "MIT",
+      "sha256": "fedeab122f1952183b57f68fa249e876663dee6c5089bdf399a751c870a8e378"
+    },
+    {
+      "local_path": "vendor/predvla/LICENSE",
+      "repository": "hiroki-oist/PredVLA",
+      "commit": "bba1d038e2fadb8904423cf8f65bb80d70fd17d4",
+      "upstream_path": "LICENSE",
+      "git_blob_sha": "88b4cecc57d051b8cf184f72780923646dbf97ba",
+      "license": "MIT",
+      "sha256": "e66e275dca41aebe1df573e71caa0770a7184b4c83fd5626106f0a9c034bfc83"
+    },
+    {
+      "local_path": "vendor/mjlab_math.py",
+      "repository": "mujocolab/mjlab",
+      "commit": "45b1e263ec1c3c0d2c3211b458135d80bb7030df",
+      "upstream_path": "src/mjlab/utils/lab_api/math.py",
+      "git_blob_sha": "1b782096f9db15ca16f1af4ebe15c8c6bd49b653",
+      "license": "BSD-3-Clause",
+      "sha256": "85e267ee202dc8dc2b340be07ec7abe9b10da9b82c3bf33e16889f422fcf9ca8"
+    },
+    {
+      "local_path": "vendor/licenses/mjlab-Apache-2.0.txt",
+      "repository": "mujocolab/mjlab",
+      "commit": "45b1e263ec1c3c0d2c3211b458135d80bb7030df",
+      "upstream_path": "LICENSE",
+      "git_blob_sha": "7eb574f4190aee92dd0e792e879e11bb99c5e5a5",
+      "license": "Apache-2.0",
+      "sha256": "8ca04d9dbbccd20f0f1842fb33e13949f9e57064b150dad36af8e7a751ca3321"
+    },
+    {
+      "local_path": "vendor/roborsi_trajectory.py",
+      "repository": "OpenSenseNova/SenseNova-RoboRSI",
+      "commit": "f7542dfea2a852dbd151da86a2e9fc475d3257fd",
+      "upstream_path": "roborsi/evaluation/trajectory.py",
+      "git_blob_sha": "b07dcd361b82c554f3df52aba0483a69b5b9dcb9",
+      "license": "Apache-2.0",
+      "sha256": "36046754effa11e8ebf35f784af6d666c2b600b66a221814ea6394fc68c98544"
+    },
+    {
+      "local_path": "vendor/licenses/roborsi-Apache-2.0.txt",
+      "repository": "OpenSenseNova/SenseNova-RoboRSI",
+      "commit": "f7542dfea2a852dbd151da86a2e9fc475d3257fd",
+      "upstream_path": "LICENSE",
+      "git_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+      "license": "Apache-2.0",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "local_path": "vendor/battery_probe.py",
+      "repository": "synthiumjp/metacognitive-monitoring-battery",
+      "commit": "2f83d0fa506e7af2b72ca191b65ce42e07c9e185",
+      "upstream_path": "analysis/probe_analysis.py",
+      "git_blob_sha": "63ae47f580ce78093bbba53273dd0b5614b469d0",
+      "license": "MIT",
+      "sha256": "c36fef9f4f7a6230611bd75aa42612e6679ff280680c04517ddea8ef5bc0c757"
+    },
+    {
+      "local_path": "vendor/licenses/battery-MIT.txt",
+      "repository": "synthiumjp/metacognitive-monitoring-battery",
+      "commit": "2f83d0fa506e7af2b72ca191b65ce42e07c9e185",
+      "upstream_path": "LICENSE",
+      "git_blob_sha": "53c7ef6904927003e5ae28ea6bec04b1a5853f64",
+      "license": "MIT",
+      "sha256": "5e1ee47c61db9cb700bf308012e99671d5f16fcfcaf251a20e95003b58b44111"
+    }
+  ]
+}
