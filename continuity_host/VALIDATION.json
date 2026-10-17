@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-17",
+  "status": "prepared_not_activated",
+  "source_commit": "7aaee60198b50246d90242d5155d3e3736882792",
+  "control_observed_commit": "be8eedb9ea7025ccdb0ab2d420ffb4a273bfe6af",
+  "real_clock_at": "2026-10-17T16:14:23.415020+00:00",
+  "real_control_gate": {
+    "eligible": false,
+    "reason": "daily_budget_used"
+  },
+  "new_host_tests_passed": 9,
+  "pinned_regression_tests_passed": 36,
+  "fixture_only": true,
+  "actual_probe_with_network_denied": true,
+  "shared_control_claim_mutated": false,
+  "github_cas_network_write_tested": false,
+  "workflow_executed": false,
+  "model_api_calls": 0,
+  "financial_actions": 0,
+  "policy_changed": false,
+  "main_changed": false
+}
