@@ -26,4 +26,4 @@ jobs:
         working-directory: examples/nasuraya_star_motion
         env:
           NASURAYA_NATIVE_ROOT: ${{ github.workspace }}/runtimes/tadash_body
-        run: python3 -m unittest test_reverse_closure.PredictionScopeTests test_reverse_transfer.TransferPolicyTests -v
+        run: python3 -m unittest test_reverse_closure.PredictionScopeTests test_reverse_transfer.TransferPolicyTests test_spiral -v

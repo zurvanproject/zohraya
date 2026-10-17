@@ -1,5 +1,16 @@
 # Coordinated star-motion overlay
 
+## Synthetic spiral experiment
+
+`evaluate_spiral.py` reuses this exact controller for a sampled one-turn floor
+spiral (1–5 cm radius), its reversed waypoint order, and a bounded mid-swing
+stop / disk checkpoint / restore / continuation trial. It starts from generated
+synthetic defaults and keeps native owner selection and every physical guard.
+The plant has no torso yaw; COM follows native weight transfer rather than an
+assigned spiral. See [the protocol and measured comparison](../../docs/nasuraya-spiral-motion-v01-fa.md).
+`verify_spiral.py` independently opens the saved evidence with all stepping
+methods forbidden; use the evaluator to reproduce actual dynamics.
+
 This experimental overlay continues the authored star-in-place body exercise.
 It keeps the native body, force/pressure/friction/tail guards and conservation
 checks, and changes the motion controller rather than mass or force ceilings.
