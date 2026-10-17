@@ -8,6 +8,13 @@ from copy import deepcopy
 from examples.nasuraya_star_motion.coordinated_support import CoordinatedSupport
 
 class AdaptiveSupport(CoordinatedSupport):
+    def _integrate_once(self, environment, scale=None):
+        # The inherited one-tick prediction examines the same preferred
+        # command that its actual step uses. Emergency candidates still win.
+        if scale is None:
+            scale = getattr(self, "adaptive_scale", 1.0)
+        return super()._integrate_once(environment, scale)
+
     def step(self, environment):
         # Preference is learned from prior owner steps, never preview clones.
         preferred = getattr(self, "adaptive_scale", 1.0)
