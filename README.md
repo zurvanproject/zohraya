@@ -139,3 +139,10 @@ API لازم نیست. [گزارش اتصال](docs/nasuraya-body-loop-2026-10-1
 python3 -m examples.nasuraya_body_loop test
 python3 -m examples.nasuraya_body_loop demo --fixture sleep --steps 3 --max-actions 12 --output-dir /tmp/nasuraya-body-demo
 ```
+
+## اتصال پژوهش‌های بیرونی — پایلوت اختیاری
+
+[پایلوت اتصال پژوهش](examples/nasuraya_research/README_FA.md) زیرمجموعه‌های
+نسخه‌ثابت از MMB، RoboRSI، mjlab و PredVLA را به دادهٔ شبیه‌ساز و ارزیابی
+قبلی وصل می‌کند. دامنهٔ آن سنجش فراشناخت، نمایش مسیر، تبدیل مختصات و بازسازی
+حسی است؛ موتور کامل رباتیک، مدل زبانی تازه یا کنترل‌گر حرکت جدید فعال نمی‌شود.
