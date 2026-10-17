@@ -1,0 +1,217 @@
+{
+  "schema": "tadash-public-test-run/1",
+  "start_utc": "2026-10-17T21:28:10.168883+00:00",
+  "end_utc": "2026-10-17T21:28:53.047003+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "fixture": "deterministic defaults; no Library state loaded",
+  "checked_public_files": 70,
+  "unit_tests_run": 89,
+  "unit_tests_passed": true,
+  "decision_core_tests_run": 10,
+  "decision_core_tests_passed": true,
+  "reflection_evaluation": {
+    "schema": "tadash-reflection-evaluation/1",
+    "criteria_sha256": "3d7c0d96ae2b551d2f5f7395ac30bd86d873b77b8899e308037080dbba977f8c",
+    "scenario_count": 10,
+    "correct": {
+      "existing_core": 5,
+      "reflection_without_memory": 9,
+      "reflection_with_memory": 10
+    },
+    "memory_only_cases": [
+      "related_correction"
+    ],
+    "fixture_scope": "constructed deterministic scenarios frozen before implementation; not a blinded/general capability benchmark",
+    "calibrated_probabilities": false,
+    "model_weights_modified": false
+  },
+  "reflection_demo": {
+    "schema": "tadash-reflection-demonstration/1",
+    "fixture": "declared synthetic initial state; no private user checkpoint loaded",
+    "body": [
+      {
+        "use_memory": false,
+        "steps": [
+          {
+            "decision_id": "body-feedback-0",
+            "proposed_action": "act",
+            "requested_body_action": "walk",
+            "realized_body_action": "protect",
+            "matched_expected": false,
+            "recalled_feedback_ids": [],
+            "body_audit": {
+              "energy_error_J": 6.45314912617323e-11,
+              "water_error_L": 7.939510865157678e-16,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "drink_input_L": 0.0,
+              "photochemical_J": 0.0,
+              "external_heat_J": 0.0,
+              "voided_L": 0.0,
+              "same_owner_ticks": true,
+              "neural_clock_error_s": 3.608224830031759e-16
+            }
+          },
+          {
+            "decision_id": "body-feedback-1",
+            "proposed_action": "act",
+            "requested_body_action": "walk",
+            "realized_body_action": "protect",
+            "matched_expected": false,
+            "recalled_feedback_ids": [],
+            "body_audit": {
+              "energy_error_J": 1.028155338644865e-10,
+              "water_error_L": 1.0808919677276346e-15,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "drink_input_L": 0.0,
+              "photochemical_J": 0.0,
+              "external_heat_J": 0.0,
+              "voided_L": 0.0,
+              "same_owner_ticks": true,
+              "neural_clock_error_s": 7.216449660063518e-16
+            }
+          }
+        ]
+      },
+      {
+        "use_memory": true,
+        "steps": [
+          {
+            "decision_id": "body-feedback-0",
+            "proposed_action": "act",
+            "requested_body_action": "walk",
+            "realized_body_action": "protect",
+            "matched_expected": false,
+            "recalled_feedback_ids": [],
+            "body_audit": {
+              "energy_error_J": 6.45314912617323e-11,
+              "water_error_L": 7.939510865157678e-16,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "drink_input_L": 0.0,
+              "photochemical_J": 0.0,
+              "external_heat_J": 0.0,
+              "voided_L": 0.0,
+              "same_owner_ticks": true,
+              "neural_clock_error_s": 3.608224830031759e-16
+            }
+          },
+          {
+            "decision_id": "body-feedback-1",
+            "proposed_action": "inspect_source",
+            "requested_body_action": "observe",
+            "realized_body_action": "observe",
+            "matched_expected": true,
+            "recalled_feedback_ids": [
+              "body-feedback-0"
+            ],
+            "body_audit": {
+              "energy_error_J": 1.028155338644865e-10,
+              "water_error_L": 1.0808919677276346e-15,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "drink_input_L": 0.0,
+              "photochemical_J": 0.0,
+              "external_heat_J": 0.0,
+              "voided_L": 0.0,
+              "same_owner_ticks": true,
+              "neural_clock_error_s": 7.216449660063518e-16
+            }
+          }
+        ]
+      }
+    ],
+    "project": {
+      "historical_source": "library://libfile_ef6accb410448191add7a790b056493a",
+      "history_type": "retrospective source-linked correction",
+      "before_action": "accept_without_visual_check",
+      "after_action": "inspect_source",
+      "cold_action": "inspect_source",
+      "recalled_feedback_ids": [
+        "historical-reading-error"
+      ],
+      "commitments": [
+        {
+          "actual": 0,
+          "id": "72div:full_collation",
+          "locator": "\u06a9\u0627\u0631 \u0628\u0627\u0632 \u06a9\u062a\u0627\u0628 / full word-by-word collation",
+          "remaining": 1,
+          "source_ref": "library://libfile_ef6accb410448191add7a790b056493a",
+          "status": "open",
+          "target": 1
+        },
+        {
+          "actual": 0,
+          "id": "72div:grid_checks",
+          "locator": "\u06a9\u0627\u0631 \u0628\u0627\u0632 \u06a9\u062a\u0627\u0628 / numerical figures",
+          "remaining": 1,
+          "source_ref": "library://libfile_ef6accb410448191add7a790b056493a",
+          "status": "open",
+          "target": 1
+        },
+        {
+          "actual": 0,
+          "id": "72div:verified_entry_index",
+          "locator": "\u06a9\u0627\u0631 \u0628\u0627\u0632 \u06a9\u062a\u0627\u0628 / names and entries",
+          "remaining": 1,
+          "source_ref": "library://libfile_ef6accb410448191add7a790b056493a",
+          "status": "open",
+          "target": 1
+        },
+        {
+          "actual": 5042,
+          "id": "72div:word_target",
+          "locator": "\u06a9\u0627\u0631 \u0628\u0627\u0632 \u06a9\u062a\u0627\u0628 / coarse whitespace count",
+          "remaining": 44958,
+          "source_ref": "library://libfile_ef6accb410448191add7a790b056493a",
+          "status": "open",
+          "target": 50000
+        }
+      ]
+    },
+    "previous_body_state_not_replaced": true,
+    "simulator_weights_changed": false,
+    "checks": {
+      "first_step_comparable": true,
+      "no_memory_repeats_vetoed_request": true,
+      "feedback_changes_next_request": true,
+      "actual_next_outcome_matches": true,
+      "cold_recall_equal": true
+    }
+  },
+  "scenario_result": {
+    "canonical_state_loaded": false,
+    "canonical_state_modified": false,
+    "checks": {
+      "activity_veto_matches_existing_fatigue_and_sleep": true,
+      "energy_water_neural_invariants": true,
+      "expired_self_model_requests_evidence": true,
+      "heat_response": true,
+      "invalid_feedback_transactional": true,
+      "low_energy_veto": true,
+      "no_prediction_leakage": true,
+      "outcome_error_detected": true,
+      "recovery_restores_uptake": true,
+      "zero_lung_exchange": true
+    },
+    "empirical_validation": false,
+    "end_utc": "2026-10-17T21:28:53.035574+00:00",
+    "fixture": "defaults plus explicit synthetic fault injections",
+    "max_energy_error_J": 4.122284735785797e-10,
+    "max_neural_clock_error_s": 5.329070518200751e-15,
+    "max_water_error_L": 3.683826247519173e-14,
+    "passed_checks": 10,
+    "scenario_count": 12,
+    "schema": "tadash-synthetic-scenarios/1",
+    "start_utc": "2026-10-17T21:28:48.060463+00:00"
+  },
+  "scenarios_passed": true,
+  "endurance_result": null,
+  "endurance_passed": null,
+  "special_result": null,
+  "special_passed": null,
+  "canonical_state_modified": false,
+  "empirical_validation": false
+}

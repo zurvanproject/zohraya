@@ -151,6 +151,8 @@ class TensorChecks(unittest.TestCase):
         self.assertEqual(report['native_actions_executed'],0)
         self.assertEqual(before,digest(weight_state(model)))
         self.assertEqual(training['action_loss_weight'],0.)
+        self.assertTrue(training['action_head_frozen'])
+        self.assertEqual(training['action_head_sha256'],digest(weight_state(model.head_a)))
 
     def test_fixed_seed_model_training_is_reproducible(self):
         from .predictive import train_observer

@@ -34,6 +34,9 @@ def restore_observer(saved):
     if any(t.shape != expected[k].shape or not torch.isfinite(t).all() for k, t in tensors.items()):
         raise ValueError('sensory weight shape/nonfinite')
     model.load_state_dict(tensors, strict=True)
+    if (saved['training'].get('action_head_frozen') is not True or
+            digest(weight_state(model.head_a)) != saved['training'].get('action_head_sha256')):
+        raise ValueError('fixed action head integrity')
     return model.eval().requires_grad_(False)
 
 
@@ -51,6 +54,10 @@ def train_observer(train_sequences, *, seed, steps=64):
     v, q = tensors(train_sequences)
     torch.manual_seed(seed)
     model = PredVLA(config())
+    # The action head also feeds the sensory branch through efference copy.
+    # lambda_a=0 alone would still allow sensory gradients to change it.
+    model.head_a.requires_grad_(False)
+    action_head_before = digest(weight_state(model.head_a))
     l = torch.tensor([[1., 0.]]).expand(len(train_sequences), -1)
     a = torch.zeros(q.shape[0], q.shape[1], 1)
     mask = torch.ones(q.shape[:2])
@@ -66,9 +73,12 @@ def train_observer(train_sequences, *, seed, steps=64):
         optimizer.step()
         losses.append(float(loss.detach()))
     model.eval().requires_grad_(False)
+    if digest(weight_state(model.head_a)) != action_head_before:
+        raise ValueError('sensory training changed the fixed action head')
     return model, dict(seed=seed, steps=steps, loss_before=losses[0],
                       loss_last=losses[-1], weight_sha256=digest(weight_state(model)),
                       features=list(FEATURES), action_loss_weight=0.,
+                      action_head_frozen=True, action_head_sha256=action_head_before,
                       scope='native synthetic sensory observer adaptation, not original PredVLA model')
 
 
