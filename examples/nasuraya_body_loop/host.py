@@ -122,11 +122,13 @@ class BodyLoop:
         return [r for r in self.engine.export()['decisions'] if r['context'] == self.config['context']]
 
     def status(self):
+        from .continuation import action_limit
         records = self.records()
         reserved = sum(r['selected_action'] is not None for r in records)
+        maximum = action_limit(self)
         return {'schema': SCHEMA, 'fixture': self.config['fixture'], 'mode': self.config['mode'],
-                'max_actions': self.config['max_actions'], 'actions_reserved': reserved,
-                'actions_remaining': max(0, self.config['max_actions'] - reserved),
+                'max_actions': maximum, 'actions_reserved': reserved,
+                'actions_remaining': max(0, maximum - reserved),
                 'completed_cycles': sum(executed_body(r) for r in records),
                 'failed_cycles': sum(r['status'] == 'complete' and not executed_body(r) for r in records),
                 'unresolved_running': [r['id'] for r in records if r['status'] == 'running'],
