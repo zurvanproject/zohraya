@@ -25,6 +25,8 @@ def trial(label):
 
 
 def run():
+    from synthetic_fixture import prepare_defaults
+    prepare_defaults()
     a, b = trial("fixed-a"), trial("fixed-b")
     comparable = [{k:v for k,v in row.items() if k!="sensory_source"} for row in a]
     independent = [{k:v for k,v in row.items() if k!="sensory_source"} for row in b]
