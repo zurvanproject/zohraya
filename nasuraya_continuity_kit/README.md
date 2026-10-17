@@ -107,6 +107,13 @@ Report publication, `completed` and the existing `finish` receipt commit atomica
 in the same database. Input is retained so a separate reader can verify the result.
 The optional job table is additive; no canonical body/control state is imported.
 
+Internal finish receipts use an available ID selected inside that same write
+transaction. Caller IDs remain unrestricted by a reserved prefix. If an older
+receipt already uses the preferred ID, deterministic numbered alternatives are
+checked without altering that receipt or repeating computation. This also covers
+a competing heartbeat committed while the report was being computed. The public
+run/request binding, database schema and completed replay response stay unchanged.
+
 Repeat the **exact run-local command**, including timestamp and file bytes, to
 retrieve a completed or abandoned record without computing the report again.
 Changing any bound parameter fails. A legacy `claim` receipt cannot be upgraded

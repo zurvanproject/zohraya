@@ -119,6 +119,44 @@ class LocalJobTests(unittest.TestCase):
     def test_maximum_run_id_can_complete(self):
         self.assertEqual(self.jobs.run('req', 'r'*80, DUE, b'[]')['status'], 'completed')
 
+    def test_claim_id_matching_internal_finish_id_completes_and_replays(self):
+        request_id = 'local-finish-'+hashlib.sha256(b'run').hexdigest()
+        first = self.jobs.run(request_id, 'run', DUE, RAW)
+        self.assertEqual(first['status'], 'completed')
+        self.store.close()
+        self.store = Store(self.path)
+        with patch('nasuraya_continuity_kit.local_job.integrity_report', side_effect=AssertionError('duplicate work')):
+            self.assertEqual(LocalJobs(self.store).run(request_id, 'run', DUE, RAW), first)
+        self.assertEqual(self.store.status(DUE)['request_count'], 2)
+
+    def test_finish_receipt_skips_occupied_ids_without_changing_old_receipts(self):
+        digest = hashlib.sha256(b'run').hexdigest()
+        occupied = ['local-finish-'+digest] + ['local-finish-'+digest[:40]+'-'+str(i) for i in (1, 2)]
+        for request_id in occupied:
+            self.store.apply('heartbeat', request_id, START)
+        old = self.store.db.execute('SELECT id,digest,receipt FROM requests ORDER BY id').fetchall()
+        self.assertEqual(self.jobs.run('req', 'run', DUE, RAW)['status'], 'completed')
+        for row in old:
+            self.assertEqual(self.store.db.execute('SELECT id,digest,receipt FROM requests WHERE id=?', (row[0],)).fetchone(), row)
+        finish_id = 'local-finish-'+digest[:40]+'-3'
+        receipt = self.store.db.execute('SELECT receipt FROM requests WHERE id=?', (finish_id,)).fetchone()
+        self.assertEqual(json.loads(receipt[0])['operation'], 'finish')
+        self.assertEqual(self.store.status(DUE)['request_count'], 5)
+
+    def test_finish_id_collision_created_during_computation_is_handled(self):
+        request_id = 'local-finish-'+hashlib.sha256(b'run').hexdigest()
+        def concurrent_heartbeat(raw):
+            other = Store(self.path)
+            try: other.apply('heartbeat', request_id, DUE)
+            finally: other.close()
+            return integrity_report(raw)
+        with patch('nasuraya_continuity_kit.local_job.integrity_report', side_effect=concurrent_heartbeat):
+            self.assertEqual(self.jobs.run('req', 'run', DUE, RAW)['status'], 'completed')
+        state = self.store.status(DUE)['state']
+        self.assertEqual(state['last_contact_at'], '2026-10-17T10:22:23+00:00')
+        self.assertIsNone(state['inflight_run_id'])
+        self.assertEqual(self.store.status(DUE)['request_count'], 3)
+
     def test_concurrent_identical_requests_publish_one_report(self):
         barrier = threading.Barrier(2)
         calls = []

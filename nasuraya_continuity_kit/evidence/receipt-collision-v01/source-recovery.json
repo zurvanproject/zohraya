@@ -1,0 +1,127 @@
+[
+  {
+    "path": ".github/workflows/nasuraya-continuity-kit.yml",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "06e22c99970e84a913f84f5af613223e73711c493adcabeffd7a491069d34e39"
+  },
+  {
+    "path": "continuity/__init__.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "1db9cb428bae3ec380404c780d4571484a64f2410514fb8c7bcd679152ddfac2"
+  },
+  {
+    "path": "continuity/gate.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "26a082342b44cca50623c8134ea7ce63981425b27e6d997ed81c9bc39721bcf4"
+  },
+  {
+    "path": "continuity/policy.json",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "37bbfc159e7da4d57656c7c527c94601b7ab2a9afd96bb5b696da405c1ead34e"
+  },
+  {
+    "path": "continuity/state.json",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "294c1784a3a45894ddb28b65b2810825154b931bc28d3c73b50eaeb8c449d142"
+  },
+  {
+    "path": "continuity/test_gate.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "5262b40ab6dcecd42e631fd296b52049d7517315bfa9866e36f70bcf2a7960e5"
+  },
+  {
+    "path": "nasuraya_continuity_kit/LOCAL_JOB_REPORT_FA.md",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "76a78e62a1dd6271168d66c74ea0ea029f5786acc9f6c1fe6a4fdc47fa337a69"
+  },
+  {
+    "path": "nasuraya_continuity_kit/README.md",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "561c1325944896016d11c841e3327bf1edbf49b622bdfe2b2d8369f10723255d"
+  },
+  {
+    "path": "nasuraya_continuity_kit/REPORT_FA.md",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "277f2d061173b417ba8ddeabc9c2651d431fb56428b2f2d9c62c163dbb6a1768"
+  },
+  {
+    "path": "nasuraya_continuity_kit/__init__.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "cd6fbff43dff3ea842bdd083c3d4a079ed25cdf1b3d0a69a6b5f9424a8fe20e9"
+  },
+  {
+    "path": "nasuraya_continuity_kit/cli.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "0671f7b2323d3380d3035f5d02b895777b5f315a9968094d68915c784a52f192"
+  },
+  {
+    "path": "nasuraya_continuity_kit/local_job.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "f000b88daa3028af0de159d6279fe3b3ffcfe27530873ebf0456585a57888b4d"
+  },
+  {
+    "path": "nasuraya_continuity_kit/store.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "815e507d85a32b7915edb4f04add9be0f3fe9a4cbdd4adeaabc2b2f33b794455"
+  },
+  {
+    "path": "nasuraya_continuity_kit/test_local_job.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "da824723edc696a18aacf7d619e77f7c6004def8cdb39fd8342d5f83ea91b02c"
+  },
+  {
+    "path": "nasuraya_continuity_kit/test_store.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "6f35b63518882f3385a11fce8cc4e634433854b52e78036037c1ba6c8361e528"
+  },
+  {
+    "path": "nasuraya_continuity_kit/verify_install.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "d49526aa4205b03f10443e05174cc9fbc60da13624c8aace11ab3c7d67d36b6d"
+  },
+  {
+    "path": "nasuraya_continuity_kit/verify_local_job.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "5fa3db8b4b1c95ba948a4e1b3aafa596a66d9c5a2d9f0474f965e3026d04d1b2"
+  },
+  {
+    "path": "project_fund/README_FA.md",
+    "commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+    "sha256": "4a8c8c950bb6f4f848534fe0fc9ec3c869414551187cd270aaddeb40853d9e26"
+  },
+  {
+    "path": "project_fund/__init__.py",
+    "commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+    "sha256": "e114af2f92fbfee2b12258def963fbd53ba5178d5c832190520684e61a844848"
+  },
+  {
+    "path": "project_fund/evidence/validation.json",
+    "commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+    "sha256": "79252b8c4d646ee61af0c0e965dbf23b6c64c4c3d1599ce158ac50918ce40b54"
+  },
+  {
+    "path": "project_fund/mandate.json",
+    "commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+    "sha256": "c8b5d14c607fc78624d717481bf64355f4fa41038db5bde918b66d2a156a3053"
+  },
+  {
+    "path": "project_fund/planner.py",
+    "commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+    "sha256": "ddb6cb0f260155bcd84b7d19cea5a36c0447f5262c3d00997ce78e83bd440e2d"
+  },
+  {
+    "path": "project_fund/test_planner.py",
+    "commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+    "sha256": "ec75987c3cb1fce3221513b1a9dd2d408d2eb66593dda1ed76b1a8c23095df1a"
+  },
+  {
+    "path": "pyproject.toml",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "067f71613aec8d86e819297205a45e775084b851ae0d4ba3b63bccf0b6c4e6cc"
+  },
+  {
+    "path": "setup.py",
+    "commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+    "sha256": "b8af96bd7bf0f1ce3782958280eb7ba094517e9cf6423c06e7a2ae73f086634f"
+  }
+]
