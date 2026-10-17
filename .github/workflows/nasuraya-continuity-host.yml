@@ -1,0 +1,48 @@
+name: Nasuraya bounded GitHub host
+on:
+  push:
+    branches: ['nasuraya/github-host-v01']
+    paths: ['continuity_host/**', '.github/workflows/nasuraya-continuity-host.yml']
+  pull_request:
+    paths: ['continuity_host/**', '.github/workflows/nasuraya-continuity-host.yml']
+  schedule:
+    - cron: '43 13 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nasuraya-bounded-continuity-host
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.repository == 'zurvanproject/zohraya' && github.event.repository.private == false && (github.event_name == 'push' || github.event_name == 'pull_request')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 7aaee60198b50246d90242d5155d3e3736882792
+          path: source
+          persist-credentials: false
+      - run: python3 -m unittest continuity_host.test_host -v
+  maintenance:
+    if: github.repository == 'zurvanproject/zohraya' && github.event.repository.private == false && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 7aaee60198b50246d90242d5155d3e3736882792
+          path: source
+          persist-credentials: false
+      - run: python3 continuity_host/host.py source
+        env:
+          GH_HOST_TOKEN: ${{ github.token }}
