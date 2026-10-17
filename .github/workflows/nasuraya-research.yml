@@ -22,7 +22,7 @@ jobs:
           .research-ci/bin/python -m pip install -r examples/nasuraya_research/requirements-cpu.txt
       - name: Verify exact vendoring and adapter invariants
         run: .research-ci/bin/python -m unittest examples.nasuraya_research.test_adapters -v
-      - name: Preserve existing metacognitive guards and experience
+      - name: Run ten-step native motion comparison\n        run: .research-ci/bin/python -m examples.nasuraya_research.ten_step_benchmark\n      - name: Preserve existing metacognitive guards and experience
         run: .research-ci/bin/python -m unittest examples.nasuraya_self_model.test_metacognitive_control examples.nasuraya_self_model.test_monitor examples.nasuraya_self_model.test_embodied_learning -v
       - name: Measure fresh paired native trials and sensory inference
         if: github.event_name == 'workflow_dispatch'
