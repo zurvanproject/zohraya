@@ -1,12 +1,12 @@
 name: Nasuraya bounded GitHub host
 on:
   push:
-    branches: ['nasuraya/github-host-v01']
+    branches: ['nasuraya/github-host-v01', 'nasuraya/cadence-v02']
     paths: ['continuity_host/**', '.github/workflows/nasuraya-continuity-host.yml']
   pull_request:
     paths: ['continuity_host/**', '.github/workflows/nasuraya-continuity-host.yml']
   schedule:
-    - cron: '43 13 * * *'
+    - cron: '43 1,7,13,19 * * *'
   workflow_dispatch:
 permissions:
   contents: read
@@ -27,7 +27,7 @@ jobs:
           ref: 7aaee60198b50246d90242d5155d3e3736882792
           path: source
           persist-credentials: false
-      - run: python3 -m unittest continuity_host.test_host -v
+      - run: python3 -m unittest continuity_host.test_host continuity_host.test_cadence -v
   maintenance:
     if: github.repository == 'zurvanproject/zohraya' && github.event.repository.private == false && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-24.04
@@ -43,6 +43,6 @@ jobs:
           ref: 7aaee60198b50246d90242d5155d3e3736882792
           path: source
           persist-credentials: false
-      - run: python3 continuity_host/host.py source
+      - run: python3 -m continuity_host.host source
         env:
           GH_HOST_TOKEN: ${{ github.token }}
