@@ -101,7 +101,17 @@ class LocalJobs:
                                       (canonical(result), run_id)).rowcount
             if changed != 1:
                 raise ValueError('run already reconciled; result will not be published')
-            self.store._apply_in_transaction('finish', 'local-finish-'+hashlib.sha256(run_id.encode()).hexdigest(), now, run_id)
+            # Caller request IDs share this table: even the old internal ID may
+            # already belong to a claim/heartbeat. Allocate under the same write
+            # lock as publication. Distinct suffixes need at most N+1 probes for
+            # N existing receipts; no overwrite, namespace reservation or retry.
+            digest = hashlib.sha256(run_id.encode()).hexdigest()
+            finish_id = 'local-finish-'+digest
+            suffix = 0
+            while self.db.execute('SELECT 1 FROM requests WHERE id=?', (finish_id,)).fetchone():
+                suffix += 1
+                finish_id = 'local-finish-'+digest[:40]+'-'+str(suffix)
+            self.store._apply_in_transaction('finish', finish_id, now, run_id)
         return self.inspect(run_id)
 
     def abandon(self, request_id, run_id, now, operator, evidence, worker_stopped=False):

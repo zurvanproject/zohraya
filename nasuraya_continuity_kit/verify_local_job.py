@@ -167,6 +167,18 @@ def verify(wheel, output):
     assert 'different local parameters' in run(db, code=2)['error']
     source.write_bytes(raw)
     assert cli(db, 'status')['result']['decision']['reason'] == 'daily_budget_used'
+    # A caller can legitimately use the legacy internal finish ID as its claim
+    # ID. Verify a fresh installed process completes, then cold-replays without
+    # computation; independently audit the committed report and both receipts.
+    db = out/'colliding-request.sqlite'
+    cli(db, 'init', now=START)
+    collision = 'local-finish-'+hashlib.sha256(b'run1').hexdigest()
+    args = ('--request-id', collision, '--run-id', 'run1', '--input', str(source))
+    completed = cli(db, 'run-local', *args)
+    assert completed['result']['status'] == 'completed'
+    audit(db, 'completed')
+    assert cli(db, 'run-local', *args, forbid_compute=True) == completed
+    audit(db, 'completed')
     crashes = []
     for phase in ['after_claim', 'after_compute', 'after_result_write', 'after_commit']:
         db = out/(phase+'.sqlite')
