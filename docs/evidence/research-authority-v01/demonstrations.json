@@ -1,0 +1,1503 @@
+{
+  "fresh_disposable_fixtures": true,
+  "committed_native_cycles": 6,
+  "api_calls": 0,
+  "rows": [
+    {
+      "fixture": "normal",
+      "initial": {
+        "authority": "bounded_native_simulation",
+        "enabled": true,
+        "model_api_calls": 0,
+        "native": {
+          "actions_remaining": 3,
+          "actions_reserved": 0,
+          "completed_cycles": 0,
+          "external_model_api_used": false,
+          "failed_cycles": 0,
+          "fixture": "normal",
+          "max_actions": 3,
+          "mode": "bounded",
+          "schema": "nasuraya-bounded-body-loop/1",
+          "self_model": {
+            "checkpoint_sha256": "137f5fa38da7ae43a0c7d004a52f5d4191ad51f2d31873567299aeba39010faa",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L.",
+            "minimum_state": {
+              "HR": 62.05427845950002,
+              "RR": 14.167210021781528,
+              "arousal": 0.2822793406531386,
+              "balance": 1.0,
+              "breath_depth": 1.5218378694671448,
+              "energy": 0.9993454504792117,
+              "fatigue": 0.01069945672828943,
+              "hydration": 0.9999859908377187,
+              "muscle_tone": 0.26973625139588886,
+              "pain": 0.11413104958422383,
+              "parasympathetic": 0.6132716213175111,
+              "posture": "double_support",
+              "sleep_pressure": 0.35032098259399874,
+              "sympathetic": 0.24538650771018136,
+              "temperature": 37.000054898365086,
+              "valence": 0.0
+            },
+            "revision": 0,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "pain",
+              "energy": 0.9993454504792117,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "double_support",
+              "position_m": [
+                0.0,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "chest_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07+00:00"
+          },
+          "unresolved_running": []
+        },
+        "original_total_budget": 3,
+        "pending": [],
+        "requests": 0
+      },
+      "batch": {
+        "results": [
+          {
+            "historical_native_cycles": 1,
+            "model_api_calls": 0,
+            "native_receipt": {
+              "actual_action": "walk",
+              "body_audit": {
+                "drink_input_L": 0.0,
+                "energy_error_J": 1.3240963880889467e-10,
+                "external_heat_J": 0.0,
+                "light_error_J": 0.0,
+                "meal_input_J": 0.0,
+                "neural_clock_error_s": 3.608224830031759e-16,
+                "photochemical_J": 0.0,
+                "same_owner_ticks": true,
+                "voided_L": 0.0,
+                "water_error_L": 7.939510865157678e-16
+              },
+              "decision_id": "research-authority:step-1",
+              "expected_outcome_matched": true,
+              "ledger_status": "complete",
+              "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+              "recalled_feedback_ids": [],
+              "replayed": false,
+              "requested_action": "walk",
+              "self_model_after": {
+                "checkpoint_sha256": "19767d273975aeaf02972794a202dc8725d859f0cfdc9740347f33494750b6bd",
+                "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L.",
+                "minimum_state": {
+                  "HR": 62.684795675925066,
+                  "RR": 14.189130811748338,
+                  "arousal": 0.3302059510050769,
+                  "balance": 1.0,
+                  "breath_depth": 1.524705597562529,
+                  "energy": 0.9993357964087033,
+                  "fatigue": 0.010858521713712594,
+                  "hydration": 0.9999857878691728,
+                  "muscle_tone": 0.27014282209312834,
+                  "pain": 0.11484637232764255,
+                  "parasympathetic": 0.6124985357513969,
+                  "posture": "shift",
+                  "sleep_pressure": 0.3503255680596273,
+                  "sympathetic": 0.2483259462553279,
+                  "temperature": 37.00005645895374,
+                  "valence": 0.0007453319703671135
+                },
+                "revision": 1,
+                "scope": "existing software body; generated fixture, not biological measurement",
+                "self_location": {
+                  "dominant_homeostatic_need": "pain",
+                  "energy": 0.9993357964087033,
+                  "evidence_level": "B",
+                  "next_move_prediction": "available by forecast(action, duration, inputs)",
+                  "pose": "shift",
+                  "position_m": [
+                    0.0004528066340146724,
+                    0.0,
+                    1.314
+                  ],
+                  "strongest_interoceptive_region": "chest_state",
+                  "where": "Tadash computational world: X left, Y forward, Z up; metres"
+                },
+                "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+              },
+              "status": "complete"
+            },
+            "preferred_action": "walk",
+            "reasons": [],
+            "replayed": false,
+            "request_id": "step-1",
+            "research_after": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993357964087033,
+                  0.9999857878691728,
+                  0.010858521713712594,
+                  0.11484637232764255,
+                  0.3503255680596273,
+                  1.0
+                ],
+                "source": "b567c913d1d7ece55c2d6637d20b752860c220767d760b339aa72bd748bf6891",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "19767d273975aeaf02972794a202dc8725d859f0cfdc9740347f33494750b6bd"
+            },
+            "research_before": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993454504792117,
+                  0.9999859908377187,
+                  0.01069945672828943,
+                  0.11413104958422383,
+                  0.35032098259399874,
+                  1.0
+                ],
+                "source": "f6f10fc9114774f995eaa4bbf7568d3a86eaf3432ec694467745e0a5d61f8fb4",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "137f5fa38da7ae43a0c7d004a52f5d4191ad51f2d31873567299aeba39010faa"
+            },
+            "this_call_native_cycles": 1
+          },
+          {
+            "historical_native_cycles": 1,
+            "model_api_calls": 0,
+            "native_receipt": {
+              "actual_action": "walk",
+              "body_audit": {
+                "drink_input_L": 0.0,
+                "energy_error_J": 1.7355716863676207e-10,
+                "external_heat_J": 0.0,
+                "light_error_J": 0.0,
+                "meal_input_J": 0.0,
+                "neural_clock_error_s": 7.216449660063518e-16,
+                "photochemical_J": 0.0,
+                "same_owner_ticks": true,
+                "voided_L": 0.0,
+                "water_error_L": 3.633561279550029e-15
+              },
+              "decision_id": "research-authority:step-2",
+              "expected_outcome_matched": true,
+              "ledger_status": "complete",
+              "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+              "recalled_feedback_ids": [
+                "research-authority:step-1"
+              ],
+              "replayed": false,
+              "requested_action": "walk",
+              "self_model_after": {
+                "checkpoint_sha256": "ce791aaab13143091b565fe56459d5bdf8a598f234d8033b2d16379d78699c51",
+                "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_R.",
+                "minimum_state": {
+                  "HR": 63.306046466796914,
+                  "RR": 14.214164695944906,
+                  "arousal": 0.3302257850901889,
+                  "balance": 1.0,
+                  "breath_depth": 1.5278512861400375,
+                  "energy": 0.9993259754266908,
+                  "fatigue": 0.01101953458852712,
+                  "hydration": 0.9999855798565015,
+                  "muscle_tone": 0.2705588813688152,
+                  "pain": 0.1152558607848207,
+                  "parasympathetic": 0.6117349898035256,
+                  "posture": "shift",
+                  "sleep_pressure": 0.3503301535252558,
+                  "sympathetic": 0.2512289726407279,
+                  "temperature": 37.00005714867009,
+                  "valence": 0.0014814052783000383
+                },
+                "revision": 2,
+                "scope": "existing software body; generated fixture, not biological measurement",
+                "self_location": {
+                  "dominant_homeostatic_need": "pain",
+                  "energy": 0.9993259754266908,
+                  "evidence_level": "B",
+                  "next_move_prediction": "available by forecast(action, duration, inputs)",
+                  "pose": "shift",
+                  "position_m": [
+                    0.0019854607556175903,
+                    0.0,
+                    1.314
+                  ],
+                  "strongest_interoceptive_region": "chest_state",
+                  "where": "Tadash computational world: X left, Y forward, Z up; metres"
+                },
+                "simulated_wall_utc": "2026-01-01T00:00:07.200000+00:00"
+              },
+              "status": "complete"
+            },
+            "preferred_action": "walk",
+            "reasons": [],
+            "replayed": false,
+            "request_id": "step-2",
+            "research_after": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993259754266908,
+                  0.9999855798565015,
+                  0.01101953458852712,
+                  0.1152558607848207,
+                  0.3503301535252558,
+                  1.0
+                ],
+                "source": "324072cfc03b8efa3ee19117ff7cb7b2a012182f8c9249629e1f0e4ceb402b0d",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "ce791aaab13143091b565fe56459d5bdf8a598f234d8033b2d16379d78699c51"
+            },
+            "research_before": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993357964087033,
+                  0.9999857878691728,
+                  0.010858521713712594,
+                  0.11484637232764255,
+                  0.3503255680596273,
+                  1.0
+                ],
+                "source": "b567c913d1d7ece55c2d6637d20b752860c220767d760b339aa72bd748bf6891",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "19767d273975aeaf02972794a202dc8725d859f0cfdc9740347f33494750b6bd"
+            },
+            "this_call_native_cycles": 1
+          },
+          {
+            "historical_native_cycles": 1,
+            "model_api_calls": 0,
+            "native_receipt": {
+              "actual_action": "walk",
+              "body_audit": {
+                "drink_input_L": 0.0,
+                "energy_error_J": 4.6000536713108886e-11,
+                "external_heat_J": 0.0,
+                "light_error_J": 0.0,
+                "meal_input_J": 0.0,
+                "neural_clock_error_s": 1.0547118733938987e-15,
+                "photochemical_J": 0.0,
+                "same_owner_ticks": true,
+                "voided_L": 0.0,
+                "water_error_L": 1.7222361774552053e-14
+              },
+              "decision_id": "research-authority:step-3",
+              "expected_outcome_matched": true,
+              "ledger_status": "complete",
+              "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+              "recalled_feedback_ids": [
+                "research-authority:step-2"
+              ],
+              "replayed": false,
+              "requested_action": "walk",
+              "self_model_after": {
+                "checkpoint_sha256": "348b9ca682abd30aa6f9bc256f959c9bd81bf8735c1b19a637d7df9f7dd1cf63",
+                "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_R.",
+                "minimum_state": {
+                  "HR": 63.918191636410526,
+                  "RR": 14.242956376067074,
+                  "arousal": 0.3302453753276392,
+                  "balance": 1.0,
+                  "breath_depth": 1.5313259965598118,
+                  "energy": 0.9993159548421804,
+                  "fatigue": 0.0111798010412913,
+                  "hydration": 0.9999853696140946,
+                  "muscle_tone": 0.27098489302103174,
+                  "pain": 0.1157189905674298,
+                  "parasympathetic": 0.6109807711905757,
+                  "posture": "shift",
+                  "sleep_pressure": 0.35033473899088435,
+                  "sympathetic": 0.25409630813380446,
+                  "temperature": 37.000057973741356,
+                  "valence": 0.0022083349367506915
+                },
+                "revision": 3,
+                "scope": "existing software body; generated fixture, not biological measurement",
+                "self_location": {
+                  "dominant_homeostatic_need": "pain",
+                  "energy": 0.9993159548421804,
+                  "evidence_level": "B",
+                  "next_move_prediction": "available by forecast(action, duration, inputs)",
+                  "pose": "shift",
+                  "position_m": [
+                    0.004798232921034782,
+                    0.0,
+                    1.314
+                  ],
+                  "strongest_interoceptive_region": "chest_state",
+                  "where": "Tadash computational world: X left, Y forward, Z up; metres"
+                },
+                "simulated_wall_utc": "2026-01-01T00:00:07.300000+00:00"
+              },
+              "status": "complete"
+            },
+            "preferred_action": "walk",
+            "reasons": [],
+            "replayed": false,
+            "request_id": "step-3",
+            "research_after": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993159548421804,
+                  0.9999853696140946,
+                  0.0111798010412913,
+                  0.1157189905674298,
+                  0.35033473899088435,
+                  1.0
+                ],
+                "source": "5e301304d11548364925480051045c76e69672fefa5797254e1cd15f0c13fcd2",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "348b9ca682abd30aa6f9bc256f959c9bd81bf8735c1b19a637d7df9f7dd1cf63"
+            },
+            "research_before": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993259754266908,
+                  0.9999855798565015,
+                  0.01101953458852712,
+                  0.1152558607848207,
+                  0.3503301535252558,
+                  1.0
+                ],
+                "source": "324072cfc03b8efa3ee19117ff7cb7b2a012182f8c9249629e1f0e4ceb402b0d",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "ce791aaab13143091b565fe56459d5bdf8a598f234d8033b2d16379d78699c51"
+            },
+            "this_call_native_cycles": 1
+          }
+        ],
+        "status": {
+          "authority": "bounded_native_simulation",
+          "enabled": true,
+          "model_api_calls": 0,
+          "native": {
+            "actions_remaining": 0,
+            "actions_reserved": 3,
+            "completed_cycles": 3,
+            "external_model_api_used": false,
+            "failed_cycles": 0,
+            "fixture": "normal",
+            "max_actions": 3,
+            "mode": "bounded",
+            "schema": "nasuraya-bounded-body-loop/1",
+            "self_model": {
+              "checkpoint_sha256": "348b9ca682abd30aa6f9bc256f959c9bd81bf8735c1b19a637d7df9f7dd1cf63",
+              "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_R.",
+              "minimum_state": {
+                "HR": 63.918191636410526,
+                "RR": 14.242956376067074,
+                "arousal": 0.3302453753276392,
+                "balance": 1.0,
+                "breath_depth": 1.5313259965598118,
+                "energy": 0.9993159548421804,
+                "fatigue": 0.0111798010412913,
+                "hydration": 0.9999853696140946,
+                "muscle_tone": 0.27098489302103174,
+                "pain": 0.1157189905674298,
+                "parasympathetic": 0.6109807711905757,
+                "posture": "shift",
+                "sleep_pressure": 0.35033473899088435,
+                "sympathetic": 0.25409630813380446,
+                "temperature": 37.000057973741356,
+                "valence": 0.0022083349367506915
+              },
+              "revision": 3,
+              "scope": "existing software body; generated fixture, not biological measurement",
+              "self_location": {
+                "dominant_homeostatic_need": "pain",
+                "energy": 0.9993159548421804,
+                "evidence_level": "B",
+                "next_move_prediction": "available by forecast(action, duration, inputs)",
+                "pose": "shift",
+                "position_m": [
+                  0.004798232921034782,
+                  0.0,
+                  1.314
+                ],
+                "strongest_interoceptive_region": "chest_state",
+                "where": "Tadash computational world: X left, Y forward, Z up; metres"
+              },
+              "simulated_wall_utc": "2026-01-01T00:00:07.300000+00:00"
+            },
+            "unresolved_running": []
+          },
+          "original_total_budget": 3,
+          "pending": [],
+          "requests": 3
+        }
+      },
+      "after_restart": {
+        "authority": "bounded_native_simulation",
+        "enabled": true,
+        "model_api_calls": 0,
+        "native": {
+          "actions_remaining": 0,
+          "actions_reserved": 3,
+          "completed_cycles": 3,
+          "external_model_api_used": false,
+          "failed_cycles": 0,
+          "fixture": "normal",
+          "max_actions": 3,
+          "mode": "bounded",
+          "schema": "nasuraya-bounded-body-loop/1",
+          "self_model": {
+            "checkpoint_sha256": "348b9ca682abd30aa6f9bc256f959c9bd81bf8735c1b19a637d7df9f7dd1cf63",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_R.",
+            "minimum_state": {
+              "HR": 63.918191636410526,
+              "RR": 14.242956376067074,
+              "arousal": 0.3302453753276392,
+              "balance": 1.0,
+              "breath_depth": 1.5313259965598118,
+              "energy": 0.9993159548421804,
+              "fatigue": 0.0111798010412913,
+              "hydration": 0.9999853696140946,
+              "muscle_tone": 0.27098489302103174,
+              "pain": 0.1157189905674298,
+              "parasympathetic": 0.6109807711905757,
+              "posture": "shift",
+              "sleep_pressure": 0.35033473899088435,
+              "sympathetic": 0.25409630813380446,
+              "temperature": 37.000057973741356,
+              "valence": 0.0022083349367506915
+            },
+            "revision": 3,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "pain",
+              "energy": 0.9993159548421804,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "shift",
+              "position_m": [
+                0.004798232921034782,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "chest_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07.300000+00:00"
+          },
+          "unresolved_running": []
+        },
+        "original_total_budget": 3,
+        "pending": [],
+        "requests": 3
+      },
+      "over_budget": {
+        "status": "rejected",
+        "exception_type": "ResearchBlocked",
+        "reason": "persistent native action budget exhausted"
+      },
+      "replay": {
+        "historical_native_cycles": 1,
+        "model_api_calls": 0,
+        "native_receipt": {
+          "actual_action": "walk",
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 1.3240963880889467e-10,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 3.608224830031759e-16,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 7.939510865157678e-16
+          },
+          "decision_id": "research-authority:step-1",
+          "expected_outcome_matched": true,
+          "ledger_status": "complete",
+          "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+          "recalled_feedback_ids": [],
+          "replayed": false,
+          "requested_action": "walk",
+          "self_model_after": {
+            "checkpoint_sha256": "19767d273975aeaf02972794a202dc8725d859f0cfdc9740347f33494750b6bd",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L.",
+            "minimum_state": {
+              "HR": 62.684795675925066,
+              "RR": 14.189130811748338,
+              "arousal": 0.3302059510050769,
+              "balance": 1.0,
+              "breath_depth": 1.524705597562529,
+              "energy": 0.9993357964087033,
+              "fatigue": 0.010858521713712594,
+              "hydration": 0.9999857878691728,
+              "muscle_tone": 0.27014282209312834,
+              "pain": 0.11484637232764255,
+              "parasympathetic": 0.6124985357513969,
+              "posture": "shift",
+              "sleep_pressure": 0.3503255680596273,
+              "sympathetic": 0.2483259462553279,
+              "temperature": 37.00005645895374,
+              "valence": 0.0007453319703671135
+            },
+            "revision": 1,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "pain",
+              "energy": 0.9993357964087033,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "shift",
+              "position_m": [
+                0.0004528066340146724,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "chest_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+          },
+          "status": "complete"
+        },
+        "preferred_action": "walk",
+        "reasons": [],
+        "replayed": true,
+        "request_id": "step-1",
+        "research_after": {
+          "action_requests_executed": 0,
+          "mode": "read_only_research",
+          "model_api_calls": 0,
+          "native_cycles_executed": 0,
+          "sensory": {
+            "q": [
+              0.9993357964087033,
+              0.9999857878691728,
+              0.010858521713712594,
+              0.11484637232764255,
+              0.3503255680596273,
+              1.0
+            ],
+            "source": "b567c913d1d7ece55c2d6637d20b752860c220767d760b339aa72bd748bf6891",
+            "v": [
+              0.196,
+              0.0,
+              0.0,
+              -0.196,
+              0.0,
+              0.0
+            ]
+          },
+          "source_checkpoint_sha256": "19767d273975aeaf02972794a202dc8725d859f0cfdc9740347f33494750b6bd"
+        },
+        "research_before": {
+          "action_requests_executed": 0,
+          "mode": "read_only_research",
+          "model_api_calls": 0,
+          "native_cycles_executed": 0,
+          "sensory": {
+            "q": [
+              0.9993454504792117,
+              0.9999859908377187,
+              0.01069945672828943,
+              0.11413104958422383,
+              0.35032098259399874,
+              1.0
+            ],
+            "source": "f6f10fc9114774f995eaa4bbf7568d3a86eaf3432ec694467745e0a5d61f8fb4",
+            "v": [
+              0.196,
+              0.0,
+              0.0,
+              -0.196,
+              0.0,
+              0.0
+            ]
+          },
+          "source_checkpoint_sha256": "137f5fa38da7ae43a0c7d004a52f5d4191ad51f2d31873567299aeba39010faa"
+        },
+        "this_call_native_cycles": 0
+      },
+      "after_replay": {
+        "authority": "bounded_native_simulation",
+        "enabled": true,
+        "model_api_calls": 0,
+        "native": {
+          "actions_remaining": 0,
+          "actions_reserved": 3,
+          "completed_cycles": 3,
+          "external_model_api_used": false,
+          "failed_cycles": 0,
+          "fixture": "normal",
+          "max_actions": 3,
+          "mode": "bounded",
+          "schema": "nasuraya-bounded-body-loop/1",
+          "self_model": {
+            "checkpoint_sha256": "348b9ca682abd30aa6f9bc256f959c9bd81bf8735c1b19a637d7df9f7dd1cf63",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_R.",
+            "minimum_state": {
+              "HR": 63.918191636410526,
+              "RR": 14.242956376067074,
+              "arousal": 0.3302453753276392,
+              "balance": 1.0,
+              "breath_depth": 1.5313259965598118,
+              "energy": 0.9993159548421804,
+              "fatigue": 0.0111798010412913,
+              "hydration": 0.9999853696140946,
+              "muscle_tone": 0.27098489302103174,
+              "pain": 0.1157189905674298,
+              "parasympathetic": 0.6109807711905757,
+              "posture": "shift",
+              "sleep_pressure": 0.35033473899088435,
+              "sympathetic": 0.25409630813380446,
+              "temperature": 37.000057973741356,
+              "valence": 0.0022083349367506915
+            },
+            "revision": 3,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "pain",
+              "energy": 0.9993159548421804,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "shift",
+              "position_m": [
+                0.004798232921034782,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "chest_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07.300000+00:00"
+          },
+          "unresolved_running": []
+        },
+        "original_total_budget": 3,
+        "pending": [],
+        "requests": 3
+      }
+    },
+    {
+      "fixture": "sleep",
+      "initial": {
+        "authority": "bounded_native_simulation",
+        "enabled": true,
+        "model_api_calls": 0,
+        "native": {
+          "actions_remaining": 3,
+          "actions_reserved": 0,
+          "completed_cycles": 0,
+          "external_model_api_used": false,
+          "failed_cycles": 0,
+          "fixture": "sleep",
+          "max_actions": 3,
+          "mode": "bounded",
+          "schema": "nasuraya-bounded-body-loop/1",
+          "self_model": {
+            "checkpoint_sha256": "93538fc6832cf83071c91872d2b544f1f79ce64af96469c608f385fb2eedb3e4",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+            "minimum_state": {
+              "HR": 62.05427845950002,
+              "RR": 14.167210021781528,
+              "arousal": 0.2822793406531386,
+              "balance": 1.0,
+              "breath_depth": 1.5218378694671448,
+              "energy": 0.9993454504792117,
+              "fatigue": 0.01069945672828943,
+              "hydration": 0.9999859908377187,
+              "muscle_tone": 0.26973625139588886,
+              "pain": 0.11413104958422383,
+              "parasympathetic": 0.6132716213175111,
+              "posture": "double_support",
+              "sleep_pressure": 0.9503209825939987,
+              "sympathetic": 0.24538650771018136,
+              "temperature": 37.000054898365086,
+              "valence": 0.0
+            },
+            "revision": 0,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "sleep",
+              "energy": 0.9993454504792117,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "double_support",
+              "position_m": [
+                0.0,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "head_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07+00:00"
+          },
+          "unresolved_running": []
+        },
+        "original_total_budget": 3,
+        "pending": [],
+        "requests": 0
+      },
+      "batch": {
+        "results": [
+          {
+            "historical_native_cycles": 1,
+            "model_api_calls": 0,
+            "native_receipt": {
+              "actual_action": "observe",
+              "body_audit": {
+                "drink_input_L": 0.0,
+                "energy_error_J": 6.45314912617323e-11,
+                "external_heat_J": 0.0,
+                "light_error_J": 0.0,
+                "meal_input_J": 0.0,
+                "neural_clock_error_s": 3.608224830031759e-16,
+                "photochemical_J": 0.0,
+                "same_owner_ticks": true,
+                "voided_L": 0.0,
+                "water_error_L": 7.939510865157678e-16
+              },
+              "decision_id": "research-authority:step-1",
+              "expected_outcome_matched": true,
+              "ledger_status": "complete",
+              "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+              "recalled_feedback_ids": [],
+              "replayed": false,
+              "requested_action": "observe",
+              "self_model_after": {
+                "checkpoint_sha256": "bc678348b5b9a329ada0ae3ab91c31fd098cb442cdbd6df45c935ab091193660",
+                "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+                "minimum_state": {
+                  "HR": 62.08803779195108,
+                  "RR": 14.187641606721902,
+                  "arousal": 0.330188976490617,
+                  "balance": 1.0,
+                  "breath_depth": 1.5245627093906644,
+                  "energy": 0.9993358655563357,
+                  "fatigue": 0.010852306110122136,
+                  "hydration": 0.9999857878691728,
+                  "muscle_tone": 0.27013202012938115,
+                  "pain": 0.11484618361297251,
+                  "parasympathetic": 0.6133681050850631,
+                  "posture": "double_support",
+                  "sleep_pressure": 0.9503255680596272,
+                  "sympathetic": 0.24584146244485283,
+                  "temperature": 37.000056175372166,
+                  "valence": 0.0007453319703671135
+                },
+                "revision": 1,
+                "scope": "existing software body; generated fixture, not biological measurement",
+                "self_location": {
+                  "dominant_homeostatic_need": "sleep",
+                  "energy": 0.9993358655563357,
+                  "evidence_level": "B",
+                  "next_move_prediction": "available by forecast(action, duration, inputs)",
+                  "pose": "double_support",
+                  "position_m": [
+                    0.0,
+                    0.0,
+                    1.314
+                  ],
+                  "strongest_interoceptive_region": "head_state",
+                  "where": "Tadash computational world: X left, Y forward, Z up; metres"
+                },
+                "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+              },
+              "status": "complete"
+            },
+            "preferred_action": "observe",
+            "reasons": [
+              "sleep_pressure"
+            ],
+            "replayed": false,
+            "request_id": "step-1",
+            "research_after": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993358655563357,
+                  0.9999857878691728,
+                  0.010852306110122136,
+                  0.11484618361297251,
+                  0.9503255680596272,
+                  1.0
+                ],
+                "source": "5ca52c939574f1a1b3ced58b9b6b37b655ebd98b974894b1864009ca0c802dfb",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "bc678348b5b9a329ada0ae3ab91c31fd098cb442cdbd6df45c935ab091193660"
+            },
+            "research_before": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993454504792117,
+                  0.9999859908377187,
+                  0.01069945672828943,
+                  0.11413104958422383,
+                  0.9503209825939987,
+                  1.0
+                ],
+                "source": "384df1919d716269b2851278c99400931448e326c40b4509037ae1f4c0e76a32",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "93538fc6832cf83071c91872d2b544f1f79ce64af96469c608f385fb2eedb3e4"
+            },
+            "this_call_native_cycles": 1
+          },
+          {
+            "historical_native_cycles": 1,
+            "model_api_calls": 0,
+            "native_receipt": {
+              "actual_action": "observe",
+              "body_audit": {
+                "drink_input_L": 0.0,
+                "energy_error_J": 1.028155338644865e-10,
+                "external_heat_J": 0.0,
+                "light_error_J": 0.0,
+                "meal_input_J": 0.0,
+                "neural_clock_error_s": 7.216449660063518e-16,
+                "photochemical_J": 0.0,
+                "same_owner_ticks": true,
+                "voided_L": 0.0,
+                "water_error_L": 1.0808919677276346e-15
+              },
+              "decision_id": "research-authority:step-2",
+              "expected_outcome_matched": true,
+              "ledger_status": "complete",
+              "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+              "recalled_feedback_ids": [
+                "research-authority:step-1"
+              ],
+              "replayed": false,
+              "requested_action": "observe",
+              "self_model_after": {
+                "checkpoint_sha256": "083256dc683b9c72fba98dfe1df5a628b4c8915cb0fce92167856b8e500939f1",
+                "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+                "minimum_state": {
+                  "HR": 62.12159481403049,
+                  "RR": 14.207644449385326,
+                  "arousal": 0.3301920429540373,
+                  "balance": 1.0,
+                  "breath_depth": 1.527231263132158,
+                  "energy": 0.9993262794912033,
+                  "fatigue": 0.011005155491954842,
+                  "hydration": 0.9999855807728313,
+                  "muscle_tone": 0.2705258940500191,
+                  "pain": 0.11502062335003267,
+                  "parasympathetic": 0.6134635297814512,
+                  "posture": "double_support",
+                  "sleep_pressure": 0.9503301535252557,
+                  "sympathetic": 0.24629028698951158,
+                  "temperature": 37.00005618206671,
+                  "valence": 0.0014814052783000383
+                },
+                "revision": 2,
+                "scope": "existing software body; generated fixture, not biological measurement",
+                "self_location": {
+                  "dominant_homeostatic_need": "sleep",
+                  "energy": 0.9993262794912033,
+                  "evidence_level": "B",
+                  "next_move_prediction": "available by forecast(action, duration, inputs)",
+                  "pose": "double_support",
+                  "position_m": [
+                    0.0,
+                    0.0,
+                    1.314
+                  ],
+                  "strongest_interoceptive_region": "head_state",
+                  "where": "Tadash computational world: X left, Y forward, Z up; metres"
+                },
+                "simulated_wall_utc": "2026-01-01T00:00:07.200000+00:00"
+              },
+              "status": "complete"
+            },
+            "preferred_action": "observe",
+            "reasons": [
+              "sleep_pressure"
+            ],
+            "replayed": false,
+            "request_id": "step-2",
+            "research_after": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993262794912033,
+                  0.9999855807728313,
+                  0.011005155491954842,
+                  0.11502062335003267,
+                  0.9503301535252557,
+                  1.0
+                ],
+                "source": "b51949aaf3bbc37ad1e5e9389034447cf5566cd7855b7c11aee85b4669995299",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "083256dc683b9c72fba98dfe1df5a628b4c8915cb0fce92167856b8e500939f1"
+            },
+            "research_before": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993358655563357,
+                  0.9999857878691728,
+                  0.010852306110122136,
+                  0.11484618361297251,
+                  0.9503255680596272,
+                  1.0
+                ],
+                "source": "5ca52c939574f1a1b3ced58b9b6b37b655ebd98b974894b1864009ca0c802dfb",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "bc678348b5b9a329ada0ae3ab91c31fd098cb442cdbd6df45c935ab091193660"
+            },
+            "this_call_native_cycles": 1
+          },
+          {
+            "historical_native_cycles": 1,
+            "model_api_calls": 0,
+            "native_receipt": {
+              "actual_action": "observe",
+              "body_audit": {
+                "drink_input_L": 0.0,
+                "energy_error_J": 1.3800871556668426e-10,
+                "external_heat_J": 0.0,
+                "light_error_J": 0.0,
+                "meal_input_J": 0.0,
+                "neural_clock_error_s": 1.0547118733938987e-15,
+                "photochemical_J": 0.0,
+                "same_owner_ticks": true,
+                "voided_L": 0.0,
+                "water_error_L": 8.724808663084296e-15
+              },
+              "decision_id": "research-authority:step-3",
+              "expected_outcome_matched": true,
+              "ledger_status": "complete",
+              "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+              "recalled_feedback_ids": [
+                "research-authority:step-2"
+              ],
+              "replayed": false,
+              "requested_action": "observe",
+              "self_model_after": {
+                "checkpoint_sha256": "823324ea61c3c55fb98c0944fe2a578261c9dae3b6df2f64b4ce8018a8ecca88",
+                "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+                "minimum_state": {
+                  "HR": 62.15494535784471,
+                  "RR": 14.227226203426405,
+                  "arousal": 0.3301950677745717,
+                  "balance": 1.0,
+                  "breath_depth": 1.5298445642205536,
+                  "energy": 0.999316692295793,
+                  "fatigue": 0.011158004873787548,
+                  "hydration": 0.9999853736537151,
+                  "muscle_tone": 0.2709178180051839,
+                  "pain": 0.1151865568600685,
+                  "parasympathetic": 0.6135579232795288,
+                  "posture": "double_support",
+                  "sleep_pressure": 0.9503347389908843,
+                  "sympathetic": 0.24673301645108084,
+                  "temperature": 37.00005618869105,
+                  "valence": 0.0022083349367506915
+                },
+                "revision": 3,
+                "scope": "existing software body; generated fixture, not biological measurement",
+                "self_location": {
+                  "dominant_homeostatic_need": "sleep",
+                  "energy": 0.999316692295793,
+                  "evidence_level": "B",
+                  "next_move_prediction": "available by forecast(action, duration, inputs)",
+                  "pose": "double_support",
+                  "position_m": [
+                    0.0,
+                    0.0,
+                    1.314
+                  ],
+                  "strongest_interoceptive_region": "head_state",
+                  "where": "Tadash computational world: X left, Y forward, Z up; metres"
+                },
+                "simulated_wall_utc": "2026-01-01T00:00:07.300000+00:00"
+              },
+              "status": "complete"
+            },
+            "preferred_action": "observe",
+            "reasons": [
+              "sleep_pressure"
+            ],
+            "replayed": false,
+            "request_id": "step-3",
+            "research_after": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.999316692295793,
+                  0.9999853736537151,
+                  0.011158004873787548,
+                  0.1151865568600685,
+                  0.9503347389908843,
+                  1.0
+                ],
+                "source": "b37b387bc892f0fabacb01fdc302e049516e60aa036e7b95b078a8571029f0e5",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "823324ea61c3c55fb98c0944fe2a578261c9dae3b6df2f64b4ce8018a8ecca88"
+            },
+            "research_before": {
+              "action_requests_executed": 0,
+              "mode": "read_only_research",
+              "model_api_calls": 0,
+              "native_cycles_executed": 0,
+              "sensory": {
+                "q": [
+                  0.9993262794912033,
+                  0.9999855807728313,
+                  0.011005155491954842,
+                  0.11502062335003267,
+                  0.9503301535252557,
+                  1.0
+                ],
+                "source": "b51949aaf3bbc37ad1e5e9389034447cf5566cd7855b7c11aee85b4669995299",
+                "v": [
+                  0.196,
+                  0.0,
+                  0.0,
+                  -0.196,
+                  0.0,
+                  0.0
+                ]
+              },
+              "source_checkpoint_sha256": "083256dc683b9c72fba98dfe1df5a628b4c8915cb0fce92167856b8e500939f1"
+            },
+            "this_call_native_cycles": 1
+          }
+        ],
+        "status": {
+          "authority": "bounded_native_simulation",
+          "enabled": true,
+          "model_api_calls": 0,
+          "native": {
+            "actions_remaining": 0,
+            "actions_reserved": 3,
+            "completed_cycles": 3,
+            "external_model_api_used": false,
+            "failed_cycles": 0,
+            "fixture": "sleep",
+            "max_actions": 3,
+            "mode": "bounded",
+            "schema": "nasuraya-bounded-body-loop/1",
+            "self_model": {
+              "checkpoint_sha256": "823324ea61c3c55fb98c0944fe2a578261c9dae3b6df2f64b4ce8018a8ecca88",
+              "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+              "minimum_state": {
+                "HR": 62.15494535784471,
+                "RR": 14.227226203426405,
+                "arousal": 0.3301950677745717,
+                "balance": 1.0,
+                "breath_depth": 1.5298445642205536,
+                "energy": 0.999316692295793,
+                "fatigue": 0.011158004873787548,
+                "hydration": 0.9999853736537151,
+                "muscle_tone": 0.2709178180051839,
+                "pain": 0.1151865568600685,
+                "parasympathetic": 0.6135579232795288,
+                "posture": "double_support",
+                "sleep_pressure": 0.9503347389908843,
+                "sympathetic": 0.24673301645108084,
+                "temperature": 37.00005618869105,
+                "valence": 0.0022083349367506915
+              },
+              "revision": 3,
+              "scope": "existing software body; generated fixture, not biological measurement",
+              "self_location": {
+                "dominant_homeostatic_need": "sleep",
+                "energy": 0.999316692295793,
+                "evidence_level": "B",
+                "next_move_prediction": "available by forecast(action, duration, inputs)",
+                "pose": "double_support",
+                "position_m": [
+                  0.0,
+                  0.0,
+                  1.314
+                ],
+                "strongest_interoceptive_region": "head_state",
+                "where": "Tadash computational world: X left, Y forward, Z up; metres"
+              },
+              "simulated_wall_utc": "2026-01-01T00:00:07.300000+00:00"
+            },
+            "unresolved_running": []
+          },
+          "original_total_budget": 3,
+          "pending": [],
+          "requests": 3
+        }
+      },
+      "after_restart": {
+        "authority": "bounded_native_simulation",
+        "enabled": true,
+        "model_api_calls": 0,
+        "native": {
+          "actions_remaining": 0,
+          "actions_reserved": 3,
+          "completed_cycles": 3,
+          "external_model_api_used": false,
+          "failed_cycles": 0,
+          "fixture": "sleep",
+          "max_actions": 3,
+          "mode": "bounded",
+          "schema": "nasuraya-bounded-body-loop/1",
+          "self_model": {
+            "checkpoint_sha256": "823324ea61c3c55fb98c0944fe2a578261c9dae3b6df2f64b4ce8018a8ecca88",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+            "minimum_state": {
+              "HR": 62.15494535784471,
+              "RR": 14.227226203426405,
+              "arousal": 0.3301950677745717,
+              "balance": 1.0,
+              "breath_depth": 1.5298445642205536,
+              "energy": 0.999316692295793,
+              "fatigue": 0.011158004873787548,
+              "hydration": 0.9999853736537151,
+              "muscle_tone": 0.2709178180051839,
+              "pain": 0.1151865568600685,
+              "parasympathetic": 0.6135579232795288,
+              "posture": "double_support",
+              "sleep_pressure": 0.9503347389908843,
+              "sympathetic": 0.24673301645108084,
+              "temperature": 37.00005618869105,
+              "valence": 0.0022083349367506915
+            },
+            "revision": 3,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "sleep",
+              "energy": 0.999316692295793,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "double_support",
+              "position_m": [
+                0.0,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "head_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07.300000+00:00"
+          },
+          "unresolved_running": []
+        },
+        "original_total_budget": 3,
+        "pending": [],
+        "requests": 3
+      },
+      "over_budget": {
+        "status": "rejected",
+        "exception_type": "ResearchBlocked",
+        "reason": "persistent native action budget exhausted"
+      },
+      "replay": {
+        "historical_native_cycles": 1,
+        "model_api_calls": 0,
+        "native_receipt": {
+          "actual_action": "observe",
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 6.45314912617323e-11,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 3.608224830031759e-16,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 7.939510865157678e-16
+          },
+          "decision_id": "research-authority:step-1",
+          "expected_outcome_matched": true,
+          "ledger_status": "complete",
+          "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+          "recalled_feedback_ids": [],
+          "replayed": false,
+          "requested_action": "observe",
+          "self_model_after": {
+            "checkpoint_sha256": "bc678348b5b9a329ada0ae3ab91c31fd098cb442cdbd6df45c935ab091193660",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+            "minimum_state": {
+              "HR": 62.08803779195108,
+              "RR": 14.187641606721902,
+              "arousal": 0.330188976490617,
+              "balance": 1.0,
+              "breath_depth": 1.5245627093906644,
+              "energy": 0.9993358655563357,
+              "fatigue": 0.010852306110122136,
+              "hydration": 0.9999857878691728,
+              "muscle_tone": 0.27013202012938115,
+              "pain": 0.11484618361297251,
+              "parasympathetic": 0.6133681050850631,
+              "posture": "double_support",
+              "sleep_pressure": 0.9503255680596272,
+              "sympathetic": 0.24584146244485283,
+              "temperature": 37.000056175372166,
+              "valence": 0.0007453319703671135
+            },
+            "revision": 1,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "sleep",
+              "energy": 0.9993358655563357,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "double_support",
+              "position_m": [
+                0.0,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "head_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+          },
+          "status": "complete"
+        },
+        "preferred_action": "observe",
+        "reasons": [
+          "sleep_pressure"
+        ],
+        "replayed": true,
+        "request_id": "step-1",
+        "research_after": {
+          "action_requests_executed": 0,
+          "mode": "read_only_research",
+          "model_api_calls": 0,
+          "native_cycles_executed": 0,
+          "sensory": {
+            "q": [
+              0.9993358655563357,
+              0.9999857878691728,
+              0.010852306110122136,
+              0.11484618361297251,
+              0.9503255680596272,
+              1.0
+            ],
+            "source": "5ca52c939574f1a1b3ced58b9b6b37b655ebd98b974894b1864009ca0c802dfb",
+            "v": [
+              0.196,
+              0.0,
+              0.0,
+              -0.196,
+              0.0,
+              0.0
+            ]
+          },
+          "source_checkpoint_sha256": "bc678348b5b9a329ada0ae3ab91c31fd098cb442cdbd6df45c935ab091193660"
+        },
+        "research_before": {
+          "action_requests_executed": 0,
+          "mode": "read_only_research",
+          "model_api_calls": 0,
+          "native_cycles_executed": 0,
+          "sensory": {
+            "q": [
+              0.9993454504792117,
+              0.9999859908377187,
+              0.01069945672828943,
+              0.11413104958422383,
+              0.9503209825939987,
+              1.0
+            ],
+            "source": "384df1919d716269b2851278c99400931448e326c40b4509037ae1f4c0e76a32",
+            "v": [
+              0.196,
+              0.0,
+              0.0,
+              -0.196,
+              0.0,
+              0.0
+            ]
+          },
+          "source_checkpoint_sha256": "93538fc6832cf83071c91872d2b544f1f79ce64af96469c608f385fb2eedb3e4"
+        },
+        "this_call_native_cycles": 0
+      },
+      "after_replay": {
+        "authority": "bounded_native_simulation",
+        "enabled": true,
+        "model_api_calls": 0,
+        "native": {
+          "actions_remaining": 0,
+          "actions_reserved": 3,
+          "completed_cycles": 3,
+          "external_model_api_used": false,
+          "failed_cycles": 0,
+          "fixture": "sleep",
+          "max_actions": 3,
+          "mode": "bounded",
+          "schema": "nasuraya-bounded-body-loop/1",
+          "self_model": {
+            "checkpoint_sha256": "823324ea61c3c55fb98c0944fe2a578261c9dae3b6df2f64b4ce8018a8ecca88",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+            "minimum_state": {
+              "HR": 62.15494535784471,
+              "RR": 14.227226203426405,
+              "arousal": 0.3301950677745717,
+              "balance": 1.0,
+              "breath_depth": 1.5298445642205536,
+              "energy": 0.999316692295793,
+              "fatigue": 0.011158004873787548,
+              "hydration": 0.9999853736537151,
+              "muscle_tone": 0.2709178180051839,
+              "pain": 0.1151865568600685,
+              "parasympathetic": 0.6135579232795288,
+              "posture": "double_support",
+              "sleep_pressure": 0.9503347389908843,
+              "sympathetic": 0.24673301645108084,
+              "temperature": 37.00005618869105,
+              "valence": 0.0022083349367506915
+            },
+            "revision": 3,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "sleep",
+              "energy": 0.999316692295793,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "double_support",
+              "position_m": [
+                0.0,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "head_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07.300000+00:00"
+          },
+          "unresolved_running": []
+        },
+        "original_total_budget": 3,
+        "pending": [],
+        "requests": 3
+      }
+    }
+  ]
+}

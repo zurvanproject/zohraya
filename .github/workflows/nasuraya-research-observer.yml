@@ -21,6 +21,8 @@ jobs:
           python-version: '3.12'
       - name: Verify observer without optional packages
         run: python -S -m unittest examples.nasuraya_research.test_adapters examples.nasuraya_research.test_body_observer -v
+      - name: Verify explicit bounded research authority and cold recovery
+        run: python -S -m examples.nasuraya_research.control test
       - name: Preserve source-pinned native body and decision behavior
         run: python runtimes/tadash_body/run_tests.py --reflection --output /tmp/research-observer-native
       - name: Preserve existing bounded body bridge and cold replay

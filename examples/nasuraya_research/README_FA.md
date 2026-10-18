@@ -56,3 +56,35 @@ checkpoint را قبل و بعد مقایسه می‌کند؛ این بررسی 
 
 جزئیات وابستگی، شواهد و مراحل ادغام در
 [گزارش جداسازی](../../docs/nasuraya-research-minimal-integration-2026-10-18-fa.md) است.
+
+## اختیار اجرایی اختیاری
+
+مشاهده‌گر اصلی همچنان خواندنی است. ماژول جداگانهٔ `controller` می‌تواند
+پس از فعال‌سازی صریح، مشاهده را به درخواست محدود در BodyLoop وصل کند.
+هر نشستِ این نسخه حداکثر سه اقدام دارد و از بودجه، دفتر تصمیم، قفل و
+نگهبان‌های موجود استفاده می‌کند. انتخاب اولیه از `assess` موجود می‌آید؛
+هستهٔ تصمیم و بدن همچنان می‌توانند آن را عوض یا رد کنند.
+
+```bash
+# یک نشست تازهٔ کاملاً مصنوعی؛ مسیر موجود بازنشانی نمی‌شود
+python -m examples.nasuraya_research.control init --session /tmp/research-body.sqlite --fixture normal --max-actions 3
+# مشاهده، انتخاب و اجرای حداکثر دو چرخهٔ شبیه‌سازی
+python -m examples.nasuraya_research.control run --session /tmp/research-body.sqlite --steps 2
+python -m examples.nasuraya_research.control pause --session /tmp/research-body.sqlite
+python -m examples.nasuraya_research.control status --session /tmp/research-body.sqlite
+# ازسرگیری صریح؛ بودجه را افزایش نمی‌دهد
+python -m examples.nasuraya_research.control resume --session /tmp/research-body.sqlite
+# درخواست نام‌دار برای بازخوانی نتیجه بدون تکرار اثر
+python -m examples.nasuraya_research.control step --session /tmp/research-body.sqlite --request-id final
+# آزمون‌ها در فرایند جدا با منابع native تأییدشده
+python -S -m examples.nasuraya_research.control test
+```
+
+چرخه‌ها فقط `walk` یا `observe` درخواست می‌کنند؛ زمان هر چرخه ۰٫۱ تا ۱
+ثانیهٔ شبیه‌سازی است. درخواست نامعلوم خودکار تکرار نمی‌شود. توقف و بودجه
+در SQLite باقی می‌مانند و شروع دوباره آن‌ها را پر نمی‌کند. نشست دارای بودجهٔ
+اولیهٔ بیش از سه اقدام به این اختیار پذیرفته نمی‌شود. این لایه برنامهٔ
+همیشه‌روشن، کنترل جسم فیزیکی یا اختیار شبکه/پول/API ایجاد نمی‌کند.
+
+گزارش و حدود اجرای تازه در
+[اختیار محدود](../../docs/nasuraya-research-authority-v01-fa.md) ثبت شده است.
