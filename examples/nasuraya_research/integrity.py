@@ -1,0 +1,37 @@
+"""Verify unmodified, licensed upstream subsets before importing them."""
+import hashlib
+import json
+from pathlib import Path, PurePosixPath
+
+ROOT = Path(__file__).resolve().parent
+LOCK_SHA256 = '00c253b7736e8d225ccb3b33f479f16b21bcad643a6da91779345536d9bbf3a2'
+
+SUPPLEMENTAL_LICENSE_SHA256 = 'f0a95b0480b1949187ffcc7adc324a73a4dc4b774c7f877b28d1cade61489430'
+
+def verify_sources(root=ROOT):
+    root = Path(root)
+    data = (root / 'upstream-lock.json').read_bytes()
+    if hashlib.sha256(data).hexdigest() != LOCK_SHA256:
+        raise ValueError('upstream lock changed')
+    lock = json.loads(data)
+    if lock['schema'] != 'nasuraya-upstream-lock/1' or len(lock['files']) != 6:
+        raise ValueError('upstream inventory')
+    seen = set()
+    for row in lock['files']:
+        relative = PurePosixPath(row['local_path'])
+        if relative.is_absolute() or '..' in relative.parts or str(relative) in seen:
+            raise ValueError('upstream path')
+        seen.add(str(relative))
+        path = root / str(relative)
+        if path.is_symlink() or not path.resolve().is_relative_to(root.resolve()):
+            raise ValueError('upstream symlink')
+        raw = path.read_bytes()
+        git_blob = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+        if (hashlib.sha256(raw).hexdigest() != row['sha256'] or
+                git_blob != row['git_blob_sha']):
+            raise ValueError('upstream source changed: ' + str(relative))
+    notice = root / 'vendor/licenses/IsaacLab-BSD-3-Clause.txt'
+    if (notice.is_symlink() or not notice.resolve().is_relative_to(root.resolve()) or
+            hashlib.sha256(notice.read_bytes()).hexdigest() != SUPPLEMENTAL_LICENSE_SHA256):
+        raise ValueError('supplemental BSD license changed')
+    return lock

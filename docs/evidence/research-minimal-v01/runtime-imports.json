@@ -1,0 +1,182 @@
+[
+  {
+    "file": "body_observer.py",
+    "line": 6,
+    "module": "copy",
+    "names": [
+      "deepcopy"
+    ]
+  },
+  {
+    "file": "body_observer.py",
+    "line": 7,
+    "module": ".adapters",
+    "names": [
+      "sensory_sample",
+      "geometry",
+      "monitoring_stats",
+      "project_trajectory"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 2,
+    "module": "copy",
+    "names": [
+      "deepcopy"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 3,
+    "modules": [
+      "hashlib"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 4,
+    "modules": [
+      "json"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 5,
+    "modules": [
+      "math"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 7,
+    "module": ".integrity",
+    "names": [
+      "verify_sources"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 23,
+    "module": ".vendor.battery_probe",
+    "names": [
+      "compute_track_stats"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 42,
+    "module": ".vendor.roborsi_trajectory",
+    "names": [
+      "TrajectoryProjection"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 76,
+    "modules": [
+      "torch"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 77,
+    "module": ".vendor",
+    "names": [
+      "mjlab_math"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 78,
+    "module": ".native_snapshot",
+    "names": [
+      "snapshot"
+    ]
+  },
+  {
+    "file": "adapters.py",
+    "line": 109,
+    "module": ".native_snapshot",
+    "names": [
+      "snapshot"
+    ]
+  },
+  {
+    "file": "native_snapshot.py",
+    "line": 7,
+    "module": "copy",
+    "names": [
+      "deepcopy"
+    ]
+  },
+  {
+    "file": "native_snapshot.py",
+    "line": 8,
+    "modules": [
+      "hashlib"
+    ]
+  },
+  {
+    "file": "native_snapshot.py",
+    "line": 9,
+    "module": "pathlib",
+    "names": [
+      "Path"
+    ]
+  },
+  {
+    "file": "native_snapshot.py",
+    "line": 10,
+    "modules": [
+      "sys"
+    ]
+  },
+  {
+    "file": "native_snapshot.py",
+    "line": 14,
+    "module": "unified_body_v2",
+    "names": [
+      "UnifiedBody"
+    ]
+  },
+  {
+    "file": "native_snapshot.py",
+    "line": 15,
+    "module": "persistent_embodiment_v1",
+    "names": [
+      "digest"
+    ]
+  },
+  {
+    "file": "native_snapshot.py",
+    "line": 16,
+    "module": "audit_self_model",
+    "names": [
+      "assess"
+    ]
+  },
+  {
+    "file": "integrity.py",
+    "line": 2,
+    "modules": [
+      "hashlib"
+    ]
+  },
+  {
+    "file": "integrity.py",
+    "line": 3,
+    "modules": [
+      "json"
+    ]
+  },
+  {
+    "file": "integrity.py",
+    "line": 4,
+    "module": "pathlib",
+    "names": [
+      "Path",
+      "PurePosixPath"
+    ]
+  }
+]

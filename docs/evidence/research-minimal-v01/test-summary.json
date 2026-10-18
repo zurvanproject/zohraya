@@ -1,0 +1,43 @@
+{
+  "groups": {
+    "research-tensor-final.log": {
+      "run": 25,
+      "passed": 25,
+      "skipped": 0
+    },
+    "research-stdlib-final.log": {
+      "run": 25,
+      "passed": 22,
+      "skipped": 3
+    },
+    "minimal-bridge.log": {
+      "run": 16,
+      "passed": 16,
+      "skipped": 0
+    },
+    "minimal-other-regressions-ready.log": {
+      "run": 31,
+      "passed": 31,
+      "skipped": 0
+    },
+    "minimal-continuity.log": {
+      "run": 9,
+      "passed": 9,
+      "skipped": 0
+    },
+    "minimal-api.log": {
+      "run": 41,
+      "passed": 39,
+      "skipped": 2
+    }
+  },
+  "native_on_main": {
+    "passed": 99
+  },
+  "native_on_minimal": {
+    "passed": 99
+  },
+  "unique_final_passed": 219,
+  "unverified_sdk_tests": 2,
+  "github_ci": "Publication explicitly approved by user on 2026-10-18; hosted CI pending on the new PR. Prior automatic rejection is historical."
+}

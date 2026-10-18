@@ -1,0 +1,30 @@
+{
+  "source_head": "d21988516d0f52118d22d13f5444e7e3b9911ed8",
+  "base_main": "50780d88e1e95e7fc19037db4dd6a0227fcb204d",
+  "same_input_checkpoint": true,
+  "all_outputs_exactly_equal": true,
+  "fixtures": 4,
+  "rows": [
+    {
+      "pressure": 0.05,
+      "result_sha256": "5ccc72eaf68bcccda354fa40138142aa71fcb3404be1f433631a8185297fcf6d",
+      "checkpoint_unchanged": true
+    },
+    {
+      "pressure": 0.42,
+      "result_sha256": "6e9d08298325da64562b200713a983dda03caa0e436899d9ea96586bd47f3097",
+      "checkpoint_unchanged": true
+    },
+    {
+      "pressure": 0.7,
+      "result_sha256": "10fb4d2ef73e495ce95e1979c1515d78c98af53fe0a3778a65b77c0186747a7c",
+      "checkpoint_unchanged": true
+    },
+    {
+      "pressure": 0.92,
+      "result_sha256": "5c463047e7c208d67493a5f868af1f007e627f4262b3798208aa6873082f5090",
+      "checkpoint_unchanged": true
+    }
+  ],
+  "first_attempt": "Independent fresh fixtures had identical displayed values but different checkpoint/observation hashes; not accepted as byte equality. Repeated against the same four source-valid checkpoints."
+}

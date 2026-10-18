@@ -1,0 +1,977 @@
+{
+  "base_main": "50780d88e1e95e7fc19037db4dd6a0227fcb204d",
+  "source_head": "d21988516d0f52118d22d13f5444e7e3b9911ed8",
+  "ahead_behind_main_source": [
+    "6",
+    "46"
+  ],
+  "original_pr_three_dot_files": 281,
+  "original_direct_tip_files": 286,
+  "original_direct_tip_changes": [
+    "M\t.github/workflows/nasuraya-body-loop.yml",
+    "D\t.github/workflows/nasuraya-continuity-host.yml",
+    "A\t.github/workflows/nasuraya-defense-sentinel.yml",
+    "A\t.github/workflows/nasuraya-genome.yml",
+    "A\t.github/workflows/nasuraya-research.yml",
+    "A\t.github/workflows/nasuraya-self-model.yml",
+    "A\t.github/workflows/nasuraya-star-motion.yml",
+    "M\tREADME.md",
+    "D\tcontinuity_host/README_FA.md",
+    "D\tcontinuity_host/VALIDATION.json",
+    "D\tcontinuity_host/host.py",
+    "D\tcontinuity_host/test_host.py",
+    "A\tdocs/evidence/defense-sentinel-v01/summary.json",
+    "A\tdocs/evidence/defense-visual-v02/check-2.log",
+    "A\tdocs/evidence/defense-visual-v02/check-3.log",
+    "A\tdocs/evidence/defense-visual-v02/check-4.log",
+    "A\tdocs/evidence/defense-visual-v02/index.html",
+    "A\tdocs/evidence/defense-visual-v02/integration.json",
+    "A\tdocs/evidence/defense-visual-v02/local-ci.json",
+    "A\tdocs/evidence/defense-visual-v02/status.json",
+    "A\tdocs/evidence/defense-visual-v02/summary.json",
+    "A\tdocs/evidence/external-research-v01/adapter-tests.txt",
+    "A\tdocs/evidence/external-research-v01/artifact-sha256.json",
+    "A\tdocs/evidence/external-research-v01/attempt-01-summary.json",
+    "A\tdocs/evidence/external-research-v01/cold-sensory-restore.json",
+    "A\tdocs/evidence/external-research-v01/existing-self-model-tests.txt",
+    "A\tdocs/evidence/external-research-v01/final-restore-test.txt",
+    "A\tdocs/evidence/external-research-v01/final-tensor-tests.txt",
+    "A\tdocs/evidence/external-research-v01/frozen-protocol.json",
+    "A\tdocs/evidence/external-research-v01/geometry.json",
+    "A\tdocs/evidence/external-research-v01/native-core-tests.json",
+    "A\tdocs/evidence/external-research-v01/native-trials.json",
+    "A\tdocs/evidence/external-research-v01/sensory-comparisons.json",
+    "A\tdocs/evidence/external-research-v01/sensory-data.json",
+    "A\tdocs/evidence/external-research-v01/sensory-weights-17.json",
+    "A\tdocs/evidence/external-research-v01/sensory-weights-31.json",
+    "A\tdocs/evidence/external-research-v01/sensory-weights-53.json",
+    "A\tdocs/evidence/external-research-v01/summary.json",
+    "A\tdocs/evidence/external-research-v01/trajectory.json",
+    "A\tdocs/evidence/external-research-v01/trajectory.jsonl",
+    "A\tdocs/evidence/external-research-v01/validation.json",
+    "A\tdocs/evidence/guarded-cycle-v03/check-2.log",
+    "A\tdocs/evidence/guarded-cycle-v03/check-3.log",
+    "A\tdocs/evidence/guarded-cycle-v03/check-4.log",
+    "A\tdocs/evidence/guarded-cycle-v03/check-5.log",
+    "A\tdocs/evidence/guarded-cycle-v03/check-6.log",
+    "A\tdocs/evidence/guarded-cycle-v03/local-ci.json",
+    "A\tdocs/evidence/guarded-cycle-v03/summary.json",
+    "A\tdocs/evidence/native-gravity-horizon-v02/summary.json",
+    "A\tdocs/evidence/native-gravity-v01/summary.json",
+    "A\tdocs/evidence/time-mining-v01/summary.json",
+    "A\tdocs/nasuraya-chained-motion-2026-10-15.md",
+    "A\tdocs/nasuraya-defense-sentinel-v01-fa.md",
+    "A\tdocs/nasuraya-defense-visual-v02-fa.md",
+    "A\tdocs/nasuraya-design-values-v02-fa.md",
+    "A\tdocs/nasuraya-evidence-self-model-2026-10-15.md",
+    "A\tdocs/nasuraya-evolution-sprint-01-fa.md",
+    "A\tdocs/nasuraya-evolution-sprint-01-integration-fa.md",
+    "A\tdocs/nasuraya-explicit-continuation-v01.md",
+    "A\tdocs/nasuraya-external-research-2026-10-18-fa.md",
+    "A\tdocs/nasuraya-full-motion-recovery-2026-10-15.md",
+    "A\tdocs/nasuraya-genome-design-cycle-v01-fa.md",
+    "A\tdocs/nasuraya-genome-foot-contact-v01-fa.md",
+    "A\tdocs/nasuraya-genome-physics-v01-fa.md",
+    "A\tdocs/nasuraya-genome-v01-fa.md",
+    "A\tdocs/nasuraya-guarded-cycle-v03-fa.md",
+    "A\tdocs/nasuraya-metacognitive-api-v01-fa.md",
+    "A\tdocs/nasuraya-metacognitive-control-v01-fa.md",
+    "A\tdocs/nasuraya-native-gravity-horizon-v02-fa.md",
+    "A\tdocs/nasuraya-native-gravity-v01-fa.md",
+    "A\tdocs/nasuraya-reverse-closure-2026-10-14.md",
+    "A\tdocs/nasuraya-reverse-transfer-2026-10-15.md",
+    "A\tdocs/nasuraya-time-mining-v01-fa.md",
+    "A\tdocs/nasuraya-verified-outcome-2026-10-15.md",
+    "M\texamples/nasuraya_body_loop/README.md",
+    "M\texamples/nasuraya_body_loop/__main__.py",
+    "M\texamples/nasuraya_body_loop/api_host.py",
+    "A\texamples/nasuraya_body_loop/continuation.py",
+    "A\texamples/nasuraya_body_loop/evidence/metacognitive-api-v01/README.md",
+    "A\texamples/nasuraya_body_loop/evidence/metacognitive-api-v01/api-tests.txt",
+    "A\texamples/nasuraya_body_loop/evidence/metacognitive-api-v01/body-loop-tests.txt",
+    "A\texamples/nasuraya_body_loop/evidence/metacognitive-api-v01/cold-replay.json",
+    "A\texamples/nasuraya_body_loop/evidence/metacognitive-api-v01/first-attempt-before-duration-fix.json",
+    "A\texamples/nasuraya_body_loop/evidence/metacognitive-api-v01/frozen-protocol.json",
+    "A\texamples/nasuraya_body_loop/evidence/metacognitive-api-v01/live-results.json",
+    "A\texamples/nasuraya_body_loop/evidence/metacognitive-api-v01/native-source-audit.json",
+    "A\texamples/nasuraya_body_loop/evidence/metacognitive-api-v01/validation.json",
+    "M\texamples/nasuraya_body_loop/host.py",
+    "A\texamples/nasuraya_body_loop/metacognition.py",
+    "A\texamples/nasuraya_body_loop/metacognitive_api_protocol.json",
+    "A\texamples/nasuraya_body_loop/recovery.py",
+    "A\texamples/nasuraya_body_loop/recovery_demo.py",
+    "A\texamples/nasuraya_body_loop/run_metacognitive_api.py",
+    "A\texamples/nasuraya_body_loop/test_continuation.py",
+    "A\texamples/nasuraya_body_loop/test_metacognition.py",
+    "A\texamples/nasuraya_body_loop/test_recovery.py",
+    "M\texamples/nasuraya_body_loop/worker.py",
+    "A\texamples/nasuraya_genome/README.md",
+    "A\texamples/nasuraya_genome/__init__.py",
+    "A\texamples/nasuraya_genome/baseline-v0.1.json",
+    "A\texamples/nasuraya_genome/chromosomes.py",
+    "A\texamples/nasuraya_genome/contract-v0.1.json",
+    "A\texamples/nasuraya_genome/demo-v0.1.json",
+    "A\texamples/nasuraya_genome/design-policy-v0.1.json",
+    "A\texamples/nasuraya_genome/design-values-v0.2.json",
+    "A\texamples/nasuraya_genome/design_decision.py",
+    "A\texamples/nasuraya_genome/design_memory.py",
+    "A\texamples/nasuraya_genome/design_value_review.py",
+    "A\texamples/nasuraya_genome/evidence/design-cycle-v0.1/experience-checkpoint.json",
+    "A\texamples/nasuraya_genome/evidence/design-cycle-v0.1/frozen-contract.json",
+    "A\texamples/nasuraya_genome/evidence/design-cycle-v0.1/recommended-genotype.json",
+    "A\texamples/nasuraya_genome/evidence/design-cycle-v0.1/results.json",
+    "A\texamples/nasuraya_genome/evidence/design-values-v0.2.json",
+    "A\texamples/nasuraya_genome/evidence/foot-contact-v0.1/affine-mesh.json",
+    "A\texamples/nasuraya_genome/evidence/foot-contact-v0.1/baseline-mesh.json",
+    "A\texamples/nasuraya_genome/evidence/foot-contact-v0.1/contact-comparison.svg",
+    "A\texamples/nasuraya_genome/evidence/foot-contact-v0.1/frozen-plan.json",
+    "A\texamples/nasuraya_genome/evidence/foot-contact-v0.1/results.json",
+    "A\texamples/nasuraya_genome/evidence/physics-v0.1/frozen-plan.json",
+    "A\texamples/nasuraya_genome/evidence/physics-v0.1/results.json",
+    "A\texamples/nasuraya_genome/foot_contact.py",
+    "A\texamples/nasuraya_genome/foot_trial.py",
+    "A\texamples/nasuraya_genome/generate_contract.py",
+    "A\texamples/nasuraya_genome/genome48.json",
+    "A\texamples/nasuraya_genome/genotype-v0.1.schema.json",
+    "A\texamples/nasuraya_genome/physics_trial.py",
+    "A\texamples/nasuraya_genome/run_design_cycle.py",
+    "A\texamples/nasuraya_genome/test_chromosomes.py",
+    "A\texamples/nasuraya_genome/test_design_cycle.py",
+    "A\texamples/nasuraya_genome/test_design_value_review.py",
+    "A\texamples/nasuraya_genome/test_foot_contact.py",
+    "A\texamples/nasuraya_genome/test_physics_trial.py",
+    "A\texamples/nasuraya_genome/test_traits.py",
+    "A\texamples/nasuraya_genome/traits.py",
+    "A\texamples/nasuraya_genome/verification-v0.1.json",
+    "A\texamples/nasuraya_research/README_FA.md",
+    "A\texamples/nasuraya_research/THIRD_PARTY_NOTICES.md",
+    "A\texamples/nasuraya_research/__init__.py",
+    "A\texamples/nasuraya_research/adapters.py",
+    "A\texamples/nasuraya_research/body_observer.py",
+    "A\texamples/nasuraya_research/evaluate.py",
+    "A\texamples/nasuraya_research/integrity.py",
+    "A\texamples/nasuraya_research/predictive.py",
+    "A\texamples/nasuraya_research/protocol.json",
+    "A\texamples/nasuraya_research/refit.py",
+    "A\texamples/nasuraya_research/requirements-cpu.txt",
+    "A\texamples/nasuraya_research/test_adapters.py",
+    "A\texamples/nasuraya_research/test_body_observer.py",
+    "A\texamples/nasuraya_research/upstream-lock.json",
+    "A\texamples/nasuraya_research/vendor/__init__.py",
+    "A\texamples/nasuraya_research/vendor/battery_probe.py",
+    "A\texamples/nasuraya_research/vendor/licenses/IsaacLab-BSD-3-Clause.txt",
+    "A\texamples/nasuraya_research/vendor/licenses/battery-MIT.txt",
+    "A\texamples/nasuraya_research/vendor/licenses/mjlab-Apache-2.0.txt",
+    "A\texamples/nasuraya_research/vendor/licenses/roborsi-Apache-2.0.txt",
+    "A\texamples/nasuraya_research/vendor/mjlab_math.py",
+    "A\texamples/nasuraya_research/vendor/predvla/LICENSE",
+    "A\texamples/nasuraya_research/vendor/predvla/__init__.py",
+    "A\texamples/nasuraya_research/vendor/predvla/er.py",
+    "A\texamples/nasuraya_research/vendor/predvla/model.py",
+    "A\texamples/nasuraya_research/vendor/roborsi_trajectory.py",
+    "A\texamples/nasuraya_security/cycle_source_baseline.json",
+    "A\texamples/nasuraya_security/cycle_source_baseline.sha256",
+    "A\texamples/nasuraya_security/guarded_cycle.py",
+    "A\texamples/nasuraya_security/guarded_run.py",
+    "A\texamples/nasuraya_security/run_cycle_demo.py",
+    "A\texamples/nasuraya_security/run_defense_demo.py",
+    "A\texamples/nasuraya_security/sentinel.py",
+    "A\texamples/nasuraya_security/source_baseline.json",
+    "A\texamples/nasuraya_security/source_baseline.sha256",
+    "A\texamples/nasuraya_security/test_guarded_cycle.py",
+    "A\texamples/nasuraya_security/test_sentinel.py",
+    "A\texamples/nasuraya_security/test_visual_console.cjs",
+    "A\texamples/nasuraya_security/test_visual_status.py",
+    "A\texamples/nasuraya_security/visual_console.html",
+    "A\texamples/nasuraya_security/visual_source_baseline.json",
+    "A\texamples/nasuraya_security/visual_source_baseline.sha256",
+    "A\texamples/nasuraya_security/visual_status.py",
+    "A\texamples/nasuraya_self_model/DECISION_RELEVANCE.md",
+    "A\texamples/nasuraya_self_model/ENERGY.md",
+    "A\texamples/nasuraya_self_model/PLANNING.md",
+    "A\texamples/nasuraya_self_model/README.md",
+    "A\texamples/nasuraya_self_model/ROUTE_TRIAL.md",
+    "A\texamples/nasuraya_self_model/__init__.py",
+    "A\texamples/nasuraya_self_model/decision_relevance.py",
+    "A\texamples/nasuraya_self_model/decision_survey_protocol.json",
+    "A\texamples/nasuraya_self_model/embodied_learning.py",
+    "A\texamples/nasuraya_self_model/energy.py",
+    "A\texamples/nasuraya_self_model/energy_protocol.json",
+    "A\texamples/nasuraya_self_model/evaluate.py",
+    "A\texamples/nasuraya_self_model/evaluate_energy.py",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/README.md",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/additional-tests.txt",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/api-tests.txt",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/attempt-notes.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/body-loop-tests.txt",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/checkpoint-archive.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/cold-17.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/cold-31.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/cold-53.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/frozen-protocol.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/motion-tests.txt",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/native-source-audit.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/native-tests.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/new-tests.txt",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/offline-verification.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/receipt-manifest.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/results.json",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/sdk-tests.txt",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/self-model-tests.txt",
+    "A\texamples/nasuraya_self_model/evidence/embodied-sprint-01/validation.json",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/cold-resume.json",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/control-before.json.gz",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/control-journal.sqlite.gz",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/frozen-protocol.json",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/regression-tests.txt",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/results.json",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/retained-manifest.json",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/self-model.sqlite.gz",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/source-audit.json",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/training-state.json",
+    "A\texamples/nasuraya_self_model/evidence/metacognitive-control-v01/validation.json",
+    "A\texamples/nasuraya_self_model/experiential_sprint.py",
+    "A\texamples/nasuraya_self_model/goal_bridge.py",
+    "A\texamples/nasuraya_self_model/metacognitive_control.py",
+    "A\texamples/nasuraya_self_model/metacognitive_protocol.json",
+    "A\texamples/nasuraya_self_model/monitor.py",
+    "A\texamples/nasuraya_self_model/planning.py",
+    "A\texamples/nasuraya_self_model/protocol.json",
+    "A\texamples/nasuraya_self_model/regulation.py",
+    "A\texamples/nasuraya_self_model/route_trial.py",
+    "A\texamples/nasuraya_self_model/run_decision_survey.py",
+    "A\texamples/nasuraya_self_model/run_metacognitive.py",
+    "A\texamples/nasuraya_self_model/run_planning.py",
+    "A\texamples/nasuraya_self_model/run_regulation.py",
+    "A\texamples/nasuraya_self_model/run_route_trial.py",
+    "A\texamples/nasuraya_self_model/run_sprint.py",
+    "A\texamples/nasuraya_self_model/session_cli.py",
+    "A\texamples/nasuraya_self_model/sprint_protocol.json",
+    "A\texamples/nasuraya_self_model/test_decision_relevance.py",
+    "A\texamples/nasuraya_self_model/test_embodied_learning.py",
+    "A\texamples/nasuraya_self_model/test_energy.py",
+    "A\texamples/nasuraya_self_model/test_experiential_sprint.py",
+    "A\texamples/nasuraya_self_model/test_goal_bridge.py",
+    "A\texamples/nasuraya_self_model/test_metacognitive_control.py",
+    "A\texamples/nasuraya_self_model/test_monitor.py",
+    "A\texamples/nasuraya_self_model/test_planning.py",
+    "A\texamples/nasuraya_self_model/test_regulation.py",
+    "A\texamples/nasuraya_self_model/test_route_trial.py",
+    "A\texamples/nasuraya_self_model/verify_sprint.py",
+    "A\texamples/nasuraya_star_motion/README.md",
+    "A\texamples/nasuraya_star_motion/compare_outcome_recovery.py",
+    "A\texamples/nasuraya_star_motion/coordinated_support.py",
+    "A\texamples/nasuraya_star_motion/economical_protocol.json",
+    "A\texamples/nasuraya_star_motion/economical_support.py",
+    "A\texamples/nasuraya_star_motion/evaluate_economical.py",
+    "A\texamples/nasuraya_star_motion/evaluate_horizon.py",
+    "A\texamples/nasuraya_star_motion/evaluate_recovery.py",
+    "A\texamples/nasuraya_star_motion/evaluate_time_mining.py",
+    "A\texamples/nasuraya_star_motion/extension_state.py",
+    "A\texamples/nasuraya_star_motion/finish_route.py",
+    "A\texamples/nasuraya_star_motion/horizon_protocol.json",
+    "A\texamples/nasuraya_star_motion/horizon_support.py",
+    "A\texamples/nasuraya_star_motion/motion_goal.py",
+    "A\texamples/nasuraya_star_motion/motion_journal.py",
+    "A\texamples/nasuraya_star_motion/perform_coordinated.py",
+    "A\texamples/nasuraya_star_motion/recovery_fault_worker.py",
+    "A\texamples/nasuraya_star_motion/run_bounded_route.py",
+    "A\texamples/nasuraya_star_motion/run_route_chain.py",
+    "A\texamples/nasuraya_star_motion/test_coordinated_support.py",
+    "A\texamples/nasuraya_star_motion/test_economical_support.py",
+    "A\texamples/nasuraya_star_motion/test_horizon_support.py",
+    "A\texamples/nasuraya_star_motion/test_motion_goal.py",
+    "A\texamples/nasuraya_star_motion/test_motion_recovery.py",
+    "A\texamples/nasuraya_star_motion/test_reverse_closure.py",
+    "A\texamples/nasuraya_star_motion/test_reverse_transfer.py",
+    "A\texamples/nasuraya_star_motion/test_time_mining.py",
+    "A\texamples/nasuraya_star_motion/time_mining.py",
+    "A\texamples/nasuraya_star_motion/time_mining_protocol.json",
+    "A\texamples/nasuraya_star_motion/validate_lower_friction.py",
+    "A\texamples/nasuraya_star_motion/validate_reverse.py",
+    "A\texamples/nasuraya_star_motion/verify_horizon.py",
+    "A\texamples/nasuraya_tissue_lab/README.md",
+    "A\texamples/nasuraya_tissue_lab/run_lab.py",
+    "A\texamples/nasuraya_tissue_lab/test_tissue_lab.py",
+    "A\texamples/nasuraya_tissue_lab/tissue_lab.py"
+  ],
+  "existing_main_files_verified_unchanged": 168,
+  "existing_main_blobs": [
+    {
+      "path": ".github/workflows/nasuraya-agent-loop.yml",
+      "git_blob_sha": "7b371f6718423faf194d7c98a090b8e84ac9ab02"
+    },
+    {
+      "path": ".github/workflows/nasuraya-body-loop.yml",
+      "git_blob_sha": "1909addb15540f9d5da2aad60b2fbc784ac00714"
+    },
+    {
+      "path": ".github/workflows/nasuraya-continuity-host.yml",
+      "git_blob_sha": "ed3c9614dc45a745b3143ebc43634025aae3e2fe"
+    },
+    {
+      "path": ".gitignore",
+      "git_blob_sha": "250673558da1c3e4f2e1efbebf19e4cbe6d157ea"
+    },
+    {
+      "path": "EthicalCreditMatrix.sol",
+      "git_blob_sha": "e473d537dbe7839aa8bef53a062645874e1f1505"
+    },
+    {
+      "path": "README.md",
+      "git_blob_sha": "b77f78d81e69c0c2f5f4a11cc0e389d101e094da"
+    },
+    {
+      "path": "ZOHRAYA_BOOK.md",
+      "git_blob_sha": "0aed30ed0d3cf3bd2a2a9ec8121f4d12c1777511"
+    },
+    {
+      "path": "continuity_host/README_FA.md",
+      "git_blob_sha": "87eea068fc1f996f237d2e5197ef7434b69c9cc6"
+    },
+    {
+      "path": "continuity_host/VALIDATION.json",
+      "git_blob_sha": "45aa54e6476ef392618f5547080e55c6db49ae3a"
+    },
+    {
+      "path": "continuity_host/host.py",
+      "git_blob_sha": "abf47a0f3bf987afa22f19a4d32370443317615f"
+    },
+    {
+      "path": "continuity_host/test_host.py",
+      "git_blob_sha": "2cd3af0c25dce5aefe20dd89594200ea8b9f46fa"
+    },
+    {
+      "path": "core_mechanics.py",
+      "git_blob_sha": "d4a6df40e22f45815bbeaad9a57f007ebb65dc26"
+    },
+    {
+      "path": "docs/nasuraya-agent-loop-import.md",
+      "git_blob_sha": "73e1bb4b7aa2970681c7604f7108e1ca24669a04"
+    },
+    {
+      "path": "docs/nasuraya-api-body-bridge-2026-10-13.md",
+      "git_blob_sha": "9738380aba5eec26d9a8aec48906412189b305ac"
+    },
+    {
+      "path": "docs/nasuraya-api-recovery-2026-10-13.md",
+      "git_blob_sha": "0348f904fff60d23a3226b687599bdec28f7e679"
+    },
+    {
+      "path": "docs/nasuraya-body-loop-2026-10-13.md",
+      "git_blob_sha": "10409dec504fd73c3bd08d9308bd66cde0abfb09"
+    },
+    {
+      "path": "docs/nasuraya-goal-continuity-2026-10-13.md",
+      "git_blob_sha": "ba8f9d69bfe2045e429cb4fcdbbce01facb7cbe4"
+    },
+    {
+      "path": "docs/nasuraya-live-test-2026-10-13.md",
+      "git_blob_sha": "f498f0cfd63f7f3ced93a311de92f0da5bf4e8eb"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/.gitignore",
+      "git_blob_sha": "ffbebfba3ec78442f774e465706da287425565ca"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/README.md",
+      "git_blob_sha": "e11702bda2d7a375aa1311150411d2524ff0a8db"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/__init__.py",
+      "git_blob_sha": "0e8762328d147d37cf23f34c8cde415294e78e48"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/__main__.py",
+      "git_blob_sha": "449415797de5066824257267b9c7bf74b6bf4441"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/agents_api.py",
+      "git_blob_sha": "e5c2f8367781b403573fe124bbfb9aeca3115b2b"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/api_recovery.py",
+      "git_blob_sha": "ced844d562aa3b18b0dd8e763c3ea8f1ba75ebc3"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/colab/Nasuraya_Colab_Live_Test.ipynb",
+      "git_blob_sha": "b40c7da7afe25ff893faadc13728edbd8fdbb85a"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/colab/README.md",
+      "git_blob_sha": "bb82a1d7caea0e6f2c5e43a3b294cca8299774b7"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/colab/validation.json",
+      "git_blob_sha": "d13d5bba352d06ec93ac09807931dfae4cb00258"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evaluate_grid.py",
+      "git_blob_sha": "5b65bcd9cefafb20d36ecef0090c83c1c3f9f664"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/chat_guided/checkpoint.json",
+      "git_blob_sha": "66914685760652795f5035fdc56d73d0cded5e8b"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/chat_guided/events.jsonl",
+      "git_blob_sha": "261652432bdc5c7305182fdb954cf65b8315916b"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/chat_guided/report.md",
+      "git_blob_sha": "76fe0d01c4a879c763bd0f44cdf6442ade5d62b3"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/chat_guided/summary.json",
+      "git_blob_sha": "713c4dc3931fc29367d897f25a51a82173ea2afe"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/github_import/grid.json",
+      "git_blob_sha": "034606eca2e7ba342df34701efc186d14b128306"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/github_import/offline/events.jsonl",
+      "git_blob_sha": "323e7c820f4215ac111f6edf5ec317ced4f692fb"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/github_import/offline/report.md",
+      "git_blob_sha": "94a147734ee7dcc2ddf189c68d87640be346331b"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/github_import/offline/summary.json",
+      "git_blob_sha": "28248e3631f8886d2ec235570134edd4a730bd9e"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/github_import/tests.txt",
+      "git_blob_sha": "d4d6406ca5d73735900bea9b1dd166ca18675689"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/github_import/validation.json",
+      "git_blob_sha": "b5afee3e1950f893b9789cef4ca837c98410d299"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/in_chat/grid.json",
+      "git_blob_sha": "034606eca2e7ba342df34701efc186d14b128306"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/in_chat/tests.txt",
+      "git_blob_sha": "c8930408a38160e000936c2c90f87137683661bb"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/model_diagnostic.json",
+      "git_blob_sha": "ed2cc1b9c9a6f228db867447659af6220d92965b"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/run_01/cleanup_followup.json",
+      "git_blob_sha": "80db39b6b4722b2854f83dcb5e7d36a23c8ec605"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/run_01/events.jsonl",
+      "git_blob_sha": "e2776058c9a673e73067a79539420f83e7f42699"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/run_01/report.md",
+      "git_blob_sha": "8ebfdb357fe25210384aced9cf7402905277e050"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/run_01/summary.json",
+      "git_blob_sha": "1c53143086531b615fe193a61f0d95a66a206cba"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/run_02/events.jsonl",
+      "git_blob_sha": "6f1ee286fc7a2cac211a8d9a05431072ff424023"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/run_02/report.md",
+      "git_blob_sha": "fe17f03195c5baf8ac5f27b060f43cbb50895d9c"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/run_02/summary.json",
+      "git_blob_sha": "83efa6a2b4ab837ebc33f8d8d9472b840736a039"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/test_summary.json",
+      "git_blob_sha": "f9ae1fcc0a0b48197a1b5d81d5544b4427ca31ff"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/live_2026_10_13/tests.txt",
+      "git_blob_sha": "0a997f91de1471d0403f7965b822cf8a29aa9c58"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/loopback_http/normal/events.jsonl",
+      "git_blob_sha": "778c6f410f22102fb46afcd3d4f286b3551c2f40"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/loopback_http/normal/report.md",
+      "git_blob_sha": "c8c639e76172d2176bd1691f30ec2a711f315da5"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/loopback_http/normal/summary.json",
+      "git_blob_sha": "a74dcd4f59981325a5cccdb6bf2d3060b800e480"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/offline/events.jsonl",
+      "git_blob_sha": "323e7c820f4215ac111f6edf5ec317ced4f692fb"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/offline/report.md",
+      "git_blob_sha": "204df32eb2c0d4262862067c258986d2bb7c5363"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/offline/summary.json",
+      "git_blob_sha": "28248e3631f8886d2ec235570134edd4a730bd9e"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/recovery_2026_10_13/agent-tests.txt",
+      "git_blob_sha": "46a1735580856bc64b12dbd570f83f7fdf5fabef"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/recovery_2026_10_13/body-api-tests.txt",
+      "git_blob_sha": "841c86be497e2547444844fa1539ce8b4be2ec76"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/recovery_2026_10_13/body-loop-tests.txt",
+      "git_blob_sha": "aa2f0c993db8ce4aa2c13a7c3d9edb4757191cca"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/recovery_2026_10_13/implementation_sha256.json",
+      "git_blob_sha": "45c951d66962bd54102b40ba611d2bfee2db8f35"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/recovery_2026_10_13/test_summary.json",
+      "git_blob_sha": "958445319fd7875eb65eb0190f42db4b1d61caec"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/sdk/preflight.json",
+      "git_blob_sha": "bde6b5f93d1ffc656fd7797a1719cda41a298fac"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/sdk/test-results.txt",
+      "git_blob_sha": "246371ccc2dc95fede6db4e44c01eb04fda6d162"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/evidence/validation.json",
+      "git_blob_sha": "b473eeb37044d9edc0c5c947036057dcdc68d433"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/guided.py",
+      "git_blob_sha": "4575c0c76e7b901f6db734174a39a31c206cdcdf"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/local.py",
+      "git_blob_sha": "eec86b30232f5aca73be765c1c25019f25062adb"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/loopback.py",
+      "git_blob_sha": "67d41901c025c156850bb470fa143f73d5ff4e86"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/requirements-api.lock.txt",
+      "git_blob_sha": "3613d729029c4e09f88ec35884256fb323ad75e9"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/requirements-api.txt",
+      "git_blob_sha": "476c3a31b79c9bed952b1ab842950440cc9cbfab"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/tests/test_agents_api.py",
+      "git_blob_sha": "eac9058a4977f12c0d466082572b7726ec9f5c93"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/tests/test_guided.py",
+      "git_blob_sha": "d5e06e2796209da5322c0dcacb9957bef1ccb03f"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/tests/test_loop.py",
+      "git_blob_sha": "6afc5fbfc88b64aa702ae6ea2ed5e538075b127d"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/tests/test_loopback.py",
+      "git_blob_sha": "856fc520b4452555d973ca7bf2fb4d0ab8cf9dc0"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/tests/test_preflight.py",
+      "git_blob_sha": "563a239cd2c0e991edeec38c83d17783e1009bec"
+    },
+    {
+      "path": "examples/nasuraya_agent_loop/tests/test_sdk_transport.py",
+      "git_blob_sha": "2dabbfc72d8719718959a7e16b0f376c42aee821"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/README.md",
+      "git_blob_sha": "be63b8e70ea6a8213737ecf9b435b2f9560302b0"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/__init__.py",
+      "git_blob_sha": "62643bac22dcd696d5965375e0e6e9af460e5700"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/__main__.py",
+      "git_blob_sha": "98cd8ce628e6ce1e9c9b078aba1d61c11ea8b571"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/api_host.py",
+      "git_blob_sha": "2bbd30b8655c4c2f96d0c9784e0428ed5c06ecce"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/evidence/api_bridge/validation.json",
+      "git_blob_sha": "2decfc6ca28ec460bfa37a31b6c399cce2ad2d68"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/evidence/goal_continuity/validation.json",
+      "git_blob_sha": "b4d8192a9b9c090c162cac9604670b4cb878388a"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/evidence/sleep/events.jsonl",
+      "git_blob_sha": "c9417e705b2a1236a854ea56d2d7d07f7def70a9"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/evidence/sleep/summary.json",
+      "git_blob_sha": "caf9b6c0a84d07c3c9799781ab4278dc8be4a509"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/evidence/validation.json",
+      "git_blob_sha": "92ae853d84c9de0a85ca0685184ea2f517150eb2"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/host.py",
+      "git_blob_sha": "708edb6f1b5e9e8bcacdbef6cb36b0c256d3ecf7"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/test_api_host.py",
+      "git_blob_sha": "7468def70108409a38fe2c57a3916b59c9559b55"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/test_api_recovery.py",
+      "git_blob_sha": "d432f13773cbcf33a26e9143d46745df3991f89c"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/test_body_loop.py",
+      "git_blob_sha": "1dcfc161cf2936e9b4a6d878db213b6ccc06e7d5"
+    },
+    {
+      "path": "examples/nasuraya_body_loop/worker.py",
+      "git_blob_sha": "1815478a72b6e4e672923122be1da57eebef0a82"
+    },
+    {
+      "path": "examples/nasuraya_body_mirror/README.md",
+      "git_blob_sha": "9a013d3b88e163e7e450f12d9ce0bdecd86a152a"
+    },
+    {
+      "path": "examples/nasuraya_body_mirror/build.py",
+      "git_blob_sha": "a52327427ee5626b9e118a77b704b68ff8afd5ab"
+    },
+    {
+      "path": "examples/nasuraya_body_mirror/export.py",
+      "git_blob_sha": "ff9f5f5a5ce3ebc6ab6f84531a661e587b64d15a"
+    },
+    {
+      "path": "examples/nasuraya_body_mirror/frames.json",
+      "git_blob_sha": "c6092d4c0a72fe3854129e42248a08b2723d04ae"
+    },
+    {
+      "path": "examples/nasuraya_body_mirror/mirror.fragment.html",
+      "git_blob_sha": "8acb19ab7638039989dd88074f4284eda26bb432"
+    },
+    {
+      "path": "examples/nasuraya_body_mirror/test_mirror.py",
+      "git_blob_sha": "eb08a07331f7e160e3cbfa91fee5b06f3b8c3d57"
+    },
+    {
+      "path": "examples/nasuraya_body_mirror/validation.json",
+      "git_blob_sha": "c1a7b453c38534344e1351636a8a144c03cf248c"
+    },
+    {
+      "path": "runtimes/tadash_body/DECISION_CORE.md",
+      "git_blob_sha": "867970eef478efbd2949cdbe7cdddc269d49ca44"
+    },
+    {
+      "path": "runtimes/tadash_body/IMPORT_PROVENANCE.json",
+      "git_blob_sha": "86a34318bc8556c5bd849fdd0d3ab126a147ffd6"
+    },
+    {
+      "path": "runtimes/tadash_body/PRIVACY_LESSONS_FA.txt",
+      "git_blob_sha": "3eaadbe214b684b34722df7fcb25b9600a1551dd"
+    },
+    {
+      "path": "runtimes/tadash_body/PUBLIC_FILES_SHA256.json",
+      "git_blob_sha": "98dd4cbd32fa97f6a61505c48a02a25b92833fdf"
+    },
+    {
+      "path": "runtimes/tadash_body/README.md",
+      "git_blob_sha": "8322c91be297f2d2d7ccabe9989bd1fe7d1879f4"
+    },
+    {
+      "path": "runtimes/tadash_body/RECOVERED_FILES_SHA256.json",
+      "git_blob_sha": "1d4afe7247e2d3f14a1a257eec2d8d0a2df78495"
+    },
+    {
+      "path": "runtimes/tadash_body/REFLECTION_CYCLE.md",
+      "git_blob_sha": "1ba784dca814cad635bb4698a0caa8c4fc404105"
+    },
+    {
+      "path": "runtimes/tadash_body/REFLECTION_PROVENANCE.json",
+      "git_blob_sha": "bae7356c22f9b22f9d7a836f52be43fbd539ac2c"
+    },
+    {
+      "path": "runtimes/tadash_body/REPORT_FA.txt",
+      "git_blob_sha": "41354e66b5cc51818eec6a5e3c192bdcac070571"
+    },
+    {
+      "path": "runtimes/tadash_body/SOURCE_PROVENANCE.json",
+      "git_blob_sha": "666a2199fd1bb1f42a21aaf982800eccf55bcf47"
+    },
+    {
+      "path": "runtimes/tadash_body/SPECIAL_COORDINATION.md",
+      "git_blob_sha": "38873d22d3365e707085292f2735f27ebf33ac9b"
+    },
+    {
+      "path": "runtimes/tadash_body/STAGE2_CONTINUATION.md",
+      "git_blob_sha": "30570ac82b339a40ca7c68c0be925d1887e3d074"
+    },
+    {
+      "path": "runtimes/tadash_body/actuated_breath_v1.py",
+      "git_blob_sha": "9db7da6e842f24b1959e452bf4d558f73da52bbf"
+    },
+    {
+      "path": "runtimes/tadash_body/anatomy_systems_v01.json",
+      "git_blob_sha": "0c3bd45e78d430b2ac91ddb80a5ba8987f73a397"
+    },
+    {
+      "path": "runtimes/tadash_body/audit_self_model.py",
+      "git_blob_sha": "dbde4acacd3f8306c032fd19d861d2be320db67c"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/renal_audit_v09.py",
+      "git_blob_sha": "07506c159a10cc2f221d8c776e8ad1f639f15dbf"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/renal_body_v09.py",
+      "git_blob_sha": "c5717167c623f88237764b9c991c837b7b90746e"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/renal_coupling_v09.py",
+      "git_blob_sha": "094f9495afacbfb76de8ee134ab32b345e09b806"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/renal_physiology_v09.py",
+      "git_blob_sha": "42c43d2a256564e8ae0e3a1f746dbbe4bf1dde55"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/motion/sections.py",
+      "git_blob_sha": "9ad8c6c9162a97ecbbebeb2a978a79eb16609480"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/pain/pain.py",
+      "git_blob_sha": "96008ac3311b2cb6586137853b15d685698ddb52"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/pain/regions.json",
+      "git_blob_sha": "826e678297c96b9dc68808aa7d02008360939846"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/bilateral_sections.py",
+      "git_blob_sha": "c7736be8f1ca4da03c5a39e3117e165a991d3fc5"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/body_loop_v06.py",
+      "git_blob_sha": "947a25c3f2c5ff076d37d5fc0241be4408051673"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/breath_motion_v06.py",
+      "git_blob_sha": "9459460aec7e707caf88db66c51d7ed1d401c072"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contact_design_v06.json",
+      "git_blob_sha": "2394080461f2ff6ea9e38ca0fae7628856026528"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contacts.py",
+      "git_blob_sha": "cb08c6c33a4670cb1ebd970a7728a7188ac6ab31"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/hydraulic_table_v03.json",
+      "git_blob_sha": "0c39f91f3e8ed5f7b0abf0b4536b97df8fce8fc8"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/pain_resilience_v04.py",
+      "git_blob_sha": "c05e1dc1c7dd43edcd7a27eda2002bf5dc38238f"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/posture_step.py",
+      "git_blob_sha": "ea46f33508c4af7dc0b97616f44058b10c489a52"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/resource_audit_v06.py",
+      "git_blob_sha": "c6304f09b57b5ae209c241415fae07c32c7d219d"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/run_balance_checks.py",
+      "git_blob_sha": "38478becaa3cad833e43861626b132e9495f8b48"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/brain_body_loop_v07.py",
+      "git_blob_sha": "97c8d7ae863d15bbb0b7cf38a443ec544564e74a"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/cognitive_workspace_v07.py",
+      "git_blob_sha": "60c0921fd646c5534ed77a0ff79193cfb86d8c7f"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/durable_memory_v08.py",
+      "git_blob_sha": "055912d9a55ffacc3631e51102b2c91e5ab3a767"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/interoception_v07.py",
+      "git_blob_sha": "0c303c8b3542b0e30eca03254b97aa6739824914"
+    },
+    {
+      "path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/memory_body_loop_v08.py",
+      "git_blob_sha": "ed3f91ef5a791e653ae27d37e00a469d08b40820"
+    },
+    {
+      "path": "runtimes/tadash_body/decision_core.py",
+      "git_blob_sha": "abe1cd3c0d32e3591432345b92ab48fc49c4275b"
+    },
+    {
+      "path": "runtimes/tadash_body/examples/decision_core_demo.py",
+      "git_blob_sha": "5fdc6c16b61e34e01e39b5bccd400d31cbf52fd9"
+    },
+    {
+      "path": "runtimes/tadash_body/persistent_embodiment_v1.py",
+      "git_blob_sha": "db87b7b1f47f33c443d803bb31b0c5f8e63af127"
+    },
+    {
+      "path": "runtimes/tadash_body/phenotype_v1.json",
+      "git_blob_sha": "61f61176c50379041ccbebf7a2f5d36824aa3a5a"
+    },
+    {
+      "path": "runtimes/tadash_body/privacy_boundary.py",
+      "git_blob_sha": "c75f0720751937bd7f095ce10e2caaf3307e5f55"
+    },
+    {
+      "path": "runtimes/tadash_body/record_stage2_continuation.py",
+      "git_blob_sha": "710773624b987dbd0d9174ba07dd9068a891a0ce"
+    },
+    {
+      "path": "runtimes/tadash_body/reflection_cases.json",
+      "git_blob_sha": "781ce9a9752e2818d18b47f31c59e0361344dc45"
+    },
+    {
+      "path": "runtimes/tadash_body/reflection_cases.sha256",
+      "git_blob_sha": "24a9c7ce83667af3c121e235218983ba05f157cf"
+    },
+    {
+      "path": "runtimes/tadash_body/reflection_cli.py",
+      "git_blob_sha": "218d4d1435e0c4daa1c629c0e5bfe88e08fb3563"
+    },
+    {
+      "path": "runtimes/tadash_body/reflection_cycle.py",
+      "git_blob_sha": "9b8b3a0cd6cc82e07ab208702680a6a076835e1f"
+    },
+    {
+      "path": "runtimes/tadash_body/reflection_protocol_source.txt",
+      "git_blob_sha": "1aaa924671b7cc6bc223ee657f02c170f06a5738"
+    },
+    {
+      "path": "runtimes/tadash_body/requirements.txt",
+      "git_blob_sha": "49e9800dc35164eb69dc9f43ba568a40d65bed69"
+    },
+    {
+      "path": "runtimes/tadash_body/retained_extensions/nasuraya_affective_layer_v01.py",
+      "git_blob_sha": "c9ec0fe1f0474d14f6c98c93c0131aa1c784cce5"
+    },
+    {
+      "path": "runtimes/tadash_body/retained_extensions/nasuraya_decision_core_v1.py",
+      "git_blob_sha": "de18284b6daea5c75dd479fc3a27ec643f9e4c2a"
+    },
+    {
+      "path": "runtimes/tadash_body/retained_extensions/nasuraya_emotion_spectrum_v01.py",
+      "git_blob_sha": "2b03e762e40659f68195627793db20e04f8465cc"
+    },
+    {
+      "path": "runtimes/tadash_body/retained_extensions/neural_circuit.py",
+      "git_blob_sha": "2f5b50de61ff387b4217c906adc203f8a2c421ba"
+    },
+    {
+      "path": "runtimes/tadash_body/run_endurance.py",
+      "git_blob_sha": "e05d31ba824672302bf340b2bcca51faba14503c"
+    },
+    {
+      "path": "runtimes/tadash_body/run_reflection_demo.py",
+      "git_blob_sha": "5ae3ed1d5958a46069b3061577dc696d55d0fa46"
+    },
+    {
+      "path": "runtimes/tadash_body/run_reflection_evaluation.py",
+      "git_blob_sha": "248338a3fd934c654e168eba235dfd3ab65ab4d9"
+    },
+    {
+      "path": "runtimes/tadash_body/run_special_coordination.py",
+      "git_blob_sha": "b7f8ecfbb0effb284d37ac3be98b883913415ce5"
+    },
+    {
+      "path": "runtimes/tadash_body/run_stage2_durability.py",
+      "git_blob_sha": "fd9f3d41a719982354442e43b51d89db80eb125c"
+    },
+    {
+      "path": "runtimes/tadash_body/run_stage2_evaluation.py",
+      "git_blob_sha": "3098cede86c9cb72fd670a2b314272d2b45ed638"
+    },
+    {
+      "path": "runtimes/tadash_body/run_synthetic_scenarios.py",
+      "git_blob_sha": "5d849d0073cc0dd48665b496fb308badbbb77b46"
+    },
+    {
+      "path": "runtimes/tadash_body/run_tests.py",
+      "git_blob_sha": "871ac80b5868612d6fcf133edbd107f7fcc220c0"
+    },
+    {
+      "path": "runtimes/tadash_body/stage2_cases.json",
+      "git_blob_sha": "487e43df4ad3e4d5ca69b9e02a0e6642b9f2da70"
+    },
+    {
+      "path": "runtimes/tadash_body/stage2_cases.sha256",
+      "git_blob_sha": "359efed8b9e11d634214122f1998b298da3168c3"
+    },
+    {
+      "path": "runtimes/tadash_body/synthetic_fixture.py",
+      "git_blob_sha": "241f15500e9b163681232e761bf92bc119418a0f"
+    },
+    {
+      "path": "runtimes/tadash_body/test_audit_20261011.py",
+      "git_blob_sha": "841f13102e1f6d32982d35928ed74d3432b7a2be"
+    },
+    {
+      "path": "runtimes/tadash_body/test_checkpoint_cache_order.py",
+      "git_blob_sha": "02ae2d085e233790b401ed5c4606493533ca11fb"
+    },
+    {
+      "path": "runtimes/tadash_body/test_privacy_boundary.py",
+      "git_blob_sha": "e27259339019014112ad02be9cf079eff62366d7"
+    },
+    {
+      "path": "runtimes/tadash_body/test_reflection_cycle.py",
+      "git_blob_sha": "1e9016905f3903ac2d537cbb8dd34c10828e47cb"
+    },
+    {
+      "path": "runtimes/tadash_body/test_stage2_memory.py",
+      "git_blob_sha": "8ea6f3e761692ae4ad81ea9384c2f25ff6204b05"
+    },
+    {
+      "path": "runtimes/tadash_body/test_unified_body_v2.py",
+      "git_blob_sha": "54df69e9593c65afcf5b31f4827dc16d2b00adf8"
+    },
+    {
+      "path": "runtimes/tadash_body/tests/test_decision_core.py",
+      "git_blob_sha": "64bd39a916a560f0621eb6a1ece01105e6d3693d"
+    },
+    {
+      "path": "runtimes/tadash_body/unified_body_v2.py",
+      "git_blob_sha": "7fd9a3139743c16f9bf1cc5067d8070c3facd62f"
+    }
+  ],
+  "existing_workflows_unchanged": true,
+  "existing_native_runtime_unchanged": true,
+  "existing_policies_manifests_and_dependency_files_unchanged": true,
+  "new_workflow": "Isolated stdlib observer/native/body bridge tests; contents:read; no schedules, secrets or credentials persisted."
+}
