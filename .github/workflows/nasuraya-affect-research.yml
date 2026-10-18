@@ -20,8 +20,8 @@ jobs:
         with:
           python-version: '3.12'
       - name: Pure evidence contracts and actual native integration
-        run: python -m unittest examples.nasuraya_affect_research.test_appraisal examples.nasuraya_affect_research.test_native -v
+        run: python -S -m examples.nasuraya_affect_research.run tests
       - name: Existing confidence regressions
-        run: python -m unittest examples.nasuraya_research.test_confidence -v
+        run: python -S -m examples.nasuraya_affect_research.run regression
       - name: Native body experiment with affect on and off
-        run: python -m examples.nasuraya_affect_research.evaluate
+        run: python -S -m examples.nasuraya_affect_research.run evaluate
