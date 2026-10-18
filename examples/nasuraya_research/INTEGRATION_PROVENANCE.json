@@ -1,0 +1,34 @@
+{
+  "base_main": "50780d88e1e95e7fc19037db4dd6a0227fcb204d",
+  "source_head": "d21988516d0f52118d22d13f5444e7e3b9911ed8",
+  "excluded_pr40_runtime": true,
+  "extracted_snapshot": {
+    "source_path": "examples/nasuraya_self_model/monitor.py",
+    "symbol": "snapshot",
+    "source_sha256": "9009dba256a6a1465d6a6494bb34776578089b9e95de1deed9316c4725debe37",
+    "changes": "Lift only read-only snapshot into local module; move three native imports into function; preserve result schema and validation."
+  },
+  "upstream_files_retained_unchanged": [
+    "vendor/mjlab_math.py",
+    "vendor/licenses/mjlab-Apache-2.0.txt",
+    "vendor/roborsi_trajectory.py",
+    "vendor/licenses/roborsi-Apache-2.0.txt",
+    "vendor/battery_probe.py",
+    "vendor/licenses/battery-MIT.txt"
+  ],
+  "modifications": {
+    "body_observer.py": "Run checkpoint equality check in finally on success and adapter failure.",
+    "adapters.py": "Use local native_snapshot instead of stacked SelfModel module.",
+    "integrity.py": "Explicit six-entry observer-only inventory plus fixed supplemental BSD notice hash.",
+    "upstream-lock.json": "Remove three unused PredVLA entries; retain all other upstream identities and hashes.",
+    "test_adapters.py": "Retain non-tensor contracts, adapt inventory count, pin BSD notice.",
+    "test_body_observer.py": "Isolate source-verified fixtures; add failure, mutation, optional dependency and geometry contracts."
+  },
+  "excluded": [
+    "PR40 guarded cycle, sentinel, security policy/manifests",
+    "SelfModel persistence, ControlTrial and action trials",
+    "PredVLA model, error-regression rollout, training, fitted weights and quantitative pilot",
+    "genome, motion extensions, API/metacognitive changes",
+    "stacked workflow modifications and historical evaluation artifacts"
+  ]
+}

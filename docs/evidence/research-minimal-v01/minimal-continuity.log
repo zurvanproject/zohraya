@@ -1,0 +1,14 @@
+test_claim_conflict_never_executes (continuity_host.test_host.HostTests.test_claim_conflict_never_executes) ... ok
+test_claim_precedes_work_and_daily_replay_defers (continuity_host.test_host.HostTests.test_claim_precedes_work_and_daily_replay_defers) ... ok
+test_contact_during_work_preserved_in_finish (continuity_host.test_host.HostTests.test_contact_during_work_preserved_in_finish) ... ok
+test_failed_final_cas_does_not_refund (continuity_host.test_host.HostTests.test_failed_final_cas_does_not_refund) ... ok
+test_pause_after_claim_cancels_and_stays_paused (continuity_host.test_host.HostTests.test_pause_after_claim_cancels_and_stays_paused) ... ok
+test_real_offline_probe_no_model_key (continuity_host.test_host.HostTests.test_real_offline_probe_no_model_key) ... ok
+test_recent_contact_and_pause_defer (continuity_host.test_host.HostTests.test_recent_contact_and_pause_defer) ... ok
+test_timeout_recorded_without_budget_refund (continuity_host.test_host.HostTests.test_timeout_recorded_without_budget_refund) ... ok
+test_unknown_outcome_keeps_inflight (continuity_host.test_host.HostTests.test_unknown_outcome_keeps_inflight) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.412s
+
+OK

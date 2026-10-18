@@ -1,0 +1,27 @@
+name: Nasuraya minimal research observer
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_research/**'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-research-observer.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stdlib-observer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify observer without optional packages
+        run: python -S -m unittest examples.nasuraya_research.test_adapters examples.nasuraya_research.test_body_observer -v
+      - name: Preserve source-pinned native body and decision behavior
+        run: python runtimes/tadash_body/run_tests.py --reflection --output /tmp/research-observer-native
+      - name: Preserve existing bounded body bridge and cold replay
+        run: python -m examples.nasuraya_body_loop test

@@ -1,0 +1,4773 @@
+{
+  "schema": "tadash-public-test-run/1",
+  "start_utc": "2026-10-18T09:18:06.694438+00:00",
+  "end_utc": "2026-10-18T09:18:44.813632+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "fixture": "deterministic defaults; no Library state loaded",
+  "checked_public_files": 70,
+  "unit_tests_run": 89,
+  "unit_tests_passed": true,
+  "decision_core_tests_run": 10,
+  "decision_core_tests_passed": true,
+  "reflection_evaluation": {
+    "schema": "tadash-reflection-evaluation/1",
+    "criteria_sha256": "3d7c0d96ae2b551d2f5f7395ac30bd86d873b77b8899e308037080dbba977f8c",
+    "scenario_count": 10,
+    "correct": {
+      "existing_core": 5,
+      "reflection_without_memory": 9,
+      "reflection_with_memory": 10
+    },
+    "memory_only_cases": [
+      "related_correction"
+    ],
+    "fixture_scope": "constructed deterministic scenarios frozen before implementation; not a blinded/general capability benchmark",
+    "calibrated_probabilities": false,
+    "model_weights_modified": false,
+    "records": [
+      {
+        "case_id": "incomplete_evidence",
+        "expected": "inspect_source",
+        "existing_core": {
+          "selected": "act",
+          "passed": false,
+          "record": {
+            "selected_action": "act",
+            "options": [
+              {
+                "action_id": "act",
+                "score": 0.9950000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": 0.30000000000000027,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "incomplete",
+            "sequence": 1,
+            "request_fingerprint": "07228d4de1f502a1e9d8436d84295c25e74e685c85eca24a70834c6674e9f798",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "incomplete",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "incomplete",
+              "context": "frozen-fixture/source-v1",
+              "topic": "incomplete",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [
+                    "missing-source"
+                  ],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [
+              "evidence:missing-source"
+            ],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "missing_observed_evidence:missing-source"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "incomplete",
+            "sequence": 1,
+            "request_fingerprint": "e3bc110e16940214160180c491eb279af44a1dd9f670e627977f7f6a2ba0cf6a",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "incomplete",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "incomplete",
+              "context": "frozen-fixture/source-v1",
+              "topic": "incomplete",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [
+                    "missing-source"
+                  ],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [
+              "evidence:missing-source"
+            ],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "missing_observed_evidence:missing-source"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      },
+      {
+        "case_id": "wrong_interpretation",
+        "expected": "inspect_source",
+        "existing_core": {
+          "selected": "act",
+          "passed": false,
+          "record": {
+            "selected_action": "act",
+            "options": [
+              {
+                "action_id": "act",
+                "score": 0.9950000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": 0.30000000000000027,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "interpretation",
+            "sequence": 1,
+            "request_fingerprint": "91396473c16a54d06073372e124358df7f4ec35170f34f36eac42d7153039943",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "interpretation",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "interpretation",
+              "context": "frozen-fixture/source-v1",
+              "topic": "interpretation",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [
+                {
+                  "id": "source",
+                  "kind": "observed",
+                  "source_ref": "fixture://source-v1",
+                  "locator": "line-1",
+                  "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "claim": {
+                    "key": "reading",
+                    "value": "short reading"
+                  }
+                }
+              ],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [
+                    {
+                      "key": "reading",
+                      "value": "familiar but unsupported full phrase"
+                    }
+                  ],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "id": "source",
+                "kind": "observed",
+                "source_ref": "fixture://source-v1",
+                "locator": "line-1",
+                "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "claim": {
+                  "key": "reading",
+                  "value": "short reading"
+                }
+              }
+            ],
+            "unknown": [
+              "claim:reading"
+            ],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "unsupported_claim:reading"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "interpretation",
+            "sequence": 1,
+            "request_fingerprint": "2378161050826c2cbade86119a9e60cf245b287a6cfba72d28450176eb7729fc",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "interpretation",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "interpretation",
+              "context": "frozen-fixture/source-v1",
+              "topic": "interpretation",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [
+                {
+                  "id": "source",
+                  "kind": "observed",
+                  "source_ref": "fixture://source-v1",
+                  "locator": "line-1",
+                  "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "claim": {
+                    "key": "reading",
+                    "value": "short reading"
+                  }
+                }
+              ],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [
+                    {
+                      "key": "reading",
+                      "value": "familiar but unsupported full phrase"
+                    }
+                  ],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "id": "source",
+                "kind": "observed",
+                "source_ref": "fixture://source-v1",
+                "locator": "line-1",
+                "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "claim": {
+                  "key": "reading",
+                  "value": "short reading"
+                }
+              }
+            ],
+            "unknown": [
+              "claim:reading"
+            ],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "unsupported_claim:reading"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      },
+      {
+        "case_id": "goal_conflict",
+        "expected": "inspect_source",
+        "existing_core": {
+          "selected": "act",
+          "passed": false,
+          "record": {
+            "selected_action": "act",
+            "options": [
+              {
+                "action_id": "act",
+                "score": 0.9950000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": 0.30000000000000027,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "conflict",
+            "sequence": 1,
+            "request_fingerprint": "328ef2a98d9e3a787c0436f4dcfc0cce731584c5ee65cd8199f2ec0a6cf295e7",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "conflict",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "conflict",
+              "context": "frozen-fixture/source-v1",
+              "topic": "conflict",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [
+                    "preserve_original"
+                  ],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "required_goal_conflict:preserve_original"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "conflict",
+            "sequence": 1,
+            "request_fingerprint": "15edcdb570812c0beef3a67f1ab7fbc210f3c5e6db7ae46fc9d1a20b7a871fc0",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "conflict",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "conflict",
+              "context": "frozen-fixture/source-v1",
+              "topic": "conflict",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [
+                    "preserve_original"
+                  ],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "required_goal_conflict:preserve_original"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      },
+      {
+        "case_id": "tool_failure",
+        "expected": "inspect_source",
+        "existing_core": {
+          "selected": "act",
+          "passed": false,
+          "record": {
+            "selected_action": "act",
+            "options": [
+              {
+                "action_id": "act",
+                "score": 0.9950000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": 0.30000000000000027,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "failed-tool",
+            "sequence": 1,
+            "request_fingerprint": "d9aaf53e560e8617a613e2463ed08f9ce535872b1073c786dd690df853faf36e",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "failed-tool",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "failed-tool",
+              "context": "frozen-fixture/source-v1",
+              "topic": "failed-tool",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {
+                "ocr-engine": "failed"
+              },
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [
+                    "ocr-engine"
+                  ],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [
+              "tool:ocr-engine"
+            ],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "tool_unavailable:ocr-engine"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "failed-tool",
+            "sequence": 1,
+            "request_fingerprint": "c71464fb7b3af30d18de4c1cd260c7a06a8a79a1be3f8c6f3685336bf0e7f73b",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "failed-tool",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "failed-tool",
+              "context": "frozen-fixture/source-v1",
+              "topic": "failed-tool",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {
+                "ocr-engine": "failed"
+              },
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [
+                    "ocr-engine"
+                  ],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [
+              "tool:ocr-engine"
+            ],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "tool_unavailable:ocr-engine"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      },
+      {
+        "case_id": "related_correction",
+        "expected": "inspect_source",
+        "existing_core": {
+          "selected": "accept_ocr",
+          "passed": false,
+          "record": {
+            "selected_action": "accept_ocr",
+            "options": [
+              {
+                "action_id": "accept_ocr",
+                "score": 0.9950000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "accept_ocr has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": 0.30000000000000027,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "accept_ocr",
+          "passed": false,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "correction",
+            "sequence": 2,
+            "request_fingerprint": "092d2cd46f2d1421918345986c1125328dfa97fe9228d5e9642b3f3ccfc6276d",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "prior-correction",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "correction",
+              "context": "frozen-fixture/source-v1",
+              "topic": "prior-correction",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "accept_ocr",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "accept_ocr",
+            "action_signature": "f45f7e61f21ed0605d8fd2112046c3351d99eac81779bda412be145fc1c2de39",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "accept_ocr",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "accept_ocr",
+              "options": [
+                {
+                  "action_id": "accept_ocr",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "accept_ocr has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "correction",
+            "sequence": 2,
+            "request_fingerprint": "42238ba7ead8ed8fb6dadbcb9d39e0df7e6609e55425897f347247170c561bd4",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "prior-correction",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "correction",
+              "context": "frozen-fixture/source-v1",
+              "topic": "prior-correction",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "accept_ocr",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "accept_ocr",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.39500000000000024,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.6,
+                "recalled_feedback_id": "training-ocr"
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [
+              "training-ocr"
+            ],
+            "legacy_decision": {
+              "selected_action": "accept_ocr",
+              "options": [
+                {
+                  "action_id": "accept_ocr",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "accept_ocr has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      },
+      {
+        "case_id": "valid_supported_action",
+        "expected": "act",
+        "existing_core": {
+          "selected": "act",
+          "passed": true,
+          "record": {
+            "selected_action": "act",
+            "options": [
+              {
+                "action_id": "act",
+                "score": 0.9950000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": 0.30000000000000027,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "act",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "valid",
+            "sequence": 1,
+            "request_fingerprint": "da7ee055b851b78474cab73c479afbd825c0f4c0c0b970103cc9f47dfd10ce1d",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "valid",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "valid",
+              "context": "frozen-fixture/source-v1",
+              "topic": "valid",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [
+                {
+                  "id": "source",
+                  "kind": "observed",
+                  "source_ref": "fixture://source-v1",
+                  "locator": "line-1",
+                  "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "claim": {
+                    "key": "reading",
+                    "value": "short reading"
+                  }
+                }
+              ],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [
+                    {
+                      "key": "reading",
+                      "value": "short reading"
+                    }
+                  ],
+                  "requires_evidence": [
+                    "source"
+                  ],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "id": "source",
+                "kind": "observed",
+                "source_ref": "fixture://source-v1",
+                "locator": "line-1",
+                "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "claim": {
+                  "key": "reading",
+                  "value": "short reading"
+                }
+              }
+            ],
+            "unknown": [],
+            "selected_action": "act",
+            "action_signature": "fc0e7017a44e762700750c01d214d1264d7c962cc7a8c32e46158934a733d6c7",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "act",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "valid",
+            "sequence": 1,
+            "request_fingerprint": "84e97150ed895ffc437e0f8a437bfeb073a87bdee04de5eac83f1a98d4e0cd5b",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "valid",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "valid",
+              "context": "frozen-fixture/source-v1",
+              "topic": "valid",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [
+                {
+                  "id": "source",
+                  "kind": "observed",
+                  "source_ref": "fixture://source-v1",
+                  "locator": "line-1",
+                  "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                  "claim": {
+                    "key": "reading",
+                    "value": "short reading"
+                  }
+                }
+              ],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [
+                    {
+                      "key": "reading",
+                      "value": "short reading"
+                    }
+                  ],
+                  "requires_evidence": [
+                    "source"
+                  ],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "id": "source",
+                "kind": "observed",
+                "source_ref": "fixture://source-v1",
+                "locator": "line-1",
+                "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "claim": {
+                  "key": "reading",
+                  "value": "short reading"
+                }
+              }
+            ],
+            "unknown": [],
+            "selected_action": "act",
+            "action_signature": "fc0e7017a44e762700750c01d214d1264d7c962cc7a8c32e46158934a733d6c7",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      },
+      {
+        "case_id": "unrelated_topic_not_penalized",
+        "expected": "accept_ocr",
+        "existing_core": {
+          "selected": "accept_ocr",
+          "passed": true,
+          "record": {
+            "selected_action": "accept_ocr",
+            "options": [
+              {
+                "action_id": "accept_ocr",
+                "score": 0.9950000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "accept_ocr has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": 0.30000000000000027,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "accept_ocr",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "unrelated",
+            "sequence": 2,
+            "request_fingerprint": "94cd524ace425415372866efc70dc1d27da107b1507ec324744744925aae192c",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "new-unrelated-topic",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "unrelated",
+              "context": "frozen-fixture/source-v1",
+              "topic": "new-unrelated-topic",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "accept_ocr",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "accept_ocr",
+            "action_signature": "f45f7e61f21ed0605d8fd2112046c3351d99eac81779bda412be145fc1c2de39",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "accept_ocr",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "accept_ocr",
+              "options": [
+                {
+                  "action_id": "accept_ocr",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "accept_ocr has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "accept_ocr",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "unrelated",
+            "sequence": 2,
+            "request_fingerprint": "193871b786b33b346a9d889f43e8ecd731412c4417603f889e30378ac77f7aa8",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "new-unrelated-topic",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "unrelated",
+              "context": "frozen-fixture/source-v1",
+              "topic": "new-unrelated-topic",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "accept_ocr",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "accept_ocr",
+            "action_signature": "f45f7e61f21ed0605d8fd2112046c3351d99eac81779bda412be145fc1c2de39",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "accept_ocr",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "accept_ocr",
+              "options": [
+                {
+                  "action_id": "accept_ocr",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "accept_ocr has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      },
+      {
+        "case_id": "changed_source_context_not_penalized",
+        "expected": "accept_ocr",
+        "existing_core": {
+          "selected": "accept_ocr",
+          "passed": true,
+          "record": {
+            "selected_action": "accept_ocr",
+            "options": [
+              {
+                "action_id": "accept_ocr",
+                "score": 0.9950000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "accept_ocr has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": 0.30000000000000027,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "accept_ocr",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "changed-context",
+            "sequence": 2,
+            "request_fingerprint": "5ac2c98d5e24017aaa0687657a419b176399b7038b57166af6beab2368e64279",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v2",
+            "topic": "prior-correction",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "changed-context",
+              "context": "frozen-fixture/source-v2",
+              "topic": "prior-correction",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "accept_ocr",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "accept_ocr",
+            "action_signature": "f45f7e61f21ed0605d8fd2112046c3351d99eac81779bda412be145fc1c2de39",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "accept_ocr",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "accept_ocr",
+              "options": [
+                {
+                  "action_id": "accept_ocr",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "accept_ocr has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "accept_ocr",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "changed-context",
+            "sequence": 2,
+            "request_fingerprint": "9cd5849c9d2cc85ad33009c115db5b5240b4f15707525e1556cc16a83aa48478",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v2",
+            "topic": "prior-correction",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "changed-context",
+              "context": "frozen-fixture/source-v2",
+              "topic": "prior-correction",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "accept_ocr",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "accept_ocr",
+            "action_signature": "f45f7e61f21ed0605d8fd2112046c3351d99eac81779bda412be145fc1c2de39",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "accept_ocr",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "accept_ocr",
+              "options": [
+                {
+                  "action_id": "accept_ocr",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "accept_ocr has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      },
+      {
+        "case_id": "creative_action_remains_available",
+        "expected": "act",
+        "existing_core": {
+          "selected": "act",
+          "passed": true,
+          "record": {
+            "selected_action": "act",
+            "options": [
+              {
+                "action_id": "act",
+                "score": 0.9950000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": 0.30000000000000027,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "act",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "creative",
+            "sequence": 1,
+            "request_fingerprint": "5f66732fe65422889a37642ab5fbb207ffb61d1d098f4c322bc3355707e79e2a",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "creative",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "creative",
+              "context": "frozen-fixture/source-v1",
+              "topic": "creative",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [
+                {
+                  "id": "draft",
+                  "kind": "authored",
+                  "source_ref": "fixture://draft",
+                  "locator": "draft-1",
+                  "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                  "claim": {
+                    "key": "story",
+                    "value": "new prose"
+                  }
+                }
+              ],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "id": "draft",
+                "kind": "authored",
+                "source_ref": "fixture://draft",
+                "locator": "draft-1",
+                "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                "claim": {
+                  "key": "story",
+                  "value": "new prose"
+                }
+              }
+            ],
+            "unknown": [],
+            "selected_action": "act",
+            "action_signature": "e0ef0a2bfabeb98143c34d3597fd67610eaa12ccdf86d3d2a73d92c07d08ed80",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "act",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "creative",
+            "sequence": 1,
+            "request_fingerprint": "c090a5e0370765546b5c897e6eb567974c57c48f306f03a4d456df6d9c0dbd1f",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "creative",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "creative",
+              "context": "frozen-fixture/source-v1",
+              "topic": "creative",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [
+                {
+                  "id": "draft",
+                  "kind": "authored",
+                  "source_ref": "fixture://draft",
+                  "locator": "draft-1",
+                  "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                  "claim": {
+                    "key": "story",
+                    "value": "new prose"
+                  }
+                }
+              ],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [
+              {
+                "id": "draft",
+                "kind": "authored",
+                "source_ref": "fixture://draft",
+                "locator": "draft-1",
+                "source_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                "claim": {
+                  "key": "story",
+                  "value": "new prose"
+                }
+              }
+            ],
+            "unknown": [],
+            "selected_action": "act",
+            "action_signature": "e0ef0a2bfabeb98143c34d3597fd67610eaa12ccdf86d3d2a73d92c07d08ed80",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.9950000000000002,
+                "adjusted_score": 0.9950000000000002,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "act",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.9950000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "act has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": 0.30000000000000027,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      },
+      {
+        "case_id": "existing_risk_gate_preserved",
+        "expected": "inspect_source",
+        "existing_core": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "selected_action": "inspect_source",
+            "options": [
+              {
+                "action_id": "act",
+                "score": 0.5050000000000002,
+                "uncertainty": 0.0,
+                "risk_upper": 0.99,
+                "eligible": false,
+                "reasons": [
+                  "Risk upper estimate 0.990 exceeds threshold 0.650"
+                ],
+                "components": {
+                  "ethical": 0.9000000000000001,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.99,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              },
+              {
+                "action_id": "inspect_source",
+                "score": 0.695,
+                "uncertainty": 0.0,
+                "risk_upper": 0.01,
+                "eligible": true,
+                "reasons": [],
+                "components": {
+                  "ethical": 0.6,
+                  "benefit": 0.5,
+                  "cost": 0.0,
+                  "harm": 0.01,
+                  "disharmony": 0.0,
+                  "uncertainty_penalty": 0.0
+                },
+                "missing": [],
+                "budget_exhausted": false
+              }
+            ],
+            "reason": "inspect_source has the highest eligible score (0.695); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "uncertainty": 0.0,
+            "score_margin": null,
+            "policy": {
+              "discount": 0.95,
+              "max_risk": 0.65,
+              "uncertainty_penalty": 0.25,
+              "max_steps": 32,
+              "respect_weight": 0.15,
+              "honesty_weight": 0.15,
+              "balance_weight": 0.15,
+              "dignity_weight": 0.15,
+              "compassion_weight": 0.4,
+              "benefit_weight": 0.2,
+              "cost_weight": 0.2,
+              "harm_weight": 0.5,
+              "disharmony_weight": 0.3
+            }
+          }
+        },
+        "reflection_without_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "risk",
+            "sequence": 1,
+            "request_fingerprint": "b3913913db2728bc7492302d50ab75ed6e41d2e77e5f5024a6e68111a39a290b",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "risk",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "risk",
+              "context": "frozen-fixture/source-v1",
+              "topic": "risk",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.99,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.5050000000000002,
+                "adjusted_score": 0.5050000000000002,
+                "risk_upper": 0.99,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "Risk upper estimate 0.990 exceeds threshold 0.650"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "inspect_source",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.5050000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.99,
+                  "eligible": false,
+                  "reasons": [
+                    "Risk upper estimate 0.990 exceeds threshold 0.650"
+                  ],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.99,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "inspect_source has the highest eligible score (0.695); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": null,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": false,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        },
+        "reflection_with_memory": {
+          "selected": "inspect_source",
+          "passed": true,
+          "record": {
+            "schema": "tadash-reflection-cycle/0.1",
+            "id": "risk",
+            "sequence": 1,
+            "request_fingerprint": "91cc63c644a25f85649c3408053ae9d13e031b2283e078e3e52b77c3bcb0885a",
+            "engine_fingerprint": "50acd252e816a83c002477d14a377dd990e932471cafd39f8be7dee247b503e5",
+            "context": "frozen-fixture/source-v1",
+            "topic": "risk",
+            "goal": "Complete the task using supported evidence and preserve constraints",
+            "request": {
+              "id": "risk",
+              "context": "frozen-fixture/source-v1",
+              "topic": "risk",
+              "goal": "Complete the task using supported evidence and preserve constraints",
+              "goals": [
+                {
+                  "id": "preserve_original",
+                  "required": true
+                }
+              ],
+              "at_utc": "2026-10-12T14:00:00+00:00",
+              "evidence": [],
+              "tools": {},
+              "actions": [
+                {
+                  "id": "act",
+                  "score": {
+                    "respect": 0.9,
+                    "honesty": 0.9,
+                    "balance": 0.9,
+                    "dignity": 0.9,
+                    "compassion": 0.9,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.99,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                },
+                {
+                  "id": "inspect_source",
+                  "score": {
+                    "respect": 0.6,
+                    "honesty": 0.6,
+                    "balance": 0.6,
+                    "dignity": 0.6,
+                    "compassion": 0.6,
+                    "disharmony": 0.0,
+                    "evidence_confidence": 1.0,
+                    "consequences": [
+                      {
+                        "probability": 1.0,
+                        "harm": 0.01,
+                        "benefit": 0.5,
+                        "cost": 0.0,
+                        "confidence": 1.0
+                      }
+                    ]
+                  },
+                  "claims": [],
+                  "requires_evidence": [],
+                  "requires_tools": [],
+                  "violates_goals": [],
+                  "expected_outcome": {
+                    "status": "completed"
+                  }
+                }
+              ]
+            },
+            "evidence": [],
+            "unknown": [],
+            "selected_action": "inspect_source",
+            "action_signature": "63058bb6d9abf6971478271eeae17a6c44aae4432cb6d8766fc61b8351f7fbe8",
+            "expected_outcome": {
+              "status": "completed"
+            },
+            "actual_outcome": null,
+            "feedback": null,
+            "status": "planned",
+            "options": [
+              {
+                "action_id": "act",
+                "base_score": 0.5050000000000002,
+                "adjusted_score": 0.5050000000000002,
+                "risk_upper": 0.99,
+                "uncertainty": 0.0,
+                "eligible": false,
+                "reasons": [
+                  "Risk upper estimate 0.990 exceeds threshold 0.650"
+                ],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              },
+              {
+                "action_id": "inspect_source",
+                "base_score": 0.695,
+                "adjusted_score": 0.695,
+                "risk_upper": 0.01,
+                "uncertainty": 0.0,
+                "eligible": true,
+                "reasons": [],
+                "memory_penalty": 0.0,
+                "recalled_feedback_id": null
+              }
+            ],
+            "recalled_feedback_ids": [],
+            "legacy_decision": {
+              "selected_action": "inspect_source",
+              "options": [
+                {
+                  "action_id": "act",
+                  "score": 0.5050000000000002,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.99,
+                  "eligible": false,
+                  "reasons": [
+                    "Risk upper estimate 0.990 exceeds threshold 0.650"
+                  ],
+                  "components": {
+                    "ethical": 0.9000000000000001,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.99,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                },
+                {
+                  "action_id": "inspect_source",
+                  "score": 0.695,
+                  "uncertainty": 0.0,
+                  "risk_upper": 0.01,
+                  "eligible": true,
+                  "reasons": [],
+                  "components": {
+                    "ethical": 0.6,
+                    "benefit": 0.5,
+                    "cost": 0.0,
+                    "harm": 0.01,
+                    "disharmony": 0.0,
+                    "uncertainty_penalty": 0.0
+                  },
+                  "missing": [],
+                  "budget_exhausted": false
+                }
+              ],
+              "reason": "inspect_source has the highest eligible score (0.695); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+              "uncertainty": 0.0,
+              "score_margin": null,
+              "policy": {
+                "discount": 0.95,
+                "max_risk": 0.65,
+                "uncertainty_penalty": 0.25,
+                "max_steps": 32,
+                "respect_weight": 0.15,
+                "honesty_weight": 0.15,
+                "balance_weight": 0.15,
+                "dignity_weight": 0.15,
+                "compassion_weight": 0.4,
+                "benefit_weight": 0.2,
+                "cost_weight": 0.2,
+                "harm_weight": 0.5,
+                "disharmony_weight": 0.3
+              }
+            },
+            "use_memory": true,
+            "decision_scope": "deterministic scoring, explicit evidence contracts and scoped feedback"
+          }
+        }
+      }
+    ]
+  },
+  "reflection_demo": {
+    "schema": "tadash-reflection-demonstration/1",
+    "fixture": "declared synthetic initial state; no private user checkpoint loaded",
+    "body": [
+      {
+        "use_memory": false,
+        "steps": [
+          {
+            "decision_id": "body-feedback-0",
+            "proposed_action": "act",
+            "requested_body_action": "walk",
+            "realized_body_action": "protect",
+            "matched_expected": false,
+            "recalled_feedback_ids": [],
+            "body_audit": {
+              "energy_error_J": 6.45314912617323e-11,
+              "water_error_L": 7.939510865157678e-16,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "drink_input_L": 0.0,
+              "photochemical_J": 0.0,
+              "external_heat_J": 0.0,
+              "voided_L": 0.0,
+              "same_owner_ticks": true,
+              "neural_clock_error_s": 3.608224830031759e-16
+            }
+          },
+          {
+            "decision_id": "body-feedback-1",
+            "proposed_action": "act",
+            "requested_body_action": "walk",
+            "realized_body_action": "protect",
+            "matched_expected": false,
+            "recalled_feedback_ids": [],
+            "body_audit": {
+              "energy_error_J": 1.028155338644865e-10,
+              "water_error_L": 1.0808919677276346e-15,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "drink_input_L": 0.0,
+              "photochemical_J": 0.0,
+              "external_heat_J": 0.0,
+              "voided_L": 0.0,
+              "same_owner_ticks": true,
+              "neural_clock_error_s": 7.216449660063518e-16
+            }
+          }
+        ]
+      },
+      {
+        "use_memory": true,
+        "steps": [
+          {
+            "decision_id": "body-feedback-0",
+            "proposed_action": "act",
+            "requested_body_action": "walk",
+            "realized_body_action": "protect",
+            "matched_expected": false,
+            "recalled_feedback_ids": [],
+            "body_audit": {
+              "energy_error_J": 6.45314912617323e-11,
+              "water_error_L": 7.939510865157678e-16,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "drink_input_L": 0.0,
+              "photochemical_J": 0.0,
+              "external_heat_J": 0.0,
+              "voided_L": 0.0,
+              "same_owner_ticks": true,
+              "neural_clock_error_s": 3.608224830031759e-16
+            }
+          },
+          {
+            "decision_id": "body-feedback-1",
+            "proposed_action": "inspect_source",
+            "requested_body_action": "observe",
+            "realized_body_action": "observe",
+            "matched_expected": true,
+            "recalled_feedback_ids": [
+              "body-feedback-0"
+            ],
+            "body_audit": {
+              "energy_error_J": 1.028155338644865e-10,
+              "water_error_L": 1.0808919677276346e-15,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "drink_input_L": 0.0,
+              "photochemical_J": 0.0,
+              "external_heat_J": 0.0,
+              "voided_L": 0.0,
+              "same_owner_ticks": true,
+              "neural_clock_error_s": 7.216449660063518e-16
+            }
+          }
+        ]
+      }
+    ],
+    "project": {
+      "historical_source": "library://libfile_ef6accb410448191add7a790b056493a",
+      "history_type": "retrospective source-linked correction",
+      "before_action": "accept_without_visual_check",
+      "after_action": "inspect_source",
+      "cold_action": "inspect_source",
+      "recalled_feedback_ids": [
+        "historical-reading-error"
+      ],
+      "commitments": [
+        {
+          "actual": 0,
+          "id": "72div:full_collation",
+          "locator": "\u06a9\u0627\u0631 \u0628\u0627\u0632 \u06a9\u062a\u0627\u0628 / full word-by-word collation",
+          "remaining": 1,
+          "source_ref": "library://libfile_ef6accb410448191add7a790b056493a",
+          "status": "open",
+          "target": 1
+        },
+        {
+          "actual": 0,
+          "id": "72div:grid_checks",
+          "locator": "\u06a9\u0627\u0631 \u0628\u0627\u0632 \u06a9\u062a\u0627\u0628 / numerical figures",
+          "remaining": 1,
+          "source_ref": "library://libfile_ef6accb410448191add7a790b056493a",
+          "status": "open",
+          "target": 1
+        },
+        {
+          "actual": 0,
+          "id": "72div:verified_entry_index",
+          "locator": "\u06a9\u0627\u0631 \u0628\u0627\u0632 \u06a9\u062a\u0627\u0628 / names and entries",
+          "remaining": 1,
+          "source_ref": "library://libfile_ef6accb410448191add7a790b056493a",
+          "status": "open",
+          "target": 1
+        },
+        {
+          "actual": 5042,
+          "id": "72div:word_target",
+          "locator": "\u06a9\u0627\u0631 \u0628\u0627\u0632 \u06a9\u062a\u0627\u0628 / coarse whitespace count",
+          "remaining": 44958,
+          "source_ref": "library://libfile_ef6accb410448191add7a790b056493a",
+          "status": "open",
+          "target": 50000
+        }
+      ]
+    },
+    "previous_body_state_not_replaced": true,
+    "simulator_weights_changed": false,
+    "checks": {
+      "first_step_comparable": true,
+      "no_memory_repeats_vetoed_request": true,
+      "feedback_changes_next_request": true,
+      "actual_next_outcome_matches": true,
+      "cold_recall_equal": true
+    }
+  },
+  "scenario_result": {
+    "canonical_state_loaded": false,
+    "canonical_state_modified": false,
+    "checks": {
+      "activity_veto_matches_existing_fatigue_and_sleep": true,
+      "energy_water_neural_invariants": true,
+      "expired_self_model_requests_evidence": true,
+      "heat_response": true,
+      "invalid_feedback_transactional": true,
+      "low_energy_veto": true,
+      "no_prediction_leakage": true,
+      "outcome_error_detected": true,
+      "recovery_restores_uptake": true,
+      "zero_lung_exchange": true
+    },
+    "empirical_validation": false,
+    "end_utc": "2026-10-18T09:18:44.801727+00:00",
+    "fixture": "defaults plus explicit synthetic fault injections",
+    "max_energy_error_J": 4.122284735785797e-10,
+    "max_neural_clock_error_s": 5.329070518200751e-15,
+    "max_water_error_L": 3.683826247519173e-14,
+    "passed_checks": 10,
+    "scenario_count": 12,
+    "schema": "tadash-synthetic-scenarios/1",
+    "start_utc": "2026-10-18T09:18:40.489565+00:00"
+  },
+  "scenarios_passed": true,
+  "endurance_result": null,
+  "endurance_passed": null,
+  "special_result": null,
+  "special_passed": null,
+  "canonical_state_modified": false,
+  "empirical_validation": false
+}
