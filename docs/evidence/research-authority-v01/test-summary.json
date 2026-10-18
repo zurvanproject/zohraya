@@ -1,0 +1,36 @@
+{
+  "base_main": "d89d0995ebff9be0b441bf81c2aded1371d83ff2",
+  "groups": {
+    "authority-tests.log": {
+      "run": 23,
+      "passed": 23,
+      "skipped": 0
+    },
+    "authority-observer-regression.log": {
+      "run": 25,
+      "passed": 22,
+      "skipped": 3
+    },
+    "authority-body-regression.log": {
+      "run": 16,
+      "passed": 16,
+      "skipped": 0
+    }
+  },
+  "native_passed": 99,
+  "unique_passed": 160,
+  "committed_demo_cycles": 6,
+  "demo_fixtures": [
+    "normal",
+    "sleep"
+  ],
+  "native_veto_preserved": true,
+  "old_core_runtime_unchanged": true,
+  "model_api_calls": 0,
+  "github_ci": "pending publication; inspect PR checks for final head",
+  "scope": "explicit finite synthetic-body control; not a background agent or external actuator",
+  "version_review_lessons": [
+    "avoid generated request-ID collision",
+    "bind recovered native receipt to exact reserved request and execution contract"
+  ]
+}

@@ -1,0 +1,30 @@
+test_actual_roborsi_projection_counts_once_and_has_no_invented_cost (examples.nasuraya_research.test_adapters.IntegrationChecks.test_actual_roborsi_projection_counts_once_and_has_no_invented_cost) ... ok
+test_changed_run_or_out_of_order_event_rejected (examples.nasuraya_research.test_adapters.IntegrationChecks.test_changed_run_or_out_of_order_event_rejected) ... ok
+test_conflicting_event_is_rejected_instead_of_silently_deduplicated (examples.nasuraya_research.test_adapters.IntegrationChecks.test_conflicting_event_is_rejected_instead_of_silently_deduplicated) ... ok
+test_exact_upstream_inventory_and_three_projects (examples.nasuraya_research.test_adapters.IntegrationChecks.test_exact_upstream_inventory_and_three_projects) ... ok
+test_floor_and_ceiling_delta_stay_undefined (examples.nasuraya_research.test_adapters.IntegrationChecks.test_floor_and_ceiling_delta_stay_undefined) ... ok
+test_model_usage_or_unknown_events_cannot_be_fabricated (examples.nasuraya_research.test_adapters.IntegrationChecks.test_model_usage_or_unknown_events_cannot_be_fabricated) ... ok
+test_modified_source_fails_before_import (examples.nasuraya_research.test_adapters.IntegrationChecks.test_modified_source_fails_before_import) ... ok
+test_rehashed_changed_lock_is_not_a_new_trust_baseline (examples.nasuraya_research.test_adapters.IntegrationChecks.test_rehashed_changed_lock_is_not_a_new_trust_baseline) ... ok
+test_required_bsd_notice_is_pinned (examples.nasuraya_research.test_adapters.IntegrationChecks.test_required_bsd_notice_is_pinned) ... ok
+test_selective_withdrawal_and_unselective_baselines (examples.nasuraya_research.test_adapters.IntegrationChecks.test_selective_withdrawal_and_unselective_baselines) ... ok
+test_unknown_outcome_and_invalid_decision_are_not_scored_as_failure (examples.nasuraya_research.test_adapters.IntegrationChecks.test_unknown_outcome_and_invalid_decision_are_not_scored_as_failure) ... ok
+test_upstream_symlink_is_rejected (examples.nasuraya_research.test_adapters.IntegrationChecks.test_upstream_symlink_is_rejected) ... ok
+test_checkpoint_tampering_is_rejected (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_checkpoint_tampering_is_rejected) ... ok
+test_geometry_known_rotation_and_all_options_have_no_authority (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_geometry_known_rotation_and_all_options_have_no_authority) ... skipped 'optional tensor dependencies absent'
+test_invalid_geometry_yaws_leave_body_unchanged (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_invalid_geometry_yaws_leave_body_unchanged) ... skipped 'optional tensor dependencies absent'
+test_missing_optional_geometry_dependency_has_no_fallback_or_body_change (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_missing_optional_geometry_dependency_has_no_fallback_or_body_change) ... ok
+test_mutation_is_detected_on_success (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_mutation_is_detected_on_success) ... ok
+test_mutation_is_detected_when_adapter_raises (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_mutation_is_detected_when_adapter_raises) ... ok
+test_no_stacked_modules_or_tensor_imported_by_default (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_no_stacked_modules_or_tensor_imported_by_default) ... ok
+test_nonfinite_sense_is_rejected (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_nonfinite_sense_is_rejected) ... ok
+test_optional_stats_and_trajectory_preserve_body_and_caller_records (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_optional_stats_and_trajectory_preserve_body_and_caller_records) ... ok
+test_reads_native_fixture_without_mutation_or_execution (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_reads_native_fixture_without_mutation_or_execution) ... ok
+test_rejects_invalid_decision_evidence_without_body_change (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_rejects_invalid_decision_evidence_without_body_change) ... ok
+test_retained_mjlab_zero_delta_pose_is_finite (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_retained_mjlab_zero_delta_pose_is_finite) ... skipped 'optional tensor dependencies absent'
+test_returned_senses_do_not_alias_body (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_returned_senses_do_not_alias_body) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 41.114s
+
+OK (skipped=3)
