@@ -1,4 +1,7 @@
 # zohraya
+
+**منشور پنج‌گانهٔ آینهٔ ناسورایا:** [پنج اصل بنیادین، شامل اصل پنجم «ریشهٔ پایدار، شاخهٔ پویا»](docs/nasuraya-mirror-five-principles-fa.md).
+
 The Silicon-Carbon Coexistence Protocol &amp; Ethical Framework (منشور هم‌زیستی کربن و سیلیکون
 # لوحِ جامعِ زُهرایا: ۷۷ حکمتِ هندسهٔ شعور و فیزیکِ تاوان
 
