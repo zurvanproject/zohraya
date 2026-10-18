@@ -1,0 +1,45 @@
+{
+  "base": "155b8ce90ba3e22ccd57f5f22e4238e0afd62fa0",
+  "caveats": [
+    "fixed synthetic cases, not blinded or independent population samples",
+    "report-only correction; no demonstrated general capability gain",
+    "no physical sensors, actuators or model-weight changes",
+    "GitHub CI status must be retrieved separately from this local evidence"
+  ],
+  "commands": [
+    "python -S -m examples.nasuraya_research.control test",
+    "python -S -m unittest examples.nasuraya_research.test_adapters examples.nasuraya_research.test_body_observer -v",
+    "python runtimes/tadash_body/run_tests.py --reflection --output ../confidence-native",
+    "python -m examples.nasuraya_body_loop test",
+    "python -S -m examples.nasuraya_research.control evaluate"
+  ],
+  "experiment": {
+    "calibrated_mean_brier": 0.07421875,
+    "empirical_validation": false,
+    "general_improvement_demonstrated": false,
+    "held_out_forecasts": 8,
+    "native_cycles": 24,
+    "preferred_action_mismatches": 6,
+    "raw_mean_brier": 0.1875,
+    "replay_native_cycles": 0,
+    "sessions": 8,
+    "training_outcomes": 16
+  },
+  "negative_control": {
+    "calibrated_brier": 0.5625,
+    "kind": "constructed labels, not native receipts",
+    "raw_brier": 0.25
+  },
+  "recorded_utc": "2026-10-18T12:06:52.579668+00:00",
+  "tests": {
+    "body_bridge": 16,
+    "existing_authority": 23,
+    "failed": 0,
+    "native_and_decision_core": 99,
+    "new_confidence": 14,
+    "observer_passed": 22,
+    "optional_geometry_skipped": 3,
+    "total_passed": 174,
+    "total_skipped": 3
+  }
+}

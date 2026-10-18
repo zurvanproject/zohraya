@@ -5,9 +5,14 @@ import unittest
 
 
 def main(args):
+    if args['command'] == 'evaluate':
+        from .evaluate_confidence import evaluate
+        print(json.dumps(evaluate(), ensure_ascii=False, sort_keys=True))
+        return 0
     if args['command'] == 'test':
-        from . import test_controller
-        suite = unittest.defaultTestLoader.loadTestsFromModule(test_controller)
+        from . import test_controller, test_confidence
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
+                                   for module in (test_controller, test_confidence))
         result = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if result.wasSuccessful() else 1
     from examples.nasuraya_body_loop.host import BodyLoop
@@ -17,7 +22,8 @@ def main(args):
                           max_actions=args['max_actions']) if command == 'init'
             else BodyLoop(args['session']))
     with loop:
-        control = (BoundedResearchController.enable(loop) if command == 'init'
+        control = (BoundedResearchController.enable(loop,
+                       forecast_confidence=args.get('forecast_confidence')) if command == 'init'
                    else BoundedResearchController(loop))
         if command == 'pause': control.pause()
         elif command == 'resume': control.resume()

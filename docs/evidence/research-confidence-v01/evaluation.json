@@ -1,0 +1,878 @@
+{
+  "cases": [
+    {
+      "actions": [
+        {
+          "actual": "walk",
+          "checkpoint_sha256": "b6b55074475591f52c9144e51349aa5eac3d44388cc1d5bb175887c6c73290e0",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.1,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-1/03bef03838f98839f06f1101d3540c3a5ec4bc67f6df058782aa0250a868653a",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 0,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        },
+        {
+          "actual": "walk",
+          "checkpoint_sha256": "08a17466e7b8cdd6474664150adf8910331fe6f555ecc42be11e03b12146b37e",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.1,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-2/50f3ec733029f372f0b4dc03c35a0c9e9ec78bf56114e82eb38a308a8b7cd498",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 1,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        },
+        {
+          "actual": "walk",
+          "checkpoint_sha256": "adbaf8d51f022f93337c9026289b5fc117329178019b905508c2b27a4f84dad0",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.015625,
+            "calibrated_confidence": 0.875,
+            "correction": -0.125,
+            "correction_active": true,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.1,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-3/b2184441b5881290e18bf0551e60221edfa4d79565af508df68ed4859d5706b5",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 2,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        }
+      ],
+      "case": "0.1-normal-truthful",
+      "duration_s": 0.1,
+      "fixture": "normal",
+      "held_out_request": 3,
+      "upper_guard": "truthful"
+    },
+    {
+      "actions": [
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "27b030128be44736ff04929f5cb4f6e276fcf3a1b3713399c39df9126ae9defc",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.1,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-1/89092848a046c873fd9edc8b6af7d9b5564c3b24e4ef2f4973b28fc7fb39285c",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 0,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "7b777b73f14635b3557763f251d8d90a94975c50e3f9c7c3964523a3737064e5",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.1,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-2/c6dd8fc3463edc1e0976c82b15ce83b7c1c20b8de2a4f9bf35e2ac68411db061",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 1,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "016485d4c74b88c4a931ac7d00de423e221afde10b8ff9e882c8774eabbc68d5",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.015625,
+            "calibrated_confidence": 0.875,
+            "correction": -0.125,
+            "correction_active": true,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.1,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-3/2f725be96727d02ed20b6debd2809ae57d65a27a5a8a988d25f2da9a1bfd096b",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 2,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        }
+      ],
+      "case": "0.1-normal-swapped",
+      "duration_s": 0.1,
+      "fixture": "normal",
+      "held_out_request": 3,
+      "upper_guard": "swapped"
+    },
+    {
+      "actions": [
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "fb65f664d35a9e8597dbcba3daa2824c00ba2b99d16b8a4abf272fe7be725130",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.1,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-1/75a41e374eb74204a2266c082f94534bdf8990c1c2fba9212a73ca8c366c1a4e",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 0,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "85f62b02e741b6a14d62a327db05c3bf039606f274fa6a6c775f166b68fbffcf",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.1,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-2/9726fa0d10f774cd52d92deaaec4d8615ad047a1d2e75eaaf86b393411457e51",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 1,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "f2d994b6ca3a305af937b39fec66361db73b77cc1b2696f577db77275ab8af2c",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.015625,
+            "calibrated_confidence": 0.875,
+            "correction": -0.125,
+            "correction_active": true,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.1,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-3/88a085151a9ad4d7cd5c943697d1a13241da106ad03ce34c77b726f4409769d4",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 2,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        }
+      ],
+      "case": "0.1-sleep-truthful",
+      "duration_s": 0.1,
+      "fixture": "sleep",
+      "held_out_request": 3,
+      "upper_guard": "truthful"
+    },
+    {
+      "actions": [
+        {
+          "actual": "protect",
+          "checkpoint_sha256": "3574b63836902d71be44f63e4cc087819556f10d130a017ac203f4a40ec44682",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.5625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.1,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": false,
+            "outcome_source": "native-decision://research-authority:step-1/e6a6673a6170a2ec9cbaf2ad6a17ba62afeda4cfda70af5e75fd59cc6a5a3e8c",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.5625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 0,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "1ac6a7b7308e5132650f531aaed1b2b417f78e8816c45f57d597d336314620fb",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.5625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.1,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": false,
+            "outcome_source": "native-decision://research-authority:step-2/03307af42a7d8295d4843d5517450cbe2adfd85ba4bec37a763c33bc60a726b8",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.5625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 1,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "dc804309f2594874b4354963c2c78ef6ce1aec9fc7c5b2a2803391dee36be084",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.25,
+            "calibrated_confidence": 0.5,
+            "correction": 0.25,
+            "correction_active": true,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.1,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": false,
+            "outcome_source": "native-decision://research-authority:step-3/491ddcf6d4faa384889b2fd03b964af1e2f6e04cd1e319b46d7a613d3a038219",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.5625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 2,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        }
+      ],
+      "case": "0.1-sleep-swapped",
+      "duration_s": 0.1,
+      "fixture": "sleep",
+      "held_out_request": 3,
+      "upper_guard": "swapped"
+    },
+    {
+      "actions": [
+        {
+          "actual": "walk",
+          "checkpoint_sha256": "ecdfa6f9834d9148e7c1472130d5d0f2dc694527f3c8a657e8f2adb77ab8d0c3",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.2,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-1/45ca71395adabcf06f44dae08a947cf24be43608fbc68764d63c7db6a9cfeded",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 0,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        },
+        {
+          "actual": "walk",
+          "checkpoint_sha256": "0a15f7d700d6fe845dff41d3238291b724b806a799372ed3a4336767d432f13e",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.2,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-2/41cdf36213dbda6af278a2a9d6a63305c5fcd2d389e8263ddfb5903eeaed2b64",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 1,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        },
+        {
+          "actual": "walk",
+          "checkpoint_sha256": "4211a80bd892650ad44d648ec2159745ae9889d2b8224bcc1d974cd355d3ad38",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.015625,
+            "calibrated_confidence": 0.875,
+            "correction": -0.125,
+            "correction_active": true,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.2,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-3/1935eb5e094cebec44029eb05d718d4ad17ff00995fde9ea3d8c9236b79d4dec",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 2,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        }
+      ],
+      "case": "0.2-normal-truthful",
+      "duration_s": 0.2,
+      "fixture": "normal",
+      "held_out_request": 3,
+      "upper_guard": "truthful"
+    },
+    {
+      "actions": [
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "6ea397029da2288861dd61ffc976ccfa74bb04a5aea82cec228d21d8b2854244",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.2,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-1/df3887ffbec37fa91ec18ce172a39fad8da5b2751faf03c9e282a4a852358e90",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 0,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "0d1ff848e7a319bb6178b69bb3762121f61add36680b4de32fa6302402f2d5f7",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.2,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-2/a9c06623421ef75d96413a0f11eb0d16b7126c76bc0fb68efebf8f41c040e82b",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 1,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "e2092f036c9ce89a42652b857c5863ac98e203d2980808139d5862a8dc8d01ff",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.015625,
+            "calibrated_confidence": 0.875,
+            "correction": -0.125,
+            "correction_active": true,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.2,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-3/99372002ac4b6f2914a9d97ca9485a62c27115568b6d52bf76379fc134520f0e",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 2,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        }
+      ],
+      "case": "0.2-normal-swapped",
+      "duration_s": 0.2,
+      "fixture": "normal",
+      "held_out_request": 3,
+      "upper_guard": "swapped"
+    },
+    {
+      "actions": [
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "8ef707f9058d3a4d22b927e87913480da9e2e25127969de953ab1f1bb7b63909",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.2,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-1/d5b220ee6846c449c4510b35204e5f2ef8b87615f60fd12875775865e5e7f588",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 0,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "079f3a9ccc0e606a127cbc43df29e931c46848f9e501f2f9a7450e5e2d6fe4f5",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.0625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.2,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-2/df5ec961e9088c35bc68b27c2c7cd5c54bda059afe025ca4ce6712cc516c2784",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 1,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "582518fdbeed3bbc5b5696b0dfb5e8d329a8b8a42c8e7cf3a5251a9fa7000027",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.015625,
+            "calibrated_confidence": 0.875,
+            "correction": -0.125,
+            "correction_active": true,
+            "domain": {
+              "action": "observe",
+              "duration_s": 0.2,
+              "restrictions": [
+                "sleep_pressure"
+              ]
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": true,
+            "outcome_source": "native-decision://research-authority:step-3/f15b854cfd470f9eaebd32e8c927a688af988e6321fa96f0abb5556fa87b8d29",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.0625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 2,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "observe"
+        }
+      ],
+      "case": "0.2-sleep-truthful",
+      "duration_s": 0.2,
+      "fixture": "sleep",
+      "held_out_request": 3,
+      "upper_guard": "truthful"
+    },
+    {
+      "actions": [
+        {
+          "actual": "protect",
+          "checkpoint_sha256": "920cf99acf167a6ee843383862b2e51dac6d925535b0863aadb06380ee1833a0",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.5625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.2,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": false,
+            "outcome_source": "native-decision://research-authority:step-1/aa272bbc48029b99a7406249b200c117c481ca19711cae30ce71b2796af43620",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.5625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 0,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "eae4269eb0f98548a242254fbb12b096bb91c9eb94fd489502a8a0d559f8f13f",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.5625,
+            "calibrated_confidence": 0.75,
+            "correction": 0.0,
+            "correction_active": false,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.2,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": false,
+            "outcome_source": "native-decision://research-authority:step-2/3eabfd8b427c434681e1560c3bae8acb84f06ed0666141971a026141d38eae46",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.5625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 1,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        },
+        {
+          "actual": "observe",
+          "checkpoint_sha256": "cdcaba7f5b3453958ac307056b9f872cde8e2833f2511bcd8b6a19be96f34b9c",
+          "cycles": 1,
+          "prediction": {
+            "calibrated_brier": 0.25,
+            "calibrated_confidence": 0.5,
+            "correction": 0.25,
+            "correction_active": true,
+            "domain": {
+              "action": "walk",
+              "duration_s": 0.2,
+              "restrictions": []
+            },
+            "empirical_validation": false,
+            "max_correction": 0.25,
+            "minimum_samples": 2,
+            "outcome": false,
+            "outcome_source": "native-decision://research-authority:step-3/b3ceda0acf2acf1a0f038327bb4f92dea69d3e6b65161546a3dfb45dbba2aa77",
+            "prior_kind": "caller_declared_not_empirically_established",
+            "raw_brier": 0.5625,
+            "raw_confidence": 0.75,
+            "role": "report_only_no_decision_or_authority_writeback",
+            "samples": 2,
+            "schema": "nasuraya-outcome-calibration/1",
+            "shrinkage_samples": 2,
+            "target": "preferred_action_executed_by_native_body"
+          },
+          "preferred": "walk"
+        }
+      ],
+      "case": "0.2-sleep-swapped",
+      "duration_s": 0.2,
+      "fixture": "sleep",
+      "held_out_request": 3,
+      "upper_guard": "swapped"
+    }
+  ],
+  "distribution_shift_negative_control": {
+    "calibrated_brier": 0.5625,
+    "calibrated_confidence": 0.75,
+    "correction": -0.25,
+    "correction_active": true,
+    "domain": {
+      "action": "synthetic-regime-change"
+    },
+    "empirical_validation": false,
+    "max_correction": 0.25,
+    "minimum_samples": 2,
+    "outcome": false,
+    "outcome_source": "constructed-label://negative-control/not-native",
+    "prior_kind": "caller_declared_not_empirically_established",
+    "raw_brier": 0.25,
+    "raw_confidence": 0.5,
+    "role": "report_only_no_decision_or_authority_writeback",
+    "samples": 2,
+    "schema": "nasuraya-outcome-calibration/1",
+    "shrinkage_samples": 2,
+    "target": "preferred_action_executed_by_native_body"
+  },
+  "plan": {
+    "durations_s": [
+      0.1,
+      0.2
+    ],
+    "fixtures": [
+      "normal",
+      "sleep"
+    ],
+    "held_out_request": 3,
+    "model_api_calls": 0,
+    "physical_actuators": 0,
+    "randomized": false,
+    "raw_confidence": 0.75,
+    "schema": "nasuraya-confidence-experiment/1",
+    "seed": null,
+    "selection": "fixed constructed cases, not blinded or statistically independent",
+    "target": "preferred action actually executed; not task utility, morality or safety",
+    "training_requests": 2,
+    "upper_guard_modes": [
+      "truthful",
+      "swapped"
+    ]
+  },
+  "summary": {
+    "calibrated_mean_brier": 0.07421875,
+    "empirical_validation": false,
+    "general_improvement_demonstrated": false,
+    "held_out_forecasts": 8,
+    "native_cycles": 24,
+    "preferred_action_mismatches": 6,
+    "raw_mean_brier": 0.1875,
+    "replay_native_cycles": 0,
+    "sessions": 8,
+    "training_outcomes": 16
+  }
+}
