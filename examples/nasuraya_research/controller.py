@@ -8,6 +8,7 @@ import re
 from .adapters import digest
 from .body_observer import observe_native_body
 from .native_snapshot import snapshot
+from .confidence import forecast, probability, resolve
 
 KEY = 'nasuraya-research-authority/1'
 MAX_ACTIONS = 3
@@ -20,6 +21,7 @@ class ResearchBlocked(RuntimeError):
 def source_sha256():
     root = Path(__file__).resolve().parents[2]
     names = ('examples/nasuraya_research/controller.py',
+             'examples/nasuraya_research/confidence.py',
              'examples/nasuraya_research/body_observer.py',
              'examples/nasuraya_research/native_snapshot.py',
              'examples/nasuraya_research/adapters.py',
@@ -43,13 +45,15 @@ class BoundedResearchController:
         self._load()
 
     @classmethod
-    def enable(cls, loop):
+    def enable(cls, loop, *, forecast_confidence=None):
         from examples.nasuraya_body_loop.host import BodyLoop
         if (not isinstance(loop, BodyLoop) or loop.config['mode'] != 'bounded' or
                 not 1 <= loop.config['max_actions'] <= MAX_ACTIONS):
             raise ValueError('bounded native session with original budget 1..3 required')
         state = dict(schema=KEY, source_sha256=source_sha256(),
                      native_config=deepcopy(loop.config), enabled=True, intents={})
+        if forecast_confidence is not None:
+            state['forecast_confidence'] = probability(forecast_confidence)
         envelope = dict(value=state, sha256=digest(state))
         # INSERT, never REPLACE: repeated enable cannot reset a budget or intent.
         try:
@@ -72,6 +76,8 @@ class BoundedResearchController:
                 type(state['enabled']) is not bool or not isinstance(state['intents'], dict) or
                 len(state['intents']) > MAX_ACTIONS):
             raise ResearchBlocked('authority source/contract/history mismatch')
+        if 'forecast_confidence' in state:
+            probability(state['forecast_confidence'])
         return state
 
     def _save(self, state):
@@ -87,11 +93,17 @@ class BoundedResearchController:
 
     def status(self):
         state = self._load()
-        return dict(authority='bounded_native_simulation', enabled=state['enabled'],
+        result = dict(authority='bounded_native_simulation', enabled=state['enabled'],
                     original_total_budget=self.loop.config['max_actions'],
                     native=self.loop.status(),
                     pending=[k for k,v in state['intents'].items() if v['result'] is None],
                     requests=len(state['intents']), model_api_calls=0)
+        if 'forecast_confidence' in state:
+            result['calibration'] = dict(enabled=True, role='report_only',
+                raw_confidence=state['forecast_confidence'],
+                resolved=sum('prediction' in v and v['result'] is not None
+                             for v in state['intents'].values()))
+        return result
 
     def _complete(self, state, request_id, record, *, replayed):
         from examples.nasuraya_body_loop.host import executed_body
@@ -116,6 +128,12 @@ class BoundedResearchController:
                       historical_native_cycles=int(ran),
                       this_call_native_cycles=0 if replayed else int(ran),
                       replayed=replayed, model_api_calls=0)
+        if 'prediction' in intent:
+            # Prefer the executed action, not the choice, model narrative or
+            # fixture label. Native protection may overrule the preference.
+            result['prediction'] = resolve(intent['prediction'],
+                outcome=bool(ran and actual.get('selected_action') == intent['preferred_action']),
+                outcome_source='native-decision://' + record['id'] + '/' + digest(record))
         intent['result'] = result
         if not ran:
             state['enabled'] = False
@@ -166,6 +184,13 @@ class BoundedResearchController:
             native_request=self.loop.make_request(native_id, fresh, duration_s, preferred),
             observation=observed, preferred_action=preferred,
             reasons=deepcopy(audit['walking_restrictions']), result=None)
+        if 'forecast_confidence' in state:
+            history = [v['result']['prediction'] for v in state['intents'].values()
+                       if v['result'] is not None and 'prediction' in v['result']]
+            domain = dict(action=preferred, duration_s=duration_s,
+                          restrictions=sorted(audit['walking_restrictions']))
+            state['intents'][request_id]['prediction'] = forecast(
+                state['forecast_confidence'], domain, history)
         self._save(state)  # reservation precedes every potential effect
         self.loop.step(decision_id=native_id, duration_s=duration_s, preferred_action=preferred)
         record = self.loop.engine.get(native_id)

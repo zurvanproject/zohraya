@@ -13,15 +13,25 @@ from examples.nasuraya_body_loop.__main__ import ROOT, SOURCE, verified_sources
 
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('command', choices=('init', 'run', 'step', 'status', 'pause', 'resume', 'test'))
+    p.add_argument('command', choices=('init', 'run', 'step', 'status', 'pause', 'resume', 'test', 'evaluate'))
     p.add_argument('--session', type=Path)
     p.add_argument('--fixture', choices=('normal', 'sleep'), default='normal')
     p.add_argument('--max-actions', type=int, choices=(1, 2, 3), default=3)
     p.add_argument('--steps', type=int, choices=(1, 2, 3), default=1)
     p.add_argument('--duration-s', type=float, default=.1)
     p.add_argument('--request-id')
+    p.add_argument('--forecast-confidence', type=float,
+                   help='init only: opt in to report-only calibration with this declared prior')
     args = p.parse_args(argv)
-    if args.command != 'test' and args.session is None:
+    if args.forecast_confidence is not None:
+        from .confidence import probability
+        try:
+            probability(args.forecast_confidence)
+        except ValueError as exc:
+            p.error(str(exc))
+        if args.command != 'init':
+            p.error('--forecast-confidence is fixed at init; use a new disposable session')
+    if args.command not in ('test', 'evaluate') and args.session is None:
         p.error('--session is required')
     if args.command == 'step' and not args.request_id:
         p.error('--request-id is required for replayable step')

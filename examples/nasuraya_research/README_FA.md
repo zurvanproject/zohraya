@@ -88,3 +88,11 @@ python -S -m examples.nasuraya_research.control test
 
 گزارش و حدود اجرای تازه در
 [اختیار محدود](../../docs/nasuraya-research-authority-v01-fa.md) ثبت شده است.
+
+## سنجش اختیاریِ اعتماد
+
+برای ثبت پیش‌بینی پیش از اجرا و اصلاح گزارش اعتماد از روی رسیدهای همین نشست،
+به [قرارداد توکل و کالیبراسیون](../../docs/nasuraya-research-confidence-v01-fa.md)
+رجوع کنید. در نشست تازه، `control init --forecast-confidence .75` این قابلیت
+را با prior اعلام‌شده فعال می‌کند. `control evaluate` آزمایش مصنوعیِ محدود
+و کنترل جابه‌جایی guard را اجرا می‌کند. این عدد، معیار اخلاقی یا مجوز عمل نیست.

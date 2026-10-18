@@ -1,0 +1,18 @@
+{
+  "base": "155b8ce90ba3e22ccd57f5f22e4238e0afd62fa0",
+  "base_files": 226,
+  "decision_core_unchanged": true,
+  "dependencies_unchanged": true,
+  "modified_base_files": [
+    "examples/nasuraya_research/README_FA.md",
+    "examples/nasuraya_research/control.py",
+    "examples/nasuraya_research/control_worker.py",
+    "examples/nasuraya_research/controller.py"
+  ],
+  "native_runtime_unchanged": true,
+  "new_model_api_calls": 0,
+  "read_only_observer_unchanged": true,
+  "root_security_and_philosophical_policy_files_unchanged": true,
+  "unchanged_base_files": 222,
+  "workflows_unchanged": true
+}
