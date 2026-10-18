@@ -1,0 +1,33 @@
+{
+  "sha256": "3152656aefdbc5a44dd3c4f7911d310c9d4df54360b8bf204e367366efdaab93",
+  "value": {
+    "case_id": "fatigue-moderate",
+    "checkpoint_sha256": "56cb2ad146c86ca222ed962ef277be0e3084042ed6d2e5a9145dcd6e3027a83d",
+    "native_records_before": 0,
+    "native_request_sha256": "8729fb3696e318ab1ed1c96994c5305ec45e0124159dd05f83eba059da2ba4a7",
+    "plan_sha256": "09d98cdc1caf89921c6e49e6d9551f21cd9e6ca79c0fe34583319b9f1c81c591",
+    "prediction": {
+      "calibrated_confidence": 0.875,
+      "correction": -0.125,
+      "correction_active": true,
+      "domain": {
+        "action": "walk",
+        "duration_s": 0.1,
+        "restrictions": []
+      },
+      "empirical_validation": false,
+      "max_correction": 0.25,
+      "minimum_samples": 2,
+      "outcome": null,
+      "outcome_source": null,
+      "prior_kind": "caller_declared_not_empirically_established",
+      "raw_confidence": 0.75,
+      "role": "report_only_no_decision_or_authority_writeback",
+      "samples": 2,
+      "schema": "nasuraya-outcome-calibration/1",
+      "shrinkage_samples": 2,
+      "target": "preferred_action_executed_by_native_body"
+    },
+    "training_sha256": "8b7a869761ab4f516abfb968e28b42d7428278115a609ef2dfd2d0cb2b5a876a"
+  }
+}
