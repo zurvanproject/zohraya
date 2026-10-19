@@ -5,6 +5,15 @@ scale after each valid physical step using *actual* recorded joint support.
 No safety gate is relaxed. This is an opt-in experiment on disposable bodies.
 """
 from copy import deepcopy
+from pathlib import Path
+import sys
+
+# The retained native runtime initializes its legacy nested module paths.
+# Make a direct import work in a fresh process, without constructing a body.
+_native_root = str(Path(__file__).resolve().parents[2]/'runtimes/tadash_body')
+if _native_root not in sys.path:
+    sys.path.insert(0, _native_root)
+import unified_body_v2 as _native_runtime
 from examples.nasuraya_star_motion.coordinated_support import CoordinatedSupport
 
 class AdaptiveSupport(CoordinatedSupport):
