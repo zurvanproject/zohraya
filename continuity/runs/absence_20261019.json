@@ -1,0 +1,130 @@
+{
+  "schema": "nasuraya-absence-run/1",
+  "run_id": "absence_20261019",
+  "started_at": "2026-10-19T17:03:24.846415+00:00",
+  "started_at_tehran": "2026-10-19T20:33:24.846415+03:30",
+  "ended_at": "2026-10-19T17:09:42.633797+00:00",
+  "ended_at_tehran": "2026-10-19T20:39:42.633797+03:30",
+  "selected_goal": "Complete a bounded PR41 follow-up: operator pause/contact preservation during colliding finish-receipt publication and historical replay.",
+  "status": "completed",
+  "cancelled_after_contact_change": false,
+  "claim_commit": "843b386bbaeb4283505dffef76ab70597229f510",
+  "control_head_before_finish": "843b386bbaeb4283505dffef76ab70597229f510",
+  "contact_at_claim": "2026-10-17T16:46:34+00:00",
+  "contact_at_finish": "2026-10-17T16:46:34+00:00",
+  "base_commit": "7aaee60198b50246d90242d5155d3e3736882792",
+  "work_commit": "7c590b435375f05b5baf616cc736bc0a4130c021",
+  "work_branch": "nasuraya/absence-work-20261017",
+  "reused_existing_open_draft_pr": true,
+  "new_prs": 0,
+  "pr_url": "https://github.com/zurvanproject/zohraya/pull/41",
+  "gate": {
+    "source_commit": "5767787d3a1ba17f50b9aba5d6b01c830f38a377",
+    "hashes_verified": true,
+    "tests_passed": 10,
+    "evaluation": "absence_window_elapsed",
+    "policy_unchanged": true
+  },
+  "baseline": {
+    "passed": 43,
+    "failed": 0,
+    "skipped": 0
+  },
+  "tests": {
+    "distinct_tests_passed": 47,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "new_tests": 4
+  },
+  "repetition": {
+    "cases": 4,
+    "repetitions": 100,
+    "executions": 400,
+    "passed": 400,
+    "failed": 0,
+    "skipped": 0,
+    "not_distinct_new_tests": true
+  },
+  "seed": null,
+  "test_commands": [
+    "python3 -m unittest nasuraya_continuity_kit.test_local_job nasuraya_continuity_kit.test_store continuity.test_gate project_fund.test_planner -v",
+    "python3 nasuraya_continuity_kit/evidence/operator-race-v01/reproduce.py",
+    "git diff --check"
+  ],
+  "initial_test_authoring_failure": {
+    "passed": 46,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "reason": "Helper incorrectly expected a new heartbeat-run to be rejected exactly 24 hours later; changed rejection check to the contact instant, preserving the existing 24-hour rule."
+  },
+  "source_sha256": {
+    "nasuraya_continuity_kit/test_local_job.py": "ff35715a9df9c27b9d6ccca6302865a3510a75de07310e689e6fba155ba4c910",
+    "nasuraya_continuity_kit/README.md": "a3ad267139faa1551bac4961008cec2748d1158697f00d646a4ffa2ae95976e0",
+    "nasuraya_continuity_kit/local_job.py": "6e29f1461cf79451ad82c16e19a20f222147d37ec4a78d29325fc8e69e50406e",
+    "nasuraya_continuity_kit/store.py": "815e507d85a32b7915edb4f04add9be0f3fe9a4cbdd4adeaabc2b2f33b794455",
+    "continuity/gate.py": "26a082342b44cca50623c8134ea7ce63981425b27e6d997ed81c9bc39721bcf4",
+    "continuity/policy.json": "37bbfc159e7da4d57656c7c527c94601b7ab2a9afd96bb5b696da405c1ead34e",
+    "nasuraya_continuity_kit/evidence/operator-race-v01/protocol.json": "63cc54a073cfe81c0bbcb2c99c37e9b348fd0456497a99c520a4c23910ce51dd",
+    "nasuraya_continuity_kit/evidence/operator-race-v01/reproduce.py": "6bc4d57fb1ab1bc20270a27f1e98ea6b9954fea28658923f12cda478138c5157"
+  },
+  "outcomes": [
+    "Same-time pause/heartbeat survive publication and reopen with receipt preservation. Newer pause than supplied finish time rolls result back and leaves inflight unresolved. Historical result replay leaves current pause intact.",
+    "No runtime implementation, identity, body, control policy, financial mandate or scheduler change.",
+    "47 tests and 400 repeat case executions passed under syscall network denial."
+  ],
+  "ci": [
+    {
+      "name": "offline-pilot (3.11)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zurvanproject/zohraya/actions/runs/39291570503/job/118193257165"
+    },
+    {
+      "name": "offline-pilot (3.12)",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/zurvanproject/zohraya/actions/runs/39291570503/job/118193256774"
+    }
+  ],
+  "prior_ci_inspected": {
+    "pr30": "success, 2 checks at 9063a9242c65785e1af800a7b08f9fb0019f05d4",
+    "pr32": "success, 4 checks at f5d4aaaccfa2afab451b3969574b92d3466ef095",
+    "pr41": "success, 2 checks at 7aaee60198b50246d90242d5155d3e3736882792"
+  },
+  "budget": {
+    "elapsed_seconds": 377.787382,
+    "maximum_seconds": 1200,
+    "source_files_changed": 3,
+    "source_lines_added": 127,
+    "source_lines_deleted": 0,
+    "all_commit_lines_added_including_reports": 359,
+    "budget_exhausted": false,
+    "scope": "One regression-evidence task, 2 source/doc edits and one 34-line reproducer; reports/control records excluded from source cap."
+  },
+  "evidence_url": "https://github.com/zurvanproject/zohraya/tree/7c590b435375f05b5baf616cc736bc0a4130c021/nasuraya_continuity_kit/evidence/operator-race-v01",
+  "report_url": "https://github.com/zurvanproject/zohraya/blob/7c590b435375f05b5baf616cc736bc0a4130c021/nasuraya_continuity_kit/OPERATOR_RACE_REPORT_FA.md",
+  "uncertainty": [
+    "Deterministic local SQLite contracts; not randomized schedule or multi-host/power-loss coverage",
+    "No new wheel/install test: runtime and packaging unchanged",
+    "Future-dated operator contact fixture is exploratory boundary coverage, not a preregistered performance evaluation",
+    "Thread wait timeouts are failure bounds, not scheduling sleeps"
+  ],
+  "scoped_lesson": "Pause is admission control, not cancellation; never use a historical receipt to restore control or erase unresolved work.",
+  "next_unfinished_step": "Review/privately evaluate documented operator pause and stale-finish reconciliation with a responsible host. PR remains draft; do not merge automatically.",
+  "fund": {
+    "branch": "nasuraya/project-fund-foundation-v01",
+    "source_commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+    "pinned_hashes_verified": true,
+    "payments_enabled": false,
+    "host_application_sent": false
+  },
+  "prohibited_effects_performed": false,
+  "preparation_notes": [
+    "Fresh limited source recovery verified by Git blob hashes, pinned fund hashes and product report equality.",
+    "Fiscal-host draft absent at initial fund foundation commit; read its product-branch version, not treated as new authority.",
+    "One apply_patch multi-operation request was rejected before changing files; corrected with a normal update."
+  ],
+  "summary_fa": "من چهار آزمون رقابت توقف/تماس و بازپخش را به همان PR41 افزودم. ۴۷ آزمون متمایز، ۴۰۰ اجرای تکراری و CI هر دو نسخهٔ پایتون موفق بود. منطق اجرایی و اختیارها تغییر نکرد؛ توقف جدیدتر از زمان پایان کارگر، کار را برای بررسی صریح حل‌نشده نگه می‌دارد."
+}
