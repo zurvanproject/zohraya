@@ -178,6 +178,84 @@ class LocalJobTests(unittest.TestCase):
         self.assertEqual(len(calls), 1)
         self.assertEqual(self.store.status(DUE)['run_count'], 1)
 
+    def _operator_during_computation(self, operation, contact_time, can_publish):
+        entered, release = threading.Event(), threading.Event()
+        calls = []
+        def report(raw):
+            calls.append(1)
+            entered.set()
+            if not release.wait(timeout=5):
+                raise AssertionError('operator barrier timed out')
+            return integrity_report(raw)
+        def worker():
+            store = Store(self.path)
+            try:
+                return LocalJobs(store).run('req', 'run', DUE, RAW)
+            finally:
+                store.close()
+        collision = 'local-finish-'+hashlib.sha256(b'run').hexdigest()
+        with patch('nasuraya_continuity_kit.local_job.integrity_report', side_effect=report):
+            with ThreadPoolExecutor(max_workers=1) as pool:
+                future = pool.submit(worker)
+                try:
+                    self.assertTrue(entered.wait(timeout=5))
+                    # Different connection, after claim but before publication.
+                    self.store.apply(operation, collision, contact_time)
+                    old = self.store.db.execute(
+                        'SELECT id,digest,receipt FROM requests ORDER BY id').fetchall()
+                finally:
+                    release.set()
+                if can_publish:
+                    self.assertEqual(future.result(timeout=5)['status'], 'completed')
+                else:
+                    with self.assertRaisesRegex(ValueError, 'future control timestamp'):
+                        future.result(timeout=5)
+        self.assertEqual(len(calls), 1)
+        self.store.close()
+        self.store = Store(self.path)
+        self.jobs = LocalJobs(self.store)
+        for row in old:
+            self.assertEqual(self.store.db.execute(
+                'SELECT id,digest,receipt FROM requests WHERE id=?', (row[0],)).fetchone(), row)
+        state = self.store.status(contact_time)['state']
+        self.assertEqual(state['enabled'], operation != 'pause')
+        self.assertEqual(state['last_contact_at'], contact_time.replace('Z', '+00:00'))
+        self.assertEqual(state['last_claimed_at'], DUE.replace('Z', '+00:00'))
+        self.assertEqual(state['inflight_run_id'], None if can_publish else 'run')
+        with patch('nasuraya_continuity_kit.local_job.integrity_report',
+                   side_effect=AssertionError('replay computed a report')):
+            if can_publish:
+                self.assertEqual(self.jobs.run('req', 'run', DUE, RAW)['status'], 'completed')
+            else:
+                with self.assertRaisesRegex(ValueError, 'outcome unknown'):
+                    self.jobs.run('req', 'run', DUE, RAW)
+                self.assertIsNone(self.jobs.inspect('run')['result'])
+        self.assertEqual(self.store.status(contact_time)['request_count'], 3 if can_publish else 2)
+        self.assertEqual(self.store.db.execute('PRAGMA integrity_check').fetchone()[0], 'ok')
+        with self.assertRaises(ValueError):
+            self.jobs.run('new', 'new', contact_time, RAW)
+
+    def test_concurrent_pause_collision_preserved_after_publication_and_reopen(self):
+        self._operator_during_computation('pause', DUE, True)
+
+    def test_concurrent_heartbeat_collision_preserved_without_refund(self):
+        self._operator_during_computation('heartbeat', DUE, True)
+
+    def test_newer_pause_rejects_stale_finish_and_retains_unresolved_claim(self):
+        self._operator_during_computation('pause', '2026-10-17T10:22:24Z', False)
+
+    def test_historical_result_replay_does_not_restore_pre_pause_control(self):
+        first = self.jobs.run('req', 'run', DUE, RAW)
+        self.store.apply('pause', 'pause', LATER)
+        before = self.store.status(LATER)
+        self.store.close()
+        self.store = Store(self.path)
+        with patch('nasuraya_continuity_kit.local_job.integrity_report',
+                   side_effect=AssertionError('replay computed a report')):
+            self.assertEqual(LocalJobs(self.store).run('req', 'run', DUE, RAW), first)
+        self.assertEqual(self.store.status(LATER), before)
+        self.assertEqual(before['decision']['reason'], 'paused')
+
     def test_late_worker_cannot_publish_after_host_abandon(self):
         self.jobs.start('req', 'run', DUE, RAW)
         def after_compute(raw):

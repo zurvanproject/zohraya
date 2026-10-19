@@ -144,6 +144,21 @@ A late worker cannot publish after abandonment. A new job needs a new ID and a
 fresh gate admission. All writers must use this upgraded adapter; an old binary
 or direct SQL can bypass application-level guards under the trusted-host model.
 
+### Operator contact during computation
+
+Pause prevents new admissions; it is not process termination. An already claimed
+local report may commit while preserving the pause/contact recorded by another
+connection. A completed replay returns historical result data, never restores its
+old control state or grants new execution authority. If contact advances beyond
+the worker's supplied finish timestamp, the unchanged gate rejects that stale
+finish: result publication rolls back and the claim stays unresolved for explicit
+host review. Do not automatically clear it or replay computation.
+
+The operator-race regressions use event barriers and separate SQLite connections,
+not timing sleeps. They check colliding pause/heartbeat receipt IDs, preservation
+after reopen, stale-finish rollback and replay with computation forbidden. These
+are injected-clock local contracts, not proof of real-world exactly-once effects.
+
 ### Independent offline/crash verification
 
 On Linux with `libseccomp.so.2` installed (a **verifier-only** prerequisite):
