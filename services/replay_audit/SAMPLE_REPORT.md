@@ -22,4 +22,3 @@ caller-reported incremental amounts; not verified billing
 - Repeated effect records are candidates for investigation, not proof of repeated payment.
 - Input must use one currency and incremental costs, not cumulative billing totals.
 - No findings does not prove safety, exactly-once execution or complete logging.
-

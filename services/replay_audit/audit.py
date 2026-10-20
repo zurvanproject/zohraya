@@ -172,7 +172,10 @@ def main():
     except (OSError, ValueError):
         print("Audit failed: check the schema, timestamps, file size and parameters.", file=sys.stderr)
         return 2
-    print(markdown(report) if args.format == "markdown" else json.dumps(report, indent=2), end="\n")
+    if args.format == "markdown":
+        print(markdown(report), end="")
+    else:
+        print(json.dumps(report, indent=2))
     return 0
 
 
