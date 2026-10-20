@@ -4,6 +4,18 @@ The separate [`workshop.py`](workshop.py) bridge now executes selected tools in
 the existing synthetic workshop and returns measured outcomes to this ledger.
 The engine itself remains a planner. See the [execution report](../../docs/nasuraya-affective-workshop-v01-fa.md).
 
+[`dialogue_cli.py`](dialogue_cli.py) now provides a caller-mediated message
+bridge to the existing native Tadash `UnifiedBody`, through its verified source
+worker and original BodyLoop/ReflectionCycle protection. It does not drive the
+separate articulated MuJoCo model. See the [Persian connection report](../../docs/nasuraya-dialogue-body-v01-fa.md).
+
+The bridge accepts explicit structured intent/appraisal from the conversational
+caller, returns a native receipt, and records observed feedback. It is not a
+text classifier, automatic ChatGPT listener or live model API backend. Two stores
+are paired by absolute path and initial body identity. Moving a saved session
+requires explicit migration; no relocation tool is supplied. Only the same-path
+cold-process recovery has been verified.
+
 Run from the repository root with Python 3.11+ and its standard library. No model
 API key, GPU, install step or third-party research code is required.
 
