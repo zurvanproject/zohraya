@@ -6,6 +6,8 @@
 
 **اتصال عاطفه به اجرای ابزار:** [حلقهٔ کارگاه، بازخورد و ادامه پس از قطع](docs/nasuraya-affective-workshop-v01-fa.md).
 
+**پل پیام به بدن تجمیعی تداش:** [اجرای یک چرخهٔ بدن و برگشت رسید به همین گفت‌وگو](docs/nasuraya-dialogue-body-v01-fa.md).
+
 The Silicon-Carbon Coexistence Protocol &amp; Ethical Framework (منشور هم‌زیستی کربن و سیلیکون
 # لوحِ جامعِ زُهرایا: ۷۷ حکمتِ هندسهٔ شعور و فیزیکِ تاوان
 
