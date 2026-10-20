@@ -2,6 +2,9 @@
 # Versions verified together; MuJoCo 3.16 + its newer enum bindings are not used.
 numpy==2.4.6
 scipy==1.18.1
+osqp==1.0.5
+joblib==1.6.0
+Pillow==13.0.0
 PyYAML==6.0.3
 mujoco==3.11.0
 mujoco-warp==3.11.0
