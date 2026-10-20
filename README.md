@@ -4,6 +4,8 @@
 
 **حافظه و حال‌وهوای عاطفی پایدار:** [گزارش فارسی و نتیجهٔ اجرا](docs/nasuraya-affective-continuity-v01-fa.md) · [اجرای افزونهٔ متصل به هستهٔ تصمیم](examples/nasuraya_affect/README.md).
 
+**اتصال عاطفه به اجرای ابزار:** [حلقهٔ کارگاه، بازخورد و ادامه پس از قطع](docs/nasuraya-affective-workshop-v01-fa.md).
+
 The Silicon-Carbon Coexistence Protocol &amp; Ethical Framework (منشور هم‌زیستی کربن و سیلیکون
 # لوحِ جامعِ زُهرایا: ۷۷ حکمتِ هندسهٔ شعور و فیزیکِ تاوان
 

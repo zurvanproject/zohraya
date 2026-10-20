@@ -1,5 +1,9 @@
 # Persistent affective planning
 
+The separate [`workshop.py`](workshop.py) bridge now executes selected tools in
+the existing synthetic workshop and returns measured outcomes to this ledger.
+The engine itself remains a planner. See the [execution report](../../docs/nasuraya-affective-workshop-v01-fa.md).
+
 Run from the repository root with Python 3.11+ and its standard library. No model
 API key, GPU, install step or third-party research code is required.
 
@@ -68,3 +72,37 @@ Seven constructed contract scenarios compare native ranking, affect without
 recall and the full layer. They are examples of implemented effects, not a blinded
 benchmark, psychological validation, learned intelligence gain or proof of
 subjective experience. The saved native body/checkpoint formats are unmodified.
+
+## Execute the bounded synthetic workshop
+
+```sh
+python -m examples.nasuraya_affect.workshop init --db /tmp/affective-workshop.sqlite --energy 29 --heat 78 --jobs 3 --max-actions 4
+python -m examples.nasuraya_affect.workshop step --db /tmp/affective-workshop.sqlite --request-id first
+python -m examples.nasuraya_affect.workshop run --db /tmp/affective-workshop.sqlite
+python -m examples.nasuraya_affect.workshop status --db /tmp/affective-workshop.sqlite
+python -m examples.nasuraya_affect.evaluate_workshop --output /tmp/new-workshop-evaluation
+```
+
+Initialization may attach the workshop to an explicitly copied affect ledger.
+It refuses a second attachment; it never refills an existing action budget.
+`--without-affect` at initialization disables affect and recall in ranking while
+still recording the same appraisal/outcome data for comparison. `--mode observe`
+prevents mutation. All action authority stays within native `ToolHost`.
+
+Candidate tools are dry-run on disposable native hosts; the checkpoint does not
+change during planning. Additional native-tool lookahead removes recovery
+durations longer than the first duration sufficient for all remaining jobs. This
+fixed unnecessary three-tick recovery for an empty queue in the development run.
+Only admitted candidates are sent to `DecisionCore`.
+The actual selected tool then runs on a restored host, and its checkpoint and
+receipt commit together in SQLite. The feedback event follows with its own
+idempotent ID. A pending request blocks a different request until resumed.
+An interruption before the host commit discards only in-memory simulation;
+after commit, recovery retains the receipt without rerunning the tool. This is
+not an exactly-once mechanism for external side effects or physical actuators.
+
+The adapter interprets measured energy, heat and completed jobs with authored
+numeric appraisal rules. It is not a natural-language emotion extractor. It does
+not equate a simulation tick with a human hour; `elapsed_hours` is zero for these
+instantaneous synthetic events. Native tools, affect engine and old checkpoints
+remain unchanged. The bridge's own source fingerprint is separate.
