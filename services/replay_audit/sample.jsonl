@@ -1,0 +1,5 @@
+{"at":"2026-10-21T09:00:00Z","kind":"start","run_id":"demo-1","request_id":"demo-request","cost_minor":0}
+{"at":"2026-10-21T09:00:01Z","kind":"effect","run_id":"demo-1","request_id":"demo-request","effect_id":"demo-write","cost_minor":40}
+{"at":"2026-10-21T09:00:02Z","kind":"fail","run_id":"demo-1","request_id":"demo-request","cost_minor":0}
+{"at":"2026-10-21T09:00:03Z","kind":"start","run_id":"demo-2","request_id":"demo-request","cost_minor":0}
+{"at":"2026-10-21T09:00:04Z","kind":"effect","run_id":"demo-2","request_id":"demo-request","effect_id":"demo-write","cost_minor":70}
