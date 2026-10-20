@@ -1,0 +1,28 @@
+{
+  "parent_remote_commit": "834c49a6c5258ae4d85e218f47d072967845ccac",
+  "model_unchanged": true,
+  "mass_kg": 85,
+  "crown_height_m": 1.85,
+  "accepted_steps": 24,
+  "passed_scenarios": 6,
+  "versions": {
+    "mujoco": "3.11.0",
+    "numpy": "2.4.6",
+    "scipy": "1.18.1",
+    "osqp": "1.0.5",
+    "joblib": "1.6.0",
+    "Pillow": "13.0.0"
+  },
+  "sha256": {
+    "examples/nasuraya_research/articulated/stepping.py": "f2ebdacca0a510a6d6340fc0ca0ebe59dc64668f742231585d1e61f6ad205879",
+    "examples/nasuraya_research/articulated/test_stepping.py": "ef03f29dd2224a244f273da88f98f9316fc2ee0dc3dfa2f88943c8e1bca2a91a",
+    "examples/nasuraya_research/articulated/render_stepping.py": "59ebf385f5530efbd1249d4fb86f99d5ae2d71e033774b3efbb752e2484eda2f",
+    "examples/nasuraya_research/articulated/requirements.txt": "e0850ff6a6eacd71d4a791446253e50615f7d6bca0cd0c71541180d4ee27ad3d",
+    "assets/nasuraya_articulated_v02/nasuraya.xml": "9b875c5868d93556676a34063878642a991f354adf1663586720ab8c401663c3",
+    "assets/nasuraya_articulated_v02/robot.yaml": "e23f4c8bdab1f2232e0412aedce8917432fb5f45701042a23c65d0e42f77c942",
+    "evidence/articulated-stepping-v01/results.json": "9d5410ce594fdab0e309707a4682ab57b14b91e4e7cca3eab335ed759f204af1",
+    "evidence/articulated-stepping-v01/results-traces.json.gz": "f99a2db120837a537bc09763ae05f183c5ac535348052526249d0a76dfb98173",
+    "evidence/articulated-stepping-v01/six-steps-poses.npz": "f9e4b6d13612efca87cea5720ac54601a2a9c37d25e36f0eb10bbe817be95ba2",
+    "evidence/articulated-stepping-v01/six-steps-2x.mp4": "ef12a04455094666e1fbf623f37aab8d59034c9211c1eff17a2b537faa3e79ee"
+  }
+}
