@@ -99,6 +99,55 @@ class StoreTests(unittest.TestCase):
         with self.assertRaises(ValueError): self.store.apply('heartbeat', 'h1', '2026-10-16T10:22:23Z')
         self.assertEqual(self.store.status(DUE), before)
 
+    def test_status_uses_one_snapshot_when_another_connection_claims(self):
+        self.store.db.execute('PRAGMA journal_mode=WAL')
+        other = Store(self.path)
+        committed = []
+        def between_reads(sql):
+            if 'count(*) FROM requests' in sql and not committed:
+                other.apply('claim', 'concurrent', DUE, 'other_run')
+                committed.append(True)
+        self.store.db.set_trace_callback(between_reads)
+        try:
+            status = self.store.status(DUE)
+        finally:
+            self.store.db.set_trace_callback(None)
+            other.close()
+        self.assertEqual(committed, [True])
+        # Either whole snapshot is valid; mixed state/counts are not.
+        if status['state']['inflight_run_id'] is None:
+            expected, reason = (0, 0), 'absence_window_elapsed'
+        else:
+            self.assertEqual(status['state']['inflight_run_id'], 'other_run')
+            expected, reason = (1, 1), 'unresolved_previous_run'
+        self.assertEqual(status['decision']['reason'], reason)
+        self.assertEqual((status['request_count'], status['run_count']), expected)
+        current = self.store.status(DUE)
+        self.assertEqual(current['state']['inflight_run_id'], 'other_run')
+        self.assertEqual((current['request_count'], current['run_count']), (1, 1))
+        self.assertFalse(self.store.db.in_transaction)
+
+    def test_status_does_not_commit_or_rollback_a_caller_transaction(self):
+        self.store.db.execute('BEGIN IMMEDIATE')
+        self.store.db.execute("INSERT INTO requests VALUES('uncommitted','digest','{}')")
+        self.assertEqual(self.store.status(DUE)['request_count'], 1)
+        self.assertTrue(self.store.db.in_transaction)
+        self.store.db.rollback()
+        self.assertEqual(self.store.status(DUE)['request_count'], 0)
+
+    def test_status_releases_its_snapshot_after_a_read_error(self):
+        def deny_runs(action, table, column, database, trigger):
+            return sqlite3.SQLITE_DENY if action == sqlite3.SQLITE_READ and table == 'runs' else sqlite3.SQLITE_OK
+        self.store.db.set_authorizer(deny_runs)
+        try:
+            with self.assertRaises(sqlite3.DatabaseError):
+                self.store.status(DUE)
+        finally:
+            self.store.db.set_authorizer(None)
+        self.assertFalse(self.store.db.in_transaction)
+        self.assertEqual(self.store.status(DUE)['run_count'], 0)
+        self.store.apply('claim', 'after_error', DUE, 'first')
+
     def test_missing_control_row_is_rejected_without_reset(self):
         self.store.db.execute('DELETE FROM control')
         with self.assertRaisesRegex(ValueError, 'missing or invalid'):

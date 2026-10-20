@@ -48,10 +48,14 @@ class Store:
         self.db.close()
 
     def status(self, now):
-        state = json.loads(self.db.execute('SELECT payload FROM control WHERE singleton=1').fetchone()[0])
+        # One statement gives control and both counts the same SQLite snapshot,
+        # without committing or rolling back any caller-owned transaction.
+        row = self.db.execute('''SELECT payload,
+            (SELECT count(*) FROM requests), (SELECT count(*) FROM runs)
+            FROM control WHERE singleton=1''').fetchone()
+        state = json.loads(row[0])
         return dict(state=state, decision=evaluate(state, now),
-                    request_count=self.db.execute('SELECT count(*) FROM requests').fetchone()[0],
-                    run_count=self.db.execute('SELECT count(*) FROM runs').fetchone()[0])
+                    request_count=row[1], run_count=row[2])
 
     def apply(self, operation, request_id, now, run_id=None):
         with self.db:

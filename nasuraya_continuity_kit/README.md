@@ -48,6 +48,12 @@ this kit never resumes itself or adds execution budget.
 
 ## Trust and persistence
 
+`status` reads control, request count and run count from one SQLite statement,
+so a concurrent commit cannot mix an old admission decision with newer counts.
+It observes a snapshot, not a lock or permission to execute a future job. Existing
+caller transactions remain owned by the caller; status neither commits nor rolls
+them back. Other commands still enforce admission independently.
+
 The caller supplies trusted time and authorization. The application ID helps
 reject accidental use of unrelated SQLite files; it is not authentication or
 protection against an operator directly editing the database. Keep the local
