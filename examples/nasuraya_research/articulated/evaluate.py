@@ -10,8 +10,8 @@ from .build import OUT,ROOT
 
 
 def name(m,kind,i):return mujoco.mj_id2name(m,kind,int(i))
-def load():
-    m=mujoco.MjModel.from_xml_path(str(OUT/'nasuraya.xml'));d=mujoco.MjData(m)
+def load(model_dir=OUT):
+    m=mujoco.MjModel.from_xml_path(str(model_dir/'nasuraya.xml'));d=mujoco.MjData(m)
     mujoco.mj_forward(m,d);return m,d
 
 def controller_arrays(m,spec):
@@ -21,8 +21,8 @@ def controller_arrays(m,spec):
         qa.append(m.jnt_qposadr[j]);va.append(m.jnt_dofadr[j]);kp.append(g['stiffness']);kd.append(g['damping']);eff.append(g['effort'])
     return tuple(np.array(v) for v in [qa,va,kp,kd,eff])
 
-def rollout(seconds=2.,drop=0.,tail_motion=False,zero_g=False,passive=False,dt=.001,frames=False):
-    m,d=load();spec=yaml.safe_load((OUT/'robot.yaml').read_text());m.opt.timestep=dt
+def rollout(seconds=2.,drop=0.,tail_motion=False,zero_g=False,passive=False,dt=.001,frames=False,model_dir=OUT):
+    m,d=load(model_dir);spec=yaml.safe_load((model_dir/'robot.yaml').read_text());m.opt.timestep=dt
     if zero_g:m.opt.gravity[:]=0;d.qpos[2]+=2.
     else:d.qpos[2]+=drop
     mujoco.mj_forward(m,d)
