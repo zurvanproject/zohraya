@@ -1,0 +1,667 @@
+{
+  "scope": "Torque-limited articulated balance, not learned running",
+  "model_sha256": "9b875c5868d93556676a34063878642a991f354adf1663586720ab8c401663c3",
+  "design": {
+    "static_free_root_residual_max": 6.295459160506959e-08,
+    "static_forward_acceleration_max": 0.0,
+    "linearized_closed_loop_spectral_radius": 0.9997586914026833,
+    "equilibrium_root_height_m": 1.050704463628564,
+    "equilibrium_root_pitch_rad": -0.0006070226480536392,
+    "max_feedforward_torque_nm": 47.55253081018494,
+    "state_cost_diagonal": [
+      1000.0,
+      1000.0,
+      1000.0,
+      1000.0,
+      1000.0,
+      1000.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10000.0,
+      10000.0,
+      10000.0,
+      10000.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10000.0,
+      10000.0,
+      10000.0,
+      10000.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      10.0,
+      10.0,
+      10.0,
+      10.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "control_cost_diagonal": 0.01,
+    "state_feedback": "full simulator qpos/qvel, not an observer",
+    "torque_limits_unchanged": true,
+    "root_actuator_or_weld": false
+  },
+  "acceptance": {
+    "standing": "Full duration; only foot ground contact; pelvis height >80% reference; tilt <20 degrees; no warnings; soft joint-limit excess <=0.02 rad.",
+    "settled": "Standing criteria plus last 2 seconds maximum absolute generalized speed <0.1 (m/s for translation, rad/s for joints).",
+    "no_running_claim": "A slow stepping reference is a separate transfer probe, never counted as a standing pass or running."
+  },
+  "trials": [
+    {
+      "label": "legacy_pd",
+      "mode": "legacy_pd",
+      "requested_seconds": 5,
+      "executed_seconds": 1.6129999999999332,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        0.0,
+        0.0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        0.0,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": false,
+      "settled_pass": false,
+      "final_pelvis_xyz_m": [
+        0.7520544169857688,
+        1.6614150902359093e-07,
+        0.7344073877535585
+      ],
+      "min_pelvis_height_m": 0.7344073877535585,
+      "max_tilt_deg": 48.81922633074041,
+      "peak_motor_torque_nm": 83.37372044172675,
+      "actuator_saturation_fraction": 0.0020966014766386695,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": null,
+      "final_displacement_xy_m": [
+        0.7520544169857688,
+        1.6614150902359093e-07
+      ],
+      "both_feet_airborne_seconds": 0.031,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.0
+    },
+    {
+      "label": "feedforward_only",
+      "mode": "feedforward_only",
+      "requested_seconds": 20,
+      "executed_seconds": 0.6120000000000004,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        0.0,
+        0.0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        0.0,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": false,
+      "settled_pass": false,
+      "final_pelvis_xyz_m": [
+        -0.08567385655122071,
+        5.7261448763579254e-08,
+        0.7350466977705139
+      ],
+      "min_pelvis_height_m": 0.7350466977705139,
+      "max_tilt_deg": 9.792840950469836,
+      "peak_motor_torque_nm": 47.55253081018494,
+      "actuator_saturation_fraction": 0.0,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": null,
+      "final_displacement_xy_m": [
+        -0.08567385655122071,
+        5.7261448763579254e-08
+      ],
+      "both_feet_airborne_seconds": 0.095,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.12397788578130853
+    },
+    {
+      "label": "standing_30s",
+      "mode": "feedback",
+      "requested_seconds": 30,
+      "executed_seconds": 30.00000000001368,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        0.0,
+        0.0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        0.0,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.004445368364898078,
+        8.886941889123675e-10,
+        1.0498088771242184
+      ],
+      "min_pelvis_height_m": 1.049747047249347,
+      "max_tilt_deg": 0.05966542673295764,
+      "peak_motor_torque_nm": 52.17777465836625,
+      "actuator_saturation_fraction": 2.424242424242424e-06,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 1.1043849288806546e-05,
+      "final_displacement_xy_m": [
+        -0.004445368364898078,
+        8.886941889123675e-10
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.0
+    },
+    {
+      "label": "forward_push",
+      "mode": "feedback",
+      "requested_seconds": 20.0,
+      "executed_seconds": 20.00000000000146,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        30,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        6.000000000000005,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.004424151972572266,
+        8.449431923081096e-10,
+        1.049813258739401
+      ],
+      "min_pelvis_height_m": 1.0429628787035128,
+      "max_tilt_deg": 0.284853858865324,
+      "peak_motor_torque_nm": 59.92993995233375,
+      "actuator_saturation_fraction": 3.636363636363636e-06,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 1.7497294645081945e-05,
+      "final_displacement_xy_m": [
+        -0.004424151972572266,
+        8.449431923081096e-10
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.0
+    },
+    {
+      "label": "backward_push",
+      "mode": "feedback",
+      "requested_seconds": 20.0,
+      "executed_seconds": 20.00000000000146,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        -30,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        -6.000000000000005,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.00448366650941928,
+        8.750492093553652e-10,
+        1.0498011444753113
+      ],
+      "min_pelvis_height_m": 1.049747047249347,
+      "max_tilt_deg": 0.3650375533529149,
+      "peak_motor_torque_nm": 52.17777465836625,
+      "actuator_saturation_fraction": 3.636363636363636e-06,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 1.4772529262721537e-05,
+      "final_displacement_xy_m": [
+        -0.00448366650941928,
+        8.750492093553652e-10
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.0
+    },
+    {
+      "label": "left_push",
+      "mode": "feedback",
+      "requested_seconds": 20.0,
+      "executed_seconds": 20.00000000000146,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        0,
+        30
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        0.0,
+        6.000000000000005
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.00444659084702629,
+        2.7755866698000502e-05,
+        1.0498087620834136
+      ],
+      "min_pelvis_height_m": 1.049747047249347,
+      "max_tilt_deg": 0.09549698883137793,
+      "peak_motor_torque_nm": 56.974532816507775,
+      "actuator_saturation_fraction": 3.636363636363636e-06,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 1.6860218265079683e-05,
+      "final_displacement_xy_m": [
+        -0.00444659084702629,
+        2.7755866698000502e-05
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.0
+    },
+    {
+      "label": "right_push",
+      "mode": "feedback",
+      "requested_seconds": 20.0,
+      "executed_seconds": 20.00000000000146,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        0,
+        -30
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        0.0,
+        -6.000000000000005
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.004446590687199237,
+        -2.7754175334129738e-05,
+        1.049808762126523
+      ],
+      "min_pelvis_height_m": 1.049747047249347,
+      "max_tilt_deg": 0.09549711710789516,
+      "peak_motor_torque_nm": 56.97451913663686,
+      "actuator_saturation_fraction": 3.636363636363636e-06,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 1.6860337323700925e-05,
+      "final_displacement_xy_m": [
+        -0.004446590687199237,
+        -2.7754175334129738e-05
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.0
+    },
+    {
+      "label": "strong_forward_push",
+      "mode": "feedback",
+      "requested_seconds": 20.0,
+      "executed_seconds": 20.00000000000146,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        100,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        20.000000000000014,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.004710759232894089,
+        -1.1250113597523728e-06,
+        1.0497487924854154
+      ],
+      "min_pelvis_height_m": 1.0311767206226237,
+      "max_tilt_deg": 0.8888554248443256,
+      "peak_motor_torque_nm": 73.86342346881645,
+      "actuator_saturation_fraction": 0.001701818181818182,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 8.21710745861882e-05,
+      "final_displacement_xy_m": [
+        -0.004710759232894089,
+        -1.1250113597523728e-06
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.014352494168664687
+    },
+    {
+      "label": "diagonal_push_holdout",
+      "mode": "feedback",
+      "requested_seconds": 20.0,
+      "executed_seconds": 20.00000000000146,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        -40,
+        40
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        -8.000000000000005,
+        8.000000000000005
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.004532030589214171,
+        4.829741185828205e-05,
+        1.0497917725368793
+      ],
+      "min_pelvis_height_m": 1.049747047249347,
+      "max_tilt_deg": 0.48009210818889353,
+      "peak_motor_torque_nm": 57.1427679516786,
+      "actuator_saturation_fraction": 3.636363636363636e-06,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 1.5606708580515283e-05,
+      "final_displacement_xy_m": [
+        -0.004532030589214171,
+        4.829741185828205e-05
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.0
+    },
+    {
+      "label": "lower_friction_holdout",
+      "mode": "feedback",
+      "requested_seconds": 20.0,
+      "executed_seconds": 20.00000000000146,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        0,
+        30
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        0.0,
+        6.000000000000005
+      ],
+      "friction": 0.4,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.004505095945107717,
+        2.7753645684815155e-05,
+        1.0497970455771095
+      ],
+      "min_pelvis_height_m": 1.0497199233939511,
+      "max_tilt_deg": 0.09561707228257879,
+      "peak_motor_torque_nm": 56.973922224804966,
+      "actuator_saturation_fraction": 3.636363636363636e-06,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 1.7157150862365533e-05,
+      "final_displacement_xy_m": [
+        -0.004505095945107717,
+        2.7753645684815155e-05
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.0
+    },
+    {
+      "label": "half_timestep_holdout",
+      "mode": "feedback",
+      "requested_seconds": 20.0,
+      "executed_seconds": 19.99999999999874,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        30,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        5.999999999999968,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.0005,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.004606598335607567,
+        8.562652401480143e-10,
+        1.0497766564543929
+      ],
+      "min_pelvis_height_m": 1.0429300478472368,
+      "max_tilt_deg": 0.2843497169277292,
+      "peak_motor_torque_nm": 59.907812348516494,
+      "actuator_saturation_fraction": 0.0,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 1.8647493498844067e-05,
+      "final_displacement_xy_m": [
+        -0.004606598335607567,
+        8.562652401480143e-10
+      ],
+      "both_feet_airborne_seconds": 0.01,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.0
+    },
+    {
+      "label": "slow_stepping_transfer_probe",
+      "mode": "feedback",
+      "requested_seconds": 6,
+      "executed_seconds": 4.5479999999998535,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        0.0,
+        0.0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        0.0,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": false,
+      "settled_pass": false,
+      "final_pelvis_xyz_m": [
+        0.21363739595723527,
+        -0.048585979573379234,
+        0.7347886219861504
+      ],
+      "min_pelvis_height_m": 0.7347886219861504,
+      "max_tilt_deg": 23.04333056494751,
+      "peak_motor_torque_nm": 133.424242424,
+      "actuator_saturation_fraction": 0.02554969217238352,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 6.5599372817494475,
+      "final_displacement_xy_m": [
+        0.21363739595723527,
+        -0.048585979573379234
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.31,
+      "max_joint_limit_soft_violation_rad": 0.05292222726236251,
+      "reference_max_foot_position_residual_m": 7.465849921338068e-07,
+      "validated_running": false,
+      "note": "Standing LQR applied to alternating 4 cm steps / 2.5 cm foot lift; no gait-policy training."
+    }
+  ],
+  "traces_file": "results-traces.json.gz"
+}
