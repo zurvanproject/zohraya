@@ -1,0 +1,20 @@
+{
+  "source_base": "952a088aee9d22d77445018b7cb02a7f2febbba9",
+  "upstream_wbc": {
+    "repository": "wbc-mjlab/wbc-mjlab",
+    "commit": "eb6c024b9586bc1de41b3dd22b9f18ad51cb1da9",
+    "license": "Apache-2.0",
+    "mode": "external dependency; no source copied"
+  },
+  "files_sha256": {
+    "examples/nasuraya_research/articulated/__init__.py": "b50c6c67962eb3d363491c2d9a1105d4ce496af24a910f5621372b5c3415e8c0",
+    "examples/nasuraya_research/articulated/test_model.py": "04601af7c4f38ee81cc262a3204b1e8c7abf70426e6e292ff6bade38783391e5",
+    "examples/nasuraya_research/articulated/install_wbc.py": "e78c03a730149b89a32b92b0748448d86b9850bf92614bc1041b2e84767d667b",
+    "examples/nasuraya_research/articulated/evaluate.py": "d550cd725db91635edf6e00fda0fc5c6a9ebda828f75fe624623673260c7b565",
+    "examples/nasuraya_research/articulated/build.py": "a2a0d97c821fafe91c478ede057470beaa4005940e01da1fe2b84f6ae007cf96",
+    "assets/nasuraya_articulated_v01/nasuraya.xml": "2d61c8da57aa41b99eb2e24732f85e1b502e14079fdbc96892018dc4ebed621b",
+    "assets/nasuraya_articulated_v01/robot.yaml": "8628d6bcafff09dffede05880a0d1d9cadd40a09f2363fa5e6f6434085328efd",
+    "assets/nasuraya_articulated_v01/provenance.json": "220a0f6a3ed2055caa852d525a1b1b5b3910b27be2dabee25994bf52684dad13"
+  },
+  "development_note": "Initial unconstrained dependency install used MuJoCo 3.16.0; its NumPy joint-enum comparison failed in upstream inspect_model. Rebuilt the isolated dependency installation with the mjlab-compatible MuJoCo 3.11.0 and NumPy 2.4.6; all recorded final checks ran there. No upstream test or model limit was disabled."
+}
