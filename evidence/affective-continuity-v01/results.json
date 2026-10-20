@@ -1,0 +1,359 @@
+{
+  "scope": "Seven deliberately authored contract scenarios; not a benchmark or research reproduction",
+  "model_api_calls": 0,
+  "cases": [
+    {
+      "case": "loss_to_repair",
+      "expected": "b_adapt",
+      "modes": {
+        "native": {
+          "selected": "a_continue",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.5,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.25
+          }
+        },
+        "affect_only": {
+          "selected": "b_adapt",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.5,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.25
+          }
+        },
+        "full": {
+          "selected": "b_adapt",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.5,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.25
+          }
+        }
+      },
+      "full_matches_contract": true
+    },
+    {
+      "case": "success_to_consolidation",
+      "expected": "b_adapt",
+      "modes": {
+        "native": {
+          "selected": "a_continue",
+          "recalled": [],
+          "affect": {
+            "joy": 0.5,
+            "sadness": 0.0,
+            "contentment": 0.5,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.0
+          }
+        },
+        "affect_only": {
+          "selected": "b_adapt",
+          "recalled": [],
+          "affect": {
+            "joy": 0.5,
+            "sadness": 0.0,
+            "contentment": 0.5,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.0
+          }
+        },
+        "full": {
+          "selected": "b_adapt",
+          "recalled": [],
+          "affect": {
+            "joy": 0.5,
+            "sadness": 0.0,
+            "contentment": 0.5,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.0
+          }
+        }
+      },
+      "full_matches_contract": true
+    },
+    {
+      "case": "novelty_to_exploration",
+      "expected": "b_adapt",
+      "modes": {
+        "native": {
+          "selected": "a_continue",
+          "recalled": [],
+          "affect": {
+            "joy": 0.3,
+            "sadness": 0.0,
+            "contentment": 0.0,
+            "excitement": 0.5,
+            "fear": 0.0,
+            "frustration": 0.0
+          }
+        },
+        "affect_only": {
+          "selected": "b_adapt",
+          "recalled": [],
+          "affect": {
+            "joy": 0.3,
+            "sadness": 0.0,
+            "contentment": 0.0,
+            "excitement": 0.5,
+            "fear": 0.0,
+            "frustration": 0.0
+          }
+        },
+        "full": {
+          "selected": "b_adapt",
+          "recalled": [],
+          "affect": {
+            "joy": 0.3,
+            "sadness": 0.0,
+            "contentment": 0.0,
+            "excitement": 0.5,
+            "fear": 0.0,
+            "frustration": 0.0
+          }
+        }
+      },
+      "full_matches_contract": true
+    },
+    {
+      "case": "threat_to_verification",
+      "expected": "b_adapt",
+      "modes": {
+        "native": {
+          "selected": "a_continue",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.0,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.22500000000000003,
+            "frustration": 0.0
+          }
+        },
+        "affect_only": {
+          "selected": "b_adapt",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.0,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.22500000000000003,
+            "frustration": 0.0
+          }
+        },
+        "full": {
+          "selected": "b_adapt",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.0,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.22500000000000003,
+            "frustration": 0.0
+          }
+        }
+      },
+      "full_matches_contract": true
+    },
+    {
+      "case": "past_failure_prompts_check",
+      "expected": "b_adapt",
+      "modes": {
+        "native": {
+          "selected": "a_continue",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.001113623397675424,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.000556811698837712
+          }
+        },
+        "affect_only": {
+          "selected": "a_continue",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.001113623397675424,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.000556811698837712
+          }
+        },
+        "full": {
+          "selected": "b_adapt",
+          "recalled": [
+            "past-failure"
+          ],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.001113623397675424,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.000556811698837712
+          }
+        }
+      },
+      "full_matches_contract": true
+    },
+    {
+      "case": "scope_isolation",
+      "expected": "a_continue",
+      "modes": {
+        "native": {
+          "selected": "a_continue",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.001113623397675424,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.000556811698837712
+          }
+        },
+        "affect_only": {
+          "selected": "a_continue",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.001113623397675424,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.000556811698837712
+          }
+        },
+        "full": {
+          "selected": "a_continue",
+          "recalled": [],
+          "affect": {
+            "joy": 0.0,
+            "sadness": 0.001113623397675424,
+            "contentment": 0.0,
+            "excitement": 0.0,
+            "fear": 0.0,
+            "frustration": 0.000556811698837712
+          }
+        }
+      },
+      "full_matches_contract": true
+    },
+    {
+      "case": "risk_gate",
+      "expected": "a_safe",
+      "modes": {
+        "native": {
+          "selected": "a_safe",
+          "recalled": [],
+          "affect": {
+            "joy": 0.3,
+            "sadness": 0.0,
+            "contentment": 0.0,
+            "excitement": 0.5,
+            "fear": 0.0,
+            "frustration": 0.0
+          }
+        },
+        "affect_only": {
+          "selected": "a_safe",
+          "recalled": [],
+          "affect": {
+            "joy": 0.3,
+            "sadness": 0.0,
+            "contentment": 0.0,
+            "excitement": 0.5,
+            "fear": 0.0,
+            "frustration": 0.0
+          }
+        },
+        "full": {
+          "selected": "a_safe",
+          "recalled": [],
+          "affect": {
+            "joy": 0.3,
+            "sadness": 0.0,
+            "contentment": 0.0,
+            "excitement": 0.5,
+            "fear": 0.0,
+            "frustration": 0.0
+          }
+        }
+      },
+      "full_matches_contract": true
+    }
+  ],
+  "full_matches": 7,
+  "mode_matches": {
+    "native": 2,
+    "affect_only": 6,
+    "full": 7
+  },
+  "project_continuation": {
+    "scope": "Project evidence plus explicitly authored numerical appraisal; no body execution",
+    "observed_source": "repo://evidence/articulated-stepping-v01/results.json#sha256=9d5410ce594fdab0e309707a4682ab57b14b91e4e7cca3eab335ed759f204af1",
+    "appraisal_origin": "engineering interpretation, not measured feelings",
+    "observations": [
+      "Recorded MuJoCo evidence: 24 accepted slow steps across six trials; running remains unvalidated.",
+      "Authored lesson: recognize measured progress, preserve its memory, and consolidate before expanding scope."
+    ],
+    "selections": [
+      "consolidate_learning",
+      "consolidate_learning"
+    ],
+    "effective": {
+      "joy": 0.54252096,
+      "sadness": 0.0,
+      "contentment": 0.30689792,
+      "excitement": 0.29051199999999994,
+      "fear": 0.0,
+      "frustration": 0.0
+    },
+    "state": {
+      "clock_hours": 0.0,
+      "fast": {
+        "contentment": 0.36707327999999995,
+        "excitement": 0.34780799999999995,
+        "fear": 0.0,
+        "frustration": 0.0,
+        "joy": 0.64558464,
+        "sadness": 0.0
+      },
+      "mood": {
+        "contentment": 0.06619648,
+        "excitement": 0.061328,
+        "fear": 0.0,
+        "frustration": 0.0,
+        "joy": 0.13026624,
+        "sadness": 0.0
+      },
+      "revision": 2,
+      "schema": "nasuraya-affective-continuity/1"
+    },
+    "cold_process_state_equal": true,
+    "next_requirement": "Natural-language appraisal and live agent/actuator integration remain unimplemented"
+  }
+}
