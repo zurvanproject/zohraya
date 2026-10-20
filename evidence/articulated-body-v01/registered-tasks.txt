@@ -1,0 +1,7 @@
+Robots: g1, nasuraya
+  Wbc-Nasuraya              logs/rsl_rl/wbc_nasuraya/  — Nasuraya 165 kg experimental articulated body; untrained.: default WBC tracking + RSI.
+  Wbc-Nasuraya-SE           logs/rsl_rl/wbc_nasuraya_se/  — Wbc-Nasuraya + SE obs (anchor pose tracking error, IMU base lin vel).
+  Wbc-Nasuraya-Terrain-Scan  logs/rsl_rl/wbc_nasuraya_terrain_scan/  — Wbc-Nasuraya on curriculum terrain + actor height scan; terrain-aware terminations.
+| 21 | Wbc-Nasuraya                                       |
+| 22 | Wbc-Nasuraya-SE                                    |
+| 23 | Wbc-Nasuraya-Terrain-Scan                          |

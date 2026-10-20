@@ -1,0 +1,45 @@
+{
+  "status": "authored_articulated_design_not_biological_measurement",
+  "axes": "+X forward,+Y left,+Z up",
+  "mass_kg": 165.0,
+  "mass_compartments_kg": {
+    "head_and_horns": 9.307692307692308,
+    "trunk": 74.46153846153847,
+    "both_arms": 18.615384615384617,
+    "both_legs_and_feet": 54.15384615384615,
+    "tail": 8.461538461538462
+  },
+  "native_reference_mass_kg": 195.0,
+  "crown_height_m": 2.5,
+  "horn_tip_site_height_m": 2.68,
+  "tail_length_m": 1.2,
+  "source_paths": [
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contact_design_v06.json",
+    "runtimes/tadash_body/phenotype_v1.json",
+    "examples/nasuraya_research/running_profile_v01.json"
+  ],
+  "derived_from_native": [
+    "hip height/spacing",
+    "foot spacing",
+    "three leg lengths and nominal IK geometry",
+    "contact patch areas/centres",
+    "crown/shoulder heights",
+    "tail length",
+    "compartment mass proportions"
+  ],
+  "authored": [
+    "within-compartment mass split",
+    "primitive inertial/collision shapes",
+    "reference pose joint ranges",
+    "motor torque limits and PD gains",
+    "four two-axis tail segments",
+    "finger/toe articulation"
+  ],
+  "limitations": [
+    "no muscles/tendons or tissue compliance",
+    "primitive feet reproduce area but not measured pressure distribution",
+    "neutral-pose joint offsets, not anatomical angle conventions",
+    "tail/head/limb inertia are authored from primitive geometry",
+    "no trained motion policy or verified running"
+  ]
+}

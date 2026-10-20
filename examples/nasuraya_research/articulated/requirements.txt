@@ -1,0 +1,11 @@
+# Install CPU Torch first from https://download.pytorch.org/whl/cpu.
+# Versions verified together; MuJoCo 3.16 + its newer enum bindings are not used.
+numpy==2.4.6
+scipy==1.18.1
+PyYAML==6.0.3
+mujoco==3.11.0
+mujoco-warp==3.11.0
+warp-lang==1.18.0
+torch==2.14.1+cpu
+mjlab==1.6.0
+wbc-mjlab @ git+https://github.com/wbc-mjlab/wbc-mjlab.git@eb6c024b9586bc1de41b3dd22b9f18ad51cb1da9
