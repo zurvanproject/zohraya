@@ -1,0 +1,12 @@
+{
+  "actual_rollout_ticks": 120,
+  "valid_frames": 120,
+  "max_whole_body_energy_residual_J": 5.368292477214709e-10,
+  "max_whole_body_water_residual_L": 2.4887264558209887e-14,
+  "original_ten_step_observations_preserved": true,
+  "repeatability_rows": 20,
+  "energy_reduction_percent": 2.5904961778799045,
+  "all_arms_have_paired_immutable_initial_states": true,
+  "all_arms_have_same_reference_per_state": true,
+  "complete_rollouts": 12
+}

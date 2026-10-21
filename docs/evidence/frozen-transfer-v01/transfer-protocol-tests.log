@@ -1,0 +1,14 @@
+test_cli_requires_an_explicit_evidence_destination (examples.nasuraya_research.test_transfer.TransferTests.test_cli_requires_an_explicit_evidence_destination) ... ok
+test_content_tampering_is_detected (examples.nasuraya_research.test_transfer.TransferTests.test_content_tampering_is_detected) ... ok
+test_counts_report_coverage_without_a_generalization_claim (examples.nasuraya_research.test_transfer.TransferTests.test_counts_report_coverage_without_a_generalization_claim) ... ok
+test_every_scored_forecast_was_sealed_before_native_execution (examples.nasuraya_research.test_transfer.TransferTests.test_every_scored_forecast_was_sealed_before_native_execution) ... ok
+test_existing_output_cannot_be_overwritten_or_restart_experiment (examples.nasuraya_research.test_transfer.TransferTests.test_existing_output_cannot_be_overwritten_or_restart_experiment) ... ok
+test_frozen_transfer_is_not_imported_into_production_history (examples.nasuraya_research.test_transfer.TransferTests.test_frozen_transfer_is_not_imported_into_production_history) ... ok
+test_invalid_or_changed_observations_are_not_false_training_labels (examples.nasuraya_research.test_transfer.TransferTests.test_invalid_or_changed_observations_are_not_false_training_labels) ... ok
+test_plan_and_training_are_content_sealed (examples.nasuraya_research.test_transfer.TransferTests.test_plan_and_training_are_content_sealed) ... ok
+test_result_labels_follow_native_action_instead_of_fixture_expectations (examples.nasuraya_research.test_transfer.TransferTests.test_result_labels_follow_native_action_instead_of_fixture_expectations) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 73.419s
+
+OK

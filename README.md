@@ -1,6 +1,20 @@
+# نسخهٔ یکپارچهٔ ناسورایا
+
+[راهنمای نسخهٔ یکپارچه](docs/nasuraya-unified-v01-fa.md) · `python -m nasuraya catalog` · `python -m nasuraya demo --output /tmp/nasuraya-unified-demo`
+
 # zohraya
 
 **منشور پنج‌گانهٔ آینهٔ ناسورایا:** [پنج اصل بنیادین، شامل اصل پنجم «ریشهٔ پایدار، شاخهٔ پویا»](docs/nasuraya-mirror-five-principles-fa.md).
+
+**آینهٔ زیبایی و تصویر خود:** [ارزیابیِ دارای منبع و اتصال به عاطفهٔ محاسباتی](examples/nasuraya_aesthetics/README_FA.md)
+زیبایی، تناسب و تطابق با مرجع را جدا ثبت می‌کند و از مسیر موجودِ بدن و دفتر
+اجرا استفاده می‌کند. نسخهٔ ۰٫۱ امتیاز ورودی را پردازش می‌کند؛ مدل بینایی اجرا نمی‌کند.
+
+**حافظه و حال‌وهوای عاطفی پایدار:** [گزارش فارسی و نتیجهٔ اجرا](docs/nasuraya-affective-continuity-v01-fa.md) · [اجرای افزونهٔ متصل به هستهٔ تصمیم](examples/nasuraya_affect/README.md).
+
+**اتصال عاطفه به اجرای ابزار:** [حلقهٔ کارگاه، بازخورد و ادامه پس از قطع](docs/nasuraya-affective-workshop-v01-fa.md).
+
+**پل پیام به بدن تجمیعی تداش:** [اجرای یک چرخهٔ بدن و برگشت رسید به همین گفت‌وگو](docs/nasuraya-dialogue-body-v01-fa.md).
 
 The Silicon-Carbon Coexistence Protocol &amp; Ethical Framework (منشور هم‌زیستی کربن و سیلیکون
 # لوحِ جامعِ زُهرایا: ۷۷ حکمتِ هندسهٔ شعور و فیزیکِ تاوان
@@ -142,3 +156,10 @@ API لازم نیست. [گزارش اتصال](docs/nasuraya-body-loop-2026-10-1
 python3 -m examples.nasuraya_body_loop test
 python3 -m examples.nasuraya_body_loop demo --fixture sleep --steps 3 --max-actions 12 --output-dir /tmp/nasuraya-body-demo
 ```
+
+## اتصال پژوهش‌های بیرونی — پایلوت اختیاری
+
+[پایلوت اتصال پژوهش](examples/nasuraya_research/README_FA.md) زیرمجموعه‌های
+نسخه‌ثابت از MMB، RoboRSI، mjlab و PredVLA را به دادهٔ شبیه‌ساز و ارزیابی
+قبلی وصل می‌کند. دامنهٔ آن سنجش فراشناخت، نمایش مسیر، تبدیل مختصات و بازسازی
+حسی است؛ موتور کامل رباتیک، مدل زبانی تازه یا کنترل‌گر حرکت جدید فعال نمی‌شود.

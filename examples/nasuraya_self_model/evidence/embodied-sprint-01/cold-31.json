@@ -1,0 +1,24 @@
+{
+  "checkpoint_sha256": "a90bb75ea54ef9118eab5d705415155704f9cd46cf7bee41ed40455d82c23cf8",
+  "knowledge": {
+    "counts": {
+      "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7": [
+        3,
+        0
+      ],
+      "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be": [
+        6,
+        0
+      ]
+    },
+    "episodes": 9,
+    "last": {
+      "requested": "walk",
+      "actual": "walk",
+      "admitted": true,
+      "receipt_sha256": "3954594bc162aa6e568bd642104dcd07fb383e6e9b8873faebd1ff1976a9b5fc",
+      "native_prediction_error": 0.0
+    },
+    "pending": []
+  }
+}

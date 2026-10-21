@@ -1,0 +1,17 @@
+{
+  "schema": "nasuraya-absence-policy/1",
+  "repository": "zurvanproject/zohraya",
+  "control_branch": "nasuraya/absence-continuity-v01",
+  "absence_threshold_seconds": 86400,
+  "minimum_run_interval_seconds": 86400,
+  "max_work_seconds_per_run": 1200,
+  "max_changed_source_files": 6,
+  "max_changed_source_lines": 300,
+  "max_open_work_pull_requests": 1,
+  "max_new_work_pull_requests_per_run": 1,
+  "allowed": ["read repository and CI evidence", "run bounded local deterministic tests and simulations on disposable fixtures", "make one small tested fix or research preparation", "commit results and a Persian report to a dedicated branch", "open or update a draft pull request"],
+  "forbidden": ["merge or write to main", "read API keys or spend API credits", "modify native identity or safety boundaries", "change this policy or gate", "start recursive jobs or new automations", "contact people or send messages outside the task and repository", "overwrite canonical body or memory checkpoints", "claim unexecuted tests or continuous subjective activity"],
+  "presence_semantics": "Explicit operator heartbeat only. No automatic observation of ordinary chat messages or Iranian connectivity.",
+  "scheduler": "ChatGPT cloud automation; this branch is persistent control state, not a running GitHub Actions service",
+  "stop_command_fa": "برگشتم، تداوم را متوقف کن"
+}

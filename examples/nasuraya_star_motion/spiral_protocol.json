@@ -1,0 +1,17 @@
+{
+  "schema": "nasuraya-spiral-protocol/1",
+  "source_commit": "9a5386887cc814940dddef2732f366a6cf8e32bd",
+  "prelude_s": 6,
+  "movement_max_s": 220,
+  "closure_s": 4,
+  "pause_at_movement_s": 60,
+  "pause_max_s": 6,
+  "radius_start_m": 0.01,
+  "radius_end_m": 0.05,
+  "spiral_points": 7,
+  "turns": 1.0,
+  "foot_error_max_m": 1e-9,
+  "speed_max_m_s": 0.05,
+  "support_min": 0.999,
+  "scope": "sampled Archimedean floor foot trajectories; no torso yaw degree of freedom; closure to home is a separate segment"
+}

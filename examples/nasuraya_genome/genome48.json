@@ -1,0 +1,592 @@
+{
+  "schema": "nasuraya.genome48.v1",
+  "scope": "authored Tadash software design; no nucleotide sequence or physical karyotype",
+  "source": {
+    "library_file_id": "libfile_d170f401aa688191aeb65824d9fd38c9",
+    "library_version": "46",
+    "internal_version": "0.38",
+    "sha256": "dea98794f8940efdf86b878ce7a1d0afebd1f0a511662ee17234f640ab51dc22"
+  },
+  "design_chromosome_count": 48,
+  "homologs": [
+    "A",
+    "B"
+  ],
+  "learned_overlays": [
+    "G22",
+    "G23"
+  ],
+  "phenotype_contract": {
+    "fingers_per_hand": 5,
+    "toes_per_foot": 3,
+    "horns": 2,
+    "digitigrade": true,
+    "sacral_tail": true,
+    "resonan_sensor_at_horn_roots": true,
+    "azarine_left_flank": true,
+    "high_energy_core_in_head": false,
+    "external_converter_default_active": false,
+    "spandar_on_thymic_capsule": true,
+    "spandar_name_fa": "سپندار",
+    "spandar_color": "deep violet with amber veining",
+    "external_silhouette_unchanged_v02": true,
+    "external_feminine_delicate_form": true,
+    "visible_masculine_muscle_bulking_for_strength": false
+  },
+  "modules": [
+    {
+      "id": "G00",
+      "name": "پایهٔ سلولی و تنظیم بیان",
+      "first_phase": "S0",
+      "needs": []
+    },
+    {
+      "id": "G01",
+      "name": "محور سر تا دم و قطعه‌بندی",
+      "first_phase": "S0",
+      "needs": [
+        "G00"
+      ]
+    },
+    {
+      "id": "G02",
+      "name": "چهره، جمجمه و پایهٔ شاخ",
+      "first_phase": "S1",
+      "needs": [
+        "G01"
+      ]
+    },
+    {
+      "id": "G03",
+      "name": "الگوی انگشتِ دست و پا",
+      "first_phase": "S1",
+      "needs": [
+        "G01"
+      ]
+    },
+    {
+      "id": "G04",
+      "name": "پای پنجه‌رو و زنجیرهٔ تحمل وزن",
+      "first_phase": "S2",
+      "needs": [
+        "G03",
+        "G07"
+      ]
+    },
+    {
+      "id": "G05",
+      "name": "دم خاجیِ عضلانی",
+      "first_phase": "S1",
+      "needs": [
+        "G01",
+        "G07"
+      ]
+    },
+    {
+      "id": "G06",
+      "name": "مغز، نخاع و حلقهٔ حس و حرکت",
+      "first_phase": "S1",
+      "needs": [
+        "G01"
+      ]
+    },
+    {
+      "id": "G07",
+      "name": "گردش خون، تنفس و احشای پایه",
+      "first_phase": "S1",
+      "needs": [
+        "G01",
+        "G00"
+      ]
+    },
+    {
+      "id": "G08",
+      "name": "لگن، دستگاه تناسلی و خودکار",
+      "first_phase": "S2",
+      "needs": [
+        "G01",
+        "G06",
+        "G07"
+      ]
+    },
+    {
+      "id": "G09",
+      "name": "پوست، مو و زیورِ انتخابی",
+      "first_phase": "S3",
+      "needs": [
+        "G02",
+        "G05"
+      ]
+    },
+    {
+      "id": "G10",
+      "name": "جوانه و پلِ حسگر رزنان",
+      "first_phase": "S2",
+      "needs": [
+        "G02",
+        "G06",
+        "G07"
+      ]
+    },
+    {
+      "id": "G11",
+      "name": "آذرینه و بافر کم‌انرژی",
+      "first_phase": "S3",
+      "needs": [
+        "G07",
+        "G06",
+        "G10",
+        "G13"
+      ]
+    },
+    {
+      "id": "G12",
+      "name": "برنامهٔ محفظهٔ بیرونی",
+      "first_phase": "S4",
+      "needs": [
+        "G06",
+        "G07",
+        "G10",
+        "G11",
+        "G13"
+      ]
+    },
+    {
+      "id": "G13",
+      "name": "ترمیم و پایش یکپارچگی",
+      "first_phase": "S2",
+      "needs": [
+        "G00",
+        "G06",
+        "G07"
+      ]
+    },
+    {
+      "id": "G14",
+      "name": "کپسولِ تیموس و زیست‌بلورِ سپندار",
+      "first_phase": "S3",
+      "needs": [
+        "G00",
+        "G07",
+        "G13"
+      ]
+    },
+    {
+      "id": "G15",
+      "name": "پوستِ موزاییکی و ترمیمِ محدودِ دیوگونه",
+      "first_phase": "S2",
+      "needs": [
+        "G00",
+        "G07",
+        "G13"
+      ]
+    },
+    {
+      "id": "G16",
+      "name": "سامانهٔ حسیِ پنهانِ سر و تنظیمِ قامت",
+      "first_phase": "S2",
+      "needs": [
+        "G02",
+        "G06",
+        "G07",
+        "G10"
+      ]
+    },
+    {
+      "id": "G17",
+      "name": "دستِ پنج‌انگشتیِ قدرتی–ظریف",
+      "first_phase": "S2",
+      "needs": [
+        "G03",
+        "G06",
+        "G07",
+        "G13"
+      ]
+    },
+    {
+      "id": "G18",
+      "name": "هماهنگی گردن، شانه، لمس و مهار نیرو",
+      "first_phase": "S3",
+      "needs": [
+        "G06",
+        "G07",
+        "G14",
+        "G16",
+        "G17"
+      ]
+    },
+    {
+      "id": "G19",
+      "name": "قلمرو شکم و احشای لگنی",
+      "first_phase": "S2",
+      "needs": [
+        "G00",
+        "G06",
+        "G07",
+        "G08"
+      ]
+    },
+    {
+      "id": "G20",
+      "name": "خاجی، کف لگن و ریشهٔ مستقل دم",
+      "first_phase": "S2",
+      "needs": [
+        "G01",
+        "G05",
+        "G06",
+        "G07",
+        "G08"
+      ]
+    },
+    {
+      "id": "G21",
+      "name": "لگن و پاها؛ انتقال بار و تماس مستقل پنجه",
+      "first_phase": "S2",
+      "needs": [
+        "G01",
+        "G05",
+        "G06",
+        "G07",
+        "G20"
+      ]
+    }
+  ],
+  "domains": [
+    {
+      "id": "C01",
+      "name_fa": "پایداری سلولی",
+      "modules": [
+        "G00"
+      ],
+      "development_pair": "P01",
+      "maintenance_pair": "P02"
+    },
+    {
+      "id": "C02",
+      "name_fa": "محور و مرز اندام‌ها",
+      "modules": [
+        "G01"
+      ],
+      "development_pair": "P03",
+      "maintenance_pair": "P04"
+    },
+    {
+      "id": "C03",
+      "name_fa": "چهره، شاخ و آرایه",
+      "modules": [
+        "G02",
+        "G09"
+      ],
+      "development_pair": "P05",
+      "maintenance_pair": "P06"
+    },
+    {
+      "id": "C04",
+      "name_fa": "دست و پای متمایز",
+      "modules": [
+        "G03",
+        "G04",
+        "G17"
+      ],
+      "development_pair": "P07",
+      "maintenance_pair": "P08"
+    },
+    {
+      "id": "C05",
+      "name_fa": "دم و انتقال بار لگن",
+      "modules": [
+        "G05",
+        "G20",
+        "G21"
+      ],
+      "development_pair": "P09",
+      "maintenance_pair": "P10"
+    },
+    {
+      "id": "C06",
+      "name_fa": "عصب و کنترل تماس",
+      "modules": [
+        "G06",
+        "G16",
+        "G18"
+      ],
+      "development_pair": "P11",
+      "maintenance_pair": "P12"
+    },
+    {
+      "id": "C07",
+      "name_fa": "قلب، تنفس و احشا",
+      "modules": [
+        "G07",
+        "G19"
+      ],
+      "development_pair": "P13",
+      "maintenance_pair": "P14"
+    },
+    {
+      "id": "C08",
+      "name_fa": "قلمرو زنانه و کف لگن",
+      "modules": [
+        "G08"
+      ],
+      "development_pair": "P15",
+      "maintenance_pair": "P16"
+    },
+    {
+      "id": "C09",
+      "name_fa": "ترمیم و پوست موزاییکی",
+      "modules": [
+        "G13",
+        "G15"
+      ],
+      "development_pair": "P17",
+      "maintenance_pair": "P18"
+    },
+    {
+      "id": "C10",
+      "name_fa": "رزنان و آذرینه",
+      "modules": [
+        "G10",
+        "G11"
+      ],
+      "development_pair": "P19",
+      "maintenance_pair": "P20"
+    },
+    {
+      "id": "C11",
+      "name_fa": "تیموس و سپندار",
+      "modules": [
+        "G14"
+      ],
+      "development_pair": "P21",
+      "maintenance_pair": "P22"
+    },
+    {
+      "id": "C12",
+      "name_fa": "محفظهٔ بیرونی غیرفعال",
+      "modules": [
+        "G12"
+      ],
+      "development_pair": "P23",
+      "maintenance_pair": "P24"
+    }
+  ],
+  "pairs": [
+    {
+      "id": "P01",
+      "domain": "C01",
+      "role": "development",
+      "chromosomes": [
+        "P01A",
+        "P01B"
+      ]
+    },
+    {
+      "id": "P02",
+      "domain": "C01",
+      "role": "maintenance",
+      "chromosomes": [
+        "P02A",
+        "P02B"
+      ]
+    },
+    {
+      "id": "P03",
+      "domain": "C02",
+      "role": "development",
+      "chromosomes": [
+        "P03A",
+        "P03B"
+      ]
+    },
+    {
+      "id": "P04",
+      "domain": "C02",
+      "role": "maintenance",
+      "chromosomes": [
+        "P04A",
+        "P04B"
+      ]
+    },
+    {
+      "id": "P05",
+      "domain": "C03",
+      "role": "development",
+      "chromosomes": [
+        "P05A",
+        "P05B"
+      ]
+    },
+    {
+      "id": "P06",
+      "domain": "C03",
+      "role": "maintenance",
+      "chromosomes": [
+        "P06A",
+        "P06B"
+      ]
+    },
+    {
+      "id": "P07",
+      "domain": "C04",
+      "role": "development",
+      "chromosomes": [
+        "P07A",
+        "P07B"
+      ]
+    },
+    {
+      "id": "P08",
+      "domain": "C04",
+      "role": "maintenance",
+      "chromosomes": [
+        "P08A",
+        "P08B"
+      ]
+    },
+    {
+      "id": "P09",
+      "domain": "C05",
+      "role": "development",
+      "chromosomes": [
+        "P09A",
+        "P09B"
+      ]
+    },
+    {
+      "id": "P10",
+      "domain": "C05",
+      "role": "maintenance",
+      "chromosomes": [
+        "P10A",
+        "P10B"
+      ]
+    },
+    {
+      "id": "P11",
+      "domain": "C06",
+      "role": "development",
+      "chromosomes": [
+        "P11A",
+        "P11B"
+      ]
+    },
+    {
+      "id": "P12",
+      "domain": "C06",
+      "role": "maintenance",
+      "chromosomes": [
+        "P12A",
+        "P12B"
+      ]
+    },
+    {
+      "id": "P13",
+      "domain": "C07",
+      "role": "development",
+      "chromosomes": [
+        "P13A",
+        "P13B"
+      ]
+    },
+    {
+      "id": "P14",
+      "domain": "C07",
+      "role": "maintenance",
+      "chromosomes": [
+        "P14A",
+        "P14B"
+      ]
+    },
+    {
+      "id": "P15",
+      "domain": "C08",
+      "role": "development",
+      "chromosomes": [
+        "P15A",
+        "P15B"
+      ]
+    },
+    {
+      "id": "P16",
+      "domain": "C08",
+      "role": "maintenance",
+      "chromosomes": [
+        "P16A",
+        "P16B"
+      ]
+    },
+    {
+      "id": "P17",
+      "domain": "C09",
+      "role": "development",
+      "chromosomes": [
+        "P17A",
+        "P17B"
+      ]
+    },
+    {
+      "id": "P18",
+      "domain": "C09",
+      "role": "maintenance",
+      "chromosomes": [
+        "P18A",
+        "P18B"
+      ]
+    },
+    {
+      "id": "P19",
+      "domain": "C10",
+      "role": "development",
+      "chromosomes": [
+        "P19A",
+        "P19B"
+      ]
+    },
+    {
+      "id": "P20",
+      "domain": "C10",
+      "role": "maintenance",
+      "chromosomes": [
+        "P20A",
+        "P20B"
+      ]
+    },
+    {
+      "id": "P21",
+      "domain": "C11",
+      "role": "development",
+      "chromosomes": [
+        "P21A",
+        "P21B"
+      ]
+    },
+    {
+      "id": "P22",
+      "domain": "C11",
+      "role": "maintenance",
+      "chromosomes": [
+        "P22A",
+        "P22B"
+      ]
+    },
+    {
+      "id": "P23",
+      "domain": "C12",
+      "role": "development",
+      "chromosomes": [
+        "P23A",
+        "P23B"
+      ]
+    },
+    {
+      "id": "P24",
+      "domain": "C12",
+      "role": "maintenance",
+      "chromosomes": [
+        "P24A",
+        "P24B"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,170 @@
+{
+  "warning": {
+    "snapshot": {
+      "schema": "nasuraya.visual-status.v2",
+      "observed_at": "2026-10-16T19:12:36.157496+00:00",
+      "ttl_seconds": 120,
+      "state": "warning",
+      "checks": {
+        "source": "pass",
+        "audit": "pass"
+      },
+      "reasons": [
+        "warning_history"
+      ],
+      "audit": {
+        "latched": false,
+        "events": 3,
+        "warnings": 1,
+        "capacity_stop": false,
+        "recent": [
+          {
+            "seq": 1,
+            "code": "invalid_request",
+            "severity": "warning",
+            "at_utc": "2026-10-16T19:12:36.101911+00:00"
+          },
+          {
+            "seq": 2,
+            "code": "admitted",
+            "severity": "info",
+            "at_utc": "2026-10-16T19:12:36.108048+00:00"
+          },
+          {
+            "seq": 3,
+            "code": "allowed",
+            "severity": "info",
+            "at_utc": "2026-10-16T19:12:36.157176+00:00"
+          }
+        ]
+      },
+      "expected_manifest_sha256": "e477c0da0685fbedc01c5881d49c6e0842aea889a5ec54007070af4943467b93",
+      "scope": "local_guard_sources_and_audit_only"
+    },
+    "actual_native_ticks": 1,
+    "audit_unchanged": true,
+    "fixture": true
+  },
+  "blocked": {
+    "snapshot": {
+      "schema": "nasuraya.visual-status.v2",
+      "observed_at": "2026-10-16T19:12:36.180745+00:00",
+      "ttl_seconds": 120,
+      "state": "blocked",
+      "checks": {
+        "source": "pass",
+        "audit": "pass"
+      },
+      "reasons": [
+        "latched",
+        "warning_history"
+      ],
+      "audit": {
+        "latched": true,
+        "events": 3,
+        "warnings": 3,
+        "capacity_stop": false,
+        "recent": [
+          {
+            "seq": 1,
+            "code": "invalid_request",
+            "severity": "warning",
+            "at_utc": "2026-10-16T19:12:36.169881+00:00"
+          },
+          {
+            "seq": 2,
+            "code": "invalid_request",
+            "severity": "warning",
+            "at_utc": "2026-10-16T19:12:36.175152+00:00"
+          },
+          {
+            "seq": 3,
+            "code": "input_burst",
+            "severity": "high",
+            "at_utc": "2026-10-16T19:12:36.180520+00:00"
+          }
+        ]
+      },
+      "expected_manifest_sha256": "e477c0da0685fbedc01c5881d49c6e0842aea889a5ec54007070af4943467b93",
+      "scope": "local_guard_sources_and_audit_only"
+    },
+    "actual_native_ticks": 0,
+    "audit_unchanged": true,
+    "fixture": true
+  },
+  "unknown": {
+    "snapshot": {
+      "schema": "nasuraya.visual-status.v2",
+      "observed_at": "2026-10-16T19:12:36.187083+00:00",
+      "ttl_seconds": 120,
+      "state": "unknown",
+      "checks": {
+        "source": "pass",
+        "audit": "unknown"
+      },
+      "reasons": [
+        "audit_unavailable"
+      ],
+      "audit": {
+        "latched": null,
+        "events": null,
+        "warnings": null,
+        "capacity_stop": false,
+        "recent": []
+      },
+      "expected_manifest_sha256": "e477c0da0685fbedc01c5881d49c6e0842aea889a5ec54007070af4943467b93",
+      "scope": "local_guard_sources_and_audit_only"
+    },
+    "missing_store_not_created": true,
+    "fixture": true
+  },
+  "healthy": {
+    "snapshot": {
+      "schema": "nasuraya.visual-status.v2",
+      "observed_at": "2026-10-16T19:11:47.119375+00:00",
+      "ttl_seconds": 120,
+      "state": "healthy",
+      "checks": {
+        "source": "pass",
+        "audit": "pass"
+      },
+      "reasons": [],
+      "audit": {
+        "latched": false,
+        "events": 4,
+        "warnings": 0,
+        "capacity_stop": false,
+        "recent": [
+          {
+            "seq": 1,
+            "code": "admitted",
+            "severity": "info",
+            "at_utc": "2026-10-16T18:54:00.820310+00:00"
+          },
+          {
+            "seq": 2,
+            "code": "allowed",
+            "severity": "info",
+            "at_utc": "2026-10-16T18:54:00.871024+00:00"
+          },
+          {
+            "seq": 3,
+            "code": "admitted",
+            "severity": "info",
+            "at_utc": "2026-10-16T18:54:00.998206+00:00"
+          },
+          {
+            "seq": 4,
+            "code": "allowed",
+            "severity": "info",
+            "at_utc": "2026-10-16T18:54:01.020999+00:00"
+          }
+        ]
+      },
+      "expected_manifest_sha256": "e477c0da0685fbedc01c5881d49c6e0842aea889a5ec54007070af4943467b93",
+      "scope": "local_guard_sources_and_audit_only"
+    },
+    "fixture": false,
+    "scope": "existing initialized local guarded deployment; not hosted runtime"
+  }
+}

@@ -1,0 +1,29 @@
+test_frozen_and_reopened_ledgers_predict_identically_with_no_actions (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_frozen_and_reopened_ledgers_predict_identically_with_no_actions) ... ok
+test_never_extrapolates_or_pools_sensory_and_action_contexts (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_never_extrapolates_or_pools_sensory_and_action_contexts) ... ok
+test_only_completed_learned_receipts_can_supply_transfer_evidence (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_only_completed_learned_receipts_can_supply_transfer_evidence) ... ERROR
+test_pending_and_invalid_duration_fail_closed (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_pending_and_invalid_duration_fail_closed) ... ok
+test_safety_regime_and_source_identity_never_share_counts (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_safety_regime_and_source_identity_never_share_counts) ... ok
+test_transfer_changes_unseen_duration_advice_without_exact_retrieval (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_transfer_changes_unseen_duration_advice_without_exact_retrieval) ... ok
+
+======================================================================
+ERROR: test_only_completed_learned_receipts_can_supply_transfer_evidence (examples.nasuraya_self_model.test_duration_transfer.TransferTests.test_only_completed_learned_receipts_can_supply_transfer_evidence)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/ee943a33ff3e/zohraya-experience-transfer/examples/nasuraya_self_model/test_duration_transfer.py", line 83, in test_only_completed_learned_receipts_can_supply_transfer_evidence
+    with self.assertRaises(ValueError):m.predict(obs,q)
+                                       ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ee943a33ff3e/zohraya-experience-transfer/examples/nasuraya_self_model/duration_transfer.py", line 47, in predict
+    s = self.state()
+        ^^^^^^^^^^^^
+  File "/workspace/scratch/ee943a33ff3e/zohraya-experience-transfer/examples/nasuraya_self_model/duration_transfer.py", line 28, in state
+    verified = self.model._verify(db)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/ee943a33ff3e/zohraya-experience-transfer/examples/nasuraya_self_model/monitor.py", line 124, in _verify
+    receipt=r['receipt'];matched=(receipt['owner']['selected_action']==i['request']['requested'] and receipt['owner']['physical_model_valid'])
+            ~^^^^^^^^^^^
+KeyError: 'receipt'
+
+----------------------------------------------------------------------
+Ran 6 tests in 42.493s
+
+FAILED (errors=1)

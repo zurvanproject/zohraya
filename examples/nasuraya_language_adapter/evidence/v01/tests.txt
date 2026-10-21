@@ -1,0 +1,13 @@
+test_gradient_updates_attention_adapter_and_preserves_base (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_gradient_updates_attention_adapter_and_preserves_base) ... {"stage": "training", "step": 1, "epoch": 1, "loss": 5.569811820983887}
+{"stage": "training", "step": 2, "epoch": 2, "loss": 5.563884258270264}
+ok
+test_label_cannot_be_changed_independently_of_receipt (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_label_cannot_be_changed_independently_of_receipt) ... ok
+test_optimizer_refuses_held_out_rows_before_accessing_model (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_optimizer_refuses_held_out_rows_before_accessing_model) ... ok
+test_overlong_example_is_rejected_without_truncating_label (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_overlong_example_is_rejected_without_truncating_label) ... ok
+test_prompt_and_padding_are_excluded_from_training_loss (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_prompt_and_padding_are_excluded_from_training_loss) ... ok
+test_same_body_or_prompt_cannot_cross_train_and_test (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_same_body_or_prompt_cannot_cross_train_and_test) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.028s
+
+OK

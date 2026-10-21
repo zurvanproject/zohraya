@@ -1,0 +1,34 @@
+{
+  "status": "authored_smaller_candidate_not_optimized_or_biological_measurement",
+  "request": "Shorter body and total mass below 100 kg, including tail and horns.",
+  "mass_kg": 85.0,
+  "crown_height_m": 1.85,
+  "horn_tip_site_height_m": 1.9832,
+  "tail_length_m": 0.888,
+  "source": "assets/nasuraya_articulated_v01",
+  "scale_factors": {
+    "length": 0.74,
+    "mass": 0.5151515151515151,
+    "torque_and_kp": 0.3812121212121212,
+    "damping_and_kd": 0.32793106624059465,
+    "armature": 0.2820969696969697
+  },
+  "mass_compartments_kg": {
+    "head_and_horns": 4.794871794871795,
+    "trunk": 38.35897435897436,
+    "both_arms": 9.58974358974359,
+    "both_legs_and_feet": 27.897435897435898,
+    "tail": 4.358974358974359
+  },
+  "assumptions": [
+    "Uniform lengths preserve silhouette and joint ranges.",
+    "Reduced torque limits avoid giving smaller body baseline motor strength.",
+    "Density changes: mass and length targets are independent.",
+    "1.85 m measures crown, excludes horns; primitive horn radius extends beyond tip site."
+  ],
+  "limitations": [
+    "No trained balance or running controller.",
+    "No tendon, muscle or tissue model.",
+    "Legacy physiological runtime and v01 fixtures are historical, not migrated."
+  ]
+}

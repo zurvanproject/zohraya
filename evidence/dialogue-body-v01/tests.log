@@ -1,0 +1,16 @@
+test_budget_is_not_extended_by_new_messages_or_resume (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_budget_is_not_extended_by_new_messages_or_resume) ... ok
+test_committed_native_outcome_recovered_without_reexecution (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_committed_native_outcome_recovered_without_reexecution) ... ok
+test_explicit_observe_cannot_turn_into_walk (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_explicit_observe_cannot_turn_into_walk) ... ok
+test_foreign_native_receipt_cannot_be_adopted (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_foreign_native_receipt_cannot_be_adopted) ... ok
+test_message_executes_native_body_and_returns_measured_feedback (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_message_executes_native_body_and_returns_measured_feedback) ... ok
+test_native_veto_still_wins_if_upper_guard_is_wrong (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_native_veto_still_wins_if_upper_guard_is_wrong) ... ok
+test_pause_blocks_a_reserved_but_unexecuted_message (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_pause_blocks_a_reserved_but_unexecuted_message) ... ok
+test_reflection_and_stop_do_not_advance_body (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_reflection_and_stop_do_not_advance_body) ... ok
+test_replay_is_idempotent_and_conflicting_message_rejected (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_replay_is_idempotent_and_conflicting_message_rejected) ... ok
+test_sleep_guard_keeps_excitement_from_requesting_walk (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_sleep_guard_keeps_excitement_from_requesting_walk) ... ok
+test_unknown_native_outcome_blocks_reexecution (examples.nasuraya_affect.test_body_dialogue.BodyDialogueTests.test_unknown_native_outcome_blocks_reexecution) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 28.778s
+
+OK

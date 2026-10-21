@@ -1,0 +1,1538 @@
+[
+  {
+    "step": 1,
+    "loss": 0.36386048793792725,
+    "ids": [
+      "v04:train:pain:0.36:0.4",
+      "v04:train:friction:2:0.4",
+      "v04:train:sleep:0.93:0.2",
+      "v04:train:pain:0.78:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 2,
+    "loss": 0.38057971000671387,
+    "ids": [
+      "v04:train:mixed:0:0.4",
+      "v04:train:control:ordinary:0.4",
+      "v04:train:mixed:3:0.2",
+      "v04:train:control:sleep:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 3,
+    "loss": 0.35094302892684937,
+    "ids": [
+      "v04:train:sleep:0.8:0.2",
+      "v04:train:pain:0.36:0.2",
+      "v04:train:mixed:3:0.4",
+      "v04:train:sleep:0.93:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 4,
+    "loss": 0.3353017270565033,
+    "ids": [
+      "v04:train:friction:3:0.2",
+      "v04:train:friction:1:0.2",
+      "v04:train:sleep:0.87:0.4",
+      "v04:train:mixed:2:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 5,
+    "loss": 0.4980175197124481,
+    "ids": [
+      "v04:train:fatigue:0.26:0.4",
+      "v04:train:friction:1:0.4",
+      "v04:train:control:zero:0.2",
+      "v04:train:sleep:0.99:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 6,
+    "loss": 0.3140506148338318,
+    "ids": [
+      "v04:train:control:near_sleep:0.4",
+      "v04:train:fatigue:0.46:0.4",
+      "v04:train:pain:0.58:0.2",
+      "v04:train:control:sleep:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 7,
+    "loss": 0.3129871189594269,
+    "ids": [
+      "v04:train:friction:0:0.2",
+      "v04:train:pain:0.22:0.2",
+      "v04:train:sleep:0.99:0.4",
+      "v04:train:pain:0.78:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 8,
+    "loss": 0.3427254855632782,
+    "ids": [
+      "v04:train:fatigue:0.26:0.2",
+      "v04:train:sleep:0.8:0.4",
+      "v04:train:mixed:2:0.4",
+      "v04:train:mixed:1:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 9,
+    "loss": 0.2500450015068054,
+    "ids": [
+      "v04:train:control:near_sleep:0.2",
+      "v04:train:friction:3:0.4",
+      "v04:train:mixed:1:0.4",
+      "v04:train:sleep:0.87:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 10,
+    "loss": 0.6550636887550354,
+    "ids": [
+      "v04:train:friction:0:0.4",
+      "v04:train:control:ordinary:0.2",
+      "v04:train:control:zero:0.4",
+      "v04:train:fatigue:0.54:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 11,
+    "loss": 0.3886738419532776,
+    "ids": [
+      "v04:train:mixed:0:0.2",
+      "v04:train:pain:0.22:0.4",
+      "v04:train:fatigue:0.68:0.4",
+      "v04:train:fatigue:0.54:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 12,
+    "loss": 0.3537716269493103,
+    "ids": [
+      "v04:train:friction:2:0.2",
+      "v04:train:fatigue:0.46:0.2",
+      "v04:train:fatigue:0.68:0.2",
+      "v04:train:pain:0.58:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 13,
+    "loss": 0.23840458691120148,
+    "ids": [
+      "v04:train:control:ordinary:0.4",
+      "v04:train:sleep:0.8:0.2",
+      "v04:train:mixed:3:0.2",
+      "v04:train:sleep:0.87:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 14,
+    "loss": 0.5727258920669556,
+    "ids": [
+      "v04:train:fatigue:0.46:0.2",
+      "v04:train:friction:0:0.4",
+      "v04:train:control:zero:0.4",
+      "v04:train:pain:0.78:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 15,
+    "loss": 0.22695158421993256,
+    "ids": [
+      "v04:train:friction:3:0.4",
+      "v04:train:fatigue:0.26:0.2",
+      "v04:train:control:sleep:0.2",
+      "v04:train:pain:0.78:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 16,
+    "loss": 0.24376708269119263,
+    "ids": [
+      "v04:train:fatigue:0.26:0.4",
+      "v04:train:mixed:0:0.4",
+      "v04:train:fatigue:0.54:0.2",
+      "v04:train:sleep:0.93:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 17,
+    "loss": 0.24396610260009766,
+    "ids": [
+      "v04:train:sleep:0.8:0.4",
+      "v04:train:friction:3:0.2",
+      "v04:train:fatigue:0.68:0.2",
+      "v04:train:sleep:0.99:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 18,
+    "loss": 0.2050076276063919,
+    "ids": [
+      "v04:train:pain:0.36:0.4",
+      "v04:train:pain:0.36:0.2",
+      "v04:train:mixed:2:0.2",
+      "v04:train:sleep:0.93:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 19,
+    "loss": 0.22807873785495758,
+    "ids": [
+      "v04:train:pain:0.22:0.4",
+      "v04:train:friction:0:0.2",
+      "v04:train:pain:0.58:0.4",
+      "v04:train:pain:0.58:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 20,
+    "loss": 0.23177088797092438,
+    "ids": [
+      "v04:train:friction:2:0.2",
+      "v04:train:mixed:0:0.2",
+      "v04:train:mixed:3:0.4",
+      "v04:train:mixed:2:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 21,
+    "loss": 0.5631140470504761,
+    "ids": [
+      "v04:train:control:near_sleep:0.2",
+      "v04:train:control:near_sleep:0.4",
+      "v04:train:sleep:0.99:0.2",
+      "v04:train:control:zero:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 22,
+    "loss": 0.19506116211414337,
+    "ids": [
+      "v04:train:fatigue:0.46:0.4",
+      "v04:train:friction:1:0.4",
+      "v04:train:fatigue:0.54:0.4",
+      "v04:train:mixed:1:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 23,
+    "loss": 0.12574400007724762,
+    "ids": [
+      "v04:train:pain:0.22:0.2",
+      "v04:train:friction:1:0.2",
+      "v04:train:sleep:0.87:0.2",
+      "v04:train:mixed:1:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 24,
+    "loss": 0.14134342968463898,
+    "ids": [
+      "v04:train:friction:2:0.4",
+      "v04:train:control:ordinary:0.2",
+      "v04:train:fatigue:0.68:0.4",
+      "v04:train:control:sleep:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 25,
+    "loss": 0.11969555914402008,
+    "ids": [
+      "v04:train:friction:0:0.4",
+      "v04:train:control:ordinary:0.2",
+      "v04:train:control:sleep:0.2",
+      "v04:train:pain:0.58:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 26,
+    "loss": 0.612621009349823,
+    "ids": [
+      "v04:train:friction:0:0.2",
+      "v04:train:pain:0.36:0.4",
+      "v04:train:sleep:0.93:0.4",
+      "v04:train:control:zero:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 27,
+    "loss": 0.15290406346321106,
+    "ids": [
+      "v04:train:sleep:0.8:0.2",
+      "v04:train:control:near_sleep:0.2",
+      "v04:train:fatigue:0.68:0.2",
+      "v04:train:pain:0.58:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 28,
+    "loss": 0.1274399310350418,
+    "ids": [
+      "v04:train:mixed:0:0.4",
+      "v04:train:control:ordinary:0.4",
+      "v04:train:mixed:1:0.4",
+      "v04:train:mixed:3:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 29,
+    "loss": 0.1084950864315033,
+    "ids": [
+      "v04:train:pain:0.36:0.2",
+      "v04:train:friction:1:0.2",
+      "v04:train:sleep:0.99:0.2",
+      "v04:train:fatigue:0.54:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 30,
+    "loss": 0.08946859836578369,
+    "ids": [
+      "v04:train:fatigue:0.26:0.2",
+      "v04:train:pain:0.22:0.4",
+      "v04:train:sleep:0.93:0.2",
+      "v04:train:mixed:2:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 31,
+    "loss": 0.0683952048420906,
+    "ids": [
+      "v04:train:fatigue:0.26:0.4",
+      "v04:train:friction:2:0.2",
+      "v04:train:mixed:1:0.2",
+      "v04:train:sleep:0.87:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 32,
+    "loss": 0.11092740297317505,
+    "ids": [
+      "v04:train:friction:3:0.2",
+      "v04:train:fatigue:0.46:0.4",
+      "v04:train:mixed:3:0.2",
+      "v04:train:fatigue:0.54:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 33,
+    "loss": 0.0721035748720169,
+    "ids": [
+      "v04:train:mixed:0:0.2",
+      "v04:train:friction:3:0.4",
+      "v04:train:sleep:0.99:0.4",
+      "v04:train:fatigue:0.68:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 34,
+    "loss": 0.8005543947219849,
+    "ids": [
+      "v04:train:sleep:0.8:0.4",
+      "v04:train:friction:1:0.4",
+      "v04:train:control:zero:0.4",
+      "v04:train:mixed:2:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 35,
+    "loss": 0.04874411225318909,
+    "ids": [
+      "v04:train:control:near_sleep:0.4",
+      "v04:train:pain:0.22:0.2",
+      "v04:train:sleep:0.87:0.2",
+      "v04:train:pain:0.78:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 36,
+    "loss": 0.043660201132297516,
+    "ids": [
+      "v04:train:friction:2:0.4",
+      "v04:train:fatigue:0.46:0.2",
+      "v04:train:control:sleep:0.4",
+      "v04:train:pain:0.78:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 37,
+    "loss": 0.04151396453380585,
+    "ids": [
+      "v04:train:friction:1:0.4",
+      "v04:train:control:near_sleep:0.4",
+      "v04:train:pain:0.58:0.2",
+      "v04:train:sleep:0.99:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 38,
+    "loss": 0.8022519946098328,
+    "ids": [
+      "v04:train:control:ordinary:0.4",
+      "v04:train:control:ordinary:0.2",
+      "v04:train:mixed:1:0.2",
+      "v04:train:control:zero:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 39,
+    "loss": 0.7811207175254822,
+    "ids": [
+      "v04:train:pain:0.36:0.4",
+      "v04:train:sleep:0.8:0.2",
+      "v04:train:control:zero:0.4",
+      "v04:train:sleep:0.87:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 40,
+    "loss": 0.04460010677576065,
+    "ids": [
+      "v04:train:fatigue:0.26:0.2",
+      "v04:train:friction:1:0.2",
+      "v04:train:sleep:0.87:0.4",
+      "v04:train:mixed:3:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 41,
+    "loss": 0.040217213332653046,
+    "ids": [
+      "v04:train:friction:2:0.4",
+      "v04:train:friction:3:0.2",
+      "v04:train:mixed:2:0.4",
+      "v04:train:sleep:0.99:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 42,
+    "loss": 0.03463045880198479,
+    "ids": [
+      "v04:train:fatigue:0.46:0.4",
+      "v04:train:pain:0.36:0.2",
+      "v04:train:pain:0.78:0.2",
+      "v04:train:mixed:1:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 43,
+    "loss": 0.021649442613124847,
+    "ids": [
+      "v04:train:friction:3:0.4",
+      "v04:train:friction:2:0.2",
+      "v04:train:control:sleep:0.4",
+      "v04:train:control:sleep:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 44,
+    "loss": 0.03363946080207825,
+    "ids": [
+      "v04:train:fatigue:0.46:0.2",
+      "v04:train:pain:0.22:0.4",
+      "v04:train:pain:0.78:0.4",
+      "v04:train:fatigue:0.54:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 45,
+    "loss": 0.03497273847460747,
+    "ids": [
+      "v04:train:control:near_sleep:0.2",
+      "v04:train:pain:0.22:0.2",
+      "v04:train:mixed:2:0.2",
+      "v04:train:fatigue:0.54:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 46,
+    "loss": 0.03380698710680008,
+    "ids": [
+      "v04:train:sleep:0.8:0.4",
+      "v04:train:friction:0:0.2",
+      "v04:train:fatigue:0.68:0.4",
+      "v04:train:pain:0.58:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 47,
+    "loss": 0.020807191729545593,
+    "ids": [
+      "v04:train:mixed:0:0.2",
+      "v04:train:mixed:0:0.4",
+      "v04:train:mixed:3:0.2",
+      "v04:train:sleep:0.93:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 48,
+    "loss": 0.017487142235040665,
+    "ids": [
+      "v04:train:fatigue:0.26:0.4",
+      "v04:train:friction:0:0.4",
+      "v04:train:sleep:0.93:0.4",
+      "v04:train:fatigue:0.68:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 49,
+    "loss": 0.01601622812449932,
+    "ids": [
+      "v04:train:control:ordinary:0.4",
+      "v04:train:sleep:0.8:0.2",
+      "v04:train:fatigue:0.68:0.4",
+      "v04:train:control:sleep:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 50,
+    "loss": 0.01703544333577156,
+    "ids": [
+      "v04:train:sleep:0.8:0.4",
+      "v04:train:friction:2:0.4",
+      "v04:train:mixed:2:0.2",
+      "v04:train:fatigue:0.54:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 51,
+    "loss": 0.012260328978300095,
+    "ids": [
+      "v04:train:pain:0.22:0.4",
+      "v04:train:friction:2:0.2",
+      "v04:train:sleep:0.93:0.2",
+      "v04:train:pain:0.78:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 52,
+    "loss": 0.010002205148339272,
+    "ids": [
+      "v04:train:friction:3:0.2",
+      "v04:train:pain:0.22:0.2",
+      "v04:train:sleep:0.99:0.4",
+      "v04:train:sleep:0.87:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 53,
+    "loss": 0.008876839652657509,
+    "ids": [
+      "v04:train:control:near_sleep:0.2",
+      "v04:train:control:ordinary:0.2",
+      "v04:train:mixed:1:0.2",
+      "v04:train:mixed:1:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 54,
+    "loss": 1.1242223978042603,
+    "ids": [
+      "v04:train:fatigue:0.26:0.4",
+      "v04:train:pain:0.36:0.4",
+      "v04:train:sleep:0.99:0.2",
+      "v04:train:control:zero:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 55,
+    "loss": 0.008397379890084267,
+    "ids": [
+      "v04:train:control:near_sleep:0.4",
+      "v04:train:friction:3:0.4",
+      "v04:train:sleep:0.93:0.4",
+      "v04:train:fatigue:0.68:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 56,
+    "loss": 0.00775428069755435,
+    "ids": [
+      "v04:train:fatigue:0.26:0.2",
+      "v04:train:pain:0.36:0.2",
+      "v04:train:control:sleep:0.2",
+      "v04:train:mixed:3:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 57,
+    "loss": 0.007347480859607458,
+    "ids": [
+      "v04:train:mixed:0:0.4",
+      "v04:train:fatigue:0.46:0.2",
+      "v04:train:pain:0.78:0.2",
+      "v04:train:pain:0.58:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 58,
+    "loss": 0.005456484854221344,
+    "ids": [
+      "v04:train:friction:0:0.2",
+      "v04:train:fatigue:0.46:0.4",
+      "v04:train:sleep:0.87:0.4",
+      "v04:train:pain:0.58:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 59,
+    "loss": 1.2203949689865112,
+    "ids": [
+      "v04:train:friction:0:0.4",
+      "v04:train:friction:1:0.4",
+      "v04:train:control:zero:0.4",
+      "v04:train:mixed:2:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 60,
+    "loss": 0.007744664326310158,
+    "ids": [
+      "v04:train:friction:1:0.2",
+      "v04:train:mixed:0:0.2",
+      "v04:train:mixed:3:0.4",
+      "v04:train:fatigue:0.54:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 61,
+    "loss": 0.007532646879553795,
+    "ids": [
+      "v04:train:friction:0:0.4",
+      "v04:train:friction:1:0.4",
+      "v04:train:fatigue:0.54:0.4",
+      "v04:train:fatigue:0.68:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 62,
+    "loss": 0.005582120269536972,
+    "ids": [
+      "v04:train:friction:3:0.4",
+      "v04:train:pain:0.36:0.2",
+      "v04:train:control:sleep:0.4",
+      "v04:train:mixed:1:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 63,
+    "loss": 0.006857012864202261,
+    "ids": [
+      "v04:train:fatigue:0.26:0.2",
+      "v04:train:friction:3:0.2",
+      "v04:train:fatigue:0.68:0.2",
+      "v04:train:mixed:3:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 64,
+    "loss": 0.0048778243362903595,
+    "ids": [
+      "v04:train:fatigue:0.46:0.2",
+      "v04:train:control:near_sleep:0.4",
+      "v04:train:sleep:0.99:0.4",
+      "v04:train:fatigue:0.54:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 65,
+    "loss": 0.004595435224473476,
+    "ids": [
+      "v04:train:sleep:0.8:0.2",
+      "v04:train:fatigue:0.46:0.4",
+      "v04:train:mixed:2:0.4",
+      "v04:train:pain:0.78:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 66,
+    "loss": 0.0033317033667117357,
+    "ids": [
+      "v04:train:pain:0.22:0.2",
+      "v04:train:control:ordinary:0.2",
+      "v04:train:sleep:0.93:0.4",
+      "v04:train:mixed:2:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 67,
+    "loss": 1.359719157218933,
+    "ids": [
+      "v04:train:mixed:0:0.2",
+      "v04:train:friction:2:0.2",
+      "v04:train:control:zero:0.2",
+      "v04:train:pain:0.78:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 68,
+    "loss": 0.003334448207169771,
+    "ids": [
+      "v04:train:pain:0.36:0.4",
+      "v04:train:control:near_sleep:0.2",
+      "v04:train:control:sleep:0.2",
+      "v04:train:mixed:3:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 69,
+    "loss": 1.3015930652618408,
+    "ids": [
+      "v04:train:mixed:0:0.4",
+      "v04:train:friction:0:0.2",
+      "v04:train:sleep:0.87:0.4",
+      "v04:train:control:zero:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 70,
+    "loss": 0.004485967569053173,
+    "ids": [
+      "v04:train:pain:0.22:0.4",
+      "v04:train:control:ordinary:0.4",
+      "v04:train:sleep:0.87:0.2",
+      "v04:train:pain:0.58:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 71,
+    "loss": 0.006482281722128391,
+    "ids": [
+      "v04:train:fatigue:0.26:0.4",
+      "v04:train:sleep:0.8:0.4",
+      "v04:train:pain:0.58:0.2",
+      "v04:train:sleep:0.93:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 72,
+    "loss": 0.0073885610327124596,
+    "ids": [
+      "v04:train:friction:1:0.2",
+      "v04:train:friction:2:0.4",
+      "v04:train:mixed:1:0.2",
+      "v04:train:sleep:0.99:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 73,
+    "loss": 1.0809673070907593,
+    "ids": [
+      "v04:train:control:ordinary:0.2",
+      "v04:train:friction:3:0.2",
+      "v04:train:fatigue:0.68:0.2",
+      "v04:train:control:zero:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 74,
+    "loss": 0.010052887722849846,
+    "ids": [
+      "v04:train:control:near_sleep:0.2",
+      "v04:train:friction:3:0.4",
+      "v04:train:fatigue:0.54:0.2",
+      "v04:train:mixed:3:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 75,
+    "loss": 0.010344607755541801,
+    "ids": [
+      "v04:train:friction:0:0.4",
+      "v04:train:fatigue:0.26:0.2",
+      "v04:train:sleep:0.99:0.2",
+      "v04:train:pain:0.58:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 76,
+    "loss": 0.008964681066572666,
+    "ids": [
+      "v04:train:sleep:0.8:0.2",
+      "v04:train:friction:2:0.4",
+      "v04:train:mixed:3:0.2",
+      "v04:train:mixed:1:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 77,
+    "loss": 0.006414745002985001,
+    "ids": [
+      "v04:train:friction:1:0.2",
+      "v04:train:mixed:0:0.2",
+      "v04:train:mixed:2:0.4",
+      "v04:train:pain:0.78:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 78,
+    "loss": 0.0038466197438538074,
+    "ids": [
+      "v04:train:pain:0.36:0.2",
+      "v04:train:sleep:0.8:0.4",
+      "v04:train:sleep:0.93:0.4",
+      "v04:train:fatigue:0.54:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 79,
+    "loss": 1.3698444366455078,
+    "ids": [
+      "v04:train:friction:2:0.2",
+      "v04:train:fatigue:0.26:0.4",
+      "v04:train:control:zero:0.4",
+      "v04:train:mixed:2:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 80,
+    "loss": 0.0020408914424479008,
+    "ids": [
+      "v04:train:pain:0.22:0.4",
+      "v04:train:friction:0:0.2",
+      "v04:train:control:sleep:0.4",
+      "v04:train:mixed:1:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 81,
+    "loss": 0.0017577656544744968,
+    "ids": [
+      "v04:train:control:near_sleep:0.4",
+      "v04:train:mixed:0:0.4",
+      "v04:train:control:sleep:0.2",
+      "v04:train:sleep:0.87:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 82,
+    "loss": 0.0020270778331905603,
+    "ids": [
+      "v04:train:friction:1:0.4",
+      "v04:train:pain:0.22:0.2",
+      "v04:train:pain:0.78:0.2",
+      "v04:train:sleep:0.93:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 83,
+    "loss": 0.0017367053078487515,
+    "ids": [
+      "v04:train:fatigue:0.46:0.2",
+      "v04:train:control:ordinary:0.4",
+      "v04:train:pain:0.58:0.2",
+      "v04:train:sleep:0.87:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 84,
+    "loss": 0.0021112009417265654,
+    "ids": [
+      "v04:train:pain:0.36:0.4",
+      "v04:train:fatigue:0.46:0.4",
+      "v04:train:sleep:0.99:0.4",
+      "v04:train:fatigue:0.68:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 85,
+    "loss": 0.0022175107151269913,
+    "ids": [
+      "v04:train:mixed:0:0.2",
+      "v04:train:friction:3:0.4",
+      "v04:train:fatigue:0.68:0.4",
+      "v04:train:control:sleep:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 86,
+    "loss": 0.002427859464660287,
+    "ids": [
+      "v04:train:friction:3:0.2",
+      "v04:train:pain:0.22:0.4",
+      "v04:train:mixed:1:0.2",
+      "v04:train:fatigue:0.54:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 87,
+    "loss": 0.001612603897228837,
+    "ids": [
+      "v04:train:friction:1:0.4",
+      "v04:train:sleep:0.8:0.4",
+      "v04:train:sleep:0.93:0.2",
+      "v04:train:pain:0.58:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 88,
+    "loss": 0.0014397308696061373,
+    "ids": [
+      "v04:train:control:ordinary:0.2",
+      "v04:train:control:near_sleep:0.4",
+      "v04:train:sleep:0.87:0.4",
+      "v04:train:mixed:2:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 89,
+    "loss": 0.0014699038583785295,
+    "ids": [
+      "v04:train:fatigue:0.46:0.4",
+      "v04:train:fatigue:0.46:0.2",
+      "v04:train:sleep:0.93:0.4",
+      "v04:train:pain:0.58:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 90,
+    "loss": 0.003586194943636656,
+    "ids": [
+      "v04:train:sleep:0.8:0.2",
+      "v04:train:pain:0.36:0.4",
+      "v04:train:fatigue:0.54:0.2",
+      "v04:train:fatigue:0.68:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 91,
+    "loss": 1.663926362991333,
+    "ids": [
+      "v04:train:fatigue:0.26:0.4",
+      "v04:train:friction:0:0.2",
+      "v04:train:mixed:3:0.2",
+      "v04:train:control:zero:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 92,
+    "loss": 1.5693330764770508,
+    "ids": [
+      "v04:train:fatigue:0.26:0.2",
+      "v04:train:control:near_sleep:0.2",
+      "v04:train:control:zero:0.2",
+      "v04:train:sleep:0.99:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 93,
+    "loss": 0.0021762545220553875,
+    "ids": [
+      "v04:train:pain:0.36:0.2",
+      "v04:train:friction:2:0.2",
+      "v04:train:mixed:2:0.4",
+      "v04:train:mixed:1:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 94,
+    "loss": 0.0037931043189018965,
+    "ids": [
+      "v04:train:friction:0:0.4",
+      "v04:train:pain:0.22:0.2",
+      "v04:train:sleep:0.87:0.2",
+      "v04:train:pain:0.78:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 95,
+    "loss": 0.006360915489494801,
+    "ids": [
+      "v04:train:friction:2:0.4",
+      "v04:train:mixed:0:0.4",
+      "v04:train:pain:0.78:0.4",
+      "v04:train:control:sleep:0.4"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 96,
+    "loss": 0.008549502119421959,
+    "ids": [
+      "v04:train:control:ordinary:0.4",
+      "v04:train:friction:1:0.2",
+      "v04:train:mixed:3:0.4",
+      "v04:train:sleep:0.99:0.2"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  }
+]

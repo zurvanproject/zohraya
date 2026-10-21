@@ -1,0 +1,22 @@
+{
+  "accepted_protocol_sha256": "6b647c2679af113787cba0e0bb5033f61a0b803f6be7c18c2523a4337f20e185",
+  "api_calls": 0,
+  "cold_trajectory_recoveries": 16,
+  "distinct_tests_executed": 98,
+  "held_out_training": false,
+  "learning_constants_changed": false,
+  "native_equations_changed": false,
+  "original_diagnostic_improvement_percent": 0.2662612588564253,
+  "overall_success": false,
+  "parent_commit": "5e0eac2a36e5072fc4bdae145640c37c590ee4d1",
+  "repair_replay_improvement_percent": 0.26630813754110716,
+  "repair_replay_is_new_independent_test": false,
+  "stress_failure_remains": true,
+  "test_counts": {
+    "adaptive_regressions.log": 19,
+    "body_regressions.log": 26,
+    "closed_loop_tests.log": 12,
+    "controlled_api_regressions.log": 41
+  },
+  "unknown_effects_replayed": false
+}

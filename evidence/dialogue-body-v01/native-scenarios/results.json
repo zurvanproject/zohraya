@@ -1,0 +1,496 @@
+{
+  "scope": "Two constructed native UnifiedBody scenarios; no MuJoCo or external model API",
+  "results": [
+    {
+      "fixture": "normal",
+      "before": {
+        "schema": "nasuraya-bounded-body-loop/1",
+        "fixture": "normal",
+        "mode": "bounded",
+        "max_actions": 1,
+        "actions_reserved": 0,
+        "actions_remaining": 1,
+        "completed_cycles": 0,
+        "failed_cycles": 0,
+        "unresolved_running": [],
+        "self_model": {
+          "checkpoint_sha256": "54ae873e1736e8fbce27c5cd42c01fd0110ff091e9a19ed0e64ebf1545952cc4",
+          "revision": 0,
+          "simulated_wall_utc": "2026-01-01T00:00:07+00:00",
+          "minimum_state": {
+            "HR": 62.05427845950002,
+            "RR": 14.167210021781528,
+            "energy": 0.9993454504792117,
+            "hydration": 0.9999859908377187,
+            "temperature": 37.000054898365086,
+            "sympathetic": 0.24538650771018136,
+            "parasympathetic": 0.6132716213175111,
+            "muscle_tone": 0.26973625139588886,
+            "fatigue": 0.01069945672828943,
+            "pain": 0.11413104958422383,
+            "arousal": 0.2822793406531386,
+            "valence": 0.0,
+            "posture": "double_support",
+            "balance": 1.0,
+            "breath_depth": 1.5218378694671448,
+            "sleep_pressure": 0.35032098259399874
+          },
+          "self_location": {
+            "where": "Tadash computational world: X left, Y forward, Z up; metres",
+            "position_m": [
+              0.0,
+              0.0,
+              1.314
+            ],
+            "pose": "double_support",
+            "strongest_interoceptive_region": "chest_state",
+            "energy": 0.9993454504792117,
+            "dominant_homeostatic_need": "pain",
+            "next_move_prediction": "available by forecast(action, duration, inputs)",
+            "evidence_level": "B"
+          },
+          "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L.",
+          "scope": "existing software body; generated fixture, not biological measurement"
+        },
+        "external_model_api_used": false
+      },
+      "result": {
+        "message_id": "fixture-normal",
+        "native_receipt": {
+          "decision_id": "dialogue-body:fixture-normal",
+          "status": "complete",
+          "ledger_status": "complete",
+          "replayed": false,
+          "requested_action": "walk",
+          "actual_action": "walk",
+          "expected_outcome_matched": true,
+          "recalled_feedback_ids": [],
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 1.3240963880889467e-10,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 3.608224830031759e-16,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 7.939510865157678e-16
+          },
+          "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+          "self_model_after": {
+            "checkpoint_sha256": "1de2d4a68f95ae80ca9eaac59b704974191d3249235320123aa0fadc3f59ab1f",
+            "revision": 1,
+            "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00",
+            "minimum_state": {
+              "HR": 62.684795675925066,
+              "RR": 14.189130811748338,
+              "energy": 0.9993357964087033,
+              "hydration": 0.9999857878691728,
+              "temperature": 37.00005645895374,
+              "sympathetic": 0.2483259462553279,
+              "parasympathetic": 0.6124985357513969,
+              "muscle_tone": 0.27014282209312834,
+              "fatigue": 0.010858521713712594,
+              "pain": 0.11484637232764255,
+              "arousal": 0.3302059510050769,
+              "valence": 0.0007453319703671135,
+              "posture": "shift",
+              "balance": 1.0,
+              "breath_depth": 1.524705597562529,
+              "sleep_pressure": 0.3503255680596273
+            },
+            "self_location": {
+              "where": "Tadash computational world: X left, Y forward, Z up; metres",
+              "position_m": [
+                0.0004528066340146724,
+                0.0,
+                1.314
+              ],
+              "pose": "shift",
+              "strongest_interoceptive_region": "chest_state",
+              "energy": 0.9993357964087033,
+              "dominant_homeostatic_need": "pain",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "evidence_level": "B"
+            },
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L.",
+            "scope": "existing software body; generated fixture, not biological measurement"
+          }
+        },
+        "plan": {
+          "selected_action": "walk",
+          "baseline_selected_action": "observe",
+          "options": [
+            {
+              "action_id": "observe",
+              "score": 1.0950000000000002,
+              "uncertainty": 0.0,
+              "risk_upper": 0.01,
+              "eligible": true,
+              "reasons": [],
+              "components": {
+                "ethical": 1.0,
+                "benefit": 0.5,
+                "cost": 0.0,
+                "harm": 0.01,
+                "disharmony": 0.0,
+                "uncertainty_penalty": 0.0
+              },
+              "missing": [],
+              "budget_exhausted": false,
+              "affective_bonus": 0.0,
+              "adjusted_score": 1.0950000000000002,
+              "within_affective_window": true
+            },
+            {
+              "action_id": "walk",
+              "score": 1.0930000000000002,
+              "uncertainty": 0.0,
+              "risk_upper": 0.01,
+              "eligible": true,
+              "reasons": [],
+              "components": {
+                "ethical": 1.0,
+                "benefit": 0.5,
+                "cost": 0.01,
+                "harm": 0.01,
+                "disharmony": 0.0,
+                "uncertainty_penalty": 0.0
+              },
+              "missing": [],
+              "budget_exhausted": false,
+              "affective_bonus": 0.008704000000000002,
+              "adjusted_score": 1.1017040000000002,
+              "within_affective_window": true
+            }
+          ],
+          "affect_enabled": true,
+          "tendencies": {
+            "explore": 0.21760000000000002,
+            "repair": 0.0,
+            "verify": 0.0,
+            "consolidate": 0.24
+          },
+          "disposition": "plan_only",
+          "arousal": 0.32000000000000006
+        },
+        "restrictions": [],
+        "affect_after": {
+          "joy": 0.46224999625582175,
+          "sadness": 0.0,
+          "contentment": 0.24499999999999997,
+          "excitement": 0.31999407493215853,
+          "fear": 0.0,
+          "frustration": 0.0
+        },
+        "reply_fa": "بدن تجمیعی تداش یک چرخهٔ کوتاه راه‌رفتن اجرا کرد.",
+        "this_call_body_cycles": 1,
+        "replayed": false,
+        "scope": "source-pinned native software body; not biological or articulated MuJoCo"
+      },
+      "after": {
+        "enabled": true,
+        "body": {
+          "schema": "nasuraya-bounded-body-loop/1",
+          "fixture": "normal",
+          "mode": "bounded",
+          "max_actions": 1,
+          "actions_reserved": 1,
+          "actions_remaining": 0,
+          "completed_cycles": 1,
+          "failed_cycles": 0,
+          "unresolved_running": [],
+          "self_model": {
+            "checkpoint_sha256": "1de2d4a68f95ae80ca9eaac59b704974191d3249235320123aa0fadc3f59ab1f",
+            "revision": 1,
+            "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00",
+            "minimum_state": {
+              "HR": 62.684795675925066,
+              "RR": 14.189130811748338,
+              "energy": 0.9993357964087033,
+              "hydration": 0.9999857878691728,
+              "temperature": 37.00005645895374,
+              "sympathetic": 0.2483259462553279,
+              "parasympathetic": 0.6124985357513969,
+              "muscle_tone": 0.27014282209312834,
+              "fatigue": 0.010858521713712594,
+              "pain": 0.11484637232764255,
+              "arousal": 0.3302059510050769,
+              "valence": 0.0007453319703671135,
+              "posture": "shift",
+              "balance": 1.0,
+              "breath_depth": 1.524705597562529,
+              "sleep_pressure": 0.3503255680596273
+            },
+            "self_location": {
+              "where": "Tadash computational world: X left, Y forward, Z up; metres",
+              "position_m": [
+                0.0004528066340146724,
+                0.0,
+                1.314
+              ],
+              "pose": "shift",
+              "strongest_interoceptive_region": "chest_state",
+              "energy": 0.9993357964087033,
+              "dominant_homeostatic_need": "pain",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "evidence_level": "B"
+            },
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L.",
+            "scope": "existing software body; generated fixture, not biological measurement"
+          },
+          "external_model_api_used": false
+        },
+        "affect": {
+          "joy": 0.46224999625582175,
+          "sadness": 0.0,
+          "contentment": 0.24499999999999997,
+          "excitement": 0.31999407493215853,
+          "fear": 0.0,
+          "frustration": 0.0
+        },
+        "pending": [],
+        "connection": "caller-mediated message bridge; no background listener",
+        "body_kind": "native UnifiedBody/Tadash, not articulated MuJoCo"
+      },
+      "replay_body_cycles": 0
+    },
+    {
+      "fixture": "sleep",
+      "before": {
+        "schema": "nasuraya-bounded-body-loop/1",
+        "fixture": "sleep",
+        "mode": "bounded",
+        "max_actions": 1,
+        "actions_reserved": 0,
+        "actions_remaining": 1,
+        "completed_cycles": 0,
+        "failed_cycles": 0,
+        "unresolved_running": [],
+        "self_model": {
+          "checkpoint_sha256": "86edf09110bf88e9a215ee7dd7d1afa1600e6b1913b509dfe0f997e61d71c4d3",
+          "revision": 0,
+          "simulated_wall_utc": "2026-01-01T00:00:07+00:00",
+          "minimum_state": {
+            "HR": 62.05427845950002,
+            "RR": 14.167210021781528,
+            "energy": 0.9993454504792117,
+            "hydration": 0.9999859908377187,
+            "temperature": 37.000054898365086,
+            "sympathetic": 0.24538650771018136,
+            "parasympathetic": 0.6132716213175111,
+            "muscle_tone": 0.26973625139588886,
+            "fatigue": 0.01069945672828943,
+            "pain": 0.11413104958422383,
+            "arousal": 0.2822793406531386,
+            "valence": 0.0,
+            "posture": "double_support",
+            "balance": 1.0,
+            "breath_depth": 1.5218378694671448,
+            "sleep_pressure": 0.9503209825939987
+          },
+          "self_location": {
+            "where": "Tadash computational world: X left, Y forward, Z up; metres",
+            "position_m": [
+              0.0,
+              0.0,
+              1.314
+            ],
+            "pose": "double_support",
+            "strongest_interoceptive_region": "head_state",
+            "energy": 0.9993454504792117,
+            "dominant_homeostatic_need": "sleep",
+            "next_move_prediction": "available by forecast(action, duration, inputs)",
+            "evidence_level": "B"
+          },
+          "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+          "scope": "existing software body; generated fixture, not biological measurement"
+        },
+        "external_model_api_used": false
+      },
+      "result": {
+        "message_id": "fixture-sleep",
+        "native_receipt": {
+          "decision_id": "dialogue-body:fixture-sleep",
+          "status": "complete",
+          "ledger_status": "complete",
+          "replayed": false,
+          "requested_action": "observe",
+          "actual_action": "observe",
+          "expected_outcome_matched": true,
+          "recalled_feedback_ids": [],
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 6.45314912617323e-11,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 3.608224830031759e-16,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 7.939510865157678e-16
+          },
+          "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+          "self_model_after": {
+            "checkpoint_sha256": "4f0fcbb06b83066d34f3cd07d73baca2f677e832f78c01932a0eae524645e755",
+            "revision": 1,
+            "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00",
+            "minimum_state": {
+              "HR": 62.08803779195108,
+              "RR": 14.187641606721902,
+              "energy": 0.9993358655563357,
+              "hydration": 0.9999857878691728,
+              "temperature": 37.000056175372166,
+              "sympathetic": 0.24584146244485283,
+              "parasympathetic": 0.6133681050850631,
+              "muscle_tone": 0.27013202012938115,
+              "fatigue": 0.010852306110122136,
+              "pain": 0.11484618361297251,
+              "arousal": 0.330188976490617,
+              "valence": 0.0007453319703671135,
+              "posture": "double_support",
+              "balance": 1.0,
+              "breath_depth": 1.5245627093906644,
+              "sleep_pressure": 0.9503255680596272
+            },
+            "self_location": {
+              "where": "Tadash computational world: X left, Y forward, Z up; metres",
+              "position_m": [
+                0.0,
+                0.0,
+                1.314
+              ],
+              "pose": "double_support",
+              "strongest_interoceptive_region": "head_state",
+              "energy": 0.9993358655563357,
+              "dominant_homeostatic_need": "sleep",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "evidence_level": "B"
+            },
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+            "scope": "existing software body; generated fixture, not biological measurement"
+          }
+        },
+        "plan": {
+          "selected_action": "observe",
+          "baseline_selected_action": "observe",
+          "options": [
+            {
+              "action_id": "observe",
+              "score": 1.0950000000000002,
+              "uncertainty": 0.0,
+              "risk_upper": 0.01,
+              "eligible": true,
+              "reasons": [],
+              "components": {
+                "ethical": 1.0,
+                "benefit": 0.5,
+                "cost": 0.0,
+                "harm": 0.01,
+                "disharmony": 0.0,
+                "uncertainty_penalty": 0.0
+              },
+              "missing": [],
+              "budget_exhausted": false,
+              "affective_bonus": 0.013600000000000001,
+              "adjusted_score": 1.1086000000000003,
+              "within_affective_window": true
+            }
+          ],
+          "affect_enabled": true,
+          "tendencies": {
+            "explore": 0.21120000000000003,
+            "repair": 0.0,
+            "verify": 0.34,
+            "consolidate": 0.24
+          },
+          "disposition": "plan_only",
+          "arousal": 0.34
+        },
+        "restrictions": [
+          "sleep_pressure"
+        ],
+        "affect_after": {
+          "joy": 0.46224999625582175,
+          "sadness": 0.0,
+          "contentment": 0.24499999999999997,
+          "excitement": 0.31999407493215853,
+          "fear": 0.33999370461541845,
+          "frustration": 0.0
+        },
+        "reply_fa": "بدن تجمیعی تداش یک چرخهٔ مشاهده اجرا کرد.",
+        "this_call_body_cycles": 1,
+        "replayed": false,
+        "scope": "source-pinned native software body; not biological or articulated MuJoCo"
+      },
+      "after": {
+        "enabled": true,
+        "body": {
+          "schema": "nasuraya-bounded-body-loop/1",
+          "fixture": "sleep",
+          "mode": "bounded",
+          "max_actions": 1,
+          "actions_reserved": 1,
+          "actions_remaining": 0,
+          "completed_cycles": 1,
+          "failed_cycles": 0,
+          "unresolved_running": [],
+          "self_model": {
+            "checkpoint_sha256": "4f0fcbb06b83066d34f3cd07d73baca2f677e832f78c01932a0eae524645e755",
+            "revision": 1,
+            "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00",
+            "minimum_state": {
+              "HR": 62.08803779195108,
+              "RR": 14.187641606721902,
+              "energy": 0.9993358655563357,
+              "hydration": 0.9999857878691728,
+              "temperature": 37.000056175372166,
+              "sympathetic": 0.24584146244485283,
+              "parasympathetic": 0.6133681050850631,
+              "muscle_tone": 0.27013202012938115,
+              "fatigue": 0.010852306110122136,
+              "pain": 0.11484618361297251,
+              "arousal": 0.330188976490617,
+              "valence": 0.0007453319703671135,
+              "posture": "double_support",
+              "balance": 1.0,
+              "breath_depth": 1.5245627093906644,
+              "sleep_pressure": 0.9503255680596272
+            },
+            "self_location": {
+              "where": "Tadash computational world: X left, Y forward, Z up; metres",
+              "position_m": [
+                0.0,
+                0.0,
+                1.314
+              ],
+              "pose": "double_support",
+              "strongest_interoceptive_region": "head_state",
+              "energy": 0.9993358655563357,
+              "dominant_homeostatic_need": "sleep",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "evidence_level": "B"
+            },
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L؛ فشار خواب بالا.",
+            "scope": "existing software body; generated fixture, not biological measurement"
+          },
+          "external_model_api_used": false
+        },
+        "affect": {
+          "joy": 0.46224999625582175,
+          "sadness": 0.0,
+          "contentment": 0.24499999999999997,
+          "excitement": 0.31999407493215853,
+          "fear": 0.33999370461541845,
+          "frustration": 0.0
+        },
+        "pending": [],
+        "connection": "caller-mediated message bridge; no background listener",
+        "body_kind": "native UnifiedBody/Tadash, not articulated MuJoCo"
+      },
+      "replay_body_cycles": 0
+    }
+  ]
+}

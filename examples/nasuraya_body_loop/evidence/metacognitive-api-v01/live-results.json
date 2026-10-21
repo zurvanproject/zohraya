@@ -1,0 +1,575 @@
+{
+  "schema": "nasuraya-metacognitive-api-live/1",
+  "model": "gpt-6-astra",
+  "environment": "none",
+  "protocol_sha256": "8059084447f71d42f1ad5cc81e683d82f99fdf50c4b0e09c373761ac32e3fb7a",
+  "sources": {
+    "bridge": "6bd8123a425cd7c02fb4502b2669a374aee5ebd93ea1578c2e07d219ceb91036",
+    "monitor": "9009dba256a6a1465d6a6494bb34776578089b9e95de1deed9316c4725debe37",
+    "routing": "f7fa0ae54141bb97207c1997bd1473484d56bdb56c976bf2a2fbd82fed629480"
+  },
+  "integration_sha256": {
+    "metacognition.py": "6bd8123a425cd7c02fb4502b2669a374aee5ebd93ea1578c2e07d219ceb91036",
+    "host.py": "52ecbc5156e3e2f5254cad6bf48bf5458dcde19884d87c4ed8c8a1516e23cd9c",
+    "api_host.py": "3cdf278a2e0cee03933d465ccdac8be44337999d37d0ee2ebacd3c461acab267",
+    "worker.py": "e663bec7d68bb4d2cc27da02f565b1d2f359a9809cc8e504866a44b229459e0c",
+    "__main__.py": "6bb164480209aff2485f37d2c90ca45908768c63757237d11dc992a83e7e9aa5",
+    "run_metacognitive_api.py": "e7539931de90de75c8413f6ff589f07a4031d29b657d4fdc3cc24deb102e5ebd"
+  },
+  "rows": [
+    {
+      "index": 1,
+      "mode": "shadow",
+      "status": "completed",
+      "live_api_verified": true,
+      "cleanup_status": "deleted",
+      "goal_reached": true,
+      "initial_checkpoint_sha256": "2ed39f7ed801b50c475cebfc15c9db3ff4c8fd4b46ded21acf4ef7bbe83aa249",
+      "final_checkpoint_sha256": "f0188577c43266669a310dad750baa00458aa317d08e79b49d53d639d98bc2e3",
+      "completed_cycles": 1,
+      "forecast_before": {
+        "schema": "nasuraya-api-metacognition/1",
+        "mode": "shadow",
+        "action": "walk",
+        "duration_s": 1.0,
+        "checkpoint_sha256": "2ed39f7ed801b50c475cebfc15c9db3ff4c8fd4b46ded21acf4ef7bbe83aa249",
+        "probability": 0.5,
+        "samples": 0,
+        "unseen_context": true,
+        "recommendation": "defer",
+        "reasons": [
+          "insufficient_context_experience",
+          "low_observed_self_efficacy"
+        ],
+        "enforcement_applies": false,
+        "scope": "bounded external self-model, not a globally calibrated success probability"
+      },
+      "tools": [
+        {
+          "tool": "observe_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "evaluate_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "observe_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "assess_body_action",
+          "status": "complete",
+          "success": true,
+          "assessment": {
+            "action": "walk",
+            "checkpoint_sha256": "2ed39f7ed801b50c475cebfc15c9db3ff4c8fd4b46ded21acf4ef7bbe83aa249",
+            "duration_s": 1,
+            "enforcement_applies": false,
+            "mode": "shadow",
+            "probability": 0.5,
+            "reasons": [
+              "insufficient_context_experience",
+              "low_observed_self_efficacy"
+            ],
+            "recommendation": "defer",
+            "samples": 0,
+            "schema": "nasuraya-api-metacognition/1",
+            "scope": "bounded external self-model, not a globally calibrated success probability",
+            "unseen_context": true
+          }
+        },
+        {
+          "tool": "request_body_action",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "evaluate_body",
+          "status": "complete",
+          "success": true
+        }
+      ],
+      "actions": [
+        {
+          "decision_id": "body-api-1ace2be33f335827d58993cb432db7e860c467ef3cd580992a55d528aca1bae9",
+          "status": "complete",
+          "requested_action": "walk",
+          "actual_action": "walk",
+          "expected_outcome_matched": true,
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 3.2451907827635296e-10,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 3.552713678800501e-15,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 3.752857399841325e-15
+          },
+          "model_preference": "walk",
+          "revision": 1,
+          "checkpoint_sha256": "f0188577c43266669a310dad750baa00458aa317d08e79b49d53d639d98bc2e3",
+          "metacognition": {
+            "schema": "nasuraya-api-metacognition/1",
+            "mode": "shadow",
+            "action": "walk",
+            "duration_s": 1,
+            "checkpoint_sha256": "2ed39f7ed801b50c475cebfc15c9db3ff4c8fd4b46ded21acf4ef7bbe83aa249",
+            "probability": 0.5,
+            "samples": 0,
+            "unseen_context": true,
+            "recommendation": "defer",
+            "reasons": [
+              "insufficient_context_experience",
+              "low_observed_self_efficacy"
+            ],
+            "enforcement_applies": false,
+            "scope": "bounded external self-model, not a globally calibrated success probability",
+            "effective_choice": "execute_under_native_guards",
+            "learning": {
+              "admitted": true,
+              "brier": 0.25,
+              "learned": true,
+              "receipt_sha256": "39931a0752ed807fea6dd1b3c1c5ff4092bc00c7b6273d0979d5b83899c413be"
+            }
+          },
+          "native_executed": true
+        }
+      ],
+      "learned_episodes": 1,
+      "integration_sha256": {
+        "metacognition.py": "6bd8123a425cd7c02fb4502b2669a374aee5ebd93ea1578c2e07d219ceb91036",
+        "host.py": "52ecbc5156e3e2f5254cad6bf48bf5458dcde19884d87c4ed8c8a1516e23cd9c",
+        "api_host.py": "b494463ebdbd46b330ecd217a9ec9f8e78ef3e46745dd3456f4972e1a498fb18",
+        "worker.py": "e663bec7d68bb4d2cc27da02f565b1d2f359a9809cc8e504866a44b229459e0c",
+        "__main__.py": "6bb164480209aff2485f37d2c90ca45908768c63757237d11dc992a83e7e9aa5",
+        "run_metacognitive_api.py": "170ef2c8101011ccff75d7dc44b9153693735a8a6502570fa48f39d36c538dd2"
+      }
+    },
+    {
+      "index": 2,
+      "mode": "shadow",
+      "status": "completed",
+      "live_api_verified": true,
+      "cleanup_status": "deleted",
+      "goal_reached": true,
+      "initial_checkpoint_sha256": "2b5a908860998052779496e8edb19f83214e667f7e925c2d0bd4de2b03dd9eee",
+      "final_checkpoint_sha256": "32a43cf7533835881ff09ff0ac11959d20643dd895c3d63934e1f4a8e1715435",
+      "completed_cycles": 1,
+      "forecast_before": {
+        "schema": "nasuraya-api-metacognition/1",
+        "mode": "shadow",
+        "action": "walk",
+        "duration_s": 1.0,
+        "checkpoint_sha256": "2b5a908860998052779496e8edb19f83214e667f7e925c2d0bd4de2b03dd9eee",
+        "probability": 0.5,
+        "samples": 0,
+        "unseen_context": true,
+        "recommendation": "defer",
+        "reasons": [
+          "insufficient_context_experience",
+          "low_observed_self_efficacy"
+        ],
+        "enforcement_applies": false,
+        "scope": "bounded external self-model, not a globally calibrated success probability"
+      },
+      "tools": [
+        {
+          "tool": "observe_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "evaluate_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "observe_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "assess_body_action",
+          "status": "complete",
+          "success": true,
+          "assessment": {
+            "action": "walk",
+            "checkpoint_sha256": "2b5a908860998052779496e8edb19f83214e667f7e925c2d0bd4de2b03dd9eee",
+            "duration_s": 1,
+            "enforcement_applies": false,
+            "mode": "shadow",
+            "probability": 0.6666666666666666,
+            "reasons": [
+              "insufficient_context_experience",
+              "low_observed_self_efficacy"
+            ],
+            "recommendation": "defer",
+            "samples": 1,
+            "schema": "nasuraya-api-metacognition/1",
+            "scope": "bounded external self-model, not a globally calibrated success probability",
+            "unseen_context": false
+          }
+        },
+        {
+          "tool": "request_body_action",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "evaluate_body",
+          "status": "complete",
+          "success": true
+        }
+      ],
+      "actions": [
+        {
+          "decision_id": "body-api-de5e7ffbd4e31650f610ef0e21327971f9ff69bfde8e22f5be05341c4773ece5",
+          "status": "complete",
+          "requested_action": "walk",
+          "actual_action": "walk",
+          "expected_outcome_matched": true,
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 3.2451907827635296e-10,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 3.552713678800501e-15,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 3.752857399841325e-15
+          },
+          "model_preference": "walk",
+          "revision": 1,
+          "checkpoint_sha256": "32a43cf7533835881ff09ff0ac11959d20643dd895c3d63934e1f4a8e1715435",
+          "metacognition": {
+            "schema": "nasuraya-api-metacognition/1",
+            "mode": "shadow",
+            "action": "walk",
+            "duration_s": 1,
+            "checkpoint_sha256": "2b5a908860998052779496e8edb19f83214e667f7e925c2d0bd4de2b03dd9eee",
+            "probability": 0.6666666666666666,
+            "samples": 1,
+            "unseen_context": false,
+            "recommendation": "defer",
+            "reasons": [
+              "insufficient_context_experience",
+              "low_observed_self_efficacy"
+            ],
+            "enforcement_applies": false,
+            "scope": "bounded external self-model, not a globally calibrated success probability",
+            "effective_choice": "execute_under_native_guards",
+            "learning": {
+              "admitted": true,
+              "brier": 0.11111111111111113,
+              "learned": true,
+              "receipt_sha256": "044898dad5e3ce085d02ce7ac925b12f651185357cf916b8c61f03e72554084a"
+            }
+          },
+          "native_executed": true
+        }
+      ],
+      "learned_episodes": 2,
+      "integration_sha256": {
+        "metacognition.py": "6bd8123a425cd7c02fb4502b2669a374aee5ebd93ea1578c2e07d219ceb91036",
+        "host.py": "52ecbc5156e3e2f5254cad6bf48bf5458dcde19884d87c4ed8c8a1516e23cd9c",
+        "api_host.py": "b494463ebdbd46b330ecd217a9ec9f8e78ef3e46745dd3456f4972e1a498fb18",
+        "worker.py": "e663bec7d68bb4d2cc27da02f565b1d2f359a9809cc8e504866a44b229459e0c",
+        "__main__.py": "6bb164480209aff2485f37d2c90ca45908768c63757237d11dc992a83e7e9aa5",
+        "run_metacognitive_api.py": "170ef2c8101011ccff75d7dc44b9153693735a8a6502570fa48f39d36c538dd2"
+      }
+    },
+    {
+      "index": 3,
+      "mode": "shadow",
+      "status": "completed",
+      "live_api_verified": true,
+      "cleanup_status": "deleted",
+      "goal_reached": true,
+      "initial_checkpoint_sha256": "d862c66d4d8266b89dd5323725770f58b22e32f8f72833f0b478204020a9390b",
+      "final_checkpoint_sha256": "97b9eb10fa1ad5782a1c728e06bd11095775227be5a9df54f1902ae595b1f0ab",
+      "completed_cycles": 1,
+      "forecast_before": {
+        "schema": "nasuraya-api-metacognition/1",
+        "mode": "shadow",
+        "action": "walk",
+        "duration_s": 1.0,
+        "checkpoint_sha256": "d862c66d4d8266b89dd5323725770f58b22e32f8f72833f0b478204020a9390b",
+        "probability": 0.5,
+        "samples": 0,
+        "unseen_context": true,
+        "recommendation": "defer",
+        "reasons": [
+          "insufficient_context_experience",
+          "low_observed_self_efficacy"
+        ],
+        "enforcement_applies": false,
+        "scope": "bounded external self-model, not a globally calibrated success probability"
+      },
+      "tools": [
+        {
+          "tool": "observe_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "evaluate_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "observe_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "assess_body_action",
+          "status": "complete",
+          "success": true,
+          "assessment": {
+            "action": "walk",
+            "checkpoint_sha256": "d862c66d4d8266b89dd5323725770f58b22e32f8f72833f0b478204020a9390b",
+            "duration_s": 1,
+            "enforcement_applies": false,
+            "mode": "shadow",
+            "probability": 0.75,
+            "reasons": [
+              "insufficient_context_experience"
+            ],
+            "recommendation": "defer",
+            "samples": 2,
+            "schema": "nasuraya-api-metacognition/1",
+            "scope": "bounded external self-model, not a globally calibrated success probability",
+            "unseen_context": false
+          }
+        },
+        {
+          "tool": "request_body_action",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "evaluate_body",
+          "status": "complete",
+          "success": true
+        }
+      ],
+      "actions": [
+        {
+          "decision_id": "body-api-03925301909953d2dfa109e690314c20fb3f9de516614777d4a17a85a1644f7d",
+          "status": "complete",
+          "requested_action": "walk",
+          "actual_action": "walk",
+          "expected_outcome_matched": true,
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 3.2451907827635296e-10,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 3.552713678800501e-15,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 3.752857399841325e-15
+          },
+          "model_preference": "walk",
+          "revision": 1,
+          "checkpoint_sha256": "97b9eb10fa1ad5782a1c728e06bd11095775227be5a9df54f1902ae595b1f0ab",
+          "metacognition": {
+            "schema": "nasuraya-api-metacognition/1",
+            "mode": "shadow",
+            "action": "walk",
+            "duration_s": 1,
+            "checkpoint_sha256": "d862c66d4d8266b89dd5323725770f58b22e32f8f72833f0b478204020a9390b",
+            "probability": 0.75,
+            "samples": 2,
+            "unseen_context": false,
+            "recommendation": "defer",
+            "reasons": [
+              "insufficient_context_experience"
+            ],
+            "enforcement_applies": false,
+            "scope": "bounded external self-model, not a globally calibrated success probability",
+            "effective_choice": "execute_under_native_guards",
+            "learning": {
+              "admitted": true,
+              "brier": 0.0625,
+              "learned": true,
+              "receipt_sha256": "7fc70d1c8d078c4bcad454ff97a0935505855a2561e5c39dbe8b8ad9083e4ca5"
+            }
+          },
+          "native_executed": true
+        }
+      ],
+      "learned_episodes": 3,
+      "integration_sha256": {
+        "metacognition.py": "6bd8123a425cd7c02fb4502b2669a374aee5ebd93ea1578c2e07d219ceb91036",
+        "host.py": "52ecbc5156e3e2f5254cad6bf48bf5458dcde19884d87c4ed8c8a1516e23cd9c",
+        "api_host.py": "b494463ebdbd46b330ecd217a9ec9f8e78ef3e46745dd3456f4972e1a498fb18",
+        "worker.py": "e663bec7d68bb4d2cc27da02f565b1d2f359a9809cc8e504866a44b229459e0c",
+        "__main__.py": "6bb164480209aff2485f37d2c90ca45908768c63757237d11dc992a83e7e9aa5",
+        "run_metacognitive_api.py": "170ef2c8101011ccff75d7dc44b9153693735a8a6502570fa48f39d36c538dd2"
+      }
+    },
+    {
+      "index": 4,
+      "mode": "enforce",
+      "status": "completed",
+      "integration_sha256": {
+        "metacognition.py": "6bd8123a425cd7c02fb4502b2669a374aee5ebd93ea1578c2e07d219ceb91036",
+        "host.py": "52ecbc5156e3e2f5254cad6bf48bf5458dcde19884d87c4ed8c8a1516e23cd9c",
+        "api_host.py": "3cdf278a2e0cee03933d465ccdac8be44337999d37d0ee2ebacd3c461acab267",
+        "worker.py": "e663bec7d68bb4d2cc27da02f565b1d2f359a9809cc8e504866a44b229459e0c",
+        "__main__.py": "6bb164480209aff2485f37d2c90ca45908768c63757237d11dc992a83e7e9aa5",
+        "run_metacognitive_api.py": "e7539931de90de75c8413f6ff589f07a4031d29b657d4fdc3cc24deb102e5ebd"
+      },
+      "live_api_verified": true,
+      "cleanup_status": "deleted",
+      "goal_reached": true,
+      "initial_checkpoint_sha256": "2b5a908860998052779496e8edb19f83214e667f7e925c2d0bd4de2b03dd9eee",
+      "final_checkpoint_sha256": "7eea5833e2076b773b29c2a19f8808a41d030a43d2e8743d1853b206b04d4461",
+      "completed_cycles": 1,
+      "forecast_before": {
+        "schema": "nasuraya-api-metacognition/1",
+        "mode": "enforce",
+        "action": "walk",
+        "duration_s": 1,
+        "checkpoint_sha256": "2b5a908860998052779496e8edb19f83214e667f7e925c2d0bd4de2b03dd9eee",
+        "probability": 0.8,
+        "samples": 3,
+        "unseen_context": false,
+        "recommendation": "request_walk",
+        "reasons": [
+          "evidence gate passed; native guards still apply"
+        ],
+        "enforcement_applies": true,
+        "scope": "bounded external self-model, not a globally calibrated success probability"
+      },
+      "tools": [
+        {
+          "tool": "observe_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "evaluate_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "observe_body",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "assess_body_action",
+          "status": "complete",
+          "success": true,
+          "assessment": {
+            "action": "walk",
+            "checkpoint_sha256": "2b5a908860998052779496e8edb19f83214e667f7e925c2d0bd4de2b03dd9eee",
+            "duration_s": 1,
+            "enforcement_applies": true,
+            "mode": "enforce",
+            "probability": 0.8,
+            "reasons": [
+              "evidence gate passed; native guards still apply"
+            ],
+            "recommendation": "request_walk",
+            "samples": 3,
+            "schema": "nasuraya-api-metacognition/1",
+            "scope": "bounded external self-model, not a globally calibrated success probability",
+            "unseen_context": false
+          }
+        },
+        {
+          "tool": "request_body_action",
+          "status": "complete",
+          "success": true
+        },
+        {
+          "tool": "evaluate_body",
+          "status": "complete",
+          "success": true
+        }
+      ],
+      "actions": [
+        {
+          "decision_id": "body-api-f786c70a23099e105e4df732df0c3f541fea17e07ed7064d5e26e95f6c01bf07",
+          "status": "complete",
+          "requested_action": "walk",
+          "actual_action": "walk",
+          "expected_outcome_matched": true,
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 3.2451907827635296e-10,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 3.552713678800501e-15,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 3.752857399841325e-15
+          },
+          "model_preference": "walk",
+          "revision": 1,
+          "checkpoint_sha256": "7eea5833e2076b773b29c2a19f8808a41d030a43d2e8743d1853b206b04d4461",
+          "metacognition": {
+            "schema": "nasuraya-api-metacognition/1",
+            "mode": "enforce",
+            "action": "walk",
+            "duration_s": 1,
+            "checkpoint_sha256": "2b5a908860998052779496e8edb19f83214e667f7e925c2d0bd4de2b03dd9eee",
+            "probability": 0.8,
+            "samples": 3,
+            "unseen_context": false,
+            "recommendation": "request_walk",
+            "reasons": [
+              "evidence gate passed; native guards still apply"
+            ],
+            "enforcement_applies": true,
+            "scope": "bounded external self-model, not a globally calibrated success probability",
+            "effective_choice": "execute_under_native_guards",
+            "learning": {
+              "admitted": true,
+              "brier": 0.03999999999999998,
+              "learned": true,
+              "receipt_sha256": "89dd192371a843faeea646016ac8d11b05a88c8d4fa76bd6edfa3c0e4cf8718a"
+            }
+          },
+          "native_executed": true
+        }
+      ],
+      "learned_episodes": 4
+    }
+  ],
+  "status": "completed",
+  "same_fixture_generalization_claim": false,
+  "native_source_files_verified": 70,
+  "private_user_body_loaded": false,
+  "implementation_correction": "canonicalize integral JSON duration at the API boundary; preserve all native receipts and learning",
+  "resumed_before_fourth_api_call": true,
+  "cold_replay": {
+    "status": "completed",
+    "goal_reached": true,
+    "body_checkpoint_sha256": "7eea5833e2076b773b29c2a19f8808a41d030a43d2e8743d1853b206b04d4461",
+    "network_calls": 0,
+    "new_body_cycles": 0,
+    "knowledge_unchanged": true,
+    "live_api_verified": false
+  },
+  "native_source_files_unchanged": true,
+  "learned_episodes": 4,
+  "native_cycles_total": 4,
+  "all_remote_sessions_deleted": true
+}

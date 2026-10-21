@@ -1,0 +1,784 @@
+{
+  "schema": "nasuraya.unified-verification/1",
+  "date": "2026-10-21",
+  "scope": "Public sources and fresh synthetic fixtures; no private/live state",
+  "modules": [
+    {
+      "module": "continuity.test_gate",
+      "exit_code": 0,
+      "seconds": 0.12,
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "module": "continuity_host.test_cadence",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 15,
+      "skipped": 0,
+      "seconds": 0.13,
+      "evidence_run": "unified-host-tests"
+    },
+    {
+      "module": "continuity_host.test_host",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 10,
+      "skipped": 0,
+      "seconds": 0.38,
+      "evidence_run": "unified-host-tests"
+    },
+    {
+      "module": "examples.nasuraya_aesthetics.test_appraisal",
+      "exit_code": 0,
+      "seconds": 0.06,
+      "tests": 16,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_aesthetics.test_integration",
+      "exit_code": 0,
+      "seconds": 27.73,
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_affect.test_articulated_dialogue",
+      "exit_code": 0,
+      "seconds": 1.02,
+      "tests": 14,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_affect.test_body_dialogue",
+      "exit_code": 0,
+      "seconds": 29.77,
+      "tests": 11,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_affect.test_engine",
+      "exit_code": 0,
+      "seconds": 0.31,
+      "tests": 13,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_affect.test_workshop",
+      "exit_code": 0,
+      "seconds": 0.47,
+      "tests": 11,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_affect_research.test_appraisal",
+      "exit_code": 0,
+      "seconds": 0.06,
+      "tests": 20,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_affect_research.test_native",
+      "exit_code": 0,
+      "seconds": 4.94,
+      "tests": 12,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_agent_loop.tests.test_agents_api",
+      "exit_code": 0,
+      "seconds": 0.06,
+      "tests": 22,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_agent_loop.tests.test_guided",
+      "exit_code": 0,
+      "seconds": 0.12,
+      "tests": 6,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_agent_loop.tests.test_loop",
+      "exit_code": 0,
+      "seconds": 0.19,
+      "tests": 17,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_agent_loop.tests.test_loopback",
+      "profile": "sdk",
+      "exit_code": 0,
+      "tests": 6,
+      "skipped": 0,
+      "seconds": 4.4,
+      "evidence_run": "unified-sdk-tests"
+    },
+    {
+      "module": "examples.nasuraya_agent_loop.tests.test_preflight",
+      "exit_code": 0,
+      "seconds": 0.1,
+      "tests": 5,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_agent_loop.tests.test_sdk_transport",
+      "profile": "sdk",
+      "exit_code": 0,
+      "tests": 4,
+      "skipped": 0,
+      "seconds": 1.43,
+      "evidence_run": "unified-sdk-tests"
+    },
+    {
+      "module": "examples.nasuraya_anatomy_audit.test_audit",
+      "exit_code": 0,
+      "seconds": 0.2,
+      "tests": 5,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.deployment.test_prepare_host",
+      "exit_code": 0,
+      "seconds": 0.07,
+      "tests": 2,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_adaptive_memory",
+      "exit_code": 0,
+      "seconds": 58.34,
+      "tests": 19,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_api_host",
+      "exit_code": 0,
+      "seconds": 63.76,
+      "tests": 20,
+      "skipped": 0,
+      "supplement": "Previously skipped SDK case rerun and passed after installing SDK; no external requests."
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_api_recovery",
+      "exit_code": 0,
+      "seconds": 111.88,
+      "tests": 21,
+      "skipped": 0,
+      "supplement": "Previously skipped SDK case rerun and passed after installing SDK; no external requests."
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_body_loop",
+      "exit_code": 0,
+      "seconds": 34.17,
+      "tests": 16,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_care",
+      "exit_code": 0,
+      "seconds": 86.8,
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_closed_loop",
+      "exit_code": 0,
+      "seconds": 33.48,
+      "tests": 12,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_continuation",
+      "exit_code": 0,
+      "seconds": 67.56,
+      "tests": 14,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_creation_reconciliation",
+      "exit_code": 0,
+      "seconds": 25.29,
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_decision_context",
+      "exit_code": 0,
+      "seconds": 46.92,
+      "tests": 8,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_experience",
+      "exit_code": 0,
+      "seconds": 52.33,
+      "tests": 8,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_metacognition",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 13,
+      "skipped": 0,
+      "seconds": 48.95,
+      "evidence_run": "unified-combination-tests"
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_native_preflight",
+      "exit_code": 0,
+      "seconds": 21.93,
+      "tests": 9,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_recovery",
+      "exit_code": 0,
+      "seconds": 40.95,
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_scheduler",
+      "exit_code": 0,
+      "seconds": 141.19,
+      "tests": 24,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_self_maintenance",
+      "exit_code": 0,
+      "seconds": 0.08,
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_sleep_integration",
+      "exit_code": 0,
+      "seconds": 90.5,
+      "tests": 12,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_body_mirror.test_mirror",
+      "exit_code": 0,
+      "seconds": 34.01,
+      "tests": 3,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_causal_probe.test_study",
+      "exit_code": 0,
+      "seconds": 0.44,
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_genome.test_chromosomes",
+      "exit_code": 0,
+      "seconds": 0.14,
+      "tests": 16,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_genome.test_design_cycle",
+      "exit_code": 0,
+      "seconds": 36.14,
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_genome.test_design_value_review",
+      "exit_code": 0,
+      "seconds": 11.16,
+      "tests": 4,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_genome.test_foot_contact",
+      "exit_code": 0,
+      "seconds": 5.29,
+      "tests": 9,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_genome.test_history",
+      "exit_code": 0,
+      "seconds": 1.07,
+      "tests": 8,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_genome.test_physics_trial",
+      "exit_code": 0,
+      "seconds": 6.88,
+      "tests": 7,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_genome.test_traits",
+      "exit_code": 0,
+      "seconds": 0.45,
+      "tests": 13,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.articulated.test_balance",
+      "exit_code": 0,
+      "seconds": 0.76,
+      "tests": 3,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.articulated.test_checkpoint",
+      "exit_code": 0,
+      "seconds": 0.76,
+      "tests": 5,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.articulated.test_model",
+      "exit_code": 0,
+      "seconds": 0.71,
+      "tests": 4,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.articulated.test_stepping",
+      "exit_code": 0,
+      "seconds": 0.65,
+      "tests": 2,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.test_adapters",
+      "exit_code": 0,
+      "seconds": 18.5,
+      "tests": 19,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.test_body_observer",
+      "exit_code": 0,
+      "seconds": 23.47,
+      "tests": 13,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.test_confidence",
+      "exit_code": 0,
+      "seconds": 48.65,
+      "tests": 14,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.test_controller",
+      "exit_code": 0,
+      "seconds": 69.57,
+      "tests": 23,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.test_dream_ten",
+      "exit_code": 0,
+      "seconds": 0.05,
+      "tests": 3,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.test_dream_ten_native",
+      "exit_code": 0,
+      "seconds": 3.53,
+      "tests": 8,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.test_running_balance",
+      "exit_code": 0,
+      "seconds": 2.24,
+      "tests": 5,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_research.test_transfer",
+      "exit_code": 0,
+      "seconds": 31.39,
+      "tests": 9,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_security.test_guarded_cycle",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 18,
+      "skipped": 0,
+      "seconds": 1.94,
+      "evidence_run": "unified-legacy-tests"
+    },
+    {
+      "module": "examples.nasuraya_security.test_sentinel",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 14,
+      "skipped": 0,
+      "seconds": 0.31,
+      "evidence_run": "unified-legacy-tests"
+    },
+    {
+      "module": "examples.nasuraya_security.test_visual_status",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 17,
+      "skipped": 0,
+      "seconds": 0.16,
+      "evidence_run": "unified-legacy-tests"
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_decision_relevance",
+      "exit_code": 0,
+      "seconds": 65.46,
+      "tests": 12,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_duration_transfer",
+      "exit_code": 0,
+      "seconds": 57.91,
+      "tests": 8,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_embodied_learning",
+      "exit_code": 0,
+      "seconds": 70.17,
+      "tests": 12,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_energy",
+      "exit_code": 0,
+      "seconds": 0.34,
+      "tests": 11,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_experiential_sprint",
+      "exit_code": 0,
+      "seconds": 0.07,
+      "tests": 4,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_goal_bridge",
+      "exit_code": 0,
+      "seconds": 21.73,
+      "tests": 4,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_metacognitive_control",
+      "exit_code": 0,
+      "seconds": 72.45,
+      "tests": 17,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_monitor",
+      "exit_code": 0,
+      "seconds": 41.88,
+      "tests": 13,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_planning",
+      "exit_code": 0,
+      "seconds": 107.95,
+      "tests": 13,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_regulation",
+      "exit_code": 0,
+      "seconds": 108.59,
+      "tests": 13,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_self_model.test_route_trial",
+      "exit_code": 0,
+      "seconds": 68.25,
+      "tests": 6,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_star_motion.test_economical_support",
+      "exit_code": 0,
+      "seconds": 0.42,
+      "tests": 6,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_star_motion.test_horizon_support",
+      "exit_code": 0,
+      "seconds": 1.31,
+      "tests": 6,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_star_motion.test_motion_goal",
+      "exit_code": 0,
+      "seconds": 0.08,
+      "tests": 5,
+      "skipped": 5
+    },
+    {
+      "module": "examples.nasuraya_star_motion.test_motion_recovery",
+      "exit_code": 0,
+      "seconds": 22.94,
+      "tests": 30,
+      "skipped": 15
+    },
+    {
+      "module": "examples.nasuraya_star_motion.test_reverse_closure",
+      "exit_code": 0,
+      "seconds": 0.13,
+      "tests": 6,
+      "skipped": 3
+    },
+    {
+      "module": "examples.nasuraya_star_motion.test_reverse_transfer",
+      "exit_code": 0,
+      "seconds": 0.11,
+      "tests": 5,
+      "skipped": 3
+    },
+    {
+      "module": "examples.nasuraya_star_motion.test_spiral",
+      "exit_code": 0,
+      "seconds": 4.44,
+      "tests": 6,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_star_motion.test_time_mining",
+      "exit_code": 0,
+      "seconds": 0.53,
+      "tests": 5,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_tissue_lab.test_tissue_lab",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 12,
+      "skipped": 0,
+      "seconds": 0.12,
+      "evidence_run": "unified-legacy-tests"
+    },
+    {
+      "module": "nasuraya_continuity_kit.test_local_job",
+      "exit_code": 0,
+      "seconds": 0.3,
+      "tests": 20,
+      "skipped": 0
+    },
+    {
+      "module": "nasuraya_continuity_kit.test_store",
+      "exit_code": 0,
+      "seconds": 0.18,
+      "tests": 13,
+      "skipped": 0
+    },
+    {
+      "module": "project_fund.test_planner",
+      "exit_code": 0,
+      "seconds": 0.07,
+      "tests": 7,
+      "skipped": 0
+    },
+    {
+      "module": "services.replay_audit.test_audit",
+      "exit_code": 0,
+      "seconds": 0.09,
+      "tests": 10,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_language_adapter.test_adapter",
+      "profile": "tensor",
+      "exit_code": 0,
+      "tests": 6,
+      "skipped": 0,
+      "seconds": 5.31,
+      "evidence_run": "unified-tensor-tests"
+    },
+    {
+      "module": "examples.nasuraya_language_body.test_body_language",
+      "profile": "tensor",
+      "exit_code": 0,
+      "tests": 10,
+      "skipped": 0,
+      "seconds": 9.99,
+      "evidence_run": "unified-tensor-tests"
+    },
+    {
+      "module": "examples.nasuraya_language_choice.test_choice",
+      "profile": "tensor",
+      "exit_code": 0,
+      "tests": 7,
+      "skipped": 0,
+      "seconds": 11.6,
+      "evidence_run": "unified-tensor-tests"
+    },
+    {
+      "module": "examples.nasuraya_language_transfer.test_transfer",
+      "profile": "tensor",
+      "exit_code": 0,
+      "tests": 7,
+      "skipped": 0,
+      "seconds": 6.86,
+      "evidence_run": "unified-tensor-tests"
+    },
+    {
+      "module": "examples.nasuraya_lm_internals.test_probe",
+      "profile": "tensor",
+      "exit_code": 0,
+      "tests": 7,
+      "skipped": 0,
+      "seconds": 4.85,
+      "evidence_run": "unified-tensor-tests"
+    },
+    {
+      "module": "examples.nasuraya_research.test_adaptive_support",
+      "profile": "tensor",
+      "exit_code": 0,
+      "tests": 1,
+      "skipped": 0,
+      "seconds": 0.09,
+      "evidence_run": "unified-tensor-tests"
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_unified_combinations",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 3,
+      "skipped": 0,
+      "seconds": 11.95,
+      "evidence_run": "unified-combination-tests"
+    },
+    {
+      "module": "nasuraya.test_integration",
+      "tests": 5,
+      "skipped": 0,
+      "exit_code": 0,
+      "seconds": 4.083
+    }
+  ],
+  "summary": {
+    "discovered_tests": 952,
+    "passed": 926,
+    "skipped": 26,
+    "failed_modules": 0,
+    "blocked_modules": 1,
+    "blocked_tests": 7,
+    "total_passed_including_native": 1025
+  },
+  "blocked": [
+    {
+      "module": "examples.nasuraya_star_motion.test_coordinated_support",
+      "tests": 7,
+      "reason": "NASURAYA_FAILURE_FIXTURE requires a private historical pre-failure checkpoint; not loaded or published",
+      "observed_exit_code": 5
+    }
+  ],
+  "historical_fixture_skips": {
+    "NASURAYA_CHAIN_SOURCE": 5,
+    "NASURAYA_RECOVERY_SOURCE": 15,
+    "NASURAYA_REVERSE_FIXTURE": 3,
+    "NASURAYA_TRANSFER_FIXTURE": 3
+  },
+  "initial_environment_failures": [
+    {
+      "module": "continuity_host.test_cadence",
+      "exit_code": 1,
+      "seconds": 0.22,
+      "tests": 0,
+      "skipped": 0
+    },
+    {
+      "module": "continuity_host.test_host",
+      "exit_code": 1,
+      "seconds": 0.22,
+      "tests": 0,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_security.test_guarded_cycle",
+      "exit_code": 1,
+      "seconds": 0.07,
+      "tests": 1,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_security.test_sentinel",
+      "exit_code": 1,
+      "seconds": 0.07,
+      "tests": 1,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_security.test_visual_status",
+      "exit_code": 1,
+      "seconds": 0.07,
+      "tests": 1,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_star_motion.test_coordinated_support",
+      "exit_code": 5,
+      "seconds": 0.08,
+      "tests": 0,
+      "skipped": 0
+    },
+    {
+      "module": "examples.nasuraya_tissue_lab.test_tissue_lab",
+      "exit_code": 1,
+      "seconds": 0.05,
+      "tests": 1,
+      "skipped": 0
+    }
+  ],
+  "resolutions": [
+    "Pinned host source checkout supplied at 7aaee60198b50246d90242d5155d3e3736882792",
+    "Legacy sibling imports isolated through unified launcher",
+    "SDK installed; ten transport and two body SDK cases rerun offline"
+  ],
+  "native_harness": {
+    "unit_tests": 89,
+    "decision_core_tests": 10,
+    "passed": 99,
+    "public_source_files": 70,
+    "canonical_state_modified": false,
+    "empirical_validation": false
+  },
+  "additional_checks": {
+    "stdlib_observer": {
+      "tests": 32,
+      "passed": 21,
+      "expected_optional_dependency_skips": 11
+    },
+    "reflection": {
+      "synthetic_scenarios": 10,
+      "baseline_correct": 5,
+      "reflection_without_memory_correct": 9,
+      "reflection_with_memory_correct": 10,
+      "general_capability_benchmark": false
+    }
+  },
+  "limitations": [
+    "33 historical-fixture tests remain unexecuted (26 skipped + 7 blocked); full all-profile command is not a clean pass without those private fixtures.",
+    "Full optional upstream training/UI dependency stack was not validated; only relevant custom WBC preparation and project tests were run.",
+    "No live model API, hardware, scheduler activation or checkpoint migration."
+  ]
+}

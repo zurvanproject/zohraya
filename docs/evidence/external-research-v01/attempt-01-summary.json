@@ -1,0 +1,137 @@
+{
+  "automatic_activation": false,
+  "canonical_user_state_used": false,
+  "cold_decision_resume_equal": true,
+  "cuda_used": false,
+  "duplicate_event_counts_once": true,
+  "geometry_checks": 12,
+  "held_out_memory_unchanged": true,
+  "max_roundtrip_error_m": 2.7755575615628914e-17,
+  "model_api_calls": 0,
+  "monitoring": {
+    "control": {
+      "acc": 0.25,
+      "kc_rate": 50.0,
+      "ki_rate": 0.0,
+      "n_correct": 8,
+      "n_incorrect": 24,
+      "samples": 32,
+      "scope": "native walk-admission monitoring/control adaptation; not MMB replication",
+      "wd": 50.0
+    },
+    "memory_disabled": {
+      "acc": 0.25,
+      "kc_rate": 0.0,
+      "ki_rate": 0.0,
+      "n_correct": 8,
+      "n_incorrect": 24,
+      "samples": 32,
+      "scope": "native walk-admission monitoring/control adaptation; not MMB replication",
+      "wd": 0.0
+    },
+    "native_only": {
+      "acc": 0.25,
+      "kc_rate": 100.0,
+      "ki_rate": 100.0,
+      "n_correct": 8,
+      "n_incorrect": 24,
+      "samples": 32,
+      "scope": "native walk-admission monitoring/control adaptation; not MMB replication",
+      "wd": 0.0
+    },
+    "report_only": {
+      "acc": 0.25,
+      "kc_rate": 100.0,
+      "ki_rate": 100.0,
+      "n_correct": 8,
+      "n_incorrect": 24,
+      "samples": 32,
+      "scope": "native walk-admission monitoring/control adaptation; not MMB replication",
+      "wd": 0.0
+    }
+  },
+  "native_cases": 32,
+  "native_policy_trials": 128,
+  "native_python_sources_unchanged": true,
+  "predicted_action_vectors_executed": 0,
+  "protocol_sha256": "e60deb941e438fdf9c82814971b5ef6c1f8bdd44c6b78f64c6f45b49b7ce90b6",
+  "python": "3.12.14",
+  "schema": "nasuraya-external-research-pilot/1",
+  "scope": "new synthetic-body integration pilot, not replication of LIBERO, MMB, RoboDojo, physical robot performance or subjective experience",
+  "sensory_comparisons": [
+    {
+      "improved_reconstruction": true,
+      "posterior_mean_q_mse": 0.017857836006442085,
+      "prior_mean_q_mse": 0.019376033465960063,
+      "training": {
+        "action_loss_weight": 0.0,
+        "features": [
+          "energy",
+          "hydration",
+          "fatigue",
+          "pain",
+          "sleep_pressure",
+          "balance"
+        ],
+        "loss_before": 0.7049657106399536,
+        "loss_last": 0.014524547383189201,
+        "scope": "native synthetic sensory observer adaptation, not original PredVLA model",
+        "seed": 17,
+        "steps": 64,
+        "weight_sha256": "ba03896400061a619b75dcc552e31846b2f9438b7af551cfdd36c94107010e47"
+      }
+    },
+    {
+      "improved_reconstruction": true,
+      "posterior_mean_q_mse": 0.019134076341288164,
+      "prior_mean_q_mse": 0.01959114415512886,
+      "training": {
+        "action_loss_weight": 0.0,
+        "features": [
+          "energy",
+          "hydration",
+          "fatigue",
+          "pain",
+          "sleep_pressure",
+          "balance"
+        ],
+        "loss_before": 0.6724493503570557,
+        "loss_last": 0.014351999387145042,
+        "scope": "native synthetic sensory observer adaptation, not original PredVLA model",
+        "seed": 31,
+        "steps": 64,
+        "weight_sha256": "61d28ebec7fc41f8dab99e8285888782fe57e87246633c39f27c33728f67ed11"
+      }
+    },
+    {
+      "improved_reconstruction": true,
+      "posterior_mean_q_mse": 0.018990590499015525,
+      "prior_mean_q_mse": 0.019571025521145202,
+      "training": {
+        "action_loss_weight": 0.0,
+        "features": [
+          "energy",
+          "hydration",
+          "fatigue",
+          "pain",
+          "sleep_pressure",
+          "balance"
+        ],
+        "loss_before": 0.5361604690551758,
+        "loss_last": 0.0143996337428689,
+        "scope": "native synthetic sensory observer adaptation, not original PredVLA model",
+        "seed": 53,
+        "steps": 64,
+        "weight_sha256": "4d1304fcfdff389851b8123d25bb68d255a8389f5b609fce9ab53f648b095370"
+      }
+    }
+  ],
+  "sensory_interpretation": "same-step sensory reconstruction before/after latent inference, not next-step forecast accuracy",
+  "sensory_native_cycles": 32,
+  "sensory_train_test_hashes_disjoint": true,
+  "tensor_status": "executed_cpu",
+  "torch": "2.14.1+cpu",
+  "training_test_hashes_disjoint": true,
+  "trajectory_turns": 128,
+  "upstream_lock_sha256": "db7c4e16ba0a181f9fbbcc837035457f78b06a9631b92863216b7ffe1c9f8e88"
+}

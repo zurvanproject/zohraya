@@ -1,0 +1,56 @@
+{
+  "schema": "nasuraya-body-informed-language/4",
+  "seed": 2026101604,
+  "cpu_threads": 4,
+  "steps": 96,
+  "batch_size": 4,
+  "learning_rate": 0.0005,
+  "max_length": 384,
+  "training_sleep_pressure": 0.29,
+  "held_out_sleep_pressure": 0.33,
+  "training_durations_s": [
+    0.2,
+    0.4
+  ],
+  "held_out_durations_s": [
+    0.6,
+    0.9
+  ],
+  "training_cases": 48,
+  "held_out_cases": 40,
+  "pain_region": "forefoot_L",
+  "regional_features": [
+    "forefoot_L",
+    "dorsal_foot_L",
+    "forefoot_R",
+    "dorsal_foot_R"
+  ],
+  "parent_adapter_sha256": "c1b88b4a842b7c78d7b53072228514b45389a3abb714d9592e82339c469149bf",
+  "choice_adapter_sha256": "aaf0c1f85dad3f3cc6985132de715c52d69d4a2de18d96a7ace70450560d7525",
+  "parent_threshold": 0.3299630433320999,
+  "primary_threshold": 0.5,
+  "primary": "trained_enriched",
+  "training": "96 fixed balanced two-completion choice-loss steps, warm start from choice_balanced; label tokens only, no EOS; no hyperparameter/threshold selection on new outcomes",
+  "comparators": [
+    "parent_calibrated_legacy",
+    "choice_frozen_legacy",
+    "choice_frozen_enriched",
+    "audit_preflight",
+    "always_admit",
+    "always_defer"
+  ],
+  "promotion": {
+    "max_false_admits": 0,
+    "minimum_admit_recall": 0.95,
+    "minimum_defer_recall": 0.95,
+    "require_strict_accuracy_gain_over_parent": true,
+    "require_strict_accuracy_gain_over_frozen_enriched": true
+  },
+  "fixture": "independent declared synthetic states; v0.3 initializer synchronizes current sensory raw, clears stale last frame, retains warmed filters/clocks/frame count; no exertion, injury or recovery history fabricated",
+  "input_scope": "pre-action observed aggregate fatigue/pain, left/right leg fatigue, four named foot slow-pain proxies, supplied per-foot friction/default native 0.6, duration, sleep and audit restriction words; no future outcomes",
+  "label": "native selected action is walk and physical_model_valid is true; admission only, not route completion",
+  "split": "fixed authored specifications and disjoint durations/sleep pressures; reject shared enriched/legacy prompts and initial native hashes across training and held-out; all labels from native receipts",
+  "fresh_test": "all model/comparator predictions persisted before first held-out native outcome; no reruns or automatic tuning",
+  "authority": "offline local LoRA only; no ChatGPT or API model weights changed, no live API, no native equations or identity changes, no automatic advisor binding",
+  "scope": "one source-pinned authored software-body family and one seed; numeric grounding or broad reasoning is not established by admission accuracy"
+}

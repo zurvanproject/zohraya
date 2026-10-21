@@ -1,0 +1,14 @@
+{
+  "case": "declared_near_threshold_fixture",
+  "initial_sleep_pressure": 0.6501,
+  "final_sleep_pressure": 0.649441263979809,
+  "actions": [
+    "sleep",
+    "walk"
+  ],
+  "recovery_goal_complete": true,
+  "cycle_goal_complete": true,
+  "actions_on_terminal_reopen": 0,
+  "model_calls": 0,
+  "config_preserved": true
+}

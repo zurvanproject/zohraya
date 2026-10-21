@@ -1,0 +1,26 @@
+test_actual_roborsi_projection_counts_once_and_has_no_invented_cost (examples.nasuraya_research.test_adapters.IntegrationChecks.test_actual_roborsi_projection_counts_once_and_has_no_invented_cost) ... ok
+test_changed_run_or_out_of_order_event_rejected (examples.nasuraya_research.test_adapters.IntegrationChecks.test_changed_run_or_out_of_order_event_rejected) ... ok
+test_conflicting_event_is_rejected_instead_of_silently_deduplicated (examples.nasuraya_research.test_adapters.IntegrationChecks.test_conflicting_event_is_rejected_instead_of_silently_deduplicated) ... ok
+test_exact_upstream_inventory_and_four_projects (examples.nasuraya_research.test_adapters.IntegrationChecks.test_exact_upstream_inventory_and_four_projects) ... ok
+test_floor_and_ceiling_delta_stay_undefined (examples.nasuraya_research.test_adapters.IntegrationChecks.test_floor_and_ceiling_delta_stay_undefined) ... ok
+test_model_usage_or_unknown_events_cannot_be_fabricated (examples.nasuraya_research.test_adapters.IntegrationChecks.test_model_usage_or_unknown_events_cannot_be_fabricated) ... ok
+test_modified_source_fails_before_import (examples.nasuraya_research.test_adapters.IntegrationChecks.test_modified_source_fails_before_import) ... ok
+test_rehashed_changed_lock_is_not_a_new_trust_baseline (examples.nasuraya_research.test_adapters.IntegrationChecks.test_rehashed_changed_lock_is_not_a_new_trust_baseline) ... ok
+test_selective_withdrawal_and_unselective_baselines (examples.nasuraya_research.test_adapters.IntegrationChecks.test_selective_withdrawal_and_unselective_baselines) ... ok
+test_unknown_outcome_and_invalid_decision_are_not_scored_as_failure (examples.nasuraya_research.test_adapters.IntegrationChecks.test_unknown_outcome_and_invalid_decision_are_not_scored_as_failure) ... ok
+test_upstream_symlink_is_rejected (examples.nasuraya_research.test_adapters.IntegrationChecks.test_upstream_symlink_is_rejected) ... ok
+test_fixed_seed_model_training_is_reproducible (examples.nasuraya_research.test_adapters.TensorChecks.test_fixed_seed_model_training_is_reproducible) ... ok
+test_invalid_frame_yaw_rejected (examples.nasuraya_research.test_adapters.TensorChecks.test_invalid_frame_yaw_rejected) ... /workspace/scratch/cd8d12945291/research-env/lib/python3.12/site-packages/torch/jit/_script.py:1491: FutureWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+ok
+test_json_weight_restore_preserves_inference_and_rejects_damage (examples.nasuraya_research.test_adapters.TensorChecks.test_json_weight_restore_preserves_inference_and_rejects_damage) ... ok
+test_mjlab_coordinate_conversion_has_independent_known_rotation (examples.nasuraya_research.test_adapters.TensorChecks.test_mjlab_coordinate_conversion_has_independent_known_rotation) ... ok
+test_predictive_limits_and_invalid_sensor_values (examples.nasuraya_research.test_adapters.TensorChecks.test_predictive_limits_and_invalid_sensor_values) ... ok
+test_predvla_training_and_latent_inference_have_no_actuation (examples.nasuraya_research.test_adapters.TensorChecks.test_predvla_training_and_latent_inference_have_no_actuation) ... ok
+test_sensory_sample_has_no_future_label_and_cannot_advance_body (examples.nasuraya_research.test_adapters.TensorChecks.test_sensory_sample_has_no_future_label_and_cannot_advance_body) ... ok
+test_zero_delta_pose_uses_mjlab_fix_without_nan (examples.nasuraya_research.test_adapters.TensorChecks.test_zero_delta_pose_uses_mjlab_fix_without_nan) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 20.430s
+
+OK

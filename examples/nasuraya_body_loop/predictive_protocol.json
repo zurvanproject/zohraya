@@ -1,0 +1,92 @@
+{
+  "schema": "nasuraya-predictive-evaluation/1",
+  "scope": "deterministic synthetic UnifiedBody; conditional one-cycle forecasts",
+  "frozen_algorithm": {
+    "alpha": 0.5,
+    "delta_limit": 0.1,
+    "error_floor": 0.005
+  },
+  "training": [
+    {
+      "fixture": "normal",
+      "actions": [
+        "observe",
+        "observe",
+        "observe",
+        "observe",
+        "walk",
+        "walk",
+        "walk",
+        "walk"
+      ]
+    },
+    {
+      "fixture": "sleep",
+      "actions": [
+        "observe",
+        "observe",
+        "observe",
+        "observe"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "fixture": "normal",
+      "warmup": 1,
+      "action": "observe",
+      "initial_sleep_pressure": 0.3
+    },
+    {
+      "fixture": "normal",
+      "warmup": 1,
+      "action": "walk",
+      "initial_sleep_pressure": 0.3
+    },
+    {
+      "fixture": "sleep",
+      "warmup": 1,
+      "action": "observe",
+      "initial_sleep_pressure": 0.9
+    }
+  ],
+  "test": [
+    {
+      "fixture": "normal",
+      "warmup": 3,
+      "action": "observe",
+      "initial_sleep_pressure": 0.2
+    },
+    {
+      "fixture": "normal",
+      "warmup": 5,
+      "action": "observe",
+      "initial_sleep_pressure": 0.4
+    },
+    {
+      "fixture": "normal",
+      "warmup": 3,
+      "action": "walk",
+      "initial_sleep_pressure": 0.2
+    },
+    {
+      "fixture": "normal",
+      "warmup": 5,
+      "action": "walk",
+      "initial_sleep_pressure": 0.4
+    },
+    {
+      "fixture": "sleep",
+      "warmup": 3,
+      "action": "observe",
+      "initial_sleep_pressure": 0.92
+    },
+    {
+      "fixture": "sleep",
+      "warmup": 5,
+      "action": "observe",
+      "initial_sleep_pressure": 0.98
+    }
+  ],
+  "contract": "Both arms use identical observed states, requested actions and 0.1-second duration. Validation and test outcomes are never passed to learn. MAE is the mean over energy, fatigue, sleep_pressure, pain and balance; decision correctness is matching the fixed self-maintenance contract. Improvement requires strictly smaller held-out MAE, unchanged budgets and preserved parameters across a fresh process. No parameter tuning against this fixture is allowed. Evaluation uses new explicitly journaled sleep-pressure interventions. The (five-state input, posture, requested-action) fingerprints of all three splits must be disjoint. This replaces an overlapping draft; the learning algorithm is unchanged."
+}

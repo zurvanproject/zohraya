@@ -1,0 +1,834 @@
+[
+  {
+    "step": 1,
+    "loss": 0.6043024063110352,
+    "ids": [
+      "train:0.35:0.1:ordinary",
+      "live:1",
+      "train:0.9:0.2:ordinary",
+      "train:0.86:0.2:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 2,
+    "loss": 0.5610732436180115,
+    "ids": [
+      "live:0",
+      "train:0.75:0.2:ordinary",
+      "train:0.75:0.2:zero_friction",
+      "train:0.9:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 3,
+    "loss": 0.4655405282974243,
+    "ids": [
+      "train:0.55:0.2:ordinary",
+      "train:0.45:0.2:ordinary",
+      "train:0.9:0.1:ordinary",
+      "train:0.94:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 4,
+    "loss": 0.5867820382118225,
+    "ids": [
+      "train:0.25:0.1:ordinary",
+      "train:0.15:0.2:ordinary",
+      "train:0.65:0.2:zero_friction",
+      "train:0.98:0.2:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 5,
+    "loss": 0.682409405708313,
+    "ids": [
+      "train:0.65:0.2:ordinary",
+      "train:0.81:0.2:ordinary",
+      "train:0.75:0.1:zero_friction",
+      "train:0.81:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 6,
+    "loss": 0.5589497089385986,
+    "ids": [
+      "train:0.55:0.1:ordinary",
+      "train:0.25:0.2:ordinary",
+      "train:0.25:0.2:zero_friction",
+      "train:0.98:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 7,
+    "loss": 0.4471292793750763,
+    "ids": [
+      "live:3",
+      "train:0.15:0.1:ordinary",
+      "train:0.94:0.2:ordinary",
+      "train:0.94:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 8,
+    "loss": 0.5519939064979553,
+    "ids": [
+      "train:0.75:0.1:ordinary",
+      "train:0.45:0.1:ordinary",
+      "train:0.15:0.2:zero_friction",
+      "train:0.86:0.1:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 9,
+    "loss": 0.6276280879974365,
+    "ids": [
+      "train:0.81:0.1:ordinary",
+      "live:2",
+      "train:0.45:0.2:zero_friction",
+      "train:0.65:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 10,
+    "loss": 0.5319777727127075,
+    "ids": [
+      "train:0.35:0.2:ordinary",
+      "train:0.65:0.1:ordinary",
+      "train:0.94:0.1:ordinary",
+      "train:0.15:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 11,
+    "loss": 0.5387667417526245,
+    "ids": [
+      "train:0.25:0.1:ordinary",
+      "train:0.75:0.1:ordinary",
+      "train:0.81:0.2:zero_friction",
+      "train:0.98:0.1:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 12,
+    "loss": 0.6307011842727661,
+    "ids": [
+      "train:0.81:0.1:ordinary",
+      "train:0.81:0.2:ordinary",
+      "train:0.55:0.1:zero_friction",
+      "train:0.55:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 13,
+    "loss": 0.6044073104858398,
+    "ids": [
+      "live:3",
+      "train:0.35:0.1:ordinary",
+      "train:0.35:0.2:zero_friction",
+      "train:0.45:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 14,
+    "loss": 0.4366062581539154,
+    "ids": [
+      "live:0",
+      "train:0.15:0.2:ordinary",
+      "train:0.86:0.1:zero_friction",
+      "train:0.86:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 15,
+    "loss": 0.49853751063346863,
+    "ids": [
+      "train:0.75:0.2:ordinary",
+      "live:1",
+      "train:0.25:0.1:zero_friction",
+      "train:0.98:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 16,
+    "loss": 0.4845839738845825,
+    "ids": [
+      "train:0.35:0.2:ordinary",
+      "live:2",
+      "train:0.9:0.2:zero_friction",
+      "train:0.35:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 17,
+    "loss": 0.597213625907898,
+    "ids": [
+      "train:0.45:0.2:ordinary",
+      "train:0.65:0.2:ordinary",
+      "train:0.35:0.2:zero_friction",
+      "train:0.65:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 18,
+    "loss": 0.48047494888305664,
+    "ids": [
+      "train:0.65:0.1:ordinary",
+      "train:0.55:0.2:ordinary",
+      "train:0.25:0.1:zero_friction",
+      "train:0.86:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 19,
+    "loss": 0.34801751375198364,
+    "ids": [
+      "train:0.15:0.1:ordinary",
+      "train:0.25:0.2:ordinary",
+      "train:0.94:0.2:zero_friction",
+      "train:0.98:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 20,
+    "loss": 0.5109834671020508,
+    "ids": [
+      "train:0.55:0.1:ordinary",
+      "train:0.45:0.1:ordinary",
+      "train:0.75:0.1:zero_friction",
+      "train:0.9:0.2:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 21,
+    "loss": 0.37421220541000366,
+    "ids": [
+      "train:0.81:0.1:ordinary",
+      "train:0.81:0.2:ordinary",
+      "train:0.9:0.1:zero_friction",
+      "train:0.94:0.1:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 22,
+    "loss": 0.5018347501754761,
+    "ids": [
+      "train:0.25:0.1:ordinary",
+      "train:0.75:0.1:ordinary",
+      "train:0.94:0.2:ordinary",
+      "train:0.35:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 23,
+    "loss": 0.500577986240387,
+    "ids": [
+      "train:0.75:0.2:ordinary",
+      "train:0.15:0.1:ordinary",
+      "train:0.75:0.2:zero_friction",
+      "train:0.86:0.1:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 24,
+    "loss": 0.4450991749763489,
+    "ids": [
+      "train:0.65:0.1:ordinary",
+      "live:2",
+      "train:0.25:0.2:zero_friction",
+      "train:0.98:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 25,
+    "loss": 0.5607500076293945,
+    "ids": [
+      "train:0.35:0.1:ordinary",
+      "live:0",
+      "train:0.55:0.2:zero_friction",
+      "train:0.81:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 26,
+    "loss": 0.3718293309211731,
+    "ids": [
+      "train:0.45:0.1:ordinary",
+      "train:0.15:0.2:ordinary",
+      "train:0.98:0.1:ordinary",
+      "train:0.86:0.2:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 27,
+    "loss": 0.4331550896167755,
+    "ids": [
+      "train:0.45:0.2:ordinary",
+      "train:0.35:0.2:ordinary",
+      "train:0.94:0.1:zero_friction",
+      "train:0.45:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 28,
+    "loss": 0.42888936400413513,
+    "ids": [
+      "train:0.25:0.2:ordinary",
+      "train:0.55:0.2:ordinary",
+      "train:0.15:0.2:zero_friction",
+      "train:0.9:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 29,
+    "loss": 0.44066062569618225,
+    "ids": [
+      "live:1",
+      "train:0.65:0.2:ordinary",
+      "train:0.65:0.1:zero_friction",
+      "train:0.9:0.1:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 30,
+    "loss": 0.5258673429489136,
+    "ids": [
+      "live:3",
+      "train:0.55:0.1:ordinary",
+      "train:0.55:0.1:zero_friction",
+      "train:0.81:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 31,
+    "loss": 0.30435505509376526,
+    "ids": [
+      "train:0.15:0.1:ordinary",
+      "train:0.45:0.2:ordinary",
+      "train:0.86:0.2:zero_friction",
+      "train:0.98:0.2:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 32,
+    "loss": 0.5379689335823059,
+    "ids": [
+      "train:0.45:0.1:ordinary",
+      "train:0.65:0.2:ordinary",
+      "train:0.15:0.1:zero_friction",
+      "train:0.45:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 33,
+    "loss": 0.5171700716018677,
+    "ids": [
+      "live:0",
+      "live:3",
+      "train:0.75:0.1:zero_friction",
+      "train:0.81:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 34,
+    "loss": 0.4184674620628357,
+    "ids": [
+      "train:0.81:0.1:ordinary",
+      "live:1",
+      "train:0.25:0.1:zero_friction",
+      "train:0.9:0.1:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 35,
+    "loss": 0.410422682762146,
+    "ids": [
+      "train:0.75:0.2:ordinary",
+      "train:0.25:0.2:ordinary",
+      "train:0.9:0.2:ordinary",
+      "train:0.45:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 36,
+    "loss": 0.5088544487953186,
+    "ids": [
+      "train:0.55:0.1:ordinary",
+      "train:0.65:0.1:ordinary",
+      "train:0.25:0.2:zero_friction",
+      "train:0.15:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 37,
+    "loss": 0.3885776400566101,
+    "ids": [
+      "train:0.81:0.2:ordinary",
+      "train:0.35:0.1:ordinary",
+      "train:0.94:0.2:zero_friction",
+      "train:0.55:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 38,
+    "loss": 0.4020123779773712,
+    "ids": [
+      "train:0.75:0.1:ordinary",
+      "train:0.15:0.2:ordinary",
+      "train:0.35:0.2:zero_friction",
+      "train:0.98:0.1:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 39,
+    "loss": 0.2484738528728485,
+    "ids": [
+      "train:0.35:0.2:ordinary",
+      "train:0.55:0.2:ordinary",
+      "train:0.86:0.1:zero_friction",
+      "train:0.86:0.1:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 40,
+    "loss": 0.3330886960029602,
+    "ids": [
+      "train:0.25:0.1:ordinary",
+      "live:2",
+      "train:0.81:0.1:zero_friction",
+      "train:0.98:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 41,
+    "loss": 0.23761242628097534,
+    "ids": [
+      "train:0.15:0.2:ordinary",
+      "train:0.15:0.1:ordinary",
+      "train:0.94:0.1:ordinary",
+      "train:0.86:0.2:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 42,
+    "loss": 0.34140995144844055,
+    "ids": [
+      "train:0.35:0.1:ordinary",
+      "train:0.35:0.2:ordinary",
+      "train:0.65:0.2:zero_friction",
+      "train:0.9:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 43,
+    "loss": 0.3521125316619873,
+    "ids": [
+      "live:0",
+      "train:0.75:0.1:ordinary",
+      "train:0.75:0.2:zero_friction",
+      "train:0.98:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 44,
+    "loss": 0.12780635058879852,
+    "ids": [
+      "live:1",
+      "train:0.45:0.1:ordinary",
+      "train:0.94:0.1:zero_friction",
+      "train:0.9:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 45,
+    "loss": 0.5779045224189758,
+    "ids": [
+      "train:0.81:0.2:ordinary",
+      "train:0.55:0.1:ordinary",
+      "train:0.15:0.2:zero_friction",
+      "train:0.55:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 46,
+    "loss": 0.5902889370918274,
+    "ids": [
+      "train:0.65:0.2:ordinary",
+      "train:0.45:0.2:ordinary",
+      "train:0.35:0.1:zero_friction",
+      "train:0.45:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 47,
+    "loss": 0.1686832308769226,
+    "ids": [
+      "train:0.55:0.2:ordinary",
+      "train:0.75:0.2:ordinary",
+      "train:0.94:0.2:ordinary",
+      "train:0.98:0.2:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 48,
+    "loss": 0.3076927065849304,
+    "ids": [
+      "live:3",
+      "train:0.25:0.1:ordinary",
+      "train:0.86:0.2:zero_friction",
+      "train:0.65:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 49,
+    "loss": 0.16780473291873932,
+    "ids": [
+      "train:0.25:0.2:ordinary",
+      "train:0.81:0.1:ordinary",
+      "train:0.94:0.1:ordinary",
+      "train:0.9:0.1:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 50,
+    "loss": 0.308055579662323,
+    "ids": [
+      "train:0.65:0.1:ordinary",
+      "live:2",
+      "train:0.9:0.2:ordinary",
+      "train:0.35:0.1:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 51,
+    "loss": 0.2848046123981476,
+    "ids": [
+      "live:3",
+      "train:0.15:0.2:ordinary",
+      "train:0.75:0.2:zero_friction",
+      "train:0.9:0.2:zero_friction"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  },
+  {
+    "step": 52,
+    "loss": 0.17948339879512787,
+    "ids": [
+      "train:0.25:0.1:ordinary",
+      "train:0.15:0.1:ordinary",
+      "train:0.98:0.1:ordinary",
+      "train:0.86:0.2:ordinary"
+    ],
+    "targets": [
+      "ADMIT",
+      "ADMIT",
+      "DEFER",
+      "DEFER"
+    ]
+  }
+]

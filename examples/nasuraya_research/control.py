@@ -13,8 +13,9 @@ from examples.nasuraya_body_loop.__main__ import ROOT, SOURCE, verified_sources
 
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('command', choices=('init', 'run', 'step', 'status', 'pause', 'resume', 'test', 'evaluate'))
+    p.add_argument('command', choices=('init', 'run', 'step', 'status', 'pause', 'resume', 'test', 'evaluate', 'transfer', 'transfer-test'))
     p.add_argument('--session', type=Path)
+    p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=('normal', 'sleep'), default='normal')
     p.add_argument('--max-actions', type=int, choices=(1, 2, 3), default=3)
     p.add_argument('--steps', type=int, choices=(1, 2, 3), default=1)
@@ -31,13 +32,19 @@ def main(argv=None):
             p.error(str(exc))
         if args.command != 'init':
             p.error('--forecast-confidence is fixed at init; use a new disposable session')
-    if args.command not in ('test', 'evaluate') and args.session is None:
+    if args.command == 'transfer' and args.output_dir is None:
+        p.error('--output-dir is required for sealed transfer evidence')
+    if args.output_dir is not None and args.command != 'transfer':
+        p.error('--output-dir is only used by transfer')
+    if args.command not in ('test', 'evaluate', 'transfer', 'transfer-test') and args.session is None:
         p.error('--session is required')
     if args.command == 'step' and not args.request_id:
         p.error('--request-id is required for replayable step')
     payload = vars(args)
     if args.session is not None:
         payload['session'] = str(args.session.absolute())
+    if args.output_dir is not None:
+        payload['output_dir'] = str(args.output_dir.absolute())
     manifest = verified_sources()
     with tempfile.TemporaryDirectory(prefix='research-control-native-') as tmp:
         work = Path(tmp)

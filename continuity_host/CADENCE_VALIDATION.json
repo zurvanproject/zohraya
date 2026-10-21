@@ -1,0 +1,33 @@
+{
+  "schema": "nasuraya-cadence-validation/2",
+  "date": "2026-10-17",
+  "status": "prepared_not_activated",
+  "host_tests_passed": 25,
+  "new_cadence_tests": 15,
+  "embedded_offline_regressions_passed": 36,
+  "seed": 20261017,
+  "irregular_fixture_arrivals": 400,
+  "network_denied_probe": true,
+  "network_cas_tested": false,
+  "real_six_hour_wait_tested": false,
+  "control_observed_commit": "be8eedb9ea7025ccdb0ab2d420ffb4a273bfe6af",
+  "real_clock_at": "2026-10-17T16:31:41.099687+00:00",
+  "real_control_dry_run": {
+    "eligible": false,
+    "reason": "interval_not_elapsed"
+  },
+  "legacy_full_seconds_reserved": 1200,
+  "source_hashes": {
+    "continuity_host/cadence.py": "e6068bb110e24ee966a71eaa93936859774b486d516e261557366c407ad163f6",
+    "continuity_host/host.py": "c68611b389a285af2750c9ca5b3188f43dd613ca4db9d44f946bc53aa449b49e",
+    "continuity_host/test_cadence.py": "efeba732cfac88addd516456db85d0b23177f7270cd30a20b2ef5d259545f516",
+    "continuity_host/test_host.py": "9e97297b11bf649fd067b29e247d97ecde2dcbc30d106931d253e2d94d202fdb",
+    ".github/workflows/nasuraya-continuity-host.yml": "cb93bb9d124a42017c41f921a3737951afb3562e531904315140cf71b130a33c",
+    "continuity_host/AGENT_PROMPT_V2.txt": "01f8627fe2d180e898780d6847fa5f32ca4483c014f82f65e9e79982fcbe103f"
+  },
+  "control_mutated": false,
+  "automation_cadence_changed": false,
+  "model_api_calls": 0,
+  "financial_actions": 0,
+  "new_host_integrity_tests": 1
+}

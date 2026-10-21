@@ -6,6 +6,7 @@ import subprocess
 import unittest
 from unittest.mock import patch
 from continuity_host import host
+from continuity_host import cadence
 
 SOURCE = Path(os.environ.get('NASURAYA_TEST_SOURCE','source')).resolve()
 spec = importlib.util.spec_from_file_location('pinned_gate',SOURCE/'continuity/gate.py')
@@ -18,23 +19,25 @@ class Fake:
         self.state=dict(schema=gate.SCHEMA,enabled=True,last_contact_at=START,
             last_claimed_at=None,inflight_run_id=None,last_completed_run_id=None)
         self.head='initial'; self.saved=[]; self.conflict=False; self.pause=False
+        self.state,self.ledger=cadence.migrate(gate,self.state,DUE)
     def snapshot(self):
         if self.pause and self.saved: self.state['enabled']=False
-        return dict(head=self.head,state=copy.deepcopy(self.state))
-    def save(self,snapshot,state,report=None):
+        return dict(head=self.head,state=copy.deepcopy(self.state),ledger=copy.deepcopy(self.ledger))
+    def save(self,snapshot,state,report=None,ledger=None):
         if self.conflict or snapshot['head']!=self.head: raise RuntimeError('CAS conflict')
         self.state=copy.deepcopy(state); self.head='commit'+str(len(self.saved))
+        if ledger is not None: self.ledger=copy.deepcopy(ledger)
         self.saved.append(copy.deepcopy(report)); return self.head
 
 
 class HostTests(unittest.TestCase):
     def setUp(self): self.api=Fake(); self.clock=patch.object(host,'now',return_value=DUE);self.clock.start();self.addCleanup(self.clock.stop)
     def run_job(self,execute=lambda _:dict(passed=True)): return host.run(self.api,gate,SOURCE,'gh_123_1',execute)
-    def test_claim_precedes_work_and_daily_replay_defers(self):
+    def test_claim_precedes_work_and_early_replay_defers(self):
         def work(_):
             self.assertEqual(self.api.state['inflight_run_id'],'gh_123_1'); return dict(passed=True)
         self.assertEqual(self.run_job(work)['status'],'recorded')
-        self.assertEqual(self.run_job()['reason'],'daily_budget_used')
+        self.assertEqual(self.run_job()['reason'],'interval_not_elapsed')
         self.assertEqual(len(self.api.saved),2)
     def test_claim_conflict_never_executes(self):
         self.api.conflict=True
@@ -70,7 +73,12 @@ class HostTests(unittest.TestCase):
     def test_timeout_recorded_without_budget_refund(self):
         def timeout(_): raise subprocess.TimeoutExpired('fixed-probe',60)
         self.assertEqual(self.run_job(timeout)['result']['reason'],'probe_timeout_killed_and_reaped')
-        self.assertEqual(self.run_job()['reason'],'daily_budget_used')
+        self.assertEqual(self.run_job()['reason'],'interval_not_elapsed')
+    def test_corrupted_ledger_before_finish_keeps_inflight(self):
+        def damage(_): self.api.ledger['entries'].clear();return dict(passed=True)
+        with self.assertRaises(ValueError): self.run_job(damage)
+        self.assertEqual(self.api.state['inflight_run_id'],'gh_123_1')
+        self.assertEqual(len(self.api.saved),1)
 
 
 if __name__=='__main__': unittest.main()

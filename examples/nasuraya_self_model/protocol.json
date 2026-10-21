@@ -1,0 +1,13 @@
+{
+  "schema": "nasuraya-self-efficacy-evaluation/1",
+  "training_sleep_pressure": [0.2, 0.91, 0.25, 0.92, 0.3, 0.93, 0.35, 0.94],
+  "held_out_sleep_pressure": [0.4, 0.95, 0.45, 0.96],
+  "requested_action": "walk",
+  "duration_s": 0.1,
+  "fixed_baseline_probability": 0.5,
+  "learning_on_held_out": false,
+  "outcome": "requested action equals native selected action and native physical model is valid",
+  "metric": "mean Brier score on four distinct held-out native starting checkpoints",
+  "acceptance": {"held_out_brier_below_fixed_prior": true, "train_test_native_hashes_disjoint": true, "cold_model_equal": true},
+  "limitations": "small designed software evaluation; no superiority claim over native analytical forecast or PR #3; no subjective-experience measure"
+}

@@ -1,0 +1,75 @@
+name: Nasuraya independent closed-loop evaluation
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_loop/closed_loop*'
+      - 'examples/nasuraya_body_loop/test_closed_loop.py'
+      - 'examples/nasuraya_body_loop/adaptive_memory.py'
+      - 'examples/nasuraya_body_loop/native_preflight.py'
+      - 'examples/nasuraya_body_loop/test_native_preflight.py'
+      - 'examples/nasuraya_body_loop/support_diagnostic.py'
+      - '.github/workflows/nasuraya-closed-loop.yml'
+  push:
+    branches: [main, 'nasuraya/**']
+    paths:
+      - 'examples/nasuraya_body_loop/closed_loop*'
+      - 'examples/nasuraya_body_loop/test_closed_loop.py'
+      - 'examples/nasuraya_body_loop/adaptive_memory.py'
+      - 'examples/nasuraya_body_loop/native_preflight.py'
+      - 'examples/nasuraya_body_loop/test_native_preflight.py'
+      - 'examples/nasuraya_body_loop/support_diagnostic.py'
+      - '.github/workflows/nasuraya-closed-loop.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  closed-loop:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify immutable controller and interrupted native effects
+        run: python3 -m examples.nasuraya_body_loop closed-loop-test
+      - name: Verify bounded native preflight and durable refusal
+        run: python3 -m examples.nasuraya_body_loop preflight-test
+      - name: Trace native support failure without changing equations
+        run: |
+          python3 -m examples.nasuraya_body_loop support-diagnostic --output-dir /tmp/nasu-support-check
+          python3 - <<'PY'
+          import json
+          r = json.load(open('/tmp/nasu-support-check/support_diagnostic.json'))
+          s = r['summary']
+          assert s['cases'] == s['known_input_validity_matches'] == 12
+          assert s['known_input_would_block'] > 0
+          assert s['api_calls'] == s['learning_updates'] == 0
+          assert not s['unknown_disturbance_detected_before_action']
+          assert not s['new_independent_learning_improvement_established']
+          assert not s['source_equations_modified']
+          PY
+      - name: Evaluate frozen separate trajectories without a model API
+        run: |
+          python3 -m examples.nasuraya_body_loop closed-loop-benchmark --output-dir /tmp/nasu-closed-check
+          python3 - <<'PY'
+          import json
+          r = json.load(open('/tmp/nasu-closed-check/closed_loop_report.json'))
+          assert r['api_calls'] == 0
+          assert r['predictor_parameters_frozen']
+          assert not r['held_out_used_for_learning']
+          assert r['all_budgets_preserved']
+          assert r['initial_state_fingerprints_disjoint']
+          assert r['forecast_improvement_confirmed'] == (r['splits']['test']['paired_mae_on_both_paths']['B'] < r['splits']['test']['paired_mae_on_both_paths']['A'])
+          assert r['success'] == (r['forecast_improvement_confirmed'] and r['stress_validation_passed'])
+          for split in r['splits'].values():
+              for case in split['cases']:
+                  assert case['initial_equal']
+                  for arm in case['arms'].values():
+                      assert arm['cold_recovery'] and arm['no_extra_effect_on_replay']
+                      assert arm['remaining'] == 3-len(arm['history'])
+                      if arm['status'] == 'blocked_physical_model':
+                          assert arm['history'][-1]['physical_model_valid'] is False
+                      else:
+                          assert arm['status'] == 'completed' and len(arm['history']) == 3
+          PY

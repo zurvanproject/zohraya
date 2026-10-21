@@ -1,0 +1,31 @@
+{
+  "schema": "nasuraya-support-contract-verification/4",
+  "base_commit": "e931ac040b750c0643a6af0809caf5f85d71f570",
+  "protocol_sha256": "fe01cd83647ddc8f1a38bf30c224b696b917f2de14aeab3387d771a0de4a6a58",
+  "contract_checks_passed": 29,
+  "identical_results_in_fresh_process": true,
+  "fresh_process_results_sha256": "8cd3fef6db22ac4bff5cfaad7a5dcd78550b362fd92ed9a525ed50f6205089c8",
+  "native_unit_tests_passed": 89,
+  "decision_core_tests_passed": 10,
+  "original_native_scenarios_passed": 12,
+  "native_sources_changed": false,
+  "mechanical_recovery_established": false,
+  "audit_summary": {
+    "api_calls": 0,
+    "biological_validation": false,
+    "checked_native_files": 70,
+    "energy_scenarios": 12,
+    "hysteresis_ticks": 102,
+    "integrated_scenarios": 2,
+    "learning_updates": 0,
+    "mechanical_recovery_established": false,
+    "native_equations_changed": false,
+    "posture_frames": 116,
+    "posture_scenarios": 38,
+    "posture_scenarios_final_valid": 17,
+    "preflight_calls": 0,
+    "terminated_followup_ticks": 65
+  },
+  "api_calls": 0,
+  "learning_updates": 0
+}

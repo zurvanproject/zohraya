@@ -1,0 +1,30 @@
+name: Nasuraya unified integration
+on:
+  pull_request:
+    paths: ['nasuraya/**', 'integration/**', 'examples/**', '.github/workflows/nasuraya-unified.yml']
+  push:
+    branches: ['nasuraya/unified-capabilities-v01']
+permissions:
+  contents: read
+jobs:
+  interfaces:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify source coverage and preserved native sources
+        run: python -m nasuraya.verify_sources
+      - name: Verify unified command interfaces and real cold replay
+        run: python -m unittest nasuraya.test_integration -v
+      - name: Verify combined aesthetics, metacognition and native recovery
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/runtimes/tadash_body
+        run: python -m unittest examples.nasuraya_body_loop.test_unified_combinations -v
+      - name: Verify default observer remains independent of optional dependencies
+        run: python -S -m unittest examples.nasuraya_research.test_adapters examples.nasuraya_research.test_body_observer -v

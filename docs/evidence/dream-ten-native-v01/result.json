@@ -1,0 +1,183 @@
+{
+  "accepted": false,
+  "learned_scale": 0.25,
+  "reason": "improvement not confirmed; retain negative result; no activation",
+  "gates": {
+    "changed_policy": true,
+    "error_improved_20_percent": false,
+    "all_valid": true,
+    "fuel_within_5_percent": true,
+    "support_not_worse": true
+  },
+  "train_options": [
+    {
+      "scale": 0.25,
+      "safe": true,
+      "mean_error_m": 0.12,
+      "fuel_j": 805.7991540378997,
+      "valid_steps": 20,
+      "steps": 20,
+      "mean_support": 1.0,
+      "minimum_support": 1.0
+    },
+    {
+      "scale": 0.5,
+      "safe": true,
+      "mean_error_m": 0.12,
+      "fuel_j": 820.133034268454,
+      "valid_steps": 20,
+      "steps": 20,
+      "mean_support": 1.0,
+      "minimum_support": 1.0
+    },
+    {
+      "scale": 0.75,
+      "safe": true,
+      "mean_error_m": 0.12,
+      "fuel_j": 825.223746925203,
+      "valid_steps": 20,
+      "steps": 20,
+      "mean_support": 1.0,
+      "minimum_support": 1.0
+    },
+    {
+      "scale": 1.0,
+      "safe": true,
+      "mean_error_m": 0.12,
+      "fuel_j": 827.2327145558044,
+      "valid_steps": 20,
+      "steps": 20,
+      "mean_support": 1.0,
+      "minimum_support": 1.0
+    }
+  ],
+  "test_relative_improvement": 0.0,
+  "baseline_test_error_m": 0.12,
+  "learned_test_error_m": 0.12,
+  "learned_test_all_valid": true,
+  "baseline_fuel_j": 827.4039795147937,
+  "learned_fuel_j": 805.9701110498368,
+  "baseline_test": {
+    "mean_error_m": 0.12,
+    "fuel_j": 827.4039795147937,
+    "valid_steps": 20,
+    "steps": 20,
+    "mean_support": 1.0,
+    "minimum_support": 1.0
+  },
+  "learned_test": {
+    "mean_error_m": 0.12,
+    "fuel_j": 805.9701110498368,
+    "valid_steps": 20,
+    "steps": 20,
+    "mean_support": 1.0,
+    "minimum_support": 1.0
+  },
+  "scope": "bounded native simulation experiment; no body activation",
+  "movement_gates": {
+    "balance_not_worse": true,
+    "capture_margin_not_worse": true,
+    "valid_walk_count_not_worse": true,
+    "foot_motion_count_not_worse": true,
+    "touchdown_count_not_worse": true,
+    "actual_foot_motion_observed": false
+  },
+  "held_out_baseline": {
+    "requests": 20,
+    "mean_endpoint_error_m": 0.12,
+    "consumed_energy_J": 827.4039795147937,
+    "fuel_used_J": 827.4039795147937,
+    "reserve_used_J": 0.0,
+    "mean_balance": 1.0,
+    "minimum_capture_margin_m": 0.09299999999999997,
+    "minimum_support_fraction": 1.0,
+    "valid_frames": 20,
+    "valid_walk_requests": 20,
+    "valid_foot_motion_ticks": 0,
+    "confirmed_walk_touchdowns": 0
+  },
+  "held_out_selected": {
+    "requests": 20,
+    "mean_endpoint_error_m": 0.12,
+    "consumed_energy_J": 805.9701110498368,
+    "fuel_used_J": 805.9701110498368,
+    "reserve_used_J": 0.0,
+    "mean_balance": 1.0,
+    "minimum_capture_margin_m": 0.09299999999999997,
+    "minimum_support_fraction": 1.0,
+    "valid_frames": 20,
+    "valid_walk_requests": 20,
+    "valid_foot_motion_ticks": 0,
+    "confirmed_walk_touchdowns": 0
+  },
+  "held_out_delta": {
+    "requests": 0,
+    "mean_endpoint_error_m": 0.0,
+    "consumed_energy_J": -21.43386846495696,
+    "fuel_used_J": -21.43386846495696,
+    "reserve_used_J": 0.0,
+    "mean_balance": 0.0,
+    "minimum_capture_margin_m": 0.0,
+    "minimum_support_fraction": 0.0,
+    "valid_frames": 0,
+    "valid_walk_requests": 0,
+    "valid_foot_motion_ticks": 0,
+    "confirmed_walk_touchdowns": 0
+  },
+  "python_version": "3.12.14",
+  "schema": "dream-ten-native/1",
+  "protocol_sha256": "ec3228caf77ae710a8520eac7b18cac0b52d1e78a465e9f6bdd0ab69d4ad925d",
+  "initial_hashes": {
+    "train": [
+      "59b18dff672bc8a94adf69e789e5cc8c1cb6139f4b1638808619c9e92388b2fd",
+      "aaecbdaffba6466dbaa7f0a307b1f747650a574fc636be761965f279d3351421"
+    ],
+    "test": [
+      "1e5b20b9d8a59b13fdab2ec6f7eb39d3d42983124af3c68ef3d2002b64eb5579",
+      "f9bbbe35da0726fc0358ef90b4a54e12a62149d0c5ee727924721c4f8ef5ddc9"
+    ]
+  },
+  "train_test_initial_states_disjoint": true,
+  "call_order": [
+    {
+      "split": "train",
+      "scale": 1.0,
+      "cached": false
+    },
+    {
+      "split": "train",
+      "scale": 1.0,
+      "cached": true
+    },
+    {
+      "split": "train",
+      "scale": 0.25,
+      "cached": false
+    },
+    {
+      "split": "train",
+      "scale": 0.5,
+      "cached": false
+    },
+    {
+      "split": "train",
+      "scale": 0.75,
+      "cached": false
+    },
+    {
+      "split": "test",
+      "scale": 1.0,
+      "cached": false
+    },
+    {
+      "split": "test",
+      "scale": 0.25,
+      "cached": false
+    }
+  ],
+  "held_out_used_for_selection": false,
+  "canonical_state_modified": false,
+  "source_code_unchanged": true,
+  "consciousness_measured": false,
+  "limitation": "one-second first-stride endpoint task; not completed gait/route or physical-world validation"
+}

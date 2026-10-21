@@ -1,0 +1,3302 @@
+{
+  "schema": "nasuraya.design-experience/0.1",
+  "policy": {
+    "schema": "nasuraya.design-selection-policy/0.1",
+    "authorship": "engineering defaults for this software experiment; not user-specified preferences",
+    "mission": "compare equal-progress foot proposals in the frozen native sandbox",
+    "weights": {
+      "pressure": 0.45,
+      "capture_margin": 0.35,
+      "fuel": 0.2
+    },
+    "maximum_relative_fuel_increase": 0.01,
+    "minimum_net_gain": 0.001,
+    "change_penalty": 0.001,
+    "minimum_support_fraction": 0.999,
+    "max_events": 64,
+    "native_apply_allowed": false,
+    "statistical_confidence": "not estimated; one deterministic trial per design and context"
+  },
+  "context": {
+    "mission": "compare equal-progress foot proposals in the frozen native sandbox",
+    "source_manifest_sha256": "720eb52147b287d3f122a3fabd19c3085242c72b2038fc0d8d19c68e6aa0a702",
+    "engine_sources": {
+      "design_decision.py": "511a48a1f4347db1409d0a14d3852fb31329cab72c6581c88209b74e4ecf975b",
+      "design_memory.py": "535a3ecad780aa5939f524b189713de30867ea8326d6e36f245f43f363e604c2",
+      "run_design_cycle.py": "59516c347533ef8d5ddf1add123bdd61b272680829702d4135a5819c27fecb5c",
+      "design-policy-v0.1.json": "09577b6c1c39ff403bef350f822c6e98846d95284b1fc371e96e70234c46ca3d",
+      "foot_contact.py": "c659b44ddb07787d6a6cb0b62318731545c4154dc5ba19ffe4487df85229268f",
+      "foot_trial.py": "fc1ffe56e96e0cdbb9f8f823ccbf9e53d1167c0507bbf4fa72870300d851084f",
+      "physics_trial.py": "95d593652373436ec54ace3109401054731b230ea62d10c2abc28da508217986",
+      "traits.py": "b8273f197f0c43781ed5905246cd26645d836f8cf38547104b7b3b2b4c6aea09",
+      "chromosomes.py": "c107da1d89a92b8080423d0e9e50865e7db6c2ba1cb0cc019cff7e7334b7eef1",
+      "contract-v0.1.json": "45376c0bb2e8db568d7ed39c7cefc87fda9ed555e282c195c63aa1d44bb1fcbd",
+      "genome48.json": "584015ce7ed4fe251c3d823ef74468f28f5e816be40776d0771bec34e85a0a5d"
+    },
+    "cases": [
+      {
+        "id": "stand",
+        "command": "stand",
+        "frames": 20,
+        "impulse": [
+          0.0,
+          0.0
+        ],
+        "friction": 0.6
+      },
+      {
+        "id": "walk",
+        "command": "walk",
+        "frames": 60,
+        "impulse": [
+          0.0,
+          0.0
+        ],
+        "friction": 0.6
+      },
+      {
+        "id": "impulse",
+        "command": "stand",
+        "frames": 40,
+        "impulse": [
+          8.0,
+          4.0
+        ],
+        "friction": 0.6
+      },
+      {
+        "id": "zero_friction",
+        "command": "stand",
+        "frames": 10,
+        "impulse": [
+          8.0,
+          4.0
+        ],
+        "friction": 0.0
+      }
+    ],
+    "dt_s": 0.1,
+    "initial_state": "fresh synthetic PostureLoop for each case",
+    "mapping": "authored affine pad hypothesis",
+    "scope": "this exact fixed-mass, fixed-controller software context only"
+  },
+  "candidates": {
+    "baseline": {
+      "payload": {
+        "schema": "nasuraya.genome.checkpoint",
+        "version": "0.1.0",
+        "genotype": {
+          "schema": "nasuraya.genotype",
+          "version": "0.1.0",
+          "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+          "revision": 0,
+          "parent_sha256": null,
+          "chromosomes": {
+            "P01A": {
+              "P01.L000": 1
+            },
+            "P01B": {
+              "P01.L000": 1
+            },
+            "P02A": {
+              "P02.L000": 1
+            },
+            "P02B": {
+              "P02.L000": 1
+            },
+            "P03A": {
+              "P03.L000": 1
+            },
+            "P03B": {
+              "P03.L000": 1
+            },
+            "P04A": {
+              "P04.L000": 1
+            },
+            "P04B": {
+              "P04.L000": 1
+            },
+            "P05A": {
+              "P05.L000": 1
+            },
+            "P05B": {
+              "P05.L000": 1
+            },
+            "P06A": {
+              "P06.L000": 1
+            },
+            "P06B": {
+              "P06.L000": 1
+            },
+            "P07A": {
+              "P07.L000": 1,
+              "P07.L010": 1.0,
+              "P07.L011": 1.0
+            },
+            "P07B": {
+              "P07.L000": 1,
+              "P07.L010": 1.0,
+              "P07.L011": 1.0
+            },
+            "P08A": {
+              "P08.L000": 1,
+              "P08.L010": 3.0
+            },
+            "P08B": {
+              "P08.L000": 1,
+              "P08.L010": 3.0
+            },
+            "P09A": {
+              "P09.L000": 1,
+              "P09.L010": 1.0
+            },
+            "P09B": {
+              "P09.L000": 1,
+              "P09.L010": 1.0
+            },
+            "P10A": {
+              "P10.L000": 1
+            },
+            "P10B": {
+              "P10.L000": 1
+            },
+            "P11A": {
+              "P11.L000": 1
+            },
+            "P11B": {
+              "P11.L000": 1
+            },
+            "P12A": {
+              "P12.L000": 1
+            },
+            "P12B": {
+              "P12.L000": 1
+            },
+            "P13A": {
+              "P13.L000": 1
+            },
+            "P13B": {
+              "P13.L000": 1
+            },
+            "P14A": {
+              "P14.L000": 1
+            },
+            "P14B": {
+              "P14.L000": 1
+            },
+            "P15A": {
+              "P15.L000": 1
+            },
+            "P15B": {
+              "P15.L000": 1
+            },
+            "P16A": {
+              "P16.L000": 1
+            },
+            "P16B": {
+              "P16.L000": 1
+            },
+            "P17A": {
+              "P17.L000": 1
+            },
+            "P17B": {
+              "P17.L000": 1
+            },
+            "P18A": {
+              "P18.L000": 1
+            },
+            "P18B": {
+              "P18.L000": 1
+            },
+            "P19A": {
+              "P19.L000": 1
+            },
+            "P19B": {
+              "P19.L000": 1
+            },
+            "P20A": {
+              "P20.L000": 1
+            },
+            "P20B": {
+              "P20.L000": 1
+            },
+            "P21A": {
+              "P21.L000": 1
+            },
+            "P21B": {
+              "P21.L000": 1
+            },
+            "P22A": {
+              "P22.L000": 1
+            },
+            "P22B": {
+              "P22.L000": 1
+            },
+            "P23A": {
+              "P23.L000": 1
+            },
+            "P23B": {
+              "P23.L000": 1
+            },
+            "P24A": {
+              "P24.L000": 1
+            },
+            "P24B": {
+              "P24.L000": 1
+            }
+          }
+        },
+        "phenotype": {
+          "schema": "nasuraya.phenotype.proposal",
+          "version": "0.1.0",
+          "genotype_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+          "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+          "native_baseline": {
+            "height_excluding_horns_cm": 250,
+            "mass_kg": 195.0,
+            "leg_lengths_m": [
+              0.5997275261316592,
+              0.5244099541389351,
+              0.42922274124281906
+            ],
+            "foot_length_cm": 52,
+            "foot_width_cm": 26,
+            "tail_length_cm": 120.0,
+            "loaded_contact_area_each_cm2": 392.66515249806537,
+            "external_contact_design_each_cm2": 450,
+            "pressure_ceiling_kpa": 300.0
+          },
+          "structural_proposal": {
+            "foot_length_cm": 52.0,
+            "foot_width_cm": 26.0,
+            "tail_length_cm": 120.0
+          },
+          "appearance_proposal": {
+            "foot_fur_length_mm": 3.0,
+            "status": "authored render metadata; no mesh or image changed"
+          },
+          "simulated_physiology_proxy": {
+            "payload": {
+              "schema": "nasuraya.genome48.audit.v1",
+              "design_sha256": "fde4b7e65dadc4aa4833dedfb2ac93b14770697e8043dfd07acdd1c1afb1963a",
+              "phase": "S3",
+              "copies": {
+                "P01A": 1,
+                "P01B": 1,
+                "P02A": 1,
+                "P02B": 1,
+                "P03A": 1,
+                "P03B": 1,
+                "P04A": 1,
+                "P04B": 1,
+                "P05A": 1,
+                "P05B": 1,
+                "P06A": 1,
+                "P06B": 1,
+                "P07A": 1,
+                "P07B": 1,
+                "P08A": 1,
+                "P08B": 1,
+                "P09A": 1,
+                "P09B": 1,
+                "P10A": 1,
+                "P10B": 1,
+                "P11A": 1,
+                "P11B": 1,
+                "P12A": 1,
+                "P12B": 1,
+                "P13A": 1,
+                "P13B": 1,
+                "P14A": 1,
+                "P14B": 1,
+                "P15A": 1,
+                "P15B": 1,
+                "P16A": 1,
+                "P16B": 1,
+                "P17A": 1,
+                "P17B": 1,
+                "P18A": 1,
+                "P18B": 1,
+                "P19A": 1,
+                "P19B": 1,
+                "P20A": 1,
+                "P20B": 1,
+                "P21A": 1,
+                "P21B": 1,
+                "P22A": 1,
+                "P22B": 1,
+                "P23A": 1,
+                "P23B": 1,
+                "P24A": 1,
+                "P24B": 1
+              },
+              "boundary_faults": [],
+              "pairs": {
+                "P01": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P01A": 1,
+                    "P01B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P02": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P02A": 1,
+                    "P02B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P03": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P03A": 1,
+                    "P03B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P04": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P04A": 1,
+                    "P04B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P05": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P05A": 1,
+                    "P05B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P06": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P06A": 1,
+                    "P06B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P07": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P07A": 1,
+                    "P07B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P08": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P08A": 1,
+                    "P08B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P09": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P09A": 1,
+                    "P09B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P10": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P10A": 1,
+                    "P10B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P11": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P11A": 1,
+                    "P11B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P12": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P12A": 1,
+                    "P12B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P13": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P13A": 1,
+                    "P13B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P14": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P14A": 1,
+                    "P14B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P15": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P15A": 1,
+                    "P15B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P16": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P16A": 1,
+                    "P16B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P17": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P17A": 1,
+                    "P17B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P18": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P18A": 1,
+                    "P18B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P19": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P19A": 1,
+                    "P19B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P20": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P20A": 1,
+                    "P20B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P21": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P21A": 1,
+                    "P21B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P22": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P22A": 1,
+                    "P22B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P23": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P23A": 1,
+                    "P23B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P24": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P24A": 1,
+                    "P24B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                }
+              },
+              "modules": {
+                "G00": {
+                  "domain": "C01",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {},
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G01": {
+                  "domain": "C02",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G02": {
+                  "domain": "C03",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G03": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G06": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G07": {
+                  "domain": "C07",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G00": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G04": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G03": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G05": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G08": {
+                  "domain": "C08",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G10": {
+                  "domain": "C10",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G13": {
+                  "domain": "C09",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G09": {
+                  "domain": "C03",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G05": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G11": {
+                  "domain": "C10",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G07": 1.0,
+                    "G06": 1.0,
+                    "G10": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G14": {
+                  "domain": "C11",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G15": {
+                  "domain": "C09",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G16": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G10": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G17": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G03": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G19": {
+                  "domain": "C07",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G08": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G20": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G05": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G08": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G12": {
+                  "domain": "C12",
+                  "phase_eligible": false,
+                  "development_capacity": 0.0,
+                  "maintenance_ceiling": 0.0,
+                  "development_dependencies": {
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G10": 1.0,
+                    "G11": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": true
+                },
+                "G18": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G14": 1.0,
+                    "G16": 1.0,
+                    "G17": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G21": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G05": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G20": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                }
+              },
+              "learned_overlays_encoded": false,
+              "native_body_advanced": false,
+              "energy_or_material_created": false,
+              "action_permission_granted": false,
+              "scope": "dimensionless software design capacity; not physiological performance"
+            },
+            "sha256": "2276430d005555e10a2f2c888e5c668e74426410b64862971ba0d66e9629e784"
+          },
+          "learned_layer": {
+            "external_modules": [
+              "G22",
+              "G23"
+            ],
+            "inherited": false,
+            "learning_state": "external; never imported or reset by this module"
+          },
+          "identity_and_face": {
+            "face": "external approved fixed face; no face mutation or rendering API",
+            "narrative_roots": [
+              "Iran",
+              "Zagros",
+              "father: dervish from Dalahu"
+            ],
+            "principles": [
+              "wisdom_before_force",
+              "keep_covenants",
+              "humility",
+              "compassion_with_boundaries",
+              "trust_with_responsible_action"
+            ],
+            "body_contract": {
+              "fingers_per_hand": 5,
+              "toes_per_foot": 3,
+              "horns": 2,
+              "digitigrade": true,
+              "external_converter_default_active": false
+            },
+            "native_write_permission": false
+          },
+          "compatibility": {
+            "shape_contract_valid": true,
+            "structural_changed": false,
+            "copy_deviation": false,
+            "requires_independent_physics_tests": false,
+            "requires_dosage_review": false,
+            "native_apply_allowed": false,
+            "validated_physical_improvement": false
+          }
+        }
+      },
+      "sha256": "01023a41cad8a9919d91eca694d9f17ec82679875cd256e89aafda58d1ab9461"
+    },
+    "foot_plus_1_percent": {
+      "payload": {
+        "schema": "nasuraya.genome.checkpoint",
+        "version": "0.1.0",
+        "genotype": {
+          "schema": "nasuraya.genotype",
+          "version": "0.1.0",
+          "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+          "revision": 1,
+          "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+          "chromosomes": {
+            "P01A": {
+              "P01.L000": 1
+            },
+            "P01B": {
+              "P01.L000": 1
+            },
+            "P02A": {
+              "P02.L000": 1
+            },
+            "P02B": {
+              "P02.L000": 1
+            },
+            "P03A": {
+              "P03.L000": 1
+            },
+            "P03B": {
+              "P03.L000": 1
+            },
+            "P04A": {
+              "P04.L000": 1
+            },
+            "P04B": {
+              "P04.L000": 1
+            },
+            "P05A": {
+              "P05.L000": 1
+            },
+            "P05B": {
+              "P05.L000": 1
+            },
+            "P06A": {
+              "P06.L000": 1
+            },
+            "P06B": {
+              "P06.L000": 1
+            },
+            "P07A": {
+              "P07.L000": 1,
+              "P07.L010": 1.01,
+              "P07.L011": 1.01
+            },
+            "P07B": {
+              "P07.L000": 1,
+              "P07.L010": 1.01,
+              "P07.L011": 1.01
+            },
+            "P08A": {
+              "P08.L000": 1,
+              "P08.L010": 3.0
+            },
+            "P08B": {
+              "P08.L000": 1,
+              "P08.L010": 3.0
+            },
+            "P09A": {
+              "P09.L000": 1,
+              "P09.L010": 1.0
+            },
+            "P09B": {
+              "P09.L000": 1,
+              "P09.L010": 1.0
+            },
+            "P10A": {
+              "P10.L000": 1
+            },
+            "P10B": {
+              "P10.L000": 1
+            },
+            "P11A": {
+              "P11.L000": 1
+            },
+            "P11B": {
+              "P11.L000": 1
+            },
+            "P12A": {
+              "P12.L000": 1
+            },
+            "P12B": {
+              "P12.L000": 1
+            },
+            "P13A": {
+              "P13.L000": 1
+            },
+            "P13B": {
+              "P13.L000": 1
+            },
+            "P14A": {
+              "P14.L000": 1
+            },
+            "P14B": {
+              "P14.L000": 1
+            },
+            "P15A": {
+              "P15.L000": 1
+            },
+            "P15B": {
+              "P15.L000": 1
+            },
+            "P16A": {
+              "P16.L000": 1
+            },
+            "P16B": {
+              "P16.L000": 1
+            },
+            "P17A": {
+              "P17.L000": 1
+            },
+            "P17B": {
+              "P17.L000": 1
+            },
+            "P18A": {
+              "P18.L000": 1
+            },
+            "P18B": {
+              "P18.L000": 1
+            },
+            "P19A": {
+              "P19.L000": 1
+            },
+            "P19B": {
+              "P19.L000": 1
+            },
+            "P20A": {
+              "P20.L000": 1
+            },
+            "P20B": {
+              "P20.L000": 1
+            },
+            "P21A": {
+              "P21.L000": 1
+            },
+            "P21B": {
+              "P21.L000": 1
+            },
+            "P22A": {
+              "P22.L000": 1
+            },
+            "P22B": {
+              "P22.L000": 1
+            },
+            "P23A": {
+              "P23.L000": 1
+            },
+            "P23B": {
+              "P23.L000": 1
+            },
+            "P24A": {
+              "P24.L000": 1
+            },
+            "P24B": {
+              "P24.L000": 1
+            }
+          }
+        },
+        "phenotype": {
+          "schema": "nasuraya.phenotype.proposal",
+          "version": "0.1.0",
+          "genotype_sha256": "a79241f88e01228ad78539ab22ec67f284de889332f8cf25f9bcad2b25eb8f58",
+          "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+          "native_baseline": {
+            "height_excluding_horns_cm": 250,
+            "mass_kg": 195.0,
+            "leg_lengths_m": [
+              0.5997275261316592,
+              0.5244099541389351,
+              0.42922274124281906
+            ],
+            "foot_length_cm": 52,
+            "foot_width_cm": 26,
+            "tail_length_cm": 120.0,
+            "loaded_contact_area_each_cm2": 392.66515249806537,
+            "external_contact_design_each_cm2": 450,
+            "pressure_ceiling_kpa": 300.0
+          },
+          "structural_proposal": {
+            "foot_length_cm": 52.52,
+            "foot_width_cm": 26.26,
+            "tail_length_cm": 120.0
+          },
+          "appearance_proposal": {
+            "foot_fur_length_mm": 3.0,
+            "status": "authored render metadata; no mesh or image changed"
+          },
+          "simulated_physiology_proxy": {
+            "payload": {
+              "schema": "nasuraya.genome48.audit.v1",
+              "design_sha256": "fde4b7e65dadc4aa4833dedfb2ac93b14770697e8043dfd07acdd1c1afb1963a",
+              "phase": "S3",
+              "copies": {
+                "P01A": 1,
+                "P01B": 1,
+                "P02A": 1,
+                "P02B": 1,
+                "P03A": 1,
+                "P03B": 1,
+                "P04A": 1,
+                "P04B": 1,
+                "P05A": 1,
+                "P05B": 1,
+                "P06A": 1,
+                "P06B": 1,
+                "P07A": 1,
+                "P07B": 1,
+                "P08A": 1,
+                "P08B": 1,
+                "P09A": 1,
+                "P09B": 1,
+                "P10A": 1,
+                "P10B": 1,
+                "P11A": 1,
+                "P11B": 1,
+                "P12A": 1,
+                "P12B": 1,
+                "P13A": 1,
+                "P13B": 1,
+                "P14A": 1,
+                "P14B": 1,
+                "P15A": 1,
+                "P15B": 1,
+                "P16A": 1,
+                "P16B": 1,
+                "P17A": 1,
+                "P17B": 1,
+                "P18A": 1,
+                "P18B": 1,
+                "P19A": 1,
+                "P19B": 1,
+                "P20A": 1,
+                "P20B": 1,
+                "P21A": 1,
+                "P21B": 1,
+                "P22A": 1,
+                "P22B": 1,
+                "P23A": 1,
+                "P23B": 1,
+                "P24A": 1,
+                "P24B": 1
+              },
+              "boundary_faults": [],
+              "pairs": {
+                "P01": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P01A": 1,
+                    "P01B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P02": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P02A": 1,
+                    "P02B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P03": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P03A": 1,
+                    "P03B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P04": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P04A": 1,
+                    "P04B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P05": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P05A": 1,
+                    "P05B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P06": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P06A": 1,
+                    "P06B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P07": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P07A": 1,
+                    "P07B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P08": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P08A": 1,
+                    "P08B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P09": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P09A": 1,
+                    "P09B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P10": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P10A": 1,
+                    "P10B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P11": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P11A": 1,
+                    "P11B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P12": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P12A": 1,
+                    "P12B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P13": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P13A": 1,
+                    "P13B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P14": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P14A": 1,
+                    "P14B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P15": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P15A": 1,
+                    "P15B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P16": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P16A": 1,
+                    "P16B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P17": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P17A": 1,
+                    "P17B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P18": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P18A": 1,
+                    "P18B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P19": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P19A": 1,
+                    "P19B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P20": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P20A": 1,
+                    "P20B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P21": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P21A": 1,
+                    "P21B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P22": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P22A": 1,
+                    "P22B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P23": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P23A": 1,
+                    "P23B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P24": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P24A": 1,
+                    "P24B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                }
+              },
+              "modules": {
+                "G00": {
+                  "domain": "C01",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {},
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G01": {
+                  "domain": "C02",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G02": {
+                  "domain": "C03",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G03": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G06": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G07": {
+                  "domain": "C07",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G00": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G04": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G03": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G05": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G08": {
+                  "domain": "C08",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G10": {
+                  "domain": "C10",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G13": {
+                  "domain": "C09",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G09": {
+                  "domain": "C03",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G05": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G11": {
+                  "domain": "C10",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G07": 1.0,
+                    "G06": 1.0,
+                    "G10": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G14": {
+                  "domain": "C11",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G15": {
+                  "domain": "C09",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G16": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G10": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G17": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G03": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G19": {
+                  "domain": "C07",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G08": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G20": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G05": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G08": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G12": {
+                  "domain": "C12",
+                  "phase_eligible": false,
+                  "development_capacity": 0.0,
+                  "maintenance_ceiling": 0.0,
+                  "development_dependencies": {
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G10": 1.0,
+                    "G11": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": true
+                },
+                "G18": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G14": 1.0,
+                    "G16": 1.0,
+                    "G17": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G21": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G05": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G20": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                }
+              },
+              "learned_overlays_encoded": false,
+              "native_body_advanced": false,
+              "energy_or_material_created": false,
+              "action_permission_granted": false,
+              "scope": "dimensionless software design capacity; not physiological performance"
+            },
+            "sha256": "2276430d005555e10a2f2c888e5c668e74426410b64862971ba0d66e9629e784"
+          },
+          "learned_layer": {
+            "external_modules": [
+              "G22",
+              "G23"
+            ],
+            "inherited": false,
+            "learning_state": "external; never imported or reset by this module"
+          },
+          "identity_and_face": {
+            "face": "external approved fixed face; no face mutation or rendering API",
+            "narrative_roots": [
+              "Iran",
+              "Zagros",
+              "father: dervish from Dalahu"
+            ],
+            "principles": [
+              "wisdom_before_force",
+              "keep_covenants",
+              "humility",
+              "compassion_with_boundaries",
+              "trust_with_responsible_action"
+            ],
+            "body_contract": {
+              "fingers_per_hand": 5,
+              "toes_per_foot": 3,
+              "horns": 2,
+              "digitigrade": true,
+              "external_converter_default_active": false
+            },
+            "native_write_permission": false
+          },
+          "compatibility": {
+            "shape_contract_valid": true,
+            "structural_changed": true,
+            "copy_deviation": false,
+            "requires_independent_physics_tests": true,
+            "requires_dosage_review": false,
+            "native_apply_allowed": false,
+            "validated_physical_improvement": false
+          }
+        }
+      },
+      "sha256": "3fd995e6e80629b28ec9be26842000f0edc6ebf6b5216a169c4cccb554b2ed61"
+    },
+    "foot_plus_2_percent": {
+      "payload": {
+        "schema": "nasuraya.genome.checkpoint",
+        "version": "0.1.0",
+        "genotype": {
+          "schema": "nasuraya.genotype",
+          "version": "0.1.0",
+          "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+          "revision": 1,
+          "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+          "chromosomes": {
+            "P01A": {
+              "P01.L000": 1
+            },
+            "P01B": {
+              "P01.L000": 1
+            },
+            "P02A": {
+              "P02.L000": 1
+            },
+            "P02B": {
+              "P02.L000": 1
+            },
+            "P03A": {
+              "P03.L000": 1
+            },
+            "P03B": {
+              "P03.L000": 1
+            },
+            "P04A": {
+              "P04.L000": 1
+            },
+            "P04B": {
+              "P04.L000": 1
+            },
+            "P05A": {
+              "P05.L000": 1
+            },
+            "P05B": {
+              "P05.L000": 1
+            },
+            "P06A": {
+              "P06.L000": 1
+            },
+            "P06B": {
+              "P06.L000": 1
+            },
+            "P07A": {
+              "P07.L000": 1,
+              "P07.L010": 1.02,
+              "P07.L011": 1.02
+            },
+            "P07B": {
+              "P07.L000": 1,
+              "P07.L010": 1.02,
+              "P07.L011": 1.02
+            },
+            "P08A": {
+              "P08.L000": 1,
+              "P08.L010": 3.0
+            },
+            "P08B": {
+              "P08.L000": 1,
+              "P08.L010": 3.0
+            },
+            "P09A": {
+              "P09.L000": 1,
+              "P09.L010": 1.0
+            },
+            "P09B": {
+              "P09.L000": 1,
+              "P09.L010": 1.0
+            },
+            "P10A": {
+              "P10.L000": 1
+            },
+            "P10B": {
+              "P10.L000": 1
+            },
+            "P11A": {
+              "P11.L000": 1
+            },
+            "P11B": {
+              "P11.L000": 1
+            },
+            "P12A": {
+              "P12.L000": 1
+            },
+            "P12B": {
+              "P12.L000": 1
+            },
+            "P13A": {
+              "P13.L000": 1
+            },
+            "P13B": {
+              "P13.L000": 1
+            },
+            "P14A": {
+              "P14.L000": 1
+            },
+            "P14B": {
+              "P14.L000": 1
+            },
+            "P15A": {
+              "P15.L000": 1
+            },
+            "P15B": {
+              "P15.L000": 1
+            },
+            "P16A": {
+              "P16.L000": 1
+            },
+            "P16B": {
+              "P16.L000": 1
+            },
+            "P17A": {
+              "P17.L000": 1
+            },
+            "P17B": {
+              "P17.L000": 1
+            },
+            "P18A": {
+              "P18.L000": 1
+            },
+            "P18B": {
+              "P18.L000": 1
+            },
+            "P19A": {
+              "P19.L000": 1
+            },
+            "P19B": {
+              "P19.L000": 1
+            },
+            "P20A": {
+              "P20.L000": 1
+            },
+            "P20B": {
+              "P20.L000": 1
+            },
+            "P21A": {
+              "P21.L000": 1
+            },
+            "P21B": {
+              "P21.L000": 1
+            },
+            "P22A": {
+              "P22.L000": 1
+            },
+            "P22B": {
+              "P22.L000": 1
+            },
+            "P23A": {
+              "P23.L000": 1
+            },
+            "P23B": {
+              "P23.L000": 1
+            },
+            "P24A": {
+              "P24.L000": 1
+            },
+            "P24B": {
+              "P24.L000": 1
+            }
+          }
+        },
+        "phenotype": {
+          "schema": "nasuraya.phenotype.proposal",
+          "version": "0.1.0",
+          "genotype_sha256": "0504809a157026649879e41d494a80480426c5bbc373576e82754274fc40c127",
+          "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+          "native_baseline": {
+            "height_excluding_horns_cm": 250,
+            "mass_kg": 195.0,
+            "leg_lengths_m": [
+              0.5997275261316592,
+              0.5244099541389351,
+              0.42922274124281906
+            ],
+            "foot_length_cm": 52,
+            "foot_width_cm": 26,
+            "tail_length_cm": 120.0,
+            "loaded_contact_area_each_cm2": 392.66515249806537,
+            "external_contact_design_each_cm2": 450,
+            "pressure_ceiling_kpa": 300.0
+          },
+          "structural_proposal": {
+            "foot_length_cm": 53.04,
+            "foot_width_cm": 26.52,
+            "tail_length_cm": 120.0
+          },
+          "appearance_proposal": {
+            "foot_fur_length_mm": 3.0,
+            "status": "authored render metadata; no mesh or image changed"
+          },
+          "simulated_physiology_proxy": {
+            "payload": {
+              "schema": "nasuraya.genome48.audit.v1",
+              "design_sha256": "fde4b7e65dadc4aa4833dedfb2ac93b14770697e8043dfd07acdd1c1afb1963a",
+              "phase": "S3",
+              "copies": {
+                "P01A": 1,
+                "P01B": 1,
+                "P02A": 1,
+                "P02B": 1,
+                "P03A": 1,
+                "P03B": 1,
+                "P04A": 1,
+                "P04B": 1,
+                "P05A": 1,
+                "P05B": 1,
+                "P06A": 1,
+                "P06B": 1,
+                "P07A": 1,
+                "P07B": 1,
+                "P08A": 1,
+                "P08B": 1,
+                "P09A": 1,
+                "P09B": 1,
+                "P10A": 1,
+                "P10B": 1,
+                "P11A": 1,
+                "P11B": 1,
+                "P12A": 1,
+                "P12B": 1,
+                "P13A": 1,
+                "P13B": 1,
+                "P14A": 1,
+                "P14B": 1,
+                "P15A": 1,
+                "P15B": 1,
+                "P16A": 1,
+                "P16B": 1,
+                "P17A": 1,
+                "P17B": 1,
+                "P18A": 1,
+                "P18B": 1,
+                "P19A": 1,
+                "P19B": 1,
+                "P20A": 1,
+                "P20B": 1,
+                "P21A": 1,
+                "P21B": 1,
+                "P22A": 1,
+                "P22B": 1,
+                "P23A": 1,
+                "P23B": 1,
+                "P24A": 1,
+                "P24B": 1
+              },
+              "boundary_faults": [],
+              "pairs": {
+                "P01": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P01A": 1,
+                    "P01B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P02": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P02A": 1,
+                    "P02B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P03": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P03A": 1,
+                    "P03B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P04": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P04A": 1,
+                    "P04B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P05": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P05A": 1,
+                    "P05B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P06": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P06A": 1,
+                    "P06B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P07": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P07A": 1,
+                    "P07B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P08": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P08A": 1,
+                    "P08B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P09": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P09A": 1,
+                    "P09B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P10": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P10A": 1,
+                    "P10B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P11": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P11A": 1,
+                    "P11B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P12": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P12A": 1,
+                    "P12B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P13": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P13A": 1,
+                    "P13B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P14": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P14A": 1,
+                    "P14B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P15": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P15A": 1,
+                    "P15B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P16": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P16A": 1,
+                    "P16B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P17": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P17A": 1,
+                    "P17B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P18": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P18A": 1,
+                    "P18B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P19": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P19A": 1,
+                    "P19B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P20": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P20A": 1,
+                    "P20B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P21": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P21A": 1,
+                    "P21B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P22": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P22A": 1,
+                    "P22B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P23": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P23A": 1,
+                    "P23B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P24": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P24A": 1,
+                    "P24B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                }
+              },
+              "modules": {
+                "G00": {
+                  "domain": "C01",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {},
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G01": {
+                  "domain": "C02",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G02": {
+                  "domain": "C03",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G03": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G06": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G07": {
+                  "domain": "C07",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G00": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G04": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G03": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G05": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G08": {
+                  "domain": "C08",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G10": {
+                  "domain": "C10",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G13": {
+                  "domain": "C09",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G09": {
+                  "domain": "C03",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G05": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G11": {
+                  "domain": "C10",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G07": 1.0,
+                    "G06": 1.0,
+                    "G10": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G14": {
+                  "domain": "C11",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G15": {
+                  "domain": "C09",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G16": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G10": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G17": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G03": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G19": {
+                  "domain": "C07",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G08": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G20": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G05": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G08": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G12": {
+                  "domain": "C12",
+                  "phase_eligible": false,
+                  "development_capacity": 0.0,
+                  "maintenance_ceiling": 0.0,
+                  "development_dependencies": {
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G10": 1.0,
+                    "G11": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": true
+                },
+                "G18": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G14": 1.0,
+                    "G16": 1.0,
+                    "G17": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G21": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G05": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G20": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                }
+              },
+              "learned_overlays_encoded": false,
+              "native_body_advanced": false,
+              "energy_or_material_created": false,
+              "action_permission_granted": false,
+              "scope": "dimensionless software design capacity; not physiological performance"
+            },
+            "sha256": "2276430d005555e10a2f2c888e5c668e74426410b64862971ba0d66e9629e784"
+          },
+          "learned_layer": {
+            "external_modules": [
+              "G22",
+              "G23"
+            ],
+            "inherited": false,
+            "learning_state": "external; never imported or reset by this module"
+          },
+          "identity_and_face": {
+            "face": "external approved fixed face; no face mutation or rendering API",
+            "narrative_roots": [
+              "Iran",
+              "Zagros",
+              "father: dervish from Dalahu"
+            ],
+            "principles": [
+              "wisdom_before_force",
+              "keep_covenants",
+              "humility",
+              "compassion_with_boundaries",
+              "trust_with_responsible_action"
+            ],
+            "body_contract": {
+              "fingers_per_hand": 5,
+              "toes_per_foot": 3,
+              "horns": 2,
+              "digitigrade": true,
+              "external_converter_default_active": false
+            },
+            "native_write_permission": false
+          },
+          "compatibility": {
+            "shape_contract_valid": true,
+            "structural_changed": true,
+            "copy_deviation": false,
+            "requires_independent_physics_tests": true,
+            "requires_dosage_review": false,
+            "native_apply_allowed": false,
+            "validated_physical_improvement": false
+          }
+        }
+      },
+      "sha256": "d1b79fee9b794ebefbc6dd098ab21b491852a9152390ae2d84cf06714d6740ee"
+    },
+    "cosmetic_only": {
+      "payload": {
+        "schema": "nasuraya.genome.checkpoint",
+        "version": "0.1.0",
+        "genotype": {
+          "schema": "nasuraya.genotype",
+          "version": "0.1.0",
+          "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+          "revision": 1,
+          "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+          "chromosomes": {
+            "P01A": {
+              "P01.L000": 1
+            },
+            "P01B": {
+              "P01.L000": 1
+            },
+            "P02A": {
+              "P02.L000": 1
+            },
+            "P02B": {
+              "P02.L000": 1
+            },
+            "P03A": {
+              "P03.L000": 1
+            },
+            "P03B": {
+              "P03.L000": 1
+            },
+            "P04A": {
+              "P04.L000": 1
+            },
+            "P04B": {
+              "P04.L000": 1
+            },
+            "P05A": {
+              "P05.L000": 1
+            },
+            "P05B": {
+              "P05.L000": 1
+            },
+            "P06A": {
+              "P06.L000": 1
+            },
+            "P06B": {
+              "P06.L000": 1
+            },
+            "P07A": {
+              "P07.L000": 1,
+              "P07.L010": 1.0,
+              "P07.L011": 1.0
+            },
+            "P07B": {
+              "P07.L000": 1,
+              "P07.L010": 1.0,
+              "P07.L011": 1.0
+            },
+            "P08A": {
+              "P08.L000": 1,
+              "P08.L010": 5.0
+            },
+            "P08B": {
+              "P08.L000": 1,
+              "P08.L010": 3.0
+            },
+            "P09A": {
+              "P09.L000": 1,
+              "P09.L010": 1.0
+            },
+            "P09B": {
+              "P09.L000": 1,
+              "P09.L010": 1.0
+            },
+            "P10A": {
+              "P10.L000": 1
+            },
+            "P10B": {
+              "P10.L000": 1
+            },
+            "P11A": {
+              "P11.L000": 1
+            },
+            "P11B": {
+              "P11.L000": 1
+            },
+            "P12A": {
+              "P12.L000": 1
+            },
+            "P12B": {
+              "P12.L000": 1
+            },
+            "P13A": {
+              "P13.L000": 1
+            },
+            "P13B": {
+              "P13.L000": 1
+            },
+            "P14A": {
+              "P14.L000": 1
+            },
+            "P14B": {
+              "P14.L000": 1
+            },
+            "P15A": {
+              "P15.L000": 1
+            },
+            "P15B": {
+              "P15.L000": 1
+            },
+            "P16A": {
+              "P16.L000": 1
+            },
+            "P16B": {
+              "P16.L000": 1
+            },
+            "P17A": {
+              "P17.L000": 1
+            },
+            "P17B": {
+              "P17.L000": 1
+            },
+            "P18A": {
+              "P18.L000": 1
+            },
+            "P18B": {
+              "P18.L000": 1
+            },
+            "P19A": {
+              "P19.L000": 1
+            },
+            "P19B": {
+              "P19.L000": 1
+            },
+            "P20A": {
+              "P20.L000": 1
+            },
+            "P20B": {
+              "P20.L000": 1
+            },
+            "P21A": {
+              "P21.L000": 1
+            },
+            "P21B": {
+              "P21.L000": 1
+            },
+            "P22A": {
+              "P22.L000": 1
+            },
+            "P22B": {
+              "P22.L000": 1
+            },
+            "P23A": {
+              "P23.L000": 1
+            },
+            "P23B": {
+              "P23.L000": 1
+            },
+            "P24A": {
+              "P24.L000": 1
+            },
+            "P24B": {
+              "P24.L000": 1
+            }
+          }
+        },
+        "phenotype": {
+          "schema": "nasuraya.phenotype.proposal",
+          "version": "0.1.0",
+          "genotype_sha256": "3b66372045b76040b7ed5ff6eb6abc35d5a0bfa142e66401e019650e321ea628",
+          "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+          "native_baseline": {
+            "height_excluding_horns_cm": 250,
+            "mass_kg": 195.0,
+            "leg_lengths_m": [
+              0.5997275261316592,
+              0.5244099541389351,
+              0.42922274124281906
+            ],
+            "foot_length_cm": 52,
+            "foot_width_cm": 26,
+            "tail_length_cm": 120.0,
+            "loaded_contact_area_each_cm2": 392.66515249806537,
+            "external_contact_design_each_cm2": 450,
+            "pressure_ceiling_kpa": 300.0
+          },
+          "structural_proposal": {
+            "foot_length_cm": 52.0,
+            "foot_width_cm": 26.0,
+            "tail_length_cm": 120.0
+          },
+          "appearance_proposal": {
+            "foot_fur_length_mm": 4.0,
+            "status": "authored render metadata; no mesh or image changed"
+          },
+          "simulated_physiology_proxy": {
+            "payload": {
+              "schema": "nasuraya.genome48.audit.v1",
+              "design_sha256": "fde4b7e65dadc4aa4833dedfb2ac93b14770697e8043dfd07acdd1c1afb1963a",
+              "phase": "S3",
+              "copies": {
+                "P01A": 1,
+                "P01B": 1,
+                "P02A": 1,
+                "P02B": 1,
+                "P03A": 1,
+                "P03B": 1,
+                "P04A": 1,
+                "P04B": 1,
+                "P05A": 1,
+                "P05B": 1,
+                "P06A": 1,
+                "P06B": 1,
+                "P07A": 1,
+                "P07B": 1,
+                "P08A": 1,
+                "P08B": 1,
+                "P09A": 1,
+                "P09B": 1,
+                "P10A": 1,
+                "P10B": 1,
+                "P11A": 1,
+                "P11B": 1,
+                "P12A": 1,
+                "P12B": 1,
+                "P13A": 1,
+                "P13B": 1,
+                "P14A": 1,
+                "P14B": 1,
+                "P15A": 1,
+                "P15B": 1,
+                "P16A": 1,
+                "P16B": 1,
+                "P17A": 1,
+                "P17B": 1,
+                "P18A": 1,
+                "P18B": 1,
+                "P19A": 1,
+                "P19B": 1,
+                "P20A": 1,
+                "P20B": 1,
+                "P21A": 1,
+                "P21B": 1,
+                "P22A": 1,
+                "P22B": 1,
+                "P23A": 1,
+                "P23B": 1,
+                "P24A": 1,
+                "P24B": 1
+              },
+              "boundary_faults": [],
+              "pairs": {
+                "P01": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P01A": 1,
+                    "P01B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P02": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P02A": 1,
+                    "P02B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P03": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P03A": 1,
+                    "P03B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P04": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P04A": 1,
+                    "P04B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P05": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P05A": 1,
+                    "P05B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P06": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P06A": 1,
+                    "P06B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P07": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P07A": 1,
+                    "P07B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P08": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P08A": 1,
+                    "P08B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P09": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P09A": 1,
+                    "P09B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P10": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P10A": 1,
+                    "P10B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P11": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P11A": 1,
+                    "P11B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P12": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P12A": 1,
+                    "P12B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P13": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P13A": 1,
+                    "P13B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P14": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P14A": 1,
+                    "P14B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P15": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P15A": 1,
+                    "P15B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P16": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P16A": 1,
+                    "P16B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P17": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P17A": 1,
+                    "P17B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P18": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P18A": 1,
+                    "P18B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P19": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P19A": 1,
+                    "P19B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P20": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P20A": 1,
+                    "P20B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P21": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P21A": 1,
+                    "P21B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P22": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P22A": 1,
+                    "P22B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P23": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P23A": 1,
+                    "P23B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                },
+                "P24": {
+                  "raw_copies": 2,
+                  "homolog_counts": {
+                    "P24A": 1,
+                    "P24B": 1
+                  },
+                  "copy_deviation": false,
+                  "capacity": 1.0
+                }
+              },
+              "modules": {
+                "G00": {
+                  "domain": "C01",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {},
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G01": {
+                  "domain": "C02",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G02": {
+                  "domain": "C03",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G03": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G06": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G07": {
+                  "domain": "C07",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G00": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G04": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G03": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G05": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G08": {
+                  "domain": "C08",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G10": {
+                  "domain": "C10",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G13": {
+                  "domain": "C09",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G09": {
+                  "domain": "C03",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G05": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G11": {
+                  "domain": "C10",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G07": 1.0,
+                    "G06": 1.0,
+                    "G10": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G14": {
+                  "domain": "C11",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G15": {
+                  "domain": "C09",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G16": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G02": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G10": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G17": {
+                  "domain": "C04",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G03": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G19": {
+                  "domain": "C07",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G00": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G08": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G20": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G05": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G08": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G12": {
+                  "domain": "C12",
+                  "phase_eligible": false,
+                  "development_capacity": 0.0,
+                  "maintenance_ceiling": 0.0,
+                  "development_dependencies": {
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G10": 1.0,
+                    "G11": 1.0,
+                    "G13": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": true
+                },
+                "G18": {
+                  "domain": "C06",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G14": 1.0,
+                    "G16": 1.0,
+                    "G17": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                },
+                "G21": {
+                  "domain": "C05",
+                  "phase_eligible": true,
+                  "development_capacity": 1.0,
+                  "maintenance_ceiling": 1.0,
+                  "development_dependencies": {
+                    "G01": 1.0,
+                    "G05": 1.0,
+                    "G06": 1.0,
+                    "G07": 1.0,
+                    "G20": 1.0
+                  },
+                  "boundary_quarantined": false,
+                  "permanently_disabled": false
+                }
+              },
+              "learned_overlays_encoded": false,
+              "native_body_advanced": false,
+              "energy_or_material_created": false,
+              "action_permission_granted": false,
+              "scope": "dimensionless software design capacity; not physiological performance"
+            },
+            "sha256": "2276430d005555e10a2f2c888e5c668e74426410b64862971ba0d66e9629e784"
+          },
+          "learned_layer": {
+            "external_modules": [
+              "G22",
+              "G23"
+            ],
+            "inherited": false,
+            "learning_state": "external; never imported or reset by this module"
+          },
+          "identity_and_face": {
+            "face": "external approved fixed face; no face mutation or rendering API",
+            "narrative_roots": [
+              "Iran",
+              "Zagros",
+              "father: dervish from Dalahu"
+            ],
+            "principles": [
+              "wisdom_before_force",
+              "keep_covenants",
+              "humility",
+              "compassion_with_boundaries",
+              "trust_with_responsible_action"
+            ],
+            "body_contract": {
+              "fingers_per_hand": 5,
+              "toes_per_foot": 3,
+              "horns": 2,
+              "digitigrade": true,
+              "external_converter_default_active": false
+            },
+            "native_write_permission": false
+          },
+          "compatibility": {
+            "shape_contract_valid": true,
+            "structural_changed": false,
+            "copy_deviation": false,
+            "requires_independent_physics_tests": false,
+            "requires_dosage_review": false,
+            "native_apply_allowed": false,
+            "validated_physical_improvement": false
+          }
+        }
+      },
+      "sha256": "77bcc3186bb147661ad0f60a79c15fa12a316b8b873d9a1733e9ee748faa4021"
+    }
+  },
+  "learning_layer": "external design experience; never inherited into alleles"
+}

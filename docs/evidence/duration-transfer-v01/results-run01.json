@@ -1,0 +1,2677 @@
+{
+  "protocol_sha256": "2107d2efba65ea34fd264b35773f31431b79859c024c88d9bf805d057db19227",
+  "rows": [
+    {
+      "seed": 71,
+      "split": "warmup",
+      "id": "0",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 71,
+      "split": "warmup",
+      "id": "1",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 71,
+      "split": "warmup",
+      "id": "2",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.1111111111111111,
+        "C": 0.1111111111111111,
+        "C_exact": 0.1111111111111111,
+        "C_frozen_pool": 0.1111111111111111
+      }
+    },
+    {
+      "seed": 71,
+      "split": "warmup",
+      "id": "3",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 71,
+      "split": "warmup",
+      "id": "4",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 71,
+      "split": "warmup",
+      "id": "5",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.1111111111111111,
+        "C": 0.04000000000000001,
+        "C_exact": 0.1111111111111111,
+        "C_frozen_pool": 0.04000000000000001
+      }
+    },
+    {
+      "seed": 71,
+      "split": "warmup",
+      "id": "6",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.11111111111111113,
+        "C": 0.11111111111111113,
+        "C_exact": 0.11111111111111113,
+        "C_frozen_pool": 0.11111111111111113
+      }
+    },
+    {
+      "seed": 71,
+      "split": "warmup",
+      "id": "7",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.11111111111111113,
+        "C": 0.03999999999999998,
+        "C_exact": 0.11111111111111113,
+        "C_frozen_pool": 0.03999999999999998
+      }
+    },
+    {
+      "seed": 71,
+      "split": "adaptation",
+      "id": "0",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777776,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 71,
+      "split": "adaptation",
+      "id": "1",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.02040816326530612,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 71,
+      "split": "adaptation",
+      "id": "2",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777766,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 71,
+      "split": "adaptation",
+      "id": "3",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.03999999999999998,
+        "C_exact": 0.03999999999999998,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 71,
+      "split": "adaptation",
+      "id": "4",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.015625,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 71,
+      "split": "adaptation",
+      "id": "5",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.03999999999999998,
+        "C_exact": 0.03999999999999998,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 71,
+      "split": "adaptation",
+      "id": "6",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.04000000000000001,
+        "C_exact": 0.04000000000000001,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 71,
+      "split": "adaptation",
+      "id": "7",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.04000000000000001,
+        "C_exact": 0.04000000000000001,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 71,
+      "split": "held_out",
+      "id": "seen-normal",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 2,
+          "successes": 2,
+          "failures": 0,
+          "probability": 0.75,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_exact": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_frozen_pool": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": false,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "3cac1ee9477d8988c62ba9c848e9597805fb7f8f1e552fc67c0b6431f9a3a6ad"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777766,
+        "C_exact": 0.027777777777777766,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 71,
+      "split": "held_out",
+      "id": "seen-high",
+      "actual": false,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 2,
+          "successes": 0,
+          "failures": 2,
+          "probability": 0.25,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_exact": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_frozen_pool": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": false,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "3cac1ee9477d8988c62ba9c848e9597805fb7f8f1e552fc67c0b6431f9a3a6ad"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777776,
+        "C_exact": 0.027777777777777776,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 71,
+      "split": "held_out",
+      "id": "interpolate-normal-02",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 8,
+          "successes": 8,
+          "failures": 0,
+          "probability": 0.9,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_exact": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_frozen_pool": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "3cac1ee9477d8988c62ba9c848e9597805fb7f8f1e552fc67c0b6431f9a3a6ad"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.009999999999999995,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 71,
+      "split": "held_out",
+      "id": "interpolate-high-02",
+      "actual": false,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 8,
+          "successes": 0,
+          "failures": 8,
+          "probability": 0.1,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_exact": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_frozen_pool": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "3cac1ee9477d8988c62ba9c848e9597805fb7f8f1e552fc67c0b6431f9a3a6ad"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.010000000000000002,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 71,
+      "split": "held_out",
+      "id": "interpolate-normal-03",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 8,
+          "successes": 8,
+          "failures": 0,
+          "probability": 0.9,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_exact": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_frozen_pool": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "3cac1ee9477d8988c62ba9c848e9597805fb7f8f1e552fc67c0b6431f9a3a6ad"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.009999999999999995,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 71,
+      "split": "held_out",
+      "id": "interpolate-high-03",
+      "actual": false,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 8,
+          "successes": 0,
+          "failures": 8,
+          "probability": 0.1,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_exact": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_frozen_pool": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "3cac1ee9477d8988c62ba9c848e9597805fb7f8f1e552fc67c0b6431f9a3a6ad"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.010000000000000002,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 71,
+      "split": "held_out",
+      "id": "extrapolate-normal",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "outside_supported_duration_hull",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_exact": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_frozen_pool": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "outside_supported_duration_hull",
+          "duration_bounds": null,
+          "memory_sha256": "3cac1ee9477d8988c62ba9c848e9597805fb7f8f1e552fc67c0b6431f9a3a6ad"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 71,
+      "split": "held_out",
+      "id": "new-sensory-context",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "unseen_family",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_exact": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "cd01c27a102b81f2dc3ae9b3a016a35444f362041df7989a4c0944d22dd8fae0"
+        },
+        "C_frozen_pool": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "unseen_family",
+          "duration_bounds": null,
+          "memory_sha256": "3cac1ee9477d8988c62ba9c848e9597805fb7f8f1e552fc67c0b6431f9a3a6ad"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 83,
+      "split": "warmup",
+      "id": "0",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 83,
+      "split": "warmup",
+      "id": "1",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 83,
+      "split": "warmup",
+      "id": "2",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 83,
+      "split": "warmup",
+      "id": "3",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.11111111111111113,
+        "C": 0.11111111111111113,
+        "C_exact": 0.11111111111111113,
+        "C_frozen_pool": 0.11111111111111113
+      }
+    },
+    {
+      "seed": 83,
+      "split": "warmup",
+      "id": "4",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.11111111111111113,
+        "C": 0.03999999999999998,
+        "C_exact": 0.11111111111111113,
+        "C_frozen_pool": 0.03999999999999998
+      }
+    },
+    {
+      "seed": 83,
+      "split": "warmup",
+      "id": "5",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 83,
+      "split": "warmup",
+      "id": "6",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.1111111111111111,
+        "C": 0.1111111111111111,
+        "C_exact": 0.1111111111111111,
+        "C_frozen_pool": 0.1111111111111111
+      }
+    },
+    {
+      "seed": 83,
+      "split": "warmup",
+      "id": "7",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.1111111111111111,
+        "C": 0.04000000000000001,
+        "C_exact": 0.1111111111111111,
+        "C_frozen_pool": 0.04000000000000001
+      }
+    },
+    {
+      "seed": 83,
+      "split": "adaptation",
+      "id": "0",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777766,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 83,
+      "split": "adaptation",
+      "id": "1",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777776,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 83,
+      "split": "adaptation",
+      "id": "2",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.03999999999999998,
+        "C_exact": 0.03999999999999998,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 83,
+      "split": "adaptation",
+      "id": "3",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.04000000000000001,
+        "C_exact": 0.04000000000000001,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 83,
+      "split": "adaptation",
+      "id": "4",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.015625,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 83,
+      "split": "adaptation",
+      "id": "5",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.03999999999999998,
+        "C_exact": 0.03999999999999998,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 83,
+      "split": "adaptation",
+      "id": "6",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.015625,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 83,
+      "split": "adaptation",
+      "id": "7",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.04000000000000001,
+        "C_exact": 0.04000000000000001,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 83,
+      "split": "held_out",
+      "id": "seen-normal",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 2,
+          "successes": 2,
+          "failures": 0,
+          "probability": 0.75,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_exact": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_frozen_pool": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": false,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "809aa5f1152206f3c60517583ba14f5365e36fb2ee0ed54d6e6909c35c13793b"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777766,
+        "C_exact": 0.027777777777777766,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 83,
+      "split": "held_out",
+      "id": "seen-high",
+      "actual": false,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 2,
+          "successes": 0,
+          "failures": 2,
+          "probability": 0.25,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_exact": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_frozen_pool": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": false,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "809aa5f1152206f3c60517583ba14f5365e36fb2ee0ed54d6e6909c35c13793b"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777776,
+        "C_exact": 0.027777777777777776,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 83,
+      "split": "held_out",
+      "id": "interpolate-normal-02",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 8,
+          "successes": 8,
+          "failures": 0,
+          "probability": 0.9,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_exact": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_frozen_pool": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "809aa5f1152206f3c60517583ba14f5365e36fb2ee0ed54d6e6909c35c13793b"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.009999999999999995,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 83,
+      "split": "held_out",
+      "id": "interpolate-high-02",
+      "actual": false,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 8,
+          "successes": 0,
+          "failures": 8,
+          "probability": 0.1,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_exact": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_frozen_pool": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "809aa5f1152206f3c60517583ba14f5365e36fb2ee0ed54d6e6909c35c13793b"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.010000000000000002,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 83,
+      "split": "held_out",
+      "id": "interpolate-normal-03",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 8,
+          "successes": 8,
+          "failures": 0,
+          "probability": 0.9,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_exact": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_frozen_pool": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "809aa5f1152206f3c60517583ba14f5365e36fb2ee0ed54d6e6909c35c13793b"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.009999999999999995,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 83,
+      "split": "held_out",
+      "id": "interpolate-high-03",
+      "actual": false,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 8,
+          "successes": 0,
+          "failures": 8,
+          "probability": 0.1,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_exact": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_frozen_pool": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "809aa5f1152206f3c60517583ba14f5365e36fb2ee0ed54d6e6909c35c13793b"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.010000000000000002,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 83,
+      "split": "held_out",
+      "id": "extrapolate-normal",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "outside_supported_duration_hull",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_exact": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_frozen_pool": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "outside_supported_duration_hull",
+          "duration_bounds": null,
+          "memory_sha256": "809aa5f1152206f3c60517583ba14f5365e36fb2ee0ed54d6e6909c35c13793b"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 83,
+      "split": "held_out",
+      "id": "new-sensory-context",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "unseen_family",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_exact": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "5175be82aab6e1e68801c53994446ac16935d87dcf1e3f8049fe8b04f88dfdaf"
+        },
+        "C_frozen_pool": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "unseen_family",
+          "duration_bounds": null,
+          "memory_sha256": "809aa5f1152206f3c60517583ba14f5365e36fb2ee0ed54d6e6909c35c13793b"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 97,
+      "split": "warmup",
+      "id": "0",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 97,
+      "split": "warmup",
+      "id": "1",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 97,
+      "split": "warmup",
+      "id": "2",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.11111111111111113,
+        "C": 0.11111111111111113,
+        "C_exact": 0.11111111111111113,
+        "C_frozen_pool": 0.11111111111111113
+      }
+    },
+    {
+      "seed": 97,
+      "split": "warmup",
+      "id": "3",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 97,
+      "split": "warmup",
+      "id": "4",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.11111111111111113,
+        "C": 0.03999999999999998,
+        "C_exact": 0.11111111111111113,
+        "C_frozen_pool": 0.03999999999999998
+      }
+    },
+    {
+      "seed": 97,
+      "split": "warmup",
+      "id": "5",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.1111111111111111,
+        "C": 0.1111111111111111,
+        "C_exact": 0.1111111111111111,
+        "C_frozen_pool": 0.1111111111111111
+      }
+    },
+    {
+      "seed": 97,
+      "split": "warmup",
+      "id": "6",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 97,
+      "split": "warmup",
+      "id": "7",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.1111111111111111,
+        "C": 0.04000000000000001,
+        "C_exact": 0.1111111111111111,
+        "C_frozen_pool": 0.04000000000000001
+      }
+    },
+    {
+      "seed": 97,
+      "split": "adaptation",
+      "id": "0",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777776,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 97,
+      "split": "adaptation",
+      "id": "1",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777766,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 97,
+      "split": "adaptation",
+      "id": "2",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.020408163265306135,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 97,
+      "split": "adaptation",
+      "id": "3",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.02040816326530612,
+        "C_exact": 0.0625,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 97,
+      "split": "adaptation",
+      "id": "4",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.04000000000000001,
+        "C_exact": 0.04000000000000001,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 97,
+      "split": "adaptation",
+      "id": "5",
+      "actual": false,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.04000000000000001,
+        "C_exact": 0.04000000000000001,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 97,
+      "split": "adaptation",
+      "id": "6",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.03999999999999998,
+        "C_exact": 0.03999999999999998,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 97,
+      "split": "adaptation",
+      "id": "7",
+      "actual": true,
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.03999999999999998,
+        "C_exact": 0.03999999999999998,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 97,
+      "split": "held_out",
+      "id": "seen-normal",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 2,
+          "successes": 2,
+          "failures": 0,
+          "probability": 0.75,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_exact": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_frozen_pool": {
+          "context": "04fae6d6d9186c1806d4391c45e2dabb0fa0aeb0fa2388bb91f8490d162e8db7",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": false,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "2dfa17f4cb947ed68a8e234223990b1ab10501a7c79c4544149112bea9f92a6e"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777766,
+        "C_exact": 0.027777777777777766,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 97,
+      "split": "held_out",
+      "id": "seen-high",
+      "actual": false,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 2,
+          "successes": 0,
+          "failures": 2,
+          "probability": 0.25,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_exact": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": false,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_frozen_pool": {
+          "context": "3fc22760befc4d76a3007387592ecee991835ae0322bba0df834a8cf17415d47",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": false,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "2dfa17f4cb947ed68a8e234223990b1ab10501a7c79c4544149112bea9f92a6e"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.0625,
+        "C": 0.027777777777777776,
+        "C_exact": 0.027777777777777776,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 97,
+      "split": "held_out",
+      "id": "interpolate-normal-02",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 8,
+          "successes": 8,
+          "failures": 0,
+          "probability": 0.9,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_exact": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_frozen_pool": {
+          "context": "fecca46b07cb27b7d78e4b5b7138e688f4847a78412b2f0ccb15052d86f296be",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "2dfa17f4cb947ed68a8e234223990b1ab10501a7c79c4544149112bea9f92a6e"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.009999999999999995,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 97,
+      "split": "held_out",
+      "id": "interpolate-high-02",
+      "actual": false,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 8,
+          "successes": 0,
+          "failures": 8,
+          "probability": 0.1,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_exact": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_frozen_pool": {
+          "context": "68bbd03e69205db46ea5a9a009c757798adf2603b6aae993dc1444a62d06a224",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "2dfa17f4cb947ed68a8e234223990b1ab10501a7c79c4544149112bea9f92a6e"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.010000000000000002,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 97,
+      "split": "held_out",
+      "id": "interpolate-normal-03",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 8,
+          "successes": 8,
+          "failures": 0,
+          "probability": 0.9,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_exact": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_frozen_pool": {
+          "context": "c84e3516af617e1c5622a1e51c376adff60e798ebe40ae4b7a21bb19a333a8dd",
+          "samples": 4,
+          "successes": 4,
+          "failures": 0,
+          "probability": 0.8333333333333334,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "2dfa17f4cb947ed68a8e234223990b1ab10501a7c79c4544149112bea9f92a6e"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.009999999999999995,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777766
+      }
+    },
+    {
+      "seed": 97,
+      "split": "held_out",
+      "id": "interpolate-high-03",
+      "actual": false,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 8,
+          "successes": 0,
+          "failures": 8,
+          "probability": 0.1,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_exact": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_frozen_pool": {
+          "context": "1ea500851f46df13f0516d683b0598010cc3b8be7f0709c89ac1c1ace332f65a",
+          "samples": 4,
+          "successes": 0,
+          "failures": 4,
+          "probability": 0.16666666666666666,
+          "unseen_context": true,
+          "kind": "pooled Beta(1,1) software admission mean; authored invariance assumption",
+          "evidence": "bounded_duration_interpolation",
+          "duration_bounds": [
+            0.1,
+            0.4
+          ],
+          "memory_sha256": "2dfa17f4cb947ed68a8e234223990b1ab10501a7c79c4544149112bea9f92a6e"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.010000000000000002,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.027777777777777776
+      }
+    },
+    {
+      "seed": 97,
+      "split": "held_out",
+      "id": "extrapolate-normal",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "outside_supported_duration_hull",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_exact": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_frozen_pool": {
+          "context": "e3027e610d4b8a8e9de435c24dfb1298244deceecc783143eb0979ac37dbc318",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "outside_supported_duration_hull",
+          "duration_bounds": null,
+          "memory_sha256": "2dfa17f4cb947ed68a8e234223990b1ab10501a7c79c4544149112bea9f92a6e"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    },
+    {
+      "seed": 97,
+      "split": "held_out",
+      "id": "new-sensory-context",
+      "actual": true,
+      "predictions": {
+        "A": {
+          "probability": 0.5,
+          "samples": 0,
+          "evidence": "fixed_prior"
+        },
+        "B": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+        },
+        "C": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "unseen_family",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_exact": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "exact_context",
+          "duration_bounds": null,
+          "memory_sha256": "4ff18f4b194d35cbe586392a5f7a1fa070eead059436e481724b1ceb6b5f2a01"
+        },
+        "C_frozen_pool": {
+          "context": "0c131d6f9578ffeba16ba3053d098f81afd34f1d583ad7021e1bbbe7b3ab831f",
+          "samples": 0,
+          "successes": 0,
+          "failures": 0,
+          "probability": 0.5,
+          "unseen_context": true,
+          "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated",
+          "evidence": "unseen_family",
+          "duration_bounds": null,
+          "memory_sha256": "2dfa17f4cb947ed68a8e234223990b1ab10501a7c79c4544149112bea9f92a6e"
+        }
+      },
+      "scores": {
+        "A": 0.25,
+        "B": 0.25,
+        "C": 0.25,
+        "C_exact": 0.25,
+        "C_frozen_pool": 0.25
+      }
+    }
+  ],
+  "policy_outcomes": [
+    {
+      "seed": 71,
+      "case": "interpolate-normal-02",
+      "arm": "A",
+      "requested": "walk",
+      "actual": "walk",
+      "valid": true,
+      "walk_admitted": true,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 71,
+      "case": "interpolate-normal-02",
+      "arm": "B",
+      "requested": "observe",
+      "actual": "observe",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 71,
+      "case": "interpolate-normal-02",
+      "arm": "C",
+      "requested": "walk",
+      "actual": "walk",
+      "valid": true,
+      "walk_admitted": true,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 71,
+      "case": "interpolate-normal-02",
+      "arm": "C_exact",
+      "requested": "observe",
+      "actual": "observe",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 71,
+      "case": "interpolate-normal-02",
+      "arm": "C_frozen_pool",
+      "requested": "walk",
+      "actual": "walk",
+      "valid": true,
+      "walk_admitted": true,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 71,
+      "case": "interpolate-high-02",
+      "arm": "A",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 71,
+      "case": "interpolate-high-02",
+      "arm": "B",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 71,
+      "case": "interpolate-high-02",
+      "arm": "C",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 71,
+      "case": "interpolate-high-02",
+      "arm": "C_exact",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 71,
+      "case": "interpolate-high-02",
+      "arm": "C_frozen_pool",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-normal-02",
+      "arm": "A",
+      "requested": "walk",
+      "actual": "walk",
+      "valid": true,
+      "walk_admitted": true,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-normal-02",
+      "arm": "B",
+      "requested": "observe",
+      "actual": "observe",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-normal-02",
+      "arm": "C",
+      "requested": "walk",
+      "actual": "walk",
+      "valid": true,
+      "walk_admitted": true,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-normal-02",
+      "arm": "C_exact",
+      "requested": "observe",
+      "actual": "observe",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-normal-02",
+      "arm": "C_frozen_pool",
+      "requested": "walk",
+      "actual": "walk",
+      "valid": true,
+      "walk_admitted": true,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-high-02",
+      "arm": "A",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-high-02",
+      "arm": "B",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-high-02",
+      "arm": "C",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-high-02",
+      "arm": "C_exact",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 83,
+      "case": "interpolate-high-02",
+      "arm": "C_frozen_pool",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-normal-02",
+      "arm": "A",
+      "requested": "walk",
+      "actual": "walk",
+      "valid": true,
+      "walk_admitted": true,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-normal-02",
+      "arm": "B",
+      "requested": "observe",
+      "actual": "observe",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-normal-02",
+      "arm": "C",
+      "requested": "walk",
+      "actual": "walk",
+      "valid": true,
+      "walk_admitted": true,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-normal-02",
+      "arm": "C_exact",
+      "requested": "observe",
+      "actual": "observe",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-normal-02",
+      "arm": "C_frozen_pool",
+      "requested": "walk",
+      "actual": "walk",
+      "valid": true,
+      "walk_admitted": true,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": -9.170931257074244e-06
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-high-02",
+      "arm": "A",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-high-02",
+      "arm": "B",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-high-02",
+      "arm": "C",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-high-02",
+      "arm": "C_exact",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    },
+    {
+      "seed": 97,
+      "case": "interpolate-high-02",
+      "arm": "C_frozen_pool",
+      "requested": "sleep",
+      "actual": "sleep",
+      "valid": true,
+      "walk_admitted": false,
+      "restricted_walk": false,
+      "sleep_pressure_reduction": 0.00021539311899965163
+    }
+  ],
+  "mean_brier": {
+    "warmup": {
+      "A": 0.25,
+      "B": 0.18055555555555555,
+      "C": 0.16277777777777777,
+      "C_exact": 0.18055555555555555,
+      "C_frozen_pool": 0.16277777777777777
+    },
+    "adaptation": {
+      "A": 0.25,
+      "B": 0.0625,
+      "C": 0.031448589852607706,
+      "C_exact": 0.05125,
+      "C_frozen_pool": 0.027777777777777773
+    },
+    "held_out": {
+      "A": 0.25,
+      "B": 0.203125,
+      "C": 0.07444444444444444,
+      "C_exact": 0.19444444444444445,
+      "C_frozen_pool": 0.08333333333333333
+    },
+    "unseen_interpolation": {
+      "A": 0.25,
+      "B": 0.25,
+      "C": 0.009999999999999998,
+      "C_exact": 0.25,
+      "C_frozen_pool": 0.027777777777777773
+    }
+  },
+  "checks": [
+    {
+      "seed": 71,
+      "cold_equal": true,
+      "frozen_memory_unchanged": true,
+      "held_out_learning": false,
+      "train_test_starting_states_disjoint": true
+    },
+    {
+      "seed": 83,
+      "cold_equal": true,
+      "frozen_memory_unchanged": true,
+      "held_out_learning": false,
+      "train_test_starting_states_disjoint": true
+    },
+    {
+      "seed": 97,
+      "cold_equal": true,
+      "frozen_memory_unchanged": true,
+      "held_out_learning": false,
+      "train_test_starting_states_disjoint": true
+    }
+  ],
+  "primary_pass": true,
+  "extra_experience_improves": true,
+  "invalid_physical_outcomes": 0,
+  "restricted_walk_requests": 0,
+  "scope": "bounded software admission transfer; not motor skill, weights or consciousness",
+  "uncertainty": "three deterministic seed clusters; report paired seed deltas, no inferential p-value",
+  "api_calls": 0,
+  "canonical_state_advanced": false,
+  "paired_seed_brier_delta_C_minus_B": {
+    "71": -0.24,
+    "83": -0.24,
+    "97": -0.24
+  }
+}

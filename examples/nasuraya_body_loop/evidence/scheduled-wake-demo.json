@@ -1,0 +1,74 @@
+{
+  "schema": "nasuraya-wakeup-demo-evidence/1",
+  "status": "completed",
+  "real_host_clock_polling": true,
+  "generated_fixture": true,
+  "live_model_execution": false,
+  "api_network_requests": 0,
+  "due_at_utc": "2026-10-14T02:30:22.499793+00:00",
+  "initial_revision": 1,
+  "final_revision": 2,
+  "evaluation": {
+    "goal_reached": true,
+    "completed_cycles": 1,
+    "failed_cycles": 0,
+    "run_actions_remaining": 0,
+    "actions_remaining": 0,
+    "unresolved": false,
+    "safe": true,
+    "target_cycles": 1,
+    "tool_calls_remaining": 0
+  },
+  "grant": {
+    "grant_id": "demo-grant",
+    "run_id": "demo-wake",
+    "additional_actions": 1,
+    "additional_calls": 4,
+    "observed_checkpoint_sha256": "37aa72ff52df56e56efa0cca19d40800d9bffe441c1582d96db46671448c8cb8",
+    "schema": "nasuraya-body-continuation-grant/1",
+    "authorized_at_utc": "2026-10-14T02:30:20.499549+00:00",
+    "previous_completed_cycles": 1,
+    "previous_action_limit": 1,
+    "previous_run_ids": [
+      "demo-old"
+    ],
+    "base_api_call_limit": 4
+  },
+  "schedule": {
+    "backend": "synthetic",
+    "due_at_utc": "2026-10-14T02:30:22.499793+00:00",
+    "expires_at_utc": "2026-10-14T02:32:22.499793+00:00",
+    "grant_id": "demo-grant",
+    "grant_sha256": "edba492d1dca9cd8e618763b07404a4fb879b94d03a47890fb4c8b92e3953d5f",
+    "max_attempts": 3,
+    "model": "synthetic-fixture",
+    "retry_delay_seconds": 30,
+    "run_id": "demo-wake",
+    "schema": "nasuraya-scheduled-wakeup/1",
+    "timeout_seconds": 60,
+    "wake_id": "demo-wake"
+  },
+  "ticks": [
+    {
+      "checked_at_utc": "2026-10-14T02:30:20.668024+00:00",
+      "state": "pending",
+      "attempts": 0,
+      "execution_started": false
+    },
+    {
+      "checked_at_utc": "2026-10-14T02:30:22.102793+00:00",
+      "state": "pending",
+      "attempts": 0,
+      "execution_started": false
+    },
+    {
+      "checked_at_utc": "2026-10-14T02:30:23.575642+00:00",
+      "state": "completed",
+      "attempts": 1,
+      "execution_started": true
+    }
+  ],
+  "terminal_replay_execution_started": false,
+  "terminal_replay_state": "completed",
+  "permanent_service_installed": false
+}

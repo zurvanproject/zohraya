@@ -1,0 +1,48 @@
+16 visual state checks passed (Node VM; not browser rendering)
+
+test_alert_mutation_detected_without_normal_append (test_sentinel.DefenseChecks.test_alert_mutation_detected_without_normal_append) ... ok
+test_alert_tail_deletion_detected (test_sentinel.DefenseChecks.test_alert_tail_deletion_detected) ... ok
+test_clean_request_and_reuse (test_sentinel.DefenseChecks.test_clean_request_and_reuse) ... ok
+test_event_capacity_stops_before_calculation (test_sentinel.DefenseChecks.test_event_capacity_stops_before_calculation) ... ok
+test_foreign_alert_store_not_reset (test_sentinel.DefenseChecks.test_foreign_alert_store_not_reset) ... ok
+test_foreign_instruction_is_data_and_logs_exclude_payload (test_sentinel.DefenseChecks.test_foreign_instruction_is_data_and_logs_exclude_payload) ... ok
+test_logging_failure_cannot_admit_calculation (test_sentinel.DefenseChecks.test_logging_failure_cannot_admit_calculation) ... ok
+test_malformed_receipt_preserved_and_blocked (test_sentinel.DefenseChecks.test_malformed_receipt_preserved_and_blocked) ... ok
+test_oversized_receipt_rejected (test_sentinel.DefenseChecks.test_oversized_receipt_rejected) ... ok
+test_repeated_invalid_input_escalates (test_sentinel.DefenseChecks.test_repeated_invalid_input_escalates) ... ok
+test_rewritten_baseline_not_self_trusted (test_sentinel.DefenseChecks.test_rewritten_baseline_not_self_trusted) ... ok
+test_source_change_latches_and_survives_restart (test_sentinel.DefenseChecks.test_source_change_latches_and_survives_restart) ... ok
+test_source_symlink_rejected (test_sentinel.DefenseChecks.test_source_symlink_rejected) ... ok
+test_symlink_receipt_rejected_without_reading_target (test_sentinel.DefenseChecks.test_symlink_receipt_rejected_without_reading_target) ... ok
+test_audit_tamper_or_truncation_blocks (test_visual_status.VisualChecks.test_audit_tamper_or_truncation_blocks) ... ok
+test_changed_source_blocks (test_visual_status.VisualChecks.test_changed_source_blocks) ... ok
+test_corrupt_database_is_unknown_and_preserved (test_visual_status.VisualChecks.test_corrupt_database_is_unknown_and_preserved) ... ok
+test_future_event_blocks (test_visual_status.VisualChecks.test_future_event_blocks) ... ok
+test_healthy_observation_no_project_import_or_disk_changes (test_visual_status.VisualChecks.test_healthy_observation_no_project_import_or_disk_changes) ... ok
+test_html_payload_cannot_terminate_json_script (test_visual_status.VisualChecks.test_html_payload_cannot_terminate_json_script) ... ok
+test_known_block_not_hidden_by_unavailable_audit (test_visual_status.VisualChecks.test_known_block_not_hidden_by_unavailable_audit) ... ok
+test_latch_is_shown_without_reset (test_visual_status.VisualChecks.test_latch_is_shown_without_reset) ... ok
+test_missing_source_and_wrong_digest_never_healthy (test_visual_status.VisualChecks.test_missing_source_and_wrong_digest_never_healthy) ... ok
+test_missing_store_stays_missing_and_unknown (test_visual_status.VisualChecks.test_missing_store_stays_missing_and_unknown) ... ok
+test_no_raw_paths_or_exceptions_leak (test_visual_status.VisualChecks.test_no_raw_paths_or_exceptions_leak) ... ok
+test_oversized_or_non_regular_input_refused (test_visual_status.VisualChecks.test_oversized_or_non_regular_input_refused) ... ok
+test_rewritten_manifest_is_not_self_trusted (test_visual_status.VisualChecks.test_rewritten_manifest_is_not_self_trusted) ... ok
+test_rollback_journal_or_wal_is_unknown (test_visual_status.VisualChecks.test_rollback_journal_or_wal_is_unknown) ... ok
+test_symlink_source_and_store_refused (test_visual_status.VisualChecks.test_symlink_source_and_store_refused) ... ok
+test_unrecognized_event_not_rendered_even_with_valid_hash (test_visual_status.VisualChecks.test_unrecognized_event_not_rendered_even_with_valid_hash) ... ok
+test_warning_survives_subsequent_allowed_event (test_visual_status.VisualChecks.test_warning_survives_subsequent_allowed_event) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.133s
+
+OK
+test_cached_result_does_not_compute (test_time_mining.MiningChecks.test_cached_result_does_not_compute) ... ok
+test_corrupt_accounting_not_silently_recomputed (test_time_mining.MiningChecks.test_corrupt_accounting_not_silently_recomputed) ... ok
+test_new_context_does_not_reuse (test_time_mining.MiningChecks.test_new_context_does_not_reuse) ... ok
+test_reproduce_is_a_new_execution (test_time_mining.MiningChecks.test_reproduce_is_a_new_execution) ... ok
+test_tampered_source_and_wrong_task_reject (test_time_mining.MiningChecks.test_tampered_source_and_wrong_task_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.394s
+
+OK

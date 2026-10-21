@@ -1,0 +1,25 @@
+{
+  "schema": "nasuraya-experience-api-validation/1",
+  "base_commit": "123467a39fdeb0db5b6527a1ed426b0da71ea91e",
+  "suites": [
+    {
+      "suite": "experience",
+      "passed": 8,
+      "seconds": 38.773,
+      "skipped": 0
+    },
+    {
+      "suite": "api_and_continuation_sdk",
+      "passed": 55,
+      "seconds": 224.659,
+      "skipped": 0
+    }
+  ],
+  "total_passed": 63,
+  "sdk_version": "3.29.0",
+  "live_api_verified": true,
+  "cold_replay_api_requests": 0,
+  "cold_replay_new_actions": 0,
+  "public_live_evidence": "experience-api-live.json",
+  "native_sources_and_budget_authorization_unchanged": true
+}

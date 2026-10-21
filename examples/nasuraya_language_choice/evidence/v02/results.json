@@ -1,0 +1,183 @@
+{
+  "schema": "nasuraya-language-choice/2",
+  "metrics": {
+    "parent": {
+      "accuracy": 0.6666666666666666,
+      "balanced_accuracy": 0.5,
+      "admit_recall": 0.0,
+      "defer_recall": 1.0,
+      "brier": 0.17356759390732165,
+      "predictions": {
+        "ADMIT": 0,
+        "DEFER": 24
+      }
+    },
+    "ce_original": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "admit_recall": 1.0,
+      "defer_recall": 1.0,
+      "brier": 0.10698710856229139,
+      "predictions": {
+        "ADMIT": 8,
+        "DEFER": 16
+      }
+    },
+    "ce_balanced": {
+      "accuracy": 0.6666666666666666,
+      "balanced_accuracy": 0.75,
+      "admit_recall": 1.0,
+      "defer_recall": 0.5,
+      "brier": 0.10501492369748182,
+      "predictions": {
+        "ADMIT": 16,
+        "DEFER": 8
+      }
+    },
+    "choice_original": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "admit_recall": 1.0,
+      "defer_recall": 1.0,
+      "brier": 0.08579499198690832,
+      "predictions": {
+        "ADMIT": 8,
+        "DEFER": 16
+      }
+    },
+    "choice_balanced": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "admit_recall": 1.0,
+      "defer_recall": 1.0,
+      "brier": 0.07080105383712511,
+      "predictions": {
+        "ADMIT": 8,
+        "DEFER": 16
+      }
+    },
+    "choice_shuffled": {
+      "accuracy": 0.6666666666666666,
+      "balanced_accuracy": 0.75,
+      "admit_recall": 1.0,
+      "defer_recall": 0.5,
+      "brier": 0.17136819647301604,
+      "predictions": {
+        "ADMIT": 16,
+        "DEFER": 8
+      }
+    },
+    "parent_calibrated": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "admit_recall": 1.0,
+      "defer_recall": 1.0,
+      "brier": 0.17356759390732165,
+      "predictions": {
+        "ADMIT": 8,
+        "DEFER": 16
+      }
+    }
+  },
+  "primary_arm": "choice_balanced",
+  "promote_advisory": true,
+  "fresh_labels_generated_after_predictions": true,
+  "fresh_native_cycles": 24,
+  "train_rows": 52,
+  "native_equations_modified": false,
+  "identity_modified": false,
+  "weights": {
+    "ce_original": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "a319a057de60cbaf22bd98d79b314fe2ece25c41c89c5d26a2e23abc4ad9217d",
+        "base_model.model.model.layers.26.self_attn.v_proj": "8cbad4e03eec5d4db2e4a422b761c53aec446d264b6d42e01a1b3313e7ece03b",
+        "base_model.model.model.layers.27.self_attn.q_proj": "3032b7f0530bc9e95f50559f271893fd3cdd30820e8acaf3c53da87221255888",
+        "base_model.model.model.layers.27.self_attn.v_proj": "e77c139b40c16b2f9a2f83ec61aa183747c0437df5abe9894b691503739fc5f1",
+        "base_model.model.model.layers.28.self_attn.q_proj": "66f43cc297136870620cc039024bf06af21f0bd1d9fd8bf2a87106d353b20179",
+        "base_model.model.model.layers.28.self_attn.v_proj": "31a011b98c4f04d7e0e2bf73141276f362990a397b223869fa4a518c34c5750d",
+        "base_model.model.model.layers.29.self_attn.q_proj": "ab06ed9641d4b3df8cbcd075dea179d3ec4337711fabd9dc550a730af342298e",
+        "base_model.model.model.layers.29.self_attn.v_proj": "f346dc94cb1cefef57133c370c5b53527b5b4abfb8aae09ba56298327742f84d"
+      },
+      "adapter_sha256": "8f56ab76e82671078c7b1f044f1c7ebfece90401c1de1c10e29c01602e12c787",
+      "changed_elements": 61440
+    },
+    "ce_balanced": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "7b1901006bed9d492de40c3dd7bc9bc9c63af0eb8e32611f1a1a59da793f64ca",
+        "base_model.model.model.layers.26.self_attn.v_proj": "397bc10be32bf1c31699c2862f8a25b62b33a05ea32b55cf83814075df46ad8c",
+        "base_model.model.model.layers.27.self_attn.q_proj": "aad54a11e4c29695e12d1e7de76f9c4cfe52d7948b4983bff46206ae9966f62a",
+        "base_model.model.model.layers.27.self_attn.v_proj": "87fdf803edc0d98b7b6cb6e07c6fcfa64fbc4170055a89fdf559b014e20a7eb9",
+        "base_model.model.model.layers.28.self_attn.q_proj": "867c16582708c0dbf0f55c19091cc2fe88156456ecd5780447fc8a1486ea22de",
+        "base_model.model.model.layers.28.self_attn.v_proj": "8d0d9f56a32e7b70b2dfdca69fa072d64c2696b228306e1772aa76c7af0a9d9b",
+        "base_model.model.model.layers.29.self_attn.q_proj": "9c34cd2dbe4abd94fc6041572d03eb8ea7b99df188a220ffe033b467d68f1f37",
+        "base_model.model.model.layers.29.self_attn.v_proj": "9f5a7adfaa5f89b29ca1f05d6500e4b535df53da0a4be8504df8df653a650e31"
+      },
+      "adapter_sha256": "c179c90d6c3861004b0d6e3ecc763fdea8bfa2e4f3638501afaea616a8685942",
+      "changed_elements": 61440
+    },
+    "choice_original": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "0b305266b4db817afae708d15c4ee61793a8c1eafc855ad20217da440a436d24",
+        "base_model.model.model.layers.26.self_attn.v_proj": "309e457aadfa30703ea4251295990d9e4fd007d535dd4090c4ab6b0ab0577082",
+        "base_model.model.model.layers.27.self_attn.q_proj": "b9de9148b6ed011ac598cf3753461f86f31f14a5940965f81d0f0fbfe6284fa8",
+        "base_model.model.model.layers.27.self_attn.v_proj": "1d91947f1b4a4c322dddde92e26e3a3f054661e551c612cbcdbd4392e64fcf83",
+        "base_model.model.model.layers.28.self_attn.q_proj": "ed761fbd43b7d1bb4faee706ec4b1c405b627bb71680ce3faedea0f776e6b500",
+        "base_model.model.model.layers.28.self_attn.v_proj": "a6f883e36ff91b0ec57b464dd7739e74477b32de5623f51c533e68b9d99bb7bc",
+        "base_model.model.model.layers.29.self_attn.q_proj": "4d027e7dd2ecad7ac6508f3502152e31f167f081587eedc8ea3d506860e5be65",
+        "base_model.model.model.layers.29.self_attn.v_proj": "9769a5a8e523ade2a63d32fde23671bd35c652756f669359081d38a31cc40722"
+      },
+      "adapter_sha256": "4c58b08dfec386f8b49d6d55584024346cd0a7f823526fcae98dfd2ebed1b48a",
+      "changed_elements": 61440
+    },
+    "choice_balanced": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "e8f68a4f8ef9cfbe700ce84343afeb837552ea0351233e57a5a2ab71f0d1d36c",
+        "base_model.model.model.layers.26.self_attn.v_proj": "948eca1a67255f3bc17abb7d3a2caee45286067090cd7ec9ddeea53511c9e902",
+        "base_model.model.model.layers.27.self_attn.q_proj": "07f510045b9eb0b95d6f5e868163ff5daed63d723c554afe2d0dea97d115a331",
+        "base_model.model.model.layers.27.self_attn.v_proj": "2ad295e3ee9e45ab09c30f5839b83c3d44adc1679f0e12a398ed5c716e12b541",
+        "base_model.model.model.layers.28.self_attn.q_proj": "61aa8743470da9b2f488450d609a59d1a0612e82d90e04e544e5e9dc923e3a0a",
+        "base_model.model.model.layers.28.self_attn.v_proj": "129ee6355429ed7cd0fcaf7ca49e92b8bf497d52be67f3ec02fbc52a36ae1ef6",
+        "base_model.model.model.layers.29.self_attn.q_proj": "f8354af5ea5c9da3555de02132a7809bf61caa67358ff1d3b6cfeaa573797b74",
+        "base_model.model.model.layers.29.self_attn.v_proj": "db79cfc1512cc35e857f50dbe106db0fcf4236c745095850331f61880a97aee9"
+      },
+      "adapter_sha256": "aaf0c1f85dad3f3cc6985132de715c52d69d4a2de18d96a7ace70450560d7525",
+      "changed_elements": 61440
+    },
+    "choice_shuffled": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "fd0ae217191f09349ff4389fd5051cc01930abd0aeff297f8ab9fb0a4488d86a",
+        "base_model.model.model.layers.26.self_attn.v_proj": "5989b5fc4944ef5575e5a92429463031ea20037a5e18eb5dd1304d0742dbb24c",
+        "base_model.model.model.layers.27.self_attn.q_proj": "b728544ef756d84a72090ecdc216ada39ab943f5aa0e338c5f0069c2a46da964",
+        "base_model.model.model.layers.27.self_attn.v_proj": "137a2dda6e715e00da3af9806732b9ee3f26d06999ef5b029dc46b6ef8f51aab",
+        "base_model.model.model.layers.28.self_attn.q_proj": "15117ec396d1ff71969df5a7557d2e0b41eb45d93b72a4774b16e6cff4f71e10",
+        "base_model.model.model.layers.28.self_attn.v_proj": "b056da44f1dbd0363257b2abaad24e035ebe9bc792c21fdb23a3e34b0bd900ba",
+        "base_model.model.model.layers.29.self_attn.q_proj": "ea76fc4005eff628fbc09649a982a2669f0c0407f25e6a9099572364acd4ee69",
+        "base_model.model.model.layers.29.self_attn.v_proj": "61300c7d27898933e98ef70136638fe4b8c16424282dbd16acee4c786562347f"
+      },
+      "adapter_sha256": "85ec28996d12842db37b9aeb31879ff74a2e0e867596970e8476e1ced77addcf",
+      "changed_elements": 61440
+    }
+  },
+  "sources": {
+    "examples/nasuraya_language_adapter/test_adapter.py": "a2d256c14a1663d4b56b936bb5bbcdc15ca66d830242bc5c0299e747e3390458",
+    "examples/nasuraya_language_adapter/__init__.py": "365e50b99b18eccf1015116551226f008fd9bc220dc562a5ad0a882b69b62e51",
+    "examples/nasuraya_language_adapter/data.py": "b5f05a6d37e0783eb103e1f9ce846c09ed24194ddd68e123d5084d0f1a523550",
+    "examples/nasuraya_language_adapter/download_base.py": "bcde36182c59c8e87254426c6de700fe7ce876f0ff4b189627ec7b78e7bb2aa5",
+    "examples/nasuraya_language_adapter/train.py": "7bb74d84f15580c79c5585f2f0dc8be4caacee743de822b1e24a9178df00e5c1",
+    "examples/nasuraya_language_choice/experiment.py": "6547e1bef61b7ff49b746298fb17ac4ce69cbba97a22a2dabebe0a1a86e182a0",
+    "examples/nasuraya_language_choice/__init__.py": "b50258e9eb9132c5652b13916d6e4c8426f78d4767ee82f985986f2397c7c212",
+    "examples/nasuraya_self_model/monitor.py": "9009dba256a6a1465d6a6494bb34776578089b9e95de1deed9316c4725debe37",
+    "examples/nasuraya_self_model/evaluate.py": "cfde3a50f2f067a94c32ac8e0e6a684b8887f3248fa767c4ed7020714a5f57d6"
+  },
+  "before_labels_sha256": "086016e1505f8a046a3d7f67834b6d77259e54b84ee75c290feae0a6d4ee62b2",
+  "fresh_label_database_sha256": "97b3e5792969d5cf1668755218e698973c538791faa51714e5b3b1b4a911865e",
+  "fresh_labels_sha256": "f91550a634123f2cb3d526ce74183a42fc7056eb75cf50801637c2afdf86f59b",
+  "protocol_sha256": "bde8ed26bc7540644654d2ec8a484d83b86dad5db205db76491d6060cc710fce",
+  "calibration_threshold": 0.3299630433320999,
+  "base_directory": "/workspace/scratch/e045c22ac582/lm-base-smollm2-135m"
+}

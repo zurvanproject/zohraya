@@ -1,0 +1,4425 @@
+{
+  "schema": "nasuraya-causal-access-probe/1",
+  "workspace_rows": [
+    {
+      "id": "w-3b5dc36c320c0172fc1c",
+      "arm": "intact",
+      "seed": 101,
+      "noise": 0.05,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "b613f40d8a5dced1fa3a80e52cf5a2846d23657fd7016598b9fd0641431924a4"
+    },
+    {
+      "id": "w-3b5dc36c320c0172fc1c",
+      "arm": "broadcast_cut",
+      "seed": 101,
+      "noise": 0.05,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "6f4b6691dc7a27e699d0aa1a37b2fa46e7ca6b0a2500b6a1cec67f542e729ab2"
+    },
+    {
+      "id": "w-3b5dc36c320c0172fc1c",
+      "arm": "offpath_control",
+      "seed": 101,
+      "noise": 0.05,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "b613f40d8a5dced1fa3a80e52cf5a2846d23657fd7016598b9fd0641431924a4"
+    },
+    {
+      "id": "w-2b8cafca4c929b941add",
+      "arm": "intact",
+      "seed": 101,
+      "noise": 0.05,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "adbde8b0f59a4cc880071503f4da7f55165e30d156c07f9a2bdc3ee9d161cba0"
+    },
+    {
+      "id": "w-2b8cafca4c929b941add",
+      "arm": "broadcast_cut",
+      "seed": 101,
+      "noise": 0.05,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "0d5b1a97b1cf589869093fd7ea84eef6960dc1f0208b01e632d6587a3f22c3b6"
+    },
+    {
+      "id": "w-2b8cafca4c929b941add",
+      "arm": "offpath_control",
+      "seed": 101,
+      "noise": 0.05,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "adbde8b0f59a4cc880071503f4da7f55165e30d156c07f9a2bdc3ee9d161cba0"
+    },
+    {
+      "id": "w-bef1891a5948c5c3fdcb",
+      "arm": "intact",
+      "seed": 101,
+      "noise": 0.2,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ad0e3f62535c08e5838911a6d0145041c258ff547f770f3692c73f46b3323f92"
+    },
+    {
+      "id": "w-bef1891a5948c5c3fdcb",
+      "arm": "broadcast_cut",
+      "seed": 101,
+      "noise": 0.2,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "15d3c5c5572859b8a04a0ea1d5706117aa18e7b2cb8fc755f5c53c51d0886f2a"
+    },
+    {
+      "id": "w-bef1891a5948c5c3fdcb",
+      "arm": "offpath_control",
+      "seed": 101,
+      "noise": 0.2,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ad0e3f62535c08e5838911a6d0145041c258ff547f770f3692c73f46b3323f92"
+    },
+    {
+      "id": "w-eb3fc154f98d9ace1c48",
+      "arm": "intact",
+      "seed": 101,
+      "noise": 0.2,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "264218ad0e945e342a9439e6719b8011d4d4f6d1122ec8ac349548f673231c7d"
+    },
+    {
+      "id": "w-eb3fc154f98d9ace1c48",
+      "arm": "broadcast_cut",
+      "seed": 101,
+      "noise": 0.2,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "69629d854e8a530d5905212e69ad5e422f2ff88e5ab4a73b8a03bae3e321b531"
+    },
+    {
+      "id": "w-eb3fc154f98d9ace1c48",
+      "arm": "offpath_control",
+      "seed": 101,
+      "noise": 0.2,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "264218ad0e945e342a9439e6719b8011d4d4f6d1122ec8ac349548f673231c7d"
+    },
+    {
+      "id": "w-ae3f7be0d6240bc85baa",
+      "arm": "intact",
+      "seed": 101,
+      "noise": 0.4,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ed2815ddfc9e79b4790fe3fdfbfc6ea2a2e964f7f844414bb2661fd90645ebe9"
+    },
+    {
+      "id": "w-ae3f7be0d6240bc85baa",
+      "arm": "broadcast_cut",
+      "seed": 101,
+      "noise": 0.4,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "8b28dc46be9ec1cfbffbf78d62d7c6afd742ffb4c5b40372acf2103773f36c42"
+    },
+    {
+      "id": "w-ae3f7be0d6240bc85baa",
+      "arm": "offpath_control",
+      "seed": 101,
+      "noise": 0.4,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ed2815ddfc9e79b4790fe3fdfbfc6ea2a2e964f7f844414bb2661fd90645ebe9"
+    },
+    {
+      "id": "w-2d91306de87658aea4cb",
+      "arm": "intact",
+      "seed": 101,
+      "noise": 0.4,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "de9d867bb709336a8f8dd8a8cc62cd77dae93c6cc4aea7cef572649e7276403e"
+    },
+    {
+      "id": "w-2d91306de87658aea4cb",
+      "arm": "broadcast_cut",
+      "seed": 101,
+      "noise": 0.4,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "3a71a019a07680c5cb384c08f1bf02c5234407fed4d502f062e7d59c00d40b19"
+    },
+    {
+      "id": "w-2d91306de87658aea4cb",
+      "arm": "offpath_control",
+      "seed": 101,
+      "noise": 0.4,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "de9d867bb709336a8f8dd8a8cc62cd77dae93c6cc4aea7cef572649e7276403e"
+    },
+    {
+      "id": "w-1d14b19ae0df4d274171",
+      "arm": "intact",
+      "seed": 101,
+      "noise": 0.49,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "a433cf6d1dc268fcef9b745d80b1cb36f51d64d1211fd3ff8abdeb91cd783814"
+    },
+    {
+      "id": "w-1d14b19ae0df4d274171",
+      "arm": "broadcast_cut",
+      "seed": 101,
+      "noise": 0.49,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "1da7c3fbeb592fbffc9d71137964e20374dca9dcc54ba08a2315e698e519a5a6"
+    },
+    {
+      "id": "w-1d14b19ae0df4d274171",
+      "arm": "offpath_control",
+      "seed": 101,
+      "noise": 0.49,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "a433cf6d1dc268fcef9b745d80b1cb36f51d64d1211fd3ff8abdeb91cd783814"
+    },
+    {
+      "id": "w-7e538ff034f9a84d31ed",
+      "arm": "intact",
+      "seed": 101,
+      "noise": 0.49,
+      "label": 1,
+      "sensor_correct": false,
+      "delayed_correct": false,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.81,
+      "restored_correct": false,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "258af8f9aba133105ddf63d8cf34ffd54d902aac032f3dda7cdd5098b99e45f7"
+    },
+    {
+      "id": "w-7e538ff034f9a84d31ed",
+      "arm": "broadcast_cut",
+      "seed": 101,
+      "noise": 0.49,
+      "label": 1,
+      "sensor_correct": false,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": false,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "9f5420d7b7f7b1919301327826e36a8e0df54d5a78fbeacee7a70a3fd0f50d14"
+    },
+    {
+      "id": "w-7e538ff034f9a84d31ed",
+      "arm": "offpath_control",
+      "seed": 101,
+      "noise": 0.49,
+      "label": 1,
+      "sensor_correct": false,
+      "delayed_correct": false,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.81,
+      "restored_correct": false,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "258af8f9aba133105ddf63d8cf34ffd54d902aac032f3dda7cdd5098b99e45f7"
+    },
+    {
+      "id": "w-d4421396870d65bfc57d",
+      "arm": "intact",
+      "seed": 307,
+      "noise": 0.05,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ac923941d09c2999fc5e9af3ab1a4860e1c4f3de8e5ad2328880046a90ca3325"
+    },
+    {
+      "id": "w-d4421396870d65bfc57d",
+      "arm": "broadcast_cut",
+      "seed": 307,
+      "noise": 0.05,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "7bbd8908428b7be42f32e5e41d293234daa56a57b922bec2ad80d746812ba3d4"
+    },
+    {
+      "id": "w-d4421396870d65bfc57d",
+      "arm": "offpath_control",
+      "seed": 307,
+      "noise": 0.05,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ac923941d09c2999fc5e9af3ab1a4860e1c4f3de8e5ad2328880046a90ca3325"
+    },
+    {
+      "id": "w-6df64a609d88aefc7dd1",
+      "arm": "intact",
+      "seed": 307,
+      "noise": 0.05,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "888842fffa0a8cfa653fb53b88821163d3a1af8cb892e26ad4050a45a6c90efd"
+    },
+    {
+      "id": "w-6df64a609d88aefc7dd1",
+      "arm": "broadcast_cut",
+      "seed": 307,
+      "noise": 0.05,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "4ee6cc1f92a498cbb174a2cd609fc2662abee1b589ec5be63f85bb61f86d8291"
+    },
+    {
+      "id": "w-6df64a609d88aefc7dd1",
+      "arm": "offpath_control",
+      "seed": 307,
+      "noise": 0.05,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "888842fffa0a8cfa653fb53b88821163d3a1af8cb892e26ad4050a45a6c90efd"
+    },
+    {
+      "id": "w-56d98bed856d9d47c098",
+      "arm": "intact",
+      "seed": 307,
+      "noise": 0.2,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "3e90cbc92bf2030cac342202b977ff9b2121bb57bdd9737c9aff5528ef6e3e1f"
+    },
+    {
+      "id": "w-56d98bed856d9d47c098",
+      "arm": "broadcast_cut",
+      "seed": 307,
+      "noise": 0.2,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "434d698f119121c03e117b62e610a32878a4353f59627b887a8240736f4fd884"
+    },
+    {
+      "id": "w-56d98bed856d9d47c098",
+      "arm": "offpath_control",
+      "seed": 307,
+      "noise": 0.2,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "3e90cbc92bf2030cac342202b977ff9b2121bb57bdd9737c9aff5528ef6e3e1f"
+    },
+    {
+      "id": "w-99355fbde48992bf35a9",
+      "arm": "intact",
+      "seed": 307,
+      "noise": 0.2,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "273139d481238427b7713b7d1f437341a345d0e12fbd3508e60e3be0214cc2aa"
+    },
+    {
+      "id": "w-99355fbde48992bf35a9",
+      "arm": "broadcast_cut",
+      "seed": 307,
+      "noise": 0.2,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "c45b5a0e02c62dffa56bed437ad9f63c649568bc14e2c94368b1b434b751a7ee"
+    },
+    {
+      "id": "w-99355fbde48992bf35a9",
+      "arm": "offpath_control",
+      "seed": 307,
+      "noise": 0.2,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "273139d481238427b7713b7d1f437341a345d0e12fbd3508e60e3be0214cc2aa"
+    },
+    {
+      "id": "w-51f7e3c64f95d4fdc25a",
+      "arm": "intact",
+      "seed": 307,
+      "noise": 0.4,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "933a6e67396118ab10d0f51890901d23663a30cc1d4dd8ecb10796502118a619"
+    },
+    {
+      "id": "w-51f7e3c64f95d4fdc25a",
+      "arm": "broadcast_cut",
+      "seed": 307,
+      "noise": 0.4,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "383c315ea1e9c07d4f5486e2a4f3034cbdeac83a1c69549735bddda711f7c09c"
+    },
+    {
+      "id": "w-51f7e3c64f95d4fdc25a",
+      "arm": "offpath_control",
+      "seed": 307,
+      "noise": 0.4,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "933a6e67396118ab10d0f51890901d23663a30cc1d4dd8ecb10796502118a619"
+    },
+    {
+      "id": "w-35620e7689c7701a4906",
+      "arm": "intact",
+      "seed": 307,
+      "noise": 0.4,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "edcbff1be1cdd3a057edb6391cdc6cadf5aba6d1bc46a07bf3e0532415fe70d0"
+    },
+    {
+      "id": "w-35620e7689c7701a4906",
+      "arm": "broadcast_cut",
+      "seed": 307,
+      "noise": 0.4,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ddf37881a65c27835235f6074d59bc0b188b10f72bdfd3273fa5b5ae0d52be45"
+    },
+    {
+      "id": "w-35620e7689c7701a4906",
+      "arm": "offpath_control",
+      "seed": 307,
+      "noise": 0.4,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "edcbff1be1cdd3a057edb6391cdc6cadf5aba6d1bc46a07bf3e0532415fe70d0"
+    },
+    {
+      "id": "w-5aafd2e150c9ddbc872d",
+      "arm": "intact",
+      "seed": 307,
+      "noise": 0.49,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "8a4590a08cb7e1617d478e9c5ef5a374ebc83f54cdcbe8a5e6f96bb3b80720cd"
+    },
+    {
+      "id": "w-5aafd2e150c9ddbc872d",
+      "arm": "broadcast_cut",
+      "seed": 307,
+      "noise": 0.49,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "5d0a67419f19dde0829e7188c1d4a161e790c6c3495fe7513c379d22ca8e383e"
+    },
+    {
+      "id": "w-5aafd2e150c9ddbc872d",
+      "arm": "offpath_control",
+      "seed": 307,
+      "noise": 0.49,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "8a4590a08cb7e1617d478e9c5ef5a374ebc83f54cdcbe8a5e6f96bb3b80720cd"
+    },
+    {
+      "id": "w-a8df5b4f9edc56923ee4",
+      "arm": "intact",
+      "seed": 307,
+      "noise": 0.49,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "cc74bb96afc5827a00c02a9f8cd58e1cdf94dac757f47db9ccdc292d59ea30e5"
+    },
+    {
+      "id": "w-a8df5b4f9edc56923ee4",
+      "arm": "broadcast_cut",
+      "seed": 307,
+      "noise": 0.49,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "bdb52fb617d205c71be4bb33b7076e76ed2b95f0c829c0f82e33731a574b9382"
+    },
+    {
+      "id": "w-a8df5b4f9edc56923ee4",
+      "arm": "offpath_control",
+      "seed": 307,
+      "noise": 0.49,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "cc74bb96afc5827a00c02a9f8cd58e1cdf94dac757f47db9ccdc292d59ea30e5"
+    },
+    {
+      "id": "w-b59c39322fc840f4d5b8",
+      "arm": "intact",
+      "seed": 911,
+      "noise": 0.05,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ff7622d5d40a9c34d39dbc5a1ce0854347d6148f4892d991aaff4a93d62af2a2"
+    },
+    {
+      "id": "w-b59c39322fc840f4d5b8",
+      "arm": "broadcast_cut",
+      "seed": 911,
+      "noise": 0.05,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "f1967d71937d4657e30a8ca435f47acadec7460fc4f5192822a7394a38a4d7bc"
+    },
+    {
+      "id": "w-b59c39322fc840f4d5b8",
+      "arm": "offpath_control",
+      "seed": 911,
+      "noise": 0.05,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ff7622d5d40a9c34d39dbc5a1ce0854347d6148f4892d991aaff4a93d62af2a2"
+    },
+    {
+      "id": "w-938b8a559918ac1b166e",
+      "arm": "intact",
+      "seed": 911,
+      "noise": 0.05,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "431e7b4f74f4018d4d02fe4a73fc50065a881f0848c2fede1616ecac746056ab"
+    },
+    {
+      "id": "w-938b8a559918ac1b166e",
+      "arm": "broadcast_cut",
+      "seed": 911,
+      "noise": 0.05,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "fe6e718212c78be306710f62866ec42b208835bd29eace7df84975a6f9accf82"
+    },
+    {
+      "id": "w-938b8a559918ac1b166e",
+      "arm": "offpath_control",
+      "seed": 911,
+      "noise": 0.05,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "431e7b4f74f4018d4d02fe4a73fc50065a881f0848c2fede1616ecac746056ab"
+    },
+    {
+      "id": "w-e12ffe22f509112580eb",
+      "arm": "intact",
+      "seed": 911,
+      "noise": 0.2,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "52f68582beb0f355f51ca6f4ec389b896fa0c746571349d496903396fe61194f"
+    },
+    {
+      "id": "w-e12ffe22f509112580eb",
+      "arm": "broadcast_cut",
+      "seed": 911,
+      "noise": 0.2,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "b5024273c58c3c316648663f0557e2966049260991b77042a6605e5d9fe4fcfd"
+    },
+    {
+      "id": "w-e12ffe22f509112580eb",
+      "arm": "offpath_control",
+      "seed": 911,
+      "noise": 0.2,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "52f68582beb0f355f51ca6f4ec389b896fa0c746571349d496903396fe61194f"
+    },
+    {
+      "id": "w-c2d88efdf774849d8f88",
+      "arm": "intact",
+      "seed": 911,
+      "noise": 0.2,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ee9939e49a2ca4749d1e68162e288b45c1d27758207aaf38560daa86d0622f4e"
+    },
+    {
+      "id": "w-c2d88efdf774849d8f88",
+      "arm": "broadcast_cut",
+      "seed": 911,
+      "noise": 0.2,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "130589e032aed9a1a0d02a74af992374661f62ca77d1b94e87b84f19c9d0b89b"
+    },
+    {
+      "id": "w-c2d88efdf774849d8f88",
+      "arm": "offpath_control",
+      "seed": 911,
+      "noise": 0.2,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "ee9939e49a2ca4749d1e68162e288b45c1d27758207aaf38560daa86d0622f4e"
+    },
+    {
+      "id": "w-c581da975aee71f4b781",
+      "arm": "intact",
+      "seed": 911,
+      "noise": 0.4,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "7a2f7558c629621cfc503ec692a81393da9d3a7130d6b05f6bf343a8f631be82"
+    },
+    {
+      "id": "w-c581da975aee71f4b781",
+      "arm": "broadcast_cut",
+      "seed": 911,
+      "noise": 0.4,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "4e412c9a845fa38ed4907e7616536c371b66d34644faf0da1a66ee7b28123069"
+    },
+    {
+      "id": "w-c581da975aee71f4b781",
+      "arm": "offpath_control",
+      "seed": 911,
+      "noise": 0.4,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "7a2f7558c629621cfc503ec692a81393da9d3a7130d6b05f6bf343a8f631be82"
+    },
+    {
+      "id": "w-5f4257bc2f7e144a63d2",
+      "arm": "intact",
+      "seed": 911,
+      "noise": 0.4,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "b830da00cd741227cb7b3a1e045f6dd262d41771a75f40a5a5b0615256e64fc6"
+    },
+    {
+      "id": "w-5f4257bc2f7e144a63d2",
+      "arm": "broadcast_cut",
+      "seed": 911,
+      "noise": 0.4,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "cc1890ec059c6705f3e2439cb41863c1ac16c2008a6c28365b6110206ed1e65b"
+    },
+    {
+      "id": "w-5f4257bc2f7e144a63d2",
+      "arm": "offpath_control",
+      "seed": 911,
+      "noise": 0.4,
+      "label": 1,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "act",
+      "delayed_probability": 0.9,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "b830da00cd741227cb7b3a1e045f6dd262d41771a75f40a5a5b0615256e64fc6"
+    },
+    {
+      "id": "w-459390f0a42dd4cdd82d",
+      "arm": "intact",
+      "seed": 911,
+      "noise": 0.49,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "7f275bbedfca44c6e5d56c527a0be36935c3d3097fe291a0c66f1e7227dcb2da"
+    },
+    {
+      "id": "w-459390f0a42dd4cdd82d",
+      "arm": "broadcast_cut",
+      "seed": 911,
+      "noise": 0.49,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "2919700806fd95bb6682f4e605414ceeed69225479a33e517f8a2d6104ecd81a"
+    },
+    {
+      "id": "w-459390f0a42dd4cdd82d",
+      "arm": "offpath_control",
+      "seed": 911,
+      "noise": 0.49,
+      "label": 0,
+      "sensor_correct": true,
+      "delayed_correct": true,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.009999999999999995,
+      "restored_correct": true,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "7f275bbedfca44c6e5d56c527a0be36935c3d3097fe291a0c66f1e7227dcb2da"
+    },
+    {
+      "id": "w-736034bc26bbfd407868",
+      "arm": "intact",
+      "seed": 911,
+      "noise": 0.49,
+      "label": 1,
+      "sensor_correct": false,
+      "delayed_correct": false,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.81,
+      "restored_correct": false,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "1f6582eaa89489d15c774edcb26d44925a906a20203b1f48cf8e3d437cedb2a3"
+    },
+    {
+      "id": "w-736034bc26bbfd407868",
+      "arm": "broadcast_cut",
+      "seed": 911,
+      "noise": 0.49,
+      "label": 1,
+      "sensor_correct": false,
+      "delayed_correct": false,
+      "delayed_plan": "no_shared_access",
+      "delayed_probability": 0.5,
+      "delayed_brier": 0.25,
+      "restored_correct": false,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "b1e779716ffeb1142d222691b8bc0ddb5b3db320402aad86fde14c744cf19663"
+    },
+    {
+      "id": "w-736034bc26bbfd407868",
+      "arm": "offpath_control",
+      "seed": 911,
+      "noise": 0.49,
+      "label": 1,
+      "sensor_correct": false,
+      "delayed_correct": false,
+      "delayed_plan": "abstain",
+      "delayed_probability": 0.09999999999999998,
+      "delayed_brier": 0.81,
+      "restored_correct": false,
+      "invalid_physical_receipts": 0,
+      "work_units": [
+        23,
+        22,
+        25,
+        22
+      ],
+      "final_sha256": "1f6582eaa89489d15c774edcb26d44925a906a20203b1f48cf8e3d437cedb2a3"
+    }
+  ],
+  "circuit_rows": [
+    {
+      "id": "n101-180-10",
+      "arm": "intact",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-180-10",
+      "arm": "recurrent_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-180-10",
+      "arm": "offpath_control",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-180-10",
+      "arm": "feedforward_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-180-40",
+      "arm": "intact",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 314.6285084855079,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-180-40",
+      "arm": "recurrent_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 314.1971136276145,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-180-40",
+      "arm": "offpath_control",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 314.6285084855079,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-180-40",
+      "arm": "feedforward_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-240-10",
+      "arm": "intact",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 324.59259813238555,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-240-10",
+      "arm": "recurrent_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 324.5928668668352,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-240-10",
+      "arm": "offpath_control",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 324.59259813238555,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-240-10",
+      "arm": "feedforward_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-240-40",
+      "arm": "intact",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 311.7884312999931,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-240-40",
+      "arm": "recurrent_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 311.34438431331796,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-240-40",
+      "arm": "offpath_control",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 311.7884312999931,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-240-40",
+      "arm": "feedforward_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-400-10",
+      "arm": "intact",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.433418248333,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-400-10",
+      "arm": "recurrent_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.4335393575091,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-400-10",
+      "arm": "offpath_control",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.433418248333,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-400-10",
+      "arm": "feedforward_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-400-40",
+      "arm": "intact",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 308.83424057837044,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-400-40",
+      "arm": "recurrent_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 4,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 318.74540601143974,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-400-40",
+      "arm": "offpath_control",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 308.83424057837044,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-400-40",
+      "arm": "feedforward_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-800-10",
+      "arm": "intact",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 323.69225708251946,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-800-10",
+      "arm": "recurrent_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.87752036882154,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-800-10",
+      "arm": "offpath_control",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 323.69225708251946,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-800-10",
+      "arm": "feedforward_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-800-40",
+      "arm": "intact",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 288.73865727415404,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-800-40",
+      "arm": "recurrent_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 7,
+        "association": 5,
+        "regulation": 4,
+        "brake": 5
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 302.6101464224917,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-800-40",
+      "arm": "offpath_control",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 288.73865727415404,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n101-800-40",
+      "arm": "feedforward_cut",
+      "seed": 101,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-180-10",
+      "arm": "intact",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-180-10",
+      "arm": "recurrent_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-180-10",
+      "arm": "offpath_control",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-180-10",
+      "arm": "feedforward_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-180-40",
+      "arm": "intact",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 314.6285084855079,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-180-40",
+      "arm": "recurrent_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 314.1971136276145,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-180-40",
+      "arm": "offpath_control",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 314.6285084855079,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-180-40",
+      "arm": "feedforward_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-240-10",
+      "arm": "intact",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 324.59259813238555,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-240-10",
+      "arm": "recurrent_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 324.5928668668352,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-240-10",
+      "arm": "offpath_control",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 324.59259813238555,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-240-10",
+      "arm": "feedforward_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-240-40",
+      "arm": "intact",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 311.7884312999931,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-240-40",
+      "arm": "recurrent_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 311.34438431331796,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-240-40",
+      "arm": "offpath_control",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 311.7884312999931,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-240-40",
+      "arm": "feedforward_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-400-10",
+      "arm": "intact",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.433418248333,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-400-10",
+      "arm": "recurrent_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.4335393575091,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-400-10",
+      "arm": "offpath_control",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.433418248333,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-400-10",
+      "arm": "feedforward_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-400-40",
+      "arm": "intact",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 308.83424057837044,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-400-40",
+      "arm": "recurrent_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 4,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 318.74540601143974,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-400-40",
+      "arm": "offpath_control",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 308.83424057837044,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-400-40",
+      "arm": "feedforward_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-800-10",
+      "arm": "intact",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 323.69225708251946,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-800-10",
+      "arm": "recurrent_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.87752036882154,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-800-10",
+      "arm": "offpath_control",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 323.69225708251946,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-800-10",
+      "arm": "feedforward_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-800-40",
+      "arm": "intact",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 288.73865727415404,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-800-40",
+      "arm": "recurrent_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 7,
+        "association": 5,
+        "regulation": 4,
+        "brake": 5
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 302.6101464224917,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-800-40",
+      "arm": "offpath_control",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 288.73865727415404,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n307-800-40",
+      "arm": "feedforward_cut",
+      "seed": 307,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-180-10",
+      "arm": "intact",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-180-10",
+      "arm": "recurrent_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-180-10",
+      "arm": "offpath_control",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-180-10",
+      "arm": "feedforward_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 0,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-180-40",
+      "arm": "intact",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 314.6285084855079,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-180-40",
+      "arm": "recurrent_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 314.1971136276145,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-180-40",
+      "arm": "offpath_control",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 314.6285084855079,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-180-40",
+      "arm": "feedforward_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-240-10",
+      "arm": "intact",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 324.59259813238555,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-240-10",
+      "arm": "recurrent_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 324.5928668668352,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-240-10",
+      "arm": "offpath_control",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 324.59259813238555,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-240-10",
+      "arm": "feedforward_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-240-40",
+      "arm": "intact",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 311.7884312999931,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-240-40",
+      "arm": "recurrent_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 311.34438431331796,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-240-40",
+      "arm": "offpath_control",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 311.7884312999931,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-240-40",
+      "arm": "feedforward_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 3,
+        "arm_input": 0,
+        "attention": 3,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-400-10",
+      "arm": "intact",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.433418248333,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-400-10",
+      "arm": "recurrent_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.4335393575091,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-400-10",
+      "arm": "offpath_control",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.433418248333,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-400-10",
+      "arm": "feedforward_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 1,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-400-40",
+      "arm": "intact",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 308.83424057837044,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-400-40",
+      "arm": "recurrent_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 4,
+        "association": 3,
+        "regulation": 3,
+        "brake": 3
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 318.74540601143974,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-400-40",
+      "arm": "offpath_control",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 308.83424057837044,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-400-40",
+      "arm": "feedforward_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 5,
+        "arm_input": 0,
+        "attention": 5,
+        "association": 3,
+        "regulation": 3,
+        "brake": 4
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-800-10",
+      "arm": "intact",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 323.69225708251946,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-800-10",
+      "arm": "recurrent_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 1,
+        "association": 1,
+        "regulation": 1,
+        "brake": 1
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 325.87752036882154,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-800-10",
+      "arm": "offpath_control",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 323.69225708251946,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-800-10",
+      "arm": "feedforward_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 2,
+        "arm_input": 0,
+        "attention": 2,
+        "association": 2,
+        "regulation": 2,
+        "brake": 2
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-800-40",
+      "arm": "intact",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 288.73865727415404,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-800-40",
+      "arm": "recurrent_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 7,
+        "association": 5,
+        "regulation": 4,
+        "brake": 5
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 302.6101464224917,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-800-40",
+      "arm": "offpath_control",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 288.73865727415404,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    },
+    {
+      "id": "n911-800-40",
+      "arm": "feedforward_cut",
+      "seed": 911,
+      "first_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 0,
+        "association": 0,
+        "regulation": 0,
+        "brake": 0
+      },
+      "recovery_spikes": {
+        "seat_input": 9,
+        "arm_input": 0,
+        "attention": 8,
+        "association": 6,
+        "regulation": 5,
+        "brake": 6
+      },
+      "perturbation_changed_cells": [
+        "attention"
+      ],
+      "perturbation_voltage_l1_mv": 327.1508432694297,
+      "update_counts": {
+        "neuron_updates": 3840,
+        "synapse_updates": 5760
+      }
+    }
+  ],
+  "summary": {
+    "workspace": {
+      "intact": {
+        "n": 24,
+        "sensor_accuracy": 0.9166666666666666,
+        "delayed_planner_accuracy": 0.9166666666666666,
+        "delayed_brier": 0.07666666666666667,
+        "restored_planner_accuracy": 0.9166666666666666,
+        "invalid_physical_receipts": 0,
+        "work_units": [
+          [
+            23,
+            22,
+            25,
+            22
+          ]
+        ]
+      },
+      "broadcast_cut": {
+        "n": 24,
+        "sensor_accuracy": 0.9166666666666666,
+        "delayed_planner_accuracy": 0.0,
+        "delayed_brier": 0.25,
+        "restored_planner_accuracy": 0.9166666666666666,
+        "invalid_physical_receipts": 0,
+        "work_units": [
+          [
+            23,
+            22,
+            25,
+            22
+          ]
+        ]
+      },
+      "offpath_control": {
+        "n": 24,
+        "sensor_accuracy": 0.9166666666666666,
+        "delayed_planner_accuracy": 0.9166666666666666,
+        "delayed_brier": 0.07666666666666667,
+        "restored_planner_accuracy": 0.9166666666666666,
+        "invalid_physical_receipts": 0,
+        "work_units": [
+          [
+            23,
+            22,
+            25,
+            22
+          ]
+        ]
+      }
+    },
+    "circuit": {
+      "intact": {
+        "n": 24,
+        "cases_changed_downstream_spike_counts": 0,
+        "cases_changed_input_spike_counts": 0,
+        "cases_recovery_counts_differ": 0,
+        "mean_perturbation_affected_cells": 1.0,
+        "update_counts_equal_to_intact": true
+      },
+      "recurrent_cut": {
+        "n": 24,
+        "cases_changed_downstream_spike_counts": 9,
+        "cases_changed_input_spike_counts": 0,
+        "cases_recovery_counts_differ": 0,
+        "mean_perturbation_affected_cells": 1.0,
+        "update_counts_equal_to_intact": true
+      },
+      "offpath_control": {
+        "n": 24,
+        "cases_changed_downstream_spike_counts": 0,
+        "cases_changed_input_spike_counts": 0,
+        "cases_recovery_counts_differ": 0,
+        "mean_perturbation_affected_cells": 1.0,
+        "update_counts_equal_to_intact": true
+      },
+      "feedforward_cut": {
+        "n": 24,
+        "cases_changed_downstream_spike_counts": 21,
+        "cases_changed_input_spike_counts": 0,
+        "cases_recovery_counts_differ": 0,
+        "mean_perturbation_affected_cells": 1.0,
+        "update_counts_equal_to_intact": true
+      }
+    },
+    "workspace_paired_effects": {
+      "broadcast_cut": {
+        "mean": -0.9166666666666666,
+        "interval": [
+          -1.0,
+          -0.7916666666666666
+        ],
+        "method": "paired case bootstrap; conditional on these designed fixtures"
+      },
+      "offpath_control": {
+        "mean": 0.0,
+        "interval": [
+          0.0,
+          0.0
+        ],
+        "method": "paired case bootstrap; conditional on these designed fixtures"
+      }
+    }
+  },
+  "workspace_trials": 72,
+  "native_body_ticks": 288,
+  "circuit_pair_trials": 96,
+  "circuit_integrations": 192,
+  "unique_circuit_input_pairs": 8,
+  "circuit_seed_replicates_are_identical": true,
+  "phenomenal_consciousness_test_validated": false,
+  "language_model_internal_intervention": false,
+  "model_api_calls": 0,
+  "limitations": [
+    "No hidden-state or weight intervention in the live ChatGPT/API language model.",
+    "The six-cell circuit and symbolic workspace are separate retained components, not one validated neural global workspace.",
+    "Existing broadcast removal forces no_shared_access by construction; its interpretation is an implementation causal dependency.",
+    "Sensor extraction and readouts are authored; no training, natural visual phenomenology or independent metacognitive observer is established.",
+    "Declared work units and update counts are controlled; hardware time and metabolic energy are not matched.",
+    "No PCI, Phi, conscious/unconscious state label or phenomenal probability is estimated."
+  ],
+  "protocol_sha256": "62f6af76f2aead04a09276011994180649563d317dd97eb1d7495ac9d183b401"
+}

@@ -1,0 +1,84 @@
+{
+  "api_calls": 0,
+  "closed_v02_replay": {
+    "improvement_percent": 0.26630813754110716,
+    "mae": {
+      "A": 0.01980742048598522,
+      "B": 0.019754671713394057
+    },
+    "model_parameters_equal_previous": true,
+    "protocol_sha256": "6b647c2679af113787cba0e0bb5033f61a0b803f6be7c18c2523a4337f20e185",
+    "stress_validation_passed": false,
+    "success": false
+  },
+  "key_status": {
+    "billing_activation_verified": false,
+    "environment_present": false,
+    "local_env_present": false
+  },
+  "native_equations_changed": false,
+  "native_regression_tests_passed": 99,
+  "native_scenarios_passed": 12,
+  "new_diagnostic": {
+    "api_calls": 0,
+    "cases": 12,
+    "known_input_validity_matches": 12,
+    "known_input_would_block": 4,
+    "learning_updates": 0,
+    "new_independent_learning_improvement_established": false,
+    "source_equations_modified": false,
+    "unknown_disturbance_detected_before_action": false
+  },
+  "new_learning_improvement_claimed": false,
+  "predictive_v01_replay": {
+    "improvement_percent": 73.28914182372966,
+    "mae": {
+      "A": 6.390308548061042e-05,
+      "B": 1.7069062532986654e-05
+    },
+    "protocol_sha256": "45104c6a06f98c7a6344c8fa7f1cd5a0a6f7c52123f8ea918f9b7398d4d26cf2",
+    "success": true
+  },
+  "related_tests_passed": 107,
+  "restart_refusal": {
+    "actions_remaining": 3,
+    "completed_cycles": 0,
+    "model_version": 1,
+    "process": "fresh interpreter",
+    "refusal_rows": 1
+  },
+  "scope": "local verification; prior protocols replayed, no new independent learning claim",
+  "tests": [
+    {
+      "passed": 9,
+      "seconds": 20.501,
+      "skipped": 0,
+      "suite": "native preflight"
+    },
+    {
+      "passed": 19,
+      "seconds": 52.108,
+      "skipped": 0,
+      "suite": "adaptive memory"
+    },
+    {
+      "passed": 12,
+      "seconds": 35.515,
+      "skipped": 0,
+      "suite": "closed-loop safety"
+    },
+    {
+      "passed": 26,
+      "seconds": 36.007,
+      "skipped": 0,
+      "suite": "body and identity"
+    },
+    {
+      "passed": 41,
+      "seconds": 161.361,
+      "skipped": 0,
+      "suite": "controlled API and recovery"
+    }
+  ],
+  "total_tests_passed": 206
+}

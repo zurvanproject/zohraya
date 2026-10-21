@@ -1,0 +1,15 @@
+test_bad_timestamp_future_clock_or_flag_fails_closed (continuity.test_gate.AbsenceTests.test_bad_timestamp_future_clock_or_flag_fails_closed) ... ok
+test_claim_and_finish_do_not_mutate_caller (continuity.test_gate.AbsenceTests.test_claim_and_finish_do_not_mutate_caller) ... ok
+test_completed_claim_still_consumes_rolling_daily_budget (continuity.test_gate.AbsenceTests.test_completed_claim_still_consumes_rolling_daily_budget) ... ok
+test_contact_defers_next_run_without_refunding_claim (continuity.test_gate.AbsenceTests.test_contact_defers_next_run_without_refunding_claim) ... ok
+test_exact_24_hours_is_eligible_in_both_timezones (continuity.test_gate.AbsenceTests.test_exact_24_hours_is_eligible_in_both_timezones) ... ok
+test_missing_fields_bad_run_id_and_future_claim_are_rejected (continuity.test_gate.AbsenceTests.test_missing_fields_bad_run_id_and_future_claim_are_rejected) ... ok
+test_one_second_before_threshold_is_blocked (continuity.test_gate.AbsenceTests.test_one_second_before_threshold_is_blocked) ... ok
+test_pause_wins_even_long_after_threshold (continuity.test_gate.AbsenceTests.test_pause_wins_even_long_after_threshold) ... ok
+test_stop_command_state_pauses_without_clearing_inflight (continuity.test_gate.AbsenceTests.test_stop_command_state_pauses_without_clearing_inflight) ... ok
+test_unresolved_effect_never_gets_an_automatic_retry (continuity.test_gate.AbsenceTests.test_unresolved_effect_never_gets_an_automatic_retry) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK

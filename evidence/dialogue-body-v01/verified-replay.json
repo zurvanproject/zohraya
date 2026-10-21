@@ -1,0 +1,135 @@
+{
+  "affect_after": {
+    "contentment": 0.4649095571624634,
+    "excitement": 0.5028711496070245,
+    "fear": 0.0,
+    "frustration": 0.0,
+    "joy": 0.7173342074241622,
+    "sadness": 0.0
+  },
+  "message_id": "in-chat-connection-20261020",
+  "native_receipt": {
+    "actual_action": "walk",
+    "body_audit": {
+      "drink_input_L": 0.0,
+      "energy_error_J": 1.3240963880889467e-10,
+      "external_heat_J": 0.0,
+      "light_error_J": 0.0,
+      "meal_input_J": 0.0,
+      "neural_clock_error_s": 3.608224830031759e-16,
+      "photochemical_J": 0.0,
+      "same_owner_ticks": true,
+      "voided_L": 0.0,
+      "water_error_L": 7.939510865157678e-16
+    },
+    "decision_id": "dialogue-body:in-chat-connection-20261020",
+    "expected_outcome_matched": true,
+    "ledger_status": "complete",
+    "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+    "recalled_feedback_ids": [],
+    "replayed": false,
+    "requested_action": "walk",
+    "self_model_after": {
+      "checkpoint_sha256": "ec09117b3be053c1bf0d4540d22d95d488d16da9869a282fce5ec18ac50a3940",
+      "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L.",
+      "minimum_state": {
+        "HR": 62.684795675925066,
+        "RR": 14.189130811748338,
+        "arousal": 0.3302059510050769,
+        "balance": 1.0,
+        "breath_depth": 1.524705597562529,
+        "energy": 0.9993357964087033,
+        "fatigue": 0.010858521713712594,
+        "hydration": 0.9999857878691728,
+        "muscle_tone": 0.27014282209312834,
+        "pain": 0.11484637232764255,
+        "parasympathetic": 0.6124985357513969,
+        "posture": "shift",
+        "sleep_pressure": 0.3503255680596273,
+        "sympathetic": 0.2483259462553279,
+        "temperature": 37.00005645895374,
+        "valence": 0.0007453319703671135
+      },
+      "revision": 1,
+      "scope": "existing software body; generated fixture, not biological measurement",
+      "self_location": {
+        "dominant_homeostatic_need": "pain",
+        "energy": 0.9993357964087033,
+        "evidence_level": "B",
+        "next_move_prediction": "available by forecast(action, duration, inputs)",
+        "pose": "shift",
+        "position_m": [
+          0.0004528066340146724,
+          0.0,
+          1.314
+        ],
+        "strongest_interoceptive_region": "chest_state",
+        "where": "Tadash computational world: X left, Y forward, Z up; metres"
+      },
+      "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+    },
+    "status": "complete"
+  },
+  "plan": {
+    "affect_enabled": true,
+    "arousal": 0.5028803840000001,
+    "baseline_selected_action": "observe",
+    "disposition": "plan_only",
+    "options": [
+      {
+        "action_id": "observe",
+        "adjusted_score": 1.0971152153600001,
+        "affective_bonus": 0.002115215360000005,
+        "budget_exhausted": false,
+        "components": {
+          "benefit": 0.5,
+          "cost": 0.0,
+          "disharmony": 0.0,
+          "ethical": 1.0,
+          "harm": 0.01,
+          "uncertainty_penalty": 0.0
+        },
+        "eligible": true,
+        "missing": [],
+        "reasons": [],
+        "risk_upper": 0.01,
+        "score": 1.0950000000000002,
+        "uncertainty": 0.0,
+        "within_affective_window": true
+      },
+      {
+        "action_id": "walk",
+        "adjusted_score": 1.1029996681355207,
+        "affective_bonus": 0.009999668135520503,
+        "budget_exhausted": false,
+        "components": {
+          "benefit": 0.5,
+          "cost": 0.01,
+          "disharmony": 0.0,
+          "ethical": 1.0,
+          "harm": 0.01,
+          "uncertainty_penalty": 0.0
+        },
+        "eligible": true,
+        "missing": [],
+        "reasons": [],
+        "risk_upper": 0.01,
+        "score": 1.0930000000000002,
+        "uncertainty": 0.0,
+        "within_affective_window": true
+      }
+    ],
+    "selected_action": "walk",
+    "tendencies": {
+      "consolidate": 0.6325277030400001,
+      "explore": 0.24999170338801255,
+      "repair": 0.0,
+      "verify": 0.052880384000000114
+    }
+  },
+  "replayed": true,
+  "reply_fa": "بدن تجمیعی تداش یک چرخهٔ کوتاه راه‌رفتن اجرا کرد.",
+  "restrictions": [],
+  "scope": "source-pinned native software body; not biological or articulated MuJoCo",
+  "this_call_body_cycles": 0
+}

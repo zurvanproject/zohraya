@@ -1,0 +1,45 @@
+{
+  "schema": "nasuraya.visual-status.v2",
+  "observed_at": "2026-10-16T19:11:47.119375+00:00",
+  "ttl_seconds": 120,
+  "state": "healthy",
+  "checks": {
+    "source": "pass",
+    "audit": "pass"
+  },
+  "reasons": [],
+  "audit": {
+    "latched": false,
+    "events": 4,
+    "warnings": 0,
+    "capacity_stop": false,
+    "recent": [
+      {
+        "seq": 1,
+        "code": "admitted",
+        "severity": "info",
+        "at_utc": "2026-10-16T18:54:00.820310+00:00"
+      },
+      {
+        "seq": 2,
+        "code": "allowed",
+        "severity": "info",
+        "at_utc": "2026-10-16T18:54:00.871024+00:00"
+      },
+      {
+        "seq": 3,
+        "code": "admitted",
+        "severity": "info",
+        "at_utc": "2026-10-16T18:54:00.998206+00:00"
+      },
+      {
+        "seq": 4,
+        "code": "allowed",
+        "severity": "info",
+        "at_utc": "2026-10-16T18:54:01.020999+00:00"
+      }
+    ]
+  },
+  "expected_manifest_sha256": "e477c0da0685fbedc01c5881d49c6e0842aea889a5ec54007070af4943467b93",
+  "scope": "local_guard_sources_and_audit_only"
+}

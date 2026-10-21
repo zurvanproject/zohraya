@@ -1,0 +1,10 @@
+{
+  "goal": "Extend PR41 regression evidence for operator contact/pause committed from another connection while a claimed report worker is suspended before publication.",
+  "baseline_commit": "7aaee60198b50246d90242d5155d3e3736882792",
+  "baseline_tests": 43,
+  "acceptance": ["pause with colliding finish ID survives result publication and reopen", "heartbeat with colliding finish ID survives publication without refund", "pause after completion survives historical result replay", "old receipts remain exact and replay invokes no computation"],
+  "ordering": "threading.Event barriers, not sleeps; two independent SQLite connections",
+  "seed": null,
+  "scope": "local deterministic persistence regression; not external effects, decision improvement, outage detection or live control mutation",
+  "frozen_before_new_tests": true
+}

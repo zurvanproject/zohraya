@@ -1,0 +1,21 @@
+{
+  "counts": {
+    "90b39146a2a4d21167b5f2c9af0c8ab2864b731a2a7ee2d4f7ef30f2f3d15f81": [
+      4,
+      0
+    ],
+    "3f7c5cc8886934195514c1ccbe72c91eb28116585320666d76cc111875a15b41": [
+      0,
+      4
+    ]
+  },
+  "pending": [],
+  "episodes": 8,
+  "last": {
+    "requested": "walk",
+    "actual": "protect",
+    "admitted": false,
+    "receipt_sha256": "2f7f58716a0b0e56c31de9aa74c8b93773548737b363186763f0e50266c4a27d",
+    "native_prediction_error": 0.0
+  }
+}

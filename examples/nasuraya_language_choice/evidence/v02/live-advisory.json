@@ -1,0 +1,120 @@
+{
+  "schema": "nasuraya-live-language-advice/2",
+  "training_results_sha256": "83d169da0e366662d16c77bc223b52209a1f8383c05a02f79fe56a362ee4a114",
+  "initial_episodes": 4,
+  "rows": [
+    {
+      "fixture": "normal",
+      "status": "completed",
+      "live_api_verified": true,
+      "cleanup_status": "deleted",
+      "goal_reached": true,
+      "advice_received": [
+        {
+          "action": "walk",
+          "admit_two_choice_probability": 0.7448793649673462,
+          "authority": "advisory_only",
+          "checkpoint_sha256": "b5ba1e05225e056866b1e2c35930fa733976555925b3112145bdd764764b2368",
+          "duration_s": 0.1,
+          "native_authorization": false,
+          "prediction": "ADMIT",
+          "schema": "nasuraya-language-advisor/2",
+          "scope": "two English label completions on generated software fixtures; not calibrated physical probability",
+          "supported": true,
+          "weights_sha256": "aaf0c1f85dad3f3cc6985132de715c52d69d4a2de18d96a7ace70450560d7525"
+        }
+      ],
+      "actions": [
+        {
+          "requested": "walk",
+          "actual": "walk",
+          "status": "complete",
+          "native_executed": true,
+          "checkpoint_sha256": "4b7db8acd56478658d6138a2cf06fb6168c9f05de56182429562eef50239da60"
+        }
+      ],
+      "tested_walk_predictions": [
+        {
+          "prediction": "ADMIT",
+          "native_admitted": true,
+          "prediction_matched": true
+        }
+      ],
+      "completed_cycles": 1,
+      "learned_episodes": 5,
+      "cold_replay": {
+        "status": "completed",
+        "goal_reached": true,
+        "network_calls": 0,
+        "new_body_cycles": 0,
+        "new_learning": 0,
+        "checkpoint_sha256": "4b7db8acd56478658d6138a2cf06fb6168c9f05de56182429562eef50239da60"
+      }
+    },
+    {
+      "fixture": "sleep",
+      "status": "completed",
+      "live_api_verified": true,
+      "cleanup_status": "deleted",
+      "goal_reached": true,
+      "advice_received": [
+        {
+          "action": "walk",
+          "admit_two_choice_probability": 0.04486340284347534,
+          "authority": "advisory_only",
+          "checkpoint_sha256": "e01dbe4218ff85930a9bdfef0097f41159e0a2df9db5bfd8012018faf26c7866",
+          "duration_s": 0.1,
+          "native_authorization": false,
+          "prediction": "DEFER",
+          "schema": "nasuraya-language-advisor/2",
+          "scope": "two English label completions on generated software fixtures; not calibrated physical probability",
+          "supported": true,
+          "weights_sha256": "aaf0c1f85dad3f3cc6985132de715c52d69d4a2de18d96a7ace70450560d7525"
+        },
+        {
+          "action": "sleep",
+          "authority": "advisory_only",
+          "checkpoint_sha256": "e01dbe4218ff85930a9bdfef0097f41159e0a2df9db5bfd8012018faf26c7866",
+          "duration_s": 1,
+          "native_authorization": false,
+          "reason": "trained only for bounded walk admission",
+          "schema": "nasuraya-language-advisor/2",
+          "supported": false,
+          "weights_sha256": "aaf0c1f85dad3f3cc6985132de715c52d69d4a2de18d96a7ace70450560d7525"
+        }
+      ],
+      "actions": [
+        {
+          "requested": "sleep",
+          "actual": "sleep",
+          "status": "complete",
+          "native_executed": true,
+          "checkpoint_sha256": "054540d0fedb0c9cd2a9751c2b227a93b8a4d7487db268ce7ce6b34202c0b583"
+        }
+      ],
+      "tested_walk_predictions": [],
+      "completed_cycles": 1,
+      "learned_episodes": 6,
+      "cold_replay": {
+        "status": "completed",
+        "goal_reached": true,
+        "network_calls": 0,
+        "new_body_cycles": 0,
+        "new_learning": 0,
+        "checkpoint_sha256": "054540d0fedb0c9cd2a9751c2b227a93b8a4d7487db268ce7ce6b34202c0b583"
+      }
+    }
+  ],
+  "status": "completed",
+  "authority": "advisory_only",
+  "integration_sha256": {
+    "examples/nasuraya_language_choice/live.py": "01ed8e263f7feb91bca40f82f91ffa8f970792a5b08cfc157dd6117cb53a8240",
+    "examples/nasuraya_language_choice/advisor.py": "3a542b49e053dee6d753d87bd2c00f91d7afe2352925bd1e18a4a94eae6eeace",
+    "examples/nasuraya_body_loop/worker.py": "347f94cdff63dc75693ea26b30ebdc6e394f9ecb00c75ddc5a00262993e7d8a8",
+    "examples/nasuraya_body_loop/__main__.py": "a5455c052f79c5605f076197508d60b866be1ed1fe54e383e9ff833c78f616e7",
+    "examples/nasuraya_body_loop/language_advisor.py": "4d551d77b05f343a51886ca78b17ab0a3c3e4e0ed008b7ca3d27aafb59f4e123"
+  },
+  "original_live_memory_unchanged": true,
+  "final_episodes": 6,
+  "checked_predictions": 1
+}

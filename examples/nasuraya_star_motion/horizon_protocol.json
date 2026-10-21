@@ -1,0 +1,76 @@
+{
+  "schema": "nasuraya-native-gravity-horizon-protocol/2",
+  "seconds": 6,
+  "dt": 0.1,
+  "terminal_position_m": 0.01,
+  "terminal_speed_m_s": 0.01,
+  "minimum_mean_fuel_saving": 0.01,
+  "policy_tuned_on_cases": false,
+  "cases": [
+    {
+      "impulse": [
+        0.0,
+        0.0
+      ],
+      "friction": 0.6
+    },
+    {
+      "impulse": [
+        2.0,
+        0.0
+      ],
+      "friction": 0.6
+    },
+    {
+      "impulse": [
+        -2.0,
+        0.0
+      ],
+      "friction": 0.6
+    },
+    {
+      "impulse": [
+        0.0,
+        2.0
+      ],
+      "friction": 0.6
+    },
+    {
+      "impulse": [
+        0.0,
+        -2.0
+      ],
+      "friction": 0.6
+    },
+    {
+      "impulse": [
+        6.0,
+        0.0
+      ],
+      "friction": 0.3
+    },
+    {
+      "impulse": [
+        0.0,
+        6.0
+      ],
+      "friction": 0.3
+    },
+    {
+      "impulse": [
+        4.0,
+        -4.0
+      ],
+      "friction": 0.3
+    }
+  ],
+  "horizon_ticks": 6,
+  "candidate_scales": [
+    0.5,
+    0.0
+  ],
+  "baseline": "coordinated",
+  "secondary_comparator": "greedy",
+  "no_parameter_tuning": true,
+  "source_parent": "46694190d497096ff65716e2a9473ea95d7be1ac"
+}
