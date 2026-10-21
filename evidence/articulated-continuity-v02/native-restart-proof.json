@@ -1,0 +1,10 @@
+{
+  "scope": "Separate direct-controller experiment: one initial bout, one in-process continuation and one cold repeat of that continuation.",
+  "exact_full_receipt_equality": true,
+  "first_swing": 0,
+  "next_swing": 1,
+  "boundary_time": 12.999999999998234,
+  "initial_checkpoint_sha256": "f4d0c9428bd6359a069b7ac1b7be8d382b2207760c10f488b918e8b81c1ad366",
+  "final_checkpoint_sha256": "b3ae47558877ad69ea6344ea4c732f5cd0551b40788e62ff03b6d85382e04e39",
+  "initialization_seconds_on_resume": 0.0
+}

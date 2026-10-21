@@ -190,24 +190,35 @@ def can_lift(data,controller,stance,forces):
 
 
 def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.001,
-               push=0.,capture=False):
+               push=0.,capture=False,checkpoint=None,retain_checkpoint=False):
     model,data=load(SMALL)
     model.opt.timestep=dt
     model.geom_friction[:,0]=friction
-    standing=BalanceController(model)
-    data.qpos[:]=model.qpos0;data.qpos[2]+=.005
-    for _ in range(round(2/dt)):
-        data.ctrl[:]=standing.command(data)[0]
-        mujoco.mj_step(model,data)
-    mujoco.mj_forward(model,data)
-    controller=ContactController(model,data)
-    feet=controller.anchors.copy()
+    from .checkpoint import restore_checkpoint, make_checkpoint, integration_state, digest
+    parameters=dict(stride=stride,timing=timing,friction=friction,dt=dt,push=push)
+    if checkpoint is None:
+        standing=BalanceController(model)
+        standing_height=float(standing.q0[2])
+        data.qpos[:]=model.qpos0;data.qpos[2]+=.005
+        for _ in range(round(2/dt)):
+            data.ctrl[:]=standing.command(data)[0]
+            mujoco.mj_step(model,data)
+        mujoco.mj_forward(model,data)
+        controller=ContactController(model,data)
+        feet=controller.anchors.copy();previous_com=controller.com0.copy()
+        step_offset=0;index=0;initialization_seconds=2.
+    else:
+        controller,feet,previous_com,standing_height,step_offset,index=restore_checkpoint(
+            checkpoint,model,data,parameters)
+        initialization_seconds=0.
     initial_feet=feet.copy();initial_root=data.qpos[:3].copy()
-    previous_com=controller.com0.copy()
     start_time=float(data.time)
+    initial_qpos=data.qpos.copy();initial_qvel=data.qvel.copy()
+    initial_integration_sha=digest(integration_state(model,data).tolist())
+    initial_solves=controller.solves;initial_inaccurate=controller.inaccurate
     trace=[];poses=[];landings=[]
     max_tilt=0.;max_limit=0.;max_torque_fraction=0.;height_min=float(data.qpos[2])
-    nonfeet=set();failure=None;index=0
+    nonfeet=set();failure=None
     current_step=-1;phase='initial';step_stats=None
     impulse=0.
     def advance(duration,reference):
@@ -247,11 +258,11 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
                 if capture:poses.append(data.qpos.copy())
             index+=1
             if (not np.isfinite(data.qpos).all() or any(w.number for w in data.warning)
-                    or other or data.qpos[2]<.8*standing.q0[2] or tilt>math.radians(20) or excess>.02):
+                    or other or data.qpos[2]<.8*standing_height or tilt>math.radians(20) or excess>.02):
                 failure='balance/contact/joint-limit guard';return False
         return True
     for step in range(steps):
-        current_step=step;swing=step%2;stance=1-swing
+        current_step=step;swing=(step_offset+step)%2;stance=1-swing
         goal=feet.copy();goal[swing,0]=feet[stance,0]+stride
         support_com=np.array([feet[stance,0]-.06882,feet[stance,1],controller.com0[2]])
         phase='transfer';step_stats=None
@@ -297,6 +308,7 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
         final_com=np.array([feet[:,0].mean()-.06882,feet[:,1].mean(),controller.com0[2]])
         if advance(3*timing,lambda t:(previous_com*(1-smooth(t/(3*timing)))+final_com*smooth(t/(3*timing)),feet.copy(),[True,True])):
             phase='settle';advance(2.,lambda t:(final_com,feet.copy(),[True,True]))
+            previous_com=final_com
     result={'label':label,'requested_steps':steps,'accepted_steps':sum(s['accepted'] for s in landings),
             'stride_m':stride,'timing_multiplier':timing,'friction':friction,'timestep_s':dt,
             'simulated_seconds':float(data.time-start_time),'failure':failure,
@@ -305,11 +317,22 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
             'mean_foot_forward_displacement_m':float((data.site_xpos[controller.sites,0]-initial_feet[:,0]).mean()),
             'max_tilt_deg':max_tilt,'min_pelvis_height_m':height_min,'max_joint_limit_excess_rad':max_limit,
             'max_motor_torque_fraction':max_torque_fraction,'nonfoot_ground_contacts':sorted(nonfeet),
-            'qp_solves':controller.solves,'qp_inaccurate_status_count':controller.inaccurate,
+            'qp_solves':controller.solves-initial_solves,'qp_inaccurate_status_count':controller.inaccurate-initial_inaccurate,
             'qp_max_constraint_violation':controller.max_residual,
             'holdout_lateral_push_n':push,'push_impulse_ns':impulse,
             'final_max_generalized_speed':float(max(abs(data.qvel))),
             'steps':landings,'trace':trace,'running_validated':False}
+    if retain_checkpoint or checkpoint is not None:
+        resumable=bool(result['walk_pass'] and max(abs(data.qvel))<.05
+                       and min(contact_state(model,data)[0])>1)
+        result.update(initialization_seconds=initialization_seconds,start_time=start_time,end_time=float(data.time),
+                      initial_qpos=initial_qpos.tolist(),initial_qvel=initial_qvel.tolist(),
+                      initial_integration_sha256=initial_integration_sha,
+                      final_qpos=data.qpos.tolist(),final_qvel=data.qvel.tolist(),
+                      continued_from=checkpoint['sha256'] if checkpoint else None,
+                      checkpoint=make_checkpoint(model,data,controller,parameters=parameters,feet=feet,
+                          previous_com=previous_com,standing_height=standing_height,
+                          next_step=step_offset+steps,ticks=index) if resumable else None)
     return (result,poses) if capture else result
 
 
