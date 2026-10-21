@@ -155,7 +155,12 @@ def main():
     from continuity import gate
     mode = os.environ.get('RESEARCH_MODE', 'auto')
     api = ResearchGitHub()
-    if mode == 'initialize':
+    if mode == 'initialize-model':
+        if os.environ.get('GITHUB_EVENT_NAME') != 'workflow_dispatch':
+            raise ValueError('model initialization requires explicit operator dispatch')
+        from continuity_host import model_research
+        result = model_research.initialize(model_research.ModelGitHub(), gate)
+    elif mode == 'initialize':
         if os.environ.get('GITHUB_EVENT_NAME') != 'workflow_dispatch':
             raise ValueError('initialization requires explicit operator dispatch')
         result = initialize(api, gate)
@@ -163,8 +168,12 @@ def main():
         run_id = 'gh_'+os.environ['GITHUB_RUN_ID']+'_'+os.environ['GITHUB_RUN_ATTEMPT']
         raw = api.raw_snapshot()
         # Until explicitly initialized, preserve the original fixed regression.
-        result = (run(api, gate, run_id) if ANCHOR in raw['state'] else
-                  host.run(host.GitHub(), gate, source, run_id))
+        from continuity_host import model_research
+        if model_research.ANCHOR in raw['state']:
+            result = model_research.run(model_research.ModelGitHub(), gate, run_id)
+        else:
+            result = (run(api, gate, run_id) if ANCHOR in raw['state'] else
+                      host.run(host.GitHub(), gate, source, run_id))
     else:
         raise ValueError('unknown research mode')
     print(lab.encode(result))

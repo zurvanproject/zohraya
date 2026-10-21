@@ -1,7 +1,7 @@
 name: Nasuraya bounded GitHub host
 on:
   push:
-    branches: ['nasuraya/github-host-v01', 'nasuraya/first-day-v01']
+    branches: ['nasuraya/github-host-v01', 'nasuraya/first-day-v01', 'nasuraya/first-day-api-v02']
     paths: ['continuity_host/**', '.github/workflows/nasuraya-continuity-host.yml']
   pull_request:
     paths: ['continuity_host/**', '.github/workflows/nasuraya-continuity-host.yml']
@@ -12,7 +12,7 @@ on:
       mode:
         description: 'auto preserves regression until explicit research initialization'
         type: choice
-        options: ['auto', 'initialize']
+        options: ['auto', 'initialize', 'initialize-model']
         default: 'auto'
 permissions:
   contents: read
@@ -33,7 +33,7 @@ jobs:
           ref: 7aaee60198b50246d90242d5155d3e3736882792
           path: source
           persist-credentials: false
-      - run: python3 -m unittest continuity_host.test_host continuity_host.test_research -v
+      - run: python3 -m unittest continuity_host.test_host continuity_host.test_research continuity_host.test_model_research -v
       - run: python3 -m continuity_host.demo_research --output "$RUNNER_TEMP/first-day-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
   maintenance:
     if: github.repository == 'zurvanproject/zohraya' && github.event.repository.private == false && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
@@ -53,4 +53,5 @@ jobs:
       - run: python3 -m continuity_host.research_host source
         env:
           GH_HOST_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           RESEARCH_MODE: ${{ inputs.mode || 'auto' }}
