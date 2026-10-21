@@ -118,3 +118,13 @@ numeric appraisal rules. It is not a natural-language emotion extractor. It does
 not equate a simulation tick with a human hour; `elapsed_hours` is zero for these
 instantaneous synthetic events. Native tools, affect engine and old checkpoints
 remain unchanged. The bridge's own source fingerprint is separate.
+
+## Articulated dialogue pilot
+
+[`articulated_cli.py`](articulated_cli.py) connects structured messages and the
+existing affect planner to a single fresh MuJoCo walking trial, limited to one
+or two steps. It preserves the controller and records measured feedback with
+cold-replay protection. This is separate from the aggregate Tadash bridge; joint
+state does not persist between trials. Install
+[`requirements-articulated.txt`](requirements-articulated.txt) for this path.
+See the [technical report](../../docs/nasuraya-articulated-dialogue-v01-fa.md).
