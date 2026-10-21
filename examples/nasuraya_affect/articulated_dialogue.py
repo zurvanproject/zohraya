@@ -1,7 +1,7 @@
-"""Caller-mediated affective dialogue -> one bounded articulated walking trial.
+"""Caller-mediated affective dialogue -> bounded, checkpointed articulated walking.
 
-Each admitted trial starts from the existing controller's neutral fixture. This
-is not persistent joint-state embodiment or an automatic chat listener. An
+The first bout starts from the neutral fixture; later bouts restore a settled
+MuJoCo/controller checkpoint. There is no automatic chat listener. An
 unknown execution is never repeated; measured outcomes can finish feedback.
 """
 from copy import deepcopy
@@ -15,7 +15,8 @@ from examples.nasuraya_agent_loop.guided import _session_lock
 from .engine import AffectiveAgent, canonical, digest, effective, validate_event, TENDENCIES
 
 ROOT = Path(__file__).resolve().parents[2]
-KEY = 'nasuraya-articulated-dialogue/1'
+KEY = 'nasuraya-articulated-dialogue/2'
+OLD_KEY = 'nasuraya-articulated-dialogue/1'
 
 
 class Blocked(RuntimeError):
@@ -55,9 +56,9 @@ def event_for(message):
         elapsed_hours=0., appraisal=message['appraisal']))
 
 
-def execute_trial(steps):
+def execute_trial(steps, checkpoint=None):
     from examples.nasuraya_research.articulated.stepping import walk_trial
-    return walk_trial(label='dialogue-articulated', steps=steps)
+    return walk_trial(label='dialogue-articulated', steps=steps, checkpoint=checkpoint, retain_checkpoint=True)
 
 
 def validate_measurement(result, requested):
@@ -83,6 +84,31 @@ def validate_measurement(result, requested):
     return result
 
 
+def validate_continuation(measured, previous, steps):
+    initialization = measured.get('initialization_seconds')
+    if initialization != (0. if previous else 2.):
+        raise ValueError('unexpected body initialization')
+    if previous:
+        p = previous['value']
+        if (measured.get('continued_from') != previous['sha256']
+                or measured.get('initial_integration_sha256') != digest(p['integration'])
+                or measured.get('initial_qpos') != p['qpos']
+                or measured.get('initial_qvel') != p['qvel']
+                or measured.get('start_time') != p['time']):
+            raise ValueError('body continuation did not start from the saved state')
+    elif measured.get('continued_from') is not None:
+        raise ValueError('unexpected checkpoint origin')
+    cp = measured.get('checkpoint')
+    if cp is not None:
+        p = cp['value']
+        if (not measured['walk_pass'] or digest(p) != cp['sha256']
+                or p['qpos'] != measured.get('final_qpos') or p['qvel'] != measured.get('final_qvel')
+                or p['time'] != measured.get('end_time')
+                or p['next_step'] != (previous['value']['next_step'] if previous else 0)+steps):
+            raise ValueError('invalid final body checkpoint')
+    return measured
+
+
 class ArticulatedDialogue:
     def __init__(self, affect):
         if not isinstance(affect, AffectiveAgent):
@@ -91,12 +117,16 @@ class ArticulatedDialogue:
         self._load()
 
     @classmethod
-    def enable(cls, affect):
+    def enable(cls, affect, max_trials=1):
+        if type(max_trials) is not int or max_trials not in (1, 2):
+            raise ValueError('explicit one or two bout budget required')
         with _session_lock(affect.path):
+            if affect.db.execute('SELECT 1 FROM meta WHERE key=?', (OLD_KEY,)).fetchone():
+                raise Blocked('v1 ledger cannot be implicitly upgraded or rebudgeted')
             if affect.db.execute('SELECT 1 FROM meta WHERE key=?', (KEY,)).fetchone():
                 raise Blocked('already enabled; budget cannot be reset')
             state = dict(schema=KEY, provenance=provenance(), enabled=True,
-                         trials_remaining=1, messages={})
+                         trials_remaining=max_trials, body_checkpoint=None, messages={})
             with affect.transaction():
                 affect.db.execute('INSERT INTO meta VALUES(?,?)',
                     (KEY, canonical(dict(value=state, sha256=digest(state)))))
@@ -121,7 +151,8 @@ class ArticulatedDialogue:
         return dict(enabled=state['enabled'], trials_remaining=state['trials_remaining'],
             pending={k:v['stage'] for k,v in state['messages'].items() if v['stage'] != 'complete'},
             affect=effective(self.affect.state()),
-            scope='One fresh articulated fixture trial; no continuous joint state or chat listener')
+            body_checkpoint_sha256=state['body_checkpoint']['sha256'] if state['body_checkpoint'] else None,
+            scope='Settled body/controller state persists across up to two bouts; no chat listener')
 
     def pause(self):
         with _session_lock(self.affect.path):
@@ -139,14 +170,14 @@ class ArticulatedDialogue:
             summary=f"Articulated trial accepted {measured['accepted_steps']} of {measured['requested_steps']} steps; pass={success}",
             source=dict(kind='observed', locator='articulated-receipt://'+identifier+'/'+digest(measured)),
             cues=['body', 'dialogue', 'articulated'],
-            elapsed_hours=(measured['simulated_seconds']+2.)/3600, appraisal=appraisal)
+            elapsed_hours=(measured['simulated_seconds']+measured['initialization_seconds'])/3600, appraisal=appraisal)
         receipt = self.affect.step(feedback, [choice('observe')])
         reply = (f"در شبیه‌ساز مفصلی، {measured['accepted_steps']} قدم پذیرفته‌شده برداشتم."
                  if success else f"آزمایش راه‌رفتن کامل نشد؛ {measured['accepted_steps']} قدم پذیرفته شد.")
         result = dict(message_id=identifier, plan=item['plan'], measurement=measured,
                       feedback_event_id=feedback['id'], affect_after=effective(receipt['state_after']),
                       reply_fa=reply, replayed=replayed, this_call_trials=0 if replayed else 1,
-                      scope='Measured articulated fixture; feedback appraisal is authored; no physiological writeback')
+                      scope='Checkpointed articulated bouts; feedback appraisal is authored; no physiological writeback')
         item.update(stage='complete', result=result)
         self._save(state)
         return deepcopy(result)
@@ -196,7 +227,13 @@ class ArticulatedDialogue:
             # Persist both spend and unresolved barrier before any simulation.
             state['trials_remaining'] -= 1
             item['stage'] = 'executing'; self._save(state)
-            measured = validate_measurement(execute_trial(message['steps']), message['steps'])
+            measured = validate_measurement(execute_trial(message['steps'], checkpoint=state['body_checkpoint']), message['steps'])
+            validate_continuation(measured, state['body_checkpoint'], message['steps'])
+            # Body checkpoint, measurement and spent budget commit together. Replay
+            # of an older receipt never rewinds this latest body checkpoint.
+            state['body_checkpoint'] = measured['checkpoint']
+            if measured['checkpoint'] is None:
+                state['enabled'] = False
             item.update(stage='measured', measurement=measured)
             self._save(state)  # Full trace survives interruption before affect feedback.
             return self._finish(state, identifier, False)

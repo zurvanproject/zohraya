@@ -122,9 +122,18 @@ remain unchanged. The bridge's own source fingerprint is separate.
 ## Articulated dialogue pilot
 
 [`articulated_cli.py`](articulated_cli.py) connects structured messages and the
-existing affect planner to a single fresh MuJoCo walking trial, limited to one
-or two steps. It preserves the controller and records measured feedback with
-cold-replay protection. This is separate from the aggregate Tadash bridge; joint
-state does not persist between trials. Install
-[`requirements-articulated.txt`](requirements-articulated.txt) for this path.
-See the [technical report](../../docs/nasuraya-articulated-dialogue-v01-fa.md).
+existing affect planner to bounded MuJoCo walking. A fresh v2 session defaults
+to one bout; `init --max-trials 2` explicitly allows two. Each bout is limited
+to one or two steps. Successful settled body/controller checkpoints continue
+across messages and processes, without repeating initialization. Old receipt
+replay cannot rewind the latest body state. V1 ledgers cannot be implicitly
+upgraded or rebudgeted.
+
+Install [`requirements-articulated.txt`](requirements-articulated.txt) for this
+path. It is separate from the aggregate Tadash bridge and has no automatic chat
+listener. See the [continuity report](../../docs/nasuraya-articulated-continuity-v02-fa.md)
+and the [historical v1 report](../../docs/nasuraya-articulated-dialogue-v01-fa.md).
+
+```sh
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m examples.nasuraya_affect.evaluate_articulated_continuity --output /tmp/new-articulated-continuity
+```

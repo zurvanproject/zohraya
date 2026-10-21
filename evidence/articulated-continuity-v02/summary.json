@@ -1,0 +1,55 @@
+{
+  "scope": "Two one-step synthetic messages in separate processes; stopped and settled between bouts.",
+  "bouts": [
+    {
+      "accepted_steps": 1,
+      "walk_pass": true,
+      "initialization_seconds": 2.0,
+      "start_time": 1.9999999999998905,
+      "end_time": 12.999999999998234,
+      "max_tilt_deg": 0.5518652691948142,
+      "max_joint_limit_excess_rad": 0.0,
+      "max_motor_torque_fraction": 1.0,
+      "nonfoot_ground_contacts": [],
+      "pelvis_displacement_xyz_m": [
+        -0.017022587516295318,
+        -0.003989603559333014,
+        0.0021873715112274983
+      ],
+      "initial_integration_sha256": "213286542a2a66fbcec95b1611103088e0db3e3f363c8d7620e7617e56781abd",
+      "continued_from": null
+    },
+    {
+      "accepted_steps": 1,
+      "walk_pass": true,
+      "initialization_seconds": 0.0,
+      "start_time": 12.999999999998234,
+      "end_time": 24.00000000000635,
+      "max_tilt_deg": 0.44659114067232863,
+      "max_joint_limit_excess_rad": 0.0,
+      "max_motor_torque_fraction": 0.8294051889784494,
+      "nonfoot_ground_contacts": [],
+      "pelvis_displacement_xyz_m": [
+        0.06009805613629392,
+        -0.00017444331873313346,
+        0.0004281972044928306
+      ],
+      "initial_integration_sha256": "93932f7993ce72f83fd9c7e35a89c8543948a0721abbc9a1ca618b76311ba29a",
+      "continued_from": "f4d0c9428bd6359a069b7ac1b7be8d382b2207760c10f488b918e8b81c1ad366"
+    }
+  ],
+  "exact_boundary_position_velocity_time": true,
+  "exact_integration_state_restored": true,
+  "alternating_swing_sides": [
+    0,
+    1
+  ],
+  "replay": {
+    "old_replay_preserves_latest_body": true,
+    "memory_unchanged": true,
+    "simulation_forbidden": true,
+    "third_bout_blocked": true
+  },
+  "total_simulated_seconds": 24.00000000000635,
+  "final_checkpoint_sha256": "b3ae47558877ad69ea6344ea4c732f5cd0551b40788e62ff03b6d85382e04e39"
+}

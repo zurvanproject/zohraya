@@ -4,7 +4,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 
-from .engine import AffectiveAgent
+from .engine import AffectiveAgent, digest
 from .fixtures import event
 from .articulated_dialogue import ArticulatedDialogue, Blocked, KEY, validate_measurement
 
@@ -14,12 +14,22 @@ def message(identifier='m1', intent='explore'):
                 appraisal=event(goal_congruence=1., novelty=1.)['appraisal'])
 
 
-def measurement(success=True):
+def measurement(success=True, previous=None):
+    start = previous['value']['time'] if previous else 2.
+    before = previous['value'] if previous else dict(qpos=[0.], qvel=[0.], integration=[2.], next_step=0)
+    after = dict(qpos=[before['qpos'][0]+.08], qvel=[0.], integration=[start+17.],
+                 time=start+17., next_step=before['next_step']+2)
     return dict(requested_steps=2, accepted_steps=2 if success else 0, walk_pass=success,
                 steps=[dict(accepted=True), dict(accepted=True)] if success else [], trace=[],
                 failure=None if success else 'support gate', nonfoot_ground_contacts=[],
                 max_joint_limit_excess_rad=0., max_motor_torque_fraction=1.,
-                simulated_seconds=17., pelvis_displacement_xyz_m=[.08, 0., 0.])
+                simulated_seconds=17., pelvis_displacement_xyz_m=[.08, 0., 0.],
+                initialization_seconds=0. if previous else 2., start_time=start,end_time=start+17.,
+                initial_qpos=before['qpos'], initial_qvel=before['qvel'],
+                initial_integration_sha256=digest(before['integration']),
+                final_qpos=after['qpos'], final_qvel=after['qvel'],
+                continued_from=previous['sha256'] if previous else None,
+                checkpoint=dict(value=after,sha256=digest(after)) if success else None)
 
 
 class ArticulatedTests(unittest.TestCase):
@@ -47,7 +57,7 @@ class ArticulatedTests(unittest.TestCase):
             self.assertEqual(replay['this_call_trials'], 0)
             self.assertEqual(self.agent.state()['revision'], revision)
             with self.assertRaises(Blocked): self.bridge.receive(message('m2'))
-            execute.assert_called_once_with(2)
+            execute.assert_called_once_with(2, checkpoint=None)
 
     def test_unknown_execution_blocks_repeat_and_allows_stop(self):
         with patch('examples.nasuraya_affect.articulated_dialogue.execute_trial', side_effect=RuntimeError('interrupted')) as execute:
@@ -120,7 +130,57 @@ class ArticulatedTests(unittest.TestCase):
             self.assertEqual(result['plan']['baseline_selected_action'], 'walk')
             self.assertEqual(result['this_call_trials'], 1)
             with self.assertRaises(Blocked): self.bridge.receive(message('next', 'walk'))
-            execute.assert_called_once_with(2)
+            execute.assert_called_once_with(2, checkpoint=None)
+
+    def two_bout_session(self):
+        self.agent.close()
+        self.path = Path(self.tmp.name)/'two-bouts.sqlite'
+        self.agent = AffectiveAgent(self.path)
+        self.bridge = ArticulatedDialogue.enable(self.agent, max_trials=2)
+
+    def test_continuation_and_old_replay_preserve_latest_checkpoint(self):
+        self.two_bout_session()
+        def execute(steps, checkpoint=None):
+            return measurement(previous=checkpoint)
+        with patch('examples.nasuraya_affect.articulated_dialogue.execute_trial', side_effect=execute) as run:
+            first = self.bridge.receive(message('one','walk'))
+            first_cp = first['measurement']['checkpoint']
+            second = self.bridge.receive(message('two','walk'))
+            run.assert_called_with(2, checkpoint=first_cp)
+            latest = self.bridge.status()['body_checkpoint_sha256']
+            self.assertNotEqual(latest,first_cp['sha256'])
+            revision = self.agent.state()['revision']
+            self.bridge.receive(message('one','walk'))
+            self.assertEqual(self.bridge.status()['body_checkpoint_sha256'],latest)
+            self.assertEqual(self.agent.state()['revision'],revision)
+            self.assertEqual(run.call_count,2)
+            with self.assertRaises(Blocked):self.bridge.receive(message('three','walk'))
+
+    def test_wrong_continuation_rejected_without_resetting_budget(self):
+        self.two_bout_session()
+        with patch('examples.nasuraya_affect.articulated_dialogue.execute_trial', return_value=measurement()):
+            self.bridge.receive(message('one','walk'))
+            with self.assertRaises(ValueError):self.bridge.receive(message('two','walk'))
+            with self.assertRaises(Blocked):self.bridge.receive(message('two','walk'))
+        self.assertEqual(self.bridge.status()['trials_remaining'],0)
+
+    def test_failed_bout_disables_continuation(self):
+        self.two_bout_session()
+        with patch('examples.nasuraya_affect.articulated_dialogue.execute_trial',return_value=measurement(False)):
+            self.bridge.receive(message('one','walk'))
+        self.assertFalse(self.bridge.status()['enabled'])
+        self.assertIsNone(self.bridge.status()['body_checkpoint_sha256'])
+        with self.assertRaises(Blocked):self.bridge.receive(message('two','walk'))
+
+    def test_old_ledger_and_budget_expansion_rejected(self):
+        from .articulated_dialogue import OLD_KEY
+        self.agent.close()
+        self.path=Path(self.tmp.name)/'old.sqlite'
+        self.agent=AffectiveAgent(self.path)
+        for count in (0,3,True,2.0):
+            with self.assertRaises(ValueError):ArticulatedDialogue.enable(self.agent,max_trials=count)
+        self.agent.db.execute('INSERT INTO meta VALUES(?,?)',(OLD_KEY,'{}'))
+        with self.assertRaises(Blocked):ArticulatedDialogue.enable(self.agent,max_trials=2)
 
     def test_lock_rejects_concurrent_caller(self):
         from examples.nasuraya_agent_loop.guided import _session_lock
