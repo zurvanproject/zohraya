@@ -65,13 +65,15 @@ def request_json(url, token, method='GET', body=None):
 
 
 class GitLedger:
+    path = LEDGER
+
     def __init__(self, token):
         self.token = token
         self.sha = None
 
     def load(self):
         try:
-            r = request_json(f'https://api.github.com/repos/{REPO}/contents/{LEDGER}?ref={quote(BRANCH, safe="")}', self.token)
+            r = request_json(f'https://api.github.com/repos/{REPO}/contents/{self.path}?ref={quote(BRANCH, safe="")}', self.token)
         except HTTPError as exc:
             if exc.code == 404:
                 return dict(schema='nasuraya-affect-api-session/1', authorization_usd=1,
@@ -87,10 +89,10 @@ class GitLedger:
                     content=base64.b64encode((encode(state)+'\n').encode()).decode())
         if self.sha:
             body['sha'] = self.sha
-        r = request_json(f'https://api.github.com/repos/{REPO}/contents/{LEDGER}', self.token, 'PUT', body)
+        r = request_json(f'https://api.github.com/repos/{REPO}/contents/{self.path}', self.token, 'PUT', body)
         self.sha = r['content']['sha']
         ROOT.joinpath('local-results').mkdir(exist_ok=True)
-        ROOT.joinpath('local-results/session.json').write_text(encode(state)+'\n')
+        ROOT.joinpath('local-results', Path(self.path).name).write_text(encode(state)+'\n')
 
 
 def object_schema(properties):
