@@ -1,0 +1,48 @@
+{
+  "review_date": "2026-10-23",
+  "method": "read upstream code and licenses; original implementation in existing BodyLoop",
+  "upstream_projects_executed": false,
+  "sources": [
+    {
+      "repository": "youngbryan97/aura",
+      "commit": "6366b577a3fdf0cd3bcfdee3cf256c0e3da41e68",
+      "files": [
+        "core/affect/affective_circumplex.py",
+        "README.md",
+        "LICENSE"
+      ],
+      "license_observed": "view/review/education only; no source code imported"
+    },
+    {
+      "repository": "stell2026/Anima",
+      "commit": "18d37443449c592abd76e007577b7832e41f2e28",
+      "files": [
+        "Anima/anima_self.jl",
+        "README.md",
+        "LICENSE.txt"
+      ],
+      "license_observed": "noncommercial; no source code imported"
+    },
+    {
+      "repository": "affect-based-control/synthetic-emotion-controller",
+      "commit": "b089d4641d46788300c7a367bd48fee8a20086ec",
+      "files": [
+        "affect_memory_demo.py",
+        "README.md",
+        "LICENSE"
+      ],
+      "license_observed": "MIT; no source code imported"
+    },
+    {
+      "repository": "huodebing-alt/anima",
+      "commit": "ba215ce72bcaedd147d5d08de6e54555a62952c1",
+      "files": [
+        "anima/store.py",
+        "anima/sleep.py",
+        "README.md",
+        "LICENSE"
+      ],
+      "license_observed": "MIT; no source code imported"
+    }
+  ]
+}
