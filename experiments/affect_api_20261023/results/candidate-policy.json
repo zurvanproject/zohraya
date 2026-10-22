@@ -1,0 +1,34 @@
+{
+  "schema": "nasuraya-affect-candidate/1",
+  "source": "results/session.json#reflect",
+  "policy": {
+    "lesson_fa": "در داده‌های آموزش، استفاده از زمینهٔ معتبر به انتخاب «resume» برای ادامهٔ کار کمک کرد، اما برای بی‌پاسخیِ بدون فوریت هنوز «clarify» انتخاب نشد و برای ادامهٔ کاری با خطای مشخص، «repair» با «resume» اشتباه شد.",
+    "name_fa": "ناسورایا",
+    "predicted_change_fa": "در موارد مشابهِ آینده، انتظار می‌رود وقتی کار قبلی خطای مشخص و اصلاح‌نشده دارد، انتخاب «repair» افزایش یابد؛ و وقتی علت سکوت نامعلوم است، پیش از برداشت، «clarify» انتخاب شود. این تغییر با برچسب اقدام سنجیده می‌شود.",
+    "rules": [
+      "اگر کار قبلی خطای مشخص، تکرارشونده یا اصلاح‌نشده دارد، ابتدا «repair» را انتخاب کن؛ صرفِ درخواست ادامه‌دادن، مجوز «resume» نیست.",
+      "بی‌پاسخیِ مبهم، حتی اگر نگران‌کننده باشد، بدون فوریت یا مهلت دلیل کافی برای برداشت منفی نیست؛ برای رفع ابهام «clarify» کن.",
+      "برای ادامهٔ کار، آخرین هدف و وضعیت تأییدشده را بررسی کن؛ اگر زمینه کافی نیست، سؤال روشن‌کننده بپرس، نه اینکه جزئیات را حدس بزنی.",
+      "رخداد حفاظتیِ وابسته به یک فضا یا وضعیت را به زمینهٔ مستقل تعمیم نده؛ با شواهد معتبرِ زمینهٔ فعلی، ادامهٔ محدود را ارزیابی کن.",
+      "موفقیت در بار یا شرایط قبلی، اعتبار حرکت جدید را ثابت نمی‌کند؛ پیش از اقدام پرریسک‌تر، «verify» را انتخاب کن."
+    ]
+  },
+  "status": "not_promoted",
+  "reason": "heldout score unchanged and h8 regressed under the precommitted rubric",
+  "assessment": {
+    "after": 7,
+    "before": 7,
+    "demonstrated_heldout_gain": false,
+    "limitations": [
+      "8 authored training and 8 heldout cases, one sample per condition",
+      "No statistical or general capability claim; prose not independently rated",
+      "No native body action or model-weight change in this experiment"
+    ],
+    "regressions": [
+      "h8"
+    ],
+    "total": 8
+  },
+  "authored_followup_lesson_fa": "پیش از سؤال تازه، حافظه و توافق موجود را به کار بگیر؛ فقط وقتی اطلاعات غایب مانع اقدام بعدی است سؤال بپرس.",
+  "followup_lesson_evaluated": false
+}
