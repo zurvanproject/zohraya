@@ -1,0 +1,51 @@
+name: Nasuraya one-time model initialization
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/nasuraya-bootstrap-model-once.yml']
+permissions:
+  contents: read
+concurrency:
+  group: nasuraya-bounded-continuity-host
+  cancel-in-progress: false
+jobs:
+  initialize-model:
+    if: github.repository == 'zurvanproject/zohraya' && github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 7aaee60198b50246d90242d5155d3e3736882792
+          path: source
+          persist-credentials: false
+      - name: Initialize bounded Nasuraya model research, no paid model call
+        env:
+          GH_HOST_TOKEN: ${{ github.token }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import subprocess
+          import sys
+          from pathlib import Path
+          from continuity_host import host, model_research
+          if os.environ.get('GITHUB_REPOSITORY') != host.REPO or os.environ.get('GITHUB_REF') != 'refs/heads/main':
+              raise ValueError('Repository and default branch restrictions')
+          source = Path('source').resolve()
+          if subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=source, text=True).strip() != host.SOURCE:
+              raise ValueError('Gate source pin mismatch')
+          if host.digest((source/'continuity/gate.py').read_bytes()) != host.GATE_HASH:
+              raise ValueError('Gate content hash mismatch')
+          sys.path.insert(0, str(source))
+          from continuity import gate
+          result = model_research.initialize(model_research.ModelGitHub(), gate)
+          print(json.dumps(result, sort_keys=True))
+          PY
