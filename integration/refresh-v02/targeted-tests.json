@@ -1,0 +1,104 @@
+{
+  "schema": "nasuraya.unified-tests/1",
+  "modules": [
+    {
+      "module": "continuity_host.test_cadence",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 15,
+      "skipped": 0,
+      "seconds": 0.17
+    },
+    {
+      "module": "continuity_host.test_cadence_host",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 10,
+      "skipped": 0,
+      "seconds": 0.63
+    },
+    {
+      "module": "continuity_host.test_host",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 9,
+      "skipped": 0,
+      "seconds": 0.69
+    },
+    {
+      "module": "continuity_host.test_live_compatibility",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 3,
+      "skipped": 0,
+      "seconds": 0.12
+    },
+    {
+      "module": "continuity_host.test_model_research",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 39,
+      "skipped": 0,
+      "seconds": 0.59
+    },
+    {
+      "module": "continuity_host.test_research",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 34,
+      "skipped": 0,
+      "seconds": 0.41
+    },
+    {
+      "module": "examples.nasuraya_body_loop.test_unified_combinations",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 3,
+      "skipped": 0,
+      "seconds": 9.41
+    },
+    {
+      "module": "examples.nasuraya_research.test_adapters",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 19,
+      "skipped": 8,
+      "seconds": 0.13
+    },
+    {
+      "module": "examples.nasuraya_research.test_body_observer",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 13,
+      "skipped": 3,
+      "seconds": 18.65
+    },
+    {
+      "module": "nasuraya.test_integration",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 5,
+      "skipped": 0,
+      "seconds": 4.5
+    },
+    {
+      "module": "nasuraya.test_self_observe",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 9,
+      "skipped": 0,
+      "seconds": 5.13
+    },
+    {
+      "module": "zohraya.tests.test_self_model",
+      "profile": "core",
+      "exit_code": 0,
+      "tests": 14,
+      "skipped": 0,
+      "seconds": 0.06
+    }
+  ],
+  "tests": 173,
+  "skipped": 11,
+  "failed_modules": 0
+}

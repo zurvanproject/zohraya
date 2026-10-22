@@ -102,13 +102,15 @@ class APIRecovery:
             return sessions.events.stream(row['session_id'], timeout=remaining())
         # Reserve before sending initial input. A crash before learning the remote
         # ID is ambiguous and must never automatically create a second session.
-        remaining()
-        self.db.execute('INSERT INTO body_api_transport VALUES(?,?,?,NULL,NULL,NULL)',
-                        (self.host.run_id, self.model, 'creating'))
-        self.host.initial_input = (
+        build_input = getattr(self.host, 'continuation_input', None)
+        initial_input = (build_input() if callable(build_input) else
             f'Continue saved logical goal {self.host.run_id}. '
             f'Host evaluation: {self.host.evaluate()}. '
             'Completed cycles are already applied. Observe afresh and do only unfinished work.')
+        remaining()
+        self.db.execute('INSERT INTO body_api_transport VALUES(?,?,?,NULL,NULL,NULL)',
+                        (self.host.run_id, self.model, 'creating'))
+        self.host.initial_input = initial_input
         create_kwargs['input'] = self.host.initial_input
         create_kwargs['timeout'] = remaining()
         return sessions.create(**create_kwargs)

@@ -1,0 +1,37 @@
+{
+  "schema": "nasuraya-duration-transfer-validation/1",
+  "validated_at_utc": "2026-10-16T12:03:53.771498+00:00",
+  "python": "3.12.14",
+  "distinct_passed_tests": 135,
+  "test_groups": {
+    "existing_self_model": 105,
+    "new_transfer": 7,
+    "new_cold_inspection": 1,
+    "api_contract": 22
+  },
+  "skipped_required_tests": 0,
+  "full_evaluations": 2,
+  "measured_whole_body_receipts_per_evaluation": 126,
+  "fixture_owner_warmups_excluded": true,
+  "results_bitwise_equal": true,
+  "results_sha256": "20a6620766379d154fd2d5665b3e04cbab7020867c2dd251234f983a246897a0",
+  "protocol_sha256": "2107d2efba65ea34fd264b35773f31431b79859c024c88d9bf805d057db19227",
+  "strict_offline_verification": {
+    "verified_native_receipts": 126,
+    "held_out_predictions_equal": true,
+    "held_out_metrics_equal": true,
+    "policy_effects_equal": true,
+    "cold_equal": true,
+    "native_actions_executed": 0,
+    "api_calls": 0
+  },
+  "unchanged_native_source_files": 67,
+  "model_api_calls": 0,
+  "canonical_state_advanced": false,
+  "source_base_commit": "1cfbfef00e869c514f88d76782dfcb36e8fa3edf",
+  "final_runtime_source_commit": "b7f0817690b9202704bac1ebefdf6e998ed4054d",
+  "local_protocol_commit": "01f68c09e4b9a739f3235f8dec320d7cf9a294e3",
+  "protocol_publication_note": "Locally frozen before first execution; GitHub publication during first execution, not independent preregistration",
+  "execution_note": "First run used initial implementation; second used additional invalid-effect guards and all-arm training prediction logs; cold readback then hardened and independently checked with both body action paths forbidden",
+  "ci": "Local validation complete; GitHub final-head checks must be inspected separately"
+}

@@ -1,0 +1,65 @@
+{
+  "enabled": true,
+  "body": {
+    "schema": "nasuraya-bounded-body-loop/1",
+    "fixture": "normal",
+    "mode": "bounded",
+    "max_actions": 3,
+    "actions_reserved": 0,
+    "actions_remaining": 3,
+    "completed_cycles": 0,
+    "failed_cycles": 0,
+    "unresolved_running": [],
+    "self_model": {
+      "checkpoint_sha256": "04252a8b6628828efdd2a0d54b60d7a5dc347138d28d302c35454e68f223f169",
+      "revision": 0,
+      "simulated_wall_utc": "2026-01-01T00:00:07+00:00",
+      "minimum_state": {
+        "HR": 62.05427845950002,
+        "RR": 14.167210021781528,
+        "energy": 0.9993454504792117,
+        "hydration": 0.9999859908377187,
+        "temperature": 37.000054898365086,
+        "sympathetic": 0.24538650771018136,
+        "parasympathetic": 0.6132716213175111,
+        "muscle_tone": 0.26973625139588886,
+        "fatigue": 0.01069945672828943,
+        "pain": 0.11413104958422383,
+        "arousal": 0.2822793406531386,
+        "valence": 0.0,
+        "posture": "double_support",
+        "balance": 1.0,
+        "breath_depth": 1.5218378694671448,
+        "sleep_pressure": 0.35032098259399874
+      },
+      "self_location": {
+        "where": "Tadash computational world: X left, Y forward, Z up; metres",
+        "position_m": [
+          0.0,
+          0.0,
+          1.314
+        ],
+        "pose": "double_support",
+        "strongest_interoceptive_region": "chest_state",
+        "energy": 0.9993454504792117,
+        "dominant_homeostatic_need": "pain",
+        "next_move_prediction": "available by forecast(action, duration, inputs)",
+        "evidence_level": "B"
+      },
+      "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L.",
+      "scope": "existing software body; generated fixture, not biological measurement"
+    },
+    "external_model_api_used": false
+  },
+  "affect": {
+    "joy": 0.54252096,
+    "sadness": 0.0,
+    "contentment": 0.30689792,
+    "excitement": 0.29051199999999994,
+    "fear": 0.0,
+    "frustration": 0.0
+  },
+  "pending": [],
+  "connection": "caller-mediated message bridge; no background listener",
+  "body_kind": "native UnifiedBody/Tadash, not articulated MuJoCo"
+}

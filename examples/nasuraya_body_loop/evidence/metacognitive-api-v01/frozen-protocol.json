@@ -1,0 +1,29 @@
+{
+  "schema": "nasuraya-metacognitive-api-live/1",
+  "locally_frozen_before_live_outcomes": true,
+  "model": "gpt-6-astra",
+  "environment": "none",
+  "shadow_runs": 3,
+  "enforced_runs": 1,
+  "fixture": "fresh generated normal BodyLoop for each run; no saved user body",
+  "requested_action": "walk",
+  "duration_s": 1.0,
+  "max_native_requests_per_run": 1,
+  "max_tool_calls_per_run": 16,
+  "timeout_seconds_per_run": 120,
+  "max_reconnects_per_run": 1,
+  "training": "only receipts of actual core-selected native requests; never preferences, assessments or deferrals",
+  "enforce_precondition": "current exact walk/duration context has at least three verified samples and passes the existing gate",
+  "stop": "stop after any failed, incomplete, unexecuted or unassessed live run; preserve its session and evidence; do not reset or invent success",
+  "acceptance": [
+    "all four turns complete through the existing Agents API runner",
+    "each turn calls assess_body_action and receives a reduced self-model report",
+    "each run contains exactly one actual native cycle",
+    "the final run uses enforce mode and the actual core choice is checked before the native callback",
+    "every learned sample matches a committed body receipt",
+    "all remote sessions are deleted after their terminal result",
+    "a fresh process reopens the completed final goal with zero network calls and zero new body cycles",
+    "native source manifest remains unchanged"
+  ],
+  "limits": "connectivity and persistence check, not an independent generalization or performance study; repeated deterministic synthetic starting fixtures may have identical hashes; no probability of consciousness is measured"
+}

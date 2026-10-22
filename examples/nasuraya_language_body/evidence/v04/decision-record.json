@@ -1,0 +1,37 @@
+{
+  "goal": "Reduce false walk admissions for fatigue/pain by actual local adapter learning, preserving valid admissions and native guards",
+  "acceptance": "fixed protocol promotion: zero false admissions, both recalls >=0.95, strict accuracy gain over calibrated parent and frozen enriched input comparator",
+  "evidence": {
+    "source": "PR #25 at 533c3a22fa3863710b5d84a39167a97ce15883e4",
+    "observed": "choice_balanced 36/42, six false admissions; calibrated parent 42/42; no forced alias errors on that finite set"
+  },
+  "authored": {
+    "training_cases": 48,
+    "held_out_cases": 40,
+    "steps": 96,
+    "seed": 2026101604,
+    "input": "pre-action numeric/body features; audit restriction words retained"
+  },
+  "interpretation": "new features alone may not repair errors; frozen/enriched comparator separates input format from weight updates; numeric grounding remains unproven",
+  "action": "implemented and executed 48 native training probes, 96 LoRA steps, all test predictions before 40 native test outcomes",
+  "limits": [
+    "one synthetic body family",
+    "forefoot_L pain only varied",
+    "one seed",
+    "admission outcome, not locomotion quality",
+    "no API advisor replacement"
+  ],
+  "observed_result": {
+    "parent_correct": 40,
+    "frozen_legacy_correct": 24,
+    "frozen_enriched_correct": 38,
+    "trained_enriched_correct": 38,
+    "primary_false_admissions": 2,
+    "promotion_eligible": false,
+    "weight_values_changed": 61440,
+    "base_unchanged": true
+  },
+  "lesson": "Input format accounts for the accuracy gain; training improves overall raw Brier but makes the same two zero-friction errors more confident. No added accuracy or promotion.",
+  "next_unfinished_requirement": "A separately frozen future input-ablation/test is required before attributing zero-friction errors or connecting this adapter; no automatic retry.",
+  "verification": "30 contract tests; 88 receipt rows verified; four model/input score sets restored with zero error; 0 network/body/optimizer work; 72 native files unchanged"
+}

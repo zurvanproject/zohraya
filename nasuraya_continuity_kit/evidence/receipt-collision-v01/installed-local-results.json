@@ -1,0 +1,978 @@
+{
+  "passed": true,
+  "wheel_sha256": "b37474944928e1655a9ab0739653890b771335740762249af2aafedaf9bacb53",
+  "installed_imports": [
+    "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/env/lib/python3.12/site-packages/nasuraya_continuity_kit/local_job.py",
+    "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/env/lib/python3.12/site-packages/continuity/gate.py"
+  ],
+  "denied_network_syscalls": [
+    "socket",
+    "socketpair",
+    "connect",
+    "bind",
+    "listen",
+    "accept",
+    "accept4",
+    "sendto",
+    "recvfrom",
+    "sendmsg",
+    "recvmsg",
+    "sendmmsg",
+    "recvmmsg"
+  ],
+  "inherited_socket_probe": "EPERM",
+  "fresh_process_cli_invocations": 35,
+  "actual_killed_workers": [
+    {
+      "phase": "after_claim",
+      "signal": "SIGKILL",
+      "exit_code": -9,
+      "sqlite_integrity": "ok",
+      "replay_did_not_reexecute": true
+    },
+    {
+      "phase": "after_compute",
+      "signal": "SIGKILL",
+      "exit_code": -9,
+      "sqlite_integrity": "ok",
+      "replay_did_not_reexecute": true
+    },
+    {
+      "phase": "after_result_write",
+      "signal": "SIGKILL",
+      "exit_code": -9,
+      "sqlite_integrity": "ok",
+      "replay_did_not_reexecute": true
+    },
+    {
+      "phase": "after_commit",
+      "signal": "SIGKILL",
+      "exit_code": -9,
+      "sqlite_integrity": "ok",
+      "replay_did_not_reexecute": true
+    }
+  ],
+  "log": [
+    {
+      "db": "normal.sqlite",
+      "operation": "init",
+      "arguments": [],
+      "now": "2026-10-16T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": null,
+            "inflight_run_id": null,
+            "last_completed_run_id": null
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "recent_contact"
+          },
+          "request_count": 0,
+          "run_count": 0
+        }
+      }
+    },
+    {
+      "db": "normal.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "early",
+        "--run-id",
+        "early",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-16T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "recent_contact"
+      }
+    },
+    {
+      "db": "normal.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "request1",
+          "status": "completed",
+          "result": {
+            "input_bytes": 23,
+            "input_sha256": "554547e836a933725b741c12c0f07813dd5cf4ca8659d48e418ec1619e4e4b91",
+            "record_count": 3,
+            "record_sha256": [
+              "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+              "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bda1fa48345336618741fd2c4bc02809eb099c49a9b02fb5056401ab6d4dc3e6"
+            ],
+            "schema": "nasuraya-local-integrity/1",
+            "utf8_bytes": 11
+          },
+          "resolution": null
+        }
+      }
+    },
+    {
+      "db": "normal.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": true,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "request1",
+          "status": "completed",
+          "result": {
+            "input_bytes": 23,
+            "input_sha256": "554547e836a933725b741c12c0f07813dd5cf4ca8659d48e418ec1619e4e4b91",
+            "record_count": 3,
+            "record_sha256": [
+              "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+              "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bda1fa48345336618741fd2c4bc02809eb099c49a9b02fb5056401ab6d4dc3e6"
+            ],
+            "schema": "nasuraya-local-integrity/1",
+            "utf8_bytes": 11
+          },
+          "resolution": null
+        }
+      }
+    },
+    {
+      "db": "normal.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "request id already bound to different local parameters"
+      }
+    },
+    {
+      "db": "normal.sqlite",
+      "operation": "status",
+      "arguments": [],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": "2026-10-17T10:22:23+00:00",
+            "inflight_run_id": null,
+            "last_completed_run_id": "run1"
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "daily_budget_used"
+          },
+          "request_count": 2,
+          "run_count": 1
+        }
+      }
+    },
+    {
+      "db": "colliding-request.sqlite",
+      "operation": "init",
+      "arguments": [],
+      "now": "2026-10-16T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": null,
+            "inflight_run_id": null,
+            "last_completed_run_id": null
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "recent_contact"
+          },
+          "request_count": 0,
+          "run_count": 0
+        }
+      }
+    },
+    {
+      "db": "colliding-request.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "local-finish-34e9aedefffddf04c3cf3f9e055ba714e9ebe21b828e6170eeb7b610123d9f7d",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "local-finish-34e9aedefffddf04c3cf3f9e055ba714e9ebe21b828e6170eeb7b610123d9f7d",
+          "status": "completed",
+          "result": {
+            "input_bytes": 23,
+            "input_sha256": "554547e836a933725b741c12c0f07813dd5cf4ca8659d48e418ec1619e4e4b91",
+            "record_count": 3,
+            "record_sha256": [
+              "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+              "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bda1fa48345336618741fd2c4bc02809eb099c49a9b02fb5056401ab6d4dc3e6"
+            ],
+            "schema": "nasuraya-local-integrity/1",
+            "utf8_bytes": 11
+          },
+          "resolution": null
+        }
+      }
+    },
+    {
+      "db": "colliding-request.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "local-finish-34e9aedefffddf04c3cf3f9e055ba714e9ebe21b828e6170eeb7b610123d9f7d",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": true,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "local-finish-34e9aedefffddf04c3cf3f9e055ba714e9ebe21b828e6170eeb7b610123d9f7d",
+          "status": "completed",
+          "result": {
+            "input_bytes": 23,
+            "input_sha256": "554547e836a933725b741c12c0f07813dd5cf4ca8659d48e418ec1619e4e4b91",
+            "record_count": 3,
+            "record_sha256": [
+              "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+              "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bda1fa48345336618741fd2c4bc02809eb099c49a9b02fb5056401ab6d4dc3e6"
+            ],
+            "schema": "nasuraya-local-integrity/1",
+            "utf8_bytes": 11
+          },
+          "resolution": null
+        }
+      }
+    },
+    {
+      "db": "after_claim.sqlite",
+      "operation": "init",
+      "arguments": [],
+      "now": "2026-10-16T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": null,
+            "inflight_run_id": null,
+            "last_completed_run_id": null
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "recent_contact"
+          },
+          "request_count": 0,
+          "run_count": 0
+        }
+      }
+    },
+    {
+      "db": "after_claim.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": true,
+      "output": {
+        "ok": false,
+        "error": "local outcome unknown; host reconciliation required"
+      }
+    },
+    {
+      "db": "after_claim.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "new",
+        "--run-id",
+        "new",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-18T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "unresolved_previous_run"
+      }
+    },
+    {
+      "db": "after_claim.sqlite",
+      "operation": "finish",
+      "arguments": [
+        "--request-id",
+        "bypass",
+        "--run-id",
+        "run1"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "local job unresolved; host reconciliation required"
+      }
+    },
+    {
+      "db": "after_claim.sqlite",
+      "operation": "abandon-local",
+      "arguments": [
+        "--request-id",
+        "review",
+        "--run-id",
+        "run1",
+        "--operator",
+        "verifier-host",
+        "--evidence",
+        "SIGKILL confirmed and child reaped"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "host operator, evidence and explicit worker-stopped attestation required"
+      }
+    },
+    {
+      "db": "after_claim.sqlite",
+      "operation": "abandon-local",
+      "arguments": [
+        "--request-id",
+        "review",
+        "--run-id",
+        "run1",
+        "--operator",
+        "verifier-host",
+        "--evidence",
+        "SIGKILL confirmed and child reaped",
+        "--worker-stopped"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "request1",
+          "status": "abandoned",
+          "result": null,
+          "resolution": {
+            "evidence": "SIGKILL confirmed and child reaped",
+            "now": "2026-10-17T10:22:23Z",
+            "operator": "verifier-host",
+            "worker_stopped": true
+          }
+        }
+      }
+    },
+    {
+      "db": "after_claim.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": true,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "request1",
+          "status": "abandoned",
+          "result": null,
+          "resolution": {
+            "evidence": "SIGKILL confirmed and child reaped",
+            "now": "2026-10-17T10:22:23Z",
+            "operator": "verifier-host",
+            "worker_stopped": true
+          }
+        }
+      }
+    },
+    {
+      "db": "after_claim.sqlite",
+      "operation": "status",
+      "arguments": [],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": "2026-10-17T10:22:23+00:00",
+            "inflight_run_id": null,
+            "last_completed_run_id": "run1"
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "daily_budget_used"
+          },
+          "request_count": 2,
+          "run_count": 1
+        }
+      }
+    },
+    {
+      "db": "after_compute.sqlite",
+      "operation": "init",
+      "arguments": [],
+      "now": "2026-10-16T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": null,
+            "inflight_run_id": null,
+            "last_completed_run_id": null
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "recent_contact"
+          },
+          "request_count": 0,
+          "run_count": 0
+        }
+      }
+    },
+    {
+      "db": "after_compute.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": true,
+      "output": {
+        "ok": false,
+        "error": "local outcome unknown; host reconciliation required"
+      }
+    },
+    {
+      "db": "after_compute.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "new",
+        "--run-id",
+        "new",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-18T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "unresolved_previous_run"
+      }
+    },
+    {
+      "db": "after_compute.sqlite",
+      "operation": "finish",
+      "arguments": [
+        "--request-id",
+        "bypass",
+        "--run-id",
+        "run1"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "local job unresolved; host reconciliation required"
+      }
+    },
+    {
+      "db": "after_compute.sqlite",
+      "operation": "abandon-local",
+      "arguments": [
+        "--request-id",
+        "review",
+        "--run-id",
+        "run1",
+        "--operator",
+        "verifier-host",
+        "--evidence",
+        "SIGKILL confirmed and child reaped"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "host operator, evidence and explicit worker-stopped attestation required"
+      }
+    },
+    {
+      "db": "after_compute.sqlite",
+      "operation": "abandon-local",
+      "arguments": [
+        "--request-id",
+        "review",
+        "--run-id",
+        "run1",
+        "--operator",
+        "verifier-host",
+        "--evidence",
+        "SIGKILL confirmed and child reaped",
+        "--worker-stopped"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "request1",
+          "status": "abandoned",
+          "result": null,
+          "resolution": {
+            "evidence": "SIGKILL confirmed and child reaped",
+            "now": "2026-10-17T10:22:23Z",
+            "operator": "verifier-host",
+            "worker_stopped": true
+          }
+        }
+      }
+    },
+    {
+      "db": "after_compute.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": true,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "request1",
+          "status": "abandoned",
+          "result": null,
+          "resolution": {
+            "evidence": "SIGKILL confirmed and child reaped",
+            "now": "2026-10-17T10:22:23Z",
+            "operator": "verifier-host",
+            "worker_stopped": true
+          }
+        }
+      }
+    },
+    {
+      "db": "after_compute.sqlite",
+      "operation": "status",
+      "arguments": [],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": "2026-10-17T10:22:23+00:00",
+            "inflight_run_id": null,
+            "last_completed_run_id": "run1"
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "daily_budget_used"
+          },
+          "request_count": 2,
+          "run_count": 1
+        }
+      }
+    },
+    {
+      "db": "after_result_write.sqlite",
+      "operation": "init",
+      "arguments": [],
+      "now": "2026-10-16T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": null,
+            "inflight_run_id": null,
+            "last_completed_run_id": null
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "recent_contact"
+          },
+          "request_count": 0,
+          "run_count": 0
+        }
+      }
+    },
+    {
+      "db": "after_result_write.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": true,
+      "output": {
+        "ok": false,
+        "error": "local outcome unknown; host reconciliation required"
+      }
+    },
+    {
+      "db": "after_result_write.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "new",
+        "--run-id",
+        "new",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-18T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "unresolved_previous_run"
+      }
+    },
+    {
+      "db": "after_result_write.sqlite",
+      "operation": "finish",
+      "arguments": [
+        "--request-id",
+        "bypass",
+        "--run-id",
+        "run1"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "local job unresolved; host reconciliation required"
+      }
+    },
+    {
+      "db": "after_result_write.sqlite",
+      "operation": "abandon-local",
+      "arguments": [
+        "--request-id",
+        "review",
+        "--run-id",
+        "run1",
+        "--operator",
+        "verifier-host",
+        "--evidence",
+        "SIGKILL confirmed and child reaped"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 2,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": false,
+        "error": "host operator, evidence and explicit worker-stopped attestation required"
+      }
+    },
+    {
+      "db": "after_result_write.sqlite",
+      "operation": "abandon-local",
+      "arguments": [
+        "--request-id",
+        "review",
+        "--run-id",
+        "run1",
+        "--operator",
+        "verifier-host",
+        "--evidence",
+        "SIGKILL confirmed and child reaped",
+        "--worker-stopped"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "request1",
+          "status": "abandoned",
+          "result": null,
+          "resolution": {
+            "evidence": "SIGKILL confirmed and child reaped",
+            "now": "2026-10-17T10:22:23Z",
+            "operator": "verifier-host",
+            "worker_stopped": true
+          }
+        }
+      }
+    },
+    {
+      "db": "after_result_write.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": true,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "request1",
+          "status": "abandoned",
+          "result": null,
+          "resolution": {
+            "evidence": "SIGKILL confirmed and child reaped",
+            "now": "2026-10-17T10:22:23Z",
+            "operator": "verifier-host",
+            "worker_stopped": true
+          }
+        }
+      }
+    },
+    {
+      "db": "after_result_write.sqlite",
+      "operation": "status",
+      "arguments": [],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": "2026-10-17T10:22:23+00:00",
+            "inflight_run_id": null,
+            "last_completed_run_id": "run1"
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "daily_budget_used"
+          },
+          "request_count": 2,
+          "run_count": 1
+        }
+      }
+    },
+    {
+      "db": "after_commit.sqlite",
+      "operation": "init",
+      "arguments": [],
+      "now": "2026-10-16T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": false,
+      "output": {
+        "ok": true,
+        "result": {
+          "state": {
+            "schema": "nasuraya-absence-control/1",
+            "enabled": true,
+            "last_contact_at": "2026-10-16T10:22:23+00:00",
+            "contact_source": "Explicit local operator initialization",
+            "last_claimed_at": null,
+            "inflight_run_id": null,
+            "last_completed_run_id": null
+          },
+          "decision": {
+            "eligible": false,
+            "reason": "recent_contact"
+          },
+          "request_count": 0,
+          "run_count": 0
+        }
+      }
+    },
+    {
+      "db": "after_commit.sqlite",
+      "operation": "run-local",
+      "arguments": [
+        "--request-id",
+        "request1",
+        "--run-id",
+        "run1",
+        "--input",
+        "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/installed-local/input.json"
+      ],
+      "now": "2026-10-17T10:22:23Z",
+      "exit_code": 0,
+      "report_computation_forbidden": true,
+      "output": {
+        "ok": true,
+        "result": {
+          "run_id": "run1",
+          "request_id": "request1",
+          "status": "completed",
+          "result": {
+            "input_bytes": 23,
+            "input_sha256": "554547e836a933725b741c12c0f07813dd5cf4ca8659d48e418ec1619e4e4b91",
+            "record_count": 3,
+            "record_sha256": [
+              "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+              "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "bda1fa48345336618741fd2c4bc02809eb099c49a9b02fb5056401ab6d4dc3e6"
+            ],
+            "schema": "nasuraya-local-integrity/1",
+            "utf8_bytes": 11
+          },
+          "resolution": null
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Injected fixture clock; no 24-hour wait",
+    "Trusted local operator/time",
+    "No scheduler daemon or physical/network effects",
+    "Only SQLite report publication tested"
+  ]
+}

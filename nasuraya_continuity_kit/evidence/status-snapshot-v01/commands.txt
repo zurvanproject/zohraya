@@ -1,0 +1,46 @@
+# Run from the repository root in a fresh isolated checkout.
+# Baseline source: 7c590b435375f05b5baf616cc736bc0a4130c021.
+# Exact locally executed commands (HEAD was a fresh limited recovery of that source):
+python3 -m unittest nasuraya_continuity_kit.test_local_job nasuraya_continuity_kit.test_store continuity.test_gate project_fund.test_planner -v
+python3 - <<'PY'
+import subprocess,unittest
+from unittest.mock import patch
+from nasuraya_continuity_kit.store import Store
+ns={}
+exec(subprocess.check_output(['git','show','HEAD:nasuraya_continuity_kit/store.py'],text=True),ns)
+names=['test_status_uses_one_snapshot_when_another_connection_claims','test_status_does_not_commit_or_rollback_a_caller_transaction','test_status_releases_its_snapshot_after_a_read_error']
+suite=unittest.defaultTestLoader.loadTestsFromNames(['nasuraya_continuity_kit.test_store.StoreTests.'+n for n in names])
+with patch.object(Store,'status',ns['Store'].status):
+ r=unittest.TextTestRunner(verbosity=2).run(suite)
+assert r.testsRun==3 and len(r.failures)==1 and not r.errors and not r.skipped
+print('EXPECTED_BASELINE_FAILURE_CONFIRMED; same final tests against recovered old status')
+PY
+# For replay from a full checkout AFTER the patch, replace HEAD above with
+# 7c590b435375f05b5baf616cc736bc0a4130c021 (the pinned parent, not the new HEAD).
+python3 - <<'PY'
+import unittest
+from nasuraya_continuity_kit.verify_local_job import deny_network
+print('DENIED',deny_network())
+r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromNames(['nasuraya_continuity_kit.test_local_job','nasuraya_continuity_kit.test_store','continuity.test_gate','project_fund.test_planner']))
+assert r.wasSuccessful()
+PY
+python3 -c 'import sys,setuptools; print(sys.version); print("setuptools",setuptools.__version__)'
+env SOURCE_DATE_EPOCH=1792159200 python3 -m pip wheel --no-index --no-deps --no-build-isolation . --wheel-dir dist
+python3 -m nasuraya_continuity_kit.verify_install --wheel dist/nasuraya_continuity_kit-0.2.0-py3-none-any.whl --output installed-admission
+python3 -m nasuraya_continuity_kit.verify_local_job --wheel dist/nasuraya_continuity_kit-0.2.0-py3-none-any.whl --output installed-local-job
+installed-admission/env/bin/python -I - <<'PY'
+import json,pathlib,unittest
+import nasuraya_continuity_kit.store as module
+from nasuraya_continuity_kit.verify_local_job import deny_network
+print('NETWORK_DENIAL',deny_network())
+assert 'site-packages' in module.__file__,module.__file__
+source=pathlib.Path('nasuraya_continuity_kit/test_store.py')
+ns={'__name__':'installed_contract_probe','__package__':'nasuraya_continuity_kit'}
+exec(compile(source.read_text(),str(source),'exec'),ns)
+r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromTestCase(ns['StoreTests']))
+assert r.wasSuccessful()
+print(json.dumps({'installed_store':module.__file__,'tests_run':r.testsRun,'failed':len(r.failures),'errors':len(r.errors),'skipped':len(r.skipped)}))
+PY
+git diff --check
+# Verifier output dirs must not already exist; choose new names for a repeat.
+# Linux libseccomp.so.2 is verifier-only; no third-party runtime dependency.

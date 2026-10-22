@@ -1,0 +1,8 @@
+{
+  "commit": "202515fd0424950afb45660f4d5c22ea65144a4f",
+  "job_url": "https://github.com/zurvanproject/zohraya/actions/runs/39191620406/job/117865467628",
+  "observed": "19 adapter tests passed; standalone adaptive_support import then failed with ModuleNotFoundError: No module named 'posture_step'.",
+  "correction": "Initialize retained native runtime module paths on standalone adaptive_support import; no controller arithmetic changed.",
+  "local_validation": "python -m unittest examples.nasuraya_research.test_adaptive_support -v: 1 test passed in a fresh process.",
+  "fix_commit": "255712d1597a36729b4cefce2e7f656acb4ee1ba"
+}

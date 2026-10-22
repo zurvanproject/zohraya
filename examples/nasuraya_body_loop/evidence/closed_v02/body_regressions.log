@@ -1,0 +1,31 @@
+test_budget_survives_reopen (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_budget_survives_reopen) ... ok
+test_callback_failure_is_not_a_completed_cycle_and_replay_never_retries (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_callback_failure_is_not_a_completed_cycle_and_replay_never_retries) ... ok
+test_cold_process_recalls_the_actual_body_veto (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_cold_process_recalls_the_actual_body_veto) ... ok
+test_completed_replay_does_not_repeat_body_effect (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_completed_replay_does_not_repeat_body_effect) ... ok
+test_concurrent_writer_is_rejected (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_concurrent_writer_is_rejected) ... ok
+test_existing_session_is_never_reset (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_existing_session_is_never_reset) ... ok
+test_failed_demo_exits_nonzero_and_retains_failed_receipt (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_failed_demo_exits_nonzero_and_retains_failed_receipt) ... ok
+test_fresh_observation_required_and_consumed (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_fresh_observation_required_and_consumed) ... ok
+test_hardlink_alias_is_rejected_before_sqlite_can_open_another_wal (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_hardlink_alias_is_rejected_before_sqlite_can_open_another_wal) ... ok
+test_invalid_duration_and_identity_preserve_observation_and_budget (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_invalid_duration_and_identity_preserve_observation_and_budget) ... ok
+test_observe_mode_never_mutates_body (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_observe_mode_never_mutates_body) ... ok
+test_session_and_sqlite_sidecars_are_private_even_with_permissive_umask (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_session_and_sqlite_sidecars_are_private_even_with_permissive_umask) ... ok
+test_source_pinned_body_feedback_changes_next_requested_action (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_source_pinned_body_feedback_changes_next_requested_action) ... ok
+test_tampered_body_observation_is_rejected (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_tampered_body_observation_is_rejected) ... ok
+test_unrelated_old_ledger_is_rejected_without_migration (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_unrelated_old_ledger_is_rejected_without_migration) ... ok
+test_unresolved_operation_blocks_all_new_execution (examples.nasuraya_body_loop.test_body_loop.BodyLoopTests.test_unresolved_operation_blocks_all_new_execution) ... ok
+test_goal_contract_budget_and_observe_mode (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_goal_contract_budget_and_observe_mode) ... ok
+test_healthy_snapshot_prefers_walk (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_healthy_snapshot_prefers_walk) ... ok
+test_identity_hash_chain_detects_accidental_corruption (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_identity_hash_chain_detects_accidental_corruption) ... ok
+test_identity_versioning_revert_and_fixed_constitution (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_identity_versioning_revert_and_fixed_constitution) ... ok
+test_invalid_indices_refuse_decision (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_invalid_indices_refuse_decision) ... ok
+test_native_veto_feedback_changes_next_preference (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_native_veto_feedback_changes_next_preference) ... ok
+test_restart_recovers_committed_effect_without_duplicate (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_restart_recovers_committed_effect_without_duplicate) ... ok
+test_tampered_maintenance_receipt_is_detected (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_tampered_maintenance_receipt_is_detected) ... ok
+test_unhealthy_indices_prefer_observation (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_unhealthy_indices_prefer_observation) ... ok
+test_unknown_result_blocks_retry (examples.nasuraya_body_loop.test_self_maintenance.SelfMaintenanceTests.test_unknown_result_blocks_retry) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 35.782s
+
+OK

@@ -24,9 +24,25 @@ namespace and do not imply endorsement by any upstream author.
   is also preserved in `vendor/licenses/mjlab-Apache-2.0.txt` for context.
 
 `vendor/__init__.py`, the adapters, extracted native snapshot, and tests are
-repository integration code. PredVLA, training, fitted weights and the full
-quantitative pilot are excluded from this minimal observer.
+repository integration code. The default observer remains read-only and stdlib-compatible.
+The unified checkout also retains the optional PredVLA experiment described below;
+its import and execution are explicit.
 
 The BSD notice is retained byte-for-byte from PR #44 and additionally pinned
 by `SUPPLEMENTAL_LICENSE_SHA256` in integrity.py; it is not represented as a
 separately retrieved upstream Git blob.
+
+
+## Retained extended research interface
+
+* `vendor/predvla/model.py` and `vendor/predvla/er.py`: Hiroki Sawada (2026),
+  `hiroki-oist/PredVLA`, commit `bba1d038e2fadb8904423cf8f65bb80d70fd17d4`.
+  MIT license: `vendor/predvla/LICENSE`.
+
+`vendor/__init__.py`, `vendor/predvla/__init__.py`, the integration adapters,
+protocol, and new tests were authored for this repository. The newly fitted
+small sensory observer is not an upstream LIBERO checkpoint or a language model.
+
+No code from `Euron-ZC/Humanoid-self-other-distincton-model` is included: its
+examined public tree contained a README and static images, not the promised
+implementation or a code license.

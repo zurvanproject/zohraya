@@ -1,0 +1,33 @@
+{
+  "schema": "nasuraya-external-research-pilot/1",
+  "registered_before_measurement": true,
+  "base_pr": 40,
+  "base_commit": "e41f71070323368922d8211f2b73566e8404f83e",
+  "seeds": [17, 31, 53],
+  "training_pressures": [0.2, 0.3, 0.7, 0.92],
+  "held_out_pressures": [0.12, 0.42, 0.82, 0.98],
+  "ticks_per_sequence": 4,
+  "duration_s": 0.1,
+  "training_steps": 64,
+  "training_lr": 0.01,
+  "er_iterations": 10,
+  "er_lr": 0.05,
+  "er_window": 4,
+  "task_embedding": [1.0, 0.0],
+  "features": ["energy", "hydration", "fatigue", "pain", "sleep_pressure", "balance"],
+  "acceptance": [
+    "vendor files exactly match pinned upstream git blobs and SHA256",
+    "battery statistic agrees with independently counted cells",
+    "decisions precede native shadow labels and held-out memory is frozen",
+    "RoboRSI projection counts turns without double-counting duplicate events",
+    "mjlab geometry roundtrip has error below 1e-12 metres and no native cycles",
+    "PredVLA weights trained only on the declared train fixtures",
+    "ER uses current and past sensory samples only and changes no model weights",
+    "all seeds and negative comparisons are reported",
+    "predicted action vectors have no path to native execution"
+  ],
+  "predvla_measure": "same-step sensory reconstruction before/after latent inference, not next-step forecast accuracy",
+  "scope": "new synthetic-body integration pilot, not replication of LIBERO, MMB, RoboDojo, physical robot performance or subjective experience",
+  "automatic_activation": false,
+  "live_model_api": false
+}

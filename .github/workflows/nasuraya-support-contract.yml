@@ -1,0 +1,27 @@
+name: Nasuraya native support contract audit
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_loop/support_contract_*'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-support-contract.yml'
+  push:
+    branches: [main, 'nasuraya/**']
+    paths:
+      - 'examples/nasuraya_body_loop/support_contract_*'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-support-contract.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Probe unchanged native equations without preflight or learning
+        run: python3 examples/nasuraya_body_loop/support_contract_audit_v04.py --output-dir /tmp/nasuraya-contract

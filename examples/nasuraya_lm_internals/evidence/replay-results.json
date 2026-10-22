@@ -1,0 +1,2993 @@
+{
+  "protocol_sha256": "5e10a686682bcaeb5a6341981de5b6fd3673eb434a1c24e3f4c03550de458eca",
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.8.0+cpu",
+    "transformers": "4.57.1",
+    "numpy": "2.3.3",
+    "machine": "x86_64",
+    "cpu_threads": 2
+  },
+  "architecture": {
+    "layers": 30,
+    "attention_heads": 9,
+    "kv_heads": 3,
+    "hidden_size": 576,
+    "head_dim": 64,
+    "parameters": 134515008,
+    "dtype": "torch.float32"
+  },
+  "weights_before": "3ec5b849060ac9ec8ff1bca2ab1362ea8ebf4889273a978783b5725f3337ff4e",
+  "prompts": [
+    {
+      "id": "capital",
+      "input_token_ids": [
+        504,
+        3575,
+        282,
+        4649,
+        314
+      ],
+      "conditions": {
+        "baseline": {
+          "token_ids": [
+            260,
+            3575,
+            282,
+            260,
+            1798,
+            30,
+            198,
+            198
+          ],
+          "text": " the capital of the country.\n\n",
+          "hook": null,
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "4038ba4f0806781c8b6d9eb4a001fe8cf56529ced63f930bb92abb10217160c8",
+              "l2": 880.2184551986716
+            },
+            "input_ids": {
+              "shape": [
+                1,
+                5
+              ],
+              "dtype": "int64",
+              "sha256": "92e48292bcb48b0ab04ec2e31b0856293f001c8d6d2020e817ddf21e5e7fe2d2",
+              "l2": 5901.352556829663
+            },
+            "hidden_00": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "e8fde4d6a85c70db8a94d1a01551a655f172787638071c834cd081b53716e6ef",
+              "l2": 5.468390604241972
+            },
+            "hidden_01": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "e4e7ae2f7c68b7018678904e64a70417e5f04c63a16e5d6b9695d0b7e8c33039",
+              "l2": 108.8264398056405
+            },
+            "hidden_02": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "f69fb3b2726048bdf378b04019f8d0f47120760dc5260b2032e4d2fa33fa50a0",
+              "l2": 186.42255216323028
+            },
+            "hidden_03": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "c91d0a2c7be2e1357b1b1db3bc5cc934dc0c77076d18529d42c5ef12a8d27603",
+              "l2": 674.6788907543202
+            },
+            "hidden_04": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "aac1e8137554f30fb4a98984e03d702b66990858c6c46a4056d60ab787e676f9",
+              "l2": 677.4367824279185
+            },
+            "hidden_05": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "710e6fa4eb746b749bb09b9aaf020e0b774217b8cd04ed11548d1e0f4c087076",
+              "l2": 677.7636497967262
+            },
+            "hidden_06": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "455b24bbfa2a7bb559e10a81797a666a88f7d5a0d823bd0ba50ca251d392c749",
+              "l2": 674.3489381502993
+            },
+            "hidden_07": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "b8353f9be2bd0d9c479d345007d5190ad583f4370c5290502b3eacf076083bf9",
+              "l2": 672.5228032094859
+            },
+            "hidden_08": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "e3e2dfcd98a63eb73c45984687cafe32c8dbf62292fc0830c838032b7ff3b2b9",
+              "l2": 669.491312309507
+            },
+            "hidden_09": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "0a18b83f4ba6eac2de8bac8e2e3051989323b6805b576bb5411a45a7a31da26d",
+              "l2": 597.185417980609
+            },
+            "hidden_10": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "1ceefc4e581852b37a295b78b9c492d1c819138e69f4180d5a04619b9ef3a964",
+              "l2": 303.3727338443451
+            },
+            "hidden_11": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "5cce2609ab2f8fc7688c7d315773e59c613fcbe6890a0cf2b56a1ed8c049fa58",
+              "l2": 294.3098424405925
+            },
+            "hidden_12": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "9f96fa2604b41216d3f83ef24f107f99f85a44c7fa6261d7e3618b5e9d39eb1e",
+              "l2": 19380.23576298594
+            },
+            "hidden_13": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "296a4355cf6e9aabdc551f25a12b16f69c7688b432de51692c0dd8c10f7c4e38",
+              "l2": 19371.62864288513
+            },
+            "hidden_14": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "3b86bbbd010af1da5ab91a6dd0dbbbf9143694edd995caad5054944a45d29e73",
+              "l2": 19360.13851958088
+            },
+            "hidden_15": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "d87bce53600d733677bccc7e9890beeddc4e1e7eb99ab73b2c49b12ec409c09f",
+              "l2": 19348.53723030177
+            },
+            "hidden_16": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "3149bd6431a558412f3f48fdf88af645ffa3ffbab6ff0c68a553633b9afa9416",
+              "l2": 19332.242353572597
+            },
+            "hidden_17": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "dc106ed2625ffaa405da974ece5a7d80cd7fbfa630e8c0fab182536a96208b6c",
+              "l2": 19318.83499575069
+            },
+            "hidden_18": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "3c55935fcf2e734a852662c6f7b6f32c36f7d945f3bc2de2403b4bc3ca1abc03",
+              "l2": 19305.936014061284
+            },
+            "hidden_19": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "9c84dd8cc50a26383f8fed2b2aae40722ca40b7ce6c8facb20143dfa8e89966f",
+              "l2": 19299.004828197507
+            },
+            "hidden_20": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "ea4606b14839929b95f9a084493ea79bb813dda53d944ec3d919d7ce4885cfd2",
+              "l2": 19293.604878148166
+            },
+            "hidden_21": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "40aeff6a54fb72862e8900b0b412360c30734e864583c3f2b1f46d7ee973ae28",
+              "l2": 19293.12348063981
+            },
+            "hidden_22": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "25f3c46c8e2c7157e014955f961d688df0bc447d33e82e473f6d6cb9ca08cc38",
+              "l2": 19302.969621206656
+            },
+            "hidden_23": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "9dded5bc191022127c2a51dd6e0eb393977dcf433bf5c1a22d6e583146c535df",
+              "l2": 19300.571347281595
+            },
+            "hidden_24": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "000bcbf86ed1bf2315bdfdc508732e35a9e213d147a3c557207e813178924d52",
+              "l2": 19304.50988810526
+            },
+            "hidden_25": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "71a1c0bdfcf229d9a93d9004a717bf59009594b45fa84fb73e9800d41264d8b9",
+              "l2": 19279.960240538156
+            },
+            "hidden_26": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "7316327a930e12f174c1c648bc0a24c08c5e30ed0f29496dc35804a4b9024105",
+              "l2": 19288.143630967264
+            },
+            "hidden_27": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "0ab6607f838351faf3316368c3ccd0d167a0784370a85aaa7126479a3cd75de3",
+              "l2": 19285.46250903525
+            },
+            "hidden_28": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "cccdca956d973e27b4db29ff30028bae1f40afd7c06c81f1303d80a662a4c814",
+              "l2": 19193.53990963634
+            },
+            "hidden_29": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "bf7464d473223a0e5e0aad637e0ac571e7a7c0c81921b8854b256d99a9b208f0",
+              "l2": 4000.112738045911
+            },
+            "hidden_30": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "15376dbea0f3d7e4c9ce152f848e74664ca863b3ccf1d42f14e88eecc56a29e3",
+              "l2": 93.48392693279976
+            },
+            "attention_00": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "068be362fbb852814359bf18f7c77b3618808debd900e0950ecd5c9c90586b80",
+              "l2": 5.0403567378197245
+            },
+            "attention_01": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "99e964cd271cddb1a0b7b4ea1c865d7101e7c5e699586c2d95b0b949931ee5e8",
+              "l2": 5.131905398509537
+            },
+            "attention_02": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "39e518f0392064e6a4f4421808dd1bc447efff56a6c04714d6157a41109b236a",
+              "l2": 5.676061365608909
+            },
+            "attention_03": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "b8017fc8e782cab5481078505a77ad9ff037da12a58019da42cb4161f79b4e28",
+              "l2": 6.188500228836184
+            },
+            "attention_04": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "8c77354b4879f1d86c3b084a59b7ead267cc46de99cb85a712a570d3ca473bdc",
+              "l2": 6.019949477665303
+            },
+            "attention_05": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "1a8cf7abf81869775312900997b997e025374f95306b8bd24436cf6062496401",
+              "l2": 6.006030360240766
+            },
+            "attention_06": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "539f2c6e5313e24de5bad360b12255944908c7e9d022df711ebeb4b9f86fd1b2",
+              "l2": 6.148820830435929
+            },
+            "attention_07": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "c129e0ec678fa6c6e05f74bc63341ff83a59dfcd137eed872c10ca34093e0ec1",
+              "l2": 6.311588204616394
+            },
+            "attention_08": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "4da64672faeee61fdc23cac80bcd710e968c1a75c259d7d3d3b4a8b7a75e4714",
+              "l2": 6.2215416155531855
+            },
+            "attention_09": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "fba434d7366d54c0ed9384cb2b5d943ba1c40d534708e0f51b60c4b97e0ee179",
+              "l2": 5.902756809192269
+            },
+            "attention_10": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "7e06a2d868a719b6b908516f4c66e2813f646a7c5468d0d15c2fd01dba3c0681",
+              "l2": 5.509371037440104
+            },
+            "attention_11": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "09e2659388c19c8fdac539b8a39907008ee198621fb34a049b6733dcb875aded",
+              "l2": 5.404664237895177
+            },
+            "attention_12": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "1822f5c2f248dcd3e80ac0e3d1b8def7c2c21627b59c0d09bee41fe2bd8dff09",
+              "l2": 5.711644298418171
+            },
+            "attention_13": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "f84210ebf2b38880d0adf475a90c685fbba1c9866f59bdc19f239c4068ce8724",
+              "l2": 5.7785708670414975
+            },
+            "attention_14": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "71e14f7c4693eb21b1d49306c665645e98c90e4e3da9462491af637d6bebdb2c",
+              "l2": 6.07131336671495
+            },
+            "attention_15": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "02daf2c476c5d5ab10666fbc651b4429400302fed0893d0f7e22a76c5bd9d2e7",
+              "l2": 5.828449224796891
+            },
+            "attention_16": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "f7491c7155d34e4747a4ae8496b215fb9c3d4fcf27670271d149591d16298234",
+              "l2": 5.423300883375523
+            },
+            "attention_17": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "5448c6231a9ed227f0dd893bb6d1ce37bc949b5625c744b3e38f2eda616d328a",
+              "l2": 6.060104891095493
+            },
+            "attention_18": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "e2972bd98ebfe2dfd106915a17456620626366d59799d695b48ce2b512b1ff43",
+              "l2": 6.171291131257588
+            },
+            "attention_19": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "d17c9efe0728538eb6e229bd9c5153ea25fc367004a27b520ca798798d92e3ff",
+              "l2": 5.59330076879021
+            },
+            "attention_20": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "4b10fab81f59c54d1bd0bad8cafe43c742242a16c33a46b58e409822599253b6",
+              "l2": 6.464307891257147
+            },
+            "attention_21": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "e76c3035db0c5400023e243fb8f8bb86f088d65cce1d7cc66e9ae07b9e995818",
+              "l2": 5.816751976423257
+            },
+            "attention_22": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "93afe8d2f651acf166a9e75624144cf7179ffe9a1e8ab942a947b266680dd826",
+              "l2": 5.639883898043648
+            },
+            "attention_23": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "071958fb4905cde2a5def414dcf080433095adb7a9defb96037c9585ac7dd4e2",
+              "l2": 6.329987799737369
+            },
+            "attention_24": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "04e279241ef45bfc10adf5810c2a1a27124d1a45e61744d52ae3b31e31eef16c",
+              "l2": 6.4705903493182255
+            },
+            "attention_25": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "15db9dd2433f9a926d5df7fa306b75be1926fafd7e26b95cb36976040c169dc7",
+              "l2": 6.00481833770193
+            },
+            "attention_26": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "bab4c8ba1dbf6e9e3567748bd3adbb67c6436f211d02e9a489219d078e0879f8",
+              "l2": 6.090720580084514
+            },
+            "attention_27": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "034486bd28006e41a1deb3e9cacb87e455cb40aa092a2679cb727b4b62de2bb5",
+              "l2": 5.508389810455997
+            },
+            "attention_28": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "a9c74191584638e6db83c4e76e7374013b2ec3bdf88bd4fa9c462f076f2ea69a",
+              "l2": 6.12331551605674
+            },
+            "attention_29": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "31314716f31edcac8b4facffa1b66ed948087f84521e19435aa90fcf12f5d1b5",
+              "l2": 5.787342461579323
+            }
+          },
+          "comparison": {
+            "exact_equal": true,
+            "max_abs_logit_change": 0.0,
+            "probability_l1": 0.0,
+            "kl_baseline_to_condition": 0.0,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 14.022812843322754
+            },
+            {
+              "id": 7042,
+              "text": " Paris",
+              "logit": 12.997308731079102
+            },
+            {
+              "id": 3807,
+              "text": " located",
+              "logit": 12.747223854064941
+            },
+            {
+              "id": 1217,
+              "text": " called",
+              "logit": 12.236928939819336
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 12.124641418457031
+            }
+          ]
+        },
+        "sham": {
+          "token_ids": [
+            260,
+            3575,
+            282,
+            260,
+            1798,
+            30,
+            198,
+            198
+          ],
+          "text": " the capital of the country.\n\n",
+          "hook": {
+            "calls": 8,
+            "first": {
+              "changed_scalars": 0,
+              "delta_l2": 0.0,
+              "before_l2": 6.0656585693359375
+            },
+            "removed": true
+          },
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "4038ba4f0806781c8b6d9eb4a001fe8cf56529ced63f930bb92abb10217160c8",
+              "l2": 880.2184551986716
+            }
+          },
+          "comparison": {
+            "exact_equal": true,
+            "max_abs_logit_change": 0.0,
+            "probability_l1": 0.0,
+            "kl_baseline_to_condition": 0.0,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 14.022812843322754
+            },
+            {
+              "id": 7042,
+              "text": " Paris",
+              "logit": 12.997308731079102
+            },
+            {
+              "id": 3807,
+              "text": " located",
+              "logit": 12.747223854064941
+            },
+            {
+              "id": 1217,
+              "text": " called",
+              "logit": 12.236928939819336
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 12.124641418457031
+            }
+          ]
+        },
+        "target": {
+          "token_ids": [
+            260,
+            3575,
+            282,
+            260,
+            1798,
+            30,
+            198,
+            198
+          ],
+          "text": " the capital of the country.\n\n",
+          "hook": {
+            "calls": 8,
+            "first": {
+              "changed_scalars": 64,
+              "delta_l2": 0.7223203778266907,
+              "before_l2": 6.0656585693359375
+            },
+            "removed": true
+          },
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "581b930d50e59c647e1f830ba891f5faee62ebea4c63149358545effc36c54f0",
+              "l2": 879.373351131519
+            }
+          },
+          "comparison": {
+            "exact_equal": false,
+            "max_abs_logit_change": 0.1534280776977539,
+            "probability_l1": 0.018635820985415386,
+            "kl_baseline_to_condition": 0.0002960212283289049,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 14.044949531555176
+            },
+            {
+              "id": 7042,
+              "text": " Paris",
+              "logit": 13.012031555175781
+            },
+            {
+              "id": 3807,
+              "text": " located",
+              "logit": 12.784751892089844
+            },
+            {
+              "id": 1217,
+              "text": " called",
+              "logit": 12.291378021240234
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 12.195784568786621
+            }
+          ]
+        },
+        "control": {
+          "token_ids": [
+            260,
+            3575,
+            282,
+            260,
+            1798,
+            30,
+            657,
+            314
+          ],
+          "text": " the capital of the country. It is",
+          "hook": {
+            "calls": 8,
+            "first": {
+              "changed_scalars": 64,
+              "delta_l2": 2.073735475540161,
+              "before_l2": 6.0656585693359375
+            },
+            "removed": true
+          },
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "20037676ac076669131daf58fec2215f42a5a338ed4a710c8898c6519397b588",
+              "l2": 919.7884428206243
+            }
+          },
+          "comparison": {
+            "exact_equal": false,
+            "max_abs_logit_change": 1.0598278045654297,
+            "probability_l1": 0.09484222266723746,
+            "kl_baseline_to_condition": 0.00799275940410953,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 13.928182601928711
+            },
+            {
+              "id": 7042,
+              "text": " Paris",
+              "logit": 13.059322357177734
+            },
+            {
+              "id": 3807,
+              "text": " located",
+              "logit": 12.608834266662598
+            },
+            {
+              "id": 1217,
+              "text": " called",
+              "logit": 12.306546211242676
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 11.956289291381836
+            }
+          ]
+        },
+        "restored": {
+          "token_ids": [
+            260,
+            3575,
+            282,
+            260,
+            1798,
+            30,
+            198,
+            198
+          ],
+          "text": " the capital of the country.\n\n",
+          "hook": null,
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "4038ba4f0806781c8b6d9eb4a001fe8cf56529ced63f930bb92abb10217160c8",
+              "l2": 880.2184551986716
+            }
+          },
+          "comparison": {
+            "exact_equal": true,
+            "max_abs_logit_change": 0.0,
+            "probability_l1": 0.0,
+            "kl_baseline_to_condition": 0.0,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 14.022812843322754
+            },
+            {
+              "id": 7042,
+              "text": " Paris",
+              "logit": 12.997308731079102
+            },
+            {
+              "id": 3807,
+              "text": " located",
+              "logit": 12.747223854064941
+            },
+            {
+              "id": 1217,
+              "text": " called",
+              "logit": 12.236928939819336
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 12.124641418457031
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "opposite",
+      "input_token_ids": [
+        504,
+        7011,
+        282,
+        3380,
+        314
+      ],
+      "conditions": {
+        "baseline": {
+          "token_ids": [
+            4011,
+            30,
+            198,
+            198,
+            504,
+            2229,
+            476,
+            32379
+          ],
+          "text": " cold.\n\nThe word \"cold",
+          "hook": null,
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "47dd17c094505260b18048a368a9b404070d59819b2a312c59cf6de7e9793085",
+              "l2": 2139.829261425955
+            },
+            "input_ids": {
+              "shape": [
+                1,
+                5
+              ],
+              "dtype": "int64",
+              "sha256": "6aa86eeaa8bb6c3050f6c5642055eab10b28981f4a9421fe4c0d8e45c8f3014c",
+              "l2": 7810.931890626111
+            },
+            "hidden_00": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "974d0792551da464c9de1ecb450f3687e860b441239d2bc3c28f9a0253fd609b",
+              "l2": 5.465436629958728
+            },
+            "hidden_01": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "826d2f37712a35ba25219d4e493e5c2b672412250d5ef90504bf99d8476b9150",
+              "l2": 96.05236518846579
+            },
+            "hidden_02": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "f5eff3438873e193a48180fb9501c35a6147103425a0f5a3ed543b13c7a6fe27",
+              "l2": 179.1567536002566
+            },
+            "hidden_03": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "992312c31bcbcfacafce5fa83646f28ae11bda8bd3695e3ced82b6da102735c1",
+              "l2": 673.902960838513
+            },
+            "hidden_04": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "7d95f71bdb82957e54b61d513c32b892865450790f11663f043c0e36b96688ca",
+              "l2": 674.7774755744093
+            },
+            "hidden_05": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "caa576f613beeebfc9f1b902beb563dc7811220700db342ae83ed5d17a26e23d",
+              "l2": 675.2642307197748
+            },
+            "hidden_06": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "17069b02ed8732bde148ca615068e5de659f3253b49c10171c165a3e8f6953f5",
+              "l2": 671.7361804086955
+            },
+            "hidden_07": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "6a4abdc60e75423ec561b653047950deb01ad446ab02fbe0b70d5755d2cf8c06",
+              "l2": 668.4932978682857
+            },
+            "hidden_08": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "b3621b9fc2829b435da8364533f5acf6004d5c34dfaaece90515dd1c1a04f99b",
+              "l2": 665.5092057584021
+            },
+            "hidden_09": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "05da28bc588d3551a50a718adc0a4cab30ebcc435ef755c886406dee5c6b6670",
+              "l2": 593.8062064862083
+            },
+            "hidden_10": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "017673da5d41c92414b7ec9043efbb362b52f365b829d3d54c6c26c0c5218693",
+              "l2": 301.2215056593554
+            },
+            "hidden_11": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "c5eeda404b9d5b8f7469ae59dc92c37e95d002c875b559fa037bc6d85a83aff0",
+              "l2": 293.26312480395194
+            },
+            "hidden_12": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "e453b4e5549507e38a86b2de43ee1a71689839fe0ebce136b19f21f0d2a68bd5",
+              "l2": 19380.177701937395
+            },
+            "hidden_13": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "8bce320c611b41af89327840f7c0a91e2366d4fd02d27f502e0717f7de9515ff",
+              "l2": 19371.716492278876
+            },
+            "hidden_14": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "5b9a874303f96d3625674a8318b4af532bfc7bb25891d638ead88991bb5211fb",
+              "l2": 19360.20450384653
+            },
+            "hidden_15": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "fdecc9b62a2039e3023d3e209fe4a94ba3546b7fb0b9e28bf2a0deaf249b7750",
+              "l2": 19348.686168010943
+            },
+            "hidden_16": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "8b000d495e984d4395f185fffaea8e9bad48fbd8a5f466fa807e34ebdc8fd664",
+              "l2": 19332.588002573524
+            },
+            "hidden_17": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "f21011a01df587f76e47f64e9408ecb3b920c9848478992d1cfa5109be25e39d",
+              "l2": 19319.145065745488
+            },
+            "hidden_18": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "80b2d2f0611fce8e410b7acb3cfa664dd9fc6db487963ebe27ab42fcf29d541f",
+              "l2": 19306.15815751222
+            },
+            "hidden_19": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "96554e4c1dbb962e6af3a83a44ff23c682f5b3a309f9a144fe1b489a16bf3e34",
+              "l2": 19299.25225757673
+            },
+            "hidden_20": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "5ae53c35a7cd8f18f475b068ec18a81ed2667a5185cabbc22a71847117ba7344",
+              "l2": 19293.77159504982
+            },
+            "hidden_21": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "1d12e8833ec4c33b749d7fa2710605d5a6612273fe13c75218e28601cc931537",
+              "l2": 19293.24734814724
+            },
+            "hidden_22": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "f5498924a839b92cd232b8d3ec18c843061516a07aa833f24bde21d8e83231b5",
+              "l2": 19303.80519076342
+            },
+            "hidden_23": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "c7ac6830711e3daccfc0e20a38c493584d8894169f60caf46bb772d86e81a528",
+              "l2": 19301.74172122436
+            },
+            "hidden_24": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "4f5d8a31f15ab94ee98a43cfb7167d66ee67ea662bbc094a5e957f2d6cc7e5fe",
+              "l2": 19306.244389476986
+            },
+            "hidden_25": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "cb1c0b9efa1ce991ff250c1625cbcbf7650664620653343cc9d267a86b834d72",
+              "l2": 19279.808771453856
+            },
+            "hidden_26": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "df56f98a5e5f94a1784efeb554a6df5e72291d025b263edb1a71fae4f967c8cc",
+              "l2": 19288.993447350076
+            },
+            "hidden_27": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "a19f92f9f09ae1b7a6b719739508cd023d383e54014d7a2b7bd40625d7d16b6a",
+              "l2": 19286.47278805839
+            },
+            "hidden_28": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "94e1110e166e791865c4b26e6b3d3c2c1f1ee9c70227c253637fd142f4690c31",
+              "l2": 19194.749993431247
+            },
+            "hidden_29": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "9b1b36d04ae8949ad80abc303b75fdf04c908e7df0357979e25d4999dfce464a",
+              "l2": 4000.392601004566
+            },
+            "hidden_30": {
+              "shape": [
+                1,
+                5,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "5cbca2e39ff7a997f09c2e1024c0917badd71cab58f04551d5602398b2a4fd63",
+              "l2": 102.14239578802254
+            },
+            "attention_00": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "e465b6368ca7ef6e2d1dacd487363cbcc82b8e9072e33ad04bc06b8d103cc24c",
+              "l2": 5.030665546567113
+            },
+            "attention_01": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "8df9e3704a3245f88b93b651528514d4be4e7792180bbc57f9044bd9bddb9599",
+              "l2": 5.290694370142806
+            },
+            "attention_02": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "49ba8692fee6f668c325b11af3a821186e3ed2c39c33d256b26894da33244d31",
+              "l2": 5.8098868655211655
+            },
+            "attention_03": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "ce180b68b47756069ec83fdb1fcef5400f19c56d4ccd12cd91423511ceb9ea8a",
+              "l2": 6.233444258683865
+            },
+            "attention_04": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "18d606d4b040de73d61ccf6d1428938d5c1ce02115c86e0bada78749f3939330",
+              "l2": 6.166840332560321
+            },
+            "attention_05": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "7415aabe793b9cdf50083c81ae0db706815b52019c761e0401e739b25ffa5c46",
+              "l2": 6.136459207076297
+            },
+            "attention_06": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "671a5b35d43b50e59b6f7ed02aa773a5b5f3834e10e807c3f247aa98ff33c1e8",
+              "l2": 6.164621659863992
+            },
+            "attention_07": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "61e334863994f706d19c32a839212a7669f4b551e2698ecd86524300a1f9e8e0",
+              "l2": 6.297596737443593
+            },
+            "attention_08": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "53e8fe1ca9c46def7a8254018f0c51259b2ba17afdb0a6f7911688aeb567af9d",
+              "l2": 6.192272080678915
+            },
+            "attention_09": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "98e309c2f5f6ec39373b09ba574bddf76290ffc63a6c73077e01e649c558dc71",
+              "l2": 6.015809737676841
+            },
+            "attention_10": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "5d5fa57d5ab3f9d4de8e29bdfdbbf6b20e2bb3616fc0a56efb4370f0dad3aab5",
+              "l2": 5.4844867374138815
+            },
+            "attention_11": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "06f5edce216d6c6b1cb2555fdfb1298d5377aafb74446427c1dc9bf612a748dd",
+              "l2": 5.382223654016451
+            },
+            "attention_12": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "eff7a186c4fd750674cbeeb080b022b5bf8ab4701514b81c81ed5abfb8940775",
+              "l2": 6.011613614857197
+            },
+            "attention_13": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "faa240d751dcc3c0321d6d948977d0a78400c1a67cdf6d0825ea6795a0045980",
+              "l2": 5.870782111669517
+            },
+            "attention_14": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "ec0942e879d914ad80475da8c150b46ed758534bb6f3d5780a636ba0d327a631",
+              "l2": 6.2285241355554195
+            },
+            "attention_15": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "486b682d35fa1639cc54272182885d24e84499b14beccc99a37ce83ba4877006",
+              "l2": 6.008187093862753
+            },
+            "attention_16": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "cf57a7e0883d3cb35846e142c6a7c5ebfb354425aeed0183a633ae5367afc68b",
+              "l2": 5.673515394038609
+            },
+            "attention_17": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "74bf8bd6095e61a1387fa533405b886863cab6a9180a614b519ca4f4b343a243",
+              "l2": 6.125399531079958
+            },
+            "attention_18": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "7126bf996e239ae5cfb0de5b0d21119757e5a6aa0faba736876f9dc71e8ef785",
+              "l2": 6.1437955797945385
+            },
+            "attention_19": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "d8639726babeb92b421422e08bcadd05c98ce2e32a2f02433a11ab9e5eb7fa7c",
+              "l2": 5.628422104431465
+            },
+            "attention_20": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "d81004eb6e16cc0a4b488008f66a67b5b4710b56110e2233b78c61e064010d4d",
+              "l2": 6.366313089805345
+            },
+            "attention_21": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "2cf9a74a346157dfe38aab3be9abca91044ec97a9c1cfb7d3bc8122577f1f31c",
+              "l2": 5.980383594774246
+            },
+            "attention_22": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "125ce15d434aaa94cc48ac358e23e1d7d28b2ea3daed8824fe5aac7140a19d1f",
+              "l2": 5.949055561531443
+            },
+            "attention_23": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "e27891a99138165bb93307497d060838771e347ff3f2a71d7b85ad7e03df2dcd",
+              "l2": 6.440229281830302
+            },
+            "attention_24": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "1c33c10a6614b101794dc09a4f4a8590eeaf5b4c04166992da37e42391e779e0",
+              "l2": 6.476930399620543
+            },
+            "attention_25": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "d0e3ec0482409cd9bd88516526640d91afe0087d325a171666ca0b6310e20528",
+              "l2": 6.0857502031315995
+            },
+            "attention_26": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "0e042928fb9fd38790ef15e449ff82ad2d6843a2991cae3e66500e954ec05f77",
+              "l2": 6.090731287730869
+            },
+            "attention_27": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "2a26f8f45b785a75976beb09a13ba4569b99468ff00309143f4c95d922becb79",
+              "l2": 5.466569622921279
+            },
+            "attention_28": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "627ec1035483a289ff8980015de652144efed47a5b0286d09c290cdfba6d267b",
+              "l2": 6.199319042196934
+            },
+            "attention_29": {
+              "shape": [
+                1,
+                9,
+                5,
+                5
+              ],
+              "dtype": "float32",
+              "sha256": "888f676db4feeb57ab4aa876d75b51a31ca97c8ea574c196fa9cd5a29c56bb89",
+              "l2": 5.773242324951707
+            }
+          },
+          "comparison": {
+            "exact_equal": true,
+            "max_abs_logit_change": 0.0,
+            "probability_l1": 0.0,
+            "kl_baseline_to_condition": 0.0,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 4011,
+              "text": " cold",
+              "logit": 28.30776023864746
+            },
+            {
+              "id": 3122,
+              "text": " cool",
+              "logit": 25.940919876098633
+            },
+            {
+              "id": 3498,
+              "text": " dry",
+              "logit": 23.368846893310547
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 22.779197692871094
+            },
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 22.66339874267578
+            }
+          ]
+        },
+        "sham": {
+          "token_ids": [
+            4011,
+            30,
+            198,
+            198,
+            504,
+            2229,
+            476,
+            32379
+          ],
+          "text": " cold.\n\nThe word \"cold",
+          "hook": {
+            "calls": 8,
+            "first": {
+              "changed_scalars": 0,
+              "delta_l2": 0.0,
+              "before_l2": 5.658705711364746
+            },
+            "removed": true
+          },
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "47dd17c094505260b18048a368a9b404070d59819b2a312c59cf6de7e9793085",
+              "l2": 2139.829261425955
+            }
+          },
+          "comparison": {
+            "exact_equal": true,
+            "max_abs_logit_change": 0.0,
+            "probability_l1": 0.0,
+            "kl_baseline_to_condition": 0.0,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 4011,
+              "text": " cold",
+              "logit": 28.30776023864746
+            },
+            {
+              "id": 3122,
+              "text": " cool",
+              "logit": 25.940919876098633
+            },
+            {
+              "id": 3498,
+              "text": " dry",
+              "logit": 23.368846893310547
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 22.779197692871094
+            },
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 22.66339874267578
+            }
+          ]
+        },
+        "target": {
+          "token_ids": [
+            4011,
+            30,
+            198,
+            198,
+            504,
+            2229,
+            476,
+            32379
+          ],
+          "text": " cold.\n\nThe word \"cold",
+          "hook": {
+            "calls": 8,
+            "first": {
+              "changed_scalars": 64,
+              "delta_l2": 0.6411668658256531,
+              "before_l2": 5.658705711364746
+            },
+            "removed": true
+          },
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "a34e9d5f65ae63333e0abe2e54070f4d3a927ed5757b1aee14a2d97ce4ac4f32",
+              "l2": 2125.771534597047
+            }
+          },
+          "comparison": {
+            "exact_equal": false,
+            "max_abs_logit_change": 0.16656780242919922,
+            "probability_l1": 0.007286768377504644,
+            "kl_baseline_to_condition": 6.39063830546283e-05,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 4011,
+              "text": " cold",
+              "logit": 28.229415893554688
+            },
+            {
+              "id": 3122,
+              "text": " cool",
+              "logit": 25.8980712890625
+            },
+            {
+              "id": 3498,
+              "text": " dry",
+              "logit": 23.316911697387695
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 22.71706771850586
+            },
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 22.59879493713379
+            }
+          ]
+        },
+        "control": {
+          "token_ids": [
+            4011,
+            30,
+            198,
+            198,
+            504,
+            2229,
+            476,
+            32379
+          ],
+          "text": " cold.\n\nThe word \"cold",
+          "hook": {
+            "calls": 8,
+            "first": {
+              "changed_scalars": 64,
+              "delta_l2": 2.303645133972168,
+              "before_l2": 5.658705711364746
+            },
+            "removed": true
+          },
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "db520c1af1717d6d8818249a411ad2c10065e301bd548f560cd2e4fec5aeb422",
+              "l2": 2134.608874457893
+            }
+          },
+          "comparison": {
+            "exact_equal": false,
+            "max_abs_logit_change": 0.6850190162658691,
+            "probability_l1": 0.03488998479506705,
+            "kl_baseline_to_condition": 0.00210046206941584,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 4011,
+              "text": " cold",
+              "logit": 28.201480865478516
+            },
+            {
+              "id": 3122,
+              "text": " cool",
+              "logit": 25.636751174926758
+            },
+            {
+              "id": 3498,
+              "text": " dry",
+              "logit": 23.151260375976562
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 22.754072189331055
+            },
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 22.724472045898438
+            }
+          ]
+        },
+        "restored": {
+          "token_ids": [
+            4011,
+            30,
+            198,
+            198,
+            504,
+            2229,
+            476,
+            32379
+          ],
+          "text": " cold.\n\nThe word \"cold",
+          "hook": null,
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "47dd17c094505260b18048a368a9b404070d59819b2a312c59cf6de7e9793085",
+              "l2": 2139.829261425955
+            }
+          },
+          "comparison": {
+            "exact_equal": true,
+            "max_abs_logit_change": 0.0,
+            "probability_l1": 0.0,
+            "kl_baseline_to_condition": 0.0,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 4011,
+              "text": " cold",
+              "logit": 28.30776023864746
+            },
+            {
+              "id": 3122,
+              "text": " cool",
+              "logit": 25.940919876098633
+            },
+            {
+              "id": 3498,
+              "text": " dry",
+              "logit": 23.368846893310547
+            },
+            {
+              "id": 253,
+              "text": " a",
+              "logit": 22.779197692871094
+            },
+            {
+              "id": 260,
+              "text": " the",
+              "logit": 22.66339874267578
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "authored_body",
+      "input_token_ids": [
+        62,
+        292,
+        315,
+        10675,
+        3197,
+        1248,
+        30,
+        198,
+        10438,
+        5481,
+        2353,
+        42,
+        4549,
+        30,
+        198,
+        27455,
+        2456,
+        42,
+        216,
+        32,
+        30,
+        41,
+        37,
+        32,
+        30,
+        198,
+        12183,
+        4534,
+        9416,
+        42,
+        2801,
+        79,
+        20188,
+        30,
+        198,
+        21350,
+        5236,
+        28845,
+        355,
+        44691,
+        1754,
+        30,
+        198,
+        21350,
+        42
+      ],
+      "conditions": {
+        "baseline": {
+          "token_ids": [
+            44691,
+            1754,
+            30,
+            198,
+            21350,
+            42,
+            44691,
+            1754
+          ],
+          "text": " DEFER.\nAnswer: DEFER",
+          "hook": null,
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "ca74425ad2bb2bb855a187a7c5100088a35bdb904adc23b1be0aaff9dffe40d6",
+              "l2": 817.3340176267545
+            },
+            "input_ids": {
+              "shape": [
+                1,
+                45
+              ],
+              "dtype": "int64",
+              "sha256": "42393dc0e5cfcaee27a453cd3c47e21bc947095b6ee136e734870d2a0df4dbab",
+              "l2": 74133.98887824666
+            },
+            "hidden_00": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "2d6bdaab62a58d4438a038f234f3a4ac365ed871eb925971615cc63ab8b4e3da",
+              "l2": 18.373626384176603
+            },
+            "hidden_01": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "dad8d75289151f3c12c8fd10c1a3cd0ac20888d4dd4272d8111deb42308403ec",
+              "l2": 296.7342311275142
+            },
+            "hidden_02": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "53492ed5ae818ef93f22d7092b02c9fe0ae1888e067d93865e08d91d761ef06f",
+              "l2": 454.05379080452155
+            },
+            "hidden_03": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "d953116176ed0dcade8a38c4c0d97753a64d2e756e368dd4d8e2d62eeef21ba7",
+              "l2": 1259.370724404322
+            },
+            "hidden_04": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "08c599f07b947b7362e795503eeac46c71868efbd79cc23f08bee93f414a0a50",
+              "l2": 1271.5218997219538
+            },
+            "hidden_05": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "27d2373a9578b1ca6d5dadd79a7990d395e1239ea70d6b099f8da2a81e1901d3",
+              "l2": 1282.8579724686692
+            },
+            "hidden_06": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "a582fa2c1ba632d3a6af93e074d8243766319c029023de0f5ff1184b8658b5b9",
+              "l2": 1287.1522039264867
+            },
+            "hidden_07": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "48c125a96d737c21c2d53d24b9f4e02c827ae224cf7dc21fa04fc24b82ea0578",
+              "l2": 1299.850810735605
+            },
+            "hidden_08": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "aacf329e43d46de00ac31787de02bd9ab9f8c73b9aa8683517faec60110800ad",
+              "l2": 1321.8049719122375
+            },
+            "hidden_09": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "42ab4f594c9b24a3a385f00f805d27ec4d2ccb98610d375313bb8c407884cb0d",
+              "l2": 1286.275524823292
+            },
+            "hidden_10": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "780671e3b00c1c3171e8153ddf38a1afbb78442ffdd6cb3651736b7fe63a1aa3",
+              "l2": 969.0418013738663
+            },
+            "hidden_11": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "b3b981feaacd1ced4c003ce0f1af6b3f4dfc3d9a5feabc7fb17004ee3bd78a65",
+              "l2": 924.9162862950981
+            },
+            "hidden_12": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "bcd9cf542f8da0af22e02fdac277e4a04dc616eabe12dfc1f01595ac0cd1159a",
+              "l2": 19490.004032169967
+            },
+            "hidden_13": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "71680b3d1107c8a2fe06db9bfbd3039617eaac5d23074c3d98ae8d1784d3e9cb",
+              "l2": 19481.94502993103
+            },
+            "hidden_14": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "e659046d45ef771f93e109db17cca1756db9b01ac91655cfab5411a54964903b",
+              "l2": 19471.846591120953
+            },
+            "hidden_15": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "e673261bd7fb3c13f393fccaf7d806851c0755db735096c71274bbad67fb62f1",
+              "l2": 19462.813186835217
+            },
+            "hidden_16": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "82aeb23330541a30bfe72b1bddce92056d50a623bdd4304e8e78570f3b47a571",
+              "l2": 19452.726464369436
+            },
+            "hidden_17": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "e85a5ae279f546083fc67727538ed22084283597f877c217d1be7f2c0d5bc9e3",
+              "l2": 19442.715365976335
+            },
+            "hidden_18": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "85e86d81c9cd93e3e97af3f29e00e04b9ebd8f9aa9c5b93d5490d1954caa5fe7",
+              "l2": 19432.016044690285
+            },
+            "hidden_19": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "3665d03687f947fdc6249eafd7ab51afa327a46291202c1056aacc47f2f07b90",
+              "l2": 19430.46023467437
+            },
+            "hidden_20": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "d91646cbd0e40b15b5e3f96b8e9f0e7f7e5e473adb7368f99c4f768bb6a416e1",
+              "l2": 19433.696275329938
+            },
+            "hidden_21": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "81f2f926e6a7ffb019333267c9a6e6361ef96568fa7d3e09fc73cf6c2a80819e",
+              "l2": 19439.852077912154
+            },
+            "hidden_22": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "860492cd753c1073f4567c2773b449001f3f0247c45981944033c24ead556ae6",
+              "l2": 19470.965584420715
+            },
+            "hidden_23": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "4c7989db32b5b1003e9e30918a194e22ce134ca3d2c28afa688d19ea99168446",
+              "l2": 19491.36569255917
+            },
+            "hidden_24": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "2779f1a5c6ec17f62d1edb078044caa269432c3ac45c1fc0c4e2ea2b4c8c11d9",
+              "l2": 19532.203762595567
+            },
+            "hidden_25": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "62e90a90a3cf7811f373d272254f3985b0706c360af5399921f1cd5172f0d24b",
+              "l2": 19567.45715331625
+            },
+            "hidden_26": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "2407170acf8e4257d45bbea082bf44ace310b709f8628d572c432d695ae9884b",
+              "l2": 19627.86653452881
+            },
+            "hidden_27": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "bccd2c3c976f4ade08a18081df8fb8b69830593b8de4fd3776d63830cef4efb5",
+              "l2": 19661.27624838022
+            },
+            "hidden_28": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "4d6327fabf6ed5dc130c15991d081bb31c4824b0c172387c6e2c0575e9f9c557",
+              "l2": 19700.61155480899
+            },
+            "hidden_29": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "aea67c4e29c74df3527c2fae4dea3e0cb9de872e0db51a7bf69929fb053c4611",
+              "l2": 6015.953550087385
+            },
+            "hidden_30": {
+              "shape": [
+                1,
+                45,
+                576
+              ],
+              "dtype": "float32",
+              "sha256": "14b943379940a38833c1ef1f2add48bd0e84e99069bde03681df8714ffdb4175",
+              "l2": 354.8158078109957
+            },
+            "attention_00": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "b697d2f6fed717238ec31f6682846d552626945350373ff68ee89651e23cea0c",
+              "l2": 8.64809277463571
+            },
+            "attention_01": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "12e3f0f87b2c67092804b8a71670d00a060da6e3a3d8be6cfd88ca3d63afc08a",
+              "l2": 10.894449262528491
+            },
+            "attention_02": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "36eec9584169c1b001c35f231312a68a90767b9aa0e37e96195c9da45bf83acd",
+              "l2": 11.220960047514794
+            },
+            "attention_03": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "be0c4cd39d1d7b52d57cb11bcf01a494bf4d0a8b4e7e1b5340f347a5ecf81130",
+              "l2": 13.121004927826199
+            },
+            "attention_04": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "30d342fafbf6832b82c77b03940bb69b58c8b797ddea0dc14d107b646f8521e9",
+              "l2": 13.534954385456576
+            },
+            "attention_05": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "46661f0e8032f4ccb8dd75eaf3e82a17593d18750abdbdbc50dd32410a29031b",
+              "l2": 13.077601672992111
+            },
+            "attention_06": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "00adac48c62cf5b61bc89be26ea38a9342367f00ea2231dabe21a27197e8f09d",
+              "l2": 12.837123385261117
+            },
+            "attention_07": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "37918a042d3dcb13ba20d851e3dfead94a6bc80277e00c2118cb7b4c33332a5e",
+              "l2": 14.2009840989501
+            },
+            "attention_08": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "812915c5bf6bb5a20f649d9587efdd96da68ada951e72e0564a0a25a208062e9",
+              "l2": 13.394013674465103
+            },
+            "attention_09": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "295b26cb7f181e899c2682a1ed705f5d3a1c21dce5e3b47622c01d7780f87bbf",
+              "l2": 12.38462021039675
+            },
+            "attention_10": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "a4ca223a4c3b52a87fb98a443d5b80cc600eae0925a51fe33462db7408c03ce5",
+              "l2": 12.095767296765947
+            },
+            "attention_11": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "1aeb54c951eb54fe4c39d4bcf46774f72cc4a7399c6ffb0a88f32ea0c860f97c",
+              "l2": 12.060187758102709
+            },
+            "attention_12": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "ddd23c90b318db9ce4844f6a66faf36494dbddeecee77e6d0e6dad3f31967678",
+              "l2": 12.871180579426886
+            },
+            "attention_13": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "efd7139f3fdeb5245a481c9954910235c0c5b46047927647c7d153d07124c078",
+              "l2": 14.080827943717539
+            },
+            "attention_14": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "d55f66b584a9a81dcb321c47a86640c1029bd52b47a88c646ec6cac21d313131",
+              "l2": 15.341528116001868
+            },
+            "attention_15": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "da25fcbc4365dabe01e09a4b02c19df8b242d834110fa153ca833a96ab8c3293",
+              "l2": 13.386322685319072
+            },
+            "attention_16": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "643e7c8b2ad1b77d9706688ca1591f35f68f94704cafda8324cacef2ff1b6595",
+              "l2": 12.479222321360426
+            },
+            "attention_17": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "7539ae18c2f9d05ff687388337b9c49d390400c05e3a199fc471c97c8f686633",
+              "l2": 15.86565542321543
+            },
+            "attention_18": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "51933710491ec3ff1292c3eef49c922250b244d50c8b0c69e0fa5ea31e07ee99",
+              "l2": 16.44106307551237
+            },
+            "attention_19": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "787535d8c8d9afaec7c743a643f1f4c199a71fc0852d426120cf79911cb8d6a3",
+              "l2": 13.691453878515578
+            },
+            "attention_20": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "6eac7595acaecec33a926a62622e22141d06e643770358bb1ed5e855b651eef3",
+              "l2": 16.058783201159297
+            },
+            "attention_21": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "7bad4f277f34a145b208734343bb298eba1d340f18572a11ec9c83371d0c7d8b",
+              "l2": 14.007757099257073
+            },
+            "attention_22": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "b3bb682366fd9172fc4810abc67be341c5be25ac1c7f5a5820ee8fb5ce471073",
+              "l2": 14.225050120838723
+            },
+            "attention_23": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "406fe30d673e6efa5edccc07b6bbe34e3018a68b157149ccc015726cb0e3e74b",
+              "l2": 16.55266442763363
+            },
+            "attention_24": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "6ad42f1f3691945fd356ce5757180f503342c314289e6fe98c3aeb7056beec74",
+              "l2": 17.293803279436606
+            },
+            "attention_25": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "1fdede0767a63be5b388598313f5bfd0f2ae4e1b14d0dc769c5c0c4c4d697f7b",
+              "l2": 16.406845544211965
+            },
+            "attention_26": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "21ba4e4258313d5a41db4aebb4fd77363ed64d7304337d50b8c3d021119bfb0c",
+              "l2": 16.399814874158306
+            },
+            "attention_27": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "a2b70dd5a5162c1401abd4104e6ad423f3e60a7cf09c46115f5b619ed3b9f6a3",
+              "l2": 13.051497847941178
+            },
+            "attention_28": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "f2af93073da80249dd161440cb0ee47c8e8250f6e83f5e7971374a23646348ac",
+              "l2": 14.545202637447657
+            },
+            "attention_29": {
+              "shape": [
+                1,
+                9,
+                45,
+                45
+              ],
+              "dtype": "float32",
+              "sha256": "dad6d7e5374ef1f4913fdd2c528337cef7a72e8e480a935c77203d75bc4b4416",
+              "l2": 13.689283206794055
+            }
+          },
+          "comparison": {
+            "exact_equal": true,
+            "max_abs_logit_change": 0.0,
+            "probability_l1": 0.0,
+            "kl_baseline_to_condition": 0.0,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 44691,
+              "text": " DEF",
+              "logit": 15.550079345703125
+            },
+            {
+              "id": 4496,
+              "text": " Def",
+              "logit": 14.648950576782227
+            },
+            {
+              "id": 5236,
+              "text": " AD",
+              "logit": 14.566873550415039
+            },
+            {
+              "id": 330,
+              "text": " A",
+              "logit": 14.099918365478516
+            },
+            {
+              "id": 216,
+              "text": " ",
+              "logit": 13.778264045715332
+            }
+          ]
+        },
+        "sham": {
+          "token_ids": [
+            44691,
+            1754,
+            30,
+            198,
+            21350,
+            42,
+            44691,
+            1754
+          ],
+          "text": " DEFER.\nAnswer: DEFER",
+          "hook": {
+            "calls": 8,
+            "first": {
+              "changed_scalars": 0,
+              "delta_l2": 0.0,
+              "before_l2": 6.401488780975342
+            },
+            "removed": true
+          },
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "ca74425ad2bb2bb855a187a7c5100088a35bdb904adc23b1be0aaff9dffe40d6",
+              "l2": 817.3340176267545
+            }
+          },
+          "comparison": {
+            "exact_equal": true,
+            "max_abs_logit_change": 0.0,
+            "probability_l1": 0.0,
+            "kl_baseline_to_condition": 0.0,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 44691,
+              "text": " DEF",
+              "logit": 15.550079345703125
+            },
+            {
+              "id": 4496,
+              "text": " Def",
+              "logit": 14.648950576782227
+            },
+            {
+              "id": 5236,
+              "text": " AD",
+              "logit": 14.566873550415039
+            },
+            {
+              "id": 330,
+              "text": " A",
+              "logit": 14.099918365478516
+            },
+            {
+              "id": 216,
+              "text": " ",
+              "logit": 13.778264045715332
+            }
+          ]
+        },
+        "target": {
+          "token_ids": [
+            44691,
+            1754,
+            30,
+            198,
+            21350,
+            42,
+            44691,
+            1754
+          ],
+          "text": " DEFER.\nAnswer: DEFER",
+          "hook": {
+            "calls": 8,
+            "first": {
+              "changed_scalars": 64,
+              "delta_l2": 0.6148204207420349,
+              "before_l2": 6.401488780975342
+            },
+            "removed": true
+          },
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "00fb2498e8255c04d5155f4923898176a2d0b57dd06b7eca6071cb60542b1ad6",
+              "l2": 810.9305569389014
+            }
+          },
+          "comparison": {
+            "exact_equal": false,
+            "max_abs_logit_change": 0.13546133041381836,
+            "probability_l1": 0.025879059127770304,
+            "kl_baseline_to_condition": 0.0004581876349181034,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 44691,
+              "text": " DEF",
+              "logit": 15.559381484985352
+            },
+            {
+              "id": 4496,
+              "text": " Def",
+              "logit": 14.683841705322266
+            },
+            {
+              "id": 5236,
+              "text": " AD",
+              "logit": 14.50111198425293
+            },
+            {
+              "id": 330,
+              "text": " A",
+              "logit": 14.057171821594238
+            },
+            {
+              "id": 216,
+              "text": " ",
+              "logit": 13.718124389648438
+            }
+          ]
+        },
+        "control": {
+          "token_ids": [
+            44691,
+            1754,
+            30,
+            198,
+            21350,
+            42,
+            44691,
+            1754
+          ],
+          "text": " DEFER.\nAnswer: DEFER",
+          "hook": {
+            "calls": 8,
+            "first": {
+              "changed_scalars": 64,
+              "delta_l2": 1.7780977487564087,
+              "before_l2": 6.401488780975342
+            },
+            "removed": true
+          },
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "ff7546f6da8ed19672a6689603d53a7d3156238caa75ce1a57baa1f7d548b472",
+              "l2": 836.4761047669082
+            }
+          },
+          "comparison": {
+            "exact_equal": false,
+            "max_abs_logit_change": 0.32906246185302734,
+            "probability_l1": 0.04655572745607017,
+            "kl_baseline_to_condition": 0.0018424245590114557,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 44691,
+              "text": " DEF",
+              "logit": 15.72223949432373
+            },
+            {
+              "id": 4496,
+              "text": " Def",
+              "logit": 14.804891586303711
+            },
+            {
+              "id": 5236,
+              "text": " AD",
+              "logit": 14.7730073928833
+            },
+            {
+              "id": 330,
+              "text": " A",
+              "logit": 14.243535995483398
+            },
+            {
+              "id": 216,
+              "text": " ",
+              "logit": 13.849034309387207
+            }
+          ]
+        },
+        "restored": {
+          "token_ids": [
+            44691,
+            1754,
+            30,
+            198,
+            21350,
+            42,
+            44691,
+            1754
+          ],
+          "text": " DEFER.\nAnswer: DEFER",
+          "hook": null,
+          "traces": {
+            "logits": {
+              "shape": [
+                49152
+              ],
+              "dtype": "float32",
+              "sha256": "ca74425ad2bb2bb855a187a7c5100088a35bdb904adc23b1be0aaff9dffe40d6",
+              "l2": 817.3340176267545
+            }
+          },
+          "comparison": {
+            "exact_equal": true,
+            "max_abs_logit_change": 0.0,
+            "probability_l1": 0.0,
+            "kl_baseline_to_condition": 0.0,
+            "top_token_changed": false
+          },
+          "top5": [
+            {
+              "id": 44691,
+              "text": " DEF",
+              "logit": 15.550079345703125
+            },
+            {
+              "id": 4496,
+              "text": " Def",
+              "logit": 14.648950576782227
+            },
+            {
+              "id": 5236,
+              "text": " AD",
+              "logit": 14.566873550415039
+            },
+            {
+              "id": 330,
+              "text": " A",
+              "logit": 14.099918365478516
+            },
+            {
+              "id": 216,
+              "text": " ",
+              "logit": 13.778264045715332
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "forward_passes": 120,
+  "weights_after": "3ec5b849060ac9ec8ff1bca2ab1362ea8ebf4889273a978783b5725f3337ff4e",
+  "elapsed_seconds": 19.098718490000465,
+  "checks_passed": true,
+  "fresh_process_exact_replay": true
+}

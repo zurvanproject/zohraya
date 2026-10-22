@@ -1,0 +1,13 @@
+test_cold_context_reads_neither_grant_nor_effect_budget (examples.nasuraya_body_loop.test_decision_context.DecisionTests.test_cold_context_reads_neither_grant_nor_effect_budget) ... ok
+test_completed_goal_has_no_next_action (examples.nasuraya_body_loop.test_decision_context.DecisionTests.test_completed_goal_has_no_next_action) ... ok
+test_explicitly_failed_effect_never_has_complete_intent (examples.nasuraya_body_loop.test_decision_context.DecisionTests.test_explicitly_failed_effect_never_has_complete_intent) ... ok
+test_proposer_ablation_is_declared_and_fixed_rule_can_mask_memory (examples.nasuraya_body_loop.test_decision_context.DecisionTests.test_proposer_ablation_is_declared_and_fixed_rule_can_mask_memory) ... ok
+test_terminal_call_replay_keeps_single_saved_intent (examples.nasuraya_body_loop.test_decision_context.DecisionTests.test_terminal_call_replay_keeps_single_saved_intent) ... ok
+test_unfinished_goal_and_reason_survive_reopen_after_one_cycle (examples.nasuraya_body_loop.test_decision_context.DecisionTests.test_unfinished_goal_and_reason_survive_reopen_after_one_cycle) ... ok
+test_unknown_api_creation_also_stops_next_decision (examples.nasuraya_body_loop.test_decision_context.DecisionTests.test_unknown_api_creation_also_stops_next_decision) ... ok
+test_unknown_effect_is_unresolved_and_context_stops (examples.nasuraya_body_loop.test_decision_context.DecisionTests.test_unknown_effect_is_unresolved_and_context_stops) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 61.803s
+
+OK

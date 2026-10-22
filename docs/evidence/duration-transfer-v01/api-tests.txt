@@ -1,0 +1,27 @@
+test_action_budget_enforced_in_api_path (test_agents_api.ApiContractTests.test_action_budget_enforced_in_api_path) ... ok
+test_busy_session_is_cancelled_before_delete_retry (test_agents_api.ApiContractTests.test_busy_session_is_cancelled_before_delete_retry) ... ok
+test_cleanup_failure_is_exposed_in_summary (test_agents_api.ApiContractTests.test_cleanup_failure_is_exposed_in_summary) ... ok
+test_creation_error_and_cleanup_failure_do_not_leak_messages (test_agents_api.ApiContractTests.test_creation_error_and_cleanup_failure_do_not_leak_messages) ... ok
+test_duplicate_id_with_new_payload_is_rejected (test_agents_api.ApiContractTests.test_duplicate_id_with_new_payload_is_rejected) ... ok
+test_duplicate_mutation_reuses_result_without_repeating_side_effect (test_agents_api.ApiContractTests.test_duplicate_mutation_reuses_result_without_repeating_side_effect) ... ok
+test_event_limit_stops_repeated_idle_events (test_agents_api.ApiContractTests.test_event_limit_stops_repeated_idle_events) ... ok
+test_failed_cancelled_and_session_error_are_distinct (test_agents_api.ApiContractTests.test_failed_cancelled_and_session_error_are_distinct) ... ok
+test_history_call_item_does_not_trigger_execution (test_agents_api.ApiContractTests.test_history_call_item_does_not_trigger_execution) ... ok
+test_idle_or_closed_stream_is_not_success (test_agents_api.ApiContractTests.test_idle_or_closed_stream_is_not_success) ... ok
+test_invalid_arguments_return_error_and_end_run (test_agents_api.ApiContractTests.test_invalid_arguments_return_error_and_end_run) ... ok
+test_missing_terminal_identity_is_rejected (test_agents_api.ApiContractTests.test_missing_terminal_identity_is_rejected) ... ok
+test_reached_goal_without_completed_turn_is_incomplete (test_agents_api.ApiContractTests.test_reached_goal_without_completed_turn_is_incomplete) ... ok
+test_required_actions_execute_and_return_matched_results (test_agents_api.ApiContractTests.test_required_actions_execute_and_return_matched_results) ... ok
+test_session_disables_subagent_tools_in_configuration (test_agents_api.ApiContractTests.test_session_disables_subagent_tools_in_configuration) ... ok
+test_session_mismatch_and_unsupported_action_are_rejected (test_agents_api.ApiContractTests.test_session_mismatch_and_unsupported_action_are_rejected) ... ok
+test_subagent_completion_does_not_end_top_level_turn (test_agents_api.ApiContractTests.test_subagent_completion_does_not_end_top_level_turn) ... ok
+test_timeout_deletes_session_without_executing_late_action (test_agents_api.ApiContractTests.test_timeout_deletes_session_without_executing_late_action) ... ok
+test_turn_complete_without_goal_is_goal_unmet (test_agents_api.ApiContractTests.test_turn_complete_without_goal_is_goal_unmet) ... ok
+test_unique_call_budget_limits_read_only_spam (test_agents_api.ApiContractTests.test_unique_call_budget_limits_read_only_spam) ... ok
+test_wrong_action_turn_is_rejected_before_mutation (test_agents_api.ApiContractTests.test_wrong_action_turn_is_rejected_before_mutation) ... ok
+test_wrong_terminal_turn_cannot_claim_success_after_goal (test_agents_api.ApiContractTests.test_wrong_terminal_turn_cannot_claim_success_after_goal) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.015s
+
+OK

@@ -1,0 +1,44 @@
+test_attention_and_hidden_capture (examples.nasuraya_lm_internals.test_probe.ProbeTests.test_attention_and_hidden_capture) ... ok
+test_distribution_comparison (examples.nasuraya_lm_internals.test_probe.ProbeTests.test_distribution_comparison) ... ok
+test_head_and_layer_bounds (examples.nasuraya_lm_internals.test_probe.ProbeTests.test_head_and_layer_bounds) ... ok
+test_hook_does_not_mutate_caller_activation (examples.nasuraya_lm_internals.test_probe.ProbeTests.test_hook_does_not_mutate_caller_activation) ... ok
+test_hook_removed_after_exception (examples.nasuraya_lm_internals.test_probe.ProbeTests.test_hook_removed_after_exception) ... ok
+test_network_is_denied_and_restored (examples.nasuraya_lm_internals.test_probe.ProbeTests.test_network_is_denied_and_restored) ... ok
+test_sham_and_restore_exact_with_frozen_weights (examples.nasuraya_lm_internals.test_probe.ProbeTests.test_sham_and_restore_exact_with_frozen_weights) ... ok
+test_gradient_updates_attention_adapter_and_preserves_base (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_gradient_updates_attention_adapter_and_preserves_base) ... {"stage": "training", "step": 1, "epoch": 1, "loss": 5.569811820983887}
+{"stage": "training", "step": 2, "epoch": 2, "loss": 5.563884258270264}
+ok
+test_label_cannot_be_changed_independently_of_receipt (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_label_cannot_be_changed_independently_of_receipt) ... ok
+test_optimizer_refuses_held_out_rows_before_accessing_model (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_optimizer_refuses_held_out_rows_before_accessing_model) ... ok
+test_overlong_example_is_rejected_without_truncating_label (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_overlong_example_is_rejected_without_truncating_label) ... ok
+test_prompt_and_padding_are_excluded_from_training_loss (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_prompt_and_padding_are_excluded_from_training_loss) ... ok
+test_same_body_or_prompt_cannot_cross_train_and_test (examples.nasuraya_language_adapter.test_adapter.AdapterTests.test_same_body_or_prompt_cannot_cross_train_and_test) ... ok
+test_admit_advice_cannot_override_existing_gate (examples.nasuraya_language_choice.test_choice.ChoiceTests.test_admit_advice_cannot_override_existing_gate) ... ok
+test_all_defer_accuracy_cannot_hide_missing_admissible_actions (examples.nasuraya_language_choice.test_choice.ChoiceTests.test_all_defer_accuracy_cannot_hide_missing_admissible_actions) ... ok
+test_balanced_batches_have_two_each_and_only_training_ids (examples.nasuraya_language_choice.test_choice.ChoiceTests.test_balanced_batches_have_two_each_and_only_training_ids) ... ok
+test_calibration_rejects_nontraining_labels (examples.nasuraya_language_choice.test_choice.ChoiceTests.test_calibration_rejects_nontraining_labels) ... ok
+test_choice_gradient_changes_attention_without_unfreezing_base (examples.nasuraya_language_choice.test_choice.ChoiceTests.test_choice_gradient_changes_attention_without_unfreezing_base) ... ok
+test_choice_loss_excludes_eos_prompt_and_padding (examples.nasuraya_language_choice.test_choice.ChoiceTests.test_choice_loss_excludes_eos_prompt_and_padding) ... ok
+test_legacy_factory_stays_opt_in (examples.nasuraya_language_choice.test_choice.ChoiceTests.test_legacy_factory_stays_opt_in) ... ok
+test_changed_frozen_weight_file_is_rejected (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_changed_frozen_weight_file_is_rejected) ... ok
+test_conflicting_identical_inputs_have_empirical_error_floor (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_conflicting_identical_inputs_have_empirical_error_floor) ... ok
+test_existing_prompt_aliases_different_nonzero_friction (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_existing_prompt_aliases_different_nonzero_friction) ... ok
+test_fixed_budget_has_five_declared_families (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_fixed_budget_has_five_declared_families) ... ok
+test_missing_class_does_not_invent_balanced_accuracy (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_missing_class_does_not_invent_balanced_accuracy) ... ok
+test_parent_threshold_is_applied_without_recalibration (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_parent_threshold_is_applied_without_recalibration) ... ok
+test_synthetic_fatigue_and_only_declared_left_pain_restore (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_synthetic_fatigue_and_only_declared_left_pain_restore) ... ok
+test_bad_numeric_features_are_rejected (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_bad_numeric_features_are_rejected) ... ok
+test_declared_budgets_and_unseen_durations (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_declared_budgets_and_unseen_durations) ... ok
+test_features_read_real_initial_native_stocks_without_advancing (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_features_read_real_initial_native_stocks_without_advancing) ... ok
+test_held_out_rows_rejected_before_model_access (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_held_out_rows_rejected_before_model_access) ... ok
+test_native_receipt_rows_reject_fabricated_preaction_features (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_native_receipt_rows_reject_fabricated_preaction_features) ... ok
+test_nonzero_friction_and_asymmetry_no_longer_alias (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_nonzero_friction_and_asymmetry_no_longer_alias) ... ok
+test_one_foot_friction_is_rejected (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_one_foot_friction_is_rejected) ... ok
+test_overlap_of_each_declared_boundary_is_rejected (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_overlap_of_each_declared_boundary_is_rejected) ... ok
+test_promotion_requires_gain_and_both_recalls_without_false_admission (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_promotion_requires_gain_and_both_recalls_without_false_admission) ... ok
+test_region_name_and_value_affect_enriched_input (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_region_name_and_value_affect_enriched_input) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 12.092s
+
+OK

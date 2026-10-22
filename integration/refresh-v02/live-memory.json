@@ -1,0 +1,17 @@
+{
+  "schema": "nasuraya.live-memory-compatibility/1",
+  "source_control_commit": "8aa17a665fae940da545cfae69323bdf6384e475",
+  "model_memory_engine": "e92cb5ecc53c5fdb26ce07ffb7752f0c707d9b7229290679f1fd5547eaa92992",
+  "memory_anchor_matches": true,
+  "model_memory_valid": true,
+  "model_entries": 0,
+  "main_files_byte_identical": {
+    "continuity_host/host.py": true,
+    "continuity_host/test_host.py": true,
+    "continuity_host/model_research.py": true,
+    "continuity_host/research_lab.py": true,
+    "continuity_host/research_host.py": true
+  },
+  "model_calls": 0,
+  "remote_writes": 0
+}

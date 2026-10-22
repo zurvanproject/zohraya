@@ -4,7 +4,7 @@ import json
 from pathlib import Path, PurePosixPath
 
 ROOT = Path(__file__).resolve().parent
-LOCK_SHA256 = '00c253b7736e8d225ccb3b33f479f16b21bcad643a6da91779345536d9bbf3a2'
+LOCK_SHA256 = 'db7c4e16ba0a181f9fbbcc837035457f78b06a9631b92863216b7ffe1c9f8e88'
 
 SUPPLEMENTAL_LICENSE_SHA256 = 'f0a95b0480b1949187ffcc7adc324a73a4dc4b774c7f877b28d1cade61489430'
 
@@ -14,7 +14,7 @@ def verify_sources(root=ROOT):
     if hashlib.sha256(data).hexdigest() != LOCK_SHA256:
         raise ValueError('upstream lock changed')
     lock = json.loads(data)
-    if lock['schema'] != 'nasuraya-upstream-lock/1' or len(lock['files']) != 6:
+    if lock['schema'] != 'nasuraya-upstream-lock/1' or len(lock['files']) != 9:
         raise ValueError('upstream inventory')
     seen = set()
     for row in lock['files']:

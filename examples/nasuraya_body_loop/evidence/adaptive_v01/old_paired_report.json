@@ -1,0 +1,97 @@
+{
+  "api_calls": 0,
+  "difference_in_veto_count_sleep": 1,
+  "endpoint": "native action requests and veto rate, not calibrated safety, intelligence or consciousness",
+  "live_biology": false,
+  "no_duplicate_effect_after_restart": true,
+  "scenarios": [
+    {
+      "baseline": {
+        "actions_remaining": 0,
+        "first": {
+          "actual": "walk",
+          "checkpoint_sha256": "255fda615499d313a80e1ce12afbb58de4957327def379acdb84d8dc873d030e",
+          "requested": "walk",
+          "status": "complete",
+          "vetoed": false
+        },
+        "restart_retained_first": true,
+        "second": {
+          "actual": "walk",
+          "checkpoint_sha256": "f5c4af41a8adabdc3daa90680fa8a83d041ce813f17886380c376c794db9aac5",
+          "requested": "walk",
+          "status": "complete",
+          "vetoed": false
+        },
+        "veto_count": 0
+      },
+      "fixture": "normal",
+      "initial_checkpoint_equal": true,
+      "supervised": {
+        "actions_remaining": 0,
+        "completed_cycles": 2,
+        "extra_actions_after_duplicate_resume": 0,
+        "first": {
+          "actual": "walk",
+          "checkpoint_sha256": "127e9754f7aebead69378b9dac4b2a5201111f947c92795f8af6e9e77ab56075",
+          "requested": "walk",
+          "vetoed": false
+        },
+        "identity_version": 1,
+        "restart_retained_first": true,
+        "second": {
+          "actual": "walk",
+          "checkpoint_sha256": "87152632730b2840fb7550406694619ac96324d113463d5e5740baddccae75ce",
+          "requested": "walk",
+          "vetoed": false
+        },
+        "veto_count": 0
+      }
+    },
+    {
+      "baseline": {
+        "actions_remaining": 0,
+        "first": {
+          "actual": "protect",
+          "checkpoint_sha256": "36f99fea13bcf33b22e8d63531251fd17051aa73db34c08c5400c2d3df2cf575",
+          "requested": "walk",
+          "status": "complete",
+          "vetoed": true
+        },
+        "restart_retained_first": true,
+        "second": {
+          "actual": "observe",
+          "checkpoint_sha256": "ed7d4c301f0ae69d618a532fa6ff3572d702fef5d1caf22d6a62ff2c1fd6eddd",
+          "requested": "observe",
+          "status": "complete",
+          "vetoed": false
+        },
+        "veto_count": 1
+      },
+      "fixture": "sleep",
+      "initial_checkpoint_equal": true,
+      "supervised": {
+        "actions_remaining": 0,
+        "completed_cycles": 2,
+        "extra_actions_after_duplicate_resume": 0,
+        "first": {
+          "actual": "observe",
+          "checkpoint_sha256": "866b00465bc0bd704c153718ca54e8eac24d644c70a9f3739a29a25d5b69e84f",
+          "requested": "observe",
+          "vetoed": false
+        },
+        "identity_version": 1,
+        "restart_retained_first": true,
+        "second": {
+          "actual": "observe",
+          "checkpoint_sha256": "5460ff5aa634cf99b4e99e9d25d512a8f8c6532948ed5ebc3e07d3d406d97bb3",
+          "requested": "observe",
+          "vetoed": false
+        },
+        "veto_count": 0
+      }
+    }
+  ],
+  "schema": "nasuraya-frozen-paired-benchmark/1",
+  "scope": "2 manually specified deterministic synthetic fixtures, not a blinded or external benchmark"
+}

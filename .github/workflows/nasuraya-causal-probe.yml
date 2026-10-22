@@ -1,0 +1,31 @@
+name: Nasuraya causal mechanism probe
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_causal_probe/**'
+      - '.github/workflows/nasuraya-causal-probe.yml'
+  push:
+    branches: ['nasuraya/causal-access-probe-v01']
+    paths:
+      - 'examples/nasuraya_causal_probe/**'
+      - '.github/workflows/nasuraya-causal-probe.yml'
+permissions:
+  contents: read
+jobs:
+  causal-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - run: python3 -m unittest examples.nasuraya_causal_probe.test_study -v
+      - run: python3 -m examples.nasuraya_causal_probe.run --output /tmp/causal-first
+      - run: python3 -m examples.nasuraya_causal_probe.verify --directory /tmp/causal-first
+      - run: python3 -m examples.nasuraya_causal_probe.run --output /tmp/causal-second
+      - run: python3 -m examples.nasuraya_causal_probe.verify --directory /tmp/causal-first --compare /tmp/causal-second
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: causal-probe-evidence
+          path: /tmp/causal-first/

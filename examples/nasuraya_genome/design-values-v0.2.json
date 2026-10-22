@@ -1,0 +1,19 @@
+{
+  "schema": "nasuraya.design-values/0.2",
+  "source": "direct user clarification, 2026-10-16 00:45:46 Asia/Tehran",
+  "functional_changes": {
+    "may_retain_beneficial_design_changes": true,
+    "foot_enlargement_is_an_allowed_example": true,
+    "specific_final_anatomical_dimensions_approved": null
+  },
+  "aesthetic_changes": {
+    "independent_design_value": true,
+    "evaluator": "user",
+    "lack_of_functional_gain_is_not_aesthetic_rejection": true,
+    "specific_fur_length_preference": null,
+    "default_verdict": "awaiting_user_aesthetic_review"
+  },
+  "source_interpretation": "The user permits retaining functional improvements and gives beauty independent value. No preference for longer or shorter foot fur is inferred.",
+  "preserve": ["fixed_face", "identity_covenant", "three_toes", "native_mechanical_guards"],
+  "native_apply_allowed": false
+}

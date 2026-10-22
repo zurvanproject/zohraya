@@ -2,6 +2,33 @@
   "schema": "nasuraya-upstream-lock/1",
   "files": [
     {
+      "local_path": "vendor/predvla/model.py",
+      "repository": "hiroki-oist/PredVLA",
+      "commit": "bba1d038e2fadb8904423cf8f65bb80d70fd17d4",
+      "upstream_path": "predvla/model.py",
+      "git_blob_sha": "f98794fced888ac4208b606c9d01d6cd7067d2bc",
+      "license": "MIT",
+      "sha256": "a18d603221cff43c206be1456c9dc973f965357e62a591a4221ac0341ef89dcb"
+    },
+    {
+      "local_path": "vendor/predvla/er.py",
+      "repository": "hiroki-oist/PredVLA",
+      "commit": "bba1d038e2fadb8904423cf8f65bb80d70fd17d4",
+      "upstream_path": "predvla/er.py",
+      "git_blob_sha": "3e926f0483dcdc90a2126eae33c044d31f2412a2",
+      "license": "MIT",
+      "sha256": "fedeab122f1952183b57f68fa249e876663dee6c5089bdf399a751c870a8e378"
+    },
+    {
+      "local_path": "vendor/predvla/LICENSE",
+      "repository": "hiroki-oist/PredVLA",
+      "commit": "bba1d038e2fadb8904423cf8f65bb80d70fd17d4",
+      "upstream_path": "LICENSE",
+      "git_blob_sha": "88b4cecc57d051b8cf184f72780923646dbf97ba",
+      "license": "MIT",
+      "sha256": "e66e275dca41aebe1df573e71caa0770a7184b4c83fd5626106f0a9c034bfc83"
+    },
+    {
       "local_path": "vendor/mjlab_math.py",
       "repository": "mujocolab/mjlab",
       "commit": "45b1e263ec1c3c0d2c3211b458135d80bb7030df",

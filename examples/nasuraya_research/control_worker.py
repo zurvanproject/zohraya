@@ -5,14 +5,23 @@ import unittest
 
 
 def main(args):
+    if args['command'] == 'transfer':
+        from .transfer import run
+        print(json.dumps(run(args['output_dir']), ensure_ascii=False, sort_keys=True))
+        return 0
+    if args['command'] == 'transfer-test':
+        from . import test_transfer
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_transfer)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
     if args['command'] == 'evaluate':
         from .evaluate_confidence import evaluate
         print(json.dumps(evaluate(), ensure_ascii=False, sort_keys=True))
         return 0
     if args['command'] == 'test':
-        from . import test_controller, test_confidence
+        from . import test_controller, test_confidence, test_transfer
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
-                                   for module in (test_controller, test_confidence))
+                                   for module in (test_controller, test_confidence, test_transfer))
         result = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if result.wasSuccessful() else 1
     from examples.nasuraya_body_loop.host import BodyLoop

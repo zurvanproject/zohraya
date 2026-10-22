@@ -1,0 +1,18 @@
+test_checkpoint_tampering_is_rejected (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_checkpoint_tampering_is_rejected) ... ok
+test_geometry_known_rotation_and_all_options_have_no_authority (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_geometry_known_rotation_and_all_options_have_no_authority) ... skipped 'optional tensor dependencies absent'
+test_invalid_geometry_yaws_leave_body_unchanged (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_invalid_geometry_yaws_leave_body_unchanged) ... skipped 'optional tensor dependencies absent'
+test_missing_optional_geometry_dependency_has_no_fallback_or_body_change (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_missing_optional_geometry_dependency_has_no_fallback_or_body_change) ... ok
+test_mutation_is_detected_on_success (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_mutation_is_detected_on_success) ... ok
+test_mutation_is_detected_when_adapter_raises (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_mutation_is_detected_when_adapter_raises) ... ok
+test_no_stacked_modules_or_tensor_imported_by_default (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_no_stacked_modules_or_tensor_imported_by_default) ... ok
+test_nonfinite_sense_is_rejected (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_nonfinite_sense_is_rejected) ... ok
+test_optional_stats_and_trajectory_preserve_body_and_caller_records (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_optional_stats_and_trajectory_preserve_body_and_caller_records) ... ok
+test_reads_native_fixture_without_mutation_or_execution (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_reads_native_fixture_without_mutation_or_execution) ... ok
+test_rejects_invalid_decision_evidence_without_body_change (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_rejects_invalid_decision_evidence_without_body_change) ... ok
+test_retained_mjlab_zero_delta_pose_is_finite (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_retained_mjlab_zero_delta_pose_is_finite) ... skipped 'optional tensor dependencies absent'
+test_returned_senses_do_not_alias_body (examples.nasuraya_research.test_body_observer.ObserverContractTests.test_returned_senses_do_not_alias_body) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 18.537s
+
+OK (skipped=3)

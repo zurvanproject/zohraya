@@ -1,0 +1,108 @@
+{
+  "schema": "nasuraya-causal-access-probe/1",
+  "seeds": [
+    101,
+    307,
+    911
+  ],
+  "workspace": {
+    "image_side": 10,
+    "noise_probabilities": [
+      0.05,
+      0.2,
+      0.4,
+      0.49
+    ],
+    "classes": [
+      0,
+      1
+    ],
+    "arms": [
+      "intact",
+      "broadcast_cut",
+      "offpath_control"
+    ],
+    "phases": [
+      "encode",
+      "delay",
+      "restore_encode",
+      "restore_delay"
+    ],
+    "target": "existing EnvironmentBrain.config.broadcast",
+    "control": "existing EnvironmentBrain.config.correlation disabled; all observations have independent acquisition IDs",
+    "primary": "paired delayed planner correct-decision rate versus independent stimulus class",
+    "secondary": [
+      "sensor accuracy",
+      "world-belief Brier",
+      "declared work units",
+      "physical validity",
+      "restoration"
+    ],
+    "disconfirmation": "A cut must not be called selective if basic sensory output changes or offpath intervention causes a comparable planning loss. An identical consumer_ids list is not independent module evidence.",
+    "body_ticks_per_arm": 4,
+    "training": false,
+    "confidence_is": "native declared environment belief, not introspective confidence",
+    "decision_deadline_horizon_s": 0.5,
+    "action_duration_s": 0.1,
+    "query_latency_s": 1.5
+  },
+  "circuit": {
+    "arms": [
+      "intact",
+      "recurrent_cut",
+      "offpath_control",
+      "feedforward_cut"
+    ],
+    "currents_pa": [
+      180,
+      240,
+      400,
+      800
+    ],
+    "pulse_duration_ms": [
+      10,
+      40
+    ],
+    "dt_ms": 0.5,
+    "duration_ms": 320,
+    "first_pulse_start_ms": 20,
+    "restore_ms": 180,
+    "second_pulse_start_ms": 220,
+    "perturbation_ms": 100,
+    "perturbation_duration_ms": 1,
+    "perturbation_pa": 1000,
+    "perturbed_cell": "attention",
+    "recurrent_edge": "association_to_attention",
+    "control_edge": "arm_to_attention",
+    "control_weight_decrement_ns": 1.0,
+    "feedforward_edge": "seat_to_attention",
+    "learning": false,
+    "learned_forward_weight_ns": 12.0,
+    "voltage_difference_epsilon_mv": 1e-06,
+    "primary": "change in downstream spiking after recurrent intervention versus offpath control",
+    "secondary": [
+      "pulse-input preservation",
+      "causal voltage spread from an actual injected pulse",
+      "recovery response",
+      "same neuron/synapse update counts"
+    ],
+    "disconfirmation": "No reproducible downstream change means recurrence relevance is not demonstrated at these preselected inputs. Absence of spikes limits discrimination. Complexity alone is not evidence of consciousness."
+  },
+  "analysis": {
+    "paired_cases": true,
+    "bootstrap_seed": 20261016,
+    "bootstrap_resamples": 2000,
+    "confidence_interval_scope": "conditional variability across designed stimulus cases; not probability of consciousness or independent physical replication",
+    "no_post_result_tuning": true,
+    "all_cases_retained": true,
+    "confirmatory_scope": "new preregistered software-mechanism probe, not a validated phenomenal-consciousness assay"
+  },
+  "limitations": [
+    "No hidden-state or weight intervention in the live ChatGPT/API language model.",
+    "The six-cell circuit and symbolic workspace are separate retained components, not one validated neural global workspace.",
+    "Existing broadcast removal forces no_shared_access by construction; its interpretation is an implementation causal dependency.",
+    "Sensor extraction and readouts are authored; no training, natural visual phenomenology or independent metacognitive observer is established.",
+    "Declared work units and update counts are controlled; hardware time and metabolic energy are not matched.",
+    "No PCI, Phi, conscious/unconscious state label or phenomenal probability is estimated."
+  ]
+}

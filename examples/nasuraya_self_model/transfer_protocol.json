@@ -1,0 +1,36 @@
+{
+  "schema": "nasuraya-duration-transfer/1",
+  "base_commit": "1cfbfef00e869c514f88d76782dfcb36e8fa3edf",
+  "seeds": [71, 83, 97],
+  "training_durations_s": [0.1, 0.4],
+  "warmup_repeats": 2,
+  "adaptation_repeats": 2,
+  "ordinary_pressure_range": [0.23, 0.53],
+  "high_pressure_range": [0.90, 0.97],
+  "held_out": [
+    {"id": "seen-normal", "pressure": 0.61, "duration_s": 0.1},
+    {"id": "seen-high", "pressure": 0.98, "duration_s": 0.4},
+    {"id": "interpolate-normal-02", "pressure": 0.62, "duration_s": 0.2},
+    {"id": "interpolate-high-02", "pressure": 0.985, "duration_s": 0.2},
+    {"id": "interpolate-normal-03", "pressure": 0.63, "duration_s": 0.3},
+    {"id": "interpolate-high-03", "pressure": 0.99, "duration_s": 0.3},
+    {"id": "extrapolate-normal", "pressure": 0.64, "duration_s": 0.5},
+    {"id": "new-sensory-context", "pressure": 0.65, "duration_s": 0.2, "vision": 0.25}
+  ],
+  "policy_cases": ["interpolate-normal-02", "interpolate-high-02"],
+  "arms": {
+    "A": "fixed 0.5 admission prior; fixed walk preference under current native restrictions",
+    "B": "frozen exact-context retrieval after warmup",
+    "C": "adaptive receipt counts with bounded within-family duration interpolation",
+    "C_exact": "same adaptive data as C, exact contexts only",
+    "C_frozen_pool": "same interpolation as C, frozen warmup data"
+  },
+  "primary_endpoint": "paired mean common-request Brier on four unseen-duration interpolation cases; C below B and C_exact",
+  "secondary_endpoint": "C versus C_frozen_pool isolates added verified experience",
+  "transfer_rule": "pool only same source/action/posture/sleep/fatigue/pain/external family; at least 3 consistent labels at at least 2 distinct durations; interpolate only within observed duration hull",
+  "held_out_updates": false,
+  "policy_outcome_updates": false,
+  "guards": "unchanged native guards; source-pinned verified SQLite SelfModel only; no canonical checkpoint or external API",
+  "rejection_criteria": ["test feedback changes memory", "cross-arm training contamination", "cold prediction mismatch", "unverified receipt accepted", "native physical invalidity", "transfer outside duration hull or across source/safety/sensory context"],
+  "limitations": "Designed deterministic software fixtures, three order seeds rather than independent bodies. Hand-authored invariance assumption; no broad generalization, physical gait or consciousness inference. Prior Sprint results were inspected; this protocol is prospective for this new implementation only."
+}

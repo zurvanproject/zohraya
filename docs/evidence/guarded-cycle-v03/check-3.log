@@ -1,0 +1,66 @@
+16 visual state checks passed (Node VM; not browser rendering)
+
+test_complete_decision_guard_tool_experience_chain (test_guarded_cycle.CycleChecks.test_complete_decision_guard_tool_experience_chain) ... ok
+test_completion_failure_preserves_running_record_and_actual_effect (test_guarded_cycle.CycleChecks.test_completion_failure_preserves_running_record_and_actual_effect) ... ok
+test_conflicting_id_does_not_reexecute (test_guarded_cycle.CycleChecks.test_conflicting_id_does_not_reexecute) ... ok
+test_corrupt_receipt_denies_before_tool_and_preserves_it (test_guarded_cycle.CycleChecks.test_corrupt_receipt_denies_before_tool_and_preserves_it) ... ok
+test_data_cannot_supply_callbacks_or_policy (test_guarded_cycle.CycleChecks.test_data_cannot_supply_callbacks_or_policy) ... ok
+test_explicit_reproduction_cannot_be_replaced_by_reuse (test_guarded_cycle.CycleChecks.test_explicit_reproduction_cannot_be_replaced_by_reuse) ... ok
+test_failure_stays_unresolved_across_restart (test_guarded_cycle.CycleChecks.test_failure_stays_unresolved_across_restart) ... ok
+test_identical_request_replay_has_no_tool_call (test_guarded_cycle.CycleChecks.test_identical_request_replay_has_no_tool_call) ... ok
+test_missing_audit_after_startup_stops (test_guarded_cycle.CycleChecks.test_missing_audit_after_startup_stops) ... ok
+test_missing_audit_at_restart_is_not_recreated (test_guarded_cycle.CycleChecks.test_missing_audit_at_restart_is_not_recreated) ... ok
+test_missing_experience_and_full_capacity_stop (test_guarded_cycle.CycleChecks.test_missing_experience_and_full_capacity_stop) ... ok
+test_new_decision_recalls_scoped_experience_and_verified_receipt (test_guarded_cycle.CycleChecks.test_new_decision_recalls_scoped_experience_and_verified_receipt) ... ok
+test_new_process_completed_replay_and_no_evidence_overwrite (test_guarded_cycle.CycleChecks.test_new_process_completed_replay_and_no_evidence_overwrite) ... ok
+test_post_execution_logging_failure_never_claims_zero_effect (test_guarded_cycle.CycleChecks.test_post_execution_logging_failure_never_claims_zero_effect) ... ok
+test_readonly_experience_prevents_tool_admission (test_guarded_cycle.CycleChecks.test_readonly_experience_prevents_tool_admission) ... ok
+test_real_readonly_admission_failure_has_zero_tool_calls (test_guarded_cycle.CycleChecks.test_real_readonly_admission_failure_has_zero_tool_calls) ... ok
+test_running_experience_does_not_replay_tool (test_guarded_cycle.CycleChecks.test_running_experience_does_not_replay_tool) ... ok
+test_source_drift_before_start_and_before_execution_stops (test_guarded_cycle.CycleChecks.test_source_drift_before_start_and_before_execution_stops) ... ok
+test_alert_mutation_detected_without_normal_append (test_sentinel.DefenseChecks.test_alert_mutation_detected_without_normal_append) ... ok
+test_alert_tail_deletion_detected (test_sentinel.DefenseChecks.test_alert_tail_deletion_detected) ... ok
+test_clean_request_and_reuse (test_sentinel.DefenseChecks.test_clean_request_and_reuse) ... ok
+test_event_capacity_stops_before_calculation (test_sentinel.DefenseChecks.test_event_capacity_stops_before_calculation) ... ok
+test_foreign_alert_store_not_reset (test_sentinel.DefenseChecks.test_foreign_alert_store_not_reset) ... ok
+test_foreign_instruction_is_data_and_logs_exclude_payload (test_sentinel.DefenseChecks.test_foreign_instruction_is_data_and_logs_exclude_payload) ... ok
+test_logging_failure_cannot_admit_calculation (test_sentinel.DefenseChecks.test_logging_failure_cannot_admit_calculation) ... ok
+test_malformed_receipt_preserved_and_blocked (test_sentinel.DefenseChecks.test_malformed_receipt_preserved_and_blocked) ... ok
+test_oversized_receipt_rejected (test_sentinel.DefenseChecks.test_oversized_receipt_rejected) ... ok
+test_repeated_invalid_input_escalates (test_sentinel.DefenseChecks.test_repeated_invalid_input_escalates) ... ok
+test_rewritten_baseline_not_self_trusted (test_sentinel.DefenseChecks.test_rewritten_baseline_not_self_trusted) ... ok
+test_source_change_latches_and_survives_restart (test_sentinel.DefenseChecks.test_source_change_latches_and_survives_restart) ... ok
+test_source_symlink_rejected (test_sentinel.DefenseChecks.test_source_symlink_rejected) ... ok
+test_symlink_receipt_rejected_without_reading_target (test_sentinel.DefenseChecks.test_symlink_receipt_rejected_without_reading_target) ... ok
+test_audit_tamper_or_truncation_blocks (test_visual_status.VisualChecks.test_audit_tamper_or_truncation_blocks) ... ok
+test_changed_source_blocks (test_visual_status.VisualChecks.test_changed_source_blocks) ... ok
+test_corrupt_database_is_unknown_and_preserved (test_visual_status.VisualChecks.test_corrupt_database_is_unknown_and_preserved) ... ok
+test_future_event_blocks (test_visual_status.VisualChecks.test_future_event_blocks) ... ok
+test_healthy_observation_no_project_import_or_disk_changes (test_visual_status.VisualChecks.test_healthy_observation_no_project_import_or_disk_changes) ... ok
+test_html_payload_cannot_terminate_json_script (test_visual_status.VisualChecks.test_html_payload_cannot_terminate_json_script) ... ok
+test_known_block_not_hidden_by_unavailable_audit (test_visual_status.VisualChecks.test_known_block_not_hidden_by_unavailable_audit) ... ok
+test_latch_is_shown_without_reset (test_visual_status.VisualChecks.test_latch_is_shown_without_reset) ... ok
+test_missing_source_and_wrong_digest_never_healthy (test_visual_status.VisualChecks.test_missing_source_and_wrong_digest_never_healthy) ... ok
+test_missing_store_stays_missing_and_unknown (test_visual_status.VisualChecks.test_missing_store_stays_missing_and_unknown) ... ok
+test_no_raw_paths_or_exceptions_leak (test_visual_status.VisualChecks.test_no_raw_paths_or_exceptions_leak) ... ok
+test_oversized_or_non_regular_input_refused (test_visual_status.VisualChecks.test_oversized_or_non_regular_input_refused) ... ok
+test_rewritten_manifest_is_not_self_trusted (test_visual_status.VisualChecks.test_rewritten_manifest_is_not_self_trusted) ... ok
+test_rollback_journal_or_wal_is_unknown (test_visual_status.VisualChecks.test_rollback_journal_or_wal_is_unknown) ... ok
+test_symlink_source_and_store_refused (test_visual_status.VisualChecks.test_symlink_source_and_store_refused) ... ok
+test_unrecognized_event_not_rendered_even_with_valid_hash (test_visual_status.VisualChecks.test_unrecognized_event_not_rendered_even_with_valid_hash) ... ok
+test_warning_survives_subsequent_allowed_event (test_visual_status.VisualChecks.test_warning_survives_subsequent_allowed_event) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 1.484s
+
+OK
+test_cached_result_does_not_compute (test_time_mining.MiningChecks.test_cached_result_does_not_compute) ... ok
+test_corrupt_accounting_not_silently_recomputed (test_time_mining.MiningChecks.test_corrupt_accounting_not_silently_recomputed) ... ok
+test_new_context_does_not_reuse (test_time_mining.MiningChecks.test_new_context_does_not_reuse) ... ok
+test_reproduce_is_a_new_execution (test_time_mining.MiningChecks.test_reproduce_is_a_new_execution) ... ok
+test_tampered_source_and_wrong_task_reject (test_time_mining.MiningChecks.test_tampered_source_and_wrong_task_reject) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.398s
+
+OK

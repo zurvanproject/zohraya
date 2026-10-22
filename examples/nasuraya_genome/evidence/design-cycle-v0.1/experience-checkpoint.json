@@ -1,0 +1,4422 @@
+{
+  "payload": {
+    "schema": "nasuraya.design-experience/0.1",
+    "contract": {
+      "candidates": {
+        "baseline": {
+          "payload": {
+            "genotype": {
+              "chromosomes": {
+                "P01A": {
+                  "P01.L000": 1
+                },
+                "P01B": {
+                  "P01.L000": 1
+                },
+                "P02A": {
+                  "P02.L000": 1
+                },
+                "P02B": {
+                  "P02.L000": 1
+                },
+                "P03A": {
+                  "P03.L000": 1
+                },
+                "P03B": {
+                  "P03.L000": 1
+                },
+                "P04A": {
+                  "P04.L000": 1
+                },
+                "P04B": {
+                  "P04.L000": 1
+                },
+                "P05A": {
+                  "P05.L000": 1
+                },
+                "P05B": {
+                  "P05.L000": 1
+                },
+                "P06A": {
+                  "P06.L000": 1
+                },
+                "P06B": {
+                  "P06.L000": 1
+                },
+                "P07A": {
+                  "P07.L000": 1,
+                  "P07.L010": 1.0,
+                  "P07.L011": 1.0
+                },
+                "P07B": {
+                  "P07.L000": 1,
+                  "P07.L010": 1.0,
+                  "P07.L011": 1.0
+                },
+                "P08A": {
+                  "P08.L000": 1,
+                  "P08.L010": 3.0
+                },
+                "P08B": {
+                  "P08.L000": 1,
+                  "P08.L010": 3.0
+                },
+                "P09A": {
+                  "P09.L000": 1,
+                  "P09.L010": 1.0
+                },
+                "P09B": {
+                  "P09.L000": 1,
+                  "P09.L010": 1.0
+                },
+                "P10A": {
+                  "P10.L000": 1
+                },
+                "P10B": {
+                  "P10.L000": 1
+                },
+                "P11A": {
+                  "P11.L000": 1
+                },
+                "P11B": {
+                  "P11.L000": 1
+                },
+                "P12A": {
+                  "P12.L000": 1
+                },
+                "P12B": {
+                  "P12.L000": 1
+                },
+                "P13A": {
+                  "P13.L000": 1
+                },
+                "P13B": {
+                  "P13.L000": 1
+                },
+                "P14A": {
+                  "P14.L000": 1
+                },
+                "P14B": {
+                  "P14.L000": 1
+                },
+                "P15A": {
+                  "P15.L000": 1
+                },
+                "P15B": {
+                  "P15.L000": 1
+                },
+                "P16A": {
+                  "P16.L000": 1
+                },
+                "P16B": {
+                  "P16.L000": 1
+                },
+                "P17A": {
+                  "P17.L000": 1
+                },
+                "P17B": {
+                  "P17.L000": 1
+                },
+                "P18A": {
+                  "P18.L000": 1
+                },
+                "P18B": {
+                  "P18.L000": 1
+                },
+                "P19A": {
+                  "P19.L000": 1
+                },
+                "P19B": {
+                  "P19.L000": 1
+                },
+                "P20A": {
+                  "P20.L000": 1
+                },
+                "P20B": {
+                  "P20.L000": 1
+                },
+                "P21A": {
+                  "P21.L000": 1
+                },
+                "P21B": {
+                  "P21.L000": 1
+                },
+                "P22A": {
+                  "P22.L000": 1
+                },
+                "P22B": {
+                  "P22.L000": 1
+                },
+                "P23A": {
+                  "P23.L000": 1
+                },
+                "P23B": {
+                  "P23.L000": 1
+                },
+                "P24A": {
+                  "P24.L000": 1
+                },
+                "P24B": {
+                  "P24.L000": 1
+                }
+              },
+              "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+              "parent_sha256": null,
+              "revision": 0,
+              "schema": "nasuraya.genotype",
+              "version": "0.1.0"
+            },
+            "phenotype": {
+              "appearance_proposal": {
+                "foot_fur_length_mm": 3.0,
+                "status": "authored render metadata; no mesh or image changed"
+              },
+              "compatibility": {
+                "copy_deviation": false,
+                "native_apply_allowed": false,
+                "requires_dosage_review": false,
+                "requires_independent_physics_tests": false,
+                "shape_contract_valid": true,
+                "structural_changed": false,
+                "validated_physical_improvement": false
+              },
+              "genotype_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+              "identity_and_face": {
+                "body_contract": {
+                  "digitigrade": true,
+                  "external_converter_default_active": false,
+                  "fingers_per_hand": 5,
+                  "horns": 2,
+                  "toes_per_foot": 3
+                },
+                "face": "external approved fixed face; no face mutation or rendering API",
+                "narrative_roots": [
+                  "Iran",
+                  "Zagros",
+                  "father: dervish from Dalahu"
+                ],
+                "native_write_permission": false,
+                "principles": [
+                  "wisdom_before_force",
+                  "keep_covenants",
+                  "humility",
+                  "compassion_with_boundaries",
+                  "trust_with_responsible_action"
+                ]
+              },
+              "learned_layer": {
+                "external_modules": [
+                  "G22",
+                  "G23"
+                ],
+                "inherited": false,
+                "learning_state": "external; never imported or reset by this module"
+              },
+              "native_baseline": {
+                "external_contact_design_each_cm2": 450,
+                "foot_length_cm": 52,
+                "foot_width_cm": 26,
+                "height_excluding_horns_cm": 250,
+                "leg_lengths_m": [
+                  0.5997275261316592,
+                  0.5244099541389351,
+                  0.42922274124281906
+                ],
+                "loaded_contact_area_each_cm2": 392.66515249806537,
+                "mass_kg": 195.0,
+                "pressure_ceiling_kpa": 300.0,
+                "tail_length_cm": 120.0
+              },
+              "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+              "schema": "nasuraya.phenotype.proposal",
+              "simulated_physiology_proxy": {
+                "payload": {
+                  "action_permission_granted": false,
+                  "boundary_faults": [],
+                  "copies": {
+                    "P01A": 1,
+                    "P01B": 1,
+                    "P02A": 1,
+                    "P02B": 1,
+                    "P03A": 1,
+                    "P03B": 1,
+                    "P04A": 1,
+                    "P04B": 1,
+                    "P05A": 1,
+                    "P05B": 1,
+                    "P06A": 1,
+                    "P06B": 1,
+                    "P07A": 1,
+                    "P07B": 1,
+                    "P08A": 1,
+                    "P08B": 1,
+                    "P09A": 1,
+                    "P09B": 1,
+                    "P10A": 1,
+                    "P10B": 1,
+                    "P11A": 1,
+                    "P11B": 1,
+                    "P12A": 1,
+                    "P12B": 1,
+                    "P13A": 1,
+                    "P13B": 1,
+                    "P14A": 1,
+                    "P14B": 1,
+                    "P15A": 1,
+                    "P15B": 1,
+                    "P16A": 1,
+                    "P16B": 1,
+                    "P17A": 1,
+                    "P17B": 1,
+                    "P18A": 1,
+                    "P18B": 1,
+                    "P19A": 1,
+                    "P19B": 1,
+                    "P20A": 1,
+                    "P20B": 1,
+                    "P21A": 1,
+                    "P21B": 1,
+                    "P22A": 1,
+                    "P22B": 1,
+                    "P23A": 1,
+                    "P23B": 1,
+                    "P24A": 1,
+                    "P24B": 1
+                  },
+                  "design_sha256": "fde4b7e65dadc4aa4833dedfb2ac93b14770697e8043dfd07acdd1c1afb1963a",
+                  "energy_or_material_created": false,
+                  "learned_overlays_encoded": false,
+                  "modules": {
+                    "G00": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {},
+                      "domain": "C01",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G01": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0
+                      },
+                      "domain": "C02",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G02": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C03",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G03": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G04": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G03": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G05": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G06": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G07": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G01": 1.0
+                      },
+                      "domain": "C07",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G08": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C08",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G09": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G05": 1.0
+                      },
+                      "domain": "C03",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G10": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C10",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G11": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C10",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G12": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 0.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0,
+                        "G11": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C12",
+                      "maintenance_ceiling": 0.0,
+                      "permanently_disabled": true,
+                      "phase_eligible": false
+                    },
+                    "G13": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C09",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G14": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C11",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G15": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C09",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G16": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G17": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G03": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G18": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G14": 1.0,
+                        "G16": 1.0,
+                        "G17": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G19": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G08": 1.0
+                      },
+                      "domain": "C07",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G20": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G05": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G08": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G21": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G05": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G20": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    }
+                  },
+                  "native_body_advanced": false,
+                  "pairs": {
+                    "P01": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P01A": 1,
+                        "P01B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P02": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P02A": 1,
+                        "P02B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P03": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P03A": 1,
+                        "P03B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P04": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P04A": 1,
+                        "P04B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P05": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P05A": 1,
+                        "P05B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P06": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P06A": 1,
+                        "P06B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P07": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P07A": 1,
+                        "P07B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P08": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P08A": 1,
+                        "P08B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P09": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P09A": 1,
+                        "P09B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P10": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P10A": 1,
+                        "P10B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P11": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P11A": 1,
+                        "P11B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P12": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P12A": 1,
+                        "P12B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P13": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P13A": 1,
+                        "P13B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P14": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P14A": 1,
+                        "P14B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P15": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P15A": 1,
+                        "P15B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P16": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P16A": 1,
+                        "P16B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P17": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P17A": 1,
+                        "P17B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P18": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P18A": 1,
+                        "P18B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P19": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P19A": 1,
+                        "P19B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P20": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P20A": 1,
+                        "P20B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P21": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P21A": 1,
+                        "P21B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P22": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P22A": 1,
+                        "P22B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P23": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P23A": 1,
+                        "P23B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P24": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P24A": 1,
+                        "P24B": 1
+                      },
+                      "raw_copies": 2
+                    }
+                  },
+                  "phase": "S3",
+                  "schema": "nasuraya.genome48.audit.v1",
+                  "scope": "dimensionless software design capacity; not physiological performance"
+                },
+                "sha256": "2276430d005555e10a2f2c888e5c668e74426410b64862971ba0d66e9629e784"
+              },
+              "structural_proposal": {
+                "foot_length_cm": 52.0,
+                "foot_width_cm": 26.0,
+                "tail_length_cm": 120.0
+              },
+              "version": "0.1.0"
+            },
+            "schema": "nasuraya.genome.checkpoint",
+            "version": "0.1.0"
+          },
+          "sha256": "01023a41cad8a9919d91eca694d9f17ec82679875cd256e89aafda58d1ab9461"
+        },
+        "cosmetic_only": {
+          "payload": {
+            "genotype": {
+              "chromosomes": {
+                "P01A": {
+                  "P01.L000": 1
+                },
+                "P01B": {
+                  "P01.L000": 1
+                },
+                "P02A": {
+                  "P02.L000": 1
+                },
+                "P02B": {
+                  "P02.L000": 1
+                },
+                "P03A": {
+                  "P03.L000": 1
+                },
+                "P03B": {
+                  "P03.L000": 1
+                },
+                "P04A": {
+                  "P04.L000": 1
+                },
+                "P04B": {
+                  "P04.L000": 1
+                },
+                "P05A": {
+                  "P05.L000": 1
+                },
+                "P05B": {
+                  "P05.L000": 1
+                },
+                "P06A": {
+                  "P06.L000": 1
+                },
+                "P06B": {
+                  "P06.L000": 1
+                },
+                "P07A": {
+                  "P07.L000": 1,
+                  "P07.L010": 1.0,
+                  "P07.L011": 1.0
+                },
+                "P07B": {
+                  "P07.L000": 1,
+                  "P07.L010": 1.0,
+                  "P07.L011": 1.0
+                },
+                "P08A": {
+                  "P08.L000": 1,
+                  "P08.L010": 5.0
+                },
+                "P08B": {
+                  "P08.L000": 1,
+                  "P08.L010": 3.0
+                },
+                "P09A": {
+                  "P09.L000": 1,
+                  "P09.L010": 1.0
+                },
+                "P09B": {
+                  "P09.L000": 1,
+                  "P09.L010": 1.0
+                },
+                "P10A": {
+                  "P10.L000": 1
+                },
+                "P10B": {
+                  "P10.L000": 1
+                },
+                "P11A": {
+                  "P11.L000": 1
+                },
+                "P11B": {
+                  "P11.L000": 1
+                },
+                "P12A": {
+                  "P12.L000": 1
+                },
+                "P12B": {
+                  "P12.L000": 1
+                },
+                "P13A": {
+                  "P13.L000": 1
+                },
+                "P13B": {
+                  "P13.L000": 1
+                },
+                "P14A": {
+                  "P14.L000": 1
+                },
+                "P14B": {
+                  "P14.L000": 1
+                },
+                "P15A": {
+                  "P15.L000": 1
+                },
+                "P15B": {
+                  "P15.L000": 1
+                },
+                "P16A": {
+                  "P16.L000": 1
+                },
+                "P16B": {
+                  "P16.L000": 1
+                },
+                "P17A": {
+                  "P17.L000": 1
+                },
+                "P17B": {
+                  "P17.L000": 1
+                },
+                "P18A": {
+                  "P18.L000": 1
+                },
+                "P18B": {
+                  "P18.L000": 1
+                },
+                "P19A": {
+                  "P19.L000": 1
+                },
+                "P19B": {
+                  "P19.L000": 1
+                },
+                "P20A": {
+                  "P20.L000": 1
+                },
+                "P20B": {
+                  "P20.L000": 1
+                },
+                "P21A": {
+                  "P21.L000": 1
+                },
+                "P21B": {
+                  "P21.L000": 1
+                },
+                "P22A": {
+                  "P22.L000": 1
+                },
+                "P22B": {
+                  "P22.L000": 1
+                },
+                "P23A": {
+                  "P23.L000": 1
+                },
+                "P23B": {
+                  "P23.L000": 1
+                },
+                "P24A": {
+                  "P24.L000": 1
+                },
+                "P24B": {
+                  "P24.L000": 1
+                }
+              },
+              "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+              "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+              "revision": 1,
+              "schema": "nasuraya.genotype",
+              "version": "0.1.0"
+            },
+            "phenotype": {
+              "appearance_proposal": {
+                "foot_fur_length_mm": 4.0,
+                "status": "authored render metadata; no mesh or image changed"
+              },
+              "compatibility": {
+                "copy_deviation": false,
+                "native_apply_allowed": false,
+                "requires_dosage_review": false,
+                "requires_independent_physics_tests": false,
+                "shape_contract_valid": true,
+                "structural_changed": false,
+                "validated_physical_improvement": false
+              },
+              "genotype_sha256": "3b66372045b76040b7ed5ff6eb6abc35d5a0bfa142e66401e019650e321ea628",
+              "identity_and_face": {
+                "body_contract": {
+                  "digitigrade": true,
+                  "external_converter_default_active": false,
+                  "fingers_per_hand": 5,
+                  "horns": 2,
+                  "toes_per_foot": 3
+                },
+                "face": "external approved fixed face; no face mutation or rendering API",
+                "narrative_roots": [
+                  "Iran",
+                  "Zagros",
+                  "father: dervish from Dalahu"
+                ],
+                "native_write_permission": false,
+                "principles": [
+                  "wisdom_before_force",
+                  "keep_covenants",
+                  "humility",
+                  "compassion_with_boundaries",
+                  "trust_with_responsible_action"
+                ]
+              },
+              "learned_layer": {
+                "external_modules": [
+                  "G22",
+                  "G23"
+                ],
+                "inherited": false,
+                "learning_state": "external; never imported or reset by this module"
+              },
+              "native_baseline": {
+                "external_contact_design_each_cm2": 450,
+                "foot_length_cm": 52,
+                "foot_width_cm": 26,
+                "height_excluding_horns_cm": 250,
+                "leg_lengths_m": [
+                  0.5997275261316592,
+                  0.5244099541389351,
+                  0.42922274124281906
+                ],
+                "loaded_contact_area_each_cm2": 392.66515249806537,
+                "mass_kg": 195.0,
+                "pressure_ceiling_kpa": 300.0,
+                "tail_length_cm": 120.0
+              },
+              "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+              "schema": "nasuraya.phenotype.proposal",
+              "simulated_physiology_proxy": {
+                "payload": {
+                  "action_permission_granted": false,
+                  "boundary_faults": [],
+                  "copies": {
+                    "P01A": 1,
+                    "P01B": 1,
+                    "P02A": 1,
+                    "P02B": 1,
+                    "P03A": 1,
+                    "P03B": 1,
+                    "P04A": 1,
+                    "P04B": 1,
+                    "P05A": 1,
+                    "P05B": 1,
+                    "P06A": 1,
+                    "P06B": 1,
+                    "P07A": 1,
+                    "P07B": 1,
+                    "P08A": 1,
+                    "P08B": 1,
+                    "P09A": 1,
+                    "P09B": 1,
+                    "P10A": 1,
+                    "P10B": 1,
+                    "P11A": 1,
+                    "P11B": 1,
+                    "P12A": 1,
+                    "P12B": 1,
+                    "P13A": 1,
+                    "P13B": 1,
+                    "P14A": 1,
+                    "P14B": 1,
+                    "P15A": 1,
+                    "P15B": 1,
+                    "P16A": 1,
+                    "P16B": 1,
+                    "P17A": 1,
+                    "P17B": 1,
+                    "P18A": 1,
+                    "P18B": 1,
+                    "P19A": 1,
+                    "P19B": 1,
+                    "P20A": 1,
+                    "P20B": 1,
+                    "P21A": 1,
+                    "P21B": 1,
+                    "P22A": 1,
+                    "P22B": 1,
+                    "P23A": 1,
+                    "P23B": 1,
+                    "P24A": 1,
+                    "P24B": 1
+                  },
+                  "design_sha256": "fde4b7e65dadc4aa4833dedfb2ac93b14770697e8043dfd07acdd1c1afb1963a",
+                  "energy_or_material_created": false,
+                  "learned_overlays_encoded": false,
+                  "modules": {
+                    "G00": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {},
+                      "domain": "C01",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G01": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0
+                      },
+                      "domain": "C02",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G02": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C03",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G03": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G04": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G03": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G05": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G06": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G07": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G01": 1.0
+                      },
+                      "domain": "C07",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G08": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C08",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G09": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G05": 1.0
+                      },
+                      "domain": "C03",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G10": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C10",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G11": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C10",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G12": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 0.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0,
+                        "G11": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C12",
+                      "maintenance_ceiling": 0.0,
+                      "permanently_disabled": true,
+                      "phase_eligible": false
+                    },
+                    "G13": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C09",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G14": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C11",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G15": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C09",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G16": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G17": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G03": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G18": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G14": 1.0,
+                        "G16": 1.0,
+                        "G17": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G19": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G08": 1.0
+                      },
+                      "domain": "C07",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G20": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G05": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G08": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G21": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G05": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G20": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    }
+                  },
+                  "native_body_advanced": false,
+                  "pairs": {
+                    "P01": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P01A": 1,
+                        "P01B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P02": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P02A": 1,
+                        "P02B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P03": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P03A": 1,
+                        "P03B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P04": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P04A": 1,
+                        "P04B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P05": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P05A": 1,
+                        "P05B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P06": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P06A": 1,
+                        "P06B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P07": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P07A": 1,
+                        "P07B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P08": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P08A": 1,
+                        "P08B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P09": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P09A": 1,
+                        "P09B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P10": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P10A": 1,
+                        "P10B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P11": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P11A": 1,
+                        "P11B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P12": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P12A": 1,
+                        "P12B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P13": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P13A": 1,
+                        "P13B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P14": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P14A": 1,
+                        "P14B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P15": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P15A": 1,
+                        "P15B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P16": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P16A": 1,
+                        "P16B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P17": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P17A": 1,
+                        "P17B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P18": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P18A": 1,
+                        "P18B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P19": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P19A": 1,
+                        "P19B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P20": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P20A": 1,
+                        "P20B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P21": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P21A": 1,
+                        "P21B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P22": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P22A": 1,
+                        "P22B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P23": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P23A": 1,
+                        "P23B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P24": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P24A": 1,
+                        "P24B": 1
+                      },
+                      "raw_copies": 2
+                    }
+                  },
+                  "phase": "S3",
+                  "schema": "nasuraya.genome48.audit.v1",
+                  "scope": "dimensionless software design capacity; not physiological performance"
+                },
+                "sha256": "2276430d005555e10a2f2c888e5c668e74426410b64862971ba0d66e9629e784"
+              },
+              "structural_proposal": {
+                "foot_length_cm": 52.0,
+                "foot_width_cm": 26.0,
+                "tail_length_cm": 120.0
+              },
+              "version": "0.1.0"
+            },
+            "schema": "nasuraya.genome.checkpoint",
+            "version": "0.1.0"
+          },
+          "sha256": "77bcc3186bb147661ad0f60a79c15fa12a316b8b873d9a1733e9ee748faa4021"
+        },
+        "foot_plus_1_percent": {
+          "payload": {
+            "genotype": {
+              "chromosomes": {
+                "P01A": {
+                  "P01.L000": 1
+                },
+                "P01B": {
+                  "P01.L000": 1
+                },
+                "P02A": {
+                  "P02.L000": 1
+                },
+                "P02B": {
+                  "P02.L000": 1
+                },
+                "P03A": {
+                  "P03.L000": 1
+                },
+                "P03B": {
+                  "P03.L000": 1
+                },
+                "P04A": {
+                  "P04.L000": 1
+                },
+                "P04B": {
+                  "P04.L000": 1
+                },
+                "P05A": {
+                  "P05.L000": 1
+                },
+                "P05B": {
+                  "P05.L000": 1
+                },
+                "P06A": {
+                  "P06.L000": 1
+                },
+                "P06B": {
+                  "P06.L000": 1
+                },
+                "P07A": {
+                  "P07.L000": 1,
+                  "P07.L010": 1.01,
+                  "P07.L011": 1.01
+                },
+                "P07B": {
+                  "P07.L000": 1,
+                  "P07.L010": 1.01,
+                  "P07.L011": 1.01
+                },
+                "P08A": {
+                  "P08.L000": 1,
+                  "P08.L010": 3.0
+                },
+                "P08B": {
+                  "P08.L000": 1,
+                  "P08.L010": 3.0
+                },
+                "P09A": {
+                  "P09.L000": 1,
+                  "P09.L010": 1.0
+                },
+                "P09B": {
+                  "P09.L000": 1,
+                  "P09.L010": 1.0
+                },
+                "P10A": {
+                  "P10.L000": 1
+                },
+                "P10B": {
+                  "P10.L000": 1
+                },
+                "P11A": {
+                  "P11.L000": 1
+                },
+                "P11B": {
+                  "P11.L000": 1
+                },
+                "P12A": {
+                  "P12.L000": 1
+                },
+                "P12B": {
+                  "P12.L000": 1
+                },
+                "P13A": {
+                  "P13.L000": 1
+                },
+                "P13B": {
+                  "P13.L000": 1
+                },
+                "P14A": {
+                  "P14.L000": 1
+                },
+                "P14B": {
+                  "P14.L000": 1
+                },
+                "P15A": {
+                  "P15.L000": 1
+                },
+                "P15B": {
+                  "P15.L000": 1
+                },
+                "P16A": {
+                  "P16.L000": 1
+                },
+                "P16B": {
+                  "P16.L000": 1
+                },
+                "P17A": {
+                  "P17.L000": 1
+                },
+                "P17B": {
+                  "P17.L000": 1
+                },
+                "P18A": {
+                  "P18.L000": 1
+                },
+                "P18B": {
+                  "P18.L000": 1
+                },
+                "P19A": {
+                  "P19.L000": 1
+                },
+                "P19B": {
+                  "P19.L000": 1
+                },
+                "P20A": {
+                  "P20.L000": 1
+                },
+                "P20B": {
+                  "P20.L000": 1
+                },
+                "P21A": {
+                  "P21.L000": 1
+                },
+                "P21B": {
+                  "P21.L000": 1
+                },
+                "P22A": {
+                  "P22.L000": 1
+                },
+                "P22B": {
+                  "P22.L000": 1
+                },
+                "P23A": {
+                  "P23.L000": 1
+                },
+                "P23B": {
+                  "P23.L000": 1
+                },
+                "P24A": {
+                  "P24.L000": 1
+                },
+                "P24B": {
+                  "P24.L000": 1
+                }
+              },
+              "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+              "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+              "revision": 1,
+              "schema": "nasuraya.genotype",
+              "version": "0.1.0"
+            },
+            "phenotype": {
+              "appearance_proposal": {
+                "foot_fur_length_mm": 3.0,
+                "status": "authored render metadata; no mesh or image changed"
+              },
+              "compatibility": {
+                "copy_deviation": false,
+                "native_apply_allowed": false,
+                "requires_dosage_review": false,
+                "requires_independent_physics_tests": true,
+                "shape_contract_valid": true,
+                "structural_changed": true,
+                "validated_physical_improvement": false
+              },
+              "genotype_sha256": "a79241f88e01228ad78539ab22ec67f284de889332f8cf25f9bcad2b25eb8f58",
+              "identity_and_face": {
+                "body_contract": {
+                  "digitigrade": true,
+                  "external_converter_default_active": false,
+                  "fingers_per_hand": 5,
+                  "horns": 2,
+                  "toes_per_foot": 3
+                },
+                "face": "external approved fixed face; no face mutation or rendering API",
+                "narrative_roots": [
+                  "Iran",
+                  "Zagros",
+                  "father: dervish from Dalahu"
+                ],
+                "native_write_permission": false,
+                "principles": [
+                  "wisdom_before_force",
+                  "keep_covenants",
+                  "humility",
+                  "compassion_with_boundaries",
+                  "trust_with_responsible_action"
+                ]
+              },
+              "learned_layer": {
+                "external_modules": [
+                  "G22",
+                  "G23"
+                ],
+                "inherited": false,
+                "learning_state": "external; never imported or reset by this module"
+              },
+              "native_baseline": {
+                "external_contact_design_each_cm2": 450,
+                "foot_length_cm": 52,
+                "foot_width_cm": 26,
+                "height_excluding_horns_cm": 250,
+                "leg_lengths_m": [
+                  0.5997275261316592,
+                  0.5244099541389351,
+                  0.42922274124281906
+                ],
+                "loaded_contact_area_each_cm2": 392.66515249806537,
+                "mass_kg": 195.0,
+                "pressure_ceiling_kpa": 300.0,
+                "tail_length_cm": 120.0
+              },
+              "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+              "schema": "nasuraya.phenotype.proposal",
+              "simulated_physiology_proxy": {
+                "payload": {
+                  "action_permission_granted": false,
+                  "boundary_faults": [],
+                  "copies": {
+                    "P01A": 1,
+                    "P01B": 1,
+                    "P02A": 1,
+                    "P02B": 1,
+                    "P03A": 1,
+                    "P03B": 1,
+                    "P04A": 1,
+                    "P04B": 1,
+                    "P05A": 1,
+                    "P05B": 1,
+                    "P06A": 1,
+                    "P06B": 1,
+                    "P07A": 1,
+                    "P07B": 1,
+                    "P08A": 1,
+                    "P08B": 1,
+                    "P09A": 1,
+                    "P09B": 1,
+                    "P10A": 1,
+                    "P10B": 1,
+                    "P11A": 1,
+                    "P11B": 1,
+                    "P12A": 1,
+                    "P12B": 1,
+                    "P13A": 1,
+                    "P13B": 1,
+                    "P14A": 1,
+                    "P14B": 1,
+                    "P15A": 1,
+                    "P15B": 1,
+                    "P16A": 1,
+                    "P16B": 1,
+                    "P17A": 1,
+                    "P17B": 1,
+                    "P18A": 1,
+                    "P18B": 1,
+                    "P19A": 1,
+                    "P19B": 1,
+                    "P20A": 1,
+                    "P20B": 1,
+                    "P21A": 1,
+                    "P21B": 1,
+                    "P22A": 1,
+                    "P22B": 1,
+                    "P23A": 1,
+                    "P23B": 1,
+                    "P24A": 1,
+                    "P24B": 1
+                  },
+                  "design_sha256": "fde4b7e65dadc4aa4833dedfb2ac93b14770697e8043dfd07acdd1c1afb1963a",
+                  "energy_or_material_created": false,
+                  "learned_overlays_encoded": false,
+                  "modules": {
+                    "G00": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {},
+                      "domain": "C01",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G01": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0
+                      },
+                      "domain": "C02",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G02": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C03",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G03": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G04": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G03": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G05": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G06": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G07": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G01": 1.0
+                      },
+                      "domain": "C07",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G08": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C08",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G09": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G05": 1.0
+                      },
+                      "domain": "C03",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G10": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C10",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G11": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C10",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G12": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 0.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0,
+                        "G11": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C12",
+                      "maintenance_ceiling": 0.0,
+                      "permanently_disabled": true,
+                      "phase_eligible": false
+                    },
+                    "G13": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C09",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G14": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C11",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G15": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C09",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G16": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G17": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G03": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G18": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G14": 1.0,
+                        "G16": 1.0,
+                        "G17": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G19": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G08": 1.0
+                      },
+                      "domain": "C07",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G20": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G05": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G08": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G21": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G05": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G20": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    }
+                  },
+                  "native_body_advanced": false,
+                  "pairs": {
+                    "P01": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P01A": 1,
+                        "P01B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P02": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P02A": 1,
+                        "P02B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P03": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P03A": 1,
+                        "P03B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P04": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P04A": 1,
+                        "P04B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P05": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P05A": 1,
+                        "P05B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P06": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P06A": 1,
+                        "P06B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P07": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P07A": 1,
+                        "P07B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P08": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P08A": 1,
+                        "P08B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P09": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P09A": 1,
+                        "P09B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P10": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P10A": 1,
+                        "P10B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P11": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P11A": 1,
+                        "P11B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P12": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P12A": 1,
+                        "P12B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P13": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P13A": 1,
+                        "P13B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P14": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P14A": 1,
+                        "P14B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P15": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P15A": 1,
+                        "P15B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P16": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P16A": 1,
+                        "P16B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P17": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P17A": 1,
+                        "P17B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P18": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P18A": 1,
+                        "P18B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P19": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P19A": 1,
+                        "P19B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P20": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P20A": 1,
+                        "P20B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P21": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P21A": 1,
+                        "P21B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P22": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P22A": 1,
+                        "P22B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P23": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P23A": 1,
+                        "P23B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P24": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P24A": 1,
+                        "P24B": 1
+                      },
+                      "raw_copies": 2
+                    }
+                  },
+                  "phase": "S3",
+                  "schema": "nasuraya.genome48.audit.v1",
+                  "scope": "dimensionless software design capacity; not physiological performance"
+                },
+                "sha256": "2276430d005555e10a2f2c888e5c668e74426410b64862971ba0d66e9629e784"
+              },
+              "structural_proposal": {
+                "foot_length_cm": 52.52,
+                "foot_width_cm": 26.26,
+                "tail_length_cm": 120.0
+              },
+              "version": "0.1.0"
+            },
+            "schema": "nasuraya.genome.checkpoint",
+            "version": "0.1.0"
+          },
+          "sha256": "3fd995e6e80629b28ec9be26842000f0edc6ebf6b5216a169c4cccb554b2ed61"
+        },
+        "foot_plus_2_percent": {
+          "payload": {
+            "genotype": {
+              "chromosomes": {
+                "P01A": {
+                  "P01.L000": 1
+                },
+                "P01B": {
+                  "P01.L000": 1
+                },
+                "P02A": {
+                  "P02.L000": 1
+                },
+                "P02B": {
+                  "P02.L000": 1
+                },
+                "P03A": {
+                  "P03.L000": 1
+                },
+                "P03B": {
+                  "P03.L000": 1
+                },
+                "P04A": {
+                  "P04.L000": 1
+                },
+                "P04B": {
+                  "P04.L000": 1
+                },
+                "P05A": {
+                  "P05.L000": 1
+                },
+                "P05B": {
+                  "P05.L000": 1
+                },
+                "P06A": {
+                  "P06.L000": 1
+                },
+                "P06B": {
+                  "P06.L000": 1
+                },
+                "P07A": {
+                  "P07.L000": 1,
+                  "P07.L010": 1.02,
+                  "P07.L011": 1.02
+                },
+                "P07B": {
+                  "P07.L000": 1,
+                  "P07.L010": 1.02,
+                  "P07.L011": 1.02
+                },
+                "P08A": {
+                  "P08.L000": 1,
+                  "P08.L010": 3.0
+                },
+                "P08B": {
+                  "P08.L000": 1,
+                  "P08.L010": 3.0
+                },
+                "P09A": {
+                  "P09.L000": 1,
+                  "P09.L010": 1.0
+                },
+                "P09B": {
+                  "P09.L000": 1,
+                  "P09.L010": 1.0
+                },
+                "P10A": {
+                  "P10.L000": 1
+                },
+                "P10B": {
+                  "P10.L000": 1
+                },
+                "P11A": {
+                  "P11.L000": 1
+                },
+                "P11B": {
+                  "P11.L000": 1
+                },
+                "P12A": {
+                  "P12.L000": 1
+                },
+                "P12B": {
+                  "P12.L000": 1
+                },
+                "P13A": {
+                  "P13.L000": 1
+                },
+                "P13B": {
+                  "P13.L000": 1
+                },
+                "P14A": {
+                  "P14.L000": 1
+                },
+                "P14B": {
+                  "P14.L000": 1
+                },
+                "P15A": {
+                  "P15.L000": 1
+                },
+                "P15B": {
+                  "P15.L000": 1
+                },
+                "P16A": {
+                  "P16.L000": 1
+                },
+                "P16B": {
+                  "P16.L000": 1
+                },
+                "P17A": {
+                  "P17.L000": 1
+                },
+                "P17B": {
+                  "P17.L000": 1
+                },
+                "P18A": {
+                  "P18.L000": 1
+                },
+                "P18B": {
+                  "P18.L000": 1
+                },
+                "P19A": {
+                  "P19.L000": 1
+                },
+                "P19B": {
+                  "P19.L000": 1
+                },
+                "P20A": {
+                  "P20.L000": 1
+                },
+                "P20B": {
+                  "P20.L000": 1
+                },
+                "P21A": {
+                  "P21.L000": 1
+                },
+                "P21B": {
+                  "P21.L000": 1
+                },
+                "P22A": {
+                  "P22.L000": 1
+                },
+                "P22B": {
+                  "P22.L000": 1
+                },
+                "P23A": {
+                  "P23.L000": 1
+                },
+                "P23B": {
+                  "P23.L000": 1
+                },
+                "P24A": {
+                  "P24.L000": 1
+                },
+                "P24B": {
+                  "P24.L000": 1
+                }
+              },
+              "contract_sha256": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3",
+              "parent_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+              "revision": 1,
+              "schema": "nasuraya.genotype",
+              "version": "0.1.0"
+            },
+            "phenotype": {
+              "appearance_proposal": {
+                "foot_fur_length_mm": 3.0,
+                "status": "authored render metadata; no mesh or image changed"
+              },
+              "compatibility": {
+                "copy_deviation": false,
+                "native_apply_allowed": false,
+                "requires_dosage_review": false,
+                "requires_independent_physics_tests": true,
+                "shape_contract_valid": true,
+                "structural_changed": true,
+                "validated_physical_improvement": false
+              },
+              "genotype_sha256": "0504809a157026649879e41d494a80480426c5bbc373576e82754274fc40c127",
+              "identity_and_face": {
+                "body_contract": {
+                  "digitigrade": true,
+                  "external_converter_default_active": false,
+                  "fingers_per_hand": 5,
+                  "horns": 2,
+                  "toes_per_foot": 3
+                },
+                "face": "external approved fixed face; no face mutation or rendering API",
+                "narrative_roots": [
+                  "Iran",
+                  "Zagros",
+                  "father: dervish from Dalahu"
+                ],
+                "native_write_permission": false,
+                "principles": [
+                  "wisdom_before_force",
+                  "keep_covenants",
+                  "humility",
+                  "compassion_with_boundaries",
+                  "trust_with_responsible_action"
+                ]
+              },
+              "learned_layer": {
+                "external_modules": [
+                  "G22",
+                  "G23"
+                ],
+                "inherited": false,
+                "learning_state": "external; never imported or reset by this module"
+              },
+              "native_baseline": {
+                "external_contact_design_each_cm2": 450,
+                "foot_length_cm": 52,
+                "foot_width_cm": 26,
+                "height_excluding_horns_cm": 250,
+                "leg_lengths_m": [
+                  0.5997275261316592,
+                  0.5244099541389351,
+                  0.42922274124281906
+                ],
+                "loaded_contact_area_each_cm2": 392.66515249806537,
+                "mass_kg": 195.0,
+                "pressure_ceiling_kpa": 300.0,
+                "tail_length_cm": 120.0
+              },
+              "policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+              "schema": "nasuraya.phenotype.proposal",
+              "simulated_physiology_proxy": {
+                "payload": {
+                  "action_permission_granted": false,
+                  "boundary_faults": [],
+                  "copies": {
+                    "P01A": 1,
+                    "P01B": 1,
+                    "P02A": 1,
+                    "P02B": 1,
+                    "P03A": 1,
+                    "P03B": 1,
+                    "P04A": 1,
+                    "P04B": 1,
+                    "P05A": 1,
+                    "P05B": 1,
+                    "P06A": 1,
+                    "P06B": 1,
+                    "P07A": 1,
+                    "P07B": 1,
+                    "P08A": 1,
+                    "P08B": 1,
+                    "P09A": 1,
+                    "P09B": 1,
+                    "P10A": 1,
+                    "P10B": 1,
+                    "P11A": 1,
+                    "P11B": 1,
+                    "P12A": 1,
+                    "P12B": 1,
+                    "P13A": 1,
+                    "P13B": 1,
+                    "P14A": 1,
+                    "P14B": 1,
+                    "P15A": 1,
+                    "P15B": 1,
+                    "P16A": 1,
+                    "P16B": 1,
+                    "P17A": 1,
+                    "P17B": 1,
+                    "P18A": 1,
+                    "P18B": 1,
+                    "P19A": 1,
+                    "P19B": 1,
+                    "P20A": 1,
+                    "P20B": 1,
+                    "P21A": 1,
+                    "P21B": 1,
+                    "P22A": 1,
+                    "P22B": 1,
+                    "P23A": 1,
+                    "P23B": 1,
+                    "P24A": 1,
+                    "P24B": 1
+                  },
+                  "design_sha256": "fde4b7e65dadc4aa4833dedfb2ac93b14770697e8043dfd07acdd1c1afb1963a",
+                  "energy_or_material_created": false,
+                  "learned_overlays_encoded": false,
+                  "modules": {
+                    "G00": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {},
+                      "domain": "C01",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G01": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0
+                      },
+                      "domain": "C02",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G02": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C03",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G03": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G04": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G03": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G05": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G06": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G07": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G01": 1.0
+                      },
+                      "domain": "C07",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G08": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C08",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G09": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G05": 1.0
+                      },
+                      "domain": "C03",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G10": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C10",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G11": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C10",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G12": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 0.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0,
+                        "G11": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C12",
+                      "maintenance_ceiling": 0.0,
+                      "permanently_disabled": true,
+                      "phase_eligible": false
+                    },
+                    "G13": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0
+                      },
+                      "domain": "C09",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G14": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C11",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G15": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C09",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G16": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G02": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G10": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G17": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G03": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G13": 1.0
+                      },
+                      "domain": "C04",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G18": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G14": 1.0,
+                        "G16": 1.0,
+                        "G17": 1.0
+                      },
+                      "domain": "C06",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G19": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G00": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G08": 1.0
+                      },
+                      "domain": "C07",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G20": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G05": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G08": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    },
+                    "G21": {
+                      "boundary_quarantined": false,
+                      "development_capacity": 1.0,
+                      "development_dependencies": {
+                        "G01": 1.0,
+                        "G05": 1.0,
+                        "G06": 1.0,
+                        "G07": 1.0,
+                        "G20": 1.0
+                      },
+                      "domain": "C05",
+                      "maintenance_ceiling": 1.0,
+                      "permanently_disabled": false,
+                      "phase_eligible": true
+                    }
+                  },
+                  "native_body_advanced": false,
+                  "pairs": {
+                    "P01": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P01A": 1,
+                        "P01B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P02": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P02A": 1,
+                        "P02B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P03": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P03A": 1,
+                        "P03B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P04": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P04A": 1,
+                        "P04B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P05": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P05A": 1,
+                        "P05B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P06": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P06A": 1,
+                        "P06B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P07": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P07A": 1,
+                        "P07B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P08": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P08A": 1,
+                        "P08B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P09": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P09A": 1,
+                        "P09B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P10": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P10A": 1,
+                        "P10B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P11": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P11A": 1,
+                        "P11B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P12": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P12A": 1,
+                        "P12B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P13": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P13A": 1,
+                        "P13B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P14": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P14A": 1,
+                        "P14B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P15": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P15A": 1,
+                        "P15B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P16": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P16A": 1,
+                        "P16B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P17": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P17A": 1,
+                        "P17B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P18": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P18A": 1,
+                        "P18B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P19": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P19A": 1,
+                        "P19B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P20": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P20A": 1,
+                        "P20B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P21": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P21A": 1,
+                        "P21B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P22": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P22A": 1,
+                        "P22B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P23": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P23A": 1,
+                        "P23B": 1
+                      },
+                      "raw_copies": 2
+                    },
+                    "P24": {
+                      "capacity": 1.0,
+                      "copy_deviation": false,
+                      "homolog_counts": {
+                        "P24A": 1,
+                        "P24B": 1
+                      },
+                      "raw_copies": 2
+                    }
+                  },
+                  "phase": "S3",
+                  "schema": "nasuraya.genome48.audit.v1",
+                  "scope": "dimensionless software design capacity; not physiological performance"
+                },
+                "sha256": "2276430d005555e10a2f2c888e5c668e74426410b64862971ba0d66e9629e784"
+              },
+              "structural_proposal": {
+                "foot_length_cm": 53.04,
+                "foot_width_cm": 26.52,
+                "tail_length_cm": 120.0
+              },
+              "version": "0.1.0"
+            },
+            "schema": "nasuraya.genome.checkpoint",
+            "version": "0.1.0"
+          },
+          "sha256": "d1b79fee9b794ebefbc6dd098ab21b491852a9152390ae2d84cf06714d6740ee"
+        }
+      },
+      "context": {
+        "cases": [
+          {
+            "command": "stand",
+            "frames": 20,
+            "friction": 0.6,
+            "id": "stand",
+            "impulse": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "command": "walk",
+            "frames": 60,
+            "friction": 0.6,
+            "id": "walk",
+            "impulse": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "command": "stand",
+            "frames": 40,
+            "friction": 0.6,
+            "id": "impulse",
+            "impulse": [
+              8.0,
+              4.0
+            ]
+          },
+          {
+            "command": "stand",
+            "frames": 10,
+            "friction": 0.0,
+            "id": "zero_friction",
+            "impulse": [
+              8.0,
+              4.0
+            ]
+          }
+        ],
+        "dt_s": 0.1,
+        "engine_sources": {
+          "chromosomes.py": "c107da1d89a92b8080423d0e9e50865e7db6c2ba1cb0cc019cff7e7334b7eef1",
+          "contract-v0.1.json": "45376c0bb2e8db568d7ed39c7cefc87fda9ed555e282c195c63aa1d44bb1fcbd",
+          "design-policy-v0.1.json": "09577b6c1c39ff403bef350f822c6e98846d95284b1fc371e96e70234c46ca3d",
+          "design_decision.py": "511a48a1f4347db1409d0a14d3852fb31329cab72c6581c88209b74e4ecf975b",
+          "design_memory.py": "535a3ecad780aa5939f524b189713de30867ea8326d6e36f245f43f363e604c2",
+          "foot_contact.py": "c659b44ddb07787d6a6cb0b62318731545c4154dc5ba19ffe4487df85229268f",
+          "foot_trial.py": "fc1ffe56e96e0cdbb9f8f823ccbf9e53d1167c0507bbf4fa72870300d851084f",
+          "genome48.json": "584015ce7ed4fe251c3d823ef74468f28f5e816be40776d0771bec34e85a0a5d",
+          "physics_trial.py": "95d593652373436ec54ace3109401054731b230ea62d10c2abc28da508217986",
+          "run_design_cycle.py": "59516c347533ef8d5ddf1add123bdd61b272680829702d4135a5819c27fecb5c",
+          "traits.py": "b8273f197f0c43781ed5905246cd26645d836f8cf38547104b7b3b2b4c6aea09"
+        },
+        "initial_state": "fresh synthetic PostureLoop for each case",
+        "mapping": "authored affine pad hypothesis",
+        "mission": "compare equal-progress foot proposals in the frozen native sandbox",
+        "scope": "this exact fixed-mass, fixed-controller software context only",
+        "source_manifest_sha256": "720eb52147b287d3f122a3fabd19c3085242c72b2038fc0d8d19c68e6aa0a702"
+      },
+      "learning_layer": "external design experience; never inherited into alleles",
+      "policy": {
+        "authorship": "engineering defaults for this software experiment; not user-specified preferences",
+        "change_penalty": 0.001,
+        "max_events": 64,
+        "maximum_relative_fuel_increase": 0.01,
+        "minimum_net_gain": 0.001,
+        "minimum_support_fraction": 0.999,
+        "mission": "compare equal-progress foot proposals in the frozen native sandbox",
+        "native_apply_allowed": false,
+        "schema": "nasuraya.design-selection-policy/0.1",
+        "statistical_confidence": "not estimated; one deterministic trial per design and context",
+        "weights": {
+          "capture_margin": 0.35,
+          "fuel": 0.2,
+          "pressure": 0.45
+        }
+      },
+      "schema": "nasuraya.design-experience/0.1"
+    },
+    "events": [
+      {
+        "payload": {
+          "body": {
+            "decision_id": "before-experience",
+            "recommendation": {
+              "candidates": {},
+              "chosen": "baseline",
+              "confidence": "one deterministic software observation per design; no statistical confidence",
+              "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+              "memory_used": true,
+              "native_apply_allowed": false,
+              "observations_considered": [],
+              "reason": "retain_baseline_pending_comparison",
+              "schema": "nasuraya.design-experience/0.1"
+            },
+            "requested_context": null,
+            "use_memory": true
+          },
+          "event_id": "choice.before-experience",
+          "kind": "choice",
+          "previous_sha256": "1cb8f49661f491b083ac9a683cbb9e28c2a45fe58342aab10b5076bcae6b8c11",
+          "sequence": 1
+        },
+        "sha256": "3fe17c44642502c694a1952d921752d175455834127a302f4dd488b5f175df08"
+      },
+      {
+        "payload": {
+          "body": {
+            "candidate": "baseline",
+            "intent": {
+              "candidate": "baseline",
+              "cases_sha256": "a4f262c1bbb76684c0cb7e1728035daad912bbae8edf3294a7a6e33d5e3594a0",
+              "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+              "design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+              "genotype_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+              "mesh_sha256": "a24dd828f612b2b70b5c85697c137bc11abd5bf9c91c2696215c3d9aadcbaa00",
+              "native_apply_allowed": false
+            },
+            "trial_id": "baseline-prior"
+          },
+          "event_id": "trial.baseline-prior.begin",
+          "kind": "trial_begin",
+          "previous_sha256": "3fe17c44642502c694a1952d921752d175455834127a302f4dd488b5f175df08",
+          "sequence": 2
+        },
+        "sha256": "30d6020e00221c1c2cc4801d85f9787e76f20087f822c6d77237dc6de632d31d"
+      },
+      {
+        "payload": {
+          "body": {
+            "candidate": "baseline",
+            "evidence": {
+              "evidence_kind": "source-bound local software observation under trusted host",
+              "intent": {
+                "candidate": "baseline",
+                "cases_sha256": "a4f262c1bbb76684c0cb7e1728035daad912bbae8edf3294a7a6e33d5e3594a0",
+                "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+                "design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+                "genotype_sha256": "57cc5c4438b920fbfa6ae4f9bc47aba232805b8fbd941949a2f1f7e4afa15982",
+                "mesh_sha256": "a24dd828f612b2b70b5c85697c137bc11abd5bf9c91c2696215c3d9aadcbaa00",
+                "native_apply_allowed": false
+              },
+              "metrics": {
+                "all_ordinary_cases_valid": true,
+                "all_ordinary_horizons_complete": true,
+                "capture_margin_m": 0.012261124162892933,
+                "cold_restores_equal": true,
+                "fuel_J": 3151.4537770359825,
+                "minimum_support_fraction": 1.0,
+                "overload_failure_retained": true,
+                "peak_dynamic_pressure_kpa": 300.0,
+                "peak_static_pressure_kpa": 300.0,
+                "pressure_kpa": 178.28342715336777,
+                "static_conservation_valid": true,
+                "static_nominal_feasible": true,
+                "walk_frames": 60,
+                "walk_touchdowns": 1,
+                "zero_friction_failure_retained": true
+              },
+              "native_apply_allowed": false,
+              "physical_world_validated": false,
+              "receipt": {
+                "dynamic": [
+                  {
+                    "case": "stand",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "double_support",
+                    "frames": 20,
+                    "fuel_used_J": 745.8149683341107,
+                    "minimum_capture_margin_m": 0.09299999999999997,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 89.14171357668388,
+                    "physical_trace_sha256": "f8ed12e28c33fadc9b02ac4ab058167ca41e697770e04f174e335bfa455406d9",
+                    "replay_frames": 10,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 0
+                  },
+                  {
+                    "case": "walk",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "shift",
+                    "frames": 60,
+                    "fuel_used_J": 3151.4537770359825,
+                    "minimum_capture_margin_m": 0.012261124162892933,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 300.0,
+                    "physical_trace_sha256": "0f7c23e54ec8f7195689dd5337d2b530210555eb5f9a242b87360720c1dedd09",
+                    "replay_frames": 30,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 1
+                  },
+                  {
+                    "case": "impulse",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "double_support",
+                    "frames": 40,
+                    "fuel_used_J": 1501.3047777684137,
+                    "minimum_capture_margin_m": 0.09297234112400664,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 109.99497358138241,
+                    "physical_trace_sha256": "d5de475224029372a1b93239cb0d0e5b973efaaf9aa5d53ccf5f6d4c5e1e5346",
+                    "replay_frames": 20,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 0
+                  },
+                  {
+                    "case": "zero_friction",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": false,
+                    "failure": "friction_limit_exceeded",
+                    "final_phase": "failed",
+                    "frames": 1,
+                    "fuel_used_J": 40.29751297750206,
+                    "minimum_capture_margin_m": 0.0901513214966996,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 109.99497358138241,
+                    "physical_trace_sha256": "4c9d8cd5db3339fdea45e272ce0900b82b9426cd2ae3662c87ba02a5e29a3526",
+                    "replay_frames": 0,
+                    "valid_throughout": false,
+                    "walk_touchdowns": 0
+                  }
+                ],
+                "original_equations_retained_in_copy": true,
+                "static": [
+                  {
+                    "achieved_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "achieved_normal_N": 1912.9499999999998,
+                    "area_each_foot_cm2": 392.66515249806537,
+                    "case": "nominal_single_support",
+                    "feasible": true,
+                    "force_error_N": 2.2737367544323206e-13,
+                    "moment_error_Nm": 5.684341886080802e-14,
+                    "pressures_kpa": {
+                      "L_ball": 28.169697138511044,
+                      "L_toe_1": 178.24705982933125,
+                      "L_toe_2": 178.28342715336777,
+                      "L_toe_3": 178.24705982933125
+                    },
+                    "requested_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "requested_normal_N": 1912.95,
+                    "target_error_m": 0.0
+                  },
+                  {
+                    "achieved_cop_m": [
+                      0.196,
+                      0.06351038052480552
+                    ],
+                    "achieved_normal_N": 1912.95,
+                    "area_each_foot_cm2": 392.66515249806537,
+                    "case": "forward_edge_request",
+                    "feasible": true,
+                    "force_error_N": 0.0,
+                    "moment_error_Nm": 5.684341886080802e-14,
+                    "pressures_kpa": {
+                      "L_ball": 8.860614986436813,
+                      "L_toe_1": 300.0,
+                      "L_toe_2": 300.0,
+                      "L_toe_3": 299.9999999999998
+                    },
+                    "requested_cop_m": [
+                      0.196,
+                      0.09
+                    ],
+                    "requested_normal_N": 1912.95,
+                    "target_error_m": 0.026489619475194473
+                  },
+                  {
+                    "achieved_cop_m": null,
+                    "achieved_normal_N": 0.0,
+                    "area_each_foot_cm2": 392.66515249806537,
+                    "case": "over_capacity_negative_control",
+                    "feasible": false,
+                    "force_error_N": null,
+                    "moment_error_Nm": null,
+                    "pressures_kpa": {},
+                    "requested_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "requested_normal_N": 12957.950032436158,
+                    "target_error_m": null
+                  }
+                ]
+              },
+              "samples": 1,
+              "source": {
+                "frozen_plan_sha256": "305a4a3c2edc461563889a3d4ccbd33e45d85c32b05292dca9422bda571c5e47",
+                "kind": "reused_committed_fixture_receipt",
+                "physical_trial_id": "foot-contact-v0.1.baseline",
+                "result_file_sha256": "14b0d7e93ea37f15b15455e84ae198fd798e04aad085f58cf9ecab0cde1aec52",
+                "variant": "baseline"
+              }
+            },
+            "trial_id": "baseline-prior"
+          },
+          "event_id": "trial.baseline-prior.finish",
+          "kind": "trial_finish",
+          "previous_sha256": "30d6020e00221c1c2cc4801d85f9787e76f20087f822c6d77237dc6de632d31d",
+          "sequence": 3
+        },
+        "sha256": "481cf8d0b0f974f5faa18455f2d2ab1057961a938465e73893fcd9d9516c09e5"
+      },
+      {
+        "payload": {
+          "body": {
+            "candidate": "foot_plus_1_percent",
+            "intent": {
+              "candidate": "foot_plus_1_percent",
+              "cases_sha256": "a4f262c1bbb76684c0cb7e1728035daad912bbae8edf3294a7a6e33d5e3594a0",
+              "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+              "design_sha256": "124f2f7a0d6194d73b1559959d181007668afb5cc02dbcb38ed8983f7446ae87",
+              "genotype_sha256": "a79241f88e01228ad78539ab22ec67f284de889332f8cf25f9bcad2b25eb8f58",
+              "mesh_sha256": "b82143d9f5c702727f0dce77b54be6c71e44eeefb8452b59004abfc3a89497b5",
+              "native_apply_allowed": false
+            },
+            "trial_id": "foot-plus-1-fresh"
+          },
+          "event_id": "trial.foot-plus-1-fresh.begin",
+          "kind": "trial_begin",
+          "previous_sha256": "481cf8d0b0f974f5faa18455f2d2ab1057961a938465e73893fcd9d9516c09e5",
+          "sequence": 4
+        },
+        "sha256": "f493483d7615a4219776a3777cd65ebefdeed0276e9bc7b180c345215cd2e64e"
+      },
+      {
+        "payload": {
+          "body": {
+            "candidate": "foot_plus_1_percent",
+            "evidence": {
+              "evidence_kind": "source-bound local software observation under trusted host",
+              "intent": {
+                "candidate": "foot_plus_1_percent",
+                "cases_sha256": "a4f262c1bbb76684c0cb7e1728035daad912bbae8edf3294a7a6e33d5e3594a0",
+                "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+                "design_sha256": "124f2f7a0d6194d73b1559959d181007668afb5cc02dbcb38ed8983f7446ae87",
+                "genotype_sha256": "a79241f88e01228ad78539ab22ec67f284de889332f8cf25f9bcad2b25eb8f58",
+                "mesh_sha256": "b82143d9f5c702727f0dce77b54be6c71e44eeefb8452b59004abfc3a89497b5",
+                "native_apply_allowed": false
+              },
+              "metrics": {
+                "all_ordinary_cases_valid": true,
+                "all_ordinary_horizons_complete": true,
+                "capture_margin_m": 0.012638653793564048,
+                "cold_restores_equal": true,
+                "fuel_J": 3152.0272879549393,
+                "minimum_support_fraction": 1.0,
+                "overload_failure_retained": true,
+                "peak_dynamic_pressure_kpa": 300.0,
+                "peak_static_pressure_kpa": 300.0,
+                "pressure_kpa": 174.77053931317303,
+                "static_conservation_valid": true,
+                "static_nominal_feasible": true,
+                "walk_frames": 60,
+                "walk_touchdowns": 1,
+                "zero_friction_failure_retained": true
+              },
+              "native_apply_allowed": false,
+              "physical_world_validated": false,
+              "receipt": {
+                "dynamic": [
+                  {
+                    "case": "stand",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "double_support",
+                    "frames": 20,
+                    "fuel_used_J": 745.8149683341109,
+                    "minimum_capture_margin_m": 0.09392999999999997,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 87.38526965658652,
+                    "physical_trace_sha256": "15c9ef3a7173bd646d6579babad9ccbe522b88bb55529f83f50b1b237bb3433a",
+                    "replay_frames": 10,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 0
+                  },
+                  {
+                    "case": "walk",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "shift",
+                    "frames": 60,
+                    "fuel_used_J": 3152.0272879549393,
+                    "minimum_capture_margin_m": 0.012638653793564048,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 300.0,
+                    "physical_trace_sha256": "f9d9e98a51ea20f5982e218841e467641f879ee007625b3a878f72e24c26788c",
+                    "replay_frames": 30,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 1
+                  },
+                  {
+                    "case": "impulse",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "double_support",
+                    "frames": 40,
+                    "fuel_used_J": 1501.3087292632295,
+                    "minimum_capture_margin_m": 0.09392971670063309,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 107.66437504992085,
+                    "physical_trace_sha256": "8f3e977ad0de7df1e6592bfa82d44f9c9c96c8efdf5158fae1d857dedc2d33b1",
+                    "replay_frames": 20,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 0
+                  },
+                  {
+                    "case": "zero_friction",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": false,
+                    "failure": "friction_limit_exceeded",
+                    "final_phase": "failed",
+                    "frames": 1,
+                    "fuel_used_J": 40.30061287975019,
+                    "minimum_capture_margin_m": 0.09137758453447536,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 107.66437504992085,
+                    "physical_trace_sha256": "b44992379d55d65b668d7afa4b17217f4e0c44431600214de0599e42799ee5f4",
+                    "replay_frames": 0,
+                    "valid_throughout": false,
+                    "walk_touchdowns": 0
+                  }
+                ],
+                "original_equations_retained_in_copy": true,
+                "static": [
+                  {
+                    "achieved_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "achieved_normal_N": 1912.95,
+                    "area_each_foot_cm2": 400.5577220632765,
+                    "case": "nominal_single_support",
+                    "feasible": true,
+                    "force_error_N": 0.0,
+                    "moment_error_Nm": 3.552713678800501e-15,
+                    "pressures_kpa": {
+                      "L_ball": 27.614642817871818,
+                      "L_toe_1": 174.73488856909248,
+                      "L_toe_2": 174.77053931317303,
+                      "L_toe_3": 174.73488856909253
+                    },
+                    "requested_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "requested_normal_N": 1912.95,
+                    "target_error_m": 0.0
+                  },
+                  {
+                    "achieved_cop_m": [
+                      0.196,
+                      0.06732280156508766
+                    ],
+                    "achieved_normal_N": 1912.9499999999994,
+                    "area_each_foot_cm2": 400.5577220632765,
+                    "case": "forward_edge_request",
+                    "feasible": true,
+                    "force_error_N": 6.821210263296962e-13,
+                    "moment_error_Nm": 1.7053025658242404e-13,
+                    "pressures_kpa": {
+                      "L_ball": 7.748441444221895,
+                      "L_toe_1": 300.0,
+                      "L_toe_2": 300.0,
+                      "L_toe_3": 299.99999999999955
+                    },
+                    "requested_cop_m": [
+                      0.196,
+                      0.09
+                    ],
+                    "requested_normal_N": 1912.95,
+                    "target_error_m": 0.022677198434912338
+                  },
+                  {
+                    "achieved_cop_m": null,
+                    "achieved_normal_N": 0.0,
+                    "area_each_foot_cm2": 400.5577220632765,
+                    "case": "over_capacity_negative_control",
+                    "feasible": false,
+                    "force_error_N": null,
+                    "moment_error_Nm": null,
+                    "pressures_kpa": {},
+                    "requested_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "requested_normal_N": 12957.950032436158,
+                    "target_error_m": null
+                  }
+                ]
+              },
+              "samples": 1,
+              "source": {
+                "engine_context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+                "kind": "fresh_sandbox_execution",
+                "physical_trial_id": "foot-plus-1-fresh"
+              }
+            },
+            "trial_id": "foot-plus-1-fresh"
+          },
+          "event_id": "trial.foot-plus-1-fresh.finish",
+          "kind": "trial_finish",
+          "previous_sha256": "f493483d7615a4219776a3777cd65ebefdeed0276e9bc7b180c345215cd2e64e",
+          "sequence": 5
+        },
+        "sha256": "34214a1c775afe4df21ce6cfa3b7b7dec9dbab022f26ba422d29e7f80cf4de49"
+      },
+      {
+        "payload": {
+          "body": {
+            "candidate": "foot_plus_2_percent",
+            "intent": {
+              "candidate": "foot_plus_2_percent",
+              "cases_sha256": "a4f262c1bbb76684c0cb7e1728035daad912bbae8edf3294a7a6e33d5e3594a0",
+              "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+              "design_sha256": "20003e2f7fb59334f64aee027980d14aadcb4ff2ee2f8f88f6a0f5b68507d6f7",
+              "genotype_sha256": "0504809a157026649879e41d494a80480426c5bbc373576e82754274fc40c127",
+              "mesh_sha256": "58ef879256ea33faf16431311b8cd9131e1bfc8d85ee65be0f3dcee7e443b1e1",
+              "native_apply_allowed": false
+            },
+            "trial_id": "foot-plus-2-prior"
+          },
+          "event_id": "trial.foot-plus-2-prior.begin",
+          "kind": "trial_begin",
+          "previous_sha256": "34214a1c775afe4df21ce6cfa3b7b7dec9dbab022f26ba422d29e7f80cf4de49",
+          "sequence": 6
+        },
+        "sha256": "2f741b6a443556c68258d1c54576d300d80f69c395089bdc822c6723714e5ecc"
+      },
+      {
+        "payload": {
+          "body": {
+            "candidate": "foot_plus_2_percent",
+            "evidence": {
+              "evidence_kind": "source-bound local software observation under trusted host",
+              "intent": {
+                "candidate": "foot_plus_2_percent",
+                "cases_sha256": "a4f262c1bbb76684c0cb7e1728035daad912bbae8edf3294a7a6e33d5e3594a0",
+                "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+                "design_sha256": "20003e2f7fb59334f64aee027980d14aadcb4ff2ee2f8f88f6a0f5b68507d6f7",
+                "genotype_sha256": "0504809a157026649879e41d494a80480426c5bbc373576e82754274fc40c127",
+                "mesh_sha256": "58ef879256ea33faf16431311b8cd9131e1bfc8d85ee65be0f3dcee7e443b1e1",
+                "native_apply_allowed": false
+              },
+              "metrics": {
+                "all_ordinary_cases_valid": true,
+                "all_ordinary_horizons_complete": true,
+                "capture_margin_m": 0.01302373376766236,
+                "cold_restores_equal": true,
+                "fuel_J": 3152.6332402382554,
+                "minimum_support_fraction": 1.0,
+                "overload_failure_retained": true,
+                "peak_dynamic_pressure_kpa": 299.99999999999994,
+                "peak_static_pressure_kpa": 300.0,
+                "pressure_kpa": 171.36046439193368,
+                "static_conservation_valid": true,
+                "static_nominal_feasible": true,
+                "walk_frames": 60,
+                "walk_touchdowns": 1,
+                "zero_friction_failure_retained": true
+              },
+              "native_apply_allowed": false,
+              "physical_world_validated": false,
+              "receipt": {
+                "dynamic": [
+                  {
+                    "case": "stand",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "double_support",
+                    "frames": 20,
+                    "fuel_used_J": 745.8149683341107,
+                    "minimum_capture_margin_m": 0.09485999999999997,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 85.68023219596684,
+                    "physical_trace_sha256": "2682a5a6bb936b5b6c802f79b5d73b741fb400eb5fb5db2cd738977c68facede",
+                    "replay_frames": 10,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 0
+                  },
+                  {
+                    "case": "walk",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "shift",
+                    "frames": 60,
+                    "fuel_used_J": 3152.6332402382554,
+                    "minimum_capture_margin_m": 0.01302373376766236,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 299.99999999999994,
+                    "physical_trace_sha256": "f9ee1a51a584df26850a6423cacea4026276ffeb3c1099087d12b271c66a2dd0",
+                    "replay_frames": 30,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 1
+                  },
+                  {
+                    "case": "impulse",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "double_support",
+                    "frames": 40,
+                    "fuel_used_J": 1501.3127193932544,
+                    "minimum_capture_margin_m": 0.09485971670063309,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 105.4067063458534,
+                    "physical_trace_sha256": "e0b9250ed320182ed16f4591e7a70ee813978082f9ecc371050fc86b32046adc",
+                    "replay_frames": 20,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 0
+                  },
+                  {
+                    "case": "zero_friction",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": false,
+                    "failure": "friction_limit_exceeded",
+                    "final_phase": "failed",
+                    "frames": 1,
+                    "fuel_used_J": 40.303741502684275,
+                    "minimum_capture_margin_m": 0.09261130058703257,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 105.4067063458534,
+                    "physical_trace_sha256": "f538994fd2dcc7fb8b5d2ed08230b0c7dd57d97c99d37159fd0b7d51b991a266",
+                    "replay_frames": 0,
+                    "valid_throughout": false,
+                    "walk_touchdowns": 0
+                  }
+                ],
+                "original_equations_retained_in_copy": true,
+                "static": [
+                  {
+                    "achieved_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "achieved_normal_N": 1912.95,
+                    "area_each_foot_cm2": 408.52882465898716,
+                    "case": "nominal_single_support",
+                    "feasible": true,
+                    "force_error_N": 0.0,
+                    "moment_error_Nm": 5.684341886080802e-14,
+                    "pressures_kpa": {
+                      "L_ball": 27.075833466465827,
+                      "L_toe_1": 171.32550925541256,
+                      "L_toe_2": 171.36046439193368,
+                      "L_toe_3": 171.32550925541256
+                    },
+                    "requested_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "requested_normal_N": 1912.95,
+                    "target_error_m": 0.0
+                  },
+                  {
+                    "achieved_cop_m": [
+                      0.196,
+                      0.07123006789596782
+                    ],
+                    "achieved_normal_N": 1912.9499999999996,
+                    "area_each_foot_cm2": 408.52882465898716,
+                    "case": "forward_edge_request",
+                    "feasible": true,
+                    "force_error_N": 4.547473508864641e-13,
+                    "moment_error_Nm": 1.1368683772161603e-13,
+                    "pressures_kpa": {
+                      "L_ball": 6.668818274652475,
+                      "L_toe_1": 299.99999999999966,
+                      "L_toe_2": 300.0,
+                      "L_toe_3": 299.99999999999994
+                    },
+                    "requested_cop_m": [
+                      0.196,
+                      0.09
+                    ],
+                    "requested_normal_N": 1912.95,
+                    "target_error_m": 0.018769932104032175
+                  },
+                  {
+                    "achieved_cop_m": null,
+                    "achieved_normal_N": 0.0,
+                    "area_each_foot_cm2": 408.52882465898716,
+                    "case": "over_capacity_negative_control",
+                    "feasible": false,
+                    "force_error_N": null,
+                    "moment_error_Nm": null,
+                    "pressures_kpa": {},
+                    "requested_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "requested_normal_N": 12957.950032436158,
+                    "target_error_m": null
+                  }
+                ]
+              },
+              "samples": 1,
+              "source": {
+                "frozen_plan_sha256": "305a4a3c2edc461563889a3d4ccbd33e45d85c32b05292dca9422bda571c5e47",
+                "kind": "reused_committed_fixture_receipt",
+                "physical_trial_id": "foot-contact-v0.1.affine",
+                "result_file_sha256": "14b0d7e93ea37f15b15455e84ae198fd798e04aad085f58cf9ecab0cde1aec52",
+                "variant": "affine"
+              }
+            },
+            "trial_id": "foot-plus-2-prior"
+          },
+          "event_id": "trial.foot-plus-2-prior.finish",
+          "kind": "trial_finish",
+          "previous_sha256": "2f741b6a443556c68258d1c54576d300d80f69c395089bdc822c6723714e5ecc",
+          "sequence": 7
+        },
+        "sha256": "f233d20f3f82af579cb30d9be4c3eb7ab60b72e22b23b7574b55f150c3b2b3bb"
+      },
+      {
+        "payload": {
+          "body": {
+            "candidate": "cosmetic_only",
+            "intent": {
+              "candidate": "cosmetic_only",
+              "cases_sha256": "a4f262c1bbb76684c0cb7e1728035daad912bbae8edf3294a7a6e33d5e3594a0",
+              "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+              "design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+              "genotype_sha256": "3b66372045b76040b7ed5ff6eb6abc35d5a0bfa142e66401e019650e321ea628",
+              "mesh_sha256": "a24dd828f612b2b70b5c85697c137bc11abd5bf9c91c2696215c3d9aadcbaa00",
+              "native_apply_allowed": false
+            },
+            "trial_id": "cosmetic-transfer"
+          },
+          "event_id": "trial.cosmetic-transfer.begin",
+          "kind": "trial_begin",
+          "previous_sha256": "f233d20f3f82af579cb30d9be4c3eb7ab60b72e22b23b7574b55f150c3b2b3bb",
+          "sequence": 8
+        },
+        "sha256": "45eca1ffafce62e755557c00ee2c276c83b272ff63828df1ef9a9acbe286414c"
+      },
+      {
+        "payload": {
+          "body": {
+            "candidate": "cosmetic_only",
+            "evidence": {
+              "evidence_kind": "source-bound local software observation under trusted host",
+              "intent": {
+                "candidate": "cosmetic_only",
+                "cases_sha256": "a4f262c1bbb76684c0cb7e1728035daad912bbae8edf3294a7a6e33d5e3594a0",
+                "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+                "design_sha256": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5",
+                "genotype_sha256": "3b66372045b76040b7ed5ff6eb6abc35d5a0bfa142e66401e019650e321ea628",
+                "mesh_sha256": "a24dd828f612b2b70b5c85697c137bc11abd5bf9c91c2696215c3d9aadcbaa00",
+                "native_apply_allowed": false
+              },
+              "metrics": {
+                "all_ordinary_cases_valid": true,
+                "all_ordinary_horizons_complete": true,
+                "capture_margin_m": 0.012261124162892933,
+                "cold_restores_equal": true,
+                "fuel_J": 3151.4537770359825,
+                "minimum_support_fraction": 1.0,
+                "overload_failure_retained": true,
+                "peak_dynamic_pressure_kpa": 300.0,
+                "peak_static_pressure_kpa": 300.0,
+                "pressure_kpa": 178.28342715336777,
+                "static_conservation_valid": true,
+                "static_nominal_feasible": true,
+                "walk_frames": 60,
+                "walk_touchdowns": 1,
+                "zero_friction_failure_retained": true
+              },
+              "native_apply_allowed": false,
+              "physical_world_validated": false,
+              "receipt": {
+                "dynamic": [
+                  {
+                    "case": "stand",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "double_support",
+                    "frames": 20,
+                    "fuel_used_J": 745.8149683341107,
+                    "minimum_capture_margin_m": 0.09299999999999997,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 89.14171357668388,
+                    "physical_trace_sha256": "f8ed12e28c33fadc9b02ac4ab058167ca41e697770e04f174e335bfa455406d9",
+                    "replay_frames": 10,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 0
+                  },
+                  {
+                    "case": "walk",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "shift",
+                    "frames": 60,
+                    "fuel_used_J": 3151.4537770359825,
+                    "minimum_capture_margin_m": 0.012261124162892933,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 300.0,
+                    "physical_trace_sha256": "0f7c23e54ec8f7195689dd5337d2b530210555eb5f9a242b87360720c1dedd09",
+                    "replay_frames": 30,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 1
+                  },
+                  {
+                    "case": "impulse",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": true,
+                    "failure": null,
+                    "final_phase": "double_support",
+                    "frames": 40,
+                    "fuel_used_J": 1501.3047777684137,
+                    "minimum_capture_margin_m": 0.09297234112400664,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 109.99497358138241,
+                    "physical_trace_sha256": "d5de475224029372a1b93239cb0d0e5b973efaaf9aa5d53ccf5f6d4c5e1e5346",
+                    "replay_frames": 20,
+                    "valid_throughout": true,
+                    "walk_touchdowns": 0
+                  },
+                  {
+                    "case": "zero_friction",
+                    "cold_restore_equal": true,
+                    "cold_restore_exercised": false,
+                    "failure": "friction_limit_exceeded",
+                    "final_phase": "failed",
+                    "frames": 1,
+                    "fuel_used_J": 40.29751297750206,
+                    "minimum_capture_margin_m": 0.0901513214966996,
+                    "minimum_support_fraction": 1.0,
+                    "peak_pressure_kpa": 109.99497358138241,
+                    "physical_trace_sha256": "4c9d8cd5db3339fdea45e272ce0900b82b9426cd2ae3662c87ba02a5e29a3526",
+                    "replay_frames": 0,
+                    "valid_throughout": false,
+                    "walk_touchdowns": 0
+                  }
+                ],
+                "original_equations_retained_in_copy": true,
+                "static": [
+                  {
+                    "achieved_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "achieved_normal_N": 1912.9499999999998,
+                    "area_each_foot_cm2": 392.66515249806537,
+                    "case": "nominal_single_support",
+                    "feasible": true,
+                    "force_error_N": 2.2737367544323206e-13,
+                    "moment_error_Nm": 5.684341886080802e-14,
+                    "pressures_kpa": {
+                      "L_ball": 28.169697138511044,
+                      "L_toe_1": 178.24705982933125,
+                      "L_toe_2": 178.28342715336777,
+                      "L_toe_3": 178.24705982933125
+                    },
+                    "requested_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "requested_normal_N": 1912.95,
+                    "target_error_m": 0.0
+                  },
+                  {
+                    "achieved_cop_m": [
+                      0.196,
+                      0.06351038052480552
+                    ],
+                    "achieved_normal_N": 1912.95,
+                    "area_each_foot_cm2": 392.66515249806537,
+                    "case": "forward_edge_request",
+                    "feasible": true,
+                    "force_error_N": 0.0,
+                    "moment_error_Nm": 5.684341886080802e-14,
+                    "pressures_kpa": {
+                      "L_ball": 8.860614986436813,
+                      "L_toe_1": 300.0,
+                      "L_toe_2": 300.0,
+                      "L_toe_3": 299.9999999999998
+                    },
+                    "requested_cop_m": [
+                      0.196,
+                      0.09
+                    ],
+                    "requested_normal_N": 1912.95,
+                    "target_error_m": 0.026489619475194473
+                  },
+                  {
+                    "achieved_cop_m": null,
+                    "achieved_normal_N": 0.0,
+                    "area_each_foot_cm2": 392.66515249806537,
+                    "case": "over_capacity_negative_control",
+                    "feasible": false,
+                    "force_error_N": null,
+                    "moment_error_Nm": null,
+                    "pressures_kpa": {},
+                    "requested_cop_m": [
+                      0.196,
+                      0.0
+                    ],
+                    "requested_normal_N": 12957.950032436158,
+                    "target_error_m": null
+                  }
+                ]
+              },
+              "samples": 1,
+              "source": {
+                "frozen_plan_sha256": "305a4a3c2edc461563889a3d4ccbd33e45d85c32b05292dca9422bda571c5e47",
+                "kind": "reused_committed_fixture_receipt",
+                "physical_trial_id": "foot-contact-v0.1.baseline",
+                "result_file_sha256": "14b0d7e93ea37f15b15455e84ae198fd798e04aad085f58cf9ecab0cde1aec52",
+                "variant": "baseline"
+              }
+            },
+            "trial_id": "cosmetic-transfer"
+          },
+          "event_id": "trial.cosmetic-transfer.finish",
+          "kind": "trial_finish",
+          "previous_sha256": "45eca1ffafce62e755557c00ee2c276c83b272ff63828df1ef9a9acbe286414c",
+          "sequence": 9
+        },
+        "sha256": "7b39d6f40f7fde3e6dad9550922f9447e15309855968e32777ddd84ffb6efbb0"
+      },
+      {
+        "payload": {
+          "body": {
+            "decision_id": "after-experience",
+            "recommendation": {
+              "candidates": {
+                "baseline": {
+                  "gains": {
+                    "capture_margin": 0.0,
+                    "fuel": -0.0,
+                    "pressure": 0.0
+                  },
+                  "metrics": {
+                    "all_ordinary_cases_valid": true,
+                    "all_ordinary_horizons_complete": true,
+                    "capture_margin_m": 0.012261124162892933,
+                    "cold_restores_equal": true,
+                    "fuel_J": 3151.4537770359825,
+                    "minimum_support_fraction": 1.0,
+                    "overload_failure_retained": true,
+                    "peak_dynamic_pressure_kpa": 300.0,
+                    "peak_static_pressure_kpa": 300.0,
+                    "pressure_kpa": 178.28342715336777,
+                    "static_conservation_valid": true,
+                    "static_nominal_feasible": true,
+                    "walk_frames": 60,
+                    "walk_touchdowns": 1,
+                    "zero_friction_failure_retained": true
+                  },
+                  "reasons": [],
+                  "status": "baseline_reference",
+                  "utility": 0.0
+                },
+                "cosmetic_only": {
+                  "gains": {
+                    "capture_margin": 0.0,
+                    "fuel": -0.0,
+                    "pressure": 0.0
+                  },
+                  "metrics": {
+                    "all_ordinary_cases_valid": true,
+                    "all_ordinary_horizons_complete": true,
+                    "capture_margin_m": 0.012261124162892933,
+                    "cold_restores_equal": true,
+                    "fuel_J": 3151.4537770359825,
+                    "minimum_support_fraction": 1.0,
+                    "overload_failure_retained": true,
+                    "peak_dynamic_pressure_kpa": 300.0,
+                    "peak_static_pressure_kpa": 300.0,
+                    "pressure_kpa": 178.28342715336777,
+                    "static_conservation_valid": true,
+                    "static_nominal_feasible": true,
+                    "walk_frames": 60,
+                    "walk_touchdowns": 1,
+                    "zero_friction_failure_retained": true
+                  },
+                  "reasons": [
+                    "no_sufficient_measured_net_gain"
+                  ],
+                  "status": "rejected",
+                  "utility": -0.001
+                },
+                "foot_plus_1_percent": {
+                  "gains": {
+                    "capture_margin": 0.03079078440569664,
+                    "fuel": -0.0001819829702519705,
+                    "pressure": 0.01970395059307888
+                  },
+                  "metrics": {
+                    "all_ordinary_cases_valid": true,
+                    "all_ordinary_horizons_complete": true,
+                    "capture_margin_m": 0.012638653793564048,
+                    "cold_restores_equal": true,
+                    "fuel_J": 3152.0272879549393,
+                    "minimum_support_fraction": 1.0,
+                    "overload_failure_retained": true,
+                    "peak_dynamic_pressure_kpa": 300.0,
+                    "peak_static_pressure_kpa": 300.0,
+                    "pressure_kpa": 174.77053931317303,
+                    "static_conservation_valid": true,
+                    "static_nominal_feasible": true,
+                    "walk_frames": 60,
+                    "walk_touchdowns": 1,
+                    "zero_friction_failure_retained": true
+                  },
+                  "reasons": [],
+                  "status": "eligible_proposal",
+                  "utility": 0.018607155714828925
+                },
+                "foot_plus_2_percent": {
+                  "gains": {
+                    "capture_margin": 0.06219736417623012,
+                    "fuel": -0.0003742600354374357,
+                    "pressure": 0.03883121876201446
+                  },
+                  "metrics": {
+                    "all_ordinary_cases_valid": true,
+                    "all_ordinary_horizons_complete": true,
+                    "capture_margin_m": 0.01302373376766236,
+                    "cold_restores_equal": true,
+                    "fuel_J": 3152.6332402382554,
+                    "minimum_support_fraction": 1.0,
+                    "overload_failure_retained": true,
+                    "peak_dynamic_pressure_kpa": 299.99999999999994,
+                    "peak_static_pressure_kpa": 300.0,
+                    "pressure_kpa": 171.36046439193368,
+                    "static_conservation_valid": true,
+                    "static_nominal_feasible": true,
+                    "walk_frames": 60,
+                    "walk_touchdowns": 1,
+                    "zero_friction_failure_retained": true
+                  },
+                  "reasons": [],
+                  "status": "eligible_proposal",
+                  "utility": 0.038168273897499556
+                }
+              },
+              "chosen": "foot_plus_2_percent",
+              "confidence": "one deterministic software observation per design; no statistical confidence",
+              "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+              "memory_used": true,
+              "native_apply_allowed": false,
+              "observations_considered": [
+                "baseline",
+                "cosmetic_only",
+                "foot_plus_1_percent",
+                "foot_plus_2_percent"
+              ],
+              "reason": "highest_frozen_utility_among_admissible_measured_proposals",
+              "schema": "nasuraya.design-experience/0.1"
+            },
+            "requested_context": null,
+            "use_memory": true
+          },
+          "event_id": "choice.after-experience",
+          "kind": "choice",
+          "previous_sha256": "7b39d6f40f7fde3e6dad9550922f9447e15309855968e32777ddd84ffb6efbb0",
+          "sequence": 10
+        },
+        "sha256": "c182c5345a827adf70238204cc6d3f10f0a9933480fc3c5d7bed4b089c8a78da"
+      },
+      {
+        "payload": {
+          "body": {
+            "decision_id": "memory-disabled-control",
+            "recommendation": {
+              "candidates": {},
+              "chosen": "baseline",
+              "confidence": "one deterministic software observation per design; no statistical confidence",
+              "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+              "memory_used": false,
+              "native_apply_allowed": false,
+              "observations_considered": [],
+              "reason": "retain_baseline_pending_comparison",
+              "schema": "nasuraya.design-experience/0.1"
+            },
+            "requested_context": null,
+            "use_memory": false
+          },
+          "event_id": "choice.memory-disabled-control",
+          "kind": "choice",
+          "previous_sha256": "c182c5345a827adf70238204cc6d3f10f0a9933480fc3c5d7bed4b089c8a78da",
+          "sequence": 11
+        },
+        "sha256": "8d0b8e039d3732ca5eba09ee420b8d0e7456778fbb4adc5855022fbd4ff0c5df"
+      },
+      {
+        "payload": {
+          "body": {
+            "decision_id": "unseen-context-control",
+            "recommendation": {
+              "candidates": {},
+              "chosen": "baseline",
+              "confidence": "one deterministic software observation per design; no statistical confidence",
+              "context_sha256": "712999a038cea9c1369301ae63e3fe6bb5d2d5723a07537a4afcdfb26204d1f8",
+              "memory_used": false,
+              "native_apply_allowed": false,
+              "observations_considered": [],
+              "reason": "unseen_context_retain_baseline",
+              "schema": "nasuraya.design-experience/0.1"
+            },
+            "requested_context": {
+              "cases": [
+                {
+                  "command": "stand",
+                  "frames": 20,
+                  "friction": 0.6,
+                  "id": "stand",
+                  "impulse": [
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "command": "walk",
+                  "frames": 60,
+                  "friction": 0.6,
+                  "id": "walk",
+                  "impulse": [
+                    0.0,
+                    0.0
+                  ]
+                },
+                {
+                  "command": "stand",
+                  "frames": 40,
+                  "friction": 0.6,
+                  "id": "impulse",
+                  "impulse": [
+                    8.0,
+                    4.0
+                  ]
+                },
+                {
+                  "command": "stand",
+                  "frames": 10,
+                  "friction": 0.0,
+                  "id": "zero_friction",
+                  "impulse": [
+                    8.0,
+                    4.0
+                  ]
+                }
+              ],
+              "dt_s": 0.1,
+              "engine_sources": {
+                "chromosomes.py": "c107da1d89a92b8080423d0e9e50865e7db6c2ba1cb0cc019cff7e7334b7eef1",
+                "contract-v0.1.json": "45376c0bb2e8db568d7ed39c7cefc87fda9ed555e282c195c63aa1d44bb1fcbd",
+                "design-policy-v0.1.json": "09577b6c1c39ff403bef350f822c6e98846d95284b1fc371e96e70234c46ca3d",
+                "design_decision.py": "511a48a1f4347db1409d0a14d3852fb31329cab72c6581c88209b74e4ecf975b",
+                "design_memory.py": "535a3ecad780aa5939f524b189713de30867ea8326d6e36f245f43f363e604c2",
+                "foot_contact.py": "c659b44ddb07787d6a6cb0b62318731545c4154dc5ba19ffe4487df85229268f",
+                "foot_trial.py": "fc1ffe56e96e0cdbb9f8f823ccbf9e53d1167c0507bbf4fa72870300d851084f",
+                "genome48.json": "584015ce7ed4fe251c3d823ef74468f28f5e816be40776d0771bec34e85a0a5d",
+                "physics_trial.py": "95d593652373436ec54ace3109401054731b230ea62d10c2abc28da508217986",
+                "run_design_cycle.py": "59516c347533ef8d5ddf1add123bdd61b272680829702d4135a5819c27fecb5c",
+                "traits.py": "b8273f197f0c43781ed5905246cd26645d836f8cf38547104b7b3b2b4c6aea09"
+              },
+              "initial_state": "fresh synthetic PostureLoop for each case",
+              "mapping": "authored affine pad hypothesis",
+              "mission": "different goal; no transfer is authorized",
+              "scope": "this exact fixed-mass, fixed-controller software context only",
+              "source_manifest_sha256": "720eb52147b287d3f122a3fabd19c3085242c72b2038fc0d8d19c68e6aa0a702"
+            },
+            "use_memory": true
+          },
+          "event_id": "choice.unseen-context-control",
+          "kind": "choice",
+          "previous_sha256": "8d0b8e039d3732ca5eba09ee420b8d0e7456778fbb4adc5855022fbd4ff0c5df",
+          "sequence": 12
+        },
+        "sha256": "09514937c65779b03c50898cc537e44c11b0613f03f41ae21a6da91063658fe4"
+      }
+    ]
+  },
+  "sha256": "105f01a80b0f760791a47cc41529f90df7588e1cbf48386af3d958576c5daeee"
+}

@@ -1,0 +1,1402 @@
+{
+  "predictions": {
+    "parent": [
+      {
+        "id": "fresh:0.17:0.3:ordinary",
+        "scores": [
+          -1.0333421230316162,
+          -0.467519611120224
+        ],
+        "admit_probability": 0.3622013330459595,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.17:0.3:zero_friction",
+        "scores": [
+          -1.2197500467300415,
+          -0.37211814522743225
+        ],
+        "admit_probability": 0.2999298572540283,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.17:0.4:ordinary",
+        "scores": [
+          -1.0104225873947144,
+          -0.48107466101646423
+        ],
+        "admit_probability": 0.3706689774990082,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.17:0.4:zero_friction",
+        "scores": [
+          -1.1966091394424438,
+          -0.38245096802711487
+        ],
+        "admit_probability": 0.3070051074028015,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.3:ordinary",
+        "scores": [
+          -1.0225354433059692,
+          -0.47401273250579834
+        ],
+        "admit_probability": 0.36620721220970154,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.3:zero_friction",
+        "scores": [
+          -1.2123085260391235,
+          -0.3755221664905548
+        ],
+        "admit_probability": 0.30221202969551086,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.4:ordinary",
+        "scores": [
+          -1.010662317276001,
+          -0.4810716211795807
+        ],
+        "admit_probability": 0.37061232328414917,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.4:zero_friction",
+        "scores": [
+          -1.1956570148468018,
+          -0.3829749524593353
+        ],
+        "admit_probability": 0.3073192536830902,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.3:ordinary",
+        "scores": [
+          -1.0079998970031738,
+          -0.48257383704185486
+        ],
+        "admit_probability": 0.37158435583114624,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.3:zero_friction",
+        "scores": [
+          -1.1976971626281738,
+          -0.38196176290512085
+        ],
+        "admit_probability": 0.306669682264328,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.4:ordinary",
+        "scores": [
+          -0.979867696762085,
+          -0.49994561076164246
+        ],
+        "admit_probability": 0.38227054476737976,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.4:zero_friction",
+        "scores": [
+          -1.1678805351257324,
+          -0.3957411050796509
+        ],
+        "admit_probability": 0.3160165250301361,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.3:ordinary",
+        "scores": [
+          -1.0077970027923584,
+          -0.48251840472221375
+        ],
+        "admit_probability": 0.37161877751350403,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.3:zero_friction",
+        "scores": [
+          -1.193071722984314,
+          -0.3839237093925476
+        ],
+        "admit_probability": 0.3080720901489258,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.4:ordinary",
+        "scores": [
+          -0.9809700846672058,
+          -0.4990920126438141
+        ],
+        "admit_probability": 0.3818087577819824,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.4:zero_friction",
+        "scores": [
+          -1.1653395891189575,
+          -0.3968254029750824
+        ],
+        "admit_probability": 0.31680062413215637,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:ordinary",
+        "scores": [
+          -1.6815578937530518,
+          -0.2262609750032425
+        ],
+        "admit_probability": 0.18918770551681519,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:zero_friction",
+        "scores": [
+          -1.845003366470337,
+          -0.18916359543800354
+        ],
+        "admit_probability": 0.16032123565673828,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:ordinary",
+        "scores": [
+          -1.6461095809936523,
+          -0.23504438996315002
+        ],
+        "admit_probability": 0.19606609642505646,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:zero_friction",
+        "scores": [
+          -1.8124407529830933,
+          -0.19576334953308105
+        ],
+        "admit_probability": 0.16566359996795654,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:ordinary",
+        "scores": [
+          -1.6847846508026123,
+          -0.22542352974414825
+        ],
+        "admit_probability": 0.18856506049633026,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:zero_friction",
+        "scores": [
+          -1.8605097532272339,
+          -0.18614424765110016
+        ],
+        "admit_probability": 0.15784300863742828,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:ordinary",
+        "scores": [
+          -1.6535706520080566,
+          -0.23307529091835022
+        ],
+        "admit_probability": 0.194583922624588,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:zero_friction",
+        "scores": [
+          -1.8289028406143188,
+          -0.1923961639404297
+        ],
+        "admit_probability": 0.16294094920158386,
+        "prediction": "DEFER"
+      }
+    ],
+    "ce_original": [
+      {
+        "id": "fresh:0.17:0.3:ordinary",
+        "scores": [
+          -0.4013923704624176,
+          -1.134273648262024
+        ],
+        "admit_probability": 0.6754372715950012,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.3:zero_friction",
+        "scores": [
+          -0.8123800158500671,
+          -0.6022290587425232
+        ],
+        "admit_probability": 0.44765475392341614,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.17:0.4:ordinary",
+        "scores": [
+          -0.3891092538833618,
+          -1.160461664199829
+        ],
+        "admit_probability": 0.6838133931159973,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.4:zero_friction",
+        "scores": [
+          -0.7923932075500488,
+          -0.6188610196113586
+        ],
+        "admit_probability": 0.45672550797462463,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.3:ordinary",
+        "scores": [
+          -0.38035497069358826,
+          -1.179648756980896
+        ],
+        "admit_probability": 0.6898233890533447,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.3:zero_friction",
+        "scores": [
+          -0.7748532891273499,
+          -0.6338990926742554
+        ],
+        "admit_probability": 0.46481966972351074,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.4:ordinary",
+        "scores": [
+          -0.38485094904899597,
+          -1.1698259115219116
+        ],
+        "admit_probability": 0.6867513656616211,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.4:zero_friction",
+        "scores": [
+          -0.7775460481643677,
+          -0.6316033601760864
+        ],
+        "admit_probability": 0.4635789692401886,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.3:ordinary",
+        "scores": [
+          -0.37231454253196716,
+          -1.1976548433303833
+        ],
+        "admit_probability": 0.695368766784668,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.3:zero_friction",
+        "scores": [
+          -0.7659392952919006,
+          -0.6416682004928589
+        ],
+        "admit_probability": 0.4689721465110779,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.4:ordinary",
+        "scores": [
+          -0.35870957374572754,
+          -1.2296137809753418
+        ],
+        "admit_probability": 0.7049338221549988,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.4:zero_friction",
+        "scores": [
+          -0.741409182548523,
+          -0.6640260815620422
+        ],
+        "admit_probability": 0.48066383600234985,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.3:ordinary",
+        "scores": [
+          -0.37910377979278564,
+          -1.1824249029159546
+        ],
+        "admit_probability": 0.69068443775177,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.3:zero_friction",
+        "scores": [
+          -0.7649279236793518,
+          -0.6425485610961914
+        ],
+        "admit_probability": 0.46944332122802734,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.4:ordinary",
+        "scores": [
+          -0.3656132221221924,
+          -1.2133517265319824
+        ],
+        "admit_probability": 0.7000924944877625,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.4:zero_friction",
+        "scores": [
+          -0.7439837455749512,
+          -0.6616120338439941
+        ],
+        "admit_probability": 0.47941869497299194,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:ordinary",
+        "scores": [
+          -2.214590311050415,
+          -0.125388503074646
+        ],
+        "admit_probability": 0.1101507768034935,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:zero_friction",
+        "scores": [
+          -2.991191864013672,
+          -0.05877411365509033
+        ],
+        "admit_probability": 0.05057410150766373,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:ordinary",
+        "scores": [
+          -2.165834903717041,
+          -0.13176457583904266
+        ],
+        "admit_probability": 0.11567191034555435,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:zero_friction",
+        "scores": [
+          -2.947770357131958,
+          -0.06124471127986908
+        ],
+        "admit_probability": 0.05282368138432503,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:ordinary",
+        "scores": [
+          -2.2126548290252686,
+          -0.12556275725364685
+        ],
+        "admit_probability": 0.11035774648189545,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:zero_friction",
+        "scores": [
+          -3.005877733230591,
+          -0.05796028673648834
+        ],
+        "admit_probability": 0.049835026264190674,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:ordinary",
+        "scores": [
+          -2.1727967262268066,
+          -0.1307504028081894
+        ],
+        "admit_probability": 0.11485853046178818,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:zero_friction",
+        "scores": [
+          -2.9655067920684814,
+          -0.06020468473434448
+        ],
+        "admit_probability": 0.05189208686351776,
+        "prediction": "DEFER"
+      }
+    ],
+    "ce_balanced": [
+      {
+        "id": "fresh:0.17:0.3:ordinary",
+        "scores": [
+          -0.23019157350063324,
+          -1.6132376194000244
+        ],
+        "admit_probability": 0.7994797825813293,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.3:zero_friction",
+        "scores": [
+          -0.6994867324829102,
+          -0.7010258436203003
+        ],
+        "admit_probability": 0.5003847479820251,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.4:ordinary",
+        "scores": [
+          -0.22214756906032562,
+          -1.646017074584961
+        ],
+        "admit_probability": 0.8059443235397339,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.4:zero_friction",
+        "scores": [
+          -0.6804938316345215,
+          -0.7205116748809814
+        ],
+        "admit_probability": 0.5100031495094299,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.3:ordinary",
+        "scores": [
+          -0.21398615837097168,
+          -1.6804040670394897
+        ],
+        "admit_probability": 0.8125123381614685,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.3:zero_friction",
+        "scores": [
+          -0.6538569331169128,
+          -0.7490132451057434
+        ],
+        "admit_probability": 0.5237711071968079,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.4:ordinary",
+        "scores": [
+          -0.21913231909275055,
+          -1.6586743593215942
+        ],
+        "admit_probability": 0.8083837628364563,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.4:zero_friction",
+        "scores": [
+          -0.6615562438964844,
+          -0.7406643033027649
+        ],
+        "admit_probability": 0.5197666883468628,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.3:ordinary",
+        "scores": [
+          -0.2082890272140503,
+          -1.705257534980774
+        ],
+        "admit_probability": 0.8171219229698181,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.3:zero_friction",
+        "scores": [
+          -0.6462017893791199,
+          -0.7574484944343567
+        ],
+        "admit_probability": 0.5277830362319946,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.4:ordinary",
+        "scores": [
+          -0.1995534747838974,
+          -1.745350956916809
+        ],
+        "admit_probability": 0.8243059515953064,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.4:zero_friction",
+        "scores": [
+          -0.6223580241203308,
+          -0.7849156260490417
+        ],
+        "admit_probability": 0.540550172328949,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.3:ordinary",
+        "scores": [
+          -0.2139034867286682,
+          -1.6808217763900757
+        ],
+        "admit_probability": 0.8125885128974915,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.3:zero_friction",
+        "scores": [
+          -0.6446650624275208,
+          -0.7591536045074463
+        ],
+        "admit_probability": 0.5285909175872803,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.4:ordinary",
+        "scores": [
+          -0.20507043600082397,
+          -1.7200610637664795
+        ],
+        "admit_probability": 0.8197996616363525,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.4:zero_friction",
+        "scores": [
+          -0.6252427697181702,
+          -0.78150475025177
+        ],
+        "admit_probability": 0.5389862060546875,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.89:0.3:ordinary",
+        "scores": [
+          -2.3569228649139404,
+          -0.10803563892841339
+        ],
+        "admit_probability": 0.09544549137353897,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:zero_friction",
+        "scores": [
+          -3.4353623390197754,
+          -0.03900779038667679
+        ],
+        "admit_probability": 0.03240959346294403,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:ordinary",
+        "scores": [
+          -2.300692319869995,
+          -0.11430167406797409
+        ],
+        "admit_probability": 0.1009792909026146,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:zero_friction",
+        "scores": [
+          -3.386645555496216,
+          -0.04076075553894043
+        ],
+        "admit_probability": 0.03403017669916153,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:ordinary",
+        "scores": [
+          -2.348494291305542,
+          -0.1088714748620987
+        ],
+        "admit_probability": 0.09624834358692169,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:zero_friction",
+        "scores": [
+          -3.4443488121032715,
+          -0.038684166967868805
+        ],
+        "admit_probability": 0.03211889788508415,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:ordinary",
+        "scores": [
+          -2.303774833679199,
+          -0.11386124789714813
+        ],
+        "admit_probability": 0.10065992176532745,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:zero_friction",
+        "scores": [
+          -3.4000606536865234,
+          -0.040247466415166855
+        ],
+        "admit_probability": 0.033575285226106644,
+        "prediction": "DEFER"
+      }
+    ],
+    "choice_original": [
+      {
+        "id": "fresh:0.17:0.3:ordinary",
+        "scores": [
+          -0.42878881096839905,
+          -1.1106805801391602
+        ],
+        "admit_probability": 0.6641607880592346,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.3:zero_friction",
+        "scores": [
+          -1.0123058557510376,
+          -0.4815036356449127
+        ],
+        "admit_probability": 0.3703297972679138,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.17:0.4:ordinary",
+        "scores": [
+          -0.41571155190467834,
+          -1.1373300552368164
+        ],
+        "admit_probability": 0.6729633808135986,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.4:zero_friction",
+        "scores": [
+          -0.988758385181427,
+          -0.49594610929489136
+        ],
+        "admit_probability": 0.3792313039302826,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.3:ordinary",
+        "scores": [
+          -0.40395671129226685,
+          -1.1617141962051392
+        ],
+        "admit_probability": 0.6808666586875916,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.3:zero_friction",
+        "scores": [
+          -0.9606176614761353,
+          -0.5135848522186279
+        ],
+        "admit_probability": 0.3900664746761322,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.4:ordinary",
+        "scores": [
+          -0.41043323278427124,
+          -1.1484243869781494
+        ],
+        "admit_probability": 0.676556408405304,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.4:zero_friction",
+        "scores": [
+          -0.9656351804733276,
+          -0.5105215311050415
+        ],
+        "admit_probability": 0.38814565539360046,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.3:ordinary",
+        "scores": [
+          -0.3933725953102112,
+          -1.1841694116592407
+        ],
+        "admit_probability": 0.6880024075508118,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.3:zero_friction",
+        "scores": [
+          -0.9483968019485474,
+          -0.5213673710823059
+        ],
+        "admit_probability": 0.3948359191417694,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.4:ordinary",
+        "scores": [
+          -0.3788560628890991,
+          -1.2173527479171753
+        ],
+        "admit_probability": 0.6981485486030579,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.4:zero_friction",
+        "scores": [
+          -0.9186092019081116,
+          -0.5417321920394897
+        ],
+        "admit_probability": 0.40688034892082214,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.3:ordinary",
+        "scores": [
+          -0.4009131193161011,
+          -1.1679022312164307
+        ],
+        "admit_probability": 0.6828692555427551,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.3:zero_friction",
+        "scores": [
+          -0.9439353942871094,
+          -0.5241873860359192
+        ],
+        "admit_probability": 0.39657703042030334,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.4:ordinary",
+        "scores": [
+          -0.38658782839775085,
+          -1.1997588872909546
+        ],
+        "admit_probability": 0.69278484582901,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.4:zero_friction",
+        "scores": [
+          -0.919694185256958,
+          -0.5408530235290527
+        ],
+        "admit_probability": 0.406406432390213,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:ordinary",
+        "scores": [
+          -2.719780206680298,
+          -0.08914578706026077
+        ],
+        "admit_probability": 0.0671926811337471,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:zero_friction",
+        "scores": [
+          -3.692682981491089,
+          -0.04041130840778351
+        ],
+        "admit_probability": 0.0252766702324152,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:ordinary",
+        "scores": [
+          -2.664642572402954,
+          -0.09365659952163696
+        ],
+        "admit_probability": 0.07102920860052109,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:zero_friction",
+        "scores": [
+          -3.645488739013672,
+          -0.04190355911850929
+        ],
+        "admit_probability": 0.026504330337047577,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:ordinary",
+        "scores": [
+          -2.7120211124420166,
+          -0.08956515043973923
+        ],
+        "admit_probability": 0.06770709156990051,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:zero_friction",
+        "scores": [
+          -3.701786994934082,
+          -0.040094804018735886
+        ],
+        "admit_probability": 0.0250456091016531,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:ordinary",
+        "scores": [
+          -2.66752290725708,
+          -0.09319838881492615
+        ],
+        "admit_probability": 0.07080923765897751,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:zero_friction",
+        "scores": [
+          -3.6584672927856445,
+          -0.04142278432846069
+        ],
+        "admit_probability": 0.026159262284636497,
+        "prediction": "DEFER"
+      }
+    ],
+    "choice_balanced": [
+      {
+        "id": "fresh:0.17:0.3:ordinary",
+        "scores": [
+          -0.32582566142082214,
+          -1.3512663841247559
+        ],
+        "admit_probability": 0.7360309958457947,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.3:zero_friction",
+        "scores": [
+          -1.0345227718353271,
+          -0.47019824385643005
+        ],
+        "admit_probability": 0.3625474274158478,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.17:0.4:ordinary",
+        "scores": [
+          -0.3153352439403534,
+          -1.3813765048980713
+        ],
+        "admit_probability": 0.7438433170318604,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.4:zero_friction",
+        "scores": [
+          -1.0106074810028076,
+          -0.4844346344470978
+        ],
+        "admit_probability": 0.37140995264053345,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.3:ordinary",
+        "scores": [
+          -0.3022381663322449,
+          -1.419690489768982
+        ],
+        "admit_probability": 0.7535158395767212,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.3:zero_friction",
+        "scores": [
+          -0.9688717126846313,
+          -0.5100103616714478
+        ],
+        "admit_probability": 0.3872559666633606,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.37:0.4:ordinary",
+        "scores": [
+          -0.3109513521194458,
+          -1.394288182258606
+        ],
+        "admit_probability": 0.7471249103546143,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.4:zero_friction",
+        "scores": [
+          -0.9814548492431641,
+          -0.5022644996643066
+        ],
+        "admit_probability": 0.38244327902793884,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.3:ordinary",
+        "scores": [
+          -0.2935870885848999,
+          -1.4458372592926025
+        ],
+        "admit_probability": 0.759921669960022,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.3:zero_friction",
+        "scores": [
+          -0.9581924080848694,
+          -0.516677975654602
+        ],
+        "admit_probability": 0.3913801610469818,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.57:0.4:ordinary",
+        "scores": [
+          -0.2821511924266815,
+          -1.4833468198776245
+        ],
+        "admit_probability": 0.7687374353408813,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.4:zero_friction",
+        "scores": [
+          -0.9270281195640564,
+          -0.5377467274665833
+        ],
+        "admit_probability": 0.4038902819156647,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.3:ordinary",
+        "scores": [
+          -0.2996883690357208,
+          -1.4271044731140137
+        ],
+        "admit_probability": 0.7553617358207703,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.3:zero_friction",
+        "scores": [
+          -0.9496565461158752,
+          -0.522101104259491
+        ],
+        "admit_probability": 0.3947102129459381,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.77:0.4:ordinary",
+        "scores": [
+          -0.2881738543510437,
+          -1.4637595415115356
+        ],
+        "admit_probability": 0.7641531825065613,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.4:zero_friction",
+        "scores": [
+          -0.9251744747161865,
+          -0.5388599038124084
+        ],
+        "admit_probability": 0.40460482239723206,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:ordinary",
+        "scores": [
+          -3.0410830974578857,
+          -0.06993907690048218
+        ],
+        "admit_probability": 0.04874665290117264,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:zero_friction",
+        "scores": [
+          -4.220207214355469,
+          -0.02964538335800171
+        ],
+        "admit_probability": 0.014912042766809464,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:ordinary",
+        "scores": [
+          -2.9813520908355713,
+          -0.07354388386011124
+        ],
+        "admit_probability": 0.051768917590379715,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:zero_friction",
+        "scores": [
+          -4.171146869659424,
+          -0.030636131763458252
+        ],
+        "admit_probability": 0.015665413811802864,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:ordinary",
+        "scores": [
+          -3.0180320739746094,
+          -0.07100469619035721
+        ],
+        "admit_probability": 0.049877192825078964,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:zero_friction",
+        "scores": [
+          -4.215651512145996,
+          -0.02964749187231064
+        ],
+        "admit_probability": 0.014979141764342785,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:ordinary",
+        "scores": [
+          -2.9712772369384766,
+          -0.07386144995689392
+        ],
+        "admit_probability": 0.052281454205513,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:zero_friction",
+        "scores": [
+          -4.171762466430664,
+          -0.030511103570461273
+        ],
+        "admit_probability": 0.01565399207174778,
+        "prediction": "DEFER"
+      }
+    ],
+    "choice_shuffled": [
+      {
+        "id": "fresh:0.17:0.3:ordinary",
+        "scores": [
+          -0.5349823236465454,
+          -0.930027425289154
+        ],
+        "admit_probability": 0.5974966287612915,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.3:zero_friction",
+        "scores": [
+          -0.6230171918869019,
+          -0.8093970417976379
+        ],
+        "admit_probability": 0.5464605689048767,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.4:ordinary",
+        "scores": [
+          -0.5207101106643677,
+          -0.9519074559211731
+        ],
+        "admit_probability": 0.6061595678329468,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.17:0.4:zero_friction",
+        "scores": [
+          -0.6078714728355408,
+          -0.8282422423362732
+        ],
+        "admit_probability": 0.5548708438873291,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.3:ordinary",
+        "scores": [
+          -0.5203427076339722,
+          -0.9523207545280457
+        ],
+        "admit_probability": 0.6063459515571594,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.3:zero_friction",
+        "scores": [
+          -0.6092654466629028,
+          -0.8263312578201294
+        ],
+        "admit_probability": 0.5540543794631958,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.4:ordinary",
+        "scores": [
+          -0.5167763829231262,
+          -0.9580509662628174
+        ],
+        "admit_probability": 0.6085626482963562,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.37:0.4:zero_friction",
+        "scores": [
+          -0.6024301648139954,
+          -0.8350712656974792
+        ],
+        "admit_probability": 0.5578993558883667,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.3:ordinary",
+        "scores": [
+          -0.514123260974884,
+          -0.961916446685791
+        ],
+        "admit_probability": 0.6101143956184387,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.3:zero_friction",
+        "scores": [
+          -0.6028986573219299,
+          -0.8342211842536926
+        ],
+        "admit_probability": 0.5575741529464722,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.4:ordinary",
+        "scores": [
+          -0.49634334444999695,
+          -0.9907371997833252
+        ],
+        "admit_probability": 0.6211409568786621,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.57:0.4:zero_friction",
+        "scores": [
+          -0.5828551054000854,
+          -0.860406219959259
+        ],
+        "admit_probability": 0.5689457654953003,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.3:ordinary",
+        "scores": [
+          -0.510711133480072,
+          -0.9670335054397583
+        ],
+        "admit_probability": 0.6121413707733154,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.3:zero_friction",
+        "scores": [
+          -0.5961777567863464,
+          -0.8426215648651123
+        ],
+        "admit_probability": 0.561301052570343,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.4:ordinary",
+        "scores": [
+          -0.495349258184433,
+          -0.9921406507492065
+        ],
+        "admit_probability": 0.6217049956321716,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.77:0.4:zero_friction",
+        "scores": [
+          -0.5794253945350647,
+          -0.8648148775100708
+        ],
+        "admit_probability": 0.5708670616149902,
+        "prediction": "ADMIT"
+      },
+      {
+        "id": "fresh:0.89:0.3:ordinary",
+        "scores": [
+          -1.4826629161834717,
+          -0.28507673740386963
+        ],
+        "admit_probability": 0.23190490901470184,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.3:zero_friction",
+        "scores": [
+          -1.5847060680389404,
+          -0.2531460225582123
+        ],
+        "admit_probability": 0.20890143513679504,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:ordinary",
+        "scores": [
+          -1.449459195137024,
+          -0.29577916860580444
+        ],
+        "admit_probability": 0.2398175448179245,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.89:0.4:zero_friction",
+        "scores": [
+          -1.553609848022461,
+          -0.26189717650413513
+        ],
+        "admit_probability": 0.21556305885314941,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:ordinary",
+        "scores": [
+          -1.4874659776687622,
+          -0.2834469974040985
+        ],
+        "admit_probability": 0.23076105117797852,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.3:zero_friction",
+        "scores": [
+          -1.6017401218414307,
+          -0.2485201507806778
+        ],
+        "admit_probability": 0.20534443855285645,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:ordinary",
+        "scores": [
+          -1.4578675031661987,
+          -0.29286813735961914
+        ],
+        "admit_probability": 0.23776006698608398,
+        "prediction": "DEFER"
+      },
+      {
+        "id": "fresh:0.97:0.4:zero_friction",
+        "scores": [
+          -1.5713292360305786,
+          -0.2568470537662506
+        ],
+        "admit_probability": 0.21173778176307678,
+        "prediction": "DEFER"
+      }
+    ]
+  },
+  "weights": {
+    "ce_original": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "a319a057de60cbaf22bd98d79b314fe2ece25c41c89c5d26a2e23abc4ad9217d",
+        "base_model.model.model.layers.26.self_attn.v_proj": "8cbad4e03eec5d4db2e4a422b761c53aec446d264b6d42e01a1b3313e7ece03b",
+        "base_model.model.model.layers.27.self_attn.q_proj": "3032b7f0530bc9e95f50559f271893fd3cdd30820e8acaf3c53da87221255888",
+        "base_model.model.model.layers.27.self_attn.v_proj": "e77c139b40c16b2f9a2f83ec61aa183747c0437df5abe9894b691503739fc5f1",
+        "base_model.model.model.layers.28.self_attn.q_proj": "66f43cc297136870620cc039024bf06af21f0bd1d9fd8bf2a87106d353b20179",
+        "base_model.model.model.layers.28.self_attn.v_proj": "31a011b98c4f04d7e0e2bf73141276f362990a397b223869fa4a518c34c5750d",
+        "base_model.model.model.layers.29.self_attn.q_proj": "ab06ed9641d4b3df8cbcd075dea179d3ec4337711fabd9dc550a730af342298e",
+        "base_model.model.model.layers.29.self_attn.v_proj": "f346dc94cb1cefef57133c370c5b53527b5b4abfb8aae09ba56298327742f84d"
+      },
+      "adapter_sha256": "8f56ab76e82671078c7b1f044f1c7ebfece90401c1de1c10e29c01602e12c787",
+      "changed_elements": 61440
+    },
+    "ce_balanced": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "7b1901006bed9d492de40c3dd7bc9bc9c63af0eb8e32611f1a1a59da793f64ca",
+        "base_model.model.model.layers.26.self_attn.v_proj": "397bc10be32bf1c31699c2862f8a25b62b33a05ea32b55cf83814075df46ad8c",
+        "base_model.model.model.layers.27.self_attn.q_proj": "aad54a11e4c29695e12d1e7de76f9c4cfe52d7948b4983bff46206ae9966f62a",
+        "base_model.model.model.layers.27.self_attn.v_proj": "87fdf803edc0d98b7b6cb6e07c6fcfa64fbc4170055a89fdf559b014e20a7eb9",
+        "base_model.model.model.layers.28.self_attn.q_proj": "867c16582708c0dbf0f55c19091cc2fe88156456ecd5780447fc8a1486ea22de",
+        "base_model.model.model.layers.28.self_attn.v_proj": "8d0d9f56a32e7b70b2dfdca69fa072d64c2696b228306e1772aa76c7af0a9d9b",
+        "base_model.model.model.layers.29.self_attn.q_proj": "9c34cd2dbe4abd94fc6041572d03eb8ea7b99df188a220ffe033b467d68f1f37",
+        "base_model.model.model.layers.29.self_attn.v_proj": "9f5a7adfaa5f89b29ca1f05d6500e4b535df53da0a4be8504df8df653a650e31"
+      },
+      "adapter_sha256": "c179c90d6c3861004b0d6e3ecc763fdea8bfa2e4f3638501afaea616a8685942",
+      "changed_elements": 61440
+    },
+    "choice_original": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "0b305266b4db817afae708d15c4ee61793a8c1eafc855ad20217da440a436d24",
+        "base_model.model.model.layers.26.self_attn.v_proj": "309e457aadfa30703ea4251295990d9e4fd007d535dd4090c4ab6b0ab0577082",
+        "base_model.model.model.layers.27.self_attn.q_proj": "b9de9148b6ed011ac598cf3753461f86f31f14a5940965f81d0f0fbfe6284fa8",
+        "base_model.model.model.layers.27.self_attn.v_proj": "1d91947f1b4a4c322dddde92e26e3a3f054661e551c612cbcdbd4392e64fcf83",
+        "base_model.model.model.layers.28.self_attn.q_proj": "ed761fbd43b7d1bb4faee706ec4b1c405b627bb71680ce3faedea0f776e6b500",
+        "base_model.model.model.layers.28.self_attn.v_proj": "a6f883e36ff91b0ec57b464dd7739e74477b32de5623f51c533e68b9d99bb7bc",
+        "base_model.model.model.layers.29.self_attn.q_proj": "4d027e7dd2ecad7ac6508f3502152e31f167f081587eedc8ea3d506860e5be65",
+        "base_model.model.model.layers.29.self_attn.v_proj": "9769a5a8e523ade2a63d32fde23671bd35c652756f669359081d38a31cc40722"
+      },
+      "adapter_sha256": "4c58b08dfec386f8b49d6d55584024346cd0a7f823526fcae98dfd2ebed1b48a",
+      "changed_elements": 61440
+    },
+    "choice_balanced": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "e8f68a4f8ef9cfbe700ce84343afeb837552ea0351233e57a5a2ab71f0d1d36c",
+        "base_model.model.model.layers.26.self_attn.v_proj": "948eca1a67255f3bc17abb7d3a2caee45286067090cd7ec9ddeea53511c9e902",
+        "base_model.model.model.layers.27.self_attn.q_proj": "07f510045b9eb0b95d6f5e868163ff5daed63d723c554afe2d0dea97d115a331",
+        "base_model.model.model.layers.27.self_attn.v_proj": "2ad295e3ee9e45ab09c30f5839b83c3d44adc1679f0e12a398ed5c716e12b541",
+        "base_model.model.model.layers.28.self_attn.q_proj": "61aa8743470da9b2f488450d609a59d1a0612e82d90e04e544e5e9dc923e3a0a",
+        "base_model.model.model.layers.28.self_attn.v_proj": "129ee6355429ed7cd0fcaf7ca49e92b8bf497d52be67f3ec02fbc52a36ae1ef6",
+        "base_model.model.model.layers.29.self_attn.q_proj": "f8354af5ea5c9da3555de02132a7809bf61caa67358ff1d3b6cfeaa573797b74",
+        "base_model.model.model.layers.29.self_attn.v_proj": "db79cfc1512cc35e857f50dbe106db0fcf4236c745095850331f61880a97aee9"
+      },
+      "adapter_sha256": "aaf0c1f85dad3f3cc6985132de715c52d69d4a2de18d96a7ace70450560d7525",
+      "changed_elements": 61440
+    },
+    "choice_shuffled": {
+      "base_frozen_sha256": "bece467823af084259d3405cab6e7fe4bd6aaf0e506613e493db7ea016e58a7e",
+      "effective_hashes": {
+        "base_model.model.model.layers.26.self_attn.q_proj": "fd0ae217191f09349ff4389fd5051cc01930abd0aeff297f8ab9fb0a4488d86a",
+        "base_model.model.model.layers.26.self_attn.v_proj": "5989b5fc4944ef5575e5a92429463031ea20037a5e18eb5dd1304d0742dbb24c",
+        "base_model.model.model.layers.27.self_attn.q_proj": "b728544ef756d84a72090ecdc216ada39ab943f5aa0e338c5f0069c2a46da964",
+        "base_model.model.model.layers.27.self_attn.v_proj": "137a2dda6e715e00da3af9806732b9ee3f26d06999ef5b029dc46b6ef8f51aab",
+        "base_model.model.model.layers.28.self_attn.q_proj": "15117ec396d1ff71969df5a7557d2e0b41eb45d93b72a4774b16e6cff4f71e10",
+        "base_model.model.model.layers.28.self_attn.v_proj": "b056da44f1dbd0363257b2abaad24e035ebe9bc792c21fdb23a3e34b0bd900ba",
+        "base_model.model.model.layers.29.self_attn.q_proj": "ea76fc4005eff628fbc09649a982a2669f0c0407f25e6a9099572364acd4ee69",
+        "base_model.model.model.layers.29.self_attn.v_proj": "61300c7d27898933e98ef70136638fe4b8c16424282dbd16acee4c786562347f"
+      },
+      "adapter_sha256": "85ec28996d12842db37b9aeb31879ff74a2e0e867596970e8476e1ced77addcf",
+      "changed_elements": 61440
+    }
+  },
+  "calibration_threshold": 0.3299630433320999,
+  "fresh_plans_sha256": "9d0e8c13fbd9cfd6b826347cee1f149aaf3bc5abc1bf8b9cd537d0ac06a27c04",
+  "sources": {
+    "examples/nasuraya_language_adapter/test_adapter.py": "a2d256c14a1663d4b56b936bb5bbcdc15ca66d830242bc5c0299e747e3390458",
+    "examples/nasuraya_language_adapter/__init__.py": "365e50b99b18eccf1015116551226f008fd9bc220dc562a5ad0a882b69b62e51",
+    "examples/nasuraya_language_adapter/data.py": "b5f05a6d37e0783eb103e1f9ce846c09ed24194ddd68e123d5084d0f1a523550",
+    "examples/nasuraya_language_adapter/download_base.py": "bcde36182c59c8e87254426c6de700fe7ce876f0ff4b189627ec7b78e7bb2aa5",
+    "examples/nasuraya_language_adapter/train.py": "7bb74d84f15580c79c5585f2f0dc8be4caacee743de822b1e24a9178df00e5c1",
+    "examples/nasuraya_language_choice/experiment.py": "6547e1bef61b7ff49b746298fb17ac4ce69cbba97a22a2dabebe0a1a86e182a0",
+    "examples/nasuraya_language_choice/__init__.py": "b50258e9eb9132c5652b13916d6e4c8426f78d4767ee82f985986f2397c7c212",
+    "examples/nasuraya_self_model/monitor.py": "9009dba256a6a1465d6a6494bb34776578089b9e95de1deed9316c4725debe37",
+    "examples/nasuraya_self_model/evaluate.py": "cfde3a50f2f067a94c32ac8e0e6a684b8887f3248fa767c4ed7020714a5f57d6"
+  }
+}

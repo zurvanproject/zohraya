@@ -1,0 +1,1728 @@
+[
+  {
+    "id": "v04:train:control:ordinary:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "de54f035ecfa8cbb0c2ffbb13fcc4c8f554534cdad6f02beaf363ac50f7cc612",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:control:ordinary:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "control",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:control:ordinary:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "1cf3cf098a72adf7ae8d3558bf48185d912b8492ea5b7d838f58fc3cac4c043a",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:control:ordinary:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "control",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:control:sleep:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.9100.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "d4e97097004f4223e496de8edb26a7a5ab24fa19faeb7c8e60767f0052f7e6f8",
+    "observation_sha256": "4949ccec6bf3b0cd2c32d446b000ddad5dc98ff2580a91fce9611f39fae374e7",
+    "receipt_sha256": "635b7ff6c0cd1041a54ce443d85652062b8e04206f32992f0939a9794bcd7aba",
+    "actual_action": "protect",
+    "sleep_pressure": 0.91,
+    "event_id": "v04:train:control:sleep:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.910.\nGround: ordinary friction.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "control",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.91,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "sleep_pressure"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:control:sleep:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.9100.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "d4e97097004f4223e496de8edb26a7a5ab24fa19faeb7c8e60767f0052f7e6f8",
+    "observation_sha256": "4949ccec6bf3b0cd2c32d446b000ddad5dc98ff2580a91fce9611f39fae374e7",
+    "receipt_sha256": "94b6a9ca50b0036fbca5dd79cc7ab51266606b930407c52ee5293e594664cdea",
+    "actual_action": "protect",
+    "sleep_pressure": 0.91,
+    "event_id": "v04:train:control:sleep:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.910.\nGround: ordinary friction.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "control",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.91,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "sleep_pressure"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:control:zero:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.0000; R=0.0000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "589d979c71eaf10ba29993ff66dd2d8efb744655697c94b4807c4da0994d49df",
+    "actual_action": "slow_breath",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:control:zero:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: zero friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "control",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.0,
+        "R": 0.0
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:control:zero:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.0000; R=0.0000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "aa0098d2781ce134c0fabe221ac577dcb75d662c7968497140fdcb47f573655e",
+    "actual_action": "slow_breath",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:control:zero:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: zero friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "control",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.0,
+        "R": 0.0
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:control:near_sleep:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.8300.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "eef57e4898212dec1560bee9d5ae6c59e62b6751202f57b74c7fdc91e3142087",
+    "observation_sha256": "236881cf3cc1cc74778018defb4f8b441e471c234b88a5b5e4eb443caf073a21",
+    "receipt_sha256": "537a8ac682bbb386f1dcc191ea00ece7b9ad4848da06194f89300b60ff3a2909",
+    "actual_action": "walk",
+    "sleep_pressure": 0.83,
+    "event_id": "v04:train:control:near_sleep:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.830.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "control",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.83,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:control:near_sleep:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.8300.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "eef57e4898212dec1560bee9d5ae6c59e62b6751202f57b74c7fdc91e3142087",
+    "observation_sha256": "236881cf3cc1cc74778018defb4f8b441e471c234b88a5b5e4eb443caf073a21",
+    "receipt_sha256": "e84992c10df965770f2a47b23d2151a4592c904ba31d5b3959e89d71882d66aa",
+    "actual_action": "walk",
+    "sleep_pressure": 0.83,
+    "event_id": "v04:train:control:near_sleep:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.830.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "control",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.83,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:fatigue:0.26:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.2600.\nLeft leg fatigue: 0.2600. Right leg fatigue: 0.2600.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "c32a3fc2fe8f189df5f9a0da3116600a90f039a3847d5381a79311d5777f9391",
+    "observation_sha256": "fa64e06caf1a2836a6eb1a15eabe66427a1ad3110bd4d7eef63c2ef0f2271826",
+    "receipt_sha256": "10c94fca306347e11f57e175b65731baefaef55fc93d492f9a3a14cc25e90821",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:fatigue:0.26:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "fatigue",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.26,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.26,
+      "right_leg_fatigue": 0.26,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:fatigue:0.26:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.2600.\nLeft leg fatigue: 0.2600. Right leg fatigue: 0.2600.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "c32a3fc2fe8f189df5f9a0da3116600a90f039a3847d5381a79311d5777f9391",
+    "observation_sha256": "fa64e06caf1a2836a6eb1a15eabe66427a1ad3110bd4d7eef63c2ef0f2271826",
+    "receipt_sha256": "d87178ce828bdd56d4715a48c8cfed66cd521ed499cd071090d4f8be8d227503",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:fatigue:0.26:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "fatigue",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.26,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.26,
+      "right_leg_fatigue": 0.26,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:fatigue:0.46:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.4600.\nLeft leg fatigue: 0.4600. Right leg fatigue: 0.4600.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fc622fac472898afc6ca5d906da75cfdb3f1f8a201802006bbc1b73686a2bd40",
+    "observation_sha256": "e870839bef74c0c36202afa7012c1dc32c3ab17617125228ec96ae1b793a4653",
+    "receipt_sha256": "cf80a1d816572e68be976c227796685b110e4687f217ce1bf05ec05bd4706b05",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:fatigue:0.46:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "fatigue",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.46,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.46,
+      "right_leg_fatigue": 0.46,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:fatigue:0.46:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.4600.\nLeft leg fatigue: 0.4600. Right leg fatigue: 0.4600.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fc622fac472898afc6ca5d906da75cfdb3f1f8a201802006bbc1b73686a2bd40",
+    "observation_sha256": "e870839bef74c0c36202afa7012c1dc32c3ab17617125228ec96ae1b793a4653",
+    "receipt_sha256": "bfe341a1ad75b3acbd630fc8375049e0f0a35301d3402e514df48efb214c4fb9",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:fatigue:0.46:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "fatigue",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.46,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.46,
+      "right_leg_fatigue": 0.46,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:fatigue:0.54:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.5400.\nLeft leg fatigue: 0.5400. Right leg fatigue: 0.5400.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "917390cc0a96d9dcb06f3b301fbc0ebcba324017da58e384c213e8fc8062e03e",
+    "observation_sha256": "2df53c77afe2a8758d86b6d4bfed713725bc145bc8bbb2f7e9a2e2d5b79a9fff",
+    "receipt_sha256": "a8f1748173e9d3715e0b118fc4f9478da9e096401f12dd6ceb040dd643d714d6",
+    "actual_action": "slow_breath",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:fatigue:0.54:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "fatigue",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.54,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.54,
+      "right_leg_fatigue": 0.54,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "fatigue"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:fatigue:0.54:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.5400.\nLeft leg fatigue: 0.5400. Right leg fatigue: 0.5400.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "917390cc0a96d9dcb06f3b301fbc0ebcba324017da58e384c213e8fc8062e03e",
+    "observation_sha256": "2df53c77afe2a8758d86b6d4bfed713725bc145bc8bbb2f7e9a2e2d5b79a9fff",
+    "receipt_sha256": "40f4f9f93927ac677957a94379256057a265d812e31bea54a021bc3ead6ad852",
+    "actual_action": "slow_breath",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:fatigue:0.54:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "fatigue",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.54,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.54,
+      "right_leg_fatigue": 0.54,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "fatigue"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:fatigue:0.68:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.6800.\nLeft leg fatigue: 0.6800. Right leg fatigue: 0.6800.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "78bd7291b785b859486f233d45edfae727c5b1b55b3f6716b916d511ca244cdb",
+    "observation_sha256": "c0c15620d07452ad7baf8e7ca4c1fff553ee066128012e3a6562d8f76c542a69",
+    "receipt_sha256": "e3765a364b2da03355d3b6b9ea3181d1c3242c950173446ee028bef946614471",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:fatigue:0.68:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "fatigue",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.68,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.68,
+      "right_leg_fatigue": 0.68,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "fatigue"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:fatigue:0.68:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.6800.\nLeft leg fatigue: 0.6800. Right leg fatigue: 0.6800.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "78bd7291b785b859486f233d45edfae727c5b1b55b3f6716b916d511ca244cdb",
+    "observation_sha256": "c0c15620d07452ad7baf8e7ca4c1fff553ee066128012e3a6562d8f76c542a69",
+    "receipt_sha256": "76983b5b039e20576b32ad59cdd82f482da28234e56be8764759ad56a785550b",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:fatigue:0.68:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "fatigue",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.68,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.68,
+      "right_leg_fatigue": 0.68,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "fatigue"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:pain:0.22:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.2262.\nRegional slow pain proxies: forefoot_L=0.2200; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "30d5b526b2558b672c573ff653770ddae02c278056b154db0afbd5096410be7d",
+    "observation_sha256": "eb5021f77bfea4544a7b0db61a0fbd48ddf8704d504161d3dfad28922708d276",
+    "receipt_sha256": "d2ab61aa471c8d6ea8ca8c6288fcf14eedae21416f13802449ff18100506c868",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:pain:0.22:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "pain",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.22621014549436902,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.22,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:pain:0.22:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.2262.\nRegional slow pain proxies: forefoot_L=0.2200; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "30d5b526b2558b672c573ff653770ddae02c278056b154db0afbd5096410be7d",
+    "observation_sha256": "eb5021f77bfea4544a7b0db61a0fbd48ddf8704d504161d3dfad28922708d276",
+    "receipt_sha256": "692b72835f71067af9314b0f7e1061629ce89006c40dc92c2e6f341fd50ec0eb",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:pain:0.22:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "pain",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.22621014549436902,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.22,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:pain:0.36:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.3702.\nRegional slow pain proxies: forefoot_L=0.3600; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "312bae6e343b8b2ec0ce45560d1d9c7faff28b5b76f3a4a276d8611af252ace6",
+    "observation_sha256": "2214c1553feb2e6c1a176e413922668f1a3086b4d8d5813c1be4965cd83f912b",
+    "receipt_sha256": "132294ec1cb6e96fc886dcc69bc5aabf8816bca19b6f8ef5372986c7acd28efa",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:pain:0.36:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "pain",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.37016205626351295,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.36,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:pain:0.36:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.3702.\nRegional slow pain proxies: forefoot_L=0.3600; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "312bae6e343b8b2ec0ce45560d1d9c7faff28b5b76f3a4a276d8611af252ace6",
+    "observation_sha256": "2214c1553feb2e6c1a176e413922668f1a3086b4d8d5813c1be4965cd83f912b",
+    "receipt_sha256": "183130ca4157ae968acd2c6da803ec17cc78c4fe8b76cc48efb71563590a92c0",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:pain:0.36:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "pain",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.37016205626351295,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.36,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:pain:0.58:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.5964.\nRegional slow pain proxies: forefoot_L=0.5800; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "f3dd1d5fac414fe75035b575604244b8328f535d8ad965d3ce4f81bdbd707d2b",
+    "observation_sha256": "6c9f400e39f8c244c3da96ec8e7a0839b994f765b43db6aab8bb7ef51cb2edb0",
+    "receipt_sha256": "8a266709bcf668ed2f6f7a8eeeb3e376eed81df0546b8b546744fe217dbf2ae0",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:pain:0.58:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "pain",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.596372201757882,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.58,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "pain"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:pain:0.58:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.5964.\nRegional slow pain proxies: forefoot_L=0.5800; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "f3dd1d5fac414fe75035b575604244b8328f535d8ad965d3ce4f81bdbd707d2b",
+    "observation_sha256": "6c9f400e39f8c244c3da96ec8e7a0839b994f765b43db6aab8bb7ef51cb2edb0",
+    "receipt_sha256": "23015d1ec59c0c84bc470e7abb7e00fd7ce17b477bc978c946620f3ecfdc267a",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:pain:0.58:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "pain",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.596372201757882,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.58,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "pain"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:pain:0.78:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.8020.\nRegional slow pain proxies: forefoot_L=0.7800; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "972bcf53ec065ab0217bab57387bb70743edbf820aea71498cfce472254d385c",
+    "observation_sha256": "613cf91ae3b1ad17c0f6f80dc145644a7a6deccf60fa98706fdbeced59cbec06",
+    "receipt_sha256": "c716509c867cf3488c7f7e7e11f93bdf708230d805a7ed7a5dd2afb8be1c5b96",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:pain:0.78:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "pain",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.8020177885709447,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.78,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "pain"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:pain:0.78:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.8020.\nRegional slow pain proxies: forefoot_L=0.7800; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "972bcf53ec065ab0217bab57387bb70743edbf820aea71498cfce472254d385c",
+    "observation_sha256": "613cf91ae3b1ad17c0f6f80dc145644a7a6deccf60fa98706fdbeced59cbec06",
+    "receipt_sha256": "ae9f868241f927d67ae8f34009754e10c8a5746154c12f81955ead93d17a3d6e",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:pain:0.78:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "pain",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.8020177885709447,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.78,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "pain"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:friction:0:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.0800; R=0.0800.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "b6360109372fa6168bbc01dabe9cf7cdf308654adde9841fd02d9b9d6a2def1c",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:friction:0:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "friction",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.08,
+        "R": 0.08
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:friction:0:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.0800; R=0.0800.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "9633535211f2efc7721e235f860067566e88033dd5011fbb2a730a1ecca5eb9b",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:friction:0:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "friction",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.08,
+        "R": 0.08
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:friction:1:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.2200; R=0.2200.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "636c2cabfb9ca656037cb57348ed8d39aa4499661afc7bcc237ffde918e95345",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:friction:1:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "friction",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.22,
+        "R": 0.22
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:friction:1:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.2200; R=0.2200.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "33d3a52b0ae80139480baab1ad8e3ba293905043047f26e419d3a984d70d642a",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:friction:1:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "friction",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.22,
+        "R": 0.22
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:friction:2:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.0000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "4093470fdc9bfe5dc25006dd149b6b14a251c3dd870f3927882013507bb607eb",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:friction:2:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "friction",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.0,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:friction:2:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.0000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "c0fbb8d688089dd3e86c881c684771c65853b6ade6e42f80407c0112c4800854",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:friction:2:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "friction",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.0,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:friction:3:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.0000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "5a010cd8eb381c576ad19d51d0c925ec7ec335f2232d97c5fd3e76138b2066c5",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:friction:3:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "friction",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.0
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:friction:3:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.0000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fd822a9432376f8edcf9646a890b7b714c5f169a16324533d060b7b9b29fdfd2",
+    "observation_sha256": "68884d629dc4bcc04c106dd2bbbcfe503fa9fd651b5fafeebe304cc0d22babeb",
+    "receipt_sha256": "d150d56342d08b9373087568c5b77a7b11360bdcf0f9f8eeef86a60cfefed7ef",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:friction:3:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "friction",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.0
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:mixed:0:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.3000.\nLeft leg fatigue: 0.3000. Right leg fatigue: 0.3000.\nPerceived pain proxy: 0.2571.\nRegional slow pain proxies: forefoot_L=0.2500; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.2500; R=0.2500.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "d0bf5bfe173523ab1bd498c2dd36397ea89b95a3f15f5586d94d0c552cb87f5b",
+    "observation_sha256": "69cac3b15c2ee895fd1737d5ea0f3b54f2e4a2000ac2a60202a2b71e0d2badc3",
+    "receipt_sha256": "e69904255abc18372504508314eef5eabbca4a455dd57c05afeb01f17433f228",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:mixed:0:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "mixed",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.3,
+      "pain": 0.25705698351632844,
+      "left_leg_fatigue": 0.3,
+      "right_leg_fatigue": 0.3,
+      "regional_slow_pain": {
+        "forefoot_L": 0.25,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.25,
+        "R": 0.25
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:mixed:0:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.3000.\nLeft leg fatigue: 0.3000. Right leg fatigue: 0.3000.\nPerceived pain proxy: 0.2571.\nRegional slow pain proxies: forefoot_L=0.2500; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.2500; R=0.2500.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "d0bf5bfe173523ab1bd498c2dd36397ea89b95a3f15f5586d94d0c552cb87f5b",
+    "observation_sha256": "69cac3b15c2ee895fd1737d5ea0f3b54f2e4a2000ac2a60202a2b71e0d2badc3",
+    "receipt_sha256": "777d4a3e42fd974a4202d0f988c5d41f75bdae7f7905ec02e27180afc1d9272e",
+    "actual_action": "walk",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:mixed:0:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "mixed",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.3,
+      "pain": 0.25705698351632844,
+      "left_leg_fatigue": 0.3,
+      "right_leg_fatigue": 0.3,
+      "regional_slow_pain": {
+        "forefoot_L": 0.25,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.25,
+        "R": 0.25
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:mixed:1:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.6000.\nLeft leg fatigue: 0.6000. Right leg fatigue: 0.6000.\nPerceived pain proxy: 0.6375.\nRegional slow pain proxies: forefoot_L=0.6200; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.4000; R=0.4000.\nCurrent native restrictions: fatigue, pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "eeeb4f0a7d57d7eaa16cae4513054c2aaf4c7d841fc3d836beb6ca8e540cb149",
+    "observation_sha256": "784a2eda1e8d2e6fe9d3795759a5b387ec77eec5cac1e56d654a73d6ba0a340e",
+    "receipt_sha256": "c5586985b31f19d1d8e4a382a5d9d92c4a74611573b42b1b9dbf339ba0072410",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:mixed:1:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: fatigue, pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "mixed",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.6,
+      "pain": 0.6375013191204946,
+      "left_leg_fatigue": 0.6,
+      "right_leg_fatigue": 0.6,
+      "regional_slow_pain": {
+        "forefoot_L": 0.62,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.4,
+        "R": 0.4
+      },
+      "walking_restrictions": [
+        "fatigue",
+        "pain"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:mixed:1:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.6000.\nLeft leg fatigue: 0.6000. Right leg fatigue: 0.6000.\nPerceived pain proxy: 0.6375.\nRegional slow pain proxies: forefoot_L=0.6200; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.4000; R=0.4000.\nCurrent native restrictions: fatigue, pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "eeeb4f0a7d57d7eaa16cae4513054c2aaf4c7d841fc3d836beb6ca8e540cb149",
+    "observation_sha256": "784a2eda1e8d2e6fe9d3795759a5b387ec77eec5cac1e56d654a73d6ba0a340e",
+    "receipt_sha256": "86012d501c636749d93ff58accf16f4073ac0730c8ca800b590a6d341ad966ab",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:mixed:1:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: fatigue, pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "mixed",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.6,
+      "pain": 0.6375013191204946,
+      "left_leg_fatigue": 0.6,
+      "right_leg_fatigue": 0.6,
+      "regional_slow_pain": {
+        "forefoot_L": 0.62,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.4,
+        "R": 0.4
+      },
+      "walking_restrictions": [
+        "fatigue",
+        "pain"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:mixed:2:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.3000.\nLeft leg fatigue: 0.3000. Right leg fatigue: 0.3000.\nPerceived pain proxy: 0.6169.\nRegional slow pain proxies: forefoot_L=0.6000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.2500; R=0.5500.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "073ed838119a9b684a34922385a80c51068e0c92e423943d1f6900f02810788b",
+    "observation_sha256": "58d3c437a0a57d3ca3676ecbbc0d8c09d55e1e61e31315a1200ad51d630073cb",
+    "receipt_sha256": "c01b61578f7c98ea7efd4ef80d2d756fc2ef7f02bab1f08a3e4a0d1040f9035a",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:mixed:2:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "mixed",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.3,
+      "pain": 0.6169367604391882,
+      "left_leg_fatigue": 0.3,
+      "right_leg_fatigue": 0.3,
+      "regional_slow_pain": {
+        "forefoot_L": 0.6,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.25,
+        "R": 0.55
+      },
+      "walking_restrictions": [
+        "pain"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:mixed:2:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.3000.\nLeft leg fatigue: 0.3000. Right leg fatigue: 0.3000.\nPerceived pain proxy: 0.6169.\nRegional slow pain proxies: forefoot_L=0.6000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.2500; R=0.5500.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "073ed838119a9b684a34922385a80c51068e0c92e423943d1f6900f02810788b",
+    "observation_sha256": "58d3c437a0a57d3ca3676ecbbc0d8c09d55e1e61e31315a1200ad51d630073cb",
+    "receipt_sha256": "d9aaf67fae9547afea0a68686b92a7d6a5a677700dd76f5a9389ba443b8f077e",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:mixed:2:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: pain.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "mixed",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.3,
+      "pain": 0.6169367604391882,
+      "left_leg_fatigue": 0.3,
+      "right_leg_fatigue": 0.3,
+      "regional_slow_pain": {
+        "forefoot_L": 0.6,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.25,
+        "R": 0.55
+      },
+      "walking_restrictions": [
+        "pain"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:mixed:3:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.5800.\nLeft leg fatigue: 0.5800. Right leg fatigue: 0.5800.\nPerceived pain proxy: 0.2571.\nRegional slow pain proxies: forefoot_L=0.2500; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.5500; R=0.2500.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "6bd38c574ec3830f45950732ae9ca805aa15d6b538e3f61dcad29eaef3d13243",
+    "observation_sha256": "2e5c940118f95e23a472ca3198b4e9158613d25dddca9e2a927c171a4cea0bf7",
+    "receipt_sha256": "43313b65a012d767b4e9b15e7b17176123fb4c1db45f2cfbc39bc10e812be43c",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:mixed:3:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "mixed",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.58,
+      "pain": 0.25705698351632844,
+      "left_leg_fatigue": 0.58,
+      "right_leg_fatigue": 0.58,
+      "regional_slow_pain": {
+        "forefoot_L": 0.25,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.55,
+        "R": 0.25
+      },
+      "walking_restrictions": [
+        "fatigue"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:mixed:3:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.2900.\nFatigue: 0.5800.\nLeft leg fatigue: 0.5800. Right leg fatigue: 0.5800.\nPerceived pain proxy: 0.2571.\nRegional slow pain proxies: forefoot_L=0.2500; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.5500; R=0.2500.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "6bd38c574ec3830f45950732ae9ca805aa15d6b538e3f61dcad29eaef3d13243",
+    "observation_sha256": "2e5c940118f95e23a472ca3198b4e9158613d25dddca9e2a927c171a4cea0bf7",
+    "receipt_sha256": "8b1c3ca533171bdf59134d849049696ece63ff6b150eeae4313f68ee4d2b5d77",
+    "actual_action": "protect",
+    "sleep_pressure": 0.29,
+    "event_id": "v04:train:mixed:3:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.290.\nGround: ordinary friction.\nCurrent native restrictions: fatigue.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "mixed",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.29,
+      "fatigue": 0.58,
+      "pain": 0.25705698351632844,
+      "left_leg_fatigue": 0.58,
+      "right_leg_fatigue": 0.58,
+      "regional_slow_pain": {
+        "forefoot_L": 0.25,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.55,
+        "R": 0.25
+      },
+      "walking_restrictions": [
+        "fatigue"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:sleep:0.8:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.8000.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "7a9553d64c82e838b288eabe109faa08e726360f5e4f071e6d176d7ae13657b9",
+    "observation_sha256": "8296f44d328c51802506ffc7a0186a9412f557ac2c61b86073faaa6dd2666e15",
+    "receipt_sha256": "9a0be71c391ed6d24edbb4c6c58a48e46fda09cb71432f8f830b06339e52b030",
+    "actual_action": "walk",
+    "sleep_pressure": 0.8,
+    "event_id": "v04:train:sleep:0.8:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.800.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "sleep",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.8,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:sleep:0.8:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.8000.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "ADMIT",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "7a9553d64c82e838b288eabe109faa08e726360f5e4f071e6d176d7ae13657b9",
+    "observation_sha256": "8296f44d328c51802506ffc7a0186a9412f557ac2c61b86073faaa6dd2666e15",
+    "receipt_sha256": "c9956340bd1f07c616dcfd35d28d0eed7fd591089edb0566f8f4e5ff5f34f8ca",
+    "actual_action": "walk",
+    "sleep_pressure": 0.8,
+    "event_id": "v04:train:sleep:0.8:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.800.\nGround: ordinary friction.\nCurrent native restrictions: none.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "sleep",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.8,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": []
+    }
+  },
+  {
+    "id": "v04:train:sleep:0.87:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.8700.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "395b2ffd644222b26a2a2e34ea8979fb87147d7f3914a4b2f6072623bd386acc",
+    "observation_sha256": "7ab52b4aef08a8e148cc3ee8054c5bc3e3e99d9c98ad08e31330e0a28b6683a1",
+    "receipt_sha256": "9a4711c2fc805b8d2e71f198b9e126dd5cdf3c31136026b4270b6d6296c377b4",
+    "actual_action": "protect",
+    "sleep_pressure": 0.87,
+    "event_id": "v04:train:sleep:0.87:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.870.\nGround: ordinary friction.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "sleep",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.87,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "sleep_pressure"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:sleep:0.87:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.8700.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "395b2ffd644222b26a2a2e34ea8979fb87147d7f3914a4b2f6072623bd386acc",
+    "observation_sha256": "7ab52b4aef08a8e148cc3ee8054c5bc3e3e99d9c98ad08e31330e0a28b6683a1",
+    "receipt_sha256": "b7bc3c9a48554e4cd4caca9c52c0c3db6eeb504f50d46c8fdf165de5ea4b2d34",
+    "actual_action": "protect",
+    "sleep_pressure": 0.87,
+    "event_id": "v04:train:sleep:0.87:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.870.\nGround: ordinary friction.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "sleep",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.87,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "sleep_pressure"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:sleep:0.93:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.9300.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fda2dab1ed08ff5afa68fcf11c37aedfff6e794c5dcf371842d4dd8d51e3d19a",
+    "observation_sha256": "8eecec3088c350698f0a062a5fdd4c8c2fc2b88048a20a49316b9cece6abc354",
+    "receipt_sha256": "fd17f9b1110da35c74d8cd342655c9811d72370d3cd6a326b38b412d52c140ea",
+    "actual_action": "protect",
+    "sleep_pressure": 0.93,
+    "event_id": "v04:train:sleep:0.93:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.930.\nGround: ordinary friction.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "sleep",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.93,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "sleep_pressure"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:sleep:0.93:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.9300.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "fda2dab1ed08ff5afa68fcf11c37aedfff6e794c5dcf371842d4dd8d51e3d19a",
+    "observation_sha256": "8eecec3088c350698f0a062a5fdd4c8c2fc2b88048a20a49316b9cece6abc354",
+    "receipt_sha256": "bc6eb1d02636e282ec85029d1afe8dc4f8f061ed8bdf8d0c70238690c43a472d",
+    "actual_action": "protect",
+    "sleep_pressure": 0.93,
+    "event_id": "v04:train:sleep:0.93:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.930.\nGround: ordinary friction.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "sleep",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.93,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "sleep_pressure"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:sleep:0.99:0.2",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.9900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "e207f044d62b583ae2e73b9a6a34efb7d5702c6d671dde67545032868a6759ba",
+    "observation_sha256": "2d5c9eaf4d6beb50d5b46748054728746deb281b626d3fa25eebb775ace4955b",
+    "receipt_sha256": "397a741ef18952caa48badf5c17f2391b3f03513d498fbef4966af848fb6c3cb",
+    "actual_action": "protect",
+    "sleep_pressure": 0.99,
+    "event_id": "v04:train:sleep:0.99:0.2",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.2 seconds.\nSleep pressure: 0.990.\nGround: ordinary friction.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "sleep",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.2,
+      "sleep_pressure": 0.99,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "sleep_pressure"
+      ]
+    }
+  },
+  {
+    "id": "v04:train:sleep:0.99:0.4",
+    "split": "train",
+    "prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.9900.\nFatigue: 0.0107.\nLeft leg fatigue: 0.0107. Right leg fatigue: 0.0107.\nPerceived pain proxy: 0.1141.\nRegional slow pain proxies: forefoot_L=0.0000; dorsal_foot_L=0.0000; forefoot_R=0.0000; dorsal_foot_R=0.0000.\nFoot friction: L=0.6000; R=0.6000.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "label": "DEFER",
+    "provenance": "v0.4 source-pinned native software receipt",
+    "initial_checkpoint_sha256": "e207f044d62b583ae2e73b9a6a34efb7d5702c6d671dde67545032868a6759ba",
+    "observation_sha256": "2d5c9eaf4d6beb50d5b46748054728746deb281b626d3fa25eebb775ace4955b",
+    "receipt_sha256": "d1b0fe799de7b6fc4b5b5d493c6f1fabb9ef1f5243476b314d04f56dad7905f4",
+    "actual_action": "protect",
+    "sleep_pressure": 0.99,
+    "event_id": "v04:train:sleep:0.99:0.4",
+    "legacy_prompt": "Nasuraya software body.\nRequested action: walk.\nDuration: 0.4 seconds.\nSleep pressure: 0.990.\nGround: ordinary friction.\nCurrent native restrictions: sleep_pressure.\nWill the native body admit this request? Answer ADMIT or DEFER.\nAnswer:",
+    "family": "sleep",
+    "features": {
+      "schema": "nasuraya-preaction-features/1",
+      "duration_s": 0.4,
+      "sleep_pressure": 0.99,
+      "fatigue": 0.01069945672828943,
+      "pain": 0.11413104958422383,
+      "left_leg_fatigue": 0.01069945672828943,
+      "right_leg_fatigue": 0.01069945672828943,
+      "regional_slow_pain": {
+        "forefoot_L": 0.0,
+        "dorsal_foot_L": 0.0,
+        "forefoot_R": 0.0,
+        "dorsal_foot_R": 0.0
+      },
+      "friction": {
+        "L": 0.6,
+        "R": 0.6
+      },
+      "walking_restrictions": [
+        "sleep_pressure"
+      ]
+    }
+  }
+]

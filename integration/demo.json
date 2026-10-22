@@ -1,0 +1,13 @@
+{
+  "schema": "nasuraya.unified-demo/1",
+  "body_kind": "native aggregate Tadash",
+  "actual_action": "walk",
+  "executed_cycles": 1,
+  "replay_cycles": 0,
+  "state_equal_across_cold_replay": true,
+  "identity_policy_sha256": "de02050e8cea4fda4f443dd6695266c7ae8dc7778566995b0ec238a271b84568",
+  "genome_revision": 0,
+  "genome_applied_to_body": false,
+  "source": "synthetic fixture only",
+  "external_api_calls": 0
+}

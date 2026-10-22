@@ -1,0 +1,12 @@
+{
+  "schema": "nasuraya-energy-evaluation/1",
+  "training_sleep_pressure": [0.2, 0.4, 0.6, 0.8],
+  "validation_sleep_pressure": [0.3, 0.7],
+  "held_out_sleep_pressure": [0.5, 0.75, 0.95],
+  "ticks_per_fixture": 24,
+  "forecast_horizon": 16,
+  "schedule": "six original MotionGoal prelude ticks, then original requested actions; refresh forecast on touchdown, veto, phase change or exhaustion",
+  "model": "context median residual, half shrinkage, validation gate; raw fallback",
+  "acceptance": "held-out MAE below raw and old action EMA; no held-out learning; exact cold model predictions",
+  "scope": "new deterministic synthetic native fixtures; fixed requests; no causal policy or private-body generalization claim"
+}

@@ -1,0 +1,16 @@
+{
+  "preregistration": "f89ac173ff8a911496f212b53af476c1a6b8e6cf",
+  "deadline_amendment": "96d720081379bb950f72aecde3b1a3402b1337cf",
+  "runner_frozen_before_final_execution": "b9c0c314cbcac8057d28203497489e5ffd21df16",
+  "pre_analysis_changes": [
+    "A default query-capable deadline did not match a forced binary decision; a declared short deadline was added before analysing outputs.",
+    "Class hints in actor identifiers were replaced with opaque hashes before analysing outputs; actor sensor and policy never receive a label field."
+  ],
+  "superseded_runs_retained": true,
+  "contract_test_correction": "One test imported CognitiveEvent from the wrong module; corrected before the final test run.",
+  "offline_verifier_correction": "Canonical digest comparison replaced tuple/list-sensitive summary equality after JSON restoration; no measurements or experimental parameters changed.",
+  "secondary_limits": [
+    "Restoration re-presents the same noisy bitmap. Its repeated feature extraction is not independent perceptual evidence; post-restoration belief confidence must not be interpreted as calibrated.",
+    "Offpath correlation ablation is task-irrelevant for the preregistered primary delayed window with one acquisition. It is not a universal task-irrelevant perturbation."
+  ]
+}

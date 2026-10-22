@@ -1,0 +1,18 @@
+# Template only; not installed. Replace paths, account and fixed wake ID.
+[Unit]
+Description=Dispatch one previously authorized Nasuraya wakeup
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=nasuraya
+WorkingDirectory=/opt/zohraya
+EnvironmentFile=/etc/nasuraya/runtime.env
+ExecStart=/opt/zohraya/.venv/bin/python -m examples.nasuraya_body_loop wake --session /var/lib/nasuraya/session.sqlite --wake-id approved-wake --allow-live-wakeup
+TimeoutStartSec=360
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/nasuraya

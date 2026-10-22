@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-16",
+  "protocol_commit_before_inference": "7ee2f745abbb68457ca9d102c3cb38adc8f2eceb",
+  "tests_passed": 37,
+  "new_tests": 7,
+  "existing_tests": 30,
+  "primary_verified_arrays": 201,
+  "replay_verified_arrays": 201,
+  "primary_forward_passes": 120,
+  "replay_forward_passes": 120,
+  "fresh_process_exact_replay": true,
+  "weights_unchanged": true,
+  "tampered_saved_logits_rejected": true,
+  "dependency_check": "pip check: No broken requirements found.",
+  "scope": "bounded offline numerical access demonstration; no learning or consciousness conclusion"
+}

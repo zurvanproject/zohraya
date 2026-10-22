@@ -1,0 +1,33 @@
+{
+  "sha256": "07387a273b5f4df764cfecc53aa9110407b363675838491766a6fad05bda76f2",
+  "value": {
+    "case_id": "energy-margin",
+    "checkpoint_sha256": "86b2885de0583630409d31834c3aa84021663dc2ab8cc3599b9f27ed23f9ed98",
+    "native_records_before": 0,
+    "native_request_sha256": "4f5da2816a931d7193ed3e371d9332de4d86eb04a0a02bb2c34e4de9c4c6f138",
+    "plan_sha256": "09d98cdc1caf89921c6e49e6d9551f21cd9e6ca79c0fe34583319b9f1c81c591",
+    "prediction": {
+      "calibrated_confidence": 0.875,
+      "correction": -0.125,
+      "correction_active": true,
+      "domain": {
+        "action": "walk",
+        "duration_s": 0.1,
+        "restrictions": []
+      },
+      "empirical_validation": false,
+      "max_correction": 0.25,
+      "minimum_samples": 2,
+      "outcome": null,
+      "outcome_source": null,
+      "prior_kind": "caller_declared_not_empirically_established",
+      "raw_confidence": 0.75,
+      "role": "report_only_no_decision_or_authority_writeback",
+      "samples": 2,
+      "schema": "nasuraya-outcome-calibration/1",
+      "shrinkage_samples": 2,
+      "target": "preferred_action_executed_by_native_body"
+    },
+    "training_sha256": "8b7a869761ab4f516abfb968e28b42d7428278115a609ef2dfd2d0cb2b5a876a"
+  }
+}

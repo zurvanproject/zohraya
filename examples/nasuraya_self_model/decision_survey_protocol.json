@@ -1,0 +1,22 @@
+{
+  "schema": "nasuraya-decision-relevance-survey/1",
+  "initial_channel_fatigue": [0.08, 0.32, 0.49, 0.58],
+  "initial_sleep_pressure": [0.47, 0.87],
+  "directions": ["forward", "reverse"],
+  "case_order": "fatigue, sleep, direction; ascending listed order",
+  "screen_ticks_per_arm": 32,
+  "followup_max_cases": 2,
+  "followup_selection": "first two cases in protocol order with different requested-action traces, irrespective of energy outcome",
+  "followup_endpoint": "four confirmed route landings or 64 total policy ticks, then up to four paid slow_breath pause ticks; pending original targets are retained",
+  "followup_landings": 4,
+  "followup_policy_tick_limit": 64,
+  "pause_ticks": 4,
+  "fixture": "declared uniform channel-fatigue and sleep initial conditions on fresh synthetic defaults; record external_input; then unchanged six-tick prelude",
+  "policies": ["old", "calibrated"],
+  "policy_parameters_changed": false,
+  "energy_model_training": false,
+  "screen_primary": "decision relevance and actual requested-action divergence; fixed-time fuel is not an efficiency win if progress differs",
+  "followup_primary": "both reach exactly four confirmed landings and a matching grounded double-support pause; compare prefix fuel debit and simulated time including pause; report failures and tradeoffs",
+  "dominance": "comparable four-landing paused endpoints; no greater fuel debit or owner ticks and at least one strictly better; no full-route benefit claim",
+  "scope": "prospective deterministic synthetic sensitivity survey; selected followup is conditional on divergence, not a population benefit estimate"
+}

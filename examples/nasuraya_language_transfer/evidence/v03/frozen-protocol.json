@@ -1,0 +1,112 @@
+{
+  "schema": "nasuraya-language-transfer/3",
+  "cpu_threads": 4,
+  "max_length": 192,
+  "durations_s": [
+    0.5,
+    0.8
+  ],
+  "ordinary_sleep_pressure": 0.31,
+  "control_sleep_pressure": 0.92,
+  "fatigue_levels": [
+    0.18,
+    0.38,
+    0.5,
+    0.56,
+    0.72
+  ],
+  "left_pain_region": "forefoot_L",
+  "left_pain_levels": [
+    0.15,
+    0.35,
+    0.55,
+    0.85
+  ],
+  "friction_pairs": [
+    [
+      0.05,
+      0.05
+    ],
+    [
+      0.15,
+      0.15
+    ],
+    [
+      0.3,
+      0.3
+    ],
+    [
+      0.45,
+      0.45
+    ],
+    [
+      0.15,
+      0.6
+    ],
+    [
+      0.6,
+      0.15
+    ]
+  ],
+  "mixed": [
+    {
+      "fatigue": 0.38,
+      "left_pain": 0.35,
+      "friction": [
+        0.3,
+        0.3
+      ]
+    },
+    {
+      "fatigue": 0.56,
+      "left_pain": 0.55,
+      "friction": [
+        0.45,
+        0.45
+      ]
+    },
+    {
+      "fatigue": 0.18,
+      "left_pain": 0.15,
+      "friction": [
+        0.15,
+        0.6
+      ]
+    }
+  ],
+  "cases": 42,
+  "fixture_construction": "new synthetic initial states only: uniform retained-channel fatigue and forefoot_L slow pain proxy, each explicitly journaled; no existing user state reset, no equations modified; synchronize current sensory raw via native constructor, clear stale last frame, retain warmed filters/clocks/frame count; no new sensor frame claimed",
+  "pain_meaning": "declared initial regional slow nociceptive proxy, not an injury measurement or a clinical pain dose; other regions retained",
+  "input_contract": "unchanged v0.1 prompt; numeric fatigue, numeric/localized pain and nonzero friction magnitudes remain omitted; exact prompt aliases audited",
+  "models": {
+    "parent_calibrated": {
+      "adapter_sha256": "c1b88b4a842b7c78d7b53072228514b45389a3abb714d9592e82339c469149bf",
+      "threshold": 0.3299630433320999
+    },
+    "choice_balanced": {
+      "adapter_sha256": "aaf0c1f85dad3f3cc6985132de715c52d69d4a2de18d96a7ace70450560d7525",
+      "threshold": 0.5
+    }
+  },
+  "comparators": [
+    "audit_preflight",
+    "always_admit",
+    "always_defer"
+  ],
+  "prediction_order": "persist every model and comparator prediction before the first target walk label",
+  "label": "native selected action is walk and native physical_model_valid is true",
+  "metrics": [
+    "accuracy",
+    "balanced_accuracy",
+    "admit_recall",
+    "defer_recall",
+    "false_admits",
+    "false_defers",
+    "two_choice_brier",
+    "per_family_confusion"
+  ],
+  "missing_class_metric": "recall for an absent class and balanced accuracy are null, not fabricated",
+  "alias_bound": "empirical deterministic-prompt ceiling equals sum of majority-label counts per exact prompt / N; not an architecture or physical upper bound",
+  "freeze": "zero optimizer steps, no threshold or prompt tuning, no automatic retraining or model replacement",
+  "scope": "authored source-pinned software fixtures, paired evaluations of two previously trained models; no live API or physical-body claim"
+}

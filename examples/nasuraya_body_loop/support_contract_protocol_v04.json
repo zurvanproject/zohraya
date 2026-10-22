@@ -1,0 +1,26 @@
+{
+  "schema": "nasuraya-support-contract-protocol/4",
+  "base_commit": "e931ac040b750c0643a6af0809caf5f85d71f570",
+  "scope": "new deterministic synthetic contract probes; no preflight, learner, API or saved user checkpoint",
+  "dt_s": 0.1,
+  "pain_levels": [0.0, 0.3, 0.5, 0.6, 0.64, 0.649, 0.65, 0.651, 0.8],
+  "commands": ["stand", "walk", "single_R"],
+  "contact_cases": ["all", "left_toe_2_off", "left_all_off"],
+  "contact_horizon_s": 2.0,
+  "energy_limits_W": [10000000.0, 450.0, 300.0, 250.0, 218.8330352265404, 200.0],
+  "energy_pain_levels": [0.0, 0.8],
+  "hysteresis_hazards": [0.8, 0.45, 0.44, 0.5, 0.44],
+  "hysteresis_repetitions": [1, 25, 10, 1, 65],
+  "single_support_horizon_s": 2.0,
+  "failed_followup_horizon_s": 6.5,
+  "expected_invariants": [
+    "A leg-region hazard >=0.65 latches all three ipsilateral joints, including postural forces.",
+    "Full postural allocation fraction does not establish full requested support.",
+    "Zero optional work alone does not make a loaded latched leg valid.",
+    "Pressure-feasible opposite-foot contact alone does not prove a reachable transition.",
+    "An already unloaded painful leg may preserve healthy-leg support without restoring posture.",
+    "Energy conservation and physical-model validity are distinct outcomes."
+  ],
+  "prohibited_changes": ["native equations", "learning coefficients", "saved user state", "implicit failure reset"],
+  "evidence_limits": "Numerical cross-checks of a reduced engineering fixture, not independent biological or physical validation."
+}

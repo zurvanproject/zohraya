@@ -1,0 +1,2160 @@
+[
+  {
+    "scale": 1.0,
+    "initial_native_sha256": "59b18dff672bc8a94adf69e789e5cc8c1cb6139f4b1638808619c9e92388b2fd",
+    "reference": {
+      "side": "R",
+      "target_m": [
+        -0.196,
+        0.12,
+        0.0
+      ],
+      "definition": "native _prepare first walk target, frozen before policy trials"
+    },
+    "friction": 0.6,
+    "rows": [
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 38.620851508239426,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 38.620851508239426,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.0830461049559214,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.0004528066340146724,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.19999999999999,
+        "native_checkpoint_sha256": "26f8c7d743f7ca6d097f3ee2eaf46f258a496c648d6c83357b13b5676488d671",
+        "receipt_sha256": "ba7d93f98ca38e84d18f8542f66c7fd519188a6a9665c366d42255e123a7dae6",
+        "whole_body_audit": {
+          "energy_error_J": 3.715356911015988e-10,
+          "water_error_L": 1.0808919677276346e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 7.216449660063518e-16
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 5.021753412409735e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.0830461049559214,
+            "water_loss_L": 2.2780597566244502e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 0.0,
+              "cop_Nm": 8.881784197001252e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 5.172175621820374e-13,
+              "waste_mOsm": 4.8887326478674886e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007490945876555209,
+            "waste_excreted_mOsm": 0.0011486852919881565
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 39.28845108916117,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 39.28845108916117,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.27996071405053236,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.0019854607556175903,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.29999999999999,
+        "native_checkpoint_sha256": "0c3cbedf58e2f3684a704b2838c7552e50f227b70cb329a46cc2fc5cb674166e",
+        "receipt_sha256": "479658de7d5f42876c19c001228e8a4e349f953293670b9fe56f20cbdd554f25",
+        "whole_body_audit": {
+          "energy_error_J": 4.020179744657071e-10,
+          "water_error_L": 1.0481043387789574e-14,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 1.0547118733938987e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 3.1421093754212953e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.27996071405053236,
+            "water_loss_L": 2.288389930212835e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 2.842170943040401e-14,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 3.3306690738754696e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 4.963427672338705e-13,
+              "waste_mOsm": 1.597940529896036e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007527088632325698,
+            "waste_excreted_mOsm": 0.001148792560131887
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 40.08681612645129,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 40.08681612645129,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.5152595658271599,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.004798232921034782,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.39999999999999,
+        "native_checkpoint_sha256": "8f2cd040dc0217ddada67d9892a7f1760df1b0c355c77e3ea64266b44a151996",
+        "receipt_sha256": "8ca64169d2d3da0dcb604879faafd73815982136a3e4581abf5792edb663dd02",
+        "whole_body_audit": {
+          "energy_error_J": 9.086420504900161e-11,
+          "water_error_L": 1.2234611652776894e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 1.4432899320127035e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 0.0,
+              "water_L": 8.179387207688307e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.5152595658271599,
+            "water_loss_L": 2.3129149915127226e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 0.0,
+              "cop_Nm": 3.552713678800501e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 5.021365268031985e-13,
+              "waste_mOsm": 7.456578757225607e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007612918948799278,
+            "waste_excreted_mOsm": 0.001148885324862944
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 40.88171075940603,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 40.88171075940603,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.7493624999945512,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.00887039226566464,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.499999999999989,
+        "native_checkpoint_sha256": "7576f9979addb53408a6b21528a8cc6ae4f3d158bb07877f4638d406684d1885",
+        "receipt_sha256": "97e11585801c07ab2c5bb99665391141c0fa117b6463a1aaf4b0af8f15137d76",
+        "whole_body_audit": {
+          "energy_error_J": 4.739320047519868e-12,
+          "water_error_L": 2.0857847512958244e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 1.7763568394002505e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 0.0,
+              "water_L": 8.061849527795512e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.7493624999945512,
+            "water_loss_L": 2.342249729896221e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 8.881784197001252e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 2.220446049250313e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 1.9815702897996168e-13,
+              "waste_mOsm": 9.045086728221019e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007715589888740615,
+            "waste_excreted_mOsm": 0.001148960484987994
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 41.59118124412062,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 41.59118124412062,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.959438723706736,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.014078032628611372,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.599999999999989,
+        "native_checkpoint_sha256": "beb8d2896537baeff49af8bc5821dc45cd1c5b4a650460f50f95492b08d6c5d4",
+        "receipt_sha256": "0286115202c592a1541376484c8da711c9ec9eb426cc5a1a0fc709bfa461bf54",
+        "whole_body_audit": {
+          "energy_error_J": 3.0471625223071896e-10,
+          "water_error_L": 3.9141053679442317e-16,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 2.1094237467877974e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 4.89387176616507e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.959438723706736,
+            "water_loss_L": 2.3714642414693907e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 9.769962616701378e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 2.3753362558137647e-13,
+              "waste_mOsm": 3.967681218297603e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007817846565205136,
+            "waste_excreted_mOsm": 0.0011490187953710348
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.16276819812015,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.16276819812015,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.131516173232731,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.020259424725037303,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.699999999999989,
+        "native_checkpoint_sha256": "f4b6ac0103a8f21f4ec9e451331333750bc955ba5c7b1bb9b60c950beebe3c09",
+        "receipt_sha256": "09021b43aa6e8aa5052d36d3b142c041a37ca8c2e083a48f793f0a41d204b681",
+        "whole_body_audit": {
+          "energy_error_J": 9.316636351286434e-11,
+          "water_error_L": 2.8376450765966316e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 2.4424906541753444e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 0.0,
+              "water_L": 7.213153007832804e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.131516173232731,
+            "water_loss_L": 2.3974795233635583e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 1.0658141036401503e-14,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 1.497851322140864e-13,
+              "waste_mOsm": 2.2220723525090413e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007908911355437426,
+            "waste_excreted_mOsm": 0.0011490632791497483
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.56672821830995,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.56672821830995,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.257695108421321,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.027249506520580294,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.799999999999988,
+        "native_checkpoint_sha256": "5f642ecb8bb3a5e93ab6569605590a2deaa4da9a49f7459d8634dd37f0ee63e5",
+        "receipt_sha256": "4ac04726fec68d15ebf7c8eda65b5d6077035ed23d8907f4df0858d5473a0f99",
+        "whole_body_audit": {
+          "energy_error_J": 3.865352482534945e-11,
+          "water_error_L": 5.478822555143523e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 2.886579864025407e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 0.0,
+              "water_L": 8.165804187346137e-16,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.257695108421321,
+            "water_loss_L": 2.4182914884001694e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 3.197442310920451e-14,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 5.075855100816762e-14,
+              "waste_mOsm": 3.5211200274942733e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007981768303072298,
+            "waste_excreted_mOsm": 0.0011490983299961182
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.79118663840416,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.79118663840416,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.334864506872097,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.034896579999971,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.899999999999988,
+        "native_checkpoint_sha256": "07e863ec917a2e0bc2b1e0257129e08d30ac53e9a0c99ebf786d791f456eda59",
+        "receipt_sha256": "8db545c84cdbf7f194c31ce3f750b86cc95f9844852159f0d9379b712ad23d76",
+        "whole_body_audit": {
+          "energy_error_J": 4.5626080691363313e-10,
+          "water_error_L": 2.604755061814956e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 3.219646771412954e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 2.5264756649615028e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.334864506872097,
+            "water_loss_L": 2.4327629785463715e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 0.0,
+              "cop_Nm": 1.7763568394002505e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 2.220446049250313e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 7.72378038263466e-13,
+              "waste_mOsm": 9.640053512394164e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0008032435427146642,
+            "waste_excreted_mOsm": 0.001149129032586649
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.84337852020437,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.84337852020437,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.3643771096889385,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.04306903768893455,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.999999999999988,
+        "native_checkpoint_sha256": "6ccb412e9b3d377dcd7c3737ef2be298b2a52d645b6f3c031d4079f8bc756706",
+        "receipt_sha256": "6fcd4bcc1b21715dde53d4a62647da72a34b06286e4ad7dcb40448726033ae08",
+        "whole_body_audit": {
+          "energy_error_J": 2.5698199124235543e-10,
+          "water_error_L": 6.422396929594079e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 3.552713678800501e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 4.095763441944178e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.3643771096889385,
+            "water_loss_L": 2.4404381040997886e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 0.0,
+              "cop_Nm": 7.105427357601002e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 2.220446049250313e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 2.86991784503865e-13,
+              "waste_mOsm": 5.016169771221435e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0008059315111353946,
+            "waste_excreted_mOsm": 0.0011491606393927638
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.76164582298131,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.76164582298131,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.353821107937834,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.05165674067075586,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 8.099999999999987,
+        "native_checkpoint_sha256": "c06fcec9f45f866a9dca1e26f59b660e9bf331c9e356fcff0db84edfab7f580c",
+        "receipt_sha256": "9a644d7d3df53ab9e9564a84df16ec4756ff63c015dc252903abdda001182b26",
+        "whole_body_audit": {
+          "energy_error_J": 4.957243504577491e-10,
+          "water_error_L": 1.2976260148865604e-14,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 3.9968028886505635e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 1.210986064030528e-16,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.353821107937834,
+            "water_loss_L": 2.441623746575092e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 1.4210854715202004e-14,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 1.018037650707404e-12,
+              "waste_mOsm": 5.179060305615657e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0008063479571143541,
+            "waste_excreted_mOsm": 0.001149198028490951
+          }
+        }
+      }
+    ],
+    "complete": true,
+    "source_unchanged": true,
+    "simulated_seconds": 1.0
+  },
+  {
+    "scale": 1.0,
+    "initial_native_sha256": "aaecbdaffba6466dbaa7f0a307b1f747650a574fc636be761965f279d3351421",
+    "reference": {
+      "side": "R",
+      "target_m": [
+        -0.196,
+        0.12,
+        0.0
+      ],
+      "definition": "native _prepare first walk target, frozen before policy trials"
+    },
+    "friction": 0.5,
+    "rows": [
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 38.62537306225971,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 38.62537306225971,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.0830461049559214,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.0004528066340146724,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.29999999999999,
+        "native_checkpoint_sha256": "d33cec5f7b148d6bd0a63bfbb3a4ed0893cd2c02696e9d1e789a7327d4feca8f",
+        "receipt_sha256": "e58cddcc2019adcf4107af126751bdb14cc0b40ef31278ea06eb165d83a888d1",
+        "whole_body_audit": {
+          "energy_error_J": 3.3494984563731123e-10,
+          "water_error_L": 8.724808663084296e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 1.0547118733938987e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 4.859387360816453e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.0830461049559214,
+            "water_loss_L": 2.2783102783449024e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 0.0,
+              "cop_Nm": 8.881784197001252e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 1.3020668527749524e-12,
+              "waste_mOsm": 4.255276686571108e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007491807014670143,
+            "waste_excreted_mOsm": 0.001148800274634789
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 39.29292651714738,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 39.29292651714738,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.27996071405053236,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.0019854607556175903,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.39999999999999,
+        "native_checkpoint_sha256": "1501948b6eb3050ffc7aff6c0aaba2c0151f4f56aee5eee5f5efd1ebff86dfd5",
+        "receipt_sha256": "8832d78a16e724577da970abecc2978205ec2c29ef51fb61b0fdf00f21efe610",
+        "whole_body_audit": {
+          "energy_error_J": 3.793374503402447e-10,
+          "water_error_L": 4.2880873548159504e-16,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 1.4432899320127035e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 1.647258853843328e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.27996071405053236,
+            "water_loss_L": 2.2886383691171596e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 2.842170943040401e-14,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 3.3306690738754696e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 4.927268445684141e-13,
+              "waste_mOsm": 8.227424817819351e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007527941119935723,
+            "waste_excreted_mOsm": 0.001148911266309789
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 40.091246894035855,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 40.091246894035855,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.5152595658271599,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.004798232921034782,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.499999999999989,
+        "native_checkpoint_sha256": "1aec9b37d4fe3f488fca557d36162a192b3bbc729271eaa134d95d3beb14a25b",
+        "receipt_sha256": "8140fc9dc6fe8ab419ead62e97d99c8c607bf1d89daf37daeee07abbca8197d0",
+        "whole_body_audit": {
+          "energy_error_J": 1.0386713711341145e-10,
+          "water_error_L": 1.197172650726705e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 1.7763568394002505e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 0.0,
+              "water_L": 8.830928338848104e-16,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.5152595658271599,
+            "water_loss_L": 2.3131614086397322e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 0.0,
+              "cop_Nm": 3.552713678800501e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 3.435877884289118e-13,
+              "waste_mOsm": 6.483832568071612e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007613763031056613,
+            "waste_excreted_mOsm": 0.0011490076687357118
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 40.88609823943038,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 40.88609823943038,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.7493624999945512,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.00887039226566464,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.599999999999989,
+        "native_checkpoint_sha256": "797a84e6b38b5023a1709d9721dae859f4053f01344cea740df6a7770d3b5ba6",
+        "receipt_sha256": "ba1de59bb84f914dc754fdb35bd5548b6654c41f82c5c0a8bbae5e77b754b0ad",
+        "whole_body_audit": {
+          "energy_error_J": 2.5089263999689138e-11,
+          "water_error_L": 1.1332690970540515e-14,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 2.1094237467877974e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 0.0,
+              "water_L": 1.1188627606871504e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.7493624999945512,
+            "water_loss_L": 2.342494192818758e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 8.881784197001252e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 2.220446049250313e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 7.302343408774337e-13,
+              "waste_mOsm": 2.314836690386901e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007716425832794822,
+            "waste_excreted_mOsm": 0.0011490863830890265
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 41.59552660614135,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 41.59552660614135,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 0.959438723706736,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.014078032628611372,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.699999999999989,
+        "native_checkpoint_sha256": "e73eac0d170e9cdb16b36639e7b750b63eefc3f5649ed305e1af79d75cd703ad",
+        "receipt_sha256": "48f5d0a1136c865b8142e84c317c5ce7026afc77bc74188cc3f5a15022366907",
+        "whole_body_audit": {
+          "energy_error_J": 4.871623104918399e-10,
+          "water_error_L": 1.1594688425521638e-14,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 2.4424906541753444e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 2.341199066210886e-18,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 0.959438723706736,
+            "water_loss_L": 2.3717068131647988e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 9.769962616701378e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 8.446151764096577e-15,
+              "waste_mOsm": 8.833862460977393e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007818674621291515,
+            "waste_excreted_mOsm": 0.0011491481664935503
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.16707235418909,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.16707235418909,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.131516173232731,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.020259424725037303,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.799999999999988,
+        "native_checkpoint_sha256": "d93519630ac975fe06aee01d1af47caacc38b62decbf6a00808e8e19acaad87a",
+        "receipt_sha256": "6feb9e89c68d6c3ceb56d742f1558d0ee388445650ee151cdca4dcd4dd0b4f16",
+        "whole_body_audit": {
+          "energy_error_J": 1.4709655715705594e-10,
+          "water_error_L": 5.7123597030969e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 2.886579864025407e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 0.0,
+              "water_L": 4.92258957120878e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.131516173232731,
+            "water_loss_L": 2.397720256434463e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 1.0658141036401503e-14,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 1.5578606113453297e-12,
+              "waste_mOsm": 9.204095818837743e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007909731736734883,
+            "waste_excreted_mOsm": 0.0011491960441173434
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.57099180615218,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.57099180615218,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.257695108421321,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.027249506520580294,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.899999999999988,
+        "native_checkpoint_sha256": "b35f8416bc84008bf437b35663145c9fdb11b4d1535112e25cce067010f115f2",
+        "receipt_sha256": "ec752e9b05ca1dc09b877a515d631e3de0673c3a0a6d9ea2da16604ce9c2b49b",
+        "whole_body_audit": {
+          "energy_error_J": 1.4273382475948893e-10,
+          "water_error_L": 5.310927072470564e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 3.219646771412954e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 0.0,
+              "water_L": 9.542192069052907e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.257695108421321,
+            "water_loss_L": 2.4185304222207152e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 3.197442310920451e-14,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 2.2548748892375903e-13,
+              "waste_mOsm": 9.385157581642822e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0007982581175819415,
+            "waste_excreted_mOsm": 0.001149234411380522
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.7954100297618,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.7954100297618,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.334864506872097,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.034896579999971,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 7.999999999999988,
+        "native_checkpoint_sha256": "bffe95e0562a1dea4c81954f704f234d866dab4238c91838423e5b196750218b",
+        "receipt_sha256": "292932255e4caf99263a92773f3de25c651d2a34171115a15bc8b1655d2ecb63",
+        "whole_body_audit": {
+          "energy_error_J": 5.368292477214709e-10,
+          "water_error_L": 5.164325998091579e-16,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 3.552713678800501e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 2.8616533784536075e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.334864506872097,
+            "water_loss_L": 2.4330001383551845e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 0.0,
+              "cop_Nm": 1.7763568394002505e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 2.220446049250313e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 1.2183240527541273e-12,
+              "waste_mOsm": 1.0343939246815204e-13,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.000803324090757486,
+            "waste_excreted_mOsm": 0.001149268354414501
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.84756185269703,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.84756185269703,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.3643771096889385,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.04306903768893455,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 8.099999999999987,
+        "native_checkpoint_sha256": "98e573c01cf9a144a7193ddb45a76b916dc04fc9c8201473881601204d52c4d7",
+        "receipt_sha256": "fcaeff2c764c3f437b63de7a6a10cb91581b6d8b0f980402032dd7e6502eca7f",
+        "whole_body_audit": {
+          "energy_error_J": 1.5261747421391192e-10,
+          "water_error_L": 6.7967143415129105e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 3.9968028886505635e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 0.0,
+              "water_L": 5.91179530459382e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.3643771096889385,
+            "water_loss_L": 2.4406735014054073e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 0.0,
+              "cop_Nm": 7.105427357601002e-15,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 2.220446049250313e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 1.3756595688974027e-13,
+              "waste_mOsm": 7.399397934648722e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0008060113267208586,
+            "waste_excreted_mOsm": 0.0011493031268686147
+          }
+        }
+      },
+      {
+        "step": {
+          "support": 1.0,
+          "route_error_m": 0.12,
+          "fuel_j": 42.76578906859115,
+          "valid": true
+        },
+        "selected_action": "walk",
+        "balance_before": 1.0,
+        "balance_after": 1.0,
+        "capture_margin_m": 0.09299999999999997,
+        "raw_support_fraction": 1.0,
+        "contact_feasible": true,
+        "friction_saturated": false,
+        "fuel_used_J": 42.76578906859115,
+        "reserve_used_J": 0.0,
+        "mechanical_work_J": 1.353821107937834,
+        "endpoint_position_m": [
+          -0.196,
+          0.0,
+          0.0
+        ],
+        "feet_m": {
+          "L": [
+            0.196,
+            0.0,
+            0.0
+          ],
+          "R": [
+            -0.196,
+            0.0,
+            0.0
+          ]
+        },
+        "com_m": [
+          0.05165674067075586,
+          0.0
+        ],
+        "foot_displacement_m": 0.0,
+        "phase": "shift",
+        "failure_reason": null,
+        "walk_touchdowns": 0,
+        "owner_ticks": 1,
+        "time_s": 8.199999999999987,
+        "native_checkpoint_sha256": "68d272f6affb29c084417ccd099f650ce439582f0b1c9877f6eb199c770a1494",
+        "receipt_sha256": "df93d5af80c4fd41345893f72f451df51c7feb3d91955c5a7f74914a76d68f04",
+        "whole_body_audit": {
+          "energy_error_J": 3.787334890148486e-10,
+          "water_error_L": 9.527060672483156e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 4.218847493575595e-15
+        },
+        "native_accounting": {
+          "resources": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "energy_J": 4.656612873077393e-10,
+              "water_L": 6.704164133564117e-15,
+              "material_kg": 0.0,
+              "wound_kg": 0.0,
+              "force_N": 0.0
+            },
+            "mechanical_work_J": 1.353821107937834,
+            "water_loss_L": 2.4418573807903437e-05
+          },
+          "gases": {
+            "passed": true,
+            "frames": 1,
+            "max_o2_error_L": 0.0,
+            "max_co2_error_L": 0.0
+          },
+          "physics": {
+            "passed": true,
+            "frames": 1,
+            "valid_frames": 1,
+            "declared_failure_frames": 0,
+            "max_errors": {
+              "normal_N": 2.2737367544323206e-13,
+              "cop_Nm": 1.4210854715202004e-14,
+              "momentum_N_s": 0.0,
+              "capture_m": 0.0,
+              "segment_length_m": 1.1102230246251565e-16,
+              "tail_work_J": 0.0
+            }
+          },
+          "solutes": {
+            "passed": true,
+            "frames": 1,
+            "max_errors": {
+              "sodium_mmol": 4.144551455503853e-13,
+              "waste_mOsm": 3.723258680532471e-14,
+              "urine_osmoles_mOsm": 0.0,
+              "pump_J": 0.0
+            },
+            "sodium_excreted_mmol": 0.0008064270427491449,
+            "waste_excreted_mOsm": 0.0011493436077589082
+          }
+        }
+      }
+    ],
+    "complete": true,
+    "source_unchanged": true,
+    "simulated_seconds": 1.0
+  }
+]

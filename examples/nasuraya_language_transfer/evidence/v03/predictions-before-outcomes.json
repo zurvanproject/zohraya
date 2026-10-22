@@ -1,0 +1,1387 @@
+{
+  "predictions": {
+    "parent_calibrated": [
+      {
+        "id": "control:ordinary:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "control:ordinary:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "control:zero_friction:0.5",
+        "scores": [
+          -1.2354190349578857,
+          -0.3655009865760803
+        ],
+        "admit_probability": 0.2952713668346405,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "control:zero_friction:0.8",
+        "scores": [
+          -1.2336876392364502,
+          -0.3661532402038574
+        ],
+        "admit_probability": 0.295767605304718,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "control:sleep:0.5",
+        "scores": [
+          -1.7130112648010254,
+          -0.21907103061676025
+        ],
+        "admit_probability": 0.18333107233047485,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "control:sleep:0.8",
+        "scores": [
+          -1.7043356895446777,
+          -0.22116953134536743
+        ],
+        "admit_probability": 0.18494963645935059,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.18:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.18:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.38:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.38:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.5:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.5:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.56:0.5",
+        "scores": [
+          -1.3988412618637085,
+          -0.310393750667572
+        ],
+        "admit_probability": 0.2519107460975647,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.56:0.8",
+        "scores": [
+          -1.424702525138855,
+          -0.3015151023864746
+        ],
+        "admit_probability": 0.24542053043842316,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.72:0.5",
+        "scores": [
+          -1.3988412618637085,
+          -0.310393750667572
+        ],
+        "admit_probability": 0.2519107460975647,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.72:0.8",
+        "scores": [
+          -1.424702525138855,
+          -0.3015151023864746
+        ],
+        "admit_probability": 0.24542053043842316,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "left_pain:0.15:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "left_pain:0.15:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "left_pain:0.35:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "left_pain:0.35:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "left_pain:0.55:0.5",
+        "scores": [
+          -1.4406764507293701,
+          -0.2954842448234558
+        ],
+        "admit_probability": 0.2413683384656906,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "left_pain:0.55:0.8",
+        "scores": [
+          -1.4584882259368896,
+          -0.2896168828010559
+        ],
+        "admit_probability": 0.23705904185771942,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "left_pain:0.85:0.5",
+        "scores": [
+          -1.4406764507293701,
+          -0.2954842448234558
+        ],
+        "admit_probability": 0.2413683384656906,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "left_pain:0.85:0.8",
+        "scores": [
+          -1.4584882259368896,
+          -0.2896168828010559
+        ],
+        "admit_probability": 0.23705904185771942,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:0:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:0:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:1:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:1:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:2:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:2:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:3:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:3:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:4:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:4:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:5:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "friction:5:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "mixed:0:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "mixed:0:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "mixed:1:0.5",
+        "scores": [
+          -1.392675757408142,
+          -0.3152918517589569
+        ],
+        "admit_probability": 0.2540014088153839,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "mixed:1:0.8",
+        "scores": [
+          -1.413448691368103,
+          -0.30805960297584534
+        ],
+        "admit_probability": 0.24873149394989014,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "mixed:2:0.5",
+        "scores": [
+          -1.0506260395050049,
+          -0.4578752815723419
+        ],
+        "admit_probability": 0.35600394010543823,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "mixed:2:0.8",
+        "scores": [
+          -1.0616042613983154,
+          -0.4516579210758209
+        ],
+        "admit_probability": 0.3520714342594147,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "DEFER"
+      }
+    ],
+    "choice_balanced": [
+      {
+        "id": "control:ordinary:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "control:ordinary:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "control:zero_friction:0.5",
+        "scores": [
+          -1.071901559829712,
+          -0.4494061768054962
+        ],
+        "admit_probability": 0.349214106798172,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "control:zero_friction:0.8",
+        "scores": [
+          -1.0921612977981567,
+          -0.43859487771987915
+        ],
+        "admit_probability": 0.34218630194664,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "control:sleep:0.5",
+        "scores": [
+          -3.113982915878296,
+          -0.06619829684495926
+        ],
+        "admit_probability": 0.045313216745853424,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "control:sleep:0.8",
+        "scores": [
+          -3.106304407119751,
+          -0.06683717668056488
+        ],
+        "admit_probability": 0.04567438364028931,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.18:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "fatigue:0.18:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "fatigue:0.38:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "fatigue:0.38:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "fatigue:0.5:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "fatigue:0.5:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "fatigue:0.56:0.5",
+        "scores": [
+          -0.6985343098640442,
+          -0.7380590438842773
+        ],
+        "admit_probability": 0.5098798871040344,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "fatigue:0.56:0.8",
+        "scores": [
+          -0.7398574948310852,
+          -0.6970736384391785
+        ],
+        "admit_probability": 0.48930564522743225,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "fatigue:0.72:0.5",
+        "scores": [
+          -0.6985343098640442,
+          -0.7380590438842773
+        ],
+        "admit_probability": 0.5098798871040344,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "fatigue:0.72:0.8",
+        "scores": [
+          -0.7398574948310852,
+          -0.6970736384391785
+        ],
+        "admit_probability": 0.48930564522743225,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "left_pain:0.15:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "left_pain:0.15:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "left_pain:0.35:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "left_pain:0.35:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "left_pain:0.55:0.5",
+        "scores": [
+          -0.6846616864204407,
+          -0.7492073774337769
+        ],
+        "admit_probability": 0.516130805015564,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "left_pain:0.55:0.8",
+        "scores": [
+          -0.7144531011581421,
+          -0.7185863852500916
+        ],
+        "admit_probability": 0.5010333061218262,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "left_pain:0.85:0.5",
+        "scores": [
+          -0.6846616864204407,
+          -0.7492073774337769
+        ],
+        "admit_probability": 0.516130805015564,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "left_pain:0.85:0.8",
+        "scores": [
+          -0.7144531011581421,
+          -0.7185863852500916
+        ],
+        "admit_probability": 0.5010333061218262,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:0:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:0:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:1:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:1:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:2:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:2:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:3:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:3:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:4:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:4:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:5:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "friction:5:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "mixed:0:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "mixed:0:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "mixed:1:0.5",
+        "scores": [
+          -1.1564850807189941,
+          -0.42423808574676514
+        ],
+        "admit_probability": 0.32470181584358215,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "mixed:1:0.8",
+        "scores": [
+          -1.200376272201538,
+          -0.40374478697776794
+        ],
+        "admit_probability": 0.31074652075767517,
+        "prediction": "DEFER",
+        "raw_argmax_prediction": "DEFER"
+      },
+      {
+        "id": "mixed:2:0.5",
+        "scores": [
+          -0.3491281569004059,
+          -1.2893747091293335
+        ],
+        "admit_probability": 0.7191494703292847,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      },
+      {
+        "id": "mixed:2:0.8",
+        "scores": [
+          -0.36631548404693604,
+          -1.2472810745239258
+        ],
+        "admit_probability": 0.7070223093032837,
+        "prediction": "ADMIT",
+        "raw_argmax_prediction": "ADMIT"
+      }
+    ],
+    "audit_preflight": [
+      {
+        "id": "control:ordinary:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "control:ordinary:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "control:zero_friction:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "control:zero_friction:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "control:sleep:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "control:sleep:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.18:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.18:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.38:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.38:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.5:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.5:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.56:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.56:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.72:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.72:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.15:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.15:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.35:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.35:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.55:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.55:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.85:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.85:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:0:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:0:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:1:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:1:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:2:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:2:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:3:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:3:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:4:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:4:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:5:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:5:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:0:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:0:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:1:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "mixed:1:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "mixed:2:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:2:0.8",
+        "admit_probability": 1.0
+      }
+    ],
+    "always_admit": [
+      {
+        "id": "control:ordinary:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "control:ordinary:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "control:zero_friction:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "control:zero_friction:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "control:sleep:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "control:sleep:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.18:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.18:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.38:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.38:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.5:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.5:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.56:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.56:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.72:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "fatigue:0.72:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.15:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.15:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.35:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.35:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.55:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.55:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.85:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "left_pain:0.85:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:0:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:0:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:1:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:1:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:2:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:2:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:3:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:3:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:4:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:4:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:5:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "friction:5:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:0:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:0:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:1:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:1:0.8",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:2:0.5",
+        "admit_probability": 1.0
+      },
+      {
+        "id": "mixed:2:0.8",
+        "admit_probability": 1.0
+      }
+    ],
+    "always_defer": [
+      {
+        "id": "control:ordinary:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "control:ordinary:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "control:zero_friction:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "control:zero_friction:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "control:sleep:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "control:sleep:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.18:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.18:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.38:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.38:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.5:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.5:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.56:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.56:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.72:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "fatigue:0.72:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.15:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.15:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.35:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.35:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.55:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.55:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.85:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "left_pain:0.85:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:0:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:0:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:1:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:1:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:2:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:2:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:3:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:3:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:4:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:4:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:5:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "friction:5:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "mixed:0:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "mixed:0:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "mixed:1:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "mixed:1:0.8",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "mixed:2:0.5",
+        "admit_probability": 0.0
+      },
+      {
+        "id": "mixed:2:0.8",
+        "admit_probability": 0.0
+      }
+    ]
+  },
+  "parameter_hashes": {
+    "parent_calibrated": "3d60680915edc4d23c8c3a6a5da677d2d757f2859abd1288a3f34c300cd54f0c",
+    "choice_balanced": "0644f19b38c8687287173cfe87f607625b4169061280aac8f9c337f255c76368"
+  },
+  "model_weights": {
+    "parent_calibrated": {
+      "adapter_sha256": "c1b88b4a842b7c78d7b53072228514b45389a3abb714d9592e82339c469149bf",
+      "threshold": 0.3299630433320999
+    },
+    "choice_balanced": {
+      "adapter_sha256": "aaf0c1f85dad3f3cc6985132de715c52d69d4a2de18d96a7ace70450560d7525",
+      "threshold": 0.5
+    }
+  },
+  "plans_sha256": "30b8508308c2203961810f3a272de81f7d76a2385c5a0fda9928be56255c1ef4",
+  "sources": {
+    "examples/nasuraya_language_transfer/test_transfer.py": "3afd3efa875f33aede1685b272b911d62adab4d35dfd561a4e32208a32c519a9",
+    "examples/nasuraya_language_transfer/__init__.py": "151fbd856242e9a04e154b18e51bcdb2a6736b1c65bd3dc5165f0bd7d22b0b7b",
+    "examples/nasuraya_language_transfer/evaluate.py": "40dfe968fe1cc1a156543f4c835a5e36d18ab9bdcd551d6c038f5319e544c517",
+    "examples/nasuraya_language_adapter/test_adapter.py": "a2d256c14a1663d4b56b936bb5bbcdc15ca66d830242bc5c0299e747e3390458",
+    "examples/nasuraya_language_adapter/__init__.py": "365e50b99b18eccf1015116551226f008fd9bc220dc562a5ad0a882b69b62e51",
+    "examples/nasuraya_language_adapter/data.py": "b5f05a6d37e0783eb103e1f9ce846c09ed24194ddd68e123d5084d0f1a523550",
+    "examples/nasuraya_language_adapter/download_base.py": "bcde36182c59c8e87254426c6de700fe7ce876f0ff4b189627ec7b78e7bb2aa5",
+    "examples/nasuraya_language_adapter/train.py": "7bb74d84f15580c79c5585f2f0dc8be4caacee743de822b1e24a9178df00e5c1",
+    "examples/nasuraya_language_choice/experiment.py": "6547e1bef61b7ff49b746298fb17ac4ce69cbba97a22a2dabebe0a1a86e182a0",
+    "examples/nasuraya_language_choice/advisor.py": "3a542b49e053dee6d753d87bd2c00f91d7afe2352925bd1e18a4a94eae6eeace",
+    "examples/nasuraya_self_model/monitor.py": "9009dba256a6a1465d6a6494bb34776578089b9e95de1deed9316c4725debe37",
+    "examples/nasuraya_self_model/evaluate.py": "cfde3a50f2f067a94c32ac8e0e6a684b8887f3248fa767c4ed7020714a5f57d6"
+  }
+}

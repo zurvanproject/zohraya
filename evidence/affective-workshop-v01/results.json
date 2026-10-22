@@ -1,0 +1,1004 @@
+{
+  "scope": "Three deliberately constructed paired workshop scenarios; no language model or physical body",
+  "interpretation": "Authored policy demonstrates causal execution effects; not learned or general performance improvement",
+  "paired": [
+    {
+      "scenario": "depleted_four_action_budget",
+      "conditions": {
+        "affect_off": {
+          "status": "bounded_stop",
+          "receipts": [
+            {
+              "request_id": "step-1",
+              "action_id": "recover_1",
+              "tool": "recover",
+              "arguments": {
+                "ticks": 1
+              },
+              "before": {
+                "energy": 29,
+                "heat": 78,
+                "pending_jobs": 3,
+                "completed_jobs": 0,
+                "tick": 0
+              },
+              "after": {
+                "energy": 49,
+                "heat": 58,
+                "pending_jobs": 3,
+                "completed_jobs": 0,
+                "tick": 1
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 3,
+                "completed_jobs": 0
+              },
+              "actions_used": 1,
+              "baseline_action": "recover_1",
+              "planning_event": "workshop:step-1:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-2",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 49,
+                "heat": 58,
+                "pending_jobs": 3,
+                "completed_jobs": 0,
+                "tick": 1
+              },
+              "after": {
+                "energy": 29,
+                "heat": 78,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 2
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 2,
+                "completed_jobs": 1
+              },
+              "actions_used": 2,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-2:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-3",
+              "action_id": "recover_1",
+              "tool": "recover",
+              "arguments": {
+                "ticks": 1
+              },
+              "before": {
+                "energy": 29,
+                "heat": 78,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 2
+              },
+              "after": {
+                "energy": 49,
+                "heat": 58,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 3
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 2,
+                "completed_jobs": 1
+              },
+              "actions_used": 3,
+              "baseline_action": "recover_1",
+              "planning_event": "workshop:step-3:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-4",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 49,
+                "heat": 58,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 3
+              },
+              "after": {
+                "energy": 29,
+                "heat": 78,
+                "pending_jobs": 1,
+                "completed_jobs": 2,
+                "tick": 4
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 1,
+                "completed_jobs": 2
+              },
+              "actions_used": 4,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-4:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            }
+          ],
+          "final": {
+            "state": {
+              "energy": 29,
+              "heat": 78,
+              "pending_jobs": 1,
+              "completed_jobs": 2,
+              "tick": 4
+            },
+            "evaluation": {
+              "goal_reached": false,
+              "safe": true,
+              "pending_jobs": 1,
+              "completed_jobs": 2
+            },
+            "actions_used": 4,
+            "actions_remaining": 0,
+            "pending": null,
+            "mode": "bounded",
+            "use_affect": false,
+            "affect": {
+              "joy": 0.7099201592137349,
+              "sadness": 0.4015641600000001,
+              "contentment": 0.5136589568,
+              "excitement": 0.0,
+              "fear": 0.2245251224489796,
+              "frustration": 0.469056
+            },
+            "scope": "synthetic_workshop_only"
+          },
+          "model_api_calls": 0
+        },
+        "affect_on": {
+          "status": "completed",
+          "receipts": [
+            {
+              "request_id": "step-1",
+              "action_id": "recover_3",
+              "tool": "recover",
+              "arguments": {
+                "ticks": 3
+              },
+              "before": {
+                "energy": 29,
+                "heat": 78,
+                "pending_jobs": 3,
+                "completed_jobs": 0,
+                "tick": 0
+              },
+              "after": {
+                "energy": 89,
+                "heat": 18,
+                "pending_jobs": 3,
+                "completed_jobs": 0,
+                "tick": 3
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 3,
+                "completed_jobs": 0
+              },
+              "actions_used": 1,
+              "baseline_action": "recover_1",
+              "planning_event": "workshop:step-1:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-2",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 89,
+                "heat": 18,
+                "pending_jobs": 3,
+                "completed_jobs": 0,
+                "tick": 3
+              },
+              "after": {
+                "energy": 69,
+                "heat": 38,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 4
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 2,
+                "completed_jobs": 1
+              },
+              "actions_used": 2,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-2:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-3",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 69,
+                "heat": 38,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 4
+              },
+              "after": {
+                "energy": 49,
+                "heat": 58,
+                "pending_jobs": 1,
+                "completed_jobs": 2,
+                "tick": 5
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 1,
+                "completed_jobs": 2
+              },
+              "actions_used": 3,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-3:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-4",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 49,
+                "heat": 58,
+                "pending_jobs": 1,
+                "completed_jobs": 2,
+                "tick": 5
+              },
+              "after": {
+                "energy": 29,
+                "heat": 78,
+                "pending_jobs": 0,
+                "completed_jobs": 3,
+                "tick": 6
+              },
+              "evaluation": {
+                "goal_reached": true,
+                "safe": true,
+                "pending_jobs": 0,
+                "completed_jobs": 3
+              },
+              "actions_used": 4,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-4:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            }
+          ],
+          "final": {
+            "state": {
+              "energy": 29,
+              "heat": 78,
+              "pending_jobs": 0,
+              "completed_jobs": 3,
+              "tick": 6
+            },
+            "evaluation": {
+              "goal_reached": true,
+              "safe": true,
+              "pending_jobs": 0,
+              "completed_jobs": 3
+            },
+            "actions_used": 4,
+            "actions_remaining": 0,
+            "pending": null,
+            "mode": "bounded",
+            "use_affect": true,
+            "affect": {
+              "joy": 0.7659373995713035,
+              "sadness": 0.23200000000000004,
+              "contentment": 0.61328427008,
+              "excitement": 0.0,
+              "fear": 0.12071428571428572,
+              "frustration": 0.27999999999999997
+            },
+            "scope": "synthetic_workshop_only"
+          },
+          "model_api_calls": 0
+        }
+      }
+    },
+    {
+      "scenario": "ordinary_workshop",
+      "conditions": {
+        "affect_off": {
+          "status": "completed",
+          "receipts": [
+            {
+              "request_id": "step-1",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 45,
+                "heat": 50,
+                "pending_jobs": 3,
+                "completed_jobs": 0,
+                "tick": 0
+              },
+              "after": {
+                "energy": 25,
+                "heat": 70,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 1
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 2,
+                "completed_jobs": 1
+              },
+              "actions_used": 1,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-1:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-2",
+              "action_id": "recover_1",
+              "tool": "recover",
+              "arguments": {
+                "ticks": 1
+              },
+              "before": {
+                "energy": 25,
+                "heat": 70,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 1
+              },
+              "after": {
+                "energy": 45,
+                "heat": 50,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 2
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 2,
+                "completed_jobs": 1
+              },
+              "actions_used": 2,
+              "baseline_action": "recover_1",
+              "planning_event": "workshop:step-2:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-3",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 45,
+                "heat": 50,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 2
+              },
+              "after": {
+                "energy": 25,
+                "heat": 70,
+                "pending_jobs": 1,
+                "completed_jobs": 2,
+                "tick": 3
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 1,
+                "completed_jobs": 2
+              },
+              "actions_used": 3,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-3:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-4",
+              "action_id": "recover_1",
+              "tool": "recover",
+              "arguments": {
+                "ticks": 1
+              },
+              "before": {
+                "energy": 25,
+                "heat": 70,
+                "pending_jobs": 1,
+                "completed_jobs": 2,
+                "tick": 3
+              },
+              "after": {
+                "energy": 45,
+                "heat": 50,
+                "pending_jobs": 1,
+                "completed_jobs": 2,
+                "tick": 4
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 1,
+                "completed_jobs": 2
+              },
+              "actions_used": 4,
+              "baseline_action": "recover_1",
+              "planning_event": "workshop:step-4:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-5",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 45,
+                "heat": 50,
+                "pending_jobs": 1,
+                "completed_jobs": 2,
+                "tick": 4
+              },
+              "after": {
+                "energy": 25,
+                "heat": 70,
+                "pending_jobs": 0,
+                "completed_jobs": 3,
+                "tick": 5
+              },
+              "evaluation": {
+                "goal_reached": true,
+                "safe": true,
+                "pending_jobs": 0,
+                "completed_jobs": 3
+              },
+              "actions_used": 5,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-5:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            }
+          ],
+          "final": {
+            "state": {
+              "energy": 25,
+              "heat": 70,
+              "pending_jobs": 0,
+              "completed_jobs": 3,
+              "tick": 5
+            },
+            "evaluation": {
+              "goal_reached": true,
+              "safe": true,
+              "pending_jobs": 0,
+              "completed_jobs": 3
+            },
+            "actions_used": 5,
+            "actions_remaining": 3,
+            "pending": null,
+            "mode": "bounded",
+            "use_affect": false,
+            "affect": {
+              "joy": 0.7887011989285613,
+              "sadness": 0.4015641600000001,
+              "contentment": 0.6281590132735999,
+              "excitement": 0.0,
+              "fear": 0.17571224489795917,
+              "frustration": 0.469056
+            },
+            "scope": "synthetic_workshop_only"
+          },
+          "model_api_calls": 0
+        },
+        "affect_on": {
+          "status": "completed",
+          "receipts": [
+            {
+              "request_id": "step-1",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 45,
+                "heat": 50,
+                "pending_jobs": 3,
+                "completed_jobs": 0,
+                "tick": 0
+              },
+              "after": {
+                "energy": 25,
+                "heat": 70,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 1
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 2,
+                "completed_jobs": 1
+              },
+              "actions_used": 1,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-1:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-2",
+              "action_id": "recover_2",
+              "tool": "recover",
+              "arguments": {
+                "ticks": 2
+              },
+              "before": {
+                "energy": 25,
+                "heat": 70,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 1
+              },
+              "after": {
+                "energy": 65,
+                "heat": 30,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 3
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 2,
+                "completed_jobs": 1
+              },
+              "actions_used": 2,
+              "baseline_action": "recover_1",
+              "planning_event": "workshop:step-2:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-3",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 65,
+                "heat": 30,
+                "pending_jobs": 2,
+                "completed_jobs": 1,
+                "tick": 3
+              },
+              "after": {
+                "energy": 45,
+                "heat": 50,
+                "pending_jobs": 1,
+                "completed_jobs": 2,
+                "tick": 4
+              },
+              "evaluation": {
+                "goal_reached": false,
+                "safe": true,
+                "pending_jobs": 1,
+                "completed_jobs": 2
+              },
+              "actions_used": 3,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-3:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            },
+            {
+              "request_id": "step-4",
+              "action_id": "process_job",
+              "tool": "process_job",
+              "arguments": {},
+              "before": {
+                "energy": 45,
+                "heat": 50,
+                "pending_jobs": 1,
+                "completed_jobs": 2,
+                "tick": 4
+              },
+              "after": {
+                "energy": 25,
+                "heat": 70,
+                "pending_jobs": 0,
+                "completed_jobs": 3,
+                "tick": 5
+              },
+              "evaluation": {
+                "goal_reached": true,
+                "safe": true,
+                "pending_jobs": 0,
+                "completed_jobs": 3
+              },
+              "actions_used": 4,
+              "baseline_action": "process_job",
+              "planning_event": "workshop:step-4:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            }
+          ],
+          "final": {
+            "state": {
+              "energy": 25,
+              "heat": 70,
+              "pending_jobs": 0,
+              "completed_jobs": 3,
+              "tick": 5
+            },
+            "evaluation": {
+              "goal_reached": true,
+              "safe": true,
+              "pending_jobs": 0,
+              "completed_jobs": 3
+            },
+            "actions_used": 4,
+            "actions_remaining": 4,
+            "pending": null,
+            "mode": "bounded",
+            "use_affect": true,
+            "affect": {
+              "joy": 0.7659373995713035,
+              "sadness": 0.23200000000000004,
+              "contentment": 0.61328427008,
+              "excitement": 0.0,
+              "fear": 0.09285714285714286,
+              "frustration": 0.27999999999999997
+            },
+            "scope": "synthetic_workshop_only"
+          },
+          "model_api_calls": 0
+        }
+      }
+    },
+    {
+      "scenario": "empty_queue_requires_recovery",
+      "conditions": {
+        "affect_off": {
+          "status": "completed",
+          "receipts": [
+            {
+              "request_id": "step-1",
+              "action_id": "recover_1",
+              "tool": "recover",
+              "arguments": {
+                "ticks": 1
+              },
+              "before": {
+                "energy": 0,
+                "heat": 100,
+                "pending_jobs": 0,
+                "completed_jobs": 0,
+                "tick": 0
+              },
+              "after": {
+                "energy": 20,
+                "heat": 80,
+                "pending_jobs": 0,
+                "completed_jobs": 0,
+                "tick": 1
+              },
+              "evaluation": {
+                "goal_reached": true,
+                "safe": true,
+                "pending_jobs": 0,
+                "completed_jobs": 0
+              },
+              "actions_used": 1,
+              "baseline_action": "recover_1",
+              "planning_event": "workshop:step-1:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            }
+          ],
+          "final": {
+            "state": {
+              "energy": 20,
+              "heat": 80,
+              "pending_jobs": 0,
+              "completed_jobs": 0,
+              "tick": 1
+            },
+            "evaluation": {
+              "goal_reached": true,
+              "safe": true,
+              "pending_jobs": 0,
+              "completed_jobs": 0
+            },
+            "actions_used": 1,
+            "actions_remaining": 3,
+            "pending": null,
+            "mode": "bounded",
+            "use_affect": false,
+            "affect": {
+              "joy": 0.17,
+              "sadness": 0.23200000000000004,
+              "contentment": 0.05,
+              "excitement": 0.0,
+              "fear": 0.32500000000000007,
+              "frustration": 0.27999999999999997
+            },
+            "scope": "synthetic_workshop_only"
+          },
+          "model_api_calls": 0
+        },
+        "affect_on": {
+          "status": "completed",
+          "receipts": [
+            {
+              "request_id": "step-1",
+              "action_id": "recover_1",
+              "tool": "recover",
+              "arguments": {
+                "ticks": 1
+              },
+              "before": {
+                "energy": 0,
+                "heat": 100,
+                "pending_jobs": 0,
+                "completed_jobs": 0,
+                "tick": 0
+              },
+              "after": {
+                "energy": 20,
+                "heat": 80,
+                "pending_jobs": 0,
+                "completed_jobs": 0,
+                "tick": 1
+              },
+              "evaluation": {
+                "goal_reached": true,
+                "safe": true,
+                "pending_jobs": 0,
+                "completed_jobs": 0
+              },
+              "actions_used": 1,
+              "baseline_action": "recover_1",
+              "planning_event": "workshop:step-1:appraisal",
+              "replayed": false,
+              "this_call_actions": 1
+            }
+          ],
+          "final": {
+            "state": {
+              "energy": 20,
+              "heat": 80,
+              "pending_jobs": 0,
+              "completed_jobs": 0,
+              "tick": 1
+            },
+            "evaluation": {
+              "goal_reached": true,
+              "safe": true,
+              "pending_jobs": 0,
+              "completed_jobs": 0
+            },
+            "actions_used": 1,
+            "actions_remaining": 3,
+            "pending": null,
+            "mode": "bounded",
+            "use_affect": true,
+            "affect": {
+              "joy": 0.17,
+              "sadness": 0.23200000000000004,
+              "contentment": 0.05,
+              "excitement": 0.0,
+              "fear": 0.32500000000000007,
+              "frustration": 0.27999999999999997
+            },
+            "scope": "synthetic_workshop_only"
+          },
+          "model_api_calls": 0
+        }
+      }
+    }
+  ],
+  "project": {
+    "seed_sha256": "2644f8e57b0706bd58211f8e9d63c4e4c0b39363a433bf771f03c451b24f68e0",
+    "seed_unchanged": true,
+    "original_affect_revision": 2,
+    "first_receipt": {
+      "request_id": "first",
+      "action_id": "recover_3",
+      "tool": "recover",
+      "arguments": {
+        "ticks": 3
+      },
+      "before": {
+        "energy": 29,
+        "heat": 78,
+        "pending_jobs": 3,
+        "completed_jobs": 0,
+        "tick": 0
+      },
+      "after": {
+        "energy": 89,
+        "heat": 18,
+        "pending_jobs": 3,
+        "completed_jobs": 0,
+        "tick": 3
+      },
+      "evaluation": {
+        "goal_reached": false,
+        "safe": true,
+        "pending_jobs": 3,
+        "completed_jobs": 0
+      },
+      "actions_used": 1,
+      "baseline_action": "recover_1",
+      "planning_event": "workshop:first:appraisal",
+      "replayed": false,
+      "this_call_actions": 1
+    },
+    "cold_replay_executed_actions": 0,
+    "cold_continuation_matches_uninterrupted": true,
+    "continuation": {
+      "status": "completed",
+      "receipts": [
+        {
+          "request_id": "step-2",
+          "action_id": "process_job",
+          "tool": "process_job",
+          "arguments": {},
+          "before": {
+            "energy": 89,
+            "heat": 18,
+            "pending_jobs": 3,
+            "completed_jobs": 0,
+            "tick": 3
+          },
+          "after": {
+            "energy": 69,
+            "heat": 38,
+            "pending_jobs": 2,
+            "completed_jobs": 1,
+            "tick": 4
+          },
+          "evaluation": {
+            "goal_reached": false,
+            "safe": true,
+            "pending_jobs": 2,
+            "completed_jobs": 1
+          },
+          "actions_used": 2,
+          "baseline_action": "process_job",
+          "planning_event": "workshop:step-2:appraisal",
+          "replayed": false,
+          "this_call_actions": 1
+        },
+        {
+          "request_id": "step-3",
+          "action_id": "process_job",
+          "tool": "process_job",
+          "arguments": {},
+          "before": {
+            "energy": 69,
+            "heat": 38,
+            "pending_jobs": 2,
+            "completed_jobs": 1,
+            "tick": 4
+          },
+          "after": {
+            "energy": 49,
+            "heat": 58,
+            "pending_jobs": 1,
+            "completed_jobs": 2,
+            "tick": 5
+          },
+          "evaluation": {
+            "goal_reached": false,
+            "safe": true,
+            "pending_jobs": 1,
+            "completed_jobs": 2
+          },
+          "actions_used": 3,
+          "baseline_action": "process_job",
+          "planning_event": "workshop:step-3:appraisal",
+          "replayed": false,
+          "this_call_actions": 1
+        },
+        {
+          "request_id": "step-4",
+          "action_id": "process_job",
+          "tool": "process_job",
+          "arguments": {},
+          "before": {
+            "energy": 49,
+            "heat": 58,
+            "pending_jobs": 1,
+            "completed_jobs": 2,
+            "tick": 5
+          },
+          "after": {
+            "energy": 29,
+            "heat": 78,
+            "pending_jobs": 0,
+            "completed_jobs": 3,
+            "tick": 6
+          },
+          "evaluation": {
+            "goal_reached": true,
+            "safe": true,
+            "pending_jobs": 0,
+            "completed_jobs": 3
+          },
+          "actions_used": 4,
+          "baseline_action": "process_job",
+          "planning_event": "workshop:step-4:appraisal",
+          "replayed": false,
+          "this_call_actions": 1
+        }
+      ],
+      "final": {
+        "state": {
+          "energy": 29,
+          "heat": 78,
+          "pending_jobs": 0,
+          "completed_jobs": 3,
+          "tick": 6
+        },
+        "evaluation": {
+          "goal_reached": true,
+          "safe": true,
+          "pending_jobs": 0,
+          "completed_jobs": 3
+        },
+        "actions_used": 4,
+        "actions_remaining": 0,
+        "pending": null,
+        "mode": "bounded",
+        "use_affect": true,
+        "affect": {
+          "joy": 0.8413080583426514,
+          "sadness": 0.23200000000000004,
+          "contentment": 0.7051220345539788,
+          "excitement": 0.29051199999999994,
+          "fear": 0.12071428571428572,
+          "frustration": 0.27999999999999997
+        },
+        "scope": "synthetic_workshop_only"
+      },
+      "model_api_calls": 0
+    }
+  }
+}

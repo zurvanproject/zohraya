@@ -1,0 +1,117 @@
+{
+  "scope": "CPU articulated simulation; no learned running",
+  "models": {
+    "baseline": {
+      "mass_kg": 165.00000000000003,
+      "crown_height_m": 2.4999999999999996,
+      "initial_com_height_m": 1.4114785430760017,
+      "upstream_imported_joints": 55,
+      "morphology_and_inertia_checks_passed": true,
+      "trials": {
+        "pose_hold_0_5s": {
+          "seconds": 0.5000000000000003,
+          "numerically_finite": true,
+          "root_height_final_m": 1.3787467365816135,
+          "root_yaw_final_rad": -2.2504301431895142e-08,
+          "tail_yaw_final_rad": 4.436976786213187e-08,
+          "peak_ground_normal_n": 2037.579091022798,
+          "actuator_saturation_fraction": 0.0,
+          "nonfoot_ground_geoms": [],
+          "max_joint_limit_soft_violation_rad": 0.0,
+          "max_physical_subtree_angular_momentum_norm": 5.86115148409318,
+          "first_nonfoot_contact_time_s_sampled": null,
+          "balance_pass": true
+        },
+        "pose_hold_5s": {
+          "seconds": 5.000000000000004,
+          "numerically_finite": true,
+          "root_height_final_m": 0.18783723822865556,
+          "root_yaw_final_rad": -0.007933273529986044,
+          "tail_yaw_final_rad": -0.00024411034646640767,
+          "peak_ground_normal_n": 56413.22302334739,
+          "actuator_saturation_fraction": 0.002876363636363616,
+          "nonfoot_ground_geoms": [
+            "finger_geom_L_1",
+            "finger_geom_L_2",
+            "finger_geom_L_3",
+            "finger_geom_L_4",
+            "finger_geom_L_5",
+            "finger_geom_R_1",
+            "finger_geom_R_2",
+            "finger_geom_R_3",
+            "finger_geom_R_4",
+            "forearm_geom_L",
+            "forearm_geom_R",
+            "head_mass",
+            "palm_L",
+            "palm_R",
+            "pelvis_mass",
+            "thigh_geom_L",
+            "thigh_geom_R",
+            "torso_mass"
+          ],
+          "max_joint_limit_soft_violation_rad": 0.0022422538983906115,
+          "max_physical_subtree_angular_momentum_norm": 208.99198505266602,
+          "first_nonfoot_contact_time_s_sampled": 2.180999999999871,
+          "balance_pass": false
+        }
+      }
+    },
+    "smaller": {
+      "mass_kg": 85.0,
+      "crown_height_m": 1.85,
+      "initial_com_height_m": 1.0444941218762946,
+      "upstream_imported_joints": 55,
+      "morphology_and_inertia_checks_passed": true,
+      "trials": {
+        "pose_hold_0_5s": {
+          "seconds": 0.5000000000000003,
+          "numerically_finite": true,
+          "root_height_final_m": 1.0183525110648795,
+          "root_yaw_final_rad": -4.609655608623598e-08,
+          "tail_yaw_final_rad": 2.2776769930618663e-08,
+          "peak_ground_normal_n": 1062.1223467411085,
+          "actuator_saturation_fraction": 0.0,
+          "nonfoot_ground_geoms": [],
+          "max_joint_limit_soft_violation_rad": 0.0,
+          "max_physical_subtree_angular_momentum_norm": 2.296629968352319,
+          "first_nonfoot_contact_time_s_sampled": null,
+          "balance_pass": true
+        },
+        "pose_hold_5s": {
+          "seconds": 5.000000000000004,
+          "numerically_finite": true,
+          "root_height_final_m": 0.13901294934956096,
+          "root_yaw_final_rad": -0.008088617313481993,
+          "tail_yaw_final_rad": -0.00019903655252941432,
+          "peak_ground_normal_n": 27429.287641131617,
+          "actuator_saturation_fraction": 0.0023199999999999853,
+          "nonfoot_ground_geoms": [
+            "finger_geom_L_1",
+            "finger_geom_L_2",
+            "finger_geom_L_3",
+            "finger_geom_L_4",
+            "finger_geom_L_5",
+            "finger_geom_R_1",
+            "finger_geom_R_2",
+            "finger_geom_R_3",
+            "finger_geom_R_4",
+            "forearm_geom_L",
+            "forearm_geom_R",
+            "head_mass",
+            "palm_L",
+            "palm_R",
+            "pelvis_mass",
+            "thigh_geom_L",
+            "thigh_geom_R",
+            "torso_mass"
+          ],
+          "max_joint_limit_soft_violation_rad": 0.0,
+          "max_physical_subtree_angular_momentum_norm": 68.74280221526742,
+          "first_nonfoot_contact_time_s_sampled": 1.8809999999999036,
+          "balance_pass": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema": "nasuraya-experimental-running-profile/0.1",
+  "status": "authored_reduced_model_design_candidate",
+  "profile": {
+    "name": "lighter_250cm_165kg",
+    "height_m": 2.5,
+    "mass_kg": 165.0,
+    "gravity": 9.81,
+    "friction": 0.6,
+    "pressure_limit_kpa": 300.0,
+    "max_vertical_bw": 4.5,
+    "max_actuator_power_w_kg": 12.0,
+    "max_compression_fraction": 0.25,
+    "max_foot_transfer_m_s": 6.0
+  },
+  "source_base_commit": "884ae8a778bbe1d60fcf6e7b6d5263ed5945833a",
+  "source_dimensions": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contact_design_v06.json",
+  "source_phenotype": "runtimes/tadash_body/phenotype_v1.json",
+  "mass_change_kg": -30.0,
+  "height_change_m": 0.0,
+  "interpretation": "A target mass for the separate COM running template, not a validated tissue redesign or migration of the native physiological runtime.",
+  "geometry_policy": "Preserve crown height and existing external proportions. Existing five-finger hands, three-toe digitigrade feet, horns and tail remain the visual design; they are not individually simulated here.",
+  "derived_assumptions": {
+    "equivalent_spring_rest_m": 1.42,
+    "apex_target_m": 1.45,
+    "spring_stiffness_n_m": 33846.153846153844,
+    "foot_patch_area_m2": 0.03926651524980653,
+    "mass_distribution": "lumped at COM; segment masses and inertia are unresolved",
+    "active_force_law": "F_active = u*k*compression*tanh(radial_velocity/0.25), abs(u)<=0.3",
+    "energy_source": "explicit ideal mechanical actuator; physiological energy supply is not modeled"
+  },
+  "remaining_requirements": [
+    "joint-level multi-body dynamics and anatomical mass/inertia allocation",
+    "swing-leg inertia, attainable joint torque, local contact pressure and torso rotation",
+    "standing-to-running and controlled stopping transitions",
+    "native body/physiology integration and real physical validation"
+  ]
+}

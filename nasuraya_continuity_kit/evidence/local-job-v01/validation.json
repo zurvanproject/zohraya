@@ -1,0 +1,68 @@
+{
+  "base_commit": "f5d4aaaccfa2afab451b3969574b92d3466ef095",
+  "python": "3.12.14",
+  "build_backend": "setuptools 78.1.0",
+  "build_frontend": "pip with preinstalled build dependencies",
+  "source_date_epoch": 1792159200,
+  "tests_passed": 40,
+  "new_tests": 13,
+  "previous_tests": 27,
+  "installed_local_cli_processes": 32,
+  "killed_workers": 4,
+  "admission_regression_cli_processes": 11,
+  "network_restriction": "Linux seccomp EPERM; inherited by build/install/local-execution children",
+  "wheel_sha256": "5f34835e319a3dd715f7f52bbb295455b82f2917e245b8774e41df5c8caf9dbe",
+  "two_builds_byte_identical": true,
+  "source_sha256": {
+    "continuity/gate.py": "26a082342b44cca50623c8134ea7ce63981425b27e6d997ed81c9bc39721bcf4",
+    "continuity/policy.json": "37bbfc159e7da4d57656c7c527c94601b7ab2a9afd96bb5b696da405c1ead34e",
+    "nasuraya_continuity_kit/local_job.py": "f000b88daa3028af0de159d6279fe3b3ffcfe27530873ebf0456585a57888b4d",
+    "nasuraya_continuity_kit/store.py": "815e507d85a32b7915edb4f04add9be0f3fe9a4cbdd4adeaabc2b2f33b794455",
+    "nasuraya_continuity_kit/cli.py": "0671f7b2323d3380d3035f5d02b895777b5f315a9968094d68915c784a52f192",
+    "nasuraya_continuity_kit/test_local_job.py": "da824723edc696a18aacf7d619e77f7c6004def8cdb39fd8342d5f83ea91b02c",
+    "nasuraya_continuity_kit/verify_local_job.py": "5fa3db8b4b1c95ba948a4e1b3aafa596a66d9c5a2d9f0474f965e3026d04d1b2",
+    "nasuraya_continuity_kit/README.md": "561c1325944896016d11c841e3327bf1edbf49b622bdfe2b2d8369f10723255d",
+    "nasuraya_continuity_kit/__init__.py": "cd6fbff43dff3ea842bdd083c3d4a079ed25cdf1b3d0a69a6b5f9424a8fe20e9",
+    "pyproject.toml": "067f71613aec8d86e819297205a45e775084b851ae0d4ba3b63bccf0b6c4e6cc",
+    "setup.py": "b8af96bd7bf0f1ce3782958280eb7ba094517e9cf6423c06e7a2ae73f086634f",
+    ".github/workflows/nasuraya-continuity-kit.yml": "06e22c99970e84a913f84f5af613223e73711c493adcabeffd7a491069d34e39"
+  },
+  "wheel_entries": [
+    "continuity/__init__.py",
+    "continuity/gate.py",
+    "nasuraya_continuity_kit/__init__.py",
+    "nasuraya_continuity_kit/cli.py",
+    "nasuraya_continuity_kit/local_job.py",
+    "nasuraya_continuity_kit/store.py",
+    "nasuraya_continuity_kit/verify_install.py",
+    "nasuraya_continuity_kit/verify_local_job.py",
+    "nasuraya_continuity_kit-0.2.0.dist-info/METADATA",
+    "nasuraya_continuity_kit-0.2.0.dist-info/WHEEL",
+    "nasuraya_continuity_kit-0.2.0.dist-info/entry_points.txt",
+    "nasuraya_continuity_kit-0.2.0.dist-info/top_level.txt",
+    "nasuraya_continuity_kit-0.2.0.dist-info/RECORD"
+  ],
+  "snapshots": {
+    "after_result_write.sqlite": {
+      "sqlite_sha256": "eb9e33b531ca7aed79d112f25f134f197f7f29e635da5eff7bf5208a54a9220b",
+      "sql_dump_sha256": "3ad5b7d96da97edf19f43d7cd2ca46a6efc9f40000a9ecbb3108364fbe6e40fd"
+    },
+    "after_commit.sqlite": {
+      "sqlite_sha256": "1f8a2c0775d8f3c98cccc3110e21c434a53c4383a94adca5ef60d422adc533c4",
+      "sql_dump_sha256": "22ad05c0540f9344bb1c9cb79adef33ac64acc53ef748556cfe97ac59484ace0"
+    },
+    "after_claim.sqlite": {
+      "sqlite_sha256": "eb9e33b531ca7aed79d112f25f134f197f7f29e635da5eff7bf5208a54a9220b",
+      "sql_dump_sha256": "3ad5b7d96da97edf19f43d7cd2ca46a6efc9f40000a9ecbb3108364fbe6e40fd"
+    },
+    "after_compute.sqlite": {
+      "sqlite_sha256": "eb9e33b531ca7aed79d112f25f134f197f7f29e635da5eff7bf5208a54a9220b",
+      "sql_dump_sha256": "3ad5b7d96da97edf19f43d7cd2ca46a6efc9f40000a9ecbb3108364fbe6e40fd"
+    },
+    "normal.sqlite": {
+      "sqlite_sha256": "1f8a2c0775d8f3c98cccc3110e21c434a53c4383a94adca5ef60d422adc533c4",
+      "sql_dump_sha256": "22ad05c0540f9344bb1c9cb79adef33ac64acc53ef748556cfe97ac59484ace0"
+    }
+  },
+  "sql_dumps_reopened_and_verified": 5
+}

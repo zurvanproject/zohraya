@@ -1,0 +1,30 @@
+{
+  "schema": "nasuraya-time-mining-protocol/1",
+  "source_parent": "59b0bd4e39a993873568a34f2d57fa9555925aea",
+  "hypothesis": "For exact cacheable result requests, verified persistent reuse preserves result receipts and reduces native ticks; explicit reproductions still execute.",
+  "minimum_tick_saving": 0.3,
+  "tasks": {
+    "A": {"impulse": [2.0, 0.0], "friction": 0.6, "seconds": 6.0, "dt": 0.1},
+    "B": {"impulse": [0.0, 0.0], "friction": 0.6, "seconds": 6.0, "dt": 0.1},
+    "C": {"impulse": [4.0, -4.0], "friction": 0.3, "seconds": 6.0, "dt": 0.1},
+    "D": {"impulse": [0.0, 6.0], "friction": 0.3, "seconds": 6.0, "dt": 0.1}
+  },
+  "requests": [
+    {"task": "A", "kind": "get"},
+    {"task": "A", "kind": "get"},
+    {"task": "B", "kind": "get"},
+    {"task": "B", "kind": "get"},
+    {"task": "C", "kind": "get"},
+    {"task": "A", "kind": "get"},
+    {"task": "A", "kind": "reproduce"},
+    {"task": "C", "kind": "get"},
+    {"task": "B", "kind": "get"},
+    {"task": "D", "kind": "get"},
+    {"task": "D", "kind": "get"},
+    {"task": "C", "kind": "reproduce"}
+  ],
+  "workload_is_authored_and_repetitive": true,
+  "stores_start_empty": true,
+  "initial_computation_cost_included": true,
+  "canonical_state_must_not_advance": true
+}

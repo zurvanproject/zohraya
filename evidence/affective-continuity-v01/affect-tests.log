@@ -1,0 +1,18 @@
+test_authored_memory_cannot_masquerade_as_observation (examples.nasuraya_affect.test_engine.AffectTests.test_authored_memory_cannot_masquerade_as_observation) ... ok
+test_clear_native_preference_cannot_be_overturned (examples.nasuraya_affect.test_engine.AffectTests.test_clear_native_preference_cannot_be_overturned) ... ok
+test_extreme_affect_preserves_risk_gate_and_abstention (examples.nasuraya_affect.test_engine.AffectTests.test_extreme_affect_preserves_risk_gate_and_abstention) ... ok
+test_joy_excitement_and_contentment_are_distinct (examples.nasuraya_affect.test_engine.AffectTests.test_joy_excitement_and_contentment_are_distinct) ... ok
+test_mixed_emotions_survive (examples.nasuraya_affect.test_engine.AffectTests.test_mixed_emotions_survive) ... ok
+test_native_choice_changes_only_with_affect (examples.nasuraya_affect.test_engine.AffectTests.test_native_choice_changes_only_with_affect) ... ok
+test_observed_adversity_influences_verification_not_confidence (examples.nasuraya_affect.test_engine.AffectTests.test_observed_adversity_influences_verification_not_confidence) ... ok
+test_recall_is_scoped_source_linked_and_read_only (examples.nasuraya_affect.test_engine.AffectTests.test_recall_is_scoped_source_linked_and_read_only) ... ok
+test_replay_conflict_atomic_rejection_and_restart (examples.nasuraya_affect.test_engine.AffectTests.test_replay_conflict_atomic_rejection_and_restart) ... ok
+test_saturation_bounds_and_high_arousal_reduce_exploration (examples.nasuraya_affect.test_engine.AffectTests.test_saturation_bounds_and_high_arousal_reduce_exploration) ... ok
+test_slow_mood_and_recovery (examples.nasuraya_affect.test_engine.AffectTests.test_slow_mood_and_recovery) ... ok
+test_source_change_and_unrelated_database_are_rejected (examples.nasuraya_affect.test_engine.AffectTests.test_source_change_and_unrelated_database_are_rejected) ... ok
+test_transaction_failure_rolls_back_episode_and_state (examples.nasuraya_affect.test_engine.AffectTests.test_transaction_failure_rolls_back_episode_and_state) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.197s
+
+OK
