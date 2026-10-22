@@ -228,9 +228,19 @@ class NoRedirect(HTTPRedirectHandler):
         raise RuntimeError('model endpoint redirect refused')
 
 
+def normalized_api_key():
+    """Normalize pasted surrounding whitespace; never return or log the raw key."""
+    key = os.environ.get('OPENAI_API_KEY', '').strip()
+    if not key:
+        return ''
+    if not key.isascii() or any(not 33 <= ord(ch) <= 126 for ch in key):
+        raise ValueError('invalid API key format')
+    return key
+
+
 def call_model(request_body):
     """One HTTPS POST. No SDK retries, proxy inheritance or secret in the prompt."""
-    key = os.environ.get('OPENAI_API_KEY', '')
+    key = normalized_api_key()
     if not key:
         raise RuntimeError('OPENAI_API_KEY unavailable')
     request = Request(ENDPOINT, data=lab.encode(request_body).encode(), method='POST',
@@ -316,7 +326,7 @@ class ModelGitHub(host.GitHub):
 
 
 def initialize(api, gate):
-    if not os.environ.get('OPENAI_API_KEY'):
+    if not normalized_api_key():
         raise ValueError('model initialization requires a securely provisioned key')
     snapshot = api.raw_snapshot()
     state = snapshot['state']
@@ -347,7 +357,7 @@ def run(api, gate, run_id, execute=None):
     validate(memory)
     if not available(memory):
         return dict(status='curriculum_complete', reason='owner_review_new_curriculum')
-    if execute is None and not os.environ.get('OPENAI_API_KEY'):
+    if execute is None and not normalized_api_key():
         return dict(status='deferred', reason='missing_secure_api_key')
     started = host.now()
     check_budget(memory, started, run_id)
