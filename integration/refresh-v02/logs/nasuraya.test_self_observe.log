@@ -1,0 +1,14 @@
+test_actual_audit_and_projection_preserve_saved_body (nasuraya.test_self_observe.NativeSelfObservationTests.test_actual_audit_and_projection_preserve_saved_body) ... ok
+test_cli_rejects_invalid_checkpoint_without_creating_state (nasuraya.test_self_observe.NativeSelfObservationTests.test_cli_rejects_invalid_checkpoint_without_creating_state) ... ok
+test_corrupt_checkpoint_is_rejected (nasuraya.test_self_observe.NativeSelfObservationTests.test_corrupt_checkpoint_is_rejected) ... ok
+test_existing_ledger_readout_leaves_file_and_schema_unchanged (nasuraya.test_self_observe.NativeSelfObservationTests.test_existing_ledger_readout_leaves_file_and_schema_unchanged) ... ok
+test_expired_native_checkpoint_remains_stale_and_unknown (nasuraya.test_self_observe.NativeSelfObservationTests.test_expired_native_checkpoint_remains_stale_and_unknown) ... ok
+test_hardlink_and_symlink_aliases_are_rejected (nasuraya.test_self_observe.NativeSelfObservationTests.test_hardlink_and_symlink_aliases_are_rejected) ... ok
+test_missing_session_and_active_writer_are_rejected (nasuraya.test_self_observe.NativeSelfObservationTests.test_missing_session_and_active_writer_are_rejected) ... ok
+test_nonfinite_and_backward_clocks_are_rejected (nasuraya.test_self_observe.NativeSelfObservationTests.test_nonfinite_and_backward_clocks_are_rejected) ... ok
+test_unresolved_execution_does_not_report_saved_body_as_current (nasuraya.test_self_observe.NativeSelfObservationTests.test_unresolved_execution_does_not_report_saved_body_as_current) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 5.054s
+
+OK

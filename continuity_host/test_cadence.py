@@ -4,7 +4,7 @@ from datetime import datetime,timedelta,timezone
 import random
 import unittest
 from continuity_host import cadence as c
-from continuity_host.test_host import gate,Fake,DUE,START
+from continuity_host.test_cadence_host import gate,Fake,DUE,START
 
 
 def later(hours): return (gate.timestamp(DUE)+timedelta(hours=hours)).isoformat()

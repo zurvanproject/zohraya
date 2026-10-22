@@ -36,12 +36,21 @@ def run(output):
         raise RuntimeError('unified continuation contract failed')
     if verify(json.loads((output/'genome.json').read_text())) != genotype:
         raise RuntimeError('genome proposal changed during body execution')
+    observation = call('self-observe', '--session', session/'body.sqlite')
+    if (observation['checkpoint_sha256'] != after['body']['self_model']['checkpoint_sha256']
+            or not observation['native_checkpoint_unchanged']):
+        raise RuntimeError('self-model observed a different body checkpoint')
+    (output/'self-observation.json').write_text(json.dumps(observation, indent=2)+'\n')
     report = dict(schema='nasuraya.unified-demo/1', body_kind='native aggregate Tadash',
                   actual_action=first['native_receipt']['actual_action'],
                   executed_cycles=first['this_call_body_cycles'], replay_cycles=replay['this_call_body_cycles'],
                   state_equal_across_cold_replay=before==after,
                   identity_policy_sha256=express(genotype)['policy_sha256'],
                   genome_revision=genotype['revision'], genome_applied_to_body=False,
+                  self_observation_checkpoint_sha256=observation['checkpoint_sha256'],
+                  self_model_status=observation['telemetry']['operational_status'],
+                  self_model_integrity=observation['telemetry']['integrity'],
+                  self_observation_cycles=observation['simulated_cycles_executed'],
                   source='synthetic fixture only', external_api_calls=0)
     (output/'summary.json').write_text(json.dumps(report, indent=2)+'\n')
     return report

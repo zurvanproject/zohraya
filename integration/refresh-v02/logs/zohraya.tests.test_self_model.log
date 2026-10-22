@@ -1,0 +1,19 @@
+test_bad_agent_id_rejected (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_bad_agent_id_rejected) ... ok
+test_compensatory_drive (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_compensatory_drive) ... ok
+test_distinct_agent_ids_do_not_share_any_memory (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_distinct_agent_ids_do_not_share_any_memory) ... ok
+test_ema_deterministic (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_ema_deterministic) ... ok
+test_energy_critical (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_energy_critical) ... ok
+test_invalid_numerics_rejected (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_invalid_numerics_rejected) ... ok
+test_invalid_prediction_error_rejected (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_invalid_prediction_error_rejected) ... ok
+test_invalid_provenance_flags_rejected (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_invalid_provenance_flags_rejected) ... ok
+test_invalid_schema_and_revision_rejected (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_invalid_schema_and_revision_rejected) ... ok
+test_optimal_readout_and_unmeasured_integrity (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_optimal_readout_and_unmeasured_integrity) ... ok
+test_prediction_pressure_bounded (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_prediction_pressure_bounded) ... ok
+test_read_does_not_mutate_input (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_read_does_not_mutate_input) ... ok
+test_unfresh_evidence_not_reported_healthy (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_unfresh_evidence_not_reported_healthy) ... ok
+test_veto_overrides_drive (zohraya.tests.test_self_model.TestReadOnlySelfModel.test_veto_overrides_drive) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.001s
+
+OK

@@ -14,7 +14,7 @@ from .__main__ import environment
 def inventory():
     result = {}
     for directory in ('nasuraya', 'examples', 'continuity', 'continuity_host', 'project_fund',
-                      'services', 'nasuraya_continuity_kit'):
+                      'services', 'nasuraya_continuity_kit', 'zohraya'):
         for path in sorted((ROOT/directory).rglob('test_*.py')):
             if 'vendor' in path.parts:
                 continue

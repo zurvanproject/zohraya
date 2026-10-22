@@ -1,5 +1,32 @@
 # Unified capability integration, 2026-10-21
 
+## 2026-10-22 refresh
+
+The refresh incorporates main `5330cbee347c1ef5b7c3a77e74f91398d45aa76f`
+and the read-only self-model source from PR #68 at `4433ba8`.
+`sources.json` retains the original source inventory and records both new heads.
+
+- Preserve the active daily `host.py`, its tests, `research_host.py`, and both
+  research engines byte for byte from main. `verify_sources` enforces this
+  because the live model memory is bound to the exact engine bytes.
+- Keep the six-hour prototype as `cadence_host.py` with its own fixture and
+  tests. The default reader does not request a nonexistent cadence ledger.
+- Keep the daily schedule, maintenance job, dispatch modes, concurrency and
+  permissions identical to main. Expand only verification in that workflow.
+- Add `research-host` and `research-day` as explicit catalogue entries, while
+  preserving the meaning of existing commands.
+- Add `self-observe`: use the verified native audit and PR #68 projection on
+  the existing checkpoint, in a separate credential-free process. SQLite is
+  opened read-only with the native host's inode-lock and single-link rules;
+  active writers and unresolved runs are rejected. Unknown integrity and
+  stale evidence remain explicit.
+- The shared demo now observes the same post-action checkpoint and proves
+  that observation and cold replay add no body cycles.
+
+Current scoped results and reproducible commands are in
+`refresh-v02/summary.json` and `../docs/nasuraya-unified-v02-fa.md`.
+The test counts below remain the historical 2026-10-21 baseline.
+
 The integration starts from main `884ae8a778bbe1d60fcf6e7b6d5263ed5945833a`.
 `sources.json` records all 59 open PR heads and two additional source branches.
 Their latest commits are retained in ancestry; no PR head was overwritten.
@@ -66,8 +93,9 @@ training/UI dependency stack has not been validated.
 
 ## Deployment boundary
 
-This branch includes the pending six-hour cadence implementation from PR #43.
-It is not activated by publishing this integration branch. Before merging into
-main, review the scheduler change and its migration requirements together with
-runtime source bindings. No existing scheduler, live ledger, model API session,
-financial route or external message was operated during integration.
+The six-hour implementation from PR #43 remains an isolated prototype and is
+not selected by the active workflow or the shared catalogue. This refresh
+retains the existing daily production contract, with no ledger migration.
+Publishing the integration branch runs verification; it does not deploy the
+shared body or change the live control branch. Any later cadence migration
+requires its own review and explicit activation.

@@ -1,0 +1,21 @@
+{
+  "schema": "nasuraya-api-local-verification/1",
+  "base_commit": "f9a6bd8808eda7fa3f258e61d9fd4f78d1a97b8a",
+  "new_tests_passed": 37,
+  "existing_research_tests_passed": 34,
+  "total_local_tests_passed": 71,
+  "test_provider": "explicit offline test double",
+  "live_model_verified": false,
+  "paid_requests_executed": 0,
+  "main_merged": false,
+  "live_state_initialized": false,
+  "daily_reservation_cap_usd": 0.05,
+  "pilot_reservation_cap_usd": 0.25,
+  "reservation_per_request_usd": 0.02,
+  "source_sha256": {
+    "continuity_host/model_research.py": "0b468d2af3b4e06f120d71cd53204aa67544785c14fa717301d3ffe6a916b3b9",
+    "continuity_host/test_model_research.py": "263ee36d0c6d80c2e84e392525aee0fd9235774e10afd0e4e6740e724a0a731c",
+    "continuity_host/research_host.py": "885b5202631d7158d409b3331baf0a345bc200f7caab45541809f26f60d7371f",
+    ".github/workflows/nasuraya-continuity-host.yml": "f76877177134aafec4f1d7c3f7952512ffa87a790e351c7d01b15425f926fde7"
+  }
+}

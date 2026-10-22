@@ -13,7 +13,8 @@ from .demo import run
 class IntegrationTests(unittest.TestCase):
     def test_catalog_has_existing_entrypoints_without_initializing_any_state(self):
         self.assertEqual(len(validate()), len(CAPABILITIES))
-        for key in ('body','dialogue','articulated','genome','self-model','guard','fund'):
+        for key in ('body','dialogue','articulated','genome','self-model','self-observe',
+                    'research-host','research-day','guard','fund'):
             self.assertIn(key,CAPABILITIES)
 
     def test_dispatch_does_not_use_shell_or_reinterpret_arguments(self):
@@ -44,6 +45,9 @@ class IntegrationTests(unittest.TestCase):
         self.assertTrue(report['state_equal_across_cold_replay'])
         self.assertEqual(report['external_api_calls'],0)
         self.assertFalse(report['genome_applied_to_body'])
+        self.assertEqual(report['self_observation_cycles'], 0)
+        self.assertIsNone(report['self_model_integrity'])
+        self.assertEqual(len(report['self_observation_checkpoint_sha256']), 64)
 
 
 if __name__=='__main__':unittest.main()

@@ -9,7 +9,6 @@ import re
 import subprocess
 import sys
 import urllib.request
-from continuity_host import cadence
 
 REPO = 'zurvanproject/zohraya'
 BRANCH = 'nasuraya/absence-continuity-v01'
@@ -41,12 +40,10 @@ class GitHub:
             return base64.b64decode(item['content'], validate=False)
         if digest(read('policy.json')) != POLICY_HASH or digest(read('gate.py')) != GATE_HASH:
             raise ValueError('control policy or gate drift; no claim')
-        return dict(head=head, tree=commit['tree']['sha'], state=json.loads(read('state.json')),
-                    ledger=json.loads(read('cadence-v2.json')))
+        return dict(head=head, tree=commit['tree']['sha'], state=json.loads(read('state.json')))
 
-    def save(self, snapshot, state, report=None, ledger=None):
+    def save(self, snapshot, state, report=None):
         files = {'continuity/state.json':encode(state)+'\n'}
-        if ledger is not None: files['continuity/cadence-v2.json']=encode(ledger)+'\n'
         if report is not None:
             files['continuity/runs/'+report['run_id']+'.json'] = encode(report)+'\n'
         tree = self.call('POST','git/trees',dict(base_tree=snapshot['tree'], tree=[
@@ -79,12 +76,11 @@ print(json.dumps(dict(passed=r.wasSuccessful() and r.testsRun==36 and not r.skip
 def run(api, gate, source, run_id, execute=probe):
     if not re.fullmatch(r'gh_[0-9]{1,30}_[0-9]{1,4}',run_id): raise ValueError('run id')
     initial = api.snapshot(); started = now()
-    decision = cadence.evaluate(gate,initial['state'],initial['ledger'],started)
+    decision = gate.evaluate(initial['state'], started)
     if not decision['eligible']: return dict(status='deferred',reason=decision['reason'])
-    claimed,reserved,budget = cadence.claim(gate,initial['state'],initial['ledger'],started,run_id)
-    claim_commit = api.save(initial,claimed,ledger=reserved)  # Atomic budget+claim.
+    claimed = gate.claim(initial['state'],started,run_id)
+    claim_commit = api.save(initial,claimed)  # No task before durable claim.
     before = api.snapshot()
-    cadence.synchronize(gate,before['state'],before['ledger'],now())
     if before['state']['inflight_run_id'] != run_id: raise ValueError('claim ownership lost')
     contact = claimed['last_contact_at']
     cancelled = not before['state']['enabled'] or before['state']['last_contact_at'] != contact
@@ -92,12 +88,11 @@ def run(api, gate, source, run_id, execute=probe):
     except subprocess.TimeoutExpired: result = dict(passed=False,reason='probe_timeout_killed_and_reaped')
     # Unexpected errors deliberately leave the durable inflight barrier intact.
     final = api.snapshot(); ended = now()
-    cadence.synchronize(gate,final['state'],final['ledger'],ended)
     if final['state']['inflight_run_id'] != run_id: raise ValueError('claim ownership lost')
     report = dict(schema='nasuraya-github-host-run/1',run_id=run_id,started_at=started,
         ended_at=ended,source_commit=SOURCE,claim_commit=claim_commit,result=result,
         contact_changed=final['state']['last_contact_at'] != contact,
-        paused=not final['state']['enabled'],reserved_budget=budget,model_api_used=False,financial_actions=0,
+        paused=not final['state']['enabled'],model_api_used=False,financial_actions=0,
         scope='Fixed synthetic regression tests; no canonical body or experience mutation')
     completed = gate.finish(final['state'],ended,run_id)  # Preserve pause/contact/budget.
     saved = api.save(final,completed,report)

@@ -548,5 +548,19 @@
   "excluded_runtime_branch": {
     "branch": "nasuraya/absence-continuity-v01",
     "reason": "Mutable operator/host execution ledger; keep on its existing branch, do not reset or copy into integration."
+  },
+  "refresh": {
+    "date": "2026-10-22",
+    "previous_integration": "458e31d434f5dc09eff15ca48c1162e793893ab6",
+    "main": "5330cbee347c1ef5b7c3a77e74f91398d45aa76f",
+    "self_model_pr": 68,
+    "self_model_sha": "4433ba8909c7e6e38b79f6d3bf29ca13805c4244",
+    "preserved_main_files": [
+      "continuity_host/host.py",
+      "continuity_host/test_host.py",
+      "continuity_host/model_research.py",
+      "continuity_host/research_lab.py",
+      "continuity_host/research_host.py"
+    ]
   }
 }
