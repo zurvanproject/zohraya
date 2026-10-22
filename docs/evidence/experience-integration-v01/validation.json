@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-23",
+  "base_commit": "5330cbee347c1ef5b7c3a77e74f91398d45aa76f",
+  "new_experience_tests": {
+    "run": 17,
+    "passed": 17,
+    "failed": 0
+  },
+  "existing_body_bridge": {
+    "run": 16,
+    "passed": 16,
+    "failed": 0
+  },
+  "native_runtime": {
+    "run": 99,
+    "passed": 99,
+    "source_files_verified": 70,
+    "synthetic_scenarios_passed": true,
+    "canonical_state_modified": false
+  },
+  "api_mock_regression": {
+    "run": 41,
+    "passed": 39,
+    "skipped": 2,
+    "skip_reason": "optional SDK not installed; no live API requests"
+  },
+  "total_tests_passed": 171,
+  "total_tests_skipped": 2,
+  "native_demo_cycles": 6,
+  "public_cli_reopen_and_replay_verified": true,
+  "external_api_calls": 0,
+  "scope": "constructed software fixtures and protocol tests; not empirical consciousness or general learning evaluation"
+}

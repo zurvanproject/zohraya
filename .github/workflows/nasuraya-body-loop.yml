@@ -40,6 +40,10 @@ jobs:
         run: python3 run_tests.py --reflection --output /tmp/nasuraya-native-check
       - name: Verify bounded bridge and cold recovery
         run: python3 -m examples.nasuraya_body_loop test
+      - name: Verify integrated experience and restart recovery
+        run: |
+          python3 -m examples.nasuraya_body_loop experience-test
+          python3 -m examples.nasuraya_body_loop experience-demo --output-dir /tmp/nasuraya-experience-demo
       - name: Verify persistent API body tools without live service
         run: |
           python3 -m venv .ci-env
