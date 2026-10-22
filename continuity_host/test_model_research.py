@@ -324,6 +324,28 @@ class TransportAndStorageTests(unittest.TestCase):
         self.assertNotIn(b'offline-placeholder', request.data)
         self.assertEqual(request.get_method(), 'POST')
 
+    def test_surrounding_whitespace_is_removed_from_api_key(self):
+        class Reply:
+            def __enter__(self): return self
+            def __exit__(self, *args): pass
+            def read(self, limit): return lab.encode(response()).encode()
+        from unittest.mock import MagicMock
+        opener = MagicMock(); opener.open.return_value = Reply()
+        raw_key = '  \\n\\t offline-placeholder \\r\\n  '.replace('\\n', '\n').replace('\\r', '\r').replace('\\t', '\t')
+        with patch.dict(os.environ, {'OPENAI_API_KEY': raw_key}), patch.object(model, 'build_opener', return_value=opener):
+            self.assertEqual(model.call_model(model.payload(model.initial()))['status'], 'completed')
+        headers = dict(opener.open.call_args.args[0].header_items())
+        self.assertEqual(headers['Authorization'], 'Bearer offline-placeholder')
+        self.assertEqual(opener.open.call_count, 1)
+
+    def test_internal_whitespace_in_key_fails_before_network(self):
+        from unittest.mock import MagicMock
+        opener = MagicMock()
+        with patch.dict(os.environ, {'OPENAI_API_KEY': 'invalid internal\\nkey'.replace('\\n', '\n')}), patch.object(model, 'build_opener', return_value=opener):
+            with self.assertRaisesRegex(ValueError, 'invalid API key format'):
+                model.call_model(model.payload(model.initial()))
+        opener.open.assert_not_called()
+
     def test_transport_error_sanitized_and_no_retry(self):
         from unittest.mock import MagicMock
         opener = MagicMock(); opener.open.side_effect = RuntimeError('secret-in-exception')
