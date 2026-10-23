@@ -151,6 +151,10 @@ class StoreTests(unittest.TestCase):
     def test_missing_control_row_is_rejected_without_reset(self):
         self.store.db.execute('DELETE FROM control')
         with self.assertRaisesRegex(ValueError, 'missing or invalid'):
+            self.store.status(DUE)
+        with self.assertRaisesRegex(ValueError, 'missing or invalid'):
+            self.store.apply('heartbeat', 'after-delete', DUE)
+        with self.assertRaisesRegex(ValueError, 'missing or invalid'):
             Store(self.path)
         self.assertEqual(self.store.db.execute('SELECT count(*) FROM control').fetchone()[0], 0)
 

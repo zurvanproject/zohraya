@@ -10,6 +10,18 @@ APPLICATION_ID = 0x4e415355
 
 
 class Store:
+    @staticmethod
+    def _decode_control(row):
+        if row is None:
+            raise ValueError('missing or invalid control state; no reset')
+        try:
+            state = json.loads(row[0])
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise ValueError('missing or invalid control state; no reset') from exc
+        if not isinstance(state, dict):
+            raise ValueError('missing or invalid control state; no reset')
+        return state
+
     def __init__(self, path):
         uri = Path(path).resolve().as_uri() + '?mode=rw'
         self.db = sqlite3.connect(uri, uri=True, isolation_level=None, timeout=5)
@@ -17,8 +29,7 @@ class Store:
             if self.db.execute('PRAGMA application_id').fetchone()[0] != APPLICATION_ID:
                 raise ValueError('not a Continuity Kit database; no migration or reset')
             row = self.db.execute('SELECT payload FROM control WHERE singleton=1').fetchone()
-            if row is None or not isinstance(json.loads(row[0]), dict):
-                raise ValueError('missing or invalid control state; no reset')
+            self._decode_control(row)
         except Exception:
             self.db.close()
             raise
@@ -53,7 +64,7 @@ class Store:
         row = self.db.execute('''SELECT payload,
             (SELECT count(*) FROM requests), (SELECT count(*) FROM runs)
             FROM control WHERE singleton=1''').fetchone()
-        state = json.loads(row[0])
+        state = self._decode_control(row)
         return dict(state=state, decision=evaluate(state, now),
                     request_count=row[1], run_count=row[2])
 
@@ -77,7 +88,8 @@ class Store:
             if previous[0] != digest:
                 raise ValueError('request id already bound to different parameters')
             return json.loads(previous[1])
-        state = json.loads(self.db.execute('SELECT payload FROM control WHERE singleton=1').fetchone()[0])
+        state = self._decode_control(
+            self.db.execute('SELECT payload FROM control WHERE singleton=1').fetchone())
         if operation == 'claim':
             updated = claim(state, now, run_id)
             if self.db.execute('SELECT 1 FROM runs WHERE id=?', (run_id,)).fetchone():
