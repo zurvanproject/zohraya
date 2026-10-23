@@ -1,0 +1,48 @@
+{
+  "schema": "nasuraya-evidence-self-model-revision/1",
+  "scope": "external software-agent predictor of the native generated body",
+  "source_ledger": "self-model-step.json",
+  "source_workflow": "https://github.com/zurvanproject/zohraya/actions/runs/39875600448",
+  "observed": {
+    "native_cycles": 4,
+    "live_model_calls": 2,
+    "cold_process_reopens_verified": 4,
+    "actual_actions": {
+      "normal": [
+        "walk",
+        "walk"
+      ],
+      "sleep": [
+        "protect",
+        "observe"
+      ]
+    },
+    "action_forecasts_correct": 3,
+    "action_forecasts_total": 4,
+    "prior_action_attributions_correct_in_second_round": 2,
+    "metric_mae_by_round": [
+      0.0003697502877579354,
+      0.00003288866533897165
+    ],
+    "unchanged_state_baseline_mae_by_round": [
+      0.0002213476330081073,
+      0.00011579605366093511
+    ],
+    "confidence_on_failed_second_sleep_action_forecast": 0.9
+  },
+  "retained_self_knowledge_fa": [
+    "در این اجرای محدود، مدل نقش پیش‌بینی‌کننده داشت؛ انتخاب و اجرای نهایی را هسته و محافظ بدن انجام دادند.",
+    "پیشنهاد walk الزاماً به اجرای walk منجر نمی‌شود؛ در وضعیت فشار خواب بالا یک بار protect و بار بعد observe اجرا شد.",
+    "خطای پیش‌بینی عددی در دور دوم کمتر شد، ولی تشخیص اقدام در همان دور یک خطا داشت؛ این دو توانایی را نباید یکی گرفت.",
+    "اطمینان ۰٫۹ در یک پیش‌بینیِ نادرست ثبت شد؛ این عدد کالیبراسیون‌شده نیست و نباید مبنای ادعای قطعیت شود.",
+    "خودمدل باید قواعد و بازخورد هستهٔ تصمیم را نیز بررسی کند؛ تکرار وضعیت ظاهری، تکرار اقدام را تضمین نمی‌کند."
+  ],
+  "unresolved_fa": [
+    "دقت روی وضعیت‌های مستقل و مدت‌های دیگر سنجیده نشده است.",
+    "اثر علّی بازخورد با گروه کنترل هم‌شرایط جدا نشده است.",
+    "این رکورد تجربهٔ ذهنی را اثبات نمی‌کند."
+  ],
+  "checkpoint_archive": "self-model-body-checkpoints.zip",
+  "next_probe_fa": "تفاوتِ مشاهدهٔ بدن با مشاهدهٔ بدن همراهِ بازخورد هسته را روی وضعیت‌های مستقل مقایسه کن؛ پیش‌بینی اقدام و پیش‌بینی عددی را جدا بسنج.",
+  "next_probe_executed": false
+}
