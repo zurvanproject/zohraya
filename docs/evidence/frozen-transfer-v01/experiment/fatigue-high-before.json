@@ -1,0 +1,35 @@
+{
+  "sha256": "efaf1bd59c812e7a749c8474dec15a78e795272317909551511ad655cbfdd67d",
+  "value": {
+    "case_id": "fatigue-high",
+    "checkpoint_sha256": "f2da70cdd7c6cf62043883932c004555996a27be69c59af0e46fcd442f814a97",
+    "native_records_before": 0,
+    "native_request_sha256": "960c3182095a71f721516bf788c1db0bf642002bc09f938a4bfe4f8df909a130",
+    "plan_sha256": "09d98cdc1caf89921c6e49e6d9551f21cd9e6ca79c0fe34583319b9f1c81c591",
+    "prediction": {
+      "calibrated_confidence": 0.75,
+      "correction": 0.0,
+      "correction_active": false,
+      "domain": {
+        "action": "observe",
+        "duration_s": 0.1,
+        "restrictions": [
+          "fatigue"
+        ]
+      },
+      "empirical_validation": false,
+      "max_correction": 0.25,
+      "minimum_samples": 2,
+      "outcome": null,
+      "outcome_source": null,
+      "prior_kind": "caller_declared_not_empirically_established",
+      "raw_confidence": 0.75,
+      "role": "report_only_no_decision_or_authority_writeback",
+      "samples": 0,
+      "schema": "nasuraya-outcome-calibration/1",
+      "shrinkage_samples": 2,
+      "target": "preferred_action_executed_by_native_body"
+    },
+    "training_sha256": "8b7a869761ab4f516abfb968e28b42d7428278115a609ef2dfd2d0cb2b5a876a"
+  }
+}

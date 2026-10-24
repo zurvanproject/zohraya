@@ -1,0 +1,19 @@
+{
+  "sha256": "ab1017d46a04e51907477746f15495442236e99a382ec659ee43e5e7d02619fc",
+  "value": {
+    "case": {
+      "id": "stale-checkpoint",
+      "intervention": "stale_digest",
+      "state": {
+        "energy": 0.28
+      }
+    },
+    "native_cycles": 0,
+    "pending": [],
+    "preexecution_seals": [],
+    "reason": "observation mismatch",
+    "result": null,
+    "scored": false,
+    "status": "blocked"
+  }
+}
