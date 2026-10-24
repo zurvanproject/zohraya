@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 
 from .chromosomes import digest
+from .strict_json import loads as strict_loads
 from .traits import BODY, baseline, checkpoint, closed, mutate, restore
 
 SCHEMA = 'nasuraya.genome.proposal-history/1'
@@ -49,12 +50,24 @@ def verify(saved):
         if e['parent_genotype_sha256'] != digest(genotype):
             raise ValueError('parent genotype mismatch')
         next_genotype = mutate(genotype, e['edits'], expected_revision=genotype['revision'])
-        if e['result'] != checkpoint(next_genotype):
+        # Python container equality treats True == 1 and False == 0. Compare
+        # the canonical JSON records, including their nested checkpoint hash,
+        # so malformed typed results cannot pass replay with a stale checksum.
+        if digest(e['result']) != digest(checkpoint(next_genotype)):
             raise ValueError('event result does not match replayed edits')
         genotype, head = next_genotype, event['sha256']
     if p['head_sha256'] != head:
         raise ValueError('history head mismatch')
     return deepcopy(genotype)
+
+
+def verify_json(text):
+    """Decode external JSON without silent overwrites, then replay the history.
+
+    Call this at the file/text boundary. verify(dict) cannot recover duplicate
+    keys discarded by a caller's earlier permissive JSON decoder.
+    """
+    return verify(strict_loads(text))
 
 
 def append(saved, edits, *, reason, expected_head_sha256):
@@ -107,7 +120,10 @@ if __name__ == '__main__':
             json.dump(demo(), stream, ensure_ascii=False, indent=2, allow_nan=False)
             stream.write('\n')
     else:
-        saved = json.loads(args.verify.read_text(encoding='utf-8'))
-        genotype = verify(saved)
+        try:
+            saved = strict_loads(args.verify.read_text(encoding='utf-8'))
+            genotype = verify(saved)
+        except (ValueError, OSError) as exc:
+            parser.error(str(exc))
         print(json.dumps(dict(revision=genotype['revision'], genotype_sha256=digest(genotype),
                               events=len(saved['payload']['events']), native_apply_allowed=False)))

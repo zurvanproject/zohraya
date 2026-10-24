@@ -1,0 +1,54 @@
+{
+  "schema": "nasuraya.genome.strict-input-verification/1",
+  "base_commit": "1e6b36ba45c9046b0ceef4fd44441fc1151994f8",
+  "before": [
+    {
+      "case": "duplicate_outer_checksum_key",
+      "accepted_before_fix": true
+    },
+    {
+      "case": "boolean_to_integer",
+      "accepted_before_fix": true
+    },
+    {
+      "case": "copy_count_to_boolean",
+      "accepted_before_fix": true
+    }
+  ],
+  "after": [
+    {
+      "case": "duplicate_outer_checksum_key",
+      "accepted_after_fix": false,
+      "error": "duplicate JSON key: 'sha256'"
+    },
+    {
+      "case": "boolean_to_integer",
+      "accepted_after_fix": false,
+      "error": "event result does not match replayed edits"
+    },
+    {
+      "case": "copy_count_to_boolean",
+      "accepted_after_fix": false,
+      "error": "event result does not match replayed edits"
+    }
+  ],
+  "valid_demo_genotype_sha256": "22dd3ac68a1542f1da285b45444a8e90412e58af7b75486343b4d3488ed0c52e",
+  "native_apply_allowed": false,
+  "real_carbon_model_inference": false,
+  "owner_state_modified": false,
+  "new_loci_added": 0,
+  "test_status": "passed",
+  "tests_passed": 75,
+  "new_tests": 8,
+  "test_command": "python3 -m unittest discover -s examples/nasuraya_genome -t . -v",
+  "python_version": "3.12.14",
+  "test_log_sha256": "50b0c91ae01f673da898b7080605a4992736e16f2da04f4bbf82e1fd4a423796",
+  "valid_demo_genotype_sha256_before": "22dd3ac68a1542f1da285b45444a8e90412e58af7b75486343b4d3488ed0c52e",
+  "historical_valid_result_unchanged": true,
+  "remote_ci_status": "not_observed_in_local_record",
+  "source_sha256": {
+    "examples/nasuraya_genome/history.py": "d8c8474a3e96c8d5638e46a05c11cf97e8f4b4a69d8563785a732967b0dd4ef9",
+    "examples/nasuraya_genome/strict_json.py": "ca111be71e07da7ee6864dc3141fe37a8eda8e12318d543b09b579d622c8b657",
+    "examples/nasuraya_genome/test_strict_history.py": "82f6c5758806773719685323c6713642d73c3cbc160585d24884748cfb7d7852"
+  }
+}
