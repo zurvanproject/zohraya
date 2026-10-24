@@ -55,9 +55,21 @@ class LocalJobs:
                               (run_id,)).fetchone()
         if row is None:
             raise ValueError('unknown local run')
+        try:
+            result = json.loads(row[2]) if row[2] is not None else None
+            resolution = json.loads(row[3]) if row[3] is not None else None
+        except (TypeError, json.JSONDecodeError) as exc:
+            raise ValueError('invalid local job state; no reset') from exc
+        completed = (row[1] == 'completed' and isinstance(result, dict) and
+                     result.get('schema') == 'nasuraya-local-integrity/1' and resolution is None)
+        abandoned = (row[1] == 'abandoned' and result is None and
+                     isinstance(resolution, dict) and resolution.get('worker_stopped') is True)
+        running = row[1] == 'running' and result is None and resolution is None
+        if (not isinstance(row[0], str) or not 0 < len(row[0]) <= 80 or
+                not (running or completed or abandoned)):
+            raise ValueError('invalid local job state; no reset')
         return dict(run_id=run_id, request_id=row[0], status=row[1],
-                    result=json.loads(row[2]) if row[2] else None,
-                    resolution=json.loads(row[3]) if row[3] else None)
+                    result=result, resolution=resolution)
 
     def start(self, request_id, run_id, now, raw):
         # Validate BEFORE consuming budget; no report is published yet.

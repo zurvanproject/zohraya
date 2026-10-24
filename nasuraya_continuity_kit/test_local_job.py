@@ -48,6 +48,29 @@ class LocalJobTests(unittest.TestCase):
             self.assertEqual(LocalJobs(self.store).run('req', 'run', DUE, RAW), first)
         self.assertEqual(self.store.status(DUE)['run_count'], 1)
 
+    def test_structurally_invalid_completed_result_fails_closed(self):
+        self.jobs.run('req', 'run', DUE, RAW)
+        before = self.store.status(DUE)
+        for corrupt in ('[]', '{}', 'not-json'):
+            with self.subTest(corrupt=corrupt):
+                self.store.db.execute('UPDATE local_jobs SET result=? WHERE run_id=?', (corrupt, 'run'))
+                with self.assertRaisesRegex(ValueError, 'invalid local job state; no reset'):
+                    self.jobs.inspect('run')
+                with patch('nasuraya_continuity_kit.local_job.integrity_report',
+                           side_effect=AssertionError('corrupt replay recomputed')):
+                    with self.assertRaisesRegex(ValueError, 'invalid local job state; no reset'):
+                        self.jobs.run('req', 'run', DUE, RAW)
+                self.assertEqual(self.store.status(DUE), before)
+
+    def test_structurally_invalid_abandonment_fails_closed(self):
+        self.jobs.start('req', 'run', DUE, RAW)
+        self.jobs.abandon('resolve', 'run', DUE, 'host', 'worker reaped', True)
+        before = self.store.status(DUE)
+        self.store.db.execute("UPDATE local_jobs SET resolution='[]' WHERE run_id='run'")
+        with self.assertRaisesRegex(ValueError, 'invalid local job state; no reset'):
+            self.jobs.inspect('run')
+        self.assertEqual(self.store.status(DUE), before)
+
     def test_mutated_input_time_run_or_kind_binding_is_rejected(self):
         self.jobs.run('req', 'run', DUE, RAW)
         for run, now, raw in [('run', DUE, b'[]'), ('other', DUE, RAW), ('run', LATER, RAW)]:
