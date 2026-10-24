@@ -190,3 +190,11 @@ A completely rewritten consistent chain or a valid shortened prefix requires
 an independently trusted head to detect. The in-memory head precondition is
 not a multiwriter filesystem lock. No owner genotype or live body is modified.
 See [the Persian report](../../docs/nasuraya-genome-history-v01-fa.md).
+
+External history text must enter through `history.verify_json(text)` or the
+`history --verify FILE` command. These reject duplicate JSON keys, non-finite
+constants and numeric overflow before replay. `verify(dict)` cannot detect keys
+discarded by a caller's earlier JSON decoder. Replayed result checkpoints are
+compared as canonical JSON, preserving the distinction between booleans,
+integers and floats. Existing valid histories and source-bound hashes retain
+their format. See [the input integrity report](../../docs/nasuraya-genome-strict-input-v01-fa.md).
