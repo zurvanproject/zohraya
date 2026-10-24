@@ -1,0 +1,67 @@
+test_admission_receipt_without_binding_cannot_be_used_to_execute (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_admission_receipt_without_binding_cannot_be_used_to_execute) ... ok
+test_claim_and_input_binding_rollback_together (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_claim_and_input_binding_rollback_together) ... ok
+test_claim_id_matching_internal_finish_id_completes_and_replays (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_claim_id_matching_internal_finish_id_completes_and_replays) ... ok
+test_completed_replay_after_restart_never_runs_computation (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_completed_replay_after_restart_never_runs_computation) ... ok
+test_concurrent_heartbeat_collision_preserved_without_refund (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_concurrent_heartbeat_collision_preserved_without_refund) ... ok
+test_concurrent_identical_requests_publish_one_report (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_concurrent_identical_requests_publish_one_report) ... ok
+test_concurrent_pause_collision_preserved_after_publication_and_reopen (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_concurrent_pause_collision_preserved_after_publication_and_reopen) ... ok
+test_finish_id_collision_created_during_computation_is_handled (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_finish_id_collision_created_during_computation_is_handled) ... ok
+test_finish_receipt_skips_occupied_ids_without_changing_old_receipts (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_finish_receipt_skips_occupied_ids_without_changing_old_receipts) ... ok
+test_historical_result_replay_does_not_restore_pre_pause_control (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_historical_result_replay_does_not_restore_pre_pause_control) ... ok
+test_host_abandon_is_explicit_durable_no_refund_and_never_reexecutes (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_host_abandon_is_explicit_durable_no_refund_and_never_reexecutes) ... ok
+test_invalid_input_does_not_consume_budget (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_invalid_input_does_not_consume_budget) ... ok
+test_late_worker_cannot_publish_after_host_abandon (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_late_worker_cannot_publish_after_host_abandon) ... ok
+test_maximum_run_id_can_complete (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_maximum_run_id_can_complete) ... ok
+test_mutated_input_time_run_or_kind_binding_is_rejected (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_mutated_input_time_run_or_kind_binding_is_rejected) ... ok
+test_newer_pause_rejects_stale_finish_and_retains_unresolved_claim (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_newer_pause_rejects_stale_finish_and_retains_unresolved_claim) ... ok
+test_original_time_pause_and_daily_budget_remain_enforced (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_original_time_pause_and_daily_budget_remain_enforced) ... ok
+test_report_matches_independent_known_hashes_and_utf8_counts (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_report_matches_independent_known_hashes_and_utf8_counts) ... ok
+test_result_and_finish_rollback_together (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_result_and_finish_rollback_together) ... ok
+test_unknown_blocks_exact_retry_new_work_and_legacy_finish (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_unknown_blocks_exact_retry_new_work_and_legacy_finish) ... ok
+test_completed_run_id_cannot_be_reused_after_another_run (nasuraya_continuity_kit.test_store.StoreTests.test_completed_run_id_cannot_be_reused_after_another_run) ... ok
+test_exact_request_replays_after_restart_without_new_transition (nasuraya_continuity_kit.test_store.StoreTests.test_exact_request_replays_after_restart_without_new_transition) ... ok
+test_exact_threshold_and_early_attempt_rolls_back (nasuraya_continuity_kit.test_store.StoreTests.test_exact_threshold_and_early_attempt_rolls_back) ... ok
+test_existing_and_foreign_database_are_not_overwritten (nasuraya_continuity_kit.test_store.StoreTests.test_existing_and_foreign_database_are_not_overwritten) ... ok
+test_invalid_clock_and_wrong_finish_preserve_state (nasuraya_continuity_kit.test_store.StoreTests.test_invalid_clock_and_wrong_finish_preserve_state) ... ok
+test_missing_control_row_is_rejected_without_reset (nasuraya_continuity_kit.test_store.StoreTests.test_missing_control_row_is_rejected_without_reset) ... ok
+test_pause_keeps_unresolved_run_and_heartbeat_does_not_resume (nasuraya_continuity_kit.test_store.StoreTests.test_pause_keeps_unresolved_run_and_heartbeat_does_not_resume) ... ok
+test_request_id_binding_is_immutable (nasuraya_continuity_kit.test_store.StoreTests.test_request_id_binding_is_immutable) ... ok
+test_status_does_not_commit_or_rollback_a_caller_transaction (nasuraya_continuity_kit.test_store.StoreTests.test_status_does_not_commit_or_rollback_a_caller_transaction) ... ok
+test_status_releases_its_snapshot_after_a_read_error (nasuraya_continuity_kit.test_store.StoreTests.test_status_releases_its_snapshot_after_a_read_error) ... ok
+test_status_uses_one_snapshot_when_another_connection_claims (nasuraya_continuity_kit.test_store.StoreTests.test_status_uses_one_snapshot_when_another_connection_claims) ... ok
+test_two_independent_connections_have_one_claim_winner (nasuraya_continuity_kit.test_store.StoreTests.test_two_independent_connections_have_one_claim_winner) ... ok
+test_unresolved_claim_survives_restart_and_never_expires_automatically (nasuraya_continuity_kit.test_store.StoreTests.test_unresolved_claim_survives_restart_and_never_expires_automatically) ... ok
+test_bad_timestamp_future_clock_or_flag_fails_closed (continuity.test_gate.AbsenceTests.test_bad_timestamp_future_clock_or_flag_fails_closed) ... ok
+test_claim_and_finish_do_not_mutate_caller (continuity.test_gate.AbsenceTests.test_claim_and_finish_do_not_mutate_caller) ... ok
+test_completed_claim_still_consumes_rolling_daily_budget (continuity.test_gate.AbsenceTests.test_completed_claim_still_consumes_rolling_daily_budget) ... ok
+test_contact_defers_next_run_without_refunding_claim (continuity.test_gate.AbsenceTests.test_contact_defers_next_run_without_refunding_claim) ... ok
+test_exact_24_hours_is_eligible_in_both_timezones (continuity.test_gate.AbsenceTests.test_exact_24_hours_is_eligible_in_both_timezones) ... ok
+test_missing_fields_bad_run_id_and_future_claim_are_rejected (continuity.test_gate.AbsenceTests.test_missing_fields_bad_run_id_and_future_claim_are_rejected) ... ok
+test_one_second_before_threshold_is_blocked (continuity.test_gate.AbsenceTests.test_one_second_before_threshold_is_blocked) ... ok
+test_pause_wins_even_long_after_threshold (continuity.test_gate.AbsenceTests.test_pause_wins_even_long_after_threshold) ... ok
+test_stop_command_state_pauses_without_clearing_inflight (continuity.test_gate.AbsenceTests.test_stop_command_state_pauses_without_clearing_inflight) ... ok
+test_unresolved_effect_never_gets_an_automatic_retry (continuity.test_gate.AbsenceTests.test_unresolved_effect_never_gets_an_automatic_retry) ... ok
+test_actual_income_payment_and_missing_sources_are_rejected (project_fund.test_planner.FundPlannerTests.test_actual_income_payment_and_missing_sources_are_rejected) ... ok
+test_currencies_are_separate_and_forecast_never_unlocks_payment (project_fund.test_planner.FundPlannerTests.test_currencies_are_separate_and_forecast_never_unlocks_payment) ... ok
+test_empty_summary_does_not_invent_a_bank_account_or_balance (project_fund.test_planner.FundPlannerTests.test_empty_summary_does_not_invent_a_bank_account_or_balance) ... ok
+test_float_bool_negative_zero_and_overflow_are_rejected (project_fund.test_planner.FundPlannerTests.test_float_bool_negative_zero_and_overflow_are_rejected) ... ok
+test_repeated_identical_request_is_idempotent (project_fund.test_planner.FundPlannerTests.test_repeated_identical_request_is_idempotent) ... ok
+test_restart_preserves_exact_proposal (project_fund.test_planner.FundPlannerTests.test_restart_preserves_exact_proposal) ... ok
+test_same_id_cannot_change_amount_currency_or_direction (project_fund.test_planner.FundPlannerTests.test_same_id_cannot_change_amount_currency_or_direction) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 0.346s
+
+OK
+DENIED ['socket', 'socketpair', 'connect', 'bind', 'listen', 'accept', 'accept4', 'sendto', 'recvfrom', 'sendmsg', 'recvmsg', 'sendmmsg', 'recvmmsg']
+3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]
+setuptools 84.0.0
+Processing ./.
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: nasuraya-continuity-kit
+  Building wheel for nasuraya-continuity-kit (pyproject.toml): started
+  Building wheel for nasuraya-continuity-kit (pyproject.toml): finished with status 'done'
+  Created wheel for nasuraya-continuity-kit: filename=nasuraya_continuity_kit-0.2.0-py3-none-any.whl size=20316 sha256=b628cab80158216c5dfa444b2644d35389c2dda651f2ac005ea0ab3b2d5d95fa
+  Stored in directory: /tmp/pip-ephem-wheel-cache-wqaqn8wd/wheels/da/e1/00/6e27aca4e85be98eb7729de8b989a59b159f244ee0f07f05cd
+Successfully built nasuraya-continuity-kit

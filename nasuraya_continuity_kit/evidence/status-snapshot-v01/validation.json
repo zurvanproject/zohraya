@@ -1,0 +1,89 @@
+{
+  "run_id": "absence_20261020",
+  "goal": "Coherent status snapshots during concurrent claims",
+  "baseline_commit": "7c590b435375f05b5baf616cc736bc0a4130c021",
+  "baseline_passed": 47,
+  "acceptance": [
+    "control, decision and counts describe one snapshot",
+    "caller-owned transaction untouched",
+    "read errors release reader state"
+  ],
+  "counterfactual": {
+    "same_final_tests": true,
+    "tests_run": 3,
+    "passed": 2,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "observed_mismatch": "control has no inflight run and eligible=true, but request_count=run_count=1",
+    "expected_failure_confirmed": true
+  },
+  "final_tests": {
+    "distinct_passed": 50,
+    "new_tests": 3,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "also_passed_under_syscall_network_denial": true
+  },
+  "installed_store_tests": {
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0,
+    "subset_of_50": true,
+    "source_test_driver_with_installed_runtime": true,
+    "network_denied": true
+  },
+  "installed_cli": {
+    "admission_invocations": 11,
+    "local_job_invocations": 35,
+    "actual_sigkill_boundaries": 4
+  },
+  "changes": {
+    "source_files": 3,
+    "insertions": 62,
+    "deletions": 3,
+    "changed_lines": 65,
+    "scope": "one read-consistency fix, regressions and README; no gate/schema/budget change"
+  },
+  "source_sha256": {
+    "nasuraya_continuity_kit/store.py": "a526ec9d9106f385a142bc4941d9b254d06b2b283961fba477e5e8fc5b42211d",
+    "nasuraya_continuity_kit/test_store.py": "f4113dd46aded58f1ac476d00e4c2f416d5624d07e065763ac6aade8c60ca399",
+    "nasuraya_continuity_kit/README.md": "0d1fc6cb6badb32514cd7b75f8d8a36db57090feab1f6e79567bf926b8ada104",
+    "continuity/gate.py": "26a082342b44cca50623c8134ea7ce63981425b27e6d997ed81c9bc39721bcf4",
+    "continuity/policy.json": "37bbfc159e7da4d57656c7c527c94601b7ab2a9afd96bb5b696da405c1ead34e",
+    "project_fund/planner.py": "ddb6cb0f260155bcd84b7d19cea5a36c0447f5262c3d00997ce78e83bd440e2d",
+    "project_fund/mandate.json": "c8b5d14c607fc78624d717481bf64355f4fa41038db5bde918b66d2a156a3053",
+    "dist/nasuraya_continuity_kit-0.2.0-py3-none-any.whl": "b628cab80158216c5dfa444b2644d35389c2dda651f2ac005ea0ab3b2d5d95fa"
+  },
+  "python": "3.12.14",
+  "setuptools_local": "84.0.0",
+  "setuptools_configured_ci": "78.1.0",
+  "seed": null,
+  "build": {
+    "source_date_epoch": 1792159200,
+    "wheel_sha256": "b628cab80158216c5dfa444b2644d35389c2dda651f2ac005ea0ab3b2d5d95fa",
+    "two_build_reproducibility_claim": false,
+    "third_party_runtime_dependencies": []
+  },
+  "actual_result": "One SELECT with scalar count subqueries prevents mixed control/count snapshots; status does not start/commit/rollback caller transactions.",
+  "uncertainty": [
+    "Controlled local WAL race fixture, not power-loss or multi-host coverage",
+    "Status is historical observation, not a lease for future execution",
+    "Installed 13 tests are a subset of 50, not 63 distinct tests",
+    "Local build tool differs from pinned CI; exact new CI separate",
+    "No held-out decision or awareness/model-weight improvement claim"
+  ],
+  "scoped_lesson": "A control display must have an explicit consistency boundary, not just individually correct fields.",
+  "next_step": "Inspect CI for exact patch; retain private-pilot/no-merge status and evaluate host restart workflow.",
+  "claim_commit": "c8ebbffb0a783d55d565bc5fac3107773c6919c7",
+  "gate_source_commit": "5767787d3a1ba17f50b9aba5d6b01c830f38a377",
+  "fund": {
+    "branch": "nasuraya/project-fund-foundation-v01",
+    "source_commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+    "hashes_verified": true,
+    "payments_enabled": false,
+    "spending_cap": 0,
+    "host_application_sent": false
+  }
+}

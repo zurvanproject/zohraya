@@ -1,0 +1,178 @@
+{
+  "schema": "nasuraya-receipt-collision-validation/1",
+  "ci": {
+    "ci30": [
+      {
+        "name": "adapter-contract",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38886572591/job/116925649892"
+      },
+      {
+        "name": "adapter-contract",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38886568613/job/116925637134"
+      }
+    ],
+    "ci32": [
+      {
+        "name": "offline-pilot (3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38889681897/job/116935866371"
+      },
+      {
+        "name": "offline-pilot (3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38889681897/job/116935865748"
+      },
+      {
+        "name": "offline-pilot (3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38889676943/job/116935849898"
+      },
+      {
+        "name": "offline-pilot (3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38889676943/job/116935849578"
+      }
+    ],
+    "ci34": [
+      {
+        "name": "offline-pilot (3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38902936135/job/116979367171"
+      },
+      {
+        "name": "offline-pilot (3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38902936135/job/116979366671"
+      },
+      {
+        "name": "offline-pilot (3.11)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38902903940/job/116979257411"
+      },
+      {
+        "name": "offline-pilot (3.12)",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/zurvanproject/zohraya/actions/runs/38902903940/job/116979257166"
+      }
+    ]
+  },
+  "base_commit": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+  "fund_commit": "c8c1b156fe17573e471db6848ddc60e51cfd8f3b",
+  "control_claim": "8bd66cfa311ae801c53b35a2098cf3ad9cd5e172",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "setuptools": "84.0.0",
+  "baseline_tests_passed": 40,
+  "new_regressions_before_fix": {
+    "tests": 3,
+    "errors": 3
+  },
+  "distinct_tests_after_fix": {
+    "passed": 43,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "same_suite_with_network_syscalls_denied": {
+    "passed": 43,
+    "failed": 0,
+    "skipped": 0
+  },
+  "admission_gate_tests_passed": 10,
+  "installed_admission_cli_invocations": 11,
+  "installed_local_cli_invocations": 35,
+  "actual_sigkill_workers": 4,
+  "seed": null,
+  "fixture_clock": [
+    "2026-10-16T10:22:23Z",
+    "2026-10-17T10:22:23Z",
+    "2026-10-18T10:22:23Z"
+  ],
+  "wheel_sha256": "b37474944928e1655a9ab0739653890b771335740762249af2aafedaf9bacb53",
+  "source_sha256": {
+    "nasuraya_continuity_kit/local_job.py": "6e29f1461cf79451ad82c16e19a20f222147d37ec4a78d29325fc8e69e50406e",
+    "nasuraya_continuity_kit/test_local_job.py": "46af46bc7fbaa02b6539b5f6a9061edebb3efc7329313b3db0280e181c4cb472",
+    "nasuraya_continuity_kit/verify_local_job.py": "f64a6ee1511c4b18c1dc21277387ec0a9eda46f2c2844301d86d5267b8a6d18a",
+    "nasuraya_continuity_kit/README.md": "9bd1fbada3b60cacbb97fd472b1f21c791fb8a22d0c3e526325591d7e437ed6e"
+  },
+  "canonical_gate_sha256": "26a082342b44cca50623c8134ea7ce63981425b27e6d997ed81c9bc39721bcf4",
+  "policy_sha256": "37bbfc159e7da4d57656c7c527c94601b7ab2a9afd96bb5b696da405c1ead34e",
+  "changed_source_files": 4,
+  "source_diff": {
+    "added": 68,
+    "deleted": 1
+  },
+  "third_party_runtime_dependencies": [],
+  "payments_enabled": false,
+  "revenue_observed": false,
+  "limitations": [
+    "Targeted sparse source recovery, not full repository regression",
+    "Initial missing fixture corrected before baseline tests",
+    "Fund README provenance comparison corrected to immutable fund commit",
+    "Local setuptools 84.0.0 differs from configured CI pin 78.1.0",
+    "Injected clock; no real 24-hour wait or physical outage",
+    "Trusted local SQLite host, no distributed effects",
+    "No statistical generalization, model-weight learning or consciousness claim"
+  ],
+  "commands": [
+    {
+      "command": "python -m unittest nasuraya_continuity_kit.test_local_job nasuraya_continuity_kit.test_store continuity.test_gate project_fund.test_planner -v",
+      "baseline": 40,
+      "after_fix": 43,
+      "exit_code": 0
+    },
+    {
+      "command": "python -m unittest nasuraya_continuity_kit.test_local_job.LocalJobTests.test_claim_id_matching_internal_finish_id_completes_and_replays nasuraya_continuity_kit.test_local_job.LocalJobTests.test_finish_receipt_skips_occupied_ids_without_changing_old_receipts nasuraya_continuity_kit.test_local_job.LocalJobTests.test_finish_id_collision_created_during_computation_is_handled -v",
+      "expected_exit_code": 1,
+      "result": "FAILED (errors=3); see tests-red.txt"
+    },
+    {
+      "command": "python - <<'PY'\nimport unittest\nfrom nasuraya_continuity_kit.verify_local_job import deny_network\ndeny_network()\nsuite=unittest.defaultTestLoader.loadTestsFromNames(['nasuraya_continuity_kit.test_local_job','nasuraya_continuity_kit.test_store','continuity.test_gate','project_fund.test_planner'])\nresult=unittest.TextTestRunner(verbosity=2).run(suite)\nraise SystemExit(not result.wasSuccessful())\nPY",
+      "exit_code": 0,
+      "passed": 43,
+      "log": "tests-offline.txt"
+    },
+    {
+      "command": "SOURCE_DATE_EPOCH=1792159200 python -m pip wheel --no-index --no-deps --no-build-isolation . --wheel-dir ../dist",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m nasuraya_continuity_kit.verify_install --wheel ../dist/nasuraya_continuity_kit-0.2.0-py3-none-any.whl --output ../installed-admission",
+      "exit_code": 0
+    },
+    {
+      "command": "python -m nasuraya_continuity_kit.verify_local_job --wheel ../dist/nasuraya_continuity_kit-0.2.0-py3-none-any.whl --output ../installed-local",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "evidence_sha256": {
+    "after_claim.sql": "097d13c2917108331a13024824d6701724fe87151722552e4c607a7cf19cc3d7",
+    "after_commit.sql": "122fbc57e719e4ca43dc9701ec0806939892a1992333a397cdb976ccaad8a953",
+    "after_compute.sql": "097d13c2917108331a13024824d6701724fe87151722552e4c607a7cf19cc3d7",
+    "after_result_write.sql": "097d13c2917108331a13024824d6701724fe87151722552e4c607a7cf19cc3d7",
+    "build.txt": "9243a49cc83a5aa54d276f414ceb0f215cfbeac5318680595d736ab0bbb84027",
+    "colliding-request.sql": "8a2b697048e92dce4e6a45a36664cd0227440555bf8de91aadfd5c7a8b38b583",
+    "installed-admission-results.json": "f461ed479b6441b13e5ca132458d163abe6566594a0544c5f5875801a52a1b6f",
+    "installed-local-results.json": "04ed4c5adb6b827b3d3f0122e2ba87278516a24aecc0895216d49eb41295ea50",
+    "normal.sql": "122fbc57e719e4ca43dc9701ec0806939892a1992333a397cdb976ccaad8a953",
+    "source-recovery.json": "50db850475d98155ed6d239d2a4a077cadea2a63adc5baa1355f23541c14dbac",
+    "tests-offline.txt": "33f47dfd3a8e7472aa69ba1193589e6a782dea653e698577b9890c1870cdb27e",
+    "tests-red.txt": "d70af28bc7402dff8a7e6189854814ff09ab1b36a725eedc059405d117898be8",
+    "tests.txt": "2abbb5dbfb00ee608d55ff7caa38e9ed4299fdee975fe7d071f5298c4c9b098e"
+  }
+}

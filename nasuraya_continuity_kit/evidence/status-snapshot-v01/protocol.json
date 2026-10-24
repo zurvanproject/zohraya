@@ -1,0 +1,9 @@
+{
+  "goal": "Return control and receipt/run counts from one SQLite snapshot during concurrent writes.",
+  "baseline_commit": "7c590b435375f05b5baf616cc736bc0a4130c021",
+  "baseline_passed": 47,
+  "acceptance": ["concurrent claim during status produces a coherent old or new snapshot, never mixed counts/control", "status preserves any caller-owned transaction", "read transaction is released after errors"],
+  "fixture": "two SQLite connections in WAL mode; trace callback controls commit order without sleeps",
+  "seed": null,
+  "scope": "local read consistency only; no cross-host/external-effects or decision-improvement claim"
+}

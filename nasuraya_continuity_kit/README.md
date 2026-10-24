@@ -48,6 +48,12 @@ this kit never resumes itself or adds execution budget.
 
 ## Trust and persistence
 
+`status` reads control, request count and run count from one SQLite statement,
+so a concurrent commit cannot mix an old admission decision with newer counts.
+It observes a snapshot, not a lock or permission to execute a future job. Existing
+caller transactions remain owned by the caller; status neither commits nor rolls
+them back. Other commands still enforce admission independently.
+
 The caller supplies trusted time and authorization. The application ID helps
 reject accidental use of unrelated SQLite files; it is not authentication or
 protection against an operator directly editing the database. Keep the local
@@ -107,6 +113,13 @@ Report publication, `completed` and the existing `finish` receipt commit atomica
 in the same database. Input is retained so a separate reader can verify the result.
 The optional job table is additive; no canonical body/control state is imported.
 
+Internal finish receipts use an available ID selected inside that same write
+transaction. Caller IDs remain unrestricted by a reserved prefix. If an older
+receipt already uses the preferred ID, deterministic numbered alternatives are
+checked without altering that receipt or repeating computation. This also covers
+a competing heartbeat committed while the report was being computed. The public
+run/request binding, database schema and completed replay response stay unchanged.
+
 Repeat the **exact run-local command**, including timestamp and file bytes, to
 retrieve a completed or abandoned record without computing the report again.
 Changing any bound parameter fails. A legacy `claim` receipt cannot be upgraded
@@ -136,6 +149,21 @@ result**, never reruns the task and never refunds the rolling daily allowance.
 A late worker cannot publish after abandonment. A new job needs a new ID and a
 fresh gate admission. All writers must use this upgraded adapter; an old binary
 or direct SQL can bypass application-level guards under the trusted-host model.
+
+### Operator contact during computation
+
+Pause prevents new admissions; it is not process termination. An already claimed
+local report may commit while preserving the pause/contact recorded by another
+connection. A completed replay returns historical result data, never restores its
+old control state or grants new execution authority. If contact advances beyond
+the worker's supplied finish timestamp, the unchanged gate rejects that stale
+finish: result publication rolls back and the claim stays unresolved for explicit
+host review. Do not automatically clear it or replay computation.
+
+The operator-race regressions use event barriers and separate SQLite connections,
+not timing sleeps. They check colliding pause/heartbeat receipt IDs, preservation
+after reopen, stale-finish rollback and replay with computation forbidden. These
+are injected-clock local contracts, not proof of real-world exactly-once effects.
 
 ### Independent offline/crash verification
 
