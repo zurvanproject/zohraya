@@ -1,0 +1,19 @@
+test_all_24_committed_samples_match_new_source_pinned_body_execution (examples.nasuraya_body_mirror.test_mirror.MirrorTests.test_all_24_committed_samples_match_new_source_pinned_body_execution) ... FAIL
+test_html_build_embeds_exact_frames_in_one_non_executable_json_slot (examples.nasuraya_body_mirror.test_mirror.MirrorTests.test_html_build_embeds_exact_frames_in_one_non_executable_json_slot) ... ok
+test_tampered_checkpoint_and_receipt_are_rejected (examples.nasuraya_body_mirror.test_mirror.MirrorTests.test_tampered_checkpoint_and_receipt_are_rejected) ... ok
+
+======================================================================
+FAIL: test_all_24_committed_samples_match_new_source_pinned_body_execution (examples.nasuraya_body_mirror.test_mirror.MirrorTests.test_all_24_committed_samples_match_new_source_pinned_body_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REVIEW_ROOT>/repo/examples/nasuraya_body_mirror/test_mirror.py", line 32, in test_all_24_committed_samples_match_new_source_pinned_body_execution
+    self.assertEqual(self.stored['runtime_manifest_sha256'],
+AssertionError: 'b3b95a88885d903f638efbc26ed693bf7a211460a5adae6dd9abfa12ac7720ef' != '5120bb3635bfc6041720cfa2a7f810b2f453e088324c06770d5fdb387b3091ee'
+- b3b95a88885d903f638efbc26ed693bf7a211460a5adae6dd9abfa12ac7720ef
++ 5120bb3635bfc6041720cfa2a7f810b2f453e088324c06770d5fdb387b3091ee
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 31.082s
+
+FAILED (failures=1)
