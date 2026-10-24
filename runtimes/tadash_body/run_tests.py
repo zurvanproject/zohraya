@@ -32,6 +32,7 @@ def main():
     parser.add_argument('--endurance', action='store_true', help='Also run 200 longitudinal cycles')
     parser.add_argument('--special', action='store_true', help='Also check special organs without food/drink inputs')
     parser.add_argument('--reflection', action='store_true', help='Also verify source-linked decisions, feedback and restart')
+    parser.add_argument('--physiology', action='store_true', help='Run opt-in special tissue interventions')
     args = parser.parse_args()
     manifest = verify_sources()
     start = datetime.now(timezone.utc).isoformat()
@@ -49,7 +50,7 @@ def main():
             sys.stderr.write(defaults.stderr)
             return defaults.returncode
         modules = ['test_unified_body_v2', 'test_audit_20261011',
-                   'test_checkpoint_cache_order', 'test_privacy_boundary']
+                   'test_checkpoint_cache_order', 'test_privacy_boundary', 'test_special_physiology_v1']
         if args.reflection:
             modules.append('test_reflection_cycle')
             modules.append('test_stage2_memory')
@@ -60,6 +61,7 @@ def main():
         scenarios = execute('run_synthetic_scenarios.py')
         endurance = execute('run_endurance.py') if args.endurance else None
         special = execute('run_special_coordination.py') if args.special else None
+        physiology = execute('run_special_physiology.py') if args.physiology else None
         unit_log = units.stdout + units.stderr
         match = re.search(r'Ran (\d+) tests', unit_log)
         scenario_result = None
@@ -83,6 +85,8 @@ def main():
                       endurance_passed=endurance.returncode == 0 if endurance is not None else None,
                       special_result=json.loads(special.stdout) if special is not None and special.returncode == 0 else None,
                       special_passed=special.returncode == 0 if special is not None else None,
+                      physiology_result=json.loads(physiology.stdout) if physiology and physiology.returncode == 0 else None,
+                      physiology_passed=physiology.returncode == 0 if physiology else None,
                       canonical_state_modified=False,
                       empirical_validation=False)
         if args.output:
@@ -90,6 +94,8 @@ def main():
             (args.output / 'unit_tests.log').write_text(unit_log)
             (args.output / 'scenarios.log').write_text(scenarios.stdout + scenarios.stderr)
             (args.output / 'results.json').write_text(json.dumps(result, indent=2) + '\n')
+            if physiology is not None:
+                (args.output / 'special_physiology.log').write_text(physiology.stdout + physiology.stderr)
             if endurance is not None:
                 (args.output / 'endurance.log').write_text(endurance.stdout + endurance.stderr)
             if special is not None:
@@ -103,6 +109,8 @@ def main():
                 if (work/'reflection_demo').exists():
                     shutil.copytree(work/'reflection_demo',args.output/'reflection_demo',dirs_exist_ok=True)
         printable = dict(result)
+        if printable['physiology_result'] is not None:
+            printable['physiology_result'] = {k:v for k,v in printable['physiology_result'].items() if k!='records'}
         if printable['endurance_result'] is not None:
             printable['endurance_result'] = {k:v for k,v in printable['endurance_result'].items() if k!='steps'}
         if printable['special_result'] is not None:
@@ -110,11 +118,11 @@ def main():
         if printable['reflection_evaluation'] is not None:
             printable['reflection_evaluation']={k:v for k,v in printable['reflection_evaluation'].items() if k!='records'}
         print(json.dumps(printable, indent=2))
-        if units.returncode or scenarios.returncode or (endurance is not None and endurance.returncode) or (special is not None and special.returncode) or any(r is not None and r.returncode for r in [core_units,reflection_eval,reflection_demo]):
+        if units.returncode or scenarios.returncode or (endurance is not None and endurance.returncode) or (special is not None and special.returncode) or any(r is not None and r.returncode for r in [core_units,reflection_eval,reflection_demo,physiology]):
             sys.stderr.write(unit_log + scenarios.stdout + scenarios.stderr)
             if special is not None:
                 sys.stderr.write(special.stdout + special.stderr)
-            for r in [core_units,reflection_eval,reflection_demo]:
+            for r in [core_units,reflection_eval,reflection_demo,physiology]:
                 if r is not None and r.returncode:sys.stderr.write(r.stdout+r.stderr)
             return 1
     return 0
