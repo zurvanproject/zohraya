@@ -17,9 +17,9 @@ from .evaluate import load, controller_arrays
 
 
 class BalanceController:
-    def __init__(self, model):
+    def __init__(self, model, model_dir=SMALL):
         self.m = model
-        spec = yaml.safe_load((SMALL/'robot.yaml').read_text())
+        spec = yaml.safe_load((Path(model_dir)/'robot.yaml').read_text())
         self.qa, self.va, self.kp, self.kd, self.eff = controller_arrays(model, spec)
         d = mujoco.MjData(model)
         def residual(x):

@@ -1,0 +1,8 @@
+# Minimal CPU physics/render environment actually used for this experiment.
+# GPU, Torch, paid API, WBC training and hosted services are not required.
+mujoco==3.11.0
+numpy==2.3.5
+scipy==1.17.0
+osqp==1.0.5
+PyYAML==6.0.3
+Pillow==12.3.0

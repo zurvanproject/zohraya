@@ -1,0 +1,50 @@
+{
+  "targets": {
+    "mass_kg": 78.0,
+    "crown_height_m": 1.7,
+    "horn_upper_bound_m": 1.92,
+    "tail_centerline_length_m": 0.85,
+    "fingers_per_hand": 5,
+    "toes_per_foot": 3
+  },
+  "steps_per_case": 2,
+  "stride_m": 0.06,
+  "timing": 1.0,
+  "cases": [
+    {
+      "label": "v02_legacy",
+      "model": "assets/nasuraya_articulated_v02",
+      "geometry_support": false
+    },
+    {
+      "label": "v03_legacy",
+      "model": "assets/nasuraya_articulated_v03",
+      "geometry_support": false
+    },
+    {
+      "label": "v03_geometry",
+      "model": "assets/nasuraya_articulated_v03",
+      "geometry_support": true
+    },
+    {
+      "label": "v03_low_friction_holdout",
+      "model": "assets/nasuraya_articulated_v03",
+      "geometry_support": true,
+      "friction": 0.4
+    },
+    {
+      "label": "v03_lateral_push_holdout",
+      "model": "assets/nasuraya_articulated_v03",
+      "geometry_support": true,
+      "push": 8.0
+    },
+    {
+      "label": "v03_half_timestep_holdout",
+      "model": "assets/nasuraya_articulated_v03",
+      "geometry_support": true,
+      "dt": 0.0005
+    }
+  ],
+  "criteria": "Existing walk_trial contact/height/tilt/joint/landing guards unchanged; additionally final speed <0.05.",
+  "limits": "Flat-ground rigid-body tests only; full-state feedback; no biological or photoreal claim."
+}
