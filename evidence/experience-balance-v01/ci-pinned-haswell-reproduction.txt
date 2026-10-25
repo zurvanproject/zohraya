@@ -1,0 +1,6 @@
+Source: https://github.com/zurvanproject/zohraya/actions/runs/40198102700/job/121183235229
+Head: dcd20627aab81847c8eb460a7b748aadbf3aaea1
+OPENBLAS_CORETYPE=Haswell; OPENBLAS_NUM_THREADS=1; OMP_NUM_THREADS=1
+2026-10-25T13:33:03.5415218Z Successfully set up CPython (3.12.14)
+2026-10-25T13:33:26.4703784Z Ran 27 tests in 11.565s
+2026-10-25T13:34:01.8311885Z {'cross_environment_differences': [(0.0, 'tilt_rms_deg', 0.3974690412331008, 0.3974690412331008, 0.0), (0.0, 'max_tilt_deg', 0.7518932171065627, 0.7518932171065627, 0.0), (0.006, 'tilt_rms_deg', 0.24672714696080164, 0.24672714696080164, 0.0), (0.006, 'max_tilt_deg', 0.49344518373445395, 0.49344518373445395, 0.0)]}

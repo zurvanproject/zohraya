@@ -1,0 +1,48 @@
+{
+  "bias_m": -0.006,
+  "case": {
+    "friction": 0.45,
+    "id": "train_low_mu",
+    "push": 0.0,
+    "stride": 0.055
+  },
+  "completed_at_utc": "2026-10-25T13:09:44.360346+00:00",
+  "result": {
+    "accepted_steps": 0,
+    "com_bias_x_m": -0.006,
+    "failure": "balance/contact/joint-limit guard",
+    "final_max_generalized_speed": 2.4753208495382144,
+    "friction": 0.45,
+    "holdout_lateral_push_n": 0.0,
+    "label": "train-train_low_mu--0.006",
+    "max_joint_limit_excess_rad": 0.018833563003269826,
+    "max_motor_torque_fraction": 1.0,
+    "max_tilt_deg": 20.008768946457156,
+    "mean_foot_forward_displacement_m": 0.025296006663348622,
+    "measured_seconds": 4.224999999999746,
+    "min_pelvis_height_m": 0.8454906604277667,
+    "nonfoot_ground_contacts": [],
+    "pelvis_displacement_xyz_m": [
+      -0.43477425271110764,
+      -0.1500569125902048,
+      -0.11901506838007325
+    ],
+    "push_impulse_ns": 0.0,
+    "qp_inaccurate_status_count": 0,
+    "qp_max_constraint_violation": 4.692447616934381e-05,
+    "qp_solves": 845,
+    "requested_steps": 2,
+    "running_validated": false,
+    "simulated_seconds": 4.225000000000523,
+    "steps": [],
+    "stride_m": 0.055,
+    "tilt_integral_deg2_s": 43.39015370260044,
+    "tilt_rms_deg": 3.2046620515307747,
+    "timestep_s": 0.001,
+    "timing_multiplier": 1.0,
+    "walk_pass": false
+  },
+  "split": "train",
+  "trace_sha256": "f9433b8a4eeda495f86cddf00748619235879e5df04e3f9654f3d47ffe70a828",
+  "wall_seconds": 22.002917361998698
+}

@@ -1,0 +1,37 @@
+{
+  "model_weights_updated": false,
+  "native_apply_allowed": false,
+  "policy_scope": "offline COM reference calibration",
+  "protocol_sha256": "9a73ec6b8b785965e07f43219061f3e974e452fc9e43d9ba82137f9300fab6f6",
+  "schema": "nasuraya.balance-experience/1",
+  "selected_bias_m": 0.006,
+  "training_observations_sha256": "a3c2a52368d535a976c224c865bdc24911d797cd35ab59ac300b472c169a580a",
+  "training_reduction": 0.06162955044981133,
+  "training_rows": [
+    {
+      "bias_m": 0.0,
+      "eligible": true,
+      "mean_rms_tilt_deg": 0.38149587180075123
+    },
+    {
+      "bias_m": -0.006,
+      "eligible": false,
+      "mean_rms_tilt_deg": null
+    },
+    {
+      "bias_m": -0.003,
+      "eligible": true,
+      "mean_rms_tilt_deg": 0.42294099215145914
+    },
+    {
+      "bias_m": 0.003,
+      "eligible": true,
+      "mean_rms_tilt_deg": 0.38664554031767057
+    },
+    {
+      "bias_m": 0.006,
+      "eligible": true,
+      "mean_rms_tilt_deg": 0.35798445272321205
+    }
+  ]
+}

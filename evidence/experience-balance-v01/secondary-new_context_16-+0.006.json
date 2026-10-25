@@ -1,0 +1,73 @@
+{
+  "bias_m": 0.006,
+  "case": {
+    "friction": 0.4751,
+    "id": "new_context_16",
+    "push": -8.839,
+    "steps": 2,
+    "stride": 0.06162
+  },
+  "completed_at_utc": "2026-10-25T13:29:45.583964+00:00",
+  "result": {
+    "accepted_steps": 2,
+    "com_bias_x_m": 0.006,
+    "failure": null,
+    "final_max_generalized_speed": 0.004028459135471122,
+    "friction": 0.4751,
+    "holdout_lateral_push_n": -8.839,
+    "label": "secondary-new_context_16-+0.006",
+    "max_joint_limit_excess_rad": 0.0,
+    "max_motor_torque_fraction": 1.0,
+    "max_tilt_deg": 0.9029839998502841,
+    "mean_foot_forward_displacement_m": 0.08629606599570608,
+    "measured_seconds": 16.999999999997794,
+    "min_pelvis_height_m": 0.9584166024754657,
+    "nonfoot_ground_contacts": [],
+    "pelvis_displacement_xyz_m": [
+      0.05650393813754512,
+      -0.006459946215759093,
+      0.0033079123136631194
+    ],
+    "push_impulse_ns": -1.7678000000000056,
+    "qp_inaccurate_status_count": 0,
+    "qp_max_constraint_violation": 0.0001248792323159248,
+    "qp_solves": 3400,
+    "requested_steps": 2,
+    "running_validated": false,
+    "simulated_seconds": 17.000000000000348,
+    "steps": [
+      {
+        "accepted": true,
+        "air_time_s": 2.9939999999997813,
+        "landing_normal_force_n": 100.62013863700068,
+        "landing_xy_error_m": 0.013292342797054565,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 8.944019555100472e-05,
+        "min_load_on_stance_n": 763.9929847712569,
+        "peak_whole_sole_clearance_m": 0.028657984158446188,
+        "step": 0,
+        "swing_side": 0
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.997999999999781,
+        "landing_normal_force_n": 11.686693907875267,
+        "landing_xy_error_m": 0.0016753084799663474,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 0.00010478991223811719,
+        "min_load_on_stance_n": 763.9975879562764,
+        "peak_whole_sole_clearance_m": 0.028436688915845477,
+        "step": 1,
+        "swing_side": 1
+      }
+    ],
+    "stride_m": 0.06162,
+    "tilt_integral_deg2_s": 2.7427382269969156,
+    "tilt_rms_deg": 0.4016684488039176,
+    "timestep_s": 0.001,
+    "timing_multiplier": 1.0,
+    "walk_pass": true
+  },
+  "trace_sha256": "f5b8ccceaeaf0c9c08361a2b9adb762da3a35b7bc7bd8851e46f3173f77e0de3",
+  "wall_seconds": 35.37430602499808
+}

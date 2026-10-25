@@ -1,0 +1,88 @@
+{
+  "all_result_fields_and_trace_identical": true,
+  "final_max_generalized_speed": 0.06651695844761486,
+  "native_apply_allowed": false,
+  "observation_only": true,
+  "root_velocity": [
+    -0.0012791405259648038,
+    -0.0015079202863562493,
+    0.0008908870007780983,
+    -0.0037486855976087597,
+    -0.0006038346304707515,
+    0.014748471374072425
+  ],
+  "settle_limit": 0.05,
+  "source": "secondary-new_context_10-+0.000.json",
+  "top_joint_speeds": [
+    {
+      "axis": 0,
+      "dof": 53,
+      "joint": "tail_yaw_1",
+      "speed": -0.06651695844761486,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 49,
+      "joint": "mtp_R",
+      "speed": -0.046897872572111164,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 47,
+      "joint": "hock_pitch_R",
+      "speed": 0.04141875461686638,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 6,
+      "joint": "waist_yaw",
+      "speed": -0.04073862927979388,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 43,
+      "joint": "hip_yaw_R",
+      "speed": 0.030469850538126928,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 46,
+      "joint": "knee_R",
+      "speed": 0.028277184938007474,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 45,
+      "joint": "hip_pitch_R",
+      "speed": -0.023414196511684932,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 51,
+      "joint": "toe_flex_R_2",
+      "speed": -0.015563254961502494,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 5,
+      "dof": 5,
+      "joint": "root",
+      "speed": 0.014748471374072425,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 54,
+      "joint": "tail_pitch_1",
+      "speed": 0.00922758547643485,
+      "unit": "rad/s"
+    }
+  ]
+}

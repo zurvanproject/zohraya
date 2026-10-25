@@ -1,0 +1,121 @@
+{
+  "bias_m": 0.0,
+  "case": {
+    "friction": 0.6,
+    "id": "long_nominal",
+    "push": 0.0,
+    "steps": 6,
+    "stride": 0.06
+  },
+  "completed_at_utc": "2026-10-25T13:22:12.484196+00:00",
+  "result": {
+    "accepted_steps": 6,
+    "com_bias_x_m": 0.0,
+    "failure": null,
+    "final_max_generalized_speed": 0.004531727558503779,
+    "friction": 0.6,
+    "holdout_lateral_push_n": 0.0,
+    "label": "secondary-long_nominal-+0.000",
+    "max_joint_limit_excess_rad": 0.0,
+    "max_motor_torque_fraction": 1.0,
+    "max_tilt_deg": 0.8119129523194082,
+    "mean_foot_forward_displacement_m": 0.3231761448455781,
+    "measured_seconds": 40.99999999999515,
+    "min_pelvis_height_m": 0.9577355455886482,
+    "nonfoot_ground_contacts": [],
+    "pelvis_displacement_xyz_m": [
+      0.2872535794094948,
+      -0.006952773908162557,
+      0.0036279913856197554
+    ],
+    "push_impulse_ns": 0.0,
+    "qp_inaccurate_status_count": 0,
+    "qp_max_constraint_violation": 0.00039440834614568043,
+    "qp_solves": 8200,
+    "requested_steps": 6,
+    "running_validated": false,
+    "simulated_seconds": 40.99999999999059,
+    "steps": [
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 72.54662141519262,
+        "landing_xy_error_m": 0.009474339224950374,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 4.372561404409292e-05,
+        "min_load_on_stance_n": 764.0370390492465,
+        "peak_whole_sole_clearance_m": 0.02866007999603205,
+        "step": 0,
+        "swing_side": 0
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.997999999999781,
+        "landing_normal_force_n": 12.117042633658464,
+        "landing_xy_error_m": 0.001623547233523859,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 0.00010423873411609929,
+        "min_load_on_stance_n": 764.0021155498449,
+        "peak_whole_sole_clearance_m": 0.0284124659320139,
+        "step": 1,
+        "swing_side": 1
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.995999999999781,
+        "landing_normal_force_n": 94.62142972034803,
+        "landing_xy_error_m": 0.004852469064816371,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 6.405993097207927e-05,
+        "min_load_on_stance_n": 763.9816066833548,
+        "peak_whole_sole_clearance_m": 0.02867724897158355,
+        "step": 2,
+        "swing_side": 0
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 170.81025347624862,
+        "landing_xy_error_m": 0.00375065491997822,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 9.159068150938767e-05,
+        "min_load_on_stance_n": 763.9715979669193,
+        "peak_whole_sole_clearance_m": 0.02876955682454589,
+        "step": 3,
+        "swing_side": 1
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 75.0044603038744,
+        "landing_xy_error_m": 0.009774475837043932,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 8.243253797801449e-05,
+        "min_load_on_stance_n": 763.9765161161444,
+        "peak_whole_sole_clearance_m": 0.0287433270894951,
+        "step": 4,
+        "swing_side": 0
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 11.990790592823497,
+        "landing_xy_error_m": 0.0017000724510091323,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 9.930104033330143e-05,
+        "min_load_on_stance_n": 764.0023858958755,
+        "peak_whole_sole_clearance_m": 0.028396934758802516,
+        "step": 5,
+        "swing_side": 1
+      }
+    ],
+    "stride_m": 0.06,
+    "tilt_integral_deg2_s": 5.217556455120226,
+    "tilt_rms_deg": 0.3567316561718942,
+    "timestep_s": 0.001,
+    "timing_multiplier": 1.0,
+    "walk_pass": true
+  },
+  "trace_sha256": "509fe50d5fb10d1a87510e8fb64f72e83972327746244143bdf255ff58ce67d6",
+  "wall_seconds": 175.13128160500128
+}

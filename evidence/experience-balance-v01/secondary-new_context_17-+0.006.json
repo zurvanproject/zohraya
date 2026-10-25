@@ -1,0 +1,73 @@
+{
+  "bias_m": 0.006,
+  "case": {
+    "friction": 0.758,
+    "id": "new_context_17",
+    "push": -8.403,
+    "steps": 2,
+    "stride": 0.06595
+  },
+  "completed_at_utc": "2026-10-25T13:30:41.190907+00:00",
+  "result": {
+    "accepted_steps": 2,
+    "com_bias_x_m": 0.006,
+    "failure": null,
+    "final_max_generalized_speed": 0.004227398500443681,
+    "friction": 0.758,
+    "holdout_lateral_push_n": -8.403,
+    "label": "secondary-new_context_17-+0.006",
+    "max_joint_limit_excess_rad": 0.0,
+    "max_motor_torque_fraction": 1.0,
+    "max_tilt_deg": 0.4938592299171977,
+    "mean_foot_forward_displacement_m": 0.09405668638391168,
+    "measured_seconds": 16.999999999997794,
+    "min_pelvis_height_m": 0.9573974586116978,
+    "nonfoot_ground_contacts": [],
+    "pelvis_displacement_xyz_m": [
+      0.0632857729336393,
+      0.00314296628218164,
+      0.0021419732554227577
+    ],
+    "push_impulse_ns": -1.6805999999999977,
+    "qp_inaccurate_status_count": 0,
+    "qp_max_constraint_violation": 0.0003085753597247276,
+    "qp_solves": 3400,
+    "requested_steps": 2,
+    "running_validated": false,
+    "simulated_seconds": 17.000000000000348,
+    "steps": [
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 20.104825897181083,
+        "landing_xy_error_m": 0.0017677784409016145,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 8.625260464825692e-05,
+        "min_load_on_stance_n": 763.9918002728546,
+        "peak_whole_sole_clearance_m": 0.028658287546702507,
+        "step": 0,
+        "swing_side": 0
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 66.8675869090396,
+        "landing_xy_error_m": 0.0036830589103682703,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 8.51548091739492e-05,
+        "min_load_on_stance_n": 763.967343643166,
+        "peak_whole_sole_clearance_m": 0.02869858198656053,
+        "step": 1,
+        "swing_side": 1
+      }
+    ],
+    "stride_m": 0.06595,
+    "tilt_integral_deg2_s": 0.7885492955943145,
+    "tilt_rms_deg": 0.2153723582125258,
+    "timestep_s": 0.001,
+    "timing_multiplier": 1.0,
+    "walk_pass": true
+  },
+  "trace_sha256": "94da28b8b31529d4e217eb588e2addf46e5a6be43f712947367fb7afbaa3547d",
+  "wall_seconds": 55.605890365997766
+}

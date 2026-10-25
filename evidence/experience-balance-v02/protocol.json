@@ -1,0 +1,215 @@
+{
+  "excluded_input": "future push",
+  "frozen_at_utc": "2026-10-25T13:31:37.360595+00:00",
+  "grid": [
+    [
+      2,
+      0.2,
+      0.1
+    ],
+    [
+      2,
+      0.2,
+      0.2
+    ],
+    [
+      2,
+      0.35,
+      0.1
+    ],
+    [
+      2,
+      0.35,
+      0.2
+    ],
+    [
+      2,
+      0.5,
+      0.1
+    ],
+    [
+      2,
+      0.5,
+      0.2
+    ],
+    [
+      3,
+      0.2,
+      0.1
+    ],
+    [
+      3,
+      0.2,
+      0.2
+    ],
+    [
+      3,
+      0.35,
+      0.1
+    ],
+    [
+      3,
+      0.35,
+      0.2
+    ],
+    [
+      3,
+      0.5,
+      0.1
+    ],
+    [
+      3,
+      0.5,
+      0.2
+    ],
+    [
+      5,
+      0.2,
+      0.1
+    ],
+    [
+      5,
+      0.2,
+      0.2
+    ],
+    [
+      5,
+      0.35,
+      0.1
+    ],
+    [
+      5,
+      0.35,
+      0.2
+    ],
+    [
+      5,
+      0.5,
+      0.1
+    ],
+    [
+      5,
+      0.5,
+      0.2
+    ]
+  ],
+  "inputs": [
+    "known friction",
+    "planned stride"
+  ],
+  "known_prior_evidence": "V01 fixed and friction-only policies regress on unseen rightward push; V01 remains unsuccessful",
+  "maximum_cv_case_regression": 0.1,
+  "minimum_cv_reduction": 0.05,
+  "native_apply_allowed": false,
+  "pretraining_amendment": {
+    "at_utc": "2026-10-25T13:32:15.689808+00:00",
+    "previous_source_sha256": "575f3ffa3df7b478ea4c73566a1c718799efcedfcb74b29d1037e44fe3adcc12",
+    "reason": "Regression test: every leave-one-out selected candidate must pass physical eligibility; before training or v02 validation"
+  },
+  "primary_protocol_sha256": "9a73ec6b8b785965e07f43219061f3e974e452fc9e43d9ba82137f9300fab6f6",
+  "rule": "unanimous qualifying nearest neighbours, otherwise zero; select settings only by leave-one-context-out training scores",
+  "schema": "nasuraya.balance-neighbours/1",
+  "secondary_protocol_sha256": "657be31ddab9c2e33799e0e8f91a9c80a716a90b62c8c172a6d3fc042709ba2f",
+  "seed": 20261026,
+  "source_sha256": "5518f75b2faa6aa0650f15afa2ebffc01c14f45a1227518617ede70d1ec4bffa",
+  "training_cases": [
+    "train_nominal",
+    "train_low_mu",
+    "train_push",
+    "new_context_01",
+    "new_context_02",
+    "new_context_03",
+    "new_context_04",
+    "new_context_05",
+    "new_context_06",
+    "new_context_07",
+    "new_context_08",
+    "new_context_09",
+    "new_context_10",
+    "new_context_11",
+    "new_context_12",
+    "new_context_13",
+    "new_context_14",
+    "new_context_15",
+    "new_context_16",
+    "new_context_17",
+    "new_context_18",
+    "new_context_19",
+    "new_context_20"
+  ],
+  "validation_cases": [
+    {
+      "friction": 0.4011,
+      "id": "v02_unseen_01",
+      "push": -7.34,
+      "stride": 0.05183
+    },
+    {
+      "friction": 0.5687,
+      "id": "v02_unseen_02",
+      "push": -9.826,
+      "stride": 0.06126
+    },
+    {
+      "friction": 0.5302,
+      "id": "v02_unseen_03",
+      "push": -3.169,
+      "stride": 0.05564
+    },
+    {
+      "friction": 0.6411,
+      "id": "v02_unseen_04",
+      "push": -0.038,
+      "stride": 0.05313
+    },
+    {
+      "friction": 0.5037,
+      "id": "v02_unseen_05",
+      "push": 9.014,
+      "stride": 0.07156
+    },
+    {
+      "friction": 0.3738,
+      "id": "v02_unseen_06",
+      "push": -0.073,
+      "stride": 0.05156
+    },
+    {
+      "friction": 0.6287,
+      "id": "v02_unseen_07",
+      "push": -7.418,
+      "stride": 0.07363
+    },
+    {
+      "friction": 0.5244,
+      "id": "v02_unseen_08",
+      "push": -3.842,
+      "stride": 0.07208
+    },
+    {
+      "friction": 0.6896,
+      "id": "v02_unseen_09",
+      "push": -3.548,
+      "stride": 0.05676
+    },
+    {
+      "friction": 0.3815,
+      "id": "v02_unseen_10",
+      "push": 5.039,
+      "stride": 0.0689
+    },
+    {
+      "friction": 0.4167,
+      "id": "v02_unseen_11",
+      "push": 1.687,
+      "stride": 0.05464
+    },
+    {
+      "friction": 0.6723,
+      "id": "v02_unseen_12",
+      "push": -0.443,
+      "stride": 0.07255
+    }
+  ],
+  "validation_criterion": "all pass, geometric mean reduction >=5%, no case regression >10%"
+}

@@ -1,0 +1,73 @@
+{
+  "bias_m": 0.006,
+  "case": {
+    "friction": 0.6,
+    "id": "train_nominal",
+    "push": 0.0,
+    "stride": 0.06
+  },
+  "completed_at_utc": "2026-10-25T13:16:08.969143+00:00",
+  "result": {
+    "accepted_steps": 2,
+    "com_bias_x_m": 0.006,
+    "failure": null,
+    "final_max_generalized_speed": 0.00478849109129661,
+    "friction": 0.6,
+    "holdout_lateral_push_n": 0.0,
+    "label": "train-train_nominal-+0.006",
+    "max_joint_limit_excess_rad": 0.0,
+    "max_motor_torque_fraction": 1.0,
+    "max_tilt_deg": 0.5890025962140208,
+    "mean_foot_forward_displacement_m": 0.08445212029408973,
+    "measured_seconds": 16.999999999997794,
+    "min_pelvis_height_m": 0.9573720301913714,
+    "nonfoot_ground_contacts": [],
+    "pelvis_displacement_xyz_m": [
+      0.054090069217542565,
+      0.004174421098706201,
+      0.0024638771160178097
+    ],
+    "push_impulse_ns": 0.0,
+    "qp_inaccurate_status_count": 0,
+    "qp_max_constraint_violation": 0.0003137500393819437,
+    "qp_solves": 3400,
+    "requested_steps": 2,
+    "running_validated": false,
+    "simulated_seconds": 17.000000000000348,
+    "steps": [
+      {
+        "accepted": true,
+        "air_time_s": 2.9989999999997807,
+        "landing_normal_force_n": 20.898174019803093,
+        "landing_xy_error_m": 0.0018501487623763257,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 4.421287064115436e-05,
+        "min_load_on_stance_n": 764.0395096238703,
+        "peak_whole_sole_clearance_m": 0.028658192667982002,
+        "step": 0,
+        "swing_side": 0
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 70.71188295074676,
+        "landing_xy_error_m": 0.009461054972815729,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 8.737427331520439e-05,
+        "min_load_on_stance_n": 763.9850280336492,
+        "peak_whole_sole_clearance_m": 0.028699904906209033,
+        "step": 1,
+        "swing_side": 1
+      }
+    ],
+    "stride_m": 0.06,
+    "tilt_integral_deg2_s": 1.18405547159895,
+    "tilt_rms_deg": 0.26391347418949795,
+    "timestep_s": 0.001,
+    "timing_multiplier": 1.0,
+    "walk_pass": true
+  },
+  "split": "train",
+  "trace_sha256": "7c8a0e3f819b18e4bc835640bd6fb338181cdc11e8bdfd61bcd24303ed1b7f96",
+  "wall_seconds": 64.64407593700162
+}

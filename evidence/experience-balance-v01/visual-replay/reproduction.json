@@ -1,0 +1,30 @@
+{
+  "case": {
+    "friction": 0.6,
+    "id": "holdout_push_right",
+    "push": 10.0,
+    "stride": 0.06
+  },
+  "checks": [
+    {
+      "all_result_fields_identical": true,
+      "bias_m": 0.0,
+      "frames": 340,
+      "full_trace_identical": true,
+      "measured_seconds": 16.999999999997794,
+      "poses_sha256": "666002b3812987818e70f4f37ffb39e7e6e720cb0d9f8ad5569469bc54121ec6",
+      "result_sha256": "2de8d9659ef8201552c737c5e0c6b5fac29ad4070a222763f307c021fc38e403"
+    },
+    {
+      "all_result_fields_identical": true,
+      "bias_m": 0.006,
+      "frames": 340,
+      "full_trace_identical": true,
+      "measured_seconds": 16.999999999997794,
+      "poses_sha256": "e5b9a8081e1774a46109e8ecc3db07a3b6efe5814e7ce101a98f8dc8d3512bdb",
+      "result_sha256": "e9e8ccd50b9dcfde37f144dbcd660d158a6e9252aab6763276c8ca71e89396ef"
+    }
+  ],
+  "native_apply_allowed": false,
+  "purpose": "visual reproduction only; not new tuning evidence"
+}

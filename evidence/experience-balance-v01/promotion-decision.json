@@ -1,0 +1,24 @@
+{
+  "decision": "blocked",
+  "evaluation_sha256": "c24c215706e8bf842b25d1978632ec734f3fbb1ba485e5b9930d93166b50231c",
+  "geometric_mean_rms_reduction": 0.20456216587511655,
+  "main_merge_requested": false,
+  "native_apply_allowed": false,
+  "policy_sha256": "e4c6da131abfade75f023a20363def01ab204dbc3bbd2f4cce14fc3c3754d245",
+  "primary_success": false,
+  "required_next_evidence": [
+    "A revised controller must reduce late landing/recenter tilt without violating the fixed duration and torque limits.",
+    "Terminal settling must pass separately from the accepted-step flag.",
+    "Validate any revised selection on untouched cases with a recorded numerical kernel; retain this failed outcome."
+  ],
+  "schema": "nasuraya.balance-promotion-decision/1",
+  "scope": "experimental COM reference policy only",
+  "violations": [
+    {
+      "baseline_rms_deg": 0.12759637305505706,
+      "candidate_rms_deg": 0.25216598377005334,
+      "case": "holdout_push_right",
+      "reduction": -0.976278617741315
+    }
+  ]
+}

@@ -1,0 +1,278 @@
+[
+  {
+    "case": "train_low_mu",
+    "bias_m": 0.0,
+    "passed": true,
+    "rms_deg": 0.3289210114311297,
+    "peak_deg": 0.5889543165769842,
+    "phase_sampled_rms": {
+      "transfer": 0.3146869377967839,
+      "swing": 0.294469157802177,
+      "landing": 0.3057708331297547,
+      "recenter": 0.3556302050534096,
+      "settle": 0.41960470436814
+    },
+    "max_stance_slide_mm": 0.08758699913957706,
+    "max_landing_error_mm": 4.411949202658713,
+    "max_motor_fraction": 0.999887842746968,
+    "max_constraint_violation": 0.00011276980825085381,
+    "final_max_speed": 0.004470507136474959
+  },
+  {
+    "case": "train_low_mu",
+    "bias_m": 0.003,
+    "passed": true,
+    "rms_deg": 0.3544256334290069,
+    "peak_deg": 0.8012918994743772,
+    "phase_sampled_rms": {
+      "transfer": 0.42172826528568164,
+      "swing": 0.28024286092236145,
+      "landing": 0.3992773127942092,
+      "recenter": 0.3397035643580493,
+      "settle": 0.37703184426958136
+    },
+    "max_stance_slide_mm": 0.10213642360514108,
+    "max_landing_error_mm": 12.090485886527325,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 0.00012948658505987365,
+    "final_max_speed": 0.003697016195104029
+  },
+  {
+    "case": "train_low_mu",
+    "bias_m": 0.006,
+    "passed": true,
+    "rms_deg": 0.4707095890643421,
+    "peak_deg": 0.9188688515689849,
+    "phase_sampled_rms": {
+      "transfer": 0.31107398409061665,
+      "swing": 0.21567189232017722,
+      "landing": 0.5299410689010914,
+      "recenter": 0.7305114209034449,
+      "settle": 0.6807075795247111
+    },
+    "max_stance_slide_mm": 0.10052205289104567,
+    "max_landing_error_mm": 12.486291303265984,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 7.974849210209967e-05,
+    "final_max_speed": 0.0017132020860862749
+  },
+  {
+    "case": "train_low_mu",
+    "bias_m": -0.003,
+    "passed": true,
+    "rms_deg": 0.43356090034072514,
+    "peak_deg": 0.9147976469863508,
+    "phase_sampled_rms": {
+      "transfer": 0.5095002537814326,
+      "swing": 0.32954257578544105,
+      "landing": 0.4788045839826851,
+      "recenter": 0.4177486695116102,
+      "settle": 0.5086071903797066
+    },
+    "max_stance_slide_mm": 0.08827869555250695,
+    "max_landing_error_mm": 14.258424973846623,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 0.0001079721064639605,
+    "final_max_speed": 0.004684150937401427
+  },
+  {
+    "case": "train_low_mu",
+    "bias_m": -0.006,
+    "passed": false,
+    "rms_deg": 3.2046620515307747,
+    "peak_deg": 20.008768946457156,
+    "phase_sampled_rms": {
+      "transfer": 0.07534842603971934,
+      "swing": 4.385062627359042
+    },
+    "max_stance_slide_mm": null,
+    "max_landing_error_mm": null,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 4.692447616934381e-05,
+    "final_max_speed": 2.4753208495382144
+  },
+  {
+    "case": "train_nominal",
+    "bias_m": 0.0,
+    "passed": true,
+    "rms_deg": 0.3947812168218851,
+    "peak_deg": 0.7540808557679677,
+    "phase_sampled_rms": {
+      "transfer": 0.44581650534616085,
+      "swing": 0.31587972413953097,
+      "landing": 0.3808469820949216,
+      "recenter": 0.399008560186071,
+      "settle": 0.49114003011116286
+    },
+    "max_stance_slide_mm": 0.1042387341160993,
+    "max_landing_error_mm": 9.474339224950374,
+    "max_motor_fraction": 0.9998633172271377,
+    "max_constraint_violation": 0.00036580045743483947,
+    "final_max_speed": 0.004422108703318055
+  },
+  {
+    "case": "train_nominal",
+    "bias_m": 0.003,
+    "passed": true,
+    "rms_deg": 0.39466173532147497,
+    "peak_deg": 0.7850614432879359,
+    "phase_sampled_rms": {
+      "transfer": 0.44625714941060524,
+      "swing": 0.3234716908930688,
+      "landing": 0.3767987715925463,
+      "recenter": 0.40982398640246964,
+      "settle": 0.46386706864682536
+    },
+    "max_stance_slide_mm": 0.10071525947097203,
+    "max_landing_error_mm": 8.590528512187824,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 0.00012730825948295554,
+    "final_max_speed": 0.004527817986897233
+  },
+  {
+    "case": "train_nominal",
+    "bias_m": 0.006,
+    "passed": true,
+    "rms_deg": 0.26391347418949795,
+    "peak_deg": 0.5890025962140208,
+    "phase_sampled_rms": {
+      "transfer": 0.11199724018004761,
+      "swing": 0.13594772380387185,
+      "landing": 0.26709908034752977,
+      "recenter": 0.4694343608280132,
+      "settle": 0.32909289453062124
+    },
+    "max_stance_slide_mm": 0.08737427331520439,
+    "max_landing_error_mm": 9.46105497281573,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 0.0003137500393819437,
+    "final_max_speed": 0.00478849109129661
+  },
+  {
+    "case": "train_nominal",
+    "bias_m": -0.003,
+    "passed": true,
+    "rms_deg": 0.4097614534553966,
+    "peak_deg": 0.7804540657050633,
+    "phase_sampled_rms": {
+      "transfer": 0.46298309603452426,
+      "swing": 0.32675536910052455,
+      "landing": 0.3897900808251193,
+      "recenter": 0.41728029495358854,
+      "settle": 0.5118675085256305
+    },
+    "max_stance_slide_mm": 0.10562324760153152,
+    "max_landing_error_mm": 9.350998679185901,
+    "max_motor_fraction": 0.9924963734080341,
+    "max_constraint_violation": 0.00037708607102718283,
+    "final_max_speed": 0.0046204706796160915
+  },
+  {
+    "case": "train_nominal",
+    "bias_m": -0.006,
+    "passed": false,
+    "rms_deg": 3.190359063721386,
+    "peak_deg": 20.017075484147405,
+    "phase_sampled_rms": {
+      "transfer": 0.07770357617234339,
+      "swing": 4.441688126773761
+    },
+    "max_stance_slide_mm": null,
+    "max_landing_error_mm": null,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 0.00013848307001564086,
+    "final_max_speed": 2.472119609007599
+  },
+  {
+    "case": "train_push",
+    "bias_m": 0.0,
+    "passed": true,
+    "rms_deg": 0.4207853871492388,
+    "peak_deg": 0.8300061860368608,
+    "phase_sampled_rms": {
+      "transfer": 0.4807800123583037,
+      "swing": 0.3373702407890724,
+      "landing": 0.42704363587818767,
+      "recenter": 0.4286111020791411,
+      "settle": 0.49042433793884294
+    },
+    "max_stance_slide_mm": 0.1053335401855423,
+    "max_landing_error_mm": 11.375166944410088,
+    "max_motor_fraction": 0.9998621530701471,
+    "max_constraint_violation": 0.0002876944136898929,
+    "final_max_speed": 0.0046948398515325685
+  },
+  {
+    "case": "train_push",
+    "bias_m": 0.003,
+    "passed": true,
+    "rms_deg": 0.41084925220253,
+    "peak_deg": 0.8227406780975618,
+    "phase_sampled_rms": {
+      "transfer": 0.45867813216497744,
+      "swing": 0.3319045094987262,
+      "landing": 0.3955750208482709,
+      "recenter": 0.4314984127727321,
+      "settle": 0.4948487210507218
+    },
+    "max_stance_slide_mm": 0.10383849588960772,
+    "max_landing_error_mm": 9.482738913902399,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 0.0003659299789973147,
+    "final_max_speed": 0.0042803328894472055
+  },
+  {
+    "case": "train_push",
+    "bias_m": 0.006,
+    "passed": true,
+    "rms_deg": 0.33933029491579614,
+    "peak_deg": 0.5873010143637927,
+    "phase_sampled_rms": {
+      "transfer": 0.3253585193902101,
+      "swing": 0.29743764272397766,
+      "landing": 0.3018566394437714,
+      "recenter": 0.3833825342014475,
+      "settle": 0.4333430249653742
+    },
+    "max_stance_slide_mm": 0.10154118761823877,
+    "max_landing_error_mm": 3.4177418189175963,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 0.000270850073761153,
+    "final_max_speed": 0.003636934121876137
+  },
+  {
+    "case": "train_push",
+    "bias_m": -0.003,
+    "passed": true,
+    "rms_deg": 0.4255006226582556,
+    "peak_deg": 0.8177262356893167,
+    "phase_sampled_rms": {
+      "transfer": 0.47645416076194824,
+      "swing": 0.33726074266723344,
+      "landing": 0.42236892291875494,
+      "recenter": 0.4312495869067424,
+      "settle": 0.5319041026875007
+    },
+    "max_stance_slide_mm": 0.10422707679307597,
+    "max_landing_error_mm": 10.950706304760773,
+    "max_motor_fraction": 0.9925096151598038,
+    "max_constraint_violation": 9.774397766547371e-05,
+    "final_max_speed": 0.004780682323151853
+  },
+  {
+    "case": "train_push",
+    "bias_m": -0.006,
+    "passed": false,
+    "rms_deg": 3.201028125411287,
+    "peak_deg": 20.04054473046074,
+    "phase_sampled_rms": {
+      "transfer": 0.07685925955786403,
+      "swing": 4.80418094476378
+    },
+    "max_stance_slide_mm": null,
+    "max_landing_error_mm": null,
+    "max_motor_fraction": 1.0,
+    "max_constraint_violation": 0.00021207428025604713,
+    "final_max_speed": 2.4739066706522586
+  }
+]
