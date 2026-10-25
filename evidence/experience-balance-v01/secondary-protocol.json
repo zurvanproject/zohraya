@@ -1,0 +1,171 @@
+{
+  "cases": [
+    {
+      "friction": 0.6,
+      "id": "long_nominal",
+      "push": 0.0,
+      "steps": 6,
+      "stride": 0.06
+    },
+    {
+      "friction": 0.5,
+      "id": "long_push",
+      "push": -8.0,
+      "steps": 6,
+      "stride": 0.06
+    },
+    {
+      "friction": 0.5409,
+      "id": "new_context_01",
+      "push": -6.083,
+      "steps": 2,
+      "stride": 0.06841
+    },
+    {
+      "friction": 0.6737,
+      "id": "new_context_02",
+      "push": -8.559,
+      "steps": 2,
+      "stride": 0.07137
+    },
+    {
+      "friction": 0.7569,
+      "id": "new_context_03",
+      "push": -7.115,
+      "steps": 2,
+      "stride": 0.05591
+    },
+    {
+      "friction": 0.6603,
+      "id": "new_context_04",
+      "push": -3.22,
+      "steps": 2,
+      "stride": 0.04905
+    },
+    {
+      "friction": 0.5252,
+      "id": "new_context_05",
+      "push": 8.17,
+      "steps": 2,
+      "stride": 0.06773
+    },
+    {
+      "friction": 0.6122,
+      "id": "new_context_06",
+      "push": 9.093,
+      "steps": 2,
+      "stride": 0.04749
+    },
+    {
+      "friction": 0.7927,
+      "id": "new_context_07",
+      "push": -9.122,
+      "steps": 2,
+      "stride": 0.0729
+    },
+    {
+      "friction": 0.635,
+      "id": "new_context_08",
+      "push": -9.369,
+      "steps": 2,
+      "stride": 0.04684
+    },
+    {
+      "friction": 0.5382,
+      "id": "new_context_09",
+      "push": -0.143,
+      "steps": 2,
+      "stride": 0.07385
+    },
+    {
+      "friction": 0.3589,
+      "id": "new_context_10",
+      "push": -2.232,
+      "steps": 2,
+      "stride": 0.05475
+    },
+    {
+      "friction": 0.5584,
+      "id": "new_context_11",
+      "push": -5.493,
+      "steps": 2,
+      "stride": 0.06262
+    },
+    {
+      "friction": 0.5603,
+      "id": "new_context_12",
+      "push": -8.984,
+      "steps": 2,
+      "stride": 0.06464
+    },
+    {
+      "friction": 0.4809,
+      "id": "new_context_13",
+      "push": -7.61,
+      "steps": 2,
+      "stride": 0.06366
+    },
+    {
+      "friction": 0.4925,
+      "id": "new_context_14",
+      "push": -3.665,
+      "steps": 2,
+      "stride": 0.07385
+    },
+    {
+      "friction": 0.581,
+      "id": "new_context_15",
+      "push": 1.148,
+      "steps": 2,
+      "stride": 0.05699
+    },
+    {
+      "friction": 0.4751,
+      "id": "new_context_16",
+      "push": -8.839,
+      "steps": 2,
+      "stride": 0.06162
+    },
+    {
+      "friction": 0.758,
+      "id": "new_context_17",
+      "push": -8.403,
+      "steps": 2,
+      "stride": 0.06595
+    },
+    {
+      "friction": 0.5208,
+      "id": "new_context_18",
+      "push": 0.622,
+      "steps": 2,
+      "stride": 0.04684
+    },
+    {
+      "friction": 0.5815,
+      "id": "new_context_19",
+      "push": -5.53,
+      "steps": 2,
+      "stride": 0.05669
+    },
+    {
+      "friction": 0.6474,
+      "id": "new_context_20",
+      "push": 3.866,
+      "steps": 2,
+      "stride": 0.06569
+    }
+  ],
+  "frozen_at_utc": "2026-10-25T13:09:43.658697+00:00",
+  "limitations": "deterministic synthetic samples, not independent real-world validation",
+  "metrics": [
+    "completed steps",
+    "pass and settle",
+    "RMS and maximum tilt",
+    "stance slide"
+  ],
+  "primary_protocol_sha256": "9a73ec6b8b785965e07f43219061f3e974e452fc9e43d9ba82137f9300fab6f6",
+  "purpose": "secondary fixed-policy transfer, no retuning or replacement of primary criteria",
+  "runner_sha256": "2879212084bd354537074694ba665eca9fa98231745152ee0a9c13d184f715df",
+  "schema": "nasuraya.balance-transfer/1",
+  "seed": 20261025
+}

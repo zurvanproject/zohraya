@@ -21,7 +21,7 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -r examples/nasuraya_research/articulated/requirements-trial.txt
       - name: Morphology, control and checkpoint regressions
-        run: python -m unittest examples.nasuraya_research.articulated.test_canon_trial examples.nasuraya_research.articulated.test_balance examples.nasuraya_research.articulated.test_stepping examples.nasuraya_research.articulated.test_checkpoint -v
+        run: python -m unittest examples.nasuraya_research.articulated.test_canon_trial examples.nasuraya_research.articulated.test_balance examples.nasuraya_research.articulated.test_stepping examples.nasuraya_research.articulated.test_checkpoint examples.nasuraya_research.articulated.test_experience_balance -v
       - name: Actual two-step candidate rollout
         run: |
           python - <<'PY'
@@ -30,4 +30,6 @@ jobs:
           r=walk_trial(steps=2,model_dir=build_candidate(),geometry_support=True)
           print({k:v for k,v in r.items() if k!='trace'})
           assert r['walk_pass'] and r['final_max_generalized_speed']<.05
+          assert 0 <= r['tilt_rms_deg'] <= r['max_tilt_deg']
+          assert abs(r['measured_seconds']-r['simulated_seconds']) < 1e-8
           PY
