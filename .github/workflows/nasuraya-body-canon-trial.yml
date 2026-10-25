@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.12.14'
       - run: python -m pip install -r examples/nasuraya_research/articulated/requirements-trial.txt
       - name: Morphology, control and checkpoint regressions
         run: python -m unittest examples.nasuraya_research.articulated.test_canon_trial examples.nasuraya_research.articulated.test_balance examples.nasuraya_research.articulated.test_stepping examples.nasuraya_research.articulated.test_checkpoint examples.nasuraya_research.articulated.test_experience_balance -v
@@ -26,6 +26,9 @@ jobs:
         run: |
           python - <<'PY'
           import json
+          import platform
+          import numpy as np
+          import scipy
           from pathlib import Path
           from examples.nasuraya_research.articulated.canon_trial import build_candidate
           from examples.nasuraya_research.articulated.stepping import walk_trial
@@ -37,6 +40,10 @@ jobs:
                 for b in plan['candidates_m'] for c in plan['training']]
           policy=json.loads((folder/'policy.json').read_text())
           assert select_policy(plan,rows)==policy
+          print({'python':platform.python_version(),'machine':platform.machine(),'platform':platform.platform()})
+          np.show_runtime()
+          scipy.show_config()
+          differences=[]
           for bias in sorted({0.,policy['selected_bias_m']}):
               r=walk_trial(steps=2,model_dir=model,geometry_support=True,com_bias_x_m=bias)
               expected=json.loads((folder/f'train-train_nominal-{bias:+.3f}.json').read_text())['result']
@@ -45,6 +52,8 @@ jobs:
               assert 0 <= r['tilt_rms_deg'] <= r['max_tilt_deg']
               assert abs(r['measured_seconds']-r['simulated_seconds']) < 1e-8
               for field in ('tilt_rms_deg','max_tilt_deg'):
-                  assert abs(r[field]-expected[field]) < 5e-5, (bias,field,r[field],expected[field])
+                  differences.append((bias,field,r[field],expected[field],abs(r[field]-expected[field])))
               assert abs(r['simulated_seconds']-expected['simulated_seconds']) < 1e-7
+          print({'cross_environment_differences':differences})
+          assert all(d[-1]<5e-5 for d in differences), differences
           PY
