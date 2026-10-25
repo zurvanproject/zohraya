@@ -72,3 +72,31 @@ phases: 114 conditions, not 114 biological experiments. It checks declared
 contract behavior; it cannot establish phenotype improvement. Audits pin the
 design hash and are recomputed from their saved conditions during verification.
 No current body state, memories, native equations or API calls are changed.
+
+## Replayable proposal history
+
+`history.py` records exact edits, their declared reason, parent event/genotype
+hashes and a recomputable checkpoint for each proposal. Verification starts at
+the source-bound canonical baseline and replays every transition. Appending
+requires the exact history head, distinguishing divergent branches with equal
+revision numbers. Failed operations leave the input unchanged.
+
+```sh
+python3 -m examples.nasuraya_genome.history --demo-output /tmp/genome-history.json
+python3 -m examples.nasuraya_genome.history --verify /tmp/genome-history.json
+```
+
+The demonstration uses synthetic proposals and exclusively creates its output.
+History hashes provide trusted-host integrity, not authorship or approval.
+A completely rewritten consistent chain or a valid shortened prefix requires
+an independently trusted head to detect. The in-memory head precondition is
+not a multiwriter filesystem lock. No owner genotype or live body is modified.
+See [the Persian report](../../docs/nasuraya-genome-history-v01-fa.md).
+
+External history text must enter through `history.verify_json(text)` or the
+`history --verify FILE` command. These reject duplicate JSON keys, non-finite
+constants and numeric overflow before replay. `verify(dict)` cannot detect keys
+discarded by a caller's earlier JSON decoder. Replayed result checkpoints are
+compared as canonical JSON, preserving the distinction between booleans,
+integers and floats. Existing valid histories and source-bound hashes retain
+their format. See [the input integrity report](../../docs/nasuraya-genome-strict-input-v01-fa.md).
