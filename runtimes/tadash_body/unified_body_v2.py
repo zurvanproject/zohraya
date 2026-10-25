@@ -24,6 +24,7 @@ sys.path.insert(0, str(ROOT / "retained_extensions"))
 from neural_circuit import Circuit
 import nasuraya_affective_layer_v01 as affect
 import nasuraya_emotion_spectrum_v01 as spectrum
+import special_physiology_v1 as special_physiology
 from persistent_embodiment_v1 import (PersistentEmbodiment, AccessoryBody,
     ACTIONS, atomic_json, digest, finite, instant, clamp)
 from actuated_breath_v1 import ActuatedBreath
@@ -44,7 +45,7 @@ CAPACITY_KEYS = {"heart", "lung", "kidney", "gut", "liver", "immune", "ovary"}
 
 
 def source_hashes():
-    names = ["unified_body_v2.py", "anatomy_systems_v01.json"]
+    names = ["unified_body_v2.py", "anatomy_systems_v01.json", "special_physiology_v1.py"]
     names += ["retained_extensions/" + n for n in (
         "neural_circuit.py", "nasuraya_affective_layer_v01.py",
         "nasuraya_emotion_spectrum_v01.py", "nasuraya_decision_core_v1.py")]
@@ -125,6 +126,18 @@ def rates(context, body, i, dt):
     photo_W=incident_W*.12*shutter
     thermal_W=incident_W*.58*shutter
     rejected_W=incident_W-photo_W-thermal_W
+    tissue_plan = None
+    if "tissue" in m["special"]:
+        tissue_plan = special_physiology.plan(m["special"]["tissue"],
+            env.get("special_physiology", {}), irradiance, temperature,
+            disabled, s.reserve_J, dt)
+        lobes = tissue_plan["lobes"].values()
+        incident_W = sum(x["incident_W"] for x in lobes)
+        photo_W = sum(x["photo_W"] for x in lobes)
+        thermal_W = sum(x["thermal_W"] for x in lobes)
+        rejected_W = incident_W - photo_W - thermal_W
+        shutter = sum(x["shutter"] for x in lobes) / 2
+        demand["special"] += tissue_plan["azarine_load_W"]
     requests=sum(demand.values())
     hydration=max(.5,min(1.0,s.free_water_L/110.0))
     table=body.table[str(round(math.floor((hydration+1e-9)*10)/10,1))]
@@ -140,7 +153,7 @@ def rates(context, body, i, dt):
     absorbed*=transport_fraction;water*=transport_fraction
     return dict(demand=demand,organ_W=organ_W,absorbed_J=absorbed,
         absorbed_water_L=water,swallowing=swallowing,incident_W=incident_W,
-        photo_W=photo_W,thermal_W=thermal_W,rejected_W=rejected_W,shutter=shutter)
+        photo_W=photo_W,thermal_W=thermal_W,rejected_W=rejected_W,shutter=shutter,tissue_plan=tissue_plan)
 
 
 def settle(context, body, f, plan):
@@ -213,6 +226,10 @@ def settle(context, body, f, plan):
     cue=m["senses"]["irradiance"]
     sp["resonan_attention"]=relax(sp["resonan_attention"],0.0 if cue is None else clamp(cue/1200.0),d,2.0)
     sp["azarine_budget_J"]=min(7200.0,s.reserve_J)
+    if "tissue" in sp:
+        special_physiology.settle(sp["tissue"], env.get("special_physiology", {}),
+            plan["tissue_plan"], dt=dt, time_s=s.time_s, funded=funded,
+            oxygen=oxygen, perfusion=perfusion, total_heat_J=s.heat_J)
     m["last_paid_W"]={k:v*funded for k,v in plan["demand"].items()}
     m["last_requests_W"]=plan["demand"]
     m["tick"]+=1
@@ -346,6 +363,15 @@ class UnifiedBody:
         obj._publish()
         return obj
 
+    def enable_special_physiology(self):
+        """Explicit initialization before the first cycle; existing journals stay immutable."""
+        if self.revision or "tissue" in self.modules["special"]:
+            raise ValueError("special physiology requires a fresh, unenabled migration")
+        self.modules["special"]["tissue"] = special_physiology.initial(self.owner.owner.body.state.heat_J)
+        self.migration["special_physiology"] = dict(schema=special_physiology.SCHEMA,
+            host_mass_kg=195.0, host_crown_height_cm=250.0, empirical_validation=False)
+        self._publish()
+
     def _publish(self):
         time_s=self.owner.owner.body.state.time_s
         outputs=self.modules["outputs"]
@@ -369,8 +395,12 @@ class UnifiedBody:
     def validate_input(self, external, now, duration):
         if not isinstance(external,dict):raise ValueError("input must be an object")
         allowed={"native","meal_J","drink_L","irradiance_w_m2","capacities",
-            "pathogen_index_input","sensors","voice_request","swallow_permitted","void_permitted","social"}
+            "pathogen_index_input","sensors","voice_request","swallow_permitted","void_permitted","social","special_physiology"}
         if set(external)-allowed:raise ValueError("unknown whole-body input")
+        if "special_physiology" in external:
+            if "tissue" not in self.modules["special"]:
+                raise ValueError("enable special physiology before supplying its inputs")
+            special_physiology.validate_input(external["special_physiology"])
         self.owner.validate_external(external.get("native",{}),now)
         finite(external.get("meal_J",0.0),"meal",0,500000.0)
         finite(external.get("drink_L",0.0),"drink",0,2.0)
@@ -456,7 +486,10 @@ class UnifiedBody:
             native.update(emotion=emotion,emotion_intensity=channels[emotion])
         chosen=requested
         if chosen is None and "spandar_to_decision" not in work.disabled:
-            if work.modules["special"]["spandar_last_error"]>.02:chosen="observe"
+            tissue=work.modules["special"].get("tissue")
+            if tissue is not None and not tissue["spandar"]["valid"]:
+                chosen="protect" if somatic["fatigue"]>.45 or somatic["pain"]>.35 else "observe"
+            elif work.modules["special"]["spandar_last_error"]>.02:chosen="observe"
             elif somatic["fatigue"]>.45 or somatic["pain"]>.35:chosen="protect"
             elif somatic["arousal"]>.45:chosen="slow_breath"
         context=dict(modules=work.modules,environment=external,disabled=work.disabled,
@@ -470,8 +503,18 @@ class UnifiedBody:
         if "body_to_affect" not in work.disabled:work.affect["somatic"].update(work._somatic())
         affect.validate(work.affect)
         error=result["prediction"]["mean_scaled_absolute_error"]
-        work.modules["special"]["spandar_last_error"]=error
-        work.modules["special"]["spandar_digest"]=digest(work.owner.aux["body_memory"])
+        sp = work.modules["special"]
+        memory_digest = digest(work.owner.aux["body_memory"])
+        if "tissue" in sp:
+            monitor = special_physiology.sample_memory(sp["tissue"],
+                time_s=work.owner.owner.body.state.time_s,
+                memory_digest=memory_digest, prediction_error=error)
+            if monitor["valid"]:
+                sp["spandar_last_error"] = monitor["sampled_error"]
+                sp["spandar_digest"] = monitor["sampled_digest"]
+        else:
+            sp["spandar_last_error"]=error
+            sp["spandar_digest"]=memory_digest
         work.modules["outputs"]["special"]=deepcopy(work.modules["special"])
         work.revision+=1;work.modules["published_packets"]+=len(work.anatomy["nodes"])*len(receipts)
         work._publish()

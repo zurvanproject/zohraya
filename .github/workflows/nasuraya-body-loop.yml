@@ -37,7 +37,7 @@ jobs:
           python-version: '3.12'
       - name: Reproduce source-pinned native body regressions
         working-directory: runtimes/tadash_body
-        run: python3 run_tests.py --reflection --output /tmp/nasuraya-native-check
+        run: python3 run_tests.py --reflection --special --physiology --output /tmp/nasuraya-native-check
       - name: Verify bounded bridge and cold recovery
         run: python3 -m examples.nasuraya_body_loop test
       - name: Verify integrated experience and restart recovery

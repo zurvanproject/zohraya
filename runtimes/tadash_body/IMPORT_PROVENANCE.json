@@ -1,14 +1,21 @@
 {
   "source_archive": "Tadash_Reflection_Cycle_v0_2_2026-10-12.zip",
   "source_archive_sha256": "0427613bb94681389b579ed5a57d3cff51afa0b069f19ff106f37d568630be07",
-  "source_manifest_sha256": "b3b95a88885d903f638efbc26ed693bf7a211460a5adae6dd9abfa12ac7720ef",
-  "source_file_count": 70,
+  "source_manifest_sha256": "5120bb3635bfc6041720cfa2a7f810b2f453e088324c06770d5fdb387b3091ee",
+  "source_file_count": 73,
   "reflection_runtime_version": "0.2",
   "decision_core_version": "0.1",
-  "native_source_files_modified": false,
+  "native_source_files_modified": true,
   "source_saved_body_loaded": false,
   "fixture_source": "synthetic_fixture.py and run_reflection_demo.sleep_fixture",
   "private_continuation_checkpoint_sha256": "6c415b268ad7fef15f250b46004cb1a24a4dd72906a07e66e2046186696648b9",
   "private_continuation_checkpoint_modified": false,
-  "private_continuation_checkpoint_published": false
+  "private_continuation_checkpoint_published": false,
+  "special_physiology_revision": {
+    "date": "2026-10-24",
+    "base_commit": "4eaf6c86e11217462fb83efeb46ca299557cb8f3",
+    "original_import_manifest_sha256": "b3b95a88885d903f638efbc26ed693bf7a211460a5adae6dd9abfa12ac7720ef",
+    "scope": "Explicit opt-in tissue dynamics; no historical checkpoint migrated",
+    "prior_import_archive_unchanged": true
+  }
 }
