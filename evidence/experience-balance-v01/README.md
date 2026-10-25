@@ -2,7 +2,7 @@
 
 This folder contains the complete frozen experiment, including unsuccessful trials.
 The fixed +6 mm reference reduced geometric-mean RMS tilt by 20.46% across six
-held-out scenarios but increased it by 97.63% in the unseen rightward push case.
+held-out scenarios but increased it by 97.63% in the unseen +10 N lateral push case.
 The predeclared criterion was **not met**. No policy was applied to the native body.
 
 - [Persian report and reproduction commands](../../docs/nasuraya-experience-balance-v01-fa.md)
@@ -24,3 +24,7 @@ Primary measurements used the recorded SkylakeX numerical runtime. Separate
 Haswell controls diagnose numerical portability and make CI repeatable; they are
 excluded from training and held-out scores. Lower RMS, completed steps and an
 accepted terminal state are distinct outcomes.
+
+The frozen identifier `holdout_push_right` is a naming error retained for record
+identity. The actual disturbance is +10 N along world +Y (the model's left side),
+opposite the training push. Numeric force values and physical outcomes are unchanged.

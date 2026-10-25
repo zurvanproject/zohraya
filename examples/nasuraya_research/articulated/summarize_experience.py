@@ -37,7 +37,7 @@ def summarize(folder):
     ax.set_title('A  Training: measured RMS pelvis tilt (degrees)',loc='left',fontweight='bold')
     fig.colorbar(image,ax=ax,shrink=.75,label='RMS degrees',extend='max')
     ax=fig.add_subplot(grid[0,1]);pairs=evaluation['pairs'];y=np.arange(len(pairs));w=.23
-    names=['Friction 0.35','Friction 0.80','Longer stride','Rightward push','Combined challenge','Half timestep']
+    names=['Friction 0.35','Friction 0.80','Longer stride','Lateral push +10 N','Combined challenge','Half timestep']
     ax.barh(y-w,[p['baseline_rms'] for p in pairs],w,label='No calibration',color='#506680')
     ax.barh(y,[p['candidate_rms'] for p in pairs],w,label='Fixed training selection',color='#d7853b')
     if context:
