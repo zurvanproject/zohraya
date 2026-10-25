@@ -23,5 +23,9 @@ jobs:
       - run: python3 -m examples.nasuraya_genome.history --verify /tmp/genome-history.json
       - name: Match the frozen demonstration history head
         run: python3 -m examples.nasuraya_genome.history --verify /tmp/genome-history.json --expected-head-sha256 02d534bbbd1ec3204eb848b0ccaa4f16bb4edbfb6cc889d717cc9091680eb455
+      - name: Pin the independent frozen demo reference
+        run: python3 -m examples.nasuraya_genome.pinned_head pin --anchor /tmp/genome-trusted-head.json --head 02d534bbbd1ec3204eb848b0ccaa4f16bb4edbfb6cc889d717cc9091680eb455
+      - name: Recover the pinned reference in a new process
+        run: python3 -m examples.nasuraya_genome.pinned_head verify --anchor /tmp/genome-trusted-head.json --history /tmp/genome-history.json
       - name: Keep native body files unchanged
         run: test -z "$(git status --porcelain --untracked-files=all -- runtimes/tadash_body)"

@@ -127,3 +127,36 @@ expected head the latter is `false`, and the result means internal integrity
 only. Existing callers, saved schemas and history/genotype hashes are unchanged.
 The head must be exactly 64 lowercase hexadecimal characters. No native-body
 permission is added. See [the evaluation](../../docs/nasuraya-genome-trusted-head-v01-fa.md).
+
+### Persist a separate reference across restarts
+
+For a trusted local POSIX host, `pinned_head` can explicitly save an independently
+accepted head in a private, host-controlled directory. The directory must already
+exist and must not be writable by the source supplying candidate histories.
+
+```sh
+python3 -m examples.nasuraya_genome.pinned_head pin \
+  --anchor "$HOST_TRUST_DIR/genome-head.json" --head "$TRUSTED_HISTORY_HEAD"
+python3 -m examples.nasuraya_genome.pinned_head verify \
+  --anchor "$HOST_TRUST_DIR/genome-head.json" --history history.json
+```
+
+`pin` never reads a candidate history, replaces an existing path, or advances a
+reference. It writes an owner-only temporary file, flushes it, publishes a complete
+record using an atomic create-only hard link, then syncs the containing directory.
+Only one competing initializer can win. Destinations inside the native runtime,
+including resolved directory symlinks, are forbidden. Hard-link and directory-sync
+support are required; no overwrite fallback is used.
+
+Verification strictly reads the reference once and passes its head to the existing
+strict history verifier. Missing, truncated, ambiguous or unsupported references
+fail; they are never repaired from the candidate or downgraded to integrity-only
+verification. Success returns a receipt with `trusted_head_matched=true` and
+`native_apply_allowed=false` without modifying either input.
+
+A filesystem error after publication can leave a complete reference in place.
+Inspect it; retries still cannot overwrite it. This is not an immutable trust
+service: a host able to replace both files can still replace the reference.
+It provides no authorship authentication, concurrent history-writer lock or body
+approval. No owner reference is initialized by importing this module, CI or demos.
+See [the Persian report](../../docs/nasuraya-genome-pinned-reference-v01-fa.md).
