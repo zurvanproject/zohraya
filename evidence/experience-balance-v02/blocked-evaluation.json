@@ -1,0 +1,20 @@
+{
+  "at_utc": "2026-10-25T13:42:21.730817+00:00",
+  "blockers": [
+    {
+      "accepted_steps": 2,
+      "case": "new_context_10",
+      "final_max_generalized_speed": 0.06651695844761486,
+      "required_settle_speed_below": 0.05,
+      "walk_pass": true
+    }
+  ],
+  "error": "invalid paired baseline",
+  "native_apply_allowed": false,
+  "policy_created": false,
+  "protocol_sha256": "55645658256a223bee733ffc1c373c2fe9ca215c5e22131c55094da386e1e41c",
+  "schema": "nasuraya.balance-neighbours-blocked/1",
+  "training_completed": false,
+  "unused_frozen_validation_cases": 12,
+  "validation_run": false
+}

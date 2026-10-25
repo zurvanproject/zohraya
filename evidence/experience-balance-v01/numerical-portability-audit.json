@@ -1,0 +1,9 @@
+{
+  "same_local_source_different_blas_kernel_reproduces_initial_ci": true,
+  "compared_physical_fields": 29,
+  "different_fields": [],
+  "original_local_rms_deg": 0.3947812168218851,
+  "local_haswell_rms_deg": 0.3974690412331008,
+  "initial_ci_rms_deg": 0.3974690412331008,
+  "scope": "nominal zero-offset control, not every scenario"
+}
