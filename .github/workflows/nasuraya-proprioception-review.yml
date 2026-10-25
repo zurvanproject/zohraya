@@ -1,0 +1,34 @@
+name: Nasuraya bounded proprioception review
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_proprioception/**'
+      - '.github/workflows/nasuraya-proprioception-review.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-offline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Run synthetic geometry and guard regression tests
+        run: python3 -m unittest discover -s examples/nasuraya_proprioception/tests -v
+      - name: Generate independent synthetic holdout receipt
+        run: |
+          mkdir -p "$RUNNER_TEMP/nasuraya-proprioception"
+          python3 -m examples.nasuraya_proprioception.benchmark --output "$RUNNER_TEMP/nasuraya-proprioception/benchmark.json"
+      - name: Retain measured report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: nasuraya-proprioception-benchmark
+          path: ${{ runner.temp }}/nasuraya-proprioception/benchmark.json
+          if-no-files-found: warn
+          retention-days: 14
