@@ -1,0 +1,65 @@
+{
+  "blas_coretype": "Haswell",
+  "purpose": "diagnose numerical portability only; excluded from training and held-out scores",
+  "python": "3.12.14",
+  "result": {
+    "accepted_steps": 2,
+    "com_bias_x_m": 0.006,
+    "failure": null,
+    "final_max_generalized_speed": 0.004138298016995043,
+    "friction": 0.6,
+    "holdout_lateral_push_n": 0.0,
+    "label": "nominal",
+    "max_joint_limit_excess_rad": 0.0,
+    "max_motor_torque_fraction": 1.0,
+    "max_tilt_deg": 0.49344518373445395,
+    "mean_foot_forward_displacement_m": 0.08501665976901465,
+    "measured_seconds": 16.999999999997794,
+    "min_pelvis_height_m": 0.9574265390329038,
+    "nonfoot_ground_contacts": [],
+    "pelvis_displacement_xyz_m": [
+      0.05433954854441364,
+      0.0035837520504524946,
+      0.0022711559743460175
+    ],
+    "push_impulse_ns": 0.0,
+    "qp_inaccurate_status_count": 0,
+    "qp_max_constraint_violation": 0.00031375049329085414,
+    "qp_solves": 3400,
+    "requested_steps": 2,
+    "running_validated": false,
+    "simulated_seconds": 17.000000000000348,
+    "steps": [
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 20.677483674779182,
+        "landing_xy_error_m": 0.001809478633560429,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 4.417074600743926e-05,
+        "min_load_on_stance_n": 764.0395138229225,
+        "peak_whole_sole_clearance_m": 0.028658184777067854,
+        "step": 0,
+        "swing_side": 0
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.997999999999781,
+        "landing_normal_force_n": 71.62221544200534,
+        "landing_xy_error_m": 0.011462812307287865,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 8.774535891174903e-05,
+        "min_load_on_stance_n": 763.9851488769709,
+        "peak_whole_sole_clearance_m": 0.028700439289858624,
+        "step": 1,
+        "swing_side": 1
+      }
+    ],
+    "stride_m": 0.06,
+    "tilt_integral_deg2_s": 1.034862845805955,
+    "tilt_rms_deg": 0.24672714696080164,
+    "timestep_s": 0.001,
+    "timing_multiplier": 1.0,
+    "walk_pass": true
+  }
+}
