@@ -100,3 +100,30 @@ discarded by a caller's earlier JSON decoder. Replayed result checkpoints are
 compared as canonical JSON, preserving the distinction between booleans,
 integers and floats. Existing valid histories and source-bound hashes retain
 their format. See [the input integrity report](../../docs/nasuraya-genome-strict-input-v01-fa.md).
+
+### Require a previously trusted history head
+
+`verify(saved, expected_head_sha256=trusted_head)` and
+`verify_json(text, expected_head_sha256=trusted_head)` optionally require the
+exact accepted history head after full replay. The CLI exposes the same check:
+
+```sh
+python3 -m examples.nasuraya_genome.history --verify history.json \
+  --expected-head-sha256 "$TRUSTED_HISTORY_HEAD"
+```
+
+The host must retain `TRUSTED_HISTORY_HEAD` independently from the incoming
+history, after its own acceptance process. Never derive it from the candidate
+file in this command: that would merely compare the file with itself. This
+module does not select, persist or automatically advance the trusted head.
+
+A valid shortened prefix, a consistently rehashed reason change, another branch
+with the same revision, or an unaccepted extension all fail against the old
+trusted head. Matching the head never skips strict JSON parsing or full replay.
+It proves a match to the supplied reference, not author identity or approval.
+
+The CLI receipt includes `head_sha256` and `trusted_head_matched`. Without an
+expected head the latter is `false`, and the result means internal integrity
+only. Existing callers, saved schemas and history/genotype hashes are unchanged.
+The head must be exactly 64 lowercase hexadecimal characters. No native-body
+permission is added. See [the evaluation](../../docs/nasuraya-genome-trusted-head-v01-fa.md).
