@@ -199,7 +199,12 @@ def can_lift(data,controller,stance,forces):
 
 def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.001,
                push=0.,capture=False,checkpoint=None,retain_checkpoint=False,
-               model_dir=SMALL,geometry_support=False):
+               model_dir=SMALL,geometry_support=False,com_bias_x_m=0.):
+    if (type(com_bias_x_m) not in (int,float) or not math.isfinite(com_bias_x_m)
+            or abs(com_bias_x_m)>.01):
+        raise ValueError('COM bias must be a finite number within 10 mm')
+    if com_bias_x_m and not geometry_support:
+        raise ValueError('COM bias requires geometry-derived support')
     model_dir=Path(model_dir)
     if (model_dir.resolve()!=SMALL.resolve() or geometry_support) and (checkpoint is not None or retain_checkpoint):
         raise ValueError('Experimental morphology/support is not checkpoint-integrated')
@@ -217,6 +222,11 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
             mujoco.mj_step(model,data)
         mujoco.mj_forward(model,data)
         controller=ContactController(model,data,geometry_support=geometry_support)
+        if controller.support_bounds is not None:
+            for bounds in controller.support_bounds:
+                target=bounds[:2].mean()+com_bias_x_m
+                if not bounds[0]<target<bounds[1]:
+                    raise ValueError('COM bias leaves the conservative support pad')
         feet=controller.anchors.copy();previous_com=controller.com0.copy()
         step_offset=0;index=0;initialization_seconds=2.
     else:
@@ -230,11 +240,13 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
     initial_solves=controller.solves;initial_inaccurate=controller.inaccurate
     trace=[];poses=[];landings=[]
     max_tilt=0.;max_limit=0.;max_torque_fraction=0.;height_min=float(data.qpos[2])
+    tilt_squared_time=0.;measured_seconds=0.
     nonfeet=set();failure=None
     current_step=-1;phase='initial';step_stats=None
     impulse=0.
     def advance(duration,reference):
         nonlocal max_tilt,max_limit,max_torque_fraction,height_min,failure,index,impulse
+        nonlocal tilt_squared_time,measured_seconds
         for local in range(round(duration/dt)):
             com,targets,support=reference(local*dt)
             try:
@@ -250,6 +262,7 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
             mujoco.mj_step(model,data);mujoco.mj_forward(model,data)
             forces,other=contact_state(model,data);nonfeet.update(other)
             tilt=math.acos(float(np.clip(data.xmat[1].reshape(3,3)[2,2],-1,1)))
+            tilt_squared_time+=math.degrees(tilt)**2*dt;measured_seconds+=dt
             max_tilt=max(max_tilt,math.degrees(tilt));height_min=min(height_min,float(data.qpos[2]))
             joints=data.qpos[model.jnt_qposadr[1:]]
             excess=float(np.maximum(model.jnt_range[1:,0]-joints,joints-model.jnt_range[1:,1]).max())
@@ -265,6 +278,7 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
                 step_stats['max_stance_slide_m']=max(step_stats['max_stance_slide_m'],drift)
             if index%round(.05/dt)==0:
                 trace.append({'t':float(data.time-start_time),'step':current_step,'phase':phase,
+                              'tilt_deg':math.degrees(tilt),
                               'pelvis_xyz':data.qpos[:3].tolist(),'com_xyz':data.subtree_com[1].tolist(),
                               'foot_xyz':data.site_xpos[controller.sites].tolist(),'normal_force_n':forces.tolist()})
                 if capture:poses.append(data.qpos.copy())
@@ -278,6 +292,7 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
         goal=feet.copy();goal[swing,0]=feet[stance,0]+stride
         offset = (np.array([-.06882,0.]) if controller.support_bounds is None else
                   np.array([controller.support_bounds[stance,:2].mean(),controller.support_bounds[stance,2:].mean()]))
+        offset[0]+=com_bias_x_m
         support_com=np.r_[feet[stance,:2]+offset,controller.com0[2]]
         phase='transfer';step_stats=None
         loads=contact_state(model,data)[0];load_start=loads/max(loads.sum(),1);load_goal=np.zeros(2);load_goal[stance]=1
@@ -321,6 +336,7 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
         current_step=steps;step_stats=None;phase='recenter'
         offset = (np.array([-.06882,0.]) if controller.support_bounds is None else
                   np.array([controller.support_bounds[:,:2].mean(),controller.support_bounds[:,2:].mean()]))
+        offset[0]+=com_bias_x_m
         final_com=np.r_[feet[:,:2].mean(axis=0)+offset,controller.com0[2]]
         if advance(3*timing,lambda t:(previous_com*(1-smooth(t/(3*timing)))+final_com*smooth(t/(3*timing)),feet.copy(),[True,True])):
             phase='settle';advance(2.,lambda t:(final_com,feet.copy(),[True,True]))
@@ -332,6 +348,9 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
             'pelvis_displacement_xyz_m':(data.qpos[:3]-initial_root).tolist(),
             'mean_foot_forward_displacement_m':float((data.site_xpos[controller.sites,0]-initial_feet[:,0]).mean()),
             'max_tilt_deg':max_tilt,'min_pelvis_height_m':height_min,'max_joint_limit_excess_rad':max_limit,
+            'tilt_rms_deg':math.sqrt(tilt_squared_time/measured_seconds) if measured_seconds else None,
+            'tilt_integral_deg2_s':tilt_squared_time,'measured_seconds':measured_seconds,
+            'com_bias_x_m':com_bias_x_m,
             'max_motor_torque_fraction':max_torque_fraction,'nonfoot_ground_contacts':sorted(nonfeet),
             'qp_solves':controller.solves-initial_solves,'qp_inaccurate_status_count':controller.inaccurate-initial_inaccurate,
             'qp_max_constraint_violation':controller.max_residual,

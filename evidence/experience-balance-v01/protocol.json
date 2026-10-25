@@ -1,0 +1,111 @@
+{
+  "body": "isolated v03 78 kg / 1.70 m",
+  "candidates_m": [
+    0.0,
+    -0.006,
+    -0.003,
+    0.003,
+    0.006
+  ],
+  "controls": [
+    "zero offset: same controller without calibrated experience",
+    "same body, timing, force limits and safety gates in each pair"
+  ],
+  "evaluation": {
+    "all_cases_must_pass": true,
+    "maximum_case_regression": 0.1,
+    "minimum_geometric_mean_reduction": 0.05,
+    "rule": "paired fixed-scenario comparison, no holdout tuning"
+  },
+  "frozen_at_utc": "2026-10-25T13:06:50.981250+00:00",
+  "holdouts": [
+    {
+      "friction": 0.35,
+      "id": "holdout_mu35",
+      "push": 0.0,
+      "stride": 0.06
+    },
+    {
+      "friction": 0.8,
+      "id": "holdout_mu80",
+      "push": 0.0,
+      "stride": 0.06
+    },
+    {
+      "friction": 0.6,
+      "id": "holdout_long",
+      "push": 0.0,
+      "stride": 0.075
+    },
+    {
+      "friction": 0.6,
+      "id": "holdout_push_right",
+      "push": 10.0,
+      "stride": 0.06
+    },
+    {
+      "friction": 0.4,
+      "id": "holdout_combined",
+      "push": 8.0,
+      "stride": 0.07
+    },
+    {
+      "dt": 0.0005,
+      "friction": 0.6,
+      "id": "holdout_half_dt",
+      "push": 0.0,
+      "stride": 0.06
+    }
+  ],
+  "limitations": [
+    "hand-authored finite candidate set; offline empirical parameter selection",
+    "deterministic synthetic scenarios, not independent real-world subjects",
+    "full-state simulator feedback; no learned estimator or neural weights",
+    "no anatomy change, live state migration or automatic deployment"
+  ],
+  "packages": {
+    "PyYAML": "6.0.3",
+    "mujoco": "3.11.0",
+    "numpy": "2.3.5",
+    "osqp": "1.0.5",
+    "scipy": "1.17.0"
+  },
+  "schema": "nasuraya.balance-experience/1",
+  "selection": {
+    "maximum_extra_duration_s": 0.1,
+    "minimum_training_reduction": 0.05,
+    "rule": "minimum mean training RMS tilt among all-pass candidates",
+    "settle_speed_limit": 0.05,
+    "tie_break": "smallest absolute offset then signed value"
+  },
+  "sources_sha256": {
+    "assets/nasuraya_articulated_v03/nasuraya.xml": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d",
+    "assets/nasuraya_articulated_v03/robot.yaml": "78be887900f165f6b3a811cf79a5e6eadb2316f62679121083456ff36ada5140",
+    "examples/nasuraya_research/articulated/balance.py": "c9b1f75a3d721e3fa8c02697300264ed608a3f0d057638cdc67d2501d9db024e",
+    "examples/nasuraya_research/articulated/evaluate.py": "191d28a720ef58ee349c3b4b21f1a431b86b3d25f841e146cb0b71db23de288d",
+    "examples/nasuraya_research/articulated/experience_balance.py": "9fa49ebc69d226d0ba3e91892b191cdf74f2430a6f73f03ea6fd03036d657066",
+    "examples/nasuraya_research/articulated/stepping.py": "dfea9d3da60984319ad5a0c96d908eebb22044c0f6342ad49e532dd992a8afe3",
+    "examples/nasuraya_research/articulated/support_geometry.py": "66cc87a37c5bfd95d3e0733a53f1a38bb5b315f42f86f3b88cdf5605fb65d0c7"
+  },
+  "steps": 2,
+  "training": [
+    {
+      "friction": 0.6,
+      "id": "train_nominal",
+      "push": 0.0,
+      "stride": 0.06
+    },
+    {
+      "friction": 0.45,
+      "id": "train_low_mu",
+      "push": 0.0,
+      "stride": 0.055
+    },
+    {
+      "friction": 0.55,
+      "id": "train_push",
+      "push": -6.0,
+      "stride": 0.06
+    }
+  ]
+}
