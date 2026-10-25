@@ -4,6 +4,7 @@ from pathlib import Path
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
+matplotlib.rcParams['svg.hashsalt']='nasuraya-experience-balance-v01'
 import matplotlib.pyplot as plt
 
 
@@ -74,11 +75,14 @@ def summarize(folder):
         ax.legend(loc='lower right',fontsize=8)
     else:
         ax.axis('off');ax.text(.1,.8,'Secondary transfer results are incomplete.\nNo secondary benefit claimed.',va='top')
-    status=f'Fixed +6 mm: {"PASS" if evaluation["predeclared_success"] else "criterion NOT MET"}'
+    status=f'Fixed {bias*1000:+.0f} mm: {"PASS" if evaluation["predeclared_success"] else "criterion NOT MET"}'
     if context:status+=f'   |   Secondary context hypothesis: {"PASS" if context["secondary_hypothesis_pass"] else "criterion NOT MET"}'
     fig.suptitle(f'Nasuraya | measured balance on the same 78 kg / 1.70 m proxy\n'+status,fontsize=15,fontweight='bold')
-    fig.supxlabel('Deterministic MuJoCo simulation • unchanged body, timing, motor limits and guards • offline selection, not neural training',fontsize=10)
-    fig.savefig(folder/'comparison.png',dpi=170);fig.savefig(folder/'comparison.svg');plt.close(fig)
+    fig.supxlabel('Recorded MuJoCo rollouts • unchanged body, timing, motor limits and guards • offline selection, not neural training',fontsize=10)
+    fig.savefig(folder/'comparison.png',dpi=170)
+    svg_path=folder/'comparison.svg'
+    fig.savefig(svg_path,metadata={'Date':None});plt.close(fig)
+    svg_path.write_text('\n'.join(line.rstrip() for line in svg_path.read_text().splitlines())+'\n')
     audit=[]
     for file in sorted(folder.glob('*-trace.json.gz')):
         record_path=file.with_name(file.name.replace('-trace.json.gz','.json'))

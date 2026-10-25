@@ -24,7 +24,7 @@ def capture(folder):
     case=next(c for c in plan['holdouts'] if c['id']==CASE)
     out=folder/'visual-replay';out.mkdir(exist_ok=True)
     checks=[]
-    for bias in (0.,policy['selected_bias_m']):
+    for bias in dict.fromkeys((0.,policy['selected_bias_m'])):
         stored=json.loads((folder/f'holdout-{CASE}-{bias:+.3f}.json').read_text())
         result,poses=walk_trial(label=stored['result']['label'],steps=2,model_dir=CANDIDATE,
             geometry_support=True,com_bias_x_m=bias,capture=True,**{k:v for k,v in case.items() if k!='id'})
@@ -53,14 +53,16 @@ def capture(folder):
 def render(folder):
     folder=Path(folder);read_plan(folder);policy,_=load_policy(folder);out=folder/'visual-replay'
     verification=json.loads((out/'reproduction.json').read_text())
+    checks=verification['checks']
+    if len(checks)==1:checks=checks*2  # A retained zero policy compares the same recorded baseline.
     records=[]
-    for check in verification['checks']:
+    for check in checks:
         p=out/f'poses-{check["bias_m"]:+.3f}.npz'
         if hashlib.sha256(p.read_bytes()).hexdigest()!=check['poses_sha256']:
             raise ValueError('recorded poses changed')
         records.append(np.load(p))
     measured=[json.loads((folder/f'holdout-{CASE}-{c["bias_m"]:+.3f}.json').read_text())['result']
-              for c in verification['checks']]
+              for c in checks]
     model=mujoco.MjModel.from_xml_path(str(CANDIDATE/'nasuraya.xml'))
     model.geom_rgba[0]=[.34,.38,.42,1]  # Display-only floor colour.
     model.vis.headlight.ambient[:]=.45
