@@ -1,0 +1,12 @@
+test_context_memory_keeps_baseline_where_training_does_not_improve (examples.nasuraya_research.articulated.test_experience_balance.ExperienceBalanceTests.test_context_memory_keeps_baseline_where_training_does_not_improve) ... ok
+test_context_rejects_contaminated_training_and_unknown_friction (examples.nasuraya_research.articulated.test_experience_balance.ExperienceBalanceTests.test_context_rejects_contaminated_training_and_unknown_friction) ... ok
+test_failure_or_extra_wait_cannot_win_by_lowering_error (examples.nasuraya_research.articulated.test_experience_balance.ExperienceBalanceTests.test_failure_or_extra_wait_cannot_win_by_lowering_error) ... ok
+test_holdouts_missing_duplicate_and_changed_scenarios_are_rejected (examples.nasuraya_research.articulated.test_experience_balance.ExperienceBalanceTests.test_holdouts_missing_duplicate_and_changed_scenarios_are_rejected) ... ok
+test_parameters_cannot_relax_geometry_or_checkpoint_gates (examples.nasuraya_research.articulated.test_experience_balance.ExperienceBalanceTests.test_parameters_cannot_relax_geometry_or_checkpoint_gates) ... ok
+test_selection_uses_measured_training_improvement_and_survives_serialization (examples.nasuraya_research.articulated.test_experience_balance.ExperienceBalanceTests.test_selection_uses_measured_training_improvement_and_survives_serialization) ... ok
+test_tiny_change_keeps_zero_offset (examples.nasuraya_research.articulated.test_experience_balance.ExperienceBalanceTests.test_tiny_change_keeps_zero_offset) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.003s
+
+OK

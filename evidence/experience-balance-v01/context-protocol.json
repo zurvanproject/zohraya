@@ -1,0 +1,41 @@
+{
+  "criteria": {
+    "all_cases_must_pass": true,
+    "maximum_case_regression": 0.1,
+    "minimum_geometric_mean_reduction": 0.05,
+    "rule": "paired fixed-scenario comparison, no holdout tuning"
+  },
+  "frozen_at_utc": "2026-10-25T13:18:45.303272+00:00",
+  "limitations": [
+    "known simulator friction, no learned or measured friction estimator",
+    "three training contexts; no neural weights or online adaptation"
+  ],
+  "memory": [
+    {
+      "bias_m": 0.0,
+      "friction": 0.45,
+      "training_case": "train_low_mu",
+      "training_reduction": 0.0
+    },
+    {
+      "bias_m": 0.006,
+      "friction": 0.55,
+      "training_case": "train_push",
+      "training_reduction": 0.19357870953002754
+    },
+    {
+      "bias_m": 0.006,
+      "friction": 0.6,
+      "training_case": "train_nominal",
+      "training_reduction": 0.3314943494169107
+    }
+  ],
+  "native_apply_allowed": false,
+  "origin": "training revealed opposite effects at friction 0.45 and 0.60",
+  "primary_protocol_sha256": "9a73ec6b8b785965e07f43219061f3e974e452fc9e43d9ba82137f9300fab6f6",
+  "rule": "nearest training friction, ties lower friction; baseline if training gain <5%",
+  "runner_sha256": "02314c9c5c8ab48c1c20c1b72b5efe5bd988e3abbdab5bf36adc752a5272b222",
+  "schema": "nasuraya.balance-context/1",
+  "status": "secondary hypothesis; does not replace the original primary criterion",
+  "training_observations_sha256": "a3c2a52368d535a976c224c865bdc24911d797cd35ab59ac300b472c169a580a"
+}

@@ -2,6 +2,7 @@
 from copy import deepcopy
 import unittest
 from .experience_balance import frozen_plan,select_policy
+from .experience_context import choose,select_memory
 from .stepping import walk_trial
 
 
@@ -59,6 +60,24 @@ class ExperienceBalanceTests(unittest.TestCase):
         with self.assertRaises(ValueError):walk_trial(com_bias_x_m=.003)
         with self.assertRaises(ValueError):
             walk_trial(com_bias_x_m=.003,geometry_support=True,retain_checkpoint=True)
+
+    def test_context_memory_keeps_baseline_where_training_does_not_improve(self):
+        plan=frozen_plan();rows=records(plan)
+        for row in rows:
+            if row['bias_m']==.006:
+                row['result']['tilt_rms_deg']=.8 if row['case']['friction']>=.55 else 1.2
+        memory=select_memory(plan,rows)
+        self.assertEqual(choose(memory,.4),0.)
+        self.assertEqual(choose(memory,.5),0.)
+        self.assertEqual(choose(memory,.58),.006)
+        self.assertEqual(choose(memory,.8),.006)
+
+    def test_context_rejects_contaminated_training_and_unknown_friction(self):
+        plan=frozen_plan();rows=records(plan);rows[0]['split']='holdout'
+        with self.assertRaises(ValueError):select_memory(plan,rows)
+        memory=select_memory(plan,records(plan))
+        for value in (True,0.,-.1,float('nan'),float('inf'),'0.6'):
+            with self.subTest(value=value),self.assertRaises(ValueError):choose(memory,value)
 
 
 if __name__=='__main__':unittest.main()

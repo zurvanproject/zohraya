@@ -1,0 +1,31 @@
+{
+  "original_source_commit": "deaeaacb70e291434d4da33e73f346f80e25d141",
+  "all_original_physical_fields_identical": true,
+  "compared_fields": [
+    "requested_steps",
+    "accepted_steps",
+    "stride_m",
+    "timing_multiplier",
+    "friction",
+    "timestep_s",
+    "simulated_seconds",
+    "failure",
+    "walk_pass",
+    "pelvis_displacement_xyz_m",
+    "mean_foot_forward_displacement_m",
+    "max_tilt_deg",
+    "min_pelvis_height_m",
+    "max_joint_limit_excess_rad",
+    "max_motor_torque_fraction",
+    "nonfoot_ground_contacts",
+    "qp_solves",
+    "qp_inaccurate_status_count",
+    "qp_max_constraint_violation",
+    "holdout_lateral_push_n",
+    "push_impulse_ns",
+    "final_max_generalized_speed",
+    "steps",
+    "running_validated"
+  ],
+  "differing_fields": []
+}
