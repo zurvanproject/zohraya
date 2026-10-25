@@ -1,0 +1,68 @@
+{
+  "v02": {
+    "mass_kg": 85.0,
+    "crown_height_m": 1.85,
+    "horn_upper_bound_m": 1.99652,
+    "tail_centerline_length_m": 0.8880000000003238,
+    "fingers_per_hand": {
+      "L": 5,
+      "R": 5
+    },
+    "toes_per_foot": {
+      "L": 3,
+      "R": 3
+    },
+    "actuated_joints": 55,
+    "positive_inertias": true,
+    "initial_self_collisions": [],
+    "support_bounds_m": [
+      [
+        -0.12011864832312,
+        -0.017521351676880008,
+        -0.07326,
+        0.07326
+      ],
+      [
+        -0.12011864832312,
+        -0.017521351676880008,
+        -0.07326,
+        0.07326
+      ]
+    ],
+    "legacy_bound_max_overshoot_m": 0.0,
+    "model_sha256": "9b875c5868d93556676a34063878642a991f354adf1663586720ab8c401663c3"
+  },
+  "v03": {
+    "mass_kg": 78.0,
+    "crown_height_m": 1.7,
+    "horn_upper_bound_m": 1.92,
+    "tail_centerline_length_m": 0.8500000000028748,
+    "fingers_per_hand": {
+      "L": 5,
+      "R": 5
+    },
+    "toes_per_foot": {
+      "L": 3,
+      "R": 3
+    },
+    "actuated_joints": 55,
+    "positive_inertias": true,
+    "initial_self_collisions": [],
+    "support_bounds_m": [
+      [
+        -0.11037929845911001,
+        -0.01610070154089,
+        -0.06732,
+        0.06732
+      ],
+      [
+        -0.11037929845911001,
+        -0.01610070154089,
+        -0.06732,
+        0.06732
+      ]
+    ],
+    "legacy_bound_max_overshoot_m": 0.004383001764476979,
+    "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d"
+  }
+}

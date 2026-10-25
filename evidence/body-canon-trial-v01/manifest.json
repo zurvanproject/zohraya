@@ -1,0 +1,21 @@
+{
+  "base_commit": "eff1e4aed8a31e7f1014309e480f35bada911064",
+  "date_tehran": "2026-10-25",
+  "files": {
+    "morphology.json": "5d53d13f2fb737af3ce2eefc8ca52605ab767f9f69115f25ad5a00b445094f2e",
+    "protocol.json": "5fccb407d3e39e99bc43ac993d95d1d3c6386524df4e67a9ae952132ee0e5d0f",
+    "results.json": "106c2932b3ce83b1a6843b17ef2c2c86c2eeca9162653be18d987cf1ff3a3f21",
+    "tests.txt": "e90637356c9f4c55f8b5187e4d88576f11bb4030f0f63ea4a540177786d223cf",
+    "traces.json.gz": "2151bced54d0911328d2028dd94336830ca2b4ff3c3f4d85a8e67310c1d1ba80",
+    "v02_legacy-poses.npz": "995dae2ca568827389f50718bf60b69557a537586965e04d012cd8525ebdf1cb",
+    "v03_geometry-poses.npz": "26bd1c9305219fd52a9092ffeaf23a1f20177f82a10de30e6af3b7fe10f9f1fc",
+    "v03_half_timestep_holdout-poses.npz": "49d5b6b6f2892feabc5a785b0e205f20aa8fcee9449b501aec0d011244fc0c1a",
+    "v03_lateral_push_holdout-poses.npz": "9eb92aec9d10f09c1c34a3391fe8a8e2c22605d8fd818ab0bc117fcfa05d9f31",
+    "v03_legacy-poses.npz": "a6c3eccae9b0159d8c9366b0cf87ec4018c27cfaf546dedbde9aa3c187e54bd0",
+    "v03_low_friction_holdout-poses.npz": "2c13e32109b9b04443ed6127f3cbd35fdf44cc46b142753af7158fd42226cb61"
+  },
+  "tests_passed": 17,
+  "paid_api_calls": 0,
+  "live_tadash_migrated": false,
+  "render": "Actual stored MuJoCo poses, 20 fps, 1x speed, failed side held after stop."
+}

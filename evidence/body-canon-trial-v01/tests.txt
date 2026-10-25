@@ -1,0 +1,22 @@
+test_old_pressure_bounds_overhang_new_pad (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_old_pressure_bounds_overhang_new_pad) ... ok
+test_proposed_wrench_pressure_stays_inside_pad (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_proposed_wrench_pressure_stays_inside_pad) ... ok
+test_rebuild_deterministic_and_parent_unchanged (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_rebuild_deterministic_and_parent_unchanged) ... ok
+test_rotated_contact_frame_rejected (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_rotated_contact_frame_rejected) ... ok
+test_target_dimensions_and_appendage_counts (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_target_dimensions_and_appendage_counts) ... ok
+test_unintegrated_checkpoint_is_explicitly_rejected (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_unintegrated_checkpoint_is_explicitly_rejected) ... ok
+test_actuator_mapping_is_not_dof_order (examples.nasuraya_research.articulated.test_balance.BalanceTests.test_actuator_mapping_is_not_dof_order) ... ok
+test_large_state_error_respects_original_motor_limits (examples.nasuraya_research.articulated.test_balance.BalanceTests.test_large_state_error_respects_original_motor_limits) ... ok
+test_unactuated_equilibrium_forward_dynamics (examples.nasuraya_research.articulated.test_balance.BalanceTests.test_unactuated_equilibrium_forward_dynamics) ... ok
+test_joint_torques_only_and_no_state_reset (examples.nasuraya_research.articulated.test_stepping.ContactControlTests.test_joint_torques_only_and_no_state_reset) ... ok
+test_released_foot_has_no_planned_ground_wrench (examples.nasuraya_research.articulated.test_stepping.ContactControlTests.test_released_foot_has_no_planned_ground_wrench) ... ok
+test_disagreement_between_metadata_and_physics_rejected (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_disagreement_between_metadata_and_physics_rejected) ... ok
+test_exact_integration_and_controller_restore (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_exact_integration_and_controller_restore) ... ok
+test_historical_source_bound_archive_rejected_without_migration (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_historical_source_bound_archive_rejected_without_migration) ... ok
+test_nonfinite_or_wrong_shape_rejected (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_nonfinite_or_wrong_shape_rejected) ... ok
+test_parameter_or_source_drift_rejected (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_parameter_or_source_drift_rejected) ... ok
+test_tampered_payload_rejected_before_body_mutation (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_tampered_payload_rejected_before_body_mutation) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 10.761s
+
+OK

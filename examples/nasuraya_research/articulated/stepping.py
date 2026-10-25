@@ -23,7 +23,7 @@ class ContactController:
  each ball pad; toes are articulated, not welded to make a rigid foot.
  """
 
-    def __init__(self, m, d):
+    def __init__(self, m, d, geometry_support=False):
         self.m = m
         self.n = m.nv
         self.va = m.jnt_dofadr[m.actuator_trnid[:, 0]]
@@ -41,6 +41,10 @@ class ContactController:
         self.previous_solution = None
         self.failed = 0
         self.load_fractions = None
+        self.support_bounds = None
+        if geometry_support:
+            from .support_geometry import support_bounds
+            self.support_bounds = support_bounds(m)
 
     def jacobians(self, d):
         m = self.m
@@ -124,10 +128,12 @@ class ContactController:
                         v[axis] = sign
                         v[2] = -min(0.5, float(m.geom_friction[0, 0]) * 0.85)
                         bound(v, -np.inf, 0)
-                bound([0, 0, -0.075, 1, 0, 0], -np.inf, 0)
-                bound([0, 0, -0.075, -1, 0, 0], -np.inf, 0)
-                bound([0, 0, -0.12, 0, 1, 0], -np.inf, 0)
-                bound([0, 0, 0.015, 0, -1, 0], -np.inf, 0)
+                xmin,xmax,ymin,ymax = ([-.12,-.015,-.075,.075]
+                    if self.support_bounds is None else self.support_bounds[s])
+                bound([0, 0, -ymax, 1, 0, 0], -np.inf, 0)
+                bound([0, 0, ymin, -1, 0, 0], -np.inf, 0)
+                bound([0, 0, xmin, 0, 1, 0], -np.inf, 0)
+                bound([0, 0, -xmax, 0, -1, 0], -np.inf, 0)
                 bound([0, 0, -0.02, 0, 0, 1], -np.inf, 0)
                 bound([0, 0, -0.02, 0, 0, -1], -np.inf, 0)
             AA.append(np.array(C))
@@ -185,26 +191,32 @@ def can_lift(data,controller,stance,forces):
     foot=data.site_xpos[controller.sites[stance]]
     relative=data.subtree_com[1]-foot
     total_weight=controller.m.body_mass.sum()*9.81
+    bounds = ([-.11,-.03,-.06,.06] if controller.support_bounds is None
+              else controller.support_bounds[stance])
     return bool(forces[stance]>=.8*total_weight and forces[1-stance]<=.2*total_weight
-                and -.11<relative[0]<-.03 and abs(relative[1])<.06)
+                and bounds[0]<relative[0]<bounds[1] and bounds[2]<relative[1]<bounds[3])
 
 
 def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.001,
-               push=0.,capture=False,checkpoint=None,retain_checkpoint=False):
-    model,data=load(SMALL)
+               push=0.,capture=False,checkpoint=None,retain_checkpoint=False,
+               model_dir=SMALL,geometry_support=False):
+    model_dir=Path(model_dir)
+    if (model_dir.resolve()!=SMALL.resolve() or geometry_support) and (checkpoint is not None or retain_checkpoint):
+        raise ValueError('Experimental morphology/support is not checkpoint-integrated')
+    model,data=load(model_dir)
     model.opt.timestep=dt
     model.geom_friction[:,0]=friction
     from .checkpoint import restore_checkpoint, make_checkpoint, integration_state, digest
     parameters=dict(stride=stride,timing=timing,friction=friction,dt=dt,push=push)
     if checkpoint is None:
-        standing=BalanceController(model)
+        standing=BalanceController(model,model_dir)
         standing_height=float(standing.q0[2])
         data.qpos[:]=model.qpos0;data.qpos[2]+=.005
         for _ in range(round(2/dt)):
             data.ctrl[:]=standing.command(data)[0]
             mujoco.mj_step(model,data)
         mujoco.mj_forward(model,data)
-        controller=ContactController(model,data)
+        controller=ContactController(model,data,geometry_support=geometry_support)
         feet=controller.anchors.copy();previous_com=controller.com0.copy()
         step_offset=0;index=0;initialization_seconds=2.
     else:
@@ -264,7 +276,9 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
     for step in range(steps):
         current_step=step;swing=(step_offset+step)%2;stance=1-swing
         goal=feet.copy();goal[swing,0]=feet[stance,0]+stride
-        support_com=np.array([feet[stance,0]-.06882,feet[stance,1],controller.com0[2]])
+        offset = (np.array([-.06882,0.]) if controller.support_bounds is None else
+                  np.array([controller.support_bounds[stance,:2].mean(),controller.support_bounds[stance,2:].mean()]))
+        support_com=np.r_[feet[stance,:2]+offset,controller.com0[2]]
         phase='transfer';step_stats=None
         loads=contact_state(model,data)[0];load_start=loads/max(loads.sum(),1);load_goal=np.zeros(2);load_goal[stance]=1
         def transfer(t):
@@ -305,7 +319,9 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
         feet=goal;previous_com=support_com
     if not failure:
         current_step=steps;step_stats=None;phase='recenter'
-        final_com=np.array([feet[:,0].mean()-.06882,feet[:,1].mean(),controller.com0[2]])
+        offset = (np.array([-.06882,0.]) if controller.support_bounds is None else
+                  np.array([controller.support_bounds[:,:2].mean(),controller.support_bounds[:,2:].mean()]))
+        final_com=np.r_[feet[:,:2].mean(axis=0)+offset,controller.com0[2]]
         if advance(3*timing,lambda t:(previous_com*(1-smooth(t/(3*timing)))+final_com*smooth(t/(3*timing)),feet.copy(),[True,True])):
             phase='settle';advance(2.,lambda t:(final_com,feet.copy(),[True,True]))
             previous_com=final_com

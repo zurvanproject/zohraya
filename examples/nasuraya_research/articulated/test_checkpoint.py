@@ -12,10 +12,29 @@ from .build import ROOT
 
 
 class CheckpointTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # Source/version-bound archives must not be silently rebound to new code.
+        # Exercise round trips with a fresh synthetic execution in this runtime.
+        from .stepping import walk_trial
+        result=walk_trial(steps=1,retain_checkpoint=True)
+        if result['checkpoint'] is None:
+            raise AssertionError('fresh synthetic checkpoint did not settle')
+        cls.fresh=result['checkpoint']
+
     def setUp(self):
-        self.cp=json.loads((ROOT/'evidence/articulated-continuity-v02/first-checkpoint.json').read_text())
+        self.cp=deepcopy(self.fresh)
         self.model,self.data=load(SMALL)
         self.parameters=self.cp['value']['parameters']
+
+    def test_historical_source_bound_archive_rejected_without_migration(self):
+        path=ROOT/'evidence/articulated-continuity-v02/first-checkpoint.json'
+        original=path.read_bytes();old=json.loads(original)
+        before=self.data.qpos.copy()
+        with self.assertRaises(ValueError):
+            restore_checkpoint(old,self.model,self.data,old['value']['parameters'])
+        self.assertEqual(original,path.read_bytes())
+        np.testing.assert_array_equal(before,self.data.qpos)
 
     def test_exact_integration_and_controller_restore(self):
         c,feet,com,height,next_step,ticks=restore_checkpoint(self.cp,self.model,self.data,self.parameters)

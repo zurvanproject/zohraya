@@ -1,0 +1,33 @@
+name: Nasuraya body morphology trial
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_research/articulated/**'
+      - 'assets/nasuraya_articulated_v03/**'
+      - '.github/workflows/nasuraya-body-canon-trial.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cpu-physics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Morphology, control and checkpoint regressions
+        run: python -m unittest examples.nasuraya_research.articulated.test_canon_trial examples.nasuraya_research.articulated.test_balance examples.nasuraya_research.articulated.test_stepping examples.nasuraya_research.articulated.test_checkpoint -v
+      - name: Actual two-step candidate rollout
+        run: |
+          python - <<'PY'
+          from examples.nasuraya_research.articulated.canon_trial import build_candidate
+          from examples.nasuraya_research.articulated.stepping import walk_trial
+          r=walk_trial(steps=2,model_dir=build_candidate(),geometry_support=True)
+          print({k:v for k,v in r.items() if k!='trace'})
+          assert r['walk_pass'] and r['final_max_generalized_speed']<.05
+          PY

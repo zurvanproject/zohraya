@@ -1,0 +1,34 @@
+{
+  "status": "authored_physics_proxy_not_anatomical_mesh",
+  "targets": {
+    "mass_kg": 78.0,
+    "crown_height_m": 1.7,
+    "horn_upper_bound_m": 1.92,
+    "tail_centerline_length_m": 0.85,
+    "fingers_per_hand": 5,
+    "toes_per_foot": 3
+  },
+  "source": "assets/nasuraya_articulated_v02",
+  "source_model_sha256": "9b875c5868d93556676a34063878642a991f354adf1663586720ab8c401663c3",
+  "scale_factors": {
+    "length": 0.9189189189189189,
+    "mass": 0.9176470588235294,
+    "torque_and_kp": 0.8432432432432432,
+    "damping_and_kd": 0.8083351540543575,
+    "armature": 0.774872169466764
+  },
+  "tail_links": 4,
+  "tail_link_length_m": 0.2125,
+  "unimplemented": [
+    "reference facial mesh and skin",
+    "18 anatomical tail vertebrae",
+    "canonical 18 cm hock and 14.5 by 11 cm support geometry",
+    "muscle/tendon mechanics and pressure distribution",
+    "Tadash physiological runtime or live checkpoint migration"
+  ],
+  "assumptions": [
+    "Remaining body proportions are uniformly scaled from v02.",
+    "Mass allocation and motor scaling remain authored engineering choices.",
+    "Horn height includes capsule radius in the neutral pose."
+  ]
+}
