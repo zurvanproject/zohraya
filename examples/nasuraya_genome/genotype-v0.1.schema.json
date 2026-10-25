@@ -1,0 +1,838 @@
+{
+  "type": "object",
+  "properties": {
+    "schema": {
+      "const": "nasuraya.genotype"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "contract_sha256": {
+      "const": "dda97e9e1aefcfcf858f50cbb4c613c0a338781244d5988cc6c0ae278ac586e3"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "parent_sha256": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      ]
+    },
+    "chromosomes": {
+      "type": "object",
+      "properties": {
+        "P01A": {
+          "type": "object",
+          "properties": {
+            "P01.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P01.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P01B": {
+          "type": "object",
+          "properties": {
+            "P01.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P01.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P02A": {
+          "type": "object",
+          "properties": {
+            "P02.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P02.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P02B": {
+          "type": "object",
+          "properties": {
+            "P02.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P02.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P03A": {
+          "type": "object",
+          "properties": {
+            "P03.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P03.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P03B": {
+          "type": "object",
+          "properties": {
+            "P03.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P03.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P04A": {
+          "type": "object",
+          "properties": {
+            "P04.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P04.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P04B": {
+          "type": "object",
+          "properties": {
+            "P04.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P04.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P05A": {
+          "type": "object",
+          "properties": {
+            "P05.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P05.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P05B": {
+          "type": "object",
+          "properties": {
+            "P05.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P05.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P06A": {
+          "type": "object",
+          "properties": {
+            "P06.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P06.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P06B": {
+          "type": "object",
+          "properties": {
+            "P06.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P06.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P07A": {
+          "type": "object",
+          "properties": {
+            "P07.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "P07.L010": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 1.02
+            },
+            "P07.L011": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 1.02
+            }
+          },
+          "required": [
+            "P07.L000",
+            "P07.L010",
+            "P07.L011"
+          ],
+          "additionalProperties": false
+        },
+        "P07B": {
+          "type": "object",
+          "properties": {
+            "P07.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "P07.L010": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 1.02
+            },
+            "P07.L011": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 1.02
+            }
+          },
+          "required": [
+            "P07.L000",
+            "P07.L010",
+            "P07.L011"
+          ],
+          "additionalProperties": false
+        },
+        "P08A": {
+          "type": "object",
+          "properties": {
+            "P08.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "P08.L010": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 8.0
+            }
+          },
+          "required": [
+            "P08.L000",
+            "P08.L010"
+          ],
+          "additionalProperties": false
+        },
+        "P08B": {
+          "type": "object",
+          "properties": {
+            "P08.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "P08.L010": {
+              "type": "number",
+              "minimum": 1.0,
+              "maximum": 8.0
+            }
+          },
+          "required": [
+            "P08.L000",
+            "P08.L010"
+          ],
+          "additionalProperties": false
+        },
+        "P09A": {
+          "type": "object",
+          "properties": {
+            "P09.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "P09.L010": {
+              "type": "number",
+              "minimum": 0.98,
+              "maximum": 1.02
+            }
+          },
+          "required": [
+            "P09.L000",
+            "P09.L010"
+          ],
+          "additionalProperties": false
+        },
+        "P09B": {
+          "type": "object",
+          "properties": {
+            "P09.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            },
+            "P09.L010": {
+              "type": "number",
+              "minimum": 0.98,
+              "maximum": 1.02
+            }
+          },
+          "required": [
+            "P09.L000",
+            "P09.L010"
+          ],
+          "additionalProperties": false
+        },
+        "P10A": {
+          "type": "object",
+          "properties": {
+            "P10.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P10.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P10B": {
+          "type": "object",
+          "properties": {
+            "P10.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P10.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P11A": {
+          "type": "object",
+          "properties": {
+            "P11.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P11.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P11B": {
+          "type": "object",
+          "properties": {
+            "P11.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P11.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P12A": {
+          "type": "object",
+          "properties": {
+            "P12.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P12.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P12B": {
+          "type": "object",
+          "properties": {
+            "P12.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P12.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P13A": {
+          "type": "object",
+          "properties": {
+            "P13.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P13.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P13B": {
+          "type": "object",
+          "properties": {
+            "P13.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P13.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P14A": {
+          "type": "object",
+          "properties": {
+            "P14.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P14.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P14B": {
+          "type": "object",
+          "properties": {
+            "P14.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P14.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P15A": {
+          "type": "object",
+          "properties": {
+            "P15.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P15.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P15B": {
+          "type": "object",
+          "properties": {
+            "P15.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P15.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P16A": {
+          "type": "object",
+          "properties": {
+            "P16.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P16.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P16B": {
+          "type": "object",
+          "properties": {
+            "P16.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P16.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P17A": {
+          "type": "object",
+          "properties": {
+            "P17.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P17.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P17B": {
+          "type": "object",
+          "properties": {
+            "P17.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P17.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P18A": {
+          "type": "object",
+          "properties": {
+            "P18.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P18.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P18B": {
+          "type": "object",
+          "properties": {
+            "P18.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P18.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P19A": {
+          "type": "object",
+          "properties": {
+            "P19.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P19.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P19B": {
+          "type": "object",
+          "properties": {
+            "P19.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P19.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P20A": {
+          "type": "object",
+          "properties": {
+            "P20.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P20.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P20B": {
+          "type": "object",
+          "properties": {
+            "P20.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P20.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P21A": {
+          "type": "object",
+          "properties": {
+            "P21.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P21.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P21B": {
+          "type": "object",
+          "properties": {
+            "P21.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P21.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P22A": {
+          "type": "object",
+          "properties": {
+            "P22.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P22.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P22B": {
+          "type": "object",
+          "properties": {
+            "P22.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P22.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P23A": {
+          "type": "object",
+          "properties": {
+            "P23.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P23.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P23B": {
+          "type": "object",
+          "properties": {
+            "P23.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P23.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P24A": {
+          "type": "object",
+          "properties": {
+            "P24.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P24.L000"
+          ],
+          "additionalProperties": false
+        },
+        "P24B": {
+          "type": "object",
+          "properties": {
+            "P24.L000": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 4
+            }
+          },
+          "required": [
+            "P24.L000"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "P01A",
+        "P01B",
+        "P02A",
+        "P02B",
+        "P03A",
+        "P03B",
+        "P04A",
+        "P04B",
+        "P05A",
+        "P05B",
+        "P06A",
+        "P06B",
+        "P07A",
+        "P07B",
+        "P08A",
+        "P08B",
+        "P09A",
+        "P09B",
+        "P10A",
+        "P10B",
+        "P11A",
+        "P11B",
+        "P12A",
+        "P12B",
+        "P13A",
+        "P13B",
+        "P14A",
+        "P14B",
+        "P15A",
+        "P15B",
+        "P16A",
+        "P16B",
+        "P17A",
+        "P17B",
+        "P18A",
+        "P18B",
+        "P19A",
+        "P19B",
+        "P20A",
+        "P20B",
+        "P21A",
+        "P21B",
+        "P22A",
+        "P22B",
+        "P23A",
+        "P23B",
+        "P24A",
+        "P24B"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema",
+    "version",
+    "contract_sha256",
+    "revision",
+    "parent_sha256",
+    "chromosomes"
+  ],
+  "additionalProperties": false,
+  "if": {
+    "properties": {
+      "revision": {
+        "const": 0
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "parent_sha256": {
+        "type": "null"
+      }
+    }
+  },
+  "else": {
+    "properties": {
+      "parent_sha256": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Nasuraya computational genotype v0.1.0"
+}
