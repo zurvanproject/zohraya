@@ -9,11 +9,7 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
-    if command == 'experience-test':
-        from . import test_experience
-        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_experience))
-        return 0 if r.wasSuccessful() else 1
-    if command.startswith('experience-'):
+    if command in ('experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-demo'):
         from .experience import ExperienceController
         if command == 'experience-demo':
             from .experience_demo import demo
@@ -34,24 +30,180 @@ def main(args):
             if command == 'experience-step':
                 return 0 if summary['native_receipt']['status'] == 'complete' else 1
         return 0
-    if command == 'test':
-        from . import test_body_loop
-        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))
+    if command == 'sleep-integration-test':
+        from . import test_sleep_integration
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_sleep_integration))
         return 0 if r.wasSuccessful() else 1
-    if command == 'api-test':
-        from . import test_api_host, test_api_recovery
-        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
-                                   for m in (test_api_host, test_api_recovery))
+    if command == 'terminal-replay-check':
+        from .terminal_replay_check import check
+        return check(args['session'], args['run_id'], args['output_dir'], fresh_process=True)
+    if command == 'creation-test':
+        from . import test_creation_reconciliation
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_creation_reconciliation))
+        return 0 if r.wasSuccessful() else 1
+    if command == 'reconcile-api-creation':
+        from .api_host import BodyAPIHost
+        from .creation_reconciliation import resolve_empty_project
+        from examples.nasuraya_agent_loop.agents_api import make_client
+        with BodyLoop(args['session']) as loop, make_client() as client:
+            host = BodyAPIHost.resume(loop, run_id=args['run_id'])
+            result = resolve_empty_project(host, client.beta.agents.sessions,
+                previous_request_finished=args['confirm_finished_create'],
+                exclusive_project_writer=args['confirm_exclusive_project_writer'])
+        print(json.dumps(result, sort_keys=True))
+        return 0
+    if command == 'memory-ablation':
+        from .memory_ablation import run
+        return run(args['output_dir'])
+    if command == 'decision-test':
+        from . import test_decision_context
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_decision_context))
+        return 0 if r.wasSuccessful() else 1
+    if command == 'intent-status':
+        from .decision_context import records
+        with BodyLoop(args['session']) as loop:
+            result = records(loop,args['run_id'])
+        print(json.dumps(result,ensure_ascii=False,sort_keys=True))
+        return 0
+    if command == 'experience-live-check':
+        from .experience_live_check import check
+        return check(args['session'],args['wake_id'],args['output_dir'])
+    if command == 'experience-test':
+        from . import test_experience, test_api_experience
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
+                                   for module in (test_experience, test_api_experience))
         r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
+    if command == 'care-memory':
+        from .care import reconcile
+        from .api_host import BodyAPIHost
+        with BodyLoop(args['session']) as loop:
+            host = BodyAPIHost.resume(loop, run_id=args['run_id'])
+            result = reconcile(host)
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0
+    if command == 'care-test':
+        from . import test_care
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_care))
+        return 0 if r.wasSuccessful() else 1
+    if command == 'care-demo':
+        from .care_demo import demo
+        return demo(args['output_dir'])
+    if command == 'wake-demo':
+        from .wake_demo import demo
+        return demo(args['output_dir'])
+    if command == 'wake-test':
+        from . import test_scheduler
+        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_scheduler))
+        return 0 if r.wasSuccessful() else 1
+    if command == 'schedule':
+        from .scheduler import register
+        with BodyLoop(args['session']) as loop:
+            result = register(loop, wake_id=args['wake_id'], run_id=args['run_id'],
+                due_at=args['due_at'], expires_at=args['expires_at'], model=args['model'],
+                backend=args['wake_backend'], max_attempts=args['wake_attempts'],
+                timeout_seconds=args['timeout_seconds'], retry_delay_seconds=args['retry_delay_seconds'])
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0
+    if command in ('wake', 'wake-watch', 'wake-status'):
+        import time
+        from .scheduler import schedules, tick, TERMINAL
+        try:
+            with BodyLoop(args['session']) as loop:
+                rows = schedules(loop)
+        except BlockingIOError:
+            rows = None
+        if command == 'wake-status':
+            print(json.dumps(dict(state='busy') if rows is None else rows, ensure_ascii=False, sort_keys=True))
+            return 0
+        selected = next((r for r in rows or [] if r['id'] == args['wake_id']), None)
+        if rows is not None and selected is None:
+            raise ValueError('saved wakeup required')
+        if selected and selected['contract']['backend'] == 'api' and not args['allow_live_wakeup']:
+            raise ValueError('saved API wakeup requires explicit --allow-live-wakeup')
+        if rows is None:
+            # Do not dispatch an uninspected live schedule while another host owns it.
+            print(json.dumps(dict(state='busy', execution_started=False)))
+            return 0
+        count = args['watch_ticks'] if command == 'wake-watch' else 1
+        for i in range(count):
+            result = tick(args['session'], wake_id=args['wake_id'])
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True), flush=True)
+            if result['state'] in TERMINAL:
+                return 0 if result['state'] == 'completed' else 1
+            if i + 1 < count:
+                time.sleep(args['poll_seconds'])
+        return 0
+    if command == 'preflight-test':
+        from . import test_native_preflight
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_native_preflight)
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if r.wasSuccessful() else 1
+    if command == 'support-diagnostic':
+        from .support_diagnostic import run_diagnostic
+        print(json.dumps(run_diagnostic(args['output_dir'])['summary'], sort_keys=True))
+        return 0
+    if command == 'closed-loop-test':
+        from . import test_closed_loop
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_closed_loop)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'closed-loop-benchmark':
+        from .closed_loop_benchmark import run_benchmark
+        result = run_benchmark(args['output_dir'])
+        print(json.dumps({k:result[k] for k in ('success','improvement_percent','protocol_sha256')}))
+        print(json.dumps(result['splits']['test']['paired_mae_on_both_paths']))
+        return 0
+    if command == 'adaptive-test':
+        from . import test_adaptive_memory
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_adaptive_memory)
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if r.wasSuccessful() else 1
+    if command == 'predictive-benchmark':
+        from .predictive_benchmark import run_benchmark
+        report = run_benchmark(args['output_dir'])
+        print(json.dumps({'success':report['success'], 'test_mae':report['evaluation']['test']['mae'],
+                          'improvement_percent':report['improvement_percent']},sort_keys=True))
+        return 0
+    if command == 'adaptive':
+        from .adaptive_memory import AdaptiveMemory
+        with BodyLoop(args['session']) as loop:
+            result = AdaptiveMemory(loop).run_goal(args['goal_id'],target_cycles=args['target_cycles'],
+                                                  time_budget_s=args['timeout_seconds'])
+        print(json.dumps(result,ensure_ascii=False,sort_keys=True))
+        return 0 if result['status']=='completed' else 1
+    if command == 'test':
+        from . import test_body_loop, test_self_maintenance
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
+                                   for m in (test_body_loop, test_self_maintenance))
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if r.wasSuccessful() else 1
+    if command == 'api-test':
+        from . import test_api_host, test_api_recovery, test_continuation, test_recovery, test_metacognition
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(m)
+                                   for m in (test_api_host, test_api_recovery, test_continuation, test_recovery, test_metacognition))
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if r.wasSuccessful() else 1
+    if command == 'benchmark':
+        from .paired_benchmark import run_benchmark
+        report = run_benchmark(args['output_dir'])
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0
+    if command == 'maintain':
+        from .self_maintenance import SelfMaintenance
+        with BodyLoop(args['session']) as loop:
+            result = SelfMaintenance(loop, goal_id=args['goal_id'],
+                                     target_cycles=args['target_cycles']).run()
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0 if result['status'] == 'completed' else 1
     if command == 'api':
         from examples.nasuraya_agent_loop.agents_api import make_client, run_api
         from examples.nasuraya_agent_loop.local import Journal
-        from .api_host import BodyAPIHost
+        from .language_advisor import host_type
         output = Path(args['output_dir'])
         output.mkdir(mode=0o700, parents=True, exist_ok=False)
         with BodyLoop(args['session']) as loop:
-            host = BodyAPIHost(loop, mode=args['api_mode'], target_cycles=args['target_cycles'],
+            host = host_type(loop)(loop, mode=args['api_mode'], target_cycles=args['target_cycles'],
                                max_calls=args['max_calls'], journal=Journal(output / 'events.jsonl'), run_id=args['run_id'])
             with make_client() as client:
                 summary = run_api(host, client, model=args['model'], max_calls=args['max_calls'],
@@ -61,11 +213,33 @@ def main(args):
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0 if summary['status'] == 'completed' else 1
     if command == 'run-status':
-        from .api_host import BodyAPIHost
+        from .language_advisor import host_type
         with BodyLoop(args['session']) as loop:
-            host = BodyAPIHost.resume(loop, run_id=args['run_id'])
+            host = host_type(loop).resume(loop, run_id=args['run_id'])
             print(json.dumps(dict(run_id=host.run_id, evaluation=host.evaluate(),
-                                 self_model=host.snapshot()), ensure_ascii=False, sort_keys=True))
+                                 self_model=host.snapshot(), next_decision=host.decision_context()), ensure_ascii=False, sort_keys=True))
+        return 0
+    if command == 'configure-language-advisor':
+        from examples.nasuraya_language_choice.advisor import configure
+        with BodyLoop(args['session']) as loop:
+            result=configure(loop,run=args['advisor_run'],base=args['advisor_base'],
+                             expected_checkpoint=args['observed_checkpoint_sha256'])
+            print(json.dumps(result,sort_keys=True))
+        return 0
+    if command == 'configure-metacognition':
+        from .metacognition import configure
+        with BodyLoop(args['session']) as loop:
+            result = configure(loop, memory_path=args['self_model'], mode=args['metacognition_mode'],
+                expected_checkpoint=args['observed_checkpoint_sha256'], create_memory=args['create_self_model'])
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0
+    if command == 'authorize-continuation':
+        from .continuation import authorize
+        with BodyLoop(args['session']) as loop:
+            grant = authorize(loop, grant_id=args['grant_id'], run_id=args['run_id'],
+                additional_actions=args['additional_actions'], additional_calls=args['additional_calls'],
+                observed_checkpoint_sha256=args['observed_checkpoint_sha256'])
+            print(json.dumps(dict(grant=grant, status=loop.status()), ensure_ascii=False, sort_keys=True))
         return 0
     if command == 'demo':
         output = Path(args['output_dir'])
@@ -78,7 +252,7 @@ def main(args):
             rows = []
             for i in range(args['steps']):
                 observation = loop.observe()
-                result = loop.step(duration_s=args['duration_s'])
+                result = loop.step(duration_s=args['duration_s'], preferred_action=args.get('preferred_action', 'walk'))
                 rows.append({'before': observation, 'outcome': result})
                 if result['status'] != 'complete':
                     break
@@ -95,7 +269,7 @@ def main(args):
             loop = BodyLoop(args['session'])
         with loop:
             if command == 'observe': summary = loop.observe()
-            elif command == 'step': summary = loop.step(decision_id=args['decision_id'], duration_s=args['duration_s'])
+            elif command == 'step': summary = loop.step(decision_id=args['decision_id'], duration_s=args['duration_s'], preferred_action=args.get('preferred_action', 'walk'))
             else: summary = loop.status()
     print(json.dumps(summary,ensure_ascii=False,sort_keys=True))
     if command == 'demo':

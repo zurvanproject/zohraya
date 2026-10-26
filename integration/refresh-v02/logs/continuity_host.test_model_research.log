@@ -1,0 +1,44 @@
+test_budget_lifetime_cap_without_reset (continuity_host.test_model_research.ModelTests.test_budget_lifetime_cap_without_reset) ... ok
+test_claim_conflict_never_sends (continuity_host.test_model_research.ModelTests.test_claim_conflict_never_sends) ... ok
+test_cold_process_validates_memory_without_api (continuity_host.test_model_research.ModelTests.test_cold_process_validates_memory_without_api) ... ok
+test_contact_during_call_does_not_apply (continuity_host.test_model_research.ModelTests.test_contact_during_call_does_not_apply) ... ok
+test_daily_execution_gate_stays_shared (continuity_host.test_model_research.ModelTests.test_daily_execution_gate_stays_shared) ... ok
+test_duplicate_request_refused (continuity_host.test_model_research.ModelTests.test_duplicate_request_refused) ... ok
+test_failed_final_commit_retains_pending_claim (continuity_host.test_model_research.ModelTests.test_failed_final_commit_retains_pending_claim) ... ok
+test_failed_validation_preserves_incumbent (continuity_host.test_model_research.ModelTests.test_failed_validation_preserves_incumbent) ... ok
+test_four_calls_resume_and_stop (continuity_host.test_model_research.ModelTests.test_four_calls_resume_and_stop) ... ok
+test_imports_existing_research_without_repeating_completed_features (continuity_host.test_model_research.ModelTests.test_imports_existing_research_without_repeating_completed_features) ... ok
+test_incomplete_response_is_not_retried (continuity_host.test_model_research.ModelTests.test_incomplete_response_is_not_retried) ... ok
+test_initialization_refuses_reinitialization_and_orphan (continuity_host.test_model_research.ModelTests.test_initialization_refuses_reinitialization_and_orphan) ... ok
+test_initialize_preserves_existing_execution_budget_and_pause (continuity_host.test_model_research.ModelTests.test_initialize_preserves_existing_execution_budget_and_pause) ... ok
+test_missing_key_never_claims (continuity_host.test_model_research.ModelTests.test_missing_key_never_claims) ... ok
+test_missing_usage_is_not_invented (continuity_host.test_model_research.ModelTests.test_missing_usage_is_not_invented) ... ok
+test_model_cannot_request_other_actions (continuity_host.test_model_research.ModelTests.test_model_cannot_request_other_actions) ... ok
+test_pause_before_send_cancels_without_refund (continuity_host.test_model_research.ModelTests.test_pause_before_send_cancels_without_refund) ... ok
+test_paused_never_claims (continuity_host.test_model_research.ModelTests.test_paused_never_claims) ... ok
+test_policy_without_evidence_rejected (continuity_host.test_model_research.ModelTests.test_policy_without_evidence_rejected) ... ok
+test_previous_measurements_reach_next_prompt (continuity_host.test_model_research.ModelTests.test_previous_measurements_reach_next_prompt) ... ok
+test_pricing_expiration_stops_before_claim (continuity_host.test_model_research.ModelTests.test_pricing_expiration_stops_before_claim) ... ok
+test_prompt_has_no_credentials_tools_or_validation_rows (continuity_host.test_model_research.ModelTests.test_prompt_has_no_credentials_tools_or_validation_rows) ... ok
+test_real_model_choice_not_offline_fixed_choice (continuity_host.test_model_research.ModelTests.test_real_model_choice_not_offline_fixed_choice) ... ok
+test_refusal_does_not_become_an_experiment (continuity_host.test_model_research.ModelTests.test_refusal_does_not_become_an_experiment) ... ok
+test_reservation_is_durable_before_network (continuity_host.test_model_research.ModelTests.test_reservation_is_durable_before_network) ... ok
+test_rolling_daily_cap (continuity_host.test_model_research.ModelTests.test_rolling_daily_cap) ... ok
+test_tampered_budget_rejected (continuity_host.test_model_research.ModelTests.test_tampered_budget_rejected) ... ok
+test_tampered_experiment_rejected (continuity_host.test_model_research.ModelTests.test_tampered_experiment_rejected) ... ok
+test_timeout_keeps_reservation_and_inflight (continuity_host.test_model_research.ModelTests.test_timeout_keeps_reservation_and_inflight) ... ok
+test_token_overrun_stops (continuity_host.test_model_research.ModelTests.test_token_overrun_stops) ... ok
+test_unexpected_model_is_not_accepted (continuity_host.test_model_research.ModelTests.test_unexpected_model_is_not_accepted) ... ok
+test_internal_whitespace_in_key_fails_before_network (continuity_host.test_model_research.TransportAndStorageTests.test_internal_whitespace_in_key_fails_before_network) ... ok
+test_redirect_refused (continuity_host.test_model_research.TransportAndStorageTests.test_redirect_refused) ... ok
+test_snapshot_verifies_anchor (continuity_host.test_model_research.TransportAndStorageTests.test_snapshot_verifies_anchor) ... ok
+test_storage_auth_error_is_not_missing_memory (continuity_host.test_model_research.TransportAndStorageTests.test_storage_auth_error_is_not_missing_memory) ... ok
+test_storage_uses_atomic_tree_and_nonforce_ref (continuity_host.test_model_research.TransportAndStorageTests.test_storage_uses_atomic_tree_and_nonforce_ref) ... ok
+test_surrounding_whitespace_is_removed_from_api_key (continuity_host.test_model_research.TransportAndStorageTests.test_surrounding_whitespace_is_removed_from_api_key) ... ok
+test_transport_error_sanitized_and_no_retry (continuity_host.test_model_research.TransportAndStorageTests.test_transport_error_sanitized_and_no_retry) ... ok
+test_transport_is_single_post_and_secrets_only_in_header (continuity_host.test_model_research.TransportAndStorageTests.test_transport_is_single_post_and_secrets_only_in_header) ... ok
+
+----------------------------------------------------------------------
+Ran 39 tests in 0.476s
+
+OK

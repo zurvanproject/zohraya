@@ -1,0 +1,41 @@
+{
+  "selection_source": "FixturePolicy",
+  "cases": 484,
+  "completed": 484,
+  "violations": 0,
+  "energy_values": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+  ],
+  "heat_values": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+  ],
+  "job_values": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "maximum_actions_observed": 7,
+  "failures": [],
+  "external_model_api_used": false
+}

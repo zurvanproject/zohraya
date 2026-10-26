@@ -1,0 +1,259 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="nasuraya_articulated_v02">
+  <compiler angle="radian" autolimits="true" inertiafromgeom="true" />
+  <option timestep=".001" integrator="implicitfast" gravity="0 0 -9.81" iterations="60" cone="elliptic" />
+  <visual>
+    <global offwidth="1200" offheight="1000" />
+  </visual>
+  <default>
+    <joint damping="1" armature="0.01" limited="true" />
+    <geom friction="0.6 0.005 0.0001" solref="0.01 1" solimp="0.95 0.99 0.001" condim="3" rgba="0.65 0.32 0.17 1" />
+  </default>
+  <worldbody>
+    <light pos="2 -2 5" dir="-1 1 -2" diffuse="0.8 0.8 0.8" />
+    <geom name="floor" type="plane" size="6 6 0.1" rgba="0.18 0.22 0.26 1" />
+    <body name="pelvis" pos="0 0 1.0508">
+      <freejoint name="root" />
+      <geom name="pelvis_mass" type="ellipsoid" pos="0 0 0.0444" size="0.1406 0.148 0.1332" mass="9.58974358974359" />
+      <body name="torso" pos="0 0 0.148">
+        <joint name="waist_yaw" type="hinge" axis="0 0 1" range="-0.6 0.6" armature="0.056419393939393936" damping="0.06558621324811893" />
+        <joint name="waist_pitch" type="hinge" axis="0 1 0" range="-0.45 0.45" armature="0.056419393939393936" damping="0.06558621324811893" />
+        <joint name="waist_roll" type="hinge" axis="1 0 0" range="-0.3 0.3" armature="0.056419393939393936" damping="0.06558621324811893" />
+        <geom name="torso_mass" type="ellipsoid" pos="0 0 0.148" size="0.1406 0.185 0.1776" mass="28.769230769230774" />
+        <site name="imu" pos="0 0 0.148" size="0.00888" />
+        <body name="head" pos="0 0 0.4144">
+          <joint name="neck_yaw" type="hinge" axis="0 0 1" range="-0.9 0.9" armature="0.014104848484848484" damping="0.06558621324811893" />
+          <joint name="neck_pitch" type="hinge" axis="0 1 0" range="-0.45 0.45" armature="0.014104848484848484" damping="0.06558621324811893" />
+          <geom name="neck_mass" type="capsule" fromto="0 0 0 0 0 0.0592" size="0.0444" mass="0.2876923076923077" />
+          <geom name="head_mass" type="ellipsoid" pos="0 0 0.1184" size="0.0962 0.0777 0.1184" mass="4.315384615384615" />
+          <site name="crown" pos="0 0 0.2368" size="0.00592" />
+          <geom name="horn_L_0" type="capsule" fromto="0 0.0592 0.1628 -0.0666 0.0814 0.2442" size="0.01332" mass="0.03196581196581197" rgba="0.22 0.14 0.11 1" />
+          <geom name="horn_L_1" type="capsule" fromto="-0.0666 0.0814 0.2442 -0.074 0.0814 0.3182" size="0.01332" mass="0.03196581196581197" rgba="0.22 0.14 0.11 1" />
+          <geom name="horn_L_2" type="capsule" fromto="-0.074 0.0814 0.3182 -0.0296 0.074 0.37" size="0.01332" mass="0.03196581196581197" rgba="0.22 0.14 0.11 1" />
+          <site name="horn_tip_L" pos="-0.0296 0.074 0.37" size="0.0037" />
+          <geom name="horn_R_0" type="capsule" fromto="0 -0.0592 0.1628 -0.0666 -0.0814 0.2442" size="0.01332" mass="0.03196581196581197" rgba="0.22 0.14 0.11 1" />
+          <geom name="horn_R_1" type="capsule" fromto="-0.0666 -0.0814 0.2442 -0.074 -0.0814 0.3182" size="0.01332" mass="0.03196581196581197" rgba="0.22 0.14 0.11 1" />
+          <geom name="horn_R_2" type="capsule" fromto="-0.074 -0.0814 0.3182 -0.0296 -0.074 0.37" size="0.01332" mass="0.03196581196581197" rgba="0.22 0.14 0.11 1" />
+          <site name="horn_tip_R" pos="-0.0296 -0.074 0.37" size="0.0037" />
+        </body>
+        <body name="upper_arm_L" pos="0 0.2294 0.3256">
+          <joint name="shoulder_pitch_L" type="hinge" axis="0 1 0" range="-2 2" armature="0.014104848484848484" damping="0.06558621324811893" />
+          <joint name="shoulder_roll_L" type="hinge" axis="1 0 0" range="-1.6 1.6" armature="0.014104848484848484" damping="0.06558621324811893" />
+          <joint name="shoulder_yaw_L" type="hinge" axis="0 0 1" range="-1.5 1.5" armature="0.014104848484848484" damping="0.06558621324811893" />
+          <geom name="upper_arm_geom_L" type="capsule" fromto="0 0 0 0 0.0518 -0.296" size="0.0481" mass="2.3974358974358974" />
+          <body name="forearm_L" pos="0 0.0518 -0.296">
+            <joint name="elbow_L" type="hinge" axis="0 1 0" range="-1.9 0.25" armature="0.014104848484848484" damping="0.06558621324811893" />
+            <geom name="forearm_geom_L" type="capsule" fromto="0 0 0 0.0185 0 -0.2664" size="0.037" mass="1.4384615384615387" />
+            <body name="hand_L" pos="0.0185 0 -0.2664">
+              <joint name="wrist_pitch_L" type="hinge" axis="0 1 0" range="-0.8 0.8" armature="0.002820969696969697" damping="0.06558621324811893" />
+              <joint name="wrist_roll_L" type="hinge" axis="1 0 0" range="-0.6 0.6" armature="0.002820969696969697" damping="0.06558621324811893" />
+              <geom name="palm_L" type="box" pos="0 0 -0.0481" size="0.0222 0.0444 0.0481" mass="0.5753846153846154" />
+              <body name="finger_L_1" pos="0 -0.03848 -0.0925">
+                <joint name="finger_flex_L_1" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_L_1" type="capsule" fromto="0 0 0 0.0111 0 -0.0592" size="0.00666" mass="0.07671794871794872" />
+              </body>
+              <body name="finger_L_2" pos="0 -0.01924 -0.0925">
+                <joint name="finger_flex_L_2" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_L_2" type="capsule" fromto="0 0 0 0 0 -0.0814" size="0.00666" mass="0.07671794871794872" />
+              </body>
+              <body name="finger_L_3" pos="0 0 -0.0925">
+                <joint name="finger_flex_L_3" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_L_3" type="capsule" fromto="0 0 0 0 0 -0.0814" size="0.00666" mass="0.07671794871794872" />
+              </body>
+              <body name="finger_L_4" pos="0 0.01924 -0.0925">
+                <joint name="finger_flex_L_4" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_L_4" type="capsule" fromto="0 0 0 0 0 -0.0814" size="0.00666" mass="0.07671794871794872" />
+              </body>
+              <body name="finger_L_5" pos="0 0.03848 -0.0925">
+                <joint name="finger_flex_L_5" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_L_5" type="capsule" fromto="0 0 0 0 0 -0.0592" size="0.00666" mass="0.07671794871794872" />
+              </body>
+            </body>
+          </body>
+        </body>
+        <body name="upper_arm_R" pos="0 -0.2294 0.3256">
+          <joint name="shoulder_pitch_R" type="hinge" axis="0 1 0" range="-2 2" armature="0.014104848484848484" damping="0.06558621324811893" />
+          <joint name="shoulder_roll_R" type="hinge" axis="1 0 0" range="-1.6 1.6" armature="0.014104848484848484" damping="0.06558621324811893" />
+          <joint name="shoulder_yaw_R" type="hinge" axis="0 0 1" range="-1.5 1.5" armature="0.014104848484848484" damping="0.06558621324811893" />
+          <geom name="upper_arm_geom_R" type="capsule" fromto="0 0 0 0 -0.0518 -0.296" size="0.0481" mass="2.3974358974358974" />
+          <body name="forearm_R" pos="0 -0.0518 -0.296">
+            <joint name="elbow_R" type="hinge" axis="0 1 0" range="-1.9 0.25" armature="0.014104848484848484" damping="0.06558621324811893" />
+            <geom name="forearm_geom_R" type="capsule" fromto="0 0 0 0.0185 0 -0.2664" size="0.037" mass="1.4384615384615387" />
+            <body name="hand_R" pos="0.0185 0 -0.2664">
+              <joint name="wrist_pitch_R" type="hinge" axis="0 1 0" range="-0.8 0.8" armature="0.002820969696969697" damping="0.06558621324811893" />
+              <joint name="wrist_roll_R" type="hinge" axis="1 0 0" range="-0.6 0.6" armature="0.002820969696969697" damping="0.06558621324811893" />
+              <geom name="palm_R" type="box" pos="0 0 -0.0481" size="0.0222 0.0444 0.0481" mass="0.5753846153846154" />
+              <body name="finger_R_1" pos="0 -0.03848 -0.0925">
+                <joint name="finger_flex_R_1" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_R_1" type="capsule" fromto="0 0 0 0.0111 0 -0.0592" size="0.00666" mass="0.07671794871794872" />
+              </body>
+              <body name="finger_R_2" pos="0 -0.01924 -0.0925">
+                <joint name="finger_flex_R_2" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_R_2" type="capsule" fromto="0 0 0 0 0 -0.0814" size="0.00666" mass="0.07671794871794872" />
+              </body>
+              <body name="finger_R_3" pos="0 0 -0.0925">
+                <joint name="finger_flex_R_3" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_R_3" type="capsule" fromto="0 0 0 0 0 -0.0814" size="0.00666" mass="0.07671794871794872" />
+              </body>
+              <body name="finger_R_4" pos="0 0.01924 -0.0925">
+                <joint name="finger_flex_R_4" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_R_4" type="capsule" fromto="0 0 0 0 0 -0.0814" size="0.00666" mass="0.07671794871794872" />
+              </body>
+              <body name="finger_R_5" pos="0 0.03848 -0.0925">
+                <joint name="finger_flex_R_5" type="hinge" axis="0 1 0" range="-0.2 1.3" armature="0.0005641939393939394" damping="0.06558621324811893" />
+                <geom name="finger_geom_R_5" type="capsule" fromto="0 0 0 0 0 -0.0592" size="0.00666" mass="0.07671794871794872" />
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="thigh_L" pos="0 0.1036 0">
+        <joint name="hip_yaw_L" type="hinge" axis="0 0 1" range="-0.6 0.6" armature="0.0846290909090909" damping="0.06558621324811893" />
+        <joint name="hip_roll_L" type="hinge" axis="1 0 0" range="-0.5 0.5" armature="0.0846290909090909" damping="0.06558621324811893" />
+        <joint name="hip_pitch_L" type="hinge" axis="0 1 0" range="-1.1 1.1" armature="0.0846290909090909" damping="0.06558621324811893" />
+        <geom name="thigh_geom_L" type="capsule" fromto="0 0 0 0.0557913876032 0.0236729582979 -0.439640654104" size="0.0629" mass="6.695384615384615" />
+        <body name="shin_L" pos="0.0557913876032 0.0236729582979 -0.439640654104">
+          <joint name="knee_L" type="hinge" axis="0 1 0" range="-0.5 1.8" armature="0.0846290909090909" damping="0.06558621324811893" />
+          <geom name="shin_geom_L" type="capsule" fromto="0 0 0 -0.203480560165 0.0177670417021 -0.329959345896" size="0.0444" mass="4.463589743589743" />
+          <body name="metatarsal_L" pos="-0.203480560165 0.0177670417021 -0.329959345896">
+            <joint name="hock_pitch_L" type="hinge" axis="0 1 0" range="-0.8 0.8" armature="0.04231454545454545" damping="0.06558621324811893" />
+            <joint name="hock_roll_L" type="hinge" axis="1 0 0" range="-0.4 0.4" armature="0.028209696969696968" damping="0.06558621324811893" />
+            <geom name="metatarsal_geom_L" type="capsule" fromto="0 0 0 0.147689172562 0 -0.2294" size="0.0333" mass="1.6738461538461538" />
+            <body name="foot_L" pos="0.147689172562 0 -0.2812">
+              <joint name="mtp_L" type="hinge" axis="0 1 0" range="-0.5 0.7" armature="0.022567757575757574" damping="0.06558621324811893" />
+              <geom name="ball_L" type="box" pos="-0.06882 0 0.0185" size="0.0569984981368 0.0814 0.0185" mass="0.8369230769230769" />
+              <site name="foot_contact_L" pos="0 0 0" size="0.0074" />
+              <body name="toe_L_1" pos="0.0111 -0.037296 0">
+                <joint name="toe_flex_L_1" type="hinge" axis="0 1 0" range="-0.3 0.6" armature="0.004231454545454545" damping="0.06558621324811893" />
+                <geom name="toe_pad_L_1" type="box" pos="0.0520664 0 0.0148" size="0.0145810111512 0.0148 0.0148" mass="0.09299145299145298" />
+              </body>
+              <body name="toe_L_2" pos="0.0111 0 0">
+                <joint name="toe_flex_L_2" type="hinge" axis="0 1 0" range="-0.3 0.6" armature="0.004231454545454545" damping="0.06558621324811893" />
+                <geom name="toe_pad_L_2" type="box" pos="0.06512 0 0.0148" size="0.016449203205 0.0185 0.0148" mass="0.09299145299145298" />
+              </body>
+              <body name="toe_L_3" pos="0.0111 0.037296 0">
+                <joint name="toe_flex_L_3" type="hinge" axis="0 1 0" range="-0.3 0.6" armature="0.004231454545454545" damping="0.06558621324811893" />
+                <geom name="toe_pad_L_3" type="box" pos="0.0520664 0 0.0148" size="0.0145810111512 0.0148 0.0148" mass="0.09299145299145298" />
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="thigh_R" pos="0 -0.1036 0">
+        <joint name="hip_yaw_R" type="hinge" axis="0 0 1" range="-0.6 0.6" armature="0.0846290909090909" damping="0.06558621324811893" />
+        <joint name="hip_roll_R" type="hinge" axis="1 0 0" range="-0.5 0.5" armature="0.0846290909090909" damping="0.06558621324811893" />
+        <joint name="hip_pitch_R" type="hinge" axis="0 1 0" range="-1.1 1.1" armature="0.0846290909090909" damping="0.06558621324811893" />
+        <geom name="thigh_geom_R" type="capsule" fromto="0 0 0 0.0557913876032 -0.0236729582979 -0.439640654104" size="0.0629" mass="6.695384615384615" />
+        <body name="shin_R" pos="0.0557913876032 -0.0236729582979 -0.439640654104">
+          <joint name="knee_R" type="hinge" axis="0 1 0" range="-0.5 1.8" armature="0.0846290909090909" damping="0.06558621324811893" />
+          <geom name="shin_geom_R" type="capsule" fromto="0 0 0 -0.203480560165 -0.0177670417021 -0.329959345896" size="0.0444" mass="4.463589743589743" />
+          <body name="metatarsal_R" pos="-0.203480560165 -0.0177670417021 -0.329959345896">
+            <joint name="hock_pitch_R" type="hinge" axis="0 1 0" range="-0.8 0.8" armature="0.04231454545454545" damping="0.06558621324811893" />
+            <joint name="hock_roll_R" type="hinge" axis="1 0 0" range="-0.4 0.4" armature="0.028209696969696968" damping="0.06558621324811893" />
+            <geom name="metatarsal_geom_R" type="capsule" fromto="0 0 0 0.147689172562 0 -0.2294" size="0.0333" mass="1.6738461538461538" />
+            <body name="foot_R" pos="0.147689172562 0 -0.2812">
+              <joint name="mtp_R" type="hinge" axis="0 1 0" range="-0.5 0.7" armature="0.022567757575757574" damping="0.06558621324811893" />
+              <geom name="ball_R" type="box" pos="-0.06882 0 0.0185" size="0.0569984981368 0.0814 0.0185" mass="0.8369230769230769" />
+              <site name="foot_contact_R" pos="0 0 0" size="0.0074" />
+              <body name="toe_R_1" pos="0.0111 -0.037296 0">
+                <joint name="toe_flex_R_1" type="hinge" axis="0 1 0" range="-0.3 0.6" armature="0.004231454545454545" damping="0.06558621324811893" />
+                <geom name="toe_pad_R_1" type="box" pos="0.0520664 0 0.0148" size="0.0145810111512 0.0148 0.0148" mass="0.09299145299145298" />
+              </body>
+              <body name="toe_R_2" pos="0.0111 0 0">
+                <joint name="toe_flex_R_2" type="hinge" axis="0 1 0" range="-0.3 0.6" armature="0.004231454545454545" damping="0.06558621324811893" />
+                <geom name="toe_pad_R_2" type="box" pos="0.06512 0 0.0148" size="0.016449203205 0.0185 0.0148" mass="0.09299145299145298" />
+              </body>
+              <body name="toe_R_3" pos="0.0111 0.037296 0">
+                <joint name="toe_flex_R_3" type="hinge" axis="0 1 0" range="-0.3 0.6" armature="0.004231454545454545" damping="0.06558621324811893" />
+                <geom name="toe_pad_R_3" type="box" pos="0.0520664 0 0.0148" size="0.0145810111512 0.0148 0.0148" mass="0.09299145299145298" />
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="tail_1" pos="-0.1332 0 -0.0592">
+        <joint name="tail_yaw_1" type="hinge" axis="0 0 1" range="-0.65 0.65" armature="0.011283878787878787" damping="0.06558621324811893" />
+        <joint name="tail_pitch_1" type="hinge" axis="0 1 0" range="-0.65 0.65" armature="0.011283878787878787" damping="0.06558621324811893" />
+        <geom name="tail_geom_1" type="capsule" fromto="0 0 0 -0.218799818254 0 -0.0375584814929" size="0.037" mass="1.7435897435897438" />
+        <body name="tail_2" pos="-0.218799818254 0 -0.0375584814929">
+          <joint name="tail_yaw_2" type="hinge" axis="0 0 1" range="-0.65 0.65" armature="0.011283878787878787" damping="0.06558621324811893" />
+          <joint name="tail_pitch_2" type="hinge" axis="0 1 0" range="-0.65 0.65" armature="0.011283878787878787" damping="0.06558621324811893" />
+          <geom name="tail_geom_2" type="capsule" fromto="0 0 0 -0.218799818254 0 -0.0375584814929" size="0.0296" mass="1.3076923076923075" />
+          <body name="tail_3" pos="-0.218799818254 0 -0.0375584814929">
+            <joint name="tail_yaw_3" type="hinge" axis="0 0 1" range="-0.65 0.65" armature="0.011283878787878787" damping="0.06558621324811893" />
+            <joint name="tail_pitch_3" type="hinge" axis="0 1 0" range="-0.65 0.65" armature="0.011283878787878787" damping="0.06558621324811893" />
+            <geom name="tail_geom_3" type="capsule" fromto="0 0 0 -0.218799818254 0 -0.0375584814929" size="0.0222" mass="0.8717948717948719" />
+            <body name="tail_4" pos="-0.218799818254 0 -0.0375584814929">
+              <joint name="tail_yaw_4" type="hinge" axis="0 0 1" range="-0.65 0.65" armature="0.011283878787878787" damping="0.06558621324811893" />
+              <joint name="tail_pitch_4" type="hinge" axis="0 1 0" range="-0.65 0.65" armature="0.011283878787878787" damping="0.06558621324811893" />
+              <geom name="tail_geom_4" type="capsule" fromto="0 0 0 -0.218799818254 0 -0.0375584814929" size="0.0148" mass="0.43589743589743596" />
+              <site name="tail_tip" pos="-0.218799818254 0 -0.0375584814929" size="0.00592" />
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor name="waist_yaw_motor" joint="waist_yaw" gear="1" ctrllimited="true" ctrlrange="-68.6181818182 68.6181818182" forcelimited="true" forcerange="-68.6181818182 68.6181818182" />
+    <motor name="waist_pitch_motor" joint="waist_pitch" gear="1" ctrllimited="true" ctrlrange="-68.6181818182 68.6181818182" forcelimited="true" forcerange="-68.6181818182 68.6181818182" />
+    <motor name="waist_roll_motor" joint="waist_roll" gear="1" ctrllimited="true" ctrlrange="-68.6181818182 68.6181818182" forcelimited="true" forcerange="-68.6181818182 68.6181818182" />
+    <motor name="neck_yaw_motor" joint="neck_yaw" gear="1" ctrllimited="true" ctrlrange="-13.3424242424 13.3424242424" forcelimited="true" forcerange="-13.3424242424 13.3424242424" />
+    <motor name="neck_pitch_motor" joint="neck_pitch" gear="1" ctrllimited="true" ctrlrange="-13.3424242424 13.3424242424" forcelimited="true" forcerange="-13.3424242424 13.3424242424" />
+    <motor name="shoulder_pitch_L_motor" joint="shoulder_pitch_L" gear="1" ctrllimited="true" ctrlrange="-34.3090909091 34.3090909091" forcelimited="true" forcerange="-34.3090909091 34.3090909091" />
+    <motor name="shoulder_roll_L_motor" joint="shoulder_roll_L" gear="1" ctrllimited="true" ctrlrange="-34.3090909091 34.3090909091" forcelimited="true" forcerange="-34.3090909091 34.3090909091" />
+    <motor name="shoulder_yaw_L_motor" joint="shoulder_yaw_L" gear="1" ctrllimited="true" ctrlrange="-34.3090909091 34.3090909091" forcelimited="true" forcerange="-34.3090909091 34.3090909091" />
+    <motor name="elbow_L_motor" joint="elbow_L" gear="1" ctrllimited="true" ctrlrange="-28.5909090909 28.5909090909" forcelimited="true" forcerange="-28.5909090909 28.5909090909" />
+    <motor name="wrist_pitch_L_motor" joint="wrist_pitch_L" gear="1" ctrllimited="true" ctrlrange="-7.62424242424 7.62424242424" forcelimited="true" forcerange="-7.62424242424 7.62424242424" />
+    <motor name="wrist_roll_L_motor" joint="wrist_roll_L" gear="1" ctrllimited="true" ctrlrange="-7.62424242424 7.62424242424" forcelimited="true" forcerange="-7.62424242424 7.62424242424" />
+    <motor name="finger_flex_L_1_motor" joint="finger_flex_L_1" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="finger_flex_L_2_motor" joint="finger_flex_L_2" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="finger_flex_L_3_motor" joint="finger_flex_L_3" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="finger_flex_L_4_motor" joint="finger_flex_L_4" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="finger_flex_L_5_motor" joint="finger_flex_L_5" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="hip_yaw_L_motor" joint="hip_yaw_L" gear="1" ctrllimited="true" ctrlrange="-133.424242424 133.424242424" forcelimited="true" forcerange="-133.424242424 133.424242424" />
+    <motor name="hip_roll_L_motor" joint="hip_roll_L" gear="1" ctrllimited="true" ctrlrange="-133.424242424 133.424242424" forcelimited="true" forcerange="-133.424242424 133.424242424" />
+    <motor name="hip_pitch_L_motor" joint="hip_pitch_L" gear="1" ctrllimited="true" ctrlrange="-133.424242424 133.424242424" forcelimited="true" forcerange="-133.424242424 133.424242424" />
+    <motor name="knee_L_motor" joint="knee_L" gear="1" ctrllimited="true" ctrlrange="-133.424242424 133.424242424" forcelimited="true" forcerange="-133.424242424 133.424242424" />
+    <motor name="hock_pitch_L_motor" joint="hock_pitch_L" gear="1" ctrllimited="true" ctrlrange="-83.8666666667 83.8666666667" forcelimited="true" forcerange="-83.8666666667 83.8666666667" />
+    <motor name="hock_roll_L_motor" joint="hock_roll_L" gear="1" ctrllimited="true" ctrlrange="-57.1818181818 57.1818181818" forcelimited="true" forcerange="-57.1818181818 57.1818181818" />
+    <motor name="mtp_L_motor" joint="mtp_L" gear="1" ctrllimited="true" ctrlrange="-60.9939393939 60.9939393939" forcelimited="true" forcerange="-60.9939393939 60.9939393939" />
+    <motor name="toe_flex_L_1_motor" joint="toe_flex_L_1" gear="1" ctrllimited="true" ctrlrange="-9.5303030303 9.5303030303" forcelimited="true" forcerange="-9.5303030303 9.5303030303" />
+    <motor name="toe_flex_L_2_motor" joint="toe_flex_L_2" gear="1" ctrllimited="true" ctrlrange="-9.5303030303 9.5303030303" forcelimited="true" forcerange="-9.5303030303 9.5303030303" />
+    <motor name="toe_flex_L_3_motor" joint="toe_flex_L_3" gear="1" ctrllimited="true" ctrlrange="-9.5303030303 9.5303030303" forcelimited="true" forcerange="-9.5303030303 9.5303030303" />
+    <motor name="shoulder_pitch_R_motor" joint="shoulder_pitch_R" gear="1" ctrllimited="true" ctrlrange="-34.3090909091 34.3090909091" forcelimited="true" forcerange="-34.3090909091 34.3090909091" />
+    <motor name="shoulder_roll_R_motor" joint="shoulder_roll_R" gear="1" ctrllimited="true" ctrlrange="-34.3090909091 34.3090909091" forcelimited="true" forcerange="-34.3090909091 34.3090909091" />
+    <motor name="shoulder_yaw_R_motor" joint="shoulder_yaw_R" gear="1" ctrllimited="true" ctrlrange="-34.3090909091 34.3090909091" forcelimited="true" forcerange="-34.3090909091 34.3090909091" />
+    <motor name="elbow_R_motor" joint="elbow_R" gear="1" ctrllimited="true" ctrlrange="-28.5909090909 28.5909090909" forcelimited="true" forcerange="-28.5909090909 28.5909090909" />
+    <motor name="wrist_pitch_R_motor" joint="wrist_pitch_R" gear="1" ctrllimited="true" ctrlrange="-7.62424242424 7.62424242424" forcelimited="true" forcerange="-7.62424242424 7.62424242424" />
+    <motor name="wrist_roll_R_motor" joint="wrist_roll_R" gear="1" ctrllimited="true" ctrlrange="-7.62424242424 7.62424242424" forcelimited="true" forcerange="-7.62424242424 7.62424242424" />
+    <motor name="finger_flex_R_1_motor" joint="finger_flex_R_1" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="finger_flex_R_2_motor" joint="finger_flex_R_2" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="finger_flex_R_3_motor" joint="finger_flex_R_3" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="finger_flex_R_4_motor" joint="finger_flex_R_4" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="finger_flex_R_5_motor" joint="finger_flex_R_5" gear="1" ctrllimited="true" ctrlrange="-1.52484848485 1.52484848485" forcelimited="true" forcerange="-1.52484848485 1.52484848485" />
+    <motor name="hip_yaw_R_motor" joint="hip_yaw_R" gear="1" ctrllimited="true" ctrlrange="-133.424242424 133.424242424" forcelimited="true" forcerange="-133.424242424 133.424242424" />
+    <motor name="hip_roll_R_motor" joint="hip_roll_R" gear="1" ctrllimited="true" ctrlrange="-133.424242424 133.424242424" forcelimited="true" forcerange="-133.424242424 133.424242424" />
+    <motor name="hip_pitch_R_motor" joint="hip_pitch_R" gear="1" ctrllimited="true" ctrlrange="-133.424242424 133.424242424" forcelimited="true" forcerange="-133.424242424 133.424242424" />
+    <motor name="knee_R_motor" joint="knee_R" gear="1" ctrllimited="true" ctrlrange="-133.424242424 133.424242424" forcelimited="true" forcerange="-133.424242424 133.424242424" />
+    <motor name="hock_pitch_R_motor" joint="hock_pitch_R" gear="1" ctrllimited="true" ctrlrange="-83.8666666667 83.8666666667" forcelimited="true" forcerange="-83.8666666667 83.8666666667" />
+    <motor name="hock_roll_R_motor" joint="hock_roll_R" gear="1" ctrllimited="true" ctrlrange="-57.1818181818 57.1818181818" forcelimited="true" forcerange="-57.1818181818 57.1818181818" />
+    <motor name="mtp_R_motor" joint="mtp_R" gear="1" ctrllimited="true" ctrlrange="-60.9939393939 60.9939393939" forcelimited="true" forcerange="-60.9939393939 60.9939393939" />
+    <motor name="toe_flex_R_1_motor" joint="toe_flex_R_1" gear="1" ctrllimited="true" ctrlrange="-9.5303030303 9.5303030303" forcelimited="true" forcerange="-9.5303030303 9.5303030303" />
+    <motor name="toe_flex_R_2_motor" joint="toe_flex_R_2" gear="1" ctrllimited="true" ctrlrange="-9.5303030303 9.5303030303" forcelimited="true" forcerange="-9.5303030303 9.5303030303" />
+    <motor name="toe_flex_R_3_motor" joint="toe_flex_R_3" gear="1" ctrllimited="true" ctrlrange="-9.5303030303 9.5303030303" forcelimited="true" forcerange="-9.5303030303 9.5303030303" />
+    <motor name="tail_yaw_1_motor" joint="tail_yaw_1" gear="1" ctrllimited="true" ctrlrange="-22.8727272727 22.8727272727" forcelimited="true" forcerange="-22.8727272727 22.8727272727" />
+    <motor name="tail_pitch_1_motor" joint="tail_pitch_1" gear="1" ctrllimited="true" ctrlrange="-22.8727272727 22.8727272727" forcelimited="true" forcerange="-22.8727272727 22.8727272727" />
+    <motor name="tail_yaw_2_motor" joint="tail_yaw_2" gear="1" ctrllimited="true" ctrlrange="-13.3424242424 13.3424242424" forcelimited="true" forcerange="-13.3424242424 13.3424242424" />
+    <motor name="tail_pitch_2_motor" joint="tail_pitch_2" gear="1" ctrllimited="true" ctrlrange="-13.3424242424 13.3424242424" forcelimited="true" forcerange="-13.3424242424 13.3424242424" />
+    <motor name="tail_yaw_3_motor" joint="tail_yaw_3" gear="1" ctrllimited="true" ctrlrange="-13.3424242424 13.3424242424" forcelimited="true" forcerange="-13.3424242424 13.3424242424" />
+    <motor name="tail_pitch_3_motor" joint="tail_pitch_3" gear="1" ctrllimited="true" ctrlrange="-13.3424242424 13.3424242424" forcelimited="true" forcerange="-13.3424242424 13.3424242424" />
+    <motor name="tail_yaw_4_motor" joint="tail_yaw_4" gear="1" ctrllimited="true" ctrlrange="-13.3424242424 13.3424242424" forcelimited="true" forcerange="-13.3424242424 13.3424242424" />
+    <motor name="tail_pitch_4_motor" joint="tail_pitch_4" gear="1" ctrllimited="true" ctrlrange="-13.3424242424 13.3424242424" forcelimited="true" forcerange="-13.3424242424 13.3424242424" />
+  </actuator>
+  <sensor>
+    <gyro name="imu_ang_vel" site="imu" />
+    <velocimeter name="imu_lin_vel" site="imu" />
+    <subtreeangmom name="root_angmom" body="pelvis" />
+  </sensor>
+</mujoco>

@@ -1,0 +1,31 @@
+{
+  "scope": "Aggregate mechanics from one executed MuJoCo fixture trial; conversation, memory and session data excluded.",
+  "measurement": {
+    "requested_steps": 2,
+    "accepted_steps": 2,
+    "walk_pass": true,
+    "simulated_seconds": 17.000000000000348,
+    "pelvis_displacement_xyz_m": [
+      0.04266295951841956,
+      -0.005423306067569316,
+      0.0030188612918038427
+    ],
+    "max_tilt_deg": 0.7447871851250775,
+    "max_joint_limit_excess_rad": 0.0,
+    "max_motor_torque_fraction": 1.0,
+    "nonfoot_ground_contacts": [],
+    "qp_solves": 3400,
+    "qp_inaccurate_status_count": 0
+  },
+  "tests": {
+    "new_bridge_tests": 10,
+    "existing_affect_tests": 13,
+    "passed": 23
+  },
+  "cold_replay": {
+    "simulator_forbidden": true,
+    "additional_trials": 0,
+    "memory_unchanged": true,
+    "second_trial_blocked": true
+  }
+}

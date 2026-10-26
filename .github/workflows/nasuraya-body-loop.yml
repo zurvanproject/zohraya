@@ -4,6 +4,7 @@ on:
     paths:
       - 'examples/nasuraya_body_loop/**'
       - 'examples/nasuraya_body_mirror/**'
+      - 'examples/nasuraya_self_model/**'
       - 'examples/nasuraya_agent_loop/agents_api.py'
       - 'examples/nasuraya_agent_loop/api_recovery.py'
       - 'examples/nasuraya_agent_loop/local.py'
@@ -16,6 +17,7 @@ on:
     paths:
       - 'examples/nasuraya_body_loop/**'
       - 'examples/nasuraya_body_mirror/**'
+      - 'examples/nasuraya_self_model/**'
       - 'examples/nasuraya_agent_loop/agents_api.py'
       - 'examples/nasuraya_agent_loop/api_recovery.py'
       - 'examples/nasuraya_agent_loop/local.py'
@@ -29,7 +31,7 @@ permissions:
 jobs:
   local-body:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
@@ -40,10 +42,39 @@ jobs:
         run: python3 run_tests.py --reflection --output /tmp/nasuraya-native-check
       - name: Verify bounded bridge and cold recovery
         run: python3 -m examples.nasuraya_body_loop test
-      - name: Verify integrated experience and restart recovery
+      - name: Verify adaptive memory and actual process interruptions
+        run: python3 -m examples.nasuraya_body_loop adaptive-test
+      - name: Measure frozen independent predictive comparison
         run: |
-          python3 -m examples.nasuraya_body_loop experience-test
-          python3 -m examples.nasuraya_body_loop experience-demo --output-dir /tmp/nasuraya-experience-demo
+          python3 -m examples.nasuraya_body_loop predictive-benchmark --output-dir /tmp/nasuraya-predictive-check
+          python3 - <<'PY'
+          import json
+          r = json.load(open('/tmp/nasuraya-predictive-check/predictive_report.json'))
+          assert r['api_calls'] == 0
+          assert r['input_action_fingerprints_disjoint']
+          assert r['held_out_parameters_unchanged']
+          assert not r['test_used_for_training']
+          assert all(x['parameters_equal'] for x in r['cold_recovery'])
+          assert all(x['all_budgets_preserved'] for x in r['evaluation'].values())
+          # Correct execution and honest reporting are required even if MAE worsens.
+          assert r['success'] == (r['evaluation']['test']['mae']['B'] < r['evaluation']['test']['mae']['A'])
+          PY
+      - name: Verify host wakeups, real process crashes and exclusive execution
+        run: python3 -m examples.nasuraya_body_loop wake-test
+      - name: Verify care continuity across bounded awakenings
+        run: python3 -m examples.nasuraya_body_loop care-test
+      - name: Verify shared measured experience and reduced API input offline
+        run: python3 -m examples.nasuraya_body_loop experience-test
+      - name: Verify saved goal, action intent and unknown-outcome stops
+        run: python3 -m examples.nasuraya_body_loop decision-test
+      - name: Verify bounded sleep with scheduled wakeups, crashes and memory
+        run: python3 -m examples.nasuraya_body_loop sleep-integration-test
+      - name: Verify explicit host review of orphan API creation
+        run: python3 -m examples.nasuraya_body_loop creation-test
+      - name: Verify prepared persistent-host units without installation
+        run: python3 -m unittest examples.nasuraya_body_loop.deployment.test_prepare_host -v
+      - name: Demonstrate integrated experience and restart recovery
+        run: python3 -m examples.nasuraya_body_loop experience-demo --output-dir /tmp/nasuraya-experience-demo
       - name: Verify persistent API body tools without live service
         run: |
           python3 -m venv .ci-env
@@ -51,6 +82,33 @@ jobs:
           .ci-env/bin/python -m examples.nasuraya_body_loop api-test
       - name: Regenerate and verify all committed motion samples
         run: python3 -m unittest examples.nasuraya_body_mirror.test_mirror -v
+      - name: Verify persistent self-maintenance and identity across restart
+        run: |
+          python3 -m examples.nasuraya_body_loop start --session /tmp/nasuraya-maintenance.sqlite --fixture sleep --max-actions 3
+          python3 -m examples.nasuraya_body_loop maintain --session /tmp/nasuraya-maintenance.sqlite --goal-id ci-self-v01 --target-cycles 2 > /tmp/nasuraya-maint-result.json
+          python3 -m examples.nasuraya_body_loop maintain --session /tmp/nasuraya-maintenance.sqlite --goal-id ci-self-v01 --target-cycles 2 > /tmp/nasuraya-maint-resume.json
+          python3 - <<'PY'
+          import json
+          first = json.load(open('/tmp/nasuraya-maint-result.json'))
+          replay = json.load(open('/tmp/nasuraya-maint-resume.json'))
+          assert first['status'] == replay['status'] == 'completed'
+          assert first['completed_cycles'] == replay['completed_cycles'] == 2
+          assert first['body_actions_remaining'] == replay['body_actions_remaining'] == 1
+          assert all(x['identity_principles_retained'] for x in first['history'])
+          assert first['external_model_api_used'] is False
+          PY
+      - name: Frozen paired comparison with cold process restart
+        run: |
+          python3 -m examples.nasuraya_body_loop benchmark --output-dir /tmp/nasu-frozen-paired
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          record = json.loads(Path('/tmp/nasu-frozen-paired/paired_report.json').read_text())
+          assert record['api_calls'] == 0
+          assert record['difference_in_veto_count_sleep'] >= 1
+          assert record['no_duplicate_effect_after_restart']
+          assert len(record['scenarios']) == 2
+          PY
       - name: Execute actual local body cycles
         run: |
           python3 -m examples.nasuraya_body_loop demo --fixture sleep --steps 3 --max-actions 12 --output-dir /tmp/nasuraya-body-demo
@@ -65,3 +123,16 @@ jobs:
           assert [(r['outcome']['requested_action'], r['outcome']['actual_action']) for r in rows] == [('walk','protect'),('observe','observe'),('observe','observe')]
           assert all(abs(r['outcome']['body_audit']['energy_error_J']) < 1e-6 for r in rows)
           PY
+  api-bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify persistent API body tools and metacognition without live service
+        run: |
+          python3 -m venv .ci-env
+          .ci-env/bin/python -m pip install -r examples/nasuraya_agent_loop/requirements-api.lock.txt
+          .ci-env/bin/python -m examples.nasuraya_body_loop api-test

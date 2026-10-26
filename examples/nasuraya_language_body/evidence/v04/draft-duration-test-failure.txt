@@ -1,0 +1,29 @@
+test_bad_numeric_features_are_rejected (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_bad_numeric_features_are_rejected) ... ok
+test_declared_budgets_and_unseen_durations (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_declared_budgets_and_unseen_durations) ... ok
+test_features_read_real_initial_native_stocks_without_advancing (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_features_read_real_initial_native_stocks_without_advancing) ... ok
+test_held_out_rows_rejected_before_model_access (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_held_out_rows_rejected_before_model_access) ... ok
+test_native_receipt_rows_reject_fabricated_preaction_features (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_native_receipt_rows_reject_fabricated_preaction_features) ... ERROR
+test_nonzero_friction_and_asymmetry_no_longer_alias (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_nonzero_friction_and_asymmetry_no_longer_alias) ... ok
+test_one_foot_friction_is_rejected (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_one_foot_friction_is_rejected) ... ok
+test_overlap_of_each_declared_boundary_is_rejected (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_overlap_of_each_declared_boundary_is_rejected) ... ok
+test_promotion_requires_gain_and_both_recalls_without_false_admission (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_promotion_requires_gain_and_both_recalls_without_false_admission) ... ok
+test_region_name_and_value_affect_enriched_input (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_region_name_and_value_affect_enriched_input) ... ok
+
+======================================================================
+ERROR: test_native_receipt_rows_reject_fabricated_preaction_features (examples.nasuraya_language_body.test_body_language.BodyLanguageTests.test_native_receipt_rows_reject_fabricated_preaction_features)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e045c22ac582/zohraya/examples/nasuraya_language_body/test_body_language.py", line 78, in test_native_receipt_rows_reject_fabricated_preaction_features
+    ledger.begin(b,q);receipt=b.cycle(**q);ledger.finish(p['id'],b,receipt,learn=False)
+    ^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/examples/nasuraya_self_model/monitor.py", line 167, in begin
+    body.validate_input(request['external'],instant(request['at_utc']),request['duration_s'])
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/unified_body_v2.py", line 403, in validate_input
+    if abs(duration*10-round(duration*10))>1e-8:raise ValueError("duration must align to .1 seconds")
+                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: duration must align to .1 seconds
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.021s
+
+FAILED (errors=1)

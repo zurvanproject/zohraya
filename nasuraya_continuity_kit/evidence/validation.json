@@ -1,0 +1,19 @@
+{
+  "tests_passed": 27,
+  "new_kit_tests": 10,
+  "existing_absence_tests": 10,
+  "existing_fund_tests": 7,
+  "fresh_process_cli_invocations": 11,
+  "offline_install_verified": true,
+  "two_builds_identical": true,
+  "wheel_sha256": "88ab8e9e2b3715ae27ad629af1e3815fe97d209edc3e5b8648464adc17cc2410",
+  "wheel_bytes": 10180,
+  "canonical_gate_sha256": "26a082342b44cca50623c8134ea7ce63981425b27e6d997ed81c9bc39721bcf4",
+  "canonical_gate_unchanged": true,
+  "third_party_runtime_dependencies": [],
+  "financial_account_created": false,
+  "host_application_sent": false,
+  "revenue_observed": false,
+  "payments_enabled": false,
+  "scope": "private local pilot with injected-clock fixtures; no real external jobs or transactions"
+}

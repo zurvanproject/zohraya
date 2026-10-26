@@ -1,0 +1,20 @@
+{
+  "base_remote_commit": "051708aa2091eada6d69e5cf40de67be5132424d",
+  "model_mass_kg": 85,
+  "model_crown_height_m": 1.85,
+  "standing_passes": 9,
+  "scenario_count": 12,
+  "versions": {
+    "mujoco": "3.11.0",
+    "numpy": "2.4.6",
+    "scipy": "1.18.1"
+  },
+  "files_sha256": {
+    "examples/nasuraya_research/articulated/balance.py": "01ee78e96c8cb18ce5ecad6fb025d287f561aeef8394e3f4647a1d34a46618c1",
+    "examples/nasuraya_research/articulated/test_balance.py": "4262b8c26eca2217a83ea339fb31e231c369e4a68dab2c8858f2bdc236aa4110",
+    "assets/nasuraya_articulated_v02/nasuraya.xml": "9b875c5868d93556676a34063878642a991f354adf1663586720ab8c401663c3",
+    "assets/nasuraya_articulated_v02/robot.yaml": "e23f4c8bdab1f2232e0412aedce8917432fb5f45701042a23c65d0e42f77c942",
+    "evidence/articulated-balance-v01/results.json": "78c8afc6cc76743c90df5c40f3e8dea9c4cc8fc0da42ea38804504f85e74b74d",
+    "evidence/articulated-balance-v01/results-traces.json.gz": "cd5eb6d5155fa49cbe6a0f4f8f1e48ff881bb4461b2b23191a4ca1e39e232f70"
+  }
+}

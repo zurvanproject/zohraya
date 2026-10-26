@@ -1,0 +1,32 @@
+name: Nasuraya Continuity Kit private pilot
+on:
+  pull_request:
+    paths: ['nasuraya_continuity_kit/**', 'continuity/gate.py', 'project_fund/**', 'pyproject.toml', 'setup.py', '.github/workflows/nasuraya-continuity-kit.yml']
+  push:
+    branches: ['nasuraya/continuity-kit-v01', 'nasuraya/offline-local-job-v01']
+    paths: ['nasuraya_continuity_kit/**', 'continuity/gate.py', 'project_fund/**', 'pyproject.toml', 'setup.py', '.github/workflows/nasuraya-continuity-kit.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '${{ matrix.python }}'
+      - name: Run local persistence and budget contracts
+        run: python -m unittest nasuraya_continuity_kit.test_local_job nasuraya_continuity_kit.test_store continuity.test_gate project_fund.test_planner -v
+      - name: Build private wheel
+        run: |
+          python -m pip install 'setuptools==78.1.0'
+          SOURCE_DATE_EPOCH=1792159200 python -m pip wheel --no-index --no-deps --no-build-isolation . --wheel-dir /tmp/kit-dist
+      - name: Verify installed CLI in fresh processes without network
+        run: python -m nasuraya_continuity_kit.verify_install --wheel /tmp/kit-dist/nasuraya_continuity_kit-0.2.0-py3-none-any.whl --output /tmp/kit-installed
+      - name: Verify installed local work and SIGKILL boundaries with network syscalls denied
+        run: python -m nasuraya_continuity_kit.verify_local_job --wheel /tmp/kit-dist/nasuraya_continuity_kit-0.2.0-py3-none-any.whl --output /tmp/local-job-installed

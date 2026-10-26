@@ -1,0 +1,42 @@
+test_changed_frozen_weight_file_is_rejected (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_changed_frozen_weight_file_is_rejected) ... ok
+test_conflicting_identical_inputs_have_empirical_error_floor (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_conflicting_identical_inputs_have_empirical_error_floor) ... ok
+test_existing_prompt_aliases_different_nonzero_friction (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_existing_prompt_aliases_different_nonzero_friction) ... ok
+test_fixed_budget_has_five_declared_families (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_fixed_budget_has_five_declared_families) ... ok
+test_missing_class_does_not_invent_balanced_accuracy (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_missing_class_does_not_invent_balanced_accuracy) ... ok
+test_parent_threshold_is_applied_without_recalibration (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_parent_threshold_is_applied_without_recalibration) ... ok
+test_synthetic_fatigue_and_only_declared_left_pain_restore (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_synthetic_fatigue_and_only_declared_left_pain_restore) ... ERROR
+
+======================================================================
+ERROR: test_synthetic_fatigue_and_only_declared_left_pain_restore (examples.nasuraya_language_transfer.test_transfer.TransferTests.test_synthetic_fatigue_and_only_declared_left_pain_restore)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e045c22ac582/zohraya/examples/nasuraya_language_transfer/test_transfer.py", line 29, in test_synthetic_fatigue_and_only_declared_left_pain_restore
+    changed=initialize(self.base,dict(fatigue=.56,left_pain=.55),'forefoot_L')
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/examples/nasuraya_language_transfer/evaluate.py", line 59, in initialize
+    return UnifiedBody.restore(body.checkpoint())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/unified_body_v2.py", line 547, in restore
+    obj=cls(CoupledEmbodiment.restore(p["owner"]),p["modules"],p["affect"],p["migration"],disabled=p["disabled"])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/persistent_embodiment_v1.py", line 664, in restore
+    obj=cls(RenalMemoryLoop.restore(p['owner']),p['auxiliary'],p['wall_utc'],p['migration'])
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/base_v09/tadash_renal_v09/renal_coupling_v09.py", line 148, in restore
+    obj = cls(MemoryBodyLoop.restore(p['legacy_resource_and_cognitive_snapshot']),
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/memory_body_loop_v08.py", line 162, in restore
+    loop=BrainBodyLoop.restore(p['loop']);memory=DurableMemory.restore(p['memory'])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/brain_body_loop_v07.py", line 163, in restore
+    obj.sensory=SensoryRoutes.restore(p['sensory'],obj.physical)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e045c22ac582/zohraya/runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/interoception_v07.py", line 100, in restore
+    if obj.raw!=cls._owner_values(physical):raise ValueError('sensory owner values differ')
+                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: sensory owner values differ
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.950s
+
+FAILED (errors=1)

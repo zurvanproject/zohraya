@@ -1,0 +1,10 @@
+test_catalog_has_existing_entrypoints_without_initializing_any_state (nasuraya.test_integration.IntegrationTests.test_catalog_has_existing_entrypoints_without_initializing_any_state) ... ok
+test_dispatch_does_not_use_shell_or_reinterpret_arguments (nasuraya.test_integration.IntegrationTests.test_dispatch_does_not_use_shell_or_reinterpret_arguments) ... ok
+test_genome_dialogue_affect_body_and_cold_replay_share_one_checkout (nasuraya.test_integration.IntegrationTests.test_genome_dialogue_affect_body_and_cold_replay_share_one_checkout) ... ok
+test_native_cli_retains_commands_from_all_merged_lineages (nasuraya.test_integration.IntegrationTests.test_native_cli_retains_commands_from_all_merged_lineages) ... ok
+test_stdlib_catalog_works_without_optional_modules (nasuraya.test_integration.IntegrationTests.test_stdlib_catalog_works_without_optional_modules) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 4.377s
+
+OK

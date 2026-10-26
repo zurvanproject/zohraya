@@ -1,0 +1,31 @@
+name: Nasuraya prediction router offline gate
+on:
+  pull_request:
+    paths:
+      - 'experiments/affect_api_20261023/**'
+      - '.github/workflows/nasuraya-prediction-router.yml'
+  push:
+    branches: ['nasuraya/affect-api-session-20261023', 'nasuraya/evidence-gated-router-20261026']
+    paths:
+      - 'experiments/affect_api_20261023/**'
+      - '.github/workflows/nasuraya-prediction-router.yml'
+permissions:
+  contents: read
+jobs:
+  offline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify routing, independent gates, and preserved spending guards
+        run: >-
+          python3 -m unittest
+          experiments.affect_api_20261023.test_prediction_router
+          experiments.affect_api_20261023.test_paired_comparison
+          experiments.affect_api_20261023.test_self_model_step
+          experiments.affect_api_20261023.test_session
+          experiments.affect_api_20261023.test_clarification -v
+      - name: Replay existing evidence without live API or credentials
+        run: python3 -m experiments.affect_api_20261023.evaluate_prediction_router --as-of 2026-10-26T00:00:00+00:00 --output /tmp/router-assessment.json

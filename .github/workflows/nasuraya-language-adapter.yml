@@ -1,0 +1,44 @@
+name: Nasuraya language weight adapter
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_language_adapter/**'
+      - 'examples/nasuraya_lm_internals/**'
+      - 'examples/nasuraya_language_choice/**'
+      - 'examples/nasuraya_language_transfer/**'
+      - 'examples/nasuraya_language_body/**'
+      - 'examples/nasuraya_body_loop/language_advisor.py'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - '.github/workflows/nasuraya-language-adapter.yml'
+  push:
+    branches: [main, 'nasuraya/**']
+    paths:
+      - 'examples/nasuraya_language_adapter/**'
+      - 'examples/nasuraya_lm_internals/**'
+      - 'examples/nasuraya_language_choice/**'
+      - 'examples/nasuraya_language_transfer/**'
+      - 'examples/nasuraya_language_body/**'
+      - 'examples/nasuraya_body_loop/language_advisor.py'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - '.github/workflows/nasuraya-language-adapter.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  adapter-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify masking, held-out exclusion and actual gradient updates
+        run: |
+          python3 -m venv .weight-env
+          .weight-env/bin/python -m pip install 'torch==2.8.0+cpu' --index-url https://download.pytorch.org/whl/cpu
+          .weight-env/bin/python -m pip install -r examples/nasuraya_language_adapter/requirements.lock.txt
+          .weight-env/bin/python -m pip install -r examples/nasuraya_agent_loop/requirements-api.lock.txt
+          .weight-env/bin/python -m unittest examples.nasuraya_lm_internals.test_probe examples.nasuraya_language_adapter.test_adapter examples.nasuraya_language_choice.test_choice examples.nasuraya_language_transfer.test_transfer examples.nasuraya_language_body.test_body_language -v

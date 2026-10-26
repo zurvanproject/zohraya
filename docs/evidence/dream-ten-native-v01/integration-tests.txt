@@ -1,0 +1,16 @@
+test_input_validation (examples.nasuraya_research.test_dream_ten.DreamTenTests.test_input_validation) ... ok
+test_no_improvement_rejected (examples.nasuraya_research.test_dream_ten.DreamTenTests.test_no_improvement_rejected) ... ok
+test_unsafe_winner_rejected (examples.nasuraya_research.test_dream_ten.DreamTenTests.test_unsafe_winner_rejected) ... ok
+test_explicit_emergency_scale_is_forwarded_unchanged (examples.nasuraya_research.test_dream_ten_native.NativeDreamTests.test_explicit_emergency_scale_is_forwarded_unchanged) ... ok
+test_missing_measurements_fail_and_no_motion_is_distinct_from_valid (examples.nasuraya_research.test_dream_ten_native.NativeDreamTests.test_missing_measurements_fail_and_no_motion_is_distinct_from_valid) ... ok
+test_policy_changes_real_com_and_not_source_or_limits (examples.nasuraya_research.test_dream_ten_native.NativeDreamTests.test_policy_changes_real_com_and_not_source_or_limits) ... ok
+test_scale_one_is_existing_governor_and_actual_stock_debits (examples.nasuraya_research.test_dream_ten_native.NativeDreamTests.test_scale_one_is_existing_governor_and_actual_stock_debits) ... ok
+test_zero_friction_failure_is_retained (examples.nasuraya_research.test_dream_ten_native.NativeDreamTests.test_zero_friction_failure_is_retained) ... ok
+test_energy_and_support_regression_rejected (examples.nasuraya_research.test_dream_ten_native.SeparationTests.test_energy_and_support_regression_rejected) ... ok
+test_mismatch_and_validity_types_rejected (examples.nasuraya_research.test_dream_ten_native.SeparationTests.test_mismatch_and_validity_types_rejected) ... ok
+test_test_results_do_not_choose_another_candidate (examples.nasuraya_research.test_dream_ten_native.SeparationTests.test_test_results_do_not_choose_another_candidate) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 7.092s
+
+OK

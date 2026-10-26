@@ -1,0 +1,47 @@
+name: Nasuraya pinned research adapters
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_research/**'
+      - '.github/workflows/nasuraya-research.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cpu-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install isolated CPU dependencies
+        run: |
+          python -m venv .research-ci
+          .research-ci/bin/python -m pip install -r examples/nasuraya_research/requirements-cpu.txt
+      - name: Verify exact vendoring and adapter invariants
+        run: .research-ci/bin/python -m unittest examples.nasuraya_research.test_adapters -v
+      - name: Check adaptive learning controller imports
+        run: .research-ci/bin/python -m unittest examples.nasuraya_research.test_adaptive_support -v
+      - name: Run ten-step native motion comparison
+        run: .research-ci/bin/python -m examples.nasuraya_research.ten_step_benchmark
+      - name: Preserve existing metacognitive guards and experience
+        run: .research-ci/bin/python -m unittest examples.nasuraya_self_model.test_metacognitive_control examples.nasuraya_self_model.test_monitor examples.nasuraya_self_model.test_embodied_learning -v
+      - name: Measure fresh paired native trials and sensory inference
+        if: github.event_name == 'workflow_dispatch'
+        run: .research-ci/bin/python -m examples.nasuraya_research.evaluate --with-tensor --output /tmp/nasuraya-research-pilot
+
+  native-dream-ten:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Check actual native measurements, fail-safe and train-test separation
+        run: python -m unittest examples.nasuraya_research.test_dream_ten examples.nasuraya_research.test_dream_ten_native -v
+      - name: Reproduce bounded independent native experiment
+        if: github.event_name == 'workflow_dispatch'
+        run: python -m examples.nasuraya_research.dream_ten_native --output /tmp/dream-ten-native

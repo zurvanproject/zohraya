@@ -1,0 +1,39 @@
+test_atomic_tree_uses_only_fixed_paths_and_nonforce_ref (continuity_host.test_research.BackendTests.test_atomic_tree_uses_only_fixed_paths_and_nonforce_ref) ... ok
+test_live_entry_rejects_nondefault_branch (continuity_host.test_research.BackendTests.test_live_entry_rejects_nondefault_branch) ... ok
+test_only_404_is_missing_not_auth_failure (continuity_host.test_research.BackendTests.test_only_404_is_missing_not_auth_failure) ... ok
+test_snapshot_verifies_anchor_and_source_bound_memory (continuity_host.test_research.BackendTests.test_snapshot_verifies_anchor_and_source_bound_memory) ... ok
+test_uninitialized_auto_uses_original_backend (continuity_host.test_research.BackendTests.test_uninitialized_auto_uses_original_backend) ... ok
+test_claim_conflict_never_executes (continuity_host.test_research.HostTests.test_claim_conflict_never_executes) ... ok
+test_claim_precedes_experiment_and_budget_shared (continuity_host.test_research.HostTests.test_claim_precedes_experiment_and_budget_shared) ... ok
+test_complete_curriculum_does_not_consume_new_slot (continuity_host.test_research.HostTests.test_complete_curriculum_does_not_consume_new_slot) ... ok
+test_contact_during_experiment_discards_learning (continuity_host.test_research.HostTests.test_contact_during_experiment_discards_learning) ... ok
+test_corrupted_memory_stops_before_claim (continuity_host.test_research.HostTests.test_corrupted_memory_stops_before_claim) ... ok
+test_fabricated_worker_result_rejected (continuity_host.test_research.HostTests.test_fabricated_worker_result_rejected) ... ok
+test_failed_final_cas_keeps_claim_and_old_memory (continuity_host.test_research.HostTests.test_failed_final_cas_keeps_claim_and_old_memory) ... ok
+test_initialize_preserves_pause_and_consumed_budget (continuity_host.test_research.HostTests.test_initialize_preserves_pause_and_consumed_budget) ... ok
+test_initialize_refuses_existing_or_unresolved_state (continuity_host.test_research.HostTests.test_initialize_refuses_existing_or_unresolved_state) ... ok
+test_pause_after_claim_cancels (continuity_host.test_research.HostTests.test_pause_after_claim_cancels) ... ok
+test_pause_during_experiment_discards_learning (continuity_host.test_research.HostTests.test_pause_during_experiment_discards_learning) ... ok
+test_paused_or_recent_contact_do_not_run (continuity_host.test_research.HostTests.test_paused_or_recent_contact_do_not_run) ... ok
+test_real_worker_through_host (continuity_host.test_research.HostTests.test_real_worker_through_host) ... ok
+test_timeout_consumes_budget_without_learning (continuity_host.test_research.HostTests.test_timeout_consumes_budget_without_learning) ... ok
+test_unknown_result_keeps_barrier (continuity_host.test_research.HostTests.test_unknown_result_keeps_barrier) ... ok
+test_boolean_must_be_boolean (continuity_host.test_research.LabTests.test_boolean_must_be_boolean) ... ok
+test_changed_receipt_rejected (continuity_host.test_research.LabTests.test_changed_receipt_rejected) ... ok
+test_child_receives_no_credentials (continuity_host.test_research.LabTests.test_child_receives_no_credentials) ... ok
+test_duplicate_history_rejected (continuity_host.test_research.LabTests.test_duplicate_history_rejected) ... ok
+test_engine_drift_rejected (continuity_host.test_research.LabTests.test_engine_drift_rejected) ... ok
+test_four_rounds_then_stops (continuity_host.test_research.LabTests.test_four_rounds_then_stops) ... ok
+test_future_and_conflict_abstain (continuity_host.test_research.LabTests.test_future_and_conflict_abstain) ... ok
+test_invalid_id (continuity_host.test_research.LabTests.test_invalid_id) ... ok
+test_parent_input_is_not_mutated (continuity_host.test_research.LabTests.test_parent_input_is_not_mutated) ... ok
+test_policy_without_evidence_rejected (continuity_host.test_research.LabTests.test_policy_without_evidence_rejected) ... ok
+test_real_cold_process_continuation (continuity_host.test_research.LabTests.test_real_cold_process_continuation) ... ok
+test_replay_does_not_rewind_latest_policy (continuity_host.test_research.LabTests.test_replay_does_not_rewind_latest_policy) ... ok
+test_train_and_validation_are_distinct (continuity_host.test_research.LabTests.test_train_and_validation_are_distinct) ... ok
+test_validation_regression_rejects_candidate (continuity_host.test_research.LabTests.test_validation_regression_rejects_candidate) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 0.285s
+
+OK

@@ -1,0 +1,21 @@
+{
+  "schema": "nasuraya-metacognitive-api-validation/1",
+  "api_tests": {
+    "passed": 78,
+    "new_metacognitive_tests": 13
+  },
+  "legacy_body_loop_tests": {
+    "passed": 16
+  },
+  "sdk": "openai==3.29.0",
+  "live_sessions": 4,
+  "verified_native_cycles": 4,
+  "learned_episodes": 4,
+  "native_tracked_files_unchanged": 72,
+  "cold_replay": {
+    "network_calls": 0,
+    "new_body_cycles": 0,
+    "knowledge_unchanged": true
+  },
+  "remote_ci": "not run when this local evidence was written"
+}

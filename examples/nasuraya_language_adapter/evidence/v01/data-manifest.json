@@ -1,0 +1,25 @@
+{
+  "schema": "nasuraya-language-weight-evaluation/1",
+  "protocol_sha256": "807cb9d584942018df5602f35e975de28f5b08b5675dc669bc0b5c1bc6a4490a",
+  "dataset_sha256": "88b1c86b383326779553485c97851a0663446ae4ac2b449d8cdf6387f0bcc675",
+  "original_live_memory_sha256": "ff55bf8177524e8f7e296d14582dac7091a38fc751ed71cac19c064f3a882d64",
+  "original_live_memory_unchanged": true,
+  "new_native_cycles": 72,
+  "new_native_labels_learned_by_old_self_model": false,
+  "splits": {
+    "train": {
+      "ADMIT": 20,
+      "DEFER": 32
+    },
+    "held_out": {
+      "ADMIT": 8,
+      "DEFER": 16
+    }
+  },
+  "split_initial_checkpoints_disjoint": true,
+  "split_prompts_disjoint": true,
+  "label_databases": {
+    "native-labels.sqlite": "8579d11b25121370db0844be33f1a545c49c28a167c5609cc2ba9904595bd5da",
+    "live-labels.sqlite": "0582e2833401f899e8a76b21f609ababa4a57cf1d5a50a61f87ed4e62025e3d3"
+  }
+}

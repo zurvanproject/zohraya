@@ -1,0 +1,17 @@
+{
+  "scope": "pure state-transition tests with injected times, not 24h wall-clock execution",
+  "tests_passed": 10,
+  "before_threshold": {
+    "eligible": false,
+    "reason": "recent_contact"
+  },
+  "at_threshold": {
+    "eligible": true,
+    "reason": "absence_window_elapsed"
+  },
+  "source_sha256": {
+    "gate.py": "26a082342b44cca50623c8134ea7ce63981425b27e6d997ed81c9bc39721bcf4",
+    "policy.json": "37bbfc159e7da4d57656c7c527c94601b7ab2a9afd96bb5b696da405c1ead34e",
+    "test_gate.py": "5262b40ab6dcecd42e631fd296b52049d7517315bfa9866e36f70bcf2a7960e5"
+  }
+}

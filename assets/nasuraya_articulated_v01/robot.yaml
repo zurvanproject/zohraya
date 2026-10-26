@@ -1,0 +1,381 @@
+id: nasuraya
+model: nasuraya.xml
+anchor_body: torso
+keybodies:
+- pelvis
+- torso
+- head
+- upper_arm_L
+- forearm_L
+- hand_L
+- thigh_L
+- shin_L
+- metatarsal_L
+- foot_L
+- upper_arm_R
+- forearm_R
+- hand_R
+- thigh_R
+- shin_R
+- metatarsal_R
+- foot_R
+- tail_1
+- tail_4
+ee_bodies:
+- foot_L
+- foot_R
+- hand_L
+- hand_R
+feet_bodies:
+- foot_L
+- foot_R
+foot_sites:
+- foot_contact_L
+- foot_contact_R
+foot_geoms:
+- ball_L
+- toe_pad_L_1
+- toe_pad_L_2
+- toe_pad_L_3
+- ball_R
+- toe_pad_R_1
+- toe_pad_R_2
+- toe_pad_R_3
+foot_sole_z: 0.0
+init_height: 1.4249999999999998
+init_joint_pos:
+  waist_yaw: 0.0
+  waist_pitch: 0.0
+  waist_roll: 0.0
+  neck_yaw: 0.0
+  neck_pitch: 0.0
+  shoulder_pitch_L: 0.0
+  shoulder_roll_L: 0.0
+  shoulder_yaw_L: 0.0
+  elbow_L: 0.0
+  wrist_pitch_L: 0.0
+  wrist_roll_L: 0.0
+  finger_flex_L_1: 0.0
+  finger_flex_L_2: 0.0
+  finger_flex_L_3: 0.0
+  finger_flex_L_4: 0.0
+  finger_flex_L_5: 0.0
+  hip_yaw_L: 0.0
+  hip_roll_L: 0.0
+  hip_pitch_L: 0.0
+  knee_L: 0.0
+  hock_pitch_L: 0.0
+  hock_roll_L: 0.0
+  mtp_L: 0.0
+  toe_flex_L_1: 0.0
+  toe_flex_L_2: 0.0
+  toe_flex_L_3: 0.0
+  shoulder_pitch_R: 0.0
+  shoulder_roll_R: 0.0
+  shoulder_yaw_R: 0.0
+  elbow_R: 0.0
+  wrist_pitch_R: 0.0
+  wrist_roll_R: 0.0
+  finger_flex_R_1: 0.0
+  finger_flex_R_2: 0.0
+  finger_flex_R_3: 0.0
+  finger_flex_R_4: 0.0
+  finger_flex_R_5: 0.0
+  hip_yaw_R: 0.0
+  hip_roll_R: 0.0
+  hip_pitch_R: 0.0
+  knee_R: 0.0
+  hock_pitch_R: 0.0
+  hock_roll_R: 0.0
+  mtp_R: 0.0
+  toe_flex_R_1: 0.0
+  toe_flex_R_2: 0.0
+  toe_flex_R_3: 0.0
+  tail_yaw_1: 0.0
+  tail_pitch_1: 0.0
+  tail_yaw_2: 0.0
+  tail_pitch_2: 0.0
+  tail_yaw_3: 0.0
+  tail_pitch_3: 0.0
+  tail_yaw_4: 0.0
+  tail_pitch_4: 0.0
+joints:
+  waist_yaw:
+    effort: 180
+    stiffness: 800
+    damping: 45
+    armature: 0.2
+  waist_pitch:
+    effort: 180
+    stiffness: 800
+    damping: 45
+    armature: 0.2
+  waist_roll:
+    effort: 180
+    stiffness: 800
+    damping: 45
+    armature: 0.2
+  neck_yaw:
+    effort: 35
+    stiffness: 120
+    damping: 10
+    armature: 0.05
+  neck_pitch:
+    effort: 35
+    stiffness: 120
+    damping: 10
+    armature: 0.05
+  shoulder_pitch_L:
+    effort: 90
+    stiffness: 300
+    damping: 22
+    armature: 0.05
+  shoulder_roll_L:
+    effort: 90
+    stiffness: 300
+    damping: 22
+    armature: 0.05
+  shoulder_yaw_L:
+    effort: 90
+    stiffness: 300
+    damping: 22
+    armature: 0.05
+  elbow_L:
+    effort: 75
+    stiffness: 260
+    damping: 18
+    armature: 0.05
+  wrist_pitch_L:
+    effort: 20
+    stiffness: 80
+    damping: 6
+    armature: 0.01
+  wrist_roll_L:
+    effort: 20
+    stiffness: 80
+    damping: 6
+    armature: 0.01
+  finger_flex_L_1:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  finger_flex_L_2:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  finger_flex_L_3:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  finger_flex_L_4:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  finger_flex_L_5:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  hip_yaw_L:
+    effort: 350
+    stiffness: 1200
+    damping: 65
+    armature: 0.3
+  hip_roll_L:
+    effort: 350
+    stiffness: 1200
+    damping: 65
+    armature: 0.3
+  hip_pitch_L:
+    effort: 350
+    stiffness: 1200
+    damping: 65
+    armature: 0.3
+  knee_L:
+    effort: 350
+    stiffness: 1200
+    damping: 65
+    armature: 0.3
+  hock_pitch_L:
+    effort: 220
+    stiffness: 800
+    damping: 40
+    armature: 0.15
+  hock_roll_L:
+    effort: 150
+    stiffness: 500
+    damping: 30
+    armature: 0.1
+  mtp_L:
+    effort: 160
+    stiffness: 700
+    damping: 35
+    armature: 0.08
+  toe_flex_L_1:
+    effort: 25
+    stiffness: 140
+    damping: 8
+    armature: 0.015
+  toe_flex_L_2:
+    effort: 25
+    stiffness: 140
+    damping: 8
+    armature: 0.015
+  toe_flex_L_3:
+    effort: 25
+    stiffness: 140
+    damping: 8
+    armature: 0.015
+  shoulder_pitch_R:
+    effort: 90
+    stiffness: 300
+    damping: 22
+    armature: 0.05
+  shoulder_roll_R:
+    effort: 90
+    stiffness: 300
+    damping: 22
+    armature: 0.05
+  shoulder_yaw_R:
+    effort: 90
+    stiffness: 300
+    damping: 22
+    armature: 0.05
+  elbow_R:
+    effort: 75
+    stiffness: 260
+    damping: 18
+    armature: 0.05
+  wrist_pitch_R:
+    effort: 20
+    stiffness: 80
+    damping: 6
+    armature: 0.01
+  wrist_roll_R:
+    effort: 20
+    stiffness: 80
+    damping: 6
+    armature: 0.01
+  finger_flex_R_1:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  finger_flex_R_2:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  finger_flex_R_3:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  finger_flex_R_4:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  finger_flex_R_5:
+    effort: 4
+    stiffness: 20
+    damping: 1
+    armature: 0.002
+  hip_yaw_R:
+    effort: 350
+    stiffness: 1200
+    damping: 65
+    armature: 0.3
+  hip_roll_R:
+    effort: 350
+    stiffness: 1200
+    damping: 65
+    armature: 0.3
+  hip_pitch_R:
+    effort: 350
+    stiffness: 1200
+    damping: 65
+    armature: 0.3
+  knee_R:
+    effort: 350
+    stiffness: 1200
+    damping: 65
+    armature: 0.3
+  hock_pitch_R:
+    effort: 220
+    stiffness: 800
+    damping: 40
+    armature: 0.15
+  hock_roll_R:
+    effort: 150
+    stiffness: 500
+    damping: 30
+    armature: 0.1
+  mtp_R:
+    effort: 160
+    stiffness: 700
+    damping: 35
+    armature: 0.08
+  toe_flex_R_1:
+    effort: 25
+    stiffness: 140
+    damping: 8
+    armature: 0.015
+  toe_flex_R_2:
+    effort: 25
+    stiffness: 140
+    damping: 8
+    armature: 0.015
+  toe_flex_R_3:
+    effort: 25
+    stiffness: 140
+    damping: 8
+    armature: 0.015
+  tail_yaw_1:
+    effort: 60
+    stiffness: 100
+    damping: 8
+    armature: 0.04
+  tail_pitch_1:
+    effort: 60
+    stiffness: 100
+    damping: 8
+    armature: 0.04
+  tail_yaw_2:
+    effort: 35
+    stiffness: 70
+    damping: 8
+    armature: 0.04
+  tail_pitch_2:
+    effort: 35
+    stiffness: 70
+    damping: 8
+    armature: 0.04
+  tail_yaw_3:
+    effort: 35
+    stiffness: 70
+    damping: 8
+    armature: 0.04
+  tail_pitch_3:
+    effort: 35
+    stiffness: 70
+    damping: 8
+    armature: 0.04
+  tail_yaw_4:
+    effort: 35
+    stiffness: 70
+    damping: 8
+    armature: 0.04
+  tail_pitch_4:
+    effort: 35
+    stiffness: 70
+    damping: 8
+    armature: 0.04
+action_scale: 0.25
+description: Nasuraya 165 kg experimental articulated body; untrained.
+nconmax: 256
+njmax: 1500

@@ -1,0 +1,6 @@
+{
+  "initial_evaluation": "Stopped at first held-out assertion: Python tuple versus JSON list equality. Compared canonical digest instead; no protocol, case, threshold, label or policy was changed.",
+  "cold_command": "Corrected subprocess module name from __main__ to the fully qualified module before the successful evaluation reached cold checks.",
+  "test_invocations": "Initial direct body-loop discovery lacked the documented legacy import path; full motion discovery lacked NASURAYA_NATIVE_ROOT and private fixtures. Correct documented public commands passed. Optional SDK cases were initially skipped, then pinned dependencies installed and both cases passed.",
+  "initial_evaluation_log": "Traceback (most recent call last):\n  File \"<frozen runpy>\", line 198, in _run_module_as_main\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"REPOSITORY/examples/nasuraya_self_model/run_sprint.py\", line 126, in <module>\n    if a.mode=='evaluate':evaluate(a.output)\n                          ^^^^^^^^^^^^^^^^^^\n  File \"REPOSITORY/examples/nasuraya_self_model/run_sprint.py\", line 85, in evaluate\n    assert s.knowledge()==(parent.knowledge() if isinstance(parent,LearningSession) else parent.verify())\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+}

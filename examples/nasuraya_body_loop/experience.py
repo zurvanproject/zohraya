@@ -126,6 +126,95 @@ class ExperienceController:
         return dict(state=state, native=self.loop.status(), external_model_api_used=False,
                     background_process_started=False)
 
+    def preview(self, snapshot, duration_s):
+        """Read prior measured memory before a caller chooses an action."""
+        validate_duration(duration_s)
+        return plan(self._load(), snapshot, duration_s)
+
+    def reserve_external(self, request_id, native_id, snapshot, duration_s, preferred):
+        """Freeze a forecast for a caller-owned native intent; never execute it.
+
+        Dialogue and experience share the native receipt instead of issuing two
+        cycles. The existing BodyLoop lock serializes both ledgers.
+        """
+        from experiments.affect_api_20261023 import prediction_router as router
+        from experiments.affect_api_20261023 import paired_comparison as paired
+        from experiments.affect_api_20261023.evaluate_prediction_router import current_scope_sha256
+        validate_duration(duration_s)
+        if (not isinstance(request_id, str) or not re.fullmatch(r'[A-Za-z0-9_.-]{1,64}', request_id)
+                or native_id != 'dialogue-body:' + request_id or preferred not in ('walk', 'observe')):
+            raise ValueError('explicit dialogue receipt binding required')
+        state = self._load()
+        binding = dict(native_id=native_id, duration_s=duration_s, snapshot=snapshot, external=True)
+        old = state['intents'].get(request_id)
+        if old is not None:
+            if (any(canonical(old.get(k)) != canonical(v) for k, v in binding.items())
+                    or old['plan']['preferred'] != preferred):
+                raise ValueError('conflicting external experience reservation')
+            return deepcopy(old['plan'])
+        if (any(v['result'] is None for v in state['intents'].values())
+                or self.loop.engine.get(native_id) is not None):
+            raise InterruptedExecution('pending experience or already-owned native receipt')
+        if self.loop.status()['actions_remaining'] <= 0:
+            raise ValueError('persistent action budget exhausted')
+        if self.loop.observe()['checkpoint_sha256'] != snapshot['checkpoint_sha256']:
+            raise ValueError('forecast observation is stale')
+        proposed = plan(state, snapshot, duration_s)
+        proposed['preferred'] = preferred
+        before = metrics(snapshot)
+        key = canonical([proposed['context'], preferred, duration_s])
+        # Only completed, source-linked observations for the same preference
+        # become prediction history. Neither future outcomes nor prose enter it.
+        history = []
+        for episode in state['episodes'] if state['flags']['memory'] and state['flags']['prediction'] else []:
+            intent = state['intents'][episode['id']]
+            result = intent['result']
+            if result is None or intent['plan']['preferred'] != preferred:
+                continue
+            prediction = result['prediction']
+            if prediction.get('actual') is None:
+                continue
+            history.append(dict(id=episode['id'], fixture=intent['plan']['context'],
+                                duration_s=intent['duration_s'], observed=prediction['before'],
+                                actual_metrics=prediction['actual'], actual_action=result['native_receipt']['actual_action']))
+        observation = dict(id=request_id, fixture=proposed['context'], duration_s=duration_s,
+                           observed=before, proposed_host_preference=preferred)
+        if preferred == 'walk':
+            routed = router.route_predictions([observation], history, scope_sha256=current_scope_sha256())
+            forecast, gate = routed['predictions'][0], routed['numeric_gate']
+        else:
+            # PR #78's paid contract covers proposed walk only. The local
+            # baseline can still recall observe receipts without broadening it.
+            forecast = paired.baselines(observation, history)['nearest_episode']
+            has_memory = any(e['fixture'] == observation['fixture'] for e in history)
+            if not has_memory:
+                forecast['predicted_action'] = preferred
+            forecast['numeric_source'] = forecast['action_source'] = (
+                'nearest_episode' if has_memory else 'persistence_fallback')
+            gate = dict(eligible=False, reasons=['observe_outside_paid_comparison_contract'])
+        proposed['prediction'] = dict(key=key, before=before, expected=forecast['predicted_metrics'],
+            predicted_action=forecast['predicted_action'], method=forecast['numeric_source'],
+            action_method=forecast['action_source'], history_ids=[e['id'] for e in history],
+            history_sha256=digest(history), numeric_gate=gate, new_api_calls=0,
+            scope='forecast only; no body permission or policy promotion')
+        proposed['selection_authority'] = 'dialogue_affective_plan_with_native_veto'
+        state['intents'][request_id] = dict(binding, plan=proposed, result=None,
+            native_request=self.loop.make_request(native_id, snapshot, duration_s, preferred))
+        self._save(state)
+        return deepcopy(proposed)
+
+    def complete_external(self, request_id, *, replayed):
+        state = self._load()
+        intent = state['intents'].get(request_id)
+        if intent is None or intent.get('external') is not True:
+            raise ValueError('reserved external experience required')
+        if intent['result'] is not None:
+            return dict(deepcopy(intent['result']), replayed=True, this_call_native_cycles=0)
+        record = self.loop.engine.get(intent['native_id'])
+        if record is None or record['status'] != 'complete':
+            raise InterruptedExecution('external native outcome unresolved; no execution allowed')
+        return self._finish(state, request_id, record, replayed=replayed)
+
     def _finish(self, state, request_id, record, *, replayed):
         intent = state['intents'][request_id]
         request = record['request']; execution = request.get('execution', {})
@@ -141,6 +230,8 @@ class ExperienceController:
             error = sum(abs(after[k]-prediction['expected'][k]) for k in METRICS)/len(METRICS)
             prediction.update(actual=after, mean_absolute_error=error,
                               source='native-decision://' + record['id'] + '/' + digest(record))
+            if 'predicted_action' in prediction:
+                prediction['action_correct'] = prediction['predicted_action'] == receipt['actual_action']
             if state['flags']['prediction']:
                 state['error_ema'] = .8*state['error_ema'] + .2*error
                 model = state['predictors'].setdefault(prediction['key'], dict(count=0, mean_delta=dict.fromkeys(METRICS, 0.)))
@@ -180,6 +271,8 @@ class ExperienceController:
             raise ValueError('bounded request ID required')
         state = self._load(); old = state['intents'].get(request_id)
         if old:
+            if old.get('external') is True:
+                raise InterruptedExecution('caller-owned intent; recover through dialogue, never step again')
             if old['duration_s'] != duration_s:
                 raise ValueError('conflicting experience replay')
             if old['result'] is not None:
@@ -257,3 +350,13 @@ class ExperienceController:
             self._save(state)
         return dict(enabled=True, changed=changed, summaries=deepcopy(state['summaries']),
                     hypotheses=deepcopy(state['hypotheses']), self_models=deepcopy(state['self_models']))
+
+
+# Preserve the historical API packet import surface without mixing stores.
+def packet(*args, **kwargs):
+    from .api_experience import packet as implementation
+    return implementation(*args, **kwargs)
+
+def continuation_input(*args, **kwargs):
+    from .api_experience import continuation_input as implementation
+    return implementation(*args, **kwargs)

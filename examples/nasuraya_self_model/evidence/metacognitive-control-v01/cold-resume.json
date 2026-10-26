@@ -1,0 +1,62 @@
+{
+  "checkpoint_sha256": "7ec9b414f94984d03b3bc133f7e8423d420f46aed0a7d433c2787885317bdbfd",
+  "decision": {
+    "report": {
+      "schema": "nasuraya-evidence-self-model/1",
+      "observed": {
+        "native_sha": "8e401616f90076a37bba6adc0a1f16a57e6c4d082077d873d502c207164d8598",
+        "revision": 1,
+        "time_s": 12.99999999999997,
+        "minimum": {
+          "HR": 63.65585507463744,
+          "RR": 14.849411959839113,
+          "energy": 0.9987687014204357,
+          "hydration": 0.9999735363561064,
+          "temperature": 37.00005646623787,
+          "sympathetic": 0.26351844672958247,
+          "parasympathetic": 0.6178314469738956,
+          "muscle_tone": 0.2892862863139739,
+          "fatigue": 0.019870419638251844,
+          "pain": 0.11836186450984922,
+          "arousal": 0.3412682281214931,
+          "valence": 0.03165800683553909,
+          "posture": "double_support",
+          "balance": 1.0,
+          "breath_depth": 1.6142375634161363,
+          "sleep_pressure": 0.12027512212971829
+        }
+      },
+      "inferred": {
+        "context": "90b39146a2a4d21167b5f2c9af0c8ab2864b731a2a7ee2d4f7ef30f2f3d15f81",
+        "samples": 4,
+        "successes": 4,
+        "failures": 0,
+        "probability": 0.8333333333333334,
+        "unseen_context": false,
+        "kind": "Beta(1,1) mean for verified software requested-action admission; not globally calibrated"
+      },
+      "unknown": [
+        "subjective_experience",
+        "physical_world_without_sensors",
+        "empirical_body_calibration"
+      ],
+      "recommendation": "continue_with_native_guards",
+      "reasons": [],
+      "last_verified_effect": {
+        "requested": "walk",
+        "actual": "protect",
+        "admitted": false,
+        "receipt_sha256": "2f7f58716a0b0e56c31de9aa74c8b93773548737b363186763f0e50266c4a27d",
+        "native_prediction_error": 0.0
+      },
+      "pending": [],
+      "scope": "local functional metacognition; no native action issued"
+    },
+    "probability": 0.8333333333333334,
+    "choice": "request_walk",
+    "reasons": [
+      "evidence gate passed; native guards still apply"
+    ]
+  },
+  "native_actions_executed": 0
+}

@@ -1,0 +1,20 @@
+test_catalog_has_existing_entrypoints_without_initializing_any_state (nasuraya.test_integration.IntegrationTests.test_catalog_has_existing_entrypoints_without_initializing_any_state) ... ok
+test_dialogue_memory_forecast_and_consolidation_survive_cold_processes (nasuraya.test_integration.IntegrationTests.test_dialogue_memory_forecast_and_consolidation_survive_cold_processes) ... ok
+test_dispatch_does_not_use_shell_or_reinterpret_arguments (nasuraya.test_integration.IntegrationTests.test_dispatch_does_not_use_shell_or_reinterpret_arguments) ... ok
+test_genome_dialogue_affect_body_and_cold_replay_share_one_checkout (nasuraya.test_integration.IntegrationTests.test_genome_dialogue_affect_body_and_cold_replay_share_one_checkout) ... ok
+test_native_cli_retains_commands_from_all_merged_lineages (nasuraya.test_integration.IntegrationTests.test_native_cli_retains_commands_from_all_merged_lineages) ... ok
+test_stdlib_catalog_works_without_optional_modules (nasuraya.test_integration.IntegrationTests.test_stdlib_catalog_works_without_optional_modules) ... ok
+test_actual_audit_and_projection_preserve_saved_body (nasuraya.test_self_observe.NativeSelfObservationTests.test_actual_audit_and_projection_preserve_saved_body) ... ok
+test_cli_rejects_invalid_checkpoint_without_creating_state (nasuraya.test_self_observe.NativeSelfObservationTests.test_cli_rejects_invalid_checkpoint_without_creating_state) ... ok
+test_corrupt_checkpoint_is_rejected (nasuraya.test_self_observe.NativeSelfObservationTests.test_corrupt_checkpoint_is_rejected) ... ok
+test_existing_ledger_readout_leaves_file_and_schema_unchanged (nasuraya.test_self_observe.NativeSelfObservationTests.test_existing_ledger_readout_leaves_file_and_schema_unchanged) ... ok
+test_expired_native_checkpoint_remains_stale_and_unknown (nasuraya.test_self_observe.NativeSelfObservationTests.test_expired_native_checkpoint_remains_stale_and_unknown) ... ok
+test_hardlink_and_symlink_aliases_are_rejected (nasuraya.test_self_observe.NativeSelfObservationTests.test_hardlink_and_symlink_aliases_are_rejected) ... ok
+test_missing_session_and_active_writer_are_rejected (nasuraya.test_self_observe.NativeSelfObservationTests.test_missing_session_and_active_writer_are_rejected) ... ok
+test_nonfinite_and_backward_clocks_are_rejected (nasuraya.test_self_observe.NativeSelfObservationTests.test_nonfinite_and_backward_clocks_are_rejected) ... ok
+test_unresolved_execution_does_not_report_saved_body_as_current (nasuraya.test_self_observe.NativeSelfObservationTests.test_unresolved_execution_does_not_report_saved_body_as_current) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 16.608s
+
+OK

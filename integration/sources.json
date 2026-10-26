@@ -1,0 +1,613 @@
+{
+  "schema": "nasuraya.integration-sources/1",
+  "date": "2026-10-21",
+  "base_main": "884ae8a778bbe1d60fcf6e7b6d5263ed5945833a",
+  "pull_requests": [
+    {
+      "number": 2,
+      "title": "Add bounded Tadash self-maintenance and versioned identity ledger",
+      "head": "nasuraya/self-maintenance-identity-v01",
+      "sha": "748d5a44f9e5bf0f21bede97a7c16653edd90964",
+      "base": "nasuraya/agent-loop-v03",
+      "base_sha": "601653d9acc302563e98b0a8f4fa9e6ed15011d5",
+      "draft": true
+    },
+    {
+      "number": 3,
+      "title": "Add verified adaptive memory and bounded predictive self-model",
+      "head": "nasuraya/adaptive-memory-v01",
+      "sha": "5e0eac2a36e5072fc4bdae145640c37c590ee4d1",
+      "base": "nasuraya/self-maintenance-identity-v01",
+      "base_sha": "748d5a44f9e5bf0f21bede97a7c16653edd90964",
+      "draft": true
+    },
+    {
+      "number": 4,
+      "title": "Evaluate independent body trajectories and block invalid physical learning",
+      "head": "nasuraya/predictive-closed-loop-v02",
+      "sha": "b67a870d13ad9edef9e1f157c135884d39f88938",
+      "base": "nasuraya/adaptive-memory-v01",
+      "base_sha": "5e0eac2a36e5072fc4bdae145640c37c590ee4d1",
+      "draft": true
+    },
+    {
+      "number": 5,
+      "title": "Trace native pain support failure and block predictable invalid actions",
+      "head": "nasuraya/native-support-preflight-v03",
+      "sha": "e931ac040b750c0643a6af0809caf5f85d71f570",
+      "base": "nasuraya/predictive-closed-loop-v02",
+      "base_sha": "b67a870d13ad9edef9e1f157c135884d39f88938",
+      "draft": true
+    },
+    {
+      "number": 6,
+      "title": "Preserve body and memory across explicitly authorized follow-up missions",
+      "head": "nasuraya/explicit-continuation-v01",
+      "sha": "76836ad454654825f4fe4781542137095fbf2216",
+      "base": "main",
+      "base_sha": "e5057324433842f8a8255d99d0bf4f904ccc4e3a",
+      "draft": true
+    },
+    {
+      "number": 7,
+      "title": "Enable bounded sleep recovery and resume native motion after restart",
+      "head": "nasuraya/bounded-sleep-recovery-v01",
+      "sha": "49fd31c0f46ce51231203b198bb2433ed35133d7",
+      "base": "nasuraya/explicit-continuation-v01",
+      "base_sha": "76836ad454654825f4fe4781542137095fbf2216",
+      "draft": true
+    },
+    {
+      "number": 8,
+      "title": "Add regional tissue observer for Resonan, Spandar and circulation diagnostics",
+      "head": "nasuraya/tissue-observer-v01",
+      "sha": "f141b036b6341e60732c407eab320817b09b972e",
+      "base": "nasuraya/bounded-sleep-recovery-v01",
+      "base_sha": "49fd31c0f46ce51231203b198bb2433ed35133d7",
+      "draft": true
+    },
+    {
+      "number": 9,
+      "title": "Govern star landings with support prediction and confirmed waypoint feedback",
+      "head": "nasuraya/coordinated-star-v01",
+      "sha": "14410b0ae2748ba51bf84d360b9189665c435974",
+      "base": "nasuraya/tissue-observer-v01",
+      "base_sha": "f141b036b6341e60732c407eab320817b09b972e",
+      "draft": true
+    },
+    {
+      "number": 10,
+      "title": "Wake previously authorized body missions within a fixed host schedule",
+      "head": "nasuraya/scheduled-wakeup-v01",
+      "sha": "6114d8fb6c6e6e61307b80386787e72c36c8c534",
+      "base": "nasuraya/explicit-continuation-v01",
+      "base_sha": "76836ad454654825f4fe4781542137095fbf2216",
+      "draft": true
+    },
+    {
+      "number": 11,
+      "title": "Carry body-care decisions and evidence across finite awakenings",
+      "head": "nasuraya/care-continuity-v01",
+      "sha": "123467a39fdeb0db5b6527a1ed426b0da71ea91e",
+      "base": "nasuraya/scheduled-wakeup-v01",
+      "base_sha": "6114d8fb6c6e6e61307b80386787e72c36c8c534",
+      "draft": true
+    },
+    {
+      "number": 12,
+      "title": "Give live body missions bounded observed experience across awakenings",
+      "head": "nasuraya/experience-api-v01",
+      "sha": "72e5cb4573e7b7ae5d239fae881123e1af701a27",
+      "base": "nasuraya/care-continuity-v01",
+      "base_sha": "123467a39fdeb0db5b6527a1ed426b0da71ea91e",
+      "draft": true
+    },
+    {
+      "number": 13,
+      "title": "Bind remaining goals to durable intents and separate memory mechanisms",
+      "head": "nasuraya/goal-memory-eval-v01",
+      "sha": "b9830fcf46b7b5191b97b91a004d924efb9dc3e5",
+      "base": "nasuraya/experience-api-v01",
+      "base_sha": "72e5cb4573e7b7ae5d239fae881123e1af701a27",
+      "draft": true
+    },
+    {
+      "number": 14,
+      "title": "Reconcile orphan API creation and complete the bounded saved goal",
+      "head": "nasuraya/creation-reconciliation-v01",
+      "sha": "4db2caee1c4fd87d85c6c3c71a1179adc4cb0b7d",
+      "base": "nasuraya/goal-memory-eval-v01",
+      "base_sha": "b9830fcf46b7b5191b97b91a004d924efb9dc3e5",
+      "draft": true
+    },
+    {
+      "number": 15,
+      "title": "Audit anatomy provenance and bounded paired leg motion before visual refinement",
+      "head": "nasuraya/anatomy-motion-audit-v01",
+      "sha": "bd8849599be988ab083a1d2d0350b825ae1751c3",
+      "base": "nasuraya/coordinated-star-v01",
+      "base_sha": "14410b0ae2748ba51bf84d360b9189665c435974",
+      "draft": true
+    },
+    {
+      "number": 16,
+      "title": "Integrate bounded sleep recovery with live-agent memory and wakeups",
+      "head": "nasuraya/sleep-live-integration-v01",
+      "sha": "874e3a21b12ffec3bc3f995c532020de1ba919a8",
+      "base": "nasuraya/creation-reconciliation-v01",
+      "base_sha": "4db2caee1c4fd87d85c6c3c71a1179adc4cb0b7d",
+      "draft": true
+    },
+    {
+      "number": 17,
+      "title": "Preserve guarded support when reverse star closure leaves settle",
+      "head": "nasuraya/reverse-closure-v01",
+      "sha": "f4923538738942285d27fd7a8cd4eb784d4c419d",
+      "base": "nasuraya/coordinated-star-v01",
+      "base_sha": "14410b0ae2748ba51bf84d360b9189665c435974",
+      "draft": true
+    },
+    {
+      "number": 18,
+      "title": "Guard walking weight transfer to preserve reverse star touchdowns",
+      "head": "nasuraya/reverse-transfer-v01",
+      "sha": "9a5386887cc814940dddef2732f366a6cf8e32bd",
+      "base": "nasuraya/reverse-closure-v01",
+      "base_sha": "f4923538738942285d27fd7a8cd4eb784d4c419d",
+      "draft": true
+    },
+    {
+      "number": 19,
+      "title": "Persist bounded motion goals with the accumulated body state",
+      "head": "nasuraya/chained-motion-v01",
+      "sha": "89014b3cabc9820a61c9efcf80a3ae21ef661eac",
+      "base": "nasuraya/reverse-transfer-v01",
+      "base_sha": "9a5386887cc814940dddef2732f366a6cf8e32bd",
+      "draft": true
+    },
+    {
+      "number": 20,
+      "title": "Add genome v0.1 with resumable experience and independent aesthetic review",
+      "head": "nasuraya/genome-48-review-v01",
+      "sha": "ddc0b68a742b472a389fc94cd29bfd22b3b0dba5",
+      "base": "nasuraya/genome-48-v01",
+      "base_sha": "a3493720a1d163b129d23ec16a45b75fd9bf085e",
+      "draft": true
+    },
+    {
+      "number": 21,
+      "title": "Add bounded metacognitive admission control with a paired challenge",
+      "head": "nasuraya/metacognitive-control-v01",
+      "sha": "c1f7670f6ff195bb7dbe4fe5d677a011f6494cce",
+      "base": "nasuraya/genome-48-review-v01",
+      "base_sha": "ddc0b68a742b472a389fc94cd29bfd22b3b0dba5",
+      "draft": true
+    },
+    {
+      "number": 22,
+      "title": "Connect metacognitive admission control to live Agents API body tools",
+      "head": "nasuraya/metacognitive-api-v01",
+      "sha": "bea479c9577e6e15138f0ce7f007ab1221340308",
+      "base": "nasuraya/metacognitive-control-v01",
+      "base_sha": "c1f7670f6ff195bb7dbe4fe5d677a011f6494cce",
+      "draft": true
+    },
+    {
+      "number": 23,
+      "title": "Train actual language-model LoRA weights from verified body receipts",
+      "head": "nasuraya/lm-weight-adapter-v01",
+      "sha": "8ef55884ff7b7caea93fad038ff014a1980ecf1f",
+      "base": "nasuraya/metacognitive-api-v01",
+      "base_sha": "bea479c9577e6e15138f0ce7f007ab1221340308",
+      "draft": true
+    },
+    {
+      "number": 24,
+      "title": "Correct language-choice calibration and add read-only API advice",
+      "head": "nasuraya/lm-choice-advisor-v02",
+      "sha": "561c023e1b9674dbc241e4d8f987e87c23f64fbe",
+      "base": "nasuraya/lm-weight-adapter-v01",
+      "base_sha": "8ef55884ff7b7caea93fad038ff014a1980ecf1f",
+      "draft": true
+    },
+    {
+      "number": 25,
+      "title": "Test frozen language-advisor transfer to fatigue, pain and intermediate friction",
+      "head": "nasuraya/language-transfer-v03",
+      "sha": "533c3a22fa3863710b5d84a39167a97ce15883e4",
+      "base": "nasuraya/lm-choice-advisor-v02",
+      "base_sha": "561c023e1b9674dbc241e4d8f987e87c23f64fbe",
+      "draft": true
+    },
+    {
+      "number": 26,
+      "title": "Train body-informed language weights and measure input versus training effects",
+      "head": "nasuraya/body-informed-language-v04",
+      "sha": "12cc925db4f6f52b7fa23ef5ba9f0d437cb2cd20",
+      "base": "nasuraya/language-transfer-v03",
+      "base_sha": "533c3a22fa3863710b5d84a39167a97ce15883e4",
+      "draft": true
+    },
+    {
+      "number": 27,
+      "title": "Sprint 01: prospective experiential ablation over verified self-model memory",
+      "head": "nasuraya/evolution-sprint-01",
+      "sha": "8181cde45b2c80c134e68ce12fd15142eea17311",
+      "base": "nasuraya/metacognitive-api-v01",
+      "base_sha": "bea479c9577e6e15138f0ce7f007ab1221340308",
+      "draft": true
+    },
+    {
+      "number": 28,
+      "title": "Connect Sprint 01 experiential learning to durable native body execution",
+      "head": "nasuraya/evolution-sprint-01-integration",
+      "sha": "1cfbfef00e869c514f88d76782dfcb36e8fa3edf",
+      "base": "nasuraya/evolution-sprint-01",
+      "base_sha": "8181cde45b2c80c134e68ce12fd15142eea17311",
+      "draft": true
+    },
+    {
+      "number": 29,
+      "title": "Probe causal workspace access and recurrent dynamics with frozen controls",
+      "head": "nasuraya/causal-access-probe-v01",
+      "sha": "91da2b9f77ddb11ac2e78b45da3c6971364f7b77",
+      "base": "nasuraya/evolution-sprint-01-integration",
+      "base_sha": "1cfbfef00e869c514f88d76782dfcb36e8fa3edf",
+      "draft": true
+    },
+    {
+      "number": 30,
+      "title": "Expose local transformer internals with reversible head controls and exact offline replay",
+      "head": "nasuraya/lm-internal-access-v01",
+      "sha": "9063a9242c65785e1af800a7b08f9fb0019f05d4",
+      "base": "nasuraya/body-informed-language-v04",
+      "base_sha": "12cc925db4f6f52b7fa23ef5ba9f0d437cb2cd20",
+      "draft": true
+    },
+    {
+      "number": 31,
+      "title": "Prepare dedicated project-fund mandate and persistent proposal journal",
+      "head": "nasuraya/project-fund-foundation-v01",
+      "sha": "196fb46c02dd97f271cd15856accfb64d2572808",
+      "base": "nasuraya/absence-continuity-v01",
+      "base_sha": "d420d0ab4e1750678bd006f92acc52440fce2ab8",
+      "draft": true
+    },
+    {
+      "number": 32,
+      "title": "Build private Continuity Kit pilot with offline installation and durable replay evidence",
+      "head": "nasuraya/continuity-kit-v01",
+      "sha": "f5d4aaaccfa2afab451b3969574b92d3466ef095",
+      "base": "nasuraya/project-fund-foundation-v01",
+      "base_sha": "196fb46c02dd97f271cd15856accfb64d2572808",
+      "draft": true
+    },
+    {
+      "number": 33,
+      "title": "Transfer verified action-admission experience across bounded unseen durations",
+      "head": "nasuraya/experience-transfer-v01",
+      "sha": "cf8e011eb6004ecfdf3b84ee08b1f88d56f34162",
+      "base": "nasuraya/evolution-sprint-01-integration",
+      "base_sha": "1cfbfef00e869c514f88d76782dfcb36e8fa3edf",
+      "draft": true
+    },
+    {
+      "number": 34,
+      "title": "Execute bounded local integrity reports offline with durable crash reconciliation",
+      "head": "nasuraya/offline-local-job-v01",
+      "sha": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+      "base": "nasuraya/continuity-kit-v01",
+      "base_sha": "f5d4aaaccfa2afab451b3969574b92d3466ef095",
+      "draft": true
+    },
+    {
+      "number": 35,
+      "title": "Record rejected native-posture fuel controller with reproducible gravity-transfer evidence",
+      "head": "nasuraya/gravity-feedback-v01",
+      "sha": "46694190d497096ff65716e2a9473ea95d7be1ac",
+      "base": "nasuraya/evolution-sprint-01-integration",
+      "base_sha": "1cfbfef00e869c514f88d76782dfcb36e8fa3edf",
+      "draft": true
+    },
+    {
+      "number": 36,
+      "title": "Reject six-tick posture fuel optimization and retain zero-step evidence verification",
+      "head": "nasuraya/gravity-horizon-v02",
+      "sha": "59b0bd4e39a993873568a34f2d57fa9555925aea",
+      "base": "nasuraya/gravity-feedback-v01",
+      "base_sha": "46694190d497096ff65716e2a9473ea95d7be1ac",
+      "draft": true
+    },
+    {
+      "number": 37,
+      "title": "Reuse checked exact-result experience while honoring explicit native reproductions",
+      "head": "nasuraya/time-mining-v01",
+      "sha": "c50b24c5f5d0245af746fd8e83493bc3a355ca9e",
+      "base": "nasuraya/gravity-horizon-v02",
+      "base_sha": "59b0bd4e39a993873568a34f2d57fa9555925aea",
+      "draft": true
+    },
+    {
+      "number": 38,
+      "title": "Add opt-in local defense sentinel with persistent alarms and guarded evidence reuse",
+      "head": "nasuraya/defense-sentinel-v01",
+      "sha": "939c483090371b4c8fe40048b2758295432d309e",
+      "base": "nasuraya/time-mining-v01",
+      "base_sha": "c50b24c5f5d0245af746fd8e83493bc3a355ca9e",
+      "draft": true
+    },
+    {
+      "number": 39,
+      "title": "Show observed defense state with bounded read-only checks and freshness limits",
+      "head": "nasuraya/defense-visual-v02",
+      "sha": "bcd7dedcdf425bd608aac0c3830c10d0aeb44a38",
+      "base": "nasuraya/defense-sentinel-v01",
+      "base_sha": "939c483090371b4c8fe40048b2758295432d309e",
+      "draft": true
+    },
+    {
+      "number": 40,
+      "title": "Connect recorded decisions and durable experience to guarded native tools",
+      "head": "nasuraya/guarded-cycle-v03",
+      "sha": "e41f71070323368922d8211f2b73566e8404f83e",
+      "base": "nasuraya/defense-visual-v02",
+      "base_sha": "bcd7dedcdf425bd608aac0c3830c10d0aeb44a38",
+      "draft": true
+    },
+    {
+      "number": 41,
+      "title": "Fix local-job finish receipt collisions and verify cold replay",
+      "head": "nasuraya/absence-work-20261017",
+      "sha": "1d8dd9681751e908de929b39b1e35abba438b79b",
+      "base": "nasuraya/offline-local-job-v01",
+      "base_sha": "1ebd693683456cf3ccb4186142fb6c698f819a9b",
+      "draft": true
+    },
+    {
+      "number": 43,
+      "title": "Prepare six-hour project cadence within the existing daily budget",
+      "head": "nasuraya/cadence-v02",
+      "sha": "6cb860e9839799abefece28144a362b89b628c19",
+      "base": "main",
+      "base_sha": "50780d88e1e95e7fc19037db4dd6a0227fcb204d",
+      "draft": true
+    },
+    {
+      "number": 44,
+      "title": "Connect pinned research subsets to native body observations and metacognitive evaluation",
+      "head": "nasuraya/external-research-integration-v01",
+      "sha": "d21988516d0f52118d22d13f5444e7e3b9911ed8",
+      "base": "nasuraya/guarded-cycle-v03",
+      "base_sha": "e41f71070323368922d8211f2b73566e8404f83e",
+      "draft": false
+    },
+    {
+      "number": 46,
+      "title": "Integrate verified native research observers into main (integration gate)",
+      "head": "nasuraya/external-research-integration-v01",
+      "sha": "d21988516d0f52118d22d13f5444e7e3b9911ed8",
+      "base": "main",
+      "base_sha": "50780d88e1e95e7fc19037db4dd6a0227fcb204d",
+      "draft": true
+    },
+    {
+      "number": 47,
+      "title": "Measure ten repeated native body steps without claiming learning",
+      "head": "nasuraya/ten-step-motion-benchmark-v01",
+      "sha": "b37f9b5a4e8efe9b5e73880c375d9dfe39f523f1",
+      "base": "nasuraya/external-research-integration-v01",
+      "base_sha": "d21988516d0f52118d22d13f5444e7e3b9911ed8",
+      "draft": false
+    },
+    {
+      "number": 48,
+      "title": "Dream Ten: bounded offline policy search with independent held-out gate",
+      "head": "nasuraya/dream-ten-offline-replay-v01",
+      "sha": "d30551b82400c21a9f0df0c3d1588ef3f5d09e4a",
+      "base": "nasuraya/ten-step-motion-benchmark-v01",
+      "base_sha": "b37f9b5a4e8efe9b5e73880c375d9dfe39f523f1",
+      "draft": true
+    },
+    {
+      "number": 52,
+      "title": "Test frozen confidence transfer and report failures under invalidated observations",
+      "head": "nasuraya/confidence-transfer-v01",
+      "sha": "400cf568b2c250c7ae72cadbb8d466156a77c3b9",
+      "base": "main",
+      "base_sha": "98979ce2faefc48d5fd3a279626881bf278bb0f8",
+      "draft": true
+    },
+    {
+      "number": 54,
+      "title": "Ground affect appraisal in completed body receipts without changing native controls",
+      "head": "nasuraya/evidence-affect-v01",
+      "sha": "674f54dda49d36d8c77097b45498e3119aef820a",
+      "base": "main",
+      "base_sha": "884ae8a778bbe1d60fcf6e7b6d5263ed5945833a",
+      "draft": true
+    },
+    {
+      "number": 55,
+      "title": "Add visual self-appraisal through the existing affective body loop",
+      "head": "nasuraya/aesthetic-self-appraisal-v01",
+      "sha": "35676c3d8579e1eaef189c3fc1cafd4cdebc0f04",
+      "base": "main",
+      "base_sha": "884ae8a778bbe1d60fcf6e7b6d5263ed5945833a",
+      "draft": false
+    },
+    {
+      "number": 56,
+      "title": "Connect Dream Ten to native body measurements and retain negative learning result",
+      "head": "nasuraya/dream-ten-native-validation-v01",
+      "sha": "4e9d53d7f40d682529d5c435d88c5c6e89bdf5ee",
+      "base": "nasuraya/dream-ten-offline-replay-v01",
+      "base_sha": "d30551b82400c21a9f0df0c3d1588ef3f5d09e4a",
+      "draft": true
+    },
+    {
+      "number": 57,
+      "title": "Add running feedback and a lighter experimental body profile",
+      "head": "nasuraya/running-feedback-v01",
+      "sha": "952a088aee9d22d77445018b7cb02a7f2febbba9",
+      "base": "main",
+      "base_sha": "884ae8a778bbe1d60fcf6e7b6d5263ed5945833a",
+      "draft": true
+    },
+    {
+      "number": 58,
+      "title": "Add articulated body and verify real WBC-Mjlab integration",
+      "head": "nasuraya/articulated-body-v01",
+      "sha": "051708aa2091eada6d69e5cf40de67be5132424d",
+      "base": "nasuraya/running-feedback-v01",
+      "base_sha": "952a088aee9d22d77445018b7cb02a7f2febbba9",
+      "draft": true
+    },
+    {
+      "number": 59,
+      "title": "Stabilize 85 kg articulated standing and preserve stepping limits",
+      "head": "nasuraya/articulated-balance-v01",
+      "sha": "834c49a6c5258ae4d85e218f47d072967845ccac",
+      "base": "nasuraya/articulated-body-v01",
+      "base_sha": "051708aa2091eada6d69e5cf40de67be5132424d",
+      "draft": true
+    },
+    {
+      "number": 60,
+      "title": "Add contact-aware slow walking with 24 measured alternating steps",
+      "head": "nasuraya/contact-stepping-v01",
+      "sha": "09c90a7450dbe07241edda39d932ec06e2a6b66f",
+      "base": "nasuraya/articulated-balance-v01",
+      "base_sha": "834c49a6c5258ae4d85e218f47d072967845ccac",
+      "draft": true
+    },
+    {
+      "number": 61,
+      "title": "Add persistent affective memory and appraisal to native decision planning",
+      "head": "nasuraya/affective-continuity-v01",
+      "sha": "8728169d29ca8ce5b6568e62c5a32b26767c9591",
+      "base": "nasuraya/contact-stepping-v01",
+      "base_sha": "09c90a7450dbe07241edda39d932ec06e2a6b66f",
+      "draft": true
+    },
+    {
+      "number": 62,
+      "title": "Execute bounded workshop tools through affective planning and retain measured feedback",
+      "head": "nasuraya/affective-agent-loop-v01",
+      "sha": "0632f5e8aff140255cf18858c46615fdf2fb7a01",
+      "base": "nasuraya/affective-continuity-v01",
+      "base_sha": "8728169d29ca8ce5b6568e62c5a32b26767c9591",
+      "draft": true
+    },
+    {
+      "number": 63,
+      "title": "Bridge conversational messages and affective memory to native Tadash body execution",
+      "head": "nasuraya/dialogue-body-affect-v01",
+      "sha": "8e952de53dbbb8c5c6a8f9d5620f9823e1c7932d",
+      "base": "nasuraya/affective-agent-loop-v01",
+      "base_sha": "0632f5e8aff140255cf18858c46615fdf2fb7a01",
+      "draft": true
+    },
+    {
+      "number": 64,
+      "title": "Prepare Offline Replay Audit as a bounded service pilot",
+      "head": "nasuraya/revenue-audit-service-v01",
+      "sha": "6ce409e87fe440763a9ddb30d758efb08f919081",
+      "base": "main",
+      "base_sha": "884ae8a778bbe1d60fcf6e7b6d5263ed5945833a",
+      "draft": true
+    },
+    {
+      "number": 65,
+      "title": "Connect dialogue to bounded articulated walking with persistent body state",
+      "head": "nasuraya/articulated-dialogue-code-v01",
+      "sha": "eff1e4aed8a31e7f1014309e480f35bada911064",
+      "base": "nasuraya/dialogue-body-affect-v01",
+      "base_sha": "8e952de53dbbb8c5c6a8f9d5620f9823e1c7932d",
+      "draft": true
+    },
+    {
+      "number": 66,
+      "title": "Add replayable genome proposal history with branch-specific head checks",
+      "head": "nasuraya/genome-history-v01",
+      "sha": "1e6b36ba45c9046b0ceef4fd44441fc1151994f8",
+      "base": "nasuraya/genome-48-review-v01",
+      "base_sha": "ddc0b68a742b472a389fc94cd29bfd22b3b0dba5",
+      "draft": true
+    }
+  ],
+  "additional_capabilities": [
+    {
+      "branch": "nasuraya/spiral-motion-v01",
+      "sha": "767fb1326bac1bbc368f1c5d57e04aff0ff45adc"
+    },
+    {
+      "branch": "nasuraya/support-contract-audit-v04",
+      "sha": "0c732e3b3d84c256ca8efbac8b4154230eeb3ff2"
+    }
+  ],
+  "excluded_runtime_branch": {
+    "branch": "nasuraya/absence-continuity-v01",
+    "reason": "Mutable operator/host execution ledger; keep on its existing branch, do not reset or copy into integration."
+  },
+  "refresh": {
+    "date": "2026-10-22",
+    "previous_integration": "458e31d434f5dc09eff15ca48c1162e793893ab6",
+    "main": "5330cbee347c1ef5b7c3a77e74f91398d45aa76f",
+    "self_model_pr": 68,
+    "self_model_sha": "4433ba8909c7e6e38b79f6d3bf29ca13805c4244",
+    "preserved_main_files": [
+      "continuity_host/host.py",
+      "continuity_host/test_host.py",
+      "continuity_host/model_research.py",
+      "continuity_host/research_lab.py",
+      "continuity_host/research_host.py"
+    ]
+  },
+  "continuity_refresh": {
+    "date": "2026-10-26",
+    "previous_integration": "a6e6f451e4383383082a536b19966755a9ac09a1",
+    "main": "4a2d687c7df6d5880b3b2187e1198c07023c160d",
+    "prediction_router_pr": 78,
+    "prediction_router_sha": "da2b70dde1107b9e4896d0f9fedccdfc155a213d",
+    "preserved_experiment_files": [
+      "experiments/affect_api_20261023/CLARIFICATION_PLAN.md",
+      "experiments/affect_api_20261023/EFFICIENCY.md",
+      "experiments/affect_api_20261023/PAIRED_COMPARISON.md",
+      "experiments/affect_api_20261023/README.md",
+      "experiments/affect_api_20261023/ROUTER.md",
+      "experiments/affect_api_20261023/SELF_MODEL_STEP.md",
+      "experiments/affect_api_20261023/audit_paired_comparison.py",
+      "experiments/affect_api_20261023/authorization.json",
+      "experiments/affect_api_20261023/cases.py",
+      "experiments/affect_api_20261023/clarification-authorization.json",
+      "experiments/affect_api_20261023/clarification.py",
+      "experiments/affect_api_20261023/evaluate_prediction_router.py",
+      "experiments/affect_api_20261023/paired-authorization.json",
+      "experiments/affect_api_20261023/paired_comparison.py",
+      "experiments/affect_api_20261023/prediction_router.py",
+      "experiments/affect_api_20261023/results/candidate-policy.json",
+      "experiments/affect_api_20261023/results/clarification-report-fa.md",
+      "experiments/affect_api_20261023/results/clarification-session.json",
+      "experiments/affect_api_20261023/results/paired-audit.json",
+      "experiments/affect_api_20261023/results/paired-body-checkpoints.zip",
+      "experiments/affect_api_20261023/results/paired-comparison.json",
+      "experiments/affect_api_20261023/results/paired-report-fa.md",
+      "experiments/affect_api_20261023/results/report-fa.md",
+      "experiments/affect_api_20261023/results/router-assessment.json",
+      "experiments/affect_api_20261023/results/self-model-body-checkpoints.zip",
+      "experiments/affect_api_20261023/results/self-model-report-fa.md",
+      "experiments/affect_api_20261023/results/self-model-revision.json",
+      "experiments/affect_api_20261023/results/self-model-step.json",
+      "experiments/affect_api_20261023/results/session.json",
+      "experiments/affect_api_20261023/self-model-authorization.json",
+      "experiments/affect_api_20261023/self_model_step.py",
+      "experiments/affect_api_20261023/session.py",
+      "experiments/affect_api_20261023/test_clarification.py",
+      "experiments/affect_api_20261023/test_paired_comparison.py",
+      "experiments/affect_api_20261023/test_prediction_router.py",
+      "experiments/affect_api_20261023/test_self_model_step.py",
+      "experiments/affect_api_20261023/test_session.py",
+      ".github/workflows/nasuraya-affect-api-session.yml"
+    ]
+  }
+}

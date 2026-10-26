@@ -1,0 +1,23 @@
+test_status_uses_one_snapshot_when_another_connection_claims (nasuraya_continuity_kit.test_store.StoreTests.test_status_uses_one_snapshot_when_another_connection_claims) ... FAIL
+test_status_does_not_commit_or_rollback_a_caller_transaction (nasuraya_continuity_kit.test_store.StoreTests.test_status_does_not_commit_or_rollback_a_caller_transaction) ... ok
+test_status_releases_its_snapshot_after_a_read_error (nasuraya_continuity_kit.test_store.StoreTests.test_status_releases_its_snapshot_after_a_read_error) ... ok
+
+======================================================================
+FAIL: test_status_uses_one_snapshot_when_another_connection_claims (nasuraya_continuity_kit.test_store.StoreTests.test_status_uses_one_snapshot_when_another_connection_claims)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/64ed79d48c39/absence-work-20261020-JO6J8i/nasuraya_continuity_kit/test_store.py", line 119, in test_status_uses_one_snapshot_when_another_connection_claims
+    self.assertEqual((status['request_count'], status['run_count']), (0, 0))
+AssertionError: Tuples differ: (1, 1) != (0, 0)
+
+First differing element 0:
+1
+0
+
+- (1, 1)
++ (0, 0)
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.030s
+
+FAILED (failures=1)

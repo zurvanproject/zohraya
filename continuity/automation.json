@@ -1,0 +1,13 @@
+{
+  "schema": "nasuraya-continuity-automation/1",
+  "automation_id": "6ad1fbcc684481919c06350360d501fa",
+  "title": "تداوم ناسورایا در غیاب ارتباط",
+  "is_enabled": true,
+  "default_timezone": "Asia/Tehran",
+  "schedule": "BEGIN:VEVENT\nDTSTART;TZID=Asia/Tehran:20261017T135223\nRRULE:FREQ=HOURLY\nEND:VEVENT",
+  "timing_mode": "condition_watch",
+  "registered_at": "2026-10-16T10:26:21.152177+00:00",
+  "immutable_gate_commit": "5767787d3a1ba17f50b9aba5d6b01c830f38a377",
+  "execution_observed": false,
+  "scope": "cloud task registered; future execution not yet demonstrated"
+}

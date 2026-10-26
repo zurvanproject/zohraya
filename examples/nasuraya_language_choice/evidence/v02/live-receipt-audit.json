@@ -1,0 +1,16 @@
+[
+  {
+    "fixture": "run-1-normal",
+    "requested": "walk",
+    "actual": "walk",
+    "duration_s": 0.1,
+    "physical_model_valid": true
+  },
+  {
+    "fixture": "run-2-sleep",
+    "requested": "sleep",
+    "actual": "sleep",
+    "duration_s": 1,
+    "physical_model_valid": true
+  }
+]

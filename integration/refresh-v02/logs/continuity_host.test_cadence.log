@@ -1,0 +1,20 @@
+test_clock_regression_and_reused_ids_rejected_without_mutation (continuity_host.test_cadence.CadenceTests.test_clock_regression_and_reused_ids_rejected_without_mutation) ... ok
+test_competing_atomic_claims_have_one_budget_reservation (continuity_host.test_cadence.CadenceTests.test_competing_atomic_claims_have_one_budget_reservation) ... ok
+test_existing_cadence_cannot_be_reinitialized (continuity_host.test_cadence.CadenceTests.test_existing_cadence_cannot_be_reinitialized) ... ok
+test_four_slices_preserve_rolling_time_and_source_caps (continuity_host.test_cadence.CadenceTests.test_four_slices_preserve_rolling_time_and_source_caps) ... ok
+test_initial_absence_still_requires_twenty_four_hours (continuity_host.test_cadence.CadenceTests.test_initial_absence_still_requires_twenty_four_hours) ... ok
+test_legacy_claim_is_full_twenty_minutes_at_migration (continuity_host.test_cadence.CadenceTests.test_legacy_claim_is_full_twenty_minutes_at_migration) ... ok
+test_lost_reservation_or_modified_budget_fails_closed (continuity_host.test_cadence.CadenceTests.test_lost_reservation_or_modified_budget_fails_closed) ... ok
+test_matching_bad_ledger_schema_still_fails_closed (continuity_host.test_cadence.CadenceTests.test_matching_bad_ledger_schema_still_fails_closed) ... ok
+test_midnight_does_not_reset_interval_or_refund_budget (continuity_host.test_cadence.CadenceTests.test_midnight_does_not_reset_interval_or_refund_budget) ... ok
+test_missing_ledger_or_seal_never_bootstraps (continuity_host.test_cadence.CadenceTests.test_missing_ledger_or_seal_never_bootstraps) ... ok
+test_old_writer_after_migration_is_conservatively_reserved (continuity_host.test_cadence.CadenceTests.test_old_writer_after_migration_is_conservatively_reserved) ... ok
+test_original_gate_cannot_grant_second_daily_legacy_run (continuity_host.test_cadence.CadenceTests.test_original_gate_cannot_grant_second_daily_legacy_run) ... ok
+test_read_only_probe_reserves_time_but_no_source_authority (continuity_host.test_cadence.CadenceTests.test_read_only_probe_reserves_time_but_no_source_authority) ... ok
+test_seeded_irregular_arrivals_match_independent_rolling_account (continuity_host.test_cadence.CadenceTests.test_seeded_irregular_arrivals_match_independent_rolling_account) ... ok
+test_unknown_old_writer_and_pause_never_expire (continuity_host.test_cadence.CadenceTests.test_unknown_old_writer_and_pause_never_expire) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.050s
+
+OK

@@ -1,0 +1,56 @@
+test_claim_id_matching_internal_finish_id_completes_and_replays (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_claim_id_matching_internal_finish_id_completes_and_replays) ... ERROR
+test_finish_receipt_skips_occupied_ids_without_changing_old_receipts (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_finish_receipt_skips_occupied_ids_without_changing_old_receipts) ... ERROR
+test_finish_id_collision_created_during_computation_is_handled (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_finish_id_collision_created_during_computation_is_handled) ... ERROR
+
+======================================================================
+ERROR: test_claim_id_matching_internal_finish_id_completes_and_replays (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_claim_id_matching_internal_finish_id_completes_and_replays)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/test_local_job.py", line 124, in test_claim_id_matching_internal_finish_id_completes_and_replays
+    first = self.jobs.run(request_id, 'run', DUE, RAW)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/local_job.py", line 91, in run
+    return self._complete(run_id, now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/local_job.py", line 104, in _complete
+    self.store._apply_in_transaction('finish', 'local-finish-'+hashlib.sha256(run_id.encode()).hexdigest(), now, run_id)
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/store.py", line 74, in _apply_in_transaction
+    raise ValueError('request id already bound to different parameters')
+ValueError: request id already bound to different parameters
+
+======================================================================
+ERROR: test_finish_receipt_skips_occupied_ids_without_changing_old_receipts (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_finish_receipt_skips_occupied_ids_without_changing_old_receipts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/test_local_job.py", line 138, in test_finish_receipt_skips_occupied_ids_without_changing_old_receipts
+    self.assertEqual(self.jobs.run('req', 'run', DUE, RAW)['status'], 'completed')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/local_job.py", line 91, in run
+    return self._complete(run_id, now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/local_job.py", line 104, in _complete
+    self.store._apply_in_transaction('finish', 'local-finish-'+hashlib.sha256(run_id.encode()).hexdigest(), now, run_id)
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/store.py", line 74, in _apply_in_transaction
+    raise ValueError('request id already bound to different parameters')
+ValueError: request id already bound to different parameters
+
+======================================================================
+ERROR: test_finish_id_collision_created_during_computation_is_handled (nasuraya_continuity_kit.test_local_job.LocalJobTests.test_finish_id_collision_created_during_computation_is_handled)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/test_local_job.py", line 154, in test_finish_id_collision_created_during_computation_is_handled
+    self.assertEqual(self.jobs.run('req', 'run', DUE, RAW)['status'], 'completed')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/local_job.py", line 91, in run
+    return self._complete(run_id, now)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/local_job.py", line 104, in _complete
+    self.store._apply_in_transaction('finish', 'local-finish-'+hashlib.sha256(run_id.encode()).hexdigest(), now, run_id)
+  File "/workspace/scratch/64ed79d48c39/absence-admission-hcp9ynu5/work/nasuraya_continuity_kit/store.py", line 74, in _apply_in_transaction
+    raise ValueError('request id already bound to different parameters')
+ValueError: request id already bound to different parameters
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.049s
+
+FAILED (errors=3)

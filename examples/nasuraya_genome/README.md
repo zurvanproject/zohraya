@@ -1,5 +1,17 @@
 # Nasuraya: 48-chromosome computational genome v0.1
 
+**Current design values (v0.2):** aesthetics is an independent value judged by
+the user. A functionally neutral appearance option is retained for aesthetic
+review, not rejected for lacking a performance gain. The historical v0.1
+functional experiment below is preserved unchanged; its rejection label is not
+an aesthetic verdict. Current review:
+
+```sh
+python3 -m examples.nasuraya_genome.design_value_review --output /tmp/design-values-review.json
+```
+
+See [the value clarification](../../docs/nasuraya-design-values-v02-fa.md).
+
 The existing dosage design is retained. A versioned genotype-to-phenotype
 prototype now adds four bounded limb-design loci, a closed contract for every
 chromosome, JSON Schema, atomic in-memory edit batches and recomputed cold
@@ -20,6 +32,92 @@ the authored foot-proportion coupling. The implementation uses only stdlib.
 Contracts and examples are generated deterministically with
 `python3 -m examples.nasuraya_genome.generate_contract`; regeneration after source
 drift requires explicit review and an appropriate version/migration decision.
+
+## Independent physics experiment
+
+`physics_trial.py` maps the tail-length proposal into an explicitly declared
+fixed-mass uniform-rod inertia proxy, then runs unchanged native equations in
+private copied fixture trees and isolated subprocesses. This is parameter
+sensitivity, not a validated anatomical tail or a live-body change. The mapping
+refuses changed foot dimensions (no mesh/contact mapping) and dosage deviations.
+It rechecks the parameter allowlist and closure before each worker executes.
+
+```sh
+python3 -m examples.nasuraya_genome.physics_trial --output /tmp/new-genome-physics-trial
+```
+
+The output directory must be new. Four conditions across six frozen cases
+give 24 primary trials (80.4 simulated seconds), plus 20 cold-restoration
+branches (40 additional simulated seconds). A descriptor-only diagnostic
+holds inertia fixed to identify which parameter the solver consumes. It is not
+a coherent geometric proposal. Tail-off, zero-friction and cosmetic controls
+retain their outcomes. Source-bound sandbox checkpoints are not exported to
+production state. All 70 original native source files remain unchanged.
+
+The expanded suite includes 59 tests. See the
+[Persian experiment report](../../docs/nasuraya-genome-physics-v01-fa.md) and
+[committed experiment evidence](evidence/physics-v0.1/results.json).
+
+## Conditional foot-contact hypothesis
+
+`foot_contact.py` adds four authored, nonoverlapping planar contact islands:
+an elliptical forepad and three circular toe pads. Their centres and continuum
+areas calibrate to the native fixture; their shapes are not measured anatomy.
+Each island has 256 triangles. Independent integration, centroid, envelope,
+orientation, separation and refinement checks test the geometry. The solver
+still uses the original conservative centre-contact polygon, not mesh edges.
+
+`foot_trial.py` compares an affine pad-growth hypothesis with baseline,
+area-only, centre-only and descriptor-only controls. Only patch centres/areas
+change in copied fixtures; equations, skeleton, mass and pressure limits stay
+fixed. This is a separate conditional sandbox path. The original
+`physics_trial.compile_candidate` still rejects foot changes for live use.
+Neither path grants native application permission or anatomical validation.
+
+```sh
+python3 -m examples.nasuraya_genome.foot_trial --output /tmp/new-foot-contact-trial
+```
+
+See the [Persian foot-contact report](../../docs/nasuraya-genome-foot-contact-v01-fa.md),
+[plan and results](evidence/foot-contact-v0.1/results.json) and
+[exact planar comparison](evidence/foot-contact-v0.1/contact-comparison.svg).
+
+## Decision and external design experience
+
+`design_decision.py` compares baseline, +1% foot dimensions, +2% foot dimensions
+and a cosmetic-only mutation using a frozen authored policy. Hard fixture,
+progress, restoration and energy-budget checks precede utility. Scores combine
+relative nominal pressure reduction, walking capture-margin change and fuel cost;
+they are engineering defaults, not inferred user preferences or learned weights.
+
+`design_memory.py` follows the intent/result and SQLite validation pattern used
+by `nasuraya_self_model.monitor`, but uses a separate design ledger. The existing
+SelfModel learns action admission and cannot receive these synthetic design
+comparisons as live-body episodes. No native planning or physiological state is
+overwritten. A completed trial replays without a callback; an unresolved one
+blocks retries until reconciliation. Historical decisions replay against their
+original evidence prefix. A portable JSON checkpoint restores the full history
+into a fresh SQLite store and reproduces the recommendation in a new process.
+Checksums assume a trusted host; they are not physical measurement signatures.
+
+```sh
+python3 -m examples.nasuraya_genome.run_design_cycle --output /tmp/new-design-cycle
+```
+
+The cycle reuses source-matching committed baseline and +2% receipts, measures
+the +1% candidate once, and explicitly transfers baseline evidence to the
+identical cosmetic-only fixture. Four candidate observations therefore represent
+three distinct physical-fixture observations, with only one fresh experiment.
+Memory changes the choice from baseline retention to a +2% **proposal** in this
+exact context; the cosmetic-only mutation has no measured functional gain.
+Under the current v0.2 value review it awaits the user's aesthetic verdict;
+its historical v0.1 functional ranking is retained for audit.
+Disabling memory or requesting an unseen context retains baseline. Neither this
+module nor its selected checkpoint applies a genotype to the owner body or
+starts a live API agent. Experience stays outside inherited alleles.
+
+See the [Persian decision-cycle report](../../docs/nasuraya-genome-design-cycle-v01-fa.md)
+and [portable experience and results](evidence/design-cycle-v0.1/results.json).
 
 `mutate(..., expected_revision=...)` returns a new valid genotype or rejects
 the entire edit batch. `checkpoint`, `save` and `restore` round-trip that genotype

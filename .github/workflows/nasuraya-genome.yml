@@ -29,3 +29,7 @@ jobs:
         run: python3 -m examples.nasuraya_genome.pinned_head verify --anchor /tmp/genome-trusted-head.json --history /tmp/genome-history.json
       - name: Keep native body files unchanged
         run: test -z "$(git status --porcelain --untracked-files=all -- runtimes/tadash_body)"
+      - run: python3 -m examples.nasuraya_genome.physics_trial --output /tmp/genome-physics-trial
+      - run: python3 -m examples.nasuraya_genome.foot_trial --output /tmp/genome-foot-contact-trial
+      - run: python3 -m examples.nasuraya_genome.run_design_cycle --output /tmp/genome-design-cycle
+      - run: python3 -m examples.nasuraya_genome.design_value_review --output /tmp/genome-design-values-review.json

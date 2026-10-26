@@ -1,0 +1,32 @@
+test_completed_run_id_cannot_be_reused_after_another_run (nasuraya_continuity_kit.test_store.StoreTests.test_completed_run_id_cannot_be_reused_after_another_run) ... ok
+test_exact_request_replays_after_restart_without_new_transition (nasuraya_continuity_kit.test_store.StoreTests.test_exact_request_replays_after_restart_without_new_transition) ... ok
+test_exact_threshold_and_early_attempt_rolls_back (nasuraya_continuity_kit.test_store.StoreTests.test_exact_threshold_and_early_attempt_rolls_back) ... ok
+test_existing_and_foreign_database_are_not_overwritten (nasuraya_continuity_kit.test_store.StoreTests.test_existing_and_foreign_database_are_not_overwritten) ... ok
+test_invalid_clock_and_wrong_finish_preserve_state (nasuraya_continuity_kit.test_store.StoreTests.test_invalid_clock_and_wrong_finish_preserve_state) ... ok
+test_missing_control_row_is_rejected_without_reset (nasuraya_continuity_kit.test_store.StoreTests.test_missing_control_row_is_rejected_without_reset) ... ok
+test_pause_keeps_unresolved_run_and_heartbeat_does_not_resume (nasuraya_continuity_kit.test_store.StoreTests.test_pause_keeps_unresolved_run_and_heartbeat_does_not_resume) ... ok
+test_request_id_binding_is_immutable (nasuraya_continuity_kit.test_store.StoreTests.test_request_id_binding_is_immutable) ... ok
+test_two_independent_connections_have_one_claim_winner (nasuraya_continuity_kit.test_store.StoreTests.test_two_independent_connections_have_one_claim_winner) ... ok
+test_unresolved_claim_survives_restart_and_never_expires_automatically (nasuraya_continuity_kit.test_store.StoreTests.test_unresolved_claim_survives_restart_and_never_expires_automatically) ... ok
+test_bad_timestamp_future_clock_or_flag_fails_closed (continuity.test_gate.AbsenceTests.test_bad_timestamp_future_clock_or_flag_fails_closed) ... ok
+test_claim_and_finish_do_not_mutate_caller (continuity.test_gate.AbsenceTests.test_claim_and_finish_do_not_mutate_caller) ... ok
+test_completed_claim_still_consumes_rolling_daily_budget (continuity.test_gate.AbsenceTests.test_completed_claim_still_consumes_rolling_daily_budget) ... ok
+test_contact_defers_next_run_without_refunding_claim (continuity.test_gate.AbsenceTests.test_contact_defers_next_run_without_refunding_claim) ... ok
+test_exact_24_hours_is_eligible_in_both_timezones (continuity.test_gate.AbsenceTests.test_exact_24_hours_is_eligible_in_both_timezones) ... ok
+test_missing_fields_bad_run_id_and_future_claim_are_rejected (continuity.test_gate.AbsenceTests.test_missing_fields_bad_run_id_and_future_claim_are_rejected) ... ok
+test_one_second_before_threshold_is_blocked (continuity.test_gate.AbsenceTests.test_one_second_before_threshold_is_blocked) ... ok
+test_pause_wins_even_long_after_threshold (continuity.test_gate.AbsenceTests.test_pause_wins_even_long_after_threshold) ... ok
+test_stop_command_state_pauses_without_clearing_inflight (continuity.test_gate.AbsenceTests.test_stop_command_state_pauses_without_clearing_inflight) ... ok
+test_unresolved_effect_never_gets_an_automatic_retry (continuity.test_gate.AbsenceTests.test_unresolved_effect_never_gets_an_automatic_retry) ... ok
+test_actual_income_payment_and_missing_sources_are_rejected (project_fund.test_planner.FundPlannerTests.test_actual_income_payment_and_missing_sources_are_rejected) ... ok
+test_currencies_are_separate_and_forecast_never_unlocks_payment (project_fund.test_planner.FundPlannerTests.test_currencies_are_separate_and_forecast_never_unlocks_payment) ... ok
+test_empty_summary_does_not_invent_a_bank_account_or_balance (project_fund.test_planner.FundPlannerTests.test_empty_summary_does_not_invent_a_bank_account_or_balance) ... ok
+test_float_bool_negative_zero_and_overflow_are_rejected (project_fund.test_planner.FundPlannerTests.test_float_bool_negative_zero_and_overflow_are_rejected) ... ok
+test_repeated_identical_request_is_idempotent (project_fund.test_planner.FundPlannerTests.test_repeated_identical_request_is_idempotent) ... ok
+test_restart_preserves_exact_proposal (project_fund.test_planner.FundPlannerTests.test_restart_preserves_exact_proposal) ... ok
+test_same_id_cannot_change_amount_currency_or_direction (project_fund.test_planner.FundPlannerTests.test_same_id_cannot_change_amount_currency_or_direction) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.018s
+
+OK

@@ -1,0 +1,17 @@
+test_expired_recovery_window_never_mutates_or_refills (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_expired_recovery_window_never_mutates_or_refills) ... ok
+test_expiry_after_observation_prevents_sleep_reservation (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_expiry_after_observation_prevents_sleep_reservation) ... ok
+test_high_pressure_cycle_goal_is_not_full_recovery (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_high_pressure_cycle_goal_is_not_full_recovery) ... ok
+test_mock_api_disconnect_sleep_duplicate_then_walk_same_session (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_mock_api_disconnect_sleep_duplicate_then_walk_same_session) ... ok
+test_observe_mode_never_exposes_sleep_or_rest (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_observe_mode_never_exposes_sleep_or_rest) ... ok
+test_rest_experience_reopens_with_rest_intent (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_rest_experience_reopens_with_rest_intent) ... ok
+test_scheduled_sleep_restart_walk_retains_all_prior_sources (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_scheduled_sleep_restart_walk_retains_all_prior_sources) ... ok
+test_sigkill_after_sleep_commit_reconciles_without_second_sleep (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_sigkill_after_sleep_commit_reconciles_without_second_sleep) ... ok
+test_sigkill_after_wake_claim_uses_same_grant (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_sigkill_after_wake_claim_uses_same_grant) ... ok
+test_sigkill_inside_sleep_blocks_unknown_effect (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_sigkill_inside_sleep_blocks_unknown_effect) ... ok
+test_three_remaining_calls_cannot_begin_partial_step (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_three_remaining_calls_cannot_begin_partial_step) ... ok
+test_unknown_api_creation_stops_local_recovery_before_calls (examples.nasuraya_body_loop.test_sleep_integration.SleepIntegrationTests.test_unknown_api_creation_stops_local_recovery_before_calls) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 128.759s
+
+OK

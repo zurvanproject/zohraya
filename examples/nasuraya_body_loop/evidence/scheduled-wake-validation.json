@@ -1,0 +1,45 @@
+{
+  "schema": "nasuraya-scheduled-wakeup-validation/1",
+  "base_commit": "76836ad454654825f4fe4781542137095fbf2216",
+  "suites": [
+    {
+      "suite": "scheduler",
+      "command": "wake-test",
+      "tests_run": 24,
+      "skipped": 0,
+      "seconds": 132.202,
+      "result": "passed"
+    },
+    {
+      "suite": "body",
+      "command": "test",
+      "tests_run": 16,
+      "skipped": 0,
+      "seconds": 32.772,
+      "result": "passed"
+    },
+    {
+      "suite": "api_and_continuation",
+      "command": "api-test",
+      "tests_run": 55,
+      "skipped": 2,
+      "seconds": 205.229,
+      "result": "passed"
+    },
+    {
+      "suite": "mirror",
+      "command": "python -m unittest examples.nasuraya_body_mirror.test_mirror -v",
+      "tests_run": 3,
+      "skipped": 0,
+      "seconds": 33.052,
+      "result": "passed"
+    }
+  ],
+  "total_tests_run": 98,
+  "total_passed": 96,
+  "total_skipped": 2,
+  "skipped_reason": "Two existing optional OpenAI SDK tests: SDK not installed.",
+  "live_api_executed": false,
+  "real_clock_generated_fixture_demo": "scheduled-wake-demo.json",
+  "native_sources_modified": false
+}

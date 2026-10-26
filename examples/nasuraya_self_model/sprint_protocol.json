@@ -1,0 +1,19 @@
+{
+  "schema": "nasuraya-sprint-01-protocol/1",
+  "seeds": [17, 31, 53],
+  "training_pressures": [0.21, 0.32, 0.43],
+  "training_duration_s": 0.1,
+  "adaptation_trials_per_seed": 6,
+  "authorized_practice_trials": 3,
+  "adaptation_duration_s": 0.2,
+  "adaptation_pressure_range": [0.25, 0.55],
+  "held_out": [
+    {"id": "new-state-known-context", "sleep_pressure": 0.61, "duration_s": 0.2},
+    {"id": "unseen-duration", "sleep_pressure": 0.62, "duration_s": 0.3},
+    {"id": "sleep-recovery", "sleep_pressure": 0.96, "duration_s": 0.2}
+  ],
+  "held_out_learning": false,
+  "held_out_common_action_probe": true,
+  "selection_rule_frozen_before_execution": true,
+  "interpretation": "Designed deterministic software fixtures; fixed physics, not independent biological samples. No general-awareness or gait-improvement inference."
+}

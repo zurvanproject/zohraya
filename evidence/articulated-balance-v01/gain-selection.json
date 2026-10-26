@@ -1,0 +1,270 @@
+{
+  "scope": "Development-set tuning on 100 N forward torso push for 0.2 s; not independent generalization evidence. Initial standing_pass did not yet include joint-limit tolerance. Final acceptance does.",
+  "trials": [
+    {
+      "label": "100/10/0.01",
+      "mode": "feedback",
+      "requested_seconds": 10,
+      "executed_seconds": 5.258000000000091,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        100,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        20.000000000000014,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": false,
+      "settled_pass": false,
+      "final_pelvis_xyz_m": [
+        0.38308025912721183,
+        -5.3193988715914815e-06,
+        0.7349333333391191
+      ],
+      "min_pelvis_height_m": 0.7349333333391191,
+      "max_tilt_deg": 32.82846468218321,
+      "peak_motor_torque_nm": 133.424242424,
+      "actuator_saturation_fraction": 0.03383588644144013,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": null,
+      "final_displacement_xy_m": [
+        0.38308025912721183,
+        -5.3193988715914815e-06
+      ],
+      "both_feet_airborne_seconds": 0.093,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.1950744486937579,
+      "source_log": "balance-tuning.log"
+    },
+    {
+      "label": "100/10/0.001",
+      "mode": "feedback",
+      "requested_seconds": 10,
+      "executed_seconds": 9.999999999999897,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        100,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        20.000000000000014,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.004421396886914959,
+        1.9834164802550413e-08,
+        1.0511649509449508
+      ],
+      "min_pelvis_height_m": 0.9557855423607823,
+      "max_tilt_deg": 2.8033114815801623,
+      "peak_motor_torque_nm": 83.8666666667,
+      "actuator_saturation_fraction": 0.004316363636363631,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 0.002250801489994348,
+      "final_displacement_xy_m": [
+        -0.004421396886914959,
+        1.9834164802550413e-08
+      ],
+      "both_feet_airborne_seconds": 0.011,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.15644722472417655,
+      "source_log": "balance-tuning.log"
+    },
+    {
+      "label": "1000/10/0.01",
+      "mode": "feedback",
+      "requested_seconds": 10,
+      "executed_seconds": 9.999999999999897,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        100,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        20.000000000000014,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.005554520926667647,
+        1.0822579955973473e-07,
+        1.0531677125878738
+      ],
+      "min_pelvis_height_m": 1.0246655506431825,
+      "max_tilt_deg": 1.6407454402730013,
+      "peak_motor_torque_nm": 73.09988401010774,
+      "actuator_saturation_fraction": 0.0014109090909090953,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 0.00018921656743283962,
+      "final_displacement_xy_m": [
+        -0.005554520926667647,
+        1.0822579955973473e-07
+      ],
+      "both_feet_airborne_seconds": 0.01,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.162425286444505,
+      "source_log": "balance-tuning.log"
+    },
+    {
+      "label": "100",
+      "mode": "feedback",
+      "requested_seconds": 10,
+      "executed_seconds": 9.999999999999897,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        100,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        20.000000000000014,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.003885762627840571,
+        3.8300696913357196e-07,
+        1.0572823203214305
+      ],
+      "min_pelvis_height_m": 0.9386467481759833,
+      "max_tilt_deg": 2.352683617753337,
+      "peak_motor_torque_nm": 83.8666666667,
+      "actuator_saturation_fraction": 0.005172727272727259,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 0.003975842127565842,
+      "final_displacement_xy_m": [
+        -0.003885762627840571,
+        3.8300696913357196e-07
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.15613514109375742,
+      "source_log": "balance-toes.log"
+    },
+    {
+      "label": "1000",
+      "mode": "feedback",
+      "requested_seconds": 10,
+      "executed_seconds": 9.999999999999897,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        100,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        20.000000000000014,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.003689383936254655,
+        2.2187582106660972e-07,
+        1.0504243203356973
+      ],
+      "min_pelvis_height_m": 1.0222802707826089,
+      "max_tilt_deg": 0.4962016737546116,
+      "peak_motor_torque_nm": 73.56849369347225,
+      "actuator_saturation_fraction": 0.0014527272727272742,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 9.998541183077292e-05,
+      "final_displacement_xy_m": [
+        -0.003689383936254655,
+        2.2187582106660972e-07
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.049661015239467476,
+      "source_log": "balance-toes.log"
+    },
+    {
+      "label": "10000",
+      "mode": "feedback",
+      "requested_seconds": 10,
+      "executed_seconds": 9.999999999999897,
+      "initial_state": "v02 neutral with 5 mm initial gap, zero velocity",
+      "force_on_torso_n": [
+        100,
+        0
+      ],
+      "force_interval_s": [
+        3.0,
+        3.2
+      ],
+      "applied_impulse_xy_ns": [
+        20.000000000000014,
+        0.0
+      ],
+      "friction": 0.6,
+      "timestep_s": 0.001,
+      "standing_pass": true,
+      "settled_pass": true,
+      "final_pelvis_xyz_m": [
+        -0.004716384519946547,
+        -1.1425030460820505e-06,
+        1.0497495577904055
+      ],
+      "min_pelvis_height_m": 1.0311767206226237,
+      "max_tilt_deg": 0.8888554248443256,
+      "peak_motor_torque_nm": 73.86342346881645,
+      "actuator_saturation_fraction": 0.003403636363636364,
+      "warnings": false,
+      "nonfoot_ground_geoms": [],
+      "first_nonfoot_time_s": null,
+      "last_2s_max_generalized_speed": 0.0001178731108702522,
+      "final_displacement_xy_m": [
+        -0.004716384519946547,
+        -1.1425030460820505e-06
+      ],
+      "both_feet_airborne_seconds": 0.009000000000000001,
+      "single_foot_contact_seconds": 0.0,
+      "max_joint_limit_soft_violation_rad": 0.014352494168664687,
+      "source_log": "balance-toes-final.log"
+    }
+  ],
+  "selected": "root position/orientation 1000, other joints 10, toe/MTP 10000; velocity root/toe 10, other joints 1; torque cost 0.01."
+}

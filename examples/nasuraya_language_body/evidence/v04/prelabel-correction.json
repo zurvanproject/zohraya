@@ -1,0 +1,8 @@
+{
+  "stage": "unit tests, before preparation/training/new dataset outcomes",
+  "cause": "draft durations 0.14/0.26 and 0.46/0.74 violate native 0.1-second tick contract",
+  "correction": "training durations 0.2/0.4, test durations 0.6/0.9; accepted by native validate_input before freezing full plans",
+  "initial_tests": "9 passed, 1 error",
+  "corrected_combined_tests": "30 passed",
+  "native_equations_modified": false
+}

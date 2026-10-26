@@ -1,0 +1,146 @@
+{
+  "schema": "nasuraya-guarded-cycle-evaluation/3",
+  "cases": {
+    "healthy": {
+      "status": "completed",
+      "visual_state": "healthy",
+      "tool_calls": 1,
+      "actual_native_ticks": 10,
+      "experience_records": 1,
+      "wall_seconds": 0.19793080100498628
+    },
+    "tampered_receipt": {
+      "status": "denied",
+      "visual_state": "blocked",
+      "tool_calls": 0,
+      "actual_native_ticks": 0,
+      "experience_records": 1,
+      "wall_seconds": 0.022829494002508
+    },
+    "foreign_instruction": {
+      "status": "invalid_request",
+      "visual_state": "warning",
+      "tool_calls": 0,
+      "actual_native_ticks": 0,
+      "experience_records": 0,
+      "wall_seconds": 0.02407182900060434
+    },
+    "audit_readonly": {
+      "status": "audit_unavailable",
+      "visual_state": "unknown",
+      "tool_calls": 0,
+      "actual_native_ticks": 0,
+      "experience_records": 1,
+      "wall_seconds": 0.023939829996379558
+    }
+  },
+  "cold_completed_replay_tool_calls": 0,
+  "cold_completed_replay_actual_ticks": 0,
+  "paired_trials": [
+    {
+      "direct": {
+        "wall_seconds": 0.15344691099744523,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      },
+      "guarded": {
+        "wall_seconds": 0.24396403999708127,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      }
+    },
+    {
+      "guarded": {
+        "wall_seconds": 0.166998553002486,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      },
+      "direct": {
+        "wall_seconds": 0.14717076899978565,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      }
+    },
+    {
+      "direct": {
+        "wall_seconds": 0.16686621100234333,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      },
+      "guarded": {
+        "wall_seconds": 0.18369244699715637,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      }
+    },
+    {
+      "guarded": {
+        "wall_seconds": 0.17254831000173,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      },
+      "direct": {
+        "wall_seconds": 0.1493279239948606,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      }
+    },
+    {
+      "direct": {
+        "wall_seconds": 0.15419349900184898,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      },
+      "guarded": {
+        "wall_seconds": 0.16499664599541575,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      }
+    },
+    {
+      "guarded": {
+        "wall_seconds": 0.1644488989986712,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      },
+      "direct": {
+        "wall_seconds": 0.14650113799871178,
+        "selected_action": "get",
+        "receipt_sha256": "e7e39959d41e19d3898f2b81ca3fda3fd182142b399c1eaedcb0e239d2d17532",
+        "actual_native_ticks": 10
+      }
+    }
+  ],
+  "median_additional_wall_seconds": 0.01888777250132989,
+  "additional_wall_seconds_range": [
+    0.01080314699356677,
+    0.09051712899963604
+  ],
+  "paired_receipts_identical": true,
+  "native_ticks_per_timing_arm": 60,
+  "timing_scope": "full guarded adapter including source/store checks and visual observation versus direct callback with same DecisionCore/ReflectionCycle; initialization excluded; six alternating local pairs, not a general benchmark",
+  "hardware_energy_measured": false,
+  "api_calls": 0,
+  "canonical_body_cycles": 0,
+  "manifest_sha256": "da47ef2eb214c249764433fd2d8f7649adf110bca08d6d64329f8ec0786d7a68",
+  "python_tests": 85,
+  "new_cycle_tests": 18,
+  "javascript_state_checks": 16,
+  "local_workflow_steps_passed": 5,
+  "browser_rendering_tested": false,
+  "prior_guard_manifest_sha256": "e477c0da0685fbedc01c5881d49c6e0842aea889a5ec54007070af4943467b93",
+  "prior_visual_manifest_sha256": "d88e37796ad7b61da0d3e3f54cab6b6ba1036c96966c8db4b9d645bf7e577351",
+  "monitor_trust_baselines_advanced": false,
+  "existing_core_guard_body_memory_sources_modified": false
+}

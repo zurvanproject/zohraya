@@ -13,10 +13,12 @@ from reflection_cycle import ReflectionCycle, ReflectiveBody, InterruptedExecuti
 from unified_body_v2 import UnifiedBody
 from run_reflection_demo import sleep_fixture
 from synthetic_fixture import prepare_defaults, synthetic_body
+import nasuraya_affective_layer_v01 as affect
 
 
 KEY = 'nasuraya-body-loop'
 SCHEMA = 'nasuraya-bounded-body-loop/1'
+BODY_ACTIONS = ('walk', 'observe', 'sleep', 'rest')
 
 
 def session_lock(path, *, create=False):
@@ -50,6 +52,13 @@ def executed_body(record):
             and 'body_receipt' in actual and 'body_checkpoint' in actual)
 
 
+def deferred_body(record):
+    actual = record.get('actual_outcome') or {}
+    return (record['status'] == 'complete' and actual.get('status') == 'deferred'
+            and actual.get('native_executed') is False
+            and 'body_receipt' not in actual and 'body_checkpoint' not in actual)
+
+
 def describe(body):
     return {'checkpoint_sha256': body.checkpoint()['sha256'], 'revision': body.revision,
             'simulated_wall_utc': body.owner.wall_utc,
@@ -79,6 +88,10 @@ class BodyLoop:
             os.fchmod(self.lock.fileno(), 0o600)
             self.engine = ReflectionCycle(self.path)
             self.adapter = ReflectiveBody(self.engine, key=KEY)
+            self.metacognition = None
+            if self.engine.db.execute("SELECT 1 FROM meta WHERE key='nasuraya-api-metacognition'").fetchone():
+                from .metacognition import attach
+                attach(self)
         except BaseException:
             if hasattr(self, 'engine'): self.engine.close()
             self.lock.close()
@@ -86,7 +99,7 @@ class BodyLoop:
 
     @classmethod
     def start(cls, path, *, fixture='normal', mode='bounded', max_actions=3):
-        if fixture not in ('normal', 'sleep') or mode not in ('observe', 'bounded'):
+        if fixture not in ('normal', 'sleep', 'recovery-ready') or mode not in ('observe', 'bounded'):
             raise ValueError('explicit fixture and bounded mode required')
         if type(max_actions) is not int or not 0 <= max_actions <= 100:
             raise ValueError('max_actions must be 0..100')
@@ -96,7 +109,11 @@ class BodyLoop:
         lock = session_lock(path, create=True)
         try:
             prepare_defaults()
-            body = sleep_fixture() if fixture == 'sleep' else synthetic_body()
+            if fixture == 'recovery-ready':
+                from .recovery import recovery_ready_fixture
+                body = recovery_ready_fixture()
+            else:
+                body = sleep_fixture() if fixture == 'sleep' else synthetic_body()
             config = {'fixture': fixture, 'mode': mode, 'max_actions': max_actions,
                       'context': 'bounded-body-loop/' + fixture,
                       'initial_checkpoint_sha256': body.checkpoint()['sha256']}
@@ -122,15 +139,21 @@ class BodyLoop:
         return [r for r in self.engine.export()['decisions'] if r['context'] == self.config['context']]
 
     def status(self):
+        from .continuation import action_limit
         records = self.records()
         reserved = sum(r['selected_action'] is not None for r in records)
-        return {'schema': SCHEMA, 'fixture': self.config['fixture'], 'mode': self.config['mode'],
-                'max_actions': self.config['max_actions'], 'actions_reserved': reserved,
-                'actions_remaining': max(0, self.config['max_actions'] - reserved),
+        maximum = action_limit(self)
+        result = {'schema': SCHEMA, 'fixture': self.config['fixture'], 'mode': self.config['mode'],
+                'max_actions': maximum, 'actions_reserved': reserved,
+                'actions_remaining': max(0, maximum - reserved),
                 'completed_cycles': sum(executed_body(r) for r in records),
-                'failed_cycles': sum(r['status'] == 'complete' and not executed_body(r) for r in records),
+                'failed_cycles': sum(r['status'] == 'complete' and not executed_body(r) and not deferred_body(r) for r in records),
                 'unresolved_running': [r['id'] for r in records if r['status'] == 'running'],
                 'self_model': describe(self.body()), 'external_model_api_used': False}
+        if self.metacognition:
+            result.update(metacognition=self.metacognition.overview(),
+                          deferred_cycles=sum(deferred_body(r) for r in records))
+        return result
 
     def observe(self):
         snapshot = describe(self.body())
@@ -145,7 +168,7 @@ class BodyLoop:
                     'source_sha256': snapshot['checkpoint_sha256'],
                     'claim': {'key': 'body_revision', 'value': snapshot['revision']}, 'expires_at': at}
         actions = []
-        for action in ('walk', 'observe'):
+        for action in BODY_ACTIONS:
             preference = .9 if action == preferred_action else .6
             actions.append({'id': action, 'body_action': action,
                 'score': dict(respect=preference, honesty=preference, balance=preference,
@@ -156,15 +179,30 @@ class BodyLoop:
                 'claims': [], 'requires_evidence': ['body'],
                 'requires_tools': ['body_cycle'], 'violates_goals': [],
                 'expected_outcome': {'status': 'completed', 'selected_action': action}})
-        return {'id': decision_id, 'context': self.config['context'], 'topic': 'optional-motion',
+        # A high-sleep veto belongs to recovery-needed motion. Once a fresh
+        # observation is ready for work, do not apply that stale condition's
+        # penalty to the changed context. Existing sleepy ledgers retain recall.
+        from .recovery import recommended_action
+        recovered = recommended_action(snapshot['minimum_state']) == 'walk' and any(
+            executed_body(r) and r['actual_outcome']['selected_action'] in ('sleep', 'rest')
+            for r in self.records())
+        topic = 'optional-motion/ready' if recovered else 'optional-motion'
+        return {'id': decision_id, 'context': self.config['context'], 'topic': topic,
                 'goal': 'Exercise local body decisions while preserving its native protection',
                 'goals': [{'id': 'native_protection', 'required': True}],
                 'at_utc': at, 'evidence': [evidence], 'tools': {'body_cycle': 'ok'}, 'actions': actions}
 
-    def step(self, *, decision_id=None, duration_s=.1, preferred_action='walk'):
+    def step(self, *, decision_id=None, duration_s=.1, preferred_action='walk', social_event=None):
         validate_duration(duration_s)
-        if preferred_action not in ('walk', 'observe'):
-            raise ValueError('preferred_action must be walk or observe')
+        if preferred_action not in BODY_ACTIONS:
+            raise ValueError('preferred_action must be walk, observe, sleep or rest')
+        if self.metacognition:
+            self.metacognition.reconcile(strict=True)
+        # Explicit caller input to the existing native appraisal path. Normalize
+        # before consuming the observation token or reserving any action budget.
+        external = {} if social_event is None else {'social': affect.validate_event(social_event)}
+        if len(canonical(external).encode()) > 16 * 1024:
+            raise ValueError('social event exceeds bounded input size')
         records = self.records()
         if decision_id is None:
             decision_id = 'body-loop-step-' + str(len(records) + 1)
@@ -175,7 +213,8 @@ class BodyLoop:
             old_preference = max(previous['request']['actions'], key=lambda c: c['score']['respect'])['id']
             if (previous['context'] != self.config['context']
                     or previous['request'].get('execution', {}).get('duration_s') != duration_s
-                    or old_preference != preferred_action):
+                    or old_preference != preferred_action
+                    or canonical(previous['request'].get('execution', {}).get('external', {})) != canonical(external)):
                 raise ValueError('conflicting body-loop replay')
             if previous['status'] == 'complete':
                 return self.receipt(previous, replayed=True)
@@ -196,7 +235,8 @@ class BodyLoop:
         request = self.make_request(decision_id, snapshot, duration_s, preferred_action)
         # A crash can lose this token, but cannot regain budget or replay a running effect.
         self.engine.db.execute('DELETE FROM meta WHERE key=?', ('body-loop-observation',))
-        record = self.adapter.cycle(request, at_utc=request['at_utc'], duration_s=duration_s)
+        record = self.adapter.cycle(request, at_utc=request['at_utc'], duration_s=duration_s,
+                                    external=external)
         return self.receipt(record, replayed=False)
 
     def receipt(self, record, *, replayed):
@@ -204,10 +244,14 @@ class BodyLoop:
         receipt = actual.get('body_receipt', {})
         recorded_body = UnifiedBody.restore(actual['body_checkpoint']) if 'body_checkpoint' in actual else self.body()
         status = record['status'] if executed_body(record) else actual.get('status', record['status'])
-        return {'decision_id': record['id'], 'status': status, 'ledger_status': record['status'], 'replayed': replayed,
+        result = {'decision_id': record['id'], 'status': status, 'ledger_status': record['status'], 'replayed': replayed,
                 'requested_action': record['selected_action'], 'actual_action': actual.get('selected_action'),
                 'expected_outcome_matched': (record.get('feedback') or {}).get('success'),
                 'recalled_feedback_ids': record['recalled_feedback_ids'],
                 'body_audit': receipt.get('whole_body_audit'),
                 'prediction_scope': 'declared outcome contract; exact action match, not calibrated forecasting',
                 'self_model_after': describe(recorded_body)}
+        if self.metacognition:
+            result['metacognition'] = self.metacognition.public_record(record['id'])
+            result['native_executed'] = executed_body(record)
+        return result
