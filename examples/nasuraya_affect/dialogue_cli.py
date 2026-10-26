@@ -13,7 +13,9 @@ from examples.nasuraya_body_loop.__main__ import ROOT, SOURCE, verified_sources
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=('init', 'message', 'status', 'pause', 'resume', 'test', 'evaluate'))
+    parser.add_argument('command', choices=('init', 'message', 'status', 'trace', 'recall', 'consolidate', 'pause', 'resume', 'test', 'evaluate'))
+    parser.add_argument('--message-id')
+    parser.add_argument('--cue', action='append', default=[])
     parser.add_argument('--session-dir', type=Path)
     parser.add_argument('--seed-affect', type=Path)
     parser.add_argument('--message', type=Path)
@@ -25,6 +27,8 @@ def main():
         parser.error('--session-dir required')
     if args.command == 'message' and args.message is None:
         parser.error('--message JSON required; intent must be explicit')
+    if args.command == 'trace' and args.message_id is None:
+        parser.error('--message-id required')
     if args.command == 'evaluate' and args.output is None:
         parser.error('--output required')
     if args.seed_affect and args.command != 'init':

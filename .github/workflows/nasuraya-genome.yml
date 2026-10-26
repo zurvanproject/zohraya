@@ -1,10 +1,10 @@
 name: Nasuraya chromosome design
 on:
   pull_request:
-    paths: ['examples/nasuraya_genome/**', '.github/workflows/nasuraya-genome.yml']
+    paths: ['examples/nasuraya_genome/**', 'runtimes/tadash_body/**', 'examples/nasuraya_body_loop/__main__.py', '.github/workflows/nasuraya-genome.yml']
   push:
     branches: [main, 'nasuraya/**']
-    paths: ['examples/nasuraya_genome/**', '.github/workflows/nasuraya-genome.yml']
+    paths: ['examples/nasuraya_genome/**', 'runtimes/tadash_body/**', 'examples/nasuraya_body_loop/__main__.py', '.github/workflows/nasuraya-genome.yml']
 permissions:
   contents: read
 jobs:
@@ -19,6 +19,16 @@ jobs:
       - run: python3 -m unittest discover -s examples/nasuraya_genome -t . -v
       - run: python3 -m examples.nasuraya_genome.chromosomes --output /tmp/genome48-evaluation.json
       - run: python3 -m examples.nasuraya_genome.traits --output /tmp/genome-traits-demo.json
+      - run: python3 -m examples.nasuraya_genome.history --demo-output /tmp/genome-history.json
+      - run: python3 -m examples.nasuraya_genome.history --verify /tmp/genome-history.json
+      - name: Match the frozen demonstration history head
+        run: python3 -m examples.nasuraya_genome.history --verify /tmp/genome-history.json --expected-head-sha256 02d534bbbd1ec3204eb848b0ccaa4f16bb4edbfb6cc889d717cc9091680eb455
+      - name: Pin the independent frozen demo reference
+        run: python3 -m examples.nasuraya_genome.pinned_head pin --anchor /tmp/genome-trusted-head.json --head 02d534bbbd1ec3204eb848b0ccaa4f16bb4edbfb6cc889d717cc9091680eb455
+      - name: Recover the pinned reference in a new process
+        run: python3 -m examples.nasuraya_genome.pinned_head verify --anchor /tmp/genome-trusted-head.json --history /tmp/genome-history.json
+      - name: Keep native body files unchanged
+        run: test -z "$(git status --porcelain --untracked-files=all -- runtimes/tadash_body)"
       - run: python3 -m examples.nasuraya_genome.physics_trial --output /tmp/genome-physics-trial
       - run: python3 -m examples.nasuraya_genome.foot_trial --output /tmp/genome-foot-contact-trial
       - run: python3 -m examples.nasuraya_genome.run_design_cycle --output /tmp/genome-design-cycle

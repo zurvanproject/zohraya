@@ -1,0 +1,24 @@
+test_absolute_and_relative_gain_thresholds (experiments.affect_api_20261023.test_prediction_router.Tests.test_absolute_and_relative_gain_thresholds) ... ok
+test_admitted_cache_replaces_only_numbers (experiments.affect_api_20261023.test_prediction_router.Tests.test_admitted_cache_replaces_only_numbers) ... ok
+test_bad_inputs_raise_without_api_fallback (experiments.affect_api_20261023.test_prediction_router.Tests.test_bad_inputs_raise_without_api_fallback) ... ok
+test_correlated_transitions_keep_group_weight_and_sample_count (experiments.affect_api_20261023.test_prediction_router.Tests.test_correlated_transitions_keep_group_weight_and_sample_count) ... ok
+test_default_ignores_model_availability_preserves_memory_action (experiments.affect_api_20261023.test_prediction_router.Tests.test_default_ignores_model_availability_preserves_memory_action) ... ok
+test_eligible_missing_cache_cannot_dispatch (experiments.affect_api_20261023.test_prediction_router.Tests.test_eligible_missing_cache_cannot_dispatch) ... ok
+test_large_relative_gain_below_absolute_floor_is_rejected (experiments.affect_api_20261023.test_prediction_router.Tests.test_large_relative_gain_below_absolute_floor_is_rejected) ... ok
+test_no_memory_falls_back_explicitly_without_spend (experiments.affect_api_20261023.test_prediction_router.Tests.test_no_memory_falls_back_explicitly_without_spend) ... ok
+test_no_pseudoreplication_or_renamed_duplicate_samples (experiments.affect_api_20261023.test_prediction_router.Tests.test_no_pseudoreplication_or_renamed_duplicate_samples) ... ok
+test_oracle_gate_uses_equal_group_mae_and_exact_sign_test (experiments.affect_api_20261023.test_prediction_router.Tests.test_oracle_gate_uses_equal_group_mae_and_exact_sign_test) ... ok
+test_original_completed_ledger_cannot_be_replayed_for_paid_calls (experiments.affect_api_20261023.test_prediction_router.Tests.test_original_completed_ledger_cannot_be_replayed_for_paid_calls) ... ok
+test_original_expiry_and_branch_are_preserved (experiments.affect_api_20261023.test_prediction_router.Tests.test_original_expiry_and_branch_are_preserved) ... ok
+test_provenance_and_leakage_fail_closed (experiments.affect_api_20261023.test_prediction_router.Tests.test_provenance_and_leakage_fail_closed) ... ok
+test_regression_in_replication_cannot_hide_in_aggregate (experiments.affect_api_20261023.test_prediction_router.Tests.test_regression_in_replication_cannot_hide_in_aggregate) ... ok
+test_replay_recomputes_known_metrics_and_preserves_exhausted_authorization (experiments.affect_api_20261023.test_prediction_router.Tests.test_replay_recomputes_known_metrics_and_preserves_exhausted_authorization) ... ok
+test_seen_archive_is_not_independent_validation (experiments.affect_api_20261023.test_prediction_router.Tests.test_seen_archive_is_not_independent_validation) ... ok
+test_single_metric_regression_rejected_despite_better_average (experiments.affect_api_20261023.test_prediction_router.Tests.test_single_metric_regression_rejected_despite_better_average) ... ok
+test_stale_unknown_mismatched_or_malformed_cache_cannot_dispatch (experiments.affect_api_20261023.test_prediction_router.Tests.test_stale_unknown_mismatched_or_malformed_cache_cannot_dispatch) ... ok
+test_zero_error_baseline_and_weak_group_consistency_block_promotion (experiments.affect_api_20261023.test_prediction_router.Tests.test_zero_error_baseline_and_weak_group_consistency_block_promotion) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 0.085s
+
+OK

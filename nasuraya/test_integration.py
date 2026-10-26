@@ -11,6 +11,19 @@ from .demo import run
 
 
 class IntegrationTests(unittest.TestCase):
+    def test_dialogue_memory_forecast_and_consolidation_survive_cold_processes(self):
+        from .continuity_demo import run as continuity
+        with tempfile.TemporaryDirectory() as directory:
+            report = continuity(Path(directory)/'demo')
+        self.assertEqual(report['native_cycles'], 2)
+        self.assertEqual(report['remaining_budget'], 0)
+        self.assertEqual(report['episode_count'], 2)
+        self.assertEqual(report['cold_replay_cycles'], 0)
+        self.assertTrue(report['cold_replay_state_equal'])
+        self.assertEqual(report['forecast_methods'], ['persistence_fallback', 'nearest_episode'])
+        self.assertEqual(report['external_api_calls'], 0)
+        self.assertFalse(report['numeric_gate_eligible'])
+
     def test_catalog_has_existing_entrypoints_without_initializing_any_state(self):
         self.assertEqual(len(validate()), len(CAPABILITIES))
         for key in ('body','dialogue','articulated','genome','self-model','self-observe',

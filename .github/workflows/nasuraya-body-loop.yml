@@ -63,7 +63,7 @@ jobs:
         run: python3 -m examples.nasuraya_body_loop wake-test
       - name: Verify care continuity across bounded awakenings
         run: python3 -m examples.nasuraya_body_loop care-test
-      - name: Verify reduced experience in API input without a live service
+      - name: Verify shared measured experience and reduced API input offline
         run: python3 -m examples.nasuraya_body_loop experience-test
       - name: Verify saved goal, action intent and unknown-outcome stops
         run: python3 -m examples.nasuraya_body_loop decision-test
@@ -73,6 +73,8 @@ jobs:
         run: python3 -m examples.nasuraya_body_loop creation-test
       - name: Verify prepared persistent-host units without installation
         run: python3 -m unittest examples.nasuraya_body_loop.deployment.test_prepare_host -v
+      - name: Demonstrate integrated experience and restart recovery
+        run: python3 -m examples.nasuraya_body_loop experience-demo --output-dir /tmp/nasuraya-experience-demo
       - name: Verify persistent API body tools without live service
         run: |
           python3 -m venv .ci-env

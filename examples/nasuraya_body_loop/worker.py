@@ -9,6 +9,27 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command in ('experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-demo'):
+        from .experience import ExperienceController
+        if command == 'experience-demo':
+            from .experience_demo import demo
+            print(json.dumps(demo(Path(args['output_dir'])), ensure_ascii=False, sort_keys=True))
+            return 0
+        with BodyLoop(args['session']) as loop:
+            if command == 'experience-enable':
+                summary = ExperienceController.enable(loop).status()
+            else:
+                controller = ExperienceController(loop)
+                if command == 'experience-step':
+                    summary = controller.step(args['decision_id'], duration_s=args['duration_s'])
+                elif command == 'experience-consolidate':
+                    summary = controller.consolidate()
+                else:
+                    summary = controller.status()
+            print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+            if command == 'experience-step':
+                return 0 if summary['native_receipt']['status'] == 'complete' else 1
+        return 0
     if command == 'sleep-integration-test':
         from . import test_sleep_integration
         r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_sleep_integration))
@@ -48,8 +69,10 @@ def main(args):
         from .experience_live_check import check
         return check(args['session'],args['wake_id'],args['output_dir'])
     if command == 'experience-test':
-        from . import test_experience
-        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_experience))
+        from . import test_experience, test_api_experience
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
+                                   for module in (test_experience, test_api_experience))
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command == 'care-memory':
         from .care import reconcile

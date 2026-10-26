@@ -28,7 +28,7 @@ def verified_sources():
 
 def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; live API requires explicit api or allowed API wakeup')
-    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'maintain', 'benchmark', 'adaptive', 'adaptive-test', 'predictive-benchmark', 'closed-loop-test', 'closed-loop-benchmark', 'preflight-test', 'support-diagnostic', 'authorize-continuation', 'schedule', 'wake', 'wake-watch', 'wake-status', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'care-memory', 'experience-test', 'experience-live-check', 'memory-ablation', 'decision-test', 'intent-status', 'creation-test', 'reconcile-api-creation', 'terminal-replay-check', 'sleep-integration-test', 'configure-metacognition', 'configure-language-advisor'])
+    p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status', 'maintain', 'benchmark', 'adaptive', 'adaptive-test', 'predictive-benchmark', 'closed-loop-test', 'closed-loop-benchmark', 'preflight-test', 'support-diagnostic', 'authorize-continuation', 'schedule', 'wake', 'wake-watch', 'wake-status', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'care-memory', 'experience-test', 'experience-live-check', 'memory-ablation', 'decision-test', 'intent-status', 'creation-test', 'reconcile-api-creation', 'terminal-replay-check', 'sleep-integration-test', 'configure-metacognition', 'configure-language-advisor', 'experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-demo'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep', 'recovery-ready'], default='normal')
@@ -68,9 +68,9 @@ def main(argv=None):
     p.add_argument('--confirm-finished-create', action='store_true')
     p.add_argument('--confirm-exclusive-project-writer', action='store_true')
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'benchmark', 'test', 'api-test', 'adaptive-test', 'predictive-benchmark', 'closed-loop-test', 'closed-loop-benchmark', 'preflight-test', 'support-diagnostic', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'experience-test', 'memory-ablation', 'decision-test', 'creation-test', 'sleep-integration-test'] and args.session is None:
+    if args.command not in ['demo', 'benchmark', 'test', 'api-test', 'adaptive-test', 'predictive-benchmark', 'closed-loop-test', 'closed-loop-benchmark', 'preflight-test', 'support-diagnostic', 'wake-test', 'wake-demo', 'care-test', 'care-demo', 'experience-test', 'memory-ablation', 'decision-test', 'creation-test', 'sleep-integration-test', 'experience-demo'] and args.session is None:
         p.error('--session required')
-    if args.command in ('demo', 'benchmark', 'predictive-benchmark', 'closed-loop-benchmark', 'support-diagnostic', 'wake-demo', 'care-demo', 'experience-live-check', 'memory-ablation', 'terminal-replay-check') and args.output_dir is None:
+    if args.command in ('demo', 'benchmark', 'predictive-benchmark', 'closed-loop-benchmark', 'support-diagnostic', 'wake-demo', 'care-demo', 'experience-live-check', 'memory-ablation', 'terminal-replay-check', 'experience-demo') and args.output_dir is None:
         p.error('--output-dir required')
     if args.command == 'api' and (args.output_dir is None or not args.model):
         p.error('--output-dir and --model required for explicit live API')

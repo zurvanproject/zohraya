@@ -12,8 +12,9 @@ from .body_dialogue import DialogueBodyBridge
 
 def main(args):
     if args['command'] == 'test':
-        from . import test_body_dialogue
-        suite = unittest.defaultTestLoader.loadTestsFromModule(test_body_dialogue)
+        from . import test_body_dialogue, test_integrated_dialogue
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
+                                   for module in (test_body_dialogue, test_integrated_dialogue))
         return 0 if unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful() else 1
     if args['command'] == 'evaluate':
         from .evaluate_dialogue import evaluate
@@ -37,8 +38,16 @@ def main(args):
                 bridge.resume()
             elif args['command'] == 'pause':
                 bridge.pause()
-            result = (bridge.receive(json.loads(Path(args['message']).read_text()))
-                      if args['command'] == 'message' else bridge.status())
+            if args['command'] == 'message':
+                result = bridge.receive(json.loads(Path(args['message']).read_text()))
+            elif args['command'] == 'trace':
+                result = bridge.trace(args['message_id'])
+            elif args['command'] == 'recall':
+                result = bridge.recall(args['cue'])
+            elif args['command'] == 'consolidate':
+                result = bridge.experience.consolidate()
+            else:
+                result = bridge.status()
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 

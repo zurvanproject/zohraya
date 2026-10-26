@@ -1,0 +1,567 @@
+{
+  "schema": "nasuraya.dialogue-memory-continuity/1",
+  "source": "two sequential synthetic software-body transitions; not independent forecast validation",
+  "native_cycles": 2,
+  "remaining_budget": 0,
+  "cold_replay_cycles": 0,
+  "cold_replay_state_equal": true,
+  "episode_count": 2,
+  "actions": [
+    "walk",
+    "walk"
+  ],
+  "action_correct": 2,
+  "metric_mae": 0.00014957204401436024,
+  "forecast_methods": [
+    "persistence_fallback",
+    "nearest_episode"
+  ],
+  "numeric_gate_eligible": false,
+  "external_api_calls": 0,
+  "incremental_api_cost_usd": 0,
+  "recalled_sources": [
+    {
+      "kind": "observed",
+      "locator": "native-decision://dialogue-body:second/80d1a9938804d739fa2cd97c1e2fd4a4460a8db05735619ef39900bf3eb18180"
+    },
+    {
+      "kind": "observed",
+      "locator": "conversation://second"
+    },
+    {
+      "kind": "observed",
+      "locator": "native-decision://dialogue-body:first/da74aba03f1badffbb84571ef13cd99abf616bd4b7e1d3f0840a752a4391cad3"
+    }
+  ],
+  "trace": {
+    "message": {
+      "id": "second",
+      "text": "Synthetic continuity fixture second",
+      "kind": "caller_message",
+      "source": "conversation://second"
+    },
+    "appraisal_kind": "caller_authored_interpretation",
+    "recalled": [
+      {
+        "cues": [
+          "body",
+          "dialogue"
+        ],
+        "event_id": "body-feedback:first",
+        "historical": true,
+        "retrieval_score": 0.9895596951705395,
+        "source": {
+          "kind": "observed",
+          "locator": "native-decision://dialogue-body:first/da74aba03f1badffbb84571ef13cd99abf616bd4b7e1d3f0840a752a4391cad3"
+        },
+        "summary": "Native body returned walk",
+        "valence": 0.46224999625582175
+      },
+      {
+        "cues": [
+          "body",
+          "dialogue"
+        ],
+        "event_id": "dialogue:first",
+        "historical": true,
+        "retrieval_score": 0.9739848927976069,
+        "source": {
+          "kind": "observed",
+          "locator": "conversation://first"
+        },
+        "summary": "Synthetic continuity fixture first",
+        "valence": 0.32000000000000006
+      }
+    ],
+    "prior_body_memory": {
+      "context": "[false,false,false,false]",
+      "memory_risk": 0.0007153227434187198,
+      "prediction": {
+        "before": {
+          "energy": 0.9993357964087033,
+          "fatigue": 0.010858521713712594,
+          "pain": 0.11484637232764255,
+          "sleep_pressure": 0.3503255680596273
+        },
+        "expected": {
+          "energy": 0.9993261423381948,
+          "fatigue": 0.011017586699135757,
+          "pain": 0.11556169507106127,
+          "sleep_pressure": 0.3503301535252558
+        },
+        "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+        "prior_samples": 1,
+        "scope": "next software state given controller preference; not calibrated probability"
+      },
+      "preferred": "walk",
+      "recalled": [
+        "first"
+      ],
+      "scores": {
+        "observe": 0.4270867088616124,
+        "walk": 0.644909780476122
+      }
+    },
+    "plan": {
+      "affect_enabled": true,
+      "arousal": 0.52121234687218,
+      "baseline_selected_action": "observe",
+      "disposition": "plan_only",
+      "options": [
+        {
+          "action_id": "observe",
+          "adjusted_score": 1.0978484938748874,
+          "affective_bonus": 0.0028484938748871993,
+          "budget_exhausted": false,
+          "components": {
+            "benefit": 0.5,
+            "cost": 0.0,
+            "disharmony": 0.0,
+            "ethical": 1.0,
+            "harm": 0.01,
+            "uncertainty_penalty": 0.0
+          },
+          "eligible": true,
+          "missing": [],
+          "reasons": [],
+          "risk_upper": 0.01,
+          "score": 1.0950000000000002,
+          "uncertainty": 0.0,
+          "within_affective_window": true
+        },
+        {
+          "action_id": "walk",
+          "adjusted_score": 1.1029820014536071,
+          "affective_bonus": 0.009982001453606972,
+          "budget_exhausted": false,
+          "components": {
+            "benefit": 0.5,
+            "cost": 0.01,
+            "disharmony": 0.0,
+            "ethical": 1.0,
+            "harm": 0.01,
+            "uncertainty_penalty": 0.0
+          },
+          "eligible": true,
+          "missing": [],
+          "reasons": [],
+          "risk_upper": 0.01,
+          "score": 1.0930000000000002,
+          "uncertainty": 0.0,
+          "within_affective_window": true
+        }
+      ],
+      "selected_action": "walk",
+      "tendencies": {
+        "consolidate": 0.5742408691996144,
+        "explore": 0.2495500363401743,
+        "repair": 0.0,
+        "verify": 0.07121234687217998
+      }
+    },
+    "forecast": {
+      "action_method": "nearest_episode",
+      "before": {
+        "energy": 0.9993357964087033,
+        "fatigue": 0.010858521713712594,
+        "pain": 0.11484637232764255,
+        "sleep_pressure": 0.3503255680596273
+      },
+      "expected": {
+        "energy": 0.9993261423381948,
+        "fatigue": 0.011017586699135757,
+        "pain": 0.11556169507106127,
+        "sleep_pressure": 0.3503301535252558
+      },
+      "history_ids": [
+        "first"
+      ],
+      "history_sha256": "a59fae6aee61e5403edbf36dc9b22f7e30da000f988705f277d41f2a218f959c",
+      "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+      "method": "nearest_episode",
+      "new_api_calls": 0,
+      "numeric_gate": {
+        "batches": {},
+        "eligible": false,
+        "policy_sha256": "fd8af2da0eb3d2225cc42fe024011c627206aeb624a82dd8ccd60c467abc9469",
+        "reasons": [
+          "independent_validation_missing"
+        ]
+      },
+      "predicted_action": "walk",
+      "scope": "forecast only; no body permission or policy promotion"
+    },
+    "result": {
+      "affect_after": {
+        "contentment": 0.4203677953894629,
+        "excitement": 0.5212027687466778,
+        "fear": 0.0,
+        "frustration": 0.0,
+        "joy": 0.6792055108514651,
+        "sadness": 0.0
+      },
+      "experience": {
+        "affect_after": {
+          "arousal": 0.4205869123254128,
+          "valence": 0.6496512406130491
+        },
+        "native_receipt": {
+          "actual_action": "walk",
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 1.7355716863676207e-10,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 7.216449660063518e-16,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 3.633561279550029e-15
+          },
+          "decision_id": "dialogue-body:second",
+          "expected_outcome_matched": true,
+          "ledger_status": "complete",
+          "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+          "recalled_feedback_ids": [
+            "dialogue-body:first"
+          ],
+          "replayed": false,
+          "requested_action": "walk",
+          "self_model_after": {
+            "checkpoint_sha256": "937467420693adb1707edfec545012bb747d5efd0ab58be9c8075aa2ae13a64c",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_R.",
+            "minimum_state": {
+              "HR": 63.306046466796914,
+              "RR": 14.214164695944906,
+              "arousal": 0.3302257850901889,
+              "balance": 1.0,
+              "breath_depth": 1.5278512861400375,
+              "energy": 0.9993259754266908,
+              "fatigue": 0.01101953458852712,
+              "hydration": 0.9999855798565015,
+              "muscle_tone": 0.2705588813688152,
+              "pain": 0.1152558607848207,
+              "parasympathetic": 0.6117349898035256,
+              "posture": "shift",
+              "sleep_pressure": 0.3503301535252558,
+              "sympathetic": 0.2512289726407279,
+              "temperature": 37.00005714867009,
+              "valence": 0.0014814052783000383
+            },
+            "revision": 2,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "pain",
+              "energy": 0.9993259754266908,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "shift",
+              "position_m": [
+                0.0019854607556175903,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "chest_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07.200000+00:00"
+          },
+          "status": "complete"
+        },
+        "plan": {
+          "context": "[false,false,false,false]",
+          "memory_risk": 0.0007153227434187198,
+          "prediction": {
+            "action_method": "nearest_episode",
+            "before": {
+              "energy": 0.9993357964087033,
+              "fatigue": 0.010858521713712594,
+              "pain": 0.11484637232764255,
+              "sleep_pressure": 0.3503255680596273
+            },
+            "expected": {
+              "energy": 0.9993261423381948,
+              "fatigue": 0.011017586699135757,
+              "pain": 0.11556169507106127,
+              "sleep_pressure": 0.3503301535252558
+            },
+            "history_ids": [
+              "first"
+            ],
+            "history_sha256": "a59fae6aee61e5403edbf36dc9b22f7e30da000f988705f277d41f2a218f959c",
+            "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+            "method": "nearest_episode",
+            "new_api_calls": 0,
+            "numeric_gate": {
+              "batches": {},
+              "eligible": false,
+              "policy_sha256": "fd8af2da0eb3d2225cc42fe024011c627206aeb624a82dd8ccd60c467abc9469",
+              "reasons": [
+                "independent_validation_missing"
+              ]
+            },
+            "predicted_action": "walk",
+            "scope": "forecast only; no body permission or policy promotion"
+          },
+          "preferred": "walk",
+          "recalled": [
+            "first"
+          ],
+          "scores": {
+            "observe": 0.4270867088616124,
+            "walk": 0.644909780476122
+          },
+          "selection_authority": "dialogue_affective_plan_with_native_veto"
+        },
+        "prediction": {
+          "action_correct": true,
+          "action_method": "nearest_episode",
+          "actual": {
+            "energy": 0.9993259754266908,
+            "fatigue": 0.01101953458852712,
+            "pain": 0.1152558607848207,
+            "sleep_pressure": 0.3503301535252558
+          },
+          "before": {
+            "energy": 0.9993357964087033,
+            "fatigue": 0.010858521713712594,
+            "pain": 0.11484637232764255,
+            "sleep_pressure": 0.3503255680596273
+          },
+          "expected": {
+            "energy": 0.9993261423381948,
+            "fatigue": 0.011017586699135757,
+            "pain": 0.11556169507106127,
+            "sleep_pressure": 0.3503301535252558
+          },
+          "history_ids": [
+            "first"
+          ],
+          "history_sha256": "a59fae6aee61e5403edbf36dc9b22f7e30da000f988705f277d41f2a218f959c",
+          "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+          "mean_absolute_error": 7.698727178400084e-05,
+          "method": "nearest_episode",
+          "new_api_calls": 0,
+          "numeric_gate": {
+            "batches": {},
+            "eligible": false,
+            "policy_sha256": "fd8af2da0eb3d2225cc42fe024011c627206aeb624a82dd8ccd60c467abc9469",
+            "reasons": [
+              "independent_validation_missing"
+            ]
+          },
+          "predicted_action": "walk",
+          "scope": "forecast only; no body permission or policy promotion",
+          "source": "native-decision://dialogue-body:second/80d1a9938804d739fa2cd97c1e2fd4a4460a8db05735619ef39900bf3eb18180"
+        },
+        "replayed": false,
+        "request_id": "second",
+        "this_call_native_cycles": 1
+      },
+      "message_id": "second",
+      "native_receipt": {
+        "actual_action": "walk",
+        "body_audit": {
+          "drink_input_L": 0.0,
+          "energy_error_J": 1.7355716863676207e-10,
+          "external_heat_J": 0.0,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "neural_clock_error_s": 7.216449660063518e-16,
+          "photochemical_J": 0.0,
+          "same_owner_ticks": true,
+          "voided_L": 0.0,
+          "water_error_L": 3.633561279550029e-15
+        },
+        "decision_id": "dialogue-body:second",
+        "expected_outcome_matched": true,
+        "ledger_status": "complete",
+        "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+        "recalled_feedback_ids": [
+          "dialogue-body:first"
+        ],
+        "replayed": false,
+        "requested_action": "walk",
+        "self_model_after": {
+          "checkpoint_sha256": "937467420693adb1707edfec545012bb747d5efd0ab58be9c8075aa2ae13a64c",
+          "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_R.",
+          "minimum_state": {
+            "HR": 63.306046466796914,
+            "RR": 14.214164695944906,
+            "arousal": 0.3302257850901889,
+            "balance": 1.0,
+            "breath_depth": 1.5278512861400375,
+            "energy": 0.9993259754266908,
+            "fatigue": 0.01101953458852712,
+            "hydration": 0.9999855798565015,
+            "muscle_tone": 0.2705588813688152,
+            "pain": 0.1152558607848207,
+            "parasympathetic": 0.6117349898035256,
+            "posture": "shift",
+            "sleep_pressure": 0.3503301535252558,
+            "sympathetic": 0.2512289726407279,
+            "temperature": 37.00005714867009,
+            "valence": 0.0014814052783000383
+          },
+          "revision": 2,
+          "scope": "existing software body; generated fixture, not biological measurement",
+          "self_location": {
+            "dominant_homeostatic_need": "pain",
+            "energy": 0.9993259754266908,
+            "evidence_level": "B",
+            "next_move_prediction": "available by forecast(action, duration, inputs)",
+            "pose": "shift",
+            "position_m": [
+              0.0019854607556175903,
+              0.0,
+              1.314
+            ],
+            "strongest_interoceptive_region": "chest_state",
+            "where": "Tadash computational world: X left, Y forward, Z up; metres"
+          },
+          "simulated_wall_utc": "2026-01-01T00:00:07.200000+00:00"
+        },
+        "status": "complete"
+      },
+      "plan": {
+        "affect_enabled": true,
+        "arousal": 0.52121234687218,
+        "baseline_selected_action": "observe",
+        "disposition": "plan_only",
+        "options": [
+          {
+            "action_id": "observe",
+            "adjusted_score": 1.0978484938748874,
+            "affective_bonus": 0.0028484938748871993,
+            "budget_exhausted": false,
+            "components": {
+              "benefit": 0.5,
+              "cost": 0.0,
+              "disharmony": 0.0,
+              "ethical": 1.0,
+              "harm": 0.01,
+              "uncertainty_penalty": 0.0
+            },
+            "eligible": true,
+            "missing": [],
+            "reasons": [],
+            "risk_upper": 0.01,
+            "score": 1.0950000000000002,
+            "uncertainty": 0.0,
+            "within_affective_window": true
+          },
+          {
+            "action_id": "walk",
+            "adjusted_score": 1.1029820014536071,
+            "affective_bonus": 0.009982001453606972,
+            "budget_exhausted": false,
+            "components": {
+              "benefit": 0.5,
+              "cost": 0.01,
+              "disharmony": 0.0,
+              "ethical": 1.0,
+              "harm": 0.01,
+              "uncertainty_penalty": 0.0
+            },
+            "eligible": true,
+            "missing": [],
+            "reasons": [],
+            "risk_upper": 0.01,
+            "score": 1.0930000000000002,
+            "uncertainty": 0.0,
+            "within_affective_window": true
+          }
+        ],
+        "selected_action": "walk",
+        "tendencies": {
+          "consolidate": 0.5742408691996144,
+          "explore": 0.2495500363401743,
+          "repair": 0.0,
+          "verify": 0.07121234687217998
+        }
+      },
+      "provenance": {
+        "appraisal": "caller_authored_interpretation",
+        "message": "conversation://second",
+        "outcome": "native-decision://dialogue-body:second/80d1a9938804d739fa2cd97c1e2fd4a4460a8db05735619ef39900bf3eb18180"
+      },
+      "recalled": [
+        {
+          "cues": [
+            "body",
+            "dialogue"
+          ],
+          "event_id": "body-feedback:first",
+          "historical": true,
+          "retrieval_score": 0.9895596951705395,
+          "source": {
+            "kind": "observed",
+            "locator": "native-decision://dialogue-body:first/da74aba03f1badffbb84571ef13cd99abf616bd4b7e1d3f0840a752a4391cad3"
+          },
+          "summary": "Native body returned walk",
+          "valence": 0.46224999625582175
+        },
+        {
+          "cues": [
+            "body",
+            "dialogue"
+          ],
+          "event_id": "dialogue:first",
+          "historical": true,
+          "retrieval_score": 0.9739848927976069,
+          "source": {
+            "kind": "observed",
+            "locator": "conversation://first"
+          },
+          "summary": "Synthetic continuity fixture first",
+          "valence": 0.32000000000000006
+        }
+      ],
+      "replayed": false,
+      "reply_fa": "بدن تجمیعی تداش یک چرخهٔ کوتاه راه‌رفتن اجرا کرد.",
+      "restrictions": [],
+      "scope": "source-pinned native software body; not biological or articulated MuJoCo",
+      "this_call_body_cycles": 1
+    },
+    "status": "completed",
+    "body_cycles_executed_by_trace": 0
+  },
+  "consolidation": {
+    "enabled": true,
+    "changed": true,
+    "summaries": [
+      {
+        "context": "[false,false,false,false]",
+        "preference": "walk",
+        "observations": 2,
+        "protection_events": 0,
+        "sources": [
+          "native-decision://dialogue-body:first/da74aba03f1badffbb84571ef13cd99abf616bd4b7e1d3f0840a752a4391cad3",
+          "native-decision://dialogue-body:second/80d1a9938804d739fa2cd97c1e2fd4a4460a8db05735619ef39900bf3eb18180"
+        ]
+      }
+    ],
+    "hypotheses": [
+      {
+        "kind": "authored_hypothesis",
+        "text": "Compare these two controller preferences under matched body conditions.",
+        "source_ids": [
+          "first",
+          "second"
+        ],
+        "verified": false
+      }
+    ],
+    "self_models": [
+      {
+        "version": 1,
+        "evidence_digest": "025f72686352ef59d239329c474c58b456c02b6cfc0959f9f1d7f4d849a192c7",
+        "learned_contexts": 1,
+        "observations": 2,
+        "error_ema": 5.094254495595532e-05,
+        "scope": "versioned software capability summary; no identity rewrite"
+      }
+    ]
+  }
+}

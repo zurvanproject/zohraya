@@ -1,0 +1,85 @@
+{
+  "schema": "nasuraya.unified-continuity-verification/1",
+  "date": "2026-10-26",
+  "passed": 289,
+  "failed": 0,
+  "skipped": 0,
+  "suites": [
+    {
+      "suite": "dialogue",
+      "passed": 19,
+      "seconds": 66.184,
+      "log": "dialogue.log",
+      "sha256": "6d5044b07a54d2dbe1d19013cf3261e6bd813e45c4d5ab94433b7172be582da0"
+    },
+    {
+      "suite": "experience",
+      "passed": 25,
+      "seconds": 98.499,
+      "log": "experience.log",
+      "sha256": "ad7deebcbd58dbaea77336b25743dcf82861c30479897fe1f8d8bf8b2d67a3cf"
+    },
+    {
+      "suite": "interfaces",
+      "passed": 15,
+      "seconds": 16.608,
+      "log": "interfaces.log",
+      "sha256": "240498b35831aec3c9b356117019f5d711982b3eac8b84ac08a602ece9ec3645"
+    },
+    {
+      "suite": "prediction_router",
+      "passed": 19,
+      "seconds": 0.085,
+      "log": "prediction_router.log",
+      "sha256": "c18dc286ea690830f6ff463ce2af14d37f32fb96840bfe37d36e949a1bbd8499"
+    },
+    {
+      "suite": "host",
+      "passed": 110,
+      "seconds": 2.643,
+      "log": "host.log",
+      "sha256": "695432e1409dd835923d47a75526c004fb8542feca328c27d9760b75a925abc3"
+    },
+    {
+      "suite": "genome",
+      "passed": 98,
+      "seconds": 78.791,
+      "log": "genome.log",
+      "sha256": "3b4e415ca324cdcaaafaa6c34cfbe88374e1e7494a51cb7643b7a41884da9974"
+    },
+    {
+      "suite": "combined_body",
+      "passed": 3,
+      "seconds": 11.016,
+      "log": "combined_body.log",
+      "sha256": "5440b7feaf333a061dce56a2f7d77fda37c2246fe099fd28fc3bdf45ca7bc304"
+    }
+  ],
+  "new_cross_ledger_tests": 8,
+  "new_cold_process_test": 1,
+  "source_coverage": {
+    "pull_request_heads": 59,
+    "additional_capabilities": 2,
+    "native_source_files": 70,
+    "upstream_blobs": 9,
+    "entrypoints": 31,
+    "refresh_heads": 4,
+    "preserved_experiment_files": 38,
+    "preserved_main_files": 5
+  },
+  "implementation_sha256": {
+    "examples/nasuraya_affect/body_dialogue.py": "02546087ab88080886c7f94f046e162fa6f37d40e3f3364fb16703b9b3189b1f",
+    "examples/nasuraya_affect/dialogue_cli.py": "38795032f14a4866d5077d340b3d2498c86045e4e8dbb16db066b3066d708b00",
+    "examples/nasuraya_affect/dialogue_worker.py": "059115085aaad1a47f1402e6d85c2178b8858a46148ac6f00330d2238eb4fdd4",
+    "examples/nasuraya_affect/test_integrated_dialogue.py": "ee2172074471df848ef77ca7340d1f9ca1e75da9b4d0ed9f4bd595a659234150",
+    "examples/nasuraya_body_loop/experience.py": "b29d3a90c945d739d8d6b52ad36ee40685bf5747157c647a2ebd919307d3c5ca",
+    "examples/nasuraya_body_loop/api_experience.py": "78523501cd00c9c4d44520cc58fb3009f44623aa4c322681b578034e1b4ffc44",
+    "nasuraya/continuity_demo.py": "d3d67aa18135bf7865e5b6f2a936d9a217c2f118f1bcfa88735c9a669788fb73",
+    "nasuraya/verify_sources.py": "dc3b84b665981dc6dc341a734420c78da2fa5046f635e2baffd7fad8e7e9b6ba",
+    "nasuraya/test_integration.py": "d507116aff3aede248b7ce7b3d508a503322c5d4a86b83e0ab62489af3ab76f5"
+  },
+  "external_api_calls": 0,
+  "live_control_branch_changed": false,
+  "main_changed": false,
+  "scope": "Relevant integration suites; not a rerun of the historical 1025-test campaign. Two sequential synthetic demo transitions are not independent predictor validation."
+}

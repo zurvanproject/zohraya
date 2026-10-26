@@ -4,6 +4,11 @@
 نظارتی و کنترل فعال و بازیابی یادگیری در
 [گزارش اتصال فراشناختی API](../../docs/nasuraya-metacognitive-api-v01-fa.md)
 مستند شده است. جلسه‌های قبلی به‌صورت پیش‌فرض این افزونه را فعال نمی‌کنند.
+افزونهٔ اختیاریِ [تجربه و خودپیش‌بینی](../../docs/nasuraya-experience-integration-2026-10-23-fa.md)
+حالت عاطفیِ مهندسی، حافظهٔ پیش‌نگر و مرورِ پایدار را به همین حلقه وصل می‌کند.
+با `experience-test` بررسی و با `experience-demo --output-dir /tmp/new-experience-demo`
+اجرا می‌شود؛ برای نشست موجود، ابتدا `experience-enable` و سپس `experience-step`
+را با `--session` به‌کار ببرید. مدل زبانی یا API در این مسیر اجرا نمی‌شود.
 
 این مسیر، DecisionCore v0.1 و ReflectionCycle v0.2 بازیابی‌شده را به چرخهٔ واقعی
 `UnifiedBody.cycle()` متصل می‌کند. چرخهٔ مشاهده ← تصمیم ← اجرا ← ارزیابی در یک

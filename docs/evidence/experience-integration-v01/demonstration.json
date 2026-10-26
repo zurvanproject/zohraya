@@ -1,0 +1,345 @@
+{
+  "date": "2026-10-23",
+  "base_commit": "5330cbee347c1ef5b7c3a77e74f91398d45aa76f",
+  "scope": "constructed native software-body demonstration, not a general capability benchmark",
+  "native_cycles": 6,
+  "model_api_calls": 0,
+  "sessions": {
+    "normal": {
+      "events": [
+        {
+          "id": "first",
+          "preferred": "walk",
+          "selected": "walk",
+          "actual": "walk",
+          "before": {
+            "energy": 0.9993454504792117,
+            "fatigue": 0.01069945672828943,
+            "pain": 0.11413104958422383,
+            "sleep_pressure": 0.35032098259399874
+          },
+          "predicted": {
+            "energy": 0.9993454504792117,
+            "fatigue": 0.01069945672828943,
+            "pain": 0.11413104958422383,
+            "sleep_pressure": 0.35032098259399874
+          },
+          "after": {
+            "energy": 0.9993357964087033,
+            "fatigue": 0.010858521713712594,
+            "pain": 0.11484637232764255,
+            "sleep_pressure": 0.3503255680596273
+          },
+          "mean_absolute_error": 0.00022215681624471965,
+          "affect_after": {
+            "arousal": 0.3854335443080621,
+            "valence": 0.649787425502959
+          },
+          "source": "native-decision://experience:first/e87580e52b174a4ed90c576c247ab3030a04710a9ca17e5aefc7cffcaa2c4b38",
+          "recalled": [],
+          "persistence_baseline_mae": 0.00022215681624471965
+        },
+        {
+          "id": "second",
+          "preferred": "walk",
+          "selected": "walk",
+          "actual": "walk",
+          "before": {
+            "energy": 0.9993357964087033,
+            "fatigue": 0.010858521713712594,
+            "pain": 0.11484637232764255,
+            "sleep_pressure": 0.3503255680596273
+          },
+          "predicted": {
+            "energy": 0.9993261423381948,
+            "fatigue": 0.011017586699135757,
+            "pain": 0.11556169507106127,
+            "sleep_pressure": 0.3503301535252558
+          },
+          "after": {
+            "energy": 0.9993259754266908,
+            "fatigue": 0.01101953458852712,
+            "pain": 0.1152558607848207,
+            "sleep_pressure": 0.3503301535252558
+          },
+          "mean_absolute_error": 7.698727178400084e-05,
+          "affect_after": {
+            "arousal": 0.4205869123254128,
+            "valence": 0.6496512406130491
+          },
+          "source": "native-decision://experience:second/084e54f0600880f6daa937cc7e7775bb9ace4d5cdf5dcbb395f1381e4eda1584",
+          "recalled": [
+            "first"
+          ],
+          "persistence_baseline_mae": 0.00014622694490843162
+        },
+        {
+          "id": "third",
+          "preferred": "walk",
+          "selected": "walk",
+          "actual": "walk",
+          "before": {
+            "energy": 0.9993259754266908,
+            "fatigue": 0.01101953458852712,
+            "pain": 0.1152558607848207,
+            "sleep_pressure": 0.3503301535252558
+          },
+          "predicted": {
+            "energy": 0.9993162379004303,
+            "fatigue": 0.011179573518645965,
+            "pain": 0.11581826638511913,
+            "sleep_pressure": 0.35033473899088435
+          },
+          "after": {
+            "energy": 0.9993159548421804,
+            "fatigue": 0.0111798010412913,
+            "pain": 0.1157189905674298,
+            "sleep_pressure": 0.35033473899088435
+          },
+          "mean_absolute_error": 2.494659964615356e-05,
+          "affect_after": {
+            "arousal": 0.45564356839885967,
+            "valence": 0.6495019815414679
+          },
+          "source": "native-decision://experience:third/eb4caf915b1d8d27673561855318a1dfe752c51e9a1160194fdace1fb547dff6",
+          "recalled": [
+            "second",
+            "first"
+          ],
+          "persistence_baseline_mae": 0.00015950057137805243
+        }
+      ],
+      "cold_reopen_equal": true,
+      "remaining_actions": 0,
+      "same_observation_preferred_by_disabled_feature": {
+        "none": "walk",
+        "affect": "walk",
+        "prediction": "walk",
+        "memory": "walk"
+      },
+      "consolidation": {
+        "enabled": true,
+        "changed": true,
+        "summaries": [
+          {
+            "context": "[false,false,false,false]",
+            "preference": "walk",
+            "observations": 3,
+            "protection_events": 0,
+            "sources": [
+              "native-decision://experience:first/e87580e52b174a4ed90c576c247ab3030a04710a9ca17e5aefc7cffcaa2c4b38",
+              "native-decision://experience:second/084e54f0600880f6daa937cc7e7775bb9ace4d5cdf5dcbb395f1381e4eda1584",
+              "native-decision://experience:third/eb4caf915b1d8d27673561855318a1dfe752c51e9a1160194fdace1fb547dff6"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "kind": "authored_hypothesis",
+            "text": "Compare these two controller preferences under matched body conditions.",
+            "source_ids": [
+              "second",
+              "third"
+            ],
+            "verified": false
+          }
+        ],
+        "self_models": [
+          {
+            "error_ema": 4.4431363248943934e-05,
+            "evidence_digest": "d638a8672844ad4a5711294912b4237999578c4c811e0cba317533c6fd81a2af",
+            "learned_contexts": 1,
+            "observations": 1,
+            "scope": "versioned software capability summary; no identity rewrite",
+            "version": 1
+          },
+          {
+            "version": 2,
+            "evidence_digest": "83239195abde242125d4c108b8e3702d7ff28a4fa40383223d84f7413c1fe9e7",
+            "learned_contexts": 1,
+            "observations": 3,
+            "error_ema": 4.574335589399497e-05,
+            "scope": "versioned software capability summary; no identity rewrite"
+          }
+        ]
+      },
+      "forecast_comparison": {
+        "scope": "same observed three-step trajectory; descriptive only, not held-out evaluation",
+        "learned_mae_mean": 0.00010803022922495802,
+        "persistence_mae_mean": 0.0001759614441770679
+      }
+    },
+    "sleep": {
+      "events": [
+        {
+          "id": "first",
+          "preferred": "walk",
+          "selected": "walk",
+          "actual": "protect",
+          "before": {
+            "energy": 0.9993454504792117,
+            "fatigue": 0.01069945672828943,
+            "pain": 0.11413104958422383,
+            "sleep_pressure": 0.9503209825939987
+          },
+          "predicted": {
+            "energy": 0.9993454504792117,
+            "fatigue": 0.01069945672828943,
+            "pain": 0.11413104958422383,
+            "sleep_pressure": 0.9503209825939987
+          },
+          "after": {
+            "energy": 0.9993358655563357,
+            "fatigue": 0.010852306110122136,
+            "pain": 0.11484618361297251,
+            "sleep_pressure": 0.9503255680596272
+          },
+          "mean_absolute_error": 0.00022053844977149495,
+          "affect_after": {
+            "arousal": 0.6952530952557343,
+            "valence": 0.3999675131390583
+          },
+          "source": "native-decision://experience:first/8a4e4f598a8f7508eccf0afec5dcf929a1cef7600909422e85a11926a0db48f8",
+          "recalled": [],
+          "persistence_baseline_mae": 0.00022053844977149495
+        },
+        {
+          "id": "second",
+          "preferred": "observe",
+          "selected": "observe",
+          "actual": "observe",
+          "before": {
+            "energy": 0.9993358655563357,
+            "fatigue": 0.010852306110122136,
+            "pain": 0.11484618361297251,
+            "sleep_pressure": 0.9503255680596272
+          },
+          "predicted": {
+            "energy": 0.9993358655563357,
+            "fatigue": 0.010852306110122136,
+            "pain": 0.11484618361297251,
+            "sleep_pressure": 0.9503255680596272
+          },
+          "after": {
+            "energy": 0.9993262794912033,
+            "fatigue": 0.011005155491954842,
+            "pain": 0.11502062335003267,
+            "sleep_pressure": 0.9503301535252557
+          },
+          "mean_absolute_error": 8.536516241343861e-05,
+          "affect_after": {
+            "arousal": 0.7898401431314119,
+            "valence": 0.4003077898523382
+          },
+          "source": "native-decision://experience:second/d44d5e2abaec0f0afcf1c1e84e1febc36ac7bb5f204ed2102cc5d0310b8c9028",
+          "recalled": [
+            "first"
+          ],
+          "persistence_baseline_mae": 8.536516241343861e-05
+        },
+        {
+          "id": "third",
+          "preferred": "observe",
+          "selected": "observe",
+          "actual": "observe",
+          "before": {
+            "energy": 0.9993262794912033,
+            "fatigue": 0.011005155491954842,
+            "pain": 0.11502062335003267,
+            "sleep_pressure": 0.9503301535252557
+          },
+          "predicted": {
+            "energy": 0.999316693426071,
+            "fatigue": 0.011158004873787548,
+            "pain": 0.11519506308709283,
+            "sleep_pressure": 0.9503347389908843
+          },
+          "after": {
+            "energy": 0.999316692295793,
+            "fatigue": 0.011158004873787548,
+            "pain": 0.1151865568600685,
+            "sleep_pressure": 0.9503347389908843
+          },
+          "mean_absolute_error": 2.1268393255793883e-06,
+          "affect_after": {
+            "arousal": 0.8841847708919621,
+            "valence": 0.40064962624080724
+          },
+          "source": "native-decision://experience:third/e07bf711c876e6944b186449a2bd26a90ea4cb09a84217a6660e9852a94f9de6",
+          "recalled": [
+            "first",
+            "second"
+          ],
+          "persistence_baseline_mae": 8.323888822685038e-05
+        }
+      ],
+      "cold_reopen_equal": true,
+      "remaining_actions": 0,
+      "same_observation_preferred_by_disabled_feature": {
+        "none": "observe",
+        "affect": "observe",
+        "prediction": "observe",
+        "memory": "walk"
+      },
+      "consolidation": {
+        "enabled": true,
+        "changed": true,
+        "summaries": [
+          {
+            "context": "[false,false,false,true]",
+            "preference": "walk",
+            "observations": 1,
+            "protection_events": 1,
+            "sources": [
+              "native-decision://experience:first/8a4e4f598a8f7508eccf0afec5dcf929a1cef7600909422e85a11926a0db48f8"
+            ]
+          },
+          {
+            "context": "[false,false,false,true]",
+            "preference": "observe",
+            "observations": 2,
+            "protection_events": 0,
+            "sources": [
+              "native-decision://experience:second/d44d5e2abaec0f0afcf1c1e84e1febc36ac7bb5f204ed2102cc5d0310b8c9028",
+              "native-decision://experience:third/e07bf711c876e6944b186449a2bd26a90ea4cb09a84217a6660e9852a94f9de6"
+            ]
+          }
+        ],
+        "hypotheses": [
+          {
+            "kind": "authored_hypothesis",
+            "text": "Compare these two controller preferences under matched body conditions.",
+            "source_ids": [
+              "second",
+              "third"
+            ],
+            "verified": false
+          }
+        ],
+        "self_models": [
+          {
+            "error_ema": 4.410768995429899e-05,
+            "evidence_digest": "ec83d85a4657c05a044ebf99c8847a99fdc028e075479328d6d49adb49766c25",
+            "learned_contexts": 1,
+            "observations": 1,
+            "scope": "versioned software capability summary; no identity rewrite",
+            "version": 1
+          },
+          {
+            "version": 2,
+            "evidence_digest": "2153523ef82e7620de0622db33e3159257d3d21d6aa5a7690bab082c89cc7c7c",
+            "learned_contexts": 2,
+            "observations": 3,
+            "error_ema": 4.231271542201741e-05,
+            "scope": "versioned software capability summary; no identity rewrite"
+          }
+        ]
+      },
+      "forecast_comparison": {
+        "scope": "same observed three-step trajectory; descriptive only, not held-out evaluation",
+        "learned_mae_mean": 0.00010267681717017098,
+        "persistence_mae_mean": 0.00012971416680392797
+      }
+    }
+  }
+}

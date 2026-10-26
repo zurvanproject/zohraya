@@ -2,6 +2,8 @@
 
 [راهنمای نسخهٔ یکپارچه](docs/nasuraya-unified-v01-fa.md) · `python -m nasuraya catalog` · `python -m nasuraya demo --output /tmp/nasuraya-unified-demo`
 
+**یکپارچه‌سازی ۲۶ اکتبر:** [گفتگو، حافظهٔ دارای منشأ، پیش‌بینی و رسید بدن](docs/nasuraya-unified-v03-fa.md) · `python -m nasuraya continuity-demo --output /tmp/nasuraya-continuity-demo`
+
 # zohraya
 
 **منشور پنج‌گانهٔ آینهٔ ناسورایا:** [پنج اصل بنیادین، شامل اصل پنجم «ریشهٔ پایدار، شاخهٔ پویا»](docs/nasuraya-mirror-five-principles-fa.md).

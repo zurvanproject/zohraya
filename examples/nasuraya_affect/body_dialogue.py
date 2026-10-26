@@ -9,6 +9,7 @@ from pathlib import Path
 import re
 
 from examples.nasuraya_body_loop.host import BodyLoop, executed_body, validate_duration
+from examples.nasuraya_body_loop.experience import ExperienceController, KEY as EXPERIENCE_KEY
 from examples.nasuraya_agent_loop.guided import _session_lock
 from examples.nasuraya_research.native_snapshot import snapshot
 from .engine import AffectiveAgent, canonical, digest, effective, validate_event, TENDENCIES
@@ -22,9 +23,12 @@ class BridgeBlocked(RuntimeError):
 
 def source_hash():
     from examples.nasuraya_body_loop import host
+    from examples.nasuraya_body_loop import experience
+    from experiments.affect_api_20261023 import prediction_router, paired_comparison
     from examples.nasuraya_research import native_snapshot
     return digest({p.name: hashlib.sha256(p.read_bytes()).hexdigest()
-                   for p in (Path(__file__), Path(host.__file__), Path(native_snapshot.__file__))})
+                   for p in (Path(__file__), Path(host.__file__), Path(native_snapshot.__file__),
+                             Path(experience.__file__), Path(prediction_router.__file__), Path(paired_comparison.__file__))})
 
 
 def choice(name):
@@ -60,6 +64,7 @@ class DialogueBodyBridge:
             raise ValueError('native BodyLoop and separate AffectiveAgent required')
         self.loop, self.affect = loop, affect
         self._load()
+        self.experience = ExperienceController(loop)
 
     @classmethod
     def enable(cls, loop, affect):
@@ -69,12 +74,18 @@ class DialogueBodyBridge:
         binding = dict(body_path=str(loop.path.resolve()), affect_path=str(affect.path.resolve()),
                        initial_body=loop.config['initial_checkpoint_sha256'])
         state = dict(schema=KEY, source_hash=source_hash(), binding=binding,
-                     enabled=True, intents={})
+                     enabled=True, intents={}, experience_integrated=True)
         # The native loop already owns an exclusive lock; always take affect second.
         with _session_lock(affect.path):
+            if loop.engine.db.execute('SELECT value FROM meta WHERE key=?', (KEY,)).fetchone():
+                raise ValueError('bridge already enabled; resume without resetting')
             row = affect.db.execute('SELECT value FROM meta WHERE key=?', (KEY,)).fetchone()
             if row is not None and row[0] != canonical(binding):
                 raise ValueError('affect ledger already bound to another body')
+            if loop.engine.db.execute('SELECT value FROM meta WHERE key=?', (EXPERIENCE_KEY,)).fetchone() is None:
+                ExperienceController.enable(loop)
+            else:
+                ExperienceController(loop)  # Reuse, never reset prior memory/budget.
             with affect.transaction():
                 affect.db.execute('INSERT OR IGNORE INTO meta VALUES(?,?)', (KEY, canonical(binding)))
             loop.engine.db.execute('INSERT INTO meta VALUES(?,?)',
@@ -111,8 +122,31 @@ class DialogueBodyBridge:
         return dict(enabled=state['enabled'], body=self.loop.status(),
                     affect=effective(self.affect.state()),
                     pending=[k for k,v in state['intents'].items() if v['result'] is None],
+                    experience=self.experience.status()['state'],
                     connection='caller-mediated message bridge; no background listener',
                     body_kind='native UnifiedBody/Tadash, not articulated MuJoCo')
+
+    def trace(self, identifier):
+        """Recover a message -> memory -> decision -> forecast -> receipt chain."""
+        state = self._load()
+        intent = state['intents'].get(identifier)
+        if intent is None:
+            raise ValueError('unknown message id')
+        result = intent['result']
+        return dict(message=dict(id=identifier, text=intent['message']['text'], kind='caller_message',
+                                 source='conversation://' + identifier),
+                    appraisal_kind='caller_authored_interpretation',
+                    recalled=deepcopy(intent.get('recalled', [])),
+                    prior_body_memory=deepcopy(intent.get('body_memory', {})),
+                    plan=deepcopy(intent.get('plan')), forecast=deepcopy(intent.get('forecast')),
+                    result=deepcopy(result), status='completed' if result is not None else 'pending',
+                    body_cycles_executed_by_trace=0)
+
+    def recall(self, cues):
+        with _session_lock(self.affect.path):
+            return dict(records=self.affect.recall('nasuraya-dialogue', 'embodied-task', cues),
+                        scope='source-attributed historical context; not permission or verified user beliefs',
+                        body_cycles_executed=0)
 
     def _finish(self, state, identifier, *, replayed):
         intent = state['intents'][identifier]
@@ -137,6 +171,7 @@ class DialogueBodyBridge:
                         cues=['body', 'dialogue'], elapsed_hours=intent['message']['duration_s']/3600 if ran else 0.,
                         appraisal=checks)
         self.affect.step(feedback, [choice('observe')])
+        experience = self.experience.complete_external(identifier, replayed=replayed)
         actual = receipt['actual_action']
         reply = ('بدن تجمیعی تداش یک چرخهٔ کوتاه راه‌رفتن اجرا کرد.' if actual == 'walk' else
                  'بدن تجمیعی تداش یک چرخهٔ مشاهده اجرا کرد.' if actual == 'observe' else
@@ -145,6 +180,10 @@ class DialogueBodyBridge:
         result = dict(message_id=identifier, native_receipt=receipt,
                       plan=intent['plan'], restrictions=intent['restrictions'],
                       affect_after=effective(self.affect.state()), reply_fa=reply,
+                      experience=experience, recalled=deepcopy(intent.get('recalled', [])),
+                      provenance=dict(message='conversation://' + identifier,
+                                      appraisal='caller_authored_interpretation',
+                                      outcome=experience['prediction'].get('source')),
                       this_call_body_cycles=int(ran and not replayed), replayed=replayed,
                       scope='source-pinned native software body; not biological or articulated MuJoCo')
         intent['result'] = result
@@ -162,7 +201,13 @@ class DialogueBodyBridge:
                 if canonical(previous['message']) != canonical(message):
                     raise ValueError('conflicting message replay')
                 if previous['result'] is not None:
-                    return dict(deepcopy(previous['result']), replayed=True, this_call_body_cycles=0)
+                    result = dict(deepcopy(previous['result']), replayed=True, this_call_body_cycles=0)
+                    if result.get('native_receipt'):
+                        result['native_receipt']['replayed'] = True
+                    if result.get('experience'):
+                        result['experience'].update(replayed=True, this_call_native_cycles=0)
+                        result['experience']['native_receipt']['replayed'] = True
+                    return result
                 if previous.get('stage') == 'executing':
                     return self._finish(state, identifier, replayed=True)
             else:
@@ -180,22 +225,28 @@ class DialogueBodyBridge:
                 audit = snapshot(self.loop.body())['audit']
                 checks = event['appraisal']
                 restrictions = audit['walking_restrictions']
+                body_memory = self.experience.preview(observation, message['duration_s'])
+                if body_memory['memory_risk'] > .5:
+                    restrictions = list(restrictions) + ['remembered_native_harm']
                 if restrictions:
                     # Body-derived concern, not a claim about the user's emotion.
                     checks['threat'] = max(checks['threat'], .8)
                     checks['controllability'] = min(checks['controllability'], .3)
                 choices = [choice('observe')]
-                if message['intent'] == 'explore' and audit['upper_controller_walk_guard_allows']:
+                if (message['intent'] == 'explore' and audit['upper_controller_walk_guard_allows']
+                        and body_memory['memory_risk'] <= .5):
                     choices.append(choice('walk'))
                 previous = dict(message=deepcopy(message), event=event, choices=choices,
                                 native_id=native_id, observation=observation,
-                                restrictions=restrictions, result=None, stage='reserved')
+                                restrictions=restrictions, body_memory=body_memory,
+                                result=None, stage='reserved')
                 state['intents'][identifier] = previous
                 self._save(state)
             if message['intent'] in ('explore', 'observe') and not state['enabled']:
                 raise BridgeBlocked('bridge paused before execution')
             plan = self.affect.step(previous['event'], previous['choices'])
             previous['plan'] = plan['decision']
+            previous['recalled'] = plan['recalled']
             if message['intent'] in ('reflect', 'stop'):
                 if message['intent'] == 'stop':
                     state['enabled'] = False
@@ -212,6 +263,8 @@ class DialogueBodyBridge:
             previous['preferred_action'] = preferred
             previous['native_request'] = self.loop.make_request(previous['native_id'],
                 previous['observation'], message['duration_s'], preferred)
+            previous['forecast'] = self.experience.reserve_external(identifier, previous['native_id'],
+                previous['observation'], message['duration_s'], preferred)['prediction']
             previous['stage'] = 'executing'
             self._save(state)
             self.loop.observe()

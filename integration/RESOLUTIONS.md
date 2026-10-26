@@ -99,3 +99,12 @@ retains the existing daily production contract, with no ledger migration.
 Publishing the integration branch runs verification; it does not deploy the
 shared body or change the live control branch. Any later cadence migration
 requires its own review and explicit activation.
+# 26 October 2026: shared dialogue/experience receipt
+
+- Incorporate main `4a2d687` and PR #78 `da2b70d`, preserving both ancestries.
+- Resolve the incompatible `experience.py` additions by retaining main's measured ExperienceController and moving the older API context builder to `api_experience.py`, with lazy compatibility exports and both original test modules.
+- Retain strict genome history, trusted references and current native source hashes from main; retain the integration branch's existing additional commands and research-host isolation.
+- Dialogue reserves its memory forecast before the native cycle and completes experience from that same receipt. Never call the standalone experience step to execute a dialogue-owned reservation.
+- Memories may restrict walk after observed harm but cannot extend native budgets or authorize API calls. Preserve all audited experiment files; the unified route defaults to local memory and supplies no live API dispatch.
+- Old source-bound dialogue databases are not silently migrated. Use explicit fresh sessions. Live scheduler/control state and main are not changed by this branch refresh.
+- Current reproducible evidence: `integration/refresh-v03/summary.json` and `docs/nasuraya-unified-v03-fa.md`. Historical test totals remain scoped to their original snapshots.

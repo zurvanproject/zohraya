@@ -44,6 +44,8 @@ def main(argv=None):
     sub.add_parser('catalog', help='List all entry points and dependency profiles')
     demo = sub.add_parser('demo', help='Fresh offline genome/message/body/affect/replay scenario')
     demo.add_argument('--output', required=True, type=Path)
+    continuity = sub.add_parser('continuity-demo', help='Cold dialogue/memory/forecast/body/learning demonstration')
+    continuity.add_argument('--output', required=True, type=Path)
     tests = sub.add_parser('test', help='Isolated test modules; no live service calls')
     tests.add_argument('--profile', choices=('core','mechanics','tensor','sdk','all'), default='core')
     tests.add_argument('--output', required=True, type=Path)
@@ -53,8 +55,11 @@ def main(argv=None):
         print(json.dumps(dict(schema='nasuraya.capabilities/1', capabilities=validate()),
                          ensure_ascii=False, indent=2))
         return 0
-    if parsed.command == 'demo':
-        from .demo import run
+    if parsed.command in ('demo', 'continuity-demo'):
+        if parsed.command == 'demo':
+            from .demo import run
+        else:
+            from .continuity_demo import run
         print(json.dumps(run(parsed.output), ensure_ascii=False, indent=2))
         return 0
     from .testing import run
