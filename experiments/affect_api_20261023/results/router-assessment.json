@@ -1,0 +1,360 @@
+{
+  "schema": "nasuraya-router-offline-assessment/1",
+  "assessed_at": "2026-10-26T00:00:00+00:00",
+  "evidence_source_commit": "90b16750a36af6980dad24fedd7a0896bf631a76",
+  "evidence_sha256": "52099bad91e32bfc161645985c6647c26f668b5ed73e48ef87884ceca3ae0034",
+  "scope_sha256": "fb33cd109238c20b0ffc88c07735ff935b29b3f4a1d5827eb78c08a537c0f419",
+  "policy": {
+    "version": "numeric-router/1",
+    "batches": [
+      "validation",
+      "replication"
+    ],
+    "minimum_independent_groups_per_batch": 20,
+    "minimum_relative_gain": 0.1,
+    "minimum_absolute_gain": 0.0001,
+    "maximum_sign_test_p": 0.0125,
+    "metric_regression_tolerance": 1e-12,
+    "action_method": "nearest_episode",
+    "numeric_default": "nearest_episode",
+    "grouping": "shared initial-condition/generator lineage is ONE group; equal group weights",
+    "history": "frozen calibration only; no validation or replication outcomes"
+  },
+  "policy_sha256": "fd8af2da0eb3d2225cc42fe024011c627206aeb624a82dd8ccd60c467abc9469",
+  "evidence_kind": "retrospective replay; not independent validation or measured new improvement",
+  "archived_audit_status": "verified_offline",
+  "historical_assessment": {
+    "api": {
+      "action_correct": 9,
+      "metric_mae": 0.0005326620850950359,
+      "n": 12
+    },
+    "nearest_episode": {
+      "action_correct": 12,
+      "metric_mae": 0.0005988940669068192,
+      "n": 12
+    },
+    "persistence": {
+      "action_correct": 6,
+      "metric_mae": 0.0008547965209629825,
+      "n": 12
+    }
+  },
+  "historical_rounds": [
+    {
+      "api": {
+        "action_correct": 6,
+        "metric_mae": 0.0003141466800260332,
+        "n": 6
+      },
+      "nearest_episode": {
+        "action_correct": 6,
+        "metric_mae": 0.0005816439480626222,
+        "n": 6
+      },
+      "persistence": {
+        "action_correct": 3,
+        "metric_mae": 0.0006735647696004076,
+        "n": 6
+      }
+    },
+    {
+      "api": {
+        "action_correct": 3,
+        "metric_mae": 0.0007511774901640387,
+        "n": 6
+      },
+      "nearest_episode": {
+        "action_correct": 6,
+        "metric_mae": 0.0006161441857510161,
+        "n": 6
+      },
+      "persistence": {
+        "action_correct": 3,
+        "metric_mae": 0.0010360282723255575,
+        "n": 6
+      }
+    }
+  ],
+  "historical_api_numeric_gain": {
+    "absolute": 6.623198181178328e-05,
+    "relative": 0.11059047913742012
+  },
+  "router_replay": {
+    "n": 12,
+    "metric_mae": 0.0005988940669068192,
+    "action_correct": 12,
+    "new_api_calls": 0,
+    "incremental_estimated_micro_usd": 0
+  },
+  "numeric_gate": {
+    "eligible": false,
+    "policy_sha256": "fd8af2da0eb3d2225cc42fe024011c627206aeb624a82dd8ccd60c467abc9469",
+    "reasons": [
+      "independent_validation_missing"
+    ],
+    "batches": {}
+  },
+  "authorization": {
+    "expires_at_exclusive": "2026-10-30T00:00:00+00:00",
+    "within_time_window": true,
+    "experiment_status": "completed",
+    "completed_calls": 2,
+    "call_ceiling": 2,
+    "remaining_calls": 0,
+    "total_reserved_micro_usd": 520000,
+    "unreserved_shared_cap_micro_usd": 480000,
+    "note": "remaining dollar headroom is not authorization to repeat a completed two-call experiment"
+  },
+  "costs": {
+    "historical_incremental_estimated_micro_usd": 3530,
+    "historical_total_estimated_micro_usd": 16183,
+    "scope": "token estimate, not invoice; reservations are not charges"
+  },
+  "decision": "memory_first_no_more_paid_calls_under_current_completed_authorization",
+  "next_step": "freeze independent lineage-grouped holdouts; improve memory offline; reassess on fresh validation",
+  "live_execution_supported": false,
+  "body_policy_changed": false,
+  "rows": [
+    {
+      "round": 1,
+      "id": "normal-2",
+      "forecast": {
+        "id": "normal-2",
+        "predicted_metrics": {
+          "energy": 0.9993261423381948,
+          "fatigue": 0.011017586699135757,
+          "pain": 0.11556169507106127,
+          "sleep_pressure": 0.3503301535252558
+        },
+        "predicted_action": "walk",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 7.642003770095282e-05,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 1,
+      "id": "normal-5",
+      "forecast": {
+        "id": "normal-5",
+        "predicted_metrics": {
+          "energy": 0.9992971801266695,
+          "fatigue": 0.011494781655405248,
+          "pain": 0.11770766330131743,
+          "sleep_pressure": 0.3503439099221414
+        },
+        "predicted_action": "walk",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 0.0003174949862175705,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 1,
+      "id": "normal-10",
+      "forecast": {
+        "id": "normal-10",
+        "predicted_metrics": {
+          "energy": 0.9992489097741272,
+          "fatigue": 0.012290106582521066,
+          "pain": 0.12128427701841103,
+          "sleep_pressure": 0.3503668372502841
+        },
+        "predicted_action": "walk",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 0.0011300960208683358,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 1,
+      "id": "sleep-2",
+      "forecast": {
+        "id": "sleep-2",
+        "predicted_metrics": {
+          "energy": 0.9993262806334596,
+          "fatigue": 0.011005155491954842,
+          "pain": 0.11556131764172119,
+          "sleep_pressure": 0.9503301535252557
+        },
+        "predicted_action": "protect",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 0.00013465444882482594,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 1,
+      "id": "sleep-5",
+      "forecast": {
+        "id": "sleep-5",
+        "predicted_metrics": {
+          "energy": 0.9992975258648314,
+          "fatigue": 0.01146370363745296,
+          "pain": 0.11770671972796722,
+          "sleep_pressure": 0.9503439099221413
+        },
+        "predicted_action": "protect",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 0.0005509496330751915,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 1,
+      "id": "sleep-10",
+      "forecast": {
+        "id": "sleep-10",
+        "predicted_metrics": {
+          "energy": 0.9992496012504511,
+          "fatigue": 0.012227950546616491,
+          "pain": 0.1212823898717106,
+          "sleep_pressure": 0.950366837250284
+        },
+        "predicted_action": "protect",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 0.0012802485616888563,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 2,
+      "id": "normal-2",
+      "forecast": {
+        "id": "normal-2",
+        "predicted_metrics": {
+          "energy": 0.9993063334626657,
+          "fatigue": 0.011341560338156174,
+          "pain": 0.11607710663550923,
+          "sleep_pressure": 0.35033932445651295
+        },
+        "predicted_action": "walk",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 1.536771997783957e-05,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 2,
+      "id": "normal-5",
+      "forecast": {
+        "id": "normal-5",
+        "predicted_metrics": {
+          "energy": 0.9992462339157787,
+          "fatigue": 0.012297087468601727,
+          "pain": 0.11848972550404221,
+          "sleep_pressure": 0.35036683725028417
+        },
+        "predicted_action": "walk",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 0.0004357126802364843,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 2,
+      "id": "normal-10",
+      "forecast": {
+        "id": "normal-10",
+        "predicted_metrics": {
+          "energy": 0.999143852915765,
+          "fatigue": 0.01387048153983992,
+          "pain": 0.12089537849704497,
+          "sleep_pressure": 0.350412691745307
+        },
+        "predicted_action": "walk",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 0.002972508614707367,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 2,
+      "id": "sleep-2",
+      "forecast": {
+        "id": "sleep-2",
+        "predicted_metrics": {
+          "energy": 0.9993071073609386,
+          "fatigue": 0.011310854255620255,
+          "pain": 0.1153715804627985,
+          "sleep_pressure": 0.9503393244565128
+        },
+        "predicted_action": "observe",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 6.258551321216416e-06,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 2,
+      "id": "sleep-5",
+      "forecast": {
+        "id": "sleep-5",
+        "predicted_metrics": {
+          "energy": 0.9992495842359699,
+          "fatigue": 0.012227950546616491,
+          "pain": 0.11637513118416719,
+          "sleep_pressure": 0.9503668372502841
+        },
+        "predicted_action": "observe",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 5.593949014832608e-05,
+        "action_correct": true
+      }
+    },
+    {
+      "round": 2,
+      "id": "sleep-10",
+      "forecast": {
+        "id": "sleep-10",
+        "predicted_metrics": {
+          "energy": 0.9991536906171394,
+          "fatigue": 0.013756444364943552,
+          "pain": 0.11790584313880811,
+          "sleep_pressure": 0.9504126917453063
+        },
+        "predicted_action": "observe",
+        "action_source": "nearest_episode",
+        "numeric_source": "nearest_episode"
+      },
+      "score": {
+        "metric_mae": 0.00021107805811486358,
+        "action_correct": true
+      }
+    }
+  ]
+}
