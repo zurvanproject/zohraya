@@ -13,6 +13,7 @@ from reflection_cycle import ReflectionCycle, ReflectiveBody, InterruptedExecuti
 from unified_body_v2 import UnifiedBody
 from run_reflection_demo import sleep_fixture
 from synthetic_fixture import prepare_defaults, synthetic_body
+import nasuraya_affective_layer_v01 as affect
 
 
 KEY = 'nasuraya-body-loop'
@@ -161,10 +162,15 @@ class BodyLoop:
                 'goals': [{'id': 'native_protection', 'required': True}],
                 'at_utc': at, 'evidence': [evidence], 'tools': {'body_cycle': 'ok'}, 'actions': actions}
 
-    def step(self, *, decision_id=None, duration_s=.1, preferred_action='walk'):
+    def step(self, *, decision_id=None, duration_s=.1, preferred_action='walk', social_event=None):
         validate_duration(duration_s)
         if preferred_action not in ('walk', 'observe'):
             raise ValueError('preferred_action must be walk or observe')
+        # Explicit caller input to the existing native appraisal path. Normalize
+        # before consuming the observation token or reserving any action budget.
+        external = {} if social_event is None else {'social': affect.validate_event(social_event)}
+        if len(canonical(external).encode()) > 16 * 1024:
+            raise ValueError('social event exceeds bounded input size')
         records = self.records()
         if decision_id is None:
             decision_id = 'body-loop-step-' + str(len(records) + 1)
@@ -175,7 +181,8 @@ class BodyLoop:
             old_preference = max(previous['request']['actions'], key=lambda c: c['score']['respect'])['id']
             if (previous['context'] != self.config['context']
                     or previous['request'].get('execution', {}).get('duration_s') != duration_s
-                    or old_preference != preferred_action):
+                    or old_preference != preferred_action
+                    or canonical(previous['request'].get('execution', {}).get('external', {})) != canonical(external)):
                 raise ValueError('conflicting body-loop replay')
             if previous['status'] == 'complete':
                 return self.receipt(previous, replayed=True)
@@ -196,7 +203,8 @@ class BodyLoop:
         request = self.make_request(decision_id, snapshot, duration_s, preferred_action)
         # A crash can lose this token, but cannot regain budget or replay a running effect.
         self.engine.db.execute('DELETE FROM meta WHERE key=?', ('body-loop-observation',))
-        record = self.adapter.cycle(request, at_utc=request['at_utc'], duration_s=duration_s)
+        record = self.adapter.cycle(request, at_utc=request['at_utc'], duration_s=duration_s,
+                                    external=external)
         return self.receipt(record, replayed=False)
 
     def receipt(self, record, *, replayed):

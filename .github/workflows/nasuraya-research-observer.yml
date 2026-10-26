@@ -3,6 +3,8 @@ on:
   pull_request:
     paths:
       - 'examples/nasuraya_research/**'
+      - 'examples/nasuraya_aesthetics/**'
+      - 'examples/nasuraya_body_loop/**'
       - 'runtimes/tadash_body/**'
       - '.github/workflows/nasuraya-research-observer.yml'
   workflow_dispatch:
@@ -11,7 +13,7 @@ permissions:
 jobs:
   stdlib-observer:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -23,6 +25,8 @@ jobs:
         run: python -S -m unittest examples.nasuraya_research.test_adapters examples.nasuraya_research.test_body_observer -v
       - name: Verify explicit bounded research authority and cold recovery
         run: python -S -m examples.nasuraya_research.control test
+      - name: Verify visual appraisal and native affect persistence
+        run: python -S -m examples.nasuraya_aesthetics test
       - name: Preserve source-pinned native body and decision behavior
         run: python runtimes/tadash_body/run_tests.py --reflection --output /tmp/research-observer-native
       - name: Preserve existing bounded body bridge and cold replay
