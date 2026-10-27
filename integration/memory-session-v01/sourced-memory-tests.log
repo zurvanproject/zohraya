@@ -1,0 +1,18 @@
+test_bounds_and_wrong_pin_reject_before_search (nasuraya.test_sourced_memory.SourceMemoryTests.test_bounds_and_wrong_pin_reject_before_search) ... ok
+test_caller_message_stays_verbatim_and_unverified (nasuraya.test_sourced_memory.SourceMemoryTests.test_caller_message_stays_verbatim_and_unverified) ... ok
+test_chunked_sources_reconstruct_original_without_summarizing (nasuraya.test_sourced_memory.SourceMemoryTests.test_chunked_sources_reconstruct_original_without_summarizing) ... ok
+test_cold_process_restart_and_source_bytes_unchanged (nasuraya.test_sourced_memory.SourceMemoryTests.test_cold_process_restart_and_source_bytes_unchanged) ... ok
+test_content_tampering_rejected_by_independent_pin (nasuraya.test_sourced_memory.SourceMemoryTests.test_content_tampering_rejected_by_independent_pin) ... ok
+test_duplicate_json_nonfinite_unknown_schema_rejected (nasuraya.test_sourced_memory.SourceMemoryTests.test_duplicate_json_nonfinite_unknown_schema_rejected) ... ok
+test_exact_text_and_source_attribution (nasuraya.test_sourced_memory.SourceMemoryTests.test_exact_text_and_source_attribution) ... ok
+test_line_span_and_record_text_tampering_rejected (nasuraya.test_sourced_memory.SourceMemoryTests.test_line_span_and_record_text_tampering_rejected) ... ok
+test_nonreplacement_private_permissions_and_failure_cleanup (nasuraya.test_sourced_memory.SourceMemoryTests.test_nonreplacement_private_permissions_and_failure_cleanup) ... ok
+test_null_or_unknown_source_metadata_is_not_invented (nasuraya.test_sourced_memory.SourceMemoryTests.test_null_or_unknown_source_metadata_is_not_invented) ... ok
+test_query_is_conjunctive_and_operators_are_literal (nasuraya.test_sourced_memory.SourceMemoryTests.test_query_is_conjunctive_and_operators_are_literal) ... ok
+test_source_hash_rechecked_even_with_new_archive_pin (nasuraya.test_sourced_memory.SourceMemoryTests.test_source_hash_rechecked_even_with_new_archive_pin) ... ok
+test_unknown_kind_and_duplicate_sources_rejected (nasuraya.test_sourced_memory.SourceMemoryTests.test_unknown_kind_and_duplicate_sources_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.106s
+
+OK

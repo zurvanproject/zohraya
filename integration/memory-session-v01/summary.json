@@ -1,0 +1,57 @@
+{
+  "schema": "nasuraya.memory-session-validation/1",
+  "date": "2026-10-27",
+  "input_kind": "synthetic only",
+  "tests": {
+    "session_composition": 24,
+    "explicit_version_reuse": 1,
+    "sourced_memory_regression": 13,
+    "total": 38,
+    "failures": 0,
+    "skipped": 0,
+    "prior_289_suite_rerun": false
+  },
+  "demo": {
+    "schema": "nasuraya.memory-session-demo/1",
+    "source": "synthetic only",
+    "fresh_process_per_command": true,
+    "archive_bytes_unchanged": true,
+    "retrieved_sources": 2,
+    "retrieval_equal_after_source_disconnect": true,
+    "trace_context_equal": true,
+    "first_call_body_cycles": 1,
+    "replay_body_cycles": 0,
+    "native_and_memory_status_equal": true,
+    "completed_native_cycles": 1,
+    "native_episode_count": 1,
+    "source_kinds": [
+      "authored_continuity_note",
+      "verbatim_user_message"
+    ],
+    "historical_hits_unverified": true,
+    "external_api_calls": 0,
+    "automatic_chatgpt_listener": false
+  },
+  "implementation_sha256": {
+    "nasuraya/memory_session.py": "cefd4d0628e8bbbd86e7c9043835f199f359301d587315ee321d7801a764be5d",
+    "nasuraya/memory_session_cli.py": "081d1e59f32e3d8e32be4542d00932d963ae34b9ca61bf708e6ec8337cfceb49",
+    "nasuraya/memory_session_worker.py": "5662001aa474d31941d49e569307cf09d47c6122f8e9aac4cf7d4c111c78b449",
+    "nasuraya/memory_session_tests.py": "8c9b09b2d5917c15051be8766e5dc2578d26022109eb2f3abccc454e8f807017",
+    "nasuraya/test_memory_session.py": "df996415638b705de370b11d7e8eba35a28728390b9457d598c13839ced6207a",
+    "nasuraya/memory_session_demo.py": "07a5d6ae32477c1b229885d2b29f5fc6f62b447c498fb3ff21e09c3872e0f03e"
+  },
+  "preserved_native_files": [
+    "examples/nasuraya_affect/body_dialogue.py",
+    "examples/nasuraya_body_loop/host.py",
+    "examples/nasuraya_body_loop/experience.py"
+  ],
+  "real_memory_modified": false,
+  "external_api_calls": 0,
+  "limitations": [
+    "caller-mediated project session, no automatic ChatGPT listener",
+    "compatible archived text only; old native actions, receipts and budgets are not transplanted",
+    "unknown archive/session/runtime versions fail closed; explicit fresh destination required",
+    "native paired-session paths remain fixed",
+    "historical source content stays unverified"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "nasuraya.memory-session-demo/1",
+  "source": "synthetic only",
+  "fresh_process_per_command": true,
+  "archive_bytes_unchanged": true,
+  "retrieved_sources": 2,
+  "retrieval_equal_after_source_disconnect": true,
+  "trace_context_equal": true,
+  "first_call_body_cycles": 1,
+  "replay_body_cycles": 0,
+  "native_and_memory_status_equal": true,
+  "completed_native_cycles": 1,
+  "native_episode_count": 1,
+  "source_kinds": [
+    "authored_continuity_note",
+    "verbatim_user_message"
+  ],
+  "historical_hits_unverified": true,
+  "external_api_calls": 0,
+  "automatic_chatgpt_listener": false
+}
