@@ -1,0 +1,33 @@
+{
+  "schema": "nasuraya.hermes-synthetic-probe/1",
+  "hermes_commit": "bf0203a794a07aac3ff764972ab9087baa4e4f4e",
+  "initial": {
+    "تعادل": [
+      1
+    ],
+    "تعادل AND چرخش": [
+      3,
+      1
+    ],
+    "ناسورايا": [],
+    "ناسورایا": [
+      1
+    ]
+  },
+  "cold_restart": {
+    "تعادل": [
+      1
+    ],
+    "تعادل AND چرخش": [
+      3,
+      1
+    ],
+    "ناسورايا": [],
+    "ناسورایا": [
+      1
+    ]
+  },
+  "match_after_restart": true,
+  "observation": "Hermes relaxed AND to OR on zero matches in this fixture; Arabic yeh differs from Persian yeh.",
+  "scope": "synthetic SQLite only, no model, gateway, real user memory or side effects resumed"
+}
