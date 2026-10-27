@@ -18,7 +18,9 @@ def main():
             shutil.copyfile(SOURCE/name,target)
         env=dict(PATH=os.defpath,PYTHONPATH=str(work)+os.pathsep+str(ROOT),
                  PYTHONNOUSERSITE='1',PYTHONDONTWRITEBYTECODE='1')
-        return subprocess.run([sys.executable,'-S','-m','unittest','nasuraya.test_history_search','-v'],
+        return subprocess.run([sys.executable,'-S','-m','unittest','nasuraya.test_history_search',
+                               'nasuraya.test_history_search_collection',
+                               'nasuraya.test_history_search_resources','-v'],
                               cwd=ROOT,env=env).returncode
 
 if __name__ == '__main__':

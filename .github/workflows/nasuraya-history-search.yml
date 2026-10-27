@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - 'nasuraya/history_search*.py'
-      - 'nasuraya/test_history_search.py'
+      - 'nasuraya/test_history_search*.py'
       - 'examples/nasuraya_affect/history.py'
       - 'runtimes/tadash_body/**'
       - '.github/workflows/nasuraya-history-search.yml'

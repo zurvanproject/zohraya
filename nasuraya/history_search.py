@@ -12,13 +12,20 @@ from examples.nasuraya_body_loop.__main__ import verified_sources, SOURCE, ROOT
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--archive', required=True, type=Path)
-    parser.add_argument('--expected-sha256', required=True)
+    parser.add_argument('--archive', required=True, type=Path, action='append')
+    parser.add_argument('--expected-sha256', required=True, action='append')
     parser.add_argument('--query', required=True)
     parser.add_argument('--max-results', type=int, default=10)
     args = parser.parse_args()
-    payload = dict(archive=str(args.archive.resolve()), expected_sha256=args.expected_sha256,
-                   query=args.query, max_results=args.max_results)
+    if len(args.archive) != len(args.expected_sha256) or not 1 <= len(args.archive) <= 4:
+        parser.error('provide 1..4 --archive entries with the same number of --expected-sha256 entries, paired by position')
+    pairs = [dict(archive=str(path.resolve()), expected_sha256=pin)
+             for path, pin in zip(args.archive, args.expected_sha256)]
+    payload = dict(query=args.query, max_results=args.max_results)
+    if len(pairs) == 1:
+        payload.update(pairs[0])
+    else:
+        payload['archives'] = pairs
     manifest = verified_sources()
     with tempfile.TemporaryDirectory(prefix='nasuraya-history-fts-') as temporary:
         work = Path(temporary)
