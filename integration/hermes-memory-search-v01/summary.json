@@ -1,0 +1,22 @@
+{
+  "schema": "nasuraya.hermes-search-verification/1",
+  "date": "2026-10-27",
+  "parent_pr": 88,
+  "hermes_commit": "bf0203a794a07aac3ff764972ab9087baa4e4f4e",
+  "offline_search_tests": 10,
+  "failures": 0,
+  "skipped": 0,
+  "actual_hermes_sessiondb_synthetic_test": true,
+  "real_user_data_used": false,
+  "external_model_calls": 0,
+  "live_import": false,
+  "sha256": {
+    "nasuraya/history_search.py": "25562104e626891a718eb75f8467cf4dd668e2b5cc8b464b1173dad91c552394",
+    "nasuraya/history_search_worker.py": "2b3c240c11f62290e9093620f88f9011f459151517eac9332a8446b749fcc817",
+    "nasuraya/history_search_tests.py": "19e1a2cdcb6022933193ef91eafb6c2f83f55dc99bd402f30c553bf4c9c6fedb",
+    "nasuraya/test_history_search.py": "71b5d19628096ffbce9c596fce5fa371a0936c6a5b54e0cc252b44a1c61cdafd",
+    "integration/hermes-memory-search-v01/probe_hermes.py": "52c92084ac3047a9c8dd2808d265b346674a2b84a4e5360dd39bfd7dc663632f",
+    "integration/hermes-memory-search-v01/hermes-probe.json": "f000d9e794e0fe9dedb7b55b9a59c9c1b99e907c1b9eb87f9bd039fc12dc19e5"
+  },
+  "scope": "Experimental read-only text search; Hermes not integrated as an automatic listener, native body, live policy, or learning runtime."
+}

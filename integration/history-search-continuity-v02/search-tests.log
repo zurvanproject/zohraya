@@ -1,0 +1,30 @@
+test_arabic_variants_and_tashkeel_are_normalized (nasuraya.test_history_search.SearchTests.test_arabic_variants_and_tashkeel_are_normalized) ... ok
+test_bad_pin_does_not_search (nasuraya.test_history_search.SearchTests.test_bad_pin_does_not_search) ... ok
+test_cold_cli_restart_and_pinned_archive (nasuraya.test_history_search.SearchTests.test_cold_cli_restart_and_pinned_archive) ... ok
+test_fts_syntax_is_not_executed (nasuraya.test_history_search.SearchTests.test_fts_syntax_is_not_executed) ... ok
+test_multiple_words_are_conjunctive (nasuraya.test_history_search.SearchTests.test_multiple_words_are_conjunctive) ... ok
+test_no_writes_or_body_calls (nasuraya.test_history_search.SearchTests.test_no_writes_or_body_calls) ... ok
+test_persian_word_search_preserves_original_and_source (nasuraya.test_history_search.SearchTests.test_persian_word_search_preserves_original_and_source) ... ok
+test_result_limit_and_query_bounds (nasuraya.test_history_search.SearchTests.test_result_limit_and_query_bounds) ... ok
+test_status_is_not_upgraded (nasuraya.test_history_search.SearchTests.test_status_is_not_upgraded) ... ok
+test_zero_width_spacing_and_case (nasuraya.test_history_search.SearchTests.test_zero_width_spacing_and_case) ... ok
+test_aggregate_bound_checks_exact_read_bytes_before_indexing (nasuraya.test_history_search_collection.CollectionSearchTests.test_aggregate_bound_checks_exact_read_bytes_before_indexing) ... ok
+test_changed_archive_after_pin_rejects_whole_request (nasuraya.test_history_search_collection.CollectionSearchTests.test_changed_archive_after_pin_rejects_whole_request) ... ok
+test_cold_collection_cli_and_mismatched_pair_counts (nasuraya.test_history_search_collection.CollectionSearchTests.test_cold_collection_cli_and_mismatched_pair_counts) ... ok
+test_collection_count_and_exact_entry_contract (nasuraya.test_history_search_collection.CollectionSearchTests.test_collection_count_and_exact_entry_contract) ... ok
+test_duplicate_archive_pin_is_rejected_even_for_another_path (nasuraya.test_history_search_collection.CollectionSearchTests.test_duplicate_archive_pin_is_rejected_even_for_another_path) ... ok
+test_input_order_does_not_change_ranking_or_result (nasuraya.test_history_search_collection.CollectionSearchTests.test_input_order_does_not_change_ranking_or_result) ... ok
+test_limit_and_conjunctive_query_remain_bounded (nasuraya.test_history_search_collection.CollectionSearchTests.test_limit_and_conjunctive_query_remain_bounded) ... ok
+test_no_source_changes_or_actions (nasuraya.test_history_search_collection.CollectionSearchTests.test_no_source_changes_or_actions) ... ok
+test_one_archive_collection_uses_explicit_collection_schema (nasuraya.test_history_search_collection.CollectionSearchTests.test_one_archive_collection_uses_explicit_collection_schema) ... ok
+test_one_bad_pin_rejects_whole_request_before_query (nasuraya.test_history_search_collection.CollectionSearchTests.test_one_bad_pin_rejects_whole_request_before_query) ... ok
+test_overlapping_snapshots_are_not_merged_or_called_independent (nasuraya.test_history_search_collection.CollectionSearchTests.test_overlapping_snapshots_are_not_merged_or_called_independent) ... ok
+test_same_local_id_in_two_sessions_keeps_both_original_sources (nasuraya.test_history_search_collection.CollectionSearchTests.test_same_local_id_in_two_sessions_keeps_both_original_sources) ... ok
+test_unresolved_status_is_not_promoted (nasuraya.test_history_search_collection.CollectionSearchTests.test_unresolved_status_is_not_promoted) ... ok
+test_sql_exception_closes_disposable_index (nasuraya.test_history_search_resources.SearchResourceTests.test_sql_exception_closes_disposable_index) ... ok
+test_success_closes_disposable_index (nasuraya.test_history_search_resources.SearchResourceTests.test_success_closes_disposable_index) ... ok
+
+----------------------------------------------------------------------
+Ran 25 tests in 8.562s
+
+OK

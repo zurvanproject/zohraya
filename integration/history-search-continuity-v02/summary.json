@@ -1,0 +1,41 @@
+{
+  "schema": "nasuraya.history-search-continuity-verification/1",
+  "date": "2026-10-27",
+  "passed": 25,
+  "failed": 0,
+  "skipped": 0,
+  "test_breakdown": {
+    "retained_single_archive": 10,
+    "new_collection": 13,
+    "new_resource": 2
+  },
+  "resource_bug_reproduced_before_fix": true,
+  "before_fix_failures": 2,
+  "command": "python -m nasuraya.history_search_tests",
+  "scope": "Code-level read-only archive retrieval; no live-memory import or model-weight update",
+  "maximum_archives": 4,
+  "maximum_collection_bytes": 67108864,
+  "maximum_hits": 32,
+  "independently_pinned_sources_required": true,
+  "partial_results_on_invalid_source": false,
+  "source_verification": {
+    "native_files": 70,
+    "preserved_experiment_files": 38,
+    "preserved_main_files": 5
+  },
+  "preserved_active_files": [
+    "examples/nasuraya_affect/body_dialogue.py",
+    "examples/nasuraya_affect/engine.py",
+    "examples/nasuraya_body_loop/experience.py",
+    "examples/nasuraya_body_loop/host.py"
+  ],
+  "real_user_memory_modified": false,
+  "external_model_api_calls": 0,
+  "sha256": {
+    "nasuraya/history_search.py": "2ff36e24f41e136f7440fb49063df782ac6d7cddab5560fd71dfc9ef796e8e37",
+    "nasuraya/history_search_worker.py": "769babf1db34749a256148ed8c3c16676f75e6202befb24681fa5cf2ef9169e2",
+    "nasuraya/history_search_tests.py": "52bbba4cf26134bdf7865744b010790323e9d54748750192afb21908d1a1c22f",
+    "nasuraya/test_history_search_collection.py": "981c2608d9f68b5b10410149fd7ac398fef0137088eadd5757b45322c391e929",
+    "nasuraya/test_history_search_resources.py": "0fbee41871c74cfe5bd382b2669c70c1afa2c2a5f40d226f939a9285658545c8"
+  }
+}

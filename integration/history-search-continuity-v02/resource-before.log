@@ -1,0 +1,27 @@
+test_sql_exception_closes_disposable_index (nasuraya.test_history_search_resources.SearchResourceTests.test_sql_exception_closes_disposable_index) ... FAIL
+test_success_closes_disposable_index (nasuraya.test_history_search_resources.SearchResourceTests.test_success_closes_disposable_index) ... FAIL
+
+======================================================================
+FAIL: test_sql_exception_closes_disposable_index (nasuraya.test_history_search_resources.SearchResourceTests.test_sql_exception_closes_disposable_index)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0279aae418d6/zohraya/nasuraya/test_history_search_resources.py", line 68, in test_sql_exception_closes_disposable_index
+    self.assert_closed()
+  File "/workspace/scratch/0279aae418d6/zohraya/nasuraya/test_history_search_resources.py", line 50, in assert_closed
+    self.assertEqual(connection.close_calls, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_success_closes_disposable_index (nasuraya.test_history_search_resources.SearchResourceTests.test_success_closes_disposable_index)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/0279aae418d6/zohraya/nasuraya/test_history_search_resources.py", line 60, in test_success_closes_disposable_index
+    self.assert_closed()
+  File "/workspace/scratch/0279aae418d6/zohraya/nasuraya/test_history_search_resources.py", line 50, in assert_closed
+    self.assertEqual(connection.close_calls, 1)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.002s
+
+FAILED (failures=2)

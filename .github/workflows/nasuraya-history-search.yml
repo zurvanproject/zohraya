@@ -1,0 +1,25 @@
+name: Nasuraya offline history search
+on:
+  pull_request:
+    paths:
+      - 'nasuraya/history_search*.py'
+      - 'nasuraya/test_history_search*.py'
+      - 'examples/nasuraya_affect/history.py'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-history-search.yml'
+  push:
+    branches: ['nasuraya/hermes-memory-search-v01']
+permissions:
+  contents: read
+jobs:
+  search:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - run: python -m nasuraya.history_search_tests

@@ -1,0 +1,15 @@
+test_arabic_variants_and_tashkeel_are_normalized (nasuraya.test_history_search.SearchTests.test_arabic_variants_and_tashkeel_are_normalized) ... ok
+test_bad_pin_does_not_search (nasuraya.test_history_search.SearchTests.test_bad_pin_does_not_search) ... ok
+test_cold_cli_restart_and_pinned_archive (nasuraya.test_history_search.SearchTests.test_cold_cli_restart_and_pinned_archive) ... ok
+test_fts_syntax_is_not_executed (nasuraya.test_history_search.SearchTests.test_fts_syntax_is_not_executed) ... ok
+test_multiple_words_are_conjunctive (nasuraya.test_history_search.SearchTests.test_multiple_words_are_conjunctive) ... ok
+test_no_writes_or_body_calls (nasuraya.test_history_search.SearchTests.test_no_writes_or_body_calls) ... ok
+test_persian_word_search_preserves_original_and_source (nasuraya.test_history_search.SearchTests.test_persian_word_search_preserves_original_and_source) ... ok
+test_result_limit_and_query_bounds (nasuraya.test_history_search.SearchTests.test_result_limit_and_query_bounds) ... ok
+test_status_is_not_upgraded (nasuraya.test_history_search.SearchTests.test_status_is_not_upgraded) ... ok
+test_zero_width_spacing_and_case (nasuraya.test_history_search.SearchTests.test_zero_width_spacing_and_case) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 3.027s
+
+OK
