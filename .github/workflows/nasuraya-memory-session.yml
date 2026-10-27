@@ -1,0 +1,28 @@
+name: Nasuraya source-attributed memory sessions
+on:
+  pull_request:
+    paths:
+      - 'nasuraya/memory_session*.py'
+      - 'nasuraya/test_memory_session.py'
+      - 'nasuraya/sourced_memory.py'
+      - 'nasuraya/test_sourced_memory.py'
+      - 'examples/nasuraya_affect/**'
+      - 'examples/nasuraya_body_loop/**'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-memory-session.yml'
+  push:
+    branches: ['nasuraya/memory-session-v01']
+permissions:
+  contents: read
+jobs:
+  memory-session:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - run: python -m unittest nasuraya.test_sourced_memory -v
+      - run: python -m nasuraya.memory_session_tests
