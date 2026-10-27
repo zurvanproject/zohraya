@@ -29,6 +29,8 @@ jobs:
         run: python -m unittest nasuraya.test_integration nasuraya.test_self_observe -v
       - name: Verify dialogue memory, pre-action forecasts and interrupted execution
         run: python -m nasuraya dialogue test
+      - name: Verify read-only history compatibility and interrupted WAL recovery
+        run: python -m nasuraya dialogue history-test
       - name: Verify measured experience and legacy API packet compatibility offline
         run: python -m nasuraya body experience-test
       - name: Verify independent evidence gate without API dispatch

@@ -11,6 +11,28 @@ from .body_dialogue import DialogueBodyBridge
 
 
 def main(args):
+    if args['command'] == 'history-test':
+        from . import test_history
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_history)
+        return 0 if unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful() else 1
+    if args['command'].startswith('history-'):
+        from . import history
+        command = args['command']
+        if command == 'history-inspect':
+            result = history.inspect(history.capture(args['session_dir']))
+        elif command == 'history-export':
+            result = history.export_history(args['session_dir'], args['output'])
+        else:
+            report = history.load_history(args['archive'], args['expected_sha256'])
+            if command == 'history-trace':
+                result = history.trace(report, args['message_id'])
+            elif command == 'history-recall':
+                result = history.recall(report, args['cue'])
+            else:
+                result = history.replay(report, history.strict_json(Path(args['message']).read_text()))
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        report = result.get('report', result)
+        return 2 if report.get('status') == 'archive_only' else 0
     if args['command'] == 'test':
         from . import test_body_dialogue, test_integrated_dialogue
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
