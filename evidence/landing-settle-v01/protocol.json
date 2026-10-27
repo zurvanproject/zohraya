@@ -1,0 +1,160 @@
+{
+  "candidate": "combined6",
+  "diagnostic_variants": [
+    "baseline",
+    "prior6",
+    "landing6",
+    "tail6",
+    "tail0",
+    "combined6"
+  ],
+  "diagnostics": [
+    {
+      "friction": 0.6,
+      "id": "known_push",
+      "push": 10.0,
+      "steps": 2,
+      "stride": 0.06
+    },
+    {
+      "friction": 0.3589,
+      "id": "known_tail",
+      "push": -2.232,
+      "steps": 2,
+      "stride": 0.05475
+    }
+  ],
+  "evaluation": {
+    "all_baselines_and_candidates_must_pass": true,
+    "candidate_must_pass_against_both_controls": true,
+    "maximum_case_regression": 0.1,
+    "maximum_extra_duration_s": 0.1,
+    "minimum_geometric_mean_reduction": 0.05,
+    "settle_speed_limit": 0.05
+  },
+  "frozen_at_utc": "2026-10-27T17:31:34.639510+00:00",
+  "holdout_variants": [
+    "baseline",
+    "prior6",
+    "combined6"
+  ],
+  "holdouts": [
+    {
+      "friction": 0.38,
+      "id": "fresh_low_negative",
+      "push": -9.0,
+      "steps": 2,
+      "stride": 0.058
+    },
+    {
+      "friction": 0.72,
+      "id": "fresh_high_positive",
+      "push": 11.0,
+      "steps": 2,
+      "stride": 0.065
+    },
+    {
+      "friction": 0.52,
+      "id": "fresh_long_negative",
+      "push": -7.0,
+      "steps": 2,
+      "stride": 0.07
+    },
+    {
+      "dt": 0.0005,
+      "friction": 0.62,
+      "id": "fresh_half_dt",
+      "push": 6.0,
+      "steps": 2,
+      "stride": 0.057
+    },
+    {
+      "friction": 0.46,
+      "id": "fresh_six_low",
+      "push": 0.0,
+      "steps": 6,
+      "stride": 0.06
+    },
+    {
+      "friction": 0.67,
+      "id": "fresh_six_negative",
+      "push": -10.0,
+      "steps": 6,
+      "stride": 0.052
+    }
+  ],
+  "limitation": "Deterministic, distinct simulator conditions; not independent biological subjects.",
+  "native_apply_allowed": false,
+  "no_parameter_search": true,
+  "parent_commit": "d07c8199d90004951c747e3b3197e60ca1de8bf9",
+  "runtime": {
+    "blas": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_CORETYPE": "SkylakeX",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "packages": {
+      "PyYAML": "6.0.3",
+      "mujoco": "3.11.0",
+      "numpy": "2.3.5",
+      "osqp": "1.0.5",
+      "scipy": "1.17.0"
+    },
+    "python": "3.12.14"
+  },
+  "schema": "nasuraya.landing-settle-study/1",
+  "sources_sha256": {
+    "assets/nasuraya_articulated_v03/nasuraya.xml": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d",
+    "assets/nasuraya_articulated_v03/robot.yaml": "78be887900f165f6b3a811cf79a5e6eadb2316f62679121083456ff36ada5140",
+    "examples/nasuraya_research/articulated/balance.py": "c9b1f75a3d721e3fa8c02697300264ed608a3f0d057638cdc67d2501d9db024e",
+    "examples/nasuraya_research/articulated/build.py": "a2a0d97c821fafe91c478ede057470beaa4005940e01da1fe2b84f6ae007cf96",
+    "examples/nasuraya_research/articulated/checkpoint.py": "a066096735b28ce6dc29e941f6c4ff82d150f52fa36ae0b4c724ade755c45643",
+    "examples/nasuraya_research/articulated/evaluate.py": "191d28a720ef58ee349c3b4b21f1a431b86b3d25f841e146cb0b71db23de288d",
+    "examples/nasuraya_research/articulated/landing_settle.py": "f0482e95daf68d896d2146dbdf77e43c9cf87dbe2371a29498351008903708e0",
+    "examples/nasuraya_research/articulated/landing_study.py": "bcb4df181596d7b1bac61f51be53d0770e3254625ee76598dc3ccf91445179e1",
+    "examples/nasuraya_research/articulated/resize.py": "c092a761627f7c7eefa06da7ab6e2d763699b73e549cc510672016f2f35235dc",
+    "examples/nasuraya_research/articulated/stepping.py": "dfea9d3da60984319ad5a0c96d908eebb22044c0f6342ad49e532dd992a8afe3",
+    "examples/nasuraya_research/articulated/support_geometry.py": "66cc87a37c5bfd95d3e0733a53f1a38bb5b315f42f86f3b88cdf5605fb65d0c7"
+  },
+  "terminal_change": {
+    "final_landing_bias_taper": "quintic 6 mm -> 0 mm in existing 1 s landing",
+    "original_posture_task": "50 * error - 12 * speed; unchanged weight 0.1",
+    "tail_task": "50 * neutral_position_error - 20 * speed; weight ramps 0 -> 1"
+  },
+  "timing": 1.0,
+  "unchanged": [
+    "body mass/model",
+    "torque/friction/pressure constraints",
+    "all physical guards",
+    "2 s transfer / 3 s swing / 1 s landing per step",
+    "3 s recenter / 2 s settle",
+    "0.05 final speed ceiling including tail",
+    "external push waveform"
+  ],
+  "variants": {
+    "baseline": {
+      "com_bias_x_m": 0.0,
+      "mode": "unchanged"
+    },
+    "combined6": {
+      "com_bias_x_m": 0.006,
+      "mode": "combined"
+    },
+    "landing6": {
+      "com_bias_x_m": 0.006,
+      "mode": "landing"
+    },
+    "prior6": {
+      "com_bias_x_m": 0.006,
+      "mode": "unchanged"
+    },
+    "tail0": {
+      "com_bias_x_m": 0.0,
+      "mode": "tail"
+    },
+    "tail6": {
+      "com_bias_x_m": 0.006,
+      "mode": "tail"
+    }
+  }
+}
