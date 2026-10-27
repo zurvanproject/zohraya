@@ -1,0 +1,41 @@
+{
+  "schema": "nasuraya.history-recovery-verification/1",
+  "date": "2026-10-27",
+  "base_pr": 67,
+  "base_head": "6281c5389b5a7a75d4bf6c6505a24699c98beb70",
+  "passed": 38,
+  "failed": 0,
+  "skipped": 0,
+  "seconds": 27.513,
+  "command": "python -m nasuraya dialogue history-test",
+  "test_log_sha256": "a7b5fdca34ae33675c3a3c314d00116700d5313d5e1e83ee4148bff0f05482fb",
+  "source_verification": {
+    "pull_request_heads": 59,
+    "additional_capabilities": 2,
+    "native_source_files": 70,
+    "upstream_blobs": 9,
+    "entrypoints": 31,
+    "refresh_heads": 4,
+    "preserved_experiment_files": 38,
+    "preserved_main_files": 5
+  },
+  "implementation_sha256": {
+    "examples/nasuraya_affect/history.py": "bb37eabcad43feadc58b0dcc6295b768424643d92c82134237ed6c70e638b2e5",
+    "examples/nasuraya_affect/test_history.py": "27b2c02d8da5f9bd4f5de4b3b696fa0541d9ed3a64f55f586638d4df790a89fe",
+    "examples/nasuraya_affect/dialogue_cli.py": "3d44f0f442fb1f1e6d7a150a2c388c77833dade6e0216e2cf8a1e32124482ec6",
+    "examples/nasuraya_affect/dialogue_worker.py": "16d26ad27d06f2027605205a55ccb66c63df9e9ff3e26f620844a28ebd70c42a"
+  },
+  "preserved_active_files": [
+    "examples/nasuraya_affect/body_dialogue.py",
+    "examples/nasuraya_affect/engine.py",
+    "examples/nasuraya_body_loop/experience.py",
+    "examples/nasuraya_body_loop/host.py",
+    "examples/nasuraya_research/native_snapshot.py"
+  ],
+  "external_api_calls": 0,
+  "real_memory_modified": false,
+  "active_state_migration": false,
+  "verified_recovery": "read-only historical caller messages, software receipts and existing measured episodes; no execution or learning replay",
+  "data": "Synthetic fixtures including the actual pinned legacy bridge, abrupt child-process exit with committed WAL, and cold-process CLI reads",
+  "scope": "38 new targeted tests; the prior 289-test campaign was not rerun locally. Existing CI may run its pre-existing suites on the PR."
+}
