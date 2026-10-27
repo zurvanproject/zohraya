@@ -1,0 +1,22 @@
+name: Nasuraya sourced text memory
+on:
+  pull_request:
+    paths:
+      - 'nasuraya/sourced_memory.py'
+      - 'nasuraya/test_sourced_memory.py'
+      - '.github/workflows/nasuraya-sourced-memory.yml'
+  push:
+    branches: ['nasuraya/sourced-memory-v01']
+permissions:
+  contents: read
+jobs:
+  sourced-memory:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - run: python -m unittest nasuraya.test_sourced_memory -v

@@ -1,0 +1,13 @@
+{
+  "schema": "nasuraya.sourced-memory-verification/1",
+  "passed": 13,
+  "failed": 0,
+  "skipped": 0,
+  "test_data": "synthetic only; real source contents and identifying metadata deliberately excluded",
+  "external_api_calls": 0,
+  "native_module_modified": false,
+  "sha256": {
+    "nasuraya/sourced_memory.py": "8dc016f4fd6a7eb31215f9877973fd81e84e5438e2f14165050101b1b92d88d6",
+    "nasuraya/test_sourced_memory.py": "965527dd40d014f00a35985a7957321e881402d1a9777f9372c852388ac2e40d"
+  }
+}
