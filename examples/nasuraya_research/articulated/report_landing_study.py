@@ -58,6 +58,8 @@ def render(folder,doc):
     for i,value in enumerate(values):bx.text(i,value+.0015,f'{value:.5f}',ha='center',fontsize=8)
     bx.legend(fontsize=8,loc='upper right');bx.grid(axis='y',alpha=.18)
     fig.tight_layout();fig.savefig(folder/'comparison.png',dpi=170);fig.savefig(folder/'comparison.svg');plt.close(fig)
+    svg=folder/'comparison.svg'
+    svg.write_text('\n'.join(line.rstrip() for line in svg.read_text().splitlines())+'\n')
     text=f'''# آزمایش فرود نهایی و آرام‌شدن دم ناسورایا — ۲۷ اکتبر ۲۰۲۶
 
 **نتیجه: نسخهٔ محدود پیاده و اندازه‌گیری شد؛ معیار عملکرد مستقل رد شد و ارتقا ممنوع است.**
