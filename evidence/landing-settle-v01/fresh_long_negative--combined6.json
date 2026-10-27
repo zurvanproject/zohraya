@@ -1,0 +1,550 @@
+{
+  "case": {
+    "friction": 0.52,
+    "id": "fresh_long_negative",
+    "push": -7.0,
+    "steps": 2,
+    "stride": 0.07
+  },
+  "completed_at_utc": "2026-10-27T17:34:21.575620+00:00",
+  "final_joint_speeds": [
+    {
+      "axis": 0,
+      "dof": 0,
+      "joint": "root",
+      "speed": 2.7515660788383985e-05,
+      "unit": "m/s"
+    },
+    {
+      "axis": 1,
+      "dof": 1,
+      "joint": "root",
+      "speed": -2.562268546596162e-07,
+      "unit": "m/s"
+    },
+    {
+      "axis": 2,
+      "dof": 2,
+      "joint": "root",
+      "speed": -6.53922415517528e-05,
+      "unit": "m/s"
+    },
+    {
+      "axis": 3,
+      "dof": 3,
+      "joint": "root",
+      "speed": 1.1093730803755527e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 4,
+      "dof": 4,
+      "joint": "root",
+      "speed": 0.00017408587291618414,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 5,
+      "dof": 5,
+      "joint": "root",
+      "speed": 0.0007394516133247259,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 6,
+      "joint": "waist_yaw",
+      "speed": -0.0017161870573667547,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 7,
+      "joint": "waist_pitch",
+      "speed": -0.0004636316549106764,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 8,
+      "joint": "waist_roll",
+      "speed": 0.00023756570310568554,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 9,
+      "joint": "neck_yaw",
+      "speed": -0.00013399663981025298,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 10,
+      "joint": "neck_pitch",
+      "speed": -0.00019692462325081997,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 11,
+      "joint": "shoulder_pitch_L",
+      "speed": -0.00030047939673716865,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 12,
+      "joint": "shoulder_roll_L",
+      "speed": -0.0001931746974003852,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 13,
+      "joint": "shoulder_yaw_L",
+      "speed": -0.00011036362678560047,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 14,
+      "joint": "elbow_L",
+      "speed": 0.000133777372180434,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 15,
+      "joint": "wrist_pitch_L",
+      "speed": 1.6063715792963396e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 16,
+      "joint": "wrist_roll_L",
+      "speed": 0.0001435751850353546,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 17,
+      "joint": "finger_flex_L_1",
+      "speed": 6.181312533901094e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 18,
+      "joint": "finger_flex_L_2",
+      "speed": 1.4483714966062244e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 19,
+      "joint": "finger_flex_L_3",
+      "speed": 2.6333006700749865e-06,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 20,
+      "joint": "finger_flex_L_4",
+      "speed": -9.219214525988154e-06,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 21,
+      "joint": "finger_flex_L_5",
+      "speed": -1.7429432025245994e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 22,
+      "joint": "shoulder_pitch_R",
+      "speed": 0.00019808962192448748,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 23,
+      "joint": "shoulder_roll_R",
+      "speed": -0.0001903469188075907,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 24,
+      "joint": "shoulder_yaw_R",
+      "speed": -0.0001176317863279225,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 25,
+      "joint": "elbow_R",
+      "speed": -0.00013859135749943644,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 26,
+      "joint": "wrist_pitch_R",
+      "speed": -0.00010015522008177315,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 27,
+      "joint": "wrist_roll_R",
+      "speed": 1.047138770256285e-06,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 28,
+      "joint": "finger_flex_R_1",
+      "speed": 2.022412244614377e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 29,
+      "joint": "finger_flex_R_2",
+      "speed": 2.1715639588599743e-06,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 30,
+      "joint": "finger_flex_R_3",
+      "speed": -8.748163765633829e-06,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 31,
+      "joint": "finger_flex_R_4",
+      "speed": -1.967559742616434e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 32,
+      "joint": "finger_flex_R_5",
+      "speed": -2.7519353931453808e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 33,
+      "joint": "hip_yaw_L",
+      "speed": -0.004561219228307156,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 34,
+      "joint": "hip_roll_L",
+      "speed": -0.0006483844504699539,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 35,
+      "joint": "hip_pitch_L",
+      "speed": 0.00025973685831987096,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 36,
+      "joint": "knee_L",
+      "speed": -7.371746223165028e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 37,
+      "joint": "hock_pitch_L",
+      "speed": -0.0009770485592004805,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 38,
+      "joint": "hock_roll_L",
+      "speed": 0.0005635171448285491,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 39,
+      "joint": "mtp_L",
+      "speed": 0.0007980432005403803,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 40,
+      "joint": "toe_flex_L_1",
+      "speed": -0.0017735863783608563,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 41,
+      "joint": "toe_flex_L_2",
+      "speed": -0.0012210974298703286,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 42,
+      "joint": "toe_flex_L_3",
+      "speed": 0.00039565834864677477,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 43,
+      "joint": "hip_yaw_R",
+      "speed": 0.0050160015789182865,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 44,
+      "joint": "hip_roll_R",
+      "speed": 0.0002733687862992488,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 45,
+      "joint": "hip_pitch_R",
+      "speed": -0.00039321296476667176,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 46,
+      "joint": "knee_R",
+      "speed": 0.0011402174097073423,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 47,
+      "joint": "hock_pitch_R",
+      "speed": -0.0002654191632018884,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 48,
+      "joint": "hock_roll_R",
+      "speed": -0.000295769073738713,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 49,
+      "joint": "mtp_R",
+      "speed": -0.00048134370387042534,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 50,
+      "joint": "toe_flex_R_1",
+      "speed": 0.0014162227435181637,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 51,
+      "joint": "toe_flex_R_2",
+      "speed": -0.0015720923329429145,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 52,
+      "joint": "toe_flex_R_3",
+      "speed": 0.0019758290545703024,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 53,
+      "joint": "tail_yaw_1",
+      "speed": -0.002944950799686405,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 54,
+      "joint": "tail_pitch_1",
+      "speed": -0.000810915970238926,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 55,
+      "joint": "tail_yaw_2",
+      "speed": 0.00028423196982844604,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 56,
+      "joint": "tail_pitch_2",
+      "speed": 0.00020476469574178354,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 57,
+      "joint": "tail_yaw_3",
+      "speed": 0.00032367014720789883,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 58,
+      "joint": "tail_pitch_3",
+      "speed": 0.00012652311271708008,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 59,
+      "joint": "tail_yaw_4",
+      "speed": 7.57145509590212e-05,
+      "unit": "rad/s"
+    },
+    {
+      "axis": 0,
+      "dof": 60,
+      "joint": "tail_pitch_4",
+      "speed": 2.3738989865404547e-05,
+      "unit": "rad/s"
+    }
+  ],
+  "legacy_replay": null,
+  "protocol_sha256": "b3a21140265eda5ee698a1da8d4786a4df2a171c28c5b6703491b2c7fc20cdc5",
+  "result": {
+    "accepted_steps": 2,
+    "com_bias_x_m": 0.006,
+    "experimental_mode": "combined",
+    "failure": null,
+    "final_max_generalized_speed": 0.0050160015789182865,
+    "friction": 0.52,
+    "holdout_lateral_push_n": -7.0,
+    "label": "fresh_long_negative--combined6",
+    "last_half_second_max_generalized_speed": 0.0052144913814636176,
+    "max_joint_limit_excess_rad": 0.0,
+    "max_motor_torque_fraction": 1.0,
+    "max_tilt_deg": 0.6646995433837062,
+    "mean_foot_forward_displacement_m": 0.09707830113664939,
+    "measured_seconds": 16.999999999997794,
+    "min_pelvis_height_m": 0.9582206813311238,
+    "native_apply_allowed": false,
+    "nonfoot_ground_contacts": [],
+    "pelvis_displacement_xyz_m": [
+      0.061949910074018455,
+      -0.0056946758923782665,
+      0.003886692183982743
+    ],
+    "phase_metrics": {
+      "0:landing": {
+        "max_generalized_speed": 0.7831083599127431,
+        "seconds": 1.0000000000000007,
+        "tilt_integral_deg2_s": 0.03895044271780003
+      },
+      "0:swing": {
+        "max_generalized_speed": 0.13772403225948676,
+        "seconds": 2.9999999999997806,
+        "tilt_integral_deg2_s": 0.07836375907950507
+      },
+      "0:transfer": {
+        "max_generalized_speed": 0.5424359563913526,
+        "seconds": 1.9999999999998905,
+        "tilt_integral_deg2_s": 0.01156106712782046
+      },
+      "1:landing": {
+        "max_generalized_speed": 0.5616482043191412,
+        "seconds": 1.0000000000000007,
+        "tilt_integral_deg2_s": 0.17609932372319373
+      },
+      "1:swing": {
+        "max_generalized_speed": 0.24033609095957068,
+        "seconds": 2.9999999999997806,
+        "tilt_integral_deg2_s": 0.5489855730262295
+      },
+      "1:transfer": {
+        "max_generalized_speed": 0.9379740774284523,
+        "seconds": 1.9999999999998905,
+        "tilt_integral_deg2_s": 0.5197846962085714
+      },
+      "2:recenter": {
+        "max_generalized_speed": 0.12238910831366676,
+        "seconds": 2.9999999999997806,
+        "tilt_integral_deg2_s": 0.4553449963369679
+      },
+      "2:settle": {
+        "max_generalized_speed": 0.1884404254579324,
+        "seconds": 1.9999999999998905,
+        "tilt_integral_deg2_s": 0.4059982744044772
+      }
+    },
+    "push_impulse_ns": -1.3999999999999948,
+    "qp_inaccurate_status_count": 0,
+    "qp_max_constraint_violation": 0.00023394990160582885,
+    "qp_solves": 3400,
+    "requested_steps": 2,
+    "running_validated": false,
+    "simulated_seconds": 17.000000000000348,
+    "steps": [
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 85.07494362958728,
+        "landing_xy_error_m": 0.003594473053410578,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 8.006322941048227e-05,
+        "min_load_on_stance_n": 763.9962613167678,
+        "peak_whole_sole_clearance_m": 0.028658342205286125,
+        "step": 0,
+        "swing_side": 0
+      },
+      {
+        "accepted": true,
+        "air_time_s": 2.9999999999997806,
+        "landing_normal_force_n": 13.350210901656602,
+        "landing_xy_error_m": 0.0016330613326015293,
+        "load_gate_wait_s": 0.0,
+        "max_stance_slide_m": 0.00010269364989533338,
+        "min_load_on_stance_n": 763.9575086832969,
+        "peak_whole_sole_clearance_m": 0.028494053677959028,
+        "step": 1,
+        "swing_side": 1
+      }
+    ],
+    "stride_m": 0.07,
+    "tilt_integral_deg2_s": 2.2350881326245666,
+    "tilt_rms_deg": 0.3625958804334993,
+    "timestep_s": 0.001,
+    "timing_multiplier": 1.0,
+    "walk_pass": true
+  },
+  "split": "holdouts",
+  "trace_sha256": "9e30c918f2dc619936b9f73bac5f4fd6702e54b221c5917b47f3304651638f19",
+  "variant": "combined6",
+  "wall_seconds": 26.796351502001926
+}

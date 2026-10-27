@@ -1,0 +1,274 @@
+{
+  "all_parent_files_byte_identical": true,
+  "native_apply_allowed": false,
+  "preterminal_prefix_checks": [
+    {
+      "case": "known_push",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "landing6"
+    },
+    {
+      "case": "known_push",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "tail6"
+    },
+    {
+      "case": "known_push",
+      "control": "baseline",
+      "identical_before_final_landing": true,
+      "variant": "tail0"
+    },
+    {
+      "case": "known_push",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "combined6"
+    },
+    {
+      "case": "known_tail",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "landing6"
+    },
+    {
+      "case": "known_tail",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "tail6"
+    },
+    {
+      "case": "known_tail",
+      "control": "baseline",
+      "identical_before_final_landing": true,
+      "variant": "tail0"
+    },
+    {
+      "case": "known_tail",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "combined6"
+    },
+    {
+      "case": "fresh_low_negative",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "combined6"
+    },
+    {
+      "case": "fresh_high_positive",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "combined6"
+    },
+    {
+      "case": "fresh_long_negative",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "combined6"
+    },
+    {
+      "case": "fresh_half_dt",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "combined6"
+    },
+    {
+      "case": "fresh_six_low",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "combined6"
+    },
+    {
+      "case": "fresh_six_negative",
+      "control": "prior6",
+      "identical_before_final_landing": true,
+      "variant": "combined6"
+    }
+  ],
+  "protocol_sha256": "b3a21140265eda5ee698a1da8d4786a4df2a171c28c5b6703491b2c7fc20cdc5",
+  "rollout_integrity": [
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_push--baseline",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_push--prior6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_push--landing6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_push--tail6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_push--tail0",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_push--combined6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_tail--baseline",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_tail--prior6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_tail--landing6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_tail--tail6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_tail--tail0",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "known_tail--combined6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_low_negative--baseline",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_low_negative--prior6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_low_negative--combined6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_high_positive--baseline",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_high_positive--prior6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_high_positive--combined6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_long_negative--baseline",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_long_negative--prior6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_long_negative--combined6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_half_dt--baseline",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_half_dt--prior6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_half_dt--combined6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_six_low--baseline",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_six_low--prior6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_six_low--combined6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_six_negative--baseline",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_six_negative--prior6",
+      "time_integrals": true,
+      "trace_hash": true
+    },
+    {
+      "all_61_dof_speeds": true,
+      "run": "fresh_six_negative--combined6",
+      "time_integrals": true,
+      "trace_hash": true
+    }
+  ],
+  "unchanged_parent_file_count": 558
+}

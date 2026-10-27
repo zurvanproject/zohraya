@@ -1,0 +1,45 @@
+name: Nasuraya isolated landing and tail experiment
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_research/articulated/landing_*.py'
+      - 'examples/nasuraya_research/articulated/test_landing_settle.py'
+      - 'evidence/landing-settle-v01/**'
+      - '.github/workflows/nasuraya-landing-settle-trial.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  experimental-regressions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_CORETYPE: Haswell
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.14'
+      - run: python -m pip install -r examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Isolation and performance gates
+        run: python -m unittest examples.nasuraya_research.articulated.test_landing_settle -v
+      - name: Independent numerical-kernel smoke test (not promotion)
+        run: |
+          python - <<'PY'
+          import json
+          from examples.nasuraya_research.articulated.landing_settle import walk_trial
+          for mode, bias in [('unchanged', 0.), ('combined', .006)]:
+              r = walk_trial(steps=2, mode=mode, com_bias_x_m=bias, push=10.)
+              r.pop('trace')
+              print(json.dumps(r))
+              assert r['accepted_steps'] == 2 and r['walk_pass']
+              assert r['final_max_generalized_speed'] < .05
+              assert r['max_motor_torque_fraction'] <= 1.00000001
+              assert abs(r['simulated_seconds'] - 17.) < 1e-7
+              assert abs(sum(x['tilt_integral_deg2_s'] for x in r['phase_metrics'].values()) - r['tilt_integral_deg2_s']) < 1e-8
+          decision = json.load(open('evidence/landing-settle-v01/promotion-decision.json'))
+          assert decision['promotion_allowed'] is False
+          assert decision['native_apply_allowed'] is False
+          PY
