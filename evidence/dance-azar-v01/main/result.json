@@ -1,0 +1,33 @@
+{
+  "executed_seconds": 26.000000000008793,
+  "requested_seconds": 26.0,
+  "complete": true,
+  "model_mass_kg": 78.0,
+  "actuated_joints": 55,
+  "max_pelvis_tilt_deg": 0.05405174411485565,
+  "max_foot_anchor_drift_m": 0.0002658998784569495,
+  "min_pelvis_height_ratio": 0.9834497482831097,
+  "max_joint_soft_limit_excess_rad": 0.0,
+  "peak_motor_torque_nm": 46.959840923516694,
+  "both_feet_loaded_fraction": 1.0,
+  "nonfoot_ground_geoms": [],
+  "self_contact_pairs": [],
+  "numerical_warnings": false,
+  "last_second_max_generalized_speed": 7.594513085508518e-07,
+  "shoulder_range_rad": [
+    1.3189047024015605,
+    1.3203543569749505
+  ],
+  "shoulder_target_rmse_rad": 0.06699400535038282,
+  "qp_solves": 5200,
+  "qp_inaccurate": 0,
+  "qp_max_constraint_residual": 1.4210854715202004e-14,
+  "failure": null,
+  "torque_limits_unchanged": true,
+  "root_actuator_or_weld": false,
+  "live_pose_overwrites": false,
+  "external_help_forces": false,
+  "performance_scope": "Only this recorded two-foot, flat-ground dance trial.",
+  "diagnostic_partial_score": false,
+  "accepted": true
+}
