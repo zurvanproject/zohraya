@@ -11,6 +11,8 @@ import re
 
 from reflection_cycle import canonical, digest, InterruptedExecution
 from .host import BodyLoop, executed_body, validate_duration
+from .affect_audit import audit_affect
+from .self_knowledge import forecast_action, score_action, summarize_action_forecasts
 
 KEY = 'nasuraya-experience/1'
 METRICS = ('energy', 'fatigue', 'pain', 'sleep_pressure')
@@ -51,7 +53,7 @@ def initial_state(config, flags):
                 scope='engineering_state_from_software_receipts')
 
 
-def plan(state, snapshot, duration_s):
+def _policy_plan(state, snapshot, duration_s):
     m = metrics(snapshot); ctx = context(m); now = seconds(snapshot)
     recalled = []
     if state['flags']['memory']:
@@ -78,6 +80,22 @@ def plan(state, snapshot, duration_s):
                 prediction=dict(key=key, before=m, expected={k: clamp(m[k]+delta[k]) for k in METRICS},
                     prior_samples=model['count'] if model else 0,
                     scope='next software state given controller preference; not calibrated probability'))
+
+
+def plan(state, snapshot, duration_s):
+    """Freeze predictions and matched-state diagnostics before body execution.
+
+    The categorical forecast uses only earlier receipt-grounded episodes. The
+    policy audit evaluates copies; neither it nor the forecast executes actions
+    or overrides the existing controller/native protection.
+    """
+    proposed = _policy_plan(state, snapshot, duration_s)
+    proposed['action_forecast'] = forecast_action(
+        state['episodes'], context=proposed['context'],
+        preferred=proposed['preferred'], duration_s=duration_s,
+        enabled=state['flags']['prediction'])
+    proposed['affect_audit'] = audit_affect(state, snapshot, duration_s, _policy_plan)
+    return proposed
 
 
 class ExperienceController:
@@ -124,7 +142,8 @@ class ExperienceController:
     def status(self):
         state = self._load()
         return dict(state=state, native=self.loop.status(), external_model_api_used=False,
-                    background_process_started=False)
+                    background_process_started=False,
+                    self_knowledge=summarize_action_forecasts(state['intents']))
 
     def _finish(self, state, request_id, record, *, replayed):
         intent = state['intents'][request_id]
@@ -136,11 +155,18 @@ class ExperienceController:
         receipt = self.loop.receipt(record, replayed=replayed)
         p = intent['plan']; prediction = deepcopy(p['prediction'])
         ran = executed_body(record)
+        action_forecast_score = None
         if ran:
             after = metrics(receipt['self_model_after']); before = prediction['before']
             error = sum(abs(after[k]-prediction['expected'][k]) for k in METRICS)/len(METRICS)
             prediction.update(actual=after, mean_absolute_error=error,
                               source='native-decision://' + record['id'] + '/' + digest(record))
+            # The old reserved plan is authoritative, including on recovery.
+            # Legacy intents have no categorical forecast: never backfill one
+            # after observing the result, which would leak the answer.
+            if 'action_forecast' in p:
+                action_forecast_score = score_action(
+                    p['action_forecast'], receipt['actual_action'], prediction['source'])
             if state['flags']['prediction']:
                 state['error_ema'] = .8*state['error_ema'] + .2*error
                 model = state['predictors'].setdefault(prediction['key'], dict(count=0, mean_delta=dict.fromkeys(METRICS, 0.)))
@@ -162,12 +188,14 @@ class ExperienceController:
                     e['strength'] = min(1., e['strength']+.1)
                     e['accesses'] += 1
             state['episodes'].append(dict(id=request_id, context=p['context'], preferred=p['preferred'],
+                duration_s=intent['duration_s'],
                 actual_action=receipt['actual_action'], harm=harm, importance=max(.2, harm, error),
                 strength=1., accesses=0, at=now, last_decay_at=now, archived=False,
                 source=prediction['source'], kind='observed_software_outcome'))
         else:
             prediction.update(actual=None, mean_absolute_error=None, unresolved=True)
         result = dict(request_id=request_id, plan=deepcopy(p), prediction=prediction,
+                      action_forecast_score=action_forecast_score,
                       affect_after=deepcopy(state['affect']), native_receipt=receipt,
                       replayed=replayed, this_call_native_cycles=0 if replayed else int(ran))
         intent['result'] = result

@@ -1,0 +1,365 @@
+{
+  "episodes": [
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-walk-1-round-0",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-1-round-0/7be79498473f38f7417e5d9e1028d838ac53604d1b28c21b06c68214328ba2f0"
+    },
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-walk-3-round-0",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-3-round-0/92fe144080bb617f60901f7472851615aede20aaa2d246bdd2ad5d246e7108e6"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-observe-1-round-0",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-1-round-0/1c555dbb3ce263686af95989de03ef96696c27ead017f86ae201724026b4b458"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-observe-3-round-0",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-3-round-0/96b193d3deaaf68ab7d9b4b9c45edb05b9ced0a0926b5ca69f21010d8cd3a16a"
+    },
+    {
+      "actual_action": "protect",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-walk-1-round-0",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-1-round-0/709c538e41c8d0f4fff40edaff8ee7676cfc7442ee137f9c5888f035124bcf2e"
+    },
+    {
+      "actual_action": "protect",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-walk-3-round-0",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-3-round-0/a9e4b06609b2e63f267baaffc8f7535cf664438c6541b79c20e3529ce505c8fb"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-observe-1-round-0",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-1-round-0/be81ccd5fd019ab344b7285ebd04046e64f73eb71beb5c57c4fef496d47863ec"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-observe-3-round-0",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-3-round-0/7c1c10ba1761c47a39236abe024eb2a00cb0d3ae28953460989796fd38ac6b76"
+    },
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-walk-1-round-1",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-1-round-1/a5552536a7355b9189605287b99775dee976e8cc64f580b6a035a6dd2f848514"
+    },
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-walk-3-round-1",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-3-round-1/11ed13a4d10dd107e0a7d4147dcdd123f028b2e866ad69dfbaa1d7934fb07361"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-observe-1-round-1",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-1-round-1/4cba7f08c62166af81c68a7ad7efbdd531c2de7c0ce1744647d1a39af711d69d"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-observe-3-round-1",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-3-round-1/f5e139f4068c8f3873c8091e048321fd288803dee441d7a4841cde3ec7867b59"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-walk-1-round-1",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-1-round-1/dc807d8f21ba8bacbcaf6ec5b8b0ff7c6442689bf62d0f6786c82c1e7ba439d1"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-walk-3-round-1",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-3-round-1/85e4f096cacaccdba681e4517f4354e2858a35e950ecd8cb52c1315fb90c6f23"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-observe-1-round-1",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-1-round-1/1df417497c145d2da07fe73e51003f1f8917ba4630c7e77ddfe8e73634d8b210"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-observe-3-round-1",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-3-round-1/6f917092101a7ba1f41ebda50d4ef9443c98a11c3dcf575f848587a70d1f6c9c"
+    },
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-walk-1-round-2",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-1-round-2/756e19032e604fba6bd8dcddb4e352111972d5d7fa367ff2f93961d3c27c64bb"
+    },
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-walk-3-round-2",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-3-round-2/aed4ed3ab495da731f4425fe784c4c7697e5464954002fa44998a864b2cad0c5"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-observe-1-round-2",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-1-round-2/6d4d2a709af0b6d4111d20801136f572910201052cec2ef29bb6698a13ad9bad"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-observe-3-round-2",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-3-round-2/25711e5b11d5954bb2b59f4787cb04711568c9d1efaca060500dae3a700fe7ca"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-walk-1-round-2",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-1-round-2/dae8d5834c30df54ce43b02234de93312825c9e9daeaa98d645affc176ace172"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-walk-3-round-2",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-3-round-2/aff67974f15a97a7a8c026a60f418363c56568f036c0083bccbe0d37f93b09a4"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-observe-1-round-2",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-1-round-2/66ebc94dc8695abbb16b15a2425e4b5175e6b6dd3c21a4cd6a4eb5632be5fe81"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-observe-3-round-2",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-3-round-2/d77254321d0eadec209985114b323cf9b0f6ec431ab666d004859c4892b1b44c"
+    },
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-walk-1-round-3",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-1-round-3/c7b1577a196ce960dd1f5e824a26a89b649a263244a9f7ad2fa2425a98b95244"
+    },
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-walk-3-round-3",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-3-round-3/330ba9cfe0ca6e39ace81a8130067796df3c1aa0f552ee06d25e48bd84c81a42"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-observe-1-round-3",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-1-round-3/63bb34613df113ac6b410fa502f4c10a30fece3ae69655adae349e126a26d21e"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-observe-3-round-3",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-3-round-3/71b0176116f1c9bc5c072e03b59e4eecae787ea03b5a195bea8bd913eb9f8d19"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-walk-1-round-3",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-1-round-3/b52eeeb7b82d9af63709cb4787562e3eed29a2b1a6bc6a7297241b8ba5df8915"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-walk-3-round-3",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-3-round-3/d52e25294eb7a8a5c084471adc0c6e6b0694a5c64f667c5cd13bf68545e29df0"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-observe-1-round-3",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-1-round-3/e8a05b53e947ca229cb0f657ccc6b4ab573e8ecced1feeb0799d10024ecf337f"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-observe-3-round-3",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-3-round-3/22144699d8546e32d28d5d2d4c49b1f631a0852aae904257308def9e4c2cb88d"
+    },
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-walk-1-round-4",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-1-round-4/bfa6dc3a33a0159a9e777135a4b77286c42be93d05d1fa6691ed9a89d9198b7d"
+    },
+    {
+      "actual_action": "walk",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-walk-3-round-4",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://normal-walk-3-round-4/59b814958c67f267b41481135291fa2caa79db84be8012f0c5e8192507380bb2"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.1,
+      "id": "normal-observe-1-round-4",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-1-round-4/ed101d054ed57ef286efa4e567c414574c3473ec4b2db9857dd4728723a2aa50"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,false]",
+      "duration_s": 0.3,
+      "id": "normal-observe-3-round-4",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://normal-observe-3-round-4/19ffbbee7b7594d8a461ac945b4a0e800371e2f8f9583f121a254f9a47e7dead"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-walk-1-round-4",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-1-round-4/286ad27a4c73b558de9558395f09362a2b1603616d2b8ec8480874920ab54462"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-walk-3-round-4",
+      "kind": "observed_software_outcome",
+      "preferred": "walk",
+      "source": "native-decision://sleep-walk-3-round-4/edfd5fbfee987e5e329736dac8aeae92cf22692a1cadb1fedc9d3645aca88ff0"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.1,
+      "id": "sleep-observe-1-round-4",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-1-round-4/ed4d702cc9361afbb1de21f56824e88a4a0eb6fed9d6c11cb71b7f4d5b62e684"
+    },
+    {
+      "actual_action": "observe",
+      "context": "[false,false,false,true]",
+      "duration_s": 0.3,
+      "id": "sleep-observe-3-round-4",
+      "kind": "observed_software_outcome",
+      "preferred": "observe",
+      "source": "native-decision://sleep-observe-3-round-4/8e3ee7e8973768e907795eeb8fce6bbb2e33d967aacff20a0d40da6d83807ed7"
+    }
+  ],
+  "sha256": "529e3c92be70fb2d2a6994f4ed77dc845594800c450d2053c7cfb26510e94369"
+}

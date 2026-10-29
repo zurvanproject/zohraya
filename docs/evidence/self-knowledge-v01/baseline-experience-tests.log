@@ -1,0 +1,22 @@
+test_affect_ablation_changes_policy_but_cannot_add_actions (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_affect_ablation_changes_policy_but_cannot_add_actions) ... ok
+test_changed_body_blocks_unexecuted_reserved_intent (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_changed_body_blocks_unexecuted_reserved_intent) ... ok
+test_cold_process_keeps_affect_memory_and_budget (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_cold_process_keeps_affect_memory_and_budget) ... ok
+test_consolidation_ablation (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_consolidation_ablation) ... ok
+test_consolidation_is_idempotent_and_hypotheses_are_not_evidence (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_consolidation_is_idempotent_and_hypotheses_are_not_evidence) ... ok
+test_crash_after_native_commit_recovers_once (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_crash_after_native_commit_recovers_once) ... ok
+test_crash_before_native_reservation_retries_safe_intent (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_crash_before_native_reservation_retries_safe_intent) ... ok
+test_explicit_enable_and_integrity (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_explicit_enable_and_integrity) ... ok
+test_failure_does_not_fabricate_experience (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_failure_does_not_fabricate_experience) ... ok
+test_invalid_input_and_exhaustion_leave_state_unchanged (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_invalid_input_and_exhaustion_leave_state_unchanged) ... ok
+test_memory_ablation_changes_preference_for_same_observation (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_memory_ablation_changes_preference_for_same_observation) ... ok
+test_native_id_collision_is_not_adopted_as_experience (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_native_id_collision_is_not_adopted_as_experience) ... ok
+test_native_protection_then_anticipatory_memory (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_native_protection_then_anticipatory_memory) ... ok
+test_observe_only_session_cannot_enable_authority (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_observe_only_session_cannot_enable_authority) ... ok
+test_prediction_ablation_does_not_update_model (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_prediction_ablation_does_not_update_model) ... ok
+test_prediction_is_reserved_before_execution_and_updates_after (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_prediction_is_reserved_before_execution_and_updates_after) ... ok
+test_replay_neither_reexecutes_nor_relearns (examples.nasuraya_body_loop.test_experience.ExperienceTests.test_replay_neither_reexecutes_nor_relearns) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 43.865s
+
+OK

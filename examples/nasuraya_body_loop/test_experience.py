@@ -111,6 +111,8 @@ with BodyLoop(sys.argv[1]) as loop:
                 r = c.step('one')
             self.assertEqual(r['native_receipt']['status'], 'executor_failed')
             self.assertIsNone(r['prediction']['actual'])
+            self.assertIsNone(r['action_forecast_score'])
+            self.assertEqual(c.status()['self_knowledge']['scored'], 0)
             self.assertEqual(c.status()['state']['episodes'], [])
             self.assertEqual(c.status()['state']['predictors'], {})
             self.assertEqual(loop.status()['actions_remaining'], 0)
@@ -124,6 +126,52 @@ with BodyLoop(sys.argv[1]) as loop:
             self.assertEqual(second['plan']['prediction']['prior_samples'], 1)
             self.assertEqual(set(first['prediction']['actual']), set(METRICS))
             self.assertIn('native-decision://', first['prediction']['source'])
+            self.assertEqual(first['plan']['action_forecast']['samples'], 0)
+            self.assertEqual(second['plan']['action_forecast']['samples'], 1)
+            self.assertEqual(second['plan']['action_forecast']['source_ids'], ['one'])
+            self.assertEqual(first['action_forecast_score']['actual_action'],
+                             first['native_receipt']['actual_action'])
+            self.assertEqual(c.status()['self_knowledge']['cold_start']['count'], 2)
+            self.assertEqual(c.status()['state']['episodes'][0]['duration_s'], .1)
+
+    def test_self_forecast_and_affect_audit_are_saved_before_execution(self):
+        with BodyLoop.start(self.path, max_actions=1) as loop:
+            c = ExperienceController.enable(loop)
+            def stop_before_execution(**kwargs):
+                intent = c._load()['intents']['one']
+                self.assertIsNone(intent['result'])
+                forecast = intent['plan']['action_forecast']
+                self.assertIsNone(forecast['predicted_action'])
+                self.assertEqual(forecast['status'], 'insufficient_evidence')
+                self.assertNotIn('actual_action', forecast)
+                self.assertIn('affect_audit', intent['plan'])
+                self.assertEqual(loop.status()['completed_cycles'], 0)
+                raise RuntimeError('before native execution')
+            with patch.object(loop, 'step', side_effect=stop_before_execution):
+                with self.assertRaisesRegex(RuntimeError, 'before native'):
+                    c.step('one')
+            saved = c._load()['intents']['one']['plan']
+            result = c.step('one')
+            self.assertEqual(result['plan'], saved)
+            self.assertEqual(result['action_forecast_score']['distribution'],
+                             saved['action_forecast']['distribution'])
+
+    def test_legacy_reserved_plan_is_recovered_without_backfilled_forecast(self):
+        with BodyLoop.start(self.path, max_actions=1) as loop:
+            c = ExperienceController.enable(loop)
+            with patch.object(c, '_finish', side_effect=RuntimeError('after native')):
+                with self.assertRaises(RuntimeError): c.step('one')
+            state = c._load()
+            # Model a legitimately reserved older-version intent. The body
+            # already ran; forecasting now would use hindsight.
+            state['intents']['one']['plan'].pop('action_forecast')
+            state['intents']['one']['plan'].pop('affect_audit')
+            c._save(state)
+            result = c.step('one')
+            self.assertIsNone(result['action_forecast_score'])
+            self.assertEqual(result['this_call_native_cycles'], 0)
+            self.assertEqual(loop.status()['completed_cycles'], 1)
+            self.assertEqual(c.status()['self_knowledge']['scored'], 0)
 
     def test_memory_ablation_changes_preference_for_same_observation(self):
         with BodyLoop.start(self.path, fixture='sleep') as loop:
@@ -153,6 +201,7 @@ with BodyLoop(sys.argv[1]) as loop:
             c.step('one'); c.step('two')
             self.assertEqual(c.status()['state']['predictors'], {})
             self.assertEqual(c.status()['state']['error_ema'], 0.)
+            self.assertEqual(c.status()['self_knowledge']['scored'], 0)
 
     def test_consolidation_is_idempotent_and_hypotheses_are_not_evidence(self):
         with BodyLoop.start(self.path) as loop:

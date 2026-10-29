@@ -44,6 +44,8 @@ jobs:
         run: |
           python3 -m examples.nasuraya_body_loop experience-test
           python3 -m examples.nasuraya_body_loop experience-demo --output-dir /tmp/nasuraya-experience-demo
+      - name: Evaluate frozen action forecasts against native receipts
+        run: python3 -m examples.nasuraya_body_loop self-knowledge-eval --output-dir /tmp/nasuraya-self-knowledge-eval
       - name: Verify persistent API body tools without live service
         run: |
           python3 -m venv .ci-env

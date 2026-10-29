@@ -9,9 +9,16 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'self-knowledge-eval':
+        from .self_knowledge_eval import run_evaluation
+        summary = run_evaluation(Path(args['output_dir']))
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0 if summary['validation_passed'] else 1
     if command == 'experience-test':
-        from . import test_experience
-        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_experience))
+        from . import test_experience, test_self_knowledge, test_affect_audit, test_self_knowledge_eval
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
+            for module in (test_experience, test_self_knowledge, test_affect_audit, test_self_knowledge_eval))
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command.startswith('experience-'):
         from .experience import ExperienceController

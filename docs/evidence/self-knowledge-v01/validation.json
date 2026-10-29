@@ -1,0 +1,21 @@
+{
+  "base_commit": "4a2d687c7df6d5880b3b2187e1198c07023c160d",
+  "scope": "local stdlib tests and synthetic software-body evaluation",
+  "new_and_existing_experience_tests_by_module": {
+    "test_experience.py": 19,
+    "test_self_knowledge.py": 9,
+    "test_affect_audit.py": 7,
+    "test_self_knowledge_eval.py": 6
+  },
+  "experience_unique_tests_passed": 41,
+  "native_unit_tests_passed": 89,
+  "native_decision_tests_passed": 10,
+  "body_bridge_tests_passed": 16,
+  "total_unique_tests_passed": 156,
+  "evidence_integrity_checks_passed": 14,
+  "benchmark_native_cycles": 64,
+  "integration_demo_native_cycles": 6,
+  "api_calls": 0,
+  "source_pinned_native_files_changed": false,
+  "note": "The38-test integrated run was followed by6 final evaluation-integrity tests, replacing its earlier3-test evaluator subset; unique current total is41 experience tests."
+}

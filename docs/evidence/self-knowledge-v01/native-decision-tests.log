@@ -1,0 +1,15 @@
+test_abstention_and_no_evidence (test_decision_core.DecisionCoreTests.test_abstention_and_no_evidence) ... ok
+test_budget_unknown_tail (test_decision_core.DecisionCoreTests.test_budget_unknown_tail) ... ok
+test_config_changes_cost_tradeoff (test_decision_core.DecisionCoreTests.test_config_changes_cost_tradeoff) ... ok
+test_future_harm_not_discounted_out_of_gate (test_decision_core.DecisionCoreTests.test_future_harm_not_discounted_out_of_gate) ... ok
+test_high_benefit_cannot_override_gate (test_decision_core.DecisionCoreTests.test_high_benefit_cannot_override_gate) ... ok
+test_invalid_inputs (test_decision_core.DecisionCoreTests.test_invalid_inputs) ... ok
+test_missing_ethics_visible (test_decision_core.DecisionCoreTests.test_missing_ethics_visible) ... ok
+test_order_and_ties_repeatable (test_decision_core.DecisionCoreTests.test_order_and_ties_repeatable) ... ok
+test_three_scenarios (test_decision_core.DecisionCoreTests.test_three_scenarios) ... ok
+test_uncertainty_increases_risk_and_reduces_score (test_decision_core.DecisionCoreTests.test_uncertainty_increases_risk_and_reduces_score) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.001s
+
+OK
