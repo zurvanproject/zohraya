@@ -1,0 +1,24 @@
+{
+  "baseline": "same receipts, preference and duration; physical context omitted",
+  "durations_s": [
+    0.1,
+    0.3
+  ],
+  "fit": "warmup receipts only; frozen for every holdout prediction",
+  "fixtures": [
+    "normal",
+    "sleep"
+  ],
+  "holdout_rounds": 3,
+  "negative_control": "shuffle training contexts within preference/duration groups",
+  "order": "round-major, then fixture, preference, duration in listed order",
+  "preferences": [
+    "walk",
+    "observe"
+  ],
+  "protocol_sha256": "10edea7b8e4701cbd06ce78311f21ecbb3a43b3b43679834c2a760d9ee17517b",
+  "schema": "nasuraya-self-knowledge-evaluation/1",
+  "scope": "constructed two-fixture temporal holdout; no novel-world or consciousness claim",
+  "shuffle_seed": 20261029,
+  "warmup_rounds": 5
+}

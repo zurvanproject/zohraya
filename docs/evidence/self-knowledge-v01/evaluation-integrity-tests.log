@@ -1,0 +1,11 @@
+test_changed_saved_brier_is_rejected_and_summary_is_rederived (examples.nasuraya_body_loop.test_self_knowledge_eval.SelfKnowledgeEvaluationTests.test_changed_saved_brier_is_rejected_and_summary_is_rederived) ... ok
+test_consistently_rewritten_forecast_is_rejected_against_prior_evidence (examples.nasuraya_body_loop.test_self_knowledge_eval.SelfKnowledgeEvaluationTests.test_consistently_rewritten_forecast_is_rejected_against_prior_evidence) ... ok
+test_empty_summary_does_not_invent_accuracy_or_improvement (examples.nasuraya_body_loop.test_self_knowledge_eval.SelfKnowledgeEvaluationTests.test_empty_summary_does_not_invent_accuracy_or_improvement) ... ok
+test_self_consistent_changed_protocol_is_rejected (examples.nasuraya_body_loop.test_self_knowledge_eval.SelfKnowledgeEvaluationTests.test_self_consistent_changed_protocol_is_rejected) ... ok
+test_shuffled_control_preserves_groups_sources_and_outcomes (examples.nasuraya_body_loop.test_self_knowledge_eval.SelfKnowledgeEvaluationTests.test_shuffled_control_preserves_groups_sources_and_outcomes) ... ok
+test_temporal_holdout_is_frozen_even_when_outcomes_reverse (examples.nasuraya_body_loop.test_self_knowledge_eval.SelfKnowledgeEvaluationTests.test_temporal_holdout_is_frozen_even_when_outcomes_reverse) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.913s
+
+OK

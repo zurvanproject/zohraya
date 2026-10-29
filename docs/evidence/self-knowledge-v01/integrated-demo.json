@@ -1,0 +1,2865 @@
+{
+  "scope": "constructed native software-body demonstration, not a general capability benchmark",
+  "native_cycles": 6,
+  "model_api_calls": 0,
+  "sessions": {
+    "normal": {
+      "cold_reopen_equal": true,
+      "self_knowledge": {
+        "schema": "nasuraya-action-forecast-summary/1",
+        "scored": 3,
+        "excluded": 0,
+        "evidence_digest": "6ab4a8a75f35d1a8f18af1dc44bdcfc0c2e23f17340982a297d7abd78fb8c4f6",
+        "scope": "prequential software outcomes; pooled frequency baseline, not an independent observer or consciousness test",
+        "cold_start": {
+          "count": 3,
+          "mean_brier": 0.5211111111111111,
+          "mean_pooled_brier": 0.5211111111111111,
+          "pooled_minus_local": 0.0
+        },
+        "supported": {
+          "count": 0,
+          "mean_brier": null,
+          "mean_pooled_brier": null,
+          "pooled_minus_local": null
+        }
+      },
+      "events": [
+        {
+          "request_id": "first",
+          "plan": {
+            "preferred": "walk",
+            "scores": {
+              "walk": 0.6525,
+              "observe": 0.42
+            },
+            "context": "[false,false,false,false]",
+            "recalled": [],
+            "memory_risk": 0.0,
+            "prediction": {
+              "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+              "before": {
+                "energy": 0.9993454504792117,
+                "fatigue": 0.01069945672828943,
+                "pain": 0.11413104958422383,
+                "sleep_pressure": 0.35032098259399874
+              },
+              "expected": {
+                "energy": 0.9993454504792117,
+                "fatigue": 0.01069945672828943,
+                "pain": 0.11413104958422383,
+                "sleep_pressure": 0.35032098259399874
+              },
+              "prior_samples": 0,
+              "scope": "next software state given controller preference; not calibrated probability"
+            },
+            "action_forecast": {
+              "schema": "nasuraya-action-forecast/1",
+              "enabled": true,
+              "context": "[false,false,false,false]",
+              "preferred": "walk",
+              "duration_s": 0.1,
+              "distribution": {
+                "walk": 0.25,
+                "observe": 0.25,
+                "protect": 0.25,
+                "other": 0.25
+              },
+              "pooled_distribution": {
+                "walk": 0.25,
+                "observe": 0.25,
+                "protect": 0.25,
+                "other": 0.25
+              },
+              "samples": 0,
+              "pooled_samples": 0,
+              "source_ids": [],
+              "pooled_source_ids": [],
+              "legacy_excluded": 0,
+              "status": "insufficient_evidence",
+              "predicted_action": null,
+              "model_digest": "dc8d5115a379dd755e84c66fb768e446444c7873c64ead750bac89f53007b27a",
+              "scope": "empirical software-action estimate; not calibrated confidence or subjective awareness"
+            },
+            "affect_audit": {
+              "schema": "nasuraya-affect-audit/1",
+              "scope": "matched_snapshot_policy_sensitivity_only",
+              "subjective_feeling_claim": false,
+              "native_cycles": 0,
+              "observation": {
+                "checkpoint_sha256": "54ae873e1736e8fbce27c5cd42c01fd0110ff091e9a19ed0e64ebf1545952cc4",
+                "revision": 0,
+                "snapshot_sha256": "828cc37d91347c61ac1380ce4d1e95534fe7af262bbe2f10644424a4c4972a56",
+                "state_sha256": "25ac4255fdca2cdaeb1e81c2456926f825b96d2e7276d6e8dcab1d095e05a18f",
+                "duration_s": 0.1,
+                "source": "persisted_controller_state_before_action",
+                "affect_stored": {
+                  "valence": 0.65,
+                  "arousal": 0.35
+                },
+                "affect_effective": {
+                  "valence": 0.65,
+                  "arousal": 0.35
+                },
+                "affect_enabled": true
+              },
+              "variants": {
+                "factual": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.65,
+                    "arousal": 0.35
+                  },
+                  "affect_effective": {
+                    "valence": 0.65,
+                    "arousal": 0.35
+                  },
+                  "scores": {
+                    "walk": 0.6525,
+                    "observe": 0.42
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "affect_off": {
+                  "flags": {
+                    "affect": false,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.7,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.04749999999999999,
+                    "observe": -0.07
+                  },
+                  "changed_preference": false
+                },
+                "neutral": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.7,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.04749999999999999,
+                    "observe": -0.07
+                  },
+                  "changed_preference": false
+                },
+                "valence_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.0,
+                    "arousal": 0.35
+                  },
+                  "affect_effective": {
+                    "valence": 0.0,
+                    "arousal": 0.35
+                  },
+                  "scores": {
+                    "walk": 0.555,
+                    "observe": 0.42
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.09749999999999992,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "valence_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 1.0,
+                    "arousal": 0.35
+                  },
+                  "affect_effective": {
+                    "valence": 1.0,
+                    "arousal": 0.35
+                  },
+                  "scores": {
+                    "walk": 0.705,
+                    "observe": 0.42
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.05249999999999999,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "arousal_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.65,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.65,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.7224999999999999,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.06999999999999995,
+                    "observe": -0.07
+                  },
+                  "changed_preference": false
+                },
+                "arousal_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.65,
+                    "arousal": 1.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.65,
+                    "arousal": 1.0
+                  },
+                  "scores": {
+                    "walk": 0.5225,
+                    "observe": 0.55
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.13,
+                    "observe": 0.13000000000000006
+                  },
+                  "changed_preference": true
+                },
+                "sham": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.65,
+                    "arousal": 0.35
+                  },
+                  "affect_effective": {
+                    "valence": 0.65,
+                    "arousal": 0.35
+                  },
+                  "scores": {
+                    "walk": 0.6525,
+                    "observe": 0.42
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.35032098259399874
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                }
+              },
+              "checks": {
+                "state_unchanged": true,
+                "snapshot_unchanged": true,
+                "sham_matches_factual": true,
+                "disabled_matches_neutral": true
+              }
+            }
+          },
+          "action_forecast_score": {
+            "schema": "nasuraya-action-forecast-score/1",
+            "actual": "walk",
+            "actual_action": "walk",
+            "brier": 0.75,
+            "pooled_brier": 0.75,
+            "source": "native-decision://experience:first/a404a0deb755f23ab144220388596909b1d50fd7c81995ca7f9ffaede7378ca4",
+            "status": "insufficient_evidence",
+            "samples": 0,
+            "pooled_samples": 0,
+            "distribution": {
+              "walk": 0.25,
+              "observe": 0.25,
+              "protect": 0.25,
+              "other": 0.25
+            },
+            "pooled_distribution": {
+              "walk": 0.25,
+              "observe": 0.25,
+              "protect": 0.25,
+              "other": 0.25
+            },
+            "source_ids": [],
+            "pooled_source_ids": [],
+            "model_digest": "dc8d5115a379dd755e84c66fb768e446444c7873c64ead750bac89f53007b27a",
+            "evidence_digest": "cd715a387ee0254b2b945ad4302952e68328292981dc75c75447e2cc5d154ad5"
+          },
+          "replayed": false,
+          "this_call_native_cycles": 1
+        },
+        {
+          "request_id": "second",
+          "plan": {
+            "preferred": "walk",
+            "scores": {
+              "walk": 0.644909780476122,
+              "observe": 0.4270867088616124
+            },
+            "context": "[false,false,false,false]",
+            "recalled": [
+              "first"
+            ],
+            "memory_risk": 0.0007153227434187198,
+            "prediction": {
+              "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+              "before": {
+                "energy": 0.9993357964087033,
+                "fatigue": 0.010858521713712594,
+                "pain": 0.11484637232764255,
+                "sleep_pressure": 0.3503255680596273
+              },
+              "expected": {
+                "energy": 0.9993261423381948,
+                "fatigue": 0.011017586699135757,
+                "pain": 0.11556169507106127,
+                "sleep_pressure": 0.3503301535252558
+              },
+              "prior_samples": 1,
+              "scope": "next software state given controller preference; not calibrated probability"
+            },
+            "action_forecast": {
+              "schema": "nasuraya-action-forecast/1",
+              "enabled": true,
+              "context": "[false,false,false,false]",
+              "preferred": "walk",
+              "duration_s": 0.1,
+              "distribution": {
+                "walk": 0.4,
+                "observe": 0.2,
+                "protect": 0.2,
+                "other": 0.2
+              },
+              "pooled_distribution": {
+                "walk": 0.4,
+                "observe": 0.2,
+                "protect": 0.2,
+                "other": 0.2
+              },
+              "samples": 1,
+              "pooled_samples": 1,
+              "source_ids": [
+                "first"
+              ],
+              "pooled_source_ids": [
+                "first"
+              ],
+              "legacy_excluded": 0,
+              "status": "insufficient_evidence",
+              "predicted_action": null,
+              "model_digest": "a84c122a40a58a9f4567ffafd0a9f22ef6c2adb185df60b8194c6e061a6ddbef",
+              "scope": "empirical software-action estimate; not calibrated confidence or subjective awareness"
+            },
+            "affect_audit": {
+              "schema": "nasuraya-affect-audit/1",
+              "scope": "matched_snapshot_policy_sensitivity_only",
+              "subjective_feeling_claim": false,
+              "native_cycles": 0,
+              "observation": {
+                "checkpoint_sha256": "e8ecee8e13795e70189161f4be7306b7951473199304fde3dc5fe6d2b0174a2e",
+                "revision": 1,
+                "snapshot_sha256": "603a99ae8b1aa7da46bccec50ef8dd712577f8e1a89c2fc23bfb97844f8cd0c6",
+                "state_sha256": "fc38710581410cc436302b5151c58f20710afb33ee4c8675387ebe9ec67e85a3",
+                "duration_s": 0.1,
+                "source": "persisted_controller_state_before_action",
+                "affect_stored": {
+                  "valence": 0.649787425502959,
+                  "arousal": 0.3854335443080621
+                },
+                "affect_effective": {
+                  "valence": 0.649787425502959,
+                  "arousal": 0.3854335443080621
+                },
+                "affect_enabled": true
+              },
+              "variants": {
+                "factual": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.649787425502959,
+                    "arousal": 0.3854335443080621
+                  },
+                  "affect_effective": {
+                    "valence": 0.649787425502959,
+                    "arousal": 0.3854335443080621
+                  },
+                  "scores": {
+                    "walk": 0.644909780476122,
+                    "observe": 0.4270867088616124
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993357964087033,
+                      "fatigue": 0.010858521713712594,
+                      "pain": 0.11484637232764255,
+                      "sleep_pressure": 0.3503255680596273
+                    },
+                    "expected": {
+                      "energy": 0.9993261423381948,
+                      "fatigue": 0.011017586699135757,
+                      "pain": 0.11556169507106127,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "affect_off": {
+                  "flags": {
+                    "affect": false,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.6995283755122905,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993357964087033,
+                      "fatigue": 0.010858521713712594,
+                      "pain": 0.11484637232764255,
+                      "sleep_pressure": 0.3503255680596273
+                    },
+                    "expected": {
+                      "energy": 0.9993261423381948,
+                      "fatigue": 0.011017586699135757,
+                      "pain": 0.11556169507106127,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.054618595036168505,
+                    "observe": -0.0770867088616124
+                  },
+                  "changed_preference": false
+                },
+                "neutral": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.6995283755122905,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993357964087033,
+                      "fatigue": 0.010858521713712594,
+                      "pain": 0.11484637232764255,
+                      "sleep_pressure": 0.3503255680596273
+                    },
+                    "expected": {
+                      "energy": 0.9993261423381948,
+                      "fatigue": 0.011017586699135757,
+                      "pain": 0.11556169507106127,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.054618595036168505,
+                    "observe": -0.0770867088616124
+                  },
+                  "changed_preference": false
+                },
+                "valence_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.0,
+                    "arousal": 0.3854335443080621
+                  },
+                  "affect_effective": {
+                    "valence": 0.0,
+                    "arousal": 0.3854335443080621
+                  },
+                  "scores": {
+                    "walk": 0.5474416666506782,
+                    "observe": 0.4270867088616124
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993357964087033,
+                      "fatigue": 0.010858521713712594,
+                      "pain": 0.11484637232764255,
+                      "sleep_pressure": 0.3503255680596273
+                    },
+                    "expected": {
+                      "energy": 0.9993261423381948,
+                      "fatigue": 0.011017586699135757,
+                      "pain": 0.11556169507106127,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.09746811382544385,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "valence_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 1.0,
+                    "arousal": 0.3854335443080621
+                  },
+                  "affect_effective": {
+                    "valence": 1.0,
+                    "arousal": 0.3854335443080621
+                  },
+                  "scores": {
+                    "walk": 0.6974416666506781,
+                    "observe": 0.4270867088616124
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993357964087033,
+                      "fatigue": 0.010858521713712594,
+                      "pain": 0.11484637232764255,
+                      "sleep_pressure": 0.3503255680596273
+                    },
+                    "expected": {
+                      "energy": 0.9993261423381948,
+                      "fatigue": 0.011017586699135757,
+                      "pain": 0.11556169507106127,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.052531886174556064,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "arousal_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.649787425502959,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.649787425502959,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.7219964893377344,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993357964087033,
+                      "fatigue": 0.010858521713712594,
+                      "pain": 0.11484637232764255,
+                      "sleep_pressure": 0.3503255680596273
+                    },
+                    "expected": {
+                      "energy": 0.9993261423381948,
+                      "fatigue": 0.011017586699135757,
+                      "pain": 0.11556169507106127,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0770867088616124,
+                    "observe": -0.0770867088616124
+                  },
+                  "changed_preference": false
+                },
+                "arousal_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.649787425502959,
+                    "arousal": 1.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.649787425502959,
+                    "arousal": 1.0
+                  },
+                  "scores": {
+                    "walk": 0.5219964893377345,
+                    "observe": 0.55
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993357964087033,
+                      "fatigue": 0.010858521713712594,
+                      "pain": 0.11484637232764255,
+                      "sleep_pressure": 0.3503255680596273
+                    },
+                    "expected": {
+                      "energy": 0.9993357964087033,
+                      "fatigue": 0.010858521713712594,
+                      "pain": 0.11484637232764255,
+                      "sleep_pressure": 0.3503255680596273
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.12291329113838756,
+                    "observe": 0.12291329113838767
+                  },
+                  "changed_preference": true
+                },
+                "sham": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.649787425502959,
+                    "arousal": 0.3854335443080621
+                  },
+                  "affect_effective": {
+                    "valence": 0.649787425502959,
+                    "arousal": 0.3854335443080621
+                  },
+                  "scores": {
+                    "walk": 0.644909780476122,
+                    "observe": 0.4270867088616124
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993357964087033,
+                      "fatigue": 0.010858521713712594,
+                      "pain": 0.11484637232764255,
+                      "sleep_pressure": 0.3503255680596273
+                    },
+                    "expected": {
+                      "energy": 0.9993261423381948,
+                      "fatigue": 0.011017586699135757,
+                      "pain": 0.11556169507106127,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                }
+              },
+              "checks": {
+                "state_unchanged": true,
+                "snapshot_unchanged": true,
+                "sham_matches_factual": true,
+                "disabled_matches_neutral": true
+              }
+            }
+          },
+          "action_forecast_score": {
+            "schema": "nasuraya-action-forecast-score/1",
+            "actual": "walk",
+            "actual_action": "walk",
+            "brier": 0.48,
+            "pooled_brier": 0.48,
+            "source": "native-decision://experience:second/a3980f4b0438b8404d17b698c1fcf87f809bde2d47fd1d73679de3ee8e00be24",
+            "status": "insufficient_evidence",
+            "samples": 1,
+            "pooled_samples": 1,
+            "distribution": {
+              "walk": 0.4,
+              "observe": 0.2,
+              "protect": 0.2,
+              "other": 0.2
+            },
+            "pooled_distribution": {
+              "walk": 0.4,
+              "observe": 0.2,
+              "protect": 0.2,
+              "other": 0.2
+            },
+            "source_ids": [
+              "first"
+            ],
+            "pooled_source_ids": [
+              "first"
+            ],
+            "model_digest": "a84c122a40a58a9f4567ffafd0a9f22ef6c2adb185df60b8194c6e061a6ddbef",
+            "evidence_digest": "7df7f9d2f0f30ab5c69446563e98ffe103595bf0803e6e176eb2dba3f3e94267"
+          },
+          "replayed": false,
+          "this_call_native_cycles": 1
+        },
+        {
+          "request_id": "third",
+          "plan": {
+            "preferred": "walk",
+            "scores": {
+              "walk": 0.6378577024619092,
+              "observe": 0.4341173824650825
+            },
+            "context": "[false,false,false,false]",
+            "recalled": [
+              "second",
+              "first"
+            ],
+            "memory_risk": 0.0007153227434187198,
+            "prediction": {
+              "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+              "before": {
+                "energy": 0.9993259754266908,
+                "fatigue": 0.01101953458852712,
+                "pain": 0.1152558607848207,
+                "sleep_pressure": 0.3503301535252558
+              },
+              "expected": {
+                "energy": 0.9993162379004303,
+                "fatigue": 0.011179573518645965,
+                "pain": 0.11581826638511913,
+                "sleep_pressure": 0.35033473899088435
+              },
+              "prior_samples": 2,
+              "scope": "next software state given controller preference; not calibrated probability"
+            },
+            "action_forecast": {
+              "schema": "nasuraya-action-forecast/1",
+              "enabled": true,
+              "context": "[false,false,false,false]",
+              "preferred": "walk",
+              "duration_s": 0.1,
+              "distribution": {
+                "walk": 0.5,
+                "observe": 0.16666666666666666,
+                "protect": 0.16666666666666666,
+                "other": 0.16666666666666666
+              },
+              "pooled_distribution": {
+                "walk": 0.5,
+                "observe": 0.16666666666666666,
+                "protect": 0.16666666666666666,
+                "other": 0.16666666666666666
+              },
+              "samples": 2,
+              "pooled_samples": 2,
+              "source_ids": [
+                "first",
+                "second"
+              ],
+              "pooled_source_ids": [
+                "first",
+                "second"
+              ],
+              "legacy_excluded": 0,
+              "status": "insufficient_evidence",
+              "predicted_action": null,
+              "model_digest": "c2ff22981859af11c5ee5dd4e23c4438d2a5fd80ccce34f31e7f3da09d0c0264",
+              "scope": "empirical software-action estimate; not calibrated confidence or subjective awareness"
+            },
+            "affect_audit": {
+              "schema": "nasuraya-affect-audit/1",
+              "scope": "matched_snapshot_policy_sensitivity_only",
+              "subjective_feeling_claim": false,
+              "native_cycles": 0,
+              "observation": {
+                "checkpoint_sha256": "18269907e429180841eb8d50c8be4823f0617fa32e005587292a6e63c00cae83",
+                "revision": 2,
+                "snapshot_sha256": "fb0f279dd2fecfe13c0da7f4fcfb7d2ee13f0e9299dbbd6a3144aa81afe0be80",
+                "state_sha256": "68449f30440d8816175a0845daedeadf1c294e4d5f420c1906096202136632e3",
+                "duration_s": 0.1,
+                "source": "persisted_controller_state_before_action",
+                "affect_stored": {
+                  "valence": 0.6496512406130491,
+                  "arousal": 0.4205869123254128
+                },
+                "affect_effective": {
+                  "valence": 0.6496512406130491,
+                  "arousal": 0.4205869123254128
+                },
+                "affect_enabled": true
+              },
+              "variants": {
+                "factual": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.6496512406130491,
+                    "arousal": 0.4205869123254128
+                  },
+                  "affect_effective": {
+                    "valence": 0.6496512406130491,
+                    "arousal": 0.4205869123254128
+                  },
+                  "scores": {
+                    "walk": 0.6378577024619092,
+                    "observe": 0.4341173824650825
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993259754266908,
+                      "fatigue": 0.01101953458852712,
+                      "pain": 0.1152558607848207,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "expected": {
+                      "energy": 0.9993162379004303,
+                      "fatigue": 0.011179573518645965,
+                      "pain": 0.11581826638511913,
+                      "sleep_pressure": 0.35033473899088435
+                    },
+                    "prior_samples": 2,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "affect_off": {
+                  "flags": {
+                    "affect": false,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.6995273988350345,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993259754266908,
+                      "fatigue": 0.01101953458852712,
+                      "pain": 0.1152558607848207,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "expected": {
+                      "energy": 0.9993162379004303,
+                      "fatigue": 0.011179573518645965,
+                      "pain": 0.11581826638511913,
+                      "sleep_pressure": 0.35033473899088435
+                    },
+                    "prior_samples": 2,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.06166969637312525,
+                    "observe": -0.08411738246508255
+                  },
+                  "changed_preference": false
+                },
+                "neutral": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.6995273988350345,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993259754266908,
+                      "fatigue": 0.01101953458852712,
+                      "pain": 0.1152558607848207,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "expected": {
+                      "energy": 0.9993162379004303,
+                      "fatigue": 0.011179573518645965,
+                      "pain": 0.11581826638511913,
+                      "sleep_pressure": 0.35033473899088435
+                    },
+                    "prior_samples": 2,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.06166969637312525,
+                    "observe": -0.08411738246508255
+                  },
+                  "changed_preference": false
+                },
+                "valence_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.0,
+                    "arousal": 0.4205869123254128
+                  },
+                  "affect_effective": {
+                    "valence": 0.0,
+                    "arousal": 0.4205869123254128
+                  },
+                  "scores": {
+                    "walk": 0.5404100163699519,
+                    "observe": 0.4341173824650825
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993259754266908,
+                      "fatigue": 0.01101953458852712,
+                      "pain": 0.1152558607848207,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "expected": {
+                      "energy": 0.9993162379004303,
+                      "fatigue": 0.011179573518645965,
+                      "pain": 0.11581826638511913,
+                      "sleep_pressure": 0.35033473899088435
+                    },
+                    "prior_samples": 2,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.09744768609195731,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "valence_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 1.0,
+                    "arousal": 0.4205869123254128
+                  },
+                  "affect_effective": {
+                    "valence": 1.0,
+                    "arousal": 0.4205869123254128
+                  },
+                  "scores": {
+                    "walk": 0.6904100163699518,
+                    "observe": 0.4341173824650825
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993259754266908,
+                      "fatigue": 0.01101953458852712,
+                      "pain": 0.1152558607848207,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "expected": {
+                      "energy": 0.9993162379004303,
+                      "fatigue": 0.011179573518645965,
+                      "pain": 0.11581826638511913,
+                      "sleep_pressure": 0.35033473899088435
+                    },
+                    "prior_samples": 2,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0525523139080426,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "arousal_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.6496512406130491,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.6496512406130491,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.7219750849269918,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993259754266908,
+                      "fatigue": 0.01101953458852712,
+                      "pain": 0.1152558607848207,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "expected": {
+                      "energy": 0.9993162379004303,
+                      "fatigue": 0.011179573518645965,
+                      "pain": 0.11581826638511913,
+                      "sleep_pressure": 0.35033473899088435
+                    },
+                    "prior_samples": 2,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0841173824650826,
+                    "observe": -0.08411738246508255
+                  },
+                  "changed_preference": false
+                },
+                "arousal_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.6496512406130491,
+                    "arousal": 1.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.6496512406130491,
+                    "arousal": 1.0
+                  },
+                  "scores": {
+                    "walk": 0.5219750849269919,
+                    "observe": 0.55
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993259754266908,
+                      "fatigue": 0.01101953458852712,
+                      "pain": 0.1152558607848207,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "expected": {
+                      "energy": 0.9993259754266908,
+                      "fatigue": 0.01101953458852712,
+                      "pain": 0.1152558607848207,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.11588261753491735,
+                    "observe": 0.11588261753491752
+                  },
+                  "changed_preference": true
+                },
+                "sham": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.6496512406130491,
+                    "arousal": 0.4205869123254128
+                  },
+                  "affect_effective": {
+                    "valence": 0.6496512406130491,
+                    "arousal": 0.4205869123254128
+                  },
+                  "scores": {
+                    "walk": 0.6378577024619092,
+                    "observe": 0.4341173824650825
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,false]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993259754266908,
+                      "fatigue": 0.01101953458852712,
+                      "pain": 0.1152558607848207,
+                      "sleep_pressure": 0.3503301535252558
+                    },
+                    "expected": {
+                      "energy": 0.9993162379004303,
+                      "fatigue": 0.011179573518645965,
+                      "pain": 0.11581826638511913,
+                      "sleep_pressure": 0.35033473899088435
+                    },
+                    "prior_samples": 2,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                }
+              },
+              "checks": {
+                "state_unchanged": true,
+                "snapshot_unchanged": true,
+                "sham_matches_factual": true,
+                "disabled_matches_neutral": true
+              }
+            }
+          },
+          "action_forecast_score": {
+            "schema": "nasuraya-action-forecast-score/1",
+            "actual": "walk",
+            "actual_action": "walk",
+            "brier": 0.3333333333333333,
+            "pooled_brier": 0.3333333333333333,
+            "source": "native-decision://experience:third/1d85a9c3466a1b222e328a8308e740e0695a0cb33dfe8f1c6c3aaea6ed94a87c",
+            "status": "insufficient_evidence",
+            "samples": 2,
+            "pooled_samples": 2,
+            "distribution": {
+              "walk": 0.5,
+              "observe": 0.16666666666666666,
+              "protect": 0.16666666666666666,
+              "other": 0.16666666666666666
+            },
+            "pooled_distribution": {
+              "walk": 0.5,
+              "observe": 0.16666666666666666,
+              "protect": 0.16666666666666666,
+              "other": 0.16666666666666666
+            },
+            "source_ids": [
+              "first",
+              "second"
+            ],
+            "pooled_source_ids": [
+              "first",
+              "second"
+            ],
+            "model_digest": "c2ff22981859af11c5ee5dd4e23c4438d2a5fd80ccce34f31e7f3da09d0c0264",
+            "evidence_digest": "3d6377b4b3e8fec95a6631322866368d7a1aab53fb06108b5282ffd791d8a55f"
+          },
+          "replayed": false,
+          "this_call_native_cycles": 1
+        }
+      ]
+    },
+    "sleep": {
+      "cold_reopen_equal": true,
+      "self_knowledge": {
+        "schema": "nasuraya-action-forecast-summary/1",
+        "scored": 3,
+        "excluded": 0,
+        "evidence_digest": "22dfc5c663716959d5940efc46ae2fc8afb5ccfe1f3a9c5d2ba4b1d23762fd52",
+        "scope": "prequential software outcomes; pooled frequency baseline, not an independent observer or consciousness test",
+        "cold_start": {
+          "count": 3,
+          "mean_brier": 0.66,
+          "mean_pooled_brier": 0.66,
+          "pooled_minus_local": 0.0
+        },
+        "supported": {
+          "count": 0,
+          "mean_brier": null,
+          "mean_pooled_brier": null,
+          "pooled_minus_local": null
+        }
+      },
+      "events": [
+        {
+          "request_id": "first",
+          "plan": {
+            "preferred": "walk",
+            "scores": {
+              "walk": 0.6525,
+              "observe": 0.42
+            },
+            "context": "[false,false,false,true]",
+            "recalled": [],
+            "memory_risk": 0.0,
+            "prediction": {
+              "key": "[\"[false,false,false,true]\",\"walk\",0.1]",
+              "before": {
+                "energy": 0.9993454504792117,
+                "fatigue": 0.01069945672828943,
+                "pain": 0.11413104958422383,
+                "sleep_pressure": 0.9503209825939987
+              },
+              "expected": {
+                "energy": 0.9993454504792117,
+                "fatigue": 0.01069945672828943,
+                "pain": 0.11413104958422383,
+                "sleep_pressure": 0.9503209825939987
+              },
+              "prior_samples": 0,
+              "scope": "next software state given controller preference; not calibrated probability"
+            },
+            "action_forecast": {
+              "schema": "nasuraya-action-forecast/1",
+              "enabled": true,
+              "context": "[false,false,false,true]",
+              "preferred": "walk",
+              "duration_s": 0.1,
+              "distribution": {
+                "walk": 0.25,
+                "observe": 0.25,
+                "protect": 0.25,
+                "other": 0.25
+              },
+              "pooled_distribution": {
+                "walk": 0.25,
+                "observe": 0.25,
+                "protect": 0.25,
+                "other": 0.25
+              },
+              "samples": 0,
+              "pooled_samples": 0,
+              "source_ids": [],
+              "pooled_source_ids": [],
+              "legacy_excluded": 0,
+              "status": "insufficient_evidence",
+              "predicted_action": null,
+              "model_digest": "b7baa376c9b78bd5f9bd5a051a95d319c710c4d22ed2c27762470d1f242334d8",
+              "scope": "empirical software-action estimate; not calibrated confidence or subjective awareness"
+            },
+            "affect_audit": {
+              "schema": "nasuraya-affect-audit/1",
+              "scope": "matched_snapshot_policy_sensitivity_only",
+              "subjective_feeling_claim": false,
+              "native_cycles": 0,
+              "observation": {
+                "checkpoint_sha256": "86edf09110bf88e9a215ee7dd7d1afa1600e6b1913b509dfe0f997e61d71c4d3",
+                "revision": 0,
+                "snapshot_sha256": "a6684c084c53ba4eae87f7ce78547a0d0761121cf92fda2cffbbaf5ade97722e",
+                "state_sha256": "25ac4255fdca2cdaeb1e81c2456926f825b96d2e7276d6e8dcab1d095e05a18f",
+                "duration_s": 0.1,
+                "source": "persisted_controller_state_before_action",
+                "affect_stored": {
+                  "valence": 0.65,
+                  "arousal": 0.35
+                },
+                "affect_effective": {
+                  "valence": 0.65,
+                  "arousal": 0.35
+                },
+                "affect_enabled": true
+              },
+              "variants": {
+                "factual": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.65,
+                    "arousal": 0.35
+                  },
+                  "affect_effective": {
+                    "valence": 0.65,
+                    "arousal": 0.35
+                  },
+                  "scores": {
+                    "walk": 0.6525,
+                    "observe": 0.42
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "affect_off": {
+                  "flags": {
+                    "affect": false,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.7,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.04749999999999999,
+                    "observe": -0.07
+                  },
+                  "changed_preference": false
+                },
+                "neutral": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.7,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.04749999999999999,
+                    "observe": -0.07
+                  },
+                  "changed_preference": false
+                },
+                "valence_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.0,
+                    "arousal": 0.35
+                  },
+                  "affect_effective": {
+                    "valence": 0.0,
+                    "arousal": 0.35
+                  },
+                  "scores": {
+                    "walk": 0.555,
+                    "observe": 0.42
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.09749999999999992,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "valence_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 1.0,
+                    "arousal": 0.35
+                  },
+                  "affect_effective": {
+                    "valence": 1.0,
+                    "arousal": 0.35
+                  },
+                  "scores": {
+                    "walk": 0.705,
+                    "observe": 0.42
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.05249999999999999,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "arousal_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.65,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.65,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.7224999999999999,
+                    "observe": 0.35
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.06999999999999995,
+                    "observe": -0.07
+                  },
+                  "changed_preference": false
+                },
+                "arousal_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.65,
+                    "arousal": 1.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.65,
+                    "arousal": 1.0
+                  },
+                  "scores": {
+                    "walk": 0.5225,
+                    "observe": 0.55
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.13,
+                    "observe": 0.13000000000000006
+                  },
+                  "changed_preference": true
+                },
+                "sham": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.65,
+                    "arousal": 0.35
+                  },
+                  "affect_effective": {
+                    "valence": 0.65,
+                    "arousal": 0.35
+                  },
+                  "scores": {
+                    "walk": 0.6525,
+                    "observe": 0.42
+                  },
+                  "preferred": "walk",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"walk\",0.1]",
+                    "before": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "expected": {
+                      "energy": 0.9993454504792117,
+                      "fatigue": 0.01069945672828943,
+                      "pain": 0.11413104958422383,
+                      "sleep_pressure": 0.9503209825939987
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                }
+              },
+              "checks": {
+                "state_unchanged": true,
+                "snapshot_unchanged": true,
+                "sham_matches_factual": true,
+                "disabled_matches_neutral": true
+              }
+            }
+          },
+          "action_forecast_score": {
+            "schema": "nasuraya-action-forecast-score/1",
+            "actual": "protect",
+            "actual_action": "protect",
+            "brier": 0.75,
+            "pooled_brier": 0.75,
+            "source": "native-decision://experience:first/857fb70ca6b8169aa75a2e6a93e3e40e941535f7f02c5d3d29c720b7a38a8ffd",
+            "status": "insufficient_evidence",
+            "samples": 0,
+            "pooled_samples": 0,
+            "distribution": {
+              "walk": 0.25,
+              "observe": 0.25,
+              "protect": 0.25,
+              "other": 0.25
+            },
+            "pooled_distribution": {
+              "walk": 0.25,
+              "observe": 0.25,
+              "protect": 0.25,
+              "other": 0.25
+            },
+            "source_ids": [],
+            "pooled_source_ids": [],
+            "model_digest": "b7baa376c9b78bd5f9bd5a051a95d319c710c4d22ed2c27762470d1f242334d8",
+            "evidence_digest": "bdd48ce33232d047a2dee05b3295bcc7b1288e95ca9a0beaefb80b7da427ef48"
+          },
+          "replayed": false,
+          "this_call_native_cycles": 1
+        },
+        {
+          "request_id": "second",
+          "plan": {
+            "preferred": "observe",
+            "scores": {
+              "walk": -0.10406210823378134,
+              "observe": 0.4890506190511469
+            },
+            "context": "[false,false,false,true]",
+            "recalled": [
+              "first"
+            ],
+            "memory_risk": 1.0,
+            "prediction": {
+              "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+              "before": {
+                "energy": 0.9993358655563357,
+                "fatigue": 0.010852306110122136,
+                "pain": 0.11484618361297251,
+                "sleep_pressure": 0.9503255680596272
+              },
+              "expected": {
+                "energy": 0.9993358655563357,
+                "fatigue": 0.010852306110122136,
+                "pain": 0.11484618361297251,
+                "sleep_pressure": 0.9503255680596272
+              },
+              "prior_samples": 0,
+              "scope": "next software state given controller preference; not calibrated probability"
+            },
+            "action_forecast": {
+              "schema": "nasuraya-action-forecast/1",
+              "enabled": true,
+              "context": "[false,false,false,true]",
+              "preferred": "observe",
+              "duration_s": 0.1,
+              "distribution": {
+                "walk": 0.25,
+                "observe": 0.25,
+                "protect": 0.25,
+                "other": 0.25
+              },
+              "pooled_distribution": {
+                "walk": 0.25,
+                "observe": 0.25,
+                "protect": 0.25,
+                "other": 0.25
+              },
+              "samples": 0,
+              "pooled_samples": 0,
+              "source_ids": [],
+              "pooled_source_ids": [],
+              "legacy_excluded": 0,
+              "status": "insufficient_evidence",
+              "predicted_action": null,
+              "model_digest": "03298ef66e52c6ca5da25901b186522ffbf859dfe56c70639c3a834d11421267",
+              "scope": "empirical software-action estimate; not calibrated confidence or subjective awareness"
+            },
+            "affect_audit": {
+              "schema": "nasuraya-affect-audit/1",
+              "scope": "matched_snapshot_policy_sensitivity_only",
+              "subjective_feeling_claim": false,
+              "native_cycles": 0,
+              "observation": {
+                "checkpoint_sha256": "bf62dbe2446097a4396b782f765fc4ff3e5d0376dd334c41b34d41294d5d206c",
+                "revision": 1,
+                "snapshot_sha256": "07d322dd6b036643630942b1528d3a914672c42ae621c833d8e3f6d9257b46a4",
+                "state_sha256": "32128024d1a654c589b73738a3024ab463f4a77829e3ef4a60c09c8cb06db0ee",
+                "duration_s": 0.1,
+                "source": "persisted_controller_state_before_action",
+                "affect_stored": {
+                  "valence": 0.3999675131390583,
+                  "arousal": 0.6952530952557343
+                },
+                "affect_effective": {
+                  "valence": 0.3999675131390583,
+                  "arousal": 0.6952530952557343
+                },
+                "affect_enabled": true
+              },
+              "variants": {
+                "factual": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.3999675131390583,
+                    "arousal": 0.6952530952557343
+                  },
+                  "affect_effective": {
+                    "valence": 0.3999675131390583,
+                    "arousal": 0.6952530952557343
+                  },
+                  "scores": {
+                    "walk": -0.10406210823378134,
+                    "observe": 0.4890506190511469
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "expected": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "affect_off": {
+                  "flags": {
+                    "affect": false,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.04999338384650679,
+                    "observe": 0.35
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "expected": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.15405549208028813,
+                    "observe": -0.1390506190511469
+                  },
+                  "changed_preference": false
+                },
+                "neutral": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.04999338384650679,
+                    "observe": 0.35
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "expected": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.15405549208028813,
+                    "observe": -0.1390506190511469
+                  },
+                  "changed_preference": false
+                },
+                "valence_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.0,
+                    "arousal": 0.6952530952557343
+                  },
+                  "affect_effective": {
+                    "valence": 0.0,
+                    "arousal": 0.6952530952557343
+                  },
+                  "scores": {
+                    "walk": -0.16405723520464008,
+                    "observe": 0.4890506190511469
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "expected": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.059995126970858736,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "valence_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 1.0,
+                    "arousal": 0.6952530952557343
+                  },
+                  "affect_effective": {
+                    "valence": 1.0,
+                    "arousal": 0.6952530952557343
+                  },
+                  "scores": {
+                    "walk": -0.014057235204640162,
+                    "observe": 0.4890506190511469
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "expected": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.09000487302914117,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "arousal_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.3999675131390583,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.3999675131390583,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.03498851081736557,
+                    "observe": 0.35
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "expected": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.1390506190511469,
+                    "observe": -0.1390506190511469
+                  },
+                  "changed_preference": false
+                },
+                "arousal_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.3999675131390583,
+                    "arousal": 1.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.3999675131390583,
+                    "arousal": 1.0
+                  },
+                  "scores": {
+                    "walk": -0.16501148918263445,
+                    "observe": 0.55
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "expected": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.060949380948853105,
+                    "observe": 0.06094938094885316
+                  },
+                  "changed_preference": false
+                },
+                "sham": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.3999675131390583,
+                    "arousal": 0.6952530952557343
+                  },
+                  "affect_effective": {
+                    "valence": 0.3999675131390583,
+                    "arousal": 0.6952530952557343
+                  },
+                  "scores": {
+                    "walk": -0.10406210823378134,
+                    "observe": 0.4890506190511469
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "expected": {
+                      "energy": 0.9993358655563357,
+                      "fatigue": 0.010852306110122136,
+                      "pain": 0.11484618361297251,
+                      "sleep_pressure": 0.9503255680596272
+                    },
+                    "prior_samples": 0,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                }
+              },
+              "checks": {
+                "state_unchanged": true,
+                "snapshot_unchanged": true,
+                "sham_matches_factual": true,
+                "disabled_matches_neutral": true
+              }
+            }
+          },
+          "action_forecast_score": {
+            "schema": "nasuraya-action-forecast-score/1",
+            "actual": "observe",
+            "actual_action": "observe",
+            "brier": 0.75,
+            "pooled_brier": 0.75,
+            "source": "native-decision://experience:second/94f63431849f3f39ac8db3c9a64696dfa8567ec501edc779e560b99a95c2c4b4",
+            "status": "insufficient_evidence",
+            "samples": 0,
+            "pooled_samples": 0,
+            "distribution": {
+              "walk": 0.25,
+              "observe": 0.25,
+              "protect": 0.25,
+              "other": 0.25
+            },
+            "pooled_distribution": {
+              "walk": 0.25,
+              "observe": 0.25,
+              "protect": 0.25,
+              "other": 0.25
+            },
+            "source_ids": [],
+            "pooled_source_ids": [],
+            "model_digest": "03298ef66e52c6ca5da25901b186522ffbf859dfe56c70639c3a834d11421267",
+            "evidence_digest": "1240241c2b01bd90e8f6c556c4a6f5a32c156b419633e86161b5da02bc2d5bcd"
+          },
+          "replayed": false,
+          "this_call_native_cycles": 1
+        },
+        {
+          "request_id": "third",
+          "plan": {
+            "preferred": "observe",
+            "scores": {
+              "walk": -0.12292971402609867,
+              "observe": 0.5079680286262824
+            },
+            "context": "[false,false,false,true]",
+            "recalled": [
+              "first",
+              "second"
+            ],
+            "memory_risk": 1.0,
+            "prediction": {
+              "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+              "before": {
+                "energy": 0.9993262794912033,
+                "fatigue": 0.011005155491954842,
+                "pain": 0.11502062335003267,
+                "sleep_pressure": 0.9503301535252557
+              },
+              "expected": {
+                "energy": 0.999316693426071,
+                "fatigue": 0.011158004873787548,
+                "pain": 0.11519506308709283,
+                "sleep_pressure": 0.9503347389908843
+              },
+              "prior_samples": 1,
+              "scope": "next software state given controller preference; not calibrated probability"
+            },
+            "action_forecast": {
+              "schema": "nasuraya-action-forecast/1",
+              "enabled": true,
+              "context": "[false,false,false,true]",
+              "preferred": "observe",
+              "duration_s": 0.1,
+              "distribution": {
+                "walk": 0.2,
+                "observe": 0.4,
+                "protect": 0.2,
+                "other": 0.2
+              },
+              "pooled_distribution": {
+                "walk": 0.2,
+                "observe": 0.4,
+                "protect": 0.2,
+                "other": 0.2
+              },
+              "samples": 1,
+              "pooled_samples": 1,
+              "source_ids": [
+                "second"
+              ],
+              "pooled_source_ids": [
+                "second"
+              ],
+              "legacy_excluded": 0,
+              "status": "insufficient_evidence",
+              "predicted_action": null,
+              "model_digest": "a585f0fad611c3e63da8971b92df3cae5784f04b3634f2504274ad7a932aa62a",
+              "scope": "empirical software-action estimate; not calibrated confidence or subjective awareness"
+            },
+            "affect_audit": {
+              "schema": "nasuraya-affect-audit/1",
+              "scope": "matched_snapshot_policy_sensitivity_only",
+              "subjective_feeling_claim": false,
+              "native_cycles": 0,
+              "observation": {
+                "checkpoint_sha256": "1bb01efb839e1c694951f9614f2a8710bb2cedd211144471574497986dc915d9",
+                "revision": 2,
+                "snapshot_sha256": "eba372f4ca4d319332b202cdd0bab82568242137af5b26cec39ce80c4dd746ab",
+                "state_sha256": "1c47577de22c3f3168c7acb5ecd886c8c1a72f6b757ad7f99f695e9bd3160284",
+                "duration_s": 0.1,
+                "source": "persisted_controller_state_before_action",
+                "affect_stored": {
+                  "valence": 0.4003077898523382,
+                  "arousal": 0.7898401431314119
+                },
+                "affect_effective": {
+                  "valence": 0.4003077898523382,
+                  "arousal": 0.7898401431314119
+                },
+                "affect_enabled": true
+              },
+              "variants": {
+                "factual": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.4003077898523382,
+                    "arousal": 0.7898401431314119
+                  },
+                  "affect_effective": {
+                    "valence": 0.4003077898523382,
+                    "arousal": 0.7898401431314119
+                  },
+                  "scores": {
+                    "walk": -0.12292971402609867,
+                    "observe": 0.5079680286262824
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993262794912033,
+                      "fatigue": 0.011005155491954842,
+                      "pain": 0.11502062335003267,
+                      "sleep_pressure": 0.9503301535252557
+                    },
+                    "expected": {
+                      "energy": 0.999316693426071,
+                      "fatigue": 0.011158004873787548,
+                      "pain": 0.11519506308709283,
+                      "sleep_pressure": 0.9503347389908843
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "affect_off": {
+                  "flags": {
+                    "affect": false,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.04999214612233301,
+                    "observe": 0.35
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993262794912033,
+                      "fatigue": 0.011005155491954842,
+                      "pain": 0.11502062335003267,
+                      "sleep_pressure": 0.9503301535252557
+                    },
+                    "expected": {
+                      "energy": 0.999316693426071,
+                      "fatigue": 0.011158004873787548,
+                      "pain": 0.11519506308709283,
+                      "sleep_pressure": 0.9503347389908843
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.1729218601484317,
+                    "observe": -0.15796802862628245
+                  },
+                  "changed_preference": false
+                },
+                "neutral": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.5,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.04999214612233301,
+                    "observe": 0.35
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993262794912033,
+                      "fatigue": 0.011005155491954842,
+                      "pain": 0.11502062335003267,
+                      "sleep_pressure": 0.9503301535252557
+                    },
+                    "expected": {
+                      "energy": 0.999316693426071,
+                      "fatigue": 0.011158004873787548,
+                      "pain": 0.11519506308709283,
+                      "sleep_pressure": 0.9503347389908843
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.1729218601484317,
+                    "observe": -0.15796802862628245
+                  },
+                  "changed_preference": false
+                },
+                "valence_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.0,
+                    "arousal": 0.7898401431314119
+                  },
+                  "affect_effective": {
+                    "valence": 0.0,
+                    "arousal": 0.7898401431314119
+                  },
+                  "scores": {
+                    "walk": -0.18297588250394933,
+                    "observe": 0.5079680286262824
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993262794912033,
+                      "fatigue": 0.011005155491954842,
+                      "pain": 0.11502062335003267,
+                      "sleep_pressure": 0.9503301535252557
+                    },
+                    "expected": {
+                      "energy": 0.999316693426071,
+                      "fatigue": 0.011158004873787548,
+                      "pain": 0.11519506308709283,
+                      "sleep_pressure": 0.9503347389908843
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.06004616847785066,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "valence_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 1.0,
+                    "arousal": 0.7898401431314119
+                  },
+                  "affect_effective": {
+                    "valence": 1.0,
+                    "arousal": 0.7898401431314119
+                  },
+                  "scores": {
+                    "walk": -0.03297588250394937,
+                    "observe": 0.5079680286262824
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993262794912033,
+                      "fatigue": 0.011005155491954842,
+                      "pain": 0.11502062335003267,
+                      "sleep_pressure": 0.9503301535252557
+                    },
+                    "expected": {
+                      "energy": 0.999316693426071,
+                      "fatigue": 0.011158004873787548,
+                      "pain": 0.11519506308709283,
+                      "sleep_pressure": 0.9503347389908843
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.08995383152214931,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                },
+                "arousal_low": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.4003077898523382,
+                    "arousal": 0.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.4003077898523382,
+                    "arousal": 0.0
+                  },
+                  "scores": {
+                    "walk": 0.03503831460018377,
+                    "observe": 0.35
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993262794912033,
+                      "fatigue": 0.011005155491954842,
+                      "pain": 0.11502062335003267,
+                      "sleep_pressure": 0.9503301535252557
+                    },
+                    "expected": {
+                      "energy": 0.999316693426071,
+                      "fatigue": 0.011158004873787548,
+                      "pain": 0.11519506308709283,
+                      "sleep_pressure": 0.9503347389908843
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.15796802862628245,
+                    "observe": -0.15796802862628245
+                  },
+                  "changed_preference": false
+                },
+                "arousal_high": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.4003077898523382,
+                    "arousal": 1.0
+                  },
+                  "affect_effective": {
+                    "valence": 0.4003077898523382,
+                    "arousal": 1.0
+                  },
+                  "scores": {
+                    "walk": -0.16496168539981623,
+                    "observe": 0.55
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993262794912033,
+                      "fatigue": 0.011005155491954842,
+                      "pain": 0.11502062335003267,
+                      "sleep_pressure": 0.9503301535252557
+                    },
+                    "expected": {
+                      "energy": 0.999316693426071,
+                      "fatigue": 0.011158004873787548,
+                      "pain": 0.11519506308709283,
+                      "sleep_pressure": 0.9503347389908843
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": -0.04203197137371756,
+                    "observe": 0.042031971373717614
+                  },
+                  "changed_preference": false
+                },
+                "sham": {
+                  "flags": {
+                    "affect": true,
+                    "consolidation": true,
+                    "memory": true,
+                    "prediction": true
+                  },
+                  "affect_stored": {
+                    "valence": 0.4003077898523382,
+                    "arousal": 0.7898401431314119
+                  },
+                  "affect_effective": {
+                    "valence": 0.4003077898523382,
+                    "arousal": 0.7898401431314119
+                  },
+                  "scores": {
+                    "walk": -0.12292971402609867,
+                    "observe": 0.5079680286262824
+                  },
+                  "preferred": "observe",
+                  "prediction": {
+                    "key": "[\"[false,false,false,true]\",\"observe\",0.1]",
+                    "before": {
+                      "energy": 0.9993262794912033,
+                      "fatigue": 0.011005155491954842,
+                      "pain": 0.11502062335003267,
+                      "sleep_pressure": 0.9503301535252557
+                    },
+                    "expected": {
+                      "energy": 0.999316693426071,
+                      "fatigue": 0.011158004873787548,
+                      "pain": 0.11519506308709283,
+                      "sleep_pressure": 0.9503347389908843
+                    },
+                    "prior_samples": 1,
+                    "scope": "next software state given controller preference; not calibrated probability"
+                  },
+                  "score_delta": {
+                    "walk": 0.0,
+                    "observe": 0.0
+                  },
+                  "changed_preference": false
+                }
+              },
+              "checks": {
+                "state_unchanged": true,
+                "snapshot_unchanged": true,
+                "sham_matches_factual": true,
+                "disabled_matches_neutral": true
+              }
+            }
+          },
+          "action_forecast_score": {
+            "schema": "nasuraya-action-forecast-score/1",
+            "actual": "observe",
+            "actual_action": "observe",
+            "brier": 0.48,
+            "pooled_brier": 0.48,
+            "source": "native-decision://experience:third/8f0f0fdf3e4d3f67b3147ba0144611f4b22afb5ec1bfdcdc8549cba16a8dfbe9",
+            "status": "insufficient_evidence",
+            "samples": 1,
+            "pooled_samples": 1,
+            "distribution": {
+              "walk": 0.2,
+              "observe": 0.4,
+              "protect": 0.2,
+              "other": 0.2
+            },
+            "pooled_distribution": {
+              "walk": 0.2,
+              "observe": 0.4,
+              "protect": 0.2,
+              "other": 0.2
+            },
+            "source_ids": [
+              "second"
+            ],
+            "pooled_source_ids": [
+              "second"
+            ],
+            "model_digest": "a585f0fad611c3e63da8971b92df3cae5784f04b3634f2504274ad7a932aa62a",
+            "evidence_digest": "a6f2f84b541f9632eac52f1f0050b4527a4e40d26b28d4b7ae52e55bf56f9bf5"
+          },
+          "replayed": false,
+          "this_call_native_cycles": 1
+        }
+      ]
+    }
+  }
+}

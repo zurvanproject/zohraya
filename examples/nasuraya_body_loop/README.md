@@ -163,3 +163,18 @@ python3 -m examples.nasuraya_body_loop run-status --session /tmp/new-body-api.sq
 پوشهٔ خروجی تازه، نشست ذخیره‌شده را بررسی و دنبال می‌کند. پس از تأیید پایان
 نشست قبلی و تطبیق رسیدها، `--api-recovery fresh` نشست تازه‌ای برای همان هدف
 می‌سازد. این گزینه اجازهٔ جایگزینی نشست فعال یا تکرار اثر نامعلوم را نمی‌دهد.
+
+## خودپیش‌بینی عمل و بازبینی عاطفی
+
+`experience-step` پیش‌بینیِ عمل نهایی را پیش از اجرا ثبت می‌کند و سپس با رسید
+بدن نمره می‌دهد. هشت مقایسهٔ اثر عاطفه روی همان وضعیت انجام می‌شود؛ بودجه و
+حفاظت بومی حفظ می‌شوند. سابقه و نمرات در `experience-status` قابل مشاهده‌اند.
+
+```sh
+python3 -m examples.nasuraya_body_loop experience-test
+python3 -m examples.nasuraya_body_loop self-knowledge-eval --output-dir /tmp/new-self-knowledge-eval
+```
+
+[روش، منابع، نتایج و حدود ارزیابی](../../docs/nasuraya-self-knowledge-2026-10-29-fa.md)
+را پیش از تفسیر نمره بخوانید. این افزونه پایشِ رفتار نرم‌افزار است؛ آزمون
+تجربهٔ ذهنی یا اجرای رسمی SAD/Looking Inward/AttuneBench نیست.
