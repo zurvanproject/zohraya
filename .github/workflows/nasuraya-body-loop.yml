@@ -47,7 +47,9 @@ jobs:
       - name: Evaluate frozen action forecasts against native receipts
         run: python3 -m examples.nasuraya_body_loop self-knowledge-eval --output-dir /tmp/nasuraya-self-knowledge-eval
       - name: Verify continuous forecasts and validation-only selection
-        run: python3 -m examples.nasuraya_body_loop self-knowledge-generalization-eval --eval-profile smoke --output-dir /tmp/nasuraya-continuous-self-eval
+        run: |
+          python3 -m examples.nasuraya_body_loop self-knowledge-generalization-eval --eval-profile smoke --output-dir /tmp/nasuraya-continuous-self-eval
+          python3 -m examples.nasuraya_body_loop.verify_continuous_eval /tmp/nasuraya-continuous-self-eval
       - name: Verify persistent API body tools without live service
         run: |
           python3 -m venv .ci-env

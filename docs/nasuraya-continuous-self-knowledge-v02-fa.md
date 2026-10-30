@@ -84,10 +84,12 @@ python3 -m examples.nasuraya_body_loop experience-status --session /tmp/new-cont
 python3 -m examples.nasuraya_body_loop experience-test
 python3 -m examples.nasuraya_body_loop self-knowledge-generalization-eval --eval-profile smoke --output-dir /tmp/new-self-smoke
 python3 -m examples.nasuraya_body_loop self-knowledge-generalization-eval --eval-profile full --output-dir /tmp/new-self-full
+python3 -m examples.nasuraya_body_loop.verify_continuous_eval /tmp/new-self-full
 ```
 
 پروفایل smoke با ۱۳۲ رسید فقط مسیر اجرا و قرارداد شواهد را بررسی می‌کند؛
 معیار برتریِ علمی محسوب نمی‌شود. CI همین پروفایل محدود را اجرا می‌کند.
+دستور آخر فقط فایل‌های ذخیره‌شده را ممیزی می‌کند و چرخهٔ بدن تازه نمی‌سازد.
 
 ## تفسیر نتیجه
 
