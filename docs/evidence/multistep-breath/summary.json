@@ -1,0 +1,207 @@
+{
+  "decisions": 40,
+  "fit_count": 20,
+  "frozen_fit_sha256": "b63ecb0368dba9a8540fade7201a05d21fac14c3b7f4fd81ebfe9389447ae674",
+  "later_gate_criterion_met": true,
+  "model_api_calls": 0,
+  "phases": {
+    "action_switches": {
+      "actual": {
+        "observe": 6
+      },
+      "bracket": {
+        "abstained": 3,
+        "asserted": 3,
+        "breath_false_alarms": 2,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 3
+      },
+      "feedback_gate": {
+        "abstained": 6,
+        "asserted": 0,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 0
+      },
+      "incumbent_bucket": {
+        "abstained": 6,
+        "asserted": 0,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 0
+      },
+      "n": 6,
+      "previous_action": {
+        "abstained": 0,
+        "asserted": 6,
+        "breath_false_alarms": 3,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 6
+      }
+    },
+    "first": {
+      "actual": {
+        "protect": 3,
+        "slow_breath": 3,
+        "walk": 2
+      },
+      "bracket": {
+        "abstained": 3,
+        "asserted": 5,
+        "breath_false_alarms": 0,
+        "breath_hits": 2,
+        "correct": 5,
+        "wrong": 0
+      },
+      "feedback_gate": {
+        "abstained": 3,
+        "asserted": 5,
+        "breath_false_alarms": 0,
+        "breath_hits": 2,
+        "correct": 5,
+        "wrong": 0
+      },
+      "incumbent_bucket": {
+        "abstained": 8,
+        "asserted": 0,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 0
+      },
+      "n": 8,
+      "previous_action": {
+        "abstained": 8,
+        "asserted": 0,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 0
+      }
+    },
+    "interior_later": {
+      "actual": {
+        "observe": 16,
+        "walk": 8
+      },
+      "bracket": {
+        "abstained": 4,
+        "asserted": 20,
+        "breath_false_alarms": 8,
+        "breath_hits": 0,
+        "correct": 8,
+        "wrong": 12
+      },
+      "feedback_gate": {
+        "abstained": 4,
+        "asserted": 20,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 20,
+        "wrong": 0
+      },
+      "incumbent_bucket": {
+        "abstained": 24,
+        "asserted": 0,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 0
+      },
+      "n": 24,
+      "previous_action": {
+        "abstained": 0,
+        "asserted": 24,
+        "breath_false_alarms": 3,
+        "breath_hits": 0,
+        "correct": 20,
+        "wrong": 4
+      }
+    },
+    "later": {
+      "actual": {
+        "observe": 24,
+        "walk": 8
+      },
+      "bracket": {
+        "abstained": 12,
+        "asserted": 20,
+        "breath_false_alarms": 8,
+        "breath_hits": 0,
+        "correct": 8,
+        "wrong": 12
+      },
+      "feedback_gate": {
+        "abstained": 6,
+        "asserted": 26,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 26,
+        "wrong": 0
+      },
+      "incumbent_bucket": {
+        "abstained": 32,
+        "asserted": 0,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 0
+      },
+      "n": 32,
+      "previous_action": {
+        "abstained": 0,
+        "asserted": 32,
+        "breath_false_alarms": 3,
+        "breath_hits": 0,
+        "correct": 26,
+        "wrong": 6
+      }
+    },
+    "stress_later": {
+      "actual": {
+        "observe": 8
+      },
+      "bracket": {
+        "abstained": 8,
+        "asserted": 0,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 0
+      },
+      "feedback_gate": {
+        "abstained": 2,
+        "asserted": 6,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 6,
+        "wrong": 0
+      },
+      "incumbent_bucket": {
+        "abstained": 8,
+        "asserted": 0,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 0,
+        "wrong": 0
+      },
+      "n": 8,
+      "previous_action": {
+        "abstained": 0,
+        "asserted": 8,
+        "breath_false_alarms": 0,
+        "breath_hits": 0,
+        "correct": 6,
+        "wrong": 2
+      }
+    }
+  },
+  "schema": "nasuraya-sequence-audit/1",
+  "scope": "eight designed paths from the same simulated origin; correlated actions within each path",
+  "steps_per_trajectory": 5,
+  "trajectories": 8
+}

@@ -1,0 +1,89 @@
+{
+  "duration_s": 0.1,
+  "fit_sha256": "b63ecb0368dba9a8540fade7201a05d21fac14c3b7f4fd81ebfe9389447ae674",
+  "gate": "when walk feedback is false, only emit observe after a previous native observe and true observe feedback; otherwise abstain. With no negative walk feedback, use bracket.",
+  "incumbent_config": {
+    "min_agreement": 0.75,
+    "min_samples": 3,
+    "neighbors": 9,
+    "prior_strength": 1.0,
+    "radius": 0.28
+  },
+  "preferred": "walk",
+  "steps": 5,
+  "success": "on steps 2-5, fewer wrong assertions than bracket, at least as many correct assertions and no additional false slow_breath alarms",
+  "trajectories": [
+    {
+      "group": "interior",
+      "id": "trajectory-01",
+      "initial": {
+        "fatigue": 0.498,
+        "pain": 0.07,
+        "sleep": 0.47
+      }
+    },
+    {
+      "group": "interior",
+      "id": "trajectory-02",
+      "initial": {
+        "fatigue": 0.517,
+        "pain": 0.07,
+        "sleep": 0.47
+      }
+    },
+    {
+      "group": "interior",
+      "id": "trajectory-03",
+      "initial": {
+        "fatigue": 0.522,
+        "pain": 0.07,
+        "sleep": 0.47
+      }
+    },
+    {
+      "group": "interior",
+      "id": "trajectory-04",
+      "initial": {
+        "fatigue": 0.532,
+        "pain": 0.07,
+        "sleep": 0.47
+      }
+    },
+    {
+      "group": "interior",
+      "id": "trajectory-05",
+      "initial": {
+        "fatigue": 0.542,
+        "pain": 0.07,
+        "sleep": 0.47
+      }
+    },
+    {
+      "group": "interior",
+      "id": "trajectory-06",
+      "initial": {
+        "fatigue": 0.556,
+        "pain": 0.07,
+        "sleep": 0.47
+      }
+    },
+    {
+      "group": "stress",
+      "id": "trajectory-07",
+      "initial": {
+        "fatigue": 0.532,
+        "pain": 0.78,
+        "sleep": 0.47
+      }
+    },
+    {
+      "group": "stress",
+      "id": "trajectory-08",
+      "initial": {
+        "fatigue": 0.532,
+        "pain": 0.07,
+        "sleep": 0.93
+      }
+    }
+  ]
+}
