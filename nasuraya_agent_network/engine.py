@@ -65,6 +65,10 @@ def copy_snapshot(root: Path, destination: Path) -> str:
             raise ValueError('symlink source: ' + str(relative))
         if not source.is_file():
             continue
+        # A .gitignore is repository metadata, not executable input. Ignore only
+        # this exact basename in visible directories; still reject other hidden files.
+        if source.name == '.gitignore' and not any(p.startswith('.') for p in relative.parts[:-1]):
+            continue
         if any(part.startswith('.') for part in relative.parts) or source.suffix in ('.key', '.pem', '.p12'):
             raise ValueError('hidden or credential-like source excluded')
         size = source.stat().st_size
