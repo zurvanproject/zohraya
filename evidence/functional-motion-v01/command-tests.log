@@ -1,0 +1,10 @@
+test_completed_replay_does_not_run_physics_or_rewind (examples.nasuraya_research.articulated.test_motion_commands.MotionCommandTests.test_completed_replay_does_not_run_physics_or_rewind) ... ok
+test_exhausted_step_budget_prevents_execution (examples.nasuraya_research.articulated.test_motion_commands.MotionCommandTests.test_exhausted_step_budget_prevents_execution) ... ok
+test_interrupted_motion_blocks_retry_and_new_command (examples.nasuraya_research.articulated.test_motion_commands.MotionCommandTests.test_interrupted_motion_blocks_retry_and_new_command) ... ok
+test_known_command_and_unknown_command (examples.nasuraya_research.articulated.test_motion_commands.MotionCommandTests.test_known_command_and_unknown_command) ... ok
+test_same_id_cannot_change_request (examples.nasuraya_research.articulated.test_motion_commands.MotionCommandTests.test_same_id_cannot_change_request) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.022s
+
+OK

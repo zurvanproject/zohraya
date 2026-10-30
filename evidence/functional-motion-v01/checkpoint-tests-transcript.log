@@ -1,0 +1,45 @@
+Captured execution transcript from the functional_motion_review agent's tool outputs.
+These are two completed unittest invocations (not a new combined rerun).
+Working directory: /workspace/scratch/3c3b1082147c/nasuraya_motion
+Python: /workspace/scratch/3c3b1082147c/motion-venv/bin/python
+Environment: OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
+
+Invocation 1: python -m unittest examples.nasuraya_research.articulated.test_checkpoint_v03 -v
+Exit status: 0
+
+test_bounds_cannot_be_widened_even_with_recomputed_hash (examples.nasuraya_research.articulated.test_checkpoint_v03.GeometryCheckpointTests.test_bounds_cannot_be_widened_even_with_recomputed_hash) ... ok
+test_disagreeing_physics_metadata_rejected_before_mutation (examples.nasuraya_research.articulated.test_checkpoint_v03.GeometryCheckpointTests.test_disagreeing_physics_metadata_rejected_before_mutation) ... ok
+test_exact_body_and_controller_round_trip (examples.nasuraya_research.articulated.test_checkpoint_v03.GeometryCheckpointTests.test_exact_body_and_controller_round_trip) ... ok
+test_model_physics_change_is_rejected (examples.nasuraya_research.articulated.test_checkpoint_v03.GeometryCheckpointTests.test_model_physics_change_is_rejected) ... ok
+test_second_command_moves_opposite_foot_without_initialization (examples.nasuraya_research.articulated.test_checkpoint_v03.GeometryCheckpointTests.test_second_command_moves_opposite_foot_without_initialization) ... ok
+test_source_parameter_shape_and_nonfinite_drift_rejected (examples.nasuraya_research.articulated.test_checkpoint_v03.GeometryCheckpointTests.test_source_parameter_shape_and_nonfinite_drift_rejected) ... ok
+test_v02_and_v03_are_not_interchangeable (examples.nasuraya_research.articulated.test_checkpoint_v03.GeometryCheckpointTests.test_v02_and_v03_are_not_interchangeable) ... ok
+test_v03_requires_explicit_opt_in (examples.nasuraya_research.articulated.test_checkpoint_v03.GeometryCheckpointTests.test_v03_requires_explicit_opt_in) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 21.176s
+
+OK
+
+Invocation 2: python -m unittest examples.nasuraya_research.articulated.test_checkpoint examples.nasuraya_research.articulated.test_canon_trial examples.nasuraya_research.articulated.test_stepping -v
+Exit status: 0
+
+test_disagreement_between_metadata_and_physics_rejected (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_disagreement_between_metadata_and_physics_rejected) ... ok
+test_exact_integration_and_controller_restore (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_exact_integration_and_controller_restore) ... ok
+test_historical_source_bound_archive_rejected_without_migration (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_historical_source_bound_archive_rejected_without_migration) ... ok
+test_nonfinite_or_wrong_shape_rejected (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_nonfinite_or_wrong_shape_rejected) ... ok
+test_parameter_or_source_drift_rejected (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_parameter_or_source_drift_rejected) ... ok
+test_tampered_payload_rejected_before_body_mutation (examples.nasuraya_research.articulated.test_checkpoint.CheckpointTests.test_tampered_payload_rejected_before_body_mutation) ... ok
+test_old_pressure_bounds_overhang_new_pad (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_old_pressure_bounds_overhang_new_pad) ... ok
+test_proposed_wrench_pressure_stays_inside_pad (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_proposed_wrench_pressure_stays_inside_pad) ... ok
+test_rebuild_deterministic_and_parent_unchanged (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_rebuild_deterministic_and_parent_unchanged) ... ok
+test_rotated_contact_frame_rejected (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_rotated_contact_frame_rejected) ... ok
+test_target_dimensions_and_appendage_counts (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_target_dimensions_and_appendage_counts) ... ok
+test_unintegrated_checkpoint_is_explicitly_rejected (examples.nasuraya_research.articulated.test_canon_trial.CanonTrialTests.test_unintegrated_checkpoint_is_explicitly_rejected) ... ok
+test_joint_torques_only_and_no_state_reset (examples.nasuraya_research.articulated.test_stepping.ContactControlTests.test_joint_torques_only_and_no_state_reset) ... ok
+test_released_foot_has_no_planned_ground_wrench (examples.nasuraya_research.articulated.test_stepping.ContactControlTests.test_released_foot_has_no_planned_ground_wrench) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 11.062s
+
+OK

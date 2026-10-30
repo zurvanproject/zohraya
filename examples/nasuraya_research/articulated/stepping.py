@@ -199,20 +199,30 @@ def can_lift(data,controller,stance,forces):
 
 def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.001,
                push=0.,capture=False,checkpoint=None,retain_checkpoint=False,
-               model_dir=SMALL,geometry_support=False,com_bias_x_m=0.):
+               model_dir=SMALL,geometry_support=False,com_bias_x_m=0.,checkpoint_v03=False):
     if (type(com_bias_x_m) not in (int,float) or not math.isfinite(com_bias_x_m)
             or abs(com_bias_x_m)>.01):
         raise ValueError('COM bias must be a finite number within 10 mm')
     if com_bias_x_m and not geometry_support:
         raise ValueError('COM bias requires geometry-derived support')
     model_dir=Path(model_dir)
-    if (model_dir.resolve()!=SMALL.resolve() or geometry_support) and (checkpoint is not None or retain_checkpoint):
-        raise ValueError('Experimental morphology/support is not checkpoint-integrated')
+    if type(checkpoint_v03) is not bool:
+        raise ValueError('explicit boolean checkpoint_v03 required')
+    if checkpoint_v03:
+        from .checkpoint import validate_geometry_profile
+        validate_geometry_profile(model_dir)
+        if not geometry_support:
+            raise ValueError('v03 checkpoints require geometry-derived support')
+    elif (model_dir.resolve()!=SMALL.resolve() or geometry_support) and (checkpoint is not None or retain_checkpoint):
+        raise ValueError('Experimental morphology/support requires explicit v03 checkpoint opt-in')
     model,data=load(model_dir)
     model.opt.timestep=dt
     model.geom_friction[:,0]=friction
     from .checkpoint import restore_checkpoint, make_checkpoint, integration_state, digest
     parameters=dict(stride=stride,timing=timing,friction=friction,dt=dt,push=push)
+    checkpoint_options = dict(model_dir=model_dir, geometry_support=True) if checkpoint_v03 else {}
+    if checkpoint_v03:
+        parameters['com_bias_x_m'] = com_bias_x_m
     if checkpoint is None:
         standing=BalanceController(model,model_dir)
         standing_height=float(standing.q0[2])
@@ -231,7 +241,7 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
         step_offset=0;index=0;initialization_seconds=2.
     else:
         controller,feet,previous_com,standing_height,step_offset,index=restore_checkpoint(
-            checkpoint,model,data,parameters)
+            checkpoint,model,data,parameters,**checkpoint_options)
         initialization_seconds=0.
     initial_feet=feet.copy();initial_root=data.qpos[:3].copy()
     start_time=float(data.time)
@@ -367,7 +377,7 @@ def walk_trial(*,label='nominal',steps=6,stride=.06,timing=1.,friction=.6,dt=.00
                       continued_from=checkpoint['sha256'] if checkpoint else None,
                       checkpoint=make_checkpoint(model,data,controller,parameters=parameters,feet=feet,
                           previous_com=previous_com,standing_height=standing_height,
-                          next_step=step_offset+steps,ticks=index) if resumable else None)
+                          next_step=step_offset+steps,ticks=index,**checkpoint_options) if resumable else None)
     return (result,poses) if capture else result
 
 
