@@ -147,8 +147,18 @@ def original_predictions(dest, frozen):
     records = [dict(case=case, second=t, predicted=(prediction[i,j] * SCALE).tolist(),
                     observed=(x[i,t] * SCALE).tolist(), persistence=(x[i,t-1] * SCALE).tolist())
                for i, case in enumerate(cases) for j, t in enumerate((7, 8))]
+    # On the historical six only, hold weights, actions and history fixed and vary
+    # the categorical draws. This does not select a model or enter the new gate.
+    draws = np.stack([
+        np.stack([np.asarray(forward(frozen, x[:, :t], a[:, :t], a[:, t],
+                                     seed=5000 + 10 * i + t)[1]) for t in (7, 8)], axis=1)
+        for i in range(32)])
+    sampling = dict(draws=32, first_seed_formula="5000 + 10 * draw_index + second",
+                    mean_within_event_sd_native=dict(zip(FEATURES,
+                        (draws.std(axis=0) * SCALE).mean(axis=(0, 1)).tolist(), strict=True)),
+                    mean_forecast_error=stats(draws.mean(axis=0), x[:, 7:], cases))
     write_json(dest / "archived_predictions.json", dict(features=FEATURES, native_units=True, rows=records,
-                                                       published_metrics=expected))
+                                                       published_metrics=expected, sampling=sampling))
 
 
 def gate(panel, name):
