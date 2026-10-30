@@ -4,6 +4,8 @@ on:
     branches: ['research/nasuraya-cloud-breath-audit']
     paths:
       - 'examples/nasuraya_body_loop/rare_breath_audit.py'
+      - 'examples/nasuraya_body_loop/multistep_breath_audit.py'
+      - 'docs/experiments/multistep-breath-protocol.md'
       - 'docs/experiments/rare-breath-cloud-protocol.md'
       - '.github/workflows/nasuraya-cloud-breath-audit.yml'
   workflow_dispatch:
@@ -45,5 +47,28 @@ jobs:
             ${{ runner.temp }}/breath-audit/forecasts.jsonl
             ${{ runner.temp }}/breath-audit/receipts.jsonl
             ${{ runner.temp }}/breath-audit/summary.json
+          if-no-files-found: error
+          retention-days: 7
+      - name: Forecast successive actions with the existing body and feedback history
+        run: python3 -m examples.nasuraya_body_loop.multistep_breath_audit --output-dir "$RUNNER_TEMP/multistep-audit"
+      - name: Show longitudinal results and checksums
+        working-directory: ${{ runner.temp }}/multistep-audit
+        run: |
+          sha256sum protocol.json forecasts.jsonl receipts.jsonl summary.json
+          {
+            echo '### Longitudinal pre-action forecasts'
+            echo '```json'
+            cat summary.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Keep the longitudinal forecasts and receipts
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: nasuraya-multistep-audit
+          path: |
+            ${{ runner.temp }}/multistep-audit/protocol.json
+            ${{ runner.temp }}/multistep-audit/forecasts.jsonl
+            ${{ runner.temp }}/multistep-audit/receipts.jsonl
+            ${{ runner.temp }}/multistep-audit/summary.json
           if-no-files-found: error
           retention-days: 7
