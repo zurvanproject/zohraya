@@ -1,0 +1,258 @@
+{
+  "all_checks_passed": true,
+  "by_fixture": {
+    "normal": {
+      "continuous_self_knowledge": {
+        "abstained": 4,
+        "evidence_digest": "3e5097465f18ba7141dc25f2e70a3bed9d95601883348cd2dee9eb09fa457194",
+        "mean_brier": 0.1139058712373408,
+        "mean_pooled_brier": 0.21932917233387597,
+        "schema": "nasuraya-continuous-action-summary/1",
+        "scope": "saved prequential outcomes; abstention and correctness reported separately",
+        "scored": 12,
+        "statuses": {
+          "insufficient_local_evidence": 2,
+          "no_observed_history": 1,
+          "supported_local_estimate": 8,
+          "unseen_feedback_state": 1
+        },
+        "supported": 8,
+        "supported_accuracy": 1.0
+      },
+      "learning_trace": [
+        {
+          "actual": "walk",
+          "brier": 0.75,
+          "id": "step-1",
+          "predicted": null,
+          "samples": 0,
+          "support": "no_observed_history"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.48,
+          "id": "step-2",
+          "predicted": null,
+          "samples": 0,
+          "support": "unseen_feedback_state"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.08333333333333333,
+          "id": "step-3",
+          "predicted": null,
+          "samples": 1,
+          "support": "insufficient_local_evidence"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.027210884353741506,
+          "id": "step-4",
+          "predicted": null,
+          "samples": 2,
+          "support": "insufficient_local_evidence"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.01171875,
+          "id": "step-5",
+          "predicted": "walk",
+          "samples": 3,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.005925925925925924,
+          "id": "step-6",
+          "predicted": "walk",
+          "samples": 4,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.003333333333333327,
+          "id": "step-7",
+          "predicted": "walk",
+          "samples": 5,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.002023950075898129,
+          "id": "step-8",
+          "predicted": "walk",
+          "samples": 6,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.0013020833333333333,
+          "id": "step-9",
+          "predicted": "walk",
+          "samples": 7,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.0008766162612316412,
+          "id": "step-10",
+          "predicted": "walk",
+          "samples": 8,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.0006122448979591804,
+          "id": "step-11",
+          "predicted": "walk",
+          "samples": 9,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "walk",
+          "brier": 0.0005333333333333296,
+          "id": "step-12",
+          "predicted": "walk",
+          "samples": 9,
+          "support": "supported_local_estimate"
+        }
+      ],
+      "same_state_after_replay": true
+    },
+    "sleep": {
+      "continuous_self_knowledge": {
+        "abstained": 5,
+        "evidence_digest": "af63afc310b5920423c23df91cdbbbbca2a37024297c3c38ac0b950e26e1f4bf",
+        "mean_brier": 0.17636142679289635,
+        "mean_pooled_brier": 0.2773847278894315,
+        "schema": "nasuraya-continuous-action-summary/1",
+        "scope": "saved prequential outcomes; abstention and correctness reported separately",
+        "scored": 12,
+        "statuses": {
+          "insufficient_local_evidence": 2,
+          "no_observed_history": 2,
+          "supported_local_estimate": 7,
+          "unseen_feedback_state": 1
+        },
+        "supported": 7,
+        "supported_accuracy": 1.0
+      },
+      "learning_trace": [
+        {
+          "actual": "protect",
+          "brier": 0.75,
+          "id": "step-1",
+          "predicted": null,
+          "samples": 0,
+          "support": "no_observed_history"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.75,
+          "id": "step-2",
+          "predicted": null,
+          "samples": 0,
+          "support": "no_observed_history"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.48,
+          "id": "step-3",
+          "predicted": null,
+          "samples": 0,
+          "support": "unseen_feedback_state"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.08333333333333333,
+          "id": "step-4",
+          "predicted": null,
+          "samples": 1,
+          "support": "insufficient_local_evidence"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.027210884353741506,
+          "id": "step-5",
+          "predicted": null,
+          "samples": 2,
+          "support": "insufficient_local_evidence"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.01171875,
+          "id": "step-6",
+          "predicted": "observe",
+          "samples": 3,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.005925925925925924,
+          "id": "step-7",
+          "predicted": "observe",
+          "samples": 4,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.003333333333333327,
+          "id": "step-8",
+          "predicted": "observe",
+          "samples": 5,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.002023950075898129,
+          "id": "step-9",
+          "predicted": "observe",
+          "samples": 6,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.0013020833333333333,
+          "id": "step-10",
+          "predicted": "observe",
+          "samples": 7,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.0008766162612316412,
+          "id": "step-11",
+          "predicted": "observe",
+          "samples": 8,
+          "support": "supported_local_estimate"
+        },
+        {
+          "actual": "observe",
+          "brier": 0.0006122448979591804,
+          "id": "step-12",
+          "predicted": "observe",
+          "samples": 9,
+          "support": "supported_local_estimate"
+        }
+      ],
+      "same_state_after_replay": true
+    }
+  },
+  "cold_restarts": 24,
+  "completed_utc": "2026-10-30T14:07:20.429775+00:00",
+  "config": {
+    "min_agreement": 0.75,
+    "min_samples": 3,
+    "neighbors": 9,
+    "prior_strength": 1.0,
+    "radius": 0.28
+  },
+  "exported_backups_reopened": true,
+  "model_api_calls": 0,
+  "native_cycles": 24,
+  "replays": 2,
+  "restart_definition": "Each step opens an existing persistent session in a fresh CLI worker process.",
+  "schema": "nasuraya-continuous-persistence-demo/1",
+  "started_utc": "2026-10-30T14:06:27.799821+00:00",
+  "storage": "Mutable database in a local temporary directory; read-only consistent backup exported after all CLI processes exited and SQLite quick_check passed."
+}

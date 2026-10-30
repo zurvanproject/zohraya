@@ -1,0 +1,27 @@
+{
+  "schema": "nasuraya-self-local-validation/1",
+  "logs": {
+    "self-final-tests.log": {
+      "tests": 63,
+      "seconds": 80.345,
+      "passed": true,
+      "sha256": "52a43025dacf9675128b09cf083c022574f18099253b0241807b1d0c681e1824"
+    },
+    "self-bridge-tests.log": {
+      "tests": 16,
+      "seconds": 40.599,
+      "passed": true,
+      "sha256": "696878cd2458b0ea5688d9c1e7cb304a31773c738a9d53231a7cfa7ec5b6c279"
+    }
+  },
+  "native": {
+    "unit_tests": 89,
+    "decision_tests": 10,
+    "both_suites_passed": true,
+    "scenarios_passed": true,
+    "canonical_state_modified": false,
+    "report_sha256": "0c725eb2d1c23b27083ab43112f563e98182cf3d9c0d135f03fa78e8a62c1b1b"
+  },
+  "unique_local_tests": 178,
+  "source_commit": "fe70f6bfd902e4f99c943d08ea0845f8e3b6a375"
+}

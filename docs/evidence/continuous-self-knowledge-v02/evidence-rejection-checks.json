@@ -1,0 +1,34 @@
+{
+  "schema": "nasuraya-evidence-rejection-checks/1",
+  "completed_utc": "2026-10-30T14:41:35.683422+00:00",
+  "checks": [
+    {
+      "mutation": "protocol_source",
+      "rejected": true,
+      "exit_code": 1,
+      "reason": "ValueError: protocol integrity mismatch"
+    },
+    {
+      "mutation": "trial_order",
+      "rejected": true,
+      "exit_code": 1,
+      "reason": "ValueError: trial sequence differs from predeclared inputs"
+    },
+    {
+      "mutation": "posthoc_forecast",
+      "rejected": true,
+      "exit_code": 1,
+      "reason": "ValueError: evidence validation failed: f531-train-000-walk-1-0 [True, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True]"
+    },
+    {
+      "mutation": "claimed_outcome",
+      "rejected": true,
+      "exit_code": 1,
+      "reason": "ValueError: evidence validation failed: f531-train-000-walk-1-0 [True, True, True, True, True, True, True, True, False, True, True, True, True, True, True, True, True]"
+    }
+  ],
+  "all_passed": true,
+  "original_evidence_unchanged": true,
+  "new_native_cycles": 0,
+  "source_manifest_sha256": "37e360038e11e3b1d4f076c1279d91089bdfd2eb3a574a55c04a47df9b21afcd"
+}

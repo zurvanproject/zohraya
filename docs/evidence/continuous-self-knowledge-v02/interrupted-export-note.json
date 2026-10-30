@@ -1,0 +1,9 @@
+{
+  "schema": "nasuraya-missing-reservation/1",
+  "detected_utc": "2026-10-30T14:14:16.457762+00:00",
+  "first_mismatch_index": 2374,
+  "missing_prediction_id": "f531-test-008-observe-3-0",
+  "preserved_prefix_candidate": 2304,
+  "disposition": "Validate the complete train/validation prefix against native records; discard and rerun the whole held-out and novelty partitions in local temporary storage.",
+  "cause_attribution": "Not established; observed append-only evidence loss and a separate SQLite corruption motivate isolating mutable runtime files."
+}

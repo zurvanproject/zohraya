@@ -1,0 +1,14 @@
+{
+  "discarded_partitions": [
+    "test",
+    "novelty"
+  ],
+  "entrypoint_sha256": "4dc88d3a8205755916c4d8a0b07f2c9067e91034abc4a09b0e131b5fab387b06",
+  "full_post_run_audit_passed": true,
+  "kept_prefix_cycles": 2304,
+  "model_and_config_changed": false,
+  "mutable_storage": "local temporary directory",
+  "new_native_cycles": 1584,
+  "schema": "nasuraya-validation-boundary-resumption/1",
+  "source_protocol_sha256": "a75b5df3a1851348930572acc7347d6e9dd98f55af3dc29a12f7297cc319b86e"
+}

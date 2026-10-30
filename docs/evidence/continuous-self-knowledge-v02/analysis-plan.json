@@ -1,0 +1,16 @@
+{
+  "schema": "nasuraya-self-descriptive-plan/1",
+  "declared_utc": "2026-10-30T13:23:29.243941+00:00",
+  "seed": 20261030,
+  "replicates": 10000,
+  "unit": "(fold,case): eight correlated actions retained together",
+  "resampling": "64 cases with replacement inside each of three fixed folds; average three fold means",
+  "estimands": [
+    "v1 minus selected Brier",
+    "pooled minus selected Brier",
+    "without_feedback minus selected Brier"
+  ],
+  "interval": "2.5 and 97.5 percentiles",
+  "purpose": "Descriptive conditional uncertainty, not a new acceptance gate; no tuning on held-out outcomes",
+  "primary_protocol_unchanged": true
+}

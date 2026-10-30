@@ -1,0 +1,29 @@
+{
+  "all_compared_results_equal": true,
+  "all_passed": true,
+  "compared_fields": [
+    "schema",
+    "profile",
+    "native_cycles",
+    "split_counts",
+    "selected_config",
+    "heldout",
+    "by_fold",
+    "novel_duration",
+    "by_step",
+    "relative_brier_reduction_vs_v1",
+    "acceptance_criteria",
+    "all_acceptance_criteria_passed",
+    "validation_passed",
+    "evidence_checks",
+    "protocol_sha256",
+    "limitations"
+  ],
+  "corrupt_prefix_rejected_before_execution": true,
+  "entrypoint_sha256": "4dc88d3a8205755916c4d8a0b07f2c9067e91034abc4a09b0e131b5fab387b06",
+  "new_native_cycles": 36,
+  "protocol_sha256": "3445ddf76c73e7a4afb70642f85b1bc784791dee169263783c9df8dfed7da669",
+  "recovered_missing_heldout_prediction": true,
+  "reused_prefix_cycles": 96,
+  "schema": "nasuraya-evaluation-resume-contract/1"
+}

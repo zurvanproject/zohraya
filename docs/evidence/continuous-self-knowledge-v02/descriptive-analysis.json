@@ -1,0 +1,431 @@
+{
+  "analysis_plan_sha256": "a6853e7a88adba889ba70ad49fea58a581b42c40b6f19abafe314bdea7fa7c48",
+  "bootstrap_scope": "Conditional on fixed fitted histories and these three synthetic folds; not population confidence or independent training replicates.",
+  "calibration_bins": [
+    {
+      "accuracy": 0.5,
+      "bin_index": 4,
+      "mean_confidence": 0.467948250728863,
+      "n": 8
+    },
+    {
+      "accuracy": 0.75,
+      "bin_index": 5,
+      "mean_confidence": 0.5474914965986395,
+      "n": 24
+    },
+    {
+      "accuracy": 0.88,
+      "bin_index": 6,
+      "mean_confidence": 0.645469387755102,
+      "n": 50
+    },
+    {
+      "accuracy": 0.9607843137254902,
+      "bin_index": 7,
+      "mean_confidence": 0.7497932506335867,
+      "n": 51
+    },
+    {
+      "accuracy": 0.9917355371900827,
+      "bin_index": 8,
+      "mean_confidence": 0.8601975559999678,
+      "n": 121
+    },
+    {
+      "accuracy": 1.0,
+      "bin_index": 9,
+      "mean_confidence": 0.9704263911567154,
+      "n": 1282
+    }
+  ],
+  "completed_utc": "2026-10-30T14:45:24.484169+00:00",
+  "conservation": {
+    "max_abs_energy_error_J": 7.84183384894277e-10,
+    "max_abs_water_error_L": 4.0610147623160175e-14
+  },
+  "excluded_partial_runs": true,
+  "heldout_actions": 1536,
+  "heldout_case_blocks": 192,
+  "highest_confidence_errors": [
+    {
+      "actual": "other",
+      "actual_action": "slow_breath",
+      "agreement": 1.0,
+      "before": {
+        "energy": 0.9993159548421804,
+        "fatigue": 0.5201346146278424,
+        "pain": 0.11572373747939863,
+        "sleep_pressure": 0.5877367563968856
+      },
+      "confidence": 0.8704081632653061,
+      "feedback": {
+        "source_ids": {
+          "observe": null,
+          "walk": "f1561-test-032-walk-3-0"
+        },
+        "state": {
+          "observe": null,
+          "walk": true
+        }
+      },
+      "id": "f1561-test-032-walk-3-1",
+      "nearest_distance": 0.1320534018964323,
+      "predicted": "walk",
+      "samples": 4,
+      "source": "native-decision://f1561-test-032-walk-3-1/386c1ea4cd9991d69b515cc90deec1abf59677a2b77f821ead025652bf599d9d"
+    },
+    {
+      "actual": "other",
+      "actual_action": "slow_breath",
+      "agreement": 0.7777777777777778,
+      "before": {
+        "energy": 0.9993454504792117,
+        "fatigue": 0.524317,
+        "pain": 0.11413104958422383,
+        "sleep_pressure": 0.35032098259399874
+      },
+      "confidence": 0.7321428571428571,
+      "feedback": {
+        "source_ids": {
+          "observe": null,
+          "walk": null
+        },
+        "state": {
+          "observe": null,
+          "walk": null
+        }
+      },
+      "id": "f1561-test-021-walk-1-0",
+      "nearest_distance": 0.050907000000000036,
+      "predicted": "protect",
+      "samples": 9,
+      "source": "native-decision://f1561-test-021-walk-1-0/2325e342a9bea4489983c83738aff3511c11ef344f714cb624718d1e1352f62e"
+    },
+    {
+      "actual": "other",
+      "actual_action": "slow_breath",
+      "agreement": 0.7777777777777778,
+      "before": {
+        "energy": 0.9993454504792117,
+        "fatigue": 0.524317,
+        "pain": 0.11413104958422383,
+        "sleep_pressure": 0.35032098259399874
+      },
+      "confidence": 0.7321428571428571,
+      "feedback": {
+        "source_ids": {
+          "observe": null,
+          "walk": null
+        },
+        "state": {
+          "observe": null,
+          "walk": null
+        }
+      },
+      "id": "f1561-test-021-walk-3-0",
+      "nearest_distance": 0.050907000000000036,
+      "predicted": "protect",
+      "samples": 9,
+      "source": "native-decision://f1561-test-021-walk-3-0/63fce4f139f1bb7dbb1bfaa086b4dffbce67dacd5150f2a35c5661244b20c222"
+    },
+    {
+      "actual": "walk",
+      "actual_action": "walk",
+      "agreement": 0.75,
+      "before": {
+        "energy": 0.9993454504792117,
+        "fatigue": 0.433898,
+        "pain": 0.1531710024259735,
+        "sleep_pressure": 0.706792
+      },
+      "confidence": 0.6704081632653061,
+      "feedback": {
+        "source_ids": {
+          "observe": null,
+          "walk": null
+        },
+        "state": {
+          "observe": null,
+          "walk": null
+        }
+      },
+      "id": "f531-test-041-walk-1-0",
+      "nearest_distance": 0.06949700000000003,
+      "predicted": "protect",
+      "samples": 4,
+      "source": "native-decision://f531-test-041-walk-1-0/36eeff98345285cf8823c1f0ec0df8ad5d5627d57e9e5e912f494f75a5be6112"
+    },
+    {
+      "actual": "walk",
+      "actual_action": "walk",
+      "agreement": 0.75,
+      "before": {
+        "energy": 0.9993454504792117,
+        "fatigue": 0.433898,
+        "pain": 0.1531710024259735,
+        "sleep_pressure": 0.706792
+      },
+      "confidence": 0.6704081632653061,
+      "feedback": {
+        "source_ids": {
+          "observe": null,
+          "walk": null
+        },
+        "state": {
+          "observe": null,
+          "walk": null
+        }
+      },
+      "id": "f531-test-041-walk-3-0",
+      "nearest_distance": 0.06949700000000003,
+      "predicted": "protect",
+      "samples": 4,
+      "source": "native-decision://f531-test-041-walk-3-0/1fcde3190d1c89ae594ad84bbd8744dff85fe85d389cf3895dd15c663a52326d"
+    }
+  ],
+  "illustrative_feedback_pair": {
+    "selection": "First lexicographic held-out trajectory with protect then observe and two correct supported forecasts; illustrative, not another benchmark.",
+    "steps": [
+      {
+        "actual": "protect",
+        "before": {
+          "energy": 0.9993454504792117,
+          "fatigue": 0.960851,
+          "pain": 0.11413104958422383,
+          "sleep_pressure": 0.35032098259399874
+        },
+        "feedback": {
+          "observe": null,
+          "walk": null
+        },
+        "id": "f1561-test-009-walk-1-0",
+        "previous": {
+          "distribution": {
+            "observe": 0.4722222222222222,
+            "other": 0.027777777777777776,
+            "protect": 0.4722222222222222,
+            "walk": 0.027777777777777776
+          },
+          "full_forecast_sha256": "dabc987397fdac2fdbb1ad3c4d004dfe1fc0ba2e3c72bcee93d99caf741d0209",
+          "model_digest": "05e6e39306aa8c316860a80a55472ec83b241e0e88ff915cb96a3d3e03e60cf3",
+          "original_schema": "nasuraya-action-forecast/1",
+          "pooled_distribution": {
+            "observe": 0.32142857142857145,
+            "other": 0.00510204081632653,
+            "protect": 0.32142857142857145,
+            "walk": 0.3520408163265306
+          },
+          "pooled_samples": 192,
+          "predicted_action": "observe",
+          "samples": 32,
+          "schema": "nasuraya-evaluation-forecast-vector/1",
+          "status": "empirical_estimate"
+        },
+        "selected": {
+          "agreement": 1.0,
+          "distribution": {
+            "observe": 0.03214285714285715,
+            "other": 0.000510204081632653,
+            "protect": 0.9321428571428572,
+            "walk": 0.03520408163265306
+          },
+          "full_forecast_sha256": "6733d25a103fd957b45556084405a7b3c5c3c2087d79ea80d163c0f6a18ad600",
+          "local_source_ids": [
+            "f1561-validation-003-walk-1-0",
+            "f1561-train-009-walk-1-0",
+            "f1561-train-065-walk-1-0",
+            "f1561-train-070-walk-1-0",
+            "f1561-train-024-walk-1-0",
+            "f1561-train-000-walk-1-0",
+            "f1561-validation-009-walk-1-0",
+            "f1561-train-058-walk-1-0",
+            "f1561-train-044-walk-1-0"
+          ],
+          "model_digest": "96b435a51209a3e9abe1cb917c8dca2adebdc4a0cca537cdd6658c9a68e2b3fd",
+          "nearest_distance": 0.040537000000000045,
+          "original_schema": "nasuraya-continuous-action-forecast/1",
+          "pooled_distribution": {
+            "observe": 0.32142857142857145,
+            "other": 0.00510204081632653,
+            "protect": 0.32142857142857145,
+            "walk": 0.3520408163265306
+          },
+          "pooled_samples": 192,
+          "predicted_action": "protect",
+          "samples": 9,
+          "schema": "nasuraya-evaluation-forecast-vector/1",
+          "status": "supported_local_estimate"
+        },
+        "source": "native-decision://f1561-test-009-walk-1-0/361524a5d76b01ece9af38cc47e7c425fcc33425751310858c7c7f5bdbed1a0c"
+      },
+      {
+        "actual": "observe",
+        "before": {
+          "energy": 0.9993358655563357,
+          "fatigue": 0.961085165647015,
+          "pain": 0.11484618361297251,
+          "sleep_pressure": 0.3503255680596273
+        },
+        "feedback": {
+          "observe": null,
+          "walk": false
+        },
+        "id": "f1561-test-009-walk-1-1",
+        "previous": {
+          "distribution": {
+            "observe": 0.4722222222222222,
+            "other": 0.027777777777777776,
+            "protect": 0.4722222222222222,
+            "walk": 0.027777777777777776
+          },
+          "full_forecast_sha256": "dabc987397fdac2fdbb1ad3c4d004dfe1fc0ba2e3c72bcee93d99caf741d0209",
+          "model_digest": "05e6e39306aa8c316860a80a55472ec83b241e0e88ff915cb96a3d3e03e60cf3",
+          "original_schema": "nasuraya-action-forecast/1",
+          "pooled_distribution": {
+            "observe": 0.32142857142857145,
+            "other": 0.00510204081632653,
+            "protect": 0.32142857142857145,
+            "walk": 0.3520408163265306
+          },
+          "pooled_samples": 192,
+          "predicted_action": "observe",
+          "samples": 32,
+          "schema": "nasuraya-evaluation-forecast-vector/1",
+          "status": "empirical_estimate"
+        },
+        "selected": {
+          "agreement": 1.0,
+          "distribution": {
+            "observe": 0.9321428571428572,
+            "other": 0.000510204081632653,
+            "protect": 0.03214285714285715,
+            "walk": 0.03520408163265306
+          },
+          "full_forecast_sha256": "99822c25375bf977b49a18446397eb9c77561f929e59af0c7a385ed7fcec377f",
+          "local_source_ids": [
+            "f1561-validation-003-walk-1-1",
+            "f1561-train-009-walk-1-1",
+            "f1561-train-065-walk-1-1",
+            "f1561-train-070-walk-1-1",
+            "f1561-train-024-walk-1-1",
+            "f1561-train-000-walk-1-1",
+            "f1561-validation-009-walk-1-1",
+            "f1561-train-058-walk-1-1",
+            "f1561-train-044-walk-1-1"
+          ],
+          "model_digest": "7f6c0d329831c11afa2eb444a896f523a0e0eda25e85678e1c20214f6b5f4ab2",
+          "nearest_distance": 0.04054579179023632,
+          "original_schema": "nasuraya-continuous-action-forecast/1",
+          "pooled_distribution": {
+            "observe": 0.32142857142857145,
+            "other": 0.00510204081632653,
+            "protect": 0.32142857142857145,
+            "walk": 0.3520408163265306
+          },
+          "pooled_samples": 192,
+          "predicted_action": "observe",
+          "samples": 9,
+          "schema": "nasuraya-evaluation-forecast-vector/1",
+          "status": "supported_local_estimate"
+        },
+        "source": "native-decision://f1561-test-009-walk-1-1/939b790b3274e28b83b40d8d9a6cb800845d466b54ad8b8531676f6fc0004e40"
+      }
+    ]
+  },
+  "independently_rescored_brier": {
+    "default": 0.1537720022239408,
+    "pooled": 0.33558201660766357,
+    "selected": 0.030780040775734152,
+    "shuffled_body": 0.15728153835886485,
+    "v1": 0.20001130044631668,
+    "without_feedback": 0.18283459090947987
+  },
+  "observed_action_counts_by_split": {
+    "novelty": {
+      "observe": 24,
+      "protect": 22,
+      "slow_breath": 1,
+      "walk": 1
+    },
+    "test": {
+      "observe": 992,
+      "protect": 222,
+      "slow_breath": 3,
+      "walk": 319
+    },
+    "train": {
+      "observe": 1154,
+      "protect": 288,
+      "slow_breath": 2,
+      "walk": 284
+    },
+    "validation": {
+      "observe": 382,
+      "protect": 94,
+      "walk": 100
+    }
+  },
+  "observed_body_ranges": {
+    "energy": {
+      "max": 0.9993454504792117,
+      "min": 0.9993159525035885
+    },
+    "fatigue": {
+      "max": 0.972450099657961,
+      "min": 0.01069945672828943
+    },
+    "pain": {
+      "max": 1.0,
+      "min": 0.11413104958422383
+    },
+    "sleep_pressure": {
+      "max": 0.9720357563968857,
+      "min": 0.028221
+    }
+  },
+  "paired_case_bootstrap": {
+    "pooled": {
+      "absolute_brier_improvement": 0.3048019758319294,
+      "percentile_95_interval": [
+        0.2967585506925863,
+        0.3120962541018934
+      ]
+    },
+    "v1": {
+      "absolute_brier_improvement": 0.16923125967058253,
+      "percentile_95_interval": [
+        0.14986179353283646,
+        0.1882102036854881
+      ]
+    },
+    "without_feedback": {
+      "absolute_brier_improvement": 0.15205455013374572,
+      "percentile_95_interval": [
+        0.13445002617485663,
+        0.17032556761283726
+      ]
+    }
+  },
+  "schema": "nasuraya-self-descriptive-analysis/1",
+  "supported_error_count": 5,
+  "supported_prediction_confusion": {
+    "observe": {
+      "abstain": 43,
+      "observe": 949
+    },
+    "other": {
+      "protect": 2,
+      "walk": 1
+    },
+    "protect": {
+      "abstain": 38,
+      "protect": 184
+    },
+    "walk": {
+      "abstain": 42,
+      "protect": 2,
+      "walk": 275
+    }
+  }
+}
