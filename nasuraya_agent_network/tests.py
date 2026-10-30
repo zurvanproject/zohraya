@@ -183,6 +183,17 @@ class NetworkTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'size budget'):
                 self.invoke()
 
+    def test_review_rejects_any_paid_model_receipt(self):
+        receipts = {role: {'passed': True, 'network_syscalls_denied': True,
+            'model_api_calls': 0, 'commands': [{'returncode': 0,
+                'interrupted': None, 'network_syscalls_denied': True}]}
+            for role in worker.ROLES}
+        self.assertTrue(engine.review(receipts)['passed'])
+        receipts['self_model']['model_api_calls'] = 1
+        review = engine.review(receipts)
+        self.assertFalse(review['passed'])
+        self.assertTrue(any('paid model' in item for item in review['reasons']))
+
     def test_incomplete_review_fails(self):
         self.assertFalse(engine.review({})['passed'])
 
