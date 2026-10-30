@@ -167,6 +167,12 @@ class NetworkTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'symlink'):
             self.invoke()
 
+    def test_nonsecret_gitignore_metadata_is_ignored(self):
+        (self.root / 'examples/.gitignore').write_text('*.pyc\n')
+        with patch.object(worker, 'execute', self.fake):
+            report = self.invoke()
+        self.assertEqual(report['status'], 'passed')
+
     def test_hidden_credentials_rejected(self):
         (self.root / 'examples/.env.local').write_text('NOT_A_REAL_SECRET')
         with self.assertRaisesRegex(ValueError, 'credential'):
