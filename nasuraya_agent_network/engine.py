@@ -127,6 +127,8 @@ def review(receipts: dict) -> dict:
         r = receipts.get(role, {})
         if r.get('passed') is not True or r.get('network_syscalls_denied') is not True:
             reasons.append(role + ': failed, interrupted, or missing')
+        if r.get('model_api_calls') != 0:
+            reasons.append(role + ': paid model use is forbidden in offline network')
         if not r.get('commands') or any(c.get('returncode') != 0 or c.get('interrupted')
                 or c.get('network_syscalls_denied') is not True for c in r.get('commands', [])):
             reasons.append(role + ': command evidence incomplete')
@@ -221,6 +223,17 @@ def run(root: Path, workspace: Path, run_id: str, max_workers: int = 2) -> dict:
             atomic_json(output / 'summary.json', report)
             lines = ['# گزارش شبکهٔ ناسورایا', '', 'شناسه: ' + run_id, 'نتیجه: ' + report['status'], '']
             lines += [r + ': ' + ('موفق' if receipts[r]['passed'] else 'نیازمند بررسی') for r in worker.ROLES]
+            self_receipt = receipts.get('self_model', {})
+            self_metrics = self_receipt.get('metrics', {})
+            required = ('context_brier', 'pooled_brier', 'pooled_minus_context_brier')
+            if self_receipt.get('passed') is True and all(name in self_metrics for name in required):
+                lines.extend([
+                    'خودمدل (۲۴ آزمون مستقل زمانی روی دو fixture مصنوعی):',
+                    f"  Brier مشروط به زمینه: {self_metrics['context_brier']:.6f}",
+                    f"  Brier پایهٔ بدون زمینه: {self_metrics['pooled_brier']:.6f}",
+                    f"  اختلاف Brier (پایه منهای مشروط): {self_metrics['pooled_minus_context_brier']:+.6f}",
+                    'عدد مثبت در اختلاف، فقط بهبود پیش‌بینی در این آزمون را نشان می‌دهد، نه تجربهٔ ذهنی.',
+                ])
             lines += ['', 'فراخوانی مدل: صفر. ادغام خودکار: خیر.', 'این نسخه اجراکنندهٔ وظایف مشخص است، نه نسخهٔ مستقل یک مدل زبانی.']
             (output / 'REPORT_FA.md').write_text('\n'.join(lines) + '\n', encoding='utf-8')
             return report
