@@ -1,0 +1,22 @@
+{
+  "width": 720,
+  "height": 1080,
+  "fps": 20,
+  "frames": 440,
+  "video_duration_s": 22.0,
+  "simulation_span_s": 22.00000000000646,
+  "simulation_start_s": 1.9999999999998905,
+  "simulation_end_s": 24.00000000000635,
+  "initialization_included": false,
+  "speed": 1.0,
+  "audio": false,
+  "motion_source": "saved MuJoCo integration results",
+  "pose_sampling": "previous recorded state; zero-order hold; no interpolation",
+  "continuous_command_boundaries": true,
+  "generated_motion": false,
+  "facial_mesh": false,
+  "command_ids": [
+    "first",
+    "second"
+  ]
+}

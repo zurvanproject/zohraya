@@ -1,0 +1,59 @@
+{
+  "scope": "Two user-invoked 78 kg v03 commands, each in a separate process, then old-ID replay. Synthetic mechanical session only.",
+  "checks": {
+    "qpos_exact": true,
+    "qvel_exact": true,
+    "time_exact": true,
+    "integration_exact": true,
+    "opposite_feet": true,
+    "second_initialization_zero": true,
+    "both_settled": true,
+    "replay_no_state_change": true,
+    "replay_flag": true
+  },
+  "accepted_steps": 2,
+  "peak_tilt_deg": 0.5856216479196322,
+  "final_max_generalized_speed": 0.0021379360125635626,
+  "total_pelvis_displacement_xyz_m": [
+    0.04778372119605158,
+    -0.004480832742638059,
+    0.0026867016139401345
+  ],
+  "simulation_interval_s": [
+    1.9999999999998905,
+    24.00000000000635
+  ],
+  "replay_duration_s": 22.00000000000646,
+  "first_initialization_s": 2.0,
+  "second_initialization_s": 0.0,
+  "nonfoot_contacts": [],
+  "joint_limit_excess_rad": 0.0,
+  "max_motor_fraction": 0.999863317213028,
+  "steps": [
+    {
+      "step": 0,
+      "swing_side": 0,
+      "load_gate_wait_s": 0.0,
+      "air_time_s": 2.9999999999997806,
+      "peak_whole_sole_clearance_m": 0.028660078364551683,
+      "max_stance_slide_m": 4.368517515098572e-05,
+      "min_load_on_stance_n": 764.0370549653038,
+      "landing_xy_error_m": 0.009493536118092059,
+      "landing_normal_force_n": 72.97320973603458,
+      "accepted": true
+    },
+    {
+      "step": 0,
+      "swing_side": 1,
+      "load_gate_wait_s": 0.0,
+      "air_time_s": 2.9999999999997806,
+      "peak_whole_sole_clearance_m": 0.02850766301631364,
+      "max_stance_slide_m": 3.628807654881415e-05,
+      "min_load_on_stance_n": 763.9382214531095,
+      "landing_xy_error_m": 0.0048651648550467035,
+      "landing_normal_force_n": 178.25287432149108,
+      "accepted": true
+    }
+  ],
+  "model_file_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d"
+}
