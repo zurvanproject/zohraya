@@ -22,6 +22,7 @@ import time
 
 ROLES = ('body', 'memory', 'genome', 'research', 'self_model')
 MAX_LOG = 2 * 1024 * 1024
+SELF_MODEL_FILE_BYTES = 16 * 1024 * 1024  # SQLite fixture journals; not a stdout allowance
 TASK_SECONDS = 90
 SELF_MODEL_WALL_SECONDS = 130  # 64 frozen synthetic body cycles; still bound by total run budget
 
@@ -76,11 +77,19 @@ def deny_network() -> None:
         raise RuntimeError('network restriction self-test failed')
 
 
+def file_size_limit(command: list[str]) -> int:
+    """Keep every other process at 2 MiB; allow fixture SQLite files up to 16 MiB."""
+    if command[:3] == ['-m', 'examples.nasuraya_body_loop', 'self-knowledge-eval']:
+        return SELF_MODEL_FILE_BYTES
+    return MAX_LOG
+
+
 def child(argv: list[str]) -> None:
     root, *command = argv
     deny_network()
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
-    resource.setrlimit(resource.RLIMIT_FSIZE, (MAX_LOG, MAX_LOG))
+    fsize = file_size_limit(command)
+    resource.setrlimit(resource.RLIMIT_FSIZE, (fsize, fsize))
     resource.setrlimit(resource.RLIMIT_CPU, (TASK_SECONDS, TASK_SECONDS))
     if len(command) < 2 or command[0] != '-m':
         raise ValueError('module command required')
