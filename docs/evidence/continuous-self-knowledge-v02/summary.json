@@ -1,0 +1,752 @@
+{
+  "acceptance_criteria": {
+    "brier_reduction": true,
+    "no_fold_regression": true,
+    "no_novelty_assertions": true,
+    "no_worse_than_pooled": true,
+    "supported_accuracy": true,
+    "supported_protect_recall": true
+  },
+  "all_acceptance_criteria_passed": true,
+  "by_fold": {
+    "1561": {
+      "default": {
+        "actual_protect": 66,
+        "asserted": 204,
+        "brier": 0.16168046168553502,
+        "claimed_protect": 20,
+        "correct_protect": 20,
+        "coverage": 0.3984375,
+        "n": 512,
+        "raw_accuracy": 0.88671875,
+        "statuses": {
+          "conflicting_local_evidence": 2,
+          "insufficient_local_evidence": 153,
+          "outside_observed_support": 153,
+          "supported_local_estimate": 204
+        },
+        "supported_accuracy": 1.0,
+        "supported_protect_precision": 1.0,
+        "supported_protect_recall": 0.30303030303030304,
+        "top_label_ece": 0.11725703302154197
+      },
+      "pooled": {
+        "actual_protect": 66,
+        "asserted": 512,
+        "brier": 0.33350036443148695,
+        "claimed_protect": 0,
+        "correct_protect": 0,
+        "coverage": 1.0,
+        "n": 512,
+        "raw_accuracy": 0.732421875,
+        "statuses": {
+          "empirical_estimate": 512
+        },
+        "supported_accuracy": 0.732421875,
+        "supported_protect_precision": null,
+        "supported_protect_recall": 0.0,
+        "top_label_ece": 0.06405452806122447
+      },
+      "selected": {
+        "actual_protect": 66,
+        "asserted": 468,
+        "brier": 0.03795661798659135,
+        "claimed_protect": 56,
+        "correct_protect": 54,
+        "coverage": 0.9140625,
+        "n": 512,
+        "raw_accuracy": 0.982421875,
+        "statuses": {
+          "conflicting_local_evidence": 20,
+          "insufficient_local_evidence": 24,
+          "supported_local_estimate": 468
+        },
+        "supported_accuracy": 0.9935897435897436,
+        "supported_protect_precision": 0.9642857142857143,
+        "supported_protect_recall": 0.8181818181818182,
+        "top_label_ece": 0.04905076986151607
+      },
+      "shuffled_body": {
+        "actual_protect": 66,
+        "asserted": 409,
+        "brier": 0.1728048897683323,
+        "claimed_protect": 43,
+        "correct_protect": 17,
+        "coverage": 0.798828125,
+        "n": 512,
+        "raw_accuracy": 0.84375,
+        "statuses": {
+          "conflicting_local_evidence": 79,
+          "insufficient_local_evidence": 24,
+          "supported_local_estimate": 409
+        },
+        "supported_accuracy": 0.9339853300733496,
+        "supported_protect_precision": 0.3953488372093023,
+        "supported_protect_recall": 0.25757575757575757,
+        "top_label_ece": 0.06358714942450187
+      },
+      "v1": {
+        "actual_protect": 66,
+        "asserted": 512,
+        "brier": 0.1880898237847551,
+        "claimed_protect": 75,
+        "correct_protect": 39,
+        "coverage": 1.0,
+        "n": 512,
+        "raw_accuracy": 0.861328125,
+        "statuses": {
+          "empirical_estimate": 512
+        },
+        "supported_accuracy": 0.861328125,
+        "supported_protect_precision": 0.52,
+        "supported_protect_recall": 0.5909090909090909,
+        "top_label_ece": 0.09872934505952596
+      },
+      "without_feedback": {
+        "actual_protect": 66,
+        "asserted": 367,
+        "brier": 0.17402489353446066,
+        "claimed_protect": 6,
+        "correct_protect": 4,
+        "coverage": 0.716796875,
+        "n": 512,
+        "raw_accuracy": 0.853515625,
+        "statuses": {
+          "conflicting_local_evidence": 139,
+          "insufficient_local_evidence": 6,
+          "supported_local_estimate": 367
+        },
+        "supported_accuracy": 0.9836512261580381,
+        "supported_protect_precision": 0.6666666666666666,
+        "supported_protect_recall": 0.06060606060606061,
+        "top_label_ece": 0.0377995883063047
+      }
+    },
+    "531": {
+      "default": {
+        "actual_protect": 74,
+        "asserted": 246,
+        "brier": 0.14900781530762794,
+        "claimed_protect": 24,
+        "correct_protect": 22,
+        "coverage": 0.48046875,
+        "n": 512,
+        "raw_accuracy": 0.8984375,
+        "statuses": {
+          "conflicting_local_evidence": 4,
+          "insufficient_local_evidence": 114,
+          "outside_observed_support": 148,
+          "supported_local_estimate": 246
+        },
+        "supported_accuracy": 0.991869918699187,
+        "supported_protect_precision": 0.9166666666666666,
+        "supported_protect_recall": 0.2972972972972973,
+        "top_label_ece": 0.09213724256274478
+      },
+      "pooled": {
+        "actual_protect": 74,
+        "asserted": 512,
+        "brier": 0.3401772698875469,
+        "claimed_protect": 0,
+        "correct_protect": 0,
+        "coverage": 1.0,
+        "n": 512,
+        "raw_accuracy": 0.64453125,
+        "statuses": {
+          "empirical_estimate": 480,
+          "insufficient_evidence": 32
+        },
+        "supported_accuracy": 0.64453125,
+        "supported_protect_precision": null,
+        "supported_protect_recall": 0.0,
+        "top_label_ece": 0.039142219387755084
+      },
+      "selected": {
+        "actual_protect": 74,
+        "asserted": 472,
+        "brier": 0.02731935683670976,
+        "claimed_protect": 70,
+        "correct_protect": 68,
+        "coverage": 0.921875,
+        "n": 512,
+        "raw_accuracy": 0.984375,
+        "statuses": {
+          "conflicting_local_evidence": 14,
+          "insufficient_local_evidence": 26,
+          "supported_local_estimate": 472
+        },
+        "supported_accuracy": 0.9957627118644068,
+        "supported_protect_precision": 0.9714285714285714,
+        "supported_protect_recall": 0.918918918918919,
+        "top_label_ece": 0.05463820921783892
+      },
+      "shuffled_body": {
+        "actual_protect": 74,
+        "asserted": 415,
+        "brier": 0.14752707889266414,
+        "claimed_protect": 51,
+        "correct_protect": 33,
+        "coverage": 0.810546875,
+        "n": 512,
+        "raw_accuracy": 0.884765625,
+        "statuses": {
+          "conflicting_local_evidence": 71,
+          "insufficient_local_evidence": 26,
+          "supported_local_estimate": 415
+        },
+        "supported_accuracy": 0.9566265060240964,
+        "supported_protect_precision": 0.6470588235294118,
+        "supported_protect_recall": 0.44594594594594594,
+        "top_label_ece": 0.03206834561391523
+      },
+      "v1": {
+        "actual_protect": 74,
+        "asserted": 480,
+        "brier": 0.21369825377321422,
+        "claimed_protect": 27,
+        "correct_protect": 14,
+        "coverage": 0.9375,
+        "n": 512,
+        "raw_accuracy": 0.85546875,
+        "statuses": {
+          "empirical_estimate": 480,
+          "insufficient_evidence": 32
+        },
+        "supported_accuracy": 0.8625,
+        "supported_protect_precision": 0.5185185185185185,
+        "supported_protect_recall": 0.1891891891891892,
+        "top_label_ece": 0.1261891382101086
+      },
+      "without_feedback": {
+        "actual_protect": 74,
+        "asserted": 332,
+        "brier": 0.18058927847544498,
+        "claimed_protect": 3,
+        "correct_protect": 1,
+        "coverage": 0.6484375,
+        "n": 512,
+        "raw_accuracy": 0.853515625,
+        "statuses": {
+          "conflicting_local_evidence": 168,
+          "insufficient_local_evidence": 12,
+          "supported_local_estimate": 332
+        },
+        "supported_accuracy": 0.9879518072289156,
+        "supported_protect_precision": 0.3333333333333333,
+        "supported_protect_recall": 0.013513513513513514,
+        "top_label_ece": 0.050897958234633084
+      }
+    },
+    "947": {
+      "default": {
+        "actual_protect": 82,
+        "asserted": 214,
+        "brier": 0.15062772967865942,
+        "claimed_protect": 20,
+        "correct_protect": 20,
+        "coverage": 0.41796875,
+        "n": 512,
+        "raw_accuracy": 0.88671875,
+        "statuses": {
+          "conflicting_local_evidence": 10,
+          "insufficient_local_evidence": 158,
+          "outside_observed_support": 130,
+          "supported_local_estimate": 214
+        },
+        "supported_accuracy": 1.0,
+        "supported_protect_precision": 1.0,
+        "supported_protect_recall": 0.24390243902439024,
+        "top_label_ece": 0.12414613403532407
+      },
+      "pooled": {
+        "actual_protect": 82,
+        "asserted": 512,
+        "brier": 0.3330684155039567,
+        "claimed_protect": 0,
+        "correct_protect": 0,
+        "coverage": 1.0,
+        "n": 512,
+        "raw_accuracy": 0.6796875,
+        "statuses": {
+          "empirical_estimate": 512
+        },
+        "supported_accuracy": 0.6796875,
+        "supported_protect_precision": null,
+        "supported_protect_recall": 0.0,
+        "top_label_ece": 0.01132015306122447
+      },
+      "selected": {
+        "actual_protect": 82,
+        "asserted": 473,
+        "brier": 0.027064147503901355,
+        "claimed_protect": 62,
+        "correct_protect": 62,
+        "coverage": 0.923828125,
+        "n": 512,
+        "raw_accuracy": 0.99609375,
+        "statuses": {
+          "conflicting_local_evidence": 28,
+          "insufficient_local_evidence": 11,
+          "supported_local_estimate": 473
+        },
+        "supported_accuracy": 1.0,
+        "supported_protect_precision": 1.0,
+        "supported_protect_recall": 0.7560975609756098,
+        "top_label_ece": 0.06284238607087174
+      },
+      "shuffled_body": {
+        "actual_protect": 82,
+        "asserted": 412,
+        "brier": 0.15151264641559814,
+        "claimed_protect": 31,
+        "correct_protect": 18,
+        "coverage": 0.8046875,
+        "n": 512,
+        "raw_accuracy": 0.873046875,
+        "statuses": {
+          "conflicting_local_evidence": 89,
+          "insufficient_local_evidence": 11,
+          "supported_local_estimate": 412
+        },
+        "supported_accuracy": 0.9563106796116505,
+        "supported_protect_precision": 0.5806451612903226,
+        "supported_protect_recall": 0.21951219512195122,
+        "top_label_ece": 0.05519554106054626
+      },
+      "v1": {
+        "actual_protect": 82,
+        "asserted": 512,
+        "brier": 0.1982458237809808,
+        "claimed_protect": 39,
+        "correct_protect": 22,
+        "coverage": 1.0,
+        "n": 512,
+        "raw_accuracy": 0.83203125,
+        "statuses": {
+          "empirical_estimate": 512
+        },
+        "supported_accuracy": 0.83203125,
+        "supported_protect_precision": 0.5641025641025641,
+        "supported_protect_recall": 0.2682926829268293,
+        "top_label_ece": 0.06598951544832451
+      },
+      "without_feedback": {
+        "actual_protect": 82,
+        "asserted": 340,
+        "brier": 0.19388960071853387,
+        "claimed_protect": 0,
+        "correct_protect": 0,
+        "coverage": 0.6640625,
+        "n": 512,
+        "raw_accuracy": 0.833984375,
+        "statuses": {
+          "conflicting_local_evidence": 164,
+          "insufficient_local_evidence": 8,
+          "supported_local_estimate": 340
+        },
+        "supported_accuracy": 0.9882352941176471,
+        "supported_protect_precision": null,
+        "supported_protect_recall": 0.0,
+        "top_label_ece": 0.02371422038867625
+      }
+    }
+  },
+  "by_step": {
+    "0": {
+      "default": {
+        "actual_protect": 222,
+        "asserted": 332,
+        "brier": 0.16286241731590714,
+        "claimed_protect": 64,
+        "correct_protect": 62,
+        "coverage": 0.4322916666666667,
+        "n": 768,
+        "raw_accuracy": 0.8645833333333334,
+        "statuses": {
+          "conflicting_local_evidence": 16,
+          "insufficient_local_evidence": 200,
+          "outside_observed_support": 220,
+          "supported_local_estimate": 332
+        },
+        "supported_accuracy": 0.9939759036144579,
+        "supported_protect_precision": 0.96875,
+        "supported_protect_recall": 0.27927927927927926,
+        "top_label_ece": 0.11790416732620175
+      },
+      "pooled": {
+        "actual_protect": 222,
+        "asserted": 768,
+        "brier": 0.3364987895668472,
+        "claimed_protect": 0,
+        "correct_protect": 0,
+        "coverage": 1.0,
+        "n": 768,
+        "raw_accuracy": 0.6380208333333334,
+        "statuses": {
+          "empirical_estimate": 752,
+          "insufficient_evidence": 16
+        },
+        "supported_accuracy": 0.6380208333333334,
+        "supported_protect_precision": null,
+        "supported_protect_recall": 0.0,
+        "top_label_ece": 0.04565263605442175
+      },
+      "selected": {
+        "actual_protect": 222,
+        "asserted": 678,
+        "brier": 0.050962418352387955,
+        "claimed_protect": 188,
+        "correct_protect": 184,
+        "coverage": 0.8828125,
+        "n": 768,
+        "raw_accuracy": 0.9765625,
+        "statuses": {
+          "conflicting_local_evidence": 62,
+          "insufficient_local_evidence": 28,
+          "supported_local_estimate": 678
+        },
+        "supported_accuracy": 0.9941002949852508,
+        "supported_protect_precision": 0.9787234042553191,
+        "supported_protect_recall": 0.8288288288288288,
+        "top_label_ece": 0.060699396325990744
+      },
+      "shuffled_body": {
+        "actual_protect": 222,
+        "asserted": 501,
+        "brier": 0.30396541351864936,
+        "claimed_protect": 125,
+        "correct_protect": 68,
+        "coverage": 0.65234375,
+        "n": 768,
+        "raw_accuracy": 0.7356770833333334,
+        "statuses": {
+          "conflicting_local_evidence": 239,
+          "insufficient_local_evidence": 28,
+          "supported_local_estimate": 501
+        },
+        "supported_accuracy": 0.8762475049900199,
+        "supported_protect_precision": 0.544,
+        "supported_protect_recall": 0.3063063063063063,
+        "top_label_ece": 0.08938046541781397
+      },
+      "v1": {
+        "actual_protect": 222,
+        "asserted": 752,
+        "brier": 0.18887904408936496,
+        "claimed_protect": 75,
+        "correct_protect": 75,
+        "coverage": 0.9791666666666666,
+        "n": 768,
+        "raw_accuracy": 0.8059895833333334,
+        "statuses": {
+          "empirical_estimate": 752,
+          "insufficient_evidence": 16
+        },
+        "supported_accuracy": 0.8125,
+        "supported_protect_precision": 1.0,
+        "supported_protect_recall": 0.33783783783783783,
+        "top_label_ece": 0.18030651738463024
+      },
+      "without_feedback": {
+        "actual_protect": 222,
+        "asserted": 519,
+        "brier": 0.19596084974780462,
+        "claimed_protect": 5,
+        "correct_protect": 5,
+        "coverage": 0.67578125,
+        "n": 768,
+        "raw_accuracy": 0.8151041666666666,
+        "statuses": {
+          "conflicting_local_evidence": 235,
+          "insufficient_local_evidence": 14,
+          "supported_local_estimate": 519
+        },
+        "supported_accuracy": 0.9807321772639692,
+        "supported_protect_precision": 1.0,
+        "supported_protect_recall": 0.02252252252252252,
+        "top_label_ece": 0.03617604392327364
+      }
+    },
+    "1": {
+      "default": {
+        "actual_protect": 0,
+        "asserted": 332,
+        "brier": 0.14468158713197443,
+        "claimed_protect": 0,
+        "correct_protect": 0,
+        "coverage": 0.4322916666666667,
+        "n": 768,
+        "raw_accuracy": 0.9166666666666666,
+        "statuses": {
+          "insufficient_local_evidence": 225,
+          "outside_observed_support": 211,
+          "supported_local_estimate": 332
+        },
+        "supported_accuracy": 1.0,
+        "supported_protect_precision": null,
+        "supported_protect_recall": null,
+        "top_label_ece": 0.11249447735217828
+      },
+      "pooled": {
+        "actual_protect": 0,
+        "asserted": 768,
+        "brier": 0.3346652436484798,
+        "claimed_protect": 0,
+        "correct_protect": 0,
+        "coverage": 1.0,
+        "n": 768,
+        "raw_accuracy": 0.7330729166666666,
+        "statuses": {
+          "empirical_estimate": 752,
+          "insufficient_evidence": 16
+        },
+        "supported_accuracy": 0.7330729166666666,
+        "supported_protect_precision": null,
+        "supported_protect_recall": null,
+        "top_label_ece": 0.0647055697278911
+      },
+      "selected": {
+        "actual_protect": 0,
+        "asserted": 735,
+        "brier": 0.010597663199080357,
+        "claimed_protect": 0,
+        "correct_protect": 0,
+        "coverage": 0.95703125,
+        "n": 768,
+        "raw_accuracy": 0.9986979166666666,
+        "statuses": {
+          "insufficient_local_evidence": 33,
+          "supported_local_estimate": 735
+        },
+        "supported_accuracy": 0.998639455782313,
+        "supported_protect_precision": null,
+        "supported_protect_recall": null,
+        "top_label_ece": 0.04533335779748409
+      },
+      "shuffled_body": {
+        "actual_protect": 0,
+        "asserted": 735,
+        "brier": 0.010597663199080357,
+        "claimed_protect": 0,
+        "correct_protect": 0,
+        "coverage": 0.95703125,
+        "n": 768,
+        "raw_accuracy": 0.9986979166666666,
+        "statuses": {
+          "insufficient_local_evidence": 33,
+          "supported_local_estimate": 735
+        },
+        "supported_accuracy": 0.998639455782313,
+        "supported_protect_precision": null,
+        "supported_protect_recall": null,
+        "top_label_ece": 0.04533335779748409
+      },
+      "v1": {
+        "actual_protect": 0,
+        "asserted": 752,
+        "brier": 0.21114355680326846,
+        "claimed_protect": 66,
+        "correct_protect": 0,
+        "coverage": 0.9791666666666666,
+        "n": 768,
+        "raw_accuracy": 0.8932291666666666,
+        "statuses": {
+          "empirical_estimate": 752,
+          "insufficient_evidence": 16
+        },
+        "supported_accuracy": 0.8909574468085106,
+        "supported_protect_precision": 0.0,
+        "supported_protect_recall": null,
+        "top_label_ece": 0.16509235001646236
+      },
+      "without_feedback": {
+        "actual_protect": 0,
+        "asserted": 520,
+        "brier": 0.16970833207115502,
+        "claimed_protect": 4,
+        "correct_protect": 0,
+        "coverage": 0.6770833333333334,
+        "n": 768,
+        "raw_accuracy": 0.87890625,
+        "statuses": {
+          "conflicting_local_evidence": 236,
+          "insufficient_local_evidence": 12,
+          "supported_local_estimate": 520
+        },
+        "supported_accuracy": 0.9923076923076923,
+        "supported_protect_precision": 0.0,
+        "supported_protect_recall": null,
+        "top_label_ece": 0.05648453950032392
+      }
+    }
+  },
+  "completed_utc": "2026-10-30T14:40:56.850137+00:00",
+  "elapsed_seconds": 1313.1784081789992,
+  "evidence_checks": 66096,
+  "heldout": {
+    "default": {
+      "actual_protect": 222,
+      "asserted": 664,
+      "brier": 0.1537720022239408,
+      "claimed_protect": 64,
+      "correct_protect": 62,
+      "coverage": 0.4322916666666667,
+      "n": 1536,
+      "raw_accuracy": 0.890625,
+      "statuses": {
+        "conflicting_local_evidence": 16,
+        "insufficient_local_evidence": 425,
+        "outside_observed_support": 431,
+        "supported_local_estimate": 664
+      },
+      "supported_accuracy": 0.9969879518072289,
+      "supported_protect_precision": 0.96875,
+      "supported_protect_recall": 0.27927927927927926,
+      "top_label_ece": 0.1074133954684417
+    },
+    "pooled": {
+      "actual_protect": 222,
+      "asserted": 1536,
+      "brier": 0.3355820166076635,
+      "claimed_protect": 0,
+      "correct_protect": 0,
+      "coverage": 1.0,
+      "n": 1536,
+      "raw_accuracy": 0.685546875,
+      "statuses": {
+        "empirical_estimate": 1504,
+        "insufficient_evidence": 32
+      },
+      "supported_accuracy": 0.685546875,
+      "supported_protect_precision": null,
+      "supported_protect_recall": 0.0,
+      "top_label_ece": 0.01717952806122443
+    },
+    "selected": {
+      "actual_protect": 222,
+      "asserted": 1413,
+      "brier": 0.030780040775734152,
+      "claimed_protect": 188,
+      "correct_protect": 184,
+      "coverage": 0.919921875,
+      "n": 1536,
+      "raw_accuracy": 0.9876302083333334,
+      "statuses": {
+        "conflicting_local_evidence": 62,
+        "insufficient_local_evidence": 61,
+        "supported_local_estimate": 1413
+      },
+      "supported_accuracy": 0.9964614295824487,
+      "supported_protect_precision": 0.9787234042553191,
+      "supported_protect_recall": 0.8288288288288288,
+      "top_label_ece": 0.05301637706173735
+    },
+    "shuffled_body": {
+      "actual_protect": 222,
+      "asserted": 1236,
+      "brier": 0.15728153835886485,
+      "claimed_protect": 125,
+      "correct_protect": 68,
+      "coverage": 0.8046875,
+      "n": 1536,
+      "raw_accuracy": 0.8671875,
+      "statuses": {
+        "conflicting_local_evidence": 239,
+        "insufficient_local_evidence": 61,
+        "supported_local_estimate": 1236
+      },
+      "supported_accuracy": 0.9490291262135923,
+      "supported_protect_precision": 0.544,
+      "supported_protect_recall": 0.3063063063063063,
+      "top_label_ece": 0.04207503872084541
+    },
+    "v1": {
+      "actual_protect": 222,
+      "asserted": 1504,
+      "brier": 0.20001130044631668,
+      "claimed_protect": 141,
+      "correct_protect": 75,
+      "coverage": 0.9791666666666666,
+      "n": 1536,
+      "raw_accuracy": 0.849609375,
+      "statuses": {
+        "empirical_estimate": 1504,
+        "insufficient_evidence": 32
+      },
+      "supported_accuracy": 0.8517287234042553,
+      "supported_protect_precision": 0.5319148936170213,
+      "supported_protect_recall": 0.33783783783783783,
+      "top_label_ece": 0.09696933290598637
+    },
+    "without_feedback": {
+      "actual_protect": 222,
+      "asserted": 1039,
+      "brier": 0.18283459090947984,
+      "claimed_protect": 9,
+      "correct_protect": 5,
+      "coverage": 0.6764322916666666,
+      "n": 1536,
+      "raw_accuracy": 0.8470052083333334,
+      "statuses": {
+        "conflicting_local_evidence": 471,
+        "insufficient_local_evidence": 26,
+        "supported_local_estimate": 1039
+      },
+      "supported_accuracy": 0.9865255052935515,
+      "supported_protect_precision": 0.5555555555555556,
+      "supported_protect_recall": 0.02252252252252252,
+      "top_label_ece": 0.026515521185532725
+    }
+  },
+  "initialization_warmup_cycles": 1,
+  "limitations": [
+    "Synthetic inputs were designed with knowledge of controller code.",
+    "Two steps per trajectory and shared synthetic origin are correlated.",
+    "Unseen-duration rejection does not establish general novelty detection.",
+    "Feedback-aware forecasting observes ledger state; it does not read LLM internals.",
+    "The monitor changes forecasts, not the native action policy."
+  ],
+  "model_api_calls": 0,
+  "native_cycles": 3888,
+  "new_native_cycles": 1584,
+  "novel_duration": {
+    "actual_protect": 22,
+    "asserted": 0,
+    "brier": 0.75,
+    "claimed_protect": 0,
+    "correct_protect": 0,
+    "coverage": 0.0,
+    "n": 48,
+    "raw_accuracy": 0.020833333333333332,
+    "statuses": {
+      "no_observed_history": 48
+    },
+    "supported_accuracy": null,
+    "supported_protect_precision": null,
+    "supported_protect_recall": 0.0,
+    "top_label_ece": 0.22916666666666666
+  },
+  "physical_actuator_calls": 0,
+  "profile": "full",
+  "protocol_sha256": "a75b5df3a1851348930572acc7347d6e9dd98f55af3dc29a12f7297cc319b86e",
+  "relative_brier_reduction_vs_v1": 0.8461084913349906,
+  "resumed_from_validation": true,
+  "reused_prefix_cycles": 2304,
+  "schema": "nasuraya-continuous-self-evaluation/1",
+  "selected_config": {
+    "min_agreement": 0.75,
+    "min_samples": 3,
+    "neighbors": 9,
+    "prior_strength": 1.0,
+    "radius": 0.28
+  },
+  "split_counts": {
+    "novelty": 48,
+    "test": 1536,
+    "train": 1728,
+    "validation": 576
+  },
+  "started_utc": "2026-10-30T14:19:03.671766+00:00",
+  "timing_scope": "resumption and audit; verified prefix executed earlier",
+  "validation_passed": true
+}

@@ -13,6 +13,7 @@ from reflection_cycle import canonical, digest, InterruptedExecution
 from .host import BodyLoop, executed_body, validate_duration
 from .affect_audit import audit_affect
 from .self_knowledge import forecast_action, score_action, summarize_action_forecasts
+from . import continuous_self_knowledge as continuous
 
 KEY = 'nasuraya-experience/1'
 METRICS = ('energy', 'fatigue', 'pain', 'sleep_pressure')
@@ -82,7 +83,7 @@ def _policy_plan(state, snapshot, duration_s):
                     scope='next software state given controller preference; not calibrated probability'))
 
 
-def plan(state, snapshot, duration_s):
+def plan(state, snapshot, duration_s, *, native_feedback=None):
     """Freeze predictions and matched-state diagnostics before body execution.
 
     The categorical forecast uses only earlier receipt-grounded episodes. The
@@ -95,6 +96,15 @@ def plan(state, snapshot, duration_s):
         preferred=proposed['preferred'], duration_s=duration_s,
         enabled=state['flags']['prediction'])
     proposed['affect_audit'] = audit_affect(state, snapshot, duration_s, _policy_plan)
+    if 'continuous_forecast_config' in state:
+        if native_feedback is None:
+            raise ValueError('current native feedback observation required')
+        proposed['native_feedback_observation'] = deepcopy(native_feedback)
+        proposed['continuous_action_forecast'] = continuous.forecast_action(
+            continuous.observed_history(state), before=proposed['prediction']['before'],
+            preferred=proposed['preferred'], duration_s=duration_s,
+            feedback=native_feedback['state'],
+            config=state['continuous_forecast_config'], enabled=state['flags']['prediction'])
     return proposed
 
 
@@ -111,13 +121,17 @@ class ExperienceController:
         self._load()
 
     @classmethod
-    def enable(cls, loop, **overrides):
+    def enable(cls, loop, *, continuous_forecast=False, forecast_config=None, **overrides):
         if not isinstance(loop, BodyLoop) or loop.config['mode'] != 'bounded':
             raise ValueError('bounded BodyLoop required')
         if set(overrides)-set(FLAGS) or any(type(v) is not bool for v in overrides.values()):
             raise ValueError('explicit boolean feature flags required')
         flags = {k: overrides.get(k, True) for k in FLAGS}
         state = initial_state(loop.config, flags)
+        if type(continuous_forecast) is not bool or (forecast_config is not None and not continuous_forecast):
+            raise ValueError('explicit continuous forecast opt-in required')
+        if continuous_forecast:
+            state['continuous_forecast_config'] = continuous.validate_config(forecast_config)
         loop.engine.db.execute('INSERT INTO meta VALUES(?,?)',
             (KEY, canonical(dict(value=state, sha256=digest(state)))))
         return cls(loop)
@@ -133,6 +147,8 @@ class ExperienceController:
                 set(state['flags']) != set(FLAGS) or
                 any(type(v) is not bool for v in state['flags'].values())):
             raise ValueError('experience state integrity/contract mismatch')
+        if 'continuous_forecast_config' in state:
+            continuous.validate_config(state['continuous_forecast_config'])
         return state
 
     def _save(self, state):
@@ -141,9 +157,12 @@ class ExperienceController:
 
     def status(self):
         state = self._load()
-        return dict(state=state, native=self.loop.status(), external_model_api_used=False,
+        result = dict(state=state, native=self.loop.status(), external_model_api_used=False,
                     background_process_started=False,
                     self_knowledge=summarize_action_forecasts(state['intents']))
+        if 'continuous_forecast_config' in state:
+            result['continuous_self_knowledge'] = continuous.summarize(state['intents'])
+        return result
 
     def _finish(self, state, request_id, record, *, replayed):
         intent = state['intents'][request_id]
@@ -156,6 +175,7 @@ class ExperienceController:
         p = intent['plan']; prediction = deepcopy(p['prediction'])
         ran = executed_body(record)
         action_forecast_score = None
+        continuous_score = None
         if ran:
             after = metrics(receipt['self_model_after']); before = prediction['before']
             error = sum(abs(after[k]-prediction['expected'][k]) for k in METRICS)/len(METRICS)
@@ -167,6 +187,9 @@ class ExperienceController:
             if 'action_forecast' in p:
                 action_forecast_score = score_action(
                     p['action_forecast'], receipt['actual_action'], prediction['source'])
+            if 'continuous_action_forecast' in p:
+                continuous_score = continuous.score_action(
+                    p['continuous_action_forecast'], receipt['actual_action'], prediction['source'])
             if state['flags']['prediction']:
                 state['error_ema'] = .8*state['error_ema'] + .2*error
                 model = state['predictors'].setdefault(prediction['key'], dict(count=0, mean_delta=dict.fromkeys(METRICS, 0.)))
@@ -198,6 +221,8 @@ class ExperienceController:
                       action_forecast_score=action_forecast_score,
                       affect_after=deepcopy(state['affect']), native_receipt=receipt,
                       replayed=replayed, this_call_native_cycles=0 if replayed else int(ran))
+        if 'continuous_action_forecast' in p:
+            result['continuous_action_score'] = continuous_score
         intent['result'] = result
         self._save(state)
         return deepcopy(result)
@@ -232,7 +257,9 @@ class ExperienceController:
             if self.loop.engine.get(native_id) is not None:
                 raise ValueError('native ID already belongs to another operation')
             snapshot = self.loop.observe()
-            proposed = plan(state, snapshot, duration_s)
+            feedback = (continuous.native_feedback(self.loop, snapshot, duration_s)
+                        if 'continuous_forecast_config' in state else None)
+            proposed = plan(state, snapshot, duration_s, native_feedback=feedback)
             old = dict(native_id=native_id, duration_s=duration_s, snapshot=snapshot, plan=proposed,
                        native_request=self.loop.make_request(native_id, snapshot, duration_s, proposed['preferred']), result=None)
             state['intents'][request_id] = old

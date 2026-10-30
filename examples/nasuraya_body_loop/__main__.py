@@ -30,7 +30,7 @@ def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
     p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status',
         'experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-test', 'experience-demo',
-        'self-knowledge-eval'])
+        'self-knowledge-eval', 'self-knowledge-generalization-eval'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
@@ -47,15 +47,24 @@ def main(argv=None):
     p.add_argument('--model')
     p.add_argument('--max-calls', type=int, default=40)
     p.add_argument('--timeout-seconds', type=float, default=30)
+    p.add_argument('--continuous-forecast', action='store_true',
+                   help='opt in to continuous observational self-forecasts when enabling experience')
+    p.add_argument('--forecast-config', type=Path,
+                   help='validated JSON parameters, only with --continuous-forecast')
+    p.add_argument('--eval-profile', choices=['smoke','full'], default='full')
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval'] and args.session is None:
+    if args.continuous_forecast and args.command != 'experience-enable':
+        p.error('--continuous-forecast applies only to experience-enable')
+    if args.forecast_config is not None and not args.continuous_forecast:
+        p.error('--forecast-config requires --continuous-forecast')
+    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval', 'self-knowledge-generalization-eval'] and args.session is None:
         p.error('--session required')
-    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval') and args.output_dir is None:
+    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval', 'self-knowledge-generalization-eval') and args.output_dir is None:
         p.error('--output-dir required')
     if args.command == 'api' and (args.output_dir is None or not args.model):
         p.error('--output-dir and --model required for explicit live API')
     payload = vars(args)
-    for key in ('session', 'output_dir'):
+    for key in ('session', 'output_dir', 'forecast_config'):
         if payload[key] is not None:
             payload[key] = str(payload[key].resolve())
     manifest = verified_sources()

@@ -1,0 +1,14 @@
+{
+  "schema": "nasuraya-rejected-persistence-attempt/1",
+  "detected_utc": "2026-10-30T14:06:27.362706+00:00",
+  "observed_error": {
+    "status": "rejected",
+    "exception_type": "DatabaseError",
+    "reason": "database disk image is malformed"
+  },
+  "sqlite_quick_check_passed": false,
+  "disposition": "Exclude the entire incomplete demonstration. Repeat unchanged core code with the mutable database in a local temporary directory and export a checked backup after process closure.",
+  "cause_attribution": "Not established; no claim that the forecaster or storage layer alone caused the corruption.",
+  "failed_database_sha256": "d53146b3a35106e1ed7e1658d1a8bb90ba68b0c99c858553a54499afcecbafd2",
+  "successful_events_recorded": 23
+}
