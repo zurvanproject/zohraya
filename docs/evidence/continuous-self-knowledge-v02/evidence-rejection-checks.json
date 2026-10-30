@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-evidence-rejection-checks/1",
-  "completed_utc": "2026-10-30T14:41:35.683422+00:00",
+  "completed_utc": "2026-10-30T14:51:33.262775+00:00",
   "checks": [
     {
       "mutation": "protocol_source",
@@ -30,5 +30,5 @@
   "all_passed": true,
   "original_evidence_unchanged": true,
   "new_native_cycles": 0,
-  "source_manifest_sha256": "37e360038e11e3b1d4f076c1279d91089bdfd2eb3a574a55c04a47df9b21afcd"
+  "source_manifest_sha256": "b9feaba8d33d3ca754caa56fdf5d4f9b9377431a92992408c010da68485b223e"
 }
