@@ -1,0 +1,49 @@
+name: Nasuraya cloud breath audit
+on:
+  push:
+    branches: ['research/nasuraya-cloud-breath-audit']
+    paths:
+      - 'examples/nasuraya_body_loop/rare_breath_audit.py'
+      - 'docs/experiments/rare-breath-cloud-protocol.md'
+      - '.github/workflows/nasuraya-cloud-breath-audit.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  forecast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Forecast held-out actions and collect native receipts
+        run: python3 -m examples.nasuraya_body_loop.rare_breath_audit --output-dir "$RUNNER_TEMP/breath-audit"
+      - name: Show results and checksums
+        working-directory: ${{ runner.temp }}/breath-audit
+        run: |
+          sha256sum protocol.json fit.json forecasts.jsonl receipts.jsonl summary.json
+          {
+            echo '### Targeted slow-breath forecast audit'
+            echo 'Independent single-action sessions in the Tadash simulator.'
+            echo '```json'
+            cat summary.json
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Keep the predictions and receipts
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: nasuraya-breath-audit
+          path: |
+            ${{ runner.temp }}/breath-audit/protocol.json
+            ${{ runner.temp }}/breath-audit/fit.json
+            ${{ runner.temp }}/breath-audit/forecasts.jsonl
+            ${{ runner.temp }}/breath-audit/receipts.jsonl
+            ${{ runner.temp }}/breath-audit/summary.json
+          if-no-files-found: error
+          retention-days: 7
