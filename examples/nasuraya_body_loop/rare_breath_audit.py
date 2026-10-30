@@ -100,11 +100,16 @@ def run(output):
         prepare_defaults()
         origin = synthetic_origin()
         history, results = [], []
+        checkpoints = set()
         for case in cases:
             ident, group = case['id'], case['group']
             body = make_body(origin, case['changes'])
             with start_session(root/f'{ident}.sqlite', ident, body, 1) as loop:
                 snapshot = loop.observe()
+                checkpoint = snapshot['checkpoint_sha256']
+                if checkpoint in checkpoints:
+                    raise ValueError(f'repeated starting checkpoint in {ident}')
+                checkpoints.add(checkpoint)
                 before = metrics(snapshot)
                 feedback = continuous.native_feedback(loop, snapshot, .1)['state']
                 if group != 'fit':
@@ -117,11 +122,13 @@ def run(output):
                     _append(output/'forecasts.jsonl', prediction)
                 receipt = loop.step(decision_id=ident, duration_s=.1, preferred_action='walk')
                 record = loop.engine.get(ident)
-                if (not executed_body(record) or record['request']['evidence'][0]['source_sha256']
-                        != snapshot['checkpoint_sha256'] or receipt['actual_action']
-                        != record['actual_outcome']['selected_action']):
-                    raise ValueError('unverified native receipt '+ident)
-                actual = receipt['actual_action']
+                if not executed_body(record) or receipt['replayed']:
+                    raise ValueError(f'missing fresh execution receipt for {ident}')
+                if record['request']['evidence'][0]['source_sha256'] != checkpoint:
+                    raise ValueError(f'receipt references the wrong starting state for {ident}')
+                actual = record['actual_outcome']['body_receipt']['owner']['selected_action']
+                if actual != receipt['actual_action']:
+                    raise ValueError(f'native action differs from the reported action for {ident}')
                 row = dict(id=ident, group=group, checkpoint=snapshot['checkpoint_sha256'],
                            actual_action=actual, native_record_sha256=digest(record))
                 _append(output/'receipts.jsonl', row)
