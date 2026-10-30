@@ -1,0 +1,28 @@
+{
+  "schema": "tadash-trend-protocol/1",
+  "declared_before_first_evaluation": true,
+  "algorithm": "River PageHinkley, min_instances=20, delta=0.01, threshold=5, alpha=0.9999, both directions",
+  "scales": {"HR": 10, "RR": 3},
+  "cadence_seconds": 1,
+  "signal_trials": {
+    "seeds": [0, 31],
+    "samples": 120,
+    "change_at_sample": 61,
+    "baseline": {"HR": 70, "RR": 15},
+    "noise_sd": {"HR": 0.5, "RR": 0.15},
+    "conditions": ["stable", "up", "down"],
+    "step": {"HR": 10, "RR": 3},
+    "acceptance": "zero stable or pre-step detections; both channels detect every injected step within 20 samples"
+  },
+  "native_trials": {
+    "conditions": ["coupled", "ablated"],
+    "duration_seconds": 60,
+    "initial_observe_seconds": 30,
+    "neuro_intensity": 0.95,
+    "neuro_rhythm": 0.7,
+    "breath_cue": 0.8,
+    "attention": 0.7,
+    "acceptance": "detect a downward RR shift during achieved slow breathing in coupled trajectory; 600 native ticks per trajectory; exact JSON continuation and replay; observer leaves native receipts and checkpoints unchanged"
+  },
+  "limits": "Authored synthetic fixture. Signal cases are development contract tests, not blinded validation. No disease or subjective-experience inference. A natural body trend or intended action may legitimately trigger detection."
+}

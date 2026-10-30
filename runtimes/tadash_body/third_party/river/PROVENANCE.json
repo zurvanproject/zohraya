@@ -1,0 +1,27 @@
+{
+  "schema": "tadash-river-adoption/1",
+  "retrieved_date": "2026-10-30",
+  "repository": "https://github.com/online-ml/river",
+  "upstream_commit": "8d1cfcf1bcb901d8b6c94e4a1454e984eee0642c",
+  "upstream_commit_date": "2026-10-30T15:52:19Z",
+  "latest_release": {
+    "tag": "0.26.1",
+    "published_at": "2026-08-21T15:25:35Z",
+    "url": "https://github.com/online-ml/river/releases/tag/0.26.1"
+  },
+  "license": "BSD-3-Clause",
+  "files": [
+    {
+      "source": "river/drift/page_hinkley.py",
+      "destination": "river_page_hinkley.py",
+      "changes": "Attribution comment and imports only; source snapshot preserved."
+    },
+    {
+      "source": "river/stats/mean.py",
+      "destination": "river_page_hinkley_support.py",
+      "changes": "Only Mean.__init__/update/get retained, plus a local minimal DriftDetector protocol. All other River estimator functions excluded."
+    }
+  ],
+  "full_package_installed": false,
+  "scope": "Opt-in per-second observer; no OpenAI API usage; change detection, not clinical inference or autonomic actuation."
+}
