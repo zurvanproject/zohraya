@@ -1,0 +1,2191 @@
+{
+  "summary": {
+    "trials": 96,
+    "samples": 11520,
+    "stable_false_detections": 0,
+    "pre_change_false_detections": 0,
+    "step_channels": 128,
+    "detected_step_channels": 128,
+    "maximum_detection_delay_samples": 5,
+    "all_directions_correct": true,
+    "accepted": true
+  },
+  "trials": [
+    {
+      "seed": 0,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 0,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 0,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 1,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 1,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 1,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 2,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 2,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 65,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 65,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 4,
+        "RR": 4
+      }
+    },
+    {
+      "seed": 2,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 3,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 3,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 3,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 4,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 4,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 4,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 5,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 5,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 5,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 6,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 6,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 6,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 7,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 7,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 7,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 8,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 8,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 8,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 9,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 9,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 65,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 4,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 9,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 10,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 10,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 10,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 65,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 4
+      }
+    },
+    {
+      "seed": 11,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 11,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 65,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 4
+      }
+    },
+    {
+      "seed": 11,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 12,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 12,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 12,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 13,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 13,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 13,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 14,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 14,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 14,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 15,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 15,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 65,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 4
+      }
+    },
+    {
+      "seed": 15,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 16,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 16,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 16,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 17,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 17,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 17,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 18,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 18,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 65,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 4,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 18,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 19,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 19,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 19,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 20,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 20,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 20,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 65,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 4,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 21,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 21,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 21,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 22,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 22,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 22,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 23,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 23,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 23,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 24,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 24,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 65,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 4,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 24,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 25,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 25,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 25,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 26,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 26,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 26,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 65,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 4,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 27,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 27,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 27,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 28,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 28,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 28,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 29,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 30,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 30,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 30,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 65,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 4,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 31,
+      "condition": "stable",
+      "changes": {
+        "HR": [],
+        "RR": []
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": null,
+        "RR": null
+      }
+    },
+    {
+      "seed": 31,
+      "condition": "up",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "up"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    },
+    {
+      "seed": 31,
+      "condition": "down",
+      "changes": {
+        "HR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ],
+        "RR": [
+          {
+            "sample": 66,
+            "direction": "down"
+          }
+        ]
+      },
+      "pre_change_detections": {
+        "HR": [],
+        "RR": []
+      },
+      "detection_delay_samples": {
+        "HR": 5,
+        "RR": 5
+      }
+    }
+  ]
+}
