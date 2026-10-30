@@ -8,13 +8,25 @@ on:
       - 'docs/experiments/multistep-breath-protocol.md'
       - 'docs/experiments/rare-breath-cloud-protocol.md'
       - '.github/workflows/nasuraya-cloud-breath-audit.yml'
+      - '.github/scripts/time_body_audit.py'
   workflow_dispatch:
+    inputs:
+      compare_runners:
+        description: Also run both audits in sequence to measure parallel speedup
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
 jobs:
   forecast:
+    name: body audits (${{ matrix.lane }})
+    strategy:
+      fail-fast: false
+      matrix:
+        # The serial control runs only for an explicitly requested comparison.
+        lane: ${{ fromJSON((inputs.compare_runners || contains(github.event.head_commit.message, '[compare-runners]')) && '["single","multi","serial"]' || '["single","multi"]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
@@ -25,8 +37,10 @@ jobs:
         with:
           python-version: '3.12'
       - name: Forecast held-out actions and collect native receipts
-        run: python3 -m examples.nasuraya_body_loop.rare_breath_audit --output-dir "$RUNNER_TEMP/breath-audit"
+        if: matrix.lane != 'multi'
+        run: python3 .github/scripts/time_body_audit.py single "$RUNNER_TEMP/breath-audit"
       - name: Show results and checksums
+        if: matrix.lane != 'multi'
         working-directory: ${{ runner.temp }}/breath-audit
         run: |
           sha256sum protocol.json fit.json forecasts.jsonl receipts.jsonl summary.json
@@ -38,9 +52,10 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Keep the predictions and receipts
+        if: matrix.lane != 'multi'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: nasuraya-breath-audit
+          name: nasuraya-breath-audit${{ matrix.lane == 'serial' && '-serial' || '' }}
           path: |
             ${{ runner.temp }}/breath-audit/protocol.json
             ${{ runner.temp }}/breath-audit/fit.json
@@ -50,8 +65,10 @@ jobs:
           if-no-files-found: error
           retention-days: 7
       - name: Forecast successive actions with the existing body and feedback history
-        run: python3 -m examples.nasuraya_body_loop.multistep_breath_audit --output-dir "$RUNNER_TEMP/multistep-audit"
+        if: matrix.lane != 'single'
+        run: python3 .github/scripts/time_body_audit.py multi "$RUNNER_TEMP/multistep-audit"
       - name: Show longitudinal results and checksums
+        if: matrix.lane != 'single'
         working-directory: ${{ runner.temp }}/multistep-audit
         run: |
           sha256sum protocol.json forecasts.jsonl receipts.jsonl summary.json
@@ -62,9 +79,10 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Keep the longitudinal forecasts and receipts
+        if: matrix.lane != 'single'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: nasuraya-multistep-audit
+          name: nasuraya-multistep-audit${{ matrix.lane == 'serial' && '-serial' || '' }}
           path: |
             ${{ runner.temp }}/multistep-audit/protocol.json
             ${{ runner.temp }}/multistep-audit/forecasts.jsonl
