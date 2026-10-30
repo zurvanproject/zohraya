@@ -1,0 +1,52 @@
+{
+  "schema": "tadash-forecast-audit/1",
+  "source_commit": "1bb7c42bf9e3ec5059ef46dbb73d614343d73db4",
+  "dreamer_commit": "e01491fad6434b2245a3b8ca201dd7faedcc458c",
+  "horizon_seconds": 1,
+  "cycles_per_case": 12,
+  "columns": ["case", "native_warmup_action", "native_warmup_seconds", "initial_myo_fatigue", "mask_first", "myo_reset_seed"],
+  "fit": [
+    ["fit01", "rest", 2, 0.04, false, 101],
+    ["fit02", "walk", 3, 0.56, false, 102],
+    ["fit03", "observe", 4, 0.22, true, 103],
+    ["fit04", "walk", 8, 0.08, true, 104],
+    ["fit05", "rest", 6, 0.78, false, 105],
+    ["fit06", "walk", 5, 0.38, false, 106]
+  ],
+  "panel_a": [
+    ["a01", "walk", 2, 0.11, false, 211],
+    ["a02", "rest", 3, 0.66, false, 212],
+    ["a03", "walk", 6, 0.27, true, 213],
+    ["a04", "observe", 8, 0.43, false, 214]
+  ],
+  "panel_b": [
+    ["b01", "rest", 5, 0.15, true, 321],
+    ["b02", "walk", 9, 0.73, false, 322],
+    ["b03", "observe", 2, 0.32, false, 323],
+    ["b04", "walk", 4, 0.49, false, 324]
+  ],
+  "unit_scales": [100, 30, 1, 3],
+  "features": ["HR_bpm", "RR_per_min", "mean_muscle_fatigue", "myo_elbow_rad"],
+  "candidate": "Forecast the increment from the last measurement with a zero-initialized linear head on the upstream RSSM's imagined deterministic state. Scale target increments by their per-channel fit-only RMS floored at 1e-6 in scaled units. Keep the original posterior level reconstruction, KL weights and Adam 0.003.",
+  "candidate_updates": 256,
+  "candidate_seeds": [17, 43, 89],
+  "inference_seed": 2001,
+  "comparators": [
+    "persistence",
+    "frozen PR100 checkpoint",
+    "ridge delta with intercept (centered fit-only), penalty 1; standardized current four channels, previous increment (zero initially), one-hot executed action"
+  ],
+  "ablations_seed_17": [
+    "PR100 prefix-18 vs new fit-72 using the absolute head at 64 and 256 updates",
+    "raw vs RMS-scaled residual at 64 updates on fit-72",
+    "RMS residual at 64 vs 256 updates on fit-72 and 256 on prefix-18"
+  ],
+  "scoring": "All 12 one-second transitions, including first and switching seconds. True observed prefix and already-arbitrated upcoming action only. Score the same rows across methods. Equal weight to each channel after fixed unit scales; report per-channel native-unit MAE and per-case scores. Fit and both test panels consist of disjoint complete simulator runs. No tuning, selection or early stopping on either panel.",
+  "gate": {
+    "maximum_fraction_of_persistence_and_frozen_mae": 0.90,
+    "maximum_fraction_of_ridge_mae": 1.00,
+    "maximum_per_channel_fraction_of_persistence": 1.05,
+    "zero_baseline_absolute_tolerance_native_units": 1e-7,
+    "required": "Every condition on each test panel for every declared training seed, plus matching independent CPU process predictions and fitted parameters for all three candidate seeds. A pass is scoped to this benchmark. A fail stays in shadow. No movement-policy wiring in this experiment."
+  }
+}
