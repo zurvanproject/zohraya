@@ -50,6 +50,7 @@ jobs:
         run: |
           python3 -m examples.nasuraya_body_loop self-knowledge-generalization-eval --eval-profile smoke --output-dir /tmp/nasuraya-continuous-self-eval
           python3 -m examples.nasuraya_body_loop.verify_continuous_eval /tmp/nasuraya-continuous-self-eval
+          python3 -m examples.nasuraya_body_loop.test_eval_resume /tmp/nasuraya-continuous-self-eval --proof /tmp/nasuraya-resume-proof.json
       - name: Verify persistent API body tools without live service
         run: |
           python3 -m venv .ci-env
