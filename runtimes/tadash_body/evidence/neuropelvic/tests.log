@@ -1,0 +1,50 @@
+test_arousal_decreases_through_release_and_recovery (test_neuropelvic.NeuroPelvicTest.test_arousal_decreases_through_release_and_recovery) ... ok
+test_boolean_gates_require_booleans (test_neuropelvic.NeuroPelvicTest.test_boolean_gates_require_booleans) ... ok
+test_finite_out_of_range_inputs_are_bounded (test_neuropelvic.NeuroPelvicTest.test_finite_out_of_range_inputs_are_bounded) ... ok
+test_idle_does_not_invent_peaks (test_neuropelvic.NeuroPelvicTest.test_idle_does_not_invent_peaks) ... ok
+test_input_withdrawal_ends_peak_without_retrigger (test_neuropelvic.NeuroPelvicTest.test_input_withdrawal_ends_peak_without_retrigger) ... ok
+test_interruptions_cut_signal_and_allow_restoration (test_neuropelvic.NeuroPelvicTest.test_interruptions_cut_signal_and_allow_restoration) ... ok
+test_invalid_dt (test_neuropelvic.NeuroPelvicTest.test_invalid_dt) ... ok
+test_invalid_inputs_do_not_mutate_state (test_neuropelvic.NeuroPelvicTest.test_invalid_inputs_do_not_mutate_state) ... ok
+test_invalid_run_requests (test_neuropelvic.NeuroPelvicTest.test_invalid_run_requests) ... ok
+test_music_alone_cannot_produce_peak_after_start (test_neuropelvic.NeuroPelvicTest.test_music_alone_cannot_produce_peak_after_start) ... ok
+test_music_and_high_input_cannot_start_idle_cycle (test_neuropelvic.NeuroPelvicTest.test_music_and_high_input_cannot_start_idle_cycle) ... ok
+test_one_peak_until_explicit_restart (test_neuropelvic.NeuroPelvicTest.test_one_peak_until_explicit_restart) ... ok
+test_peak_is_time_bounded (test_neuropelvic.NeuroPelvicTest.test_peak_is_time_bounded) ... ok
+test_peak_requires_threshold_hold (test_neuropelvic.NeuroPelvicTest.test_peak_requires_threshold_hold) ... ok
+test_phase (test_neuropelvic.NeuroPelvicTest.test_phase) ... ok
+test_range (test_neuropelvic.NeuroPelvicTest.test_range) ... ok
+test_recovery (test_neuropelvic.NeuroPelvicTest.test_recovery) ... ok
+test_recovery_signal_stays_off_with_continuing_music (test_neuropelvic.NeuroPelvicTest.test_recovery_signal_stays_off_with_continuing_music) ... ok
+test_reentry_is_blocked_during_active_cycle_and_recovery (test_neuropelvic.NeuroPelvicTest.test_reentry_is_blocked_during_active_cycle_and_recovery) ... ok
+test_run_duration_is_exact_and_zero_does_not_advance (test_neuropelvic.NeuroPelvicTest.test_run_duration_is_exact_and_zero_does_not_advance) ... ok
+test_settling_cues_reduce_residual_at_fixed_time (test_neuropelvic.NeuroPelvicTest.test_settling_cues_reduce_residual_at_fixed_time) ... ok
+test_timestep_variants_preserve_cycle_and_restoration (test_neuropelvic.NeuroPelvicTest.test_timestep_variants_preserve_cycle_and_restoration) ... ok
+test_weak_input_times_out_without_peak (test_neuropelvic.NeuroPelvicTest.test_weak_input_times_out_without_peak) ... ok
+test_attach_preserves_native_stocks_and_checkpoint (test_neuropelvic_body.BodyBridgeChecks.test_attach_preserves_native_stocks_and_checkpoint) ... ok
+test_checksum_and_source_fingerprint_are_enforced (test_neuropelvic_body.BodyBridgeChecks.test_checksum_and_source_fingerprint_are_enforced) ... ok
+test_cold_json_restart_continues_identically (test_neuropelvic_body.BodyBridgeChecks.test_cold_json_restart_continues_identically) ... ok
+test_explicit_native_action_is_not_replaced (test_neuropelvic_body.BodyBridgeChecks.test_explicit_native_action_is_not_replaced) ... ok
+test_explicit_stop_cuts_sidecar_signal (test_neuropelvic_body.BodyBridgeChecks.test_explicit_stop_cuts_sidecar_signal) ... ok
+test_external_body_advance_is_detected (test_neuropelvic_body.BodyBridgeChecks.test_external_body_advance_is_detected) ... ok
+test_invalid_inputs_are_atomic (test_neuropelvic_body.BodyBridgeChecks.test_invalid_inputs_are_atomic) ... ok
+test_missing_control_never_starts_cycle (test_neuropelvic_body.BodyBridgeChecks.test_missing_control_never_starts_cycle) ... ok
+test_model_restore_rejects_out_of_range_or_boolean_state (test_neuropelvic_body.BodyBridgeChecks.test_model_restore_rejects_out_of_range_or_boolean_state) ... ok
+test_native_pain_is_feedback_not_a_user_supplied_sidecar_number (test_neuropelvic_body.BodyBridgeChecks.test_native_pain_is_feedback_not_a_user_supplied_sidecar_number) ... ok
+test_one_owner_advance_and_matching_clocks (test_neuropelvic_body.BodyBridgeChecks.test_one_owner_advance_and_matching_clocks) ... ok
+test_real_body_breathing_changes_when_coupling_enabled (test_neuropelvic_body.BodyBridgeChecks.test_real_body_breathing_changes_when_coupling_enabled) ... ok
+test_same_event_replay_does_not_advance_either_clock (test_neuropelvic_body.BodyBridgeChecks.test_same_event_replay_does_not_advance_either_clock) ... ok
+test_stale_writer_is_rejected (test_neuropelvic_body.BodyBridgeChecks.test_stale_writer_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 18.565s
+
+OK
+
+Post-change actuator-receipt assertion:
+test_real_body_breathing_changes_when_coupling_enabled (test_neuropelvic_body.BodyBridgeChecks.test_real_body_breathing_changes_when_coupling_enabled) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 10.251s
+
+OK
