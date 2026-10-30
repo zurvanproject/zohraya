@@ -1,0 +1,19 @@
+{
+  "schema": "tadash-connected-verification/1",
+  "passing_tests": {
+    "connected integrations": 5,
+    "existing body CLI": 16,
+    "existing interoception and neuropelvic": 55
+  },
+  "repeated_cpu_runs": {
+    "identical_24_rows": true,
+    "identical_checkpoint_bytes": true,
+    "identical_forecast_metrics": true
+  },
+  "standalone_graph": {
+    "independent_reads_validated": 3,
+    "episodes_per_read": 24,
+    "edges_per_read": 21
+  },
+  "fixtures": "All numerical evidence is from synthetic Tadash/MyoSuite experiments."
+}

@@ -1,0 +1,14 @@
+# Separate CPython 3.12 environment for the pinned DreamerV3 source.
+jax[cpu]==0.4.33
+numpy==1.26.4
+optax==0.2.4
+chex==0.1.87
+ninjax==3.5.1
+elements==3.19.1
+portal==3.5.0
+einops==0.8.2
+ruamel.yaml==0.19.1
+jaxtyping==0.3.11
+colored_traceback==0.4.2
+granular==0.20.3
+cloudpickle==3.1.2

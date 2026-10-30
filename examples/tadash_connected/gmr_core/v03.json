@@ -1,0 +1,115 @@
+{
+  "human_root_name": "Hips",
+  "robot_root_name": "pelvis",
+  "human_height_assumption": 1.7,
+  "ground_height": 0,
+  "use_ik_match_table1": true,
+  "use_ik_match_table2": false,
+  "human_scale_table": {
+    "Hips": 1,
+    "Spine": 1,
+    "RightForeArm": 1,
+    "RightHand": 1,
+    "LeftFoot": 1,
+    "RightFoot": 1
+  },
+  "ik_match_table1": {
+    "pelvis": [
+      "Hips",
+      200,
+      45,
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "torso": [
+      "Spine",
+      50,
+      10,
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "forearm_R": [
+      "RightForeArm",
+      50,
+      10,
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "hand_R": [
+      "RightHand",
+      50,
+      10,
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "foot_L": [
+      "LeftFoot",
+      200,
+      45,
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ]
+    ],
+    "foot_R": [
+      "RightFoot",
+      200,
+      45,
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "ik_match_table2": {}
+}
