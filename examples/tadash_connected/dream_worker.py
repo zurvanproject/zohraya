@@ -38,17 +38,14 @@ def trajectories(rows):
             jnp.asarray(list(actions.values())), list(actions))
 
 
-def train(rows, destination, updates=64):
+def forecast_functions(size, delta_scale=None):
+    """None selects the published absolute readout. A scale enables the offline delta head."""
     nn.COMPUTE_DTYPE = jnp.float32
-    xs, actions, cases = trajectories(rows)
-    batch, steps, size = xs.shape
-    if steps < 4:
-        raise ValueError("At least three executed cycles per case are required")
-    holdout = max(1, (steps - 1) // 4)
-    split = steps - holdout
     model = RSSM({"control": elements.Space(np.float32, (len(ACTIONS),))},
                  deter=32, hidden=32, stoch=4, classes=4, blocks=4, free_nats=0., name="body_rssm")
     readout = nn.Linear(size, name="body_readout")
+    if delta_scale is not None:
+        delta_head = nn.Linear(size, outscale=0., name="body_delta")
 
     def reset_flags(x):
         return jnp.zeros(x.shape[:2], dtype=bool).at[:, 0].set(True)
@@ -57,19 +54,49 @@ def train(rows, destination, updates=64):
         deter, stoch = feat["deter"], feat["stoch"]
         return readout(jnp.concatenate([deter, stoch.reshape((*deter.shape[:-1], -1))], -1))
 
+    def imagine_entries(entries, controls, training):
+        n = controls.shape[0] * controls.shape[1]
+        starts = {k: v.reshape((n, *v.shape[2:])) for k, v in entries.items()}
+        _, (imagined, _) = model.imagine(
+            starts, {"control": controls.reshape(n, -1)}, 1, training, single=True)
+        return imagined
+
+    def prediction(imagined, current):
+        if delta_scale is None:
+            return decode(imagined)
+        return current + delta_scale * delta_head(imagined["deter"])
+
     def objective(x, a):
         _, entries, losses, feat, _ = model.loss(
             model.initial(len(x)), x, {"control": a}, reset_flags(x), training=True)
-        n = x.shape[0] * (x.shape[1] - 1)
-        starts = {k: v[:, :-1].reshape((n, *v.shape[2:])) for k, v in entries.items()}
-        _, (imagined, _) = model.imagine(
-            starts, {"control": a[:, 1:].reshape(n, -1)}, 1, training=True, single=True)
-        forecast = jnp.square(decode(imagined) - x[:, 1:].reshape(n, -1)).mean()
+        imagined = imagine_entries({k: v[:, :-1] for k, v in entries.items()}, a[:, 1:], True)
+        target = x[:, 1:].reshape(-1, size)
+        if delta_scale is None:
+            forecast = jnp.square(decode(imagined) - target).mean()
+        else:
+            delta = (target - x[:, :-1].reshape(-1, size)) / delta_scale
+            forecast = jnp.square(delta_head(imagined["deter"]) - delta).mean()
         reconstruct = jnp.square(decode(feat) - x).mean()
         return forecast + .2 * reconstruct + .1 * (losses["dyn"].mean() + losses["rep"].mean())
 
-    x_fit, a_fit = xs[:, :split], actions[:, :split]
-    params = nj.init(objective)({}, x_fit, a_fit, seed=17)
+    def forecast(x, a, next_action):
+        carry, _, _ = model.observe(model.initial(len(x)), x, {"control": a}, reset_flags(x), False)
+        _, (feat, _) = model.imagine(carry, {"control": next_action}, 1, False, single=True)
+        return prediction(feat, x[:, -1])
+
+    def roll_forecasts(current, previous_actions, controls):
+        # Each posterior entry is a forward scan up to and including current[t].
+        # controls[t] is the native action selected before measuring next[t].
+        _, entries, _ = model.observe(model.initial(len(current)), current,
+                                     {"control": previous_actions}, reset_flags(current), False)
+        feat = imagine_entries(entries, controls, False)
+        return prediction(feat, current.reshape(-1, size)).reshape(current.shape)
+
+    return objective, forecast, roll_forecasts
+
+
+def fit_model(objective, x_fit, a_fit, updates, init_seed=17):
+    params = nj.init(objective)({}, x_fit, a_fit, seed=init_seed)
     pure_loss = nj.pure(objective)
     def measure(p, key):
         return pure_loss(p, x_fit, a_fit, seed=key)[1]
@@ -87,12 +114,18 @@ def train(rows, destination, updates=64):
     for idx in range(updates):
         params, opt_state = step(params, opt_state, jax.random.PRNGKey(1000 + idx))
     final = float(diagnostic_loss(params, jax.random.PRNGKey(99)))
+    return params, initial, final
 
-    def forecast(x, a, next_action):
-        carry, _, _ = model.observe(model.initial(len(x)), x, {"control": a}, reset_flags(x), False)
-        _, (feat, _) = model.imagine(carry, {"control": next_action}, 1, False, single=True)
-        return decode(feat)
 
+def train(rows, destination, updates=64):
+    xs, actions, cases = trajectories(rows)
+    batch, steps, size = xs.shape
+    if steps < 4:
+        raise ValueError("At least three executed cycles per case are required")
+    holdout = max(1, (steps - 1) // 4)
+    split = steps - holdout
+    objective, forecast, _ = forecast_functions(size)
+    params, initial, final = fit_model(objective, xs[:, :split], actions[:, :split], updates)
     pure_forecast = jax.jit(nj.pure(forecast))
     np.savez_compressed(destination / "rssm_parameters.npz", **params)
     with np.load(destination / "rssm_parameters.npz", allow_pickle=False) as data:

@@ -51,12 +51,12 @@ class ArmTargets:
 class MuscleArm:
     """Upstream six-muscle elbow fixture coupled to the selected native action."""
 
-    def __init__(self, initial_fatigue, seconds):
+    def __init__(self, initial_fatigue, seconds, *, seed=17):
         feature = (FatigueWrapper, {"fatigue_reset_vec": np.full(6, initial_fatigue)})
         cfg = EnvConfig("myoElbowPose1D6MRandom-v0", features=(feature,),
                         max_episode_steps=100 * seconds + 1)
         self.env = make_env(cfg)
-        self.env.reset(seed=17)
+        self.env.reset(seed=seed)
         self.fatigue = self.env.get_wrapper_attr("muscle_fatigue")
         self.dt = float(self.env.unwrapped.dt)
         self.steps_per_second = round(1. / self.dt)
