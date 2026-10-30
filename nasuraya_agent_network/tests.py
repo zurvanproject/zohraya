@@ -307,6 +307,16 @@ class RealWorkerTests(unittest.TestCase):
         with patch.object(worker, 'commands', return_value=[['-m', 'probe']]), patch.object(worker, 'metrics', return_value={}):
             return worker.execute('body', self.snapshot, self.output, self.stop, time.monotonic() + seconds)
 
+    def test_self_model_fixture_file_cap_does_not_expand_log_or_other_agents(self):
+        command = worker.commands('self_model', Path('/tmp/test-fixture'))[0]
+        self.assertEqual(worker.file_size_limit(command), 16 * 1024 * 1024)
+        self.assertEqual(worker.MAX_LOG, 2 * 1024 * 1024)
+        for other in ('body', 'memory', 'genome', 'research'):
+            self.assertEqual(worker.file_size_limit(
+                worker.commands(other, Path('/tmp/test-fixture'))[0]), worker.MAX_LOG)
+        self.assertEqual(worker.file_size_limit(['-m', 'unknown.module', 'self-knowledge-eval']),
+                         worker.MAX_LOG)
+
     def test_real_network_and_secrets_denied_in_child_and_grandchild(self):
         code = '''import errno,os,socket,subprocess,sys
 assert 'OPENAI_API_KEY' not in os.environ
