@@ -178,3 +178,7 @@ python3 -m examples.nasuraya_body_loop self-knowledge-eval --output-dir /tmp/new
 [روش، منابع، نتایج و حدود ارزیابی](../../docs/nasuraya-self-knowledge-2026-10-29-fa.md)
 را پیش از تفسیر نمره بخوانید. این افزونه پایشِ رفتار نرم‌افزار است؛ آزمون
 تجربهٔ ذهنی یا اجرای رسمی SAD/Looking Inward/AttuneBench نیست.
+
+## اجرای pymdp و MyoSuite
+
+فرمان `connected-demo` انتخاب کنش و خستگی شش عضلهٔ آرنج را در یک چرخهٔ یک‌ثانیه‌ای به هم متصل می‌کند. راه‌اندازی، فرمان اجرا و نتایج آزمایش در [راهنمای کنترل و خستگی تداش](../tadash_connected/README.md) آمده است.
