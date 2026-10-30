@@ -9,15 +9,22 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'self-knowledge-generalization-eval':
+        from .continuous_self_eval import run_evaluation
+        summary = run_evaluation(Path(args['output_dir']), args.get('eval_profile','full'))
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0 if summary['validation_passed'] else 1
     if command == 'self-knowledge-eval':
         from .self_knowledge_eval import run_evaluation
         summary = run_evaluation(Path(args['output_dir']))
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0 if summary['validation_passed'] else 1
     if command == 'experience-test':
-        from . import test_experience, test_self_knowledge, test_affect_audit, test_self_knowledge_eval
+        from . import (test_experience, test_self_knowledge, test_affect_audit,
+                       test_self_knowledge_eval, test_continuous_self_knowledge)
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
-            for module in (test_experience, test_self_knowledge, test_affect_audit, test_self_knowledge_eval))
+            for module in (test_experience, test_self_knowledge, test_affect_audit,
+                           test_self_knowledge_eval, test_continuous_self_knowledge))
         r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command.startswith('experience-'):
@@ -28,7 +35,10 @@ def main(args):
             return 0
         with BodyLoop(args['session']) as loop:
             if command == 'experience-enable':
-                summary = ExperienceController.enable(loop).status()
+                summary = ExperienceController.enable(loop,
+                    continuous_forecast=args.get('continuous_forecast', False),
+                    forecast_config=(json.loads(Path(args['forecast_config']).read_text())
+                                     if args.get('forecast_config') else None)).status()
             else:
                 controller = ExperienceController(loop)
                 if command == 'experience-step':
