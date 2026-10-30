@@ -31,10 +31,13 @@ def main(argv=None):
     if argv[:1] == ['connected-demo']:
         from examples.tadash_connected.__main__ import main as connected_demo
         return connected_demo(argv[1:])
+    if argv[:1] == ['forecast-audit']:
+        from examples.tadash_connected.forecast_audit.__main__ import main as forecast_audit
+        return forecast_audit(argv[1:])
     p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
     p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status',
         'experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-test', 'experience-demo',
-        'self-knowledge-eval', 'connected-demo'])
+        'self-knowledge-eval', 'connected-demo', 'forecast-audit'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')

@@ -20,14 +20,14 @@ def native_template(runtime):
     return synthetic_body()
 
 
-def run_case(template, name, cycles, initial_fatigue, missing_first=False):
+def run_case(template, name, cycles, initial_fatigue, missing_first=False, *, arm_seed=17):
     from interoceptive_trends import InteroceptiveBody
     from neuropelvic_body import NeuroPelvicBody
     from persistent_embodiment_v1 import instant
 
     body = InteroceptiveBody(NeuroPelvicBody(deepcopy(template)))
     policy, targets = EffortPolicy(), ArmTargets()
-    arm = MuscleArm(initial_fatigue, cycles)
+    arm = MuscleArm(initial_fatigue, cycles, seed=arm_seed)
     rows = []
     try:
         for index in range(cycles):
