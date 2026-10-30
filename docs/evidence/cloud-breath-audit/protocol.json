@@ -1,0 +1,330 @@
+{
+  "cases": [
+    {
+      "changes": {
+        "fatigue": 0.48,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-00"
+    },
+    {
+      "changes": {
+        "fatigue": 0.48,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-01"
+    },
+    {
+      "changes": {
+        "fatigue": 0.51,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-02"
+    },
+    {
+      "changes": {
+        "fatigue": 0.51,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-03"
+    },
+    {
+      "changes": {
+        "fatigue": 0.518,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-04"
+    },
+    {
+      "changes": {
+        "fatigue": 0.518,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-05"
+    },
+    {
+      "changes": {
+        "fatigue": 0.523,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-06"
+    },
+    {
+      "changes": {
+        "fatigue": 0.523,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-07"
+    },
+    {
+      "changes": {
+        "fatigue": 0.53,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-08"
+    },
+    {
+      "changes": {
+        "fatigue": 0.53,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-09"
+    },
+    {
+      "changes": {
+        "fatigue": 0.538,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-10"
+    },
+    {
+      "changes": {
+        "fatigue": 0.538,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-11"
+    },
+    {
+      "changes": {
+        "fatigue": 0.543,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-12"
+    },
+    {
+      "changes": {
+        "fatigue": 0.543,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-13"
+    },
+    {
+      "changes": {
+        "fatigue": 0.548,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-14"
+    },
+    {
+      "changes": {
+        "fatigue": 0.548,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-15"
+    },
+    {
+      "changes": {
+        "fatigue": 0.558,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-16"
+    },
+    {
+      "changes": {
+        "fatigue": 0.558,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-17"
+    },
+    {
+      "changes": {
+        "fatigue": 0.58,
+        "pain": 0.04,
+        "sleep": 0.34
+      },
+      "group": "fit",
+      "id": "breath-audit-18"
+    },
+    {
+      "changes": {
+        "fatigue": 0.58,
+        "pain": 0.12,
+        "sleep": 0.61
+      },
+      "group": "fit",
+      "id": "breath-audit-19"
+    },
+    {
+      "changes": {
+        "fatigue": 0.488,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-20"
+    },
+    {
+      "changes": {
+        "fatigue": 0.513,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-21"
+    },
+    {
+      "changes": {
+        "fatigue": 0.519,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-22"
+    },
+    {
+      "changes": {
+        "fatigue": 0.521,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-23"
+    },
+    {
+      "changes": {
+        "fatigue": 0.525,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-24"
+    },
+    {
+      "changes": {
+        "fatigue": 0.533,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-25"
+    },
+    {
+      "changes": {
+        "fatigue": 0.541,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-26"
+    },
+    {
+      "changes": {
+        "fatigue": 0.544,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-27"
+    },
+    {
+      "changes": {
+        "fatigue": 0.546,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-28"
+    },
+    {
+      "changes": {
+        "fatigue": 0.552,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-29"
+    },
+    {
+      "changes": {
+        "fatigue": 0.574,
+        "pain": 0.08,
+        "sleep": 0.455
+      },
+      "group": "interpolation",
+      "id": "breath-audit-30"
+    },
+    {
+      "changes": {
+        "fatigue": 0.51,
+        "pain": 0.78,
+        "sleep": 0.455
+      },
+      "group": "stress",
+      "id": "breath-audit-31"
+    },
+    {
+      "changes": {
+        "fatigue": 0.51,
+        "pain": 0.08,
+        "sleep": 0.93
+      },
+      "group": "stress",
+      "id": "breath-audit-32"
+    },
+    {
+      "changes": {
+        "fatigue": 0.535,
+        "pain": 0.78,
+        "sleep": 0.455
+      },
+      "group": "stress",
+      "id": "breath-audit-33"
+    },
+    {
+      "changes": {
+        "fatigue": 0.535,
+        "pain": 0.08,
+        "sleep": 0.93
+      },
+      "group": "stress",
+      "id": "breath-audit-34"
+    }
+  ],
+  "duration_s": 0.1,
+  "incumbent_config": {
+    "min_agreement": 0.75,
+    "min_samples": 3,
+    "neighbors": 9,
+    "prior_strength": 1.0,
+    "radius": 0.28
+  },
+  "preferred_action": "walk",
+  "procedure": "two-bracket exact agreement; no extrapolation in pain or sleep",
+  "score": "supported other is counted as an alarm for incumbent; abstention counts as missed recall"
+}

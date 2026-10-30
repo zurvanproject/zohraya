@@ -1,0 +1,81 @@
+{
+  "fit_count": 20,
+  "held_out_count": 15,
+  "interpolation": {
+    "actual": {
+      "protect": 3,
+      "slow_breath": 5,
+      "walk": 3
+    },
+    "exact": {
+      "abstained": 4,
+      "asserted": 7,
+      "class_recalls": {
+        "protect": 0.6666666666666666,
+        "slow_breath": 0.6,
+        "walk": 0.6666666666666666
+      },
+      "correct_assertions": 7,
+      "macro_recall": 0.6444444444444444,
+      "n": 11,
+      "rare_actual": 5,
+      "rare_caught": 3,
+      "rare_false_alarms": 0,
+      "rare_recall": 0.6
+    },
+    "incumbent_bucket": {
+      "abstained": 11,
+      "asserted": 0,
+      "class_recalls": {
+        "protect": 0.0,
+        "slow_breath": 0.0,
+        "walk": 0.0
+      },
+      "correct_assertions": 0,
+      "macro_recall": 0.0,
+      "n": 11,
+      "rare_actual": 5,
+      "rare_caught": 0,
+      "rare_false_alarms": 0,
+      "rare_recall": 0.0
+    }
+  },
+  "model_api_calls": 0,
+  "native_cycles": 35,
+  "protocol_sha256": "f200a432c84c0e7650e50c92dbc49b4a9a7c87728101a51f4e73972e602ce7a1",
+  "schema": "nasuraya-rare-breath-audit/1",
+  "scope": "one warm synthetic origin, single-step walks; enriched, non-IID panels",
+  "stress": {
+    "actual": {
+      "protect": 4
+    },
+    "exact": {
+      "abstained": 4,
+      "asserted": 0,
+      "class_recalls": {
+        "protect": 0.0
+      },
+      "correct_assertions": 0,
+      "macro_recall": 0.0,
+      "n": 4,
+      "rare_actual": 0,
+      "rare_caught": 0,
+      "rare_false_alarms": 0,
+      "rare_recall": null
+    },
+    "incumbent_bucket": {
+      "abstained": 4,
+      "asserted": 0,
+      "class_recalls": {
+        "protect": 0.0
+      },
+      "correct_assertions": 0,
+      "macro_recall": 0.0,
+      "n": 4,
+      "rare_actual": 0,
+      "rare_caught": 0,
+      "rare_false_alarms": 0,
+      "rare_recall": null
+    }
+  }
+}

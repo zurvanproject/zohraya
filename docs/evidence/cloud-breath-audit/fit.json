@@ -1,0 +1,362 @@
+[
+  {
+    "actual_action": "walk",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.48,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-00",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-00/02b1648b33d88a91794e62564eb18ca74eff953c192ce3901fcfb2a959d19f04"
+  },
+  {
+    "actual_action": "walk",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.48,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-01",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-01/59978180f13370464d9f1e8a15dba76c8d909ecc33a8499bd90145135f161531"
+  },
+  {
+    "actual_action": "walk",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.51,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-02",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-02/23bf1a06b8c189aa0dae85f713e60136f0cec84f1f25866a07558a79f964d2ba"
+  },
+  {
+    "actual_action": "walk",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.51,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-03",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-03/a375bb84cae3e1625393ffae9d3d772bdd66927e6d8d4fec3f4c18c4c5010779"
+  },
+  {
+    "actual_action": "walk",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.518,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-04",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-04/4bbb7feee6313a465b2f2c3fb966dd984d3d60714ebfee01fe404e4ec288f229"
+  },
+  {
+    "actual_action": "walk",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.518,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-05",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-05/8dead4219ea0d273258f8798da9ce33f6f9bf47e0a6a6bb0a1ccd6e544ada7d9"
+  },
+  {
+    "actual_action": "slow_breath",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.523,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-06",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-06/3e1c47c5bf36df8affd39587e03c6aa02e09d76f1ea25d84501c57fb1901dc0e"
+  },
+  {
+    "actual_action": "slow_breath",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.523,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-07",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-07/38157b09537732fa368ecfb2ac0bd1ce26bac0b9721074bab032eeb60b4c2f40"
+  },
+  {
+    "actual_action": "slow_breath",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.53,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-08",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-08/af352da782a48a0e00214e48a76b09c1c927c8743b2e089c08c67f19ae5c9b3e"
+  },
+  {
+    "actual_action": "slow_breath",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.53,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-09",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-09/eec8e617af5a9c3bffb718c42ed1cfc927e5b10ccde191a4edac34b1e35378e9"
+  },
+  {
+    "actual_action": "slow_breath",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.538,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-10",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-10/3653c1cb9380ade97bb119f2ca53eb33c2d4b8338e3c503a06e6dd3b18225082"
+  },
+  {
+    "actual_action": "slow_breath",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.538,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-11",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-11/83adf3563aaa0d232986e1efa1012e8e4ce7ca77b385e6d6445951779dee398f"
+  },
+  {
+    "actual_action": "slow_breath",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.543,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-12",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-12/2dca748fa4306ca4de82269624ed330a73ddb5e328edd57e9cbab81f3f5a0ff9"
+  },
+  {
+    "actual_action": "slow_breath",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.543,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-13",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-13/e5141a19e13a6337ad77943d2893a88f4bbaa4a2c2a9f0db0a37344d7385acad"
+  },
+  {
+    "actual_action": "protect",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.548,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-14",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-14/d8cf030828f5b92e381dca320e366f0a2508cabea181b96e7da1e764a78dab2e"
+  },
+  {
+    "actual_action": "protect",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.548,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-15",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-15/c88aa3050e6dc778839a8ee9a4fbd0d0ad56c9d32e7038ef74763a0a6ac8ddae"
+  },
+  {
+    "actual_action": "protect",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.558,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-16",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-16/ea44fec84b4edc2c909cca2fe6691b54bd117e426339e3c7c06741d820fb6ac2"
+  },
+  {
+    "actual_action": "protect",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.558,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-17",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-17/6b2f840879606de0cdc48ce5426ddadc35d6f6f7194e4a46518d0b3cdbbdc03d"
+  },
+  {
+    "actual_action": "protect",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.58,
+      "pain": 0.11413104958422383,
+      "sleep_pressure": 0.34
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-18",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-18/c48d40d18084145d87e3915e450320cdf4b29a51006e5182213de6ecfa5939fc"
+  },
+  {
+    "actual_action": "protect",
+    "before": {
+      "energy": 0.9993454504792117,
+      "fatigue": 0.58,
+      "pain": 0.12338735208783765,
+      "sleep_pressure": 0.61
+    },
+    "duration_s": 0.1,
+    "feedback": {
+      "observe": null,
+      "walk": null
+    },
+    "id": "breath-audit-19",
+    "kind": "observed_software_outcome",
+    "preferred": "walk",
+    "source": "native-decision://breath-audit-19/8d7a402a5410ac86818b19636edf34043d52aa209fb9bfd3a632446b2ed1a5e7"
+  }
+]
