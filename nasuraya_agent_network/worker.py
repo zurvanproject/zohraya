@@ -20,9 +20,11 @@ import subprocess
 import sys
 import time
 
-ROLES = ('body', 'memory', 'genome', 'research')
+ROLES = ('body', 'memory', 'genome', 'research', 'self_model')
 MAX_LOG = 2 * 1024 * 1024
+SELF_MODEL_FILE_BYTES = 16 * 1024 * 1024  # SQLite fixture journals; not a stdout allowance
 TASK_SECONDS = 90
+SELF_MODEL_WALL_SECONDS = 130  # 64 frozen synthetic body cycles; still bound by total run budget
 
 
 def digest(path: Path) -> str:
@@ -40,6 +42,7 @@ def commands(role: str, output: Path) -> list[list[str]]:
                    genome + ['--demo-output', str(output / 'history.json')],
                    genome + ['--verify', str(output / 'history.json')]],
         'research': [['-m', 'examples.nasuraya_agent_loop.evaluate_grid', '--output', str(output / 'grid.json')]],
+        'self_model': [body + ['self-knowledge-eval', '--output-dir', str(output / 'self_model')]],
     }
     return plans[role]
 
@@ -74,11 +77,19 @@ def deny_network() -> None:
         raise RuntimeError('network restriction self-test failed')
 
 
+def file_size_limit(command: list[str]) -> int:
+    """Keep every other process at 2 MiB; allow fixture SQLite files up to 16 MiB."""
+    if command[:3] == ['-m', 'examples.nasuraya_body_loop', 'self-knowledge-eval']:
+        return SELF_MODEL_FILE_BYTES
+    return MAX_LOG
+
+
 def child(argv: list[str]) -> None:
     root, *command = argv
     deny_network()
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
-    resource.setrlimit(resource.RLIMIT_FSIZE, (MAX_LOG, MAX_LOG))
+    fsize = file_size_limit(command)
+    resource.setrlimit(resource.RLIMIT_FSIZE, (fsize, fsize))
     resource.setrlimit(resource.RLIMIT_CPU, (TASK_SECONDS, TASK_SECONDS))
     if len(command) < 2 or command[0] != '-m':
         raise ValueError('module command required')
@@ -121,6 +132,56 @@ def metrics(role: str, output: Path) -> dict:
         if data['cases'] != 484 or data['completed'] != 484 or data['violations'] != 0:
             raise ValueError('research grid mismatch')
         return {'cases': 484, 'completed': 484, 'violations': 0}
+    if role == 'self_model':
+        data = json.loads((output / 'self_model/summary.json').read_text())
+        required_checks = {
+            'all_native_cycles_completed', 'no_failed_or_unresolved',
+            'budgets_exhausted', 'expected_split', 'complete_unique_trials',
+            'forecasts_preserved', 'expected_training', 'training_is_warmup_only',
+            'frozen_training', 'protocol_preserved', 'fixed_trial_order',
+            'scores_match_frozen_forecasts', 'forecasts_match_prior_evidence',
+            'prior_evidence_stamps_match',
+        }
+        checks = data.get('validation_checks')
+        if (data.get('schema') != 'nasuraya-self-knowledge-evaluation/1'
+                or data.get('validation_passed') is not True
+                or not isinstance(checks, dict)
+                or not required_checks.issubset(checks)
+                or any(checks[name] is not True for name in required_checks)):
+            raise ValueError('self-model frozen validation failed')
+        warmup, holdout = data['warmup'], data['holdout']
+        if (data['actual_native_cycles'] != 64
+                or data['expected_native_cycles'] != 64
+                or data['training_receipts'] != 40
+                or warmup['attempted'] != 40 or warmup['scored'] != 40
+                or holdout['attempted'] != 24 or holdout['scored'] != 24
+                or holdout['failed_or_unresolved'] != 0
+                or holdout['supported'] != 24
+                or data['all_forecasts_reserved_before_execution'] is not True
+                or data['holdout_outcomes_used_for_fitting'] is not False
+                or data['model_api_calls'] != 0
+                or data['physical_actuator_calls'] != 0):
+            raise ValueError('self-model sample or isolation contract failed')
+        measures = ('mean_brier', 'mean_pooled_brier',
+                    'mean_shuffled_context_brier', 'mean_zero_history_brier')
+        scores = {name: holdout[name] for name in measures}
+        if any(type(value) not in (int, float) or not math.isfinite(value) or not 0 <= value <= 2
+               for value in scores.values()):
+            raise ValueError('self-model Brier metrics invalid')
+        delta = scores['mean_pooled_brier'] - scores['mean_brier']
+        recorded = data['heldout_brier_improvement_absolute']
+        if (type(recorded) not in (float, int) or not math.isfinite(recorded)
+                or not math.isclose(delta, recorded, rel_tol=0., abs_tol=1e-10)
+                or data['context_helped_on_this_constructed_holdout'] is not (delta > 0)):
+            raise ValueError('self-model control comparison inconsistent')
+        return {'native_cycles': 64, 'training_receipts': 40, 'heldout_trials': 24,
+                'context_brier': scores['mean_brier'],
+                'pooled_brier': scores['mean_pooled_brier'],
+                'shuffled_context_brier': scores['mean_shuffled_context_brier'],
+                'zero_history_brier': scores['mean_zero_history_brier'],
+                'pooled_minus_context_brier': delta,
+                'context_helped_on_constructed_holdout': delta > 0,
+                'scope': 'two synthetic fixtures; forecasting only, not consciousness'}
     history = output / 'history.json'
     json.loads(history.read_text())
     return {'history_verified_by_cli': True, 'history_sha256': digest(history)}
@@ -142,7 +203,8 @@ def execute(role: str, snapshot: Path, output: Path, stop: Path, deadline: float
     env = {'PATH': os.defpath, 'HOME': str(home), 'TMPDIR': str(temp),
            'PYTHONPATH': str(source), 'PYTHONDONTWRITEBYTECODE': '1', 'PYTHONNOUSERSITE': '1',
            'LANG': 'C.UTF-8', 'LC_ALL': 'C.UTF-8'}
-    deadline = min(deadline, started + TASK_SECONDS)
+    wall_limit = SELF_MODEL_WALL_SECONDS if role == 'self_model' else TASK_SECONDS
+    deadline = min(deadline, started + wall_limit)
     try:
         for index, command in enumerate(commands(role, output)):
             if stop.exists() or time.monotonic() >= deadline:

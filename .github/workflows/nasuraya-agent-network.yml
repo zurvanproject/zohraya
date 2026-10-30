@@ -27,7 +27,7 @@ jobs:
           python-version: '3.12'
       - name: Test durable claims, crash recovery, concurrency, and network denial
         run: python3 -m unittest nasuraya_agent_network.tests -v 2>&1 | tee "$RUNNER_TEMP/network-tests.log"
-      - name: Run four real repository specialists with two concurrent slots
+      - name: Run five repository specialists with two concurrent slots and frozen self-model holdout
         run: |
           python3 -m nasuraya_agent_network run \
             --workspace "$RUNNER_TEMP/nasuraya-network" \
