@@ -1,0 +1,53 @@
+{
+  "schema": "tadash-forecast-verification/1",
+  "base_commit": "1bb7c42bf9e3ec5059ef46dbb73d614343d73db4",
+  "preregistered_commit": "ea46ffcb0a3288f4a1ffe497dde6eec4dec592da",
+  "scoring_code_commit": "8f98ce2c654bfab2d2f1852fca575985e885de04",
+  "original_default_cli_before_and_after": {
+    "identical_rows": 24,
+    "identical_summary_sha256": "6fe2af4b7606b6df3742af552fb8f06ba7354c090ea6e9e08b4d573494236fec",
+    "identical_parameters_sha256": "1b120c95d946688e77b7918197136223d95f7a2c36000940490443416884716f"
+  },
+  "independent_cpu_process_replications": {
+    "cold_recovered_files_and_receipt_identical": 4,
+    "all_fit_files_identical": 11,
+    "all_score_files_identical": 3,
+    "independent_rescore_from_archived_weights_identical": 3
+  },
+  "candidate_initialization_seeds": [
+    17,
+    43,
+    89
+  ],
+  "collection_per_run": {
+    "fit_transitions": 72,
+    "independent_test_transitions": 96,
+    "native_ticks": 1680,
+    "myo_control_steps": 8400,
+    "cold_read_episodes": 168,
+    "cold_read_temporal_edges": 154
+  },
+  "independent_recalculation_from_raw_float64_measurements": {
+    "forecasted_test_rows": 96,
+    "models_and_baselines_per_row": 12,
+    "formula": "mean(abs(prediction_native - raw_after_native) / fixed_unit_scale); aligned by case, second and native action",
+    "max_absolute_difference_from_published_scaled_mae": 2.913450156474817e-09,
+    "max_absolute_difference_from_published_native_mae": {
+      "HR_bpm": 7.57468906875669e-07,
+      "RR_per_min": 2.6142564646391975e-07,
+      "mean_muscle_fatigue": 2.596792855399932e-09,
+      "myo_elbow_rad": 1.8841761109666955e-08
+    },
+    "note": "Published scores match the PR100 float32 input representation; raw simulator measurements are float64."
+  },
+  "passing_tests": {
+    "forecast_causality_and_gate": 3,
+    "connected_integrations": 5,
+    "existing_body_cli": 16,
+    "existing_interoceptive_and_neuropelvic": 55
+  },
+  "candidate_passed_all_metrics_per_seed_and_panel": 0,
+  "required_seed_panel_combinations": 6,
+  "policy_gate_pass": false,
+  "movement_policy_uses_forecast": false
+}

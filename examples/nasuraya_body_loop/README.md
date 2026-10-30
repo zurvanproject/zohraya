@@ -182,3 +182,5 @@ python3 -m examples.nasuraya_body_loop self-knowledge-eval --output-dir /tmp/new
 ## اجرای pymdp و MyoSuite
 
 فرمان `connected-demo` انتخاب کنش و خستگی شش عضلهٔ آرنج را در یک چرخهٔ یک‌ثانیه‌ای به هم متصل می‌کند. راه‌اندازی، فرمان اجرا و نتایج آزمایش در [راهنمای کنترل و خستگی تداش](../tadash_connected/README.md) آمده است.
+
+فرمان `forecast-audit` پیش‌بینی یک‌ثانیه‌ای را در مسیرهایی مستقل از آموزش ارزیابی می‌کند. [اجرای آزمایش و نتایج](../tadash_connected/forecast_audit/README.md)

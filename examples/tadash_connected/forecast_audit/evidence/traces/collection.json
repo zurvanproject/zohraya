@@ -1,0 +1,41 @@
+{
+  "fit": {
+    "graphiti": {
+      "episodes": 72,
+      "temporal_edges": 66,
+      "database_reopened": true,
+      "separate_process": true,
+      "standalone_database": true,
+      "group": "tadash_six"
+    },
+    "uncompressed_sha256": "5ca74179ba8e9860912d3a25a934b273a75abae37202edd303142afb34267c62",
+    "native_ticks": 720,
+    "myo_control_steps": 3600
+  },
+  "panel_a": {
+    "graphiti": {
+      "episodes": 48,
+      "temporal_edges": 44,
+      "database_reopened": true,
+      "separate_process": true,
+      "standalone_database": true,
+      "group": "tadash_six"
+    },
+    "uncompressed_sha256": "b0a685d958e3ee8e45959fdbd6c7f78f8b2ec2cedab77d87efaba24053786ab2",
+    "native_ticks": 480,
+    "myo_control_steps": 2400
+  },
+  "panel_b": {
+    "graphiti": {
+      "episodes": 48,
+      "temporal_edges": 44,
+      "database_reopened": true,
+      "separate_process": true,
+      "standalone_database": true,
+      "group": "tadash_six"
+    },
+    "uncompressed_sha256": "3533cb0c791e36681f317eaab0c10b4ee9527cdf9b09f66b9495d543ebcc4299",
+    "native_ticks": 480,
+    "myo_control_steps": 2400
+  }
+}

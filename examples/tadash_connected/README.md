@@ -45,3 +45,7 @@ git -C "$work/dreamerv3" checkout --detach e01491fad6434b2245a3b8ca201dd7faedcc4
 - هستهٔ عددی GMR و مجوز MIT آن عین منبع آمده‌اند. فایل‌های `params.py` و `v03.json` نگاشت مخصوص تداش را تعیین می‌کنند. [کد منبع](https://github.com/YanjieZe/GMR/blob/25f56db79ac411258b377b6d4ccba0c8ff3372ac/general_motion_retargeting/motion_retarget.py)
 - فایل مدل v03 با شناسهٔ محتوایی `b7177c1a43715a8eb27e1f837c7c72bbbcee932e` از نسخهٔ مفصل‌دار خود پروژه برداشته شد. [مدل اصلی](https://github.com/zurvanproject/zohraya/blob/c6bac77802a7fab9178fb00eed28e3c4410b9482/assets/nasuraya_articulated_v03/nasuraya.xml)
 - فرآیند تداش از نسخهٔ تأییدشدهٔ منبع و لایهٔ مشاهدهٔ ضربان و تنفس استفاده می‌کند. [تغییر پیش‌نیاز](https://github.com/zurvanproject/zohraya/pull/99)
+
+## ارزیابی مستقل مسیر پیش‌بینی
+
+فرمان آفلاین `forecast-audit` وزن‌های همین نسخه، پیش‌بینی تغییر یک‌ثانیه‌ای، تکرار آخرین مشاهده و مدل خطی را روی مسیرهای کامل و جداگانه می‌سنجد. [نتیجهٔ چهار متغیر و فرمان بازتولید](forecast_audit/README.md)
