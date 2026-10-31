@@ -17,7 +17,7 @@ jobs:
   bounded-network:
     if: github.repository == 'zurvanproject/zohraya' && github.event.repository.private == false
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -26,9 +26,17 @@ jobs:
         with:
           python-version: '3.12'
       - name: Test durable claims, crash recovery, concurrency, and network denial
-        run: python3 -m unittest nasuraya_agent_network.tests -v 2>&1 | tee "$RUNNER_TEMP/network-tests.log"
+        run: |
+          set -o pipefail
+          python3 -m unittest nasuraya_agent_network.tests -v 2>&1 | tee "$RUNNER_TEMP/network-tests.log"
       - name: Test stage-3 goal selection against crafted durable network receipts
-        run: python3 -m unittest nasuraya_agent_network.test_goal_governor -v 2>&1 | tee "$RUNNER_TEMP/goal-governor-tests.log"
+        run: |
+          set -o pipefail
+          python3 -m unittest nasuraya_agent_network.test_goal_governor -v 2>&1 | tee "$RUNNER_TEMP/goal-governor-tests.log"
+      - name: Verify one-shot stage-3 experiment admission and conservative replanning
+        run: |
+          set -o pipefail
+          python3 -m unittest nasuraya_agent_network.test_stage3_cycle -v 2>&1 | tee "$RUNNER_TEMP/stage3-cycle-tests.log"
       - name: Run five repository specialists with two concurrent slots and frozen self-model holdout
         run: |
           python3 -m nasuraya_agent_network run \
@@ -48,6 +56,12 @@ jobs:
             --workspace "$RUNNER_TEMP/nasuraya-network" \
             --run-id "ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
             --output "$RUNNER_TEMP/nasuraya-network/stage3-goal.json"
+      - name: Run exactly one allowed offline native experiment and propose a next goal
+        run: |
+          python3 -m nasuraya_agent_network.stage3_cycle \
+            --workspace "$RUNNER_TEMP/nasuraya-network" \
+            --run-id "ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --output "$RUNNER_TEMP/nasuraya-network/stage3-native-cycle" > "$RUNNER_TEMP/stage3-cycle-result.json"
       - name: Verify canonical checkout was not changed
         if: always()
         run: |
@@ -70,4 +84,7 @@ jobs:
             ${{ runner.temp }}/network-*.json
             ${{ runner.temp }}/network-tests.log
             ${{ runner.temp }}/goal-governor-tests.log
+            ${{ runner.temp }}/stage3-cycle-tests.log
+            ${{ runner.temp }}/stage3-cycle-result.json
+            ${{ runner.temp }}/nasuraya-network/stage3-native-cycle/
             ${{ runner.temp }}/nasuraya-network/stage3-goal.json
