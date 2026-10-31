@@ -79,7 +79,10 @@ def deny_network() -> None:
 
 def file_size_limit(command: list[str]) -> int:
     """Keep every other process at 2 MiB; allow fixture SQLite files up to 16 MiB."""
-    if command[:3] == ['-m', 'examples.nasuraya_body_loop', 'self-knowledge-eval']:
+    if command[:3] in (
+        ['-m', 'examples.nasuraya_body_loop', 'self-knowledge-eval'],
+        ['-m', 'examples.nasuraya_body_loop', 'rare-action-probe'],
+    ):
         return SELF_MODEL_FILE_BYTES
     return MAX_LOG
 
