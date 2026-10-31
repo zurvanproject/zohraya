@@ -9,6 +9,11 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'rare-action-probe':
+        from .rare_action_probe import run_probe
+        summary = run_probe(Path(args['output_dir']), Path(args['training_file']))
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0 if summary['validation_passed'] else 1
     if command == 'self-knowledge-eval':
         from .self_knowledge_eval import run_evaluation
         summary = run_evaluation(Path(args['output_dir']))
