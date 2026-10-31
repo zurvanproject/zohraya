@@ -26,11 +26,17 @@ jobs:
         with:
           python-version: '3.12'
       - name: Test durable claims, crash recovery, concurrency, and network denial
-        run: python3 -m unittest nasuraya_agent_network.tests -v 2>&1 | tee "$RUNNER_TEMP/network-tests.log"
+        run: |
+          set -o pipefail
+          python3 -m unittest nasuraya_agent_network.tests -v 2>&1 | tee "$RUNNER_TEMP/network-tests.log"
       - name: Test stage-3 goal selection against crafted durable network receipts
-        run: python3 -m unittest nasuraya_agent_network.test_goal_governor -v 2>&1 | tee "$RUNNER_TEMP/goal-governor-tests.log"
+        run: |
+          set -o pipefail
+          python3 -m unittest nasuraya_agent_network.test_goal_governor -v 2>&1 | tee "$RUNNER_TEMP/goal-governor-tests.log"
       - name: Verify one-shot stage-3 experiment admission and conservative replanning
-        run: python3 -m unittest nasuraya_agent_network.test_stage3_cycle -v 2>&1 | tee "$RUNNER_TEMP/stage3-cycle-tests.log"
+        run: |
+          set -o pipefail
+          python3 -m unittest nasuraya_agent_network.test_stage3_cycle -v 2>&1 | tee "$RUNNER_TEMP/stage3-cycle-tests.log"
       - name: Run five repository specialists with two concurrent slots and frozen self-model holdout
         run: |
           python3 -m nasuraya_agent_network run \
