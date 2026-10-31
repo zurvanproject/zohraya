@@ -140,7 +140,7 @@ def verified_network(workspace: Path, run_id: str) -> dict:
     if report_file != stored or not isinstance(stored, dict) or stored.get('run_id') != run_id:
         raise ValueError('network summary disagrees with durable ledger')
     binding = {k: stored.get(k) for k in ('schema', 'source_sha256', 'implementation_sha256', 'max_workers')}
-    if binding['schema'] != engine.VERSION or row[0] != digest(binding):
+    if binding['schema'] != engine.VERSION or row[0] != sha256(engine.encode(binding).encode('utf-8')).hexdigest():
         raise ValueError('network run fingerprint mismatch')
     if stored.get('mode') != 'offline_fixed_workers' or stored.get('status') != 'passed' or stored.get('model_api_calls') != 0:
         raise ValueError('not a passing offline network run')
