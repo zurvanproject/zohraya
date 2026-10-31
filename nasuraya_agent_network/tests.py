@@ -117,12 +117,17 @@ class NetworkTests(unittest.TestCase):
 
     def test_parallel_limit_and_overlap(self):
         lock, barrier = threading.Lock(), threading.Barrier(2)
-        counts = {'active': 0, 'peak': 0}
+        counts = {'active': 0, 'peak': 0, 'started': 0}
         def overlap(*args):
             with lock:
                 counts['active'] += 1
+                counts['started'] += 1
+                index = counts['started']
                 counts['peak'] = max(counts['peak'], counts['active'])
-            barrier.wait(timeout=5)
+            # Only the first PAIR must overlap. The fifth worker has no peer
+            # at max_workers=2; forcing it into a two-party barrier is a test bug.
+            if index <= 2:
+                barrier.wait(timeout=5)
             result = self.fake(*args)
             with lock:
                 counts['active'] -= 1
