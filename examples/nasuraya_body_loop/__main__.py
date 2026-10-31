@@ -30,9 +30,10 @@ def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
     p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status',
         'experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-test', 'experience-demo',
-        'self-knowledge-eval'])
+        'self-knowledge-eval', 'rare-action-probe'])
     p.add_argument('--session', type=Path)
     p.add_argument('--output-dir', type=Path)
+    p.add_argument('--training-file', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
     p.add_argument('--mode', choices=['observe', 'bounded'], default='bounded')
     p.add_argument('--max-actions', type=int, default=3)
@@ -48,14 +49,16 @@ def main(argv=None):
     p.add_argument('--max-calls', type=int, default=40)
     p.add_argument('--timeout-seconds', type=float, default=30)
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval', 'rare-action-probe'] and args.session is None:
         p.error('--session required')
-    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval') and args.output_dir is None:
+    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval', 'rare-action-probe') and args.output_dir is None:
         p.error('--output-dir required')
+    if args.command == 'rare-action-probe' and args.training_file is None:
+        p.error('--training-file required for frozen native probe')
     if args.command == 'api' and (args.output_dir is None or not args.model):
         p.error('--output-dir and --model required for explicit live API')
     payload = vars(args)
-    for key in ('session', 'output_dir'):
+    for key in ('session', 'output_dir', 'training_file'):
         if payload[key] is not None:
             payload[key] = str(payload[key].resolve())
     manifest = verified_sources()
