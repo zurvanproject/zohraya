@@ -1,6 +1,7 @@
 """No model/API/simulator calls: fake durable network receipts exercise goal selection."""
 from dataclasses import replace
 from contextlib import closing
+from hashlib import sha256
 import json
 from pathlib import Path
 import sqlite3
@@ -47,7 +48,7 @@ class GoalChoiceTests(unittest.TestCase):
         (self.output / 'summary.json').write_text(engine.encode(self.report), encoding='utf-8')
         with closing(sqlite3.connect(self.workspace / 'ledger.sqlite')) as db:
             db.execute('INSERT OR REPLACE INTO runs VALUES (?,?,?,?)',
-                       (self.run_id, goal.digest(self.binding), status, engine.encode(self.report)))
+                       (self.run_id, sha256(engine.encode(self.binding).encode('utf-8')).hexdigest(), status, engine.encode(self.report)))
             for role, receipt in [*self.receipts.items(), ('reviewer', self.report['reviewer'])]:
                 db.execute('INSERT OR REPLACE INTO jobs VALUES (?,?,?,?)',
                            (self.run_id, role, 'completed', engine.encode(receipt)))
@@ -111,6 +112,14 @@ class GoalChoiceTests(unittest.TestCase):
     def test_untrusted_provenance_rejected(self):
         with self.assertRaises(ValueError):
             replace(goal.GAPS[0], source='https://other.example/pr/96')
+
+    def test_noncanonical_ledger_fingerprint_rejected(self):
+        with closing(sqlite3.connect(self.workspace / 'ledger.sqlite')) as db:
+            db.execute('UPDATE runs SET fingerprint=? WHERE id=?',
+                       (goal.digest(self.binding), self.run_id))
+            db.commit()
+        with self.assertRaisesRegex(ValueError, 'fingerprint mismatch'):
+            self.evidence()
 
     def test_inflight_run_rejected(self):
         self.persist(status='running')
