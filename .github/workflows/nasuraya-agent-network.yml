@@ -1,10 +1,10 @@
 name: Nasuraya Agent Network
 on:
   pull_request:
-    paths: ['nasuraya_agent_network/**', '.github/workflows/nasuraya-agent-network.yml']
+    paths: ['nasuraya_agent_network/**', 'examples/nasuraya_body_loop/five_class_*.py', 'examples/nasuraya_body_loop/worker.py', 'examples/nasuraya_body_loop/__main__.py', '.github/workflows/nasuraya-agent-network.yml']
   push:
     branches: [main]
-    paths: ['nasuraya_agent_network/**', '.github/workflows/nasuraya-agent-network.yml']
+    paths: ['nasuraya_agent_network/**', 'examples/nasuraya_body_loop/five_class_*.py', 'examples/nasuraya_body_loop/worker.py', 'examples/nasuraya_body_loop/__main__.py', '.github/workflows/nasuraya-agent-network.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -37,6 +37,10 @@ jobs:
         run: |
           set -o pipefail
           python3 -m unittest nasuraya_agent_network.test_stage3_cycle -v 2>&1 | tee "$RUNNER_TEMP/stage3-cycle-tests.log"
+      - name: Test five-action metacognition, abstention, and no training leakage
+        run: |
+          set -o pipefail
+          python3 -m unittest examples.nasuraya_body_loop.test_five_class_metacognition -v 2>&1 | tee "$RUNNER_TEMP/five-class-unit.log"
       - name: Run five repository specialists with two concurrent slots and frozen self-model holdout
         run: |
           python3 -m nasuraya_agent_network run \
@@ -62,6 +66,23 @@ jobs:
             --workspace "$RUNNER_TEMP/nasuraya-network" \
             --run-id "ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
             --output "$RUNNER_TEMP/nasuraya-network/stage3-native-cycle" > "$RUNNER_TEMP/stage3-cycle-result.json"
+      - name: Explicit separate five-action native shadow experiment
+        run: |
+          python3 -I nasuraya_agent_network/worker.py "$GITHUB_WORKSPACE" -m examples.nasuraya_body_loop five-class-probe \
+            --training-file "$RUNNER_TEMP/nasuraya-network/ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}/self_model/self_model/training.json" \
+            --output-dir "$RUNNER_TEMP/nasuraya-network/five-class-native" > "$RUNNER_TEMP/five-class-native.log"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          path = Path(os.environ['RUNNER_TEMP']) / 'nasuraya-network/five-class-native/summary.json'
+          summary = json.loads(path.read_text())
+          assert summary['validation_passed'] is True
+          assert summary['cases'] == summary['native_cycles'] == 24
+          assert summary['model_api_calls'] == summary['physical_actuator_calls'] == summary['model_weight_updates'] == 0
+          assert summary['can_act_autonomously'] is False
+          assert summary['confidence_calibrated'] is False
+          print(json.dumps({k:summary[k] for k in ('five_class_brier', 'pooled_five_class_brier', 'lifted_four_class_brier', 'slow_breath_events', 'exact_slow_breath_recall', 'selective_coverage', 'research_conclusion')}, sort_keys=True))
+          PY
       - name: Verify canonical checkout was not changed
         if: always()
         run: |
@@ -86,5 +107,8 @@ jobs:
             ${{ runner.temp }}/goal-governor-tests.log
             ${{ runner.temp }}/stage3-cycle-tests.log
             ${{ runner.temp }}/stage3-cycle-result.json
+            ${{ runner.temp }}/five-class-unit.log
+            ${{ runner.temp }}/five-class-native.log
             ${{ runner.temp }}/nasuraya-network/stage3-native-cycle/
             ${{ runner.temp }}/nasuraya-network/stage3-goal.json
+            ${{ runner.temp }}/nasuraya-network/five-class-native/

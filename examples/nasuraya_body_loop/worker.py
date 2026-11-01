@@ -9,6 +9,11 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'five-class-probe':
+        from .five_class_probe import run_probe
+        summary = run_probe(Path(args['output_dir']), Path(args['training_file']))
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0 if summary['validation_passed'] else 1
     if command == 'rare-action-probe':
         from .rare_action_probe import run_probe
         summary = run_probe(Path(args['output_dir']), Path(args['training_file']))
@@ -20,9 +25,9 @@ def main(args):
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0 if summary['validation_passed'] else 1
     if command == 'experience-test':
-        from . import test_experience, test_self_knowledge, test_affect_audit, test_self_knowledge_eval
+        from . import test_experience, test_self_knowledge, test_affect_audit, test_self_knowledge_eval, test_five_class_metacognition
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
-            for module in (test_experience, test_self_knowledge, test_affect_audit, test_self_knowledge_eval))
+            for module in (test_experience, test_self_knowledge, test_affect_audit, test_self_knowledge_eval, test_five_class_metacognition))
         r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command.startswith('experience-'):
