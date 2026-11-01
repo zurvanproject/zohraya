@@ -40,6 +40,20 @@ jobs:
         run: python3 run_tests.py --reflection --output /tmp/nasuraya-native-check
       - name: Verify bounded bridge and cold recovery
         run: python3 -m examples.nasuraya_body_loop test
+      - name: Verify reversible instinct activation in an observe-only native session
+        run: |
+          python3 -m examples.nasuraya_body_loop instinct-demo --output-dir /tmp/nasuraya-instinct-demo
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('/tmp/nasuraya-instinct-demo')
+          status = json.loads((root/'status.json').read_text())
+          events = json.loads((root/'reports.json').read_text())
+          assert status['enabled'] and status['events_recorded'] == 4
+          assert all(e['native_cycles_caused'] == 0 for e in events)
+          assert events[0]['synthetic']['sexual_response_proxy'] == 0.0
+          assert events[2]['synthetic']['action'] == 'respect_boundary'
+          PY
       - name: Verify integrated experience and restart recovery
         run: |
           python3 -m examples.nasuraya_body_loop experience-test
