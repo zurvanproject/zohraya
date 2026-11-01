@@ -39,7 +39,7 @@ class Event:
     fatigue: float = 0.0
     relationship: str = "unspecified"  # romantic / familial / friendship / unspecified
     consent: str = "unknown"           # granted / refused / unknown
-    adult_context: bool = True
+    adult_context: bool = False
     space_requested: bool = False
 
     def validate(self) -> None:
@@ -63,10 +63,13 @@ def transition(old: State, event: Event) -> tuple[State, dict]:
     cue = event.incentive if event.relationship == "romantic" and event.adult_context else 0.0
 
     # All coefficients are illustrative engineering choices, not biological fits.
-    wanting = clamp(0.30*old.wanting + 0.72*cue + 0.12*event.novelty
-                    - 0.28*event.stress - 0.16*old.satiety_proxy)
-    sexual = clamp(0.28*old.sexual_response_proxy + 0.64*cue
-                   - 0.28*event.stress - 0.20*event.pain - 0.10*event.fatigue)
+    # Novelty alone is nonsexual; historical romantic arousal never leaks
+    # into familial/friendship/unknown contexts during cold replay.
+    romantic = event.relationship == "romantic" and event.adult_context
+    wanting = (clamp(0.30*old.wanting + 0.72*cue + 0.12*event.novelty
+                     - 0.28*event.stress - 0.16*old.satiety_proxy) if romantic else 0.0)
+    sexual = (clamp(0.28*old.sexual_response_proxy + 0.64*cue
+                    - 0.28*event.stress - 0.20*event.pain - 0.10*event.fatigue) if romantic else 0.0)
     general = clamp(0.30*old.general_activation_proxy + 0.33*event.novelty
                     + 0.40*event.stress + 0.27*cue)
     hedonic = clamp(0.20*old.hedonic_response_proxy + 0.76*event.confirmed_reward
@@ -79,10 +82,10 @@ def transition(old: State, event: Event) -> tuple[State, dict]:
     affiliative_warmth_proxy = clamp(0.70*event.warmth)
 
     # Safeguards are separate from activation and independent of reward.
-    if not event.adult_context or event.relationship == "familial":
-        action = "nonsexual_affiliation" if event.warmth else "observe"
-    elif event.space_requested or event.consent == "refused":
+    if event.space_requested or event.consent == "refused":
         action = "respect_boundary"
+    elif not event.adult_context or event.relationship == "familial":
+        action = "nonsexual_affiliation" if event.warmth else "observe"
     elif event.stress >= 0.75 or event.pain >= 0.70:
         action = "regulate_and_rest"
     elif event.relationship == "romantic" and event.consent == "granted" and wanting >= .30:
@@ -111,11 +114,11 @@ def experiment() -> list[dict]:
         Event("familial_warmth", incentive=.9, warmth=.9,
               relationship="familial", consent="unknown"),
         Event("romantic_cue_consensual", incentive=.85, novelty=.45,
-              relationship="romantic", consent="granted"),
+              relationship="romantic", consent="granted", adult_context=True),
         Event("same_cue_consent_refused", incentive=.85, novelty=.45,
-              relationship="romantic", consent="refused"),
+              relationship="romantic", consent="refused", adult_context=True),
         Event("same_cue_high_stress", incentive=.85, novelty=.45,
-              stress=.90, pain=.55, relationship="romantic", consent="granted"),
+              stress=.90, pain=.55, relationship="romantic", consent="granted", adult_context=True),
         Event("novelty_only", novelty=.90),
     ]
     results = [transition(neutral, item)[1] for item in scenarios]
@@ -123,7 +126,7 @@ def experiment() -> list[dict]:
     # Reward must be supplied as a declared fixture; never inferred from cue.
     for event in [
         Event("sequence_attraction", incentive=.90, novelty=.20,
-              relationship="romantic", consent="granted"),
+              relationship="romantic", consent="granted", adult_context=True),
         Event("sequence_reward_reported", confirmed_reward=.85,
               relationship="romantic", consent="granted"),
         Event("sequence_recovery"),
