@@ -30,8 +30,10 @@ def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
     p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status',
         'experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-test', 'experience-demo',
-        'self-knowledge-eval'])
+        'self-knowledge-eval', 'instinct-enable', 'instinct-step', 'instinct-status',
+        'instinct-disable', 'instinct-test', 'instinct-demo'])
     p.add_argument('--session', type=Path)
+    p.add_argument('--event-json', type=Path, help='explicit local JSON event for instinct-step')
     p.add_argument('--output-dir', type=Path)
     p.add_argument('--fixture', choices=['normal', 'sleep'], default='normal')
     p.add_argument('--mode', choices=['observe', 'bounded'], default='bounded')
@@ -48,14 +50,16 @@ def main(argv=None):
     p.add_argument('--max-calls', type=int, default=40)
     p.add_argument('--timeout-seconds', type=float, default=30)
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval', 'instinct-test', 'instinct-demo'] and args.session is None:
         p.error('--session required')
-    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval') and args.output_dir is None:
+    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval', 'instinct-demo') and args.output_dir is None:
         p.error('--output-dir required')
+    if args.command == 'instinct-step' and args.event_json is None:
+        p.error('--event-json required for instinct-step')
     if args.command == 'api' and (args.output_dir is None or not args.model):
         p.error('--output-dir and --model required for explicit live API')
     payload = vars(args)
-    for key in ('session', 'output_dir'):
+    for key in ('session', 'output_dir', 'event_json'):
         if payload[key] is not None:
             payload[key] = str(payload[key].resolve())
     manifest = verified_sources()

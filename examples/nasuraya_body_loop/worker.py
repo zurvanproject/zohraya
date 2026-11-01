@@ -14,6 +14,29 @@ def main(args):
         summary = run_evaluation(Path(args['output_dir']))
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0 if summary['validation_passed'] else 1
+    if command == 'instinct-test':
+        from . import test_instinct
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_instinct)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'instinct-demo':
+        from .instinct import demo
+        print(json.dumps(demo(Path(args['output_dir'])), ensure_ascii=False, sort_keys=True))
+        return 0
+    if command.startswith('instinct-'):
+        from .instinct import InstinctController
+        with BodyLoop(args['session']) as loop:
+            if command == 'instinct-enable':
+                summary = InstinctController.enable(loop).status()
+            elif command == 'instinct-step':
+                event = json.loads(Path(args['event_json']).read_text(encoding='utf-8'))
+                summary = InstinctController(loop).step(event)
+            elif command == 'instinct-disable':
+                summary = InstinctController(loop).disable()
+            else:
+                summary = InstinctController(loop).status()
+            print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0
     if command == 'experience-test':
         from . import test_experience, test_self_knowledge, test_affect_audit, test_self_knowledge_eval
         suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
@@ -42,8 +65,10 @@ def main(args):
                 return 0 if summary['native_receipt']['status'] == 'complete' else 1
         return 0
     if command == 'test':
-        from . import test_body_loop
-        r = unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(test_body_loop))
+        from . import test_body_loop, test_instinct
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
+            for module in (test_body_loop, test_instinct))
+        r = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if r.wasSuccessful() else 1
     if command == 'api-test':
         from . import test_api_host, test_api_recovery
