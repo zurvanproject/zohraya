@@ -82,6 +82,7 @@ def file_size_limit(command: list[str]) -> int:
     if command[:3] in (
         ['-m', 'examples.nasuraya_body_loop', 'self-knowledge-eval'],
         ['-m', 'examples.nasuraya_body_loop', 'rare-action-probe'],
+        ['-m', 'examples.nasuraya_body_loop', 'five-class-probe'],
     ):
         return SELF_MODEL_FILE_BYTES
     return MAX_LOG
