@@ -107,8 +107,8 @@ class InstinctBodyIntegrationTests(unittest.TestCase):
             result = controller.step({"id": "bodyread", "source": "synthetic_fixture",
                                       "stress": 0, "fatigue": 0, "pain": 0})
             observation = result["native_observation"]
-            self.assertEqual(result["effective_inhibitors"]["pain"], observation["values"]["pain"])
-            self.assertEqual(result["effective_inhibitors"]["fatigue"], observation["values"]["fatigue"])
+            self.assertEqual(result["effective_inhibitors"]["pain"], round(observation["values"]["pain"], 6))
+            self.assertEqual(result["effective_inhibitors"]["fatigue"], round(observation["values"]["fatigue"], 6))
             self.assertIn("arousal", observation["values"])
             self.assertEqual(before, loop.body().checkpoint()["sha256"])
             self.assertEqual(loop.status()["actions_reserved"], 0)
