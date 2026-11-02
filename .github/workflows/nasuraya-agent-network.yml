@@ -83,6 +83,11 @@ jobs:
           assert summary['confidence_calibrated'] is False
           print(json.dumps({k:summary[k] for k in ('five_class_brier', 'pooled_five_class_brier', 'lifted_four_class_brier', 'slow_breath_events', 'exact_slow_breath_recall', 'selective_coverage', 'research_conclusion')}, sort_keys=True))
           PY
+      - name: Probe real five-role network at 2 and 4 slots with fail-closed restart tests
+        run: |
+          python3 -m nasuraya_agent_network.scaling_probe \
+            --root "$GITHUB_WORKSPACE" \
+            --workspace "$RUNNER_TEMP/nasuraya-scale"
       - name: Verify canonical checkout was not changed
         if: always()
         run: |
@@ -112,3 +117,4 @@ jobs:
             ${{ runner.temp }}/nasuraya-network/stage3-native-cycle/
             ${{ runner.temp }}/nasuraya-network/stage3-goal.json
             ${{ runner.temp }}/nasuraya-network/five-class-native/
+            ${{ runner.temp }}/nasuraya-scale/
