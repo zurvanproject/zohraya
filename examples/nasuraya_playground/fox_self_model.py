@@ -58,7 +58,7 @@ def public(row):
 def experiment():
     train = cases(TRAIN_SEED, 12)
     holdout = cases(HOLDOUT_SEED, 4)
-    assert not set(r["id"] for r in train) - set(r["id"] for holdout)  # IDs repeat by cue; keep separate seed.
+    assert {r["id"] for r in train}.isdisjoint({r["id"] for r in holdout})
     return train, holdout
 
 
