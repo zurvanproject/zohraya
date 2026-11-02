@@ -1,0 +1,48 @@
+name: Tadash developmental affect observer v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_developmental_affect.py'
+      - 'experiments/test_tadash_developmental_affect.py'
+      - 'docs/tadash-developmental-affect-v01-fa.md'
+      - '.github/workflows/tadash-developmental-affect.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  developmental-affect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Checkout experimental branch
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test negative cases, persistence and source isolation
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_developmental_affect |& tee /tmp/affect-test-log.txt
+      - name: Reconstruct bounded affect demo from prior motor audit
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_developmental_affect \
+            --motor-audit docs/tadash-motor-learning-independent-audit-20261102.json \
+            --output /tmp/tadash-affect-$GITHUB_RUN_ID-$GITHUB_RUN_ATTEMPT | tee /tmp/affect-demo.json
+      - name: Archive cold-state demo and actual unit logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-developmental-affect-audit
+          path: |
+            /tmp/affect-test-log.txt
+            /tmp/affect-demo.json
+            /tmp/tadash-affect-*/
+          retention-days: 7
+          if-no-files-found: warn
