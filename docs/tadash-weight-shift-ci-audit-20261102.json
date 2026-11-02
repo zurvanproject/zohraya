@@ -1,0 +1,83 @@
+{
+  "schema": "tadash-weight-shift-ci-audit/1",
+  "utc_date": "2026-11-02",
+  "pr": 113,
+  "tested_code_commit": "858f4fe717caf5b07ad319121e2e5e854485f7ea",
+  "workflow": {
+    "run_id": 41481944440,
+    "job_id": 125402267269,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/41481944440",
+    "status": "success"
+  },
+  "offline_tests": {
+    "passed": 27,
+    "failed": 0,
+    "not_native_trials": true
+  },
+  "native_source": {
+    "commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+    "model_path": "assets/nasuraya_articulated_v03/nasuraya.xml",
+    "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d"
+  },
+  "artifact": {
+    "id": 13159113498,
+    "link": "https://github.com/zurvanproject/zohraya/actions/runs/41481944440/artifacts/13159113498",
+    "zip_sha256": "f4764d34d9db8174082fdf9197f7673411daa6c57b64f96747e9048f7f79f613",
+    "file_count": 33
+  },
+  "frozen_plan_sha256": "02afa8f68a1eb23ea39f0d650fbb10965f720f8b63b580835824faa87a2f36f7",
+  "native_trials": [
+    {
+      "trial": 1,
+      "commanded_shift_m": 0,
+      "held_com_y_delta_m": 2.783640796224194e-11,
+      "returned_com_y_delta_m": 2.878904635736277e-11,
+      "role": "baseline"
+    },
+    {
+      "trial": 2,
+      "commanded_shift_m": 0.002,
+      "held_com_y_delta_m": 0.0018177385864789027,
+      "returned_com_y_delta_m": 0.0000016618566445806445,
+      "outcome": "met"
+    },
+    {
+      "trial": 3,
+      "commanded_shift_m": 0.002,
+      "held_com_y_delta_m": 0.0018177385864789027,
+      "returned_com_y_delta_m": 0.0000016618566445806445,
+      "outcome": "met_repeat"
+    },
+    {
+      "trial": 4,
+      "commanded_shift_m": -0.002,
+      "held_com_y_delta_m": -0.001817738530451277,
+      "returned_com_y_delta_m": -0.0000016849296921979585,
+      "outcome": "met"
+    },
+    {
+      "trial": 5,
+      "commanded_shift_m": -0.002,
+      "held_com_y_delta_m": -0.001817738530451277,
+      "returned_com_y_delta_m": -0.0000016849296921979585,
+      "outcome": "met_repeat"
+    }
+  ],
+  "metrics": {
+    "approx_response_fraction": 0.9088693,
+    "peak_tilt_deg": 0.05284374120876472,
+    "peak_motor_fraction": 0.6405878013924565,
+    "both_feet_loaded_fraction_all_trials": 1,
+    "recorded_trace_samples_per_trial": 80,
+    "simulated_seconds_after_initial_standing_per_trial": 4
+  },
+  "independent_review": "Downloaded artifact ZIP, verified ZIP digest, plan hash, all five intent/native/result hashes and raw receipt agreements. Reconstructed signed plateau/return shifts from 10 downsampled stored trace points per phase: aligned with full-sample recorded averages within 0.0000005 m. Repeated native data byte-identical for each direction. 33 archive entries, all ZIP integrity checks pass.",
+  "limits": [
+    "Repeated same-input trials are deterministic and not independent statistical replications",
+    "No training or retained motor adaptation, no improved policy, no evidence of subjective feeling",
+    "No motor hardware and no human physiological inference",
+    "No step lifting; original pinned torque-limited ContactController with bilateral contact",
+    "Draft unmerged; no main or live body updates",
+    "Small shift success is only demonstrated on original flat-ground nominal model"
+  ]
+}
