@@ -1,0 +1,80 @@
+{
+  "schema": "tadash-native-affect-motor-bridge-independent-audit/1",
+  "date_utc": "2026-11-02",
+  "pr": 117,
+  "tested_code_commit": "14081b51d5c0c45880a07b89347c0d5c05f5e9fd",
+  "successful_run_id": 41498695322,
+  "job_id": 125460289386,
+  "run_url": "https://github.com/zurvanproject/zohraya/actions/runs/41498695322",
+  "status": "success",
+  "first_failed_run": {
+    "run_id": 41498599542,
+    "reason": "One unit test expected an incompatible error message on NaN; strict native validator correctly refused NaN. No MuJoCo run in that failed CI.",
+    "corrected_commit": "14081b51d5c0c45880a07b89347c0d5c05f5e9fd"
+  },
+  "unit_tests": {
+    "passed": 12,
+    "failed": 0
+  },
+  "native_trials": {
+    "total": 40,
+    "training": 16,
+    "holdout": 24,
+    "comparison_cases": 8
+  },
+  "motor_source": {
+    "commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+    "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d"
+  },
+  "input_source": "prior PR #114 motor-command-gain audit and #116 synthetic decision audit",
+  "predeclared_plan_sha256": "06d0f3b17381474890b711481171da30289c7fed13f7a2bacad86e84da622beb",
+  "frozen_native_policy_sha256": "1feff7eac2b4ada34b9c1bd9c3f8967f9cf09be6544913c571f8c9bdf565956f",
+  "native_learned_policy": {
+    "curious": "explore",
+    "frustrated": "simplify",
+    "tired": "rest",
+    "steady": "repeat"
+  },
+  "prior_synthetic_policy": {
+    "curious": "explore",
+    "frustrated": "simplify",
+    "tired": "rest",
+    "steady": "repeat"
+  },
+  "policy_changed_vs_prior": false,
+  "heldout_reward_mean": {
+    "native_learned": 0.9625009733646693,
+    "always_repeat": 0.740619573076924,
+    "prior_synthetic": 0.9625009733646693
+  },
+  "wins_vs_repeat": 6,
+  "wins_vs_prior": 0,
+  "predeclared_thresholds": {
+    "gain_vs_always_repeat": 0.08,
+    "minimum_wins_vs_repeat": 5,
+    "minimum_gain_vs_prior": 0.01
+  },
+  "better_than_repeat": true,
+  "new_decision_learning_beyond_prior_demonstrated": false,
+  "native_guards": {
+    "max_tilt_deg": 0.05284374120876472,
+    "max_motor_fraction": 0.6405878013924565,
+    "minimum_bilateral_foot_loaded_fraction": 1
+  },
+  "artifact": {
+    "id": 13166843719,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/41498695322/artifacts/13166843719",
+    "zip_sha256": "f428cd32aad9267f0681a36c99e2d54e954fa2f8557a23e7baadacac598f6be2",
+    "files": 215,
+    "zip_integrity_passed": true
+  },
+  "independent_reconstruction": "Downloaded exact 215-file ZIP; verified the ZIP SHA and CRC, plan and frozen-policy hashes, all 40 pairs of intent and native receipt hashes, raw measured COM response, native friction, action provenance, positive motor guard evidence, the 16-entry persisted SQLite feedback table, and all 8 paired rewards and mean scores from raw files.",
+  "limits": [
+    "All context names correspond to authored goal templates; no affect/neuromodulatory state observed from native physiology",
+    "Deterministic simulator, small fixed command/action menu and easy matched goals; not general decision-learning evidence",
+    "New native feedback policy exactly equals earlier synthetic policy, so no incremental action-selection gain established",
+    "No independent general motor skill, persistent subjective feeling or real-world transfer evidence",
+    "No main merge or active Tadash session modification; isolated Draft PR only"
+  ],
+  "conclusion": "Native-feedback action-selection integration and cold persistence verified; benefit over fixed repeat only; no newly superior decision policy versus already frozen synthetic baseline."
+}
