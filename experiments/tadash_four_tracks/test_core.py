@@ -5,7 +5,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from .core import (METRICS, digest, encode, hindsight_items, inspect_mjcf,
-                   motion_readiness, rehearsal_gate, review_pair)
+                   motion_readiness, rehearsal_gate, review_pair, validate_hindsight_export)
 
 
 def pair():
@@ -78,6 +78,69 @@ class Contracts(unittest.TestCase):
     def test_review_tampering(self):
         t, c = pair(); r = review_pair(t, c); r["verdict"] = "not_met"
         with self.assertRaises(ValueError): hindsight_items(t, c, r)
+
+    def test_fractional_native_tick_rejected(self):
+        t, c = pair()
+        t["duration_s"] = c["duration_s"] = .15
+        t["actual_actions"] *= 2
+        c["actual_actions"] *= 2
+        with self.assertRaisesRegex(ValueError, "align"):
+            review_pair(t, c)
+
+    def test_unsupported_short_duration_rejected(self):
+        t, c = pair()
+        t["duration_s"] = c["duration_s"] = .09
+        with self.assertRaises(ValueError):
+            review_pair(t, c)
+
+    def test_valid_two_ticks(self):
+        t, c = pair()
+        t["duration_s"] = c["duration_s"] = .2
+        t["actual_actions"] *= 2
+        c["actual_actions"] *= 2
+        self.assertEqual(review_pair(t, c)["verdict"], "met")
+
+    def test_valid_float_0_3_duration(self):
+        t, c = pair()
+        t["duration_s"] = c["duration_s"] = .1 + .2
+        t["actual_actions"] *= 3
+        c["actual_actions"] *= 3
+        self.assertEqual(review_pair(t, c)["verdict"], "met")
+
+    def test_hindsight_offline_contract(self):
+        t, c = pair()
+        batch = hindsight_items(t, c, review_pair(t, c))
+        self.assertEqual(validate_hindsight_export(batch), 3)
+
+    def test_hindsight_duplicate_rejected(self):
+        t, c = pair()
+        batch = hindsight_items(t, c, review_pair(t, c))
+        batch["items"][1] = copy.deepcopy(batch["items"][0])
+        with self.assertRaises(ValueError):
+            validate_hindsight_export(batch)
+
+    def test_hindsight_personal_field_rejected(self):
+        t, c = pair()
+        batch = hindsight_items(t, c, review_pair(t, c))
+        obj = json.loads(batch["items"][0]["content"])
+        obj["personal_secret"] = "not allowed"
+        batch["items"][0]["content"] = json.dumps(obj)
+        with self.assertRaises(ValueError):
+            validate_hindsight_export(batch)
+
+    def test_hindsight_bad_timestamp_rejected(self):
+        t, c = pair()
+        batch = hindsight_items(t, c, review_pair(t, c))
+        batch["items"][0]["timestamp"] = "2026-01-01T00:00:00Z"
+        with self.assertRaises(ValueError):
+            validate_hindsight_export(batch)
+
+    def test_hindsight_metadata_wrong_type_rejected(self):
+        t, c = pair()
+        batch = hindsight_items(t, c, review_pair(t, c))
+        batch["items"][0]["metadata"]["synthetic"] = True
+        with self.assertRaises(ValueError):
+            validate_hindsight_export(batch)
 
     def test_bad_model_blocked(self):
         p = [[.9] * 5]; y = [[.5] * 5]; b = [[.49] * 5]
