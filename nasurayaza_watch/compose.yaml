@@ -1,0 +1,22 @@
+services:
+  nasurayaza:
+    build:
+      context: ..
+      dockerfile: nasurayaza_watch/Dockerfile
+    restart: unless-stopped
+    read_only: true
+    user: "10001:10001"
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 64
+    mem_limit: 256m
+    cpus: 0.50
+    environment:
+      POLL_SECONDS: "900"
+      NASURAYAZA_DATA: /data
+    volumes:
+      - nasurayaza_state:/data
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+volumes:
+  nasurayaza_state:
