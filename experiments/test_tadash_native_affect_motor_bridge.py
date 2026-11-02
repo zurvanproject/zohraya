@@ -57,7 +57,8 @@ class NativeAffectMotorTests(unittest.TestCase):
 
     def test_context_menu_is_author_defined_not_derived_physiology(self):
         self.assertEqual(set(lab.CONTEXT_TARGETS),{"curious","frustrated","tired","steady"})
-        self.assertEqual(lab.CONTEXT_TARGETS["tired"],0.)
+        self.assertEqual(lab.CONTEXT_TARGETS["tired"],.002)
+        self.assertEqual(lab.CONTEXT_TARGETS["steady"],0.)
         self.assertEqual(lab.ACTION_NOMINAL_M["rest"],0.)
 
     def test_feedback_ledger_replay_and_cold_recovery(self):
@@ -123,7 +124,8 @@ class NativeAffectMotorTests(unittest.TestCase):
             self.assertTrue(result["cold_recovered"])
             self.assertEqual(set(result["native_learned_policy"]),set(lab.CONTEXT_TARGETS))
             self.assertTrue(result["metrics"]["better_than_repeat"])
-            self.assertFalse(result["metrics"]["new_decision_learning_beyond_prior_demonstrated"])
+            self.assertTrue(result["metrics"]["new_decision_learning_beyond_prior_demonstrated"])
+            self.assertNotEqual(result["native_learned_policy"],result["prior_synthetic_policy"])
             self.assertEqual(len(seen),40)
             self.assertEqual(len(json.loads((root/"out"/"status.json").read_text())),2)
 

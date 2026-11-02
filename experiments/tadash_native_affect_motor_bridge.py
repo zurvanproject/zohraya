@@ -24,18 +24,20 @@ from experiments import tadash_motion_episode as evidence
 from experiments import tadash_weight_shift as native
 from experiments import tadash_affect_decision_learning as prior
 
-SCHEMA = "tadash-native-affect-motor-bridge/1"
+SCHEMA = "tadash-native-affect-motor-reversal/2"
 MOTOR_AUDIT_SCHEMA = "tadash-motor-learning-independent-audit/1"
 POLICY_AUDIT_SCHEMA = "tadash-affect-decision-learning-audit/1"
 TRAIN_FRICTION = 0.6
-CONTEXT_TARGETS = {"curious": .003, "frustrated": .001, "tired": 0., "steady": .002}
+# REVERSED TASK v0.2: research-assigned target labels deliberately differ from
+# the prior synthetic preference mapping; this is NOT an emotional stimulus.
+CONTEXT_TARGETS = {"curious": .001, "frustrated": .003, "tired": .002, "steady": 0.}
 ACTION_NOMINAL_M = {"explore": .003, "repeat": .002, "simplify": .001, "rest": 0.}
 HOLDOUT_OFFSETS = (+.00015, -.00015)
 HOLDOUT_FRICTIONS = (.50, .55)
 MAX_TRIALS = 40
 REWARD_SCALE_M = .004
 MIN_GAIN_REPEAT = .08
-MIN_GAIN_PRIOR = .01
+MIN_GAIN_PRIOR = .08
 MIN_WINS_REPEAT = 5
 
 
