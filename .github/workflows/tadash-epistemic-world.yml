@@ -1,0 +1,59 @@
+name: Tadash falsifiable epistemic micro-world v0.1
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_epistemic_world_model.py'
+      - 'experiments/test_tadash_epistemic_world_model.py'
+      - '.github/workflows/tadash-epistemic-world.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  micro-world:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout experiment independently of canonical model
+        uses: actions/checkout@v4
+        with:
+          path: research
+          persist-credentials: false
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict offline hypothesis and negative-control tests
+        working-directory: research
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_epistemic_world_model 2>&1 | tee "${RUNNER_TEMP}/world-tests.log"
+      - name: Checkout exactly pinned original v03 native body
+        uses: actions/checkout@v4
+        with:
+          repository: zurvanproject/zohraya
+          ref: c6bac77802a7fab9178fb00eed28e3c4410b9482
+          path: pinned-motion
+          persist-credentials: false
+      - name: Install pinned CPU native dependencies
+        run: |
+          set -euo pipefail
+          python -m pip install -r pinned-motion/examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Execute 8 training and 8 unseen native forecasts
+        working-directory: research
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_epistemic_world_model \
+            --motion-source "${GITHUB_WORKSPACE}/pinned-motion" \
+            --output "${RUNNER_TEMP}/world-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --timeout 240 | tee "${RUNNER_TEMP}/world-results.json"
+      - name: Preserve native evidence even if a hypothesis fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-epistemic-world-native
+          path: |
+            ${{ runner.temp }}/world-${{ github.run_id }}-${{ github.run_attempt }}/
+            ${{ runner.temp }}/world-tests.log
+            ${{ runner.temp }}/world-results.json
+          retention-days: 7
+          if-no-files-found: warn
