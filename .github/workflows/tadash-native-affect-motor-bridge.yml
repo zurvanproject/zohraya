@@ -1,0 +1,61 @@
+name: Tadash native affect motor feedback bridge v0.1
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_native_affect_motor_bridge.py'
+      - 'experiments/test_tadash_native_affect_motor_bridge.py'
+      - '.github/workflows/tadash-native-affect-motor-bridge.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-affect-motor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout isolated research branch
+        uses: actions/checkout@v4
+        with:
+          path: research
+          persist-credentials: false
+      - name: Python for tests and physics
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict offline learning/negative-control tests
+        working-directory: research
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_native_affect_motor_bridge 2>&1 | tee "${RUNNER_TEMP}/bridge-tests.log"
+      - name: Checkout pinned original v03 body source
+        uses: actions/checkout@v4
+        with:
+          repository: zurvanproject/zohraya
+          ref: c6bac77802a7fab9178fb00eed28e3c4410b9482
+          path: pinned-motion
+          persist-credentials: false
+      - name: Install pinned CPU MuJoCo physics
+        run: |
+          set -euo pipefail
+          python -m pip install -r pinned-motion/examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Execute 16 actual motor feedback trials and 24 frozen holdout trials
+        working-directory: research
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_native_affect_motor_bridge \
+            --motion-source "${GITHUB_WORKSPACE}/pinned-motion" \
+            --motor-audit docs/tadash-motor-learning-independent-audit-20261102.json \
+            --policy-audit docs/tadash-affect-decision-learning-ci-audit-20261102.json \
+            --output "${RUNNER_TEMP}/bridge-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --timeout 240 | tee "${RUNNER_TEMP}/bridge-result.json"
+      - name: Preserve failed and successful raw receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-native-affect-bridge-evidence
+          path: |
+            ${{ runner.temp }}/bridge-${{ github.run_id }}-${{ github.run_attempt }}/
+            ${{ runner.temp }}/bridge-tests.log
+            ${{ runner.temp }}/bridge-result.json
+          retention-days: 7
+          if-no-files-found: warn
