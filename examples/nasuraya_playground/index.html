@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>باغ نور | بازی آزمایشی ناسورایا در تداش</title>
+<style>
+:root{color-scheme:dark;--bg:#091b1c;--line:#42605a;--gold:#f9be73;--blue:#80d6ff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#24423d 0,#09191c 76%);font-family:system-ui,"Vazirmatn",sans-serif;color:#f9efe1;min-height:100svh}.wrap{width:min(100%,720px);margin:auto;padding:18px 14px 26px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.eyebrow{font-size:11px;letter-spacing:.12em;color:#adcebb;text-transform:uppercase}h1{margin:5px 0 0;font-size:24px;line-height:1.25}h1 span{color:var(--gold)}.tag{padding:8px 10px;border:1px solid #446c5a;border-radius:999px;color:#a7dfc8;font-size:12px;white-space:nowrap}.sub{font-size:13px;color:#bfd0c5;line-height:1.8;margin:9px 0 13px}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:10px}.stat{background:#142b2b;border:1px solid #426157;border-radius:12px;padding:10px;text-align:center}.stat b{display:block;font-size:22px;color:#ffcc8c;font-variant-numeric:tabular-nums}.stat small{font-size:11px;color:#b8d0c7}.board{position:relative;border:1px solid #6d8067;border-radius:18px;overflow:hidden;box-shadow:0 10px 35px #03110d77, inset 0 0 25px #0005;background:linear-gradient(155deg,#274a38,#142f32)}canvas{display:block;width:100%;aspect-ratio:1/1;touch-action:manipulation}.controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 8px}button{font:inherit;background:#203937;color:#e4eadb;border:1px solid #5a7564;border-radius:11px;padding:11px 7px;cursor:pointer;min-height:43px}button.primary{background:#b26e43;color:#171b15;border-color:#eba56c;font-weight:800}button:focus-visible{outline:3px solid #ffdb98;outline-offset:2px}.dpad{display:grid;grid-template-columns:repeat(3,58px);grid-template-rows:repeat(2,42px);justify-content:center;gap:4px;margin:9px auto 0}.dpad button{padding:3px;min-height:41px;font-size:18px}.dpad [data-move="up"]{grid-column:2;grid-row:1}.dpad [data-move="left"]{grid-column:1;grid-row:2}.dpad [data-move="down"]{grid-column:2;grid-row:2}.dpad [data-move="right"]{grid-column:3;grid-row:2}.hint{text-align:center;font-size:12px;color:#a5bfb6;margin:10px 0;min-height:32px;line-height:1.6}.foot{padding:12px 14px;border:1px solid #345249;border-radius:12px;background:#101f21;font-size:12px;line-height:1.9;color:#c9d8ca}strong{color:#fac77c}a{color:#7edaff}
+</style>
+</head>
+<body><main class="wrap">
+<header class="top"><div><div class="eyebrow">TADASH • FOX PLAYGROUND v0.1</div><h1>باغ <span>نور</span> 🦊</h1></div><div class="tag">بدون نصب • آفلاین</div></header>
+<p class="sub">ناسورایا در باغی کوچک قدم می‌زند، جرقه‌های آبی را پیدا می‌کند و مسیرهای تازه را امتحان می‌کند. می‌توانی بازی خودکارش را تماشا کنی یا کنترل را بگیری.</p>
+<section class="stats" aria-label="امتیاز بازی"><div class="stat"><b id="score">۰</b><small>امتیاز بازی</small></div><div class="stat"><b id="found">۰/۵</b><small>جرقه‌های پیدا شده</small></div><div class="stat"><b id="steps">۰</b><small>قدم‌ها</small></div></section>
+<div class="board"><canvas id="garden" width="720" height="720" aria-label="نقشهٔ باغ و شخصیت ناسورایا"></canvas></div>
+<div class="controls"><button class="primary" id="toggle">▶ تماشای بازی</button><button id="reset">↻ باغ تازه</button><button id="manual">✋ کنترل دستی</button></div>
+<div class="dpad" aria-label="کلیدهای حرکت"><button data-move="up" aria-label="بالا">↑</button><button data-move="left" aria-label="چپ">←</button><button data-move="down" aria-label="پایین">↓</button><button data-move="right" aria-label="راست">→</button></div>
+<p class="hint" id="status" role="status">بازی آماده است؛ برای شروع «تماشای بازی» را بزن.</p>
+<p class="foot"><strong>معنای فنی:</strong> جرقه‌ها پاداش عددی‌اند، نه احساس لذت؛ مسیر‌یاب، بازدید از خانه‌های تکراری را کم‌اولویت می‌کند. این فقط یک شبیه‌ساز جدا از کنترل‌های بدن تداش است. هیچ داده‌ای ارسال نمی‌شود و هیچ ارتباط خودکار و دائمی با ChatGPT وجود ندارد.</p>
+</main>
+<script>
+'use strict';
+(() => {
+  const N=9, TARGET=5, c=document.getElementById('garden'),ctx=c.getContext('2d');
+  const dirs=[[1,0],[-1,0],[0,1],[0,-1]];
+  const seedRandom=(seed)=>()=>{seed|=0;seed=seed+0x6d2b79f5|0;let t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296};
+  let serial=0, world, running=false, mode='auto',timer=null;
+  const key=(x,y)=>x+','+y;
+  function fresh(){running=false;clearInterval(timer);const rand=seedRandom(11419+serial++*53);
+    const rocks=new Set();while(rocks.size<13){const x=Math.floor(rand()*N),y=Math.floor(rand()*N);if((x===0&&y===0)||(x===1&&y===0)||(x===0&&y===1))continue;rocks.add(key(x,y));}
+    // Ensure that all reachable tiles are connected to the start. Unreachable rocks are removed.
+    const reach=new Set([key(0,0)]),q=[[0,0]];
+    for(let i=0;i<q.length;i++){const [x,y]=q[i];for(const [dx,dy] of dirs){const a=x+dx,b=y+dy,k=key(a,b);if(a>=0&&b>=0&&a<N&&b<N&&!rocks.has(k)&&!reach.has(k)){reach.add(k);q.push([a,b]);}}}
+    for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(!reach.has(key(x,y)))rocks.delete(key(x,y));
+    const slots=[...reach].filter(k=>k!==key(0,0));const sparks=new Set();while(sparks.size<TARGET){const k=slots[Math.floor(rand()*slots.length)];if(k)sparks.add(k);}
+    world={x:0,y:0,rocks,sparks,visits:new Map([[key(0,0),1]]),score:0,steps:0,found:0,last:'آغاز سفر',done:false};
+    mode='auto';document.getElementById('manual').textContent='✋ کنترل دستی';status('باغ تازه ساخته شد. پنج جرقهٔ آبی در آن پنهان است.');update();draw();}
+  const valid=(x,y)=>x>=0&&y>=0&&x<N&&y<N&&!world.rocks.has(key(x,y));
+  function route(){// Dijkstra: length plus small visit penalty; never crosses rocks.
+    const dist=new Map([[key(world.x,world.y),0]]),parent=new Map(),open=[[world.x,world.y,0]];
+    while(open.length){open.sort((a,b)=>a[2]-b[2]);const [x,y,d]=open.shift(),k=key(x,y);if(d!==dist.get(k))continue;
+      if(world.sparks.has(k)){let now=k;while(parent.has(now)&&parent.get(now)!==key(world.x,world.y))now=parent.get(now);const [a,b]=now.split(',').map(Number);return [a-world.x,b-world.y];}
+      for(const [dx,dy] of dirs){const a=x+dx,b=y+dy,p=key(a,b);if(!valid(a,b))continue;const nd=d+1+(world.visits.get(p)||0)*.18;
+        if(nd<(dist.get(p)??Infinity)){dist.set(p,nd);parent.set(p,k);open.push([a,b,nd]);}}
+    }return null;
+  }
+  function step(dx,dy){if(world.done)return false;const a=world.x+dx,b=world.y+dy;if(!valid(a,b)){world.last='مسیری بسته بود؛ بازگشت به انتخاب بعدی';world.score=Math.max(0,world.score-1);update();return false;}
+    world.x=a;world.y=b;world.steps++;const k=key(a,b);world.visits.set(k,(world.visits.get(k)||0)+1);
+    world.score+=1;world.last='قدم امن';if(world.sparks.delete(k)){world.found++;world.score+=20;world.last='✨ جرقهٔ آبی پیدا شد!';}
+    if(world.found>=TARGET){world.done=true;running=false;clearInterval(timer);world.last='🏆 باغ کامل شد؛ تمام جرقه‌ها پیدا شدند.';}
+    update();draw();return true;
+  }
+  function tick(){if(!running||world.done)return;const mv=route();if(!mv){running=false;clearInterval(timer);status('مسیر پیدا نشد.');return;}step(...mv);}
+  function status(t){document.getElementById('status').textContent=t;}
+  function update(){const num=x=>String(x).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[+d]);document.getElementById('score').textContent=num(world.score);document.getElementById('found').textContent=num(world.found)+'/'+num(TARGET);document.getElementById('steps').textContent=num(world.steps);status(world.last);document.getElementById('toggle').textContent=running?'⏸ توقف':'▶ تماشای بازی';}
+  function circle(x,y,r,color){ctx.fillStyle=color;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();}
+  function draw(){const w=c.width,s=w/N;ctx.clearRect(0,0,w,w);const grad=ctx.createLinearGradient(0,0,w,w);grad.addColorStop(0,'#1f483d');grad.addColorStop(1,'#0d292d');ctx.fillStyle=grad;ctx.fillRect(0,0,w,w);
+    for(let y=0;y<N;y++)for(let x=0;x<N;x++){const X=x*s,Y=y*s;ctx.fillStyle=(x+y)%2?'#26514299':'#24473b99';ctx.fillRect(X+1,Y+1,s-2,s-2);
+      if(world.rocks.has(key(x,y))){circle(X+s*.49,Y+s*.53,s*.3,'#475e55');circle(X+s*.43,Y+s*.47,s*.21,'#718075');}
+      if(world.sparks.has(key(x,y))){circle(X+s*.5,Y+s*.5,s*.31,'#2db8e02a');circle(X+s*.5,Y+s*.5,s*.16,'#80eaff');circle(X+s*.45,Y+s*.41,s*.06,'#f2feff');}
+      if((world.visits.get(key(x,y))||0)>0){circle(X+s*.82,Y+s*.81,s*.035,'#efa95f88');}}
+    const X=(world.x+.5)*s,Y=(world.y+.52)*s;circle(X,Y,s*.34,'#e8894f');circle(X,Y-s*.055,s*.25,'#f6bb78');
+    // Horns, three-toe paw symbols, and blue fox spirit are stylized, not anatomical evidence.
+    ctx.fillStyle='#c85d37';ctx.beginPath();ctx.moveTo(X-s*.18,Y-s*.23);ctx.lineTo(X-s*.28,Y-s*.50);ctx.lineTo(X-s*.035,Y-s*.32);ctx.closePath();ctx.fill();ctx.beginPath();ctx.moveTo(X+s*.18,Y-s*.23);ctx.lineTo(X+s*.28,Y-s*.50);ctx.lineTo(X+s*.035,Y-s*.32);ctx.closePath();ctx.fill();
+    circle(X-s*.09,Y-s*.085,s*.035,'#473c21');circle(X+s*.09,Y-s*.085,s*.035,'#473c21');ctx.strokeStyle='#733927';ctx.lineWidth=3;ctx.beginPath();ctx.arc(X,Y+s*.03,s*.09,.2,2.9);ctx.stroke();
+    for(const d of [-.13,0,.13])circle(X+d*s,Y+s*.28,s*.07,'#593f32');
+    const fx=Math.min(w-s*.2,X+s*.52),fy=Math.max(s*.2,Y-s*.42);circle(fx,fy,s*.12,'#52bffb99');circle(fx,fy,s*.07,'#a9f3ff');
+  }
+  function auto(){if(world.done)fresh();running=!running;mode='auto';clearInterval(timer);if(running)timer=setInterval(tick,300);update();}
+  document.getElementById('toggle').addEventListener('click',auto);
+  document.getElementById('reset').addEventListener('click',fresh);
+  document.getElementById('manual').addEventListener('click',()=>{running=false;clearInterval(timer);mode='manual';document.getElementById('manual').textContent='🎮 دست تو';status('با فلش‌ها حرکت کن.');update();});
+  function manualMove(dx,dy){running=false;clearInterval(timer);mode='manual';step(dx,dy);}
+  for(const el of document.querySelectorAll('[data-move]'))el.addEventListener('click',()=>{const a={up:[0,-1],down:[0,1],left:[-1,0],right:[1,0]}[el.dataset.move];manualMove(...a)});
+  window.addEventListener('keydown',e=>{const m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[e.key];if(m){e.preventDefault();manualMove(...m)}});
+  fresh();
+})();
+</script></body></html>
