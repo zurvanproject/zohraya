@@ -1,0 +1,97 @@
+{
+  "schema": "tadash-native-policy-reversal-independent-audit/1",
+  "date_utc": "2026-11-02",
+  "pr": 118,
+  "tested_commit": "cf40464625694a7d4830f1e989d0d356819f23d9",
+  "workflow": {
+    "run_id": 41502340252,
+    "job_id": 125472712491,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/41502340252",
+    "conclusion": "success"
+  },
+  "unit_tests": {
+    "passed": 12,
+    "failed": 0
+  },
+  "mechanics": {
+    "source_commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+    "body": "78 kg pinned v03",
+    "native_trials": 40,
+    "training_trials": 16,
+    "holdout_trials": 24,
+    "holdout_contexts": 8,
+    "peak_tilt_deg": 0.05284374120876472,
+    "peak_motor_fraction": 0.6405878013924565
+  },
+  "contract": {
+    "prior_goal_map_mm": {
+      "curious": 3,
+      "frustrated": 1,
+      "tired": 0,
+      "steady": 2
+    },
+    "reversed_goal_map_mm": {
+      "curious": 1,
+      "frustrated": 3,
+      "tired": 2,
+      "steady": 0
+    },
+    "training_friction": 0.6,
+    "holdout_friction": [
+      0.5,
+      0.55
+    ],
+    "holdout_offsets_mm": [
+      0.15,
+      -0.15
+    ],
+    "reward_rule": "1 - abs(observed COM - intended COM)/0.004, clamped [0,1]",
+    "min_gain_vs_repeat": 0.08,
+    "min_gain_vs_prior": 0.08,
+    "min_wins_vs_repeat": 5,
+    "goal_labels": "hand-authored contexts, not measured emotions"
+  },
+  "plan_sha256": "293cf7864e940777a170e2a968d276bb299169dad3b07caec504a5007e86b17c",
+  "frozen_policy_sha256": "a23ca46da278bb53800880d81104c763c7d20b0885858f87d1477e4e55e17c17",
+  "policy": {
+    "previous": {
+      "curious": "explore",
+      "frustrated": "simplify",
+      "tired": "rest",
+      "steady": "repeat"
+    },
+    "native_learned": {
+      "curious": "simplify",
+      "frustrated": "explore",
+      "tired": "repeat",
+      "steady": "rest"
+    }
+  },
+  "holdout": {
+    "mean_reward_new": 0.9625009733646693,
+    "mean_reward_always_repeat": 0.740619573076924,
+    "mean_reward_previous_synthetic": 0.49998251590937953,
+    "wins_new_vs_repeat": 6,
+    "wins_new_vs_previous": 8,
+    "absolute_gain_vs_repeat": 0.22188140028774528,
+    "absolute_gain_vs_previous": 0.4625184574552898,
+    "all_predeclared_criteria_met": true
+  },
+  "artifact": {
+    "id": 13170460364,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/41502340252/artifacts/13170460364",
+    "sha256": "72d0108f79c9ea44e14094e83a31a7bd577f25d92c0fc04b7af672139e7d7ba0",
+    "zip_entries": 215,
+    "zip_crc_ok": true
+  },
+  "verification": "Downloaded and inspected artifact ZIP; all 40 pre-action intent, raw native trace and reward receipt digest chains verified; each trial has 80 trace entries, 3200 samples total; recomputed all 40 rewards, policy argmax and three holdout reward means exactly. Native safety guards passed on all trials.",
+  "interpretation": "Successful adaptation of a tiny feedback-trained decision table to deliberately reversed, hand-authored motor task goals in deterministic MuJoCo. Not a generalization claim to independent, unstructured new tasks.",
+  "limitations": [
+    "Each context is assigned a motor goal by a human-designed task; no actual emotional state observed.",
+    "No independent statistically variable physical world or true novelty in action menu.",
+    "No learned motor dynamics beyond fixed controller and prior command-gain calibration.",
+    "No long-term autonomous activity, no felt emotion, no human/robotic transfer.",
+    "Draft only; main and canonical body unchanged."
+  ],
+  "deployments": "none"
+}
