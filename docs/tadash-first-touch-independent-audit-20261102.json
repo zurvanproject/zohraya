@@ -1,0 +1,111 @@
+{
+  "schema": "tadash-kimia-khak-first-touch-independent-audit/1",
+  "date_utc": "2026-11-02",
+  "pr": 121,
+  "tested_code_commit": "ee902878ebce78b2b351a9d50525e0e57d5be209",
+  "ci": {
+    "run_id": 41510281004,
+    "job_id": 125500050414,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/41510281004",
+    "result": "success",
+    "offline_tests_passed": 22
+  },
+  "native": {
+    "source_commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+    "model_mass_kg": 78,
+    "flat_ground_friction_training": 0.6,
+    "flat_ground_friction_holdout": 0.5,
+    "native_trials": 6,
+    "raw_contact_trace_samples": 480,
+    "bilateral_contact_all_samples": true,
+    "feet_only_ground_contacts": true,
+    "max_tilt_below_20_deg": true
+  },
+  "contact_holds": [
+    {
+      "name": "still",
+      "friction": 0.6,
+      "shift_command_mm": 0,
+      "observed_com_shift_mm": 2.783640796224194e-8,
+      "left_normal_force_n": 382.5900177126272,
+      "right_normal_force_n": 382.59001675643987,
+      "left_minus_right_n": 9.561873071106675e-7
+    },
+    {
+      "name": "left",
+      "friction": 0.6,
+      "shift_command_mm": -1,
+      "observed_com_shift_mm": -0.9089173345599633,
+      "left_normal_force_n": 382.0525963779497,
+      "right_normal_force_n": 383.1274401093045,
+      "left_minus_right_n": -1.074843731354747
+    },
+    {
+      "name": "right",
+      "friction": 0.6,
+      "shift_command_mm": 1,
+      "observed_com_shift_mm": 0.9089180857706664,
+      "left_normal_force_n": 383.1274472450317,
+      "right_normal_force_n": 382.0525892456495,
+      "left_minus_right_n": 1.0748579993822318
+    },
+    {
+      "name": "still_holdout",
+      "friction": 0.5,
+      "shift_command_mm": 0,
+      "observed_com_shift_mm": 2.8581434102472874e-8,
+      "left_normal_force_n": 382.59001771137844,
+      "right_normal_force_n": 382.59001674399354,
+      "left_minus_right_n": 9.67384892192058e-7
+    },
+    {
+      "name": "left_holdout",
+      "friction": 0.5,
+      "shift_command_mm": -1,
+      "observed_com_shift_mm": -0.9088356369983707,
+      "left_normal_force_n": 382.05289704161544,
+      "right_normal_force_n": 383.1271393309892,
+      "left_minus_right_n": -1.0742422893737853
+    },
+    {
+      "name": "right_holdout",
+      "friction": 0.5,
+      "shift_command_mm": 1,
+      "observed_com_shift_mm": 0.9088355770847345,
+      "left_normal_force_n": 383.12714059273225,
+      "right_normal_force_n": 382.0528957797177,
+      "left_minus_right_n": 1.074244813014559
+    }
+  ],
+  "cross_friction_frozen_prediction": {
+    "trained_response_gain": 0.9089177101653148,
+    "mae_new_m": 5.473566418349878e-8,
+    "mae_historical_prior_m": 2.2457654473008298e-8,
+    "mae_no_response_m": 0.0006058904142215131,
+    "mae_perfect_tracking_m": 0.000060776271499442986,
+    "strong_prior_outperformed": false
+  },
+  "observations": {
+    "sign_correct_for_both_directions": true,
+    "load_transfer_detected_from_native_normal_forces": true,
+    "com_return_within_0_1mm": true,
+    "contact_force_total_approx_n": 765.18,
+    "foot_touch_simulated": true
+  },
+  "unmeasured": [
+    "physical soil",
+    "soil grains / moisture / compliance",
+    "cutaneously felt touch",
+    "slip velocity"
+  ],
+  "artifact": {
+    "id": 13172442905,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/41510281004/artifacts/13172442905",
+    "zip_sha256": "53150f8b4d9da2afcb2dcdd018312f0f0c890e616597d078d9e672a7580be348",
+    "zip_file_count": 37,
+    "zip_crc": "passed"
+  },
+  "independent_verification": "Opened archived GitHub ZIP, validated exact ZIP digest and all 37 entries, recomputed plan/frozen/summary hashes; verified all six intention/native/receipt hashes; regenerated left/right force means from ten hold samples of each of 480 native 50-ms trace records; recomputed all four holdout MAEs; source/model unchanged.",
+  "claim_scope": "Six genuine independent simulations of ground-contact normal load and small left/right weight shift; supports bounded contact-data attention but not conscious sensation or tactile soil simulation.",
+  "repository": "Draft unmerged; canonical body, main, real actuators and language model weights unchanged"
+}
