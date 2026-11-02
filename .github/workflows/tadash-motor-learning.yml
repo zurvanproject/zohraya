@@ -1,0 +1,62 @@
+name: Tadash motor learning blinded heldout native v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_motor_learning.py'
+      - 'experiments/test_tadash_motor_learning.py'
+      - 'experiments/tadash_weight_shift.py'
+      - '.github/workflows/tadash-motor-learning.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  motor-learning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout experiment separate from canonical motion
+        uses: actions/checkout@v4
+        with:
+          path: curriculum
+          persist-credentials: false
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Strict offline tests and negative controls
+        working-directory: curriculum
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_motor_learning experiments.test_tadash_weight_shift
+      - name: Checkout immutable real v03 body
+        uses: actions/checkout@v4
+        with:
+          repository: zurvanproject/zohraya
+          ref: c6bac77802a7fab9178fb00eed28e3c4410b9482
+          path: pinned-motion
+          persist-credentials: false
+      - name: Install exact pinned model CPU requirements
+        run: |
+          set -euo pipefail
+          python -m pip install -r pinned-motion/examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Train from native feedback and evaluate unseen targets
+        working-directory: curriculum
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_motor_learning \
+            --motion-source "${GITHUB_WORKSPACE}/pinned-motion" \
+            --output "${RUNNER_TEMP}/tadash-learning-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --timeout 240 | tee "${RUNNER_TEMP}/tadash-learning-console.json"
+      - name: Archive raw sensor feedback and frozen model even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-motor-learning-native-raw
+          path: |
+            ${{ runner.temp }}/tadash-learning-${{ github.run_id }}-${{ github.run_attempt }}/
+            ${{ runner.temp }}/tadash-learning-console.json
+          retention-days: 7
+          if-no-files-found: warn

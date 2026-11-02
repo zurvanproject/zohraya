@@ -31,12 +31,15 @@ from examples.nasuraya_research.articulated.balance import BalanceController
 from examples.nasuraya_research.articulated.stepping import ContactController, contact_state, smooth
 
 shift = float(sys.argv[1])
+friction = float(sys.argv[2]) if len(sys.argv) > 2 else 0.6
+if not math.isfinite(friction) or not 0.45 <= friction <= 0.7:
+    raise ValueError("Friction outside frozen experiment range")
 if not math.isfinite(shift) or abs(shift) > 0.004:
     raise ValueError("Nonfinite or unapproved shift")
 
 m, d = load(CANDIDATE)
 m.opt.timestep = 0.001
-m.geom_friction[:, 0] = 0.6
+m.geom_friction[:, 0] = friction
 standing = BalanceController(m, CANDIDATE)
 d.qpos[:] = m.qpos0
 d.qpos[2] += 0.005
@@ -110,7 +113,7 @@ for i in range(4000):
 completed = len(returned) == 500 and failure is None
 print(json.dumps({
     "schema": "native-v03-bilateral-shift/1",
-    "requested_shift_y_m": shift, "seconds_requested": 4.,
+    "requested_shift_y_m": shift, "friction": friction, "seconds_requested": 4.,
     "seconds_completed": float(d.time - 2.),
     "completed": completed, "failure": failure,
     "held_com_y_delta_m": float(np.mean(held)) if held else None,
