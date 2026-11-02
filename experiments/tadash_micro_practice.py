@@ -24,7 +24,7 @@ MAX_ATTEMPTS = 4
 CHILD = """import json, sys
 from examples.nasuraya_research.articulated.canon_trial import CANDIDATE
 from examples.nasuraya_research.articulated.stepping import walk_trial
-r, _ = walk_trial(label="micro-practice", steps=1,
+r = walk_trial(label="micro-practice", steps=1,
                   stride=float(sys.argv[1]), model_dir=CANDIDATE,
                   geometry_support=True, checkpoint_v03=True,
                   retain_checkpoint=True, capture=False)
