@@ -1,0 +1,66 @@
+name: Tadash v03 movement and recovered evidence
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_motion_episode.py'
+      - 'experiments/test_tadash_motion_episode.py'
+      - '.github/workflows/tadash-v03-motion-episode.yml'
+permissions:
+  contents: read
+concurrency:
+  group: tadash-v03-motion-episode-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  bounded-cpu-episode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      OPENBLAS_CORETYPE: Haswell
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: laboratory
+          persist-credentials: false
+      - name: Retrieve the exact existing v03 source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: zurvanproject/zohraya
+          ref: c6bac77802a7fab9178fb00eed28e3c4410b9482
+          path: motion-source
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install the pinned CPU experiment dependencies
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m pip install --only-binary=:all: -r motion-source/examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Evidence integrity and recovery contract tests
+        working-directory: laboratory
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_motion_episode 2>&1 | tee "$RUNNER_TEMP/v03-episode-unit.log"
+      - name: Two bounded commands with a cold recovered evidence gate
+        working-directory: laboratory
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_motion_episode --motion-source "$GITHUB_WORKSPACE/motion-source" --output "$RUNNER_TEMP/v03-motion-episode" 2>&1 | tee "$RUNNER_TEMP/v03-episode-run.log"
+          git diff --exit-code
+          git -C "$GITHUB_WORKSPACE/motion-source" diff --exit-code
+      - name: Preserve receipts and diagnostics
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: tadash-v03-motion-episode-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/v03-motion-episode
+            ${{ runner.temp }}/v03-episode-unit.log
+            ${{ runner.temp }}/v03-episode-run.log
+          retention-days: 7

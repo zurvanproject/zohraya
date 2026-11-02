@@ -82,5 +82,13 @@
     "full_four_track_run_41421531033": "in_progress",
     "retry_triggered": false
   },
-  "next_safe_step": "If a finite authorized run remains, inspect CI without rerun; evaluate dedicated synthetic memory bank and exact-scope parsing only after backend authorization, without human data or model API."
+  "next_safe_step": "If a finite authorized run remains, inspect CI without rerun; evaluate dedicated synthetic memory bank and exact-scope parsing only after backend authorization, without human data or model API.",
+  "later_motion_audit_correction": {
+    "date": "2026-11-02",
+    "supersedes": "research_status.motion is a historical status; its 165 kg inference does not identify the active v03 command model.",
+    "current_motion_source": "PR95 motion_commands explicitly selects the existing 78 kg / 1.70 m v03 XML.",
+    "compiled_cpu_audit": "docs/tadash-v03-cpu-audit-20261102.json",
+    "remaining_integration_gap": "The separate native resource/physiology model still uses 195 kg parameters; no migration is claimed.",
+    "details": "docs/tadash-v03-source-and-physiology-audit-fa.md"
+  }
 }

@@ -1,0 +1,61 @@
+{
+  "schema": "tadash-v03-motion-independent-audit/1",
+  "verified_utc": "2026-11-02T14:05:02.677617+00:00",
+  "source_output_name": "v03_motion_episode_20261102_a",
+  "verification_method": "Independent stdlib + NumPy reads; experiment module not imported; no MuJoCo or body rerun.",
+  "manifest_entries_verified": 34,
+  "manifest_complete_except_self_and_session_lock": true,
+  "source_commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+  "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d",
+  "harness_sha256": "d909c90ef93f7affe89758a8b7893f6ca827a058b38bc2ea1cd9cabb6c4d6f3c",
+  "explicit_model_mass_attributes": 44,
+  "static_mass_sum_kg": 78.0,
+  "compiled_mass_from_fresh_audit_kg": 78.0,
+  "physical_continuity_recomputed": {
+    "qpos_exact": true,
+    "qvel_exact": true,
+    "time_exact": true,
+    "integration_digest_exact": true,
+    "checkpoint_id_exact": true,
+    "second_initialization_zero": true,
+    "opposite_feet": true
+  },
+  "raw_capture_frames_per_command": [
+    222,
+    222
+  ],
+  "episode_sha256": "96e26e53387475719aaa89a4d336e991de824ba516c3c84fb6a607d504b05544",
+  "raw_episode_evidence_files_verified": 5,
+  "cold_process_pid_matches_record": true,
+  "new_process_count": 8,
+  "accepted_steps": 2,
+  "simulation_span_s": 22.00000000000646,
+  "total_pelvis_displacement_xyz_m": [
+    0.04778372119605158,
+    -0.004480832742638059,
+    0.0026867016139401345
+  ],
+  "first_command_pelvis_forward_m": -0.012079045701834362,
+  "second_command_pelvis_forward_m": 0.059862766897885944,
+  "max_tilt_deg": 0.5856216479196322,
+  "max_motor_fraction": 0.999863317213028,
+  "max_joint_limit_excess_rad": 0.0,
+  "nonfoot_contacts": [],
+  "final_max_generalized_speed": 0.0021379360125635626,
+  "rule_based_gate": true,
+  "learning_or_quality_improvement_established": false,
+  "replay": {
+    "saved_replay_flag": true,
+    "final_session_still_second_checkpoint": true,
+    "no_state_change_assertion_recorded": true,
+    "independently_recomputable_before_after_replay_hashes": false
+  },
+  "limitations": [
+    "No new simulation was executed by this verifier. Fresh-run metrics were reconstructed from the saved native receipts and arrays.",
+    "The before-replay hash map was checked by executed harness but not archived separately; replay no-state-change cannot be independently reconstructed from separate pre/post snapshots here.",
+    "First command pelvis displacement is negative; net two-command progression is positive. Foot stride target is not pelvis displacement.",
+    "Peak motor fraction is near one, so this run does not establish extra torque or load margin.",
+    "This is a fixed evidence-gated continuation, not learned memory, Hindsight/Graphiti service, or 195 kg physiology integration.",
+    "SHA hashes establish file integrity relative to saved anchors, not source authentication against a writer controlling the anchors."
+  ]
+}
