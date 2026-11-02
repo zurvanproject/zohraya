@@ -1,7 +1,10 @@
-"""Synthetic evidence-integrity tests; these do not execute MuJoCo."""
+"""Evidence-integrity tests plus an optional real headless import smoke; no motion."""
 import copy
+import importlib.util
 import json
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -158,6 +161,39 @@ class EvidenceGateTests(unittest.TestCase):
         self.assertTrue(all(lab.continuity(first, second).values()))
         second["initial_integration_sha256"] = "0" * 64
         self.assertFalse(lab.continuity(first, second)["integration_exact"])
+
+
+class HeadlessImportTests(unittest.TestCase):
+    @unittest.skipUnless(importlib.util.find_spec("mujoco") is not None, "MuJoCo not installed in this interpreter")
+    def test_physics_child_imports_actual_mujoco_without_graphics_libraries(self):
+        # A fresh process has neither previously imported MuJoCo nor a cached GL
+        # context. Make GL discovery unavailable and fail on any graphics import.
+        script = """import ctypes.util, importlib.abc, json, sys
+original_find_library = ctypes.util.find_library
+def without_graphics_library(name):
+    if name.lower() in {'egl', 'gl', 'glesv2', 'osmesa'}:
+        return None
+    return original_find_library(name)
+ctypes.util.find_library = without_graphics_library
+graphics = ('OpenGL', 'mujoco.egl', 'mujoco.osmesa', 'mujoco.glfw', 'mujoco.cgl', 'glfw')
+attempts = []
+class NoGraphics(importlib.abc.MetaPathFinder):
+    def find_spec(self, fullname, path=None, target=None):
+        if any(fullname == name or fullname.startswith(name + '.') for name in graphics):
+            attempts.append(fullname)
+            raise AssertionError('Physics tried to import graphics: ' + fullname)
+sys.meta_path.insert(0, NoGraphics())
+import mujoco
+assert hasattr(mujoco, 'MjModel')
+assert not any(name in sys.modules for name in graphics)
+print(json.dumps({'version': mujoco.__version__, 'graphics_import_attempts': attempts}))
+"""
+        result = subprocess.run([sys.executable, "-c", script], env=lab.clean_env(),
+                                capture_output=True, text=True, timeout=60)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        observed = json.loads(result.stdout)
+        self.assertTrue(observed["version"])
+        self.assertEqual(observed["graphics_import_attempts"], [])
 
 
 if __name__ == "__main__":

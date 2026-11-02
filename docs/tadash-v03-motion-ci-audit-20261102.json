@@ -1,0 +1,25 @@
+{
+  "schema": "tadash-v03-ci-audit/1",
+  "date": "2026-11-02",
+  "initial_run": {
+    "run_id": 41465016148,
+    "job_id": 125343484522,
+    "code_commit": "b384609c8448190ee66bfad57affea843056a8f8",
+    "conclusion": "failure",
+    "unit_tests_passed": 14,
+    "native_motion_started": false,
+    "failed_stage": "audit import before movement",
+    "reason": "MUJOCO_GL=egl unnecessarily required graphics libraries on a headless CPU runner; OpenGL.EGL raised AttributeError on eglQueryString.",
+    "artifact_id": 13151421235,
+    "artifact_sha256": "eac0e6f221ed3d758d74e189f91adb66550386789f3ac8edc197bdb6d75e743e"
+  },
+  "correction": {
+    "physics_child_MUJOCO_GL": "disable",
+    "separate_video_renderer_changed": false,
+    "regression": "A fresh process imports actual MuJoCo while GL library discovery is unavailable and graphics imports are rejected.",
+    "local_tests_passed": 15,
+    "old_egl_negative_control": "failed as expected",
+    "harness_sha256": "4103fa918459ab711483cb4b01e89a7d4c152dacc761db65be1c836c8ab3a24c"
+  },
+  "corrected_ci": "awaiting committed execution; no success claimed yet"
+}

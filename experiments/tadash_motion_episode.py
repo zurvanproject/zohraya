@@ -64,8 +64,10 @@ def write(path, value, *, replace=False):
 
 def clean_env():
     env = {key: os.environ[key] for key in ("PATH", "LANG", "LC_ALL", "TMPDIR", "SYSTEMROOT") if key in os.environ}
+    # Physics and recorded-pose validation do not create a graphics context.
+    # Rendering is a separate caller: do not require system EGL on CPU CI hosts.
     env.update(OPENBLAS_CORETYPE="Haswell", OPENBLAS_NUM_THREADS="1", OMP_NUM_THREADS="1",
-               PYTHONNOUSERSITE="1", PYTHONDONTWRITEBYTECODE="1", MUJOCO_GL="egl")
+               PYTHONNOUSERSITE="1", PYTHONDONTWRITEBYTECODE="1", MUJOCO_GL="disable")
     return env
 
 
