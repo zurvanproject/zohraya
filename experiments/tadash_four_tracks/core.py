@@ -46,6 +46,15 @@ def number(value: Any, low: float, high: float) -> float:
     return float(value)
 
 
+def tick_count(duration: Any) -> int:
+    """Require integral 100-ms native ticks; round() alone admits e.g. 0.15 s."""
+    d = number(duration, .1, 2.0)
+    ticks = round(d * 10)
+    if ticks < 1 or abs(d * 10 - ticks) > 1e-8:
+        raise ValueError("duration must align to exact 0.1 second ticks")
+    return ticks
+
+
 def snapshot(value: dict) -> dict[str, float]:
     return {key: number(value[key], 0.0, 1.0) for key in METRICS}
 
@@ -66,11 +75,11 @@ def review_pair(treatment: dict, control: dict, *, min_effect: float = .005,
             raise ValueError("only completed synthetic trial receipts are admitted")
         identifier(trial["id"])
         snapshot(trial["before"]); snapshot(trial["after"])
-        number(trial["duration_s"], .1, 2.0)
+        ticks = tick_count(trial["duration_s"])
         actions = trial["actual_actions"]
         if not actions or any(a not in ACTIONS for a in actions):
             raise ValueError("missing or unknown executed action")
-        if len(actions) != round(trial["duration_s"] * 10):
+        if len(actions) != ticks:
             raise ValueError("action count does not match fixed 0.1s ticks")
         if not re.fullmatch(r"[0-9a-f]{64}", trial["initial_checkpoint_sha256"]):
             raise ValueError("missing initial checkpoint digest")
@@ -100,11 +109,66 @@ def review_pair(treatment: dict, control: dict, *, min_effect: float = .005,
         "empirical_physiology": False, "generalization_established": False}
 
 
+def validate_hindsight_export(batch: dict) -> int:
+    """Offline structural validation against the documented v1.1.0 retain fields.
+
+    This is a local allowlist, not Hindsight server validation or LLM extraction.
+    """
+    if not isinstance(batch, dict) or set(batch) != {"items"}:
+        raise ValueError("expected only retain items")
+    items = batch["items"]
+    if not isinstance(items, list) or not items or len(items) % 3:
+        raise ValueError("each synthetic comparison needs a complete triple")
+    allowed = {
+        "intention": {"goal", "requested", "duration_s"},
+        "observation": {"treatment_actual", "control_actual",
+                        "treatment_before", "treatment_after", "control_after"},
+        "interpretation": {"verdict", "reason", "effects_vs_control",
+                           "not_a_general_rule", "not_subjective_experience"},
+    }
+    seen = set()
+    groups = {}
+    for item in items:
+        if not isinstance(item, dict) or set(item) != {
+                "content", "timestamp", "context", "document_id", "metadata", "tags"}:
+            raise ValueError("unexpected retain item fields")
+        meta = item["metadata"]
+        if not isinstance(meta, dict) or set(meta) != {
+                "category", "evidence_sha256", "synthetic", "schema"}:
+            raise ValueError("unexpected metadata fields")
+        if any(not isinstance(v, str) for v in meta.values()):
+            raise ValueError("Hindsight metadata must be string values")
+        kind, source = meta["category"], meta["evidence_sha256"]
+        if kind not in allowed or not isinstance(source, str) or not re.fullmatch(r"[0-9a-f]{64}", source):
+            raise ValueError("invalid synthetic source or category")
+        if (meta["synthetic"] != "true" or meta["schema"] != "tadash-memory-export/1"
+                or item["timestamp"] != "unset"
+                or item["context"] != "Synthetic Tadash software experiment, not a human event or lived experience"
+                or item["document_id"] != f"tadash-{source}-{kind}"
+                or item["tags"] != ["tadash-synthetic", kind]):
+            raise ValueError("invalid synthetic export provenance")
+        if item["document_id"] in seen:
+            raise ValueError("duplicate synthetic document id")
+        seen.add(item["document_id"])
+        if not isinstance(item["content"], str):
+            raise ValueError("retain content must be text")
+        try:
+            payload = json.loads(item["content"])
+        except (TypeError, ValueError) as exc:
+            raise ValueError("invalid retain JSON content") from exc
+        if not isinstance(payload, dict) or set(payload) != allowed[kind]:
+            raise ValueError("unapproved retain content fields")
+        groups.setdefault(source, set()).add(kind)
+    if any(kinds != set(allowed) for kinds in groups.values()):
+        raise ValueError("incomplete retain comparison triple")
+    return len(items)
+
+
 def hindsight_items(treatment: dict, control: dict, review: dict) -> dict:
     """Build allowlisted synthetic retain payloads; never send them anywhere.
 
     category is our metadata, not a claim about Hindsight's inferred fact_type.
-    Raw signed-by-hash receipts remain outside Hindsight's lossy extraction.
+    Raw hash-linked receipts remain outside Hindsight's lossy extraction.
     """
     recomputed = review_pair(treatment, control,
         min_effect=review["thresholds"]["min_arousal_effect"],
@@ -130,7 +194,9 @@ def hindsight_items(treatment: dict, control: dict, review: dict) -> dict:
         "metadata": {"category": category, "evidence_sha256": source,
             "synthetic": "true", "schema": "tadash-memory-export/1"},
         "tags": ["tadash-synthetic", category]} for category, value in parts.items()]
-    return {"items": items}
+    output = {"items": items}
+    validate_hindsight_export(output)
+    return output
 
 
 def vector_rows(rows: list) -> list[list[float]]:
