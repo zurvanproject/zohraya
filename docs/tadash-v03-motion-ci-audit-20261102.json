@@ -21,5 +21,34 @@
     "old_egl_negative_control": "failed as expected",
     "harness_sha256": "4103fa918459ab711483cb4b01e89a7d4c152dacc761db65be1c836c8ab3a24c"
   },
-  "corrected_ci": "awaiting committed execution; no success claimed yet"
+  "corrected_ci": {
+    "run_id": 41465819160,
+    "job_id": 125346288613,
+    "code_commit": "97b947655dbc307d9243d5d59c74bf4babaa7bce",
+    "conclusion": "success",
+    "unit_tests_passed": 15,
+    "native_summary": "docs/tadash-v03-motion-ci-summary-20261102.json",
+    "summary_read_from_actual_job_log": true,
+    "all_twelve_native_checks_passed": true,
+    "artifact_id": 13153360026,
+    "artifact_sha256": "29ce3909ecd1412ba64db2ff688ce15951ef3e5139e7789f4011cce72f287c6f",
+    "core_physical_metrics_exactly_match_local": {
+      "accepted_steps": true,
+      "simulation_span_s": true,
+      "total_pelvis_displacement_xyz_m": true,
+      "peak_tilt_deg": true,
+      "max_motor_fraction": true,
+      "final_max_generalized_speed": true
+    },
+    "separate_source_checkout_and_unchanged_source_steps_passed": true,
+    "native_parameters_changed": false,
+    "is_independent_physiological_generalization": false,
+    "basis": "CI logs and job steps verified; local raw archive independently reconstructed separately."
+  },
+  "other_automatically_triggered_checks": {
+    "41465819023": "four-track success",
+    "41465819110": "memory scope success",
+    "41465819055": "affect ablation success",
+    "manual_rerun": false
+  }
 }
