@@ -113,14 +113,19 @@ def measured_run(root: Path, workspace: Path, run_id: str, slots: int) -> dict:
         ret = proc.wait()
     wall = time.monotonic() - t0
     after = resource.getrusage(resource.RUSAGE_CHILDREN)
-    if ret != 0:
-        raise RuntimeError(f'real workers failed at slots={slots}; {stderr_file.read_text()[-1400:]}')
+    # A failed native run is an important scale result, not a probe crash.
+    # Still audit its terminal ledger, durable receipts, and cold replay.
+    if ret not in (0, 1):
+        raise RuntimeError(f'coordinator exit={ret}: {stderr_file.read_text()[-1400:]}')
     report = json.loads(stdout_file.read_text())
-    assert report['status'] == 'passed' and report['reviewer']['passed'] is True
+    assert report['status'] in ('passed', 'failed')
+    assert (ret == 0) is (report['status'] == 'passed')
+    assert report['reviewer']['passed'] is (report['status'] == 'passed')
     assert report['model_api_calls'] == 0
     assert set(report['workers']) == set(worker.ROLES)
-    assert all(r['passed'] is True and r['network_syscalls_denied'] is True
-               and r['model_api_calls'] == 0 for r in report['workers'].values())
+    assert all(r['model_api_calls'] == 0 for r in report['workers'].values())
+    assert all(r['network_syscalls_denied'] is True for r in report['workers'].values()
+               if r['passed'] is True)
     assert peak_claims <= slots
 
     # Distinct receipts must be durable; replay must not launch a worker.
@@ -130,11 +135,11 @@ def measured_run(root: Path, workspace: Path, run_id: str, slots: int) -> dict:
     with sqlite3.connect(workspace / 'ledger.sqlite') as db:
         jobs_before = db.execute('SELECT agent,status,receipt FROM jobs ORDER BY agent').fetchall()
         assert len(jobs_before) == len(worker.ROLES) + 1
-        assert all(status == 'completed' for _, status, _ in jobs_before)
+        assert all(status in ('completed', 'failed') for _, status, _ in jobs_before)
     replay_file = workspace / 'replay.json'
     with replay_file.open('wb') as stdout:
         second = subprocess.run(command, cwd=root, stdout=stdout, stderr=subprocess.PIPE, timeout=30)
-    assert second.returncode == 0, second.stderr.decode(errors='replace')
+    assert second.returncode == ret, second.stderr.decode(errors='replace')
     assert json.loads(replay_file.read_text()) == report
     assert receipts_before == files_in(log_dir), 'replay modified command receipts'
     with sqlite3.connect(workspace / 'ledger.sqlite') as db:
@@ -155,12 +160,19 @@ def measured_run(root: Path, workspace: Path, run_id: str, slots: int) -> dict:
         'peak_running_role_claims': peak_claims,
         'coordinator_child_user_cpu_seconds': round(after.ru_utime - before.ru_utime, 3),
         'coordinator_child_system_cpu_seconds': round(after.ru_stime - before.ru_stime, 3),
-        'direct_child_maxrss_kib': after.ru_maxrss,
+        # ru_maxrss is a historical max over children, so omit it from paired comparison.
         'workspace_bytes': storage, 'source_sha256': report['source_sha256'],
         'implementation_sha256': report['implementation_sha256'],
         'worker_elapsed_seconds': {k: r['elapsed_seconds'] for k, r in report['workers'].items()},
         'worker_log_count': len(receipts_before),
-        'all_jobs_completed': True, 'cold_replay_identical': True,
+        'status': report['status'],
+        'successful_roles': sum(r['passed'] is True for r in report['workers'].values()),
+        'failed_roles': {role: {'error': r.get('error'),
+                               'commands': [{'returncode': c.get('returncode'),
+                                             'interrupted': c.get('interrupted')}
+                                            for c in r.get('commands', [])]}
+                         for role, r in report['workers'].items() if r['passed'] is not True},
+        'all_jobs_terminal': True, 'cold_replay_identical': True,
         'receipts_hash_and_mtime_unchanged': True,
         'different_slot_replay_rejected': True,
         'pause_before_claim_rejected': True,
@@ -254,12 +266,18 @@ def main() -> None:
         (base / 'scale-results.json').write_text(json.dumps(
             result, ensure_ascii=False, sort_keys=True, indent=2) + '\n')
     two, four = result['benchmark']
-    result['speedup_2_over_4'] = round(two['wall_seconds'] / four['wall_seconds'], 3)
-    result['time_saved_percent'] = round(
-        100 * (two['wall_seconds'] - four['wall_seconds']) / two['wall_seconds'], 2)
+    if two['status'] == four['status'] == 'passed':
+        result['speedup_2_over_4'] = round(two['wall_seconds'] / four['wall_seconds'], 3)
+        result['time_saved_percent'] = round(
+            100 * (two['wall_seconds'] - four['wall_seconds']) / two['wall_seconds'], 2)
+    else:
+        result['speedup_2_over_4'] = None
+        result['time_saved_percent'] = None
+        result['comparison_note'] = 'Failed runs do not count as completed throughput.'
     (base / 'scale-results.json').write_text(json.dumps(
         result, ensure_ascii=False, sort_keys=True, indent=2) + '\n')
     print(json.dumps({'wall_s_2': two['wall_seconds'], 'wall_s_4': four['wall_seconds'],
+                      'status_2': two['status'], 'status_4': four['status'],
                       'speedup': result['speedup_2_over_4'],
                       'roles': result['roles'], 'receipts_valid': True,
                       'sigkill_fail_closed': True}, sort_keys=True))
