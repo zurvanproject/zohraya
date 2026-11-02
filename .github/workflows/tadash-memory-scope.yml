@@ -1,0 +1,40 @@
+name: Tadash Hindsight synthetic scope audit
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_memory_scope.py'
+      - 'experiments/test_tadash_memory_scope.py'
+      - '.github/workflows/tadash-memory-scope.yml'
+permissions:
+  contents: read
+concurrency:
+  group: tadash-memory-scope-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  local-contract-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Execute strict offline synthetic policy tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_memory_scope 2>&1 | tee "$RUNNER_TEMP/tadash-memory-scope-tests.log"
+          python -m py_compile experiments/tadash_memory_scope.py experiments/test_tadash_memory_scope.py
+          git diff --exit-code
+      - name: Archive test log without any memory payload
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: tadash-memory-scope-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/tadash-memory-scope-tests.log
+          retention-days: 7

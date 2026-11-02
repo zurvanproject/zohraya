@@ -1,0 +1,54 @@
+name: Tadash affect-autonomic first-tick ablation
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_first_tick_ablation.py'
+      - 'experiments/test_tadash_first_tick_ablation.py'
+      - '.github/workflows/tadash-affect-first-tick.yml'
+permissions:
+  contents: read
+concurrency:
+  group: tadash-first-tick-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  bounded-ablation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Offline unit tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_first_tick_ablation 2>&1 | tee "$RUNNER_TEMP/tadash-first-tick-units.log"
+      - name: Bounded native synthetic ablation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_first_tick_ablation --output "$RUNNER_TEMP/tadash-first-tick-results"
+          git diff --exit-code
+          python - "$RUNNER_TEMP/tadash-first-tick-results" <<'PY'
+          import json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          print(json.dumps(json.loads((root/"summary.json").read_text()), indent=2))
+          status = json.loads((root/"status.json").read_text())
+          assert status["status"] == "completed", status
+          assert status["source_unchanged"] is True, status
+          PY
+      - name: Archive provenance, native outcomes and failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: tadash-first-tick-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/tadash-first-tick-results
+            ${{ runner.temp }}/tadash-first-tick-units.log
+          retention-days: 7

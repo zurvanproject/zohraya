@@ -1,0 +1,275 @@
+{
+  "schema": "tadash-four-track-second-audit/1",
+  "date": "2026-11-02",
+  "repository": "zurvanproject/zohraya",
+  "branch": "nasuraya/four-track-lab-20261102",
+  "validation": {
+    "tested_commit": "fa981a94457c6f564d1e2d2ddae68b7dbc908f7f",
+    "github_actions_run": 41406420259,
+    "github_actions_job": 125149526042,
+    "workflow_conclusion": "success",
+    "unit_tests_passed": 31,
+    "native_pilot_run_again_by_CI": true,
+    "native_intervention_cycles": 64,
+    "prior_negative_results_unchanged": true,
+    "independent_new_physiology_claim": false,
+    "note": "This is a fresh automatic PR CI run after two contract-code commits, not an independent physiological replication."
+  },
+  "fixes": [
+    "Reject non-integral 100-ms durations such as 0.15s that previously passed round() checks",
+    "Validate offline Hindsight batch fields, categories, content allowlists, timestamp unset, string metadata, and unique document IDs",
+    "Correct misleading signed-by-hash terminology to hash-linked (no identity signature)"
+  ],
+  "first_tick_diagnostic": {
+    "evidence_source": "archived original PR111 run 41400431454 native-transitions.jsonl; not a new ablation",
+    "initial_baseline_arousal": 0.2822793406531386,
+    "baseline_first_tick_arousal_delta_slow_breath": 0.0478988052507494,
+    "baseline_first_tick_arousal_delta_observe": 0.04790899008843623,
+    "baseline_first_tick_difference_slow_minus_observe": -1.018483768683e-05,
+    "post_walk_first_tick_common_start_arousal": 0.330245077,
+    "first_tick_spike_observed_in": "baseline context under both actions",
+    "absent_in": "post_walk context",
+    "interpretation": "Shared initialization/context effect is plausible, exact mechanism not established. Do not attribute the spike to slow_breath alone or exclude the first tick after seeing outcomes.",
+    "repeat_horizons_nonindependent": true
+  },
+  "mass_model_source_audit": {
+    "status": "corrected_source_trace_and_fresh_cpu_compilation",
+    "revision": 2,
+    "correction_date": "2026-11-02",
+    "physiology_source_commit": "203352d2769400bed3563b3449add9ddc19d2116",
+    "pr95_head_commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+    "pr100_head_commit": "1bb7c42bf9e3ec5059ef46dbb73d614343d73db4",
+    "actual_pr95_command_execution_route": [
+      {
+        "path": "examples/nasuraya_research/articulated/motion_commands.py",
+        "blob_sha": "a86e22ed798a6540e3bbed4b3182d575e2808fcd",
+        "role": "execute() explicitly passes canon_trial.CANDIDATE, checkpoint_v03=True and geometry_support=True to walk_trial()",
+        "source_url": "https://github.com/zurvanproject/zohraya/blob/c6bac77802a7fab9178fb00eed28e3c4410b9482/examples/nasuraya_research/articulated/motion_commands.py"
+      },
+      {
+        "path": "examples/nasuraya_research/articulated/canon_trial.py",
+        "blob_sha": "ca65d73400f215982c24a6f50564ea8f6e561e6b",
+        "role": "CANDIDATE is assets/nasuraya_articulated_v03; TARGETS are 78 kg and 1.70 m crown height; imports ROOT/fmt from build.py without invoking its build()",
+        "source_url": "https://github.com/zurvanproject/zohraya/blob/c6bac77802a7fab9178fb00eed28e3c4410b9482/examples/nasuraya_research/articulated/canon_trial.py"
+      },
+      {
+        "path": "examples/nasuraya_research/articulated/stepping.py",
+        "blob_sha": "8d00f816cdd94d69ee4f8ee3b96ab8e582bdd5a4",
+        "role": "walk_trial() loads the explicit model_dir, not the legacy default",
+        "source_url": "https://github.com/zurvanproject/zohraya/blob/c6bac77802a7fab9178fb00eed28e3c4410b9482/examples/nasuraya_research/articulated/stepping.py"
+      },
+      {
+        "path": "examples/nasuraya_research/articulated/evaluate.py",
+        "blob_sha": "15cb1bd9434a2b4b60e6ce36acb742496ee36768",
+        "role": "load(model_dir) compiles model_dir/nasuraya.xml directly",
+        "source_url": "https://github.com/zurvanproject/zohraya/blob/c6bac77802a7fab9178fb00eed28e3c4410b9482/examples/nasuraya_research/articulated/evaluate.py"
+      }
+    ],
+    "actual_atlas": {
+      "path": "assets/nasuraya_articulated_v03/nasuraya.xml",
+      "git_blob_sha1": "b7177c1a43715a8eb27e1f837c7c72bbbcee932e",
+      "sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d",
+      "same_blob_at_pr95_and_pr100": true,
+      "tracked_xml_present_at_pr95": true,
+      "tracked_xml_present_at_pr100": true,
+      "static_explicit_mass_attribute_count": 44,
+      "static_explicit_mass_sum_kg": 78.0,
+      "static_arithmetic_is_a_compilation": false,
+      "source_urls": [
+        "https://github.com/zurvanproject/zohraya/blob/c6bac77802a7fab9178fb00eed28e3c4410b9482/assets/nasuraya_articulated_v03/nasuraya.xml",
+        "https://github.com/zurvanproject/zohraya/blob/1bb7c42bf9e3ec5059ef46dbb73d614343d73db4/assets/nasuraya_articulated_v03/nasuraya.xml"
+      ]
+    },
+    "legacy_generation_chain": [
+      {
+        "version": "v01",
+        "generator": "examples/nasuraya_research/articulated/build.py",
+        "mass_kg": 165,
+        "crown_height_m": 2.5
+      },
+      {
+        "version": "v02",
+        "generator": "examples/nasuraya_research/articulated/resize.py",
+        "mass_kg": 85,
+        "crown_height_m": 1.85
+      },
+      {
+        "version": "v03",
+        "generator": "examples/nasuraya_research/articulated/canon_trial.py:build_candidate",
+        "mass_kg": 78,
+        "crown_height_m": 1.7
+      }
+    ],
+    "pr100_connection": {
+      "loader": "examples/tadash_connected/movement.py:ArmTargets",
+      "registry": "examples/tadash_connected/gmr_core/params.py:ROBOT_XML_DICT[nasuraya_v03]",
+      "runtime_mass_assertion": "abs(mujoco.mj_getTotalmass(model) - 78.0) <= 0.02",
+      "source_urls": [
+        "https://github.com/zurvanproject/zohraya/blob/1bb7c42bf9e3ec5059ef46dbb73d614343d73db4/examples/tadash_connected/movement.py",
+        "https://github.com/zurvanproject/zohraya/blob/1bb7c42bf9e3ec5059ef46dbb73d614343d73db4/examples/tadash_connected/gmr_core/params.py"
+      ]
+    },
+    "historical_measurements_not_fresh_reruns": [
+      {
+        "source": "https://github.com/zurvanproject/zohraya/blob/c6bac77802a7fab9178fb00eed28e3c4410b9482/evidence/body-canon-trial-v01/morphology.json",
+        "measured_mass_kg": 78.0,
+        "measured_crown_height_m": 1.7,
+        "measured_horn_upper_bound_m": 1.92
+      },
+      {
+        "source": "https://github.com/zurvanproject/zohraya/blob/c6bac77802a7fab9178fb00eed28e3c4410b9482/evidence/functional-motion-v01/summary.json",
+        "accepted_steps": 2,
+        "both_settled": true,
+        "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d"
+      },
+      {
+        "source": "https://github.com/zurvanproject/zohraya/blob/1bb7c42bf9e3ec5059ef46dbb73d614343d73db4/examples/tadash_connected/evidence/summary.json",
+        "atlas_mass_kg": 78.00000000000001,
+        "native_cycles": 24,
+        "native_ticks": 240
+      }
+    ],
+    "fresh_cpu_compilation": {
+      "date": "2026-11-02",
+      "receipt_path": "docs/tadash-v03-cpu-audit-20261102.json",
+      "receipt_sha256": "099e931af1437cabba98b9c3136da27ce168a04abe9432cbae529e628ad35e9e",
+      "source_commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+      "xml_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d",
+      "backend": "cpu",
+      "measured_mass_kg": 78.0,
+      "measured_crown_height_m": 1.7,
+      "measured_horn_upper_bound_m": 1.92,
+      "measured_tail_centerline_length_m": 0.8500000000028748,
+      "fingers_per_hand": {
+        "L": 5,
+        "R": 5
+      },
+      "toes_per_foot": {
+        "L": 3,
+        "R": 3
+      },
+      "actuated_joints": 55,
+      "positive_inertias": true,
+      "initial_self_collisions": [],
+      "versions": {
+        "mujoco": "3.11.0",
+        "numpy": "2.3.5",
+        "scipy": "1.17.0",
+        "osqp": "1.0.5",
+        "PyYAML": "6.0.3",
+        "Pillow": "12.3.0"
+      },
+      "scope": "Compilation, model forwarding and static geometry/mass inspection only. This receipt does not establish a new motion episode or cold recovery."
+    },
+    "remaining_mismatch": {
+      "mechanical_v03_mass_kg": 78.0,
+      "native_temperature_mass_parameter_kg": 195.0,
+      "native_reduced_posture_mass_kg": 195.0,
+      "physiology_parameters_rescaled": false,
+      "legacy_165kg_model_is_current_command_model": false,
+      "heat_limit_195000_unit": "J, not kg",
+      "capacity_references_are_not_proven_mass_proportional": true,
+      "inventory": "docs/tadash-v03-source-and-physiology-audit-fa.md"
+    },
+    "next": "Use the pinned existing v03 atlas for one bounded motion/evidence/recovery episode; keep the 195 kg physiology migration as a separate parameter-design and conservation-validation task."
+  },
+  "pinned_upstream_project_sources": [
+    {
+      "repository": "PhyAgentOS/PhyAgentOS-core",
+      "tag": "v1.1.1",
+      "tag_object": "d7ae62a06c172741208498f2a8eb37653aedbfcb",
+      "commit": "9fbcc4d471a7fac4e4251b34d598f1b0bbc2c0d0",
+      "license": "MIT",
+      "code_imported": false
+    },
+    {
+      "repository": "vectorize-io/hindsight",
+      "tag": "v1.1.0",
+      "tag_object": "df2bbce99a237a85bbcd3abc5eed099c220547f5",
+      "commit": "a5a619b5ca59c5c39e0f96be6f7a31fabd136bd5",
+      "license": "MIT",
+      "code_imported": false
+    },
+    {
+      "repository": "mujocolab/mjlab",
+      "tag": "v1.6.0",
+      "commit": "0fb8a681136be94ffc636a3dd423cabb97d91f10",
+      "license": "Apache-2.0",
+      "code_imported": false
+    },
+    {
+      "repository": "gurpnijjer/dream-rehearsal",
+      "ref": "main",
+      "commit": "7680778f798be3a27a17c320cc875b573c45f0e1",
+      "license": "Apache-2.0",
+      "code_imported": false
+    }
+  ],
+  "memory_schema_confirmation": {
+    "source": "vectorize-io/hindsight v1.1.0 docs/developer/api/retain.mdx",
+    "timestamp_unset_documented": true,
+    "document_id_groups_idempotent": true,
+    "metadata_requires_string_values": true,
+    "tags_control_visibility_scope": true,
+    "remote_server_called": false
+  },
+  "world_model_gate": {
+    "previous_pilot_mae": 0.0018527349122857456,
+    "previous_persistence_mae": 0.00010110122548022971,
+    "model_better": false,
+    "imagined_rollout_authorized": false,
+    "new_model_training_done": false
+  },
+  "safety": {
+    "paid_api_calls": 0,
+    "model_weights_changed": false,
+    "user_state_modified": false,
+    "main_modified": false,
+    "merge": false,
+    "deployment": false,
+    "gpu_training": false,
+    "external_code_executed": false
+  },
+  "record_scope": "Original checkpoint-2 evidence remains historical except mass_model_source_audit, which is explicitly corrected below. Later CPU evidence is a separate receipt and does not retroactively validate the original inference.",
+  "historical_mass_model_source_audit": {
+    "status": "superseded_incorrect_execution_path_inference",
+    "superseded_on": "2026-11-02",
+    "reason": "The original audit examined legacy v01 build.py and incorrectly inferred that it was the PR95 command-interface model. It missed the explicit v03 model_dir and the tracked 78 kg XML.",
+    "original": {
+      "pr95_head_commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+      "generator": "examples/nasuraya_research/articulated/build.py",
+      "generator_blob_sha": "6b13c7e09fd7dd65353b14e7044eb0ac451b8bc7",
+      "profile": "examples/nasuraya_research/running_profile_v01.json",
+      "profile_blob_sha": "32a0fbbe5458992c729f83a3dac63175883af34f",
+      "phenotype_blob_sha": "61f61176c50379041ccbebf7a2f5d36824aa3a5a",
+      "contact_design_blob_sha": "2394080461f2ff6ea9e38ca0fae7628856026528",
+      "native_physiology_mass_kg": 195,
+      "original_phenotype_mass_compartments_kg": {
+        "head_and_horns": 11,
+        "trunk": 88,
+        "both_arms": 22,
+        "both_legs_and_feet": 64,
+        "tail": 10
+      },
+      "original_compartments_sum_kg": 195,
+      "pr95_generated_articulated_mass_kg": 165,
+      "pr95_generated_articulated_height_m": 2.5,
+      "pr95_generator_scales_compartments_by": 0.8461538461538461,
+      "pr95_scaled_compartments_kg": {
+        "head_and_horns": 9.307692308,
+        "trunk": 74.461538462,
+        "both_arms": 18.615384615,
+        "both_legs_and_feet": 54.153846154,
+        "tail": 8.461538462
+      },
+      "pr100_reported_kinematic_atlas_mass_kg": 78,
+      "is_78_kg_xml_generated_by_pr95": false,
+      "generated_xml_output": "assets/nasuraya_articulated_v01/nasuraya.xml (generated after invoking build.py; not a tracked source XML in current PR111)",
+      "current_branch_static_glob": "no *.xml in examples/nasuraya_research",
+      "current_local_cpu_mujoco_import_available": false,
+      "full_mjcf_compilation_attempted": false,
+      "reason_blocked": "PR95 uses a separate 165 kg dynamic geometry assembled by a Python generator, whereas PR100 describes a different 78 kg kinematic atlas. MuJoCo is not installed in the local environment and no 78 kg generated MJCF has been verified.",
+      "next": "Pin exact mass target and compatible source; compile reviewed generated model in separate CPU environment only when dependency available. Do not silently rescale source."
+    }
+  }
+}

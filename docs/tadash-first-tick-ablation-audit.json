@@ -1,0 +1,73 @@
+{
+  "schema": "tadash-first-tick-ablation-audit/1",
+  "date": "2026-11-02",
+  "branch": "nasuraya/four-track-lab-20261102",
+  "pr": 111,
+  "tested_commit": "4281c75e15e596c7e39bd4ee2b75180c7314e1ec",
+  "github_actions_run": 41415700538,
+  "github_actions_job": 125178888502,
+  "workflow_conclusion": "success",
+  "unit_tests_passed": 8,
+  "synthetic_cells": 8,
+  "intervention_native_ticks": 16,
+  "comparisons": 4,
+  "origins": 2,
+  "post_walk_preparation_ticks": 3,
+  "raw_artifact_id": 13126799419,
+  "artifact_sha256": "14c059eccb46e45b3e532d5afef82d48ede27529fdc663232586779e29eeb2b5",
+  "plan_sha256": "dbbff7adcb6d5f169862ba7b66a4a57425cceaef1c2cb45cdbd4f5c55a6817e9",
+  "first_tick": {
+    "baseline": {
+      "initial_arousal": 0.2822793406531386,
+      "observe": {
+        "enabled": 0.33018799142082755,
+        "disabled": 0.28268746163975284,
+        "route_effect": 0.04750052978107472
+      },
+      "slow_breath": {
+        "enabled": 0.3301778065831408,
+        "disabled": 0.28267727680206606,
+        "route_effect": 0.04750052978107472
+      },
+      "enabled_native_emotion": "curiosity",
+      "disabled_native_emotion": "neutral"
+    },
+    "post_walk": {
+      "initial_arousal": 0.3302450768993293,
+      "observe": {
+        "enabled": 0.33024676665651737,
+        "disabled": 0.33048805457457386,
+        "route_effect": -0.00024128791805649863
+      },
+      "slow_breath": {
+        "enabled": 0.3302365818462578,
+        "disabled": 0.3304778697643143,
+        "route_effect": -0.00024128791805649863
+      },
+      "enabled_native_emotion": "curiosity",
+      "disabled_native_emotion": "curiosity"
+    }
+  },
+  "mechanism_support": {
+    "source": "runtimes/tadash_body/persistent_embodiment_v1.py",
+    "function": "PersistentEmbodiment._external",
+    "literal": "elif a['emotion']=='curiosity': a['arousal']=clamp(.30+.15*i)",
+    "ablation_route": "UnifiedBody.cycle affects 'emotion' insertion unless affect_to_autonomic is disabled",
+    "interpretation": "The baseline jump is largely attributable to a one-time native curiosity input in this deterministic model; post-walk native emotion persists despite disabling future input"
+  },
+  "all_actual_actions_as_requested": true,
+  "same_full_initial_checkpoint_within_context": true,
+  "source_runtime_unchanged": true,
+  "main_modified": false,
+  "workflow_previous_pilot_triggered_unintentionally_by_stacked_PR_diff": true,
+  "previous_pilot_runs_41415583667_41415632398_41415700439": "all completed success (not independent research replications)",
+  "limitations": [
+    "Within-simulator mechanism only",
+    "No independent stochastic repeats",
+    "Two ticks per cell; not long-horizon therapeutic effect",
+    "No physical sensors, clinical data or subjective emotion",
+    "Upstream framework runtime not used",
+    "Other tracks retain previous checkpoint and blockers"
+  ],
+  "future": "For mass-model integration, keep 78/165/195 kg sources distinct; Hindsight server and mjlab CPU compilation remain unverified, Dream Rehearsal rollout remains blocked"
+}

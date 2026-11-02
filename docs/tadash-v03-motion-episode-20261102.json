@@ -1,0 +1,171 @@
+{
+  "schema": "tadash-motion-episode-summary/1",
+  "source": {
+    "commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+    "model_path": "assets/nasuraya_articulated_v03/nasuraya.xml",
+    "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d"
+  },
+  "scope": "Two synthetic v03 mechanical commands, cold saved-evidence gate and old-ID replay.",
+  "morphology": {
+    "mass_kg": 78.0,
+    "crown_height_m": 1.7,
+    "horn_upper_bound_m": 1.92,
+    "tail_centerline_length_m": 0.8500000000028748,
+    "fingers_per_hand": {
+      "L": 5,
+      "R": 5
+    },
+    "toes_per_foot": {
+      "L": 3,
+      "R": 3
+    },
+    "actuated_joints": 55,
+    "positive_inertias": true,
+    "initial_self_collisions": [],
+    "support_bounds_m": [
+      [
+        -0.11037929845911001,
+        -0.01610070154089,
+        -0.06732,
+        0.06732
+      ],
+      [
+        -0.11037929845911001,
+        -0.01610070154089,
+        -0.06732,
+        0.06732
+      ]
+    ],
+    "legacy_bound_max_overshoot_m": 0.004383001764476979,
+    "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d"
+  },
+  "checks": {
+    "qpos_exact": true,
+    "qvel_exact": true,
+    "time_exact": true,
+    "integration_exact": true,
+    "checkpoint_exact": true,
+    "second_initialization_zero": true,
+    "opposite_feet": true,
+    "replay_flag": true,
+    "replay_no_state_change": true,
+    "expectation_unchanged": true,
+    "source_unchanged": true,
+    "harness_unchanged": true
+  },
+  "accepted_steps": 2,
+  "peak_tilt_deg": 0.5856216479196322,
+  "final_max_generalized_speed": 0.0021379360125635626,
+  "total_pelvis_displacement_xyz_m": [
+    0.04778372119605158,
+    -0.004480832742638059,
+    0.0026867016139401345
+  ],
+  "simulation_interval_s": [
+    1.9999999999998905,
+    24.00000000000635
+  ],
+  "simulation_span_s": 22.00000000000646,
+  "first_initialization_s": 2.0,
+  "second_initialization_s": 0.0,
+  "max_motor_fraction": 0.999863317213028,
+  "cold_decision": {
+    "schema": "tadash-motion-evidence-decision/1",
+    "decision": "execute_second_one_step",
+    "rule": "continue_only_after_verified_completed_settled_first_step",
+    "evidence_sha256": "96e26e53387475719aaa89a4d336e991de824ba516c3c84fb6a607d504b05544",
+    "source": {
+      "commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+      "model_path": "assets/nasuraya_articulated_v03/nasuraya.xml",
+      "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d"
+    },
+    "checkpoint_sha256": "298caa5fca57c4c345b2ea31b2b10af09c4fc96e640ca4ab27a1b816fe823959",
+    "recovered_observation": {
+      "accepted_steps": 1,
+      "max_tilt_deg": 0.5856216479196322,
+      "max_joint_limit_excess_rad": 0.0,
+      "final_max_generalized_speed": 0.005346219665120129,
+      "pelvis_displacement_xyz_m": [
+        -0.012079045701834362,
+        -0.00408845217522779,
+        0.002150508779370619
+      ],
+      "start_time": 1.9999999999998905,
+      "end_time": 12.999999999998234,
+      "max_motor_torque_fraction": 0.999863317213028,
+      "checkpoint_sha256": "298caa5fca57c4c345b2ea31b2b10af09c4fc96e640ca4ab27a1b816fe823959"
+    },
+    "learned_policy": false,
+    "quality_improvement_established": false,
+    "cold_process_pid": 15,
+    "cold_capture_verified": true
+  },
+  "episode_sha256": "96e26e53387475719aaa89a4d336e991de824ba516c3c84fb6a607d504b05544",
+  "processes": [
+    {
+      "name": "audit",
+      "pid": 8,
+      "exit_code": 0,
+      "wall_seconds": 0.2648373689999062
+    },
+    {
+      "name": "start",
+      "pid": 9,
+      "exit_code": 0,
+      "wall_seconds": 0.6658718040007443
+    },
+    {
+      "name": "first",
+      "pid": 13,
+      "exit_code": 0,
+      "wall_seconds": 13.408719001999998
+    },
+    {
+      "name": "capture-first",
+      "pid": 14,
+      "exit_code": 0,
+      "wall_seconds": 0.31540063800002827
+    },
+    {
+      "name": "cold-recovery",
+      "pid": 15,
+      "exit_code": 0,
+      "wall_seconds": 0.3149177939994843
+    },
+    {
+      "name": "second",
+      "pid": 23,
+      "exit_code": 0,
+      "wall_seconds": 12.65433024900085
+    },
+    {
+      "name": "capture-final",
+      "pid": 24,
+      "exit_code": 0,
+      "wall_seconds": 0.265072551999765
+    },
+    {
+      "name": "replay",
+      "pid": 25,
+      "exit_code": 0,
+      "wall_seconds": 0.5655453279996436
+    }
+  ],
+  "harness_sha256": "d909c90ef93f7affe89758a8b7893f6ca827a058b38bc2ea1cd9cabb6c4d6f3c",
+  "capture_validation": {
+    "commands": 2,
+    "frames": [
+      222,
+      222
+    ],
+    "start_time": 1.9999999999998905,
+    "end_time": 24.00000000000635,
+    "receipt_and_pose_boundaries_agree": true
+  },
+  "limitations": [
+    "The second action is selected by a fixed verified-evidence gate; learning or decision-quality improvement is not established.",
+    "No Hindsight, Graphiti, language model, GPU training or human data in this experiment.",
+    "The 195 kg physiological subsystem is not executed or rescaled; this is the 78 kg mechanical body.",
+    "Hashes are run-local integrity checks, not cryptographic identity signatures."
+  ]
+}

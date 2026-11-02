@@ -1,0 +1,43 @@
+{
+  "mass_kg": 78.0,
+  "crown_height_m": 1.7,
+  "horn_upper_bound_m": 1.92,
+  "tail_centerline_length_m": 0.8500000000028748,
+  "fingers_per_hand": {
+    "L": 5,
+    "R": 5
+  },
+  "toes_per_foot": {
+    "L": 3,
+    "R": 3
+  },
+  "actuated_joints": 55,
+  "positive_inertias": true,
+  "initial_self_collisions": [],
+  "support_bounds_m": [
+    [
+      -0.11037929845911001,
+      -0.01610070154089,
+      -0.06732,
+      0.06732
+    ],
+    [
+      -0.11037929845911001,
+      -0.01610070154089,
+      -0.06732,
+      0.06732
+    ]
+  ],
+  "legacy_bound_max_overshoot_m": 0.004383001764476979,
+  "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d",
+  "xml_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d",
+  "versions": {
+    "mujoco": "3.11.0",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "osqp": "1.0.5",
+    "PyYAML": "6.0.3",
+    "Pillow": "12.3.0"
+  },
+  "source_commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482"
+}

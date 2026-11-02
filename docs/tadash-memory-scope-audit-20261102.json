@@ -1,0 +1,94 @@
+{
+  "schema": "tadash-hindsight-scoping-audit/1",
+  "date": "2026-11-02",
+  "project": "zurvanproject/zohraya",
+  "pr": 111,
+  "branch": "nasuraya/four-track-lab-20261102",
+  "code_commit": "e7c4d10c8ccef86d29d9094fe47667760166771d",
+  "upstream": {
+    "repository": "vectorize-io/hindsight",
+    "tag": "v1.1.0",
+    "api_document": "hindsight-docs/docs/developer/api/retain.mdx",
+    "license": "MIT",
+    "executed": false
+  },
+  "change": {
+    "new_files": [
+      "experiments/tadash_memory_scope.py",
+      "experiments/test_tadash_memory_scope.py",
+      ".github/workflows/tadash-memory-scope.yml"
+    ],
+    "old_export_still_accepted_as_input": true,
+    "strict_v1_input": "exact synthetic provenance; fixed goal, numeric channels, native action count and consistency; reject free text and unknown keys",
+    "v2_document_ids": "tadash-v2-{evidence_sha256}-{category}",
+    "v2_tags": [
+      "tadash-synthetic",
+      "tadash-evidence:{sha256}",
+      "tadash-kind:{category}"
+    ],
+    "observation_scopes": "combined",
+    "update_mode": "replace",
+    "recall_tags_match": "exact",
+    "recall_query": "summarize synthetic Tadash experiment evidence",
+    "actual_ingestion": false,
+    "actual_retrieval": false,
+    "live_bank": false,
+    "paid_api_calls": 0
+  },
+  "tests": {
+    "local_synthetic_contracts": {
+      "count": 15,
+      "passed": 15,
+      "python": "local runtime"
+    },
+    "github_actions": {
+      "workflow": "Tadash Hindsight synthetic scope audit",
+      "run_id": 41421601256,
+      "job_id": 125198192603,
+      "head_sha": "e7c4d10c8ccef86d29d9094fe47667760166771d",
+      "unit_tests": 15,
+      "passed": 15,
+      "conclusion": "success",
+      "log_inspected": true
+    },
+    "archived_native_receipts": {
+      "archive_name": "tadash-four-track-evidence-41400431454.zip",
+      "prior_run_id": 41400431454,
+      "archived_trials": 12,
+      "comparisons": 6,
+      "archived_hindsight_items": 18,
+      "scoped_items_locally_validated": 18,
+      "source_hash_recomputed_from_raw_trials": true,
+      "network_calls": 0
+    }
+  },
+  "safety_and_limits": [
+    "Hindsight tags select recalled memories; they are not authentication or bank-level access control.",
+    "With Hindsight default recall tags_match=any, untagged/global facts may be returned; exact scoping prevents this class of broad match within a correctly configured bank.",
+    "Local validation cannot prove source authenticity: a fully fabricated consistent triple can pass without separately checked raw native receipts.",
+    "Legacy exporter includes no standalone control-before observation; matching checkpoints were verified upstream by native experiment only.",
+    "No Hindsight installation, LLM extraction, observation consolidation, or real server recall was executed.",
+    "No extra synthetic body experiment was started for this checkpoint.",
+    "Source code is original adapter code; no upstream library code copied or imported."
+  ],
+  "research_status": {
+    "outcome": "Prior paired experiment six not_met; no new intervention in this checkpoint.",
+    "motion": "78/165/195 kg atlas/param mismatch unresolved; MuJoCo CPU compilation not executed.",
+    "rehearsal": "Prior mean-delta candidate worse than persistence; rollout still prohibited.",
+    "memory": "Local scope overlay verified, real Hindsight service and security integration still blocked."
+  },
+  "outstanding_ci_at_audit_time": {
+    "full_four_track_run_41421601008": "pending",
+    "full_four_track_run_41421531033": "in_progress",
+    "retry_triggered": false
+  },
+  "next_safe_step": "If a finite authorized run remains, inspect CI without rerun; evaluate dedicated synthetic memory bank and exact-scope parsing only after backend authorization, without human data or model API.",
+  "later_motion_audit_correction": {
+    "date": "2026-11-02",
+    "supersedes": "research_status.motion is a historical status; its 165 kg inference does not identify the active v03 command model.",
+    "current_motion_source": "PR95 motion_commands explicitly selects the existing 78 kg / 1.70 m v03 XML.",
+    "compiled_cpu_audit": "docs/tadash-v03-cpu-audit-20261102.json",
+    "remaining_integration_gap": "The separate native resource/physiology model still uses 195 kg parameters; no migration is claimed.",
+    "details": "docs/tadash-v03-source-and-physiology-audit-fa.md"
+  }
+}
