@@ -1,0 +1,61 @@
+name: Tadash bounded native micro-practice v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_micro_practice.py'
+      - 'experiments/test_tadash_micro_practice.py'
+      - '.github/workflows/tadash-micro-practice.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  micro-practice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout experimental curriculum
+        uses: actions/checkout@v4
+        with:
+          path: curriculum
+          persist-credentials: false
+      - name: Setup isolated Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run synthetic guard tests BEFORE native process
+        working-directory: curriculum
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_micro_practice experiments.test_tadash_motion_episode.EvidenceGateTests
+      - name: Checkout exactly pinned v03 native body
+        uses: actions/checkout@v4
+        with:
+          repository: zurvanproject/zohraya
+          ref: c6bac77802a7fab9178fb00eed28e3c4410b9482
+          path: pinned-motion
+          persist-credentials: false
+      - name: Install pinned CPU physics for native body only
+        run: |
+          set -euo pipefail
+          python -m pip install -r pinned-motion/examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Four bounded native one-step trials; never retry an unknown outcome
+        working-directory: curriculum
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_micro_practice \
+            --motion-source "${GITHUB_WORKSPACE}/pinned-motion" \
+            --output "${RUNNER_TEMP}/tadash-micro-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --max-attempts 4 --timeout 480 | tee "${RUNNER_TEMP}/tadash-micro-console.json"
+      - name: Archive raw, intention-before-action, outcomes and failed-state logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-micro-practice-raw
+          path: |
+            ${{ runner.temp }}/tadash-micro-${{ github.run_id }}-${{ github.run_attempt }}/
+            ${{ runner.temp }}/tadash-micro-console.json
+          retention-days: 7
+          if-no-files-found: warn
