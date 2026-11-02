@@ -1,0 +1,25 @@
+name: Nasuraya playful self-model probe (offline)
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_playground/fox_self_model.py'
+      - 'examples/nasuraya_playground/test_fox_self_model.py'
+      - '.github/workflows/nasuraya-fox-self-model.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-self-model:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify original Fox Garden can still finish games
+        run: node examples/nasuraya_playground/test_playground.cjs
+      - name: Run strict offline self-model tests
+        run: python3 -m unittest examples.nasuraya_playground.test_fox_self_model -v
+      - name: Produce reproducible dry-run measurement
+        run: python3 -m examples.nasuraya_playground.fox_self_model --dry-run
