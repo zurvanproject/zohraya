@@ -1,0 +1,67 @@
+{
+  "schema": "tadash-epistemic-micro-world-independent-audit/1",
+  "utc_date": "2026-11-02",
+  "pr": 119,
+  "tested_commit": "48886b10c0dbee27edee2941e8628f5eefc52131",
+  "run_id": 41504779767,
+  "run_url": "https://github.com/zurvanproject/zohraya/actions/runs/41504779767",
+  "job_id": 125481158916,
+  "ci": "success",
+  "unit_tests": {
+    "passed": 12,
+    "failed": 0
+  },
+  "native": {
+    "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d",
+    "source_commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+    "training": 8,
+    "holdout": 8,
+    "successful": 16,
+    "trace_samples_per_trial": 80,
+    "total_trace_samples": 1280,
+    "nonfoot_contacts": 0
+  },
+  "model": {
+    "candidates": [
+      "linear",
+      "friction",
+      "curvature"
+    ],
+    "chosen": "friction",
+    "training_loo_mae_m": {
+      "linear": 4.44313045269663e-8,
+      "friction": 3.9657458886287276e-8,
+      "curvature": 5.152623681552008e-8
+    },
+    "holdout_mae_m": {
+      "chosen": 5.434010544265238e-8,
+      "strong_prior": 4.7298758924644354e-8,
+      "identity": 0.0001822244907885284,
+      "zero": 0.0018177755092114716
+    },
+    "training_complexity_threshold_met": true,
+    "predeclared_strong_prior_threshold_met": false,
+    "chosen_model_worse_than_prior_by_approx_fraction": 0.1488707,
+    "prior_calibration_gain": 0.908869279232545
+  },
+  "frozen_plan_sha256": "e6beff780a8cca1ea843ad2573788bcf58cd7211d00c71b5f56e9d2323528124",
+  "frozen_model_sha256": "6e51d56c5c600a631df8913807a1c9c1af4a6be6fdad88a13caa468393c9f19f",
+  "archive": {
+    "artifact_id": 13169767941,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/41504779767/artifacts/13169767941",
+    "zip_sha256": "bf72406d538c853fbcccf59aeb81ee96bb18a43528193967b66a6e90ced2a7a6",
+    "files": 87,
+    "crc_test": "passed"
+  },
+  "audit_reconstruction": "Downloaded ZIP; confirmed 16 original pinned native raw result/intent/receipt hash chains, all 16 physical guard cases, 80 trace snapshots per run, eight frozen training receipt references, pre-action holdout forecasts and summary/status hashes; recomputed all four holdout MAEs exactly from raw native COM observations.",
+  "observation": "Every measured shift had same sign as the command; all held-out trials returned within 0.1 mm of center under this fixed virtual-body control setting.",
+  "hypothesis": "Friction-dependent predictive hypothesis won training leave-one-out by 10.75% over linear; it failed the stricter independent holdout comparison to the prior calibrated gain.",
+  "conclusion": "No new predictive superiority over the already calibrated strong baseline is established. The experiment demonstrates a traceable epistemic workflow, NOT discovery of a new general physical law.",
+  "limits": [
+    "The only world here is a deterministic flat-ground, bounded lateral-motion MuJoCo model.",
+    "No sensor noise, unknown environment, terrain, broad perception, or subjective feelings modeled.",
+    "The stronger earlier gain is a same-simulator historical control and does not imply physical-world relevance.",
+    "Draft PR remains unmerged; no actuation or changes to ChatGPT model weights or canonical body."
+  ],
+  "next_creative_question": "Do contact changes create genuinely informative nonlinearities, and can a predictor detect when it should abstain? Requires new frozen physical benchmarks."
+}
