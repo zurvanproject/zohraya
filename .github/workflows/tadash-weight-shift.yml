@@ -1,0 +1,58 @@
+name: Tadash weight-shift foundation native v0.1
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_weight_shift.py'
+      - 'experiments/test_tadash_weight_shift.py'
+      - '.github/workflows/tadash-weight-shift.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  weight-shift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout experimental code
+        uses: actions/checkout@v4
+        with:
+          path: curriculum
+          persist-credentials: false
+      - name: Install isolated Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test offline safety and simplification before physics
+        working-directory: curriculum
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_weight_shift experiments.test_tadash_micro_practice
+      - name: Checkout exact immutable original v03 body
+        uses: actions/checkout@v4
+        with:
+          repository: zurvanproject/zohraya
+          ref: c6bac77802a7fab9178fb00eed28e3c4410b9482
+          path: pinned-motion
+          persist-credentials: false
+      - name: Install pinned CPU physics dependencies
+        run: |
+          set -euo pipefail
+          python -m pip install -r pinned-motion/examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Run five native bilateral balance trials from fresh state
+        working-directory: curriculum
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_weight_shift \
+            --motion-source "${GITHUB_WORKSPACE}/pinned-motion" \
+            --output "${RUNNER_TEMP}/tadash-shift-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --timeout 240 | tee "${RUNNER_TEMP}/tadash-shift-console.json"
+      - name: Preserve inputs, raw measurements and failed state
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-weight-shift-raw
+          path: |
+            ${{ runner.temp }}/tadash-shift-${{ github.run_id }}-${{ github.run_attempt }}/
+            ${{ runner.temp }}/tadash-shift-console.json
+          retention-days: 7
+          if-no-files-found: warn
