@@ -1,0 +1,52 @@
+name: Tadash four-track bounded pilot
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_four_tracks/**'
+      - '.github/workflows/tadash-four-tracks.yml'
+permissions:
+  contents: read
+concurrency:
+  group: tadash-four-tracks-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  bounded-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Unit tests with explicit doubles
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.tadash_four_tracks.test_core 2>&1 | tee "$RUNNER_TEMP/four-track-unit.log"
+      - name: Native paired experiment and offline exports
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_four_tracks.run_probe --output "$RUNNER_TEMP/four-track-evidence"
+          git diff --exit-code
+          python - "$RUNNER_TEMP/four-track-evidence" <<'PY'
+          import json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          for name in ('status.json', 'outcome-reviews.json', 'mjlab-readiness.json', 'world-model-gate.json'):
+              print('EVIDENCE', name)
+              print(json.dumps(json.loads((root/name).read_text()), indent=2))
+          PY
+      - name: Preserve synthetic evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: tadash-four-track-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/four-track-evidence
+            ${{ runner.temp }}/four-track-unit.log
+          retention-days: 7
