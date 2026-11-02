@@ -1,0 +1,26 @@
+name: Tadash Kimia Khak source and contact epistemic tests
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_kimia_khak.py'
+      - 'experiments/test_tadash_kimia_khak.py'
+      - 'docs/tadash-kimia-khak-contract-v01.json'
+      - '.github/workflows/tadash-kimia-khak.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-charter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify poetic anchor and no overclaimed simulated contact
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_kimia_khak
