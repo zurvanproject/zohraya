@@ -79,7 +79,7 @@ class NativeAffectMotorTests(unittest.TestCase):
             db=lab.Feedback(Path(td)/"ledger.sqlite")
             with self.assertRaisesRegex(ValueError,"Only training"):
                 db.learn("holdout-1","steady","repeat",1.,"b"*64)
-            with self.assertRaisesRegex(ValueError,"Invalid motor"):
+            with self.assertRaisesRegex(ValueError,"Finite numeric observation required"):
                 db.learn("training-x","steady","repeat",float("nan"),"b"*64)
             db.close()
 
