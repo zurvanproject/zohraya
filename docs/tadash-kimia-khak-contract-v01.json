@@ -1,0 +1,49 @@
+{
+  "schema": "tadash-kimia-khak-charter/1",
+  "title_fa": "کیمیای خاک: از تماس تا شناخت",
+  "literary_anchor": {
+    "author": "مولانا جلال‌الدین محمد بلخی",
+    "work": "دیوان شمس",
+    "ghazal": 473,
+    "verse": [
+      "ای خنک آن جان و دل کو رهد از آب و گل",
+      "گرچه در این آب و گل دستگه کیمیاست"
+    ],
+    "source_url": "https://ganjoor.net/moulavi/shams/ghazalsh/sh473/",
+    "role": "poetic_and_ethical_metaphor_not_empirical_evidence"
+  },
+  "epistemic_sequence": [
+    "contact",
+    "measure",
+    "hypothesize",
+    "predict",
+    "compare",
+    "update_or_abstain"
+  ],
+  "phase": "design_only_no_soil_sensor_enabled",
+  "grounding_rules": {
+    "physical_soil_touch_claim_without_physical_sensor": false,
+    "simulated_contact_is_not_lived_sensation": true,
+    "raw_evidence_before_explanation": true,
+    "out_of_domain_abstention": true,
+    "new_action_from_this_charter": false,
+    "known_model": "existing pinned MuJoCo v03 articulated robot, flat-ground only",
+    "require_contact_load_n_positive": true
+  },
+  "future_measurables": [
+    "contact_presence",
+    "normal_force_n",
+    "friction_estimate",
+    "tangential_slip_m_per_s",
+    "joint_torque_fraction"
+  ],
+  "unimplemented": [
+    "soil texture or particles",
+    "pressure sensor array",
+    "organic substrate deformation",
+    "physical tactile sensor",
+    "conscious tactile feeling"
+  ],
+  "safety": "read_only_advisory; no motor or actuator commands",
+  "contribution": "an actionable provenance and abstention contract; not a new sensation or motor capability"
+}
