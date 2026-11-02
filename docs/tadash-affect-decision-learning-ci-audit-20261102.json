@@ -1,0 +1,59 @@
+{
+  "schema": "tadash-affect-decision-learning-audit/1",
+  "date_utc": "2026-11-02",
+  "pr": 116,
+  "code_commit": "41ba16e34af9d9ce77fb6205b46b9b0c948b8e5a",
+  "workflow_run_id": 41497413001,
+  "workflow_url": "https://github.com/zurvanproject/zohraya/actions/runs/41497413001",
+  "job_id": 125455872774,
+  "workflow_result": "success",
+  "unit_tests": {
+    "passed": 12,
+    "failed": 0
+  },
+  "training": {
+    "state_contexts": 4,
+    "actions_per_state": 4,
+    "reward_observations": 192,
+    "per_action_context_repeats": 12,
+    "feedback_source": "authored synthetic fixture, not native body",
+    "persistent_ledger": "SQLite",
+    "cold_recovery": true
+  },
+  "holdout": {
+    "count": 48,
+    "independent_random_seeds": true,
+    "heldout_feature_jitter": true,
+    "learned_mean_reward": 0.6799799367413644,
+    "repeat_mean_reward": 0.4293600368054255,
+    "permuted_mean_reward": 0.39649774451943826,
+    "positive_contexts_vs_repeat": 3,
+    "acceptance_conditions_met": true
+  },
+  "learned_policy": {
+    "curious": "explore",
+    "frustrated": "simplify",
+    "tired": "rest",
+    "steady": "repeat"
+  },
+  "frozen_policy_sha256": "84244bd9657242e913e1cb59edc00e9bef4574448efcb7e57d1dccbf81e043d2",
+  "artifact": {
+    "id": 13166084542,
+    "github_url": "https://github.com/zurvanproject/zohraya/actions/runs/41497413001/artifacts/13166084542",
+    "zip_sha256": "8c01004209a6b814956b397416ddc376e2a1e9c1f4e0564c335264bbf0d961db",
+    "entries": 11,
+    "crc": "passed"
+  },
+  "independent_reconstruction": "Recomputed aggregate from all 48 archived heldout rows, matched all printed means (floating-point 1e-16), verified frozen policy SHA and uniqueness of 192 feedback IDs, inspected both SQLite training ledgers: each 16 context/action cells had 12 feedback receipts.",
+  "interpretation": "A bounded tabular preference model learned the authored synthetic reward associations, passed frozen controls in the same authored environment and recovered persistent state.",
+  "not_proven": [
+    "felt emotions",
+    "autonomous continuation between turns",
+    "better native motor outcomes",
+    "biological desire",
+    "general reasoning",
+    "transfer to novel environment reward structure"
+  ],
+  "changes_to_main_or_live_body": false,
+  "draft_unmerged": true
+}

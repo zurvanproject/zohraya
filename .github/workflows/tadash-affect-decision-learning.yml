@@ -1,0 +1,44 @@
+name: Tadash bounded affect decision learning v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_affect_decision_learning.py'
+      - 'experiments/test_tadash_affect_decision_learning.py'
+      - '.github/workflows/tadash-affect-decision-learning.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  decision-learning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test policy, negative controls and cold SQLite recovery
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_affect_decision_learning 2>&1 | tee /tmp/tadash-decision-tests.txt
+      - name: Execute predeclared synthetic training and separate-seed holdouts
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_affect_decision_learning \
+            --output "/tmp/tadash-decision-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" | tee /tmp/tadash-decision-result.json
+      - name: Archive actual trial receipts, plan, policies and controls
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-affect-decision-learning-evidence
+          path: |
+            /tmp/tadash-decision-*/
+            /tmp/tadash-decision-tests.txt
+            /tmp/tadash-decision-result.json
+          retention-days: 7
+          if-no-files-found: warn
