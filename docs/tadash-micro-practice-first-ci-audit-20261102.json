@@ -1,0 +1,80 @@
+{
+  "schema": "tadash-micro-practice-first-ci-audit/1",
+  "date_utc": "2026-11-02",
+  "pr": 112,
+  "code_commit": "212ffd466eaa1a59e7e69bd44039084b7f071f2b",
+  "workflow_run_url": "https://github.com/zurvanproject/zohraya/actions/runs/41479113734",
+  "workflow_run_id": 41479113734,
+  "job_id": 125392415510,
+  "status": "success",
+  "unit_tests": {
+    "passed": 28,
+    "failed": 0,
+    "note": "14 curriculum tests + 14 prior evidence-gate tests; synthetic unit tests, not mechanical trials"
+  },
+  "motion_source": {
+    "commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+    "model_path": "assets/nasuraya_articulated_v03/nasuraya.xml",
+    "model_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d"
+  },
+  "artifact": {
+    "id": 13159440733,
+    "github_url": "https://github.com/zurvanproject/zohraya/actions/runs/41479113734/artifacts/13159440733",
+    "zip_sha256": "342fd9a0331962f62eb751b08c06dc099116eb813a4d507cbecd5aade7e181fb",
+    "file_count": 24
+  },
+  "plan_sha256": "7ffcda688fd4e109300d9bf46727795c6ebed521a6b83a4fb868b63b45002b09",
+  "native_trials": [
+    {
+      "index": 1,
+      "stride_m": 0.015,
+      "outcome": "met",
+      "simulated_seconds": 11,
+      "max_tilt_deg": 0.1581179854941044,
+      "max_motor_torque_fraction": 0.999863317213028,
+      "landing_error_m": 0.0012734066932086501
+    },
+    {
+      "index": 2,
+      "stride_m": 0.015,
+      "outcome": "met",
+      "simulated_seconds": 11,
+      "max_tilt_deg": 0.1581179854941044,
+      "max_motor_torque_fraction": 0.999863317213028,
+      "landing_error_m": 0.0012734066932086501
+    },
+    {
+      "index": 3,
+      "stride_m": 0.03,
+      "outcome": "met",
+      "simulated_seconds": 11,
+      "max_tilt_deg": 0.16620110606507904,
+      "max_motor_torque_fraction": 0.999863317213028,
+      "landing_error_m": 0.0016029343327686608
+    },
+    {
+      "index": 4,
+      "stride_m": 0.03,
+      "outcome": "met",
+      "simulated_seconds": 11,
+      "max_tilt_deg": 0.16620110606507904,
+      "max_motor_torque_fraction": 0.999863317213028,
+      "landing_error_m": 0.0016029343327686608
+    }
+  ],
+  "next_rule": "promote_after_two",
+  "next_untested_stride_m": 0.06,
+  "evidence_reconstruction": "Downloaded artifact ZIP, verified plan SHA256 and each of four intention/native-result/receipt file hashes against summary; reread each accepted native result and mechanical metrics",
+  "limitations": [
+    "deterministic repeated trials, not statistically independent",
+    "no motor weights updated or motor-learning gain demonstrated",
+    "no movement outside pinned synthetic v03 simulator",
+    "98-100% actuator utilisation; no spare loading margin established",
+    "next 60 mm stage not executed in this run",
+    "Draft PR not merged or deployed"
+  ],
+  "first_failed_run": {
+    "run_id": 41478810210,
+    "reason": "Incorrectly unpacked non-capture walk_trial return as tuple; no mechanical outcome from that run; fixed at 212ffd466eaa1a59e7e69bd44039084b7f071f2b"
+  }
+}
