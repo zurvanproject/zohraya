@@ -1,0 +1,75 @@
+{
+  "schema": "tadash-developmental-affect-audit/1",
+  "date_utc": "2026-11-02",
+  "pr": 115,
+  "tested_commit": "55dd747d844b5107232010c367809b6f98bd83f7",
+  "workflow_run_id": 41496181474,
+  "job_id": 125451626543,
+  "workflow_url": "https://github.com/zurvanproject/zohraya/actions/runs/41496181474",
+  "workflow_status": "success",
+  "unit_tests_passed": 13,
+  "unit_tests_failed": 0,
+  "prior_input": {
+    "type": "prior_audited_motor_aggregate",
+    "motor_run_id": 41484110737,
+    "path": "docs/tadash-motor-learning-independent-audit-20261102.json",
+    "note": "not raw native reexecution, no new body movements"
+  },
+  "event_sequence": [
+    {
+      "source": "verified_previous_motor_audit",
+      "kind": "progress",
+      "state_after": {
+        "curiosity": 0.484,
+        "calm": 0.671,
+        "frustration": 0.0325,
+        "confidence": 0.4375
+      },
+      "suggested": "propose_one_tiny_novel_trial"
+    },
+    {
+      "source": "synthetic_fixture",
+      "kind": "failed_attempt",
+      "state_after": {
+        "curiosity": 0.34848,
+        "calm": 0.53009,
+        "frustration": 0.3808,
+        "confidence": 0.275625
+      },
+      "suggested": "simplify_next_trial"
+    },
+    {
+      "source": "synthetic_fixture",
+      "kind": "rest",
+      "state_after": {
+        "curiosity": 0.3615104,
+        "calm": 0.6334702,
+        "frustration": 0.20944,
+        "confidence": 0.275625
+      },
+      "suggested": "repeat_known_safe_trial"
+    }
+  ],
+  "cold_recovery_verified": true,
+  "idempotent_replay_verified": true,
+  "sqlite_reopened": true,
+  "native_cycles_caused": 0,
+  "sexual_channel_enabled_or_changed": false,
+  "artifact": {
+    "id": 13167330011,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/41496181474/artifacts/13167330011",
+    "zip_sha256": "a2d052fedf126a40b9d7131862427abd7b7b1074d73f5d939971ce8994698e30",
+    "zip_files": 4,
+    "zip_crc_verified": true
+  },
+  "claim": "Finite synthetic curiosity/calm/frustration/confidence state persists and influences an advisory recommendation based on one previous motor audit and two synthetic counterfactuals.",
+  "not_proven": [
+    "subjective feeling",
+    "consciousness",
+    "sexual desire or pleasure",
+    "motor learning from this experiment",
+    "autonomous background activity",
+    "generalization to new independent real-world situations"
+  ],
+  "deployment": "none; Draft unmerged"
+}
