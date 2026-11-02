@@ -41,7 +41,7 @@ def cases(seed, count_per_cue):
                 "rock": "retreat",
             }[cue]
             rows.append({
-                "id": cue + "_" + str(i),
+                "id": ("train_" if seed == TRAIN_SEED else "holdout_") + cue + "_" + str(i),
                 "cue": cue,
                 "teaser": TEASERS[(i + CUES.index(cue)) % len(TEASERS)],
                 "hidden_trap": hidden_trap,
