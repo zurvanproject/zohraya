@@ -1,0 +1,59 @@
+name: Tadash Kimia Khak first native contact attention practice
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_first_touch_practice.py'
+      - 'experiments/test_tadash_first_touch_practice.py'
+      - '.github/workflows/tadash-first-touch-practice.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  first-touch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout experiment branch
+        uses: actions/checkout@v4
+        with:
+          path: research
+          persist-credentials: false
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run synthetic negative controls before native physics
+        working-directory: research
+        run: |
+          set -euo pipefail
+          python -m unittest -v experiments.test_tadash_first_touch_practice experiments.test_tadash_kimia_khak 2>&1 | tee "${RUNNER_TEMP}/ground-tests.log"
+      - name: Checkout pinned physical simulator body
+        uses: actions/checkout@v4
+        with:
+          repository: zurvanproject/zohraya
+          ref: c6bac77802a7fab9178fb00eed28e3c4410b9482
+          path: pinned-motion
+          persist-credentials: false
+      - name: Install pinned CPU native physics packages
+        run: |
+          set -euo pipefail
+          python -m pip install -r pinned-motion/examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Six real simulated-ground-contact measurements
+        working-directory: research
+        run: |
+          set -euo pipefail
+          python -m experiments.tadash_first_touch_practice \
+            --motion-source "${GITHUB_WORKSPACE}/pinned-motion" \
+            --output "${RUNNER_TEMP}/first-touch-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --timeout 240 | tee "${RUNNER_TEMP}/first-touch-summary.json"
+      - name: Keep original source, raw contact data, and failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-first-touch-raw
+          path: |
+            ${{ runner.temp }}/first-touch-${{ github.run_id }}-${{ github.run_attempt }}/
+            ${{ runner.temp }}/ground-tests.log
+            ${{ runner.temp }}/first-touch-summary.json
+          retention-days: 7
+          if-no-files-found: warn
