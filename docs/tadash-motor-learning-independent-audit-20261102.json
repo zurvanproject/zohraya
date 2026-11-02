@@ -1,0 +1,53 @@
+{
+  "schema": "tadash-motor-learning-independent-audit/1",
+  "date_utc": "2026-11-02",
+  "pull_request": 114,
+  "validated_commit": "814eb46e33868a13c71caf0e4657abd4a84623d5",
+  "workflow_run_id": 41484110737,
+  "job_id": 125409774067,
+  "workflow_url": "https://github.com/zurvanproject/zohraya/actions/runs/41484110737",
+  "strict_ci": "success",
+  "unit_tests_passed": 27,
+  "native_trials": 19,
+  "training_trials": 3,
+  "holdout_pairs": 8,
+  "holdout_better_cases": 8,
+  "model_source_commit": "c6bac77802a7fab9178fb00eed28e3c4410b9482",
+  "model_xml_sha256": "3c3e129fb7d676ea666f99fc8167a0e341a2fce4c2efc7a26b548e8addae5e1d",
+  "frozen_protocol_sha256": "9de12ea7a025345e6a413a251f3ae5f3026f31b5476deb93982a6061fd3d653e",
+  "trained_gain_model_sha256": "6e75da2e34d347530165bf757fe200be2ed563a516cd6f159a01f3c3618c49d7",
+  "trained_plant_gain": 0.908869279232545,
+  "trained_command_gain": 1.1002682375230093,
+  "holdout_mae_baseline_mm": 0.1821829060347602,
+  "holdout_mae_frozen_learned_mm": 0.00011325635019442592,
+  "holdout_relative_improvement": 0.9993783371192201,
+  "conditions": [
+    "Train on 0 and ±2mm friction 0.6 ONLY",
+    "Freeze command gain before holdout",
+    "Evaluate ±1 and ±3mm at friction 0.6 and 0.5 versus unadapted gain=1.0",
+    "Pass prespecified >=20% relative MAE and >=6/8 wins and benefit in both friction strata"
+  ],
+  "all_conditions_met": true,
+  "max_motor_fraction": 0.6405878013924565,
+  "max_tilt_deg": 0.05284374120876472,
+  "min_both_feet_loaded_fraction": 1,
+  "max_final_speed": 0.00021557128703635176,
+  "artifact": {
+    "id": 13161825929,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/41484110737/artifacts/13161825929",
+    "zip_sha256": "9d10e82a635f570e03340e8c2864c1fd1ba2b2c224fcf58a49aa4abafaf03bae",
+    "zip_entries": 100,
+    "zip_crc_test": "passed"
+  },
+  "independent_reconstruction": "Downloaded exact artifact ZIP; recomputed SHA256 for plan, frozen model, summary, 19 raw native traces, 19 intent documents and 19 receipt files; confirmed all chains against on-disk evidence, train-only scalar fit and all 8 paired heldout MAEs/8 wins exactly; all native guard metrics within bounds.",
+  "claim": "Demonstrates finite parameter update driven by actual simulated sensory feedback and improved motor-target accuracy for unseen commands in the pinned simulator.",
+  "not_proven": [
+    "independent statistically variable environments",
+    "long-term persistence across host restart",
+    "general multi-joint motor learning",
+    "real biological motor learning",
+    "real-world robotic transfer",
+    "conscious subjective experience"
+  ],
+  "deployment": "none; draft PR unmerged; model weights unchanged"
+}
