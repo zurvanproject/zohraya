@@ -1,0 +1,70 @@
+name: Nasuraya paired causal policy twins (offline only)
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_consciousness_lab/**'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - 'docs/nasuraya-causal-twins-v01-fa.md'
+      - '.github/workflows/nasuraya-causal-twins.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-native-causal-twins:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONNOUSERSITE: '1'
+      OPENAI_API_KEY: ''
+      GH_HOST_TOKEN: ''
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Offline pure policy, safety and negative controls
+        run: |
+          python3 -m unittest examples.nasuraya_consciousness_lab.test_lab examples.nasuraya_consciousness_lab.test_native_shadow examples.nasuraya_consciousness_lab.test_causal_twins -v
+      - name: Bounded source-verified native software twin experiment (96 cycles, no API)
+        run: |
+          python3 -m examples.nasuraya_body_loop causal-twins-eval --output-dir "$RUNNER_TEMP/nasuraya-causal-twins"
+      - name: Independent final verification, tamper test and safety guard
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          from examples.nasuraya_consciousness_lab.causal_twins import check_artifacts
+          root=pathlib.Path(os.environ["RUNNER_TEMP"])/"nasuraya-causal-twins"
+          x=json.loads((root/"summary.json").read_text())
+          reread=check_artifacts(root)
+          assert x["number_of_native_software_cycles"] == 96
+          assert x["native_decision_receipts"] == 96
+          assert x["independent_scenario_count"] == 6
+          assert reread["result"] == x["result"]
+          assert x["result"]["sham_identical_to_intact"] is True
+          assert x["paired_start_and_sham_checks_passed"] is True
+          assert x["all_pre_outcome_intents_replayed"] is True
+          assert x["real_world_actuation"] is False
+          assert x["production_tadash_modified"] is False
+          assert x["paid_api_calls"] == 0
+          assert x["consciousness_claim"] is None
+          assert len(x["result"]["paired_scenario_utility"]) == 6
+          p=root/"predictions.jsonl"
+          rows=p.read_text().splitlines()
+          tampered=json.loads(rows[-1])
+          tampered["decision"]["preferred_action"]="observe" if tampered["decision"]["preferred_action"]=="walk" else "walk"
+          rows[-1]=json.dumps(tampered)
+          p.write_text("\n".join(rows)+"\n")
+          try:
+              check_artifacts(root)
+          except ValueError:
+              pass
+          else:
+              raise AssertionError("tampering failed open")
+          print(json.dumps({"scenario_utilities":x["result"]["conditions"],
+                            "intact_minus_ablated":x["result"]["intact_minus_ablated_mean_utility"],
+                            "intact_minus_corrupted":x["result"]["intact_minus_corrupted_mean_utility"]},
+                            ensure_ascii=False,sort_keys=True))
+          print("PASS: 96 paired native software cycles, integrity failure closed, no spending")
+          PY
