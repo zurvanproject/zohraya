@@ -1,0 +1,29 @@
+name: Fox host handoff safety (offline, no spending)
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_playground/fox_host_preflight.py'
+      - 'examples/nasuraya_playground/test_fox_host_preflight.py'
+      - '.github/workflows/nasuraya-fox-host-preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-only:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      OPENAI_API_KEY: ''
+      GH_HOST_TOKEN: ''
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Existing Fox calibration regressions
+        run: python3 -m unittest examples.nasuraya_playground.test_fox_self_model -v
+      - name: Offline host handoff regressions
+        run: python3 -m unittest examples.nasuraya_playground.test_fox_host_preflight -v
+      - name: Reproduce bounded Brier baseline
+        run: python3 -m examples.nasuraya_playground.fox_self_model --dry-run
