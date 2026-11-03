@@ -102,6 +102,22 @@ class TailFootIntegrationTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError,"native design"):
                     bridge.observe_legacy_native(self.profile)
 
+    def test_fresh_native_export_override_and_tamper_rejection(self):
+        with tempfile.TemporaryDirectory() as temp:
+            source=bridge.ROOT/"examples/nasuraya_body_mirror/frames.json"
+            mirror=Path(temp)/"fresh-native.json"
+            mirror.write_bytes(source.read_bytes())
+            out=bridge.report(self.profile, native_mirror=mirror)
+            self.assertEqual(out["native_V06_replay_observed_separately"]["source_hashes"]
+                             ["V06_replay_sha256"],bridge._sha_file(mirror))
+            self.assertEqual(out["new_profile_mass_kg"],78)
+            self.assertEqual(out["native_V06_replay_observed_separately"]["legacy_mass_kg"],195)
+            payload=json.loads(mirror.read_text())
+            payload["scenarios"]["sleep"]["frames"][0]["actual"]="fabricated"
+            mirror.write_text(json.dumps(payload))
+            with self.assertRaisesRegex(ValueError, "native action"):
+                bridge.report(self.profile, native_mirror=mirror)
+
     def test_profile_tampering_with_toes_mass_nan_and_stiffness_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             for key,change in [
