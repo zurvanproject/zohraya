@@ -58,6 +58,16 @@ class TwinProtocolTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             twin.schedule(99)
 
+    def test_ambiguous_model_is_not_allowed_to_request_walk(self):
+        from unittest.mock import patch
+        ambiguous = {"walk": .4, "observe": .4, "protect": .1, "other": .1}
+        fake = {"distribution": ambiguous, "pooled_distribution": ambiguous}
+        with patch("examples.nasuraya_body_loop.self_knowledge.forecast_action",
+                   return_value=fake):
+            result = twin.select_preference(self.training,
+                "[false,false,false,false]", 0.1, "intact")
+        self.assertEqual(result["preferred_action"], "observe")
+
     def test_unsupported_state_or_parameter_fails_closed(self):
         for bad_ctx in ("not a body context", "[false,false,true,true]"):
             with self.assertRaises(ValueError):
