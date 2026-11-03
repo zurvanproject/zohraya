@@ -85,6 +85,12 @@ class HostPreflightTests(unittest.TestCase):
         self.assertFalse(report["score"]["beats_strong_baseline_by_5pct"])
         self.assertEqual(report["accounting_status"], "not_recorded_by_this_offline_helper")
 
+    def test_four_bin_calibration_diagnostic_matches_independent_result(self):
+        train, holdout = fox.experiment()
+        result = bridge.calibration_diagnostics(fox.dry_reply(train, holdout), holdout)
+        self.assertEqual(result["top_label_ece_4bins"], 0.21875)
+        self.assertEqual(sum(item["count"] for item in result["bins"]), 16)
+
     def test_no_usage_or_refusal_fails_closed(self):
         response = self.fake_envelope()
         response["usage"] = {}
