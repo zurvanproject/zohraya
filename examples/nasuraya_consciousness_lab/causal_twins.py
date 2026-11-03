@@ -39,12 +39,13 @@ PROTOCOL = {
 }
 
 def _frozen():
-    from reflection_cycle import digest as legacy_digest
+    # Same canonical SHA-256 as pinned reflection_cycle.digest, without importing
+    # the isolated native runtime into host-side, no-secrets unit tests.
     path = Path(__file__).resolve().parents[2] / PROTOCOL["training_reference"]
     data = json.loads(path.read_text(encoding="utf-8"))
     rows = data.get("episodes")
     if (not isinstance(rows, list) or len(rows) != 40 or
-            data.get("sha256") != TRAIN_SHA256 or legacy_digest(rows) != TRAIN_SHA256):
+            data.get("sha256") != TRAIN_SHA256 or digest(rows) != TRAIN_SHA256):
         raise ValueError("frozen prior training mismatch; abort native experiment")
     if len({r["id"] for r in rows}) != len(rows):
         raise ValueError("duplicated training evidence")
