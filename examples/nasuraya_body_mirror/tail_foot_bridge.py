@@ -253,7 +253,7 @@ def footing_trial(p, *, com_x=None, com_y=None):
     improved = signed_margin(poly, [assisted_x, y])
     hm = human["one_foot_effective_width_m"] / 2 - abs(x)
     return {
-        "foot_polygon_centres_xy_m": poly,
+        "foot_polygon_centres_xy_m": [list(point) for point in poly],
         "com_projection_m": [x, y],
         "digitigrade_signed_contact_centre_margin_m": static,
         "with_tail_lateral_shift_margin_m": improved,
