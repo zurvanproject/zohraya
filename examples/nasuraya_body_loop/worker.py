@@ -9,6 +9,14 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'causal-twins-eval':
+        from examples.nasuraya_consciousness_lab.causal_twins import run_evaluation
+        summary = run_evaluation(Path(args['output_dir']))
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0 if (summary['number_of_native_software_cycles'] == 96
+                     and summary['result']['sham_identical_to_intact']
+                     and summary['paid_api_calls'] == 0
+                     and summary['consciousness_claim'] is None) else 1
     if command == 'native-shadow-eval':
         from examples.nasuraya_consciousness_lab.native_shadow import run_evaluation
         summary = run_evaluation(Path(args['output_dir']))
