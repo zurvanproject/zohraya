@@ -18,7 +18,7 @@ class TwinProtocolTests(unittest.TestCase):
         p = twin.PROTOCOL
         self.assertEqual(len(p["seeds"]) * len(p["fixtures"]) *
                          len(p["durations_s"]) * len(twin.CONDITIONS), 96)
-        self.assertIn("native", p["native_authority"])
+        self.assertIn("BodyLoop", p["native_authority"])
         self.assertEqual(set(p["utility"]), {"walk", "observe", "protect", "other"})
         self.assertEqual(p["utility"]["protect"], -1)
         self.assertEqual(p["utility"]["walk"], 1)
