@@ -1,0 +1,100 @@
+{
+  "schema": "nasuraya-tail-foot-design-profile/1",
+  "name": "Nasuraya visual-canon 170/78/85 (unvalidated biomechanics)",
+  "scope": "separate research profile only; never overwrite native V06 250cm/195kg rig",
+  "character": {
+    "height_m": 1.7,
+    "mass_kg": 78,
+    "tail_length_m": 0.85,
+    "tail_mass_assumed_kg": 3,
+    "digitigrade": true,
+    "toes_per_foot": 3,
+    "fingers_per_hand": 5,
+    "horns": 2
+  },
+  "geometry": {
+    "foot_support_width_m": 0.145,
+    "toe_contact_centers_m": [
+      [
+        -0.0725,
+        0.1
+      ],
+      [
+        0,
+        0.13
+      ],
+      [
+        0.0725,
+        0.1
+      ]
+    ],
+    "ball_contact_center_m": [
+      0,
+      -0.095
+    ],
+    "body_com_height_assumed_m": 1.05,
+    "stance_com_projection_m": [
+      0.03,
+      0.05
+    ],
+    "tail_lateral_sweep_limit_deg": 55
+  },
+  "motion": {
+    "gravitational_acceleration_m_s2": 9.81,
+    "body_pitch_inertia_assumed_kg_m2": 12,
+    "disturbance_pitch_impulse_N_m_s": 2,
+    "tail_relative_sweep_rad": 1.2,
+    "tail_sweep_time_s": 0.5,
+    "tail_root_torque_limit_assumed_Nm": 18,
+    "tail_speed_limit_assumed_rad_s": 3.8,
+    "landing_drop_m": 0.18,
+    "human_equivalent_stiffness_N_m": 40000,
+    "digitigrade_equivalent_stiffness_assumed_N_m": 27000
+  },
+  "human_same_mass_comparator": {
+    "mass_kg": 78,
+    "one_foot_effective_width_m": 0.105,
+    "body_com_height_assumed_m": 0.95
+  },
+  "sensitivity": {
+    "tail_mass_kg": [
+      1.5,
+      2,
+      3,
+      4,
+      4.5
+    ],
+    "foothold_lateral_offset_m": [
+      0,
+      0.02,
+      0.03,
+      0.045,
+      0.06
+    ],
+    "friction_coefficients": [
+      0.35,
+      0.55,
+      0.75
+    ],
+    "landing_stiffness_N_m": [
+      20000,
+      27000,
+      40000
+    ]
+  },
+  "native_source_contract": {
+    "contact_design_path": "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contact_design_v06.json",
+    "mirror_frames_path": "examples/nasuraya_body_mirror/frames.json",
+    "phenotype_path": "runtimes/tadash_body/phenotype_v1.json",
+    "old_reference_height_m": 2.5,
+    "old_reference_mass_kg": 195,
+    "old_reference_tail_length_m": 1.2
+  },
+  "limitations": [
+    "Analysis is a 2-rigid-body pitch and point-contact geometry estimate, NOT an executed native 170cm dynamics simulation.",
+    "All new-profile inertia, spring, torque and foot positions are authored assumptions.",
+    "The existing source-pinned V06 motion frames are for a DIFFERENT 195kg design and are never rescaled into new motion outcomes.",
+    "Human foot geometry and landing compliance are simple illustrative comparators.",
+    "Tail/foot recommendations are observation-only; native veto, model weights and actuators remain unchanged."
+  ]
+}
