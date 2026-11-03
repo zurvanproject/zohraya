@@ -52,6 +52,26 @@ def _frozen():
     return rows
 
 
+def _context(metrics):
+    """Independent replay of the pinned ExperienceController context contract.
+
+    The original controller computes this in the isolated native worker. This
+    exact pure form is independently callable by no-secrets CI after exit.
+    """
+    if not isinstance(metrics, dict) or set(metrics) != {
+        "energy", "fatigue", "pain", "sleep_pressure"
+    }:
+        raise ValueError("unexpected native minimum-state metrics")
+    if any(type(v) not in (int, float) or not math.isfinite(v)
+           or not 0 <= v <= 1 for v in metrics.values()):
+        raise ValueError("invalid native metric")
+    return json.dumps(
+        [metrics["energy"] < .25, metrics["fatigue"] > .52,
+         metrics["pain"] > .4, metrics["sleep_pressure"] > .65],
+        ensure_ascii=False, sort_keys=True, allow_nan=False, separators=(",", ":"),
+    )
+
+
 def _swap_context(ctx):
     normal, fatigued = "[false,false,false,false]", "[false,false,false,true]"
     if ctx == normal:
@@ -154,7 +174,6 @@ def summarize(trials):
 
 def check_artifacts(output):
     """Replay the decision solely from pre-outcome data and frozen priors."""
-    from examples.nasuraya_body_loop.experience import context
     training = _frozen()
     output = Path(output)
     if json.loads((output / "protocol.json").read_text()) != PROTOCOL:
@@ -185,7 +204,7 @@ def check_artifacts(output):
                                             or not math.isfinite(m[k])
                                             for k in ("energy","fatigue","pain","sleep_pressure")):
             raise ValueError("invalid native observation")
-        actual_ctx = context(m)
+        actual_ctx = _context(m)
         if actual_ctx != pre["context"]:
             raise ValueError("context and native metrics disagree")
         expected = select_preference(training, actual_ctx, pre["duration_s"], condition)
@@ -263,6 +282,8 @@ def run_evaluation(output_dir):
                         loop = twins[condition]
                         snapshot = loop.observe()
                         ctx = context(metrics(snapshot))
+                        if ctx != _context(metrics(snapshot)):
+                            raise ValueError("host replay context differs from native")
                         decision = select_preference(training, ctx, duration, condition)
                         pre = {
                             "id": case_id + "-" + condition, "seed": seed,
@@ -309,7 +330,7 @@ def run_evaluation(output_dir):
         "schema": PROTOCOL["schema"],
         **verified,
         "number_of_native_software_cycles": verified["native_decision_receipts"],
-        "independent_scenario_count": len(PROTOCOL["seeds"])*len(PROTOCOL["fixtures"]),
+        "paired_scenario_groups": len(PROTOCOL["seeds"])*len(PROTOCOL["fixtures"]),
         "real_world_actuation": False,
         "paid_api_calls": 0,
         "production_tadash_modified": False,
