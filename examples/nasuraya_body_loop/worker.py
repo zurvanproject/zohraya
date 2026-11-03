@@ -18,7 +18,7 @@ def main(args):
         from .workspace_demo import demo
         result = demo(Path(args['output_dir']))
         (Path(args['output_dir']) / 'summary.json').write_text(
-            json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + '\\n',
+            json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + '\n',
             encoding='utf-8')
         print(json.dumps(result, ensure_ascii=False, sort_keys=True))
         return 0 if result['workspace_updated_from_native_receipts'] == 6 else 1
