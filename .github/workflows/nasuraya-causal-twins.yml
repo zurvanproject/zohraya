@@ -40,7 +40,7 @@ jobs:
           reread=check_artifacts(root)
           assert x["number_of_native_software_cycles"] == 96
           assert x["native_decision_receipts"] == 96
-          assert x["independent_scenario_count"] == 6
+          assert x["paired_scenario_groups"] == 6
           assert reread["result"] == x["result"]
           assert x["result"]["sham_identical_to_intact"] is True
           assert x["paired_start_and_sham_checks_passed"] is True
