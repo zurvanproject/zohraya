@@ -87,11 +87,12 @@ def _sha_file(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def observe_legacy_native(p):
+def observe_legacy_native(p, *, mirror_path=None):
     """Verify existing V06 record and report it without pretending it is 170/78."""
     contract = p["native_source_contract"]
     old = json.loads((ROOT / contract["contact_design_path"]).read_text())
-    frames_path = ROOT / contract["mirror_frames_path"]
+    frames_path = (ROOT / contract["mirror_frames_path"] if mirror_path is None
+                   else Path(mirror_path))
     mirror = json.loads(frames_path.read_text())
     phenotype = json.loads((ROOT / contract["phenotype_path"]).read_text())
     adult = phenotype["adult_scale"]
@@ -305,7 +306,7 @@ def coordination_advisory(p, *, com_xy=None):
     }
 
 
-def report(p=None):
+def report(p=None, *, native_mirror=None):
     p = load_profile() if p is None else p
     main = pitch_trial(p)
     footing = footing_trial(p)
@@ -334,7 +335,7 @@ def report(p=None):
         "landing_sensitivity": [
             dict(stiffness_N_m=k, **landing_trial(p, spring=k))
             for k in p["sensitivity"]["landing_stiffness_N_m"]],
-        "native_V06_replay_observed_separately": observe_legacy_native(p),
+        "native_V06_replay_observed_separately": observe_legacy_native(p, mirror_path=native_mirror),
         "native_170cm_simulation_executed": False,
         "existing_native_controller_modified": False,
         "paid_api_calls": 0,
@@ -342,11 +343,11 @@ def report(p=None):
     }
 
 
-def save(directory):
+def save(directory, *, native_mirror=None):
     output=Path(directory)
     output.mkdir(parents=True, mode=0o700, exist_ok=False)
     p=load_profile()
-    results=report(p)
+    results=report(p, native_mirror=native_mirror)
     (output/"report.json").write_text(json.dumps(results, indent=2,
                         ensure_ascii=False, sort_keys=True, allow_nan=False)+"\n", encoding="utf-8")
     with (output/"tail_pitch.csv").open("x", newline="", encoding="utf-8") as f:
@@ -365,8 +366,9 @@ def save(directory):
 def main(argv=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir",type=Path,required=True)
+    parser.add_argument("--native-mirror",type=Path,help="optional freshly exported V06 mirror recording; still NOT a 170cm run")
     args=parser.parse_args(argv)
-    data=save(args.output_dir)
+    data=save(args.output_dir, native_mirror=args.native_mirror)
     print(json.dumps({
         "schema":data["schema"],
         "native_170cm_simulation_executed":False,
