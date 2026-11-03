@@ -65,6 +65,39 @@ def preflight(state, memory, gate, at, run_id):
     }
 
 
+
+def calibration_diagnostics(reply, holdout):
+    """Four-bin top-label ECE diagnostic on 16 toy cases, NOT calibration proof.
+
+    Confidence bins: [0,.25), [.25,.5), [.5,.75), [.75,1].
+    Tiny samples and publicly reproducible holdouts limit interpretation.
+    """
+    p = fox.validate_forecast(reply, holdout)
+    bins = {i: [] for i in range(4)}
+    for row in holdout:
+        probs = p[row["id"]]
+        predicted = max(fox.ACTIONS, key=lambda action: probs[action])
+        confidence = probs[predicted]
+        b = min(int(confidence * 4), 3)
+        bins[b].append((confidence, predicted == row["actual_action"]))
+    entries = []
+    ece = 0.0
+    for i, values in bins.items():
+        if not values:
+            continue
+        n = len(values)
+        avg_confidence = sum(x[0] for x in values) / n
+        observed_accuracy = sum(x[1] for x in values) / n
+        ece += n / len(holdout) * abs(avg_confidence - observed_accuracy)
+        entries.append({
+            "bin": i, "count": n,
+            "mean_confidence": round(avg_confidence, 6),
+            "observed_accuracy": round(observed_accuracy, 6),
+        })
+    return {"top_label_ece_4bins": round(ece, 6), "bins": entries,
+            "interpretation": "Diagnostic for a tiny synthetic holdout, not evidence of general calibration"}
+
+
 def evaluate_saved_response(raw_response, train=None, holdout=None):
     """Offline-only grading of a separately supplied Responses API envelope.
 
@@ -115,6 +148,7 @@ def evaluate_saved_response(raw_response, train=None, holdout=None):
     model.check_usage(checked)
     return {
         "score": fox.evaluate(reply, train, holdout, fox.commitment(holdout)),
+        "calibration": calibration_diagnostics(reply, holdout),
         "checked_usage": checked,
         "provider_response_id": response_id,
         "accounting_status": "not_recorded_by_this_offline_helper",
