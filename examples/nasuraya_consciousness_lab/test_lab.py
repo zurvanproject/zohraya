@@ -3,6 +3,7 @@ from copy import deepcopy
 import unittest
 
 from . import indicators as i, mechanisms as m, probes
+from .evidence import prior_forecasting_receipt
 
 
 class RegistryTests(unittest.TestCase):
@@ -12,6 +13,27 @@ class RegistryTests(unittest.TestCase):
         self.assertEqual({theory: sum(s.theory == theory for s in i.INDICATORS)
                           for theory in i.THEORIES},
                          {"RPT": 2, "GWT": 4, "HOT": 4, "AST": 1, "PP": 1, "AE": 2})
+
+    def test_existing_receipts_are_read_only_and_narrowly_interpreted(self):
+        existing = prior_forecasting_receipt()
+        self.assertEqual(existing["train_receipts"], 40)
+        self.assertEqual(existing["test_receipts"], 24)
+        self.assertLess(existing["contextual_brier"], existing["pooled_brier"])
+        self.assertEqual(existing["indicator_confirmation"],
+                         "none: no independent structural/counterfactual audit")
+
+    def test_prior_receipt_tampering_is_rejected(self):
+        import json
+        import tempfile
+        from pathlib import Path
+        from .evidence import DEFAULT_RECEIPT
+        raw = json.loads(DEFAULT_RECEIPT.read_text(encoding="utf-8"))
+        raw["validation_passed"] = False
+        with tempfile.TemporaryDirectory() as tmp:
+            tampered = Path(tmp) / "receipt.json"
+            tampered.write_text(json.dumps(raw), encoding="utf-8")
+            with self.assertRaises(ValueError):
+                prior_forecasting_receipt(tampered)
 
     def test_no_status_claim_without_evidence(self):
         report = i.audit()
