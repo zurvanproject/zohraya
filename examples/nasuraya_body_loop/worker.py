@@ -9,6 +9,13 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'native-shadow-eval':
+        from examples.nasuraya_consciousness_lab.native_shadow import run_evaluation
+        summary = run_evaluation(Path(args['output_dir']))
+        print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0 if (summary['actual_native_software_cycles'] == 64
+                     and summary['paid_api_calls'] == 0
+                     and summary['consciousness_verdict'] is None) else 1
     if command == 'self-knowledge-eval':
         from .self_knowledge_eval import run_evaluation
         summary = run_evaluation(Path(args['output_dir']))
