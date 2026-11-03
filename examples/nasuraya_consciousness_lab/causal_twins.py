@@ -78,7 +78,11 @@ def select_preference(training, ctx, duration, condition):
     if set(probabilities) != set(BUCKETS):
         raise ValueError("invalid probability taxonomy")
     predicted = max(BUCKETS, key=lambda action: probabilities[action])
-    preferred = "walk" if predicted == "walk" else "observe"
+    # Strict unique winner: tied/unsupported predictions default to observe.
+    # No tie may silently become a walk request because of dictionary order.
+    walk_unique_winner = all(probabilities["walk"] > probabilities[other]
+                             for other in BUCKETS if other != "walk")
+    preferred = "walk" if walk_unique_winner else "observe"
     return {
         "intervention": condition,
         "forecast_context": None if condition == "ablated" else observed,
