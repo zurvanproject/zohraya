@@ -9,6 +9,16 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'autonomic-peak-test':
+        from . import test_autonomic_peak
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_autonomic_peak)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'autonomic-peak-demo':
+        from .autonomic_peak import demo
+        result = demo(Path(args['output_dir']))
+        print(json.dumps(result,ensure_ascii=False,sort_keys=True))
+        return 0 if result['zero_native_cycles_verified'] and result['record_checksum_verified'] else 1
     if command == 'self-knowledge-eval':
         from .self_knowledge_eval import run_evaluation
         summary = run_evaluation(Path(args['output_dir']))
