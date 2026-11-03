@@ -233,11 +233,13 @@ def check_artifacts(output):
 
 def run_evaluation(output_dir):
     """True source-pinned SOFTWARE native cycles, but no production mutation."""
+    # Refuse any pre-existing target before importing or constructing a
+    # native runtime. This is also a safety contract for host-only tests.
+    output = Path(output_dir)
+    output.mkdir(parents=True, mode=0o700, exist_ok=False)
     from examples.nasuraya_body_loop.experience import context, metrics
     from examples.nasuraya_body_loop.host import BodyLoop, executed_body
 
-    output = Path(output_dir)
-    output.mkdir(parents=True, mode=0o700, exist_ok=False)
     write_new(output / "protocol.json", PROTOCOL)
     training = _frozen()
     with ExitStack() as stack:
