@@ -105,7 +105,11 @@ def prepare(state, snapshot, base_plan, affect):
     calm = max(0.0, 1.0 - max(arousal, 0.5 * load))
     desire = state["desire_proxy"]
     curiosity = novelty
-    exploration_boost = (0.08 * curiosity + 0.19 * desire * curiosity) * calm
+    # Libido interacts with curiosity and calm, rather than being reported
+    # as a decorative signal. Coefficients are authored engineering choices,
+    # NOT fitted physiological or psychological parameters.
+    exploration_boost = (0.03 * curiosity + 0.44 * desire * curiosity) * (
+        0.5 + 0.5 * calm)
     rest_pressure = 0.26 * load + 0.09 * arousal
     adjusted = {
         "walk": round(float(walk) + exploration_boost - rest_pressure, 7),
@@ -113,7 +117,8 @@ def prepare(state, snapshot, base_plan, affect):
     }
     # Prevent a high numeric 'desire' overriding observed distress/poor energy.
     guarded = (body["energy"] < 0.5 or body["fatigue"] > 0.55 or
-               body["pain"] > 0.4 or body["sleep_pressure"] > 0.55 or risk >= 0.25)
+               body["pain"] > 0.4 or body["sleep_pressure"] > 0.55 or
+               arousal > 0.9 or risk >= 0.25)
     choice = "observe" if guarded else max(
         ("walk", "observe"), key=lambda a: (adjusted[a], a))
     reason = ("guarded_rest" if guarded else
