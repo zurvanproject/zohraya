@@ -1,0 +1,77 @@
+name: Tadash native autonomic-motivation bridge (offline)
+on:
+  push:
+    branches:
+      - feature/tadash-autonomic-motivation-bridge-v01-20261104
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_loop/autonomic_peak.py'
+      - 'examples/nasuraya_body_loop/test_autonomic_peak.py'
+      - 'examples/nasuraya_body_loop/autonomic_bridge.py'
+      - 'examples/nasuraya_body_loop/test_autonomic_bridge.py'
+      - 'examples/nasuraya_body_loop/autonomic_bridge_demo.py'
+      - 'examples/nasuraya_body_loop/motivation.py'
+      - 'examples/nasuraya_body_loop/experience.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - '.github/workflows/tadash-autonomic-motivation-bridge.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-autonomic-motivation:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      OPENAI_API_KEY: ''
+      GH_HOST_TOKEN: ''
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Independently verify PR132 source waveform and standalone safety
+        run: python3 -m examples.nasuraya_body_loop autonomic-peak-test
+      - name: Verify wave to motivation, safety veto and restart
+        run: python3 -m examples.nasuraya_body_loop autonomic-wave-test
+      - name: Existing motivation integration regression
+        run: python3 -m examples.nasuraya_body_loop motivation-test
+      - name: Complete matched native 34-cycle software demo
+        run: python3 -m examples.nasuraya_body_loop autonomic-wave-demo --output-dir "$RUNNER_TEMP/tadash-wave-bridge"
+      - name: Independently inspect actual receipts, phase coverage and limits
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'tadash-wave-bridge'/'summary.json'
+          r=json.loads(p.read_text('utf-8'))
+          assert r['total_native_software_cycles']==34
+          assert r['wave_model_samples']==17
+          assert r['wave_model_duration_seconds_not_body_elapsed_time']==32
+          assert r['wave_model_native_source_verified']
+          assert r['native_veto_preserved']
+          assert r['api_calls']==0 and not r['physical_actuation']
+          assert r['actual_pelvic_contractions']==0
+          assert not r['subjective_orgasm_or_lust_inferred']
+          assert not r['clinical_calibration'] and not r['generalization_claim']
+          assert r['arms']['wave']['native_cycles']==17
+          assert r['arms']['baseline']['native_cycles']==17
+          assert r['arms']['wave']['initial_native_body_checkpoint_sha256']==r['arms']['baseline']['initial_native_body_checkpoint_sha256']
+          assert all(v['cold_reopen_verified'] and v['native_replay_extra_cycles']==0 for v in r['arms'].values())
+          rows=r['arms']['wave']['rows']
+          assert [row['model_phase'] for row in rows].count('rise')==5
+          assert [row['model_phase'] for row in rows].count('peak')==3
+          assert [row['model_phase'] for row in rows].count('recovery')==8
+          assert any(row['exploration_boost_from_wave']>0 for row in rows)
+          assert any(row['regulation_pressure_from_wave']>0 for row in rows)
+          print(json.dumps({
+            'cycles':r['total_native_software_cycles'],
+            'baseline_walks':r['arms']['baseline']['native_walks'],
+            'wave_walks':r['arms']['wave']['native_walks'],
+            'baseline_protect':r['arms']['baseline']['native_protect_vetoes'],
+            'wave_protect':r['arms']['wave']['native_protect_vetoes'],
+            'wave_phases':{phase:sum(row['model_phase']==phase for row in rows) for phase in ('baseline','rise','peak','recovery')},
+            'api_calls':r['api_calls']
+          }, sort_keys=True))
+          PY
