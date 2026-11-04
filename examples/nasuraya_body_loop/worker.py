@@ -9,6 +9,54 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'autonomic-peak-test':
+        from . import test_autonomic_peak
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_autonomic_peak)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'autonomic-peak-demo':
+        from .autonomic_peak import demo
+        report = demo(Path(args['output_dir']))
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0 if report['native_body_cycles_executed'] == 0 and report['sample_count'] == 17 else 1
+    if command == 'autonomic-wave-test':
+        from . import test_autonomic_bridge
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_autonomic_bridge)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'autonomic-wave-demo':
+        from .autonomic_bridge_demo import demo
+        result = demo(Path(args['output_dir']))
+        print(json.dumps({
+            'schema': result['schema'],
+            'total_native_software_cycles': result['total_native_software_cycles'],
+            'wave_model_samples': result['wave_model_samples'],
+            'baseline_actions': {
+                k: result['arms']['baseline'][k]
+                for k in ('native_walks', 'native_observes', 'native_protect_vetoes')},
+            'wave_actions': {
+                k: result['arms']['wave'][k]
+                for k in ('native_walks', 'native_observes', 'native_protect_vetoes')},
+            'api_calls': result['api_calls'],
+            'physical_actuation': result['physical_actuation'],
+        }, ensure_ascii=False, sort_keys=True))
+        return 0 if result['total_native_software_cycles'] == 34 else 1
+    if command.startswith('autonomic-wave-'):
+        from .experience import ExperienceController
+        with BodyLoop(args['session']) as loop:
+            c = ExperienceController(loop)
+            if command == 'autonomic-wave-enable':
+                result = c.enable_autonomic_bridge()
+            elif command == 'autonomic-wave-step':
+                if c.status()['autonomic_motivation_bridge'] is None:
+                    raise ValueError('enable source-pinned autonomic bridge first')
+                result = c.step(args['decision_id'], duration_s=args['duration_s'])
+            else:
+                result = c.status()['autonomic_motivation_bridge'] or {'enabled': False}
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            if command == 'autonomic-wave-step':
+                return 0 if result['native_receipt']['status'] == 'complete' else 1
+        return 0
     if command == 'motivation-test':
         from . import test_motivation
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_motivation)
