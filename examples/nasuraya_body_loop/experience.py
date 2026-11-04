@@ -90,6 +90,26 @@ def plan(state, snapshot, duration_s):
     or overrides the existing controller/native protection.
     """
     proposed = _policy_plan(state, snapshot, duration_s)
+    if 'motivation' in state:
+        from . import motivation
+        motivated = motivation.prepare(
+            state['motivation'], snapshot, proposed, state['affect'])
+        proposed['motivation'] = motivated
+        if motivated['preferred'] != proposed['preferred']:
+            # No behavior changes to old sessions. This opt-in preference
+            # remains subject to workspace downgrades AND the native veto.
+            proposed['pre_motivation_preferred'] = proposed['preferred']
+            proposed['preferred'] = motivated['preferred']
+            key = canonical([proposed['context'], proposed['preferred'], duration_s])
+            predictor = (state['predictors'].get(key)
+                         if state['flags']['prediction'] else None)
+            delta = predictor['mean_delta'] if predictor else dict.fromkeys(METRICS, 0.)
+            before = metrics(snapshot)
+            proposed['prediction'] = dict(
+                key=key, before=before,
+                expected={k: clamp(before[k] + delta[k]) for k in METRICS},
+                prior_samples=predictor['count'] if predictor else 0,
+                scope='next software state after motivated preference; not calibrated probability')
     if 'workspace' in state:
         from . import workspace
         integrated = workspace.prepare(state['workspace'], snapshot, proposed)
@@ -157,6 +177,9 @@ class ExperienceController:
         if 'workspace' in state:
             from . import workspace
             workspace.validate(state['workspace'])
+        if 'motivation' in state:
+            from . import motivation
+            motivation.validate(state['motivation'])
         return state
 
     def enable_workspace(self):
@@ -174,6 +197,23 @@ class ExperienceController:
             self._save(state)
         return workspace.summary(state['workspace'])
 
+    def enable_motivation(self, *, desire_proxy=0.5):
+        """Explicitly opt in to AUTHORED numerical desire, not felt lust.
+
+        Does not run an action, consume budgets or change past plans.
+        """
+        from . import motivation
+        requested = motivation.initial(desire_proxy)
+        state = self._load()
+        if any(intent['result'] is None for intent in state['intents'].values()):
+            raise InterruptedExecution('reconcile pending intent before motivation enable')
+        if 'motivation' not in state:
+            state['motivation'] = requested
+            self._save(state)
+        elif state['motivation']['desire_proxy'] != requested['desire_proxy']:
+            raise ValueError('motivation already configured; cannot silently change its input')
+        return motivation.summary(state['motivation'])
+
     def _save(self, state):
         self.loop.engine.db.execute('UPDATE meta SET value=? WHERE key=?',
             (canonical(dict(value=state, sha256=digest(state))), KEY))
@@ -184,10 +224,14 @@ class ExperienceController:
         if 'workspace' in state:
             from . import workspace
             integrated = workspace.summary(state['workspace'])
+        motivated = None
+        if 'motivation' in state:
+            from . import motivation
+            motivated = motivation.summary(state['motivation'])
         return dict(state=state, native=self.loop.status(), external_model_api_used=False,
                     background_process_started=False,
                     self_knowledge=summarize_action_forecasts(state['intents']),
-                    integrated_workspace=integrated)
+                    integrated_workspace=integrated, motivational_drive=motivated)
 
     def _finish(self, state, request_id, record, *, replayed):
         intent = state['intents'][request_id]
@@ -244,6 +288,14 @@ class ExperienceController:
                 # global-workspace learning receipt. No independent writer.
                 state['workspace'] = workspace.record(
                     state['workspace'], request_id, p['workspace'],
+                    intent['snapshot'], receipt['actual_action'],
+                    prediction['source'], error, harm)
+            if 'motivation' in state:
+                if 'motivation' not in p:
+                    raise ValueError('motivation plan missing from pre-outcome intent')
+                from . import motivation
+                state['motivation'] = motivation.record(
+                    state['motivation'], request_id, p['motivation'],
                     intent['snapshot'], receipt['actual_action'],
                     prediction['source'], error, harm)
         else:
