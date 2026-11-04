@@ -90,10 +90,17 @@ def plan(state, snapshot, duration_s):
     or overrides the existing controller/native protection.
     """
     proposed = _policy_plan(state, snapshot, duration_s)
+    wave = None
+    if 'autonomic_bridge' in state:
+        from . import autonomic_bridge
+        # Pure authored model-index lookup; source baseline was native-verified
+        # when explicitly enabled, never inferred from future body outcomes.
+        wave = autonomic_bridge.preview(state['autonomic_bridge'])
+        proposed['autonomic_wave'] = wave
     if 'motivation' in state:
         from . import motivation
         motivated = motivation.prepare(
-            state['motivation'], snapshot, proposed, state['affect'])
+            state['motivation'], snapshot, proposed, state['affect'], autonomic=wave)
         proposed['motivation'] = motivated
         if motivated['preferred'] != proposed['preferred']:
             # No behavior changes to old sessions. This opt-in preference
@@ -180,6 +187,11 @@ class ExperienceController:
         if 'motivation' in state:
             from . import motivation
             motivation.validate(state['motivation'])
+        if 'autonomic_bridge' in state:
+            from . import autonomic_bridge
+            autonomic_bridge.validate(state['autonomic_bridge'])
+            if 'motivation' not in state or 'workspace' not in state:
+                raise ValueError('autonomic bridge requires motivation and workspace')
         return state
 
     def enable_workspace(self):
@@ -214,6 +226,28 @@ class ExperienceController:
             raise ValueError('motivation already configured; cannot silently change its input')
         return motivation.summary(state['motivation'])
 
+    def enable_autonomic_bridge(self):
+        """Explicit, zero-native-cycle source-pinned wave -> motive connection.
+
+        The PR #132 waveform is computed once from verified native checkpoint
+        and pinned to this session. Each completed native decision subsequently
+        moves only its virtual model index by one sample. No biological response.
+        """
+        from . import autonomic_bridge, autonomic_peak
+        state = self._load()
+        if 'motivation' not in state or 'workspace' not in state:
+            raise ValueError('enable motivation and workspace first')
+        if any(i['result'] is None for i in state['intents'].values()):
+            raise InterruptedExecution('reconcile pending native intent before wave bridge')
+        if 'autonomic_bridge' not in state:
+            if state['intents'] or self.loop.status()['actions_reserved'] or (
+                    self.loop.status()['completed_cycles']):
+                raise ValueError('wave source must be pinned before first native cycle')
+            source = autonomic_peak.compute(self.loop)
+            state['autonomic_bridge'] = autonomic_bridge.initial(source)
+            self._save(state)
+        return autonomic_bridge.summary(state['autonomic_bridge'])
+
     def _save(self, state):
         self.loop.engine.db.execute('UPDATE meta SET value=? WHERE key=?',
             (canonical(dict(value=state, sha256=digest(state))), KEY))
@@ -228,10 +262,15 @@ class ExperienceController:
         if 'motivation' in state:
             from . import motivation
             motivated = motivation.summary(state['motivation'])
+        wave_status = None
+        if 'autonomic_bridge' in state:
+            from . import autonomic_bridge
+            wave_status = autonomic_bridge.summary(state['autonomic_bridge'])
         return dict(state=state, native=self.loop.status(), external_model_api_used=False,
                     background_process_started=False,
                     self_knowledge=summarize_action_forecasts(state['intents']),
-                    integrated_workspace=integrated, motivational_drive=motivated)
+                    integrated_workspace=integrated, motivational_drive=motivated,
+                    autonomic_motivation_bridge=wave_status)
 
     def _finish(self, state, request_id, record, *, replayed):
         intent = state['intents'][request_id]
@@ -298,6 +337,14 @@ class ExperienceController:
                     state['motivation'], request_id, p['motivation'],
                     intent['snapshot'], receipt['actual_action'],
                     prediction['source'], error, harm)
+            if 'autonomic_bridge' in state:
+                if 'autonomic_wave' not in p:
+                    raise ValueError('missing frozen autonomic predecision')
+                from . import autonomic_bridge
+                state['autonomic_bridge'] = autonomic_bridge.record(
+                    state['autonomic_bridge'], request_id,
+                    p['autonomic_wave'], prediction['source'],
+                    receipt['actual_action'])
         else:
             prediction.update(actual=None, mean_absolute_error=None, unresolved=True)
         result = dict(request_id=request_id, plan=deepcopy(p), prediction=prediction,

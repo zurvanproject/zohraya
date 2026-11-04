@@ -78,7 +78,7 @@ def validate(state):
     return state
 
 
-def prepare(state, snapshot, base_plan, affect):
+def prepare(state, snapshot, base_plan, affect, autonomic=None):
     """Pure PRE-OUTCOME preference proposal. Body safety veto remains native."""
     validate(state)
     body = body_signals(snapshot)
@@ -111,14 +111,30 @@ def prepare(state, snapshot, base_plan, affect):
     exploration_boost = (0.03 * curiosity + 0.44 * desire * curiosity) * (
         0.5 + 0.5 * calm)
     rest_pressure = 0.26 * load + 0.09 * arousal
+    # Optional PR #132 finite waveform, anchored to the native checkpoint.
+    # Mild synthetic rise may increase exploration; peak and recovery favor
+    # observation/recovery. These are authored control gains, not physiology.
+    wave_phase, wave_drive, wave_exploration, wave_settling = None, 0.0, 0.0, 0.0
+    if autonomic is not None:
+        from . import autonomic_bridge
+        autonomic_bridge.validate_preview(autonomic)
+        sample = autonomic["sample"]
+        wave_phase = sample["phase"]
+        wave_drive = unit(sample["activation_envelope"], "wave activation")
+        if wave_phase == "rise":
+            wave_exploration = 0.16 * desire * wave_drive * curiosity * calm
+        if wave_phase in ("peak", "recovery"):
+            wave_settling = (0.28 if wave_phase == "peak" else 0.18) * desire * wave_drive
     adjusted = {
-        "walk": round(float(walk) + exploration_boost - rest_pressure, 7),
-        "observe": round(float(observe) + 0.16 * load, 7),
+        "walk": round(float(walk) + exploration_boost + wave_exploration -
+                      rest_pressure - wave_settling, 7),
+        "observe": round(float(observe) + 0.16 * load + wave_settling, 7),
     }
     # Prevent a high numeric 'desire' overriding observed distress/poor energy.
     guarded = (body["energy"] < 0.5 or body["fatigue"] > 0.55 or
                body["pain"] > 0.4 or body["sleep_pressure"] > 0.55 or
-               arousal > 0.9 or risk >= 0.25)
+               arousal > 0.9 or risk >= 0.25 or
+               (wave_phase == "peak" and wave_drive >= 0.95 and desire > 0.2))
     choice = "observe" if guarded else max(
         ("walk", "observe"), key=lambda a: (adjusted[a], a))
     reason = ("guarded_rest" if guarded else
@@ -138,6 +154,11 @@ def prepare(state, snapshot, base_plan, affect):
         "fatigue_proxy": body["fatigue"],
         "exploration_boost": round(exploration_boost, 7),
         "rest_pressure": round(rest_pressure, 7),
+        "autonomic_phase": wave_phase,
+        "autonomic_activation_proxy": wave_drive,
+        "wave_exploration_boost": round(wave_exploration, 7),
+        "wave_regulation_pressure": round(wave_settling, 7),
+        "wave_is_authored_not_experienced": True,
         "adjusted_scores": adjusted,
         "native_safety_still_authoritative": True,
         "subjective_lust_or_pleasure_inferred": False,
