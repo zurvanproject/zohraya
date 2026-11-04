@@ -19,7 +19,8 @@ PR #132 موج محدود خودمختار را ساخت؛ PR #134 میل/کنج
 در یک نشست تازهٔ bounded و قبل از اولین کنش، ابتدا لایه‌های پایه را فعال کنید:
 
 ~~~bash
-python3 -m examples.nasuraya_body_loop experience-enable --session /tmp/nasuraya-peak.sqlite --max-actions 12
+python3 -m examples.nasuraya_body_loop start --session /tmp/nasuraya-peak.sqlite --max-actions 12
+python3 -m examples.nasuraya_body_loop experience-enable --session /tmp/nasuraya-peak.sqlite
 python3 -m examples.nasuraya_body_loop workspace-enable --session /tmp/nasuraya-peak.sqlite
 python3 -m examples.nasuraya_body_loop motivation-enable --session /tmp/nasuraya-peak.sqlite --desire-proxy 0.85
 python3 -m examples.nasuraya_body_loop autonomic-wave-enable --session /tmp/nasuraya-peak.sqlite
