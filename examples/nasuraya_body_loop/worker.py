@@ -18,7 +18,7 @@ def main(args):
         from .motivation_demo import demo
         result = demo(Path(args['output_dir']))
         print(json.dumps(result, ensure_ascii=False, sort_keys=True))
-        return 0 if result['total_native_software_cycles'] == 12 else 1
+        return 0 if result['total_native_software_cycles'] == 15 else 1
     if command.startswith('motivation-'):
         from .experience import ExperienceController
         with BodyLoop(args['session']) as loop:
