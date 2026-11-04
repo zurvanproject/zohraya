@@ -31,7 +31,8 @@ def main(argv=None):
     p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status',
         'experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-test', 'experience-demo',
         'self-knowledge-eval', 'workspace-enable', 'workspace-step', 'workspace-status', 'workspace-test', 'workspace-demo', 'workspace-ablation-test', 'workspace-ablation-demo', 'motivation-enable', 'motivation-step', 'motivation-status', 'motivation-test', 'motivation-demo', 'autonomic-wave-enable', 'autonomic-wave-step', 'autonomic-wave-status', 'autonomic-wave-test', 'autonomic-wave-demo', 'autonomic-peak-test', 'autonomic-peak-demo', 'neurovisceral-enable', 'neurovisceral-step', 'neurovisceral-status', 'neurovisceral-test', 'neurovisceral-demo', 'standing-test', 'standing-demo', 'instinct-enable', 'instinct-step', 'instinct-status',
-        'instinct-disable', 'instinct-test', 'instinct-demo'])
+        'instinct-disable', 'instinct-test', 'instinct-demo',
+        'unified-enable', 'unified-step', 'unified-status', 'unified-test', 'unified-demo'])
     p.add_argument('--session', type=Path)
     p.add_argument('--event-json', type=Path, help='explicit local JSON event for instinct-step')
     p.add_argument('--output-dir', type=Path)
@@ -51,10 +52,12 @@ def main(argv=None):
     p.add_argument('--max-calls', type=int, default=40)
     p.add_argument('--timeout-seconds', type=float, default=30)
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval', 'workspace-test', 'workspace-demo', 'workspace-ablation-test', 'workspace-ablation-demo', 'motivation-test', 'motivation-demo', 'autonomic-wave-test', 'autonomic-wave-demo', 'autonomic-peak-test', 'autonomic-peak-demo', 'neurovisceral-test', 'neurovisceral-demo', 'standing-test', 'standing-demo', 'instinct-test', 'instinct-demo'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval', 'workspace-test', 'workspace-demo', 'workspace-ablation-test', 'workspace-ablation-demo', 'motivation-test', 'motivation-demo', 'autonomic-wave-test', 'autonomic-wave-demo', 'autonomic-peak-test', 'autonomic-peak-demo', 'neurovisceral-test', 'neurovisceral-demo', 'standing-test', 'standing-demo', 'instinct-test', 'instinct-demo', 'unified-test', 'unified-demo'] and args.session is None:
         p.error('--session required')
-    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval', 'workspace-demo', 'workspace-ablation-demo', 'motivation-demo', 'autonomic-wave-demo', 'autonomic-peak-demo', 'instinct-demo') and args.output_dir is None:
+    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval', 'workspace-demo', 'workspace-ablation-demo', 'motivation-demo', 'autonomic-wave-demo', 'autonomic-peak-demo', 'instinct-demo', 'unified-demo') and args.output_dir is None:
         p.error('--output-dir required')
+    if args.command == 'unified-step' and args.decision_id is None:
+        p.error('--decision-id required for unified-step')
     if args.command == 'instinct-step' and args.event_json is None:
         p.error('--event-json required for instinct-step')
     if args.command == 'api' and (args.output_dir is None or not args.model):
