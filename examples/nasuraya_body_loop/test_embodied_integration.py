@@ -129,7 +129,7 @@ class EmbodiedIntegrationTests(unittest.TestCase):
                     controller.status()["state"]["embodied_integration"], "one",
                     result["plan"]["embodied_integration"],
                     result["prediction"]["source"], result["native_receipt"]["actual_action"],
-                    result["native_receipt"]["self_model_before"],
+                    controller.status()["state"]["intents"]["one"]["snapshot"],
                     result["native_receipt"]["self_model_after"], 0)
             altered = deepcopy(result["plan"]["embodied_integration"])
             altered["source_checkpoint_sha256"] = "0"*64
@@ -137,7 +137,7 @@ class EmbodiedIntegrationTests(unittest.TestCase):
                 embodied_integration.record(
                     s, "new", altered, result["prediction"]["source"],
                     result["native_receipt"]["actual_action"],
-                    result["native_receipt"]["self_model_before"],
+                    controller.status()["state"]["intents"]["one"]["snapshot"],
                     result["native_receipt"]["self_model_after"], 0)
 
     def test_legacy_without_opt_in_keeps_no_integration(self):
