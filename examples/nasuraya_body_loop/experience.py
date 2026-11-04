@@ -182,6 +182,29 @@ def plan(state, snapshot, duration_s, *, neuro_sample=None, spinal_sample=None):
                 expected={k: clamp(before[k]+delta[k]) for k in METRICS},
                 prior_samples=predictor['count'] if predictor else 0,
                 scope='next software state after conservative spinal feedback; not biological validation')
+    if 'embodied_integration' in state:
+        from . import embodied_integration
+        if 'motivation' not in proposed or 'autonomic_wave' not in proposed or (
+                'neurovisceral' not in proposed):
+            raise ValueError('embodied integration requires all three frozen inputs')
+        embodied = embodied_integration.preview(
+            state['embodied_integration'], snapshot,
+            proposed['motivation'], proposed['autonomic_wave'], proposed['neurovisceral'])
+        proposed['embodied_integration'] = embodied
+        # Conservative regulatory gate: only walk -> observe. Never actuates
+        # any pelvic motor command or bypasses the native protection veto.
+        if embodied['recommendation'] == 'observe' and proposed['preferred'] == 'walk':
+            proposed['pre_embodied_preferred'] = proposed['preferred']
+            proposed['preferred'] = 'observe'
+            key = canonical([proposed['context'], proposed['preferred'], duration_s])
+            predictor = state['predictors'].get(key) if state['flags']['prediction'] else None
+            delta = predictor['mean_delta'] if predictor else dict.fromkeys(METRICS, 0.)
+            before = metrics(snapshot)
+            proposed['prediction'] = dict(
+                key=key, before=before,
+                expected={k: clamp(before[k]+delta[k]) for k in METRICS},
+                prior_samples=predictor['count'] if predictor else 0,
+                scope='next software state after conservative embodied gate; not sexual physiology')
     proposed['action_forecast'] = forecast_action(
         state['episodes'], context=proposed['context'],
         preferred=proposed['preferred'], duration_s=duration_s,
@@ -241,6 +264,19 @@ class ExperienceController:
             neurovisceral.validate(state['neurovisceral'])
             if 'motivation' not in state or 'workspace' not in state:
                 raise ValueError('neurovisceral coordination requires motivation and workspace')
+        if 'embodied_integration' in state:
+            from . import embodied_integration
+            embodied_integration.validate(state['embodied_integration'])
+            if not all(k in state for k in (
+                    'workspace', 'motivation', 'autonomic_bridge', 'neurovisceral')):
+                raise ValueError('embodied integration requires its source layers')
+            if (state['embodied_integration']['original_checkpoint_sha256']
+                    != state['autonomic_bridge']['original_checkpoint_sha256'] or
+                    state['embodied_integration']['wave_trace_sha256']
+                    != state['autonomic_bridge']['wave_trace_sha256'] or
+                    state['embodied_integration']['desire_parameter']
+                    != state['motivation']['desire_proxy']):
+                raise ValueError('embodied persistent state disagrees with parent source')
         return state
 
     def enable_workspace(self):
@@ -314,6 +350,29 @@ class ExperienceController:
             self._save(state)
         return neurovisceral.summary(state['neurovisceral'])
 
+    def enable_embodied_integration(self):
+        """Opt-in peak/refractory/reward memory only with verified source layers.
+
+        No native action, physical contraction, subjective experience or clock
+        advancement occurs on enable. Begin before the first native action.
+        """
+        from . import embodied_integration
+        state = self._load()
+        required = ('workspace', 'motivation', 'autonomic_bridge', 'neurovisceral')
+        if not all(k in state for k in required):
+            raise ValueError('enable workspace, motivation, autonomic bridge and neurovisceral first')
+        if any(intent['result'] is None for intent in state['intents'].values()):
+            raise InterruptedExecution('reconcile pending native intent before embodied enable')
+        if 'embodied_integration' not in state:
+            native_status = self.loop.status()
+            if (state['intents'] or native_status['completed_cycles'] or
+                    native_status['actions_reserved']):
+                raise ValueError('embodied source must be pinned before first native cycle')
+            state['embodied_integration'] = embodied_integration.initial(
+                state['motivation'], state['autonomic_bridge'], state['neurovisceral'])
+            self._save(state)
+        return embodied_integration.summary(state['embodied_integration'])
+
     def _save(self, state):
         self.loop.engine.db.execute('UPDATE meta SET value=? WHERE key=?',
             (canonical(dict(value=state, sha256=digest(state))), KEY))
@@ -340,12 +399,17 @@ class ExperienceController:
         if 'neurovisceral' in state:
             from . import phenotype_alignment
             canonical_alignment = phenotype_alignment.read(self.loop.body())
+        embodied_status = None
+        if 'embodied_integration' in state:
+            from . import embodied_integration
+            embodied_status = embodied_integration.summary(state['embodied_integration'])
         return dict(state=state, native=self.loop.status(), external_model_api_used=False,
                     background_process_started=False,
                     self_knowledge=summarize_action_forecasts(state['intents']),
                     integrated_workspace=integrated, motivational_drive=motivated,
                     autonomic_motivation_bridge=wave_status,
                     neurovisceral_coordination=neuro_status,
+                    embodied_peak_reward_memory=embodied_status,
                     canonical_phenotype_alignment=canonical_alignment)
 
     def _finish(self, state, request_id, record, *, replayed):
@@ -429,6 +493,15 @@ class ExperienceController:
                     state['neurovisceral'], request_id,
                     p['neurovisceral'], prediction['source'],
                     receipt['actual_action'], receipt['self_model_after']['checkpoint_sha256'])
+            if 'embodied_integration' in state:
+                if 'embodied_integration' not in p:
+                    raise ValueError('missing frozen embodied predecision')
+                from . import embodied_integration
+                state['embodied_integration'] = embodied_integration.record(
+                    state['embodied_integration'], request_id,
+                    p['embodied_integration'], prediction['source'],
+                    receipt['actual_action'], intent['snapshot'],
+                    receipt['self_model_after'], harm)
         else:
             prediction.update(actual=None, mean_absolute_error=None, unresolved=True)
         result = dict(request_id=request_id, plan=deepcopy(p), prediction=prediction,

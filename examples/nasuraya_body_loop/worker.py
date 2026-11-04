@@ -9,6 +9,26 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'embodied-test':
+        from . import test_embodied_integration
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_embodied_integration)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command.startswith('embodied-'):
+        from .experience import ExperienceController
+        with BodyLoop(args['session']) as loop:
+            controller = ExperienceController(loop)
+            if command == 'embodied-enable':
+                result = controller.enable_embodied_integration()
+            elif command == 'embodied-step':
+                if controller.status()['embodied_peak_reward_memory'] is None:
+                    raise ValueError('enable embodied integration first')
+                result = controller.step(args['decision_id'], duration_s=args['duration_s'])
+            else:
+                result = controller.status()['embodied_peak_reward_memory'] or {'enabled': False}
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            return 0 if (command != 'embodied-step'
+                or result['native_receipt']['status'] == 'complete') else 1
     if command == 'standing-test':
         from . import test_standing
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_standing)
