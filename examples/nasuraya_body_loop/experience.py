@@ -82,7 +82,7 @@ def _policy_plan(state, snapshot, duration_s):
                     scope='next software state given controller preference; not calibrated probability'))
 
 
-def plan(state, snapshot, duration_s):
+def plan(state, snapshot, duration_s, *, neuro_sample=None):
     """Freeze predictions and matched-state diagnostics before body execution.
 
     The categorical forecast uses only earlier receipt-grounded episodes. The
@@ -138,6 +138,30 @@ def plan(state, snapshot, duration_s):
                 expected={k: clamp(before[k] + delta[k]) for k in METRICS},
                 prior_samples=predictor['count'] if predictor else 0,
                 scope='next software state after workspace preference; not calibrated probability')
+    if 'neurovisceral' in state:
+        from . import neurovisceral
+        if neuro_sample is None or (
+                neuro_sample['native_checkpoint_sha256'] != snapshot['checkpoint_sha256']):
+            raise ValueError('neurovisceral model requires fresh matching native body source')
+        # The anatomy/physiology overlay may only conservatively downgrade walk.
+        # No waveform or desire can override a native protection action.
+        nv = neurovisceral.preview(
+            state['neurovisceral'], neuro_sample,
+            desire_proxy=state['motivation']['desire_proxy'], autonomic=wave)
+        proposed['neurovisceral'] = nv
+        if nv['recommendation'] == 'observe' and proposed['preferred'] == 'walk':
+            proposed['pre_neurovisceral_preferred'] = proposed['preferred']
+            proposed['preferred'] = 'observe'
+            key = canonical([proposed['context'], proposed['preferred'], duration_s])
+            predictor = (state['predictors'].get(key)
+                         if state['flags']['prediction'] else None)
+            delta = predictor['mean_delta'] if predictor else dict.fromkeys(METRICS, 0.)
+            before = metrics(snapshot)
+            proposed['prediction'] = dict(
+                key=key, before=before,
+                expected={k: clamp(before[k]+delta[k]) for k in METRICS},
+                prior_samples=predictor['count'] if predictor else 0,
+                scope='next software state after safe neurovisceral veto; not clinical physiology')
     proposed['action_forecast'] = forecast_action(
         state['episodes'], context=proposed['context'],
         preferred=proposed['preferred'], duration_s=duration_s,
@@ -192,6 +216,11 @@ class ExperienceController:
             autonomic_bridge.validate(state['autonomic_bridge'])
             if 'motivation' not in state or 'workspace' not in state:
                 raise ValueError('autonomic bridge requires motivation and workspace')
+        if 'neurovisceral' in state:
+            from . import neurovisceral
+            neurovisceral.validate(state['neurovisceral'])
+            if 'motivation' not in state or 'workspace' not in state:
+                raise ValueError('neurovisceral coordination requires motivation and workspace')
         return state
 
     def enable_workspace(self):
@@ -248,6 +277,23 @@ class ExperienceController:
             self._save(state)
         return autonomic_bridge.summary(state['autonomic_bridge'])
 
+    def enable_neurovisceral(self):
+        """Zero-action opt-in for a source-pinned neural/visceral advisory graph."""
+        from . import neurovisceral
+        state = self._load()
+        if 'motivation' not in state or 'workspace' not in state:
+            raise ValueError('enable motivation and workspace before neurovisceral')
+        if any(i['result'] is None for i in state['intents'].values()):
+            raise InterruptedExecution('reconcile pending intent before neurovisceral enable')
+        if 'neurovisceral' not in state:
+            if state['intents'] or self.loop.status()['completed_cycles'] or (
+                    self.loop.status()['actions_reserved']):
+                raise ValueError('pin neurovisceral source before first native action')
+            state['neurovisceral'] = neurovisceral.initial(
+                neurovisceral.capture(self.loop.body()))
+            self._save(state)
+        return neurovisceral.summary(state['neurovisceral'])
+
     def _save(self, state):
         self.loop.engine.db.execute('UPDATE meta SET value=? WHERE key=?',
             (canonical(dict(value=state, sha256=digest(state))), KEY))
@@ -266,11 +312,16 @@ class ExperienceController:
         if 'autonomic_bridge' in state:
             from . import autonomic_bridge
             wave_status = autonomic_bridge.summary(state['autonomic_bridge'])
+        neuro_status = None
+        if 'neurovisceral' in state:
+            from . import neurovisceral
+            neuro_status = neurovisceral.summary(state['neurovisceral'])
         return dict(state=state, native=self.loop.status(), external_model_api_used=False,
                     background_process_started=False,
                     self_knowledge=summarize_action_forecasts(state['intents']),
                     integrated_workspace=integrated, motivational_drive=motivated,
-                    autonomic_motivation_bridge=wave_status)
+                    autonomic_motivation_bridge=wave_status,
+                    neurovisceral_coordination=neuro_status)
 
     def _finish(self, state, request_id, record, *, replayed):
         intent = state['intents'][request_id]
@@ -345,6 +396,14 @@ class ExperienceController:
                     state['autonomic_bridge'], request_id,
                     p['autonomic_wave'], prediction['source'],
                     receipt['actual_action'])
+            if 'neurovisceral' in state:
+                if 'neurovisceral' not in p:
+                    raise ValueError('missing frozen neurovisceral predecision')
+                from . import neurovisceral
+                state['neurovisceral'] = neurovisceral.record(
+                    state['neurovisceral'], request_id,
+                    p['neurovisceral'], prediction['source'],
+                    receipt['actual_action'], receipt['self_model_after']['checkpoint_sha256'])
         else:
             prediction.update(actual=None, mean_absolute_error=None, unresolved=True)
         result = dict(request_id=request_id, plan=deepcopy(p), prediction=prediction,
@@ -385,7 +444,11 @@ class ExperienceController:
             if self.loop.engine.get(native_id) is not None:
                 raise ValueError('native ID already belongs to another operation')
             snapshot = self.loop.observe()
-            proposed = plan(state, snapshot, duration_s)
+            neuro_sample = None
+            if 'neurovisceral' in state:
+                from . import neurovisceral
+                neuro_sample = neurovisceral.capture(self.loop.body())
+            proposed = plan(state, snapshot, duration_s, neuro_sample=neuro_sample)
             old = dict(native_id=native_id, duration_s=duration_s, snapshot=snapshot, plan=proposed,
                        native_request=self.loop.make_request(native_id, snapshot, duration_s, proposed['preferred']), result=None)
             state['intents'][request_id] = old
