@@ -9,6 +9,23 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'workspace-ablation-test':
+        from . import test_workspace_ablation
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_workspace_ablation)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'workspace-ablation-demo':
+        from .workspace_ablation import run
+        result = run(Path(args['output_dir']))
+        print(json.dumps({
+            'total_native_cycles': result['total_native_cycles'],
+            'matched_preference_comparisons': result['matched_preference_comparisons'],
+            'baseline': result['baseline'],
+            'workspace': result['workspace'],
+            'api_calls': result['api_calls'],
+            'physical_actuation': result['physical_actuation'],
+        }, ensure_ascii=False, sort_keys=True))
+        return 0 if result['total_native_cycles'] == 30 else 1
     if command == 'workspace-test':
         from . import test_workspace
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_workspace)
