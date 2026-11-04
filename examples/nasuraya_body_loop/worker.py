@@ -9,6 +9,31 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'neurovisceral-test':
+        from . import test_neurovisceral
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_neurovisceral)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'neurovisceral-demo':
+        from .neurovisceral_demo import demo
+        result = demo(Path(args['output_dir']))
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0 if result['native_cycles'] == 3 else 1
+    if command.startswith('neurovisceral-'):
+        from .experience import ExperienceController
+        with BodyLoop(args['session']) as loop:
+            c = ExperienceController(loop)
+            if command == 'neurovisceral-enable':
+                result = c.enable_neurovisceral()
+            elif command == 'neurovisceral-step':
+                if c.status()['neurovisceral_coordination'] is None:
+                    raise ValueError('enable neurovisceral coordination before step')
+                result = c.step(args['decision_id'], duration_s=args['duration_s'])
+            else:
+                result = c.status()['neurovisceral_coordination'] or {'enabled': False}
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            return 0 if (command != 'neurovisceral-step'
+                or result['native_receipt']['status'] == 'complete') else 1
     if command == 'autonomic-peak-test':
         from . import test_autonomic_peak
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_autonomic_peak)
