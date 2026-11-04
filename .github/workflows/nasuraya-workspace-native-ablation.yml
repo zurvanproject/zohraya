@@ -1,0 +1,51 @@
+name: Tadash native workspace paired ablation (30 cycles)
+on:
+  push:
+    branches:
+      - feature/tadash-native-workspace-ablation-30cycles-20261104
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_loop/workspace_ablation.py'
+      - 'examples/nasuraya_body_loop/test_workspace_ablation.py'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - '.github/workflows/nasuraya-workspace-native-ablation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  paired-native-cycles:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      OPENAI_API_KEY: ''
+      GH_HOST_TOKEN: ''
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Run paired native-body tests and strict replay checks
+        run: python3 -m examples.nasuraya_body_loop workspace-ablation-test
+      - name: Collect fresh full 30-cycle report
+        run: python3 -m examples.nasuraya_body_loop workspace-ablation-demo --output-dir "$RUNNER_TEMP/tadash-30"
+      - name: Verify exact cycle counts, real receipts, no cloud cost or actuation
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          r=json.loads((Path(os.environ['RUNNER_TEMP'])/'tadash-30'/'summary.json').read_text('utf-8'))
+          assert r['total_native_cycles']==30
+          assert r['matched_preference_comparisons']==15
+          assert r['fresh_native_software_sessions']==10
+          assert r['extra_cycles_on_idempotent_replay']==0
+          assert r['baseline']['native_cycles']==15
+          assert r['workspace']['native_cycles']==15
+          assert r['baseline']['recorded_workspace_receipts']==0
+          assert r['workspace']['recorded_workspace_receipts']==15
+          assert r['api_calls']==0 and not r['physical_actuation']
+          assert not r['subjective_experience_inferred']
+          print(json.dumps({'baseline':r['baseline'], 'workspace':r['workspace'],
+            'delta_native_protect_vetoes':r['protect_veto_difference_baseline_minus_workspace']},sort_keys=True))
+          PY
