@@ -1,0 +1,69 @@
+name: Tadash modeled desire and curiosity (software only)
+on:
+  push:
+    branches:
+      - feature/tadash-motivational-drive-v01-20261104
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_loop/motivation.py'
+      - 'examples/nasuraya_body_loop/motivation_demo.py'
+      - 'examples/nasuraya_body_loop/test_motivation.py'
+      - 'examples/nasuraya_body_loop/experience.py'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - '.github/workflows/nasuraya-motivational-drive.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-motivation:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      OPENAI_API_KEY: ''
+      GH_HOST_TOKEN: ''
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Validate motive, safety gating, persistence, native receipts
+        run: python3 -m examples.nasuraya_body_loop motivation-test
+      - name: Guard older native memory and experience behavior
+        run: |
+          python3 -m examples.nasuraya_body_loop workspace-test
+          python3 -m examples.nasuraya_body_loop experience-test
+      - name: Run source-pinned paired native-body demo
+        run: python3 -m examples.nasuraya_body_loop motivation-demo --output-dir "$RUNNER_TEMP/nasuraya-motivation"
+      - name: Verify bounded evidence and no API or actuation
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'nasuraya-motivation'/'summary.json'
+          r=json.loads(p.read_text('utf-8'))
+          assert r['total_native_software_cycles']==15
+          assert len(r['sessions'])==4
+          assert r['ordinary_native_software_cycles']==12
+          assert r['authored_challenge_native_software_cycles']==3
+          assert [r['challenge'][arm]['actual_action'] for arm in ('baseline','low','high')] == ['observe','observe','walk']
+          assert all(r['challenge'][arm]['native_cycles']==1 for arm in ('baseline','low','high'))
+          assert r['native_replays_created_extra_cycles']==0
+          assert r['api_calls']==0
+          assert r['physical_actuation'] is False
+          assert r['subjective_desire_or_pleasure_measured'] is False
+          assert r['generalization_claim'] is False
+          assert r['sessions']['sleep_motivated']['motivation_receipts']==3
+          assert r['sessions']['sleep_baseline']['motivation_receipts']==0
+          assert all(s['cold_reopen_ok'] and s['workspace_receipts']==3
+                     for s in r['sessions'].values())
+          print(json.dumps({
+            'baseline_protect_vetoes':r['baseline_native_protect_vetoes'],
+            'motivated_protect_vetoes':r['motivated_native_protect_vetoes'],
+            'native_cycles':r['total_native_software_cycles'],
+            'authored_challenge':{arm: r['challenge'][arm]['actual_action'] for arm in ('baseline','low','high')},
+            'desire_proxy':r['authored_desire_proxy'],
+            'api_calls':r['api_calls'],
+          }, ensure_ascii=False, sort_keys=True))
+          PY
