@@ -1,0 +1,36 @@
+name: Tadash embodied peak and receipt-grounded regulation
+on:
+  push:
+    branches:
+      - feature/tadash-embodied-peak-reward-memory-v01-20261104
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_loop/embodied_integration.py'
+      - 'examples/nasuraya_body_loop/test_embodied_integration.py'
+      - 'examples/nasuraya_body_loop/experience.py'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - '.github/workflows/tadash-embodied-integration.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  embodied-native:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      OPENAI_API_KEY: ''
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Embodied integration with authoritative native receipt tests
+        run: python3 -m examples.nasuraya_body_loop embodied-test
+      - name: Guard pre-existing wave and motivation
+        run: |
+          python3 -m examples.nasuraya_body_loop autonomic-wave-test
+          python3 -m examples.nasuraya_body_loop motivation-test
+      - name: Guard existing native neurovisceral source
+        run: python3 -m examples.nasuraya_body_loop neurovisceral-test
