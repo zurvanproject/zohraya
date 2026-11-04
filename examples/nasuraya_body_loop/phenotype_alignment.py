@@ -7,6 +7,9 @@ energy accounts are rescaled or represented as calibrated. A pictorial avatar
 is not evidence of actual embodiment or subjective sensation.
 """
 from copy import deepcopy
+from pathlib import Path
+import hashlib
+import json
 import math
 
 SCHEMA = "tadash-canonical-phenotype-alignment/1"
@@ -32,6 +35,16 @@ def read(body):
     atlas = body.anatomy["baseline_contract"]
     old = atlas["adult_scale"]
     contract = atlas["phenotype_contract"]
+    runtime = Path(__file__).resolve().parents[2] / "runtimes" / "tadash_body"
+    raw = (runtime / "phenotype_v1.json").read_bytes()
+    manifest = json.loads((runtime / "PUBLIC_FILES_SHA256.json").read_text())
+    phenotype_sha = hashlib.sha256(raw).hexdigest()
+    if manifest.get("phenotype_v1.json") != phenotype_sha:
+        raise ValueError("historical phenotype source manifest does not match")
+    historical = json.loads(raw)["adult_scale"]
+    if (historical["ground_to_crown_cm"] != old["ground_to_crown_cm"]
+            or historical["mass_target_kg"] != old["mass_target_kg"]):
+        raise ValueError("historical sources contradict one another")
     if (old["ground_to_crown_cm"] <= 0 or old["mass_target_kg"] <= 0 or
             type(contract["fingers_per_hand"]) is not int or
             type(contract["toes_per_foot"]) is not int):
@@ -70,10 +83,10 @@ def read(body):
         "canonical_visual_contract": deepcopy(CANONICAL),
         "historical_solver_atlas": {
             "crown_height_cm": old["ground_to_crown_cm"],
-            "horn_tip_height_cm": old.get("ground_to_horn_tip_cm"),
+            "horn_tip_height_cm": historical["ground_to_horn_tip_cm"],
             "mass_kg": old["mass_target_kg"],
-            "tail_centerline_cm": old["tail"]["centerline_cm"]
-                if isinstance(old.get("tail"), dict) else None,
+            "tail_centerline_cm": historical["tail"]["centerline_cm"],
+            "phenotype_manifest_verified_sha256": phenotype_sha,
         },
         "appearance_scale_only": round(scale, 8),
         "visual_landmark_projection_m": projection,
