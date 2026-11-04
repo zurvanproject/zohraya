@@ -82,7 +82,7 @@ def _policy_plan(state, snapshot, duration_s):
                     scope='next software state given controller preference; not calibrated probability'))
 
 
-def plan(state, snapshot, duration_s, *, neuro_sample=None):
+def plan(state, snapshot, duration_s, *, neuro_sample=None, spinal_sample=None):
     """Freeze predictions and matched-state diagnostics before body execution.
 
     The categorical forecast uses only earlier receipt-grounded episodes. The
@@ -162,6 +162,26 @@ def plan(state, snapshot, duration_s, *, neuro_sample=None):
                 expected={k: clamp(before[k]+delta[k]) for k in METRICS},
                 prior_samples=predictor['count'] if predictor else 0,
                 scope='next software state after safe neurovisceral veto; not clinical physiology')
+    if 'neurovisceral' in state:
+        from . import spinal_reflex
+        if spinal_sample is None or (
+                spinal_sample['native_checkpoint_sha256'] != snapshot['checkpoint_sha256']):
+            raise ValueError('postural reflex requires a matching native encoder sample')
+        posture = spinal_reflex.preview(spinal_sample)
+        proposed['spinal_reflex'] = posture
+        if posture['recommendation'] == 'observe' and proposed['preferred'] == 'walk':
+            proposed['pre_spinal_reflex_preferred'] = proposed['preferred']
+            proposed['preferred'] = 'observe'
+            key = canonical([proposed['context'], proposed['preferred'], duration_s])
+            predictor = (state['predictors'].get(key)
+                         if state['flags']['prediction'] else None)
+            delta = predictor['mean_delta'] if predictor else dict.fromkeys(METRICS, 0.)
+            before = metrics(snapshot)
+            proposed['prediction'] = dict(
+                key=key, before=before,
+                expected={k: clamp(before[k]+delta[k]) for k in METRICS},
+                prior_samples=predictor['count'] if predictor else 0,
+                scope='next software state after conservative spinal feedback; not biological validation')
     proposed['action_forecast'] = forecast_action(
         state['episodes'], context=proposed['context'],
         preferred=proposed['preferred'], duration_s=duration_s,
@@ -316,12 +336,17 @@ class ExperienceController:
         if 'neurovisceral' in state:
             from . import neurovisceral
             neuro_status = neurovisceral.summary(state['neurovisceral'])
+        canonical_alignment = None
+        if 'neurovisceral' in state:
+            from . import phenotype_alignment
+            canonical_alignment = phenotype_alignment.read(self.loop.body())
         return dict(state=state, native=self.loop.status(), external_model_api_used=False,
                     background_process_started=False,
                     self_knowledge=summarize_action_forecasts(state['intents']),
                     integrated_workspace=integrated, motivational_drive=motivated,
                     autonomic_motivation_bridge=wave_status,
-                    neurovisceral_coordination=neuro_status)
+                    neurovisceral_coordination=neuro_status,
+                    canonical_phenotype_alignment=canonical_alignment)
 
     def _finish(self, state, request_id, record, *, replayed):
         intent = state['intents'][request_id]
@@ -444,11 +469,14 @@ class ExperienceController:
             if self.loop.engine.get(native_id) is not None:
                 raise ValueError('native ID already belongs to another operation')
             snapshot = self.loop.observe()
-            neuro_sample = None
+            neuro_sample = spinal_sample = None
             if 'neurovisceral' in state:
-                from . import neurovisceral
-                neuro_sample = neurovisceral.capture(self.loop.body())
-            proposed = plan(state, snapshot, duration_s, neuro_sample=neuro_sample)
+                from . import neurovisceral, spinal_reflex
+                native_body = self.loop.body()
+                neuro_sample = neurovisceral.capture(native_body)
+                spinal_sample = spinal_reflex.capture(native_body)
+            proposed = plan(state, snapshot, duration_s,
+                            neuro_sample=neuro_sample, spinal_sample=spinal_sample)
             old = dict(native_id=native_id, duration_s=duration_s, snapshot=snapshot, plan=proposed,
                        native_request=self.loop.make_request(native_id, snapshot, duration_s, proposed['preferred']), result=None)
             state['intents'][request_id] = old
