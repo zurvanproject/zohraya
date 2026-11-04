@@ -8,6 +8,8 @@ on:
       - 'examples/nasuraya_body_loop/neurovisceral.py'
       - 'examples/nasuraya_body_loop/test_neurovisceral.py'
       - 'examples/nasuraya_body_loop/neurovisceral_demo.py'
+      - 'examples/nasuraya_body_loop/standing_demo.py'
+      - 'examples/nasuraya_body_loop/test_standing.py'
       - 'examples/nasuraya_body_loop/experience.py'
       - '.github/workflows/tadash-neurovisceral.yml'
   workflow_dispatch:
@@ -28,12 +30,33 @@ jobs:
           persist-credentials: false
       - name: Native neural and special organ source tests
         run: python3 -m examples.nasuraya_body_loop neurovisceral-test
+      - name: Matched native standing and postural receipt tests
+        run: python3 -m examples.nasuraya_body_loop standing-test
       - name: Guard previous body-loop integration
         run: |
           python3 -m examples.nasuraya_body_loop autonomic-wave-test
           python3 -m examples.nasuraya_body_loop motivation-test
       - name: Native three cycle report
         run: python3 -m examples.nasuraya_body_loop neurovisceral-demo --output-dir "$RUNNER_TEMP/neurovisceral"
+      - name: Finite standing counterfactual versus baseline demo
+        run: python3 -m examples.nasuraya_body_loop standing-demo --output-dir "$RUNNER_TEMP/standing"
+      - name: Verify native standing measurements and source scope
+        run: |
+          python3 - <<'PY'
+          import os, json
+          from pathlib import Path
+          r = json.loads((Path(os.environ['RUNNER_TEMP']) / 'standing' / 'summary.json').read_text())
+          assert r['total_native_cycles'] == 6
+          assert r['matched_native_standing_behavior']
+          assert all(a in ('observe', 'protect') for a in r['native_action_modes'])
+          assert r['arms']['baseline']['snapshots'] == r['arms']['neurovisceral']['snapshots']
+          assert r['arms']['neurovisceral']['overlay_receipts'] == 3
+          assert r['actual_native_physiology_changed_by_overlay'] is False
+          assert r['biomechanics_calibrated_for_170cm_78kg_body'] is False
+          assert r['physical_actuation'] is False
+          assert r['api_calls'] == 0
+          print('PASS native matched standing with read-only neurovisceral overlay')
+          PY
       - name: Verify claim boundaries and receipt totals
         run: |
           python3 - <<'PY'
