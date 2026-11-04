@@ -9,6 +9,22 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'standing-test':
+        from . import test_standing
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_standing)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'standing-demo':
+        from .standing_demo import demo
+        r = demo(Path(args['output_dir']))
+        print(json.dumps({
+            'schema': r['schema'], 'total_native_cycles': r['total_native_cycles'],
+            'native_action_modes': r['native_action_modes'],
+            'matched_native_standing_behavior': r['matched_native_standing_behavior'],
+            'api_calls': r['api_calls'],
+        }, ensure_ascii=False, sort_keys=True))
+        return 0 if (r['total_native_cycles'] == 6 and
+                     r['matched_native_standing_behavior']) else 1
     if command == 'neurovisceral-test':
         from . import test_neurovisceral
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_neurovisceral)
