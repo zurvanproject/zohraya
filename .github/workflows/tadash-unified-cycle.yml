@@ -1,0 +1,52 @@
+name: Tadash unified receipt-grounded five-stage cycle
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_loop/unified_cycle.py'
+      - 'examples/nasuraya_body_loop/test_unified_cycle.py'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - 'docs/tadash-unified-receipt-cycle-v01-fa.md'
+      - '.github/workflows/tadash-unified-cycle.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unified-receipts:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      OPENAI_API_KEY: ''
+      GH_HOST_TOKEN: ''
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Regression on native source and one shared receipt
+        run: python3 -m examples.nasuraya_body_loop unified-test
+      - name: Verify original component invariants
+        run: |
+          python3 -m examples.nasuraya_body_loop neurovisceral-test
+          python3 -m examples.nasuraya_body_loop motivation-test
+          python3 -m examples.nasuraya_body_loop workspace-test
+      - name: Finite cold-restart demonstration
+        run: python3 -m examples.nasuraya_body_loop unified-demo --output-dir "$RUNNER_TEMP/tadash-unified"
+      - name: Reject synthetic data or receipts being claimed as consciousness
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          f = Path(os.environ['RUNNER_TEMP'])/'tadash-unified'/'summary.json'
+          report = json.loads(f.read_text(encoding='utf-8'))
+          assert report['schema'] == 'tadash-unified-receipt-cycle/1'
+          assert report['total_native_software_cycles'] == 4
+          assert report['all_native_receipts_synchronized']
+          assert all(x['cold_restart_replay_safe'] and x['source_pinned']
+                     for x in report['arms'].values())
+          assert report['api_calls'] == 0
+          assert report['physical_actuation'] is False
+          assert report['subjective_experience_inferred'] is False
+          print("PASS: four receipt-grounded cycles; no API, actuators or subjective claim")
+          PY
