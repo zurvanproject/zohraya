@@ -26,8 +26,10 @@ def main(args):
         return 0 if (r['total_native_cycles'] == 6 and
                      r['matched_native_standing_behavior']) else 1
     if command == 'neurovisceral-test':
-        from . import test_neurovisceral
-        suite = unittest.defaultTestLoader.loadTestsFromModule(test_neurovisceral)
+        from . import test_neurovisceral, test_spinal_reflex, test_phenotype_alignment
+        suite = unittest.TestSuite(
+            unittest.defaultTestLoader.loadTestsFromModule(m)
+            for m in (test_neurovisceral, test_spinal_reflex, test_phenotype_alignment))
         result = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if result.wasSuccessful() else 1
     if command == 'neurovisceral-demo':
