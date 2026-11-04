@@ -43,8 +43,12 @@ jobs:
           from pathlib import Path
           p=Path(os.environ['RUNNER_TEMP'])/'nasuraya-motivation'/'summary.json'
           r=json.loads(p.read_text('utf-8'))
-          assert r['total_native_software_cycles']==12
+          assert r['total_native_software_cycles']==15
           assert len(r['sessions'])==4
+          assert r['ordinary_native_software_cycles']==12
+          assert r['authored_challenge_native_software_cycles']==3
+          assert [r['challenge'][arm]['actual_action'] for arm in ('baseline','low','high')] == ['observe','observe','walk']
+          assert all(r['challenge'][arm]['native_cycles']==1 for arm in ('baseline','low','high'))
           assert r['native_replays_created_extra_cycles']==0
           assert r['api_calls']==0
           assert r['physical_actuation'] is False
@@ -58,6 +62,7 @@ jobs:
             'baseline_protect_vetoes':r['baseline_native_protect_vetoes'],
             'motivated_protect_vetoes':r['motivated_native_protect_vetoes'],
             'native_cycles':r['total_native_software_cycles'],
+            'authored_challenge':{arm: r['challenge'][arm]['actual_action'] for arm in ('baseline','low','high')},
             'desire_proxy':r['authored_desire_proxy'],
             'api_calls':r['api_calls'],
           }, ensure_ascii=False, sort_keys=True))
