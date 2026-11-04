@@ -9,6 +9,32 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'motivation-test':
+        from . import test_motivation
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_motivation)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'motivation-demo':
+        from .motivation_demo import demo
+        result = demo(Path(args['output_dir']))
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0 if result['total_native_software_cycles'] == 12 else 1
+    if command.startswith('motivation-'):
+        from .experience import ExperienceController
+        with BodyLoop(args['session']) as loop:
+            c = ExperienceController(loop)
+            if command == 'motivation-enable':
+                result = c.enable_motivation(desire_proxy=args['desire_proxy'])
+            elif command == 'motivation-step':
+                if c.status()['motivational_drive'] is None:
+                    raise ValueError('enable modeled motivational drive first')
+                result = c.step(args['decision_id'], duration_s=args['duration_s'])
+            else:
+                result = c.status()['motivational_drive'] or {'enabled': False}
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            if command == 'motivation-step':
+                return 0 if result['native_receipt']['status'] == 'complete' else 1
+        return 0
     if command == 'workspace-ablation-test':
         from . import test_workspace_ablation
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_workspace_ablation)
