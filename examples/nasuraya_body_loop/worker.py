@@ -9,6 +9,33 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == "unified-test":
+        from . import test_unified_cycle
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_unified_cycle)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == "unified-demo":
+        from .unified_cycle import demo
+        report = demo(Path(args["output_dir"]))
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0 if (report["total_native_software_cycles"] == 4
+            and report["all_native_receipts_synchronized"]) else 1
+    if command.startswith("unified-"):
+        from . import unified_cycle
+        from .experience import ExperienceController
+        with BodyLoop(args["session"]) as loop:
+            if command == "unified-enable":
+                summary = unified_cycle.enable(loop, desire_proxy=args["desire_proxy"])
+            else:
+                controller = ExperienceController(loop)
+                if command == "unified-step":
+                    summary = unified_cycle.step(
+                        controller, args["decision_id"], duration_s=args["duration_s"])
+                else:
+                    summary = unified_cycle.status(controller)
+            print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+            return 0 if (command != "unified-step"
+                or summary["native_receipt_status"] == "complete") else 1
     if command == 'standing-test':
         from . import test_standing
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_standing)
