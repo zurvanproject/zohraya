@@ -1,0 +1,29 @@
+name: Nasuraya Moltbook read-only bridge (offline checks)
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_moltbook_gateway/**'
+      - 'runtimes/tadash_body/social_observations.py'
+      - '.github/workflows/nasuraya-moltbook-gateway.yml'
+  push:
+    branches: [main, 'nasuraya/**']
+    paths:
+      - 'examples/nasuraya_moltbook_gateway/**'
+      - 'runtimes/tadash_body/social_observations.py'
+      - '.github/workflows/nasuraya-moltbook-gateway.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  read-only-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Offline tests; no Moltbook secret required
+        run: python3 -m unittest discover -s examples/nasuraya_moltbook_gateway -p 'test_*.py' -v
