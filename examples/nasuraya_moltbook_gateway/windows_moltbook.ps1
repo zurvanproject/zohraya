@@ -7,7 +7,10 @@ access or private data uploads. Uses an existing account key encrypted via DPAPI
 [CmdletBinding()]
 param(
     [ValidateSet('Init','Once','Install','Status')]
-    [string]$Action = 'Once'
+    [string]$Action = 'Once',
+    [ValidateSet('Native','Python')]
+    [string]$Transport = 'Native',
+    [string]$PythonExe = (Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'Programs\Python\Python312\python.exe')
 )
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
@@ -16,6 +19,116 @@ $KeyFile = Join-Path $HomeDir 'moltbook_key.dpapi'
 $SnapshotFile = Join-Path $HomeDir 'public_social_snapshot.json'
 $TaskName = 'NasurayaMoltbookReadOnly'
 $script:BridgeStage = 'startup'
+
+# Embedded so the phone/VPS deployment only needs one downloaded file.
+# The credential goes through the child's stdin, never its command line.
+$script:PythonReadOnly = @'
+import json
+import re
+import ssl
+import sys
+import urllib.error
+import urllib.request
+
+ROUTES = {'/api/v1/agents/status', '/api/v1/agents/me', '/api/v1/posts?sort=new&limit=10'}
+MAX_BODY = 1024 * 1024
+
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+def reject_constant(value):
+    raise ValueError('nonfinite JSON')
+
+def read_api(route, key):
+    if route not in ROUTES or not re.fullmatch(r'[A-Za-z0-9_-]{12,256}', key):
+        raise ValueError('invalid input')
+    import certifi
+    context = ssl.create_default_context(cafile=certifi.where())
+    opener = urllib.request.build_opener(
+        urllib.request.ProxyHandler({}), NoRedirect(),
+        urllib.request.HTTPSHandler(context=context))
+    request = urllib.request.Request('https://www.moltbook.com' + route,
+        headers={'Authorization': 'Bearer ' + key, 'Accept': 'application/json'}, method='GET')
+    with opener.open(request, timeout=15) as response:
+        if response.status != 200:
+            raise ValueError('unexpected response')
+        body = response.read(MAX_BODY + 1)
+    if len(body) > MAX_BODY:
+        raise ValueError('response too large')
+    data = json.loads(body.decode('utf-8'), parse_constant=reject_constant)
+    if not isinstance(data, dict):
+        raise ValueError('expected object')
+    return data
+
+def main():
+    try:
+        route = sys.argv[1] if len(sys.argv) == 2 else ''
+        key = sys.stdin.read(258).strip()
+        data = read_api(route, key)
+        result = {'ok': True, 'data': data}
+        code = 0
+    except Exception as exc:
+        # Never print exception text, headers, response bodies or credentials.
+        reason = exc.reason if isinstance(exc, urllib.error.URLError) else exc
+        kind = 'TransportFailure'
+        if isinstance(reason, ssl.SSLCertVerificationError):
+            kind = 'CertificateFailure'
+        elif isinstance(reason, ssl.SSLError):
+            kind = 'TLSFailure'
+        elif isinstance(reason, (TimeoutError,)):
+            kind = 'Timeout'
+        elif isinstance(exc, ImportError):
+            kind = 'MissingDependency'
+        elif isinstance(exc, ValueError):
+            kind = 'InvalidData'
+        http = exc.code if isinstance(exc, urllib.error.HTTPError) and 100 <= exc.code <= 599 else None
+        result = {'ok': False, 'http_status': http, 'network_status': kind}
+        code = 1
+    print(json.dumps(result, ensure_ascii=True, allow_nan=False))
+    return code
+
+if __name__ == '__main__':
+    sys.exit(main())
+'@
+
+function Read-PythonAPI([string]$route, [string]$apiKey) {
+    if (-not (Test-Path -LiteralPath $PythonExe -PathType Leaf)) { throw 'Python executable missing.' }
+    $encoded = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($script:PythonReadOnly))
+    $info = New-Object Diagnostics.ProcessStartInfo
+    $info.FileName = $PythonExe
+    $info.Arguments = ('-I -c "import base64;exec(base64.b64decode(''' + $encoded + '''))" "' + $route + '"')
+    $info.UseShellExecute = $false
+    $info.CreateNoWindow = $true
+    $info.RedirectStandardInput = $true
+    $info.RedirectStandardOutput = $true
+    $info.RedirectStandardError = $true
+    $process = New-Object Diagnostics.Process
+    $process.StartInfo = $info
+    try {
+        $null = $process.Start()
+        $outTask = $process.StandardOutput.ReadToEndAsync()
+        $errTask = $process.StandardError.ReadToEndAsync()
+        $process.StandardInput.WriteLine($apiKey)
+        $process.StandardInput.Close()
+        if (-not $process.WaitForExit(45000)) {
+            $process.Kill()
+            throw 'Python transport timeout.'
+        }
+        $result = $outTask.Result | ConvertFrom-Json
+        # stderr is captured and deliberately never echoed.
+        $null = $errTask.Result
+        if ($process.ExitCode -ne 0 -or $result.ok -ne $true) {
+            $failure = New-Object System.Exception('Python HTTPS request failed.')
+            $failure.Data['bridge_http_status'] = $result.http_status
+            $failure.Data['bridge_network_status'] = $result.network_status
+            throw $failure
+        }
+        return $result.data
+    } finally {
+        $process.Dispose()
+    }
+}
 
 function Get-BridgeDiagnostic($record, [string]$stage) {
     # Only fixed labels and numeric metadata may leave this boundary.
@@ -39,6 +152,14 @@ function Get-BridgeDiagnostic($record, [string]$stage) {
                     if ($code -ge 100 -and $code -le 599) { $httpStatus = $code }
                 }
             } catch { }
+        }
+        if ($current.Data.Contains('bridge_http_status')) {
+            $code = [int]$current.Data['bridge_http_status']
+            if ($code -ge 100 -and $code -le 599) { $httpStatus = $code }
+        }
+        $safeNetwork = @('TransportFailure','CertificateFailure','TLSFailure','Timeout','MissingDependency','InvalidData')
+        if ($safeNetwork -ccontains $current.Data['bridge_network_status']) {
+            $networkStatus = $current.Data['bridge_network_status']
         }
         $current = $current.InnerException
     }
@@ -97,6 +218,7 @@ function Read-API([string]$route, [string]$apiKey) {
     if ($route -cnotmatch '^/api/v1/(agents/status|agents/me|posts\?sort=new&limit=10)$') {
         throw 'Only fixed read-only routes are supported.'
     }
+    if ($Transport -eq 'Python') { return Read-PythonAPI $route $apiKey }
     $headers = @{ Authorization = ('Bearer ' + $apiKey); Accept = 'application/json' }
     # PowerShell 4.0 may otherwise default to TLS 1.0 on .NET Framework.
     # Only this request's process state changes; restore it even on failure.
@@ -212,7 +334,8 @@ try {
             $script:BridgeStage = 'task_install'
             if (-not (Test-Path -LiteralPath $KeyFile -PathType Leaf)) { throw 'Run -Action Init first.' }
             $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
-            $taskAction = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -NonInteractive -ExecutionPolicy Bypass -File "' + $PSCommandPath + '" -Action Once')
+            if ($PythonExe.Contains('"')) { throw 'Invalid Python executable path.' }
+            $taskAction = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -NonInteractive -ExecutionPolicy Bypass -File "' + $PSCommandPath + '" -Action Once -Transport ' + $Transport + ' -PythonExe "' + $PythonExe + '"')
             $trigger = New-ScheduledTaskTrigger -Once -At ((Get-Date).AddMinutes(1)) -RepetitionInterval (New-TimeSpan -Minutes 15) -RepetitionDuration (New-TimeSpan -Days 3650)
             $settings = New-ScheduledTaskSettingsSet -StartWhenAvailable -ExecutionTimeLimit (New-TimeSpan -Minutes 3) -MultipleInstances IgnoreNew
             # Password logon gives user-bound DPAPI and networking after RDP logoff.
@@ -233,6 +356,7 @@ try {
             $file = Get-Item -LiteralPath $SnapshotFile -ErrorAction SilentlyContinue
             Write-Output (@{
                 powershell_version = $PSVersionTable.PSVersion.ToString()
+                transport = $Transport
                 task_installed = ($null -ne $task)
                 task_state = if ($null -ne $task) { [string]$task.State } else { 'missing' }
                 snapshot_exists = ($null -ne $file)
@@ -245,3 +369,4 @@ try {
     Write-Output ((Get-BridgeDiagnostic $_ $script:BridgeStage) | ConvertTo-Json -Compress)
     exit 1
 }
+

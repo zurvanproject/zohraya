@@ -33,6 +33,24 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -Action Status
 
 آزمون مستقل `test_windows_offline.ps1` بدون اینترنت یا کلید واقعی، مسیر DPAPI با دادهٔ مصنوعی، مرز درخواست GET، بازیابی تنظیم TLS پس از موفقیت و خطا، تشخیص HTTP 401 و timeout، و عدم نشت متن حساس در گزارش را بررسی می‌کند. این آزمون جای تأیید اجرای زنده روی VPS و تداوم پس از خروج را نمی‌گیرد.
 
+### مسیر Python برای Windows Server 2012 R2
+
+در VPS واقعی، Windows Server 2012 R2 x64 و PowerShell 4.0 تأیید شدند. مسیر بومی .NET در درخواست وضعیت با `SecureChannelFailure` شکست خورد. پس از نصب Python 3.12.10 و certifi، درخواست HTTPS بدون کلید به صفحهٔ اصلی مولت‌بوک با بررسی گواهی پاسخ 200 داد. این فقط موفقیت ارتباط با سایت است؛ ورود حساب و اجرای دائمی هنوز نیازمند تأیید هستند.
+
+برای استفاده از همین مسیر، Python و certifi را در حساب ویندوزیِ دارندهٔ کلید نصب کنید؛ سپس:
+
+~~~powershell
+& "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe" -m pip install --upgrade certifi
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -Transport Python -Action Once
+# فقط پس از موفقیت Once:
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -Transport Python -Action Install
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -Transport Python -Action Status
+~~~
+
+اگر Python در مسیر دیگری نصب است، `-PythonExe` را با مسیر کامل بدهید. Install همین روش و مسیر Python را در Task ذخیره می‌کند. کلید DPAPI قبلی دوباره استفاده می‌شود؛ Init را تکرار نکنید. Python داخل فایل پاورشل جاسازی شده است و فایل جانبی لازم ندارد. کلید فقط از ورودی استاندارد فرایند منتقل می‌شود، نه آرگومان فرمان یا فایل موقت. Python در حالت ایزوله اجرا می‌شود، گواهی و نام میزبان را با certifi بررسی می‌کند، فقط GET به سه مسیر ثابت دارد، Redirect و پراکسی محیطی را نمی‌پذیرد و اندازهٔ پاسخ را به یک مگابایت محدود می‌کند. زمان هر درخواست ۱۵ ثانیه و سقف عمر فرایند هر درخواست ۴۵ ثانیه است. هیچ خطایی باعث خاموش‌شدن بررسی گواهی نمی‌شود.
+
+آزمون‌های Python بدون شبکه، مسیرهای مجاز، رد Redirect، محدودیت پاسخ، اعتبارسنجی گواهی و گزارش خطای بدون کلید را بررسی می‌کنند. آزمون Windows نیز عبور کلید مصنوعی از stdin به فرایند واقعی Python و انتقال خطا به گزارش PowerShell را می‌سنجد؛ جای آزمون زندهٔ VPS را نمی‌گیرد.
+
 ## لینوکس Ubuntu 24.04 (گزینهٔ جایگزین VPS ویندوز)
 
 اگر سرور به Linux منتقل شد، به Python 3.12 و مسیر مخزن ~/zohraya نیاز است. فایل کلید حساب **موجود** را با روش امن روی همان سرور داخل ~/.local/share/nasuraya/moltbook/moltbook_api_key قرار دهید، دایرکتوری مجوز 0700 و فایل مجوز 0600 داشته باشد. هیچ فرمان register را اجرا نکنید.
@@ -66,3 +84,4 @@ assert not data["may_publish"]
 این مسیر یک رابط داده‌ایِ جداشده است، نه حلقهٔ خودکار یادگیری یا کنترل بدن. برای ادعای اتصال دائمی عملیاتی، چهار شاهد لازم است: Task/Timer فعال، snapshot تازه، نتیجهٔ موفق آخرین اجرای زمان‌بندی‌شده، و تداوم پس از خروج از RDP یا راه‌اندازی مجدد.
 
 CI آزمون‌های آفلاین دارد و هیچ کلید واقعی در GitHub قرار داده نمی‌شود. آزمون آفلاین به‌تنهایی اتصال زنده را اثبات نمی‌کند.
+

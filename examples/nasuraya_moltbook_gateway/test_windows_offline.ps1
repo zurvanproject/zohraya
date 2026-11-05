@@ -6,7 +6,7 @@ $parseErrors = $null
 $path = Join-Path $PSScriptRoot 'windows_moltbook.ps1'
 $ast = [Management.Automation.Language.Parser]::ParseFile($path, [ref]$tokens, [ref]$parseErrors)
 if ($parseErrors.Count -ne 0) { throw 'Windows bridge did not parse.' }
-foreach ($name in @('Get-BridgeDiagnostic','Read-API','Read-Key')) {
+foreach ($name in @('Get-BridgeDiagnostic','Read-API','Read-Key','Read-PythonAPI')) {
     $found = @($ast.FindAll({ param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq $name }, $false))
     if ($found.Count -ne 1) { throw 'Expected test target function was not found.' }
     . ([scriptblock]::Create($found[0].Extent.Text))
@@ -94,4 +94,29 @@ try {
 } finally {
     if (Test-Path -LiteralPath $KeyFile) { Remove-Item -LiteralPath $KeyFile -Force }
 }
+# Exercise the real Windows subprocess boundary with a synthetic key and stubbed
+# read function. No live HTTP, certifi install, or account credentials required.
+$PythonExe = (Get-Command python.exe -ErrorAction Stop).Source
+$raw = [IO.File]::ReadAllText($path)
+$match = [regex]::Match($raw, "(?s)\`$script:PythonReadOnly = @'\r?\n(.*?)\r?\n'@")
+Assert-Check $match.Success 'embedded Python source found'
+$originalPython = $match.Groups[1].Value
+$script:PythonReadOnly = $originalPython.Replace("if __name__ == '__main__':", 'if False:') + @'
+
+def read_api(route, key):
+    assert route == '/api/v1/agents/status'
+    assert key == 'OFFLINE_TEST_KEY_NOT_A_REAL_CREDENTIAL'
+    return {'status': 'claimed'}
+sys.exit(main())
+'@
+$Transport = 'Python'
+$result = Read-API '/api/v1/agents/status' $sampleKey
+Assert-Check ($result.status -ceq 'claimed') 'Python subprocess receives route and stdin key'
+$script:PythonReadOnly = $originalPython
+$record = $null
+try { Read-API '/api/v1/agents/status' 'invalid key' | Out-Null } catch { $record = $_ }
+Assert-Check ($null -ne $record) 'Python subprocess fails closed on invalid key'
+$diagnostic = Get-BridgeDiagnostic $record 'status_request'
+Assert-Check ($diagnostic.network_status -ceq 'InvalidData') 'safe Python diagnostic preserved through PowerShell'
+Assert-Check (($diagnostic | ConvertTo-Json -Compress) -notmatch $sampleKey) 'subprocess diagnostic omits key'
 Write-Output ('Windows offline checks passed: ' + $script:Checks)
