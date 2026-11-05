@@ -256,7 +256,9 @@ function Write-Snapshot([object]$doc) {
     try {
         [IO.File]::WriteAllText($tmp, ($doc | ConvertTo-Json -Depth 8 -Compress), $utf8)
         if (Test-Path -LiteralPath $SnapshotFile) {
-            [IO.File]::Replace($tmp, $SnapshotFile, $null)
+            # PowerShell converts plain $null to an empty .NET string. Use an
+            # actual null string for the optional backup path on repeat writes.
+            [IO.File]::Replace($tmp, $SnapshotFile, [System.Management.Automation.Language.NullString]::Value)
         } else {
             Move-Item -LiteralPath $tmp -Destination $SnapshotFile
         }

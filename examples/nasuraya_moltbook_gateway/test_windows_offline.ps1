@@ -6,7 +6,7 @@ $parseErrors = $null
 $path = Join-Path $PSScriptRoot 'windows_moltbook.ps1'
 $ast = [Management.Automation.Language.Parser]::ParseFile($path, [ref]$tokens, [ref]$parseErrors)
 if ($parseErrors.Count -ne 0) { throw 'Windows bridge did not parse.' }
-foreach ($name in @('Get-BridgeDiagnostic','Read-API','Read-Key','Read-PythonAPI')) {
+foreach ($name in @('Get-BridgeDiagnostic','Read-API','Read-Key','Read-PythonAPI','Write-Snapshot')) {
     $found = @($ast.FindAll({ param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq $name }, $false))
     if ($found.Count -ne 1) { throw 'Expected test target function was not found.' }
     $definition = $found[0].Extent.Text
@@ -125,4 +125,26 @@ Assert-Check ($null -ne $record) 'Python subprocess fails closed on invalid key'
 $diagnostic = Get-BridgeDiagnostic $record 'status_request'
 Assert-Check ($diagnostic.network_status -ceq 'InvalidData') 'safe Python diagnostic preserved through PowerShell'
 Assert-Check (($diagnostic | ConvertTo-Json -Compress) -notmatch $sampleKey) 'subprocess diagnostic omits key'
+# A recurring task must replace an existing snapshot, not just create its first
+# one. Plain $null in File.Replace's string argument broke this on Windows.
+$HomeDir = Join-Path $env:TEMP ('nasuraya-snapshot-test-' + [guid]::NewGuid().ToString('N'))
+$SnapshotFile = Join-Path $HomeDir 'public_social_snapshot.json'
+New-Item -ItemType Directory -Path $HomeDir | Out-Null
+try {
+    Write-Snapshot @{ sequence = 1; posts = @() }
+    $first = Get-Content -LiteralPath $SnapshotFile -Raw | ConvertFrom-Json
+    Assert-Check ($first.sequence -eq 1) 'initial snapshot saved'
+    Write-Snapshot @{ sequence = 2; posts = @(@{ id = 'test_post_123' }) }
+    $second = Get-Content -LiteralPath $SnapshotFile -Raw | ConvertFrom-Json
+    Assert-Check ($second.sequence -eq 2 -and $second.posts.Count -eq 1) 'existing snapshot atomically replaced'
+    $lock = [IO.File]::Open($SnapshotFile, [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::None)
+    $blocked = $false
+    try { Write-Snapshot @{ sequence = 3 } } catch { $blocked = $true } finally { $lock.Dispose() }
+    Assert-Check $blocked 'locked destination fails without non-atomic fallback'
+    $afterFailure = Get-Content -LiteralPath $SnapshotFile -Raw | ConvertFrom-Json
+    Assert-Check ($afterFailure.sequence -eq 2) 'failed replacement preserves previous snapshot'
+    Assert-Check (@(Get-ChildItem -LiteralPath $HomeDir -Force).Count -eq 1) 'temporary snapshots cleaned after success and failure'
+} finally {
+    Remove-Item -LiteralPath $HomeDir -Recurse -Force
+}
 Write-Output ('Windows offline checks passed: ' + $script:Checks)
