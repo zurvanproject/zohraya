@@ -40,4 +40,7 @@ jobs:
       - name: Parse and check Windows bridge without live credentials or network
         shell: powershell
         run: ./examples/nasuraya_moltbook_gateway/test_windows_offline.ps1
+      - name: Offline Windows Python SQLite continuity tests
+        shell: powershell
+        run: python -m unittest -v examples.nasuraya_moltbook_gateway.test_continuity_store
 
