@@ -113,7 +113,10 @@ class ContinuityTests(unittest.TestCase):
         self.write()
         other = self.directory / "legit.sqlite"
         other.write_bytes(b"fake")
-        self.db.symlink_to(other)
+        try:
+            self.db.symlink_to(other)
+        except (OSError, NotImplementedError):
+            self.skipTest("host does not permit symlink creation")
         with self.assertRaises(ContinuityError):
             ingest(self.snapshot, self.db)
         if os.name == "posix":
