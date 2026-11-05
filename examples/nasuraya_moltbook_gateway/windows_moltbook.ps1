@@ -1,4 +1,4 @@
-#requires -Version 5.1
+#requires -Version 4.0
 <#
 Nasuraya Moltbook -> Tadash public social snapshot.
 Windows only, READ ONLY. No registration, publishing, commands, Tadash memory
@@ -59,8 +59,16 @@ function Read-API([string]$route, [string]$apiKey) {
         throw 'Only fixed read-only routes are supported.'
     }
     $headers = @{ Authorization = ('Bearer ' + $apiKey); Accept = 'application/json' }
-    # Exact HTTPS www host, no redirects, no POST.
-    return Invoke-RestMethod -Uri ('https://www.moltbook.com' + $route) -Headers $headers -Method GET -MaximumRedirection 0 -TimeoutSec 15
+    # PowerShell 4.0 may otherwise default to TLS 1.0 on .NET Framework.
+    # Only this request's process state changes; restore it even on failure.
+    $previousProtocol = [Net.ServicePointManager]::SecurityProtocol
+    try {
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        # Exact HTTPS www host, no redirects, no POST, no IE parsing dependency.
+        return Invoke-RestMethod -UseBasicParsing -Uri ('https://www.moltbook.com' + $route) -Headers $headers -Method GET -MaximumRedirection 0 -TimeoutSec 15
+    } finally {
+        [Net.ServicePointManager]::SecurityProtocol = $previousProtocol
+    }
 }
 
 function Write-Snapshot([object]$doc) {
@@ -162,6 +170,7 @@ try {
             $task = Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue
             $file = Get-Item -LiteralPath $SnapshotFile -ErrorAction SilentlyContinue
             Write-Output (@{
+                powershell_version = $PSVersionTable.PSVersion.ToString()
                 task_installed = ($null -ne $task)
                 task_state = if ($null -ne $task) { [string]$task.State } else { 'missing' }
                 snapshot_exists = ($null -ne $file)

@@ -25,7 +25,9 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File $script -Action Status
 - Install: ساخت Scheduled Task هر ۱۵ دقیقه. برای اجرا پس از خروج RDP، رمز ورود حساب ویندوز *فقط در خود سرور* پرسیده می‌شود؛ برای امنیت بهتر حساب محدود به‌جای Administrator توصیه می‌شود.
 - Status: وضعیت Task و زمان آخرین snapshot را نشان می‌دهد. نتیجهٔ آخرین اجرای Task را در Task Scheduler نیز بررسی کنید.
 
-مسیر حالت خصوصی: %LOCALAPPDATA%\Nasuraya\Moltbook . فایل نتیجه: public_social_snapshot.json . کلید DPAPI فقط در حساب ویندوزیِ ایجادکننده قابل بازیابی است. اجرای اسکریپت نیازمند Windows PowerShell 5.1 و ScheduledTasks است.
+مسیر حالت خصوصی: %LOCALAPPDATA%\Nasuraya\Moltbook . فایل نتیجه: public_social_snapshot.json . کلید DPAPI فقط در حساب ویندوزیِ ایجادکننده قابل بازیابی است. اجرای اسکریپت نیازمند Windows PowerShell 4.0 یا 5.1، .NET Framework دارای TLS 1.2 و ماژول ScheduledTasks است. درخواست‌های وب با `-UseBasicParsing` اجرا می‌شوند و TLS 1.2 فقط در محدودهٔ همان درخواست فعال و سپس مقدار قبلی بازیابی می‌شود؛ تنظیمات سراسری ویندوز تغییر نمی‌کنند.
+
+برای بررسی اولیه، پس از دریافت فایل فقط `-Action Status` را اجرا کنید؛ این فرمان کلید نمی‌خواهد و Task نمی‌سازد، ولی پوشهٔ خصوصی و مجوز آن را آماده می‌کند. وجود `powershell_version` در خروجی نسخهٔ میزبان را نشان می‌دهد. پشتیبانی از نسخهٔ ۴ با بازبینی کد افزوده شده است؛ اجرای زنده، DPAPI و Task Scheduler روی VPS هنوز باید بررسی شوند.
 
 ## لینوکس Ubuntu 24.04 (گزینهٔ جایگزین VPS ویندوز)
 
