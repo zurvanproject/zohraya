@@ -9,7 +9,13 @@ if ($parseErrors.Count -ne 0) { throw 'Windows bridge did not parse.' }
 foreach ($name in @('Get-BridgeDiagnostic','Read-API','Read-Key','Read-PythonAPI')) {
     $found = @($ast.FindAll({ param($node) $node -is [Management.Automation.Language.FunctionDefinitionAst] -and $node.Name -eq $name }, $false))
     if ($found.Count -ne 1) { throw 'Expected test target function was not found.' }
-    . ([scriptblock]::Create($found[0].Extent.Text))
+    $definition = $found[0].Extent.Text
+    if ($name -eq 'Read-PythonAPI') {
+        # Only synthetic credentials are used in this offline test. Expose child
+        # failures here so the regression suite can diagnose process startup.
+        $definition = $definition.Replace('$null = $errTask.Result', '$null = $errTask.Result; if ($process.ExitCode -ne 0) { Write-Host ("Offline child output: " + $outTask.Result); Write-Host ("Offline child error: " + $errTask.Result) }')
+    }
+    . ([scriptblock]::Create($definition))
 }
 $script:Checks = 0
 function Assert-Check([bool]$condition, [string]$label) {
