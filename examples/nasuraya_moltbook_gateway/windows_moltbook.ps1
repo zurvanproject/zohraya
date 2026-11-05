@@ -15,6 +15,44 @@ $HomeDir = Join-Path ([Environment]::GetFolderPath('LocalApplicationData')) 'Nas
 $KeyFile = Join-Path $HomeDir 'moltbook_key.dpapi'
 $SnapshotFile = Join-Path $HomeDir 'public_social_snapshot.json'
 $TaskName = 'NasurayaMoltbookReadOnly'
+$script:BridgeStage = 'startup'
+
+function Get-BridgeDiagnostic($record, [string]$stage) {
+    # Only fixed labels and numeric metadata may leave this boundary.
+    # Do not include Message, ErrorDetails, response bodies or InvocationInfo text.
+    $allowedStages = @('startup','private_directory','key_init','key_read','key_format',
+        'status_request','validate_claim','identity_request','validate_identity',
+        'feed_request','normalize_posts','save_snapshot','task_install','local_status')
+    if ($allowedStages -notcontains $stage) { $stage = 'unknown' }
+    $errorType = 'Unknown'
+    $httpStatus = $null
+    $networkStatus = $null
+    $current = $record.Exception
+    for ($depth = 0; $null -ne $current -and $depth -lt 8; $depth++) {
+        $name = $current.GetType().Name
+        if ($name -cmatch '^[A-Za-z][A-Za-z0-9_]{0,79}$') { $errorType = $name }
+        if ($current -is [Net.WebException]) {
+            $networkStatus = $current.Status.ToString()
+            try {
+                if ($null -ne $current.Response) {
+                    $code = [int]$current.Response.StatusCode
+                    if ($code -ge 100 -and $code -le 599) { $httpStatus = $code }
+                }
+            } catch { }
+        }
+        $current = $current.InnerException
+    }
+    $line = 0
+    if ($null -ne $record.InvocationInfo) { $line = [int]$record.InvocationInfo.ScriptLineNumber }
+    return [ordered]@{
+        ok = $false
+        stage = $stage
+        http_status = $httpStatus
+        network_status = $networkStatus
+        error_type = $errorType
+        line = $line
+    }
+}
 
 function Initialize-PrivateDir {
     if (-not (Test-Path -LiteralPath $HomeDir -PathType Container)) {
@@ -44,6 +82,7 @@ function Read-Key {
     } finally {
         [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr)
     }
+    $script:BridgeStage = 'key_format'
     if ($key -cnotmatch '^[A-Za-z0-9_-]{12,256}$') { throw 'Invalid credential format.' }
     return $key
 }
@@ -64,8 +103,19 @@ function Read-API([string]$route, [string]$apiKey) {
     $previousProtocol = [Net.ServicePointManager]::SecurityProtocol
     try {
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        # Exact HTTPS www host, no redirects, no POST, no IE parsing dependency.
-        return Invoke-RestMethod -UseBasicParsing -Uri ('https://www.moltbook.com' + $route) -Headers $headers -Method GET -MaximumRedirection 0 -TimeoutSec 15
+        # Keep the fixed host, GET-only method and no-redirect boundary.
+        $request = @{
+            Uri = ('https://www.moltbook.com' + $route)
+            Headers = $headers
+            Method = 'GET'
+            MaximumRedirection = 0
+            TimeoutSec = 15
+        }
+        # Feature-detect this parameter instead of assuming the host exposes it.
+        if ((Get-Command Invoke-RestMethod).Parameters.ContainsKey('UseBasicParsing')) {
+            $request.UseBasicParsing = $true
+        }
+        return Invoke-RestMethod @request
     } finally {
         [Net.ServicePointManager]::SecurityProtocol = $previousProtocol
     }
@@ -93,9 +143,11 @@ function Write-Snapshot([object]$doc) {
 }
 
 try {
+    $script:BridgeStage = 'private_directory'
     Initialize-PrivateDir
     switch ($Action) {
         'Init' {
+            $script:BridgeStage = 'key_init'
             if (Test-Path -LiteralPath $KeyFile) { throw 'Encrypted key already exists. Do not register again.' }
             $secret = Read-Host 'Paste EXISTING nasuraya Moltbook API key here on the VPS (hidden)' -AsSecureString
             $encrypted = ConvertFrom-SecureString -SecureString $secret
@@ -110,17 +162,24 @@ try {
             Write-Output 'Existing account key encrypted locally using Windows DPAPI. Key not displayed.'
         }
         'Once' {
+            $script:BridgeStage = 'key_read'
             $key = Read-Key
             try {
+                $script:BridgeStage = 'status_request'
                 $status = Read-API '/api/v1/agents/status' $key
+                $script:BridgeStage = 'validate_claim'
                 if ($status.status -cne 'claimed') { throw 'Agent claim not confirmed.' }
+                $script:BridgeStage = 'identity_request'
                 $me = Read-API '/api/v1/agents/me' $key
+                $script:BridgeStage = 'validate_identity'
                 $profile = if ($null -ne $me.agent) { $me.agent } else { $me }
                 if ([string]$profile.name -ine 'nasuraya') { throw 'Authenticated identity mismatch.' }
+                $script:BridgeStage = 'feed_request'
                 $feed = Read-API '/api/v1/posts?sort=new&limit=10' $key
             } finally {
                 $key = $null
             }
+            $script:BridgeStage = 'normalize_posts'
             $items = New-Object System.Collections.Generic.List[object]
             foreach ($p in @($feed.posts)) {
                 if ($null -eq $p) { continue }
@@ -145,10 +204,12 @@ try {
                 checked_at_utc = (Get-Date).ToUniversalTime().ToString('o')
                 posts = @($items.ToArray())
             }
+            $script:BridgeStage = 'save_snapshot'
             Write-Snapshot $doc
             Write-Output (@{ ok = $true; agent = 'nasuraya'; status = 'claimed'; observed_posts = $items.Count; posting_enabled = $false; tadash_private_state_changed = $false } | ConvertTo-Json -Compress)
         }
         'Install' {
+            $script:BridgeStage = 'task_install'
             if (-not (Test-Path -LiteralPath $KeyFile -PathType Leaf)) { throw 'Run -Action Init first.' }
             $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
             $taskAction = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument ('-NoProfile -NonInteractive -ExecutionPolicy Bypass -File "' + $PSCommandPath + '" -Action Once')
@@ -167,6 +228,7 @@ try {
             Write-Output 'Read-only scheduled task installed (every 15 minutes). Check -Action Status.'
         }
         'Status' {
+            $script:BridgeStage = 'local_status'
             $task = Get-ScheduledTask -TaskName $TaskName -ErrorAction SilentlyContinue
             $file = Get-Item -LiteralPath $SnapshotFile -ErrorAction SilentlyContinue
             Write-Output (@{
@@ -180,7 +242,6 @@ try {
         }
     }
 } catch {
-    # Never print API responses, headers, key or credential-related exceptions.
-    Write-Host 'Nasuraya read-only bridge failed. Check local network, key, task permissions and claim status.'
+    Write-Output ((Get-BridgeDiagnostic $_ $script:BridgeStage) | ConvertTo-Json -Compress)
     exit 1
 }

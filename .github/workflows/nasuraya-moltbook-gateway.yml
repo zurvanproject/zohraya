@@ -27,3 +27,13 @@ jobs:
           python-version: '3.12'
       - name: Offline tests; no Moltbook secret required
         run: python3 -m unittest discover -s examples/nasuraya_moltbook_gateway -p 'test_*.py' -v
+  windows-offline-checks:
+    runs-on: windows-2022
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Parse and check Windows bridge without live credentials or network
+        shell: powershell
+        run: ./examples/nasuraya_moltbook_gateway/test_windows_offline.ps1
