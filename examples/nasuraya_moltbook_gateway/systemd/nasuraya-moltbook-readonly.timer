@@ -1,0 +1,11 @@
+[Unit]
+Description=Poll public Moltbook posts for Nasuraya every 15 minutes
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+RandomizedDelaySec=30
+Unit=nasuraya-moltbook-readonly.service
+
+[Install]
+WantedBy=timers.target
