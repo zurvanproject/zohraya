@@ -87,7 +87,7 @@ class TransportTests(unittest.TestCase):
         for exc, status, kind in failures:
             out = io.StringIO()
             with patch.object(MOD.sys, 'argv', ['bridge', ROUTE]), \
-                 patch.object(MOD.sys, 'stdin', io.StringIO(KEY)), \
+                 patch.object(MOD.sys, 'stdin', types.SimpleNamespace(buffer=io.BytesIO(KEY.encode()))), \
                  patch.object(MOD, 'read_api', side_effect=exc), contextlib.redirect_stdout(out):
                 self.assertEqual(MOD.main(), 1)
             self.assertNotIn(KEY, out.getvalue())
@@ -97,12 +97,20 @@ class TransportTests(unittest.TestCase):
     def test_success_envelope(self):
         out = io.StringIO()
         with patch.object(MOD.sys, 'argv', ['bridge', ROUTE]), \
-             patch.object(MOD.sys, 'stdin', io.StringIO(KEY + '\n')), \
+             patch.object(MOD.sys, 'stdin', types.SimpleNamespace(buffer=io.BytesIO(KEY.encode() + b'\r\n'))), \
              patch.object(MOD, 'read_api', return_value={'status': 'claimed'}) as call, \
              contextlib.redirect_stdout(out):
             self.assertEqual(MOD.main(), 0)
         call.assert_called_once_with(ROUTE, KEY)
         self.assertEqual(json.loads(out.getvalue()), {'ok': True, 'data': {'status': 'claimed'}})
+
+    def test_dotnet_utf8_bom_on_stdin(self):
+        out = io.StringIO()
+        with patch.object(MOD.sys, 'argv', ['bridge', ROUTE]), \
+             patch.object(MOD.sys, 'stdin', types.SimpleNamespace(buffer=io.BytesIO(b'\xef\xbb\xbf' + KEY.encode() + b'\r\n'))), \
+             patch.object(MOD, 'read_api', return_value={}) as call, contextlib.redirect_stdout(out):
+            self.assertEqual(MOD.main(), 0)
+        call.assert_called_once_with(ROUTE, KEY)
 
 
 if __name__ == '__main__':

@@ -64,7 +64,8 @@ def read_api(route, key):
 def main():
     try:
         route = sys.argv[1] if len(sys.argv) == 2 else ''
-        key = sys.stdin.read(258).strip()
+        # .NET Framework may prefix redirected stdin with a UTF-8 BOM.
+        key = sys.stdin.buffer.read(264).decode('utf-8-sig').strip()
         data = read_api(route, key)
         result = {'ok': True, 'data': data}
         code = 0
