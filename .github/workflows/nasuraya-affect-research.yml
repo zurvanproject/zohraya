@@ -1,0 +1,27 @@
+name: Nasuraya evidence-grounded affect
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_affect_research/**'
+      - '.github/workflows/nasuraya-affect-research.yml'
+      - 'runtimes/tadash_body/**'
+      - 'examples/nasuraya_research/**'
+permissions:
+  contents: read
+jobs:
+  evidence-appraisal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Pure evidence contracts and actual native integration
+        run: python -S -m examples.nasuraya_affect_research.run tests
+      - name: Existing confidence regressions
+        run: python -S -m examples.nasuraya_affect_research.run regression
+      - name: Native body experiment with affect on and off
+        run: python -S -m examples.nasuraya_affect_research.run evaluate
