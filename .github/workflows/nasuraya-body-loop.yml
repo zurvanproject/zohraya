@@ -40,6 +40,8 @@ jobs:
         run: python3 run_tests.py --reflection --output /tmp/nasuraya-native-check
       - name: Verify bounded bridge and cold recovery
         run: python3 -m examples.nasuraya_body_loop test
+      - name: Verify Tadash body-drive experiments and advisory arbitration
+        run: python3 -m unittest examples.nasuraya_research.test_body_desire_experiment_20261106 examples.nasuraya_body_loop.test_native_body_drive_experiment_20261106 examples.nasuraya_body_loop.test_drive_decision_bridge_20261106 -v
       - name: Verify reversible instinct activation in an observe-only native session
         run: |
           python3 -m examples.nasuraya_body_loop instinct-demo --output-dir /tmp/nasuraya-instinct-demo
