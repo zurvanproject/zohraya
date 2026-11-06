@@ -111,7 +111,10 @@ try {
     Stop-ScheduledTask -TaskName $task -ErrorAction Stop
     Move-Item -LiteralPath $tmpAgent -Destination $agent -Force
     Set-Content -LiteralPath $target -Value $wrapper -Encoding ASCII
-    $startedEpoch = ([DateTime]::UtcNow - [DateTime]'1970-01-01T00:00:00Z').TotalSeconds
+    # Casting an ISO timestamp ending in Z converts it to the server's local
+    # zone in Windows PowerShell. Subtracting those local ticks from UtcNow
+    # can move this threshold hours into the future and cause false rollback.
+    $startedEpoch = ([DateTime]::UtcNow.Ticks / 10000000.0) - 62135596800.0
     Start-ScheduledTask -TaskName $task -ErrorAction Stop
     # Running alone is insufficient: require a fresh successful authenticated poll.
     $healthy = $false
