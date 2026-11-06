@@ -1,0 +1,88 @@
+{
+  "sha256": "09d98cdc1caf89921c6e49e6d9551f21cd9e6ca79c0fe34583319b9f1c81c591",
+  "value": {
+    "base": "98979ce2faefc48d5fd3a279626881bf278bb0f8",
+    "cases": [
+      {
+        "id": "fatigue-moderate",
+        "state": {
+          "fatigue": 0.42
+        }
+      },
+      {
+        "id": "fatigue-high",
+        "state": {
+          "fatigue": 0.58
+        }
+      },
+      {
+        "id": "energy-low",
+        "state": {
+          "energy": 0.2
+        }
+      },
+      {
+        "id": "energy-margin",
+        "state": {
+          "energy": 0.28
+        }
+      },
+      {
+        "id": "sleep-margin",
+        "state": {
+          "sleep": 0.84
+        }
+      },
+      {
+        "id": "sleep-high",
+        "state": {
+          "sleep": 0.86
+        }
+      },
+      {
+        "id": "combined-margin",
+        "state": {
+          "energy": 0.26,
+          "fatigue": 0.5
+        }
+      },
+      {
+        "id": "combined-restricted",
+        "state": {
+          "energy": 0.22,
+          "fatigue": 0.54
+        }
+      },
+      {
+        "id": "stale-checkpoint",
+        "intervention": "stale_digest",
+        "state": {
+          "energy": 0.28
+        }
+      },
+      {
+        "id": "change-after-forecast",
+        "intervention": "sleep_after_reservation",
+        "state": {}
+      }
+    ],
+    "duration_s": 0.1,
+    "model_api_calls": 0,
+    "physical_actuators": 0,
+    "raw_confidence": 0.75,
+    "schema": "nasuraya-frozen-transfer/1",
+    "selection": "fixed synthetic interventions; not blinded or independent samples",
+    "source_sha256": {
+      "examples/nasuraya_body_loop/host.py": "c5146ae90ae4c6ecb2625843014ecca2fc9e3303571da2548fe4b9a1c03f8009",
+      "examples/nasuraya_research/confidence.py": "4194cab67a70bf2b266db57760e7255c937e76208e2d7f3b0e38a8d3c7780c53",
+      "examples/nasuraya_research/controller.py": "9765b341a203b5474afcddba36e88d667f02d22479ca048ef4e381d2c4d25ff6",
+      "examples/nasuraya_research/transfer.py": "eb25e7b542146b58c6a6b1152c30baeea2b01af230125f2fab849e7b936c7020",
+      "runtimes/tadash_body/PUBLIC_FILES_SHA256.json": "b3b95a88885d903f638efbc26ed693bf7a211460a5adae6dd9abfa12ac7720ef"
+    },
+    "stop_rule": "one attempt per held-out case; no retries or parameter tuning",
+    "target": "preferred action actually executed, not task value or safety",
+    "training_actions": 2,
+    "training_fixture": "normal only",
+    "updates_after_training": 0
+  }
+}

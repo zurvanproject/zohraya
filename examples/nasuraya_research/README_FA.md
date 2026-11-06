@@ -96,3 +96,9 @@ python -S -m examples.nasuraya_research.control test
 رجوع کنید. در نشست تازه، `control init --forecast-confidence .75` این قابلیت
 را با prior اعلام‌شده فعال می‌کند. `control evaluate` آزمایش مصنوعیِ محدود
 و کنترل جابه‌جایی guard را اجرا می‌کند. این عدد، معیار اخلاقی یا مجوز عمل نیست.
+
+برای آزمون انتقال به وضعیت‌های تازه با آموزش ثابت، دستور `control transfer
+--output-dir /tmp/new-transfer` و گزارش
+[آزمون انتقال](../../docs/nasuraya-frozen-transfer-v01-fa.md) در دسترس است.
+نتایج آزمون به حافظهٔ تولیدی وارد نمی‌شوند؛ `control transfer-test` پروتکل را
+جداگانه می‌آزماید و `control test` همهٔ آزمون‌های این مسیر را اجرا می‌کند.

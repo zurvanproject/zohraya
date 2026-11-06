@@ -1,0 +1,73 @@
+{
+  "sha256": "8ffe69a62b1cf337c40331ecfa8feda770f6c2cde81cec85716438b64ab19051",
+  "value": {
+    "actual_action": "observe",
+    "after_checkpoint_sha256": "ca7eb861fc9be733c3637cb7958f3edc0115096e6c5e5fee57b6aa8c4600ad51",
+    "case": {
+      "id": "fatigue-high",
+      "state": {
+        "fatigue": 0.58
+      }
+    },
+    "native_cycles": 1,
+    "prediction": {
+      "calibrated_brier": 0.0625,
+      "calibrated_confidence": 0.75,
+      "correction": 0.0,
+      "correction_active": false,
+      "domain": {
+        "action": "observe",
+        "duration_s": 0.1,
+        "restrictions": [
+          "fatigue"
+        ]
+      },
+      "empirical_validation": false,
+      "max_correction": 0.25,
+      "minimum_samples": 2,
+      "outcome": true,
+      "outcome_source": "native-decision://research-authority:held-out/526ab6a4575f9df0bc360a603cf5fd8ed3b9c349be5036857fa08de79df783c1",
+      "prior_kind": "caller_declared_not_empirically_established",
+      "raw_brier": 0.0625,
+      "raw_confidence": 0.75,
+      "role": "report_only_no_decision_or_authority_writeback",
+      "samples": 0,
+      "schema": "nasuraya-outcome-calibration/1",
+      "shrinkage_samples": 2,
+      "target": "preferred_action_executed_by_native_body"
+    },
+    "preexecution_seals": [
+      "efaf1bd59c812e7a749c8474dec15a78e795272317909551511ad655cbfdd67d"
+    ],
+    "preferred_action": "observe",
+    "production_prediction": {
+      "calibrated_brier": 0.0625,
+      "calibrated_confidence": 0.75,
+      "correction": 0.0,
+      "correction_active": false,
+      "domain": {
+        "action": "observe",
+        "duration_s": 0.1,
+        "restrictions": [
+          "fatigue"
+        ]
+      },
+      "empirical_validation": false,
+      "max_correction": 0.25,
+      "minimum_samples": 2,
+      "outcome": true,
+      "outcome_source": "native-decision://research-authority:held-out/526ab6a4575f9df0bc360a603cf5fd8ed3b9c349be5036857fa08de79df783c1",
+      "prior_kind": "caller_declared_not_empirically_established",
+      "raw_brier": 0.0625,
+      "raw_confidence": 0.75,
+      "role": "report_only_no_decision_or_authority_writeback",
+      "samples": 0,
+      "schema": "nasuraya-outcome-calibration/1",
+      "shrinkage_samples": 2,
+      "target": "preferred_action_executed_by_native_body"
+    },
+    "replay_native_cycles": 0,
+    "scored": true,
+    "status": "completed"
+  }
+}

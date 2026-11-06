@@ -1,0 +1,16 @@
+{
+  "base": "98979ce2faefc48d5fd3a279626881bf278bb0f8",
+  "base_files": 241,
+  "body_and_decision_core_unchanged": true,
+  "confidence_algorithm_unchanged": true,
+  "controller_unchanged": true,
+  "dependency_changes": 0,
+  "modified_base_files": [
+    "examples/nasuraya_research/README_FA.md",
+    "examples/nasuraya_research/control.py",
+    "examples/nasuraya_research/control_worker.py"
+  ],
+  "production_writeback_added": false,
+  "unchanged_base_files": 238,
+  "workflows_and_security_policies_unchanged": true
+}

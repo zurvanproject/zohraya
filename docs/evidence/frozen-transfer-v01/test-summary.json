@@ -1,0 +1,66 @@
+{
+  "base": "98979ce2faefc48d5fd3a279626881bf278bb0f8",
+  "caveats": [
+    "constructed unblinded cases",
+    "secondary metric uses one explicitly imputed failure label, not a native completed receipt",
+    "historical full native SQLite ledgers are temporary, not archived",
+    "GitHub CI for this new branch must be checked separately"
+  ],
+  "experiment_command": "python -S -m examples.nasuraya_research.control transfer --output-dir ../transfer-experiment-final",
+  "interpretation": "stable-case improvement, no robust general gain; no decision authority increase",
+  "local_passed": {
+    "existing_authority_and_confidence": 37,
+    "new_transfer_protocol": 9,
+    "total": 46
+  },
+  "merged_head": "11e80aa22b899b1c555e3e3df40edffeaca7410b",
+  "merged_pr": 51,
+  "merged_pr_ci": {
+    "conclusion": "success",
+    "run": 39125991587
+  },
+  "posthoc_sensitivity": {
+    "analysis_timing": "added after the primary protocol completed; exploratory",
+    "empirical_validation": false,
+    "frozen_transfer_mean_brier": 0.11979166666666667,
+    "general_improvement_demonstrated": false,
+    "imputed_zero_cases": [
+      "change-after-forecast"
+    ],
+    "interpretation": "guard-blocked attempt counts as nonexecution of preferred action",
+    "native_labelled_cases": 8,
+    "original_primary_result_modified": false,
+    "production_labels_written": 0,
+    "raw_mean_brier": 0.11805555555555555,
+    "schema": "nasuraya-transfer-posthoc-sensitivity/1",
+    "total_scored": 9
+  },
+  "primary": {
+    "applied_transfer_cases": 4,
+    "blocked_cases": 2,
+    "case_count": 10,
+    "decision_writeback": false,
+    "empirical_validation": false,
+    "frozen_transfer_mean_brier": 0.0390625,
+    "general_improvement_demonstrated": false,
+    "model_api_calls": 0,
+    "plan_sha256": "09d98cdc1caf89921c6e49e6d9551f21cd9e6ca79c0fe34583319b9f1c81c591",
+    "production_history_imported": false,
+    "raw_mean_brier": 0.0625,
+    "schema": "nasuraya-frozen-transfer/1",
+    "scored_forecasts": 8,
+    "test_native_cycles": 8,
+    "test_outcomes_used_for_training": 0,
+    "training_native_cycles": 2,
+    "training_sha256": "8b7a869761ab4f516abfb968e28b42d7428278115a609ef2dfd2d0cb2b5a876a",
+    "training_unchanged": true,
+    "unseen_domain_fallbacks": 4
+  },
+  "recorded_utc": "2026-10-18T12:20:35.144064+00:00",
+  "test_commands": {
+    "current_combined_command": "python -S -m examples.nasuraya_research.control test now loads all 46",
+    "existing": "python -S -m examples.nasuraya_research.control test",
+    "existing_scope": "37-case loader was started before adding the transfer module to the default suite; those test modules were unchanged",
+    "protocol": "python -S -m examples.nasuraya_research.control transfer-test"
+  }
+}
