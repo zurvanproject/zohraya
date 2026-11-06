@@ -42,7 +42,7 @@ class RecoveryMemory:
                 "schema": KEY, "scope": SCOPE, "enabled": True,
                 "native_config_digest": digest(loop.config),
                 "baseline_sha256": native["checkpoint_sha256"],
-                "projection": deepcopy(native["values"]),
+                "projection": {key: native["values"][key] for key in FIELDS},
                 "ticks": 0, "history": []
             }
             cls._store(loop, saved)
