@@ -7,6 +7,7 @@ on:
       - 'tools/bridge_jobs/**'
       - 'tests/test_bridge_v2.py'
       - 'tests/test_moltbook_first_reply.py'
+      - 'tests/test_moltbook_verify_first.py'
       - 'tests/test_bridge_v2_installer.ps1'
       - '.github/workflows/nasuraya-bridge-v2.yml'
   push:
@@ -17,6 +18,7 @@ on:
       - 'tools/bridge_jobs/**'
       - 'tests/test_bridge_v2.py'
       - 'tests/test_moltbook_first_reply.py'
+      - 'tests/test_moltbook_verify_first.py'
       - 'tests/test_bridge_v2_installer.ps1'
       - '.github/workflows/nasuraya-bridge-v2.yml'
 permissions:
@@ -37,6 +39,7 @@ jobs:
           python -m py_compile tools/bridge_v2.py tools/bridge_jobs/runtime_probe.py
           python -m unittest discover -s tests -p 'test_bridge_v2.py' -v
           python -m unittest discover -s tests -p 'test_moltbook_first_reply.py' -v
+          python -m unittest discover -s tests -p 'test_moltbook_verify_first.py' -v
 
   parse-windows:
     runs-on: windows-2022
