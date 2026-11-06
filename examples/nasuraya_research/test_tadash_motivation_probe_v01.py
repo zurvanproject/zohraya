@@ -60,6 +60,31 @@ class MotivationProbeTests(unittest.TestCase):
         self.assertGreater(second["hedonic_response_proxy"], 0.0)
         self.assertGreater(second["satiety_proxy"], 0.0)
 
+    def test_sleep_pressure_is_an_independent_rest_gate(self):
+        cue = dict(name="adult_invitation", relationship="romantic",
+                   adult_context=True, consent="granted", incentive=.90)
+        rested = transition(State(), Event(**cue, sleep_pressure=.35))[1]
+        exhausted = transition(State(), Event(**cue, sleep_pressure=.95))[1]
+        self.assertEqual(rested["action"], "consider_mutual_closeness")
+        self.assertEqual(exhausted["action"], "regulate_and_rest")
+        self.assertEqual(exhausted["wanting"], rested["wanting"])
+        self.assertLess(exhausted["sexual_response_proxy"],
+                        rested["sexual_response_proxy"])
+        self.assertGreater(exhausted["wanting"], .3)
+
+    def test_sleep_pressure_cannot_override_consent_boundary(self):
+        _, result = transition(State(), Event(
+            "revoked", relationship="romantic", adult_context=True,
+            consent="refused", incentive=1, sleep_pressure=.95))
+        self.assertEqual(result["action"], "respect_boundary")
+
+    def test_high_sleep_pressure_prioritizes_rest_over_nonsexual_affiliation(self):
+        _, result = transition(State(), Event(
+            "family", relationship="familial", warmth=.9,
+            sleep_pressure=.95))
+        self.assertEqual(result["action"], "regulate_and_rest")
+        self.assertEqual(result["sexual_response_proxy"], 0.0)
+
     def test_invalid_input_rejected(self):
         with self.assertRaises(ValueError):
             transition(State(), Event("bad", incentive=2.0))
