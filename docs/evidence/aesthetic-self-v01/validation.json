@@ -1,0 +1,43 @@
+{
+  "schema": "nasuraya-aesthetic-validation/1",
+  "base_commit": "884ae8a778bbe1d60fcf6e7b6d5263ed5945833a",
+  "local_test_runs": [
+    {
+      "command": "python -S -m examples.nasuraya_aesthetics test",
+      "tests": 26,
+      "passed": true
+    },
+    {
+      "command": "python -m examples.nasuraya_body_loop test",
+      "tests": 16,
+      "passed": true
+    },
+    {
+      "command": "python -S -m examples.nasuraya_research.control test",
+      "tests": 37,
+      "passed": true
+    }
+  ],
+  "native_unit_tests": 89,
+  "native_decision_tests": 10,
+  "total_tests": 178,
+  "all_passed": true,
+  "constructed_comparisons": 8,
+  "comparison_contract_matches": 8,
+  "comparison_native_cycles": 16,
+  "model_api_calls": 0,
+  "source_pinned_native_files_unchanged": 70,
+  "evidence_scope": "Functional contracts on disposable software-body fixtures. No trained aesthetic model, facial recognition or subjective-experience measurement.",
+  "implemented": [
+    "approved-reference hash binding",
+    "source-qualified beauty and proportion rating ingestion",
+    "designed appraisal into existing native affect",
+    "budgeted persistent body-loop integration and replay"
+  ],
+  "not_implemented": [
+    "automatic image aesthetics inference",
+    "face embedding similarity",
+    "upstream active-inference reproduction",
+    "ArtEmis explanation model"
+  ]
+}

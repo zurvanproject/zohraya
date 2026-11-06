@@ -1,0 +1,16 @@
+{
+  "checked_public_files": 70,
+  "unit_tests_run": 89,
+  "unit_tests_passed": true,
+  "decision_core_tests_run": 10,
+  "decision_core_tests_passed": true,
+  "scenarios_passed": true,
+  "canonical_state_modified": false,
+  "empirical_validation": false,
+  "reflection_cases": 10,
+  "reflection_correct": {
+    "existing_core": 5,
+    "reflection_without_memory": 9,
+    "reflection_with_memory": 10
+  }
+}
