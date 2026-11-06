@@ -14,6 +14,37 @@ def main(args):
         summary = run_evaluation(Path(args['output_dir']))
         print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
         return 0 if summary['validation_passed'] else 1
+    if command == 'body-drive-test':
+        from examples.nasuraya_research import test_body_desire_experiment_20261106
+        from . import test_native_body_drive_experiment_20261106
+        from . import test_drive_decision_bridge_20261106
+        from . import test_autonomic_recovery_probe_20261106
+        from . import test_autonomic_recovery_memory_20261106
+        from . import test_counterfactual_choice_20261106
+        modules = (test_body_desire_experiment_20261106,
+                   test_native_body_drive_experiment_20261106,
+                   test_drive_decision_bridge_20261106,
+                   test_autonomic_recovery_probe_20261106,
+                   test_autonomic_recovery_memory_20261106,
+                   test_counterfactual_choice_20261106)
+        suite = unittest.TestSuite(
+            unittest.defaultTestLoader.loadTestsFromModule(m) for m in modules)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command.startswith('recovery-'):
+        from .autonomic_recovery_memory import RecoveryMemory
+        with BodyLoop(args['session']) as loop:
+            if command == 'recovery-enable':
+                summary = RecoveryMemory.enable(loop).status()
+            elif command == 'recovery-step':
+                summary = RecoveryMemory(loop).step(args['decision_id'],
+                                                    steps=args['steps'])
+            elif command == 'recovery-disable':
+                summary = RecoveryMemory(loop).disable()
+            else:
+                summary = RecoveryMemory(loop).status()
+            print(json.dumps(summary, ensure_ascii=False, sort_keys=True))
+        return 0
     if command == 'instinct-test':
         from . import test_instinct
         suite = unittest.defaultTestLoader.loadTestsFromModule(test_instinct)

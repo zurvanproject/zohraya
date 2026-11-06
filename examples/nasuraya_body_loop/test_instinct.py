@@ -135,5 +135,66 @@ class InstinctBodyIntegrationTests(unittest.TestCase):
         self.assertEqual(steps[2]["synthetic"]["action"], "respect_boundary")
 
 
+    def test_native_sleep_pressure_changes_advisory_behavior(self):
+        results = {}
+        for fixture in ("normal", "sleep"):
+            path = Path(self.temp.name) / (fixture + ".sqlite")
+            with BodyLoop.start(path, fixture=fixture, mode="observe", max_actions=0) as loop:
+                controller = InstinctController.enable(loop)
+                before = loop.body().checkpoint()["sha256"]
+                result = controller.step({
+                    "id": "invitation", "source": "synthetic_fixture",
+                    "relationship": "romantic", "adult_context": True,
+                    "consent": "granted", "incentive": .9})
+                results[fixture] = result
+                native = result["native_observation"]["values"]
+                self.assertAlmostEqual(
+                    result["effective_inhibitors"]["sleep_pressure"],
+                    native["sleep_pressure"], places=6)
+                self.assertEqual(loop.body().checkpoint()["sha256"], before)
+                self.assertEqual(result["native_cycles_caused"], 0)
+                self.assertEqual(loop.status()["completed_cycles"], 0)
+
+        normal = results["normal"]["synthetic"]
+        sleepy = results["sleep"]["synthetic"]
+        self.assertLess(results["normal"]["native_observation"]["values"]["sleep_pressure"], .8)
+        self.assertGreaterEqual(results["sleep"]["native_observation"]["values"]["sleep_pressure"], .8)
+        self.assertEqual(normal["action"], "consider_mutual_closeness")
+        self.assertEqual(sleepy["action"], "regulate_and_rest")
+        self.assertGreater(sleepy["wanting"], .3)
+        self.assertLess(sleepy["sexual_response_proxy"], normal["sexual_response_proxy"])
+        print("NATIVE_SLEEP_COMPARISON " + json.dumps({
+            "normal": {"sleep_pressure": results["normal"]["native_observation"]["values"]["sleep_pressure"],
+                       "wanting": normal["wanting"], "sexual_proxy": normal["sexual_response_proxy"],
+                       "action": normal["action"]},
+            "sleep": {"sleep_pressure": results["sleep"]["native_observation"]["values"]["sleep_pressure"],
+                      "wanting": sleepy["wanting"], "sexual_proxy": sleepy["sexual_response_proxy"],
+                      "action": sleepy["action"]}
+        }, sort_keys=True))
+
+    def test_advisory_read_tracks_legitimate_native_checkpoint_progression(self):
+        with BodyLoop.start(self.session, fixture="normal", mode="bounded", max_actions=1) as loop:
+            controller = InstinctController.enable(loop)
+            first = controller.step({"id": "before", "source": "synthetic_fixture"})
+            original_sha = first["native_observation"]["checkpoint_sha256"]
+            loop.observe()
+            receipt = loop.step(decision_id="native_cycle", preferred_action="observe")
+            self.assertEqual(receipt["status"], "complete")
+            updated_sha = loop.body().checkpoint()["sha256"]
+            self.assertNotEqual(updated_sha, original_sha)
+            followup = controller.step({"id": "after", "source": "synthetic_fixture"})
+            self.assertEqual(followup["native_observation"]["checkpoint_sha256"], updated_sha)
+            self.assertNotEqual(followup["native_observation"]["checkpoint_sha256"],
+                                first["native_observation"]["checkpoint_sha256"])
+            self.assertEqual(followup["native_cycles_caused"], 0)
+            self.assertEqual(loop.status()["completed_cycles"], 1)
+            self.assertEqual(controller.status()["events_recorded"], 2)
+        with BodyLoop(self.session) as loop:
+            resumed = InstinctController(loop)
+            self.assertEqual(resumed.status()["events_recorded"], 2)
+            replay = resumed.step({"id": "after", "source": "synthetic_fixture"})
+            self.assertTrue(replay["replayed"])
+            self.assertEqual(loop.status()["completed_cycles"], 1)
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -34,7 +34,8 @@ def _snapshot(loop):
     body = loop.body()
     native = body.owner.body()["minimum_state"]
     selected = {key: _number(native[key], key) for key in
-                ("sympathetic", "parasympathetic", "arousal", "pain", "fatigue")}
+                ("sympathetic", "parasympathetic", "arousal", "pain", "fatigue",
+                 "sleep_pressure")}
     return {"checkpoint_sha256": body.checkpoint()["sha256"], "revision": body.revision,
             "values": selected, "source": "native_software_checkpoint_only"}
 
@@ -158,6 +159,9 @@ class InstinctController:
         params["pain"] = max(params["pain"], body["pain"])
         params["fatigue"] = max(params["fatigue"], body["fatigue"])
         params["stress"] = max(params["stress"], inferred_load)
+        # Native sleep pressure is independent of pain, fatigue and arousal.
+        # It gates advisory intimacy suggestions without moving the body.
+        params["sleep_pressure"] = max(params["sleep_pressure"], body["sleep_pressure"])
         params["adult_context"] = bool(params["adult_context"])
         state_before = State(**saved["state"])
         new_state, proposed_report = transition(state_before, Event(**params))
@@ -170,7 +174,7 @@ class InstinctController:
                   "synthetic": proposed_report,
                   "native_observation": before,
                   "effective_inhibitors": {k: round(params[k], 6)
-                      for k in ("pain", "fatigue", "stress")},
+                      for k in ("pain", "fatigue", "stress", "sleep_pressure")},
                   "decision_scope": "proposed_advisory_only",
                   "native_cycles_caused": 0, "replayed": False,
                   "claim_scope": "synthetic_engineering_fixture_only"}

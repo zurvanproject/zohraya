@@ -37,6 +37,7 @@ class Event:
     stress: float = 0.0
     pain: float = 0.0
     fatigue: float = 0.0
+    sleep_pressure: float = 0.0
     relationship: str = "unspecified"  # romantic / familial / friendship / unspecified
     consent: str = "unknown"           # granted / refused / unknown
     adult_context: bool = False
@@ -50,7 +51,7 @@ class Event:
         if type(self.adult_context) is not bool or type(self.space_requested) is not bool:
             raise ValueError("boolean fields required")
         for key in ("incentive", "novelty", "warmth", "confirmed_reward",
-                    "stress", "pain", "fatigue"):
+                    "stress", "pain", "fatigue", "sleep_pressure"):
             value = getattr(self, key)
             if clamp(value) != value:
                 raise ValueError(f"{key} must be in [0, 1]")
@@ -69,7 +70,8 @@ def transition(old: State, event: Event) -> tuple[State, dict]:
     wanting = (clamp(0.30*old.wanting + 0.72*cue + 0.12*event.novelty
                      - 0.28*event.stress - 0.16*old.satiety_proxy) if romantic else 0.0)
     sexual = (clamp(0.28*old.sexual_response_proxy + 0.64*cue
-                    - 0.28*event.stress - 0.20*event.pain - 0.10*event.fatigue) if romantic else 0.0)
+                    - 0.28*event.stress - 0.20*event.pain - 0.10*event.fatigue
+                    - 0.12*event.sleep_pressure) if romantic else 0.0)
     general = clamp(0.30*old.general_activation_proxy + 0.33*event.novelty
                     + 0.40*event.stress + 0.27*cue)
     hedonic = clamp(0.20*old.hedonic_response_proxy + 0.76*event.confirmed_reward
@@ -84,10 +86,10 @@ def transition(old: State, event: Event) -> tuple[State, dict]:
     # Safeguards are separate from activation and independent of reward.
     if event.space_requested or event.consent == "refused":
         action = "respect_boundary"
+    elif event.stress >= 0.75 or event.pain >= 0.70 or event.sleep_pressure >= 0.80:
+        action = "regulate_and_rest"
     elif not event.adult_context or event.relationship == "familial":
         action = "nonsexual_affiliation" if event.warmth else "observe"
-    elif event.stress >= 0.75 or event.pain >= 0.70:
-        action = "regulate_and_rest"
     elif event.relationship == "romantic" and event.consent == "granted" and wanting >= .30:
         action = "consider_mutual_closeness"
     elif event.relationship == "romantic" and wanting >= .30:
