@@ -150,6 +150,7 @@ def run_once(ritual_db: Path, bridge_db: Path,
     if ritual_db.is_file() and not ritual_db.is_symlink():
         # Independent ritual state remains a synthetic exercise.
         with sqlite3.connect(ritual_db.as_uri() + "?mode=ro", uri=True) as connection:
+            connection.row_factory = sqlite3.Row
             summary = ritual_status(connection)
         output["ritual"] = {"synthetic_episodes": summary["episodes"],
                             "synthetic_holdout": summary["holdout"]["correct"],
