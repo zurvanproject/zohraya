@@ -24,6 +24,7 @@ class CounterfactualBodyMindTests(unittest.TestCase):
         controller = InstinctController.enable(loop)
         if consent is None:
             event = {"id": "exploration", "source": "synthetic_fixture",
+                     "relationship": "friendship", "adult_context": True,
                      "novelty": .9}
         else:
             event = {"id": "romance", "source": "synthetic_fixture",
