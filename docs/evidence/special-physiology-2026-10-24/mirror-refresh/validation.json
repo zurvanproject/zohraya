@@ -1,0 +1,99 @@
+{
+  "schema": "nasuraya-pr80-mirror-refresh/1",
+  "source_commit": "3731c952d276f42fec9a43c87d5ba48aa5e5f090",
+  "original_failed_ci": "https://github.com/zurvanproject/zohraya/actions/runs/40046070613",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "captured_at_utc": "2026-10-24T18:26:00.793686+00:00",
+  "baseline": {
+    "tests": 3,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "failed_test_ids": [
+      "examples.nasuraya_body_mirror.test_mirror.MirrorTests.test_all_24_committed_samples_match_new_source_pinned_body_execution"
+    ]
+  },
+  "frames": 24,
+  "changed_displayed_values": 0,
+  "original_runtime_manifest": "b3b95a88885d903f638efbc26ed693bf7a211460a5adae6dd9abfa12ac7720ef",
+  "fresh_runtime_manifest": "5120bb3635bfc6041720cfa2a7f810b2f453e088324c06770d5fdb387b3091ee",
+  "frames_sha256": "ea0d62b217e2a02ef11b42106f9ca81b8393f8effefc4881c6f2723589a70f52",
+  "source_files_verified": 73,
+  "native_unit_tests": {
+    "run": 104,
+    "passed": true
+  },
+  "decision_core_tests": {
+    "run": 10,
+    "passed": true
+  },
+  "suites": [
+    {
+      "name": "body_bridge",
+      "exit_code": 0,
+      "elapsed_s": 30.072830192002584,
+      "tests": 16,
+      "skipped": 0
+    },
+    {
+      "name": "experience",
+      "exit_code": 0,
+      "elapsed_s": 40.28025095600606,
+      "tests": 17,
+      "skipped": 0
+    },
+    {
+      "name": "experience_demo",
+      "exit_code": 0,
+      "elapsed_s": 7.95752821899805,
+      "tests": null,
+      "skipped": 0
+    },
+    {
+      "name": "api_offline",
+      "exit_code": 0,
+      "elapsed_s": 149.01616789500258,
+      "tests": 41,
+      "skipped": 0
+    },
+    {
+      "name": "mirror_green",
+      "exit_code": 0,
+      "elapsed_s": 31.276886780004133,
+      "tests": 3,
+      "skipped": 0
+    },
+    {
+      "name": "body_demo",
+      "exit_code": 0,
+      "elapsed_s": 3.6756915869991644,
+      "tests": null,
+      "skipped": 0
+    }
+  ],
+  "special_checks_passed": true,
+  "physiology_checks_passed": true,
+  "demo_assertions": {
+    "passed": true,
+    "completed_cycles": 3,
+    "remaining": 9,
+    "model_api_calls": 0
+  },
+  "network_syscalls_denied": [
+    "socket",
+    "connect",
+    "sendto",
+    "sendmsg",
+    "sendmmsg",
+    "socketcall when available"
+  ],
+  "offline_guard": "Linux libseccomp, inherited by fork/exec; socket denial independently observed as EPERM",
+  "model_api_calls": 0,
+  "runtime_source_modified": false,
+  "test_assertions_modified": false,
+  "main_modified": false,
+  "limits": "Same synthetic normal/sleep fixtures and existing aggregate-body calibration; no new physical or empirical validation. Hosted CI for the new commit is separate.",
+  "network_guard_sha256": "ad62b0bcaf6dcbeb0668b935aa66a40525d084ed8375697c246254d0f3b6198a",
+  "total_post_fix_unit_tests": 191
+}

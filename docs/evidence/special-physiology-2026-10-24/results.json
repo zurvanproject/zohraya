@@ -1,0 +1,571 @@
+{
+  "schema": "tadash-public-test-run/1",
+  "start_utc": "2026-10-24T00:37:12.938512+00:00",
+  "end_utc": "2026-10-24T00:38:32.025374+00:00",
+  "checked_public_files": 73,
+  "unit_tests_run": 104,
+  "unit_tests_passed": true,
+  "decision_core_tests_run": 10,
+  "decision_core_tests_passed": true,
+  "scenarios_passed": true,
+  "special_passed": true,
+  "physiology_passed": true,
+  "canonical_state_modified": false,
+  "empirical_validation": false,
+  "bridge_tests_run": 16,
+  "bridge_tests_passed": true,
+  "new_special_unit_tests": 15,
+  "legacy_special_checks": 37,
+  "physiology": {
+    "schema": "nasuraya-special-physiology-demo/1",
+    "checks": {
+      "unilateral_input_preserves_other_side": true,
+      "spandar_stops_and_recovers": true,
+      "local_heating_reduces_admitted_load": true,
+      "spontaneous_cooling_without_temperature_reset": true,
+      "energy_conserved": true,
+      "water_conserved": true,
+      "partition_conserved": true
+    },
+    "checks_passed": 7,
+    "checks_total": 7,
+    "host_mass_kg": 195,
+    "host_height_cm": 250,
+    "proposed_morphology_executed": false,
+    "canonical_state_loaded": false,
+    "external_api_used": false,
+    "biological_validation": false,
+    "simulated_seconds": 32.4,
+    "independent_fixture_warmup_seconds": 7,
+    "records": [
+      {
+        "name": "bilateral",
+        "simulated_seconds": 0.1,
+        "revision": 1,
+        "audit": {
+          "energy_error_J": 5.707789796360885e-11,
+          "water_error_L": 6.720840518229659e-15,
+          "light_error_J": 3.3306690738754696e-16,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.288,
+          "external_heat_J": 1.392,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 3.608224830031759e-16
+        },
+        "special": {
+          "resonan_attention": 0.048770575499285984,
+          "shutter": 1.0,
+          "spandar_digest": "7bf53880d0653e25e7adfc53299efa4f086d652418ed69eb9a0dca797f15ba9f",
+          "spandar_last_error": 0.0,
+          "azarine_budget_J": 7200.0,
+          "azarine_pool": "tagged ceiling within the retained reserve_J; not an extra stock",
+          "tissue": {
+            "schema": "nasuraya-special-physiology/1",
+            "host_mass_kg": 195.0,
+            "resonan": {
+              "left": {
+                "adaptation": 0.046677871387594466,
+                "signal": 0.9570908464731535,
+                "confidence": 0.9570908464731535,
+                "shutter": 1.0,
+                "irradiance_w_m2": 1200
+              },
+              "right": {
+                "adaptation": 0.046677871387594466,
+                "signal": 0.9570908464731535,
+                "confidence": 0.9570908464731535,
+                "shutter": 1.0,
+                "irradiance_w_m2": 1200
+              }
+            },
+            "spandar": {
+              "valid": true,
+              "last_sample_s": 7.099999999999991,
+              "sampled_digest": "7bf53880d0653e25e7adfc53299efa4f086d652418ed69eb9a0dca797f15ba9f",
+              "sampled_error": 0.0,
+              "adequacy": 0.9570908464731535,
+              "period_s": 2.0
+            },
+            "azarine": {
+              "local_heat_J": 0.021074808453664474,
+              "accounted_total_heat_J": 38.3396915042676,
+              "local_temperature_C": 37.000069323742146,
+              "core_temperature_C": 37.00005616951289,
+              "thermal_gate": 1.0,
+              "requested_load_W": 0.0,
+              "paid_load_J": 0.0,
+              "exchanged_heat_J": 1.0396784839173703e-06,
+              "partition_error_J": 0.0
+            }
+          }
+        },
+        "fuel_J": 3997343.750225343,
+        "reserve_J": 60000.0
+      },
+      {
+        "name": "left_perfusion_loss",
+        "simulated_seconds": 0.1,
+        "revision": 1,
+        "audit": {
+          "energy_error_J": 6.080824732634937e-11,
+          "water_error_L": 1.0068870379392053e-14,
+          "light_error_J": 2.220446049250313e-16,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.144,
+          "external_heat_J": 0.696,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 3.608224830031759e-16
+        },
+        "special": {
+          "resonan_attention": 0.048770575499285984,
+          "shutter": 0.5,
+          "spandar_digest": "7bf53880d0653e25e7adfc53299efa4f086d652418ed69eb9a0dca797f15ba9f",
+          "spandar_last_error": 0.0,
+          "azarine_budget_J": 7200.0,
+          "azarine_pool": "tagged ceiling within the retained reserve_J; not an extra stock",
+          "tissue": {
+            "schema": "nasuraya-special-physiology/1",
+            "host_mass_kg": 195.0,
+            "resonan": {
+              "left": {
+                "adaptation": 0.0,
+                "signal": 0.0,
+                "confidence": 0.0,
+                "shutter": 0.0,
+                "irradiance_w_m2": 1200
+              },
+              "right": {
+                "adaptation": 0.046677871387594466,
+                "signal": 0.9570908464731535,
+                "confidence": 0.9570908464731535,
+                "shutter": 1.0,
+                "irradiance_w_m2": 1200
+              }
+            },
+            "spandar": {
+              "valid": true,
+              "last_sample_s": 7.099999999999991,
+              "sampled_digest": "7bf53880d0653e25e7adfc53299efa4f086d652418ed69eb9a0dca797f15ba9f",
+              "sampled_error": 0.0,
+              "adequacy": 0.9570908464731535,
+              "period_s": 2.0
+            },
+            "azarine": {
+              "local_heat_J": 0.021074808453664478,
+              "accounted_total_heat_J": 38.339691504267606,
+              "local_temperature_C": 37.000069323742146,
+              "core_temperature_C": 37.00005616951289,
+              "thermal_gate": 1.0,
+              "requested_load_W": 0.0,
+              "paid_load_J": 0.0,
+              "exchanged_heat_J": 1.0396784839173703e-06,
+              "partition_error_J": 0.0
+            }
+          }
+        },
+        "fuel_J": 3997343.6062253425,
+        "reserve_J": 60000.0
+      },
+      {
+        "name": "spandar_funded",
+        "simulated_seconds": 0.1,
+        "revision": 1,
+        "audit": {
+          "energy_error_J": 6.45314912617323e-11,
+          "water_error_L": 7.939510865157678e-16,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 3.608224830031759e-16
+        },
+        "special": {
+          "resonan_attention": 0.0,
+          "shutter": 1.0,
+          "spandar_digest": "7bf53880d0653e25e7adfc53299efa4f086d652418ed69eb9a0dca797f15ba9f",
+          "spandar_last_error": 0.0,
+          "azarine_budget_J": 7200.0,
+          "azarine_pool": "tagged ceiling within the retained reserve_J; not an extra stock",
+          "tissue": {
+            "schema": "nasuraya-special-physiology/1",
+            "host_mass_kg": 195.0,
+            "resonan": {
+              "left": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              },
+              "right": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              }
+            },
+            "spandar": {
+              "valid": true,
+              "last_sample_s": 7.099999999999991,
+              "sampled_digest": "7bf53880d0653e25e7adfc53299efa4f086d652418ed69eb9a0dca797f15ba9f",
+              "sampled_error": 0.0,
+              "adequacy": 0.9570908464731535,
+              "period_s": 2.0
+            },
+            "azarine": {
+              "local_heat_J": 0.021074808453664478,
+              "accounted_total_heat_J": 38.339691504267606,
+              "local_temperature_C": 37.000069323742146,
+              "core_temperature_C": 37.00005616951289,
+              "thermal_gate": 1.0,
+              "requested_load_W": 0.0,
+              "paid_load_J": 0.0,
+              "exchanged_heat_J": 1.0396784839173703e-06,
+              "partition_error_J": 0.0
+            }
+          }
+        },
+        "fuel_J": 3997343.4622253426,
+        "reserve_J": 60000.0
+      },
+      {
+        "name": "spandar_support_loss",
+        "simulated_seconds": 2,
+        "revision": 2,
+        "audit": {
+          "energy_error_J": 6.343725544866174e-11,
+          "water_error_L": 6.378767956546905e-14,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 7.549516567451064e-15
+        },
+        "special": {
+          "resonan_attention": 0.0,
+          "shutter": 1.0,
+          "spandar_digest": "7bf53880d0653e25e7adfc53299efa4f086d652418ed69eb9a0dca797f15ba9f",
+          "spandar_last_error": 0.0,
+          "azarine_budget_J": 7200.0,
+          "azarine_pool": "tagged ceiling within the retained reserve_J; not an extra stock",
+          "tissue": {
+            "schema": "nasuraya-special-physiology/1",
+            "host_mass_kg": 195.0,
+            "resonan": {
+              "left": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              },
+              "right": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              }
+            },
+            "spandar": {
+              "valid": false,
+              "last_sample_s": 7.099999999999991,
+              "sampled_digest": "7bf53880d0653e25e7adfc53299efa4f086d652418ed69eb9a0dca797f15ba9f",
+              "sampled_error": 0.0,
+              "adequacy": 0.0,
+              "period_s": 2.0
+            },
+            "azarine": {
+              "local_heat_J": 0.10083729100836916,
+              "accounted_total_heat_J": 38.422369314654425,
+              "local_temperature_C": 37.00033169546362,
+              "core_temperature_C": 37.000056173786334,
+              "thermal_gate": 1.0,
+              "requested_load_W": 0.0,
+              "paid_load_J": 0.0,
+              "exchanged_heat_J": 0.00023974989953719819,
+              "partition_error_J": 0.0
+            }
+          }
+        },
+        "fuel_J": 3996575.7705380195,
+        "reserve_J": 60000.0
+      },
+      {
+        "name": "spandar_support_return",
+        "simulated_seconds": 0.1,
+        "revision": 3,
+        "audit": {
+          "energy_error_J": 1.688675865807454e-10,
+          "water_error_L": 1.818420495560899e-15,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 7.993605777301127e-15
+        },
+        "special": {
+          "resonan_attention": 0.0,
+          "shutter": 1.0,
+          "spandar_digest": "18ae708cca74818241b083366c73c9e97f9a616cf39c5f2f41a32a35c3f03250",
+          "spandar_last_error": 0.0,
+          "azarine_budget_J": 7200.0,
+          "azarine_pool": "tagged ceiling within the retained reserve_J; not an extra stock",
+          "tissue": {
+            "schema": "nasuraya-special-physiology/1",
+            "host_mass_kg": 195.0,
+            "resonan": {
+              "left": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              },
+              "right": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              }
+            },
+            "spandar": {
+              "valid": true,
+              "last_sample_s": 9.199999999999983,
+              "sampled_digest": "18ae708cca74818241b083366c73c9e97f9a616cf39c5f2f41a32a35c3f03250",
+              "sampled_error": 0.0,
+              "adequacy": 0.9595942631743272,
+              "period_s": 2.0
+            },
+            "azarine": {
+              "local_heat_J": 0.10481433726234349,
+              "accounted_total_heat_J": 38.42604791059347,
+              "local_temperature_C": 37.000344777609996,
+              "core_temperature_C": 37.000056173348845,
+              "thermal_gate": 1.0,
+              "requested_load_W": 0.0,
+              "paid_load_J": 0.0,
+              "exchanged_heat_J": 0.0002625604827107406,
+              "partition_error_J": 0.0
+            }
+          }
+        },
+        "fuel_J": 3996537.344490109,
+        "reserve_J": 60000.0
+      },
+      {
+        "name": "azarine_load",
+        "simulated_seconds": 10,
+        "revision": 1,
+        "audit": {
+          "energy_error_J": 1.8271748558618128e-09,
+          "water_error_L": 3.492115450975941e-13,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 1.9539925233402755e-14
+        },
+        "special": {
+          "resonan_attention": 0.0,
+          "shutter": 1.0,
+          "spandar_digest": "da30204dc1a6977bd72d9ba1c76f5a4074941cbb06776fec27a1a443108e96d9",
+          "spandar_last_error": 0.0,
+          "azarine_budget_J": 7200.0,
+          "azarine_pool": "tagged ceiling within the retained reserve_J; not an extra stock",
+          "tissue": {
+            "schema": "nasuraya-special-physiology/1",
+            "host_mass_kg": 195.0,
+            "resonan": {
+              "left": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              },
+              "right": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              }
+            },
+            "spandar": {
+              "valid": true,
+              "last_sample_s": 16.99999999999997,
+              "sampled_digest": "da30204dc1a6977bd72d9ba1c76f5a4074941cbb06776fec27a1a443108e96d9",
+              "sampled_error": 0.0,
+              "adequacy": 0.9628413196876215,
+              "period_s": 2.0
+            },
+            "azarine": {
+              "local_heat_J": 272.9332638511886,
+              "accounted_total_heat_J": 39.4540480911364,
+              "local_temperature_C": 37.89779013880872,
+              "core_temperature_C": 36.99965775346427,
+              "thermal_gate": 0.20948928161750757,
+              "requested_load_W": 8.379571264700303,
+              "paid_load_J": 277.1051286500356,
+              "exchanged_heat_J": 4.46582982361094,
+              "partition_error_J": 0.0
+            }
+          }
+        },
+        "fuel_J": 3993254.4587603244,
+        "reserve_J": 60000.0
+      },
+      {
+        "name": "azarine_passive_recovery",
+        "simulated_seconds": 10,
+        "revision": 2,
+        "audit": {
+          "energy_error_J": 2.7694113668985665e-10,
+          "water_error_L": 3.7939529989872156e-13,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 1.2079226507921703e-13
+        },
+        "special": {
+          "resonan_attention": 0.0,
+          "shutter": 1.0,
+          "spandar_digest": "36c60d7d3ecc5031df4ffd9b2393d62d060f3d8f963cd80424349e0719734d3e",
+          "spandar_last_error": 0.0,
+          "azarine_budget_J": 7200.0,
+          "azarine_pool": "tagged ceiling within the retained reserve_J; not an extra stock",
+          "tissue": {
+            "schema": "nasuraya-special-physiology/1",
+            "host_mass_kg": 195.0,
+            "resonan": {
+              "left": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              },
+              "right": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              }
+            },
+            "spandar": {
+              "valid": true,
+              "last_sample_s": 27.000000000000114,
+              "sampled_digest": "36c60d7d3ecc5031df4ffd9b2393d62d060f3d8f963cd80424349e0719734d3e",
+              "sampled_error": 0.0,
+              "adequacy": 0.9628413196876215,
+              "period_s": 2.0
+            },
+            "azarine": {
+              "local_heat_J": 266.32135281583885,
+              "accounted_total_heat_J": 38.716013477433194,
+              "local_temperature_C": 37.876040834812365,
+              "core_temperature_C": 36.99966636371187,
+              "thermal_gate": 0.24748894341536243,
+              "requested_load_W": 0.0,
+              "paid_load_J": 277.1051286500356,
+              "exchanged_heat_J": 11.477233944766656,
+              "partition_error_J": 0.0
+            }
+          }
+        },
+        "fuel_J": 3989387.0392843215,
+        "reserve_J": 60000.0
+      },
+      {
+        "name": "paired_baseline",
+        "simulated_seconds": 10,
+        "revision": 1,
+        "audit": {
+          "energy_error_J": 6.598384061362594e-10,
+          "water_error_L": 4.182943054431565e-13,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "drink_input_L": 0.0,
+          "photochemical_J": 0.0,
+          "external_heat_J": 0.0,
+          "voided_L": 0.0,
+          "same_owner_ticks": true,
+          "neural_clock_error_s": 1.9539925233402755e-14
+        },
+        "special": {
+          "resonan_attention": 0.0,
+          "shutter": 1.0,
+          "spandar_digest": "8a2feb0405118dc2180f8ca15d0db489f0de1987e7e3ad4eaf5e86028502a386",
+          "spandar_last_error": 0.0,
+          "azarine_budget_J": 7200.0,
+          "azarine_pool": "tagged ceiling within the retained reserve_J; not an extra stock",
+          "tissue": {
+            "schema": "nasuraya-special-physiology/1",
+            "host_mass_kg": 195.0,
+            "resonan": {
+              "left": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              },
+              "right": {
+                "adaptation": 0.0,
+                "signal": null,
+                "confidence": 0.0,
+                "shutter": 1.0,
+                "irradiance_w_m2": null
+              }
+            },
+            "spandar": {
+              "valid": true,
+              "last_sample_s": 16.99999999999997,
+              "sampled_digest": "8a2feb0405118dc2180f8ca15d0db489f0de1987e7e3ad4eaf5e86028502a386",
+              "sampled_error": 0.0,
+              "adequacy": 0.9628413196876215,
+              "period_s": 2.0
+            },
+            "azarine": {
+              "local_heat_J": 0.4118165955563106,
+              "accounted_total_heat_J": 38.615257162213894,
+              "local_temperature_C": 37.00135463473111,
+              "core_temperature_C": 37.00005600068145,
+              "thermal_gate": 1.0,
+              "requested_load_W": 0.0,
+              "paid_load_J": 0.0,
+              "exchanged_heat_J": 0.005205607566341314,
+              "partition_error_J": 0.0
+            }
+          }
+        },
+        "fuel_J": 3993531.5933794943,
+        "reserve_J": 60000.0
+      }
+    ]
+  }
+}
