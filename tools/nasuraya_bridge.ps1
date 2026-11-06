@@ -123,34 +123,48 @@ function Poll-Bridge {
         throw 'Bridge issue owner does not match.'
     }
 
-    $issueCommand = [regex]::Match([string]$issue.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*$')
-    if ($issueCommand.Success) {
-        Process-Request 'issue-initial' $issueCommand.Groups[1].Value.ToLowerInvariant() $seen
-    }
-
+    # Load every comment before dispatching commands. This allows us to find
+    # completed responses, avoiding duplicates even if local state is lost.
+    $allComments = New-Object System.Collections.ArrayList
     $page = 1
     do {
         $path = ('/repos/{0}/issues/{1}/comments?per_page=100&page={2}' -f $Repo, $IssueNumber, $page)
         $response = Invoke-GitHub 'Get' $path
-        $comments = @($response)
-        if ($comments.Count -eq 1 -and $comments[0] -is [array]) {
-            $comments = @($comments[0])
+        $pageComments = @($response)
+        if ($pageComments.Count -eq 1 -and $pageComments[0] -is [array]) {
+            $pageComments = @($pageComments[0])
         }
-        Write-BridgeLog ('Page {0}: {1} comments returned' -f $page, $comments.Count)
-
-        foreach ($comment in $comments) {
-            if ($null -eq $comment) { continue }
-            if ([string]$comment.user.login -ne $Owner) { continue }
-            $command = [regex]::Match([string]$comment.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*$')
-            if ($command.Success) {
-                $requestId = 'comment-' + [string]$comment.id
-                $cmd = $command.Groups[1].Value.ToLowerInvariant()
-                Write-BridgeLog ('Request {0}: {1}, seen={2}' -f $requestId, $cmd, $seen.ContainsKey($requestId))
-                Process-Request $requestId $cmd $seen
-            }
+        foreach ($c in $pageComments) {
+            if ($null -ne $c) { [void]$allComments.Add($c) }
         }
         $page = $page + 1
-    } while ($comments.Count -eq 100)
+    } while ($pageComments.Count -eq 100)
+
+    $completed = @{}
+    foreach ($c in $allComments) {
+        if ([string]$c.user.login -ne $Owner) { continue }
+        $answerMatch = [regex]::Match([string]$c.body, 'request_id=(issue-initial|comment-[0-9]+);')
+        if ($answerMatch.Success) {
+            $completed[[string]$answerMatch.Groups[1].Value] = $true
+        }
+    }
+    Write-BridgeLog ('Poll: {0} comments; {1} completed requests' -f $allComments.Count, $completed.Count)
+
+    $initial = [regex]::Match([string]$issue.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*$')
+    if ($initial.Success -and (-not $completed.ContainsKey('issue-initial'))) {
+        Process-Request 'issue-initial' $initial.Groups[1].Value.ToLowerInvariant() $seen
+    }
+
+    foreach ($c in $allComments) {
+        if ([string]$c.user.login -ne $Owner) { continue }
+        $cmdMatch = [regex]::Match([string]$c.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*$')
+        if (-not $cmdMatch.Success) { continue }
+        $requestId = 'comment-' + [string]$c.id
+        if ($completed.ContainsKey($requestId)) { continue }
+        $cmd = $cmdMatch.Groups[1].Value.ToLowerInvariant()
+        Write-BridgeLog ('Processing request {0}: {1}' -f $requestId, $cmd)
+        Process-Request $requestId $cmd $seen
+    }
 }
 
 if ($Setup) {
