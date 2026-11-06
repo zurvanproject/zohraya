@@ -21,8 +21,13 @@ class AutonomicRecoveryMemoryTests(unittest.TestCase):
                 self.assertTrue(status["enabled"])
                 self.assertEqual(status["baseline_sha256"], before)
                 self.assertEqual(status["events_recorded"], 0)
-                self.assertEqual(status["projected_autonomic_state"],
-                                 InstinctController.enable(loop).status()["native_body"]["values"])
+                native = InstinctController.enable(loop).status()["native_body"]["values"]
+                expected = {name: native[name] for name in
+                            ("sympathetic", "parasympathetic", "arousal",
+                             "pain", "fatigue")}
+                self.assertEqual(status["projected_autonomic_state"], expected)
+                self.assertIn("sleep_pressure", native)
+                self.assertNotIn("sleep_pressure", status["projected_autonomic_state"])
                 self.assertEqual(loop.body().checkpoint()["sha256"], before)
                 self.assertEqual(loop.status()["completed_cycles"], 0)
 
