@@ -1,4 +1,4 @@
-# Nasuraya Bridge v1.0 — bounded, read-only GitHub Issues relay
+# Nasuraya Bridge v1.0 - bounded, read-only GitHub Issues relay
 # Compatible with Windows PowerShell 4.0 / Windows Server 2012 R2.
 # Uses only outbound HTTPS, and processes commands from repository owner.
 param(
@@ -115,62 +115,41 @@ function Process-Request([string]$id, [string]$cmd, [hashtable]$seen) {
 function Poll-Bridge {
     $seen = Read-Seen
     $issue = Invoke-GitHub 'Get' ('/repos/{0}/issues/{1}' -f $Repo, $IssueNumber)
-    if ($issue.state -ne 'open') { Write-BridgeLog 'Bridge issue is closed: no commands accepted.'; return }
-    if ($issue.user.login -ne $Owner) { throw 'Bridge issue owner does not match.' }
+    if ($issue.state -ne 'open') {
+        Write-BridgeLog 'Bridge issue is closed; no commands accepted.'
+        return
+    }
+    if ($issue.user.login -ne $Owner) {
+        throw 'Bridge issue owner does not match.'
+    }
 
-    $match = [regex]::Match([string]$issue.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*$')
-    if ($match.Success) { Process-Request 'issue-initial' $match.Groups[1].Value.ToLowerInvariant() $seen }
+    $issueCommand = [regex]::Match([string]$issue.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*$')
+    if ($issueCommand.Success) {
+        Process-Request 'issue-initial' $issueCommand.Groups[1].Value.ToLowerInvariant() $seen
+    }
 
     $page = 1
     do {
-        # Collect GitHub's response explicitly. PS4 can enumerate REST JSON arrays in
-        # more than one way, so unwrap any nested array before inspecting comments.
-        $raw = Invoke-GitHub 'Get' ('/repos/{0}/issues/{1}/comments?per_page=100&page={2}&cache_bust={3}' -f $Repo, $IssueNumber, $page, ([DateTime]::UtcNow.Ticks))
-        $comments = @()
-        foreach ($item in @($raw)) {
-            if ($item -is [array]) { $comments += @($item) }
-            elseif ($null -ne $item) { $comments += $item }
+        $path = ('/repos/{0}/issues/{1}/comments?per_page=100&page={2}' -f $Repo, $IssueNumber, $page)
+        $response = Invoke-GitHub 'Get' $path
+        $comments = @($response)
+        if ($comments.Count -eq 1 -and $comments[0] -is [array]) {
+            $comments = @($comments[0])
         }
-        Write-BridgeLog ('Poll page {0}: received {1} comments' -f $page, $comments.Count)
-        foreach ($c in $comments) {
-            if ($null -eq $c) { continue }
-            $id = [string]$c.id
-            $author = [string]$c.user.login
-            if ($author -ne $Owner) { continue }
-            $cmdMatch = [regex]::Match([string]$c.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*
-}
+        Write-BridgeLog ('Page {0}: {1} comments returned' -f $page, $comments.Count)
 
-if ($Setup) {
-    Write-Host 'Nasuraya Bridge setup. Create a fine-grained GitHub token scoped to zurvanproject/zohraya with Issues: Read and write.'
-    Write-Host 'Paste your token here, NOT in ChatGPT. The token is stored encrypted for this Windows account.'
-    $secure = Read-Host 'GitHub token' -AsSecureString
-    $script:Token = Get-TokenFromSecureString $secure
-    $me = Invoke-GitHub 'Get' '/user'
-    if ($me.login -ne $Owner) { throw 'The GitHub token does not belong to the expected repository owner.' }
-    $secure | ConvertFrom-SecureString | Set-Content -Path $TokenFile -Encoding ASCII
-    Write-BridgeLog 'GitHub authentication completed. Token stored with Windows user DPAPI.'
-} else {
-    if (-not (Test-Path $TokenFile)) { throw 'No token configured. Run this script with -Setup first.' }
-    $encrypted = Get-Content -Path $TokenFile -Raw
-    $secure = ConvertTo-SecureString $encrypted.Trim()
-    $script:Token = Get-TokenFromSecureString $secure
-}
-
-Write-BridgeLog 'Bridge started (bounded read-only commands only).'
-do {
-    try { Poll-Bridge }
-    catch { Write-BridgeLog ('Poll failed: ' + $_.Exception.Message) }
-    if (-not $Once) { Start-Sleep -Seconds 60 }
-} while (-not $Once)
-)
-            if ($cmdMatch.Success) {
-                $cmd = $cmdMatch.Groups[1].Value.ToLowerInvariant()
-                $requestId = 'comment-' + $id
-                Write-BridgeLog ('Command {0} ({1}), already_done={2}' -f $requestId, $cmd, $seen.ContainsKey($requestId))
+        foreach ($comment in $comments) {
+            if ($null -eq $comment) { continue }
+            if ([string]$comment.user.login -ne $Owner) { continue }
+            $command = [regex]::Match([string]$comment.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*$')
+            if ($command.Success) {
+                $requestId = 'comment-' + [string]$comment.id
+                $cmd = $command.Groups[1].Value.ToLowerInvariant()
+                Write-BridgeLog ('Request {0}: {1}, seen={2}' -f $requestId, $cmd, $seen.ContainsKey($requestId))
                 Process-Request $requestId $cmd $seen
             }
         }
-        $page += 1
+        $page = $page + 1
     } while ($comments.Count -eq 100)
 }
 
@@ -180,11 +159,15 @@ if ($Setup) {
     $secure = Read-Host 'GitHub token' -AsSecureString
     $script:Token = Get-TokenFromSecureString $secure
     $me = Invoke-GitHub 'Get' '/user'
-    if ($me.login -ne $Owner) { throw 'The GitHub token does not belong to the expected repository owner.' }
+    if ($me.login -ne $Owner) {
+        throw 'The GitHub token does not belong to the expected repository owner.'
+    }
     $secure | ConvertFrom-SecureString | Set-Content -Path $TokenFile -Encoding ASCII
     Write-BridgeLog 'GitHub authentication completed. Token stored with Windows user DPAPI.'
 } else {
-    if (-not (Test-Path $TokenFile)) { throw 'No token configured. Run this script with -Setup first.' }
+    if (-not (Test-Path $TokenFile)) {
+        throw 'No token configured. Run this script with -Setup first.'
+    }
     $encrypted = Get-Content -Path $TokenFile -Raw
     $secure = ConvertTo-SecureString $encrypted.Trim()
     $script:Token = Get-TokenFromSecureString $secure
@@ -192,7 +175,12 @@ if ($Setup) {
 
 Write-BridgeLog 'Bridge started (bounded read-only commands only).'
 do {
-    try { Poll-Bridge }
-    catch { Write-BridgeLog ('Poll failed: ' + $_.Exception.Message) }
-    if (-not $Once) { Start-Sleep -Seconds 60 }
+    try {
+        Poll-Bridge
+    } catch {
+        Write-BridgeLog ('Poll failed: ' + $_.Exception.Message)
+    }
+    if (-not $Once) {
+        Start-Sleep -Seconds 60
+    }
 } while (-not $Once)
