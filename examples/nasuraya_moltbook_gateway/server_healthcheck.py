@@ -55,11 +55,11 @@ def _iso(value: datetime) -> str:
 
 def snapshot_status(directory: Path, now: datetime, freshness_minutes: int) -> dict:
     result = {"state": "missing", "checked_at_utc": None}
-    if directory.is_symlink():
+    if directory.is_symlink() or directory.is_junction():
         result["state"] = "unsafe_path"
         return result
     path = directory / SNAPSHOT
-    if path.is_symlink():
+    if path.is_symlink() or path.is_junction():
         result["state"] = "unsafe_path"
         return result
     try:
