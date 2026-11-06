@@ -1,0 +1,16 @@
+[Unit]
+Description=Nasuraya finite daily offline virtual ritual
+Documentation=https://github.com/zurvanproject/zohraya
+ConditionPathExists=%h/nasuraya/ritual/examples/nasuraya_virtual_learning/daily.py
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/nasuraya/ritual
+ExecStart=/usr/bin/python3 -m examples.nasuraya_virtual_learning.daily --db %h/nasuraya/state/ritual.sqlite
+Environment=PYTHONDONTWRITEBYTECODE=1
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+UMask=0077
+TimeoutStartSec=100
+MemoryMax=1G
