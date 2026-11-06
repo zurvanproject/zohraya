@@ -13,11 +13,12 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import ssl
 import sys
 import time
 from typing import Any
 from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+from urllib.request import Request, build_opener, HTTPSHandler, HTTPRedirectHandler, ProxyHandler
 
 REPO = "zurvanproject/zohraya"
 OWNER = "zurvanproject"
@@ -35,6 +36,22 @@ JOB_TIMEOUT_SECONDS = 75
 API_TIMEOUT_SECONDS = 25
 
 
+class NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def open_verified(req):
+    # Use certifi when present on the older Windows host; keep verification on.
+    try:
+        import certifi
+        context = ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        context = ssl.create_default_context()
+    return build_opener(ProxyHandler({}), NoRedirect(),
+                        HTTPSHandler(context=context)).open(req, timeout=API_TIMEOUT_SECONDS)
+
+
 def api_request(token: str, path: str, method: str = "GET", data: dict | None = None) -> Any:
     body = None if data is None else json.dumps(data, separators=(",", ":")).encode("utf-8")
     req = Request(
@@ -49,7 +66,7 @@ def api_request(token: str, path: str, method: str = "GET", data: dict | None = 
             "User-Agent": USER_AGENT,
         },
     )
-    with urlopen(req, timeout=API_TIMEOUT_SECONDS) as resp:
+    with open_verified(req) as resp:
         raw = resp.read(MAX_RESPONSE_BYTES + 1)
     if len(raw) > MAX_RESPONSE_BYTES:
         raise ValueError("API response size limit exceeded")
@@ -58,12 +75,12 @@ def api_request(token: str, path: str, method: str = "GET", data: dict | None = 
 
 def get_comments(token: str) -> list[dict]:
     found: list[dict] = []
-    for page in range(1, 11):
-        items = api_request(token, f"/repos/{REPO}/issues/{ISSUE}/comments?per_page=100&page={page}")
+    for page in range(1, 35):
+        items = api_request(token, f"/repos/{REPO}/issues/{ISSUE}/comments?per_page=30&page={page}")
         if not isinstance(items, list):
             raise TypeError("Comments API returned unexpected data")
         found.extend(items)
-        if len(items) < 100:
+        if len(items) < 30:
             break
     else:
         raise RuntimeError("Comment page limit exceeded; refusing to process incomplete queue")
@@ -91,7 +108,7 @@ def parse_job(body: str) -> tuple[str, str, str] | None:
 def download_job(commit: str, job: str, expected_sha256: str) -> bytes:
     url = f"{RAW}/{REPO}/{commit}/tools/bridge_jobs/{job}.py"
     req = Request(url, headers={"User-Agent": USER_AGENT})
-    with urlopen(req, timeout=API_TIMEOUT_SECONDS) as resp:
+    with open_verified(req) as resp:
         src = resp.read(MAX_JOB_BYTES + 1)
     if len(src) > MAX_JOB_BYTES:
         raise ValueError("Job source too large")
@@ -230,6 +247,12 @@ def main() -> int:
     while True:
         try:
             total, newly = poll(token, root)
+            # Written only after a successful authenticated poll. Startup alone
+            # is not evidence of a working relay.
+            health = root / "v2_health.tmp"
+            health.write_text(json.dumps({"pid": os.getpid(), "utc_epoch": time.time(),
+                                          "poll_ok": True}), encoding="utf-8")
+            os.replace(health, root / "v2_health.json")
             print(f"Bridge poll complete: {total} comments; {newly} new jobs", flush=True)
         except (HTTPError, URLError, OSError, ValueError, KeyError, TypeError, RuntimeError) as err:
             print("Bridge poll error: " + type(err).__name__, flush=True)

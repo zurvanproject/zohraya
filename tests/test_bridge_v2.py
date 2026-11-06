@@ -11,6 +11,25 @@ import bridge_v2 as b
 
 
 class BridgeV2Tests(unittest.TestCase):
+    def test_paginates_with_bounded_pages(self):
+        pages = []
+        def api(token, path, method="GET", data=None):
+            pages.append(path)
+            return [{"id": i} for i in range(30)] if len(pages) == 1 else []
+        with mock.patch.object(b, "api_request", side_effect=api):
+            self.assertEqual(len(b.get_comments("dummy")), 30)
+        self.assertIn("per_page=30&page=2", pages[-1])
+
+    def test_transport_keeps_tls_verification_and_rejects_redirects(self):
+        self.assertIsNone(b.NoRedirect().redirect_request(None, None, 302, "", {}, "https://example.com"))
+        import ssl
+        with mock.patch.object(b, "build_opener") as opener:
+            b.open_verified(b.Request("https://api.github.com/rate_limit"))
+            handlers = opener.call_args.args
+            https = next(h for h in handlers if isinstance(h, b.HTTPSHandler))
+            self.assertTrue(https._context.check_hostname)
+            self.assertEqual(https._context.verify_mode, ssl.CERT_REQUIRED)
+
     def test_rejects_shell_and_non_pinned_commands(self):
         self.assertIsNone(b.parse_job("nasu: powershell dir"))
         self.assertIsNone(b.parse_job("nasu: run abc other 123"))

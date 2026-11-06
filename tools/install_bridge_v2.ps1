@@ -5,7 +5,7 @@ $ErrorActionPreference = 'Stop'
 $root = 'C:\NasurayaBridge'
 $target = Join-Path $root 'bridge.ps1'
 $agent = Join-Path $root 'bridge_v2.py'
-$backup = Join-Path $root 'bridge_v1_backup.ps1'
+$backup = Join-Path $root ('bridge_backup_' + [Guid]::NewGuid().ToString('N') + '.ps1')
 $task = 'NasurayaBridge'
 $expectedSha256 = 'a2e5b05a7e78fc7044c0dd8cd955d6508d1eafaf2c02236a4392fbdc5e5981fd'
 $source = 'https://raw.githubusercontent.com/zurvanproject/zohraya/65141fb6e1b21fb1b2480bf5b891f527f51b18fb/tools/bridge_v2.py'
@@ -55,14 +55,14 @@ foreach ($candidate in ($candidates | Select-Object -Unique)) {
     if (-not $candidate -or -not (Test-Path -LiteralPath $candidate -PathType Leaf)) { continue }
     try {
         $v = (& $candidate --version 2>&1 | Out-String).Trim()
-        if ($LASTEXITCODE -eq 0 -and $v -match '^Python 3\.(1[0-9]|[2-9][0-9])\.') {
+        if ($LASTEXITCODE -eq 0 -and $v -match '^Python 3\.(1[2-9]|[2-9][0-9])\.') {
             $python = $candidate
             $version = $v
             break
         }
     } catch { continue }
 }
-if (-not $python) { throw 'Python 3.10+ not found; existing v1 bridge unchanged.' }
+if (-not $python) { throw 'Python 3.12+ not found; existing v1 bridge unchanged.' }
 Write-Host ('FOUND_PYTHON: ' + $version)
 
 $tmpAgent = $agent + '.new'
@@ -72,6 +72,8 @@ if ($actualHash -ne $expectedSha256) {
     Remove-Item -LiteralPath $tmpAgent -Force -ErrorAction SilentlyContinue
     throw 'Agent SHA256 verification failed; existing bridge unchanged.'
 }
+& $python -I -c 'import ast,sys; ast.parse(open(sys.argv[1], encoding="utf-8").read())' $tmpAgent
+if ($LASTEXITCODE -ne 0) { throw 'Python syntax preflight failed; existing bridge unchanged.' }
 
 $wrapper = @'
 # Nasuraya Bridge v2 Windows scheduled-task wrapper. PowerShell 4 compatible.
@@ -96,24 +98,47 @@ $tokens = $null; $parseErrors = $null
 if ($parseErrors.Count -ne 0) { throw 'Wrapper PowerShell parse failed; existing bridge unchanged.' }
 
 # All preflight checks have passed. Only now replace the scheduled-task target.
-$updated = $false
+$rollbackNeeded = $false
+$agentBackup = $backup + '.py'
+$hadAgent = Test-Path -LiteralPath $agent
+$wasRunning = $existingTask.State.ToString() -eq 'Running'
 try {
-    Stop-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue
+    # Backups finish before stopping or changing the existing service.
     Copy-Item -LiteralPath $target -Destination $backup -Force
+    Export-ScheduledTask -TaskName $task | Set-Content -LiteralPath ($backup + '.task.xml') -Encoding UTF8
+    if ($hadAgent) { Copy-Item -LiteralPath $agent -Destination $agentBackup -Force }
+    $rollbackNeeded = $true
+    Stop-ScheduledTask -TaskName $task -ErrorAction Stop
     Move-Item -LiteralPath $tmpAgent -Destination $agent -Force
     Set-Content -LiteralPath $target -Value $wrapper -Encoding ASCII
-    $updated = $true
+    $startedEpoch = ([DateTime]::UtcNow - [DateTime]'1970-01-01T00:00:00Z').TotalSeconds
     Start-ScheduledTask -TaskName $task -ErrorAction Stop
-    Start-Sleep -Seconds 8
+    # Running alone is insufficient: require a fresh successful authenticated poll.
+    $healthy = $false
+    $healthPath = Join-Path $env:ProgramData 'NasurayaBridge\v2_health.json'
+    for ($attempt = 0; $attempt -lt 11; $attempt++) {
+        Start-Sleep -Seconds 4
+        if (Test-Path -LiteralPath $healthPath) {
+            try {
+                $health = Get-Content -LiteralPath $healthPath -Raw | ConvertFrom-Json
+                if ($health.poll_ok -eq $true -and $health.utc_epoch -ge $startedEpoch) {
+                    $healthy = $true
+                    break
+                }
+            } catch { }
+        }
+    }
     $state = (Get-ScheduledTask -TaskName $task).State.ToString()
-    if ($state -ne 'Running') { throw ('Scheduled task is ' + $state) }
-    Write-Host ('NASURAYA_V2_STARTED; Python=' + $version + '; Task=' + $state)
+    if ($state -ne 'Running' -or -not $healthy) { throw 'Bridge did not complete an authenticated poll; rolling back.' }
+    Write-Host ('NASURAYA_V2_CONNECTED; Python=' + $version + '; Task=' + $state)
     Write-Host 'NEXT: Future bounded jobs will be submitted through GitHub, without more server pastes.'
 } catch {
-    if ($updated -and (Test-Path -LiteralPath $backup)) {
+    if ($rollbackNeeded -and (Test-Path -LiteralPath $backup)) {
         Stop-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue
         Copy-Item -LiteralPath $backup -Destination $target -Force
-        Start-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue
+        if ($hadAgent) { Copy-Item -LiteralPath $agentBackup -Destination $agent -Force }
+        elseif (Test-Path -LiteralPath $agent) { Remove-Item -LiteralPath $agent -Force }
+        if ($wasRunning) { Start-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue }
     }
     throw
 }
