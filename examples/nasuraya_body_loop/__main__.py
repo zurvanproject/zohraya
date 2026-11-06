@@ -31,7 +31,8 @@ def main(argv=None):
     p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status',
         'experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-test', 'experience-demo',
         'self-knowledge-eval', 'instinct-enable', 'instinct-step', 'instinct-status',
-        'instinct-disable', 'instinct-test', 'instinct-demo', 'body-drive-test'])
+        'instinct-disable', 'instinct-test', 'instinct-demo', 'body-drive-test',
+        'recovery-enable', 'recovery-step', 'recovery-status', 'recovery-disable'])
     p.add_argument('--session', type=Path)
     p.add_argument('--event-json', type=Path, help='explicit local JSON event for instinct-step')
     p.add_argument('--output-dir', type=Path)
