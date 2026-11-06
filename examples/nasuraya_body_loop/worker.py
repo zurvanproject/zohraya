@@ -18,9 +18,11 @@ def main(args):
         from examples.nasuraya_research import test_body_desire_experiment_20261106
         from . import test_native_body_drive_experiment_20261106
         from . import test_drive_decision_bridge_20261106
+        from . import test_autonomic_recovery_probe_20261106
         modules = (test_body_desire_experiment_20261106,
                    test_native_body_drive_experiment_20261106,
-                   test_drive_decision_bridge_20261106)
+                   test_drive_decision_bridge_20261106,
+                   test_autonomic_recovery_probe_20261106)
         suite = unittest.TestSuite(
             unittest.defaultTestLoader.loadTestsFromModule(m) for m in modules)
         result = unittest.TextTestRunner(verbosity=2).run(suite)
