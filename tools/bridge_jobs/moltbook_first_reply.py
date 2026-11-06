@@ -37,11 +37,15 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 class Client:
     def __init__(self, key):
-        import certifi
+        try:
+            import certifi
+            context = ssl.create_default_context(cafile=certifi.where())
+        except ImportError:
+            context = ssl.create_default_context()
         self.key = key
         self.opener = urllib.request.build_opener(
             urllib.request.ProxyHandler({}), NoRedirect(),
-            urllib.request.HTTPSHandler(context=ssl.create_default_context(cafile=certifi.where())))
+            urllib.request.HTTPSHandler(context=context))
 
     def request(self, method, route, data=None):
         allowed = {"/api/v1/agents/status", "/api/v1/agents/me"}

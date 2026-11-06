@@ -7,8 +7,8 @@ $target = Join-Path $root 'bridge.ps1'
 $agent = Join-Path $root 'bridge_v2.py'
 $backup = Join-Path $root ('bridge_backup_' + [Guid]::NewGuid().ToString('N') + '.ps1')
 $task = 'NasurayaBridge'
-$expectedSha256 = 'a2e5b05a7e78fc7044c0dd8cd955d6508d1eafaf2c02236a4392fbdc5e5981fd'
-$source = 'https://raw.githubusercontent.com/zurvanproject/zohraya/65141fb6e1b21fb1b2480bf5b891f527f51b18fb/tools/bridge_v2.py'
+$expectedSha256 = '9d42e61d4751d713daeac1eb4ce3569b90c2a90716e69b0b6c3f4d9c8cc5a93e'
+$source = 'https://raw.githubusercontent.com/zurvanproject/zohraya/b6d5469180c0e66f3bf6fb67639c17fe4c752bcc/tools/bridge_v2.py'
 
 if (-not (Test-Path -LiteralPath $target)) { throw 'Existing bridge.ps1 not found; nothing changed.' }
 if (-not (Test-Path -LiteralPath (Join-Path $env:ProgramData 'NasurayaBridge\github_token.dpapi'))) {
@@ -72,7 +72,7 @@ if ($actualHash -ne $expectedSha256) {
     Remove-Item -LiteralPath $tmpAgent -Force -ErrorAction SilentlyContinue
     throw 'Agent SHA256 verification failed; existing bridge unchanged.'
 }
-& $python -I -c 'import ast,sys; ast.parse(open(sys.argv[1], encoding="utf-8").read())' $tmpAgent
+& $python -I -c 'import ast,pathlib,sys; ast.parse(pathlib.Path(sys.argv[1]).read_bytes())' $tmpAgent
 if ($LASTEXITCODE -ne 0) { throw 'Python syntax preflight failed; existing bridge unchanged.' }
 
 $wrapper = @'
