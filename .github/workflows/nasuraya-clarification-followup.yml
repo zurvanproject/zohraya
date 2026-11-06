@@ -1,0 +1,28 @@
+name: Nasuraya economical clarification followup
+on:
+  push:
+    branches: ['nasuraya/affect-api-session-20261023']
+    paths: ['experiments/affect_api_20261023/clarification-authorization.json']
+permissions:
+  contents: read
+concurrency:
+  group: nasuraya-affect-api-20261023
+  cancel-in-progress: false
+jobs:
+  clarification-session:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify cumulative cost and clarification guards offline
+        run: python3 -m unittest experiments.affect_api_20261023.test_session experiments.affect_api_20261023.test_clarification -v
+      - name: Run two authorized live comparisons
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GH_SESSION_TOKEN: ${{ github.token }}
+        run: python3 -m experiments.affect_api_20261023.clarification
