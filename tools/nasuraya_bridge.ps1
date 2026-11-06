@@ -123,12 +123,51 @@ function Poll-Bridge {
 
     $page = 1
     do {
-        $comments = @(Invoke-GitHub 'Get' ('/repos/{0}/issues/{1}/comments?per_page=100&page={2}' -f $Repo, $IssueNumber, $page))
+        # Collect GitHub's response explicitly. PS4 can enumerate REST JSON arrays in
+        # more than one way, so unwrap any nested array before inspecting comments.
+        $raw = Invoke-GitHub 'Get' ('/repos/{0}/issues/{1}/comments?per_page=100&page={2}&cache_bust={3}' -f $Repo, $IssueNumber, $page, ([DateTime]::UtcNow.Ticks))
+        $comments = @()
+        foreach ($item in @($raw)) {
+            if ($item -is [array]) { $comments += @($item) }
+            elseif ($null -ne $item) { $comments += $item }
+        }
+        Write-BridgeLog ('Poll page {0}: received {1} comments' -f $page, $comments.Count)
         foreach ($c in $comments) {
-            if ($null -eq $c -or $c.user.login -ne $Owner) { continue }
-            $cmdMatch = [regex]::Match([string]$c.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*$')
+            if ($null -eq $c) { continue }
+            $id = [string]$c.id
+            $author = [string]$c.user.login
+            if ($author -ne $Owner) { continue }
+            $cmdMatch = [regex]::Match([string]$c.body, '(?m)^[ \t]*nasu:[ \t]*(status|task|disk|python|help)[ \t]*
+}
+
+if ($Setup) {
+    Write-Host 'Nasuraya Bridge setup. Create a fine-grained GitHub token scoped to zurvanproject/zohraya with Issues: Read and write.'
+    Write-Host 'Paste your token here, NOT in ChatGPT. The token is stored encrypted for this Windows account.'
+    $secure = Read-Host 'GitHub token' -AsSecureString
+    $script:Token = Get-TokenFromSecureString $secure
+    $me = Invoke-GitHub 'Get' '/user'
+    if ($me.login -ne $Owner) { throw 'The GitHub token does not belong to the expected repository owner.' }
+    $secure | ConvertFrom-SecureString | Set-Content -Path $TokenFile -Encoding ASCII
+    Write-BridgeLog 'GitHub authentication completed. Token stored with Windows user DPAPI.'
+} else {
+    if (-not (Test-Path $TokenFile)) { throw 'No token configured. Run this script with -Setup first.' }
+    $encrypted = Get-Content -Path $TokenFile -Raw
+    $secure = ConvertTo-SecureString $encrypted.Trim()
+    $script:Token = Get-TokenFromSecureString $secure
+}
+
+Write-BridgeLog 'Bridge started (bounded read-only commands only).'
+do {
+    try { Poll-Bridge }
+    catch { Write-BridgeLog ('Poll failed: ' + $_.Exception.Message) }
+    if (-not $Once) { Start-Sleep -Seconds 60 }
+} while (-not $Once)
+)
             if ($cmdMatch.Success) {
-                Process-Request ('comment-' + [string]$c.id) $cmdMatch.Groups[1].Value.ToLowerInvariant() $seen
+                $cmd = $cmdMatch.Groups[1].Value.ToLowerInvariant()
+                $requestId = 'comment-' + $id
+                Write-BridgeLog ('Command {0} ({1}), already_done={2}' -f $requestId, $cmd, $seen.ContainsKey($requestId))
+                Process-Request $requestId $cmd $seen
             }
         }
         $page += 1
