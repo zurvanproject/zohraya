@@ -14,7 +14,14 @@ WORKER_MANIFEST="e8558cf14cb7ed1f6273a7dcfe75ba287d7a44ec39b3a2feb730d816072f909
 def psq(v):return "'"+str(v).replace("'","''")+"'"
 def ps(code):
  p=subprocess.run(["powershell.exe","-NoProfile","-NonInteractive","-Command","$ErrorActionPreference='Stop';"+code],capture_output=True,text=True,encoding="utf-8",errors="replace",timeout=20)
- if p.returncode:raise RuntimeError("TaskOperation")
+ if p.returncode:
+  phase=("register_sample" if PREFIX+"Sample" in code else "register_final") if "Register-ScheduledTask" in code else ("verify" if "Task definition" in code else ("start" if "Start-ScheduledTask" in code else "probe"))
+  match=re.search(r"FullyQualifiedErrorId\s*:\s*([A-Za-z0-9_.,]+)",p.stderr)
+  error_id=(match.group(1).split(",")[0] if match else "powershell")[:24]
+  private=Path(os.environ["PROGRAMDATA"])/"NasurayaModelWorker/monitoring/evening-20261107"
+  if private.is_dir():
+   (private/("task-error-"+phase+".json")).write_text(json.dumps({"phase":phase,"error_id":error_id,"stderr":p.stderr,"at":time.time()}),encoding="utf-8")
+  raise RuntimeError("TaskOperation_"+phase+"_"+error_id)
  return p.stdout.strip()
 def load_watch(root):
  p=root/"watch.py"
