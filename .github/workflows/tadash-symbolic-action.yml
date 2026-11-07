@@ -1,0 +1,25 @@
+name: Tadash symbolic action checks
+on:
+  pull_request:
+    paths:
+      - 'runtimes/tadash_body/symbolic_action_v1.py'
+      - 'runtimes/tadash_body/test_symbolic_action_v1.py'
+      - 'runtimes/tadash_body/run_symbolic_action_checks.py'
+      - '.github/workflows/tadash-symbolic-action.yml'
+permissions:
+  contents: read
+jobs:
+  symbolic-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify symbolic contracts with explicit test doubles
+        working-directory: runtimes/tadash_body
+        run: python -m unittest -v test_symbolic_action_v1
+      - name: Verify native body parity and replay in a temporary copy
+        working-directory: runtimes/tadash_body
+        run: python run_symbolic_action_checks.py --native
