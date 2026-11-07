@@ -1,0 +1,36 @@
+name: Nasuraya validation-gated forecast probe
+
+on:
+  push:
+    branches:
+      - research/nasuraya-forecast-guard-20261107
+    paths:
+      - tools/bridge_jobs/forecast_guard_probe.py
+      - tests/test_forecast_guard_probe.py
+      - .github/workflows/nasuraya-forecast-guard.yml
+  pull_request:
+    paths:
+      - tools/bridge_jobs/forecast_guard_probe.py
+      - tests/test_forecast_guard_probe.py
+      - .github/workflows/nasuraya-forecast-guard.yml
+
+permissions:
+  contents: read
+
+jobs:
+  validation-gate:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check guard and previous benchmark
+        run: python -m unittest discover -s tests -p "*probe.py" -v
+      - name: Run finite isolated server job
+        run: python -I tools/bridge_jobs/forecast_guard_probe.py
+
