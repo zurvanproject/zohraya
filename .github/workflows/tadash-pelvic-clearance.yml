@@ -1,0 +1,32 @@
+name: Tadash pelvic clearance v0.4
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/tadash-pelvic-clearance.yml
+      - runtimes/tadash_body/pelvic_clearance_v04.py
+      - examples/nasuraya_pelvis/test_pelvic_clearance_v04.py
+      - runtimes/tadash_body/pelvic_neurovisceral_v03.py
+      - runtimes/tadash_body/pelvis_v01.py
+      - runtimes/tadash_body/pelvis_observer_v02.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  numerical-geometry-and-invariants:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check pelvis, neurovisceral and clearance suites
+        run: |
+          python -m unittest \
+            examples.nasuraya_pelvis.test_pelvis_v01 \
+            examples.nasuraya_pelvis.test_pelvis_observer_v02 \
+            examples.nasuraya_pelvis.test_pelvic_neurovisceral_v03 \
+            examples.nasuraya_pelvis.test_pelvic_clearance_v04 -v
