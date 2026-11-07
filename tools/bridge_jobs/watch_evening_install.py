@@ -15,7 +15,7 @@ def psq(v):return "'"+str(v).replace("'","''")+"'"
 def ps(code):
  p=subprocess.run(["powershell.exe","-NoProfile","-NonInteractive","-Command","$ErrorActionPreference='Stop';"+code],capture_output=True,text=True,encoding="utf-8",errors="replace",timeout=20)
  if p.returncode:
-  phase=("register_sample" if PREFIX+"Sample" in code else "register_final") if "Register-ScheduledTask" in code else ("verify" if "Task definition" in code else ("start" if "Start-ScheduledTask" in code else "probe"))
+  phase=("register_sample" if PREFIX+"Sample" in code else "register_final") if "Register-ScheduledTask" in code else ("verify" if "TaskPrincipal" in code else ("start" if "Start-ScheduledTask" in code else "probe"))
   match=re.search(r"FullyQualifiedErrorId\s*:\s*([A-Za-z0-9_.,]+)",p.stderr)
   error_id=(match.group(1).split(",")[0] if match else "powershell")[:24]
   private=Path(os.environ["PROGRAMDATA"])/"NasurayaModelWorker/monitoring/evening-20261107"
@@ -50,8 +50,9 @@ def verify_schedule(config,source):
  for mode,name in (("sample",config["sample_task"]),("final",config["final_task"])):
   arguments='-I -X utf8 "'+str(source)+'" '+mode+' --root "'+str(source.parent)+'"'
   code+=("$t=Get-ScheduledTask -TaskName "+psq(name)+";if($t.Principal.UserId -notin @('SYSTEM','S-1-5-18')){throw 'TaskPrincipal'};if($t.Actions[0].Execute -ne "+psq(sys.executable)+"){throw 'TaskExecutable'};if($t.Actions[0].Arguments -ne "+psq(arguments)+"){throw 'TaskArguments'};")
-  if mode=="sample":code+="if($t.Triggers[0].Repetition.Interval -ne 'PT10M'){throw 'TaskCadence'};"
-  else:code+="if([Math]::Abs((([DateTimeOffset]::Parse($t.Triggers[0].StartBoundary)).UtcDateTime-$epoch).TotalSeconds-"+str(config["deadline"])+") -gt 1){throw 'TaskDeadline'};"
+  code+="$xml=[xml](Export-ScheduledTask -TaskName "+psq(name)+");"
+  if mode=="sample":code+="$node=$xml.SelectSingleNode(\"//*[local-name()='TimeTrigger']/*[local-name()='Repetition']/*[local-name()='Interval']\");if(($null -eq $node) -or ([Xml.XmlConvert]::ToTimeSpan($node.InnerText).TotalSeconds -ne 600)){throw 'TaskCadence'};"
+  else:code+="$node=$xml.SelectSingleNode(\"//*[local-name()='TimeTrigger']/*[local-name()='StartBoundary']\");if(($null -eq $node) -or ([Math]::Abs((([DateTimeOffset]::Parse($node.InnerText)).UtcDateTime-$epoch).TotalSeconds-"+str(config["deadline"])+") -gt 1)){throw 'TaskDeadline'};"
  ps(code)
 
 def main():
@@ -68,6 +69,14 @@ def main():
  clock=clock_reference(runtime/"cacert.pem")
  host_deadline=int(round(DEADLINE+clock["offset"]))
  root=worker/"monitoring/evening-20261107"
+ # A rolled-back setup never started the observation window. Retain its
+ # diagnostics and any partial samples in a sibling, then start a fresh window.
+ if root.is_dir() and (root/"config.json").is_file() and not (root/"installation.json").exists() and ((root/"installation-failed.json").exists() or any(root.glob("task-error-*.json"))):
+  if json.loads((root/"owner.json").read_text(encoding="utf-8"))!={"schema":SCHEMA}:raise ValueError("failed setup ownership")
+  names=[PREFIX+"Sample",PREFIX+"Final"]
+  remaining=ps("@("+",".join(psq(n) for n in names)+")|ForEach-Object{if(Get-ScheduledTask -TaskName $_ -ErrorAction SilentlyContinue){$_}};exit 0")
+  if remaining:raise ValueError("failed setup still owns tasks")
+  os.rename(root,root.with_name("evening-20261107-setup-"+str(time.time_ns())))
  marker=root/"owner.json"
  if root.exists() and (root.is_symlink() or root.is_junction() or (any(root.iterdir()) and not marker.is_file())):raise ValueError("monitor directory")
  root.mkdir(parents=True,exist_ok=True)
