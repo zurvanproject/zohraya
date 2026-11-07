@@ -1,0 +1,24 @@
+{
+  "original_runtime_manifest": "b3b95a88885d903f638efbc26ed693bf7a211460a5adae6dd9abfa12ac7720ef",
+  "fresh_runtime_manifest": "5120bb3635bfc6041720cfa2a7f810b2f453e088324c06770d5fdb387b3091ee",
+  "design_equal": true,
+  "scenarios": [
+    {
+      "fixture": "normal",
+      "original_frames": 12,
+      "fresh_frames": 12,
+      "public_values_equal": true,
+      "changed_checkpoint_hashes": 12,
+      "frame_differences": []
+    },
+    {
+      "fixture": "sleep",
+      "original_frames": 12,
+      "fresh_frames": 12,
+      "public_values_equal": true,
+      "changed_checkpoint_hashes": 12,
+      "frame_differences": []
+    }
+  ],
+  "expected_failure": "stale runtime manifest; public numerical values not assumed equal before execution"
+}
