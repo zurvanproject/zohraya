@@ -38,7 +38,7 @@
 
 ۱۱ تست تعریف شده‌اند؛ ۱۰ مورد محلی لینوکس گذشت و یک مورد مخصوص قفل Windows به‌درستی skip شد. تست‌ها شامل ۲۰ چرخهٔ واقعی نرم‌افزاری برای سقف پایدار، دو فرایند و حافظه، replay، عدم reset، رد دفتر بیگانه بدون تغییر، رد منبع دست‌کاری‌شده، عملیات حل‌نشده و رهاشدن mutex پس از مرگ واقعی فرایند هستند.
 
-در نمونهٔ محلی مستقل: revision صفر → یک → دو؛ نوبت اول walk→protect؛ نوبت دوم observe→observe با فراخوانی یک بازخورد قبلی؛ replay نوبت اول با صفر چرخهٔ اضافی و حفظ checkpoint نوبت دوم. هنوز اجرای Windows CI و نصب VPS در این commit ادعا نمی‌شود؛ شاهد تازه جدا ثبت خواهد شد.
+در نمونهٔ محلی مستقل: revision صفر → یک → دو؛ نوبت اول walk→protect؛ نوبت دوم observe→observe با فراخوانی یک بازخورد قبلی؛ replay نوبت اول با صفر چرخهٔ اضافی و حفظ checkpoint نوبت دوم. اجرای نهایی روی Windows CI و VPS واقعی تأیید شد؛ [شاهد اجرای سرور](evidence/NASURAYA_TADASH_VPS_LIVE_20261107_FA.md) شناسهٔ درخواست‌ها، پاسخ‌ها و حدود نتیجه را ثبت می‌کند.
 
 ## اجرا
 
@@ -64,3 +64,7 @@ python -I -X utf8 driver.py status --state /dedicated/state
 - Python zoneinfo: https://docs.python.org/3.12/library/zoneinfo.html
 - Native integration: https://github.com/zurvanproject/zohraya/pull/140
 
+
+## وضعیت نهایی
+
+بسته روی VPS نصب شد؛ دو چرخهٔ بومی در دو فرایند جدا اجرا شدند؛ قدم دوم یک بازخورد واقعی قبلی را فراخواند. status مستقل همان revision=2 و checkpoint قدم دوم را تأیید کرد. در CI نهایی، ۱۴ آزمون Windows موفق و ۱۳ آزمون Linux موفق با یک skip مخصوص Windows ثبت شد. سه آزمون نصب/فرمان پل به ۱۱ آزمون اولیه افزوده شده‌اند. نشانی شواهد در بخش بالا است.

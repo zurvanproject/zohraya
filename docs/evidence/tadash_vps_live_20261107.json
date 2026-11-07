@@ -1,0 +1,56 @@
+{
+  "schema": "nasuraya-tadash-vps-deployment-evidence/1",
+  "date": "2026-11-07",
+  "native_commit": "5f171aa493b41823b1198f767d803df053884f37",
+  "package_commit": "33c669113f08da032c75d4eaf2f778d515d7669f",
+  "job_commit": "6ef9ae84380e17e58a14a18b8c3ab68f98545381",
+  "package": {
+    "package_sha256": "6a0c9fe013aad59716b251c66aadec6081daa764ac76bfdb2dc0763ab2f049cb",
+    "package_bytes": 335432,
+    "manifest_sha256": "1ffedf1f438a2e3b9178a19703cfb2037c5d0296a94743ff9391493edae65d15"
+  },
+  "job_sha256": {
+    "tools/bridge_jobs/tadash_install.py": "4a11abcc7389521b8eb6d2258594a92bd937ce2ecf9b1abb2de579def03d2611",
+    "tools/bridge_jobs/tadash_step.py": "6964e01cd3a8da0611bfc95039578d23157babb7d2384bb30d1bdf161ded900f",
+    "tools/bridge_jobs/tadash_status.py": "263e2d37ad48da74b8231f38ce440773e6fcaf3871a65fa54407532248f42596"
+  },
+  "ci_run": 42370331772,
+  "windows_job": 128396947856,
+  "linux_job": 128396947780,
+  "pairs": [
+    {
+      "stage": "نصب",
+      "request": 6706638702,
+      "reply": 6706639765,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6706639765",
+      "body": "Nasuraya Bridge v2 result; request_id=comment-6706638702; command=run tadash_install\nResult: OK TADASH=READY; CYCLES=0; REV=0; SOURCE=70/70; STATE=SQLITE; MASS=195; ACT=0"
+    },
+    {
+      "stage": "قدم اول",
+      "request": 6706646249,
+      "reply": 6706650764,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6706650764",
+      "body": "Nasuraya Bridge v2 result; request_id=comment-6706646249; command=run tadash_step\nResult: OK TADASH=NATIVE; CYCLES=1; REV=1; REQUEST=walk; RESULT=protect; RECALL=0; REPLAY_EXTRA=0; SIG=caade4ae8aa9362d; ACT=0"
+    },
+    {
+      "stage": "قدم دوم در فرایند تازه",
+      "request": 6706655213,
+      "reply": 6706661162,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6706661162",
+      "body": "Nasuraya Bridge v2 result; request_id=comment-6706655213; command=run tadash_step\nResult: OK TADASH=NATIVE; CYCLES=2; REV=2; REQUEST=observe; RESULT=observe; RECALL=1; REPLAY_EXTRA=0; SIG=e56bddf4b641ec18; ACT=0"
+    },
+    {
+      "stage": "وضعیت مستقل",
+      "request": 6706664030,
+      "reply": 6706671508,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6706671508",
+      "body": "Nasuraya Bridge v2 result; request_id=comment-6706664030; command=run tadash_status\nResult: OK TADASH=ONLINE; CYCLES=2; REV=2; UNRESOLVED=0; SIG=e56bddf4b641ec18; ACT=0"
+    }
+  ],
+  "native_cycles": 2,
+  "last_revision": 2,
+  "unresolved": 0,
+  "checkpoint_sha256_prefix": "e56bddf4b641ec18",
+  "physical_actuation": false
+}
+
