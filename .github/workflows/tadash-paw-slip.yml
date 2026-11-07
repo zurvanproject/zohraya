@@ -1,0 +1,41 @@
+name: Measure native paw slip
+on:
+  pull_request:
+    paths:
+      - 'experiments/tadash_paw_slip.py'
+      - 'experiments/test_tadash_paw_slip.py'
+      - 'experiments/tadash_weight_shift.py'
+      - '.github/workflows/tadash-paw-slip.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  slip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: research
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: c6bac77802a7fab9178fb00eed28e3c4410b9482
+          path: pinned-motion
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r pinned-motion/examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Check native contact kinematics
+        working-directory: research
+        run: python -m unittest -v experiments.test_tadash_paw_slip
+      - name: Six native trials and per-paw slip
+        working-directory: research
+        run: python -m experiments.tadash_paw_slip --motion-source ../pinned-motion --output "${RUNNER_TEMP}/paw-slip"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: native-paw-slip
+          path: ${{ runner.temp }}/paw-slip
+          if-no-files-found: error

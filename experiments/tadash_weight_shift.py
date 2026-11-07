@@ -57,6 +57,7 @@ peak_joint_excess = 0.
 min_height = float(d.qpos[2])
 nonfeet = set()
 trace = []
+slip_observer = globals().get("slip_observer")
 failure = None
 held = []
 returned = []
@@ -88,6 +89,8 @@ for i in range(4000):
         failure = "nonfinite_or_native_warning"
         break
     forces, other = contact_state(m, d)
+    if slip_observer is not None:
+        slip_observer.sample(m, d, forces)
     nonfeet.update(other)
     tilt = math.degrees(math.acos(float(np.clip(d.xmat[1].reshape(3, 3)[2, 2], -1, 1))))
     peak_tilt = max(peak_tilt, tilt)
@@ -123,6 +126,7 @@ print(json.dumps({
     "last_half_second_max_speed": last_speed,
     "both_feet_loaded_fraction": both_contact_samples / 4000,
     "nonfoot_contacts": sorted(nonfeet), "qp_solves": ctrl.solves, "trace": trace,
+    **({"paw_slip": slip_observer.result()} if slip_observer is not None else {}),
     "controller": "original_v03_contact_QP_both_feet_grounded",
     "body_model": "unchanged_78kg_v03",
     "no_weight_update": True, "no_root_actuator": True
@@ -293,3 +297,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
