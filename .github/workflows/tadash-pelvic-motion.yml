@@ -1,0 +1,32 @@
+name: Tadash pelvic motion neurovascular tests
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tadash-pelvic-motion.yml'
+      - 'runtimes/tadash_body/pelvic_motion_v05.py'
+      - 'runtimes/tadash_body/pelvic_clearance_v04.py'
+      - 'runtimes/tadash_body/pelvic_neurovisceral_v03.py'
+      - 'examples/nasuraya_pelvis/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bounded-motion-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test geometry, nerve/visceral channels and fixed-root vascular sweep
+        run: |
+          python -m unittest \
+            examples.nasuraya_pelvis.test_pelvis_v01 \
+            examples.nasuraya_pelvis.test_pelvis_observer_v02 \
+            examples.nasuraya_pelvis.test_pelvic_neurovisceral_v03 \
+            examples.nasuraya_pelvis.test_pelvic_clearance_v04 \
+            examples.nasuraya_pelvis.test_pelvic_motion_v05 -v
