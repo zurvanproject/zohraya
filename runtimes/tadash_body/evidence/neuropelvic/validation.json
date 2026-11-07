@@ -1,0 +1,220 @@
+{
+  "schema": "tadash-neuropelvic-evaluation/1",
+  "fixture": "generated deterministic V2 defaults; seven-second warm-up excluded",
+  "body_baseline_commit": "97ae493d72bb83525582d672c09e4b853b18a808",
+  "wrapper_source_fingerprints": {
+    "neuropelvic.py": "11af35930b67c1f9d52621e1c00319bcd8c3087f68e1f4044026adfbfc485c11",
+    "neuropelvic_body.py": "ed6022f6a87f2687a66f74aa2923c8589bcc429a85187daf731d3c6d17d95ff1"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "execution_wall_seconds": 20.929646219999995,
+  "scenarios": {
+    "coupled": {
+      "peak_count": 1,
+      "final_neuropelvic": {
+        "time": 20.0,
+        "phase": "baseline",
+        "arousal": 0.0,
+        "pelvic_tone": 0.3,
+        "genital_perfusion": 0.25,
+        "pudendal_drive": 0.1,
+        "autonomic_drive": 0.2,
+        "fatigue": 0.0,
+        "tail_stability": 0.8,
+        "breath_rate": 0.3,
+        "heart_rate": 0.3,
+        "chakra": [
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ],
+        "sacral_signal": 0.0,
+        "resonance": 0.0,
+        "settling": 0.0
+      },
+      "final_body": {
+        "HR": 59.447343978678404,
+        "RR": 10.92702743085538,
+        "energy": 0.997415310500549,
+        "hydration": 0.999944316111385,
+        "temperature": 37.000056762186304,
+        "sympathetic": 0.18301481883850534,
+        "parasympathetic": 0.7384370321582112,
+        "muscle_tone": 0.28573267020179177,
+        "fatigue": 0.04126933309483094,
+        "pain": 0.11816434238666607,
+        "arousal": 0.3274211897738311,
+        "valence": 0.055074900082566054,
+        "posture": "double_support",
+        "balance": 1.0,
+        "breath_depth": 2.368219413909623,
+        "sleep_pressure": 0.3512380418169833
+      },
+      "events": [
+        {
+          "time": 0.0,
+          "from": "baseline",
+          "to": "rising",
+          "reason": "explicit_start",
+          "arousal": 0.0
+        },
+        {
+          "time": 3.94,
+          "from": "rising",
+          "to": "peak",
+          "reason": "threshold_held",
+          "arousal": 0.8169221239033766
+        },
+        {
+          "time": 5.54,
+          "from": "peak",
+          "to": "release",
+          "reason": "peak_complete",
+          "arousal": 0.877623418257301
+        },
+        {
+          "time": 7.66,
+          "from": "release",
+          "to": "recovery",
+          "reason": "arousal_settled",
+          "arousal": 0.1199137996724668
+        },
+        {
+          "time": 18.1,
+          "from": "recovery",
+          "to": "baseline",
+          "reason": "restored",
+          "arousal": 6.63612645181875e-06
+        }
+      ],
+      "json_roundtrip": true,
+      "simulated_seconds": 20,
+      "native_owner_ticks": 200
+    },
+    "ablated": {
+      "peak_count": 1,
+      "final_neuropelvic": {
+        "time": 20.0,
+        "phase": "baseline",
+        "arousal": 0.0,
+        "pelvic_tone": 0.3,
+        "genital_perfusion": 0.25,
+        "pudendal_drive": 0.1,
+        "autonomic_drive": 0.2,
+        "fatigue": 0.0,
+        "tail_stability": 0.8,
+        "breath_rate": 0.3,
+        "heart_rate": 0.3,
+        "chakra": [
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ],
+        "sacral_signal": 0.0,
+        "resonance": 0.0,
+        "settling": 0.0
+      },
+      "final_body": {
+        "HR": 64.78111046742663,
+        "RR": 15.105980277931128,
+        "energy": 0.9974160524821502,
+        "hydration": 0.9999443300494075,
+        "temperature": 37.00005672659259,
+        "sympathetic": 0.26954550550351036,
+        "parasympathetic": 0.6236054050459632,
+        "muscle_tone": 0.3076476654494424,
+        "fatigue": 0.04126933309483094,
+        "pain": 0.11845796489633023,
+        "arousal": 0.33332153119037866,
+        "valence": 0.055074900082566054,
+        "posture": "double_support",
+        "balance": 1.0,
+        "breath_depth": 1.649739597960283,
+        "sleep_pressure": 0.3512380418169833
+      },
+      "events": [
+        {
+          "time": 0.0,
+          "from": "baseline",
+          "to": "rising",
+          "reason": "explicit_start",
+          "arousal": 0.0
+        },
+        {
+          "time": 3.94,
+          "from": "rising",
+          "to": "peak",
+          "reason": "threshold_held",
+          "arousal": 0.8169221239033766
+        },
+        {
+          "time": 5.54,
+          "from": "peak",
+          "to": "release",
+          "reason": "peak_complete",
+          "arousal": 0.877623418257301
+        },
+        {
+          "time": 7.66,
+          "from": "release",
+          "to": "recovery",
+          "reason": "arousal_settled",
+          "arousal": 0.1199137996724668
+        },
+        {
+          "time": 18.1,
+          "from": "recovery",
+          "to": "baseline",
+          "reason": "restored",
+          "arousal": 6.63612645181875e-06
+        }
+      ],
+      "json_roundtrip": true,
+      "simulated_seconds": 20,
+      "native_owner_ticks": 200
+    }
+  },
+  "comparison": {
+    "actual_slow_breath_cycles": 13,
+    "achieved_slow_breath_ticks": 130,
+    "min_native_RR_coupled": 9.998117775211096,
+    "min_native_RR_ablated": 14.353123734013742,
+    "final_native_RR_delta": -4.178952847075747,
+    "final_native_HR_delta": -5.333766488748225,
+    "final_native_muscle_tone_delta": -0.021914995247650615,
+    "maximum_energy_error_J": 1.132491433963878e-09,
+    "maximum_water_error_L": 7.939588114562468e-14
+  },
+  "acceptance": {
+    "exactly_one_peak_each": true,
+    "final_sidecar_restored": true,
+    "coupling_changes_native_respiration": true,
+    "actual_slow_breath_was_executed": true,
+    "native_ticks_not_duplicated": true,
+    "conservation": true
+  },
+  "feedback_latency": "previous simulator snapshot; at most one 1-second wrapper cycle",
+  "new_physical_stock": false,
+  "empirical_validation": false,
+  "external_model_api_used": false,
+  "full_pelvic_floor_actuator": false,
+  "limitation": "Native body remains the existing reduced 195 kg solver; this is not the 78 kg MuJoCo atlas.",
+  "verification": {
+    "cycle_and_bridge_tests": 37,
+    "cycle_and_bridge_passed": true,
+    "post_change_actuator_assertion_passed": true,
+    "native_regression_tests": 58,
+    "native_regression_passed": true,
+    "distinct_unit_tests_passed": 95,
+    "unchanged_native_files_verified": 70
+  }
+}
