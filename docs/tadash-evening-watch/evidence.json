@@ -1,0 +1,80 @@
+{
+  "schema": "nasuraya-evening-watch-public-evidence/1",
+  "date": "2026-11-07",
+  "pull_request": 159,
+  "source_commit": "47be80f6616556fa05ed7e4c6a56b92d181c00c9",
+  "source_hashes": {
+    "deploy/tadash_watch/watch.py": "ae07581fb7a5ecafb9274199364ab836a8529e07823b70e2ee1bbd867ecb3058",
+    "tools/bridge_jobs/watch_evening_install.py": "4324be493315880f65190ddff6cd0b6ace7c3ba209346c5f22e55e096112992e",
+    "tools/bridge_jobs/watch_evening_report.py": "f53487a7d218373bfe9231527e36ff9ca7789e0e26101f6eac507a6acce44ef0",
+    "tests/test_tadash_evening_watch.py": "efd47b6f5f8fcdb48dddca1345fe863668b3987ac104f043257fb219b85922b6"
+  },
+  "deadline": "2026-11-07T22:00:00+03:30",
+  "deadline_utc": "2026-11-07T18:30:00Z",
+  "interval_seconds": 600,
+  "task_names": [
+    "NasurayaEveningWatch20261107Sample",
+    "NasurayaEveningWatch20261107Final"
+  ],
+  "principal": "SYSTEM",
+  "scheduler_readback": "exported XML duration parsed as 600 seconds and final boundary matched to calibrated host deadline",
+  "installation": {
+    "request": 6708007131,
+    "response": 6708009786,
+    "first_system_sample_verified": true,
+    "first_sample_bad": 0,
+    "initial_revision": 9,
+    "source": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6708009786"
+  },
+  "live_report": {
+    "request": 6708010669,
+    "response": 6708020846,
+    "status": "active",
+    "samples": 1,
+    "bad_samples": 0,
+    "missing_slots": 0,
+    "maximum_gap_seconds": 66,
+    "revision": 9,
+    "checkpoint_prefix": "36ef52e76264c1bb",
+    "coverage_complete": false,
+    "final_sample_recorded": false
+  },
+  "delivery": {
+    "chatgpt_report_scheduled": true,
+    "is_enabled": true,
+    "schedule": "2026-11-07T22:00:00+03:30",
+    "timezone": "Asia/Tehran",
+    "one_time": true,
+    "server_report_verified_readable": true
+  },
+  "clock": {
+    "host_clock_skew_observed": true,
+    "first_precondition_receipt": 6707830377,
+    "diagnostic_receipt": 6707853288,
+    "initial_host_remaining_seconds": -2119,
+    "reference": "fresh GitHub HTTPS Date from a unique no-cache HEAD request during installer only",
+    "system_clock_changed": false,
+    "offset_persisted_privately": true,
+    "assumption": "calibrated host offset remains stable over this finite watch window"
+  },
+  "ci": {
+    "run": 42380344135,
+    "linux_job": 128426449089,
+    "windows_job": 128426449318,
+    "tests_per_platform": 4,
+    "result": "success"
+  },
+  "safety": {
+    "model_api_calls_by_watch": 0,
+    "sampler_network_calls": 0,
+    "api_key_access": false,
+    "native_and_worker_ledgers_readonly": true,
+    "model_dialogue_copied": false,
+    "worker_and_bridge_unchanged": true,
+    "automatic_goals": false,
+    "budgets_unchanged": true
+  },
+  "scope": "ten-minute samples; brief outages between observations may not be detected",
+  "server_directory": "%PROGRAMDATA%/NasurayaModelWorker/monitoring/evening-20261107",
+  "final_result_available": false
+}

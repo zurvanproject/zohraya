@@ -1,0 +1,27 @@
+name: Tadash finite evening watch
+on:
+  push:
+    branches: ['nasuraya/evening-stability-watch-20261107']
+    paths: ['deploy/tadash_watch/**', 'tools/bridge_jobs/watch_evening_*.py', 'tests/test_tadash_evening_watch.py', '.github/workflows/tadash-evening-watch.yml']
+  pull_request:
+    paths: ['deploy/tadash_watch/**', 'tools/bridge_jobs/watch_evening_*.py', 'tests/test_tadash_evening_watch.py', '.github/workflows/tadash-evening-watch.yml']
+permissions:
+  contents: read
+jobs:
+  watch:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify read-only snapshots, drift detection and honest coverage
+        run: python -m unittest discover -s tests -p "test_tadash_evening_watch.py" -v
