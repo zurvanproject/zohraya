@@ -1,0 +1,294 @@
+{
+  "status": "verified_offline",
+  "assessment": {
+    "api": {
+      "action_correct": 9,
+      "metric_mae": 0.0005326620850950359,
+      "n": 12
+    },
+    "nearest_episode": {
+      "action_correct": 12,
+      "metric_mae": 0.0005988940669068192,
+      "n": 12
+    },
+    "persistence": {
+      "action_correct": 6,
+      "metric_mae": 0.0008547965209629825,
+      "n": 12
+    }
+  },
+  "rounds": [
+    {
+      "api": {
+        "action_correct": 6,
+        "metric_mae": 0.0003141466800260332,
+        "n": 6
+      },
+      "nearest_episode": {
+        "action_correct": 6,
+        "metric_mae": 0.0005816439480626222,
+        "n": 6
+      },
+      "persistence": {
+        "action_correct": 3,
+        "metric_mae": 0.0006735647696004076,
+        "n": 6
+      }
+    },
+    {
+      "api": {
+        "action_correct": 3,
+        "metric_mae": 0.0007511774901640387,
+        "n": 6
+      },
+      "nearest_episode": {
+        "action_correct": 6,
+        "metric_mae": 0.0006161441857510161,
+        "n": 6
+      },
+      "persistence": {
+        "action_correct": 3,
+        "metric_mae": 0.0010360282723255575,
+        "n": 6
+      }
+    }
+  ],
+  "api_numeric_wins": {
+    "persistence": 11,
+    "nearest_episode": 6
+  },
+  "incremental_estimated_micro_usd": 3530,
+  "total_estimated_micro_usd": 16183,
+  "input_tokens": 3174,
+  "output_tokens": 2280,
+  "receipt_rows": [
+    {
+      "round": 1,
+      "id": "normal-2",
+      "actual_action": "walk",
+      "scores": {
+        "api": {
+          "action_correct": true,
+          "metric_mae": 0.00006469330779774801
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.00007642003770095282
+        },
+        "persistence": {
+          "action_correct": true,
+          "metric_mae": 0.00036895099523622703
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "normal-5",
+      "actual_action": "walk",
+      "scores": {
+        "api": {
+          "action_correct": true,
+          "metric_mae": 0.00006275284390989087
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.0003174949862175705
+        },
+        "persistence": {
+          "action_correct": true,
+          "metric_mae": 0.0007942097454201268
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "normal-10",
+      "actual_action": "walk",
+      "scores": {
+        "api": {
+          "action_correct": true,
+          "metric_mae": 0.00043581336453247686
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.0011300960208683358
+        },
+        "persistence": {
+          "action_correct": true,
+          "metric_mae": 0.0010948956606973335
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "sleep-2",
+      "actual_action": "protect",
+      "scores": {
+        "api": {
+          "action_correct": true,
+          "metric_mae": 0.00013447187993392232
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.00013465444882482594
+        },
+        "persistence": {
+          "action_correct": false,
+          "metric_mae": 0.00030642302184630873
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "sleep-5",
+      "actual_action": "protect",
+      "scores": {
+        "api": {
+          "action_correct": true,
+          "metric_mae": 0.00037534394451918226
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.0005509496330751915
+        },
+        "persistence": {
+          "action_correct": false,
+          "metric_mae": 0.0005517482673822491
+        }
+      }
+    },
+    {
+      "round": 1,
+      "id": "sleep-10",
+      "actual_action": "protect",
+      "scores": {
+        "api": {
+          "action_correct": true,
+          "metric_mae": 0.0008118047394629789
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.0012802485616888563
+        },
+        "persistence": {
+          "action_correct": false,
+          "metric_mae": 0.0009251609270202006
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "normal-2",
+      "actual_action": "walk",
+      "scores": {
+        "api": {
+          "action_correct": true,
+          "metric_mae": 0.00006344579726703763
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.00001536771997783957
+        },
+        "persistence": {
+          "action_correct": true,
+          "metric_mae": 0.0003058630673682355
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "normal-5",
+      "actual_action": "walk",
+      "scores": {
+        "api": {
+          "action_correct": true,
+          "metric_mae": 0.0004982852303862138
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.0004357126802364843
+        },
+        "persistence": {
+          "action_correct": true,
+          "metric_mae": 0.0002975076342499189
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "normal-10",
+      "actual_action": "walk",
+      "scores": {
+        "api": {
+          "action_correct": true,
+          "metric_mae": 0.003339887458660606
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.002972508614707367
+        },
+        "persistence": {
+          "action_correct": true,
+          "metric_mae": 0.004434777902514941
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "sleep-2",
+      "actual_action": "observe",
+      "scores": {
+        "api": {
+          "action_correct": false,
+          "metric_mae": 0.0001419811366096058
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.000006258551321216416
+        },
+        "persistence": {
+          "action_correct": false,
+          "metric_mae": 0.0001644734629754471
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "sleep-5",
+      "actual_action": "observe",
+      "scores": {
+        "api": {
+          "action_correct": false,
+          "metric_mae": 0.00018088254402346933
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.00005593949014832608
+        },
+        "persistence": {
+          "action_correct": false,
+          "metric_mae": 0.00037090280567234025
+        }
+      }
+    },
+    {
+      "round": 2,
+      "id": "sleep-10",
+      "actual_action": "observe",
+      "scores": {
+        "api": {
+          "action_correct": false,
+          "metric_mae": 0.0002825827740372995
+        },
+        "nearest_episode": {
+          "action_correct": true,
+          "metric_mae": 0.00021107805811486358
+        },
+        "persistence": {
+          "action_correct": false,
+          "metric_mae": 0.0006426447611724622
+        }
+      }
+    }
+  ]
+}
