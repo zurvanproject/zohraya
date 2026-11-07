@@ -39,3 +39,18 @@ class SlipTests(unittest.TestCase):
         self.assertIsNone(observer.rows[0][3])
         with self.assertRaisesRegex(ValueError, "right"):
             observer.result()
+
+    @unittest.skipUnless(mujoco.__version__.split(".")[0] == "4", "native linvel in the 4.0 comparison")
+    def test_native_linvel_crosscheck(self):
+        model = mujoco.MjModel.from_xml_string("""<mujoco><worldbody>
+        <geom name="ground" type="plane" size="2 2 .1"/>
+        <body pos="0 0 .099"><freejoint/><geom name="pad" type="sphere" size=".1"/></body>
+        </worldbody><sensor><contact geom1="ground" geom2="pad" data="found linvel"/></sensor></mujoco>""")
+        data = mujoco.MjData(model)
+        data.qvel[:] = [.03, .04, -.02, 1., 0., 0.]
+        mujoco.mj_forward(model, data)
+        self.assertEqual(data.sensordata[0], 1)
+        via_sensor = float(np.linalg.norm(data.sensordata[2:4]))
+        measured = contact_speed(model, data, data.contact[0])
+        self.assertAlmostEqual(via_sensor, measured, places=10)
+        print(f"sensor_linvel_tangent_m_s={via_sensor:.10f}, jacobian_m_s={measured:.10f}")

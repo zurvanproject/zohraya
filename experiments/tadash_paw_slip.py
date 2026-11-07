@@ -78,6 +78,8 @@ class PawSlip:
 
 
 def run(source, output):
+    import mujoco
+
     from experiments import tadash_motion_episode as evidence
     from experiments import tadash_weight_shift as shift
     from experiments.tadash_first_touch_practice import TRAIN, TEST
@@ -105,7 +107,8 @@ def run(source, output):
         results.append({"name": name, "shift_m": target, "friction": friction,
                         "source_trace_sha256": evidence.sha(output / f"{name}.json"),
                         "feet": slip["feet"]})
-    summary = {"schema": "tadash-native-paw-slip/1", "source": identity, "trials": results}
+    summary = {"schema": "tadash-native-paw-slip/1", "source": identity,
+               "mujoco_version": mujoco.__version__, "trials": results}
     evidence.write(output / "summary.json", summary)
     print(json.dumps(summary, allow_nan=False))
 

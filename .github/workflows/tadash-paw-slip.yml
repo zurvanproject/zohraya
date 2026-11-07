@@ -11,6 +11,10 @@ permissions:
   contents: read
 jobs:
   slip:
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: ['3.11.0', '4.0.0']
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -27,7 +31,19 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install -r pinned-motion/examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Install isolated pinned engine and trial dependencies
+        env:
+          ENGINE: ${{ matrix.engine }}
+        run: |
+          constraints=pinned-motion/examples/nasuraya_research/articulated/requirements-trial.txt
+          if [ "$ENGINE" = "3.11.0" ]; then
+            python -m pip install -r "$constraints"
+          else
+            sed "s/^mujoco==3.11.0$/mujoco-core==$ENGINE/" "$constraints" > "${RUNNER_TEMP}/slip-deps.txt"
+            python -m pip install -r "${RUNNER_TEMP}/slip-deps.txt"
+          fi
+          python -c 'import mujoco, os; assert mujoco.__version__ == os.environ["ENGINE"]'
+
       - name: Check native contact kinematics
         working-directory: research
         run: python -m unittest -v experiments.test_tadash_paw_slip
@@ -36,6 +52,6 @@ jobs:
         run: python -m experiments.tadash_paw_slip --motion-source ../pinned-motion --output "${RUNNER_TEMP}/paw-slip"
       - uses: actions/upload-artifact@v4
         with:
-          name: native-paw-slip
+          name: native-paw-slip-${{ matrix.engine }}
           path: ${{ runner.temp }}/paw-slip
           if-no-files-found: error
