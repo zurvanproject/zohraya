@@ -1,4 +1,5 @@
 import base64
+from contextlib import closing
 import hashlib
 import importlib.util
 import json
@@ -82,9 +83,10 @@ class NativeVPSHostTests(unittest.TestCase):
     def test_foreign_ledger_is_refused_without_mutation(self):
         self.state.mkdir()
         db = self.state / "session.sqlite"
-        with sqlite3.connect(db) as connection:
+        with closing(sqlite3.connect(db)) as connection:
             connection.execute("CREATE TABLE foreign_data (value TEXT)")
             connection.execute("INSERT INTO foreign_data VALUES ('untouched')")
+            connection.commit()
         before = hashlib.sha256(db.read_bytes()).hexdigest()
         self.call("init", good=False)
         self.assertEqual(hashlib.sha256(db.read_bytes()).hexdigest(), before)
@@ -92,10 +94,11 @@ class NativeVPSHostTests(unittest.TestCase):
     def test_unresolved_operation_blocks_new_work(self):
         self.call("init")
         one = self.call("step")
-        with sqlite3.connect(self.state / "session.sqlite") as db:
+        with closing(sqlite3.connect(self.state / "session.sqlite")) as db:
             record = json.loads(db.execute("SELECT record FROM decisions WHERE id='vps-cycle-1'").fetchone()[0])
             record["status"] = "running"
             db.execute("UPDATE decisions SET status='running',record=? WHERE id='vps-cycle-1'", (json.dumps(record),))
+            db.commit()
         self.call("step", good=False)
         after = self.call("status")
         self.assertEqual(after["revision"], one["revision"])

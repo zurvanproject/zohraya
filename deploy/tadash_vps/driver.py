@@ -2,7 +2,7 @@
 The native 195 kg aggregate software plant and its protections remain unchanged.
 New generated fixture state is separate from every prior/user checkpoint.
 """
-from contextlib import contextmanager
+from contextlib import contextmanager, closing
 from datetime import datetime, timedelta
 import hashlib
 import importlib.util
@@ -75,8 +75,10 @@ def regular(path):
 @contextmanager
 def host_lock(root):
     root = Path(root).absolute()
-    if root.exists() and (root.is_symlink() or not root.is_dir() or root.resolve() != root):
+    if root.exists() and (root.is_symlink() or getattr(root, 'is_junction', lambda: False)() or not root.is_dir()):
         raise ValueError("dedicated nonaliased state directory required")
+    # Windows TEMP can contain an 8.3 short-name alias; canonicalize it once.
+    root = root.resolve()
     root.mkdir(mode=0o700, parents=True, exist_ok=True)
     path = root / "host.lock.sqlite"
     regular(path)
@@ -94,7 +96,7 @@ def checked_ledger(path):
     regular(path)
     if not path.is_file():
         raise ValueError("initialize a new host explicitly")
-    with sqlite3.connect(path.resolve().as_uri() + "?mode=ro", uri=True) as db:
+    with closing(sqlite3.connect(path.resolve().as_uri() + "?mode=ro", uri=True)) as db:
         row = db.execute("SELECT value FROM meta WHERE key=?", (SCHEMA,)).fetchone()
         if row is None:
             raise ValueError("foreign ledger; no reset")
