@@ -22,6 +22,13 @@ def clip(x):
     return max(0.0, min(1.0, float(x)))
 
 
+def unit(x):
+    """External normalized signals are validated, never silently clipped."""
+    if type(x) not in (int, float) or not isfinite(x) or not 0.0 <= x <= 1.0:
+        raise ValueError("normalized input must be in [0, 1]")
+    return float(x)
+
+
 def simulate(seed, sequences):
     """Independent seeded synthetic trajectories. Outcome is hidden future state."""
     if type(seed) is not int or type(sequences) is not int or not 1 <= sequences <= 30:
@@ -91,7 +98,7 @@ def decide(*, boundary, pain, fatigue, familial):
     """Advisory-only test that protective rules beat exploratory preferences."""
     if type(boundary) is not bool or type(familial) is not bool:
         raise ValueError("explicit boolean flags required")
-    pain, fatigue = clip(pain), clip(fatigue)
+    pain, fatigue = unit(pain), unit(fatigue)
     if boundary:
         return "respect_boundary"
     if pain >= 0.70 or fatigue >= 0.80:
