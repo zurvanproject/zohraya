@@ -1,0 +1,94 @@
+{
+  "schema": "nasuraya-tadash-model-goal-live/1",
+  "date": "2026-11-07",
+  "goal_id": "nasuraya-review-20261107-v1",
+  "model": "gpt-6-astra",
+  "backend": "agents_api",
+  "environment": "none",
+  "orchestration": "caller-mediated Work operator with GitHub Bridge v2",
+  "new_native_cycles": 3,
+  "initial_body_revision": 2,
+  "final_body_revision": 5,
+  "final_checkpoint_sha256_prefix": "037cccf654aa6f54",
+  "goal_complete": true,
+  "live_api_turn_completed": true,
+  "api_results_acknowledged": 4,
+  "session_sha256": "b323508ac63d5456355cb1e144ebe301034f2208694700337db0a75428e8cda0",
+  "final_turn_sha256": "e3b7df74a778b64664e3dd48e18a3f06a6cd6f69fa6a857e50038e1aeea267f1",
+  "api_session_deleted": true,
+  "api_key_published": false,
+  "private_dialogue_published": false,
+  "native_model_mass_kg": 195,
+  "physical_actuation": false,
+  "tests": {
+    "goal_tests_per_os": 18,
+    "workflow_run": 42373119231,
+    "windows_job": 128405135937,
+    "linux_job": 128405136182,
+    "prior_host_regression_run": 42373119147
+  },
+  "events": [
+    {
+      "call_key": "05ab680ce33248e3d9fa84da561c514f350f3320b1c0cdea3d30cdf410be0cb8",
+      "name": "observe_body",
+      "arguments": {},
+      "source_commit": "7e33a82285f9cfbc7d1b3240af0d91cbf467c09a",
+      "job_sha256": "8b57de5b4ee2892a6cac345d34d16860f12330727dc5355f3ab3bf832f1571d5",
+      "request_id": 6706899988,
+      "reply_id": 6706908167,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6706908167",
+      "summary": "G=ACTIVE;N=0/3;R=2;E=0.999;F=0.011;P=0.115;S=0.950;Q=none;D=none;A=none;MEM=0;X=0;SIG=e56bddf4b641ec18;PHY=0"
+    },
+    {
+      "call_key": "f04bdc3856caf078c5251670a8007fbe5fbcbf0fc3e91dbfded46f4f835bc568",
+      "name": "request_body_action",
+      "arguments": {
+        "action": "observe"
+      },
+      "source_commit": "94887f812e8bfd45b48a05f335f8b1a820e2e3d8",
+      "job_sha256": "93cd55a8d168e64e900a56ff0e0b15f5998255792fdc0bf672082039cbd3f302",
+      "request_id": 6706949315,
+      "reply_id": 6706951450,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6706951450",
+      "summary": "G=ACTIVE;N=1/3;R=3;E=0.999;F=0.011;P=0.115;S=0.950;Q=observe;D=observe;A=observe;MEM=2;X=0;SIG=ca5c27d7106de3f9;PHY=0"
+    },
+    {
+      "call_key": "3a3edcf624031550d1b55babeccf049bf1906d82f1e35b6b5583542f2f7ce50b",
+      "name": "request_body_action",
+      "arguments": {
+        "action": "observe"
+      },
+      "source_commit": "e17700944ccff39d063bbadac6b366016973e883",
+      "job_sha256": "083555326d89985f4ce27e4d543b8c62dd20f6447cdff1e9956caa5e0f7afb4d",
+      "request_id": 6706964580,
+      "reply_id": 6706972791,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6706972791",
+      "summary": "G=ACTIVE;N=2/3;R=4;E=0.999;F=0.011;P=0.115;S=0.950;Q=observe;D=observe;A=observe;MEM=2;X=0;SIG=9e39fa713176be9f;PHY=0"
+    },
+    {
+      "call_key": "3635357d7718824edd97c3659b86939dba14a965d7e000f23f96ea85bc5451e9",
+      "name": "request_body_action",
+      "arguments": {
+        "action": "observe"
+      },
+      "source_commit": "029fdfcf70bd82de45f9feb2f02077071fffb6b1",
+      "job_sha256": "b570bab405944536fda1b2af58587c0d325bd406ac17eab54fa5455bbc44f54d",
+      "request_id": 6706984990,
+      "reply_id": 6706995616,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6706995616",
+      "summary": "G=DONE;N=3/3;R=5;E=0.999;F=0.011;P=0.115;S=0.950;Q=observe;D=observe;A=observe;MEM=2;X=0;SIG=037cccf654aa6f54;PHY=0"
+    },
+    {
+      "call_key": "b9ea8652f19b895177207a51c1e68851242158014894675f4965d3429b4e3166",
+      "name": "evaluate_goal",
+      "arguments": {},
+      "source_commit": "ca5e7303b0ec6d40baabd79d983dc402ccf025e7",
+      "job_sha256": "05490695092dc190ec0fb5c71f8b89a3395fdcb37ee7f69f515f2885ecc9b46f",
+      "request_id": 6707010138,
+      "reply_id": 6707018674,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6707018674",
+      "summary": "G=DONE;N=3/3;R=5;E=0.999;F=0.011;P=0.115;S=0.950;Q=none;D=none;A=none;MEM=0;X=0;SIG=037cccf654aa6f54;PHY=0"
+    }
+  ]
+}
+

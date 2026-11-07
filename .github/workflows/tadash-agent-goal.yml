@@ -1,0 +1,28 @@
+name: Tadash model-goal restart and receipts
+on:
+  push:
+    branches: ['nasuraya/tadash-model-goal-v01-20261107']
+    paths: ['deploy/tadash_agent/**', 'tools/bridge_jobs/tadash_goal_call.py', 'tests/test_tadash_agent_*.py', '.github/workflows/tadash-agent-goal.yml']
+  pull_request:
+    paths: ['deploy/tadash_agent/**', 'tools/bridge_jobs/tadash_goal_call.py', 'tests/test_tadash_agent_*.py', '.github/workflows/tadash-agent-goal.yml']
+permissions:
+  contents: read
+jobs:
+  durable-goal:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify goal, native protection and receipt replay without API
+        run: python -m unittest discover -s tests -p "test_tadash_agent_*.py" -v
+
