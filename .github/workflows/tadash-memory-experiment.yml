@@ -1,0 +1,27 @@
+name: Tadash cold memory experiment
+on:
+  push:
+    branches: ['nasuraya/server-memory-three-cycle-20261107']
+    paths: ['tools/bridge_jobs/worker_memory_*.py', 'tests/test_tadash_memory_experiment.py', '.github/workflows/tadash-memory-experiment.yml']
+  pull_request:
+    paths: ['tools/bridge_jobs/worker_memory_*.py', 'tests/test_tadash_memory_experiment.py', '.github/workflows/tadash-memory-experiment.yml']
+permissions:
+  contents: read
+jobs:
+  memory:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify cold memory comparison and exactly-three-cycle continuation without API
+        run: python -m unittest discover -s tests -p "test_tadash_memory_experiment.py" -v
