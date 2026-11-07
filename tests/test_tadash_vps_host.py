@@ -177,6 +177,46 @@ class NativeVPSHostTests(unittest.TestCase):
         self.assertEqual(passed.returncode, 0, passed.stderr)
 
 
+
+
+class DeploymentJobTests(unittest.TestCase):
+    def setUp(self):
+        spec = importlib.util.spec_from_file_location("tadash_install_job", ROOT / "tools/bridge_jobs/tadash_install.py")
+        self.job = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(self.job)
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name) / "dedicated"
+        self.payload = BUNDLE.read_bytes()
+
+    def test_full_deployment_and_cold_step_protocol(self):
+        ready = self.job.perform("install", self.root, self.payload)
+        one = self.job.perform("step", self.root)
+        two = self.job.perform("step", self.root)
+        status = self.job.perform("status", self.root)
+        self.assertIn("CYCLES=0", ready["summary"])
+        self.assertIn("RESULT=protect", one["summary"])
+        self.assertIn("RESULT=observe; RECALL=1", two["summary"])
+        self.assertIn("CYCLES=2", status["summary"])
+        for result in (ready, one, two, status):
+            self.assertRegex(result["summary"], r"\A[a-zA-Z0-9 .,:;=/_()+-]{1,180}\Z")
+
+    def test_modified_package_is_rejected_without_install(self):
+        with self.assertRaises(ValueError):
+            self.job.install_local(self.payload + b"changed", self.root)
+        self.assertFalse(self.job.installation(self.root).exists())
+
+    def test_existing_install_is_verified_and_arbitrary_command_refused(self):
+        self.job.install_local(self.payload, self.root)
+        self.assertEqual(self.job.install_local(b"unused", self.root), self.job.installation(self.root))
+        with self.assertRaises(ValueError):
+            self.job.invoke(self.root, "shell")
+        source = self.job.installation(self.root) / "driver.py"
+        source.write_bytes(source.read_bytes() + b"\n# changed")
+        with self.assertRaises(ValueError):
+            self.job.perform("status", self.root)
+
+
 if __name__ == "__main__":
     unittest.main()
 
