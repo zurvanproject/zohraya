@@ -31,5 +31,7 @@ jobs:
           python-version: '3.12'
       - name: Run fixed synthetic holdout tests
         run: python -m unittest discover -s tests -p test_worldmodel_probe.py -v
+      - name: Print checksum for immutable bridge job
+        run: python -c "import hashlib,pathlib; print('JOB_SHA256='+hashlib.sha256(pathlib.Path('tools/bridge_jobs/worldmodel_probe.py').read_bytes()).hexdigest())"
       - name: Run isolated read-only server job smoke
         run: python -I tools/bridge_jobs/worldmodel_probe.py
