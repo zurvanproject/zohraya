@@ -1,0 +1,59 @@
+name: Nasuraya integrated working memory (software only)
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_loop/workspace.py'
+      - 'examples/nasuraya_body_loop/workspace_demo.py'
+      - 'examples/nasuraya_body_loop/test_workspace.py'
+      - 'examples/nasuraya_body_loop/experience.py'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - '.github/workflows/nasuraya-workspace.yml'
+      - 'docs/nasuraya-integrated-workspace-v01-fa.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  working-memory:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      OPENAI_API_KEY: ''
+      GH_HOST_TOKEN: ''
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Validate native software-body workspace and adverse inputs
+        run: python3 -m examples.nasuraya_body_loop workspace-test
+      - name: Ensure old experience integration still works without opt-in
+        run: python3 -m examples.nasuraya_body_loop experience-test
+      - name: Exercise two native body fixtures with actual steps and cold recovery
+        run: python3 -m examples.nasuraya_body_loop workspace-demo --output-dir "$RUNNER_TEMP/workspace-demo"
+      - name: Validate end-to-end persistent working-memory receipts
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ['RUNNER_TEMP'])/'workspace-demo'
+          result=json.loads((root/'summary.json').read_text(encoding='utf-8'))
+          assert result['software_body_cycles'] == 6
+          assert result['workspace_updated_from_native_receipts'] == 6
+          assert result['sessions_reopened'] == 2
+          assert result['api_calls'] == 0 and result['physical_actuation'] is False
+          assert result['consciousness_claim'] is None
+          assert result['fixtures']['normal']['requested'][0] == 'walk'
+          assert result['fixtures']['sleep']['requested'][0] == 'observe'
+          assert all(v['cold_restart_preserved_workspace'] and
+                     not v['replay_created_extra_body_cycles']
+                     for v in result['fixtures'].values())
+          assert all(v['native_protection_owned_by_body']
+                     for v in result['fixtures'].values())
+          print(json.dumps({'normal':result['fixtures']['normal']['requested'],
+                            'sleep':result['fixtures']['sleep']['requested'],
+                            'recovered_cycles':result['workspace_updated_from_native_receipts'],
+                            'api_calls':result['api_calls']},ensure_ascii=False))
+          print('PASS: integrated, recovered, bounded, no cost')
+          PY

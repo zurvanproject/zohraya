@@ -9,6 +9,37 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'workspace-test':
+        from . import test_workspace
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_workspace)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'workspace-demo':
+        from .workspace_demo import demo
+        result = demo(Path(args['output_dir']))
+        (Path(args['output_dir']) / 'summary.json').write_text(
+            json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + '\n',
+            encoding='utf-8')
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0 if result['workspace_updated_from_native_receipts'] == 6 else 1
+    if command.startswith('workspace-'):
+        from .experience import ExperienceController
+        from . import workspace
+        with BodyLoop(args['session']) as loop:
+            controller = ExperienceController(loop)
+            if command == 'workspace-enable':
+                result = controller.enable_workspace()
+            elif command == 'workspace-step':
+                if 'workspace' not in controller.status()['state']:
+                    raise ValueError('enable integrated workspace before workspace-step')
+                result = controller.step(args['decision_id'], duration_s=args['duration_s'])
+            else:
+                state = controller.status()
+                result = state['integrated_workspace'] or {'enabled': False}
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            if command == 'workspace-step':
+                return 0 if result['native_receipt']['status'] == 'complete' else 1
+        return 0
     if command == 'self-knowledge-eval':
         from .self_knowledge_eval import run_evaluation
         summary = run_evaluation(Path(args['output_dir']))

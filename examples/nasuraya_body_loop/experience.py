@@ -90,6 +90,27 @@ def plan(state, snapshot, duration_s):
     or overrides the existing controller/native protection.
     """
     proposed = _policy_plan(state, snapshot, duration_s)
+    if 'workspace' in state:
+        from . import workspace
+        integrated = workspace.prepare(state['workspace'], snapshot, proposed)
+        proposed['workspace'] = integrated
+        if integrated['preferred'] != proposed['preferred']:
+            # The shared workspace may only conservatively downgrade a
+            # preference. Native BodyLoop still owns the final safety veto.
+            if proposed['preferred'] != 'walk' or integrated['preferred'] != 'observe':
+                raise ValueError('workspace exceeded bounded observation authority')
+            proposed['base_preferred'] = proposed['preferred']
+            proposed['preferred'] = integrated['preferred']
+            key = canonical([proposed['context'], proposed['preferred'], duration_s])
+            predictor = (state['predictors'].get(key)
+                         if state['flags']['prediction'] else None)
+            delta = predictor['mean_delta'] if predictor else dict.fromkeys(METRICS, 0.)
+            before = metrics(snapshot)
+            proposed['prediction'] = dict(
+                key=key, before=before,
+                expected={k: clamp(before[k] + delta[k]) for k in METRICS},
+                prior_samples=predictor['count'] if predictor else 0,
+                scope='next software state after workspace preference; not calibrated probability')
     proposed['action_forecast'] = forecast_action(
         state['episodes'], context=proposed['context'],
         preferred=proposed['preferred'], duration_s=duration_s,
@@ -133,7 +154,25 @@ class ExperienceController:
                 set(state['flags']) != set(FLAGS) or
                 any(type(v) is not bool for v in state['flags'].values())):
             raise ValueError('experience state integrity/contract mismatch')
+        if 'workspace' in state:
+            from . import workspace
+            workspace.validate(state['workspace'])
         return state
+
+    def enable_workspace(self):
+        """One-time opt-in for the shared working memory in an existing session.
+
+        Old sessions remain valid and unchanged until explicitly enabled.
+        This never resets native action budgets or pending work.
+        """
+        from . import workspace
+        state = self._load()
+        if any(intent['result'] is None for intent in state['intents'].values()):
+            raise InterruptedExecution('reconcile pending experience intent before workspace enable')
+        if 'workspace' not in state:
+            state['workspace'] = workspace.initial()
+            self._save(state)
+        return workspace.summary(state['workspace'])
 
     def _save(self, state):
         self.loop.engine.db.execute('UPDATE meta SET value=? WHERE key=?',
@@ -141,9 +180,14 @@ class ExperienceController:
 
     def status(self):
         state = self._load()
+        integrated = None
+        if 'workspace' in state:
+            from . import workspace
+            integrated = workspace.summary(state['workspace'])
         return dict(state=state, native=self.loop.status(), external_model_api_used=False,
                     background_process_started=False,
-                    self_knowledge=summarize_action_forecasts(state['intents']))
+                    self_knowledge=summarize_action_forecasts(state['intents']),
+                    integrated_workspace=integrated)
 
     def _finish(self, state, request_id, record, *, replayed):
         intent = state['intents'][request_id]
@@ -192,6 +236,16 @@ class ExperienceController:
                 actual_action=receipt['actual_action'], harm=harm, importance=max(.2, harm, error),
                 strength=1., accesses=0, at=now, last_decay_at=now, archived=False,
                 source=prediction['source'], kind='observed_software_outcome'))
+            if 'workspace' in state:
+                if 'workspace' not in p:
+                    raise ValueError('workspace plan missing from pre-outcome intent')
+                from . import workspace
+                # The same state save persists the native experience AND the
+                # global-workspace learning receipt. No independent writer.
+                state['workspace'] = workspace.record(
+                    state['workspace'], request_id, p['workspace'],
+                    intent['snapshot'], receipt['actual_action'],
+                    prediction['source'], error, harm)
         else:
             prediction.update(actual=None, mean_absolute_error=None, unresolved=True)
         result = dict(request_id=request_id, plan=deepcopy(p), prediction=prediction,
