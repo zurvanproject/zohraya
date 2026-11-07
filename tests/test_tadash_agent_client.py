@@ -12,8 +12,8 @@ client=importlib.util.module_from_spec(spec);spec.loader.exec_module(client)
 
 class Session:
     id="sess_test"
-    def __init__(self,actions):self.actions=actions
-    def to_dict(self):return {"id":self.id,"status":"requires_action","required_actions":self.actions}
+    def __init__(self,actions,status="requires_action"):self.actions=actions;self.status=status
+    def to_dict(self):return {"id":self.id,"status":self.status,"required_actions":self.actions}
 
 
 def action(name="observe_body",arguments=None):
@@ -22,10 +22,10 @@ def action(name="observe_body",arguments=None):
 
 class FakeSessions:
     def __init__(self):
-        self.creations=0;self.submissions=0;self.actions=[action()];self.fail_after_submit=False
+        self.creations=0;self.submissions=0;self.actions=[action()];self.fail_after_submit=False;self.status="requires_action"
         self.events=SimpleNamespace(create=self.create_event)
     def create(self,**kwargs):self.creations+=1;return Session(self.actions)
-    def retrieve(self,identity):return Session(self.actions)
+    def retrieve(self,identity):return Session(self.actions,self.status)
     def create_event(self,identity,**kwargs):
         self.submissions+=1;self.actions=[]
         if self.fail_after_submit:raise TimeoutError("synthetic lost acknowledgement")
@@ -65,7 +65,7 @@ class ClientStateTests(unittest.TestCase):
         with self.assertRaises(ValueError):client.submit(self.api,data,key,{"complete":True},self.state)
         self.assertEqual(self.sessions.submissions,1)
 
-    def test_uncertain_api_ack_reconciles_without_repeat(self):
+    def test_uncertain_api_ack_blocks_without_second_submission(self):
         data,key=self.start();self.sessions.fail_after_submit=True
         with self.assertRaises(TimeoutError):client.submit(self.api,data,key,{"n":1},self.state)
         resumed=client.load(self.state);self.sessions.fail_after_submit=False
@@ -75,6 +75,21 @@ class ClientStateTests(unittest.TestCase):
     def test_arguments_reject_arbitrary_tools_and_actions(self):
         for item in (action("shell"),action("observe_body",{"path":"private"}),action("request_body_action",{"action":"reset"})):
             with self.assertRaises(ValueError):client.normalized("sess_test",item)
+
+    def test_completed_turn_resume_preserves_contract_and_is_idempotent(self):
+        data,key=self.start();before=data["contract"].copy()
+        self.sessions.status="idle";self.sessions.actions=[]
+        observation={"goal_id":client.GOAL_ID,"goal_cycles_completed":0,"body_revision":2}
+        client.continue_goal(self.api,data,observation,self.state)
+        client.continue_goal(self.api,data,observation,self.state)
+        self.assertEqual(self.sessions.creations,1);self.assertEqual(self.sessions.submissions,1)
+        self.assertEqual(client.load(self.state)["contract"],before)
+
+    def test_resume_rejects_foreign_goal_and_active_turn(self):
+        data,key=self.start()
+        with self.assertRaises(ValueError):client.continue_goal(self.api,data,{"goal_id":"other","goal_cycles_completed":0},self.state)
+        with self.assertRaises(ValueError):client.continue_goal(self.api,data,{"goal_id":client.GOAL_ID,"goal_cycles_completed":0},self.state)
+        self.assertEqual(self.sessions.submissions,0)
 
 
 
