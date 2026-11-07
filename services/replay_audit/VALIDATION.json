@@ -1,0 +1,24 @@
+{
+  "date_tehran": "2026-10-21",
+  "unit_tests_passed": 10,
+  "cli_sample_verified": true,
+  "sample_kind": "synthetic",
+  "sample_counts": {
+    "budget_exceeded": 1,
+    "duplicate_effect": 1,
+    "request_reused": 1,
+    "unresolved_run": 1
+  },
+  "external_customer_runs": 0,
+  "paid_api_calls": 0,
+  "payment_integration": false,
+  "scheduler_enabled_for_service": false,
+  "source_sha256": {
+    "test_audit.py": "f3ec79a8a1b0c801dd0b65c38f8bfbf69880c88c264ea3be28e98b6cd262611b",
+    "sample.jsonl": "961e245fe7d9c2a3337b5896a7f842202a31a53660d49305575619425d7bd7f2",
+    "RESEARCH_FA.md": "8c743cf4ce2b955916a1110d3c43fde657f6d81185727dfe3f1bc299bb1fdf5c",
+    "README.md": "c943ddc93d86ab263644bcc0836353c6ee851a84fb88462bd30f4e1ec6f37ce4",
+    "SAMPLE_REPORT.md": "96b67e1b621e4773535ff75df7f0ac3455c87b7a6b503d215583dbf7692777fa",
+    "audit.py": "6aa06491513b471682da1920f64e03502a392a5fd5b23a7ed3867cde2c65e58a"
+  }
+}
