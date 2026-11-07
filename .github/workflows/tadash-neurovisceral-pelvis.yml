@@ -1,0 +1,30 @@
+name: Tadash neurovisceral pelvis v0.3
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/tadash-neurovisceral-pelvis.yml
+      - runtimes/tadash_body/pelvic_neurovisceral_v03.py
+      - examples/nasuraya_pelvis/test_pelvic_neurovisceral_v03.py
+      - runtimes/tadash_body/pelvis_v01.py
+      - runtimes/tadash_body/pelvis_observer_v02.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pure-python-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Neurovisceral and base pelvic invariants
+        run: |
+          python -m unittest \
+            examples.nasuraya_pelvis.test_pelvis_v01 \
+            examples.nasuraya_pelvis.test_pelvis_observer_v02 \
+            examples.nasuraya_pelvis.test_pelvic_neurovisceral_v03 -v
