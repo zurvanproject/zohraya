@@ -1,8 +1,10 @@
 """Install the finite owner-authorized evening watch, preserving the model worker."""
-import base64,hashlib,importlib.util,json,os,re,sqlite3,subprocess,sys,time,zlib
+import base64,hashlib,importlib.util,json,os,re,sqlite3,subprocess,sys,time,zlib,ssl,uuid
+from email.utils import parsedate_to_datetime
+from urllib.request import Request,build_opener,HTTPSHandler,HTTPRedirectHandler,ProxyHandler
 from pathlib import Path
-CODE_B64="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"
-CODE_SHA256="e77d9b4abd809a7a87b9b5599c1d112192357c57250f21c50cbf01d5e679c98d"
+CODE_B64="eNq9Wm1z2zYS/u5fgeA6Y3JCMXZ66fWk8lrFUVLdOY5HUpp2dBoOJEIWa4pkCdK2mst/v2cBUKRe8jJz7TWNIgLYxWJ3n30BxTl/nlVpJCMm72QapzdMlWIeJ3G5YUqs8wRDPhuXIo1EEbEknhei2PRYmrFUlvdZccuygvWvh+xWbphYLKRSPuf8ZFlka7bI0lI+lKBi8TrPipItkkyBpZmORCnLeC3ryfrZo4/fs1Se2ImVUCsw8X5VWeqtRbnyMuWp3yCl/NpT1TwvMtrYUxulaQ37HAtbW1/j8eRkfPHj4HU/4KlQVSE2omPP3bkX5WL15JyfDK8mg9FP/cvgm7Ozk5NILtlCpFkaL0Ti3LndQpZVkTISxY+qda6cO0+BfwgFqGBSVNKTKXjLUKhFHAcvRaKkJ5Ikuw9TkdpnJXNRiDIrVOBwD3+63HX1ZlF8I1XZ2ske3lcr8fTZN05bGF+miyySjuv6K/lgKQ2bQoooJCGdfFfmJBORckgZmPH1MrKRo1lBEQGvymXn21ocyLiOF07uQaATlgeWsFeu8yD37+NyhVOtpZP79M9j7mOCuyeMZhi++1kuU4ffc+9gAyYUW3aX/n0BO+6cy+0t/WVSqZXj9jLlL9UmXTgYihOZZjjtCcNoIfNELKSDTbzcHjqj056waB5Y7/DhgqlclK0Dqyy5g8p8ocKqiB33Mf9+DSUGRcY9DBgTkhdlVRk8c4mbLx/kooKQ/HrUf/W6z36rZLEJszTZBG+uuNtrL3k+eDW8IhVYrUdz40WlULdhnC5xANKkCvhXg6LIiv6ijLP0upBLWUBHMjgdl1l+2vuqDF7JsjNerGRUJTKagJ516PMKmmanV9aDX0P45B2QKIvT3jQrIrCJZj+8B5BLGUxVWUDps69Kf0wDPZmKObgF03mWJXpYliVWKH9gZnpAUSnXgYO5a9Au4lwk/lsli2HEOnHKfnBOx7+MJ4PXp97puHPeedY5//YUNtPxQhahpZ+OoRCYdtPi8i5Oo+xeDSOZlpiZdbs44kVV4OBwXH+oxpr2w38usvROFuUk6/wTTss6F9k6h+kUJx9sEO8XVepMeZ7dy0KtZJKQGYCmzlV2XWTkL+YhHSIQFQKavtMjYLdGSONermbeQuQl4RX2zmFyY39Aogbzrtt6kowG61n/41tfOSdniZcs943lCZrdQsRKslGV0iptb4drT6hScSfihFTecpYWRHNflRH4usZ9VCpytcpK516bOiyyrPRSQSey37P7ACeVHnQzl8HW3cjbaI4E8OnDcUlKDLFYMaJgEiGJBgDbhrmBemvA7bW2M7OtAZxhJUVSroIm9LSIn3Az69MEEANcLuObj601s3atDSY2dTgAeWvbJ1z7+RMFbwCMfIN7RC+KLtEcZ6fDHoVwvLgNAa7FLXf9pUT0R5B23EfB1OHZLffcmTXeTyKpatPZnWO40w35NkkH2y0AOxW8L6Zns27LhMX0fOayJTJkweJ0R4rx4HJwMWFx5Blq9nL05jWL5CKmYyj2ZvRiMGLPf2FK/sbdD7QLbHiEg4n63h0JaZgUxtnYux8HowHl5eB0m+3uctWZZ9HmtD4zzO+4RklF4xEfP7llHq5jRdbQ5yeGQfvY2T0d3KreZCVaA93S1NmMaobWOAAsNkTKZ1hiRky245+wgTadqtbHHGTHmYyDmKE/2z/sxrv+cZMh5/8B3qH5NJ4honVcljLS7kFwDzTyyZwwTiVVMJ3pgGSRdyNLh8cp1JEkgnJOGIP2UWDBdny6a1j5IkcejxyLYkyZCM5NyEuzknWefRcghnTau1U51XRRKPNsseLemftd8Ndn+yxpRxmCrCjnUpSWJR3IMNH2I0E5wijVapz8h7Zs1tishqLiYMqko2amLV89ty+SNSMxseLsUBmBNDcYDlqLdKIprHgfY2fpTliV2jIkQi5bO0XDtlLcDYItp8Y7bIzxNc6VroEgVcNof8tmJjR4aSWZ9xxa7sJWHjdU3FJ7OjXxLn16u1J3jyhguwSlREnesrOoHnQ9QODAsbqf9DpvG27knQ6IvLsXKKZ8OzXzuIZpngF29cI6fujN64iBVgcL2iqXCYpD6EjoIgw2RQAks+q0+HHlb+Vr1My7zff2ppaWd9/fdre1vWZ96921mSMsrcH7w1arGu4fp9PTDRVtSUP1KVEqO3oJhBV5DDlQtKpSmfNbxe9MAJ6a/03DfXvgD7YTQhkmChTrpmTz5gIajFNJNYaNOUkMSe38tPYvSgbEmnoEC5k9kx/40qEL7JjZ2zWq1z773oFdG+StUPrkJAjlGit/M7aPI0T99AYOwh/r6f1j7Bl5z3Z/7M42zm51q7E6s468U3sfRqB6Hgy2a7bxgNpXGTkKjAyZa2vOaB6K0tHV3Se6Kj3/hOsGus6vTQPlxcCEMXOCXjvRNerxrurXDNLAirode9e/3Gus7CpqBldFlmaVCl6+vbzke8wuRoP+ZMAm/eeXAzZ8ya7eTNjg5+F4MjY3GvBnlUCPk8HPE3Y9Gr7uj35h/xr84omSgfRSE1yBcZ179cJ60D3S2ekituZda2unJGkpsi48LI/pTkFw9pmCoF0N2A1b9UDp0cG4O7Mdg17g7DYHiyyhkJcVQd1QeMsYSjf3EiR4U92bov+gUj9Sove+uMEgNGhKhGjAeS347FFgLmWOlVPkU6FdWEPg/h9BzSKCUIQiPmNo5zQ89Glq7eqH+PdGCc35DTe9wNLef3fI9ohM9aTGErRC/TnJRroPuGbIG9b65OjBnbV4cM48hC7HoSppq4RSEPgQIZ/UF0+u637efRBYsiQKvtBHTCugJfyee9r/PfewAwDHI3dFGCXHRI1ZbGhfnRSCrSKd+iitoht5tx5t9WoYJT/BX7dm02SIoM4tenxLXsdJnULkw0LmJRvofxBRSBe6HW/EOlLbTG30QyQtN7l0NIXrh/riKgxnR4oNDZWdqoJGUGbrTXxT1mo1BlqXdXjN4yjIFIVkfHO+0I5tGw6vxoPRBJhmw1dXb2AzOMWbrRnhHG8HY+d7D3/c2o7aq5vLMxJQe5A1pB6wAaFarwXdWy2tzTy0Y4oYEO5NGBDpBnGI60AyC7b+3JRCoCBXAMxVYBMH1kPps4NFyDzBOk4dg7t9aNGC6Ia6lAMszB5r/o+n4IAWBtAJb0QeEISmBkfzjjCRUnhz2vH3OHc0N09/Ts+7M1e3mcZz5UOu6zzN4lxfIfsLGSeOgx0+icVPhRyNbY3oz3F5fE53lnMlC6r53xPNVsnurt50J17PPaoNANezHXdAhR2l6oLKA6c+met2av7Yai5MZ0F3fLTTtgw7sFEiVElduZp2zmf2FkCZk73HprYa093rfoU2OyK4qUb2FlJ/um09bDDvmpjv1V1PlxP+E0ma24ueVCzWk/yz9uD2ls+0HbUxugfW8RrK7iEv1JMylYXQtDqaWAyawlorz0Nw2uZ99B3C1P0A++IWGFvCSKFCME6p+m+3O0dXoPpuSxxu74PDqlwckb/zxRy3CesoS8PgI2uOwPaL9rU9H3ldSNeg1HWYWPH+Yc9r6OlBPzVu+gG6te4OgW6qRKCyBSDAxg5jXjzE62odGq83BSaCRKPxgl5sOTZ2eF8bkXY9U4U1ZoxZ62Fs3+QCQog57X6acHdTRLOwNWq21d5sXcU2C7SnHvY4EdaT5qakxYsuRExDg/CeqHC+QX2cxki8vHtmHC67g6feyDC7tSx1QVPHi+DMPBpFfBf8/cwM6Nig46yrn/VXigLHsGVcc5HlQAs/P+sgrCNf2cQU2duRHkPFD0EUm8vyXsp0m7jWYqOLs7lkEVBMAYvblvKgRPtYnfp/qU3/5yrwL2yykjqqIuTlkgKIvovSKq6JzAgphUyXiNxnlwASE8y+F5TsxXPipTJWgh1CWgWrGm1iCqzXAh00qxRde7H7VYxPfWWhzY+d6Y0nToi4aS4J/b1SZL+TM4rT5D6B+ksbOV3H3FSiiKiU0V/2XoWh+bq4fDse/jTQl6GoQIDAoLVfx4hrzGUKUbMIjGI08M72BWZjZ7OA+O11OY3j2L6GXuKYS3pVJWVwpAY66N48W6Had59mL88woHEyIcoWXr+BO/LuXDcu3OPmhRdVQoo9PXv6Tef8vHP2N/b0aRco7KtYPJnIFTI5J4AxPtbJsMv4Y7PbtE6PSEhjIyJNUj+xXWDzzwxR4m1qgLipgbe/uJ2wZq7Z87WJE8wGWt0lHBAej8a056Uo6HKKteIwQ5xhNg4fMPpM2K6leqkd2URcVkfcfWbNFSAEGerkQUugd/9XRN/tunYiqje4yhjdMyT6xwv1XZEP9AI1+H83snk6euXwDjRJuoMtEQCzCgjMdWjhKFOZc8SpywfEb/OK27xn5/9OrXTajdzHNHD4clx7rHV6OkR900BMd0Plnx8XPwtZi60DeB6Bsm2IvxyFCuewhjxMrlThc7Q+KPem3fNvZts601nyd/3JxY+oW40PnBognc7QvOWycNwPvXFr0mx8OvvQe95/0Yy38EJzr4fjFtFRTNAyCmL2vyV/1b+2BX9N9mkEnM4g2qjZpfZxYnzx5qfBaJdbK/lryp29Xw6v+pe7649WIpoSOAjOeoOrF8HTp2dnk8GPo/5Vbzx8FbyHCT5weyVIeUf/gMH+qgboR8ZSkt7L19/9fnFTrWVaXtMTdN3LfRFFobDDDifkobhcZfFC0i9gjDzArel2qPwi7tw9JO109FWCR5CNC3RT5n09GnsNAHgM1qog97UoRAivOwQEjftHXzbv3FAVcY7SzL5LeBTs/RZHIy4M6XcGYWh/TDPflPrGvP2LnI/fbGVVsZB2Vy2SvvsMaoV0bXbbSku9bLK31uisuy2k2ovzwhhfh41mAsYEk/oGBDzCkAwbhrxrrnmMmT9z42KYW6C97A8vBy96g9HozSg4ftOig5rWhPmZx+AhLh10xv8FKndejQ=="
+CODE_SHA256="ae07581fb7a5ecafb9274199364ab836a8529e07823b70e2ee1bbd867ecb3058"
 DEADLINE=1794076200
 SCHEMA="nasuraya-evening-watch/1"
 PREFIX="NasurayaEveningWatch20261107"
@@ -19,17 +21,34 @@ def load_watch(root):
  if hashlib.sha256(p.read_bytes()).hexdigest()!=CODE_SHA256:raise ValueError("watch source")
  s=importlib.util.spec_from_file_location("evening_watch",p);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
 
+class NoRedirect(HTTPRedirectHandler):
+ def redirect_request(self,*args,**kwargs):return None
+
+def clock_reference(cafile):
+ # Installer only: no token or private data. Bind the finite local schedule to
+ # a fresh HTTPS Date header instead of changing the Windows system clock.
+ url="https://api.github.com/repos/zurvanproject/zohraya/commits/64a7f40d57c06705ef8e692c4048f5b6c5cf36a1?nasuraya_watch="+uuid.uuid4().hex
+ context=ssl.create_default_context(cafile=str(cafile))
+ opener=build_opener(ProxyHandler({}),NoRedirect(),HTTPSHandler(context=context))
+ start=time.time()
+ with opener.open(Request(url,method="HEAD",headers={"User-Agent":"NasurayaEveningWatch/1","Cache-Control":"no-cache"}),timeout=10) as response:
+  reference=parsedate_to_datetime(response.headers["Date"]).timestamp()
+  if float(response.headers.get("Age","0"))>10:raise ValueError("stale clock reference")
+ end=time.time()
+ if end-start>10 or not 1794009600<=reference<DEADLINE-120:raise ValueError("reference outside evening window")
+ return {"offset":(start+end)/2-reference,"reference_utc":reference,"host_epoch":(start+end)/2,"roundtrip_seconds":end-start,"source":"GitHub HTTPS Date; no-cache unique request"}
+
 def verify_schedule(config,source):
  code="$epoch=[DateTime]::SpecifyKind([DateTime]'1970-01-01',[DateTimeKind]::Utc);"
  for mode,name in (("sample",config["sample_task"]),("final",config["final_task"])):
   arguments='-I -X utf8 "'+str(source)+'" '+mode+' --root "'+str(source.parent)+'"'
   code+=("$t=Get-ScheduledTask -TaskName "+psq(name)+";if(($t.Principal.UserId -notin @('SYSTEM','S-1-5-18')) -or ($t.Actions[0].Execute -ne "+psq(sys.executable)+") -or ($t.Actions[0].Arguments -ne "+psq(arguments)+")){throw 'Task definition'};")
   if mode=="sample":code+="if($t.Triggers[0].Repetition.Interval -ne 'PT10M'){throw 'Task cadence'};"
-  else:code+="if([Math]::Abs((([DateTimeOffset]::Parse($t.Triggers[0].StartBoundary)).UtcDateTime-$epoch).TotalSeconds-"+str(DEADLINE)+") -gt 1){throw 'Task deadline'};"
+  else:code+="if([Math]::Abs((([DateTimeOffset]::Parse($t.Triggers[0].StartBoundary)).UtcDateTime-$epoch).TotalSeconds-"+str(config["deadline"])+") -gt 1){throw 'Task deadline'};"
  ps(code)
 
 def main():
- if os.name!="nt" or time.time()>=DEADLINE-120:raise ValueError("Windows evening window")
+ if os.name!="nt":raise ValueError("Windows host required")
  worker=Path(os.environ["PROGRAMDATA"])/"NasurayaModelWorker"
  if json.loads((worker/"owner.json").read_text(encoding="utf-8"))!={"schema":"nasuraya-model-worker/1"}:raise ValueError("worker ownership")
  cfg=json.loads((worker/"config.json").read_text(encoding="utf-8"))
@@ -39,6 +58,8 @@ def main():
  for name,expected in json.loads(raw).items():
   p=runtime/name
   if p.is_symlink() or not p.resolve().is_relative_to(runtime.resolve()) or hashlib.sha256(p.read_bytes()).hexdigest()!=expected:raise ValueError("worker source")
+ clock=clock_reference(runtime/"cacert.pem")
+ host_deadline=int(round(DEADLINE+clock["offset"]))
  root=worker/"monitoring/evening-20261107"
  marker=root/"owner.json"
  if root.exists() and (root.is_symlink() or root.is_junction() or (any(root.iterdir()) and not marker.is_file())):raise ValueError("monitor directory")
@@ -55,11 +76,11 @@ def main():
  config_path=root/"config.json"
  if config_path.exists():
   config=watch.read_json(config_path)
-  if config["schema"]!=SCHEMA or config["deadline"]!=DEADLINE or config["script_sha256"]!=CODE_SHA256:raise ValueError("watch config conflict")
+  if config["schema"]!=SCHEMA or config.get("deadline_reference_utc")!=DEADLINE or config["script_sha256"]!=CODE_SHA256:raise ValueError("watch config conflict")
  else:
   baseline=watch.snapshot(worker,Path(cfg["tadash_root"]))
   if baseline["issues"] or baseline["native_revision"]!=9 or baseline["checkpoint"][:16]!="36ef52e76264c1bb":raise ValueError("healthy saved revision9 required")
-  config={"schema":SCHEMA,"started":time.time(),"deadline":DEADLINE,"interval_seconds":600,"worker_root":str(worker),
+  config={"schema":SCHEMA,"started":time.time(),"deadline":host_deadline,"deadline_reference_utc":DEADLINE,"clock_offset_seconds":clock["offset"],"clock_reference":clock,"interval_seconds":600,"worker_root":str(worker),
           "native_root":cfg["tadash_root"],"baseline":baseline,"script_sha256":CODE_SHA256,"sample_task":PREFIX+"Sample","final_task":PREFIX+"Final"}
   watch.atomic(config_path,config)
  names=[config["sample_task"],config["final_task"]]
@@ -72,7 +93,7 @@ def main():
  try:
   for mode,name in (("sample",names[0]),("final",names[1])):
    arguments='-I -X utf8 "'+str(source)+'" '+mode+' --root "'+str(root)+'"'
-   end="$end=[DateTime]::SpecifyKind([DateTime]'1970-01-01',[DateTimeKind]::Utc).AddSeconds("+str(DEADLINE)+").ToLocalTime();"
+   end="$end=[DateTime]::SpecifyKind([DateTime]'1970-01-01',[DateTimeKind]::Utc).AddSeconds("+str(config["deadline"])+").ToLocalTime();"
    trigger=("$begin=(Get-Date).AddSeconds(4);$t=New-ScheduledTaskTrigger -Once -At $begin -RepetitionInterval (New-TimeSpan -Minutes 10) -RepetitionDuration ($end-$begin);"
             if mode=="sample" else "$t=New-ScheduledTaskTrigger -Once -At $end;")
    script=(end+trigger+"$a=New-ScheduledTaskAction -Execute "+psq(sys.executable)+" -Argument "+psq(arguments)+" -WorkingDirectory "+psq(root)+";"
@@ -88,8 +109,8 @@ def main():
    if rows:
     first=rows[0]
     if first["issues"] or not first.get("task",{}).get("sampler_system"):raise RuntimeError("FirstSampleUnhealthy")
-    watch.atomic(root/"installation.json",{"schema":SCHEMA,"installed":time.time(),"tasks":names,"script_sha256":CODE_SHA256,"deadline":DEADLINE})
-    return "WATCH=INSTALLED;SYSTEM=1;S=1;BAD=0;EVERY=10MIN;END=2200TEHRAN;R=9;API=0"
+    watch.atomic(root/"installation.json",{"schema":SCHEMA,"installed":time.time(),"tasks":names,"script_sha256":CODE_SHA256,"deadline_reference_utc":DEADLINE,"host_deadline":config["deadline"]})
+    return "WATCH=INSTALLED;SYSTEM=1;S=1;BAD=0;EVERY=10MIN;END=2200TEHRAN;CLOCK=CALIBRATED;R=9;API=0"
    time.sleep(1)
   raise RuntimeError("NoSystemSample")
  except Exception:

@@ -62,4 +62,15 @@ class WatchTests(unittest.TestCase):
   self.assertEqual(result,again);self.assertEqual(len(watch.read_samples(self.monitor)),2)
   self.assertEqual(result["api_calls_by_monitor"],0)
 
+ def test_host_clock_offset_preserves_reference_deadline_and_coverage(self):
+  cfg=watch.read_json(self.monitor/"config.json")
+  cfg.update(clock_offset_seconds=18000,deadline_reference_utc=cfg["deadline"]-18000)
+  watch.atomic(self.monitor/"config.json",cfg)
+  watch.sample(self.monitor,self.start,self.frozen)
+  watch.sample(self.monitor,self.start+600,self.frozen)
+  result=watch.finalize(self.monitor,self.start+1200,self.frozen)
+  self.assertTrue(result["coverage_ok"])
+  self.assertEqual(result["deadline_reference_utc"],self.start+1200-18000)
+  self.assertEqual(result["started_reference_utc"],self.start-18000)
+
 if __name__=="__main__":unittest.main()

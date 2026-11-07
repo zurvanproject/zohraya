@@ -104,6 +104,9 @@ def summary_of(config,rows,now):
  boot_ids={r["worker_boot_id"] for r in rows if r.get("worker_boot_id")}
  return {"schema":SCHEMA,"status":"completed" if final else ("incomplete" if now>=config["deadline"] else "active"),
   "started":config["started"],"deadline":config["deadline"],"generated":now,"samples":len(rows),"bad_samples":bad,
+  "clock_offset_seconds":config.get("clock_offset_seconds",0),
+  "started_reference_utc":config["started"]-config.get("clock_offset_seconds",0),
+  "deadline_reference_utc":config.get("deadline_reference_utc",config["deadline"]-config.get("clock_offset_seconds",0)),
   "issue_codes":sorted({x for r in rows for x in r["issues"]}),"missing_regular_slots":missing,"maximum_observation_gap_seconds":round(max_gap,3),
   "worker_boot_ids_observed":len(boot_ids),"revision":last.get("native_revision"),"checkpoint":last.get("checkpoint"),
   "final_sample_recorded":final,"last_sample_epoch":last.get("at"),"api_calls_by_monitor":0,

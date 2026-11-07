@@ -1,7 +1,7 @@
 """Read the private evening-watch aggregate; no writes to worker or native ledgers."""
 import hashlib,importlib.util,json,os
 from pathlib import Path
-SHA="e77d9b4abd809a7a87b9b5599c1d112192357c57250f21c50cbf01d5e679c98d"
+SHA="ae07581fb7a5ecafb9274199364ab836a8529e07823b70e2ee1bbd867ecb3058"
 def main():
  root=Path(os.environ["PROGRAMDATA"])/"NasurayaModelWorker/monitoring/evening-20261107"
  p=root/"watch.py"
