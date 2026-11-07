@@ -1,0 +1,35 @@
+name: Tadash pelvis observer tests
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/tadash-pelvis-observer.yml
+      - runtimes/tadash_body/pelvis_v01.py
+      - runtimes/tadash_body/pelvis_observer_v02.py
+      - examples/nasuraya_pelvis/**
+  push:
+    branches:
+      - feat/tadash-pelvis-mechanics-20261107-v01
+    paths:
+      - .github/workflows/tadash-pelvis-observer.yml
+      - runtimes/tadash_body/pelvis_v01.py
+      - runtimes/tadash_body/pelvis_observer_v02.py
+      - examples/nasuraya_pelvis/**
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify bounded read-only pelvic geometry and observer
+        run: |
+          python -m unittest \
+            examples.nasuraya_pelvis.test_pelvis_v01 \
+            examples.nasuraya_pelvis.test_pelvis_observer_v02 -v
