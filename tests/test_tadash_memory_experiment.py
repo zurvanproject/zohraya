@@ -39,7 +39,9 @@ class MemoryExperimentTests(unittest.TestCase):
   (self.service/"health.json").write_text(json.dumps({"installation_id":"fixture","system":True,"updated_epoch":time.time()}))
  def cli(self,name):
   env=dict(os.environ,PROGRAMDATA=str(self.base))
-  p=subprocess.run([sys.executable,"-I","-X","utf8",str(ROOT/"tools/bridge_jobs"/name)],env=env,capture_output=True,text=True,encoding="utf-8",timeout=35)
+  # Match the actual bridge invocation, including Windows' default non-UTF-8
+  # process; the pinned job must bootstrap its own UTF-8 native interpreter.
+  p=subprocess.run([sys.executable,"-I",str(ROOT/"tools/bridge_jobs"/name)],env=env,capture_output=True,text=True,encoding="utf-8",timeout=35)
   self.assertEqual(p.returncode,0,p.stderr+p.stdout)
   return json.loads(p.stdout)["summary"]
  def native_count(self):
@@ -70,5 +72,18 @@ class MemoryExperimentTests(unittest.TestCase):
   self.assertIn("CONT=1;SOURCES=1;CF=1;REPORT=1;DEL=1",summary)
   self.assertEqual(self.native_count(),before)
   self.assertIn("ALREADY_ADMITTED",self.cli("worker_memory_goal.py"))
+
+ def test_pre_admission_partial_snapshot_is_preserved_and_live_state_is_unchanged(self):
+  self.assertIn("MEMORY_GOAL=QUEUED",self.cli("worker_memory_goal.py"))
+  parent=self.service/"experiments";experiment=parent/"nasuraya-memory-three-cycle-20261107-v1"
+  (experiment/"experiment.json").unlink()
+  next((self.service/"inbox").glob("*.json")).unlink()
+  before=self.native_count()
+  self.assertIn("MEMORY_GOAL=QUEUED",self.cli("worker_memory_goal.py"))
+  preserved=list(parent.glob("*-incomplete-*"))
+  self.assertEqual(len(preserved),1)
+  self.assertTrue((preserved[0]/"before.sqlite").is_file())
+  self.assertTrue((preserved[0]/"preserved_failure.json").is_file())
+  self.assertEqual(self.native_count(),before)
 
 if __name__=="__main__":unittest.main()

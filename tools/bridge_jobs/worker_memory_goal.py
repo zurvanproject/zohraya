@@ -6,6 +6,11 @@ from copy import deepcopy
 import hashlib,importlib.util,json,os,re,sqlite3,sys,time
 from pathlib import Path
 
+# Bridge v2 starts jobs with -I only. The original native source reads UTF-8
+# defaults implicitly; restart this exact pinned file in explicit UTF-8 mode.
+if os.name=="nt" and not sys.flags.utf8_mode:
+ os.execv(sys.executable,[sys.executable,"-I","-X","utf8",str(Path(__file__).resolve())])
+
 MODE="admit"
 GOAL_ID="nasuraya-memory-three-cycle-20261107-v1"
 SCHEMA="nasuraya-memory-experiment/1"
@@ -113,7 +118,19 @@ def admit(root):
   record=json.loads(marker.read_text(encoding="utf-8"))
   if record["schema"]!=SCHEMA or record["goal"]["goal_id"]!=GOAL_ID or record["goal_sha256"]!=sha(canonical(record["goal"]).encode()):raise ValueError("experiment conflict")
  else:
-  if list(experiment.iterdir()):raise ValueError("incomplete experiment requires recovery")
+  if list(experiment.iterdir()):
+   # Preserve the known first, pre-admission UTF-8 failure; never delete or
+   # overwrite a checkpoint and never retry a goal already in the worker ledger.
+   allowed={name+suffix for name in ("before.sqlite","without-memory.sqlite","with-memory.sqlite") for suffix in ("","-wal","-shm")}
+   if any(p.name not in allowed or p.is_symlink() or not p.is_file() for p in experiment.iterdir()):raise ValueError("unknown incomplete experiment")
+   before=experiment/"before.sqlite"
+   if not before.is_file():raise ValueError("missing partial snapshot")
+   with closing(readonly(before)) as a,closing(readonly(Path(config["tadash_root"])/"state/session.sqlite")) as b:
+    query="SELECT digest FROM runtime WHERE key='nasuraya-vps-body'"
+    if a.execute(query).fetchone()!=b.execute(query).fetchone():raise ValueError("partial snapshot differs from live state")
+   preserved=experiment.with_name(GOAL_ID+"-incomplete-"+str(time.time_ns()))
+   os.rename(experiment,preserved);experiment.mkdir()
+   atomic(preserved/"preserved_failure.json",{"schema":SCHEMA,"reason":"pre-admission encoding failure","at":time.time()})
   record=probe(Path(config["tadash_root"]),experiment,worker)
  target=root/"inbox"/(GOAL_ID+".json")
  if target.exists():
