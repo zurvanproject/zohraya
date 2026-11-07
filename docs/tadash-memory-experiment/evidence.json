@@ -1,0 +1,90 @@
+{
+  "schema": "nasuraya-three-cycle-memory-public-evidence/1",
+  "date": "2026-11-07",
+  "goal_id": "nasuraya-memory-three-cycle-20261107-v1",
+  "pull_request": 158,
+  "source_commit": "c2f1fe2b170ee06b21c438d98bca83772915f9b0",
+  "source_hashes": {
+    "tools/bridge_jobs/worker_memory_goal.py": "1bb635da80b39d77fe5f3dbf6b34dd6cdf38bfa0324396fbf515a1d4875b3026",
+    "tools/bridge_jobs/worker_memory_audit.py": "2615b1793e2930e2cbdfd8f5a94020fe3f5ee179ae288605daeed8bfec112cf3",
+    "tests/test_tadash_memory_experiment.py": "0a5a2f01aab3982d79d8213ee38f1e20fb14e9cf9f3ffd6ccbb8f9b77e8a8f3b"
+  },
+  "installed_worker_unchanged": true,
+  "model": "gpt-6-astra",
+  "admission": {
+    "request": 6707489878,
+    "response": 6707498689
+  },
+  "audit": {
+    "request": 6707490019,
+    "response": 6707509755
+  },
+  "live": {
+    "completed_cycles": 3,
+    "revision_before": 6,
+    "revision_after": 9,
+    "checkpoint_before_prefix": "2afc0213c3321cee",
+    "checkpoint_after_prefix": "36ef52e76264c1bb",
+    "actual_actions": [
+      "observe",
+      "observe",
+      "observe"
+    ],
+    "minimum_recalled_feedback_per_cycle": 2,
+    "continuity_verified": true,
+    "historical_source_records_unchanged": true,
+    "model_final_report_saved_privately": true,
+    "required_report_labels_present": true,
+    "semantic_report_quality_assessed": false,
+    "api_session_deleted": true,
+    "work_tool_relay": false,
+    "physical_actuation": false
+  },
+  "paired_native_probe": {
+    "same_saved_checkpoint": true,
+    "identical_request_asserted": true,
+    "without_memory": "walk",
+    "with_memory": "observe",
+    "live_body_cycles": 0,
+    "scope": "deterministic native recall preference mechanism on this existing synthetic sleep fixture; not a blinded capability benchmark or causal language-model evaluation"
+  },
+  "initial_attempt": {
+    "source_commit": "84dcb409126100cfb1f39dda20ad77140ea001a9",
+    "admission_request": 6707452507,
+    "admission_response": 6707455978,
+    "error": "UnicodeDecodeError before goal admission",
+    "early_audit_request": 6707453935,
+    "early_audit_response": 6707466313,
+    "early_audit_error": "FileNotFoundError before experiment manifest existed",
+    "recovery": "preserved incomplete private snapshots; explicit UTF-8 self-bootstrap under actual bridge invocation; no live-state reset"
+  },
+  "ci": {
+    "experiment_run": 42376518551,
+    "linux_job": 128415102627,
+    "windows_job": 128415102760,
+    "tests_each": 3,
+    "result": "success",
+    "worker_regression_run": 42376518553,
+    "regression_tests_each": 14,
+    "result_regression": "success"
+  },
+  "budgets": {
+    "worker_goal_cycles": 3,
+    "existing_admission_limits_unchanged": true,
+    "maximum_goals_per_utc_day": 2,
+    "maximum_goals_total": 5,
+    "existing_native_action_cap": 20,
+    "automatic_new_goals": false
+  },
+  "private_server_records": {
+    "directory": "%PROGRAMDATA%/NasurayaModelWorker/experiments/nasuraya-memory-three-cycle-20261107-v1",
+    "files": [
+      "before.sqlite",
+      "without-memory.sqlite",
+      "with-memory.sqlite",
+      "experiment.json",
+      "report.json"
+    ],
+    "model_final_report": "%PROGRAMDATA%/NasurayaModelWorker/state/worker.sqlite"
+  }
+}
