@@ -1,0 +1,27 @@
+name: Independent Tadash server worker
+on:
+  push:
+    branches: ['nasuraya/server-model-worker-v01-20261107']
+    paths: ['deploy/tadash_server/**', 'deploy/tadash_server_v01.bundle.b64', 'tools/bridge_jobs/worker_*.py', 'tests/test_tadash_server_*.py', '.github/workflows/tadash-server-worker.yml']
+  pull_request:
+    paths: ['deploy/tadash_server/**', 'deploy/tadash_server_v01.bundle.b64', 'tools/bridge_jobs/worker_*.py', 'tests/test_tadash_server_*.py', '.github/workflows/tadash-server-worker.yml']
+permissions:
+  contents: read
+jobs:
+  worker:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify isolated worker and durable native receipts without API
+        run: python -m unittest discover -s tests -p "test_tadash_server_*.py" -v
