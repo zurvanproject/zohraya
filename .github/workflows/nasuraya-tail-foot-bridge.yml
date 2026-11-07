@@ -1,0 +1,70 @@
+name: Nasuraya tail and digitigrade foot integration (offline)
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_mirror/tail_foot_bridge.py'
+      - 'examples/nasuraya_body_mirror/design_profiles/**'
+      - 'examples/nasuraya_body_mirror/export.py'
+      - 'examples/nasuraya_body_mirror/test_tail_foot_bridge.py'
+      - 'docs/NASURAYA_TAIL_FOOT_NATIVE_MIRROR_INTEGRATION_V01_FA.md'
+      - '.github/workflows/nasuraya-tail-foot-bridge.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-native-adapter:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONNOUSERSITE: '1'
+      OPENAI_API_KEY: ''
+      GH_HOST_TOKEN: ''
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Validate profile, reduced-order motion, native mirror, source integrity and advisory controls
+        run: python3 -m unittest examples.nasuraya_body_mirror.test_tail_foot_bridge -v
+      - name: Verify old native mirror still reproduces its real source-pinned body fixture
+        run: python3 -m unittest examples.nasuraya_body_mirror.test_mirror -v
+      - name: Produce integrated artifact from two FRESH source-pinned native recordings
+        run: |
+          python3 -m examples.nasuraya_body_loop demo --fixture normal --max-actions 12 --steps 12 --duration-s 1 --output-dir "$RUNNER_TEMP/native-runs/normal" > /dev/null
+          python3 -m examples.nasuraya_body_loop demo --fixture sleep --max-actions 12 --steps 12 --duration-s 1 --output-dir "$RUNNER_TEMP/native-runs/sleep" > /dev/null
+          python3 -m examples.nasuraya_body_mirror.export --runs "$RUNNER_TEMP/native-runs" --output "$RUNNER_TEMP/native-export.json" --tail-foot-analysis-dir "$RUNNER_TEMP/tail-foot-report"
+      - name: Confirm no new-body native claim or unauthorized actuation
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])
+          old=json.loads((root/"native-export.json").read_text())
+          x=json.loads((root/"tail-foot-report/report.json").read_text())
+          assert old["schema"]=="nasuraya-body-mirror/1"
+          assert sum(len(q["frames"]) for q in old["scenarios"].values())==24
+          assert x["native_170cm_simulation_executed"] is False
+          assert x["existing_native_controller_modified"] is False
+          assert x["paid_api_calls"]==0
+          assert x["new_profile_mass_kg"]==78
+          assert x["native_V06_replay_observed_separately"]["legacy_mass_kg"]==195
+          assert sum(q["frames"] for q in x["native_V06_replay_observed_separately"]["scenarios"].values())==24
+          assert x["coordination_advice"]["native_action_authorized"] is False
+          assert x["coordination_advice"]["safety_veto_unchanged"] is True
+          m=x["analytical_pitch"]
+          assert abs(m["human_tailless_pitch_deg"]-4.77464829275686)<1e-9
+          assert abs(m["digitigrade_active_tail_pitch_deg"]-.5989655079772023)<1e-9
+          print(json.dumps({
+            "native_fixture_frames":24,
+            "legacy_mass_kg":195,
+            "new_analytical_profile_mass_kg":78,
+            "passive_tail_pitch_deg":m["digitigrade_passive_tail_pitch_deg"],
+            "active_tail_pitch_deg":m["digitigrade_active_tail_pitch_deg"],
+            "foot_margin_m":x["analytical_footing"]["digitigrade_signed_contact_centre_margin_m"],
+            "tail_assisted_margin_m":x["analytical_footing"]["with_tail_lateral_shift_margin_m"],
+            "landing_peak_force_N":x["analytical_landing"]["digitigrade"]["peak_spring_force_N"],
+            "no_actuation":True,
+            "no_spend":True
+          },sort_keys=True))
+          PY

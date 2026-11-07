@@ -1,0 +1,50 @@
+{
+  "schema": "nasuraya-tail-foot-native-mirror-evidence/1",
+  "recorded_at_utc": "2026-11-03",
+  "tested_code_commit": "bfa5d8f2b5ce9b66380979a50a0898675c6e3936",
+  "github_actions_url": "https://github.com/zurvanproject/zohraya/actions/runs/41631955202",
+  "ci_result": "success",
+  "ci_tests": {
+    "new_analytical_bridge_tests_passed": 11,
+    "legacy_native_mirror_replay_tests_passed": 3,
+    "source_pinned_fresh_native_fixture_frames": 24,
+    "fresh_scenarios": [
+      "normal",
+      "sleep"
+    ]
+  },
+  "design_profiles": {
+    "new_character": {
+      "height_m": 1.7,
+      "mass_kg": 78,
+      "tail_length_m": 0.85,
+      "physics_run": "reduced_order_analytical_assumptions_only"
+    },
+    "old_native_v06": {
+      "height_m": 2.5,
+      "mass_kg": 195,
+      "tail_length_m": 1.2,
+      "physics_run": "recorded_source_verified_synthetic_native_fixture_only"
+    },
+    "shapes_not_interchanged": true
+  },
+  "analytical_outputs": {
+    "human_tailless_pitch_deg": 4.77464829275686,
+    "passive_tail_pitch_deg": 4.50350005997896,
+    "active_tail_pitch_deg": 0.5989655079772023,
+    "lateral_contact_center_margin_m": 0.022411397951103893,
+    "tail_assisted_lateral_margin_m": 0.03496200739879913,
+    "human_rectangular_lateral_margin_m": 0.0225,
+    "hypothetical_digitigrade_landing_peak_force_N": 3597.67890245345,
+    "hypothetical_human_landing_peak_force_N": 4171.658009968654
+  },
+  "restrictions": {
+    "native_new_character_simulation_executed": false,
+    "paid_api_calls": 0,
+    "actual_actuators_used": false,
+    "native_controller_modified": false,
+    "generated_report_in_ci": "RUNNER_TEMP/tail-foot-report/report.json",
+    "generated_trajectory_in_ci": "RUNNER_TEMP/tail-foot-report/tail_pitch.csv",
+    "interpretation": "All 170cm outputs are analytical, based on unvalidated inertia, torque, toe-centre and spring assumptions."
+  }
+}
