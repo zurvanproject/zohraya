@@ -1,0 +1,35 @@
+name: Nasuraya finite world-model probe
+
+on:
+  push:
+    branches:
+      - research/nasuraya-worldmodel-probe-20261107
+    paths:
+      - tools/bridge_jobs/worldmodel_probe.py
+      - tests/test_worldmodel_probe.py
+      - .github/workflows/nasuraya-worldmodel-probe.yml
+  pull_request:
+    paths:
+      - tools/bridge_jobs/worldmodel_probe.py
+      - tests/test_worldmodel_probe.py
+      - .github/workflows/nasuraya-worldmodel-probe.yml
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-holdout:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run fixed synthetic holdout tests
+        run: python -m unittest discover -s tests -p test_worldmodel_probe.py -v
+      - name: Run isolated read-only server job smoke
+        run: python -I tools/bridge_jobs/worldmodel_probe.py
