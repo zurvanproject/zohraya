@@ -32,7 +32,7 @@ class TadashGoalTests(unittest.TestCase):
         source=re.sub(r"^CALL = .*?$","CALL = "+json.dumps(call),JOB.read_text(encoding="utf-8"),count=1,flags=re.M)
         script=self.account/"one-call.py";script.write_text(source,encoding="utf-8")
         env=dict(os.environ);env["LOCALAPPDATA"]=str(self.account)
-        run=subprocess.run([sys.executable,"-I","-X","utf8",str(script)],capture_output=True,text=True,
+        run=subprocess.run([sys.executable,"-I",str(script)],capture_output=True,text=True,
                            encoding="utf-8",env=env,timeout=30)
         self.assertEqual(run.returncode,0,run.stderr)
         output=json.loads(run.stdout)

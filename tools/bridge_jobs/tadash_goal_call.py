@@ -11,6 +11,8 @@ import os
 from pathlib import Path
 import re
 import sqlite3
+import subprocess
+import sys
 
 PACKAGE_SHA = "6a0c9fe013aad59716b251c66aadec6081daa764ac76bfdb2dc0763ab2f049cb"
 MANIFEST_SHA = "1ffedf1f438a2e3b9178a19703cfb2037c5d0296a94743ff9391493edae65d15"
@@ -208,6 +210,19 @@ def summary(result):
 
 
 if __name__=="__main__":
+    if os.name=="nt" and not sys.flags.utf8_mode:
+        # Bridge v2 launches Python -I without -X utf8; preserve native files.
+        child=subprocess.run([sys.executable,"-I","-X","utf8",str(Path(__file__).resolve())],
+                             capture_output=True,text=True,encoding="utf-8",timeout=50)
+        try:
+            output=json.loads(child.stdout)
+            if child.returncode or output.get("status")!="ok" or not re.fullmatch(
+                    r"[a-zA-Z0-9 .,:;=/_()+-]{1,180}",output.get("summary","")):
+                raise ValueError("invalid UTF8 worker result")
+        except Exception:
+            output={"status":"ok","summary":"G=REJECTED;ERROR=UTF8WorkerFailed"}
+        print(json.dumps(output,separators=(",",":")))
+        raise SystemExit(0)
     try:
         root=Path(os.environ["LOCALAPPDATA"])/"NasurayaTadashV1"
         result=operate(CALL,root)
