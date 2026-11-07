@@ -1,5 +1,6 @@
 """No network. Real native SQLite fixture plus bounded-watch coverage tests."""
 from copy import deepcopy
+from contextlib import closing
 import hashlib,importlib.util,json,sqlite3,sys,tempfile,time,unittest
 from pathlib import Path
 
@@ -15,7 +16,8 @@ class WatchTests(unittest.TestCase):
   installer=importlib.util.module_from_spec(spec);spec.loader.exec_module(installer)
   installer.perform("install",self.native,(ROOT/"deploy/tadash_vps_v01.bundle.b64").read_bytes())
   (self.worker/"state").mkdir()
-  with sqlite3.connect(self.worker/"state/worker.sqlite") as db:db.execute("CREATE TABLE goals(id TEXT PRIMARY KEY,admitted REAL,record TEXT)")
+  with closing(sqlite3.connect(self.worker/"state/worker.sqlite")) as db:
+   db.execute("CREATE TABLE goals(id TEXT PRIMARY KEY,admitted REAL,record TEXT)");db.commit()
   self.start=10000.
   watch.atomic(self.worker/"config.json",{"installation_id":"fixture"})
   watch.atomic(self.worker/"health.json",{"installation_id":"fixture","system":True,"updated_epoch":self.start,"state":"idle","boot_id":"boot-a"})
@@ -32,10 +34,11 @@ class WatchTests(unittest.TestCase):
   sample=watch.snapshot(self.worker,self.native,self.start,self.probe)
   self.assertEqual(sample["issues"],[]);self.assertEqual(sample["native_revision"],0)
   self.assertEqual(before,[hashlib.sha256(p.read_bytes()).hexdigest() for p in paths])
-  with sqlite3.connect(paths[0]) as db:
+  with closing(sqlite3.connect(paths[0])) as db:
    raw=json.loads(db.execute("SELECT value FROM runtime").fetchone()[0])
    raw["payload"]["revision"]+=1
    db.execute("UPDATE runtime SET value=?",(json.dumps(raw),))
+   db.commit()
   with self.assertRaisesRegex(ValueError,"native_checksum"):watch.snapshot(self.worker,self.native,self.start,self.probe)
  def test_same_slot_is_idempotent_and_changed_api_counter_is_flagged(self):
   watch.sample(self.monitor,self.start,self.frozen)
