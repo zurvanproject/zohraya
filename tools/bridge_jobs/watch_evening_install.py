@@ -20,7 +20,7 @@ def ps(code):
   error_id=(match.group(1).split(",")[0] if match else "powershell")[:24]
   private=Path(os.environ["PROGRAMDATA"])/"NasurayaModelWorker/monitoring/evening-20261107"
   if private.is_dir():
-   (private/("task-error-"+phase+".json")).write_text(json.dumps({"phase":phase,"error_id":error_id,"stderr":p.stderr,"at":time.time()}),encoding="utf-8")
+   (private/("task-error-"+phase+".json")).write_text(json.dumps({"phase":phase,"error_id":error_id,"stderr":p.stderr,"stdout":p.stdout,"at":time.time()}),encoding="utf-8")
   raise RuntimeError("TaskOperation_"+phase+"_"+error_id)
  return p.stdout.strip()
 def load_watch(root):
@@ -49,9 +49,9 @@ def verify_schedule(config,source):
  code="$epoch=[DateTime]::SpecifyKind([DateTime]'1970-01-01',[DateTimeKind]::Utc);"
  for mode,name in (("sample",config["sample_task"]),("final",config["final_task"])):
   arguments='-I -X utf8 "'+str(source)+'" '+mode+' --root "'+str(source.parent)+'"'
-  code+=("$t=Get-ScheduledTask -TaskName "+psq(name)+";if(($t.Principal.UserId -notin @('SYSTEM','S-1-5-18')) -or ($t.Actions[0].Execute -ne "+psq(sys.executable)+") -or ($t.Actions[0].Arguments -ne "+psq(arguments)+")){throw 'Task definition'};")
-  if mode=="sample":code+="if($t.Triggers[0].Repetition.Interval -ne 'PT10M'){throw 'Task cadence'};"
-  else:code+="if([Math]::Abs((([DateTimeOffset]::Parse($t.Triggers[0].StartBoundary)).UtcDateTime-$epoch).TotalSeconds-"+str(config["deadline"])+") -gt 1){throw 'Task deadline'};"
+  code+=("$t=Get-ScheduledTask -TaskName "+psq(name)+";if($t.Principal.UserId -notin @('SYSTEM','S-1-5-18')){throw 'TaskPrincipal'};if($t.Actions[0].Execute -ne "+psq(sys.executable)+"){throw 'TaskExecutable'};if($t.Actions[0].Arguments -ne "+psq(arguments)+"){throw 'TaskArguments'};")
+  if mode=="sample":code+="if($t.Triggers[0].Repetition.Interval -ne 'PT10M'){throw 'TaskCadence'};"
+  else:code+="if([Math]::Abs((([DateTimeOffset]::Parse($t.Triggers[0].StartBoundary)).UtcDateTime-$epoch).TotalSeconds-"+str(config["deadline"])+") -gt 1){throw 'TaskDeadline'};"
  ps(code)
 
 def main():
