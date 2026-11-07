@@ -51,7 +51,7 @@ class WorldModelProbeTests(unittest.TestCase):
     def test_bad_inputs_fail_closed(self):
         for bad in (float("nan"), float("inf"), -1., 1.1, True):
             with self.subTest(bad=bad), self.assertRaises(ValueError):
-                probe.clip(bad)
+                probe.unit(bad)
         with self.assertRaises(ValueError):
             probe.decide(boundary=1, pain=0., fatigue=0., familial=False)
 
