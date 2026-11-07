@@ -1,0 +1,87 @@
+{
+  "schema": "nasuraya-server-worker-public-evidence/1",
+  "date": "2026-11-07",
+  "pull_request": 157,
+  "package": {
+    "commit": "df08e5cb113991e5a22bedabe2ea7ba984d79f9a",
+    "package_sha256": "e747ee5d4aaa642c8300f589b98f3bfa63b339b15b4239e914e3afcea64b1ecf",
+    "manifest_sha256": "e8558cf14cb7ed1f6273a7dcfe75ba287d7a44ec39b3a2feb730d816072f909b",
+    "bytes": 192644
+  },
+  "installer": {
+    "commit": "5f8c9fe2052da71b7a9b38214a809503836d752f",
+    "sha256": "51def007a6bcdd5ab36183b94fd469a3c9b122e1eac54684bca920fd730d5481",
+    "request": 6707273846,
+    "response": 6707278817,
+    "summary": "Result: OK WORKER=INSTALLED;SYSTEM=1;KEY=DPAPI;STARTUP=1;SMOKE=QUEUED;MODEL=G6ASTRA"
+  },
+  "credential": {
+    "commit": "c11d63fc62e9b5aeaddbfc49b2daa9cc3545599e",
+    "request": 6707224417,
+    "response": 6707234006,
+    "storage": "machine DPAPI with SYSTEM/Administrators ACL",
+    "plaintext_published": false,
+    "temporary_recipient_removed": true
+  },
+  "live_goal": {
+    "goal_id": "nasuraya-server-install-smoke-20261107-v1",
+    "model": "gpt-6-astra",
+    "work_tool_relay": false,
+    "system_worker": true,
+    "completed_cycles": 1,
+    "body_revision_before": 5,
+    "body_revision_after": 6,
+    "checkpoint_prefix": "2afc0213c3321cee",
+    "tools": 3,
+    "goal_http_requests": 24,
+    "final_answer_saved_privately": true,
+    "api_session_deleted": true,
+    "session_id_sha256_prefix": "dee9cd5f4a81",
+    "physical_actuation": false,
+    "status_request": 6707280587,
+    "status_response": 6707290841,
+    "audit_request": 6707280756,
+    "audit_response": 6707302407
+  },
+  "startup": {
+    "configured": true,
+    "principal": "SYSTEM",
+    "trigger": "AtStartup",
+    "reboot_tested": false,
+    "task_restart_tested": true,
+    "task_restart_request": 6707295743,
+    "task_restart_response": 6707314850,
+    "extra_goal_http_requests_on_restart": 0,
+    "extra_cycles_on_restart": 0,
+    "native_after_restart": {
+      "request": 6707328350,
+      "response": 6707336731,
+      "cycles": 6,
+      "revision": 6,
+      "unresolved": 0,
+      "checkpoint_prefix": "2afc0213c3321cee"
+    }
+  },
+  "ci": {
+    "run": 42374926164,
+    "linux_job": 128410463222,
+    "windows_job": 128410463429,
+    "discovered_each": 14,
+    "result": "success",
+    "platform_skip_each": 1,
+    "latest_successful_run": 42375188085
+  },
+  "limits": {
+    "cycles_per_goal": [
+      1,
+      3
+    ],
+    "goals_per_utc_day": 2,
+    "total_goals": 5,
+    "tool_calls_per_goal": 12,
+    "goal_api_requests": 80,
+    "run_deadline_seconds": 120,
+    "native_total_action_cap": 20,
+    "idle_model_requests": 0
+  }
+}
