@@ -69,12 +69,41 @@ class ClientStateTests(unittest.TestCase):
         data,key=self.start();self.sessions.fail_after_submit=True
         with self.assertRaises(TimeoutError):client.submit(self.api,data,key,{"n":1},self.state)
         resumed=client.load(self.state);self.sessions.fail_after_submit=False
-        client.submit(self.api,resumed,key,{"n":1},self.state)
+        with self.assertRaises(ValueError):client.submit(self.api,resumed,key,{"n":1},self.state)
         self.assertEqual(self.sessions.submissions,1)
 
     def test_arguments_reject_arbitrary_tools_and_actions(self):
         for item in (action("shell"),action("observe_body",{"path":"private"}),action("request_body_action",{"action":"reset"})):
             with self.assertRaises(ValueError):client.normalized("sess_test",item)
+
+
+
+
+class BridgeReceiptTests(unittest.TestCase):
+    def module(self):
+        spec=importlib.util.spec_from_file_location("bridge_parser",ROOT/"deploy/tadash_agent/bridge.py")
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
+    def receipt(self,summary=None):
+        summary=summary or "G=DONE;N=3/3;R=5;E=0.900;F=0.100;P=0.000;S=0.940;Q=observe;D=observe;A=observe;MEM=1;X=0;SIG=0123456789abcdef;PHY=0"
+        return {"id":2,"user":{"login":"zurvanproject"},
+                "body":"Nasuraya Bridge v2 result; request_id=comment-1; command=run tadash_goal_call\nResult: OK "+summary}
+    def test_exact_authenticated_receipt_is_converted(self):
+        result=self.module().parse_reply(self.receipt(),1)
+        self.assertTrue(result["goal_complete"]);self.assertEqual(result["goal_cycles_completed"],3)
+        self.assertEqual(result["measurement_precision"],0.001)
+    def test_wrong_author_request_and_rejection_are_refused(self):
+        module=self.module()
+        for kind in ("author","request","rejection"):
+            value=self.receipt()
+            if kind=="author":value["user"]["login"]="other"
+            elif kind=="request":value["body"]=value["body"].replace("comment-1","comment-9")
+            else:value=self.receipt("G=REJECTED;ERROR=ValueError")
+            with self.assertRaises(ValueError):module.parse_reply(value,1)
+    def test_completion_scope_and_range_tampering_are_refused(self):
+        module=self.module();base=self.receipt()
+        for old,new in (("G=DONE","G=ACTIVE"),("N=3/3","N=4/3"),("PHY=0","PHY=1"),("S=0.940","S=9.940"),("X=0","X=1")):
+            value=dict(base);value["body"]=base["body"].replace(old,new)
+            with self.assertRaises(ValueError):module.parse_reply(value,1)
 
 
 if __name__=="__main__":unittest.main()

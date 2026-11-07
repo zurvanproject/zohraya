@@ -19,7 +19,7 @@ MANIFEST_SHA = "1ffedf1f438a2e3b9178a19703cfb2037c5d0296a94743ff9391493edae65d15
 GOAL_ID = "nasuraya-review-20261107-v1"
 MAX_CYCLES = 3
 MAX_CALLS = 12
-CALL = {"goal_id":"nasuraya-review-20261107-v1","call_key":"05ab680ce33248e3d9fa84da561c514f350f3320b1c0cdea3d30cdf410be0cb8","name":"observe_body","arguments":{}}
+CALL = {"goal_id":"nasuraya-review-20261107-v1","call_key":"f04bdc3856caf078c5251670a8007fbe5fbcbf0fc3e91dbfded46f4f835bc568","name":"request_body_action","arguments":{"action":"observe"}}
 
 
 def canonical(value):

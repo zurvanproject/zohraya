@@ -158,17 +158,42 @@ def submit(client, data, key, output, state=STATE):
         raise ValueError("conflicting tool result replay")
     if saved and saved.get("submitted"):
         return pending(client,data,state)
-    data["results"][key] = {"event":event,"submitted":False}
+    attempted = bool(saved and saved.get("attempted_submission"))
+    data["results"][key] = {"event":event,"submitted":False,"attempted_submission":attempted}
     save(data,state)
     session = client.beta.agents.sessions.retrieve(data["session_id"])
     live_keys = {normalized(data["session_id"],a)["call_key"] for a in session.to_dict().get("required_actions",[])}
     if key in live_keys:
+        data["results"][key]["attempted_submission"] = True
+        save(data,state)
         client.beta.agents.sessions.events.create(data["session_id"],events=[event],
             extra_headers={"Idempotency-Key":"nasuraya-result-"+fingerprint(event)})
-    elif saved is None:
-        raise ValueError("tool result is no longer pending; reconcile")
+    else:
+        raise ValueError("tool result is no longer pending; delivery is unconfirmed")
     data["results"][key]["submitted"] = True
     save(data,state)
+    return pending(client,data,state)
+
+
+def continue_goal(client,data,observation,state=STATE):
+    if observation.get("goal_id")!=GOAL_ID or not 0<=observation.get("goal_cycles_completed",-1)<=3:
+        raise ValueError("same verified goal observation required")
+    session=client.beta.agents.sessions.retrieve(data["session_id"])
+    if session.status!="idle":
+        raise ValueError("resume only after the preceding turn is idle")
+    message=("Continue the SAME saved goal; do not reset or count earlier unrelated body cycles. "
+             "The previous turn ended before the bridge result arrived. The authenticated VPS result is now: "
+             +canonical(observation)+". This is the requested initial observation. "
+             "Use it to request ONE safe body action next, then use returned results for subsequent steps. "
+             "The goal remains exactly three native cycles followed by evaluate_goal.")
+    event={"type":"agent.session.input.message","input":[{"type":"message","role":"user",
+            "content":[{"type":"input_text","text":message}]}]}
+    key="nasuraya-continue-"+fingerprint([GOAL_ID,observation])
+    saved=data.setdefault("continuations",{}).get(key)
+    if not saved or not saved.get("submitted"):
+        data["continuations"][key]={"event":event,"submitted":False};save(data,state)
+        client.beta.agents.sessions.events.create(data["session_id"],events=[event],extra_headers={"Idempotency-Key":key})
+        data["continuations"][key]["submitted"]=True;save(data,state)
     return pending(client,data,state)
 
 
@@ -189,7 +214,7 @@ def make_client():
 def main():
     import argparse
     parser=argparse.ArgumentParser()
-    parser.add_argument("command",choices=("start","pending","submit","status","delete"))
+    parser.add_argument("command",choices=("start","pending","submit","resume","status","delete"))
     parser.add_argument("--result-file",type=Path)
     parser.add_argument("--call-key")
     args=parser.parse_args()
@@ -197,6 +222,8 @@ def main():
         data=create_or_resume(client)
         if args.command=="submit":
             result=submit(client,data,args.call_key,json.loads(args.result_file.read_text(encoding="utf-8")))
+        elif args.command=="resume":
+            result=continue_goal(client,data,json.loads(args.result_file.read_text(encoding="utf-8")))
         elif args.command=="delete":
             client.beta.agents.sessions.delete(data["session_id"])
             data["deleted"]=True;save(data);result={"deleted":True}
