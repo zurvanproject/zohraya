@@ -10,6 +10,7 @@
 | پیشرفت بومی | یک چرخه؛ revision از ۵ به ۶؛ checkpoint prefix: `2afc0213c3321cee` | همان رسید وضعیت |
 | حذف گیرندهٔ موقت انتقال کلید | فایل خصوصی RSA حذف‌شده | همان رسید ارزیابی |
 | restart خودِ وظیفه | موفق؛ SYSTEM و کلید فعال؛ صفر هدف، صفر HTTP و صفر چرخهٔ اضافه؛ revision=6 | [6707314850](https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6707314850) |
+| دفتر بومی پس از restart | خواندن تازه: CYCLES=6؛ REV=6؛ UNRESOLVED=0؛ همان checkpoint | [6707336731](https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6707336731) |
 | آزمون‌های Windows و Linux | ۱۴ مورد در هر پلتفرم؛ موفق؛ یک skip مربوط به پلتفرم در هرکدام | [42374926164](https://github.com/zurvanproject/zohraya/actions/runs/42374926164) |
 | آخرین بررسی تغییرات ابزار audit/restart | موفق | [42375188085](https://github.com/zurvanproject/zohraya/actions/runs/42375188085) |
 

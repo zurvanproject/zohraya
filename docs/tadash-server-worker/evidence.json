@@ -52,7 +52,15 @@
     "task_restart_request": 6707295743,
     "task_restart_response": 6707314850,
     "extra_goal_http_requests_on_restart": 0,
-    "extra_cycles_on_restart": 0
+    "extra_cycles_on_restart": 0,
+    "native_after_restart": {
+      "request": 6707328350,
+      "response": 6707336731,
+      "cycles": 6,
+      "revision": 6,
+      "unresolved": 0,
+      "checkpoint_prefix": "2afc0213c3321cee"
+    }
   },
   "ci": {
     "run": 42374926164,
