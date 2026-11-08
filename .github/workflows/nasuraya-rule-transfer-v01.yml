@@ -1,0 +1,44 @@
+name: Nasuraya rule transfer v0.1 (offline)
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_research/rule_transfer_probe_v01.py'
+      - 'examples/nasuraya_research/rule_transfer_core.py'
+      - 'tests/test_rule_transfer_probe_v01.py'
+      - 'docs/NASURAYA_RULE_TRANSFER_V01_FA.md'
+      - '.github/workflows/nasuraya-rule-transfer-v01.yml'
+  push:
+    branches: [main, 'nasuraya/**']
+    paths:
+      - 'examples/nasuraya_research/rule_transfer_probe_v01.py'
+      - 'examples/nasuraya_research/rule_transfer_core.py'
+      - 'tests/test_rule_transfer_probe_v01.py'
+      - 'docs/NASURAYA_RULE_TRANSFER_V01_FA.md'
+      - '.github/workflows/nasuraya-rule-transfer-v01.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Unit and negative-control tests
+        run: python -m unittest discover -s tests -p 'test_rule_transfer_probe_v01.py' -v
+      - name: Generate trace and verify locked fixture
+        run: |
+          python -m examples.nasuraya_research.rule_transfer_probe_v01 --output "$RUNNER_TEMP/transfer-report.json"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = json.loads((Path(os.environ['RUNNER_TEMP'])/'transfer-report.json').read_text())
+          assert report['fixture_sha256'] == '97b2e9f8bfa5b0ba27f8d124591b7418d970060471cc880d2823a7b15d6a343f'
+          assert report['total'] == 30
+          assert report['correct'] == {'no_memory': 7, 'exact_episode': 11,
+                                        'always_review': 16, 'rule_bank': 30}
+          assert report['actual_api_calls'] == 0 and not report['live_server_changed']
+          PY
