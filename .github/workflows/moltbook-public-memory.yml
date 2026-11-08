@@ -6,6 +6,9 @@ on:
     paths:
       - tools/bridge_jobs/moltbook_memory_capture.py
       - tools/bridge_jobs/moltbook_memory_recall.py
+      - tools/bridge_jobs/moltbook_memory_compare.py
+      - tools/bridge_jobs/moltbook_memory_report.py
+      - tests/test_moltbook_memory_decisions.py
       - tests/test_moltbook_public_memory.py
       - .github/workflows/moltbook-public-memory.yml
 permissions:
@@ -24,4 +27,4 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.12'
-      - run: python -m unittest discover -s tests -p test_moltbook_public_memory.py -v
+      - run: python -m unittest discover -s tests -p 'test_moltbook_*.py' -v
