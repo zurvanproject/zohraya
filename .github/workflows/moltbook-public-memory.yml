@@ -8,6 +8,9 @@ on:
       - tools/bridge_jobs/moltbook_memory_recall.py
       - tools/bridge_jobs/moltbook_memory_compare.py
       - tools/bridge_jobs/moltbook_memory_report.py
+      - tools/bridge_jobs/moltbook_reflection_train.py
+      - tools/bridge_jobs/moltbook_reflection_report.py
+      - tests/test_moltbook_native_feedback.py
       - tests/test_moltbook_memory_decisions.py
       - tests/test_moltbook_public_memory.py
       - .github/workflows/moltbook-public-memory.yml
