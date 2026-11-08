@@ -37,7 +37,8 @@ class GalleryTests(unittest.TestCase):
             self.assertNotIn('<script>alert("x")</script>', html)
             self.assertNotIn('<script>alert("x")</script>', svg)
             self.assertIn('&lt;script&gt;', html)
-            self.assertIn('&lt;script&gt;', svg)
+            self.assertNotIn('&lt;script&gt;', svg, "SVG must not carry letter text")
+            self.assertIn('class="on-paper"', html)
             self.assertIn("یک نامهٔ امن", html)
 
     def test_invalid_letters_fail(self):
