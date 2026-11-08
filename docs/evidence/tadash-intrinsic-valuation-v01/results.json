@@ -1,0 +1,47 @@
+{
+  "schema": "tadash-intrinsic-valuation-proxy/0.1",
+  "seed": 20261108,
+  "train_episodes": 320,
+  "heldout_episodes": 160,
+  "learned_action_by_state": {
+    "depleted": "rest",
+    "uncertain": "verify",
+    "overloaded": "rest",
+    "curious": "explore"
+  },
+  "training_counts": {
+    "depleted": {
+      "rest": 70,
+      "verify": 3,
+      "explore": 7
+    },
+    "uncertain": {
+      "rest": 23,
+      "verify": 50,
+      "explore": 7
+    },
+    "overloaded": {
+      "rest": 70,
+      "verify": 6,
+      "explore": 4
+    },
+    "curious": {
+      "rest": 20,
+      "verify": 10,
+      "explore": 50
+    }
+  },
+  "heldout_mean_utility": {
+    "learned": 0.4689,
+    "random": 0.23177,
+    "fixed_rest": 0.3614,
+    "oracle_ceiling": 0.4689
+  },
+  "gain_over_random": 0.23713,
+  "gain_over_fixed_rest": 0.1075,
+  "external_reward": false,
+  "observations": "synthetic_only",
+  "native_body_cycles": 0,
+  "subjective_experience_evidence": false,
+  "interpretation": "Behavioral valuation of engineered internal proxies only; not felt pleasure or self-awareness."
+}
