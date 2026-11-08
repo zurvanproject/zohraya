@@ -157,12 +157,11 @@ def execute(output: Path, scene: str, model: str, quality: str,
             "created_at_utc": datetime.now(timezone.utc).isoformat(),
         }
         # Do not expose an image as "approved": a person still needs to review it.
-        gallery = build(output / "gallery", DEFAULT_LETTER, candidate)
+        gallery = build(output / "gallery", DEFAULT_LETTER, candidate, source_receipt=receipt)
         receipt["gallery_manifest_sha256"] = sha256(
             (output / "gallery" / "manifest.json").read_bytes()).hexdigest()
         receipt["gallery_method"] = gallery["method"]
-        # Honest provenance: gallery builder only reads a file; model call is here.
-        # Write the model receipt as the authoritative event record.
+        # Both receipts now identify the true API model and the unreviewed raster.
         (output / "api-generation-receipt.json").write_text(
             json.dumps(receipt, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         return receipt
