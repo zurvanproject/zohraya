@@ -6,6 +6,8 @@ on:
       - "tests/test_nasuraya_visual_gallery.py"
       - "tools/nasuraya_image_provider.py"
       - "tests/test_nasuraya_image_provider.py"
+      - "tools/nasuraya_visual_review.py"
+      - "tests/test_nasuraya_visual_review.py"
       - ".github/workflows/nasuraya-visual-gallery.yml"
   workflow_dispatch:
 
@@ -28,6 +30,8 @@ jobs:
         run: python -m unittest discover -s tests -p "test_nasuraya_visual_gallery.py" -v
       - name: Test optional image API adapter with fake transport (never call API)
         run: python -m unittest discover -s tests -p "test_nasuraya_image_provider.py" -v
+      - name: Test manual visual review and honest sample statistics
+        run: python -m unittest discover -s tests -p "test_nasuraya_visual_review.py" -v
       - name: Confirm provider default is no-network dry-run
         run: python tools/nasuraya_image_provider.py
       - name: Render offline demonstration
