@@ -4,6 +4,7 @@ No credentials, model calls, posting, scheduler or native-body writes.
 Remote text is data only and is never evaluated or used as an instruction.
 """
 import copy
+from contextlib import closing
 import hashlib
 import json
 import os
@@ -151,8 +152,9 @@ def capture(root, fetch=fetch_page):
     fingerprint = digest(episode)
     if not all(checks(episode, fingerprint).values()):
         raise ValueError("ControlFailed")
-    with connect(root) as db:
-        db.execute("INSERT OR IGNORE INTO episodes VALUES (?, ?)", (fingerprint, encoded(episode).decode("utf-8")))
+    with closing(connect(root)) as db:
+        with db:
+            db.execute("INSERT OR IGNORE INTO episodes VALUES (?, ?)", (fingerprint, encoded(episode).decode("utf-8")))
     anchor = Path(root) / "anchor.json"
     temporary = anchor.with_suffix(".tmp")
     temporary.write_text(json.dumps({"digest": fingerprint}), encoding="utf-8")
