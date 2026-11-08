@@ -1,4 +1,5 @@
 import copy
+from contextlib import closing
 import importlib.util
 import json
 import os
@@ -40,7 +41,7 @@ class PublicMemoryTest(unittest.TestCase):
     def test_database_corruption_is_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             m.capture(d, fetch_fixture)
-            with sqlite3.connect(Path(d) / "episodes.sqlite3") as db:
+            with closing(sqlite3.connect(Path(d) / "episodes.sqlite3")) as db, db:
                 row = json.loads(db.execute("SELECT body FROM episodes").fetchone()[0])
                 row["nodes"][0]["content"] = "changed"
                 db.execute("UPDATE episodes SET body=?", (json.dumps(row),))
@@ -50,7 +51,7 @@ class PublicMemoryTest(unittest.TestCase):
     def test_missing_episode_is_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             m.capture(d, fetch_fixture)
-            with sqlite3.connect(Path(d) / "episodes.sqlite3") as db:
+            with closing(sqlite3.connect(Path(d) / "episodes.sqlite3")) as db, db:
                 db.execute("DELETE FROM episodes")
             with self.assertRaisesRegex(ValueError, "MissingEpisode"):
                 m.recall(d)
