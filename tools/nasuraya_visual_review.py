@@ -12,6 +12,8 @@ import json
 from pathlib import Path
 import re
 
+from nasuraya_visual_gallery import check_raster
+
 CRITERIA = (
     "face_identity_consistent",
     "exactly_two_horns",
@@ -27,6 +29,7 @@ HEX_SHA = re.compile(r"^[0-9a-f]{64}$")
 def form(image_path: Path) -> dict:
     if not image_path.is_file() or image_path.stat().st_size == 0:
         raise ValueError("an existing nonempty image is required")
+    check_raster(image_path)
     return {
         "schema": "nasuraya-visual-review-v1",
         "image_sha256": sha256(image_path.read_bytes()).hexdigest(),
@@ -46,9 +49,10 @@ def validate(doc: dict) -> tuple[str, bool]:
     scores = doc.get("scores")
     if not isinstance(scores, dict) or set(scores) != set(CRITERIA):
         raise ValueError("missing or extra score fields")
-    if any(value is not None and type(value) is not bool for value in scores.values()):
-        raise ValueError("scores must be true, false or null")
-    all_set = all(type(value) is bool for value in scores.values())
+    if any(value is not None and type(value) is not bool and value != "not_visible"
+           for value in scores.values()):
+        raise ValueError("scores must be true, false, not_visible or null")
+    all_set = all(type(value) is bool or value == "not_visible" for value in scores.values())
     all_unset = all(value is None for value in scores.values())
     if not (all_set or all_unset):
         raise ValueError("partially completed reviews are not counted")
@@ -76,7 +80,7 @@ def validate(doc: dict) -> tuple[str, bool]:
 
 def report(files: list[Path]) -> dict:
     seen = set()
-    counts = {key: {"pass": 0, "fail": 0} for key in CRITERIA}
+    counts = {key: {"pass": 0, "fail": 0, "not_visible": 0} for key in CRITERIA}
     reviewed = 0
     pending = 0
     for path in files:
@@ -90,7 +94,8 @@ def report(files: list[Path]) -> dict:
             continue
         reviewed += 1
         for key, value in doc["scores"].items():
-            counts[key]["pass" if value else "fail"] += 1
+            counts[key]["not_visible" if value == "not_visible" else
+                        "pass" if value else "fail"] += 1
     return {
         "schema": "nasuraya-visual-review-summary-v1",
         "sample_count": len(seen),
@@ -99,8 +104,9 @@ def report(files: list[Path]) -> dict:
         "minimum_sample_size": 10,
         "sufficient_samples_for_comparison": reviewed >= 10,
         "scores": {
-            key: {**value, "denominator": reviewed,
-                  "pass_fraction": value["pass"] / reviewed if reviewed else None}
+            key: {**value, "denominator": value["pass"] + value["fail"],
+                  "pass_fraction": value["pass"] / (value["pass"] + value["fail"])
+                                   if value["pass"] + value["fail"] else None}
             for key, value in counts.items()
         },
         "visual_review_automated": False,
