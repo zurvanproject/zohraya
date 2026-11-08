@@ -41,12 +41,8 @@ def portrait_svg(letter: str) -> str:
     """Deterministic vector illustration; NOT AI-generated or photorealistic."""
     lines = validated_letter(letter)
     # A separate HTML transcript is the legibility source of truth.
-    letter_svg = "\n".join(
-        f'<text x="820" y="{737 + i * 58}" text-anchor="end" direction="rtl" '
-        f'font-family="Tahoma,Arial,sans-serif" font-size="29" fill="#2b272b">'
-        f'{escape(line)}</text>'
-        for i, line in enumerate(lines)
-    )
+    # SVG renderers vary in Persian shaping; HTML overlays provide text instead.
+    letter_svg = ""
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1240"
 role="img" aria-label="Original vector portrait of Nasuraya holding an open Persian letter">
 <defs>
@@ -93,8 +89,6 @@ fill="none" stroke="#dc7842" stroke-width="35" stroke-linecap="round"/>
 <path d="M144 693 Q125 660 104 701 L87 772 Q106 793 139 761Z" fill="#db9b78" stroke="#9c664d" stroke-width="4"/>
 <path d="M816 698 Q841 660 869 700 L884 769 Q859 792 825 767Z" fill="#db9b78" stroke="#9c664d" stroke-width="4"/>
 {letter_svg}
-<text x="820" y="1142" direction="rtl" text-anchor="end" fill="#7b4b3f" font-size="22"
-font-family="Tahoma,Arial,sans-serif">ناسورایا | نامهٔ باز</text>
 </svg>'''
 
 
@@ -143,6 +137,8 @@ def build(output: Path, letter: str = DEFAULT_LETTER, image: Path | None = None)
         f'<p class="line">{escape(line) if line else "&nbsp;"}</p>'
         for line in letter.splitlines()
     )
+    overlay_html = (f'<div class="on-paper" aria-hidden="true">{text_html}</div>'
+                    if image is None else "")
     page = f'''<!doctype html>
 <html lang="fa" dir="rtl">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -151,12 +147,14 @@ def build(output: Path, letter: str = DEFAULT_LETTER, image: Path | None = None)
 <style>
 *{{box-sizing:border-box}}body{{margin:0;background:#192a32;color:#f5ecd7;font-family:Tahoma,Arial,sans-serif}}
 main{{width:min(960px,96vw);margin:auto;padding:24px 0 60px}}
-h1{{font-size:clamp(26px,5vw,41px)}}figure{{margin:0}}img{{width:100%;height:auto;max-height:86vh;object-fit:contain;background:#415561;border-radius:18px}}
+h1{{font-size:clamp(26px,5vw,41px)}}figure{{position:relative;margin:0 auto;width:min(100%,680px)}}img{{display:block;width:100%;height:auto;object-fit:contain;background:#415561;border-radius:18px}}
+.on-paper{{position:absolute;top:59%;right:15%;width:70%;height:30%;overflow:hidden;color:#2b272b;direction:rtl;text-align:right;font-family:Tahoma,Arial,sans-serif;font-size:clamp(10px,2vw,21px);line-height:1.55}}
+.on-paper .line{{margin:0 0 8px;white-space:normal}}
 article{{background:#f7eedb;color:#292624;margin-top:18px;border-radius:18px;padding:24px;line-height:1.9;font-size:clamp(19px,3.5vw,28px)}}
 .line{{margin:0 0 8px}}small{{display:block;color:#c8cdd0;margin-top:20px;line-height:1.8}}
 </style></head>
 <body><main><h1>ناسورایا | نامهٔ باز</h1>
-<figure><img src="{escape(art_name, quote=True)}" alt="تصویر داستانی ناسورایا با نامهٔ باز"></figure>
+<figure><img src="{escape(art_name, quote=True)}" alt="تصویر داستانی ناسورایا با نامهٔ باز">{overlay_html}</figure>
 <article aria-label="متن خوانای نامه">{text_html}</article>
 <small>نمایش آزمایشی و آفلاین. تصویر برداری ساده یا فایل تصویریِ تأییدشده است. ساخت تصویر با مدل هوش مصنوعی و انتشار اینترنتی در این برنامه انجام نمی‌شود.</small>
 </main></body></html>'''
