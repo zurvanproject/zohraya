@@ -4,6 +4,8 @@ on:
     paths:
       - "tools/nasuraya_visual_gallery.py"
       - "tests/test_nasuraya_visual_gallery.py"
+      - "tools/nasuraya_image_provider.py"
+      - "tests/test_nasuraya_image_provider.py"
       - ".github/workflows/nasuraya-visual-gallery.yml"
   workflow_dispatch:
 
@@ -24,6 +26,10 @@ jobs:
           python-version: "3.12"
       - name: Test gallery / safety / provenance
         run: python -m unittest discover -s tests -p "test_nasuraya_visual_gallery.py" -v
+      - name: Test optional image API adapter with fake transport (never call API)
+        run: python -m unittest discover -s tests -p "test_nasuraya_image_provider.py" -v
+      - name: Confirm provider default is no-network dry-run
+        run: python tools/nasuraya_image_provider.py
       - name: Render offline demonstration
         run: python tools/nasuraya_visual_gallery.py --out visual-preview
       - name: Inspect generated files
