@@ -37,3 +37,10 @@ jobs:
           m = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
           assert m["published"] is False
           assert m["image_model_invoked"] is False
+      - name: Archive offline gallery for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: nasuraya-gallery-${{ matrix.os }}
+          path: visual-preview/
+          if-no-files-found: error
+          retention-days: 14
