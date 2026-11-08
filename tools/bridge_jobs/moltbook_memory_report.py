@@ -163,13 +163,18 @@ def load_baseline(root):
 def strict_episode(comments, dates):
     # Missing reply-count evidence cannot establish a complete zero-reply tree.
     episode = make_episode(comments, dates, allow_missing_own=True)
-    pending = list(comments)
+    node_ids = {n["id"] for n in episode["nodes"]}
+    if any(n["parent"] is not None and n["parent"] not in node_ids for n in episode["nodes"]):
+        episode["tree_complete"] = False
+    pending = [(c, None) for c in comments]
     missing_counts = 0
     while pending:
-        item = pending.pop()
+        item, enclosing_parent = pending.pop()
+        if enclosing_parent and item.get("parent_id") not in (None, enclosing_parent):
+            episode["tree_complete"] = False
         if type(item.get("reply_count")) is not int:
             missing_counts += 1
-        pending.extend(item.get("replies") or [])
+        pending.extend((r, item["id"]) for r in (item.get("replies") or []))
     if missing_counts:
         episode["tree_complete"] = False
     episode["missing_reply_counts"] = missing_counts
