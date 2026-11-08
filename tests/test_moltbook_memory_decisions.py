@@ -94,6 +94,13 @@ class MemoryDecisionTest(unittest.TestCase):
         decision = m.decide(m.strict_episode([comment()], []), m.strict_episode(items, []))
         self.assertEqual(decision["action"], "RECHECK")
 
+    def test_orphan_and_contradictory_parent_links_abstain(self):
+        before = m.strict_episode([comment()], [])
+        orphan = [comment(), comment("orphan", "visitor", "absent-parent")]
+        nested = with_reply(); nested[0]["replies"][0]["parent_id"] = "absent-parent"
+        for items in (orphan, nested):
+            self.assertEqual(m.decide(before, m.strict_episode(items, []))["action"], "RECHECK")
+
     def test_deduplication_and_anchor_preservation(self):
         with tempfile.TemporaryDirectory() as d:
             c.capture(d, page([comment()]))
