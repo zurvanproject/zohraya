@@ -1,4 +1,5 @@
 import base64
+import atexit
 from contextlib import closing
 import hashlib
 import importlib.util
@@ -37,32 +38,40 @@ def fixture_context(memory):
     return m.source_context(memory)
 
 
+_native_fixture_cache = None
+_native_fixture_owner = None
+
+
+def native_fixture():
+    global _native_fixture_cache, _native_fixture_owner
+    if _native_fixture_cache is not None:
+        return _native_fixture_cache
+    configured = os.environ.get("NASURAYA_NATIVE_FIXTURE")
+    if configured:
+        _native_fixture_cache = Path(configured).resolve()
+    else:
+        _native_fixture_owner = tempfile.TemporaryDirectory()
+        _native_fixture_cache = Path(_native_fixture_owner.name)
+        url = "https://raw.githubusercontent.com/zurvanproject/zohraya/33c669113f08da032c75d4eaf2f778d515d7669f/deploy/tadash_vps_v01.bundle.b64"
+        with urlopen(url, timeout=30) as response:
+            raw = response.read(500001)
+        if len(raw) > 500000 or hashlib.sha256(raw).hexdigest() != m.PACKAGE:
+            raise ValueError("PinnedFixtureMismatch")
+        with zipfile.ZipFile(io.BytesIO(base64.b64decode(raw, validate=True))) as archive:
+            for name in ["FILES_SHA256.json", "native/reflection_cycle.py", "native/decision_core.py"]:
+                dest = _native_fixture_cache / name
+                dest.parent.mkdir(exist_ok=True, parents=True)
+                dest.write_bytes(archive.read(name))
+    if _native_fixture_owner:
+        atexit.register(_native_fixture_owner.cleanup)
+    return _native_fixture_cache
+
+
 class NativeFeedbackTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.prepared = None
-        configured = os.environ.get("NASURAYA_NATIVE_FIXTURE")
-        if configured:
-            cls.installation = Path(configured).resolve()
-        else:
-            cls.prepared = tempfile.TemporaryDirectory()
-            cls.installation = Path(cls.prepared.name)
-            url = "https://raw.githubusercontent.com/zurvanproject/zohraya/33c669113f08da032c75d4eaf2f778d515d7669f/deploy/tadash_vps_v01.bundle.b64"
-            with urlopen(url, timeout=30) as response:
-                raw = response.read(500001)
-            if len(raw) > 500000 or hashlib.sha256(raw).hexdigest() != m.PACKAGE:
-                raise ValueError("PinnedFixtureMismatch")
-            with zipfile.ZipFile(io.BytesIO(base64.b64decode(raw, validate=True))) as archive:
-                for name in ["FILES_SHA256.json", "native/reflection_cycle.py", "native/decision_core.py"]:
-                    dest = cls.installation / name
-                    dest.parent.mkdir(exist_ok=True, parents=True)
-                    dest.write_bytes(archive.read(name))
+        cls.installation = native_fixture()
         cls.Engine = m.load_engine(cls.installation)
-
-    @classmethod
-    def tearDownClass(cls):
-        if cls.prepared:
-            cls.prepared.cleanup()
 
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
