@@ -12,6 +12,8 @@ on:
       - tools/bridge_jobs/moltbook_reflection_report.py
       - tools/bridge_jobs/moltbook_recovery_run.py
       - tools/bridge_jobs/moltbook_recovery_report.py
+      - tools/bridge_jobs/moltbook_repair_retest.py
+      - tests/test_moltbook_repair_retest.py
       - tests/test_moltbook_recovery.py
       - tests/test_moltbook_native_feedback.py
       - tests/test_moltbook_memory_decisions.py
