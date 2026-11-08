@@ -87,8 +87,11 @@ class RecoveryTest(unittest.TestCase):
             shutil.copyfile(self.installation / name, dest)
         deps = self.memory / "RecoveryLabV1/dependencies"
         deps.mkdir(parents=True)
-        for name in m.DEPENDENCIES:
-            shutil.copyfile(n.JOBS / (name + ".py"), deps / (name + ".py"))
+        for name, expected in m.DEPENDENCIES.items():
+            # Git's Windows checkout may use CRLF; the pinned raw GitHub object uses LF.
+            raw = (n.JOBS / (name + ".py")).read_bytes().replace(b"\r\n", b"\n")
+            self.assertEqual(m.sha(raw), expected)
+            (deps / (name + ".py")).write_bytes(raw)
         process = subprocess.run([sys.executable, "-I", str(n.JOBS / "moltbook_recovery_report.py")],
             env=dict(os.environ, LOCALAPPDATA=str(self.local)), capture_output=True, text=True, check=True, timeout=15)
         output = json.loads(process.stdout)["summary"]
