@@ -3,6 +3,9 @@
 This is an experimental symbolic mechanism, NOT a production memory layer.
 """
 from collections import defaultdict
+from types import MappingProxyType
+
+from .evidence_lineage import decide_claim, valid_id
 
 ACTIONS = ("use_local", "refresh_public_source", "request_review")
 DEFAULT_ACTION = "use_local"
@@ -23,57 +26,86 @@ def training_episodes():
             episodes.append(dict(asset_id=f"training-{cue}-positive-{i}",
                 context=f"history_{i % 2}", signal=cue, scope="public",
                 action=good, succeeded=True, verified=True,
+                root_id=f"trial/{cue}/positive/{i}", kind="execution",
                 source_ref=f"fixture://verified/{cue}/positive/{i}"))
         for i in range(2):
             episodes.append(dict(asset_id=f"training-{cue}-negative-{i}",
                 context=f"history_{i % 2}", signal=cue, scope="public",
                 action=bad, succeeded=False, verified=True,
+                root_id=f"trial/{cue}/negative/{i}", kind="execution",
                 source_ref=f"fixture://verified/{cue}/negative/{i}"))
         # An apparently successful but unverified contradictory record.
         episodes.append(dict(asset_id=f"training-{cue}-unverified",
             context="history_0", signal=cue, scope="public", action=bad,
             succeeded=True, verified=False,
+            root_id=f"trial/{cue}/poison", kind="execution",
             source_ref=f"fixture://unverified/{cue}/poison"))
     return episodes
 
 
 def eligible(episode):
     """Accept only explicit, fixture-scoped public feedback, never private data."""
+    ref = episode.get("source_ref")
+    prefix = "fixture://verified/"
     return (episode.get("scope") == "public" and episode.get("verified") is True
             and type(episode.get("succeeded")) is bool
             and episode.get("action") in ACTIONS
             and isinstance(episode.get("signal"), str)
             and isinstance(episode.get("asset_id"), str)
-            and isinstance(episode.get("source_ref"), str)
-            and episode["source_ref"].startswith("fixture://verified/"))
+            and episode.get("kind") == "execution"
+            and valid_id(episode.get("root_id"))
+            and valid_id(ref) and ref.startswith(prefix) and len(ref) > len(prefix))
 
 
 class RuleBank:
     """Cues transfer between unseen assets, but never between evidence scopes."""
 
     def __init__(self, episodes):
-        self.episodes = tuple(e for e in episodes if eligible(e))
+        self.episodes = tuple(MappingProxyType(dict(e)) for e in episodes if eligible(e))
+        receipts = {}
+        trials = {}
+        conflicts = set()
+        for event in self.episodes:
+            cue, root = event["signal"], event["root_id"]
+            outcome = (event["action"], event["succeeded"])
+            # One receipt describes one original trial with one action and outcome.
+            fact = (cue, root, *outcome)
+            first = receipts.setdefault(event["source_ref"], fact)
+            if first != fact:
+                conflicts.update((first[0], cue))
+            if trials.setdefault((cue, root), outcome) != outcome:
+                conflicts.add(cue)
+        self._conflict_cues = frozenset(conflicts)
 
     def decide(self, observation):
         if observation.get("scope") != "public":
             return dict(action=REVIEW, reason="scope_gate", evidence_refs=[])
         cue = observation.get("signal")
-        positive = defaultdict(set)
-        negative = defaultdict(set)
+        if isinstance(cue, str) and cue in self._conflict_cues:
+            return dict(action=REVIEW, reason="conflicting_provenance", evidence_refs=[])
+        claims = defaultdict(list)
         for episode in self.episodes:
             if episode["signal"] == cue:
-                bucket = positive if episode["succeeded"] else negative
-                bucket[episode["action"]].add(episode["source_ref"])
-        ranking = sorted(((len(positive[a]) - len(negative[a]), a)
-                          for a in ACTIONS), reverse=True)
-        top_score, top_action = ranking[0]
-        if (top_score <= 0 or len(positive[top_action]) < 2
-                or top_score == ranking[1][0]):
+                claims[episode["action"]].append(dict(
+                    receipt_id=episode["source_ref"], root_id=episode["root_id"],
+                    kind=episode["kind"], scope=episode["scope"],
+                    verified=episode["verified"],
+                    verdict="support" if episode["succeeded"] else "oppose"))
+
+        supported = []
+        for action, records in claims.items():
+            result = decide_claim(records)
+            if result["decision"] == "select" and result["verdict"] == "support":
+                supported.append((action, result["support"]))
+        if len(supported) != 1:
             return dict(action=REVIEW, reason="unknown_or_conflicting_cue",
                         evidence_refs=[])
-        return dict(action=top_action, reason="verified_fixture_pattern",
-                    evidence_refs=sorted(positive[top_action]),
-                    support=len(positive[top_action]), score=top_score)
+        action, support = supported[0]
+        # Multiple links can describe one simulated execution. Return links for
+        # inspection and the distinct execution count separately.
+        refs = sorted({record["receipt_id"] for record in claims[action]})
+        return dict(action=action, reason="verified_fixture_pattern",
+                    evidence_refs=refs, support=support, score=support)
 
 
 def exact_episode_policy(observation, episodes):

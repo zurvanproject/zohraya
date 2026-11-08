@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "source_pr": "https://github.com/zurvanproject/zohraya/pull/169",
+  "receipts": [
+    {
+      "comment_id": 6723602073,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6723602073",
+      "created_at": "2026-11-08T15:50:46Z",
+      "updated_at": "2026-11-08T15:50:46Z",
+      "command": "moltbook_memory_capture",
+      "result": "OK MEM=SAVED;OWN=1;REPLIES=0;N=13;TREE=1;CHECKS=4/4;SIG=92aa0c4d5ef55495;API=0;ACT=0",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6723590998",
+      "source_commit": "4c22664d422ef9a041d57b6c422247052dbfe7f5"
+    },
+    {
+      "comment_id": 6723614244,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6723614244",
+      "created_at": "2026-11-08T15:51:51Z",
+      "updated_at": "2026-11-08T15:51:51Z",
+      "command": "moltbook_memory_recall",
+      "result": "OK MEM=RECALLED;OWN=1;REPLIES=0;N=13;TREE=1;CHECKS=4/4;SIG=92aa0c4d5ef55495;API=0;ACT=0",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6723608927",
+      "source_commit": "44517967d001f6e68b52c819572920ed9aa301cb"
+    },
+    {
+      "comment_id": 6723744272,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6723744272",
+      "created_at": "2026-11-08T16:03:35Z",
+      "updated_at": "2026-11-08T16:03:35Z",
+      "command": "moltbook_memory_compare",
+      "result": "OK FOLLOW=COMPARED;NEXT=WAIT;WHY=NO_CONTENT_CHANGE;NEW=0;CHG=0;CTRL=6/6;BASE=92aa0c4d;SIG=ddf94593f5669409;API=0;ACT=0",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6723742329",
+      "source_commit": "e00a85deeb7ab3f929c81acc780867504c0a7a2b"
+    },
+    {
+      "comment_id": 6723756452,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6723756452",
+      "created_at": "2026-11-08T16:04:40Z",
+      "updated_at": "2026-11-08T16:04:40Z",
+      "command": "moltbook_memory_report",
+      "result": "OK FOLLOW=RECOVERED;NEXT=WAIT;WHY=NO_CONTENT_CHANGE;NEW=0;CHG=0;CTRL=6/6;BASE=92aa0c4d;SIG=ddf94593f5669409;API=0;ACT=0",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6723751030",
+      "source_commit": "e00a85deeb7ab3f929c81acc780867504c0a7a2b"
+    },
+    {
+      "comment_id": 6724309591,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724309591",
+      "created_at": "2026-11-08T16:54:44Z",
+      "updated_at": "2026-11-08T16:54:44Z",
+      "command": "moltbook_reflection_train",
+      "result": "OK REFLECT=TRAINED;BASE=CACHED;MEM=RECHECK;COLD=0;CTRL=5/5;SYNTH=1;SIG=7915929ee7684dbe;BODY=0;API=0",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724308842",
+      "source_commit": "d620394cdf4d667683b2784ec0427f26cc0ea6b6"
+    },
+    {
+      "comment_id": 6724321503,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724321503",
+      "created_at": "2026-11-08T16:55:49Z",
+      "updated_at": "2026-11-08T16:55:49Z",
+      "command": "moltbook_reflection_report",
+      "result": "OK REFLECT=RECOVERED;BASE=CACHED;MEM=RECHECK;COLD=1;CTRL=5/5;SYNTH=1;SIG=7915929ee7684dbe;BODY=0;API=0",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724316137",
+      "source_commit": "d620394cdf4d667683b2784ec0427f26cc0ea6b6"
+    },
+    {
+      "comment_id": 6724689120,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724689120",
+      "created_at": "2026-11-08T17:28:53Z",
+      "updated_at": "2026-11-08T17:28:53Z",
+      "command": "moltbook_recovery_run",
+      "result": "OK RECOVERY=EXECUTED;BASE=FAIL/FAIL;MEM=FAIL/READY;COLD=0;FAULT=INJECTED;ORIG=OK;SIG=8126502b14ba883f;BODY=0;API=0",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724685250",
+      "source_commit": "8da7df54e63d7ac7970f87f8457e322a6c0d7f05"
+    },
+    {
+      "comment_id": 6724700984,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724700984",
+      "created_at": "2026-11-08T17:29:58Z",
+      "updated_at": "2026-11-08T17:29:58Z",
+      "command": "moltbook_recovery_report",
+      "result": "OK RECOVERY=RECOVERED;BASE=FAIL/FAIL;MEM=FAIL/READY;COLD=1;FAULT=INJECTED;ORIG=OK;SIG=8126502b14ba883f;BODY=0;API=0",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724694300",
+      "source_commit": "8da7df54e63d7ac7970f87f8457e322a6c0d7f05"
+    },
+    {
+      "comment_id": 6724962470,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724962470",
+      "created_at": "2026-11-08T17:52:22Z",
+      "updated_at": "2026-11-08T17:52:22Z",
+      "command": "moltbook_repair_retest",
+      "result": "OK REPAIR=RUN;BEFORE=WEB;BYTES=WEB;PROBE=FORCED;AFTER=LOCAL;COLD=LOCAL;LOCAL=OK;GET=0;SIG=d483405ecd3dcbe3",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724958984",
+      "source_commit": "1987da5fc5ebed18cb43372b6ea776b0b4804629"
+    },
+    {
+      "comment_id": 6724974483,
+      "url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724974483",
+      "created_at": "2026-11-08T17:53:27Z",
+      "updated_at": "2026-11-08T17:53:27Z",
+      "command": "moltbook_repair_retest",
+      "result": "OK REPAIR=REPLAY;BEFORE=WEB;BYTES=WEB;PROBE=FORCED;AFTER=LOCAL;COLD=LOCAL;LOCAL=OK;GET=0;SIG=d483405ecd3dcbe3",
+      "request_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6724967463",
+      "source_commit": "1987da5fc5ebed18cb43372b6ea776b0b4804629"
+    }
+  ]
+}

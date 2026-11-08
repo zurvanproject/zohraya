@@ -52,8 +52,81 @@ class RuleTransferProbeTests(unittest.TestCase):
             for i in range(2):
                 rows.append(dict(signal="ambiguous", scope="public", action=action,
                     asset_id=f"{action}/{i}", succeeded=True, verified=True,
+                    root_id=f"trial/{action}/{i}", kind="execution",
                     source_ref=f"fixture://verified/{action}/{i}"))
+        self.assertTrue(all(eligible(row) for row in rows))
+        self.assertEqual(RuleBank(rows[:2]).decide(self.observe("ambiguous"))["action"],
+                         "use_local")
         self.assertEqual(RuleBank(rows).decide(self.observe("ambiguous"))["action"], REVIEW)
+
+    def test_same_operation_under_two_urls_is_one_vote(self):
+        event = self.episodes[0]
+        alias = dict(event, source_ref="fixture://verified/second-link")
+        observation = self.observe(event["signal"])
+        self.assertEqual(RuleBank([event, alias]).decide(observation)["action"], REVIEW)
+        decision = RuleBank([event, alias, self.episodes[1]]).decide(observation)
+        self.assertEqual(decision["action"], event["action"])
+        self.assertEqual(decision["support"], 2)
+
+    def test_replay_or_missing_origin_cannot_supply_second_vote(self):
+        event, second = self.episodes[:2]
+        observation = self.observe(event["signal"])
+        self.assertEqual(RuleBank([event, second]).decide(observation)["support"], 2)
+        for field in ("kind", "root_id"):
+            with self.subTest(missing=field):
+                incomplete = dict(second)
+                del incomplete[field]
+                self.assertEqual(RuleBank([event, incomplete]).decide(observation)["action"],
+                                 REVIEW)
+        replay = dict(second, kind="replay")
+        self.assertEqual(RuleBank([event, replay]).decide(observation)["action"], REVIEW)
+
+    def test_same_link_with_different_origins_abstains(self):
+        first, second = self.episodes[:2]
+        alias = dict(second, source_ref=first["source_ref"])
+        decision = RuleBank([first, alias]).decide(self.observe(first["signal"]))
+        self.assertEqual(decision["action"], REVIEW)
+
+    def test_conflicting_outcomes_on_same_action_block_transfer(self):
+        first, second = self.episodes[:2]
+        contradiction = dict(first, source_ref="fixture://verified/conflict",
+                             succeeded=False)
+        decision = RuleBank([first, second, contradiction]).decide(self.observe(first["signal"]))
+        self.assertEqual(decision["action"], REVIEW)
+
+    def test_conflicting_receipt_across_actions_blocks_affected_cue(self):
+        first, second = self.episodes[:2]
+        other = dict(first, action="use_local", root_id="wrong_origin")
+        result = RuleBank([first, second, other]).decide(self.observe(first["signal"]))
+        self.assertEqual(result["action"], REVIEW)
+        self.assertEqual(result["reason"], "conflicting_provenance")
+
+    def test_conflicting_receipt_blocks_both_cues_but_spares_unrelated_cue(self):
+        first, second = self.episodes[:2]
+        other = dict(first, signal="other", root_id="other-1", action="use_local")
+        other_second = dict(other, root_id="other-2", source_ref="fixture://verified/other-2")
+        unrelated = self.episodes[6:8]
+        bank = RuleBank([first, second, other, other_second, *unrelated])
+        for cue in (first["signal"], other["signal"]):
+            self.assertEqual(bank.decide(self.observe(cue))["reason"], "conflicting_provenance")
+        self.assertEqual(bank.decide(self.observe(unrelated[0]["signal"]))["support"], 2)
+
+    def test_one_trial_claiming_different_original_actions_abstains(self):
+        first, second = self.episodes[:2]
+        other = dict(first, action="use_local", source_ref="fixture://verified/other-action")
+        result = RuleBank([first, second, other]).decide(self.observe(first["signal"]))
+        self.assertEqual(result["reason"], "conflicting_provenance")
+
+    def test_bank_snapshots_validated_inputs(self):
+        first, second = self.episodes[:2]
+        obs = self.observe(first["signal"])
+        bank = RuleBank([first, second])
+        before = bank.decide(obs)
+        self.assertEqual(before["support"], 2)
+        first.update(source_ref="https://untrusted.invalid/unverified", root_id="changed")
+        self.assertEqual(bank.decide(obs), before)
+        with self.assertRaises(TypeError):
+            bank.episodes[0]["source_ref"] = "rewritten"
 
     def test_exact_recall_does_not_cheat_on_holdout(self):
         for case in heldout_cases():
