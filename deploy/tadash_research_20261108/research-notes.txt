@@ -1,0 +1,23 @@
+Tadash evening session, 2026-11-08. Research shards and interpretation.
+
+Protocol -- fixed before launch
+Per 10-minute slot, the controller runs three separate offline experiments. No external model calls, simulated full-body cycles, user-controlled physiology or reward from people enter these experiments. The accompanying operational sampler independently inspects the existing Windows service. Its healthy sample is not evidence of model improvement. All times in a physiological trace use simulated seconds.
+
+A. Source-pinned #98 single-system dynamics.
+Each slot selects a different synthetic intensity from 48 preset levels across .68 to .99. It generates 21 coarse pulses (1 through 11 seconds), two negative controls, and 180 near-threshold cases. These vary six rhythmic inputs, 15 withdrawal times spaced 0.1 seconds around the model's analytically predicted crossing + hold interval, and two recovery cues. Target <= threshold probes are centered near the finite 20-second timeout. Available outcomes include actual peak time, count and restoration to baseline. All near-threshold rows and retention of failures to restore are recorded. The sweep characterizes the response surface of an engineered sidecar. It cannot estimate human parameters or infer the state of the independent native-body worker.
+Metric: # tested grid cells with a peak; verify no-start and early-stop controls remain zero. Inspect a given slot JSON to identify the shortest tested successful pulse at its intensity and compare the two cue-specific restoration times.
+
+B. Source-pinned #166 decision robustness.
+Four independent epsilon-greedy training depths, 16/64/320/960 episodes, with distinct seeds and a balanced four-state stream. There are 128 trained policies per slot. A frozen policy is evaluated with 128 new encounters twice, with the true state label and with a noisy label. Across slots the corruption rates are 0, .1, .25, .5, .75 and 1. A corrupted label is sampled uniformly from the other three states. The held-out outcome always uses its true state and a shared, fresh noise vector. Global label-blind, fixed-rest and per-encounter oracle values accompany both policy results. The 16,384 held-out choices per slot count distinct test encounters presented to each policy. Training contexts themselves are hand-authored and shared between training and test. The trial JSON retains training size, stochastic seed and number of incorrect labels.
+Metric: expected drop of mean utility with label noise and training size where applicable, with the exact same encounters in each comparison. The test derives the oracle ceiling from all three simulated outcomes, making it available only to the evaluator.
+
+C. Same-learner reversal.
+At first the curious/explore outcome has its original information gain and uncertainty-relief terms. After 8/24/48/96/192/256/384/512 pretraining blocks, these two terms are removed from new exploration outcomes. The running mean learner retains all previous evidence. The comparator freezes the policy before the change. Both are scored on matched, independent noise. There are 16 seeds per history length per slot, 128 post-change blocks, one outcome observation for each of the three available actions per block. Report separately the number that switched to rest for the remainder of the measured sequence and the median switch time among those that did. A missing latency is right-censoring at 128 blocks. The test quantifies persistence of engineered sample means, not a spontaneous change in experience.
+
+Reproduce locally on Python 3.12 (stdlib). Keep research.py, valuation.py and neuropelvic.py in one folder.
+  python research.py --slot 0 --out experiment_output
+  python research.py --summary --out experiment_output
+A receipt is deterministic for its slot and source revisions; replay reads that existing file. The aggregate also counts observed slots and reports real total workloads rather than extrapolating until the planned cutoff.
+Sources
+  https://github.com/zurvanproject/zohraya/pull/98
+  https://github.com/zurvanproject/zohraya/pull/166
