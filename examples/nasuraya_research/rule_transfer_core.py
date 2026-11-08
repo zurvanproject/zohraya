@@ -43,8 +43,7 @@ def training_episodes():
     return episodes
 
 
-def eligible(episode):
-    """Accept only explicit, fixture-scoped public feedback, never private data."""
+def _valid_fixture_record(episode):
     ref = episode.get("source_ref")
     prefix = "fixture://verified/"
     return (episode.get("scope") == "public" and episode.get("verified") is True
@@ -52,29 +51,40 @@ def eligible(episode):
             and episode.get("action") in ACTIONS
             and isinstance(episode.get("signal"), str)
             and isinstance(episode.get("asset_id"), str)
-            and episode.get("kind") == "execution"
+            and episode.get("kind") in ("execution", "replay", "mirror", "synthetic")
             and valid_id(episode.get("root_id"))
             and valid_id(ref) and ref.startswith(prefix) and len(ref) > len(prefix))
+
+
+def eligible(episode):
+    """Only verified public fixture executions can supply a vote."""
+    return _valid_fixture_record(episode) and episode["kind"] == "execution"
 
 
 class RuleBank:
     """Cues transfer between unseen assets, but never between evidence scopes."""
 
     def __init__(self, episodes):
-        self.episodes = tuple(MappingProxyType(dict(e)) for e in episodes if eligible(e))
+        originals = []
         receipts = {}
         trials = {}
         conflicts = set()
-        for event in self.episodes:
+        for event in episodes:
+            if not _valid_fixture_record(event):
+                continue
             cue, root = event["signal"], event["root_id"]
             outcome = (event["action"], event["succeeded"])
-            # One receipt describes one original trial with one action and outcome.
-            fact = (cue, root, *outcome)
+            # An immutable receipt has one identity, even when it is a readback.
+            fact = (cue, root, *outcome, event["kind"])
             first = receipts.setdefault(event["source_ref"], fact)
             if first != fact:
                 conflicts.update((first[0], cue))
+            if event["kind"] != "execution":
+                continue
+            originals.append(MappingProxyType(dict(event)))
             if trials.setdefault((cue, root), outcome) != outcome:
                 conflicts.add(cue)
+        self.episodes = tuple(originals)
         self._conflict_cues = frozenset(conflicts)
 
     def decide(self, observation):

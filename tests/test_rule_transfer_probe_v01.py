@@ -117,6 +117,21 @@ class RuleTransferProbeTests(unittest.TestCase):
         result = RuleBank([first, second, other]).decide(self.observe(first["signal"]))
         self.assertEqual(result["reason"], "conflicting_provenance")
 
+    def test_same_receipt_cannot_be_an_execution_and_a_derivative(self):
+        first, second = self.episodes[:2]
+        unrelated = self.episodes[6:8]
+        obs = self.observe(first["signal"])
+        for kind in ("replay", "mirror"):
+            derivative = dict(first, kind=kind)
+            bank = RuleBank([derivative, first, second, *unrelated])
+            self.assertEqual(bank.decide(obs)["reason"], "conflicting_provenance")
+            self.assertEqual(bank.decide(self.observe(unrelated[0]["signal"]))["support"], 2)
+            for inert in (dict(derivative, source_ref="fixture://verified/readback"),
+                          dict(derivative, verified=False), dict(derivative, scope="private")):
+                bank = RuleBank([first, second, inert])
+                self.assertEqual(bank.decide(obs)["support"], 2)
+                self.assertEqual(len(bank.episodes), 2)
+
     def test_bank_snapshots_validated_inputs(self):
         first, second = self.episodes[:2]
         obs = self.observe(first["signal"])
