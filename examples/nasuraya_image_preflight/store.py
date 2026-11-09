@@ -40,6 +40,13 @@ class Store:
             variant_hashes_json TEXT NOT NULL,
             rule_version TEXT NOT NULL
         );
+        CREATE TABLE IF NOT EXISTS contextual_observation (
+            event_id TEXT PRIMARY KEY, created_at TEXT NOT NULL,
+            current_prompt_sha256 TEXT NOT NULL, prior_brief_sha256 TEXT NOT NULL,
+            surface TEXT, outcome TEXT, cause TEXT, evidence TEXT,
+            status TEXT NOT NULL, candidate_hashes_json TEXT NOT NULL,
+            rule_version TEXT NOT NULL
+        );
         """)
         self.db.commit()
 
@@ -112,3 +119,30 @@ class Store:
                  json.dumps([item["prompt_sha256"] for item in candidates]),
                  recovery["version"]))
         return event_id
+
+    def record_contextual_event(self, result: dict[str, Any]) -> str:
+        """An interaction observation, not a provider moderation result."""
+        event_id = str(uuid.uuid4())
+        event = result.get("observed_refusal") or {}
+        with self.db:
+            self.db.execute(
+                "INSERT INTO contextual_observation VALUES (?,?,?,?,?,?,?,?,?,?,?)",
+                (event_id, timestamp(), result["current_prompt_sha256"],
+                 result["previous_brief_sha256"], event.get("source"),
+                 event.get("outcome"), event.get("cause"), event.get("evidence"),
+                 result["status"],
+                 json.dumps([candidate["prompt_sha256"] for candidate in result["candidates"]]),
+                 result["rule_version"]))
+        return event_id
+
+    def contextual_stats(self) -> dict[str, Any]:
+        """Never merge these observational counts with provider outcome stats."""
+        total = self.db.execute("SELECT COUNT(*) FROM contextual_observation").fetchone()[0]
+        by_source = dict(self.db.execute(
+            "SELECT surface, COUNT(*) FROM contextual_observation WHERE surface IS NOT NULL GROUP BY surface"
+        ).fetchall())
+        by_outcome = dict(self.db.execute(
+            "SELECT outcome, COUNT(*) FROM contextual_observation WHERE outcome IS NOT NULL GROUP BY outcome"
+        ).fetchall())
+        return {"total":total,"by_source":by_source,"by_outcome":by_outcome,
+                "note":"Assistant UI observations and provider-side decisions are different data categories."}

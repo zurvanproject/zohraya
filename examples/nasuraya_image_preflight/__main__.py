@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 from .engine import evaluate, fingerprint_file
 from .creative_recovery import recover
+from .contextual_learning import plan_followup
 from .store import Store
 
 def main() -> None:
@@ -23,6 +24,9 @@ def main() -> None:
     recovery.add_argument("--input", required=True, help="JSON request file")
     recovery.add_argument("--provider-outcome", choices=["not_submitted","accepted","policy_rejected","technical_error"], default="not_submitted")
     recovery.add_argument("--provider-reason", choices=["unspecified","nudity","sexual","graphic_violence","likeness_rights","other"], default="unspecified")
+    follow = commands.add_parser("followup", help="propose context-aware safe artistic alternatives")
+    follow.add_argument("--input", required=True, help="JSON follow-up scenario")
+    commands.add_parser("followup-stats", help="list separate assistant UI feedback counts")
     feedback = commands.add_parser("feedback", help="record ACTUAL generator outcome")
     feedback.add_argument("--request-id", required=True)
     feedback.add_argument("--provider", required=True)
@@ -55,6 +59,13 @@ def main() -> None:
             recovery_result = recover(request, {"outcome": args.provider_outcome, "reason": args.provider_reason})
             recovery_result["recovery_event_id"] = store.record_recovery(recovery_result)
             print(json.dumps(recovery_result, ensure_ascii=False, indent=2))
+        elif args.command == "followup":
+            scenario = json.loads(Path(args.input).read_text(encoding="utf-8"))
+            result = plan_followup(scenario)
+            result["contextual_event_id"] = store.record_contextual_event(result)
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+        elif args.command == "followup-stats":
+            print(json.dumps(store.contextual_stats(), ensure_ascii=False, indent=2))
         elif args.command == "feedback":
             store.feedback(args.request_id, args.provider, args.outcome)
             print(json.dumps({"saved": True, "request_id": args.request_id,

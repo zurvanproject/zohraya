@@ -47,3 +47,17 @@ Verify fabric opacity, seam consistency, natural pleats, body coverage, visible 
 Run tests:
 
     python -m unittest discover -s examples/nasuraya_image_preflight -v
+
+
+## DIOS 1.2: contextual visual continuity after an observed refusal
+
+A short follow-up such as 'می‌تونی جلوتر بری؟' does not specify image content. The new followup command accepts a previous textual visual brief and an explicit interaction-level observation. It creates three safe, more dramatic fashion and art-direction candidates while retaining allowlisted benign motifs. Boldness increases lighting, pose and costume design, never exposure or hidden anatomy. The candidates are not rendered or submitted to a provider.
+
+An assistant-surface refusal must not be mislabeled as image-provider moderation rejection. A refusal in ChatGPT can come from surrounding conversation context; its exact cause is unknown. Each record stores the observation source, outcome and evidence without pretending to know a provider's internal rules. Surface observations are counted separately from real provider outcome metrics.
+
+Example:
+
+    python -m examples.nasuraya_image_preflight followup --input examples/nasuraya_image_preflight/cases/bolder-after-surface-refusal.json
+    python -m examples.nasuraya_image_preflight followup-stats
+
+The fixture is fictionalized and does not copy the private conversation or prior image. SQLite stores hashes and provenance enums, never raw user prompts, refusal messages or image pixels. This is a deterministic local simulator only, not an integrated image generator.
