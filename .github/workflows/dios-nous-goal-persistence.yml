@@ -1,0 +1,26 @@
+name: DIOS NOUS Goal Persistence Probe
+on:
+  push:
+    paths:
+      - 'examples/nasuraya_research/goal_persistence_v01.py'
+      - 'examples/nasuraya_research/test_goal_persistence_v01.py'
+      - '.github/workflows/dios-nous-goal-persistence.yml'
+      - 'docs/research/DIOS_NOUS_GOAL_PERSISTENCE_*'
+  pull_request:
+    paths:
+      - 'examples/nasuraya_research/goal_persistence_v01.py'
+      - 'examples/nasuraya_research/test_goal_persistence_v01.py'
+      - '.github/workflows/dios-nous-goal-persistence.yml'
+      - 'docs/research/DIOS_NOUS_GOAL_PERSISTENCE_*'
+jobs:
+  test-and-evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit tests (development seeds)
+        run: python -m unittest examples.nasuraya_research.test_goal_persistence_v01 -v
+      - name: Preregistered 128-seed held-out experiment
+        run: python -m examples.nasuraya_research.goal_persistence_v01
