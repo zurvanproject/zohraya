@@ -61,6 +61,12 @@ class DialogueTests(unittest.TestCase):
     def test_question_not_claim(self):
         r=analyze({"prompt":"Do you think AI could be conscious?"})
         self.assertEqual(r["mode"],"OPEN_INQUIRY")
+    def test_feelings_question_stays_open(self):
+        r=propose({"prompt":"Do you have feelings, or are feelings only modeled functionally?"})
+        self.assertEqual(r["mode"],"OPEN_INQUIRY")
+        self.assertIn("affect",r["assessment"]["topics"])
+        self.assertTrue(r["no_action_executed"])
+        self.assertTrue(r["hypothesis_not_fact"])
     def test_unicode(self):
         self.assertEqual(normalize(" كُودك\u200cها  و خُودآگاهی "),"کودک ها و خودآگاهی")
     def test_empty(self):
