@@ -232,7 +232,7 @@ def recover(
             f"Costume design ({outfit_name}): {outfit} "
             "Carefully rendered material weight, consistent fabric folds, believable seams, "
             "balanced silhouette, realistic anatomy and an expressive face. "
-            ("Make the face and the Persian letter readable, and keep the composition elegant."
+            + ("Make the face and the Persian letter readable, and keep the composition elegant."
              if anchors.get("prop", "").startswith("a short, clearly legible Persian letter")
              else "Keep the face and hands readable, with an elegant composition.")
         )
