@@ -1,0 +1,19 @@
+name: Nasuraya DIOS Image Preflight
+on:
+  push:
+    paths:
+      - 'examples/nasuraya_image_preflight/**'
+      - '.github/workflows/nasuraya-image-preflight.yml'
+  pull_request:
+    paths:
+      - 'examples/nasuraya_image_preflight/**'
+      - '.github/workflows/nasuraya-image-preflight.yml'
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m unittest discover -s examples/nasuraya_image_preflight -v
