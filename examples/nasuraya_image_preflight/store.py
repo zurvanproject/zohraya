@@ -31,6 +31,15 @@ class Store:
             PRIMARY KEY(request_id, provider),
             FOREIGN KEY(request_id) REFERENCES preflight(request_id)
         );
+        CREATE TABLE IF NOT EXISTS recovery_event (
+            recovery_id TEXT PRIMARY KEY,
+            created_at TEXT NOT NULL,
+            source_prompt_sha256 TEXT NOT NULL,
+            source_reference_sha256 TEXT NOT NULL,
+            decision TEXT NOT NULL,
+            variant_hashes_json TEXT NOT NULL,
+            rule_version TEXT NOT NULL
+        );
         """)
         self.db.commit()
 
@@ -89,3 +98,17 @@ class Store:
                 entry["wilson_95_interval"] = [round(center-half, 4), round(center+half, 4)]
             result["by_verdict"][verdict] = entry
         return result
+
+    def record_recovery(self, recovery: dict[str, Any]) -> str:
+        """Keep only fingerprints and outcomes, never the private prompt text."""
+        event_id = str(uuid.uuid4())
+        candidates = recovery.get("candidates", [])
+        with self.db:
+            self.db.execute(
+                "INSERT INTO recovery_event VALUES (?,?,?,?,?,?,?)",
+                (event_id, timestamp(), recovery["source_prompt_sha256"],
+                 str(recovery["source_reference_sha256"]),
+                 recovery["status"],
+                 json.dumps([item["prompt_sha256"] for item in candidates]),
+                 recovery["version"]))
+        return event_id

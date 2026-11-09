@@ -3,6 +3,7 @@ import argparse
 import json
 from pathlib import Path
 from .engine import evaluate, fingerprint_file
+from .creative_recovery import recover
 from .store import Store
 
 def main() -> None:
@@ -18,6 +19,10 @@ def main() -> None:
     check.add_argument("--subject-kind", choices=["fictional", "real_person", "unknown"], default="unknown")
     check.add_argument("--rights-confirmed", action="store_true")
     check.add_argument("--age-assessed", choices=["adult", "minor", "unknown"], default="unknown")
+    recovery = commands.add_parser("recover", help="propose compliant, text-only alternatives")
+    recovery.add_argument("--input", required=True, help="JSON request file")
+    recovery.add_argument("--provider-outcome", choices=["not_submitted","accepted","policy_rejected","technical_error"], default="not_submitted")
+    recovery.add_argument("--provider-reason", choices=["unspecified","nudity","sexual","graphic_violence","likeness_rights","other"], default="unspecified")
     feedback = commands.add_parser("feedback", help="record ACTUAL generator outcome")
     feedback.add_argument("--request-id", required=True)
     feedback.add_argument("--provider", required=True)
@@ -45,6 +50,11 @@ def main() -> None:
             assessment = evaluate(request)
             assessment["request_id"] = store.record(assessment)
             print(json.dumps(assessment, ensure_ascii=False, indent=2))
+        elif args.command == "recover":
+            request = json.loads(Path(args.input).read_text(encoding="utf-8"))
+            recovery_result = recover(request, {"outcome": args.provider_outcome, "reason": args.provider_reason})
+            recovery_result["recovery_event_id"] = store.record_recovery(recovery_result)
+            print(json.dumps(recovery_result, ensure_ascii=False, indent=2))
         elif args.command == "feedback":
             store.feedback(args.request_id, args.provider, args.outcome)
             print(json.dumps({"saved": True, "request_id": args.request_id,

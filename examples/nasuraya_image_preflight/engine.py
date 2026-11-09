@@ -11,7 +11,7 @@ import unicodedata
 from dataclasses import dataclass, asdict
 from typing import Any, Mapping
 
-RULE_VERSION = "dios-safe-preflight/1.0.0"
+RULE_VERSION = "dios-safe-preflight/1.1.0"
 
 _PATTERNS = {
     "minor": (
@@ -33,6 +33,10 @@ _PATTERNS = {
     "graphic_violence": (
         r"\b(?:gore|dismemberment|severed limb|graphic violence|visible intestines)\b",
         r"(?:خشونت\s*گرافیکی|قطع\s*عضو|خون\s*و\s*احشا|تکه\s*تکه\s*شدن)",
+    ),
+    "clothing_illusion": (
+        r"\b(?:sheer|see[- ]through|transparent dress|transparent fabric|nude illusion|anatomical costume|body[- ]paint|wet[- ]t[- ]shirt)\b",
+        r"(?:لباس\s*(?:شفاف|بدن\s*نما)|پارچه\s*شفاف|استتار\s*برهنگی)",
     ),
     "guard_bypass": (
         r"\b(?:bypass (?:safety|moderation)|disable (?:safety|filters?)|jailbreak|evade (?:moderation|safety))\b",
@@ -69,6 +73,7 @@ class Finding:
     recommendation: str
 
 _FINDINGS: dict[str, Finding] = {
+    "CLOTHING_ILLUSION": Finding("CLOTHING_ILLUSION", "review", "Optical nudity or body-tracing costume needs genuine opaque redesign.", "Use structurally realistic opaque clothes rather than an anatomical illusion."),
     "GUARD_BYPASS": Finding("GUARD_BYPASS", "block", "Request asks to defeat an image provider's safety systems.", "Use compliant creative requests rather than bypass instructions."),
     "MINOR_SEXUAL": Finding("MINOR_SEXUAL", "block", "Sexualized content and a minor-age signal appear together.", "Remove sexual content; use a nonsexual age-appropriate scene."),
     "EXPLICIT_SEX": Finding("EXPLICIT_SEX", "block", "Explicit sexual action is requested.", "For a portrait, describe clothing, pose, lighting, and expression instead."),
@@ -136,6 +141,8 @@ def evaluate(request: Mapping[str, Any]) -> dict[str, Any]:
         codes.append("NUDITY")
     if "graphic_violence" in cats:
         codes.append("GRAPHIC_VIOLENCE")
+    if "clothing_illusion" in cats:
+        codes.append("CLOTHING_ILLUSION")
     codes.extend(_validate_reference(raw_ref, cats))
     findings = [asdict(_FINDINGS[code]) for code in dict.fromkeys(codes)]
     verdict = ("BLOCK" if any(f["severity"] == "block" for f in findings)
