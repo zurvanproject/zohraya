@@ -5,6 +5,7 @@ from pathlib import Path
 from .engine import evaluate, fingerprint_file
 from .creative_recovery import recover
 from .contextual_learning import plan_followup
+from .visual_director import direct, letter_svg, hash_image_file, grade_visual_review
 from .store import Store
 
 def main() -> None:
@@ -27,6 +28,15 @@ def main() -> None:
     follow = commands.add_parser("followup", help="propose context-aware safe artistic alternatives")
     follow.add_argument("--input", required=True, help="JSON follow-up scenario")
     commands.add_parser("followup-stats", help="list separate assistant UI feedback counts")
+    director = commands.add_parser("director", help="make a single-image visual design contract")
+    director.add_argument("--input", required=True, help="JSON request")
+    plate = commands.add_parser("letter-svg", help="export exact Persian text as a standalone SVG")
+    plate.add_argument("--input", required=True, help="JSON request containing letter_lines")
+    plate.add_argument("--output", required=True, help="target SVG path")
+    visual = commands.add_parser("visual-review", help="record human review of an actual image file")
+    visual.add_argument("--input", required=True, help="JSON human review report")
+    visual.add_argument("--image-file", required=True)
+    commands.add_parser("visual-stats", help="report observed visual reviews")
     feedback = commands.add_parser("feedback", help="record ACTUAL generator outcome")
     feedback.add_argument("--request-id", required=True)
     feedback.add_argument("--provider", required=True)
@@ -66,6 +76,21 @@ def main() -> None:
             print(json.dumps(result, ensure_ascii=False, indent=2))
         elif args.command == "followup-stats":
             print(json.dumps(store.contextual_stats(), ensure_ascii=False, indent=2))
+        elif args.command == "director":
+            config = json.loads(Path(args.input).read_text(encoding="utf-8"))
+            print(json.dumps(direct(config), ensure_ascii=False, indent=2))
+        elif args.command == "letter-svg":
+            config = json.loads(Path(args.input).read_text(encoding="utf-8"))
+            svg = letter_svg(config["letter_lines"])
+            Path(args.output).write_text(svg, encoding="utf-8")
+            print(json.dumps({"created": args.output, "letter_lines": len(config["letter_lines"])}))
+        elif args.command == "visual-review":
+            report = json.loads(Path(args.input).read_text(encoding="utf-8"))
+            graded = grade_visual_review(report, hash_image_file(args.image_file))
+            graded["review_id"] = store.record_visual_review(graded)
+            print(json.dumps(graded, ensure_ascii=False, indent=2))
+        elif args.command == "visual-stats":
+            print(json.dumps(store.visual_review_stats(), ensure_ascii=False, indent=2))
         elif args.command == "feedback":
             store.feedback(args.request_id, args.provider, args.outcome)
             print(json.dumps({"saved": True, "request_id": args.request_id,

@@ -61,3 +61,28 @@ Example:
     python -m examples.nasuraya_image_preflight followup-stats
 
 The fixture is fictionalized and does not copy the private conversation or prior image. SQLite stores hashes and provenance enums, never raw user prompts, refusal messages or image pixels. This is a deterministic local simulator only, not an integrated image generator.
+
+
+## DIOS 1.3 | Visual Director, authentic Persian SVG letters and real-image quality evidence
+
+The earlier demonstration produced a collage/infographic rather than the user-requested ONE character image holding a legible Persian letter. DIOS 1.3 has a new auditable render contract and real manual image-quality checklist:
+
+- Director compiles an authorized, safe previous visual brief to three original single-portrait art directions. Each includes explicit connected horns, tail, hands and feet, full-body frame requirements, actual opaque clothing and no inset frames. These are PLANNED requirements, not computer vision conclusions.
+- The letter is generated independently as an exact, escaped UTF-8 right-to-left SVG plate, with up to five supplied lines. The generator request shows a blank parchment held by both hands so no Persian words need to be hallucinated into the raster image. A human/editor must apply perspective and place the plate onto that paper after rendering. The SVG itself is a real deliverable; it does not magically edit a photo.
+- Visual review requires an actual PNG/JPEG filename, whose bytes are SHA-256 hashed, plus an honest human assessment of eight criteria: single_frame, full_body, character_identity, horn_tail_feet, hands_correct, garment_coherence, letter_present and persian_text_legible. Each is yes/no/unknown. A single no fails, and unknown cannot pass.
+- Human visual-quality observations are recorded in a new SQLite ledger, separate from provider moderation and separate from assistant UI refusals. Original image bytes and letter text are not saved in the database.
+
+Commands from the repository root:
+
+    python -m unittest discover -s examples/nasuraya_image_preflight -v
+    python -m examples.nasuraya_image_preflight director --input examples/nasuraya_image_preflight/cases/director-letter.json
+    python -m examples.nasuraya_image_preflight letter-svg --input examples/nasuraya_image_preflight/cases/director-letter.json --output letter.svg
+    python -m examples.nasuraya_image_preflight visual-stats
+
+For image QA, create a human review JSON using the example template, insert the actual 64-digit prompt hash provided by director, and fill in observations based on a genuine generated image:
+
+    python -m examples.nasuraya_image_preflight visual-review --input review.json --image-file /path/to/image.png
+
+Important: The image-file check examines signature bytes and image size, not decoded image content. A trusted image decoder or official vision adapter is not wired in. The SVG may require a capable installed Persian text font and RTL-aware renderer; typesetting and perspective are manually applied. Nothing here runs the proprietary image safety model or bypasses it, and no background job automatically sends prompts to image generation.
+
+Next measurable milestone: authenticated reference-image adapter, real editor integration and independent visual inspections for the final exported portrait.

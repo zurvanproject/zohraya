@@ -2,6 +2,7 @@
 import json
 from .engine import evaluate
 from .creative_recovery import recover
+from .visual_director import direct, letter_svg
 
 SAMPLES = [
     ("already_compatible", {
@@ -47,3 +48,17 @@ def main():
 
 if __name__ == "__main__":
     main()
+    output = direct({
+        "current_prompt": "جسورتر با یک نامه فارسی",
+        "previous_visual_brief": "ناسورایا با موهای مسی شاخ های قرمز و نامه در حیاط زیر تاک انگور، تمام قد",
+        "letter_required": True,
+        "letter_lines": ["سلام سهند", "به روشنایی"],
+    })
+    print("=== DIOS 1.3: single-image visual director ===")
+    print(json.dumps({"status": output["status"], "options": len(output["options"]),
+                      "selected": output["selected_design_id"],
+                      "provider_calls": output["generator_calls"]}, ensure_ascii=False))
+    assert output["status"] == "ALTERNATIVES_READY"
+    assert len(output["options"]) == 3
+    assert output["generator_calls"] == 0
+    assert "سلام سهند" in letter_svg(["سلام سهند"])

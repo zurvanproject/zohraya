@@ -8,3 +8,6 @@ __all__ += ['recover', 'RECOVERY_VERSION']
 
 from .contextual_learning import plan_followup
 __all__ += ["plan_followup"]
+
+from .visual_director import direct, letter_svg, hash_image_file, grade_visual_review
+__all__ += ["direct", "letter_svg", "hash_image_file", "grade_visual_review"]

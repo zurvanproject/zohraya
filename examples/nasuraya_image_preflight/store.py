@@ -47,6 +47,13 @@ class Store:
             status TEXT NOT NULL, candidate_hashes_json TEXT NOT NULL,
             rule_version TEXT NOT NULL
         );
+        CREATE TABLE IF NOT EXISTS visual_review (
+            event_id TEXT PRIMARY KEY, observed_at TEXT NOT NULL,
+            image_sha256 TEXT NOT NULL UNIQUE, prompt_sha256 TEXT NOT NULL,
+            design_id TEXT NOT NULL, review_source TEXT NOT NULL,
+            verdict TEXT NOT NULL, criteria_json TEXT NOT NULL,
+            rule_version TEXT NOT NULL
+        );
         """)
         self.db.commit()
 
@@ -146,3 +153,26 @@ class Store:
         ).fetchall())
         return {"total":total,"by_source":by_source,"by_outcome":by_outcome,
                 "note":"Assistant UI observations and provider-side decisions are different data categories."}
+
+    def record_visual_review(self, review: dict[str, Any]) -> str:
+        """Store one manual visual review per image, never its actual bytes."""
+        if review["review_source"] != "human_observed":
+            raise ValueError("only human reviews are accepted")
+        event_id = str(uuid.uuid4())
+        with self.db:
+            self.db.execute(
+                "INSERT INTO visual_review VALUES (?,?,?,?,?,?,?,?,?)",
+                (event_id, timestamp(), review["image_sha256"],
+                 review["prompt_sha256"], review["design_id"],
+                 review["review_source"], review["verdict"],
+                 json.dumps(review["criteria"], sort_keys=True),
+                 review["rule_version"]))
+        return event_id
+
+    def visual_review_stats(self) -> dict[str, Any]:
+        counts = dict(self.db.execute(
+            "SELECT verdict, COUNT(*) FROM visual_review GROUP BY verdict"
+        ).fetchall())
+        return {"total": sum(counts.values()), "counts": counts,
+                "source": "human_observed",
+                "note": "Actual human-observed images only, never provider moderation outcomes."}
