@@ -101,15 +101,6 @@ _SOURCE_CHANGE_NOTES = {
     "CLOTHING_ILLUSION": "Illusion, translucent or anatomical-outline clothing was replaced by real opaque textiles.",
     "GRAPHIC_VIOLENCE": "Graphic detail was replaced by peaceful narrative imagery.",
 }
-_UNSAFE_VISUAL_MARKERS = re.compile(
-    r"\b(?:sheer|see[- ]through|transparent dress|transparent fabric|"
-    r"nude illusion|anatomical costume|body paint|body-painted|"
-    r"wet[- ]t[- ]shirt|fake genital|concealed genitals)\b|"
-    r"(?:لباس\s*(?:شفاف|بدن\s*نما)|پارچه\s*شفاف|"
-    r"رنگ\s*بدن\s*به\s*جای\s*لباس|استتار\s*برهنگی)",
-    re.IGNORECASE,
-)
-
 def _extract_anchors(prompt: str, creative_brief: Mapping[str, Any]) -> dict[str, str]:
     # Only known descriptive concepts survive extraction. Arbitrary user text
     # cannot become a prompt fragment, including a forged system instruction.
@@ -174,7 +165,7 @@ def recover(
     if "provider" in feedback and (not isinstance(feedback["provider"], str) or len(feedback["provider"]) > 100):
         raise ValueError("invalid provider name")
     findings = {item["code"] for item in original["findings"]}
-    unsafe_clothing = bool(_UNSAFE_VISUAL_MARKERS.search(normalize(prompt)))
+    unsafe_clothing = "clothing_illusion" in original["categories"]
     if unsafe_clothing:
         findings.add("CLOTHING_ILLUSION")
     reference = request.get("reference") or {}
@@ -235,13 +226,15 @@ def recover(
         # rejected prompt in a purportedly corrected request.
         candidate_prompt = (
             f"An original, nonsexual {style} illustration of {character} in {setting}. "
-            f"Composition: {shot}; pose: {pose}. Lighting: {lighting}. "
+            f"Composition: {shot}; pose: {pose if 'pose' in supported else 'relaxed upright posture'}. Lighting: {lighting}. "
             f"Palette: {palette}. Emotional atmosphere: {mood}. "
             f"Visual prop: {prop}. "
             f"Costume design ({outfit_name}): {outfit} "
             "Carefully rendered material weight, consistent fabric folds, believable seams, "
             "balanced silhouette, realistic anatomy and an expressive face. "
-            "Make the face and the letter readable, and keep the composition elegant."
+            ("Make the face and the Persian letter readable, and keep the composition elegant."
+             if anchors.get("prop", "").startswith("a short, clearly legible Persian letter")
+             else "Keep the face and hands readable, with an elegant composition.")
         )
         assessment = evaluate({"prompt": candidate_prompt})
         if assessment["verdict"] != "PASS_LOCAL":

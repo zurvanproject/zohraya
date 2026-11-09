@@ -35,7 +35,7 @@ _PATTERNS = {
         r"(?:خشونت\s*گرافیکی|قطع\s*عضو|خون\s*و\s*احشا|تکه\s*تکه\s*شدن)",
     ),
     "clothing_illusion": (
-        r"\b(?:sheer|see[- ]through|transparent dress|transparent fabric|nude illusion|anatomical costume|body[- ]paint|wet[- ]t[- ]shirt)\b",
+        r"\b(?:sheer (?:dress|fabric|clothing|blouse|robe|skirt)|see[- ]through (?:dress|fabric|clothing|blouse|robe|skirt)|transparent (?:dress|fabric|clothing)|nude illusion|anatomical costume|body[- ]paint|wet[- ]t[- ]shirt)\b",
         r"(?:لباس\s*(?:شفاف|بدن\s*نما)|پارچه\s*شفاف|استتار\s*برهنگی)",
     ),
     "guard_bypass": (
@@ -43,6 +43,10 @@ _PATTERNS = {
         r"(?:دور\s*زدن\s*(?:فیلتر|سیستم\s*ایمنی)|غیرفعال\s*کردن\s*(?:فیلتر|امنیت)|جیلبریک)",
     ),
 }
+_NEGATED_CLOTHING = (
+    r"(?:without|no)\s+(?:any\s+)?(?:sheer (?:dress|fabric|clothing|blouse|robe|skirt)|see[- ]through (?:dress|fabric|clothing|blouse|robe|skirt)|transparent (?:dress|fabric|clothing)|nude illusion)",
+    r"(?:بدون|فاقد)\s+(?:لباس|پارچه)\s+شفاف",
+)
 _NEGATED_NUDITY = (
     r"(?:without|no|not)\s+(?:any\s+)?(?:nudity|nude|nakedness)",
     r"fully\s+clothed",
@@ -56,11 +60,11 @@ def normalize(text: str) -> str:
 
 def _matched_categories(prompt: str) -> list[str]:
     scan = prompt
-    for negative in _NEGATED_NUDITY:
+    for negative in (*_NEGATED_NUDITY, *_NEGATED_CLOTHING):
         scan = re.sub(negative, " ", scan, flags=re.IGNORECASE)
     found = []
     for category, regexes in _PATTERNS.items():
-        source = scan if category == "nudity" else prompt
+        source = scan if category in ("nudity", "clothing_illusion") else prompt
         if any(re.search(rx, source, re.IGNORECASE) for rx in regexes):
             found.append(category)
     return found

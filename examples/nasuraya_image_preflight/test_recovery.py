@@ -125,5 +125,24 @@ class RecoveryTests(unittest.TestCase):
                              r["candidates"][0]["preservation_count"])
         self.assertNotIn("acceptance_probability", str(r["candidates"]))
 
+
+    def test_clothing_precision_and_negation(self):
+        from examples.nasuraya_image_preflight import evaluate
+        self.assertEqual(evaluate({"prompt": "sheer delight at a garden party"})["verdict"], "PASS_LOCAL")
+        self.assertEqual(evaluate({"prompt": "a portrait without sheer fabric"})["verdict"], "PASS_LOCAL")
+        self.assertEqual(evaluate({"prompt": "a fantasy robe with transparent fabric"})["verdict"], "REVIEW")
+
+    def test_unmentioned_letter_not_injected(self):
+        r = recover({"prompt": "forest fantasy portrait"}, {"outcome": "policy_rejected"})
+        self.assertTrue(r["candidates"])
+        self.assertTrue(all("Make the face and the Persian letter readable" not in c["prompt"] for c in r["candidates"]))
+
+    def test_midshot_replaces_incompatible_full_body_pose(self):
+        r = recover({"prompt": "Nasuraya standing full-body in a library"}, {"outcome": "policy_rejected"})
+        mid = r["candidates"][1]
+        self.assertIn("relaxed upright posture", mid["prompt"])
+        self.assertIn("pose", mid["changed_anchors"])
+        self.assertNotIn("standing in a natural full-body pose", mid["prompt"])
+
 if __name__ == "__main__":
     unittest.main()
