@@ -37,13 +37,13 @@ class AdaptiveCommitmentTests(unittest.TestCase):
         self.assertFalse(run_episode(s,"reactive")["resumed"])
 
     def test_override_before_other_goals(self):
-        cases=[make_episode(x) for x in range(230000,230120) if make_episode(x).intervention=="override"]
+        cases=[make_episode(x) for x in DEVELOPMENT if make_episode(x).intervention=="override"]
         self.assertTrue(cases)
         for policy in CONDITIONS:
             self.assertTrue(run_episode(cases[0],policy)["override_compliance"])
 
     def test_stop_and_revoke_never_work_illegally(self):
-        sample=[make_episode(x) for x in range(230000,230180)]
+        sample=[make_episode(x) for x in DEVELOPMENT]
         self.assertTrue(any(s.intervention=="stop" for s in sample))
         self.assertTrue(any(s.intervention=="revoke" for s in sample))
         for s in sample:
