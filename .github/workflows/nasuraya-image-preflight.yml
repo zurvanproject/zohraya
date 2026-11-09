@@ -17,3 +17,5 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m unittest discover -s examples/nasuraya_image_preflight -v
+      - name: Test demonstration scenarios (no provider calls)
+        run: python -m examples.nasuraya_image_preflight.demo_preflight
