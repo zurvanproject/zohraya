@@ -200,3 +200,24 @@ def grade_visual_review(review: Mapping[str, Any], image_sha256: str) -> dict[st
         "provider_approved": None,
         "caveat": "Observed human review, not provider moderation or automatic image classification.",
     }
+
+def choose_from_observations(plan: Mapping[str, Any], evidence: Mapping[str, Any]) -> dict[str, Any]:
+    """Use manually observed image quality when sufficient. No provider statistics."""
+    if not isinstance(plan, Mapping) or not isinstance(evidence, Mapping):
+        raise TypeError("plan and evidence must be mappings")
+    from copy import deepcopy
+    result = deepcopy(dict(plan))
+    if evidence.get("evidence_source") != "human_observed_only" or evidence.get("provider_moderation_data_used") is not False:
+        raise ValueError("only separate human visual-quality evidence is supported")
+    if (evidence.get("ready_for_cautious_ranking") is not True
+            or result.get("status") != "ALTERNATIVES_READY"):
+        result["ranking_evidence"] = "INSUFFICIENT_HUMAN_REVIEWS"
+        return result
+    preferred = evidence.get("most_supported_design")
+    if preferred not in {option["design_id"] for option in result.get("options", [])}:
+        result["ranking_evidence"] = "NO_MATCHING_DESIGN"
+        return result
+    result["selected_design_id"] = preferred
+    result["selected_reason"] = "Cautious descriptive selection from human image-QA observations; not moderation probability or causal proof"
+    result["ranking_evidence"] = "SUFFICIENT_OBSERVATIONAL_REVIEWS"
+    return result

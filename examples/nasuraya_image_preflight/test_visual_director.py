@@ -147,5 +147,62 @@ class DirectorTests(unittest.TestCase):
             self.assertNotIn(BASE.encode(), dbpath.read_bytes())
             self.assertNotIn(LINES[0].encode(), dbpath.read_bytes())
 
+
+    def test_no_quality_leader_without_enough_real_reviews(self):
+        with tempfile.TemporaryDirectory() as td:
+            with Store(str(Path(td) / "scores.sqlite")) as db:
+                report = db.visual_quality_report()
+                self.assertFalse(report["ready_for_cautious_ranking"])
+                self.assertIsNone(report["most_supported_design"])
+                from examples.nasuraya_image_preflight.visual_director import choose_from_observations
+                plan = direct(base())
+                ranked = choose_from_observations(plan, report)
+                self.assertEqual(ranked["selected_design_id"], plan["selected_design_id"])
+                self.assertEqual(ranked["ranking_evidence"], "INSUFFICIENT_HUMAN_REVIEWS")
+
+    def test_actual_human_reviews_can_support_cautious_ranking(self):
+        from examples.nasuraya_image_preflight.visual_director import choose_from_observations
+        with tempfile.TemporaryDirectory() as td:
+            with Store(str(Path(td) / "scores.sqlite")) as db:
+                for variant, count in ((1, 10), (2, 18), (3, 5)):
+                    for i in range(20):
+                        data = CHECKS.copy()
+                        if i >= count:
+                            data["hands_correct"] = "no"
+                        observation = review(design_id="context_variant_" + str(variant), criteria=data)
+                        unique_digest = format((variant * 100) + i, "064x")
+                        db.record_visual_review(grade_visual_review(observation, unique_digest))
+                evidence = db.visual_quality_report()
+                self.assertTrue(evidence["ready_for_cautious_ranking"])
+                self.assertEqual(evidence["most_supported_design"], "context_variant_2")
+                self.assertEqual(evidence["by_design"]["context_variant_2"]["reviewed_images"], 20)
+                self.assertEqual(evidence["by_design"]["context_variant_2"]["observed_pass_rate"], .9)
+                self.assertIsNotNone(evidence["by_design"]["context_variant_2"]["wilson_95_interval"])
+                initial = direct(base())
+                updated = choose_from_observations(initial, evidence)
+                self.assertEqual(updated["selected_design_id"], "context_variant_2")
+                self.assertEqual(initial["selected_design_id"], "context_variant_1")
+                self.assertFalse(evidence["provider_moderation_data_used"])
+
+    def test_unknown_reviews_do_not_count_as_successes(self):
+        with tempfile.TemporaryDirectory() as td:
+            with Store(str(Path(td) / "scores.sqlite")) as db:
+                check = CHECKS.copy()
+                check["single_frame"] = "unknown"
+                db.record_visual_review(grade_visual_review(review(criteria=check), "f"*64))
+                stats = db.visual_quality_report(minimum_per_design=1)
+                item = stats["by_design"]["context_variant_1"]
+                self.assertEqual(item["reviewed_images"], 0)
+                self.assertEqual(item["pending"], 1)
+                self.assertIsNone(item["observed_pass_rate"])
+
+    def test_quality_evidence_cannot_use_provider_acceptance_stats(self):
+        from examples.nasuraya_image_preflight.visual_director import choose_from_observations
+        with self.assertRaises(ValueError):
+            choose_from_observations(direct(base()), {
+                "evidence_source": "image_provider", "provider_moderation_data_used": True,
+                "ready_for_cautious_ranking": True, "most_supported_design": "context_variant_2",
+            })
+
 if __name__ == "__main__":
     unittest.main()

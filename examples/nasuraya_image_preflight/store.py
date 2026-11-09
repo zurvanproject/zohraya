@@ -176,3 +176,55 @@ class Store:
         return {"total": sum(counts.values()), "counts": counts,
                 "source": "human_observed",
                 "note": "Actual human-observed images only, never provider moderation outcomes."}
+
+    def visual_quality_report(self, minimum_per_design: int = 20) -> dict[str, Any]:
+        """Human-observed visual quality only, excluding unknown reviews.
+
+        Each design needs enough manually reviewed actual images for cautious
+        comparison. Wilson intervals are descriptive, not causal or iid proof.
+        """
+        if type(minimum_per_design) is not int or not 1 <= minimum_per_design <= 10000:
+            raise ValueError("invalid minimum_per_design")
+        rows = self.db.execute("""
+            SELECT design_id, verdict, COUNT(*) FROM visual_review
+            GROUP BY design_id, verdict
+        """).fetchall()
+        by_design = {name: {"PASS_OBSERVED": 0, "FAIL": 0, "NEEDS_REVIEW": 0}
+                     for name in ("context_variant_1", "context_variant_2", "context_variant_3")}
+        for design, verdict, count in rows:
+            if design in by_design and verdict in by_design[design]:
+                by_design[design][verdict] += count
+        outputs = {}
+        for design, counts in by_design.items():
+            passed = counts["PASS_OBSERVED"]
+            failed = counts["FAIL"]
+            n = passed + failed
+            point, interval = None, None
+            if n >= minimum_per_design:
+                z = 1.959963984540054
+                p = passed / n
+                den = 1 + z * z / n
+                center = (p + z * z / (2*n)) / den
+                margin = z * math.sqrt((p*(1-p) + z*z/(4*n))/n) / den
+                point = round(p, 4)
+                interval = [round(center-margin, 4), round(center+margin, 4)]
+            outputs[design] = {
+                "reviewed_images": n,
+                "passed": passed, "failed": failed,
+                "pending": counts["NEEDS_REVIEW"],
+                "observed_pass_rate": point, "wilson_95_interval": interval,
+            }
+        enough = all(v["reviewed_images"] >= minimum_per_design for v in outputs.values())
+        best = (max(outputs, key=lambda d: outputs[d]["wilson_95_interval"][0])
+                if enough else None)
+        return {
+            "schema": "dios.visual-quality-evidence.v1",
+            "evidence_source": "human_observed_only",
+            "minimum_per_design": minimum_per_design,
+            "ready_for_cautious_ranking": enough,
+            "most_supported_design": best,
+            "by_design": outputs,
+            "provider_moderation_data_used": False,
+            "warning": ("Observational reviews can be biased or dependent; "
+                        "Wilson intervals are descriptive, not independently validated generalization."),
+        }

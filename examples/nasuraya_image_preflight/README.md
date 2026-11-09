@@ -86,3 +86,13 @@ For image QA, create a human review JSON using the example template, insert the 
 Important: The image-file check examines signature bytes and image size, not decoded image content. A trusted image decoder or official vision adapter is not wired in. The SVG may require a capable installed Persian text font and RTL-aware renderer; typesetting and perspective are manually applied. Nothing here runs the proprietary image safety model or bypasses it, and no background job automatically sends prompts to image generation.
 
 Next measurable milestone: authenticated reference-image adapter, real editor integration and independent visual inspections for the final exported portrait.
+
+
+### Evidence-based design ranking, without made-up provider probabilities
+
+Human-scored real-image quality is now reported per design. At least 20 completed human reviews are required for EACH design before recommending a statistical winner. Unknown reviews are excluded from success denominators; a failing criterion marks the image as failed. Rates and Wilson 95% intervals are descriptive and can have selection bias; they do not estimate provider moderation acceptance.
+
+    python -m examples.nasuraya_image_preflight visual-leaderboard
+    python -m examples.nasuraya_image_preflight director --input examples/nasuraya_image_preflight/cases/director-letter.json --use-visual-evidence
+
+The default director still makes a transparent static planning choice until enough real images have been reviewed. There is no fabricated training data or automatic model update.
