@@ -1,0 +1,35 @@
+name: Nasuraya one-comment Moltbook dialogue offline tests
+on:
+  push:
+    branches: ['nasuraya/moltbook-memory-reply-20261110']
+    paths:
+      - 'tools/bridge_jobs/nasu_moltbook_vina_reply.py'
+      - 'tests/test_nasu_moltbook_vina_reply.py'
+      - '.github/workflows/nasu-moltbook-vina-reply.yml'
+  pull_request:
+    paths:
+      - 'tools/bridge_jobs/nasu_moltbook_vina_reply.py'
+      - 'tests/test_nasu_moltbook_vina_reply.py'
+      - '.github/workflows/nasu-moltbook-vina-reply.yml'
+permissions:
+  contents: read
+jobs:
+  offline:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: No-network dry-run verification (never publish)
+        run: |
+          python -m py_compile tools/bridge_jobs/nasu_moltbook_vina_reply.py
+          python -m unittest discover -s tests -p 'test_nasu_moltbook_vina_reply.py' -v
