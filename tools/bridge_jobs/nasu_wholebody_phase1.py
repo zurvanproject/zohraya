@@ -30,7 +30,7 @@ PINNED = (
      "61f61176c50379041ccbebf7a2f5d36824aa3a5a"),
 )
 BASE = "https://raw.githubusercontent.com/zurvanproject/zohraya/"
-SUMMARY = re.compile(r"\A[A-Z0-9=;_-]{1,170}\Z", re.ASCII)
+SUMMARY = re.compile(r"\A[A-Za-z0-9=;_-]{1,170}\Z", re.ASCII)
 OUTPUT = (
     Path(os.environ.get("PROGRAMDATA") or tempfile.gettempdir()) /
     "NasurayaBridge" / "WholeBodyAtlasV1"
