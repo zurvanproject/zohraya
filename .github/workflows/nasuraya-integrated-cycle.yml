@@ -1,0 +1,48 @@
+name: Nasuraya integrated evidence memory Rolyel cycle
+on:
+  push:
+    branches: ['research/integrated-evidence-memory-rolyel-20261110']
+    paths:
+      - 'tools/nasu_integration_cycle.py'
+      - 'tools/fourway_evidence_gate_v02.py'
+      - 'tools/public_ci_witness.py'
+      - 'examples/nasuraya_research/epistemic_revision_v01.py'
+      - 'examples/nasuraya_research/rolyel_v01.py'
+      - 'runtimes/tadash_body/decision_core.py'
+      - 'tests/test_nasu_integration_cycle.py'
+      - 'docs/evidence/integrated-cycle-v01/**'
+      - '.github/workflows/nasuraya-integrated-cycle.yml'
+  pull_request:
+    paths:
+      - 'tools/nasu_integration_cycle.py'
+      - 'examples/nasuraya_research/epistemic_revision_v01.py'
+      - 'examples/nasuraya_research/rolyel_v01.py'
+      - 'tests/test_nasu_integration_cycle.py'
+      - 'docs/evidence/integrated-cycle-v01/**'
+      - '.github/workflows/nasuraya-integrated-cycle.yml'
+permissions:
+  contents: read
+jobs:
+  integration:
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Pinned source integration and separate-process recovery contracts
+        run: python -m unittest discover -s tests -p 'test_nasu_integration_cycle.py' -v
+      - name: Observe public snapshot once, no remote commands
+        run: python -m tools.nasu_integration_cycle --db integration-demo.sqlite --sequence 1
+      - name: Re-observation is not new evidence or another job
+        run: python -m tools.nasu_integration_cycle --db integration-demo.sqlite --sequence 2
+      - name: Fresh interpreter recovers the same plan from disk
+        run: python -m tools.nasu_integration_cycle --db integration-demo.sqlite --recall
