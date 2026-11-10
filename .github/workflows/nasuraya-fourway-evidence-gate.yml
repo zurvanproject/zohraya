@@ -1,0 +1,42 @@
+name: Nasuraya fourway evidence gate v0.2 (offline)
+on:
+  push:
+    branches: ['research/public-ci-witness-v01-20261110']
+    paths:
+      - 'tools/fourway_evidence_gate_v02.py'
+      - 'tests/test_fourway_evidence_gate_v02.py'
+      - 'docs/evidence/fourway-evidence-v02/**'
+      - 'docs/research/NASURAYA_FOURWAY_EVIDENCE_GATE_PREREG_2026-11-10.md'
+      - 'docs/NASURAYA_FOURWAY_EVIDENCE_GATE_V02_FA.md'
+      - '.github/workflows/nasuraya-fourway-evidence-gate.yml'
+  pull_request:
+    paths:
+      - 'tools/fourway_evidence_gate_v02.py'
+      - 'tests/test_fourway_evidence_gate_v02.py'
+      - 'docs/evidence/fourway-evidence-v02/**'
+      - 'docs/research/NASURAYA_FOURWAY_EVIDENCE_GATE_PREREG_2026-11-10.md'
+      - 'docs/NASURAYA_FOURWAY_EVIDENCE_GATE_V02_FA.md'
+      - '.github/workflows/nasuraya-fourway-evidence-gate.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Offline provenance and false-success checks
+        run: |
+          python -m py_compile tools/fourway_evidence_gate_v02.py
+          python -m unittest discover -s tests -p 'test_fourway_evidence_gate_v02.py' -v
+          python tools/fourway_evidence_gate_v02.py
