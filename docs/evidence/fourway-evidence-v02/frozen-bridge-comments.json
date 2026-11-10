@@ -1,0 +1,51 @@
+{
+  "schema": "nasuraya.bridge-observations.v02",
+  "repository": "zurvanproject/zohraya",
+  "issue_number": 149,
+  "observed_date_utc": "2026-11-10",
+  "notes": "Minimum observed public Issue #149 comment subset, not a complete or current live queue; frozen for offline regression.",
+  "comments": [
+    {
+      "id": 6724967463,
+      "body": "nasu: run 1987da5fc5ebed18cb43372b6ea776b0b4804629 moltbook_repair_retest 8dc3d3cfba8f9862fedf4e7a079e44d34935801d36c84282697d581bcdce319d",
+      "user": {
+        "login": "zurvanproject"
+      }
+    },
+    {
+      "id": 6724974483,
+      "body": "Nasuraya Bridge v2 result; request_id=comment-6724967463; command=run moltbook_repair_retest\nResult: OK REPAIR=REPLAY;BEFORE=WEB;BYTES=WEB;PROBE=FORCED;AFTER=LOCAL;COLD=LOCAL;LOCAL=OK;GET=0;SIG=d483405ecd3dcbe3",
+      "user": {
+        "login": "zurvanproject"
+      }
+    },
+    {
+      "id": 6740249936,
+      "body": "nasu: run f9ae14e28cacb1e21313ec4ba9b8cd1247e458fa nasu_research_status 7627a9c3b53a0f18bd863b4b5febab1eecfd1f65280255a8bb471de35a137ff3",
+      "user": {
+        "login": "zurvanproject"
+      }
+    },
+    {
+      "id": 6740270749,
+      "body": "Nasuraya Bridge v2 result; request_id=comment-6740249936; command=run nasu_research_status\nResult: OK STATE=RUNNING;CYCLES=1;ROLYEL=150;BAD=0;TESTS=14;TF=0;BODYTOY=40;AUDIT=1;STALE_MIN=0;LEFT_MIN=1426",
+      "user": {
+        "login": "zurvanproject"
+      }
+    },
+    {
+      "id": 6770326192,
+      "body": "nasu: run f9ae14e28cacb1e21313ec4ba9b8cd1247e458fa nasu_research_status 7627a9c3b53a0f18bd863b4b5febab1eecfd1f65280255a8bb471de35a137ff3",
+      "user": {
+        "login": "zurvanproject"
+      }
+    },
+    {
+      "id": 6771977584,
+      "body": "nasu: run f1c93810abf83bea894ceda2801c3771716c5b30 nasu_wholebody_phase1 c0d984346b1c87f82b28225e76eada70880c1a795f9303d0e9250e193b106173",
+      "user": {
+        "login": "zurvanproject"
+      }
+    }
+  ]
+}
