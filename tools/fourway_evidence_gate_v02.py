@@ -13,7 +13,10 @@ import re
 import ssl
 from urllib.request import Request, build_opener, HTTPRedirectHandler, HTTPSHandler, ProxyHandler
 
-from tools.public_ci_witness import audit_snapshot
+if __package__:
+    from .public_ci_witness import audit_snapshot
+else:
+    from public_ci_witness import audit_snapshot
 
 SCHEMA = "nasuraya.fourway-evidence-gate.v02"
 REPO = "zurvanproject/zohraya"
