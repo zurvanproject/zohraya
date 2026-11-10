@@ -59,6 +59,23 @@ FAILURES = frozenset((
     "INVALID_JOB_RESULT", "JOB_NOT_AUTHORIZED",
 ))
 
+FIELD_RE = re.compile(r"\\A([A-Z][A-Z0-9_]*)=([A-Za-z0-9._/+-]+)\\Z", re.ASCII)
+
+
+def parse_summary_fields(raw: str) -> dict[str, str] | None:
+    """Exact fields only: NODES=970 must never count as NODES=97."""
+    if not isinstance(raw, str) or not raw.startswith("OK "):
+        return None
+    parts = raw[3:].split(";")
+    values: dict[str, str] = {}
+    for part in parts:
+        m = FIELD_RE.fullmatch(part)
+        if m is None or m.group(1) in values:
+            return None
+        values[m.group(1)] = m.group(2)
+    return values
+
+
 
 def public_comment_url(number: int) -> str:
     return ("https://github.com/" + REPO + "/issues/" + str(ISSUE)
@@ -122,11 +139,12 @@ def atlas_status(record: dict) -> dict:
     if record["state"] != "OWNER_ACCOUNT_REPORTED":
         return result
     raw = record["result"]
-    required = (
-        "ATLAS=INVENTORY", "NODES=97", "SYSTEMS=12", "ROUTES=31",
-        "EXTRA=35", "PHYSICS=UNVERIFIED",
-    )
-    if raw.startswith("OK ") and all(x in raw for x in required):
+    fields = parse_summary_fields(raw)
+    required = {
+        "ATLAS": "INVENTORY", "NODES": "97", "SYSTEMS": "12",
+        "ROUTES": "31", "EXTRA": "35", "PHYSICS": "UNVERIFIED",
+    }
+    if fields is not None and all(fields.get(k) == v for k, v in required.items()):
         result["state"] = "REPORTED_INVENTORY"
         result["not_physical_body"] = True
     elif raw in FAILURES or raw.startswith("OK FAIL="):
@@ -144,11 +162,11 @@ def research_status(record: dict, historical: bool = False) -> dict:
             result["state"] = "STATUS_REQUEST_PENDING"
         return result
     raw = record["result"]
-    if raw.startswith("OK ") and "STATE=COMPLETED" in raw and all(
-        x in raw for x in ("BAD=0", "TF=0")
-    ):
+    fields = parse_summary_fields(raw)
+    if (fields is not None and fields.get("STATE") == "COMPLETED" and
+            fields.get("BAD") == "0" and fields.get("TF") == "0"):
         result["state"] = "REPORTED_COMPLETED_NO_TEST_FAILURE"
-    elif raw.startswith("OK ") and "STATE=RUNNING" in raw:
+    elif fields is not None and fields.get("STATE") == "RUNNING":
         result["state"] = "REPORTED_RUNNING"
     elif raw in FAILURES or raw.startswith("OK FAIL="):
         result["state"] = "REPORTED_FAILURE"
@@ -164,7 +182,8 @@ def moltbook_status(record: dict) -> dict:
     if record["state"] != "OWNER_ACCOUNT_REPORTED":
         return result
     raw = record["result"]
-    if raw.startswith("OK ") and "REPAIR=REPLAY" in raw and "GET=0" in raw:
+    fields = parse_summary_fields(raw)
+    if fields is not None and fields.get("REPAIR") == "REPLAY" and fields.get("GET") == "0":
         result["state"] = "HISTORICAL_REPLAY_ONLY"
     else:
         result["state"] = "NOT_PROOF_OF_FRESH_MOLTBOOK_READ"
