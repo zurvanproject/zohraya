@@ -1,0 +1,70 @@
+name: Ritual cognitive integration
+on:
+  push:
+    branches: ['research/ritual-cognitive-integration-v01']
+    paths:
+      - 'examples/ritual_cognition/**'
+      - 'tests/test_ritual_cognition.py'
+      - '.github/workflows/ritual-cognition.yml'
+permissions:
+  contents: read
+jobs:
+  contracts:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Load pinned Rolyel and original contracts
+        run: |
+          git fetch --depth=1 origin 4de2f1e0ff2a72a9d0cd0688acca62d52f1f8654
+          git restore --source=4de2f1e0ff2a72a9d0cd0688acca62d52f1f8654 --worktree -- examples/nasuraya_research/rolyel_v01.py examples/nasuraya_research/test_rolyel_v01.py
+      - run: python -m unittest discover -s tests -v
+      - run: python -m unittest examples.nasuraya_research.test_rolyel_v01 -v
+  heldout:
+    needs: contracts
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Load pinned Rolyel
+        run: |
+          git fetch --depth=1 origin 4de2f1e0ff2a72a9d0cd0688acca62d52f1f8654
+          git restore --source=4de2f1e0ff2a72a9d0cd0688acca62d52f1f8654 --worktree -- examples/nasuraya_research/rolyel_v01.py
+      - run: python -m examples.ritual_cognition.benchmark holdout heldout.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ritual-v01-${{ matrix.os }}
+          path: heldout.json
+  parity:
+    needs: heldout
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: ritual-v01-*
+      - name: Compare paired decisions, scores and reasons across platforms
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          paths = sorted(Path(".").glob("ritual-v01-*/heldout.json"))
+          assert len(paths) == 2
+          reports = [json.loads(path.read_bytes()) for path in paths]
+          assert reports[0]["paired_digest"] == reports[1]["paired_digest"]
+          for path, report in zip(paths, reports):
+              print(path.parent, report["paired_digest"], report["summary"])
