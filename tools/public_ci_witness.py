@@ -220,7 +220,7 @@ def load_and_audit(path: Path) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--fixture", type=Path, default=(
-        Path(__file__).resolve().parents[2] /
+        Path(__file__).resolve().parents[1] /
         "docs/evidence/public-ci-witness-v01/frozen-public-github-runs.json"
     ))
     args = parser.parse_args()
