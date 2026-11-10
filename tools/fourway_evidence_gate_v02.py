@@ -59,7 +59,7 @@ FAILURES = frozenset((
     "INVALID_JOB_RESULT", "JOB_NOT_AUTHORIZED",
 ))
 
-FIELD_RE = re.compile(r"\\A([A-Z][A-Z0-9_]*)=([A-Za-z0-9._/+-]+)\\Z", re.ASCII)
+FIELD_RE = re.compile(r"\A([A-Z][A-Z0-9_]*)=([A-Za-z0-9._/+-]+)\Z", re.ASCII)
 
 
 def parse_summary_fields(raw: str) -> dict[str, str] | None:
