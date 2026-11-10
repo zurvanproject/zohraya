@@ -4,12 +4,16 @@ on:
     branches: ['nasuraya/wholebody-atlas-v01-20261110']
     paths:
       - 'tools/fullbody_design_atlas.py'
+      - 'tools/bridge_jobs/nasu_wholebody_phase1.py'
       - 'tests/test_fullbody_design_atlas.py'
+      - 'tests/test_nasu_wholebody_phase1.py'
       - '.github/workflows/nasuraya-wholebody-atlas.yml'
   pull_request:
     paths:
       - 'tools/fullbody_design_atlas.py'
+      - 'tools/bridge_jobs/nasu_wholebody_phase1.py'
       - 'tests/test_fullbody_design_atlas.py'
+      - 'tests/test_nasu_wholebody_phase1.py'
       - '.github/workflows/nasuraya-wholebody-atlas.yml'
 permissions:
   contents: read
@@ -34,5 +38,6 @@ jobs:
         run: |
           python -m py_compile tools/fullbody_design_atlas.py
           python -m unittest discover -s tests -p 'test_fullbody_design_atlas.py' -v
+          python -m unittest discover -s tests -p 'test_nasu_wholebody_phase1.py' -v
       - name: Offline inventory no native body import
         run: python tools/fullbody_design_atlas.py
