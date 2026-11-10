@@ -7,6 +7,7 @@ P2 is a separately written in-memory reducer with identical evidence metadata.
 from __future__ import annotations
 
 import argparse
+from contextlib import closing
 from dataclasses import replace
 import hashlib
 import json
@@ -133,7 +134,7 @@ def run_equal_information(seeds: range) -> dict:
             # the corrupted database. Neither original nor Tadash memory touched.
             damaged = root / (str(seed) + "_damaged.sqlite")
             shutil.copyfile(path, damaged)
-            with sqlite3.connect(damaged) as connection:
+            with closing(sqlite3.connect(damaged)) as connection:
                 same_before = pinned_snapshot_digest(connection) == anchor
                 connection.execute(
                     "UPDATE evidence "
