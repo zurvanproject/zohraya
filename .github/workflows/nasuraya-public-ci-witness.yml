@@ -1,0 +1,42 @@
+name: Nasuraya public CI witness (offline)
+on:
+  push:
+    branches: ['research/public-ci-witness-v01-20261110']
+    paths:
+      - 'tools/public_ci_witness.py'
+      - 'tests/test_public_ci_witness.py'
+      - 'docs/evidence/public-ci-witness-v01/**'
+      - 'docs/research/NASURAYA_PUBLIC_CI_WITNESS_PREREG_2026-11-10.md'
+      - 'docs/NASURAYA_PUBLIC_CI_WITNESS_V01_FA.md'
+      - '.github/workflows/nasuraya-public-ci-witness.yml'
+  pull_request:
+    paths:
+      - 'tools/public_ci_witness.py'
+      - 'tests/test_public_ci_witness.py'
+      - 'docs/evidence/public-ci-witness-v01/**'
+      - 'docs/research/NASURAYA_PUBLIC_CI_WITNESS_PREREG_2026-11-10.md'
+      - 'docs/NASURAYA_PUBLIC_CI_WITNESS_V01_FA.md'
+      - '.github/workflows/nasuraya-public-ci-witness.yml'
+permissions:
+  contents: read
+jobs:
+  offline:
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Validate frozen public CI data and derived controls
+        run: |
+          python -m py_compile tools/public_ci_witness.py
+          python -m unittest discover -s tests -p 'test_public_ci_witness.py' -v
+          python tools/public_ci_witness.py
