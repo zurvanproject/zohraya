@@ -202,5 +202,46 @@ class FourwayEvidenceGateTests(unittest.TestCase):
                          "QUEUED_NO_RECEIPT")
 
 
+    def test_padded_numbers_cannot_claim_atlas_completion(self):
+        ci, bridge = source_inputs()
+        bridge["comments"].append(reply(
+            900013, 6771977584, "nasu_wholebody_phase1",
+            "OK ATLAS=INVENTORY;NODES=970;SYSTEMS=120;ROUTES=310;"
+            "EXTRA=350;PHYSICS=UNVERIFIED"
+        ))
+        self.assertEqual(reconcile(ci, bridge)["vps"]["atlas_phase1"]["state"],
+                         "REVIEW_REQUIRED")
+
+    def test_duplicate_key_in_result_cannot_claim_completion(self):
+        ci, bridge = source_inputs()
+        bridge["comments"].append(reply(
+            900014, 6771977584, "nasu_wholebody_phase1",
+            "OK ATLAS=INVENTORY;NODES=97;SYSTEMS=12;ROUTES=31;"
+            "EXTRA=35;PHYSICS=UNVERIFIED;NODES=999"
+        ))
+        self.assertEqual(reconcile(ci, bridge)["vps"]["atlas_phase1"]["state"],
+                         "REVIEW_REQUIRED")
+
+    def test_padded_test_failures_cannot_claim_clean_research(self):
+        ci, bridge = source_inputs()
+        bridge["comments"].append(reply(
+            900015, 6770326192, "nasu_research_status",
+            "OK STATE=COMPLETED;CYCLES=96;BAD=01;TF=09"
+        ))
+        self.assertEqual(
+            reconcile(ci, bridge)["vps"]["research_fresh_request"]["state"],
+            "REVIEW_REQUIRED",
+        )
+
+    def test_historical_moltbook_get_00_is_not_zero(self):
+        ci, bridge = source_inputs()
+        for item in bridge["comments"]:
+            if item["id"] == 6724974483:
+                item["body"] = item["body"].replace("GET=0;", "GET=00;")
+        self.assertEqual(reconcile(ci, bridge)["moltbook"]["state"],
+                         "NOT_PROOF_OF_FRESH_MOLTBOOK_READ")
+
+
+
 if __name__ == "__main__":
     unittest.main()
