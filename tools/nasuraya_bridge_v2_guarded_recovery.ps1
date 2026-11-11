@@ -167,7 +167,12 @@ try {
     exit 0
 } catch {
     # Avoid output of exception messages/paths/URLs that might include sensitive info.
-    Say ('RECOVERY=BLOCKED;ERROR=' + [string]$_.Exception.GetType().Name)
+    $reason = [string]$_.Exception.Message
+    if ($reason -match '\A(?:ResponseTooLarge|IssueIdentityOrStateMismatch|QueuePaginationIncomplete|V2AgentMissing|V2WrapperMissing|BridgeAgentPinMismatch|V2WrapperNotActive|TaskActionNotBridgeWrapper|JournalMissing|JournalInvalid|JournalContinuityNotProven|UnresolvedQueueRisk|TaskNotReadyToStartWithoutInterruption|BridgeProcessStillActive|AdminRequiredToStartExistingTask)\z') {
+        Say ('RECOVERY=BLOCKED;REASON=' + $reason)
+    } else {
+        Say ('RECOVERY=BLOCKED;ERROR=' + [string]$_.Exception.GetType().Name)
+    }
     Say 'NO_MUTATION_PERFORMED_UNLESS_EXISTING_TASK_START_REQUESTED_WAS_PRINTED'
     exit 2
 }
