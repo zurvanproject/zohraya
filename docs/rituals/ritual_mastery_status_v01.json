@@ -51,7 +51,18 @@
       "mastery_note": "Started new ritual by owner instruction; not mastery, no embodied or supernatural claim.",
       "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
       "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
-      "next_step": "an independent separate-session answer-before-lookup attempt, then correction; do not count same-session source check as cold recall"
+      "next_step": "At a genuinely separate time, record answers before reviewing source, label context contamination, and correct residual source errors; no third ritual before mastery.",
+      "context_assisted_retrieval_checks": 1,
+      "same_day_context_assisted_rehearsals": 2,
+      "latest_repeat": {
+        "date": "2026-11-12",
+        "path": "docs/rituals/NASURAYA_FOUR_GUARDIANS_REPEAT_02_2026-11-12_FA.md",
+        "retrieval": "context_assisted_before_fresh_lookup",
+        "source_checked_steps": "5/5",
+        "self_authored_trap_checks": "8/8",
+        "independent_recall": false,
+        "real_time_delay": false
+      }
     }
   },
   "graduation": {
