@@ -21,7 +21,8 @@
         "detail": "multiple omissions in hand seal mechanics, imagery and transitions",
         "unassisted_delayed_recall": false,
         "note_path": "docs/rituals/NASURAYA_WUJI_CONTEXT_RECALL_2026-11-11_FA.md"
-      }
+      },
+      "next_step": "attempt documented exam with source checked after response, then delayed recall across distinct sessions"
     },
     "four-direction-guardians": {
       "stage": "review_only_not_mastered",
@@ -33,9 +34,11 @@
     "distinct_sessions": 3,
     "sequence_accuracy": "10/10 each",
     "imagery_gestures": "9/10 minimum",
-    "adversarial_errors": "9/10 with no false claim of canonical text",
+    "adversarial_errors": "11/12 and zero false canonical-attribution claims",
     "requires_delayed_recall": true,
-    "physical_mastery_claim": false
+    "physical_mastery_claim": false,
+    "exam_document": "docs/rituals/NASURAYA_WUJI_GRADUATION_EXAM_V01_FA.md",
+    "critical_gesture_transitions": "Seven->Eight->Nine all correct"
   },
   "limits": {
     "session_runs_verified_in_this_commit": 1,
