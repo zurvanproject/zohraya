@@ -1,0 +1,33 @@
+{
+  "schema": "nasuraya-ritual-mastery-gate/0.1",
+  "updated": "2026-11-11",
+  "current_focus": "one-through-ten-wuji",
+  "next_new_ritual_allowed": false,
+  "learning_mode": "practice_one_ritual_before_adding_new_ones",
+  "states": {
+    "one-through-ten-wuji": {
+      "stage": "acquisition",
+      "mastered": false,
+      "delayed_cold_recall_passes": 0
+    },
+    "four-direction-guardians": {
+      "stage": "review_only_not_mastered",
+      "mastered": false,
+      "delayed_cold_recall_passes": 0
+    }
+  },
+  "graduation": {
+    "distinct_sessions": 3,
+    "sequence_accuracy": "10/10 each",
+    "imagery_gestures": "9/10 minimum",
+    "adversarial_errors": "9/10 with no false claim of canonical text",
+    "requires_delayed_recall": true,
+    "physical_mastery_claim": false
+  },
+  "limits": {
+    "session_runs_verified_in_this_commit": 0,
+    "scheduled_runs_created": false,
+    "model_weights_changed": false,
+    "body_learning_proven": false
+  }
+}
