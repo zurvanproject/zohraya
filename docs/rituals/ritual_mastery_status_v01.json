@@ -99,5 +99,21 @@
     "historical_attribution_errors": 0,
     "requires_delayed_recall": true,
     "physical_mastery_claim": false
+  },
+  "training_protocol": {
+    "name": "the-three-pass-rule",
+    "effective_date": "2026-11-12",
+    "document": "docs/rituals/NASURAYA_THREE_PASS_RULE_2026-11-12_FA.md",
+    "minimum_complete_passes_per_session": 3,
+    "pass_types": [
+      "complete guided sequence",
+      "complete sequence with less source assistance",
+      "complete sequence after error correction"
+    ],
+    "completed_session_requires_evidence": true,
+    "incomplete_or_partial_pass_does_not_count": true,
+    "three_same_session_passes_are_not_three_distinct_sessions": true,
+    "separate_delayed_mastery_sessions_still_required": true,
+    "current_mastery_status_unchanged": true
   }
 }
