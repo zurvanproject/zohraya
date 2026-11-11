@@ -1,9 +1,9 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
   "updated": "2026-11-12",
-  "current_focus": "one-through-ten-wuji",
+  "current_focus": "four-direction-guardians",
   "next_new_ritual_allowed": false,
-  "learning_mode": "practice_one_ritual_before_adding_new_ones",
+  "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
   "states": {
     "one-through-ten-wuji": {
       "stage": "acquisition",
@@ -40,9 +40,18 @@
       }
     },
     "four-direction-guardians": {
-      "stage": "review_only_not_mastered",
+      "stage": "acquisition",
       "mastered": false,
-      "delayed_cold_recall_passes": 0
+      "delayed_cold_recall_passes": 0,
+      "source_guided_rehearsals_new_this_turn": 1,
+      "unassisted_cold_recall_passes": 0,
+      "source_check": "5/5 guardian-direction-symbol names source-checked; not independent recall",
+      "trap_bank": "12 documented corrections; not a closed-book score",
+      "generated_shuffled_decks": 8,
+      "mastery_note": "Started new ritual by owner instruction; not mastery, no embodied or supernatural claim.",
+      "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
+      "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
+      "next_step": "an independent separate-session answer-before-lookup attempt, then correction; do not count same-session source check as cold recall"
     }
   },
   "graduation": {
@@ -62,6 +71,22 @@
     "body_learning_proven": false,
     "session_run_type": "two source-checked textual practice sessions, not embodied learning",
     "latest_followup_counts_as_new_delayed_session": false,
-    "latest_followup_type": "same-conversation context-assisted retrieval and correction"
+    "latest_followup_type": "same-conversation context-assisted retrieval and correction",
+    "latest_four_guardians_rehearsal_type": "source-assisted textual review only"
+  },
+  "owner_priority_override": {
+    "date": "2026-11-12",
+    "reason": "explicit instruction to select new ritual and put it into learning cycle",
+    "overrides": "block on opening Four Guardians before Wuji textual mastery",
+    "does_not_override": "honest mastery criteria, safety, source provenance, no new third ritual"
+  },
+  "graduation_four_guardians": {
+    "distinct_sessions_min": 3,
+    "sequence_accuracy": "5/5",
+    "guardians": "4/4",
+    "adversarial_errors": "11/12",
+    "historical_attribution_errors": 0,
+    "requires_delayed_recall": true,
+    "physical_mastery_claim": false
   }
 }
