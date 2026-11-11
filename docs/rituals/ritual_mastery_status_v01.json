@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
-  "updated": "2026-11-11",
+  "updated": "2026-11-12",
   "current_focus": "one-through-ten-wuji",
   "next_new_ritual_allowed": false,
   "learning_mode": "practice_one_ritual_before_adding_new_ones",
@@ -9,7 +9,7 @@
       "stage": "acquisition",
       "mastered": false,
       "delayed_cold_recall_passes": 0,
-      "guided_source_checked_rehearsals": 1,
+      "guided_source_checked_rehearsals": 2,
       "specific_source_corrections": 6,
       "unassisted_cold_recall_passes": 0,
       "mastery_note": "More accurate written choreography after guided source check; no delayed unassisted retention evidence.",
@@ -22,7 +22,15 @@
         "unassisted_delayed_recall": false,
         "note_path": "docs/rituals/NASURAYA_WUJI_CONTEXT_RECALL_2026-11-11_FA.md"
       },
-      "next_step": "attempt documented exam with source checked after response, then delayed recall across distinct sessions"
+      "next_step": "perform genuine distinct-session source-before-lookup recall; only graduate after delayed/independent exams",
+      "latest_source_guided_session": {
+        "date": "2026-11-12",
+        "report": "docs/rituals/NASURAYA_WUJI_SESSION_2_2026-11-12_FA.md",
+        "cue_deck": "docs/rituals/wuji_shuffled_recall_deck_2026-11-12.json",
+        "step_reconstruction": "10/10 source-assisted",
+        "error_corrections": "12/12 source-assisted answer-key audit",
+        "delayed_unassisted_pass": false
+      }
     },
     "four-direction-guardians": {
       "stage": "review_only_not_mastered",
@@ -41,10 +49,10 @@
     "critical_gesture_transitions": "Seven->Eight->Nine all correct"
   },
   "limits": {
-    "session_runs_verified_in_this_commit": 1,
+    "session_runs_verified_in_this_commit": 2,
     "scheduled_runs_created": false,
     "model_weights_changed": false,
     "body_learning_proven": false,
-    "session_run_type": "guided_source_checked_textual_rehearsal_only"
+    "session_run_type": "two source-checked textual practice sessions, not embodied learning"
   }
 }
