@@ -1,5 +1,5 @@
 {
-  "schema": "nasuraya-source-ritual/0.1",
+  "schema": "nasuraya-source-ritual/0.1-source-corrected",
   "date": "2026-11-11",
   "status": "draft",
   "basis": "Johnson Daoist Exorcism, owner-supplied PDF, printed pp.121-128 and 238-241",
@@ -10,80 +10,80 @@
     {
       "index": 1,
       "name": "one",
-      "movement_and_visualization": "front/back/center melting imagination",
-      "facing": "east",
+      "movement_and_visualization": "Wuji with feet slightly wider than shoulders; five linked attentional passes: front (thumb+index down, weight balls of feet), back (ring+little fingers down, heels), head/arms (balance centered), chest/abdomen (middle fingers down), legs/feet; source describes three tongue stations, final wood/upper-palate retained",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "121-122",
       "adaptation": false
     },
     {
       "index": 2,
       "name": "two",
-      "movement_and_visualization": "fan palm / earth",
-      "facing": "east",
+      "movement_and_visualization": "Extended Fan Palm from hips rotating toward front/sides/back; visualize outward Earth contact in five directions",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "123",
       "adaptation": false
     },
     {
       "index": 3,
       "name": "three",
-      "movement_and_visualization": "sword fingers / roots",
-      "facing": "east",
+      "movement_and_visualization": "Sword Fingers hand seal; imagined roots twice body height extending forward/back/left/right/down",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "123",
       "adaptation": false
     },
     {
       "index": 4,
       "name": "four",
-      "movement_and_visualization": "golden core / palms",
-      "facing": "east",
+      "movement_and_visualization": "Open palms and Bellows Palm movement of hips/chest/arms; imagined golden streams rising to Lower Dantian, up back, over head, down front",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "124",
       "adaptation": false
     },
     {
       "index": 5,
       "name": "five",
-      "movement_and_visualization": "palms outward",
-      "facing": "east",
+      "movement_and_visualization": "Palms face outward; imagined two golden streams out along both arms to the room with hip/chest/arm movements",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "125",
       "adaptation": false
     },
     {
       "index": 6,
       "name": "six",
-      "movement_and_visualization": "six directions / palms inward",
-      "facing": "east",
+      "movement_and_visualization": "Palms turn inward; imagine filling the room from six directions and expansion/contraction with natural breathing",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "125-126",
       "adaptation": false
     },
     {
       "index": 7,
       "name": "seven",
-      "movement_and_visualization": "pole star / mighty light hands",
-      "facing": "east",
+      "movement_and_visualization": "Mighty Light Hand Seal; palms toward body, fingers angled in, wrists pressed outward gently, chin slightly tucked; pole star above, feet rooted to Earth",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "126",
       "adaptation": false
     },
     {
       "index": 8,
       "name": "eight",
-      "movement_and_visualization": "celestial fire seal / natural breaths",
-      "facing": "east",
+      "movement_and_visualization": "From Mighty Light release ring fingers -> Celestial Fire; thumb covers tip of middle-finger nail; rotate inward on comfortable inhale and outward on comfortable exhale",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "127",
       "adaptation": false
     },
     {
       "index": 9,
       "name": "nine",
-      "movement_and_visualization": "fan palms / white light",
-      "facing": "east",
+      "movement_and_visualization": "Release middle fingers -> Extended Fan Palm; palms inward on inhale and outward on exhale; imagined white light fills room and ten directions",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "128",
       "adaptation": false
     },
     {
       "index": 10,
       "name": "ten",
-      "movement_and_visualization": "ready for invocations",
-      "facing": "east",
+      "movement_and_visualization": "Begin: transition to Three Invocations or Shi Shou, not a standalone magical formula nor complete rite ending",
+      "facing": "not_specified_for_this_preliminary_meditation",
       "printed_page": "128",
       "adaptation": false
     },
@@ -164,5 +164,11 @@
     "rounds": 3,
     "cues_per_round": 19,
     "mode": "deterministic textual replay; not embodied learning"
+  },
+  "source_audit": {
+    "audited_date": "2026-11-11",
+    "source": "owner-provided PDF, pages 120-127 (printed 121-128)",
+    "correction": "One is Fun contains five microstages; directions E in earlier 1-10 were overinferred; hand-seal transitions Seven->Eight->Nine need explicit finger movements",
+    "mastery_claim": false
   }
 }
