@@ -1,0 +1,201 @@
+{
+  "schema": "nasuraya/four-guardians-learning-loop/v0.1",
+  "date": "2026-11-12",
+  "project": "Zohraya/Tadash",
+  "ritual_id": "four-direction-guardian-invitation",
+  "source": {
+    "book": "Jerry Alan Johnson, Daoist Exorcism",
+    "owner_supplied_pdf_pages": [
+      231,
+      232,
+      233
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "figures": [
+      "1.226",
+      "1.227",
+      "1.228"
+    ],
+    "section": "From Taiji to the Four Directions",
+    "independent_corroboration": "https://en.daoinfo.org/index.php?title=The_Four_Numinous_Animals_and_Twenty-Eight_Constellations"
+  },
+  "status": {
+    "stage": "acquisition",
+    "new_in_this_turn": "one source-guided narrative rehearsal; no delayed unassisted exam",
+    "mastered": false,
+    "wuji_mastered": false,
+    "owner_exception": "explicit owner authorization 2026-11-12 to begin second ritual before Wuji mastery",
+    "next_third_ritual_allowed": false
+  },
+  "safety": {
+    "symbolic_only": true,
+    "real_invocation_claim": false,
+    "physiological_arousal_claim": false,
+    "fire_incense": "symbolic only",
+    "breathing": "natural",
+    "historical_chant_claim": false,
+    "body_skill_proven": false
+  },
+  "steps": [
+    {
+      "id": "east",
+      "order": 1,
+      "dir_fa": "شرق",
+      "direction": "E",
+      "color": "green",
+      "guardian_fa": "اژدهای سبز",
+      "book_title": "Qing Lin",
+      "symbolic_name": "Mengzhang",
+      "image": "اژدهای سبز در شرق",
+      "action": "مکث و تعظیم نمادین؛ دعوت محترمانه، نه فرمان",
+      "adapted_line": "ای نگهبان شرق، به احترامِ رویش و آغاز تو را به یاد می‌آورم."
+    },
+    {
+      "id": "south",
+      "order": 2,
+      "dir_fa": "جنوب",
+      "direction": "S",
+      "color": "red",
+      "guardian_fa": "پرندهٔ سرخ",
+      "book_title": "Chi Lin",
+      "symbolic_name": "Lingguang",
+      "image": "پرندهٔ سرخ در جنوب",
+      "action": "حرکت نمادین رو به جنوب و مکث",
+      "adapted_line": "ای نگهبان جنوب، روشنایی و بیداری را گرامی می‌دارم."
+    },
+    {
+      "id": "west",
+      "order": 3,
+      "dir_fa": "غرب",
+      "direction": "W",
+      "color": "white",
+      "guardian_fa": "ببر سفید",
+      "book_title": "Bai Lin",
+      "symbolic_name": "Jianbing",
+      "image": "ببر سفید در غرب",
+      "action": "چرخش نمادین رو به غرب و مکث",
+      "adapted_line": "ای نگهبان غرب، استواری و پاسداری را گرامی می‌دارم."
+    },
+    {
+      "id": "north",
+      "order": 4,
+      "dir_fa": "شمال",
+      "direction": "N",
+      "color": "black",
+      "guardian_fa": "لاک‌پشت و مار سیاه",
+      "book_title": "Hei Lin",
+      "symbolic_name": "Zhiming",
+      "image": "لاک‌پشت و مار سیاه در شمال",
+      "action": "چرخش نمادین رو به شمال و مکث",
+      "adapted_line": "ای نگهبان شمال، پایداری و آرامش را گرامی می‌دارم."
+    },
+    {
+      "id": "center",
+      "order": 5,
+      "dir_fa": "مرکز",
+      "direction": "C",
+      "color": null,
+      "guardian_fa": "بازگشت به میانه",
+      "book_title": null,
+      "symbolic_name": null,
+      "image": "چهار نگهبان در اطراف جایگاه مرکزی",
+      "action": "بازگشتِ ذهنی به مرکز؛ پایان بخش آموزشی، نه پایان کل مراسم",
+      "adapted_line": "چهار جهت را شناختم و به میانه برمی‌گردم."
+    }
+  ],
+  "traps": [
+    {
+      "bad": "آیین از شمال شروع می‌شود",
+      "fix": "آغاز شرق و سپس جنوب، غرب، شمال و مرکز است"
+    },
+    {
+      "bad": "جنوب اژدهای سبز است",
+      "fix": "جنوب پرندهٔ سرخ است"
+    },
+    {
+      "bad": "غرب نگهبان سیاه است",
+      "fix": "غرب ببر سفید است"
+    },
+    {
+      "bad": "شمال ببر سفید است",
+      "fix": "شمال لاک‌پشت و مار سیاه است"
+    },
+    {
+      "bad": "Mengzhang نام ببر است",
+      "fix": "Mengzhang نام اژدهای شرق است"
+    },
+    {
+      "bad": "Lingguang نگهبان شمال است",
+      "fix": "Lingguang نام پرندهٔ جنوب است"
+    },
+    {
+      "bad": "Jianbing نام پرندهٔ سرخ است",
+      "fix": "Jianbing نام ببر غرب است"
+    },
+    {
+      "bad": "Zhiming نگهبان غرب است",
+      "fix": "Zhiming نام نگهبان شمال است"
+    },
+    {
+      "bad": "در هر جهت حتماً هفت تعظیم وجود دارد",
+      "fix": "شمار تعظیم برای هر جهت در صفحات مذکور تعیین نشده است"
+    },
+    {
+      "bad": "هدف آیین فرمان دادن و مقیدکردن نگهبانان است",
+      "fix": "کتاب بر دعوت و درخواست یاری، نه فرمان یا مقیدسازی، تأکید می‌کند"
+    },
+    {
+      "bad": "متن فارسی ما ورد اصیل باستانی است",
+      "fix": "عبارت‌های فارسی دفتر تازه‌ساخته‌اند؛ نه نقل تحت‌اللفظی"
+    },
+    {
+      "bad": "بازگشت به مرکز پایان کامل آیین طولانی کتاب است",
+      "fix": "بازگشت به مرکز در توالی ذکر شده، اما بستن نسخهٔ کوتاه آموزشی اقتباسی است"
+    }
+  ],
+  "cycle": {
+    "phases": [
+      "source-study",
+      "one-guided-rehearsal",
+      "ordered-recall",
+      "shuffled-recall",
+      "error-detection",
+      "delayed-recall",
+      "external-audit",
+      "next-step"
+    ],
+    "primary_goal": "master ritual's sourced structure, not supernatural effect",
+    "graduation": {
+      "separate_sessions_min": 3,
+      "sequence": "5/5 in each distinct session",
+      "guardian_name_color_pairings": "4/4",
+      "trap_detection_min": "11/12",
+      "false_historical_attribution_max": 0,
+      "requires_real_delay": true,
+      "physical_mastery_claim": false
+    }
+  },
+  "acceleration": {
+    "state": "growth-not-plateau",
+    "optional_synthetic_reward_pulse": true,
+    "not_empirical": true,
+    "cannot_override_accuracy_or_sources": true,
+    "meaning": "toy scalar in learning-research, not felt arousal/erotic ritual"
+  },
+  "rehearsal": {
+    "kind": "source_assisted_textual",
+    "checked_sequence": [
+      "east",
+      "south",
+      "west",
+      "north",
+      "center"
+    ],
+    "source_check": "all 5 mappings checked against owner supplied PDF and project notes",
+    "limits": "does not demonstrate recall, learning weights, actual gestures, or physical effect"
+  }
+}
