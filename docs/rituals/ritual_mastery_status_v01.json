@@ -12,17 +12,24 @@
       "guided_source_checked_rehearsals": 2,
       "specific_source_corrections": 6,
       "unassisted_cold_recall_passes": 0,
-      "mastery_note": "More accurate written choreography after guided source check; no delayed unassisted retention evidence.",
-      "context_assisted_retrieval_checks": 1,
+      "mastery_note": "Context-assisted sequence and finger transitions match the project notes; initial recall omitted stance width and explicit root directions. Full gesture geometry and independent delayed retention remain unverified.",
+      "context_assisted_retrieval_checks": 2,
       "last_retrieval_result": {
-        "date": "2026-11-11",
-        "kind": "same-conversation-before-GitHub-lookup",
-        "sequence": "10/10",
-        "detail": "multiple omissions in hand seal mechanics, imagery and transitions",
+        "date": "2026-11-12",
+        "kind": "context_assisted_before_fresh_repository_lookup",
+        "recorded_at_utc": "2026-11-11T21:39:35.934721+00:00",
+        "sequence": "10/10 against project notes, not an independent test",
+        "detail": "stance width and explicit five root directions omitted then corrected; tongue detail and complete hand-seal geometry unverified",
         "unassisted_delayed_recall": false,
-        "note_path": "docs/rituals/NASURAYA_WUJI_CONTEXT_RECALL_2026-11-11_FA.md"
+        "distinct_delayed_session": false,
+        "original_pdf_examined": false,
+        "transfer_questions": 6,
+        "independent_assessor": false,
+        "source_commit": "768ebc8e431afcdb77c9c4481f0bbde8120ebfc1",
+        "attempt_sha256": "274cfa5514baf309ef623162829e2645c2f315daedc2dfe7e2ce1883d85c3625",
+        "note_path": "docs/rituals/NASURAYA_WUJI_CONTEXT_FOLLOWUP_2026-11-12_FA.md"
       },
-      "next_step": "perform genuine distinct-session source-before-lookup recall; only graduate after delayed/independent exams",
+      "next_step": "repair step-1 stance and step-3 direction omissions; verify full gesture geometry against the original source when available; perform genuinely separated recall with context assistance disclosed; do not graduate yet",
       "latest_source_guided_session": {
         "date": "2026-11-12",
         "report": "docs/rituals/NASURAYA_WUJI_SESSION_2_2026-11-12_FA.md",
@@ -53,6 +60,8 @@
     "scheduled_runs_created": false,
     "model_weights_changed": false,
     "body_learning_proven": false,
-    "session_run_type": "two source-checked textual practice sessions, not embodied learning"
+    "session_run_type": "two source-checked textual practice sessions, not embodied learning",
+    "latest_followup_counts_as_new_delayed_session": false,
+    "latest_followup_type": "same-conversation context-assisted retrieval and correction"
   }
 }
