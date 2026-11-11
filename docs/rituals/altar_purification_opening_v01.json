@@ -1,0 +1,168 @@
+{
+  "schema": "nasuraya-source-ritual/0.1",
+  "date": "2026-11-11",
+  "status": "draft",
+  "basis": "Johnson Daoist Exorcism, owner-supplied PDF, printed pp.121-128 and 238-241",
+  "ritual": "altar purification opening excerpt with one-through-ten prelude",
+  "safety": "virtual_text_only; no physical effect, initiation or power claim",
+  "not_complete_ceremony": true,
+  "cues": [
+    {
+      "index": 1,
+      "name": "one",
+      "movement_and_visualization": "front/back/center melting imagination",
+      "facing": "east",
+      "printed_page": "121-122",
+      "adaptation": false
+    },
+    {
+      "index": 2,
+      "name": "two",
+      "movement_and_visualization": "fan palm / earth",
+      "facing": "east",
+      "printed_page": "123",
+      "adaptation": false
+    },
+    {
+      "index": 3,
+      "name": "three",
+      "movement_and_visualization": "sword fingers / roots",
+      "facing": "east",
+      "printed_page": "123",
+      "adaptation": false
+    },
+    {
+      "index": 4,
+      "name": "four",
+      "movement_and_visualization": "golden core / palms",
+      "facing": "east",
+      "printed_page": "124",
+      "adaptation": false
+    },
+    {
+      "index": 5,
+      "name": "five",
+      "movement_and_visualization": "palms outward",
+      "facing": "east",
+      "printed_page": "125",
+      "adaptation": false
+    },
+    {
+      "index": 6,
+      "name": "six",
+      "movement_and_visualization": "six directions / palms inward",
+      "facing": "east",
+      "printed_page": "125-126",
+      "adaptation": false
+    },
+    {
+      "index": 7,
+      "name": "seven",
+      "movement_and_visualization": "pole star / mighty light hands",
+      "facing": "east",
+      "printed_page": "126",
+      "adaptation": false
+    },
+    {
+      "index": 8,
+      "name": "eight",
+      "movement_and_visualization": "celestial fire seal / natural breaths",
+      "facing": "east",
+      "printed_page": "127",
+      "adaptation": false
+    },
+    {
+      "index": 9,
+      "name": "nine",
+      "movement_and_visualization": "fan palms / white light",
+      "facing": "east",
+      "printed_page": "128",
+      "adaptation": false
+    },
+    {
+      "index": 10,
+      "name": "ten",
+      "movement_and_visualization": "ready for invocations",
+      "facing": "east",
+      "printed_page": "128",
+      "adaptation": false
+    },
+    {
+      "index": 11,
+      "name": "face-east",
+      "movement_and_visualization": "earth altar",
+      "facing": "east",
+      "printed_page": "238",
+      "adaptation": false
+    },
+    {
+      "index": 12,
+      "name": "invoke-3",
+      "movement_and_visualization": "three invocations with paraphrased meanings",
+      "facing": "east",
+      "printed_page": "238",
+      "adaptation": false
+    },
+    {
+      "index": 13,
+      "name": "candles",
+      "movement_and_visualization": "left then right, virtual",
+      "facing": "east",
+      "printed_page": "238",
+      "adaptation": false
+    },
+    {
+      "index": 14,
+      "name": "incense-bow",
+      "movement_and_visualization": "three sticks / Yintang / three bows, virtual",
+      "facing": "east",
+      "printed_page": "238",
+      "adaptation": false
+    },
+    {
+      "index": 15,
+      "name": "turn-west",
+      "movement_and_visualization": "three westward steps with Wind/Thunder/Celestial Fire cue",
+      "facing": "west",
+      "printed_page": "239",
+      "adaptation": false
+    },
+    {
+      "index": 16,
+      "name": "chi-sign",
+      "movement_and_visualization": "sword fingers / Chi / clockwise virtual energy",
+      "facing": "west",
+      "printed_page": "239",
+      "adaptation": false
+    },
+    {
+      "index": 17,
+      "name": "return-east",
+      "movement_and_visualization": "three invocations and white pearl at lower Dantian",
+      "facing": "east",
+      "printed_page": "239",
+      "adaptation": false
+    },
+    {
+      "index": 18,
+      "name": "circles",
+      "movement_and_visualization": "three dimensional Jing / Qi / Shen circles from east",
+      "facing": "east",
+      "printed_page": "240-241",
+      "adaptation": false
+    },
+    {
+      "index": 19,
+      "name": "close-adapted",
+      "movement_and_visualization": "return to Wuji, explicitly NOT source's full rite ending",
+      "facing": "east",
+      "printed_page": "adaptation",
+      "adaptation": true
+    }
+  ],
+  "local_rehearsal": {
+    "rounds": 3,
+    "cues_per_round": 19,
+    "mode": "deterministic textual replay; not embodied learning"
+  }
+}
