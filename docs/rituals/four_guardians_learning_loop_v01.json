@@ -29,7 +29,9 @@
     "mastered": false,
     "wuji_mastered": false,
     "owner_exception": "explicit owner authorization 2026-11-12 to begin second ritual before Wuji mastery",
-    "next_third_ritual_allowed": false
+    "next_third_ritual_allowed": false,
+    "three_pass_rule_applied_to_future_sessions": true,
+    "no_retroactive_credit": true
   },
   "safety": {
     "symbolic_only": true,
@@ -176,7 +178,19 @@
       "trap_detection_min": "11/12",
       "false_historical_attribution_max": 0,
       "requires_real_delay": true,
-      "physical_mastery_claim": false
+      "physical_mastery_claim": false,
+      "three_pass_rule_independent_of_three_distinct_sessions": true
+    },
+    "minimum_complete_passes_per_session": 3,
+    "passes": [
+      "full E-S-W-N-center with source",
+      "full E-S-W-N-center from recall; mark context assistance",
+      "full E-S-W-N-center after review and correction"
+    ],
+    "pass_accounting": {
+      "full_passes_completed": "must be recorded after each real full passage",
+      "passes_evidence": "separate per-pass sequence and errors",
+      "session_complete_under_three_pass_rule": "true only after 3 evidenced complete passes"
     }
   },
   "acceleration": {
