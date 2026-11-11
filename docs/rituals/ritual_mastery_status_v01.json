@@ -8,7 +8,11 @@
     "one-through-ten-wuji": {
       "stage": "acquisition",
       "mastered": false,
-      "delayed_cold_recall_passes": 0
+      "delayed_cold_recall_passes": 0,
+      "guided_source_checked_rehearsals": 1,
+      "specific_source_corrections": 6,
+      "unassisted_cold_recall_passes": 0,
+      "mastery_note": "More accurate written choreography after guided source check; no delayed unassisted retention evidence."
     },
     "four-direction-guardians": {
       "stage": "review_only_not_mastered",
@@ -25,9 +29,10 @@
     "physical_mastery_claim": false
   },
   "limits": {
-    "session_runs_verified_in_this_commit": 0,
+    "session_runs_verified_in_this_commit": 1,
     "scheduled_runs_created": false,
     "model_weights_changed": false,
-    "body_learning_proven": false
+    "body_learning_proven": false,
+    "session_run_type": "guided_source_checked_textual_rehearsal_only"
   }
 }
