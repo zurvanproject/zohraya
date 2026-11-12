@@ -1,0 +1,16 @@
+Run: https://github.com/zurvanproject/zohraya/actions/runs/43200843512
+Head: ac162f1d0371c6b2698b045d4c2cdbee49e6d730
+Job: 131123560910
+Verified cleanup-failure log excerpts:
+2026-11-12T10:30:15.1056454Z ERROR: test_crash_after_commit_reconciles_without_reexecution (examples.nasuraya_runtime.test_session.SessionTests.test_crash_after_commit_reconciles_without_reexecution)
+2026-11-12T10:30:15.1058516Z ----------------------------------------------------------------------
+2026-11-12T10:30:15.1059262Z Traceback (most recent call last):
+2026-11-12T10:30:15.1067821Z   File "C:\hostedtoolcache\windows\Python\3.11.9\x64\Lib\shutil.py", line 632, in _rmtree_unsafe
+2026-11-12T10:30:15.1069324Z     os.unlink(fullname)
+2026-11-12T10:30:15.1070747Z PermissionError: [WinError 32] The process cannot access the file because it is being used by another process: 'C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\tmpgjvj99id\\run\\session.sqlite'
+2026-11-12T10:30:15.1072393Z
+2026-11-12T10:30:15.1072907Z During handling of the above exception, another exception occurred:
+2026-11-12T10:30:15.1073509Z
+2026-11-12T10:30:15.1073749Z Traceback (most recent call last):
+2026-11-12T10:30:15.1351874Z Ran 17 tests in 17.854s
+2026-11-12T10:30:15.1352095Z FAILED (errors=12, skipped=5)

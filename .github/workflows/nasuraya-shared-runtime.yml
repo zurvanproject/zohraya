@@ -1,0 +1,33 @@
+name: Nasuraya Shared Runtime
+on:
+  push:
+    paths: ['examples/nasuraya_runtime/**', '.github/workflows/nasuraya-shared-runtime.yml']
+  pull_request:
+    paths: ['examples/nasuraya_runtime/**', '.github/workflows/nasuraya-shared-runtime.yml']
+jobs:
+  integration:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11'
+      - run: python -m unittest examples.nasuraya_runtime.test_session -v
+      - run: python -m unittest examples.tadash_interoception.test_interoception -v
+      - run: python -m unittest discover -s examples/dios_nous -v
+      - name: Real native and portable session demonstration
+        if: runner.os == 'Linux'
+        run: python -m examples.nasuraya_runtime demo --native --output "${{ runner.temp }}/shared-session-demo"
+      - name: Portable session demonstration
+        if: runner.os == 'Windows'
+        run: python -m examples.nasuraya_runtime demo --output "${{ runner.temp }}/shared-session-demo"

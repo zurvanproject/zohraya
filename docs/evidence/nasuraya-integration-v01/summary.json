@@ -1,0 +1,142 @@
+{
+  "base_commit": "61050eb1a3079e9a0b422380d99a31cafc34915a",
+  "platform": "Linux",
+  "python": "3.12.14",
+  "scenarios": {
+    "native": {
+      "actions_used": 4,
+      "body_clock": 13.399999999999968,
+      "dissent_used": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "duplicate_returned_original": true,
+      "executed": [
+        "observe",
+        "walk",
+        "observe",
+        "observe"
+      ],
+      "native_neural_ticks": 12800,
+      "pressure": [
+        0.029658479479006294,
+        0.03657220930450155,
+        0.9179060216623397,
+        0.21481653340168938
+      ],
+      "remaining_after_reopen": 0,
+      "requested": [
+        "observe",
+        "walk",
+        "observe",
+        "observe"
+      ],
+      "resume_snapshot_equal": true,
+      "sensory_hypothesis_stance": "ABSTAIN",
+      "session_database_bytes": 2887680,
+      "stop_survives_reopen": true,
+      "visual_plan_options": 3,
+      "workload": [
+        "RECOVERING",
+        "ACTIVE",
+        "ACTIVE",
+        "ACTIVE"
+      ]
+    },
+    "native_sleep": {
+      "actions_used": 4,
+      "body_clock": 13.399999999999968,
+      "dissent_used": [
+        false,
+        false,
+        true,
+        true
+      ],
+      "duplicate_returned_original": true,
+      "executed": [
+        "observe",
+        "protect",
+        "observe",
+        "observe"
+      ],
+      "native_neural_ticks": 12800,
+      "pressure": [
+        0.029658479479006294,
+        0.03657220930450155,
+        0.03839178749679005,
+        0.0388714183777703
+      ],
+      "remaining_after_reopen": 0,
+      "requested": [
+        "observe",
+        "walk",
+        "observe",
+        "observe"
+      ],
+      "resume_snapshot_equal": true,
+      "sensory_hypothesis_stance": "ABSTAIN",
+      "session_database_bytes": 2789376,
+      "stop_survives_reopen": true,
+      "visual_plan_options": 3,
+      "workload": [
+        "RECOVERING",
+        "ACTIVE",
+        "ACTIVE",
+        "ACTIVE"
+      ]
+    },
+    "workshop": {
+      "actions_used": 4,
+      "body_clock": null,
+      "dissent_used": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "duplicate_returned_original": true,
+      "executed": [
+        "recover",
+        "process_job",
+        "recover",
+        "recover"
+      ],
+      "native_neural_ticks": null,
+      "pressure": [
+        0.029658479479006294,
+        0.03657220930450155,
+        0.9179060216623397,
+        0.21481653340168938
+      ],
+      "remaining_after_reopen": 0,
+      "requested": [
+        "recover",
+        "process_job",
+        "recover",
+        "recover"
+      ],
+      "resume_snapshot_equal": true,
+      "sensory_hypothesis_stance": "ABSTAIN",
+      "session_database_bytes": 184320,
+      "stop_survives_reopen": true,
+      "visual_plan_options": 3,
+      "workload": [
+        "RECOVERING",
+        "ACTIVE",
+        "ACTIVE",
+        "ACTIVE"
+      ]
+    }
+  },
+  "test_counts": {
+    "inherited_agent_optional_skipped": 10,
+    "inherited_agent_passed": 50,
+    "inherited_dios": 177,
+    "inherited_interoception": 33,
+    "inherited_native_body": 25,
+    "new_runtime": 17,
+    "total_passed": 302
+  }
+}

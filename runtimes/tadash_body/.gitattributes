@@ -1,0 +1,3 @@
+# Source manifests authenticate exact imported bytes, including newlines.
+# Preserve these on every checkout; verification must not normalize them.
+* -text

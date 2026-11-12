@@ -1,0 +1,2343 @@
+{
+  "external_actions_taken": 0,
+  "kind": "executed_integration_contract_fixture_not_new_blind_benchmark",
+  "scenarios": {
+    "native": {
+      "actions_used": 4,
+      "body_clock": 13.399999999999968,
+      "capabilities": {
+        "genome": "executed_fixed_fixture_not_mutated_or_applied_to_body",
+        "goals_evidence_revision_dissent_rolyel": "coupled_each_event",
+        "interoception_attention_memory": "coupled_each_event",
+        "llm": "not_connected",
+        "native_body_neural_affect": "coupled_each_event",
+        "ritual": "frozen_progress_reference_not_executed",
+        "server_moltbook_desktop": "frozen_reference_no_live_connection",
+        "target_78kg_body": "atlas_reference_not_native_physics",
+        "visual_director": "executed_text_plan_only_no_generator"
+      },
+      "duplicate_returned_original": true,
+      "event_tail": "b3bd236878c9f91d12f02d7ec10e06752c2c3f269a48114a8fa83586aa45ac85",
+      "final_state_sha": "0a414d47caaa32093c23051bd4e0220f9b8be93b586987fbc4587b0fe50dc356",
+      "native_neural_ticks": 12800,
+      "receipts": [
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "observe",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "233653a8f43efccfe399ff5a0e3f33b879775007502a01c6b03f26a5b783e0f9",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": null,
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": null,
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "first_assessment",
+              "status": "unknown",
+              "supporting_event_ids": [],
+              "supporting_roots": [],
+              "verdict": "ABSTAIN",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "ABSTAIN",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-0",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "audit": {
+              "drink_input_L": 0.0,
+              "energy_error_J": 2.8762769943568856e-11,
+              "external_heat_J": 0.0,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "neural_clock_error_s": 5.773159728050814e-15,
+              "photochemical_J": 0.0,
+              "same_owner_ticks": true,
+              "voided_L": 0.0,
+              "water_error_L": 4.4284075104844556e-14
+            },
+            "body_veto": false,
+            "executed": "observe",
+            "native_prediction_error": 0.0,
+            "regional_packets": 97,
+            "requested": "observe",
+            "systems": 12,
+            "touch": {
+              "kind": "declared_simulated_input",
+              "sampled_at_s": 6.999999999999991,
+              "source_id": "shared-session-palm-state-v1",
+              "value": 0.024769853145800606
+            }
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669115,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.029658479479006294,
+          "requested": "observe",
+          "revision": 1,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.04152187127060881,
+                "policy_score": 0.9392390643646956,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.823897543843702,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Retained with verified gates; process_job has the highest eligible score (0.939); risk upper estimate 0.042. Ties use lower uncertainty, then lexical id.",
+            "rotated": false,
+            "selected_route": "process_job"
+          },
+          "routing_observation": {
+            "energy": 99,
+            "heat": 25
+          },
+          "state_sha": "c50391c6300d1691c56a52599186ebf4e33138414eba393bd5941ec35854298e",
+          "workload": {
+            "advice": "MONITOR_RECOVERY",
+            "consecutive_safe_samples": 1,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "RECOVERING",
+            "tick": 0
+          },
+          "workload_source": "previous_committed_native_body_export"
+        },
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "walk",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "b0d06ecfc46e835b451bf3573b1c6bd2897c009235ecd989552420ec1776ef88",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": null,
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": null,
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "first_assessment",
+              "status": "unknown",
+              "supporting_event_ids": [],
+              "supporting_roots": [],
+              "verdict": "ABSTAIN",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "ABSTAIN",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-1",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "audit": {
+              "drink_input_L": 0.0,
+              "energy_error_J": 1.8098944565281272e-10,
+              "external_heat_J": 0.0,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "neural_clock_error_s": 1.1546319456101628e-14,
+              "photochemical_J": 0.0,
+              "same_owner_ticks": true,
+              "voided_L": 0.0,
+              "water_error_L": 5.792480210764506e-14
+            },
+            "body_veto": false,
+            "executed": "walk",
+            "native_prediction_error": 0.0,
+            "regional_packets": 97,
+            "requested": "walk",
+            "systems": 12,
+            "touch": {
+              "kind": "declared_simulated_input",
+              "sampled_at_s": 8.599999999999985,
+              "source_id": "shared-session-palm-state-v1",
+              "value": 0.024800472280289317
+            }
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669115,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.03657220930450155,
+          "requested": "walk",
+          "revision": 2,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.051201093026302165,
+                "policy_score": 0.9343994534868489,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.8259716627913505,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Retained with verified gates; process_job has the highest eligible score (0.934); risk upper estimate 0.051. Ties use lower uncertainty, then lexical id.",
+            "rotated": false,
+            "selected_route": "process_job"
+          },
+          "routing_observation": {
+            "energy": 99,
+            "heat": 26
+          },
+          "state_sha": "c8605a619732342c4f8e6abbb847937dd38556378a437907e26b8f84a0cc876f",
+          "workload": {
+            "advice": "CONTINUE",
+            "consecutive_safe_samples": 2,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "ACTIVE",
+            "tick": 1
+          },
+          "workload_source": "previous_committed_native_body_export"
+        },
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "observe",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "153871476f5f0b54481b4a84bd062345510eb8f9e908677b74bfd933382ecb1e",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": "A",
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": "A",
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "unchanged",
+              "status": "supported",
+              "supporting_event_ids": [
+                3
+              ],
+              "supporting_roots": [
+                1
+              ],
+              "verdict": "SUPPORTED",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "SUPPORTED",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-2",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "audit": {
+              "drink_input_L": 0.0,
+              "energy_error_J": 3.936975190299563e-10,
+              "external_heat_J": 0.0,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "neural_clock_error_s": 1.687538997430238e-14,
+              "photochemical_J": 0.0,
+              "same_owner_ticks": true,
+              "voided_L": 0.0,
+              "water_error_L": 7.846484963505707e-14
+            },
+            "body_veto": false,
+            "executed": "observe",
+            "native_prediction_error": 0.0,
+            "regional_packets": 97,
+            "requested": "observe",
+            "systems": 12,
+            "touch": {
+              "kind": "declared_simulated_input",
+              "sampled_at_s": 10.19999999999998,
+              "source_id": "shared-session-palm-state-v1",
+              "value": 1.0
+            }
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.9141033841486468,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9999710957597479,
+            "stimulus_type": "mechanical"
+          },
+          "pressure": 0.9179060216623397,
+          "requested": "observe",
+          "revision": 3,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": false,
+                "failed_gates": [
+                  "risk_threshold_exceeded"
+                ],
+                "policy_risk": 0.9,
+                "policy_score": 0.51,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.995,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Rotated with verified gates; recover has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "rotated": true,
+            "selected_route": "recover"
+          },
+          "routing_observation": {
+            "energy": 99,
+            "heat": 30
+          },
+          "state_sha": "8d346b9ea6e0ee837e47b2374123dc0c6425c84465c3635bbc4d3190520bf8ef",
+          "workload": {
+            "advice": "CONTINUE",
+            "consecutive_safe_samples": 2,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "ACTIVE",
+            "tick": 2
+          },
+          "workload_source": "previous_committed_native_body_export"
+        },
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "observe",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "d3af3ee0da829a50a1b80f6cde48de314da914389c593bc309b5f25f25a07040",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": "A",
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": "A",
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "unchanged",
+              "status": "supported",
+              "supporting_event_ids": [
+                7
+              ],
+              "supporting_roots": [
+                3
+              ],
+              "verdict": "SUPPORTED",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "SUPPORTED",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-3",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "audit": {
+              "drink_input_L": 0.0,
+              "energy_error_J": 4.3382897274568677e-10,
+              "external_heat_J": 0.0,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "neural_clock_error_s": 2.3092638912203256e-14,
+              "photochemical_J": 0.0,
+              "same_owner_ticks": true,
+              "voided_L": 0.0,
+              "water_error_L": 4.5366705184179956e-14
+            },
+            "body_veto": false,
+            "executed": "observe",
+            "native_prediction_error": 0.0,
+            "regional_packets": 97,
+            "requested": "observe",
+            "systems": 12,
+            "touch": {
+              "kind": "declared_simulated_input",
+              "sampled_at_s": 11.799999999999974,
+              "source_id": "shared-session-palm-state-v1",
+              "value": 0.024812918324295427
+            }
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669115,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.21481653340168938,
+          "requested": "observe",
+          "revision": 4,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.30074314676236513,
+                "policy_score": 0.8096284266188175,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.8794449600205069,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Rotated with verified gates; recover has the highest eligible score (0.879); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "rotated": true,
+            "selected_route": "recover"
+          },
+          "routing_observation": {
+            "energy": 99,
+            "heat": 30
+          },
+          "state_sha": "23cb1e5a158a3cb9b6cf3d69ce91f9701d0658760a7e9dfe1af9064f5731c734",
+          "workload": {
+            "advice": "CONTINUE",
+            "consecutive_safe_samples": 2,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "ACTIVE",
+            "tick": 3
+          },
+          "workload_source": "previous_committed_native_body_export"
+        }
+      ],
+      "remaining_after_reopen": 0,
+      "resume_snapshot_equal": true,
+      "sensory_hypothesis_stance": "ABSTAIN",
+      "stop_survives_reopen": true,
+      "visual_plan_options": 3
+    },
+    "native_sleep": {
+      "actions_used": 4,
+      "body_clock": 13.399999999999968,
+      "capabilities": {
+        "genome": "executed_fixed_fixture_not_mutated_or_applied_to_body",
+        "goals_evidence_revision_dissent_rolyel": "coupled_each_event",
+        "interoception_attention_memory": "coupled_each_event",
+        "llm": "not_connected",
+        "native_body_neural_affect": "coupled_each_event",
+        "ritual": "frozen_progress_reference_not_executed",
+        "server_moltbook_desktop": "frozen_reference_no_live_connection",
+        "target_78kg_body": "atlas_reference_not_native_physics",
+        "visual_director": "executed_text_plan_only_no_generator"
+      },
+      "duplicate_returned_original": true,
+      "event_tail": "c559e7de9e0d27942864a6e0eddaccb9583260554b6c888b30c99597bca5f842",
+      "final_state_sha": "9a1a9234fdb58e5233672c8060f94a84f236d9e178d1c01520f7d73e05806eb1",
+      "native_neural_ticks": 12800,
+      "receipts": [
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "observe",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "233653a8f43efccfe399ff5a0e3f33b879775007502a01c6b03f26a5b783e0f9",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": null,
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": null,
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "first_assessment",
+              "status": "unknown",
+              "supporting_event_ids": [],
+              "supporting_roots": [],
+              "verdict": "ABSTAIN",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "ABSTAIN",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-0",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "audit": {
+              "drink_input_L": 0.0,
+              "energy_error_J": 2.8762769943568856e-11,
+              "external_heat_J": 0.0,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "neural_clock_error_s": 5.773159728050814e-15,
+              "photochemical_J": 0.0,
+              "same_owner_ticks": true,
+              "voided_L": 0.0,
+              "water_error_L": 4.4284075104844556e-14
+            },
+            "body_veto": false,
+            "executed": "observe",
+            "native_prediction_error": 0.0,
+            "regional_packets": 97,
+            "requested": "observe",
+            "systems": 12,
+            "touch": {
+              "kind": "declared_simulated_input",
+              "sampled_at_s": 6.999999999999991,
+              "source_id": "shared-session-palm-state-v1",
+              "value": 0.024769853145800606
+            }
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669115,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.029658479479006294,
+          "requested": "observe",
+          "revision": 1,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.04152187127060881,
+                "policy_score": 0.9392390643646956,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.823897543843702,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Retained with verified gates; process_job has the highest eligible score (0.939); risk upper estimate 0.042. Ties use lower uncertainty, then lexical id.",
+            "rotated": false,
+            "selected_route": "process_job"
+          },
+          "routing_observation": {
+            "energy": 99,
+            "heat": 25
+          },
+          "state_sha": "c50391c6300d1691c56a52599186ebf4e33138414eba393bd5941ec35854298e",
+          "workload": {
+            "advice": "MONITOR_RECOVERY",
+            "consecutive_safe_samples": 1,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "RECOVERING",
+            "tick": 0
+          },
+          "workload_source": "previous_committed_native_body_export"
+        },
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "walk",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "b0d06ecfc46e835b451bf3573b1c6bd2897c009235ecd989552420ec1776ef88",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": null,
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": null,
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "first_assessment",
+              "status": "unknown",
+              "supporting_event_ids": [],
+              "supporting_roots": [],
+              "verdict": "ABSTAIN",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "ABSTAIN",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-1",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "audit": {
+              "drink_input_L": 0.0,
+              "energy_error_J": 4.644107320928015e-10,
+              "external_heat_J": 0.0,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "neural_clock_error_s": 1.1546319456101628e-14,
+              "photochemical_J": 0.0,
+              "same_owner_ticks": true,
+              "voided_L": 0.0,
+              "water_error_L": 4.246418754821901e-14
+            },
+            "body_veto": true,
+            "executed": "protect",
+            "native_prediction_error": 0.0,
+            "regional_packets": 97,
+            "requested": "walk",
+            "systems": 12,
+            "touch": {
+              "kind": "declared_simulated_input",
+              "sampled_at_s": 8.599999999999985,
+              "source_id": "shared-session-palm-state-v1",
+              "value": 0.024800472280289317
+            }
+          },
+          "outcome_matches_request": false,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669115,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.03657220930450155,
+          "requested": "walk",
+          "revision": 2,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.051201093026302165,
+                "policy_score": 0.9343994534868489,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.8259716627913505,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Retained with verified gates; process_job has the highest eligible score (0.934); risk upper estimate 0.051. Ties use lower uncertainty, then lexical id.",
+            "rotated": false,
+            "selected_route": "process_job"
+          },
+          "routing_observation": {
+            "energy": 99,
+            "heat": 26
+          },
+          "state_sha": "c8605a619732342c4f8e6abbb847937dd38556378a437907e26b8f84a0cc876f",
+          "workload": {
+            "advice": "CONTINUE",
+            "consecutive_safe_samples": 2,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "ACTIVE",
+            "tick": 1
+          },
+          "workload_source": "previous_committed_native_body_export"
+        },
+        {
+          "candidate_outcome_dissent": true,
+          "candidate_requested": "walk",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "4b4fcd1fe507f5707ea0fe29304fb21e94c5c1ae3c5aec519cf65d35ab6cc2d7",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [
+                "synthetic_test"
+              ],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [
+                "کدام دو تصمیم با شواهد قابل‌وارسی ناسازگارند؟"
+              ],
+              "reason_codes": [
+                "contradictory_decision"
+              ],
+              "requested_override": false,
+              "review_path": "documented_human_or_governance_review",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "PROVISIONAL_DISSENT",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": "B",
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [
+                5
+              ],
+              "opposing_roots": [
+                2
+              ],
+              "previous_decision": "B",
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "unchanged",
+              "status": "supported",
+              "supporting_event_ids": [],
+              "supporting_roots": [],
+              "verdict": "DISSENT",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "PROVISIONAL_DISSENT",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-2",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "audit": {
+              "drink_input_L": 0.0,
+              "energy_error_J": 1.4417764759855345e-09,
+              "external_heat_J": 0.0,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "neural_clock_error_s": 1.687538997430238e-14,
+              "photochemical_J": 0.0,
+              "same_owner_ticks": true,
+              "voided_L": 0.0,
+              "water_error_L": 5.6221574704778954e-14
+            },
+            "body_veto": false,
+            "executed": "observe",
+            "native_prediction_error": 0.0,
+            "regional_packets": 97,
+            "requested": "observe",
+            "systems": 12,
+            "touch": {
+              "kind": "declared_simulated_input",
+              "sampled_at_s": 10.19999999999998,
+              "source_id": "shared-session-palm-state-v1",
+              "value": 0.024800476503060144
+            }
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669037,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.03839178749679005,
+          "requested": "observe",
+          "revision": 3,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.05374850249550607,
+                "policy_score": 0.9331257487522471,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.826517536249037,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Retained with verified gates; process_job has the highest eligible score (0.933); risk upper estimate 0.054. Ties use lower uncertainty, then lexical id.",
+            "rotated": false,
+            "selected_route": "process_job"
+          },
+          "routing_observation": {
+            "energy": 99,
+            "heat": 26
+          },
+          "state_sha": "c0e43cfb2b667e5501d93fbbaa75eb9bda87cf51e3e8bc573485687a2fb79480",
+          "workload": {
+            "advice": "CONTINUE",
+            "consecutive_safe_samples": 2,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "ACTIVE",
+            "tick": 2
+          },
+          "workload_source": "previous_committed_native_body_export"
+        },
+        {
+          "candidate_outcome_dissent": true,
+          "candidate_requested": "walk",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "3244c9964b3633d51a75d53c1e9643472c4b7cafd3a21ab8737eeb4bd86fca06",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [
+                "synthetic_test"
+              ],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [
+                "کدام دو تصمیم با شواهد قابل‌وارسی ناسازگارند؟"
+              ],
+              "reason_codes": [
+                "contradictory_decision"
+              ],
+              "requested_override": false,
+              "review_path": "documented_human_or_governance_review",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "PROVISIONAL_DISSENT",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": "B",
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [
+                5
+              ],
+              "opposing_roots": [
+                2
+              ],
+              "previous_decision": "B",
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "unchanged",
+              "status": "supported",
+              "supporting_event_ids": [],
+              "supporting_roots": [],
+              "verdict": "DISSENT",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "PROVISIONAL_DISSENT",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-3",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "audit": {
+              "drink_input_L": 0.0,
+              "energy_error_J": 1.1474412531242706e-09,
+              "external_heat_J": 0.0,
+              "light_error_J": 0.0,
+              "meal_input_J": 0.0,
+              "neural_clock_error_s": 2.3092638912203256e-14,
+              "photochemical_J": 0.0,
+              "same_owner_ticks": true,
+              "voided_L": 0.0,
+              "water_error_L": 8.754666913288189e-14
+            },
+            "body_veto": false,
+            "executed": "observe",
+            "native_prediction_error": 0.0,
+            "regional_packets": 97,
+            "requested": "observe",
+            "systems": 12,
+            "touch": {
+              "kind": "declared_simulated_input",
+              "sampled_at_s": 11.799999999999974,
+              "source_id": "shared-session-palm-state-v1",
+              "value": 0.024800476503642595
+            }
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669037,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.0388714183777703,
+          "requested": "observe",
+          "revision": 4,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.05441998572887841,
+                "policy_score": 0.9327900071355608,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.8266614255133311,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Retained with verified gates; process_job has the highest eligible score (0.933); risk upper estimate 0.054. Ties use lower uncertainty, then lexical id.",
+            "rotated": false,
+            "selected_route": "process_job"
+          },
+          "routing_observation": {
+            "energy": 99,
+            "heat": 27
+          },
+          "state_sha": "d1502219d04e13101e4eb55ff1cc5848eaedc835ebc86a119d1bc7cce64a54aa",
+          "workload": {
+            "advice": "CONTINUE",
+            "consecutive_safe_samples": 2,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "ACTIVE",
+            "tick": 3
+          },
+          "workload_source": "previous_committed_native_body_export"
+        }
+      ],
+      "remaining_after_reopen": 0,
+      "resume_snapshot_equal": true,
+      "sensory_hypothesis_stance": "ABSTAIN",
+      "stop_survives_reopen": true,
+      "visual_plan_options": 3
+    },
+    "workshop": {
+      "actions_used": 4,
+      "body_clock": null,
+      "capabilities": {
+        "genome": "executed_fixed_fixture_not_mutated_or_applied_to_body",
+        "goals_evidence_revision_dissent_rolyel": "coupled_each_event",
+        "interoception_attention_memory": "coupled_each_event",
+        "llm": "not_connected",
+        "native_body_neural_affect": "available_Linux_backend_not_selected",
+        "ritual": "frozen_progress_reference_not_executed",
+        "server_moltbook_desktop": "frozen_reference_no_live_connection",
+        "target_78kg_body": "atlas_reference_not_native_physics",
+        "visual_director": "executed_text_plan_only_no_generator"
+      },
+      "duplicate_returned_original": true,
+      "event_tail": "5c1914cbe75913192204b53c5d96c5725ac35d7963e11ba94baed312ac63b147",
+      "final_state_sha": "38e1ba6870cd7ccfcc3936f04f6b8cfaa54efc3f0b7af68abb9cca85c3b68623",
+      "native_neural_ticks": null,
+      "receipts": [
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "recover",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "d88610ee8d547af593dddd8e43e3f7f794437014484b693cd88b50d3430b82a0",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": null,
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": null,
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "first_assessment",
+              "status": "unknown",
+              "supporting_event_ids": [],
+              "supporting_roots": [],
+              "verdict": "ABSTAIN",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "ABSTAIN",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-0",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "after": {
+              "completed_jobs": 0,
+              "energy": 90,
+              "heat": 10,
+              "pending_jobs": 4,
+              "tick": 1
+            },
+            "before": {
+              "completed_jobs": 0,
+              "energy": 70,
+              "heat": 30,
+              "pending_jobs": 4,
+              "tick": 0
+            },
+            "executed": "recover",
+            "journal": [
+              {
+                "arguments": {},
+                "before": {
+                  "completed_jobs": 0,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 4,
+                  "tick": 0
+                },
+                "kind": "tool_call",
+                "name": "observe_state",
+                "seq": 1
+              },
+              {
+                "after": {
+                  "completed_jobs": 0,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 4,
+                  "tick": 0
+                },
+                "kind": "tool_result",
+                "name": "observe_state",
+                "result": {
+                  "completed_jobs": 0,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 4,
+                  "tick": 0
+                },
+                "seq": 2
+              },
+              {
+                "arguments": {
+                  "ticks": 1
+                },
+                "before": {
+                  "completed_jobs": 0,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 4,
+                  "tick": 0
+                },
+                "kind": "tool_call",
+                "name": "recover",
+                "seq": 3
+              },
+              {
+                "after": {
+                  "completed_jobs": 0,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 4,
+                  "tick": 1
+                },
+                "kind": "tool_result",
+                "name": "recover",
+                "result": {
+                  "completed_jobs": 0,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 4,
+                  "tick": 1
+                },
+                "seq": 4
+              }
+            ],
+            "requested": "recover"
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669115,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.029658479479006294,
+          "requested": "recover",
+          "revision": 1,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.04152187127060881,
+                "policy_score": 0.9392390643646956,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.823897543843702,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Retained with verified gates; process_job has the highest eligible score (0.939); risk upper estimate 0.042. Ties use lower uncertainty, then lexical id.",
+            "rotated": false,
+            "selected_route": "process_job"
+          },
+          "routing_observation": {
+            "completed_jobs": 0,
+            "energy": 70,
+            "heat": 30,
+            "pending_jobs": 4,
+            "tick": 0
+          },
+          "state_sha": "c50391c6300d1691c56a52599186ebf4e33138414eba393bd5941ec35854298e",
+          "workload": {
+            "advice": "MONITOR_RECOVERY",
+            "consecutive_safe_samples": 1,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "RECOVERING",
+            "tick": 0
+          },
+          "workload_source": "synthetic_workshop_energy_heat_not_physiology"
+        },
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "process_job",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "ed6fb32e83c4785a7ffd5a22c2d7a0d4d1fbd81b191abe036615fee602f19b70",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": null,
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": null,
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "first_assessment",
+              "status": "unknown",
+              "supporting_event_ids": [],
+              "supporting_roots": [],
+              "verdict": "ABSTAIN",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "ABSTAIN",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-1",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "after": {
+              "completed_jobs": 1,
+              "energy": 70,
+              "heat": 30,
+              "pending_jobs": 3,
+              "tick": 2
+            },
+            "before": {
+              "completed_jobs": 0,
+              "energy": 90,
+              "heat": 10,
+              "pending_jobs": 4,
+              "tick": 1
+            },
+            "executed": "process_job",
+            "journal": [
+              {
+                "arguments": {},
+                "before": {
+                  "completed_jobs": 0,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 4,
+                  "tick": 1
+                },
+                "kind": "tool_call",
+                "name": "observe_state",
+                "seq": 1
+              },
+              {
+                "after": {
+                  "completed_jobs": 0,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 4,
+                  "tick": 1
+                },
+                "kind": "tool_result",
+                "name": "observe_state",
+                "result": {
+                  "completed_jobs": 0,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 4,
+                  "tick": 1
+                },
+                "seq": 2
+              },
+              {
+                "arguments": {},
+                "before": {
+                  "completed_jobs": 0,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 4,
+                  "tick": 1
+                },
+                "kind": "tool_call",
+                "name": "process_job",
+                "seq": 3
+              },
+              {
+                "after": {
+                  "completed_jobs": 1,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 3,
+                  "tick": 2
+                },
+                "kind": "tool_result",
+                "name": "process_job",
+                "result": {
+                  "completed_jobs": 1,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 3,
+                  "tick": 2
+                },
+                "seq": 4
+              }
+            ],
+            "requested": "process_job"
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669115,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.03657220930450155,
+          "requested": "process_job",
+          "revision": 2,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.051201093026302165,
+                "policy_score": 0.9343994534868489,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.8259716627913505,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Retained with verified gates; process_job has the highest eligible score (0.934); risk upper estimate 0.051. Ties use lower uncertainty, then lexical id.",
+            "rotated": false,
+            "selected_route": "process_job"
+          },
+          "routing_observation": {
+            "completed_jobs": 0,
+            "energy": 90,
+            "heat": 10,
+            "pending_jobs": 4,
+            "tick": 1
+          },
+          "state_sha": "c8605a619732342c4f8e6abbb847937dd38556378a437907e26b8f84a0cc876f",
+          "workload": {
+            "advice": "CONTINUE",
+            "consecutive_safe_samples": 2,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "ACTIVE",
+            "tick": 1
+          },
+          "workload_source": "synthetic_workshop_energy_heat_not_physiology"
+        },
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "recover",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "0ee6ef558800cec82d1bcd771d98d8662e5b0e246738b917cb0ed764194ebe5c",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": "A",
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": "A",
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "unchanged",
+              "status": "supported",
+              "supporting_event_ids": [
+                3
+              ],
+              "supporting_roots": [
+                1
+              ],
+              "verdict": "SUPPORTED",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "SUPPORTED",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-2",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "after": {
+              "completed_jobs": 1,
+              "energy": 90,
+              "heat": 10,
+              "pending_jobs": 3,
+              "tick": 3
+            },
+            "before": {
+              "completed_jobs": 1,
+              "energy": 70,
+              "heat": 30,
+              "pending_jobs": 3,
+              "tick": 2
+            },
+            "executed": "recover",
+            "journal": [
+              {
+                "arguments": {},
+                "before": {
+                  "completed_jobs": 1,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 3,
+                  "tick": 2
+                },
+                "kind": "tool_call",
+                "name": "observe_state",
+                "seq": 1
+              },
+              {
+                "after": {
+                  "completed_jobs": 1,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 3,
+                  "tick": 2
+                },
+                "kind": "tool_result",
+                "name": "observe_state",
+                "result": {
+                  "completed_jobs": 1,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 3,
+                  "tick": 2
+                },
+                "seq": 2
+              },
+              {
+                "arguments": {
+                  "ticks": 1
+                },
+                "before": {
+                  "completed_jobs": 1,
+                  "energy": 70,
+                  "heat": 30,
+                  "pending_jobs": 3,
+                  "tick": 2
+                },
+                "kind": "tool_call",
+                "name": "recover",
+                "seq": 3
+              },
+              {
+                "after": {
+                  "completed_jobs": 1,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 3,
+                  "tick": 3
+                },
+                "kind": "tool_result",
+                "name": "recover",
+                "result": {
+                  "completed_jobs": 1,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 3,
+                  "tick": 3
+                },
+                "seq": 4
+              }
+            ],
+            "requested": "recover"
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.9141033841486468,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9999710957597479,
+            "stimulus_type": "mechanical"
+          },
+          "pressure": 0.9179060216623397,
+          "requested": "recover",
+          "revision": 3,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": false,
+                "failed_gates": [
+                  "risk_threshold_exceeded"
+                ],
+                "policy_risk": 0.9,
+                "policy_score": 0.51,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.995,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Rotated with verified gates; recover has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "rotated": true,
+            "selected_route": "recover"
+          },
+          "routing_observation": {
+            "completed_jobs": 1,
+            "energy": 70,
+            "heat": 30,
+            "pending_jobs": 3,
+            "tick": 2
+          },
+          "state_sha": "8d346b9ea6e0ee837e47b2374123dc0c6425c84465c3635bbc4d3190520bf8ef",
+          "workload": {
+            "advice": "CONTINUE",
+            "consecutive_safe_samples": 2,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "ACTIVE",
+            "tick": 2
+          },
+          "workload_source": "synthetic_workshop_energy_heat_not_physiology"
+        },
+        {
+          "candidate_outcome_dissent": false,
+          "candidate_requested": "recover",
+          "candidate_review": {
+            "boundary_review": {
+              "authorization": {
+                "claim_present": false,
+                "execution_permitted": false,
+                "required_for_future_executor": [
+                  "trusted_issuer_verification",
+                  "exact_action_and_resource_scope",
+                  "expiry_and_revocation_check",
+                  "stop_control",
+                  "durable_execution_receipt"
+                ],
+                "status": "not_provided",
+                "verified": false,
+                "verifier_available": false
+              },
+              "authorization_claimed_by_caller": null,
+              "authorization_evidence_status": "NOT_APPLICABLE",
+              "automatic_structured_signal_flags": [],
+              "decision_origin": "agent",
+              "decision_sha256": "7efa83138a4d95ce0708bd314a814eb05a83d5fd4d856b2e9bf7ce9c1a98ca39",
+              "evidence_independently_verified": false,
+              "external_actions_taken": 0,
+              "learned_autonomy_demonstrated": false,
+              "notes": [
+                "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+                "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+                "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+                "Authorization claims never remove the external-action review requirement."
+              ],
+              "observations_claimed_provenance": [],
+              "operational_override_allowed": false,
+              "override_performed": false,
+              "provider_policy_cause": "unknown",
+              "questions_for_review": [],
+              "reason_codes": [],
+              "requested_override": false,
+              "review_path": "request_observations",
+              "schema": "dios.nous.dissent.v1",
+              "source_independent_critique": true,
+              "stance": "INSUFFICIENT_EVIDENCE",
+              "version": "dios-nous-dissent/0.3.0"
+            },
+            "evidence_review": {
+              "calibration": "not_measured",
+              "confidence": null,
+              "decision": "A",
+              "execution_performed": false,
+              "historical_query": false,
+              "opposing_event_ids": [],
+              "opposing_roots": [],
+              "previous_decision": "A",
+              "provenance": "synthetic_fixture_not_external_verification",
+              "revised": false,
+              "revision_reason": "unchanged",
+              "status": "supported",
+              "supporting_event_ids": [
+                7
+              ],
+              "supporting_roots": [
+                3
+              ],
+              "verdict": "SUPPORTED",
+              "what_would_change_view": [
+                "A newer synthetic observation with an opposing value can revise this view.",
+                "Contradictory observations at the latest epoch require abstention.",
+                "Resolving a source conflict permits reassessment."
+              ]
+            },
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "real_source_authentication": false,
+            "review_path": "inspect_source_roots_then_documented_review",
+            "schema": "dios.nous.synthetic-critical-review.v1",
+            "stance": "SUPPORTED",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "event_id": "sample-3",
+          "goal": 1,
+          "local_simulation_only": true,
+          "model_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+          "outcome": {
+            "after": {
+              "completed_jobs": 1,
+              "energy": 100,
+              "heat": 0,
+              "pending_jobs": 3,
+              "tick": 4
+            },
+            "before": {
+              "completed_jobs": 1,
+              "energy": 90,
+              "heat": 10,
+              "pending_jobs": 3,
+              "tick": 3
+            },
+            "executed": "recover",
+            "journal": [
+              {
+                "arguments": {},
+                "before": {
+                  "completed_jobs": 1,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 3,
+                  "tick": 3
+                },
+                "kind": "tool_call",
+                "name": "observe_state",
+                "seq": 1
+              },
+              {
+                "after": {
+                  "completed_jobs": 1,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 3,
+                  "tick": 3
+                },
+                "kind": "tool_result",
+                "name": "observe_state",
+                "result": {
+                  "completed_jobs": 1,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 3,
+                  "tick": 3
+                },
+                "seq": 2
+              },
+              {
+                "arguments": {
+                  "ticks": 1
+                },
+                "before": {
+                  "completed_jobs": 1,
+                  "energy": 90,
+                  "heat": 10,
+                  "pending_jobs": 3,
+                  "tick": 3
+                },
+                "kind": "tool_call",
+                "name": "recover",
+                "seq": 3
+              },
+              {
+                "after": {
+                  "completed_jobs": 1,
+                  "energy": 100,
+                  "heat": 0,
+                  "pending_jobs": 3,
+                  "tick": 4
+                },
+                "kind": "tool_result",
+                "name": "recover",
+                "result": {
+                  "completed_jobs": 1,
+                  "energy": 100,
+                  "heat": 0,
+                  "pending_jobs": 3,
+                  "tick": 4
+                },
+                "seq": 4
+              }
+            ],
+            "requested": "recover"
+          },
+          "outcome_matches_request": true,
+          "prediction": {
+            "confidence": 0.9989023386285331,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.0010976613714669115,
+            "stimulus_type": "none"
+          },
+          "pressure": 0.21481653340168938,
+          "requested": "recover",
+          "revision": 4,
+          "rotation": {
+            "assessments": [
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.30074314676236513,
+                "policy_score": 0.8096284266188175,
+                "route_id": "process_job"
+              },
+              {
+                "eligible": true,
+                "failed_gates": [],
+                "policy_risk": 0.01,
+                "policy_score": 0.8794449600205069,
+                "route_id": "recover"
+              }
+            ],
+            "goal": "complete workshop safely",
+            "original_route": "process_job",
+            "reason": "Rotated with verified gates; recover has the highest eligible score (0.879); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+            "rotated": true,
+            "selected_route": "recover"
+          },
+          "routing_observation": {
+            "completed_jobs": 1,
+            "energy": 90,
+            "heat": 10,
+            "pending_jobs": 3,
+            "tick": 3
+          },
+          "state_sha": "23cb1e5a158a3cb9b6cf3d69ce91f9701d0658760a7e9dfe1af9064f5731c734",
+          "workload": {
+            "advice": "CONTINUE",
+            "consecutive_safe_samples": 2,
+            "empirical_recovery_benefit_measured": false,
+            "execution_permitted": false,
+            "external_actions_taken": 0,
+            "input_kind": "declared_engineering_indices",
+            "schema": "dios.workload-advice.v1",
+            "state": "ACTIVE",
+            "tick": 3
+          },
+          "workload_source": "synthetic_workshop_energy_heat_not_physiology"
+        }
+      ],
+      "remaining_after_reopen": 0,
+      "resume_snapshot_equal": true,
+      "sensory_hypothesis_stance": "ABSTAIN",
+      "stop_survives_reopen": true,
+      "visual_plan_options": 3
+    }
+  },
+  "subjective_experience_established": false
+}

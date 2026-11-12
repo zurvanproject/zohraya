@@ -1,0 +1,54 @@
+test_native_palm_neural_affect_feedback_and_resume (examples.nasuraya_runtime.test_session.NativeTests.test_native_palm_neural_affect_feedback_and_resume) ... FAIL
+test_native_protective_veto_revises_next_decision (examples.nasuraya_runtime.test_session.NativeTests.test_native_protective_veto_revises_next_decision) ... FAIL
+test_stale_native_workload_cannot_enable_motion (examples.nasuraya_runtime.test_session.NativeTests.test_stale_native_workload_cannot_enable_motion) ... ok
+test_crash_after_commit_reconciles_without_reexecution (examples.nasuraya_runtime.test_session.SessionTests.test_crash_after_commit_reconciles_without_reexecution) ... ok
+test_creation_never_resets_existing_directory (examples.nasuraya_runtime.test_session.SessionTests.test_creation_never_resets_existing_directory) ... ok
+test_duplicate_conflict_stale_writer_and_budget (examples.nasuraya_runtime.test_session.SessionTests.test_duplicate_conflict_stale_writer_and_budget) ... FAIL
+test_event_corruption_and_published_projection_corruption_fail_closed (examples.nasuraya_runtime.test_session.SessionTests.test_event_corruption_and_published_projection_corruption_fail_closed) ... ok
+test_fresh_process_resume_matches_uninterrupted (examples.nasuraya_runtime.test_session.SessionTests.test_fresh_process_resume_matches_uninterrupted) ... FAIL
+test_invalid_frames_do_not_advance_state (examples.nasuraya_runtime.test_session.SessionTests.test_invalid_frames_do_not_advance_state) ... ok
+test_process_death_during_legacy_projection_is_recoverable (examples.nasuraya_runtime.test_session.SessionTests.test_process_death_during_legacy_projection_is_recoverable) ... ok
+test_projection_failure_before_action_does_not_commit (examples.nasuraya_runtime.test_session.SessionTests.test_projection_failure_before_action_does_not_commit) ... ok
+test_source_and_model_pins_fail_closed (examples.nasuraya_runtime.test_session.SessionTests.test_source_and_model_pins_fail_closed) ... ok
+test_state_changes_behavior_without_labels (examples.nasuraya_runtime.test_session.SessionTests.test_state_changes_behavior_without_labels) ... ok
+test_stop_persists_even_before_first_observation (examples.nasuraya_runtime.test_session.SessionTests.test_stop_persists_even_before_first_observation) ... ok
+test_visual_executes_and_unconnected_components_stay_explicit (examples.nasuraya_runtime.test_session.SessionTests.test_visual_executes_and_unconnected_components_stay_explicit) ... ok
+
+======================================================================
+FAIL: test_native_palm_neural_affect_feedback_and_resume (examples.nasuraya_runtime.test_session.NativeTests.test_native_palm_neural_affect_feedback_and_resume)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/74c712ebd879/zohraya/examples/nasuraya_runtime/test_session.py", line 205, in test_native_palm_neural_affect_feedback_and_resume
+    self.assertNotEqual(end['body']['affect'], start['body']['affect'])
+AssertionError: {'admiration': 0.0, 'affection': 0.0, 'amusement': 0.0, 'anger': 0.0, 'anxiety': 0.0, 'attachment': 0.0, 'attraction': 0.0, 'awe': 0.0, 'boredom': 0.0, 'calm': 0.65, 'compassion': 0.25, 'contempt': 0.0, 'contentment': 0.0, 'courage': 0.0, 'curiosity': 0.2, 'desire': 0.0, 'despair': 0.0, 'disappointment': 0.0, 'disgust': 0.0, 'elevation': 0.0, 'embarrassment': 0.0, 'envy': 0.0, 'fear': 0.0, 'frustration': 0.0, 'gratitude': 0.0, 'grief': 0.0, 'guilt': 0.0, 'hope': 0.0, 'jealousy': 0.0, 'joy': 0.0, 'loneliness': 0.0, 'longing': 0.0, 'love': 0.0, 'nostalgia': 0.0, 'pride': 0.0, 'regret': 0.0, 'relief': 0.0, 'romantic_love': 0.0, 'sadness': 0.0, 'shame': 0.0, 'surprise': 0.0, 'tenderness': 0.0, 'trust': 0.0, 'vulnerability': 0.0} == {'admiration': 0.0, 'affection': 0.0, 'amusement': 0.0, 'anger': 0.0, 'anxiety': 0.0, 'attachment': 0.0, 'attraction': 0.0, 'awe': 0.0, 'boredom': 0.0, 'calm': 0.65, 'compassion': 0.25, 'contempt': 0.0, 'contentment': 0.0, 'courage': 0.0, 'curiosity': 0.2, 'desire': 0.0, 'despair': 0.0, 'disappointment': 0.0, 'disgust': 0.0, 'elevation': 0.0, 'embarrassment': 0.0, 'envy': 0.0, 'fear': 0.0, 'frustration': 0.0, 'gratitude': 0.0, 'grief': 0.0, 'guilt': 0.0, 'hope': 0.0, 'jealousy': 0.0, 'joy': 0.0, 'loneliness': 0.0, 'longing': 0.0, 'love': 0.0, 'nostalgia': 0.0, 'pride': 0.0, 'regret': 0.0, 'relief': 0.0, 'romantic_love': 0.0, 'sadness': 0.0, 'shame': 0.0, 'surprise': 0.0, 'tenderness': 0.0, 'trust': 0.0, 'vulnerability': 0.0}
+
+======================================================================
+FAIL: test_native_protective_veto_revises_next_decision (examples.nasuraya_runtime.test_session.NativeTests.test_native_protective_veto_revises_next_decision)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/74c712ebd879/zohraya/examples/nasuraya_runtime/test_session.py", line 215, in test_native_protective_veto_revises_next_decision
+    self.assertTrue(first['outcome']['body_veto'])
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_duplicate_conflict_stale_writer_and_budget (examples.nasuraya_runtime.test_session.SessionTests.test_duplicate_conflict_stale_writer_and_budget)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/74c712ebd879/zohraya/examples/nasuraya_runtime/test_session.py", line 69, in test_duplicate_conflict_stale_writer_and_budget
+    self.assertEqual(other.step('one', demo_frames(0, 0), expected_revision=0), first)
+AssertionError: {'event_id': 'one', 'goal': 1, 'local_simulation_only': True, [2486 chars]ogy'} != {'event_id': 'one', 'revision': 1, 'prediction': {'occurred': [2486 chars]True}
+Diff is 5600 characters long. Set self.maxDiff to None to see it.
+
+======================================================================
+FAIL: test_fresh_process_resume_matches_uninterrupted (examples.nasuraya_runtime.test_session.SessionTests.test_fresh_process_resume_matches_uninterrupted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/74c712ebd879/zohraya/examples/nasuraya_runtime/test_session.py", line 64, in test_fresh_process_resume_matches_uninterrupted
+    self.assertEqual(resumed.snapshot(), expected)
+AssertionError: {'sch[12596 chars]6': '1b4d45f5897ac6091860696ba3b6416a9c4b8d2ae[88914 chars]05d'} != {'sch[12596 chars]6': '295be52c04cdb3a5e1576b81997c2c5d29ff4ed7f[88914 chars]3af'}
+Diff is 454741 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 15 tests in 13.978s
+
+FAILED (failures=4)
