@@ -58,8 +58,8 @@ it does not rewrite native physiology, goal memory or epistemic arbitration.
 ## Reproducible baseline and validation
 
 Before editing: 177 existing DIOS tests passed, raw log retained. After integration:
-31 interoception tests, 177 DIOS tests, 50 agent tests passed; 10 optional SDK tests
-skipped; all 25 native body bridge tests passed. Total: 283 passed, 10 skipped,
+33 interoception tests, 177 DIOS tests, 50 agent tests passed; 10 optional SDK tests
+skipped; all 25 native body bridge tests passed. Total: 285 passed, 10 skipped,
 zero failures in these local suites. These are not every test in every research
 branch. Native behavior and returned receipts were exercised, not just imports.
 
@@ -67,3 +67,14 @@ The original protocol, pre-test code commits, a detected selection-leak failure,
 corrective addendum, first/new test outputs and model rollback snapshots are all
 retained. Local commits preceded their respective runs; GitHub publication is
 later, so there is no claim of independently verified public preregistration.
+
+## CI portability correction
+
+First PR run 43189292910 passed Linux and the new/DIOS Windows suites, but the
+legacy guided-agent module imported Linux-only fcntl during Windows discovery.
+The workflow now runs that complete suite on Linux and explicitly selects the
+five portable agent modules on Windows. The failure excerpt is retained. Two
+new verifier checks reject changed numeric predictions/labels; the CI replay
+now compares all 500 predictions and primary metrics with frozen evidence using
+absolute tolerance 1e-10 and relative tolerance 1e-9 for floating-point values.
+No sensory, decoder, fitting or test-generator equations changed.

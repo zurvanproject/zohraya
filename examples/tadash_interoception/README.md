@@ -12,10 +12,12 @@ From the repository root:
 ```sh
 python -m unittest examples.tadash_interoception.test_interoception -v
 python -m unittest discover -s examples/dios_nous -v
+# Linux only: the full legacy guided-agent suite imports fcntl
 python -m unittest discover -s examples/nasuraya_agent_loop/tests -v
 python -m examples.tadash_interoception.demo --output /tmp/palm-agent-demo
 python -m examples.tadash_interoception.demo --native --output /tmp/palm-native-demo
 python -m examples.tadash_interoception.evaluate --include-test --output /tmp/palm-regression
+python -m examples.tadash_interoception.verify_regression /tmp/palm-regression/report.json
 python -m examples.nasuraya_body_loop test
 ```
 
@@ -130,3 +132,15 @@ hand withdrawal actuator or new anatomical hand mesh.
 No VPS, Moltbook, production database or language-model API is connected. Existing
 server evidence integrations are audited and their core memory/decision code is
 reused; no unrelated remote receipt task is run. No new third-party dependencies.
+
+On Windows, the portable legacy agent suite is selected explicitly (the full
+Linux suite remains tested on Linux):
+
+```sh
+python -m unittest examples.nasuraya_agent_loop.tests.test_loop examples.nasuraya_agent_loop.tests.test_agents_api examples.nasuraya_agent_loop.tests.test_loopback examples.nasuraya_agent_loop.tests.test_preflight examples.nasuraya_agent_loop.tests.test_sdk_transport -v
+```
+
+The memory ablation removes the explicit 12-frame trace, not all temporal state;
+recursive filtering and load still persist. Regression verification compares all
+500 trial predictions and primary metrics with frozen confirmation; floating
+values allow absolute tolerance 1e-10 and relative tolerance 1e-9. Timing is excluded.

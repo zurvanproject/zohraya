@@ -174,6 +174,19 @@ class DecoderTests(unittest.TestCase):
                             baseline_prediction(r, 'visible_label').location != r['truth']['location'] for r in subset))
 
 
+class RegressionVerifierTests(unittest.TestCase):
+    def test_changed_numeric_prediction_is_detected(self):
+        from .verify_regression import compare
+        compare({'p': .2}, {'p': .2 + 1e-13})
+        with self.assertRaises(AssertionError): compare({'p': .2}, {'p': .21})
+        with self.assertRaises(AssertionError): compare({'p': .2}, {'p': float('nan')})
+
+    def test_changed_labels_and_missing_rows_are_detected(self):
+        from .verify_regression import compare
+        with self.assertRaises(AssertionError): compare([{'label': 'none'}], [{'label': 'thermal'}])
+        with self.assertRaises(AssertionError): compare([1, 2], [1])
+
+
 class IntegrationTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

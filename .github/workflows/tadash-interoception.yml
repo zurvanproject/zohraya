@@ -24,7 +24,18 @@ jobs:
           python-version: '3.11'
       - run: python -m unittest examples.tadash_interoception.test_interoception -v
       - run: python -m unittest discover -s examples/dios_nous -v
-      - run: python -m unittest discover -s examples/nasuraya_agent_loop/tests -v
+      - name: Complete agent regression including Linux file locks
+        if: runner.os == 'Linux'
+        run: python -m unittest discover -s examples/nasuraya_agent_loop/tests -v
+      - name: Portable agent regression (guided.py requires fcntl)
+        if: runner.os == 'Windows'
+        run: >-
+          python -m unittest
+          examples.nasuraya_agent_loop.tests.test_loop
+          examples.nasuraya_agent_loop.tests.test_agents_api
+          examples.nasuraya_agent_loop.tests.test_loopback
+          examples.nasuraya_agent_loop.tests.test_preflight
+          examples.nasuraya_agent_loop.tests.test_sdk_transport -v
       - run: python -m examples.tadash_interoception.demo --output "${{ runner.temp }}/interoception-demo"
   regression:
     needs: tests
@@ -39,4 +50,5 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m examples.tadash_interoception.evaluate --include-test --output "${{ runner.temp }}/interoception-regression"
+      - run: python -m examples.tadash_interoception.verify_regression "${{ runner.temp }}/interoception-regression/report.json"
       - run: python -m examples.tadash_interoception.demo --native --output "${{ runner.temp }}/interoception-native"
