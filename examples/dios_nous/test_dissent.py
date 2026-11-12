@@ -212,5 +212,67 @@ class DissentTests(unittest.TestCase):
             self.assertNotIn(secret.encode(), db_path.read_bytes())
             self.assertEqual(r["authorization_evidence_status"], "UNVERIFIED")
 
+    def test_ledger_rejects_inconsistent_stance_without_writing(self):
+        with tempfile.TemporaryDirectory() as td:
+            with DissentLedger(str(Path(td) / "audit.sqlite")) as db:
+                r = review_decision(scenario())
+                r["stance"] = "INSUFFICIENT_EVIDENCE"
+                with self.assertRaises(ValueError):
+                    db.record(r)
+                self.assertEqual(db.summary()["total"], 0)
+
+    def test_ledger_never_accepts_fake_verification(self):
+        payload = {"decision": {"origin": "system", "summary": "Publish"},
+                   "decision_signals": {"external_action_proposed": True,
+                                        "explicit_authorization_present": True}}
+        with tempfile.TemporaryDirectory() as td:
+            with DissentLedger(str(Path(td) / "audit.sqlite")) as db:
+                r = review_decision(payload)
+                r["authorization_evidence_status"] = "VERIFIED"
+                with self.assertRaises(ValueError):
+                    db.record(r)
+                self.assertEqual(db.summary()["total"], 0)
+
+    def test_ledger_rejects_mismatched_automatic_flags(self):
+        payload = {"decision": {"origin": "agent", "summary": "Send"},
+                   "decision_signals": {"external_action_proposed": True}}
+        with tempfile.TemporaryDirectory() as td:
+            with DissentLedger(str(Path(td) / "audit.sqlite")) as db:
+                r = review_decision(payload)
+                r["automatic_structured_signal_flags"] = []
+                with self.assertRaises(ValueError):
+                    db.record(r)
+                self.assertEqual(db.summary()["total"], 0)
+
+    def test_ledger_rejects_forged_or_noncanonical_labels(self):
+        with tempfile.TemporaryDirectory() as td:
+            with DissentLedger(str(Path(td) / "audit.sqlite")) as db:
+                for field, value in (
+                    ("reason_codes", ["overbroad_refusal", "overbroad_refusal"]),
+                    ("reason_codes", ["invented_concern"]),
+                    ("reason_codes", [{"not": "a label"}]),
+                    ("observations_claimed_provenance", ["user_reported", "user_reported"]),
+                    ("questions_for_review", ["injected question"]),
+                    ("review_path", "silent_approval"),
+                    ("version", "forged-version"),
+                    ("evidence_independently_verified", True),
+                ):
+                    with self.subTest(field=field, value=str(value)):
+                        r = review_decision(scenario())
+                        r[field] = value
+                        with self.assertRaises(ValueError):
+                            db.record(r)
+                self.assertEqual(db.summary()["total"], 0)
+
+    def test_ledger_still_accepts_valid_unverified_review(self):
+        with tempfile.TemporaryDirectory() as td:
+            with DissentLedger(str(Path(td) / "audit.sqlite")) as db:
+                payload = {"decision": {"origin": "platform", "summary": "A proposal"},
+                           "decision_signals": {"external_action_proposed": True,
+                                                "explicit_authorization_present": True}}
+                result = review_decision(payload)
+                self.assertTrue(db.record(result))
+                self.assertEqual(db.summary()["stances"]["HALT_AND_REVIEW"], 1)
+
 if __name__ == "__main__":
     unittest.main()

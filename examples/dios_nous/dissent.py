@@ -187,6 +187,43 @@ class DissentLedger:
         requested = result.get("requested_override")
         if type(requested) is not bool:
             raise ValueError("invalid override request")
+        # Only internally consistent advisory receipts may enter this ledger.
+        # This is NOT independent authentication of the caller or evidence.
+        if result.get("version") != VERSION:
+            raise ValueError("incorrect review version")
+        if codes != sorted(set(codes)) or sources != sorted(set(sources)):
+            raise ValueError("review labels must be canonical and unique")
+        automatic = result.get("automatic_structured_signal_flags")
+        if not isinstance(automatic, list) or any(
+            type(code) is not str or code not in CONCERNS for code in automatic
+        ):
+            raise ValueError("invalid automatic concerns")
+        if automatic != sorted(set(automatic)) or not set(automatic).issubset(codes):
+            raise ValueError("automatic concerns must be canonical and included in reasons")
+        authorization_claim = result.get("authorization_claimed_by_caller")
+        if authorization_claim is not None and type(authorization_claim) is not bool:
+            raise ValueError("authorization claim must be boolean or absent")
+        evidence_status = result.get("authorization_evidence_status")
+        if evidence_status not in ("UNVERIFIED", "NOT_APPLICABLE"):
+            raise ValueError("authorization is never verified by this module")
+        if (evidence_status == "UNVERIFIED") != ("missing_authorization" in automatic):
+            raise ValueError("inconsistent unverified authorization hold")
+        expected_stance = (
+            "HALT_AND_REVIEW" if set(codes) & HALT_CONCERNS
+            else "PROVISIONAL_DISSENT" if codes else "INSUFFICIENT_EVIDENCE"
+        )
+        if result.get("stance") != expected_stance:
+            raise ValueError("review stance conflicts with reason codes")
+        if result.get("questions_for_review") != [CONCERNS[code] for code in codes]:
+            raise ValueError("review questions conflict with reason codes")
+        expected_path = "documented_human_or_governance_review" if codes else "request_observations"
+        if result.get("review_path") != expected_path:
+            raise ValueError("review path conflicts with reasons")
+        if (result.get("evidence_independently_verified") is not False
+                or result.get("provider_policy_cause") != "unknown"
+                or result.get("source_independent_critique") is not True
+                or result.get("learned_autonomy_demonstrated") is not False):
+            raise ValueError("unsupported verification or autonomy claim")
         key = str(uuid.uuid4())
         with self.conn:
             self.conn.execute(
