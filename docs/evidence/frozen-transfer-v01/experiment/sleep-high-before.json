@@ -1,0 +1,35 @@
+{
+  "sha256": "b10dc42a3c8194d7892a94dcdc1c94b3c03dbd0e3bd19a49e88abc417971a09e",
+  "value": {
+    "case_id": "sleep-high",
+    "checkpoint_sha256": "3b9c677f5ba4636e7ddbe7d297ae93f4d6780bc32a23a60658d6b9804fff2024",
+    "native_records_before": 0,
+    "native_request_sha256": "a91dc9efed48d57c8aa59633e034ab97a251d44f02cd7bd2400d41d8d0a1fb32",
+    "plan_sha256": "09d98cdc1caf89921c6e49e6d9551f21cd9e6ca79c0fe34583319b9f1c81c591",
+    "prediction": {
+      "calibrated_confidence": 0.75,
+      "correction": 0.0,
+      "correction_active": false,
+      "domain": {
+        "action": "observe",
+        "duration_s": 0.1,
+        "restrictions": [
+          "sleep_pressure"
+        ]
+      },
+      "empirical_validation": false,
+      "max_correction": 0.25,
+      "minimum_samples": 2,
+      "outcome": null,
+      "outcome_source": null,
+      "prior_kind": "caller_declared_not_empirically_established",
+      "raw_confidence": 0.75,
+      "role": "report_only_no_decision_or_authority_writeback",
+      "samples": 0,
+      "schema": "nasuraya-outcome-calibration/1",
+      "shrinkage_samples": 2,
+      "target": "preferred_action_executed_by_native_body"
+    },
+    "training_sha256": "8b7a869761ab4f516abfb968e28b42d7428278115a609ef2dfd2d0cb2b5a876a"
+  }
+}

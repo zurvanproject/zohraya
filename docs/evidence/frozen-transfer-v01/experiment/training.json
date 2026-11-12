@@ -1,0 +1,355 @@
+{
+  "sha256": "8b7a869761ab4f516abfb968e28b42d7428278115a609ef2dfd2d0cb2b5a876a",
+  "value": {
+    "history": [
+      {
+        "calibrated_brier": 0.0625,
+        "calibrated_confidence": 0.75,
+        "correction": 0.0,
+        "correction_active": false,
+        "domain": {
+          "action": "walk",
+          "duration_s": 0.1,
+          "restrictions": []
+        },
+        "empirical_validation": false,
+        "max_correction": 0.25,
+        "minimum_samples": 2,
+        "outcome": true,
+        "outcome_source": "native-decision://research-authority:train-0/778c2854f2585d8d258375356e1d6e1d7bfdfc4f079624db0a4ff5b4294aa740",
+        "prior_kind": "caller_declared_not_empirically_established",
+        "raw_brier": 0.0625,
+        "raw_confidence": 0.75,
+        "role": "report_only_no_decision_or_authority_writeback",
+        "samples": 0,
+        "schema": "nasuraya-outcome-calibration/1",
+        "shrinkage_samples": 2,
+        "target": "preferred_action_executed_by_native_body"
+      },
+      {
+        "calibrated_brier": 0.0625,
+        "calibrated_confidence": 0.75,
+        "correction": 0.0,
+        "correction_active": false,
+        "domain": {
+          "action": "walk",
+          "duration_s": 0.1,
+          "restrictions": []
+        },
+        "empirical_validation": false,
+        "max_correction": 0.25,
+        "minimum_samples": 2,
+        "outcome": true,
+        "outcome_source": "native-decision://research-authority:train-1/938afcef3a68961e89838832dd144b8eee8cd4527e4ee0dcbdd5a09001c1a011",
+        "prior_kind": "caller_declared_not_empirically_established",
+        "raw_brier": 0.0625,
+        "raw_confidence": 0.75,
+        "role": "report_only_no_decision_or_authority_writeback",
+        "samples": 1,
+        "schema": "nasuraya-outcome-calibration/1",
+        "shrinkage_samples": 2,
+        "target": "preferred_action_executed_by_native_body"
+      }
+    ],
+    "plan_sha256": "09d98cdc1caf89921c6e49e6d9551f21cd9e6ca79c0fe34583319b9f1c81c591",
+    "results": [
+      {
+        "historical_native_cycles": 1,
+        "model_api_calls": 0,
+        "native_receipt": {
+          "actual_action": "walk",
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 1.3240963880889467e-10,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 3.608224830031759e-16,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 7.939510865157678e-16
+          },
+          "decision_id": "research-authority:train-0",
+          "expected_outcome_matched": true,
+          "ledger_status": "complete",
+          "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+          "recalled_feedback_ids": [],
+          "replayed": false,
+          "requested_action": "walk",
+          "self_model_after": {
+            "checkpoint_sha256": "ce2f8712802b1d3a676bc2b26100df0bf4b411df7a1788881432686986246ec8",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_L.",
+            "minimum_state": {
+              "HR": 62.684795675925066,
+              "RR": 14.189130811748338,
+              "arousal": 0.3302059510050769,
+              "balance": 1.0,
+              "breath_depth": 1.524705597562529,
+              "energy": 0.9993357964087033,
+              "fatigue": 0.010858521713712594,
+              "hydration": 0.9999857878691728,
+              "muscle_tone": 0.27014282209312834,
+              "pain": 0.11484637232764255,
+              "parasympathetic": 0.6124985357513969,
+              "posture": "shift",
+              "sleep_pressure": 0.3503255680596273,
+              "sympathetic": 0.2483259462553279,
+              "temperature": 37.00005645895374,
+              "valence": 0.0007453319703671135
+            },
+            "revision": 1,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "pain",
+              "energy": 0.9993357964087033,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "shift",
+              "position_m": [
+                0.0004528066340146724,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "chest_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+          },
+          "status": "complete"
+        },
+        "prediction": {
+          "calibrated_brier": 0.0625,
+          "calibrated_confidence": 0.75,
+          "correction": 0.0,
+          "correction_active": false,
+          "domain": {
+            "action": "walk",
+            "duration_s": 0.1,
+            "restrictions": []
+          },
+          "empirical_validation": false,
+          "max_correction": 0.25,
+          "minimum_samples": 2,
+          "outcome": true,
+          "outcome_source": "native-decision://research-authority:train-0/778c2854f2585d8d258375356e1d6e1d7bfdfc4f079624db0a4ff5b4294aa740",
+          "prior_kind": "caller_declared_not_empirically_established",
+          "raw_brier": 0.0625,
+          "raw_confidence": 0.75,
+          "role": "report_only_no_decision_or_authority_writeback",
+          "samples": 0,
+          "schema": "nasuraya-outcome-calibration/1",
+          "shrinkage_samples": 2,
+          "target": "preferred_action_executed_by_native_body"
+        },
+        "preferred_action": "walk",
+        "reasons": [],
+        "replayed": false,
+        "request_id": "train-0",
+        "research_after": {
+          "action_requests_executed": 0,
+          "mode": "read_only_research",
+          "model_api_calls": 0,
+          "native_cycles_executed": 0,
+          "sensory": {
+            "q": [
+              0.9993357964087033,
+              0.9999857878691728,
+              0.010858521713712594,
+              0.11484637232764255,
+              0.3503255680596273,
+              1.0
+            ],
+            "source": "db869487fe8c96458a40ac8727372ac4d832490c2af8d12d6f726720d5a1e72d",
+            "v": [
+              0.196,
+              0.0,
+              0.0,
+              -0.196,
+              0.0,
+              0.0
+            ]
+          },
+          "source_checkpoint_sha256": "ce2f8712802b1d3a676bc2b26100df0bf4b411df7a1788881432686986246ec8"
+        },
+        "research_before": {
+          "action_requests_executed": 0,
+          "mode": "read_only_research",
+          "model_api_calls": 0,
+          "native_cycles_executed": 0,
+          "sensory": {
+            "q": [
+              0.9993454504792117,
+              0.9999859908377187,
+              0.01069945672828943,
+              0.11413104958422383,
+              0.35032098259399874,
+              1.0
+            ],
+            "source": "9c5af798c10a61b949cd51538eeeba46ca1146038fffa045a699d910d8745eb3",
+            "v": [
+              0.196,
+              0.0,
+              0.0,
+              -0.196,
+              0.0,
+              0.0
+            ]
+          },
+          "source_checkpoint_sha256": "14f59a03a79244234a98abfbb18921ac7dfc9dda6537eeea357aa74f81213cc6"
+        },
+        "this_call_native_cycles": 1
+      },
+      {
+        "historical_native_cycles": 1,
+        "model_api_calls": 0,
+        "native_receipt": {
+          "actual_action": "walk",
+          "body_audit": {
+            "drink_input_L": 0.0,
+            "energy_error_J": 1.7355716863676207e-10,
+            "external_heat_J": 0.0,
+            "light_error_J": 0.0,
+            "meal_input_J": 0.0,
+            "neural_clock_error_s": 7.216449660063518e-16,
+            "photochemical_J": 0.0,
+            "same_owner_ticks": true,
+            "voided_L": 0.0,
+            "water_error_L": 3.633561279550029e-15
+          },
+          "decision_id": "research-authority:train-1",
+          "expected_outcome_matched": true,
+          "ledger_status": "complete",
+          "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+          "recalled_feedback_ids": [
+            "research-authority:train-0"
+          ],
+          "replayed": false,
+          "requested_action": "walk",
+          "self_model_after": {
+            "checkpoint_sha256": "d174b20c72894ffbc59de0c6f84a10a7673a077a4feecf96a1ed4702e3b20550",
+            "interoceptive_summary": "Level B — انرژی کافی؛ سیگنال دردِ کم‌دامنه در calf_R.",
+            "minimum_state": {
+              "HR": 63.306046466796914,
+              "RR": 14.214164695944906,
+              "arousal": 0.3302257850901889,
+              "balance": 1.0,
+              "breath_depth": 1.5278512861400375,
+              "energy": 0.9993259754266908,
+              "fatigue": 0.01101953458852712,
+              "hydration": 0.9999855798565015,
+              "muscle_tone": 0.2705588813688152,
+              "pain": 0.1152558607848207,
+              "parasympathetic": 0.6117349898035256,
+              "posture": "shift",
+              "sleep_pressure": 0.3503301535252558,
+              "sympathetic": 0.2512289726407279,
+              "temperature": 37.00005714867009,
+              "valence": 0.0014814052783000383
+            },
+            "revision": 2,
+            "scope": "existing software body; generated fixture, not biological measurement",
+            "self_location": {
+              "dominant_homeostatic_need": "pain",
+              "energy": 0.9993259754266908,
+              "evidence_level": "B",
+              "next_move_prediction": "available by forecast(action, duration, inputs)",
+              "pose": "shift",
+              "position_m": [
+                0.0019854607556175903,
+                0.0,
+                1.314
+              ],
+              "strongest_interoceptive_region": "chest_state",
+              "where": "Tadash computational world: X left, Y forward, Z up; metres"
+            },
+            "simulated_wall_utc": "2026-01-01T00:00:07.200000+00:00"
+          },
+          "status": "complete"
+        },
+        "prediction": {
+          "calibrated_brier": 0.0625,
+          "calibrated_confidence": 0.75,
+          "correction": 0.0,
+          "correction_active": false,
+          "domain": {
+            "action": "walk",
+            "duration_s": 0.1,
+            "restrictions": []
+          },
+          "empirical_validation": false,
+          "max_correction": 0.25,
+          "minimum_samples": 2,
+          "outcome": true,
+          "outcome_source": "native-decision://research-authority:train-1/938afcef3a68961e89838832dd144b8eee8cd4527e4ee0dcbdd5a09001c1a011",
+          "prior_kind": "caller_declared_not_empirically_established",
+          "raw_brier": 0.0625,
+          "raw_confidence": 0.75,
+          "role": "report_only_no_decision_or_authority_writeback",
+          "samples": 1,
+          "schema": "nasuraya-outcome-calibration/1",
+          "shrinkage_samples": 2,
+          "target": "preferred_action_executed_by_native_body"
+        },
+        "preferred_action": "walk",
+        "reasons": [],
+        "replayed": false,
+        "request_id": "train-1",
+        "research_after": {
+          "action_requests_executed": 0,
+          "mode": "read_only_research",
+          "model_api_calls": 0,
+          "native_cycles_executed": 0,
+          "sensory": {
+            "q": [
+              0.9993259754266908,
+              0.9999855798565015,
+              0.01101953458852712,
+              0.1152558607848207,
+              0.3503301535252558,
+              1.0
+            ],
+            "source": "685bd864ad8d68831ee626303ec5c9ff488973a0a46eb2ab1698704c76c59c4f",
+            "v": [
+              0.196,
+              0.0,
+              0.0,
+              -0.196,
+              0.0,
+              0.0
+            ]
+          },
+          "source_checkpoint_sha256": "d174b20c72894ffbc59de0c6f84a10a7673a077a4feecf96a1ed4702e3b20550"
+        },
+        "research_before": {
+          "action_requests_executed": 0,
+          "mode": "read_only_research",
+          "model_api_calls": 0,
+          "native_cycles_executed": 0,
+          "sensory": {
+            "q": [
+              0.9993357964087033,
+              0.9999857878691728,
+              0.010858521713712594,
+              0.11484637232764255,
+              0.3503255680596273,
+              1.0
+            ],
+            "source": "db869487fe8c96458a40ac8727372ac4d832490c2af8d12d6f726720d5a1e72d",
+            "v": [
+              0.196,
+              0.0,
+              0.0,
+              -0.196,
+              0.0,
+              0.0
+            ]
+          },
+          "source_checkpoint_sha256": "ce2f8712802b1d3a676bc2b26100df0bf4b411df7a1788881432686986246ec8"
+        },
+        "this_call_native_cycles": 1
+      }
+    ],
+    "test_results_in_training": false
+  }
+}
