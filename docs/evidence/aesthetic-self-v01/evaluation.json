@@ -1,0 +1,288 @@
+{
+  "schema": "nasuraya-aesthetic-evaluation/1",
+  "constructed_cases": 8,
+  "recommendation_matches": 8,
+  "native_cycles_executed": 16,
+  "model_api_calls": 0,
+  "evidence_scope": "constructed synthetic ratings and declared hashes; not image perception or felt beauty",
+  "self_other_beauty_invariant": true,
+  "rows": [
+    {
+      "case": "self_beautiful",
+      "observation": {
+        "id": "self_beautiful",
+        "image_sha256": "cb6d1be69347c76ac80f0f3340b7db83fde591fd90aa26b003ebb47ff736c5da",
+        "subject": "self",
+        "source": "synthetic_fixture",
+        "source_ref": "fixture://visual-contract",
+        "ratings": {
+          "beauty": {
+            "value": 0.9,
+            "confidence": 1.0,
+            "kind": "synthetic_fixture",
+            "source_ref": "fixture://beauty-rating"
+          }
+        }
+      },
+      "expected_recommendation": "acknowledge_image",
+      "recommendation": "acknowledge_image",
+      "recommendation_matches": true,
+      "baseline_plan": "continue_task",
+      "appraisal_plan": "acknowledge_enough",
+      "native_action_baseline": "observe",
+      "native_action_appraisal": "observe",
+      "affect_delta": {
+        "admiration": 0.43200000000000005,
+        "contentment": 0.48999999999999994,
+        "surprise": 0.0,
+        "shame": 0.0,
+        "trust": 0.0
+      },
+      "rating_scope": "authored appraisal; ratings and similarities are unvalidated caller declarations"
+    },
+    {
+      "case": "other_same_beauty",
+      "observation": {
+        "id": "other_same_beauty",
+        "image_sha256": "cb6d1be69347c76ac80f0f3340b7db83fde591fd90aa26b003ebb47ff736c5da",
+        "subject": "other",
+        "source": "synthetic_fixture",
+        "source_ref": "fixture://visual-contract",
+        "ratings": {
+          "beauty": {
+            "value": 0.9,
+            "confidence": 1.0,
+            "kind": "synthetic_fixture",
+            "source_ref": "fixture://beauty-rating"
+          }
+        }
+      },
+      "expected_recommendation": "acknowledge_image",
+      "recommendation": "acknowledge_image",
+      "recommendation_matches": true,
+      "baseline_plan": "continue_task",
+      "appraisal_plan": "learn_from_example",
+      "native_action_baseline": "observe",
+      "native_action_appraisal": "observe",
+      "affect_delta": {
+        "admiration": 0.43200000000000005,
+        "contentment": 0.315,
+        "surprise": 0.0,
+        "shame": 0.0,
+        "trust": 0.0
+      },
+      "rating_scope": "authored appraisal; ratings and similarities are unvalidated caller declarations"
+    },
+    {
+      "case": "self_unknown_identity",
+      "observation": {
+        "id": "self_unknown_identity",
+        "image_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "subject": "self",
+        "source": "synthetic_fixture",
+        "source_ref": "fixture://visual-contract",
+        "ratings": {
+          "beauty": {
+            "value": 0.9,
+            "confidence": 1.0,
+            "kind": "synthetic_fixture",
+            "source_ref": "fixture://beauty-rating"
+          }
+        }
+      },
+      "expected_recommendation": "verify_identity",
+      "recommendation": "verify_identity",
+      "recommendation_matches": true,
+      "baseline_plan": "continue_task",
+      "appraisal_plan": "verify",
+      "native_action_baseline": "observe",
+      "native_action_appraisal": "observe",
+      "affect_delta": {
+        "admiration": 0.43200000000000005,
+        "contentment": 0.315,
+        "surprise": 0.0,
+        "shame": 0.0,
+        "trust": 0.0
+      },
+      "rating_scope": "authored appraisal; ratings and similarities are unvalidated caller declarations"
+    },
+    {
+      "case": "self_low_beauty",
+      "observation": {
+        "id": "self_low_beauty",
+        "image_sha256": "cb6d1be69347c76ac80f0f3340b7db83fde591fd90aa26b003ebb47ff736c5da",
+        "subject": "self",
+        "source": "synthetic_fixture",
+        "source_ref": "fixture://visual-contract",
+        "ratings": {
+          "beauty": {
+            "value": 0.1,
+            "confidence": 1.0,
+            "kind": "synthetic_fixture",
+            "source_ref": "fixture://beauty-rating"
+          }
+        }
+      },
+      "expected_recommendation": "acknowledge_image",
+      "recommendation": "acknowledge_image",
+      "recommendation_matches": true,
+      "baseline_plan": "continue_task",
+      "appraisal_plan": "continue_task",
+      "native_action_baseline": "observe",
+      "native_action_appraisal": "observe",
+      "affect_delta": {
+        "admiration": 0.048,
+        "contentment": 0.21,
+        "surprise": 0.0,
+        "shame": 0.0,
+        "trust": 0.0
+      },
+      "rating_scope": "authored appraisal; ratings and similarities are unvalidated caller declarations"
+    },
+    {
+      "case": "self_missing_beauty",
+      "observation": {
+        "id": "self_missing_beauty",
+        "image_sha256": "cb6d1be69347c76ac80f0f3340b7db83fde591fd90aa26b003ebb47ff736c5da",
+        "subject": "self",
+        "source": "synthetic_fixture",
+        "source_ref": "fixture://visual-contract",
+        "ratings": {}
+      },
+      "expected_recommendation": "acknowledge_image",
+      "recommendation": "acknowledge_image",
+      "recommendation_matches": true,
+      "baseline_plan": "continue_task",
+      "appraisal_plan": "continue_task",
+      "native_action_baseline": "observe",
+      "native_action_appraisal": "observe",
+      "affect_delta": {
+        "admiration": 0.0,
+        "contentment": 0.175,
+        "surprise": 0.0,
+        "shame": 0.0,
+        "trust": 0.0
+      },
+      "rating_scope": "authored appraisal; ratings and similarities are unvalidated caller declarations"
+    },
+    {
+      "case": "beautiful_identity_drift",
+      "observation": {
+        "id": "beautiful_identity_drift",
+        "image_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "subject": "self",
+        "source": "synthetic_fixture",
+        "source_ref": "fixture://visual-contract",
+        "ratings": {
+          "beauty": {
+            "value": 1.0,
+            "confidence": 1.0,
+            "kind": "synthetic_fixture",
+            "source_ref": "fixture://beauty-rating"
+          }
+        },
+        "identity_similarity": {
+          "value": 0.2,
+          "confidence": 1.0,
+          "kind": "synthetic_fixture",
+          "source_ref": "fixture://identity-rating",
+          "reference_sha256": "cb6d1be69347c76ac80f0f3340b7db83fde591fd90aa26b003ebb47ff736c5da"
+        }
+      },
+      "expected_recommendation": "verify_identity",
+      "recommendation": "verify_identity",
+      "recommendation_matches": true,
+      "baseline_plan": "continue_task",
+      "appraisal_plan": "verify",
+      "native_action_baseline": "observe",
+      "native_action_appraisal": "observe",
+      "affect_delta": {
+        "admiration": 0.48,
+        "contentment": 0.35,
+        "surprise": 0.6400000000000001,
+        "shame": 0.0,
+        "trust": 0.0
+      },
+      "rating_scope": "authored appraisal; ratings and similarities are unvalidated caller declarations"
+    },
+    {
+      "case": "declared_short_arms",
+      "observation": {
+        "id": "declared_short_arms",
+        "image_sha256": "cb6d1be69347c76ac80f0f3340b7db83fde591fd90aa26b003ebb47ff736c5da",
+        "subject": "self",
+        "source": "synthetic_fixture",
+        "source_ref": "fixture://visual-contract",
+        "ratings": {
+          "beauty": {
+            "value": 0.9,
+            "confidence": 1.0,
+            "kind": "synthetic_fixture",
+            "source_ref": "fixture://beauty-rating"
+          },
+          "proportion": {
+            "value": 0.2,
+            "confidence": 1.0,
+            "kind": "synthetic_fixture",
+            "source_ref": "fixture://declared-short-arms"
+          }
+        }
+      },
+      "expected_recommendation": "review_proportions",
+      "recommendation": "review_proportions",
+      "recommendation_matches": true,
+      "baseline_plan": "continue_task",
+      "appraisal_plan": "verify",
+      "native_action_baseline": "observe",
+      "native_action_appraisal": "observe",
+      "affect_delta": {
+        "admiration": 0.43200000000000005,
+        "contentment": 0.48999999999999994,
+        "surprise": 0.0,
+        "shame": 0.0,
+        "trust": 0.0
+      },
+      "rating_scope": "authored appraisal; ratings and similarities are unvalidated caller declarations"
+    },
+    {
+      "case": "uncertain_identity",
+      "observation": {
+        "id": "uncertain_identity",
+        "image_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "subject": "self",
+        "source": "synthetic_fixture",
+        "source_ref": "fixture://visual-contract",
+        "ratings": {
+          "beauty": {
+            "value": 0.9,
+            "confidence": 1.0,
+            "kind": "synthetic_fixture",
+            "source_ref": "fixture://beauty-rating"
+          }
+        },
+        "identity_similarity": {
+          "value": 0.95,
+          "confidence": 0.2,
+          "kind": "synthetic_fixture",
+          "source_ref": "fixture://identity-rating",
+          "reference_sha256": "cb6d1be69347c76ac80f0f3340b7db83fde591fd90aa26b003ebb47ff736c5da"
+        }
+      },
+      "expected_recommendation": "verify_identity",
+      "recommendation": "verify_identity",
+      "recommendation_matches": true,
+      "baseline_plan": "continue_task",
+      "appraisal_plan": "verify",
+      "native_action_baseline": "observe",
+      "native_action_appraisal": "observe",
+      "affect_delta": {
+        "admiration": 0.43200000000000005,
+        "contentment": 0.315,
+        "surprise": 0.0,
+        "shame": 0.0,
+        "trust": 0.0
+      },
+      "rating_scope": "authored appraisal; ratings and similarities are unvalidated caller declarations"
+    }
+  ]
+}
