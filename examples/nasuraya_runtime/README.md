@@ -161,3 +161,17 @@ window calibration or subjective experience is established by these tests.
 
 See [verified results](../../docs/research/NASURAYA_INTEGRATION_RESULTS_2026-11-12_FA.md)
 and [retained evidence](../../docs/evidence/nasuraya-integration-v01/README.md).
+
+## Isolated veto-review experiment (opt-in)
+
+The default conservative deferral above is unchanged. A separate research mode
+can test whether a historical walk veto permits one short, context-conditioned
+probe. It requires `Session.create(..., backend='native',
+research_veto_policy='context-review-v1')`; `research_veto_policy='sticky'` is its
+matched baseline. Ordinary sessions reject `research_fixture` inputs.
+
+Run `python -m examples.nasuraya_runtime.veto_experiment run --output /tmp/new-veto-run`
+on Linux. See [criteria, intervention provenance and rollback](../../docs/research/NASURAYA_VETO_REVIEW_DESIGN_2026-11-12.md).
+This mode is experimental, disabled by default, and not authorized for operational
+deployment. It preserves old evidence and native guards; a successful probe is
+not unrestricted clearance to walk again.

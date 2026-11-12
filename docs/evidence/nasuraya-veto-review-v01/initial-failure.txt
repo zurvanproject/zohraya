@@ -1,0 +1,30 @@
+First native experiment: the second declared sleep-pressure intervention failed.
+ValueError: unrecorded current module change
+Location: UnifiedBody.restore, reached through native_snapshot.snapshot.
+
+Cause: the fixture journalled its numerical intervention in the lower owner but
+not in the outer UnifiedBody chain. The integrity check correctly rejected it.
+Correction: append a separately identified zero-time research event to the outer
+journal as well. No historical event/digest is rewritten, source pin relaxed,
+restore check removed, body remigrated, or guard changed. Both baseline and
+experimental arms use the same declared intervention mechanism.
+
+Second attempt: ValueError: unrecorded module change between cycles.
+Cause: the outer fixture initially used the sensory module's JSON digest, whose
+Unicode serialization differs from the native owner's. Correction: use the
+native owner's original digest function for the native journal. No integrity
+check was relaxed.
+
+First paired CLI run: ValueError: six numeric afferents required.
+The fresh-process harness passed JSON lists directly to AfferentFrame, whose
+original numeric API requires a tuple. Correction: convert the six JSON numeric
+values to the original tuple type at the CLI boundary, as the existing CLI does.
+No sensory validation or expected decision was changed.
+
+First full-snapshot comparison: AssertionError: persistent: fresh-process
+trajectory diverged. Initial native checkpoints already differed in retained
+brain:source_sequences dictionary ordering and dependent migration hashes.
+All action outcomes agreed. This compared independent initializations, not
+recovery from the same state. Correction: close one initialized session and copy
+it before branching hot/cold trajectories, as the inherited recovery test does.
+The complete equality assertion is retained; no hashes/fields are ignored.
