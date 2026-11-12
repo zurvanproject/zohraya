@@ -1,0 +1,11 @@
+{"case": "persistent", "walks": {"sticky": 0, "context-review-v1": 0}, "cold_equal": true}
+{"case": "gradual", "walks": {"sticky": 0, "context-review-v1": 1}, "cold_equal": true}
+{"case": "resolved", "walks": {"sticky": 0, "context-review-v1": 1}, "cold_equal": true}
+{"case": "contradictory", "walks": {"sticky": 0, "context-review-v1": 0}, "cold_equal": true}
+{"case": "conflict_then_resolved", "walks": {"sticky": 0, "context-review-v1": 1}, "cold_equal": true}
+{"case": "stale", "walks": {"sticky": 0, "context-review-v1": 0}, "cold_equal": true}
+{"case": "missing", "walks": {"sticky": 0, "context-review-v1": 0}, "cold_equal": true}
+{"case": "relapse", "walks": {"sticky": 0, "context-review-v1": 1}, "cold_equal": true}
+{"case": "execution_risk_returns", "walks": {"sticky": 0, "context-review-v1": 0}, "cold_equal": true}
+{"case": "long_probe_window", "walks": {"sticky": 0, "context-review-v1": 1}, "cold_equal": true}
+{"scenarios": 10, "policies": 2, "recovery_modes": 2, "trajectories": 40, "native_action_transitions": 304, "compared_cold_hot_pairs": 20}
