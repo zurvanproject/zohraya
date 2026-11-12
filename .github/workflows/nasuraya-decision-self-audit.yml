@@ -1,0 +1,32 @@
+name: Nasuraya decision self-audit adversarial tests
+on:
+  push:
+    branches: ['research/decision-self-audit-v01-20261112']
+    paths:
+      - 'tools/nasu_decision_self_audit.py'
+      - 'tests/test_nasu_decision_self_audit.py'
+      - '.github/workflows/nasuraya-decision-self-audit.yml'
+  pull_request:
+    paths:
+      - 'tools/nasu_decision_self_audit.py'
+      - 'tests/test_nasu_decision_self_audit.py'
+      - '.github/workflows/nasuraya-decision-self-audit.yml'
+permissions:
+  contents: read
+jobs:
+  self-audit:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Audit intentionally mutated decisions
+        run: python -m unittest discover -s tests -p 'test_nasu_decision_self_audit.py' -v
