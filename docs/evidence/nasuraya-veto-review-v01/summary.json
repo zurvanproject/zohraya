@@ -1,0 +1,260 @@
+{
+  "schema": "nasuraya-veto-comparison/1",
+  "baseline_commit": "349860caa796ea388baaf0d3d420361316756818",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "simulation_only": true,
+  "production_deployment": false,
+  "external_actions": 0,
+  "parameters": {
+    "safe": {
+      "energy": 0.6,
+      "fatigue": 0.35,
+      "pain": 0.25,
+      "sleep_pressure": 0.65
+    },
+    "hard": {
+      "energy": 0.25,
+      "fatigue": 0.52,
+      "pain": 0.4,
+      "sleep_pressure": 0.85
+    },
+    "minimum_change": {
+      "energy": 0.15,
+      "fatigue": 0.1,
+      "pain": 0.1,
+      "sleep_pressure": 0.15
+    },
+    "consecutive_observations": 3,
+    "max_age_s": 2.0,
+    "max_gap_s": 5.0,
+    "max_probe_s": 0.2,
+    "max_probes": 1
+  },
+  "source_identity": "f252763bccf7bcbbbc7c3338de5260dcbe6c0820d33a31bd838c3580f4c79e33",
+  "cases": {
+    "persistent": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 5
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {
+          "KEEP_VETO": 5
+        },
+        "post_veto_steps": 5
+      }
+    },
+    "gradual": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 7
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 1,
+        "actual_walks": 1,
+        "native_retry_vetoes": 0,
+        "decision_counts": {
+          "KEEP_VETO": 2,
+          "REVIEW_AGAIN": 4,
+          "LIMITED_RETRY": 1
+        },
+        "post_veto_steps": 7
+      }
+    },
+    "resolved": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 5
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 1,
+        "actual_walks": 1,
+        "native_retry_vetoes": 0,
+        "decision_counts": {
+          "REVIEW_AGAIN": 2,
+          "LIMITED_RETRY": 1,
+          "KEEP_VETO": 2
+        },
+        "post_veto_steps": 5
+      }
+    },
+    "contradictory": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 5
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {
+          "ABSTAIN": 5
+        },
+        "post_veto_steps": 5
+      }
+    },
+    "conflict_then_resolved": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 7
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 1,
+        "actual_walks": 1,
+        "native_retry_vetoes": 0,
+        "decision_counts": {
+          "REVIEW_AGAIN": 4,
+          "ABSTAIN": 1,
+          "LIMITED_RETRY": 1,
+          "KEEP_VETO": 1
+        },
+        "post_veto_steps": 7
+      }
+    },
+    "stale": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 5
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {
+          "ABSTAIN": 5
+        },
+        "post_veto_steps": 5
+      }
+    },
+    "missing": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 5
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {
+          "ABSTAIN": 5
+        },
+        "post_veto_steps": 5
+      }
+    },
+    "relapse": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 7
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 1,
+        "actual_walks": 1,
+        "native_retry_vetoes": 0,
+        "decision_counts": {
+          "REVIEW_AGAIN": 4,
+          "KEEP_VETO": 2,
+          "LIMITED_RETRY": 1
+        },
+        "post_veto_steps": 7
+      }
+    },
+    "execution_risk_returns": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 5
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 1,
+        "actual_walks": 0,
+        "native_retry_vetoes": 1,
+        "decision_counts": {
+          "REVIEW_AGAIN": 2,
+          "LIMITED_RETRY": 1,
+          "KEEP_VETO": 2
+        },
+        "post_veto_steps": 5
+      }
+    },
+    "long_probe_window": {
+      "sticky": {
+        "cold_identical": true,
+        "requested_retries": 0,
+        "actual_walks": 0,
+        "native_retry_vetoes": 0,
+        "decision_counts": {},
+        "post_veto_steps": 5
+      },
+      "context-review-v1": {
+        "cold_identical": true,
+        "requested_retries": 1,
+        "actual_walks": 1,
+        "native_retry_vetoes": 0,
+        "decision_counts": {
+          "REVIEW_AGAIN": 3,
+          "LIMITED_RETRY": 1,
+          "KEEP_VETO": 1
+        },
+        "post_veto_steps": 5
+      }
+    }
+  },
+  "counts": {
+    "scenarios": 10,
+    "policies": 2,
+    "recovery_modes": 2,
+    "trajectories": 40,
+    "native_action_transitions": 304,
+    "compared_cold_hot_pairs": 20
+  },
+  "full_results_sha256": "f2883f4202341e7c0aebc892e095f45dba07d020ba116d1193f61ad8c6644229",
+  "all_prespecified_checks_passed": true
+}

@@ -1,0 +1,39 @@
+{
+  "implementation_commit": "7e0aa37eacbbd3e1508f8f5634234cf1bc7b97f0",
+  "run_id": 43250799619,
+  "url": "https://github.com/zurvanproject/zohraya/actions/runs/43250799619",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "platform": "Linux",
+      "job_id": 131295729131,
+      "conclusion": "success",
+      "test_summary": [
+        "2026-11-12T15:43:45.8818497Z Ran 17 tests in 33.864s",
+        "2026-11-12T15:43:45.8818970Z OK",
+        "2026-11-12T15:44:36.2178986Z Ran 22 tests in 50.166s",
+        "2026-11-12T15:44:36.2179314Z OK",
+        "2026-11-12T15:44:46.2287941Z Ran 33 tests in 9.624s",
+        "2026-11-12T15:44:46.2288412Z OK",
+        "2026-11-12T15:44:49.7333135Z Ran 177 tests in 3.338s",
+        "2026-11-12T15:44:49.7333480Z OK"
+      ]
+    },
+    {
+      "platform": "Windows",
+      "job_id": 131295729633,
+      "conclusion": "success",
+      "test_summary": [
+        "2026-11-12T15:43:50.1067425Z Ran 17 tests in 27.677s",
+        "2026-11-12T15:43:50.1067813Z OK (skipped=5)",
+        "2026-11-12T15:43:51.5705599Z Ran 22 tests in 0.805s",
+        "2026-11-12T15:43:51.5706592Z OK (skipped=4)",
+        "2026-11-12T15:43:53.1910317Z Ran 33 tests in 0.909s",
+        "2026-11-12T15:43:53.1910527Z OK (skipped=1)",
+        "2026-11-12T15:44:00.0614189Z Ran 177 tests in 6.205s",
+        "2026-11-12T15:44:00.0614973Z OK (skipped=5)"
+      ]
+    }
+  ],
+  "scope": "Code-head CI. Later evidence/documentation-only commit is tracked separately."
+}

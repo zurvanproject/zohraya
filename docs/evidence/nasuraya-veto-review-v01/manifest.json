@@ -1,0 +1,67 @@
+{
+  "schema": "nasuraya-veto-evidence-manifest/1",
+  "base_commit": "349860caa796ea388baaf0d3d420361316756818",
+  "implementation_commit": "7e0aa37eacbbd3e1508f8f5634234cf1bc7b97f0",
+  "source_identity": "f252763bccf7bcbbbc7c3338de5260dcbe6c0820d33a31bd838c3580f4c79e33",
+  "production_deployed": false,
+  "tests_passed": 324,
+  "optional_tests_skipped": 10,
+  "counts": {
+    "scenarios": 10,
+    "policies": 2,
+    "recovery_modes": 2,
+    "trajectories": 40,
+    "native_action_transitions": 304,
+    "compared_cold_hot_pairs": 20
+  },
+  "files": {
+    "README.md": {
+      "bytes": 2481,
+      "sha256": "09f624d221a7e49e8d58f4a9798eaa8ccb592064b57be636bfd9c1e072dc9a34"
+    },
+    "agent-regressions.txt": {
+      "bytes": 9075,
+      "sha256": "38f86b6db8339062e29c41ebde7963b1313de4cca2baad0bf59492cf3fb2a464"
+    },
+    "ci-code-head.json": {
+      "bytes": 1479,
+      "sha256": "8848198bfe6087926ee3c58aa1524e779f543ce35da4138f4d5b4f0f12144b08"
+    },
+    "dios-regressions.txt": {
+      "bytes": 25266,
+      "sha256": "1e7f2c92c9aad19846b2c49c596ed2f7d28f5c9b85e03ce59f1b2c5179cc2737"
+    },
+    "experiment-progress.txt": {
+      "bytes": 1067,
+      "sha256": "bfb4eac3fcfd9f828cd71ea6bc773d5651c8f38a7370f08714d671928f5ecd74"
+    },
+    "full-results.json.gz": {
+      "bytes": 469293,
+      "sha256": "b1ae464d441b22dc4a3f55e0309359c7c002318ce5dfa753661fdabfa5738ff3"
+    },
+    "initial-failure.txt": {
+      "bytes": 1878,
+      "sha256": "249a4db0fcc27d23981d048eb09a4f88b10c970f59fe57d491f7aa2e518616c8"
+    },
+    "interoception-regressions.txt": {
+      "bytes": 4927,
+      "sha256": "ceeddd45ccdfc0ee5bd9a17c34aab3b5cdf46de95daa7b1854ba13c25f3c578a"
+    },
+    "native-regressions.txt": {
+      "bytes": 4458,
+      "sha256": "d0ef909a2e55694a41c30f4c00ee42d204dc56faf0d93e477ea858e153f53f91"
+    },
+    "runtime-contracts.txt": {
+      "bytes": 6774,
+      "sha256": "0dfe8c7d248a2bb8325855c67e4bc038c61d1f4df4a382ec8e3ebef95a6796f5"
+    },
+    "summary.json": {
+      "bytes": 6530,
+      "sha256": "4c7bf0fff7dcadf14faea4de5aedc69845d3b4593d9cafd03a05e9dfd091c168"
+    },
+    "traces.json": {
+      "bytes": 229295,
+      "sha256": "f245df0734ae8f77c4473f11cb6865c6ae45b795662da44ec44a47ae962b58ce"
+    }
+  }
+}

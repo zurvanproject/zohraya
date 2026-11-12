@@ -1,0 +1,38 @@
+test_loadable_rollback_restores_exact_model (examples.tadash_interoception.test_interoception.DecoderTests.test_loadable_rollback_restores_exact_model) ... ok
+test_metrics_known_errors (examples.tadash_interoception.test_interoception.DecoderTests.test_metrics_known_errors) ... ok
+test_misleading_label_does_not_change_prediction (examples.tadash_interoception.test_interoception.DecoderTests.test_misleading_label_does_not_change_prediction) ... ok
+test_novel_excluded_from_calibration_and_acceptance (examples.tadash_interoception.test_interoception.DecoderTests.test_novel_excluded_from_calibration_and_acceptance) ... ok
+test_novel_not_in_training (examples.tadash_interoception.test_interoception.DecoderTests.test_novel_not_in_training) ... ok
+test_predict_is_label_blind (examples.tadash_interoception.test_interoception.DecoderTests.test_predict_is_label_blind) ... ok
+test_predictions_are_bounded_and_model_frozen (examples.tadash_interoception.test_interoception.DecoderTests.test_predictions_are_bounded_and_model_frozen) ... ok
+test_splits_disjoint (examples.tadash_interoception.test_interoception.DecoderTests.test_splits_disjoint) ... ok
+test_visible_label_baseline_fails_misleading (examples.tadash_interoception.test_interoception.DecoderTests.test_visible_label_baseline_fails_misleading) ... ok
+test_accuracy_regression_blocks_update (examples.tadash_interoception.test_interoception.IntegrationTests.test_accuracy_regression_blocks_update) ... ok
+test_actual_host_action_changes_without_text (examples.tadash_interoception.test_interoception.IntegrationTests.test_actual_host_action_changes_without_text) ... ok
+test_agent_reports_internal_uncertainty (examples.tadash_interoception.test_interoception.IntegrationTests.test_agent_reports_internal_uncertainty) ... ok
+test_dios_rejects_and_then_revises (examples.tadash_interoception.test_interoception.IntegrationTests.test_dios_rejects_and_then_revises) ... ok
+test_native_source_pinned_body_and_cold_memory (examples.tadash_interoception.test_interoception.IntegrationTests.test_native_source_pinned_body_and_cold_memory) ... ok
+test_prediction_before_truth_and_hash_chain (examples.tadash_interoception.test_interoception.IntegrationTests.test_prediction_before_truth_and_hash_chain) ... ok
+test_sticky_stop_and_observe_only_host (examples.tadash_interoception.test_interoception.IntegrationTests.test_sticky_stop_and_observe_only_host) ... ok
+test_underlying_host_protection_remains (examples.tadash_interoception.test_interoception.IntegrationTests.test_underlying_host_protection_remains) ... ok
+test_changed_labels_and_missing_rows_are_detected (examples.tadash_interoception.test_interoception.RegressionVerifierTests.test_changed_labels_and_missing_rows_are_detected) ... ok
+test_changed_numeric_prediction_is_detected (examples.tadash_interoception.test_interoception.RegressionVerifierTests.test_changed_numeric_prediction_is_detected) ... ok
+test_all_modalities_and_no_stimulus (examples.tadash_interoception.test_interoception.SensoryTests.test_all_modalities_and_no_stimulus) ... ok
+test_frame_is_numeric_and_closed (examples.tadash_interoception.test_interoception.SensoryTests.test_frame_is_numeric_and_closed) ... ok
+test_frequency_and_duration_change_afferents (examples.tadash_interoception.test_interoception.SensoryTests.test_frequency_and_duration_change_afferents) ... ok
+test_invalid_stimulus_fields (examples.tadash_interoception.test_interoception.SensoryTests.test_invalid_stimulus_fields) ... ok
+test_noise_and_seed_replay (examples.tadash_interoception.test_interoception.SensoryTests.test_noise_and_seed_replay) ... ok
+test_spatial_localization_not_single_constant (examples.tadash_interoception.test_interoception.SensoryTests.test_spatial_localization_not_single_constant) ... ok
+test_attention_ablation (examples.tadash_interoception.test_interoception.StateTests.test_attention_ablation) ... ok
+test_checkpoint_has_no_aliases (examples.tadash_interoception.test_interoception.StateTests.test_checkpoint_has_no_aliases) ... ok
+test_cold_continuation (examples.tadash_interoception.test_interoception.StateTests.test_cold_continuation) ... ok
+test_corruption_and_forged_shape_rejected (examples.tadash_interoception.test_interoception.StateTests.test_corruption_and_forged_shape_rejected) ... ok
+test_fresh_process_restore (examples.tadash_interoception.test_interoception.StateTests.test_fresh_process_restore) ... ok
+test_memory_ablation (examples.tadash_interoception.test_interoception.StateTests.test_memory_ablation) ... ok
+test_nonmonotonic_time_cannot_mutate (examples.tadash_interoception.test_interoception.StateTests.test_nonmonotonic_time_cannot_mutate) ... ok
+test_stable_memory_after_afferent_ceases (examples.tadash_interoception.test_interoception.StateTests.test_stable_memory_after_afferent_ceases) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 10.535s
+
+OK

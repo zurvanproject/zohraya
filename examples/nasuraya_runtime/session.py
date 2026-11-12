@@ -27,6 +27,8 @@ from examples.tadash_interoception.integration import action_pressure, select_ro
 from examples.tadash_interoception.sensory import AfferentFrame
 from examples.tadash_interoception.state import InternalState, canonical, digest
 from .adapters import decoder, native_call, source_identity, visual_plan, fixture_summary
+from .veto_review import VetoReview, POLICY as VETO_POLICY
+from . import veto_fixture
 
 SCHEMA = 'nasuraya.shared-session/1'
 EMPTY = '0' * 64
@@ -75,7 +77,8 @@ class Session:
 
     @classmethod
     def create(cls, directory, *, session_id='nasuraya', backend='workshop',
-               fixture='normal', max_actions=12, at_utc='2026-11-12T12:00:00+00:00'):
+               fixture='normal', max_actions=12, at_utc='2026-11-12T12:00:00+00:00',
+               research_veto_policy=None):
         _identifier(session_id)
         if backend not in ('workshop', 'native') or fixture not in ('normal', 'sleep'):
             raise ValueError('known local backend and fixture required')
@@ -83,6 +86,10 @@ class Session:
             raise ValueError('sleep fixture belongs to native backend')
         if type(max_actions) is not int or not 0 <= max_actions <= 100:
             raise ValueError('persistent action budget must be 0..100')
+        if research_veto_policy not in (None, 'sticky', VETO_POLICY):
+            raise ValueError('unknown experimental veto policy')
+        if research_veto_policy is not None and backend != 'native':
+            raise ValueError('veto research requires the native simulator')
         identity, model = source_identity(), decoder()
         public = evidence.snapshot(now_utc=at_utc)
         native = native_call({'checkpoint': None, 'fixture': fixture}) if backend == 'native' else None
@@ -99,6 +106,10 @@ class Session:
                  'sensory': InternalState().checkpoint(), 'workshop': asdict(State(70, 30, 4)),
                  'workload': RecoveryAdvisor().checkpoint(), 'native': native,
                  'prediction': None, 'last_receipt': None}
+        if research_veto_policy is not None:
+            config['research_veto_policy'] = research_veto_policy
+        if research_veto_policy == VETO_POLICY:
+            state['veto_review'] = VetoReview(identity).checkpoint()
         # sqlite3's own context manager commits/rolls back but does not close.
         # Explicit close is essential for Windows rename/removal and failure paths.
         with closing(sqlite3.connect(directory / 'session.sqlite')) as db, db:
@@ -135,6 +146,10 @@ class Session:
         State(**state['workshop'])
         if not 0 <= state['actions_used'] <= self.config['max_actions']:
             raise ValueError('invalid retained budget')
+        if self.config.get('research_veto_policy') == VETO_POLICY:
+            review = VetoReview.restore(state['veto_review'], source=self.config['source_identity'])
+            if len(review.history) != state['actions_used']:
+                raise ValueError('review ledger disagrees with session budget')
         return state, rows, tail
 
     def _project(self, state, rows, tail):
@@ -210,13 +225,19 @@ class Session:
     def _after_commit(self):
         """Fault-injection seam. Production implementation has no side effects."""
 
-    def step(self, event_id, frames, *, expected_revision):
+    def step(self, event_id, frames, *, expected_revision, research_fixture=None):
         _identifier(event_id)
         if type(expected_revision) is not int or expected_revision < 0:
             raise ValueError('explicit nonnegative revision required')
         if type(frames) is not tuple or not 1 <= len(frames) <= 16 or any(type(f) is not AfferentFrame for f in frames):
             raise ValueError('one to sixteen numeric frames required; no labels or prompts')
         request = {'kind': 'step', 'frames': [asdict(f) for f in frames], 'expected_revision': expected_revision}
+        research_policy = self.config.get('research_veto_policy')
+        if research_fixture is not None and research_policy is None:
+            raise ValueError('research fixtures disabled in ordinary sessions')
+        if research_policy is not None:
+            research_fixture = veto_fixture.validate(research_fixture)
+            request['research_fixture'] = research_fixture
         request = json.loads(canonical(request))
         self.db.execute('BEGIN IMMEDIATE')
         try:
@@ -242,6 +263,11 @@ class Session:
             pressure = action_pressure(sensory)
             advisor = RecoveryAdvisor.restore(state['workload'])
             native = state['native']
+            observation = None
+            if research_policy is not None:
+                native = veto_fixture.call({'checkpoint': native['checkpoint'],
+                    'research_phase': 'observe', 'research_fixture': research_fixture})
+                observation = veto_fixture.observe(native, research_fixture, self.config['source_identity'])
             if native is None:
                 workshop = state['workshop']
                 advisor.step(tick=state['revision'], stress=workshop['heat'] * 10,
@@ -273,6 +299,15 @@ class Session:
             dissent = candidate_review['evidence_review']['verdict'] == 'DISSENT'
             if dissent:
                 requested = 'recover' if native is None else 'observe'
+            review, review_decision = None, None
+            duration = round(sensory.time - start, 8)
+            if research_policy == VETO_POLICY:
+                review = VetoReview.restore(state['veto_review'], source=self.config['source_identity'])
+                review_decision = review.evaluate(observation, eligible=candidate == 'walk', duration=duration)
+                if review_decision['permits_probe']:
+                    requested = 'walk'
+                elif review_decision['status'] != 'NO_PRIOR_VETO':
+                    requested = 'observe'
             if native is None:
                 journal = Journal()
                 host = ToolHost(State(**state['workshop']), journal, max_actions=1)
@@ -282,9 +317,14 @@ class Session:
                            'before': state['workshop'], 'after': asdict(host.state), 'journal': journal.events}
                 state['workshop'] = asdict(host.state)
             else:
-                native = native_call({'checkpoint': native['checkpoint'], 'fixture': self.config['fixture'],
-                    'duration': round(sensory.time - start, 8), 'touch': min(1., max(sensory.features())),
-                    'event_id': event_id, 'requested': requested})
+                payload = {'checkpoint': native['checkpoint'], 'fixture': self.config['fixture'],
+                    'duration': duration, 'touch': min(1., max(sensory.features())),
+                    'event_id': event_id, 'requested': requested}
+                if research_policy is not None and research_fixture['execution_sleep_pressure'] is not None:
+                    payload.update(research_phase='execute', research_fixture=research_fixture)
+                    native = veto_fixture.call(payload)
+                else:
+                    native = native_call(payload)
                 state['native'] = native
                 outcome = native['receipt']
             receipt = {'event_id': event_id, 'revision': state['revision'] + 1,
@@ -297,6 +337,16 @@ class Session:
                        'rotation': asdict(rotation), 'requested': requested, 'outcome': outcome,
                        'outcome_matches_request': outcome['executed'] == requested,
                        'local_simulation_only': True}
+            if research_policy is not None:
+                receipt['research'] = dict(policy=research_policy, observation=observation,
+                    decision=review_decision, declared_fixture=research_fixture, duration_s=duration)
+            if review is not None:
+                decision = review.complete(observation, eligible=candidate == 'walk', duration=duration,
+                    requested=requested, executed=outcome['executed'])
+                if decision != review_decision:
+                    raise ValueError('review changed within transition')
+                state['veto_review'] = review.checkpoint()
+                receipt['research']['retained'] = review.summary()
             state.update(sensory=sensory.checkpoint(), prediction=prediction,
                          workload=advisor.checkpoint(), last_receipt=receipt,
                          actions_used=state['actions_used'] + 1)
@@ -360,6 +410,12 @@ class Session:
                 'source_identity': self.config['source_identity'], 'model_sha': self.model.fingerprint(),
                 'external_actions_taken': 0, 'subjective_experience_established': False}
             output['snapshot_sha256'] = digest(output)
+            if self.config.get('research_veto_policy') is not None:
+                output['research_veto_policy'] = self.config['research_veto_policy']
+                if 'veto_review' in state:
+                    output['veto_review'] = state['veto_review']
+                output.pop('snapshot_sha256')
+                output['snapshot_sha256'] = digest(output)
             self.db.commit()
             return output
         except BaseException:

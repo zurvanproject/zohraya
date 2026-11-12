@@ -36,6 +36,13 @@ def run(request, staging):
                    'audit': result['whole_body_audit'], 'touch': body.modules['senses']['samples']['touch'],
                    'native_prediction_error': result['owner']['prediction']['mean_scaled_absolute_error'],
                    'systems': result['systems'], 'regional_packets': result['regional_packets']}
+    return capture(body, receipt)
+
+
+def capture(body, receipt):
+    from examples.nasuraya_research.native_snapshot import snapshot
+    from examples.dios_nous.unified.body import project_native_snapshot, MODEL
+    from examples.tadash_interoception.state import digest
     checkpoint = body.checkpoint()
     return {'checkpoint': checkpoint,
             'export': project_native_snapshot(snapshot(body), model_id=MODEL,
