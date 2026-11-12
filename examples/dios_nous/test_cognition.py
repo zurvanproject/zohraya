@@ -1,5 +1,6 @@
 """Development contracts, not independent human validation."""
 from dataclasses import dataclass
+from contextlib import closing
 import hashlib
 import json
 from pathlib import Path
@@ -109,8 +110,9 @@ class CognitiveContracts(unittest.TestCase):
     def test_tampered_database_stops_read_and_reopen(self):
         with self.session() as session:
             session.append(EvidenceEvent(1, 1, 1, 'A', 1, 1))
-            with sqlite3.connect(self.db) as connection:
-                connection.execute("UPDATE evidence SET value='B'")
+            with closing(sqlite3.connect(self.db)) as connection:
+                with connection:
+                    connection.execute("UPDATE evidence SET value='B'")
             with self.assertRaisesRegex(ValueError, 'integrity'):
                 session.assess(1, 1, 1, 'A')
         with self.assertRaisesRegex(ValueError, 'integrity'):

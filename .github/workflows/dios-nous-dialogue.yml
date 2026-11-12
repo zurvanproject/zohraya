@@ -12,6 +12,8 @@ jobs:
   unittest:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 5
+    env:
+      PYTHONUTF8: '1'
     strategy:
       fail-fast: false
       matrix:
