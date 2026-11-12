@@ -109,5 +109,25 @@ class DecisionConsistencyAuditTests(unittest.TestCase):
         self.assertTrue(result["read_only"])
 
 
+    def test_actual_integration_pipeline_is_gated(self):
+        # Uses the frozen public observations, not fabricated VPS status.
+        import json
+        import tempfile
+        from pathlib import Path
+        from tools.nasu_integration_cycle import ROOT, cycle, recall
+
+        ci = json.loads((ROOT / "docs/evidence/public-ci-witness-v01/frozen-public-github-runs.json").read_text(encoding="utf-8"))
+        bridge = json.loads((ROOT / "docs/evidence/integrated-cycle-v01/bridge-observation.json").read_text(encoding="utf-8"))
+        with tempfile.TemporaryDirectory() as td:
+            db = Path(td) / "decision-audit-test.sqlite"
+            first = cycle(db, ci, bridge, 1, "public_observation")
+            restored = recall(db, "public_observation")
+        for result in (first, restored):
+            self.assertEqual(result["decision_consistency_audit"]["status"], "PASS")
+            self.assertEqual(result["decision_consistency_audit"]["observed_route"],
+                             result["recommendation"]["selected_route"])
+            self.assertFalse(result["remote_execution_proven"])
+
+
 if __name__ == "__main__":
     unittest.main()
