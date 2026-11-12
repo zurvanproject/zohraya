@@ -1,0 +1,17 @@
+{
+  "run_id": 43189292910,
+  "head": "08b132cc14af1f5b439448c2cc9255862286c476",
+  "windows_failure_excerpt": [
+    "2026-11-12T09:12:13.5804018Z ERROR: test_guided (unittest.loader._FailedTest.test_guided)",
+    "2026-11-12T09:12:13.5806100Z ImportError: Failed to import test module: test_guided",
+    "2026-11-12T09:12:13.5821444Z   File \"D:\\a\\zohraya\\zohraya\\examples\\nasuraya_agent_loop\\tests\\test_guided.py\", line 9, in <module>",
+    "2026-11-12T09:12:13.5823696Z   File \"D:\\a\\zohraya\\zohraya\\examples\\nasuraya_agent_loop\\guided.py\", line 10, in <module>",
+    "2026-11-12T09:12:13.5824374Z     import fcntl",
+    "2026-11-12T09:12:13.5824720Z ModuleNotFoundError: No module named 'fcntl'",
+    "2026-11-12T09:12:13.5826042Z Ran 55 tests in 0.321s",
+    "2026-11-12T09:12:13.5826393Z FAILED (errors=1, skipped=10)"
+  ],
+  "new_tests": "30 passed, 1 Linux-only skip",
+  "dios_tests": "172 passed, 5 Linux-only skips",
+  "agent_tests": "44 passed, 10 optional skips, 1 import error for Linux-only guided module"
+}

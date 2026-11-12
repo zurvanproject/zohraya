@@ -1,0 +1,6 @@
+{
+  "787aa4c": "tree 0dc22e8e623cb2eb5c2b077def71665567200630\nparent 6fa94d012cd5265dc407e946ef47dbe7d700a367\nauthor Codex <codex@openai.com> 1794473303 +0200\ncommitter Codex <codex@openai.com> 1794473303 +0200\n\nresearch: preregister blinded Tadash interoception protocol before implementation\n",
+  "f40bdca": "tree 0c9e663b452a1379bd301c6e013004d7ab460cd6\nparent 787aa4c8dc9a129e81f53ccb4ced829138e5eb68\nauthor Codex <codex@openai.com> 1794473900 +0200\ncommitter Codex <codex@openai.com> 1794473900 +0200\n\nfeat: add blind afferent decoding, DIOS correction gate and bounded body integration\n",
+  "5edf7a6": "tree 19ba7008cd391b7618b55b1afc0fcdb3c4073a54\nparent f40bdca84f530c08d7b2aaa1b2caa13a8015239c\nauthor Codex <codex@openai.com> 1794474142 +0200\ncommitter Codex <codex@openai.com> 1794474142 +0200\n\nresearch: retain first run, disclose novelty selection exposure and freeze fresh confirmation\n",
+  "05d6a7d": "tree 44ec64bf0c7be3268a28788f22be14429b44a090\nparent 5edf7a6a164f11dcd64b159d6f561f3ca9dfbd3b\nauthor Codex <codex@openai.com> 1794474222 +0200\ncommitter Codex <codex@openai.com> 1794474222 +0200\n\nfix: exclude novel family from calibration and selection; retain loadable rollbacks\n"
+}

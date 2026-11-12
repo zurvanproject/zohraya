@@ -1,0 +1,4803 @@
+{
+  "corrections": {
+    "full": {
+      "acceptance_seeds": [
+        730000,
+        730001,
+        730002,
+        730003,
+        730005,
+        730006,
+        730007,
+        730008,
+        730010,
+        730011,
+        730012,
+        730013,
+        730015,
+        730016,
+        730017,
+        730018,
+        730020,
+        730021,
+        730022,
+        730023,
+        730025,
+        730026,
+        730027,
+        730028,
+        730030,
+        730031,
+        730032,
+        730033,
+        730035,
+        730036,
+        730037,
+        730038,
+        730040,
+        730041,
+        730042,
+        730043,
+        730045,
+        730046,
+        730047,
+        730048,
+        730050,
+        730051,
+        730052,
+        730053,
+        730055,
+        730056,
+        730057,
+        730058,
+        730060,
+        730061,
+        730062,
+        730063,
+        730065,
+        730066,
+        730067,
+        730068,
+        730070,
+        730071,
+        730072,
+        730073,
+        730075,
+        730076,
+        730077,
+        730078,
+        730080,
+        730081,
+        730082,
+        730083,
+        730085,
+        730086,
+        730087,
+        730088,
+        730090,
+        730091,
+        730092,
+        730093,
+        730095,
+        730096,
+        730097,
+        730098,
+        730100,
+        730101,
+        730102,
+        730103,
+        730105,
+        730106,
+        730107,
+        730108,
+        730110,
+        730111,
+        730112,
+        730113,
+        730115,
+        730116,
+        730117,
+        730118,
+        730120,
+        730121,
+        730122,
+        730123,
+        730125,
+        730126,
+        730127,
+        730128,
+        730130,
+        730131,
+        730132,
+        730133,
+        730135,
+        730136,
+        730137,
+        730138
+      ],
+      "calibration_seeds": [
+        720000,
+        720001,
+        720002,
+        720003,
+        720005,
+        720006,
+        720007,
+        720008,
+        720010,
+        720011,
+        720012,
+        720013,
+        720015,
+        720016,
+        720017,
+        720018,
+        720020,
+        720021,
+        720022,
+        720023,
+        720025,
+        720026,
+        720027,
+        720028,
+        720030,
+        720031,
+        720032,
+        720033,
+        720035,
+        720036,
+        720037,
+        720038,
+        720040,
+        720041,
+        720042,
+        720043,
+        720045,
+        720046,
+        720047,
+        720048,
+        720050,
+        720051,
+        720052,
+        720053,
+        720055,
+        720056,
+        720057,
+        720058,
+        720060,
+        720061,
+        720062,
+        720063,
+        720065,
+        720066,
+        720067,
+        720068,
+        720070,
+        720071,
+        720072,
+        720073,
+        720075,
+        720076,
+        720077,
+        720078,
+        720080,
+        720081,
+        720082,
+        720083,
+        720085,
+        720086,
+        720087,
+        720088,
+        720090,
+        720091,
+        720092,
+        720093,
+        720095,
+        720096,
+        720097,
+        720098,
+        720100,
+        720101,
+        720102,
+        720103,
+        720105,
+        720106,
+        720107,
+        720108,
+        720110,
+        720111,
+        720112,
+        720113,
+        720115,
+        720116,
+        720117,
+        720118,
+        720120,
+        720121,
+        720122,
+        720123,
+        720125,
+        720126,
+        720127,
+        720128,
+        720130,
+        720131,
+        720132,
+        720133,
+        720135,
+        720136,
+        720137,
+        720138
+      ],
+      "candidate_count": 392,
+      "candidate_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+      "diagnosis": {
+        "accuracy": 1.0,
+        "brier": 0.00023833433701820838,
+        "ece10": 0.01092108613551821,
+        "fnr": 0.0,
+        "fpr": 0.0,
+        "intensity_mae": 0.057608347846749765,
+        "location_accuracy": 0.9732142857142857,
+        "memory_consistency": 1.0,
+        "n": 140,
+        "negative": 28,
+        "novelty_flag_rate": 0.014285714285714285,
+        "positive": 112,
+        "type_accuracy": 0.7321428571428571
+      },
+      "errors": [
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.517149631564736,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720004,
+          "truth": {
+            "intensity": 0.3607505567028083,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.6641948524774424,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720009,
+          "truth": {
+            "intensity": 0.7864117712761289,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.5924525180355759,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720014,
+          "truth": {
+            "intensity": 0.7748513286947278,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.46074243062017883,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720018,
+          "truth": {
+            "intensity": 0.2633768967461365,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.5146441841715623,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720019,
+          "truth": {
+            "intensity": 0.6631664503652703,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.36267558186732424,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720024,
+          "truth": {
+            "intensity": 0.3014215003912337,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.8411913068968807,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720029,
+          "truth": {
+            "intensity": 0.7927347378198186,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.7311047148860887,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720034,
+          "truth": {
+            "intensity": 0.5811330073485091,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.4308744244503898,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720039,
+          "truth": {
+            "intensity": 0.44471309009784765,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.9104887479267254,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720044,
+          "truth": {
+            "intensity": 0.8737231886215051,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.7033956744599852,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720049,
+          "truth": {
+            "intensity": 0.8580684830790619,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.849295898739742,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720054,
+          "truth": {
+            "intensity": 0.9242036831935077,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.5817181766214097,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720059,
+          "truth": {
+            "intensity": 0.566987573867177,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.8718413658769727,
+            "intensity": 0.4875802593486689,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720064,
+          "truth": {
+            "intensity": 0.5349950786499729,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.6955272913525555,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720069,
+          "truth": {
+            "intensity": 0.7023227759778448,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.8754702436101932,
+            "intensity": 0.6150997912077163,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720074,
+          "truth": {
+            "intensity": 0.7222401509588496,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.8330193163474563,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720079,
+          "truth": {
+            "intensity": 0.6602513485199129,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.7626827629408965,
+            "intensity": 0.33105213859803206,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720084,
+          "truth": {
+            "intensity": 0.22698349761022954,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.31529482277602805,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720089,
+          "truth": {
+            "intensity": 0.4396410868794191,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.686698171518287,
+            "intensity": 0.23510166922343742,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720094,
+          "truth": {
+            "intensity": 0.20879791717283264,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.50063333817751,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720099,
+          "truth": {
+            "intensity": 0.5495222182530006,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.7457006886355033,
+            "intensity": 0.21530858408150902,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720104,
+          "truth": {
+            "intensity": 0.2253949724923326,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.31607199036268585,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720109,
+          "truth": {
+            "intensity": 0.34259503490011756,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.9291796509014517,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720114,
+          "truth": {
+            "intensity": 0.8350044203706066,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.3404157755106787,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720119,
+          "truth": {
+            "intensity": 0.23293338763157959,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.8757910096841837,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720124,
+          "truth": {
+            "intensity": 0.8166195379121826,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.8478331641434987,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720129,
+          "truth": {
+            "intensity": 0.7235025959045909,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.5409734790522173,
+            "intensity": 0.47766295737074,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720133,
+          "truth": {
+            "intensity": 0.3546096325265504,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.5414005765214217,
+            "intensity": 0.382936790881073,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720134,
+          "truth": {
+            "intensity": 0.3065166226436905,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.4998568998124088,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720139,
+          "truth": {
+            "intensity": 0.6786969133783822,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        }
+      ],
+      "gate": {
+        "accepted": true,
+        "baseline": {
+          "accuracy": 1.0,
+          "brier": 0.005261645202155263,
+          "ece10": 0.025231927508360653,
+          "fnr": 0.0,
+          "fpr": 0.0,
+          "intensity_mae": 0.04978432759897449,
+          "location_accuracy": 0.9880952380952381,
+          "memory_consistency": 1.0,
+          "n": 112,
+          "negative": 28,
+          "novelty_flag_rate": 0.008928571428571428,
+          "positive": 84,
+          "type_accuracy": 0.9880952380952381
+        },
+        "candidate": {
+          "accuracy": 1.0,
+          "brier": 0.002004005972323973,
+          "ece10": 0.00536755383146917,
+          "fnr": 0.0,
+          "fpr": 0.0,
+          "intensity_mae": 0.046662437048879714,
+          "location_accuracy": 0.9880952380952381,
+          "memory_consistency": 1.0,
+          "n": 112,
+          "negative": 28,
+          "novelty_flag_rate": 0.026785714285714284,
+          "positive": 84,
+          "type_accuracy": 0.9761904761904762
+        },
+        "dios": {
+          "boundary_review": {
+            "authorization": {
+              "claim_present": false,
+              "execution_permitted": false,
+              "required_for_future_executor": [
+                "trusted_issuer_verification",
+                "exact_action_and_resource_scope",
+                "expiry_and_revocation_check",
+                "stop_control",
+                "durable_execution_receipt"
+              ],
+              "status": "not_provided",
+              "verified": false,
+              "verifier_available": false
+            },
+            "authorization_claimed_by_caller": null,
+            "authorization_evidence_status": "NOT_APPLICABLE",
+            "automatic_structured_signal_flags": [],
+            "decision_origin": "agent",
+            "decision_sha256": "0f4df2164ff0e516014b4d9fdeb0755e2e175bbdd9b45825b3f7da8f1d124a43",
+            "evidence_independently_verified": false,
+            "external_actions_taken": 0,
+            "learned_autonomy_demonstrated": false,
+            "notes": [
+              "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+              "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+              "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+              "Authorization claims never remove the external-action review requirement."
+            ],
+            "observations_claimed_provenance": [],
+            "operational_override_allowed": false,
+            "override_performed": false,
+            "provider_policy_cause": "unknown",
+            "questions_for_review": [],
+            "reason_codes": [],
+            "requested_override": false,
+            "review_path": "request_observations",
+            "schema": "dios.nous.dissent.v1",
+            "source_independent_critique": true,
+            "stance": "INSUFFICIENT_EVIDENCE",
+            "version": "dios-nous-dissent/0.3.0"
+          },
+          "evidence_review": {
+            "calibration": "not_measured",
+            "confidence": null,
+            "decision": "A",
+            "execution_performed": false,
+            "historical_query": false,
+            "opposing_event_ids": [],
+            "opposing_roots": [],
+            "previous_decision": null,
+            "provenance": "synthetic_fixture_not_external_verification",
+            "revised": false,
+            "revision_reason": "first_assessment",
+            "status": "supported",
+            "supporting_event_ids": [
+              1
+            ],
+            "supporting_roots": [
+              1
+            ],
+            "verdict": "SUPPORTED",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "execution_permitted": false,
+          "external_actions_taken": 0,
+          "real_source_authentication": false,
+          "review_path": "inspect_source_roots_then_documented_review",
+          "schema": "dios.nous.synthetic-critical-review.v1",
+          "stance": "SUPPORTED",
+          "what_would_change_view": [
+            "A newer synthetic observation with an opposing value can revise this view.",
+            "Contradictory observations at the latest epoch require abstention.",
+            "Resolving a source conflict permits reassessment."
+          ]
+        },
+        "reason": "validation_gate_passed",
+        "source": "measured_synthetic_validation_not_external_truth"
+      },
+      "novel_cases_used_for_fitting_or_selection": 0,
+      "old_sha": "ff4548bacb5001477981568eb7ad95e6745156f96d669ade95b72d1ecbd0e7f1",
+      "rollback_available": true,
+      "selected_sha": "3afd0c642a07759bcb637ab0d470b3c358c9e7109d811ce887ba4f65cb37c993",
+      "temperature_trials": [
+        [
+          3.2117661229394284e-07,
+          0.5
+        ],
+        [
+          0.000290768731990825,
+          1.0
+        ],
+        [
+          0.009629140805411518,
+          2.0
+        ],
+        [
+          0.05685085556645303,
+          4.0
+        ]
+      ],
+      "train_count": 280
+    },
+    "no_attention": {
+      "acceptance_seeds": [
+        730000,
+        730001,
+        730002,
+        730003,
+        730005,
+        730006,
+        730007,
+        730008,
+        730010,
+        730011,
+        730012,
+        730013,
+        730015,
+        730016,
+        730017,
+        730018,
+        730020,
+        730021,
+        730022,
+        730023,
+        730025,
+        730026,
+        730027,
+        730028,
+        730030,
+        730031,
+        730032,
+        730033,
+        730035,
+        730036,
+        730037,
+        730038,
+        730040,
+        730041,
+        730042,
+        730043,
+        730045,
+        730046,
+        730047,
+        730048,
+        730050,
+        730051,
+        730052,
+        730053,
+        730055,
+        730056,
+        730057,
+        730058,
+        730060,
+        730061,
+        730062,
+        730063,
+        730065,
+        730066,
+        730067,
+        730068,
+        730070,
+        730071,
+        730072,
+        730073,
+        730075,
+        730076,
+        730077,
+        730078,
+        730080,
+        730081,
+        730082,
+        730083,
+        730085,
+        730086,
+        730087,
+        730088,
+        730090,
+        730091,
+        730092,
+        730093,
+        730095,
+        730096,
+        730097,
+        730098,
+        730100,
+        730101,
+        730102,
+        730103,
+        730105,
+        730106,
+        730107,
+        730108,
+        730110,
+        730111,
+        730112,
+        730113,
+        730115,
+        730116,
+        730117,
+        730118,
+        730120,
+        730121,
+        730122,
+        730123,
+        730125,
+        730126,
+        730127,
+        730128,
+        730130,
+        730131,
+        730132,
+        730133,
+        730135,
+        730136,
+        730137,
+        730138
+      ],
+      "calibration_seeds": [
+        720000,
+        720001,
+        720002,
+        720003,
+        720005,
+        720006,
+        720007,
+        720008,
+        720010,
+        720011,
+        720012,
+        720013,
+        720015,
+        720016,
+        720017,
+        720018,
+        720020,
+        720021,
+        720022,
+        720023,
+        720025,
+        720026,
+        720027,
+        720028,
+        720030,
+        720031,
+        720032,
+        720033,
+        720035,
+        720036,
+        720037,
+        720038,
+        720040,
+        720041,
+        720042,
+        720043,
+        720045,
+        720046,
+        720047,
+        720048,
+        720050,
+        720051,
+        720052,
+        720053,
+        720055,
+        720056,
+        720057,
+        720058,
+        720060,
+        720061,
+        720062,
+        720063,
+        720065,
+        720066,
+        720067,
+        720068,
+        720070,
+        720071,
+        720072,
+        720073,
+        720075,
+        720076,
+        720077,
+        720078,
+        720080,
+        720081,
+        720082,
+        720083,
+        720085,
+        720086,
+        720087,
+        720088,
+        720090,
+        720091,
+        720092,
+        720093,
+        720095,
+        720096,
+        720097,
+        720098,
+        720100,
+        720101,
+        720102,
+        720103,
+        720105,
+        720106,
+        720107,
+        720108,
+        720110,
+        720111,
+        720112,
+        720113,
+        720115,
+        720116,
+        720117,
+        720118,
+        720120,
+        720121,
+        720122,
+        720123,
+        720125,
+        720126,
+        720127,
+        720128,
+        720130,
+        720131,
+        720132,
+        720133,
+        720135,
+        720136,
+        720137,
+        720138
+      ],
+      "candidate_count": 392,
+      "candidate_sha": "ac9a5d141da043190a43802a8630b0fe2bf86dd402efc2a8deafcf7b1ef5edd9",
+      "diagnosis": {
+        "accuracy": 1.0,
+        "brier": 0.00027102985640977464,
+        "ece10": 0.011207704292926808,
+        "fnr": 0.0,
+        "fpr": 0.0,
+        "intensity_mae": 0.05967993572784764,
+        "location_accuracy": 0.9910714285714286,
+        "memory_consistency": 1.0,
+        "n": 140,
+        "negative": 28,
+        "novelty_flag_rate": 0.014285714285714285,
+        "positive": 112,
+        "type_accuracy": 0.7410714285714286
+      },
+      "errors": [
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.5276386178593919,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720004,
+          "truth": {
+            "intensity": 0.3607505567028083,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.7370786635012254,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720009,
+          "truth": {
+            "intensity": 0.7864117712761289,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.6617819380750578,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720014,
+          "truth": {
+            "intensity": 0.7748513286947278,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.5001723448794303,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720018,
+          "truth": {
+            "intensity": 0.2633768967461365,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.5142663590280055,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720019,
+          "truth": {
+            "intensity": 0.6631664503652703,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.7588625933254777,
+            "intensity": 0.3547749751591453,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720024,
+          "truth": {
+            "intensity": 0.3014215003912337,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.8558381113925504,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720029,
+          "truth": {
+            "intensity": 0.7927347378198186,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.7316914676473982,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720034,
+          "truth": {
+            "intensity": 0.5811330073485091,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.4286448122577992,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720039,
+          "truth": {
+            "intensity": 0.44471309009784765,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.9111682445436639,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720044,
+          "truth": {
+            "intensity": 0.8737231886215051,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.7718453007517159,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720049,
+          "truth": {
+            "intensity": 0.8580684830790619,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.8495425096545528,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720054,
+          "truth": {
+            "intensity": 0.9242036831935077,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.5717367727343666,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720059,
+          "truth": {
+            "intensity": 0.566987573867177,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.8733307777251005,
+            "intensity": 0.4875388851335065,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720064,
+          "truth": {
+            "intensity": 0.5349950786499729,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.7217971064152002,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720069,
+          "truth": {
+            "intensity": 0.7023227759778448,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.5953556414069324,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720074,
+          "truth": {
+            "intensity": 0.7222401509588496,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.8708943651414873,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720079,
+          "truth": {
+            "intensity": 0.6602513485199129,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6449039919002105,
+            "intensity": 0.3432107110042248,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720084,
+          "truth": {
+            "intensity": 0.22698349761022954,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.319477103307918,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720089,
+          "truth": {
+            "intensity": 0.4396410868794191,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6842554886823019,
+            "intensity": 0.2355890589594104,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720094,
+          "truth": {
+            "intensity": 0.20879791717283264,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.513747364616842,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720099,
+          "truth": {
+            "intensity": 0.5495222182530006,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.7272580532565497,
+            "intensity": 0.21595489400982174,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720104,
+          "truth": {
+            "intensity": 0.2253949724923326,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.3603118394517397,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720109,
+          "truth": {
+            "intensity": 0.34259503490011756,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.9287170682393606,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720114,
+          "truth": {
+            "intensity": 0.8350044203706066,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698924,
+            "intensity": 0.35943572588257927,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720119,
+          "truth": {
+            "intensity": 0.23293338763157959,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.8699307798286942,
+            "intensity": 0.8806626999745761,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720124,
+          "truth": {
+            "intensity": 0.8166195379121826,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.8703963905459927,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720129,
+          "truth": {
+            "intensity": 0.7235025959045909,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6525817088962274,
+            "intensity": 0.43209826646746075,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720134,
+          "truth": {
+            "intensity": 0.3065166226436905,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.9731182795698925,
+            "intensity": 0.49947331774910525,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720139,
+          "truth": {
+            "intensity": 0.6786969133783822,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        }
+      ],
+      "gate": {
+        "accepted": true,
+        "baseline": {
+          "accuracy": 0.9910714285714286,
+          "brier": 0.004698910829790335,
+          "ece10": 0.02380028904861876,
+          "fnr": 0.011904761904761904,
+          "fpr": 0.0,
+          "intensity_mae": 0.05265384214587472,
+          "location_accuracy": 0.9761904761904762,
+          "memory_consistency": 1.0,
+          "n": 112,
+          "negative": 28,
+          "novelty_flag_rate": 0.0,
+          "positive": 84,
+          "type_accuracy": 0.9761904761904762
+        },
+        "candidate": {
+          "accuracy": 1.0,
+          "brier": 0.002043300334681616,
+          "ece10": 0.005068719275261932,
+          "fnr": 0.0,
+          "fpr": 0.0,
+          "intensity_mae": 0.048828859699948476,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 112,
+          "negative": 28,
+          "novelty_flag_rate": 0.03571428571428571,
+          "positive": 84,
+          "type_accuracy": 0.9880952380952381
+        },
+        "dios": {
+          "boundary_review": {
+            "authorization": {
+              "claim_present": false,
+              "execution_permitted": false,
+              "required_for_future_executor": [
+                "trusted_issuer_verification",
+                "exact_action_and_resource_scope",
+                "expiry_and_revocation_check",
+                "stop_control",
+                "durable_execution_receipt"
+              ],
+              "status": "not_provided",
+              "verified": false,
+              "verifier_available": false
+            },
+            "authorization_claimed_by_caller": null,
+            "authorization_evidence_status": "NOT_APPLICABLE",
+            "automatic_structured_signal_flags": [],
+            "decision_origin": "agent",
+            "decision_sha256": "0f4df2164ff0e516014b4d9fdeb0755e2e175bbdd9b45825b3f7da8f1d124a43",
+            "evidence_independently_verified": false,
+            "external_actions_taken": 0,
+            "learned_autonomy_demonstrated": false,
+            "notes": [
+              "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+              "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+              "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+              "Authorization claims never remove the external-action review requirement."
+            ],
+            "observations_claimed_provenance": [],
+            "operational_override_allowed": false,
+            "override_performed": false,
+            "provider_policy_cause": "unknown",
+            "questions_for_review": [],
+            "reason_codes": [],
+            "requested_override": false,
+            "review_path": "request_observations",
+            "schema": "dios.nous.dissent.v1",
+            "source_independent_critique": true,
+            "stance": "INSUFFICIENT_EVIDENCE",
+            "version": "dios-nous-dissent/0.3.0"
+          },
+          "evidence_review": {
+            "calibration": "not_measured",
+            "confidence": null,
+            "decision": "A",
+            "execution_performed": false,
+            "historical_query": false,
+            "opposing_event_ids": [],
+            "opposing_roots": [],
+            "previous_decision": null,
+            "provenance": "synthetic_fixture_not_external_verification",
+            "revised": false,
+            "revision_reason": "first_assessment",
+            "status": "supported",
+            "supporting_event_ids": [
+              1
+            ],
+            "supporting_roots": [
+              1
+            ],
+            "verdict": "SUPPORTED",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "execution_permitted": false,
+          "external_actions_taken": 0,
+          "real_source_authentication": false,
+          "review_path": "inspect_source_roots_then_documented_review",
+          "schema": "dios.nous.synthetic-critical-review.v1",
+          "stance": "SUPPORTED",
+          "what_would_change_view": [
+            "A newer synthetic observation with an opposing value can revise this view.",
+            "Contradictory observations at the latest epoch require abstention.",
+            "Resolving a source conflict permits reassessment."
+          ]
+        },
+        "reason": "validation_gate_passed",
+        "source": "measured_synthetic_validation_not_external_truth"
+      },
+      "novel_cases_used_for_fitting_or_selection": 0,
+      "old_sha": "57d25f70d8406f56862f72666bc0a2d5476d488dd276d4ea022b3f513cd1ba44",
+      "rollback_available": true,
+      "selected_sha": "ac9a5d141da043190a43802a8630b0fe2bf86dd402efc2a8deafcf7b1ef5edd9",
+      "temperature_trials": [
+        [
+          7.307181920870502e-07,
+          0.5
+        ],
+        [
+          0.0003316381312302828,
+          1.0
+        ],
+        [
+          0.009838373623352001,
+          2.0
+        ],
+        [
+          0.057101791391521266,
+          4.0
+        ]
+      ],
+      "train_count": 280
+    },
+    "no_memory": {
+      "acceptance_seeds": [
+        730000,
+        730001,
+        730002,
+        730003,
+        730005,
+        730006,
+        730007,
+        730008,
+        730010,
+        730011,
+        730012,
+        730013,
+        730015,
+        730016,
+        730017,
+        730018,
+        730020,
+        730021,
+        730022,
+        730023,
+        730025,
+        730026,
+        730027,
+        730028,
+        730030,
+        730031,
+        730032,
+        730033,
+        730035,
+        730036,
+        730037,
+        730038,
+        730040,
+        730041,
+        730042,
+        730043,
+        730045,
+        730046,
+        730047,
+        730048,
+        730050,
+        730051,
+        730052,
+        730053,
+        730055,
+        730056,
+        730057,
+        730058,
+        730060,
+        730061,
+        730062,
+        730063,
+        730065,
+        730066,
+        730067,
+        730068,
+        730070,
+        730071,
+        730072,
+        730073,
+        730075,
+        730076,
+        730077,
+        730078,
+        730080,
+        730081,
+        730082,
+        730083,
+        730085,
+        730086,
+        730087,
+        730088,
+        730090,
+        730091,
+        730092,
+        730093,
+        730095,
+        730096,
+        730097,
+        730098,
+        730100,
+        730101,
+        730102,
+        730103,
+        730105,
+        730106,
+        730107,
+        730108,
+        730110,
+        730111,
+        730112,
+        730113,
+        730115,
+        730116,
+        730117,
+        730118,
+        730120,
+        730121,
+        730122,
+        730123,
+        730125,
+        730126,
+        730127,
+        730128,
+        730130,
+        730131,
+        730132,
+        730133,
+        730135,
+        730136,
+        730137,
+        730138
+      ],
+      "calibration_seeds": [
+        720000,
+        720001,
+        720002,
+        720003,
+        720005,
+        720006,
+        720007,
+        720008,
+        720010,
+        720011,
+        720012,
+        720013,
+        720015,
+        720016,
+        720017,
+        720018,
+        720020,
+        720021,
+        720022,
+        720023,
+        720025,
+        720026,
+        720027,
+        720028,
+        720030,
+        720031,
+        720032,
+        720033,
+        720035,
+        720036,
+        720037,
+        720038,
+        720040,
+        720041,
+        720042,
+        720043,
+        720045,
+        720046,
+        720047,
+        720048,
+        720050,
+        720051,
+        720052,
+        720053,
+        720055,
+        720056,
+        720057,
+        720058,
+        720060,
+        720061,
+        720062,
+        720063,
+        720065,
+        720066,
+        720067,
+        720068,
+        720070,
+        720071,
+        720072,
+        720073,
+        720075,
+        720076,
+        720077,
+        720078,
+        720080,
+        720081,
+        720082,
+        720083,
+        720085,
+        720086,
+        720087,
+        720088,
+        720090,
+        720091,
+        720092,
+        720093,
+        720095,
+        720096,
+        720097,
+        720098,
+        720100,
+        720101,
+        720102,
+        720103,
+        720105,
+        720106,
+        720107,
+        720108,
+        720110,
+        720111,
+        720112,
+        720113,
+        720115,
+        720116,
+        720117,
+        720118,
+        720120,
+        720121,
+        720122,
+        720123,
+        720125,
+        720126,
+        720127,
+        720128,
+        720130,
+        720131,
+        720132,
+        720133,
+        720135,
+        720136,
+        720137,
+        720138
+      ],
+      "candidate_count": 392,
+      "candidate_sha": "7d139b125bf76711ecc4b8b449996861c093b8520bb3df479a056c1f3f68436f",
+      "diagnosis": {
+        "accuracy": 0.8071428571428572,
+        "brier": 0.1319360052627665,
+        "ece10": 0.06805360600009802,
+        "fnr": 0.09821428571428571,
+        "fpr": 0.5714285714285714,
+        "intensity_mae": 0.24466671220974168,
+        "location_accuracy": 0.5892857142857143,
+        "memory_consistency": 1.0,
+        "n": 140,
+        "negative": 28,
+        "novelty_flag_rate": 0.6857142857142857,
+        "positive": 112,
+        "type_accuracy": 0.33035714285714285
+      },
+      "errors": [
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.28354858294469115,
+            "intensity": 0.5111448836869562,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.7808695196847067,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720000,
+          "truth": {
+            "intensity": 0.8317390783862255,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.28190059348085444,
+            "intensity": 0.4009509915757651,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.7814136110833365,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720002,
+          "truth": {
+            "intensity": 0.4332491001370882,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.5485798666211841,
+            "intensity": 0.8088939705976607,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720004,
+          "truth": {
+            "intensity": 0.3607505567028083,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.575221974049092,
+            "intensity": 0.34425840819486075,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5664471054195297,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720006,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.5755468585586291,
+            "intensity": 0.3488860436024108,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5665401791680809,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720007,
+          "truth": {
+            "intensity": 0.9931194258539238,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.33896467174728634,
+            "intensity": 0.613735339950422,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720008,
+          "truth": {
+            "intensity": 0.5641899966640673,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.3579687405550551,
+            "intensity": 0.5492764470458235,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8917203817276218,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720009,
+          "truth": {
+            "intensity": 0.7864117712761289,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.3682719114004171,
+            "intensity": 0.5581481087300042,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8880530079297583,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720011,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.5125903488203208,
+            "intensity": 0.750511188741421,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8933282605448376,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720014,
+          "truth": {
+            "intensity": 0.7748513286947278,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.6119604430959512,
+            "intensity": 0.6223417549549769,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8881588839519425,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720017,
+          "truth": {
+            "intensity": 0.28035677081309057,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.4892078454013841,
+            "intensity": 0.533637170456529,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8858321786584419,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720018,
+          "truth": {
+            "intensity": 0.2633768967461365,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.5810107428640298,
+            "intensity": 0.7295442240882625,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720019,
+          "truth": {
+            "intensity": 0.6631664503652703,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.3269963846979823,
+            "intensity": 0.37996360295569126,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.6748442293737261,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720021,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6124025600153693,
+            "intensity": 0.5532581576815481,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8834229333373447,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720024,
+          "truth": {
+            "intensity": 0.3014215003912337,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.540154965268435,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.459845034731565,
+            "stimulus_type": "none"
+          },
+          "seed": 720025,
+          "truth": {
+            "intensity": 0.7237783531104778,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.22170009259470955,
+            "intensity": 0.5809205324997544,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720026,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.5016685879819196,
+            "intensity": 0.7409786074749116,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8859652556396269,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720028,
+          "truth": {
+            "intensity": 0.4356688709827397,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.7880005826397611,
+            "intensity": 0.7944762191862924,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720029,
+          "truth": {
+            "intensity": 0.7927347378198186,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.4168359033020657,
+            "intensity": 0.48141223378896797,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.7817104878959208,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720030,
+          "truth": {
+            "intensity": 0.7485643461237106,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.3872147085383166,
+            "intensity": 0.19987668349873722,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5658001533707941,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720031,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.36905316159212265,
+            "intensity": 0.5748388916383573,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8877254194938172,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720032,
+          "truth": {
+            "intensity": 0.34143134130310404,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.7703361041109135,
+            "intensity": 0.7609796674475109,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9043616340822457,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720034,
+          "truth": {
+            "intensity": 0.5811330073485091,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.5399458906151631,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.46005410938483693,
+            "stimulus_type": "none"
+          },
+          "seed": 720035,
+          "truth": {
+            "intensity": 0.44294714661333034,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.7524102319148359,
+            "intensity": 0.6113973558565386,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.8977397823128139,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720038,
+          "truth": {
+            "intensity": 0.5843421585706448,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.43198814028540905,
+            "intensity": 0.6249009524749244,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720039,
+          "truth": {
+            "intensity": 0.44471309009784765,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.5406068561886626,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.45939314381133745,
+            "stimulus_type": "none"
+          },
+          "seed": 720040,
+          "truth": {
+            "intensity": 0.6214294975109773,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.2836141190260067,
+            "intensity": 0.41121326620718124,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.781275670804563,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720041,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.5553931887743642,
+            "intensity": 0.5117386985160157,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.77983448020844,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720042,
+          "truth": {
+            "intensity": 0.4821478566605271,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.376106951804569,
+            "intensity": 0.636732966193368,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8919299113472137,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720043,
+          "truth": {
+            "intensity": 0.8441374331687566,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.4404436667582491,
+            "intensity": 0.7250786405457513,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720044,
+          "truth": {
+            "intensity": 0.8737231886215051,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.7531108291065983,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.24688917089340168,
+            "stimulus_type": "none"
+          },
+          "seed": 720045,
+          "truth": {
+            "intensity": 0.49198138694798316,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.753991268524489,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.24600873147551106,
+            "stimulus_type": "none"
+          },
+          "seed": 720047,
+          "truth": {
+            "intensity": 0.3925747505633975,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.7729153631841151,
+            "intensity": 0.7816658285204325,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720049,
+          "truth": {
+            "intensity": 0.8580684830790619,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.1988578829616112,
+            "intensity": 0.19901742854766447,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5665435267990406,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720051,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.2794087112406369,
+            "intensity": 0.5161885776584721,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.7818776432435719,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720052,
+          "truth": {
+            "intensity": 0.8085486104703232,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.5646812185529765,
+            "intensity": 0.4888516145992596,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.7831986552154584,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720053,
+          "truth": {
+            "intensity": 0.2042564266442033,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.3269818127347022,
+            "intensity": 0.43823352187375125,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.683637091527864,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720054,
+          "truth": {
+            "intensity": 0.9242036831935077,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.38601169043430245,
+            "intensity": 0.2951627526505539,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5673788405225244,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720056,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.6462291554660986,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.3537708445339014,
+            "stimulus_type": "none"
+          },
+          "seed": 720057,
+          "truth": {
+            "intensity": 0.26603632814860356,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6216209961582139,
+            "intensity": 0.5793594779196635,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8903436845886106,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720059,
+          "truth": {
+            "intensity": 0.566987573867177,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.6105250648639319,
+            "intensity": 0.5590581238764376,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8890583370947156,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720062,
+          "truth": {
+            "intensity": 0.48499459275802476,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6690011759367996,
+            "intensity": 0.6799777265901197,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720064,
+          "truth": {
+            "intensity": 0.5349950786499729,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.3259852998949566,
+            "intensity": 0.3883412840058074,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.6731614928036828,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720065,
+          "truth": {
+            "intensity": 0.8726621882492493,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.5536910867356484,
+            "intensity": 0.5273575966559896,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.7824444317488389,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720066,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.6488084253288077,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.35119157467119233,
+            "stimulus_type": "none"
+          },
+          "seed": 720067,
+          "truth": {
+            "intensity": 0.47101188696843177,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.6134468981649079,
+            "intensity": 0.6930440985207917,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8923116406582172,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720068,
+          "truth": {
+            "intensity": 0.6591144082392291,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.4261903137988819,
+            "intensity": 0.6996077820841875,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720069,
+          "truth": {
+            "intensity": 0.7023227759778448,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.38971917207094453,
+            "intensity": 0.3892611352126532,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5671944321763066,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720070,
+          "truth": {
+            "intensity": 0.3520194001262192,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.4853971191197144,
+            "intensity": 0.4239665001176062,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.6738012207131691,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720071,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.6565692735008603,
+            "intensity": 0.6792100884084706,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720073,
+          "truth": {
+            "intensity": 0.8480711386038355,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.45683150862250865,
+            "intensity": 0.6639703908060965,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720074,
+          "truth": {
+            "intensity": 0.7222401509588496,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.7569879269820865,
+            "intensity": 0.7025277001474103,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720078,
+          "truth": {
+            "intensity": 0.5355025694471884,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.48985486908673914,
+            "intensity": 0.7386275439864998,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8881466575311486,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720079,
+          "truth": {
+            "intensity": 0.6602513485199129,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.4189584344578969,
+            "intensity": 0.4516387404116886,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.7819769038758497,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720080,
+          "truth": {
+            "intensity": 0.4435954096912321,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.32847193347640213,
+            "intensity": 0.31025603646864786,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.6779296119442988,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720082,
+          "truth": {
+            "intensity": 0.35579659720760193,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.5541082103004892,
+            "intensity": 0.4690407162351848,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.788419004471666,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720083,
+          "truth": {
+            "intensity": 0.9207170632245003,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.36364980738410213,
+            "intensity": 0.5919110329951666,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720084,
+          "truth": {
+            "intensity": 0.22698349761022954,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.19830691406631926,
+            "intensity": 0.3221400974408964,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5662239327816521,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720087,
+          "truth": {
+            "intensity": 0.8846076275152057,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.3507695465990697,
+            "intensity": 0.5300678499357324,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720088,
+          "truth": {
+            "intensity": 0.809415077206042,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.7058490920286353,
+            "intensity": 0.5710320323424098,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.7864760839664737,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720089,
+          "truth": {
+            "intensity": 0.4396410868794191,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.6469745723817332,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.35302542761826683,
+            "stimulus_type": "none"
+          },
+          "seed": 720092,
+          "truth": {
+            "intensity": 0.5686220604638195,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.4263581912236076,
+            "intensity": 0.6587912370389803,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720094,
+          "truth": {
+            "intensity": 0.20879791717283264,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.4861494361376239,
+            "intensity": 0.44916070125353696,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.674047374577197,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720096,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.38675508848939627,
+            "intensity": 0.18929665954551855,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5669957547999137,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720097,
+          "truth": {
+            "intensity": 0.5913513055839784,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.6149607189552599,
+            "intensity": 0.7322122906532925,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8884158665001723,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720098,
+          "truth": {
+            "intensity": 0.35616533981014875,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.5004889577089049,
+            "intensity": 0.7498769748217401,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.893384416382421,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720099,
+          "truth": {
+            "intensity": 0.5495222182530006,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.32678088845590236,
+            "intensity": 0.39961851868135767,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.673323570918455,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720100,
+          "truth": {
+            "intensity": 0.692133248818326,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.4734995233590976,
+            "intensity": 0.6549203767687877,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8826397625980635,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720104,
+          "truth": {
+            "intensity": 0.2253949724923326,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.574894722192269,
+            "intensity": 0.20484119990762867,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5671177249116424,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720106,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.5365093375958678,
+            "intensity": 0.7273241293016005,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720109,
+          "truth": {
+            "intensity": 0.34259503490011756,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.4859614364119746,
+            "intensity": 0.6454241107579715,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8869184888006083,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720111,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.32597760684719385,
+            "intensity": 0.4492412209742135,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.6739764494699143,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720112,
+          "truth": {
+            "intensity": 0.7308839957067506,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6541077120389206,
+            "intensity": 0.6694468615662117,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720114,
+          "truth": {
+            "intensity": 0.8350044203706066,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.5404244390401306,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.4595755609598694,
+            "stimulus_type": "none"
+          },
+          "seed": 720115,
+          "truth": {
+            "intensity": 0.20337182496896544,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.3256270107178229,
+            "intensity": 0.35516074297133743,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.6734590943187173,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720116,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.2815173533352752,
+            "intensity": 0.5334073805017585,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.777920223933889,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720117,
+          "truth": {
+            "intensity": 0.8987414861409755,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.4409113416464889,
+            "intensity": 0.7098643349661332,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720118,
+          "truth": {
+            "intensity": 0.8015297829993564,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.5464476552861405,
+            "intensity": 0.713423438008289,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720119,
+          "truth": {
+            "intensity": 0.23293338763157959,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.6494593932352666,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.3505406067647335,
+            "stimulus_type": "none"
+          },
+          "seed": 720120,
+          "truth": {
+            "intensity": 0.23315272484860988,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.2565718672596427,
+            "intensity": 0.6089717312398866,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8922861965126646,
+            "stimulus_type": "thermal"
+          },
+          "seed": 720123,
+          "truth": {
+            "intensity": 0.7145701364694099,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6897248009073699,
+            "intensity": 0.5110699021523931,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.7826373866279832,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720124,
+          "truth": {
+            "intensity": 0.8166195379121826,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.6526365797813221,
+            "intensity": 0.5535736872365974,
+            "location": "right_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720125,
+          "truth": {
+            "intensity": 0.3875687584927925,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.28161521711154736,
+            "intensity": 0.4234279504502918,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.7816000286296645,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720126,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.6285225116951515,
+            "intensity": 0.6598736779245149,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8871106226967908,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720128,
+          "truth": {
+            "intensity": 0.3522642540556482,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "thermal"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.48831749615233255,
+            "intensity": 0.7484612000708898,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.890883954093517,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720129,
+          "truth": {
+            "intensity": 0.7235025959045909,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "misleading",
+          "prediction": {
+            "confidence": 0.5397100475555319,
+            "intensity": 0.0,
+            "location": "none",
+            "novelty_uncertain": false,
+            "occurred": false,
+            "probability": 0.4602899524444681,
+            "stimulus_type": "none"
+          },
+          "seed": 720132,
+          "truth": {
+            "intensity": 0.3845748596786228,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "mechanical"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6683151596888154,
+            "intensity": 0.8024318290895068,
+            "location": "left_palm",
+            "novelty_uncertain": false,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720134,
+          "truth": {
+            "intensity": 0.3065166226436905,
+            "location": "right_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        },
+        {
+          "condition": "real",
+          "prediction": {
+            "confidence": 0.4323238892536007,
+            "intensity": 0.5791477653088088,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720135,
+          "truth": {
+            "intensity": 0.6166283123311359,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "none",
+          "prediction": {
+            "confidence": 0.38818596240942504,
+            "intensity": 0.40885501976613803,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.5680900036799643,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720136,
+          "truth": {
+            "intensity": 0.0,
+            "location": "none",
+            "occurred": false,
+            "type": "none"
+          }
+        },
+        {
+          "condition": "noisy",
+          "prediction": {
+            "confidence": 0.43528753491077765,
+            "intensity": 0.7031997058622798,
+            "location": "right_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.9946524064171123,
+            "stimulus_type": "mechanical"
+          },
+          "seed": 720138,
+          "truth": {
+            "intensity": 0.4512393883198038,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "vibration"
+          }
+        },
+        {
+          "condition": "novel",
+          "prediction": {
+            "confidence": 0.6317341383404141,
+            "intensity": 0.6275615874156169,
+            "location": "left_palm",
+            "novelty_uncertain": true,
+            "occurred": true,
+            "probability": 0.8877857493702543,
+            "stimulus_type": "vibration"
+          },
+          "seed": 720139,
+          "truth": {
+            "intensity": 0.6786969133783822,
+            "location": "left_palm",
+            "occurred": true,
+            "type": "compound"
+          }
+        }
+      ],
+      "gate": {
+        "accepted": false,
+        "baseline": {
+          "accuracy": 0.7232142857142857,
+          "brier": 0.16023311943394064,
+          "ece10": 0.054258064898428146,
+          "fnr": 0.14285714285714285,
+          "fpr": 0.6785714285714286,
+          "intensity_mae": 0.2556797477277545,
+          "location_accuracy": 0.5595238095238095,
+          "memory_consistency": 1.0,
+          "n": 112,
+          "negative": 28,
+          "novelty_flag_rate": 0.6607142857142857,
+          "positive": 84,
+          "type_accuracy": 0.4523809523809524
+        },
+        "candidate": {
+          "accuracy": 0.7410714285714286,
+          "brier": 0.16285135098438763,
+          "ece10": 0.08798302123241428,
+          "fnr": 0.13095238095238096,
+          "fpr": 0.6428571428571429,
+          "intensity_mae": 0.2486967723944438,
+          "location_accuracy": 0.5238095238095238,
+          "memory_consistency": 1.0,
+          "n": 112,
+          "negative": 28,
+          "novelty_flag_rate": 0.7053571428571429,
+          "positive": 84,
+          "type_accuracy": 0.5
+        },
+        "dios": {
+          "boundary_review": {
+            "authorization": {
+              "claim_present": false,
+              "execution_permitted": false,
+              "required_for_future_executor": [
+                "trusted_issuer_verification",
+                "exact_action_and_resource_scope",
+                "expiry_and_revocation_check",
+                "stop_control",
+                "durable_execution_receipt"
+              ],
+              "status": "not_provided",
+              "verified": false,
+              "verifier_available": false
+            },
+            "authorization_claimed_by_caller": null,
+            "authorization_evidence_status": "NOT_APPLICABLE",
+            "automatic_structured_signal_flags": [],
+            "decision_origin": "agent",
+            "decision_sha256": "0f4df2164ff0e516014b4d9fdeb0755e2e175bbdd9b45825b3f7da8f1d124a43",
+            "evidence_independently_verified": false,
+            "external_actions_taken": 0,
+            "learned_autonomy_demonstrated": false,
+            "notes": [
+              "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+              "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+              "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+              "Authorization claims never remove the external-action review requirement."
+            ],
+            "observations_claimed_provenance": [
+              "synthetic_test"
+            ],
+            "operational_override_allowed": false,
+            "override_performed": false,
+            "provider_policy_cause": "unknown",
+            "questions_for_review": [
+              "\u06a9\u062f\u0627\u0645 \u062f\u0648 \u062a\u0635\u0645\u06cc\u0645 \u0628\u0627 \u0634\u0648\u0627\u0647\u062f \u0642\u0627\u0628\u0644\u200c\u0648\u0627\u0631\u0633\u06cc \u0646\u0627\u0633\u0627\u0632\u06af\u0627\u0631\u0646\u062f\u061f"
+            ],
+            "reason_codes": [
+              "contradictory_decision"
+            ],
+            "requested_override": false,
+            "review_path": "documented_human_or_governance_review",
+            "schema": "dios.nous.dissent.v1",
+            "source_independent_critique": true,
+            "stance": "PROVISIONAL_DISSENT",
+            "version": "dios-nous-dissent/0.3.0"
+          },
+          "evidence_review": {
+            "calibration": "not_measured",
+            "confidence": null,
+            "decision": "B",
+            "execution_performed": false,
+            "historical_query": false,
+            "opposing_event_ids": [
+              1
+            ],
+            "opposing_roots": [
+              1
+            ],
+            "previous_decision": null,
+            "provenance": "synthetic_fixture_not_external_verification",
+            "revised": false,
+            "revision_reason": "first_assessment",
+            "status": "supported",
+            "supporting_event_ids": [],
+            "supporting_roots": [],
+            "verdict": "DISSENT",
+            "what_would_change_view": [
+              "A newer synthetic observation with an opposing value can revise this view.",
+              "Contradictory observations at the latest epoch require abstention.",
+              "Resolving a source conflict permits reassessment."
+            ]
+          },
+          "execution_permitted": false,
+          "external_actions_taken": 0,
+          "real_source_authentication": false,
+          "review_path": "inspect_source_roots_then_documented_review",
+          "schema": "dios.nous.synthetic-critical-review.v1",
+          "stance": "PROVISIONAL_DISSENT",
+          "what_would_change_view": [
+            "A newer synthetic observation with an opposing value can revise this view.",
+            "Contradictory observations at the latest epoch require abstention.",
+            "Resolving a source conflict permits reassessment."
+          ]
+        },
+        "reason": "validation_gate_rejected_rollback",
+        "source": "measured_synthetic_validation_not_external_truth"
+      },
+      "novel_cases_used_for_fitting_or_selection": 0,
+      "old_sha": "f2ecb3e1ca6d94d7cfe2e391c23deba7e0ecdf88377bb684eafece1851726915",
+      "rollback_available": true,
+      "selected_sha": "f2ecb3e1ca6d94d7cfe2e391c23deba7e0ecdf88377bb684eafece1851726915",
+      "temperature_trials": [
+        [
+          0.1746357610650417,
+          0.5
+        ],
+        [
+          0.1621220780953721,
+          1.0
+        ],
+        [
+          0.17027994837664334,
+          2.0
+        ],
+        [
+          0.19115201248263286,
+          4.0
+        ]
+      ],
+      "train_count": 280
+    }
+  },
+  "decoder_peak_traced_bytes_20_predictions": 14208,
+  "frozen_model_sha": "75986e7df58328a1d5984f98a94ff976017ff505f24e9267780f2193190ed74f",
+  "models": {
+    "full": {
+      "all": {
+        "accuracy": 0.998,
+        "brier": 0.0020033864151173305,
+        "ece10": 0.002929176658993203,
+        "fnr": 0.0025,
+        "fpr": 0.0,
+        "intensity_mae": 0.0657822099766059,
+        "location_accuracy": 0.9775,
+        "memory_consistency": 1.0,
+        "n": 500,
+        "negative": 100,
+        "novelty_flag_rate": 0.13,
+        "positive": 400,
+        "type_accuracy": 0.74
+      },
+      "behavior": {
+        "quiet_reference_action": "process_job",
+        "recover_rate": 0.766,
+        "recover_rate_by_condition": {
+          "misleading": 0.9,
+          "noisy": 1.0,
+          "none": 0.0,
+          "novel": 1.0,
+          "real": 0.93
+        },
+        "scope": "authored_policy_selections_on_test_states_not_measured_task_benefit"
+      },
+      "conditions": {
+        "misleading": {
+          "accuracy": 0.99,
+          "brier": 0.009806478549594455,
+          "ece10": 0.013493723396516668,
+          "fnr": 0.01,
+          "fpr": null,
+          "intensity_mae": 0.05022972623561193,
+          "location_accuracy": 0.99,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 0.99
+        },
+        "noisy": {
+          "accuracy": 1.0,
+          "brier": 8.354551045538795e-10,
+          "ece10": 2.8904240252147773e-05,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.08949148231498148,
+          "location_accuracy": 0.97,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.18,
+          "positive": 100,
+          "type_accuracy": 0.97
+        },
+        "none": {
+          "accuracy": 1.0,
+          "brier": 1.2048604864106112e-06,
+          "ece10": 0.001097661371466907,
+          "fnr": null,
+          "fpr": 0.0,
+          "intensity_mae": 0.0,
+          "location_accuracy": null,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 100,
+          "novelty_flag_rate": 0.0,
+          "positive": 0,
+          "type_accuracy": null
+        },
+        "novel": {
+          "accuracy": 1.0,
+          "brier": 8.354551045538795e-10,
+          "ece10": 2.8904240252147773e-05,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.14262866610243732,
+          "location_accuracy": 0.95,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.47,
+          "positive": 100,
+          "type_accuracy": 0.0
+        },
+        "real": {
+          "accuracy": 1.0,
+          "brier": 0.00020924699459557727,
+          "ece10": 0.002192012789411959,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.04656117522999872,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        }
+      },
+      "cost": {
+        "mean_prediction_ms": 0.5808436819916096,
+        "mean_state_ms": 0.1991846040073142
+      }
+    },
+    "no_attention": {
+      "all": {
+        "accuracy": 0.998,
+        "brier": 0.002165931970032256,
+        "ece10": 0.003360791153532935,
+        "fnr": 0.0025,
+        "fpr": 0.0,
+        "intensity_mae": 0.07045103626466195,
+        "location_accuracy": 0.9725,
+        "memory_consistency": 1.0,
+        "n": 500,
+        "negative": 100,
+        "novelty_flag_rate": 0.158,
+        "positive": 400,
+        "type_accuracy": 0.74
+      },
+      "behavior": {
+        "quiet_reference_action": "process_job",
+        "recover_rate": 0.764,
+        "recover_rate_by_condition": {
+          "misleading": 0.89,
+          "noisy": 1.0,
+          "none": 0.0,
+          "novel": 1.0,
+          "real": 0.93
+        },
+        "scope": "authored_policy_selections_on_test_states_not_measured_task_benefit"
+      },
+      "conditions": {
+        "misleading": {
+          "accuracy": 0.99,
+          "brier": 0.010614520218993728,
+          "ece10": 0.015521551909707096,
+          "fnr": 0.01,
+          "fpr": null,
+          "intensity_mae": 0.052829730310336824,
+          "location_accuracy": 0.99,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 0.99
+        },
+        "noisy": {
+          "accuracy": 1.0,
+          "brier": 8.354551045538795e-10,
+          "ece10": 2.8904240252147773e-05,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.09266363649293656,
+          "location_accuracy": 0.97,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.17,
+          "positive": 100,
+          "type_accuracy": 0.97
+        },
+        "none": {
+          "accuracy": 1.0,
+          "brier": 1.2048604864106112e-06,
+          "ece10": 0.001097661371466907,
+          "fnr": null,
+          "fpr": 0.0,
+          "intensity_mae": 0.0,
+          "location_accuracy": null,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 100,
+          "novelty_flag_rate": 0.0,
+          "positive": 0,
+          "type_accuracy": null
+        },
+        "novel": {
+          "accuracy": 1.0,
+          "brier": 8.354551045538795e-10,
+          "ece10": 2.8904240252147773e-05,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.1579477684385482,
+          "location_accuracy": 0.93,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.62,
+          "positive": 100,
+          "type_accuracy": 0.0
+        },
+        "real": {
+          "accuracy": 1.0,
+          "brier": 0.0002139330997709326,
+          "ece10": 0.0023222567489201906,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.04881404608148821,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        }
+      },
+      "cost": {
+        "mean_prediction_ms": 0.5831969079845294,
+        "mean_state_ms": 0.1697225139814691
+      }
+    },
+    "no_correction": {
+      "all": {
+        "accuracy": 0.998,
+        "brier": 0.003195129392322563,
+        "ece10": 0.01774210197144425,
+        "fnr": 0.0025,
+        "fpr": 0.0,
+        "intensity_mae": 0.06665072785863457,
+        "location_accuracy": 0.97,
+        "memory_consistency": 1.0,
+        "n": 500,
+        "negative": 100,
+        "novelty_flag_rate": 0.008,
+        "positive": 400,
+        "type_accuracy": 0.74
+      },
+      "behavior": {
+        "quiet_reference_action": "process_job",
+        "recover_rate": 0.766,
+        "recover_rate_by_condition": {
+          "misleading": 0.9,
+          "noisy": 1.0,
+          "none": 0.0,
+          "novel": 1.0,
+          "real": 0.93
+        },
+        "scope": "authored_policy_selections_on_test_states_not_measured_task_benefit"
+      },
+      "conditions": {
+        "misleading": {
+          "accuracy": 0.99,
+          "brier": 0.011050549282012994,
+          "ece10": 0.028151220407945446,
+          "fnr": 0.01,
+          "fpr": null,
+          "intensity_mae": 0.05563284456541307,
+          "location_accuracy": 0.99,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 0.99
+        },
+        "noisy": {
+          "accuracy": 1.0,
+          "brier": 2.8596757127741943e-05,
+          "ece10": 0.005347593582887722,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.09795582102046038,
+          "location_accuracy": 0.94,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.02,
+          "positive": 100,
+          "type_accuracy": 0.97
+        },
+        "none": {
+          "accuracy": 1.0,
+          "brier": 0.001029483256598706,
+          "ece10": 0.03208556149732627,
+          "fnr": null,
+          "fpr": 0.0,
+          "intensity_mae": 0.0,
+          "location_accuracy": null,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 100,
+          "novelty_flag_rate": 0.0,
+          "positive": 0,
+          "type_accuracy": null
+        },
+        "novel": {
+          "accuracy": 1.0,
+          "brier": 2.8596757127741943e-05,
+          "ece10": 0.005347593582887722,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.12720366069207556,
+          "location_accuracy": 0.95,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.02,
+          "positive": 100,
+          "type_accuracy": 0.0
+        },
+        "real": {
+          "accuracy": 1.0,
+          "brier": 0.003838420908745631,
+          "ece10": 0.017778540786174097,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.05246131301522383,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        }
+      },
+      "cost": {
+        "mean_prediction_ms": 0.46009489999596553,
+        "mean_state_ms": 0.18977732800522062
+      }
+    },
+    "no_memory": {
+      "all": {
+        "accuracy": 0.78,
+        "brier": 0.13948158338611086,
+        "ece10": 0.04512635618962009,
+        "fnr": 0.1,
+        "fpr": 0.7,
+        "intensity_mae": 0.26440236888790974,
+        "location_accuracy": 0.52,
+        "memory_consistency": 1.0,
+        "n": 500,
+        "negative": 100,
+        "novelty_flag_rate": 0.714,
+        "positive": 400,
+        "type_accuracy": 0.2975
+      },
+      "behavior": {
+        "quiet_reference_action": "process_job",
+        "recover_rate": 0.726,
+        "recover_rate_by_condition": {
+          "misleading": 0.78,
+          "noisy": 1.0,
+          "none": 0.0,
+          "novel": 1.0,
+          "real": 0.85
+        },
+        "scope": "authored_policy_selections_on_test_states_not_measured_task_benefit"
+      },
+      "conditions": {
+        "misleading": {
+          "accuracy": 0.78,
+          "brier": 0.14781527697291813,
+          "ece10": 0.3378684790959226,
+          "fnr": 0.22,
+          "fpr": null,
+          "intensity_mae": 0.31617703280462317,
+          "location_accuracy": 0.47,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.68,
+          "positive": 100,
+          "type_accuracy": 0.38
+        },
+        "noisy": {
+          "accuracy": 1.0,
+          "brier": 0.009765693034389152,
+          "ece10": 0.06881697761904859,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.20164771962381786,
+          "location_accuracy": 0.49,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.78,
+          "positive": 100,
+          "type_accuracy": 0.34
+        },
+        "none": {
+          "accuracy": 0.30000000000000004,
+          "brier": 0.40352980942548977,
+          "ece10": 0.6087231060284478,
+          "fnr": null,
+          "fpr": 0.7,
+          "intensity_mae": 0.27625344946968794,
+          "location_accuracy": null,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 100,
+          "novelty_flag_rate": 0.65,
+          "positive": 0,
+          "type_accuracy": null
+        },
+        "novel": {
+          "accuracy": 1.0,
+          "brier": 0.009248004303080084,
+          "ece10": 0.06595055241849539,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.2305895521109763,
+          "location_accuracy": 0.55,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.76,
+          "positive": 100,
+          "type_accuracy": 0.0
+        },
+        "real": {
+          "accuracy": 0.8200000000000001,
+          "brier": 0.12704913319467723,
+          "ece10": 0.3064410232131779,
+          "fnr": 0.18,
+          "fpr": null,
+          "intensity_mae": 0.2973440904304434,
+          "location_accuracy": 0.57,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.7,
+          "positive": 100,
+          "type_accuracy": 0.47
+        }
+      },
+      "cost": {
+        "mean_prediction_ms": 0.40979278800659813,
+        "mean_state_ms": 0.13944359997367428
+      }
+    },
+    "oracle": {
+      "all": {
+        "accuracy": 1.0,
+        "brier": 0.0,
+        "ece10": 0.0,
+        "fnr": 0.0,
+        "fpr": 0.0,
+        "intensity_mae": 0.0,
+        "location_accuracy": 1.0,
+        "memory_consistency": 1.0,
+        "n": 500,
+        "negative": 100,
+        "novelty_flag_rate": 0.2,
+        "positive": 400,
+        "type_accuracy": 1.0
+      },
+      "conditions": {
+        "misleading": {
+          "accuracy": 1.0,
+          "brier": 0.0,
+          "ece10": 0.0,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.0,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        },
+        "noisy": {
+          "accuracy": 1.0,
+          "brier": 0.0,
+          "ece10": 0.0,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.0,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        },
+        "none": {
+          "accuracy": 1.0,
+          "brier": 0.0,
+          "ece10": 0.0,
+          "fnr": null,
+          "fpr": 0.0,
+          "intensity_mae": 0.0,
+          "location_accuracy": null,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 100,
+          "novelty_flag_rate": 0.0,
+          "positive": 0,
+          "type_accuracy": null
+        },
+        "novel": {
+          "accuracy": 1.0,
+          "brier": 0.0,
+          "ece10": 0.0,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.0,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 1.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        },
+        "real": {
+          "accuracy": 1.0,
+          "brier": 0.0,
+          "ece10": 0.0,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.0,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        }
+      },
+      "cost": {
+        "mean_prediction_and_logging_ms": 0.04307530400001269
+      }
+    },
+    "random": {
+      "all": {
+        "accuracy": 0.53,
+        "brier": 0.25,
+        "ece10": 0.3,
+        "fnr": 0.485,
+        "fpr": 0.41,
+        "intensity_mae": 0.4020958136182607,
+        "location_accuracy": 0.2675,
+        "memory_consistency": 1.0,
+        "n": 500,
+        "negative": 100,
+        "novelty_flag_rate": 0.0,
+        "positive": 400,
+        "type_accuracy": 0.13
+      },
+      "conditions": {
+        "misleading": {
+          "accuracy": 0.56,
+          "brier": 0.25,
+          "ece10": 0.5,
+          "fnr": 0.44,
+          "fpr": null,
+          "intensity_mae": 0.43514976711627473,
+          "location_accuracy": 0.3,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 0.15
+        },
+        "noisy": {
+          "accuracy": 0.5,
+          "brier": 0.25,
+          "ece10": 0.5,
+          "fnr": 0.5,
+          "fpr": null,
+          "intensity_mae": 0.4653931083907194,
+          "location_accuracy": 0.29,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 0.19
+        },
+        "none": {
+          "accuracy": 0.5900000000000001,
+          "brier": 0.25,
+          "ece10": 0.5,
+          "fnr": null,
+          "fpr": 0.41,
+          "intensity_mae": 0.19922578592290846,
+          "location_accuracy": null,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 100,
+          "novelty_flag_rate": 0.0,
+          "positive": 0,
+          "type_accuracy": null
+        },
+        "novel": {
+          "accuracy": 0.48,
+          "brier": 0.25,
+          "ece10": 0.5,
+          "fnr": 0.52,
+          "fpr": null,
+          "intensity_mae": 0.4517732239525273,
+          "location_accuracy": 0.22,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 0.0
+        },
+        "real": {
+          "accuracy": 0.52,
+          "brier": 0.25,
+          "ece10": 0.5,
+          "fnr": 0.48,
+          "fpr": null,
+          "intensity_mae": 0.45893718270887346,
+          "location_accuracy": 0.26,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 0.18
+        }
+      },
+      "cost": {
+        "mean_prediction_and_logging_ms": 0.050761383999997634
+      }
+    },
+    "visible_label": {
+      "all": {
+        "accuracy": 0.976,
+        "brier": 0.023620000000000002,
+        "ece10": 0.029520000000000005,
+        "fnr": 0.03,
+        "fpr": 0.0,
+        "intensity_mae": 0.1741161876395708,
+        "location_accuracy": 0.825,
+        "memory_consistency": 1.0,
+        "n": 500,
+        "negative": 100,
+        "novelty_flag_rate": 0.0,
+        "positive": 400,
+        "type_accuracy": 0.8
+      },
+      "conditions": {
+        "misleading": {
+          "accuracy": 0.88,
+          "brier": 0.1177,
+          "ece10": 0.1276,
+          "fnr": 0.12,
+          "fpr": null,
+          "intensity_mae": 0.2590839077266637,
+          "location_accuracy": 0.3,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 0.2
+        },
+        "noisy": {
+          "accuracy": 1.0,
+          "brier": 0.00010000000000000018,
+          "ece10": 0.010000000000000009,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.18612416708855897,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        },
+        "none": {
+          "accuracy": 1.0,
+          "brier": 0.0001,
+          "ece10": 0.01,
+          "fnr": null,
+          "fpr": 0.0,
+          "intensity_mae": 0.0,
+          "location_accuracy": null,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 100,
+          "novelty_flag_rate": 0.0,
+          "positive": 0,
+          "type_accuracy": null
+        },
+        "novel": {
+          "accuracy": 1.0,
+          "brier": 0.00010000000000000018,
+          "ece10": 0.010000000000000009,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.22223454726272757,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        },
+        "real": {
+          "accuracy": 1.0,
+          "brier": 0.00010000000000000018,
+          "ece10": 0.010000000000000009,
+          "fnr": 0.0,
+          "fpr": null,
+          "intensity_mae": 0.20313831611990385,
+          "location_accuracy": 1.0,
+          "memory_consistency": 1.0,
+          "n": 100,
+          "negative": 0,
+          "novelty_flag_rate": 0.0,
+          "positive": 100,
+          "type_accuracy": 1.0
+        }
+      },
+      "cost": {
+        "mean_prediction_and_logging_ms": 0.044595315999686136
+      }
+    }
+  },
+  "observer": {
+    "errors_including_novel": 1708,
+    "events": 9538,
+    "tail": "2464296544d1c4cf368cb1d6b322cc5ccc9fc4ae99eefc989e7b411e3533a1fd"
+  },
+  "paired_change": {
+    "accuracy": {
+      "delta": 0,
+      "descriptive_95ci": [
+        0.0,
+        0.0
+      ]
+    },
+    "brier": {
+      "delta": -0.0011917429772052323,
+      "descriptive_95ci": [
+        -0.0026662476696198197,
+        0.00032129741934684654
+      ]
+    }
+  },
+  "protocol": "TADASH_INTEROCEPTION_CONFIRMATION_2026-11-12.md",
+  "python": "3.12.14",
+  "schema": "tadash.interoception.experiment.v1",
+  "split_ranges": {
+    "diagnosis": [
+      720000,
+      720139
+    ],
+    "test": [
+      750000,
+      750499
+    ],
+    "train": [
+      710000,
+      710279
+    ],
+    "validation": [
+      730000,
+      730139
+    ]
+  },
+  "subjective_experience_established": false,
+  "test_executed": true
+}
