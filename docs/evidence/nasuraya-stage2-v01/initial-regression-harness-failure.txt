@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/74c712ebd879/zohraya/scripts/verify_nasuraya_stage2.py", line 83, in <module>
+    if __name__ == '__main__': main()
+                               ^^^^^^
+  File "/workspace/scratch/74c712ebd879/zohraya/scripts/verify_nasuraya_stage2.py", line 69, in main
+    compare(original, result); compare(predicted, actual)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/74c712ebd879/zohraya/scripts/verify_nasuraya_stage2.py", line 29, in compare
+    compare(expected[key], actual[key], path+'.'+key)
+  File "/workspace/scratch/74c712ebd879/zohraya/scripts/verify_nasuraya_stage2.py", line 29, in compare
+    compare(expected[key], actual[key], path+'.'+key)
+  File "/workspace/scratch/74c712ebd879/zohraya/scripts/verify_nasuraya_stage2.py", line 34, in compare
+    raise AssertionError(f'{path}: categorical value changed')
+AssertionError: root.splits.diagnosis: categorical value changed

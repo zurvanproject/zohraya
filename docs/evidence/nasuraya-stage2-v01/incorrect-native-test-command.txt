@@ -1,0 +1,21 @@
+test_body_loop (unittest.loader._FailedTest.test_body_loop) ... ERROR
+
+======================================================================
+ERROR: test_body_loop (unittest.loader._FailedTest.test_body_loop)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_body_loop
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/loader.py", line 137, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/74c712ebd879/zohraya/examples/nasuraya_body_loop/test_body_loop.py", line 14, in <module>
+    from .host import BodyLoop, InterruptedExecution, UnifiedBody
+  File "/workspace/scratch/74c712ebd879/zohraya/examples/nasuraya_body_loop/host.py", line 12, in <module>
+    from reflection_cycle import ReflectionCycle, ReflectiveBody, InterruptedExecution, canonical
+ModuleNotFoundError: No module named 'reflection_cycle'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
