@@ -1,0 +1,20 @@
+{
+  "ci_run_id": 43141312738,
+  "ci_job_id": 130928698094,
+  "before_fix": {
+    "probe": "real native-model worker with ASCII text stdout",
+    "returncode": 1,
+    "error": "UnicodeEncodeError",
+    "reported_nonascii_positions": [
+      7168,
+      7172
+    ]
+  },
+  "after_fix": {
+    "worker_output": "explicit UTF-8 bytes",
+    "local_tests": 14,
+    "failed": 0,
+    "windows_ci_rerun_required": true
+  },
+  "raw_private_stderr_retained": false
+}

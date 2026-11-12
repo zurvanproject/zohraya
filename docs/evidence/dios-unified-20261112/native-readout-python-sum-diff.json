@@ -1,0 +1,35 @@
+{
+  "ci_job": 130928698405,
+  "ci_python_version": "3.11.18",
+  "ci_run": 43141312738,
+  "diagnostic_intervention": "isolated subprocess replaces builtins.sum with sequential addition; not production code and not an actual local3.11 interpreter",
+  "diagnostic_python_version": "3.12.14",
+  "diagnostic_script_sha256": "8a72172341bcb3d03d67a9f24d41ccf2004ff28a3f2f6696bfb9d272a5fd4c34",
+  "finite_stocks_equal": true,
+  "maximum_absolute_load_difference_N": 3.410605131648481e-13,
+  "minimum_state_equal": true,
+  "native_source_files_modified": false,
+  "official_reference": "https://docs.python.org/3.12/library/functions.html#sum",
+  "payload_differences": [
+    {
+      "naive_sum": 956.4750000000003,
+      "path": "body_digest_payload.native.proprioception.foot_L.load",
+      "standard_sum": 956.4749999999999
+    },
+    {
+      "naive_sum": 956.4750000000003,
+      "path": "body_digest_payload.native.proprioception.foot_R.load",
+      "standard_sum": 956.4749999999999
+    }
+  ],
+  "production_sum_patched": false,
+  "schema": "dios.native_readout_cross_python_diagnostic/1",
+  "sequential_sum_body_digest": "28534261a6ba16f05ac778481ac51e289f94813213b51588ffe86bfbae67d65a",
+  "sequential_sum_matches_ci_digest": true,
+  "source_identity_equal": true,
+  "standard_body_digest": "d6638f1d28d4f43acba3c48af9ff27a21d6e56ab0abaf00884a56dfdec85d705",
+  "within_run_checkpoints_equal": [
+    true,
+    true
+  ]
+}

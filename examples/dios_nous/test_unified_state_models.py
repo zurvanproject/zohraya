@@ -3,8 +3,10 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import subprocess
 import sys
 import tempfile
+import traceback
 import unittest
 from unittest.mock import patch
 
@@ -154,6 +156,58 @@ class NativeStateModelTests(unittest.TestCase):
                     state_models.run_models(output)
                 run.assert_not_called()
             self.assertFalse(output.exists())
+
+    def test_worker_writes_utf8_bytes_when_redirected_text_stream_is_ascii(self):
+        # Emulate a narrow Windows stdout codec inside the real isolated worker.
+        # This test failed with UnicodeEncodeError when output used text print().
+        worker = state_models._WORKER.replace(
+            "sys.dont_write_bytecode = True",
+            "sys.stdout.reconfigure(encoding='ascii', errors='strict')\n"
+            "sys.dont_write_bytecode = True", 1)
+        self.assertNotEqual(worker, state_models._WORKER)
+        with tempfile.TemporaryDirectory() as name, patch.object(state_models, "_WORKER", worker):
+            result = state_models.run_models(Path(name))
+        self.assertEqual(result["models"]["affect"]["parameters"]["profiles"]["love"][0], "دوست داشتن")
+        self.assertTrue(all(model["checkpoint_roundtrip_equal"] for model in result["models"].values()))
+        canonical(result)
+
+    def test_worker_failure_reports_only_code_and_stderr_digest(self):
+        secret = b"PRIVATE_ERROR_CANARY\xff/private/output/path"
+        completed = subprocess.CompletedProcess(["PRIVATE_SCRIPT_CANARY"], 7, b"", secret)
+        with tempfile.TemporaryDirectory() as name, patch.object(state_models.subprocess, "run", return_value=completed):
+            with self.assertRaises(RuntimeError) as caught:
+                state_models.run_models(Path(name))
+        self.assertEqual(str(caught.exception), "native_state_worker_failed;returncode=7;stderr_sha256="
+                         + hashlib.sha256(secret).hexdigest())
+        self.assertNotIn("PRIVATE", "".join(traceback.format_exception(caught.exception)))
+
+    def test_worker_timeout_does_not_expose_script_paths_or_stderr(self):
+        secret = b"PRIVATE_TIMEOUT_CANARY/private/output/path"
+        failure = subprocess.TimeoutExpired(["PRIVATE_SCRIPT_CANARY"], 30, stderr=secret)
+        with tempfile.TemporaryDirectory() as name, patch.object(state_models.subprocess, "run", side_effect=failure):
+            with self.assertRaises(RuntimeError) as caught:
+                state_models.run_models(Path(name))
+        self.assertEqual(str(caught.exception), "native_state_worker_timed_out;stderr_sha256="
+                         + hashlib.sha256(secret).hexdigest())
+        self.assertNotIn("PRIVATE", "".join(traceback.format_exception(caught.exception)))
+
+    def test_worker_launch_failure_hides_private_path(self):
+        failure = OSError(2, "PRIVATE_LAUNCH_CANARY", "/private/output/path")
+        with tempfile.TemporaryDirectory() as name, patch.object(state_models.subprocess, "run", side_effect=failure):
+            with self.assertRaises(RuntimeError) as caught:
+                state_models.run_models(Path(name))
+        self.assertEqual(str(caught.exception), "native_state_worker_launch_failed;errno=2")
+        self.assertNotIn("PRIVATE", "".join(traceback.format_exception(caught.exception)))
+
+    def test_malformed_worker_output_is_hashed_without_echoing_bytes(self):
+        secret = b"PRIVATE_OUTPUT_CANARY\xff/private/output/path"
+        completed = subprocess.CompletedProcess(["PRIVATE_SCRIPT_CANARY"], 0, secret, b"")
+        with tempfile.TemporaryDirectory() as name, patch.object(state_models.subprocess, "run", return_value=completed):
+            with self.assertRaises(RuntimeError) as caught:
+                state_models.run_models(Path(name))
+        self.assertEqual(str(caught.exception), "native_state_worker_invalid_json;stdout_sha256="
+                         + hashlib.sha256(secret).hexdigest())
+        self.assertNotIn("PRIVATE", "".join(traceback.format_exception(caught.exception)))
 
 
 if __name__ == "__main__":

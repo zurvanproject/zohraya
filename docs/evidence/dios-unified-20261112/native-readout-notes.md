@@ -56,9 +56,10 @@ Five dependent hashes consequently differ. Exact paths and values are preserved
 in `native-readout-checkpoint-diff.json`.
 
 No native physics or serializer was edited, and no hash-seed workaround was
-introduced. The corrected regression checks full checkpoint equality within each
-run, and across fresh processes checks the observed body digest, minimum state,
-and finite stocks. Fresh checkpoint bit identity is explicitly not claimed.
+introduced. The first correction checked full checkpoint equality within each
+run, and across local fresh processes checked the observed body digest, minimum
+state, and finite stocks. The later cross-Python CI counterexample below supersedes
+the broad body-digest comparison. Fresh checkpoint bit identity is not claimed.
 This correction was made after seeing the failure and is not an independent or
 preregistered scientific result. The final focused suite passed six tests.
 
@@ -66,3 +67,37 @@ The 195 kg legacy physiological model remains distinct from the 78 kg visual
 target and separate MuJoCo mechanics. Source integrity does not authenticate an
 arbitrary supplied export. No server action, paid API, neural training, model
 weight update, physical action, or subjective experience is established here.
+
+## Cross-Python CI counterexample and correction
+
+[CI run 43141312738, Linux job 130928698405](https://github.com/zurvanproject/zohraya/actions/runs/43141312738/job/130928698405)
+ran CPython 3.11.18 and failed one of 171 tests. The broad `body_before_digest`
+was `28534261a6ba16f05ac778481ac51e289f94813213b51588ffe86bfbae67d65a`,
+while the saved local CPython 3.12.14 digest was
+`d6638f1d28d4f43acba3c48af9ff27a21d6e56ab0abaf00884a56dfdec85d705`.
+This digest covers the entire native body, modules and affect, including fields
+outside the bounded 22-field export.
+
+A diagnostic-only subprocess replaced `builtins.sum` with straightforward
+sequential addition before loading the unchanged source files. That produced the
+**exact CI digest**. Comparing the complete digest payload found only two changed
+values: `native.proprioception.foot_L.load` and `foot_R.load`, each
+`956.4749999999999` versus `956.4750000000003` N (about 3.41e-13 N).
+The diagnostic retained unchanged checkpoints within its run and identical
+minimum-state fields, finite stocks and source identity. Exact differences and
+digests are in `native-readout-python-sum-diff.json`. This was a controlled
+diagnostic on 3.12, not a claim that a local 3.11 interpreter was available.
+
+The [official Python 3.12 documentation](https://docs.python.org/3.12/library/functions.html#sum)
+records the change in floating-point summation accuracy. Together with the exact
+digest reproduction, this explains why broad bit identity across these Python
+versions was an invalid integration criterion. Production code does not patch
+summation, change native physics, introduce a numerical tolerance, or discard
+hash verification.
+
+The final cross-runtime regression compares the pinned source identity and all
+16 minimum-state fields and six finite stocks exactly. Complete checkpoint
+equality before/after each readout, source-byte verification, observation/export
+digest integrity and all no-action guards remain required. New receipts record
+the Python version, implementation and platform. This correction follows an
+observed CI failure and is not a preregistered independent scientific result.

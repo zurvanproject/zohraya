@@ -1,0 +1,16 @@
+{
+  "run_id": 43141312738,
+  "head_sha": "da11fecc71cb1988ca662e1851e794931bcaad44",
+  "job_id": 130928698405,
+  "platform": "linux",
+  "status": "failure",
+  "summary_lines": [
+    "2026-11-12T02:25:42.3392190Z FAIL: test_actual_native_initial_state_readout_in_fresh_process (test_unified_native_readout.NativeReadoutTests.test_actual_native_initial_state_readout_in_fresh_process)",
+    "2026-11-12T02:25:42.3408585Z AssertionError: '28534261a6ba16f05ac778481ac51e289f94813213b51588ffe86bfbae67d65a' != 'd6638f1d28d4f43acba3c48af9ff27a21d6e56ab0abaf00884a56dfdec85d705'",
+    "2026-11-12T02:25:42.3409768Z - 28534261a6ba16f05ac778481ac51e289f94813213b51588ffe86bfbae67d65a",
+    "2026-11-12T02:25:42.3410467Z + d6638f1d28d4f43acba3c48af9ff27a21d6e56ab0abaf00884a56dfdec85d705",
+    "2026-11-12T02:25:42.3411628Z Ran 171 tests in 2.776s",
+    "2026-11-12T02:25:42.3411960Z FAILED (failures=1)"
+  ],
+  "notes": "Cross-environment body hash assertion failed; native within-run no-mutation checks passed."
+}

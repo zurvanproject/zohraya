@@ -153,6 +153,9 @@ def _observe_staged(source_root):
                 status="fresh_authored_default_not_trained_or_user_state")
         result = dict(schema="dios.native_readout_receipt/1",
             execution_kind="executed_initial_simulation_readout",
+            runtime_python_version=sys.version.split()[0],
+            runtime_python_implementation=sys.implementation.name,
+            runtime_platform=sys.platform,
             initialization="fresh_authored_defaults_without_synthetic_origin_warmup",
             source_commit=SOURCE_COMMIT,
             source_files={p: dict(git_blob_sha1=SOURCE_BLOBS[p], sha256=hashlib.sha256(raw).hexdigest())
@@ -169,7 +172,8 @@ def _observe_staged(source_root):
             limitations=["fresh_initial_state_not_live_saved_user_body",
                 "no_physiological_dynamics_executed", "no_empirical_validation",
                 "legacy_195kg_not_calibrated_78kg", "no_geometry_or_torch_execution",
-                "fresh_process_checkpoint_hash_varies_with_native_source_sequence_order"])
+                "fresh_process_checkpoint_hash_varies_with_native_source_sequence_order",
+                "cross_runtime_body_digest_bit_identity_not_claimed"])
         json.dumps(result, allow_nan=False)
         return result
 

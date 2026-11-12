@@ -236,7 +236,9 @@ for path, info in pins.items():
         raise ValueError('native model changed pinned source bytes')
 result = {'models': {'neural': neural_result, 'affect': affect_result, 'genome': genome_result},
           'source_bytes_unchanged': True}
-print(canonical(result).decode('utf-8'))
+# The redirected Windows text stream may be cp1252 even in isolated mode.
+# Encode once and write bytes; the parent always receives UTF-8 JSON.
+sys.stdout.buffer.write(canonical(result) + b'\n')
 '''
 
 
@@ -263,12 +265,27 @@ def run_models(directory: Path) -> dict:
             (staging / path).write_bytes(b"")
         encoded_pins = _canonical(pins)
         (staging / "pins.json").write_bytes(encoded_pins)
-        completed = subprocess.run(
-            [sys.executable, "-I", "-S", "-c", _WORKER, str(staging), str(directory.resolve()),
-             hashlib.sha256(encoded_pins).hexdigest()],
-            check=True, capture_output=True, text=True, encoding="utf-8", timeout=30,
-        )
-        executed = json.loads(completed.stdout)
+        try:
+            completed = subprocess.run(
+                [sys.executable, "-I", "-S", "-c", _WORKER, str(staging), str(directory.resolve()),
+                 hashlib.sha256(encoded_pins).hexdigest()],
+                check=False, capture_output=True, timeout=30,
+            )
+        except subprocess.TimeoutExpired as error:
+            digest = hashlib.sha256(error.stderr or b"").hexdigest()
+            raise RuntimeError("native_state_worker_timed_out;stderr_sha256=" + digest) from None
+        except OSError as error:
+            raise RuntimeError("native_state_worker_launch_failed;errno=" + str(error.errno)) from None
+        if completed.returncode:
+            digest = hashlib.sha256(completed.stderr).hexdigest()
+            # Never print the complete -c script, private output path or stderr.
+            raise RuntimeError("native_state_worker_failed;returncode=" + str(completed.returncode)
+                               + ";stderr_sha256=" + digest)
+        try:
+            executed = json.loads(completed.stdout)
+        except (UnicodeDecodeError, json.JSONDecodeError):
+            digest = hashlib.sha256(completed.stdout).hexdigest()
+            raise RuntimeError("native_state_worker_invalid_json;stdout_sha256=" + digest) from None
     report = {
         "schema": "dios.nous.unified-native-state-models.v1",
         "kind": "executed_fixed_offline_native_models",
