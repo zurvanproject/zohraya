@@ -1,0 +1,19 @@
+test_affect_runs_neutral_transition_and_native_persistence (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_affect_runs_neutral_transition_and_native_persistence) ... ok
+test_changed_source_is_rejected_before_any_legacy_import_or_checkpoint (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_changed_source_is_rejected_before_any_legacy_import_or_checkpoint) ... ok
+test_finite_report_does_not_promote_states_to_truth_or_authority (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_finite_report_does_not_promote_states_to_truth_or_authority) ... ok
+test_genome_uses_native_contract_validation_without_mutation_or_apply (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_genome_uses_native_contract_validation_without_mutation_or_apply) ... ok
+test_legacy_imports_do_not_pollute_parent_process (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_legacy_imports_do_not_pollute_parent_process) ... ok
+test_malformed_worker_output_is_hashed_without_echoing_bytes (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_malformed_worker_output_is_hashed_without_echoing_bytes) ... ok
+test_neural_native_checkpoint_and_continuation_preserve_complete_state (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_neural_native_checkpoint_and_continuation_preserve_complete_state) ... ok
+test_nonempty_output_is_rejected_without_overwriting_checkpoints (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_nonempty_output_is_rejected_without_overwriting_checkpoints) ... ok
+test_reported_counts_cover_the_serialized_parameter_states (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_reported_counts_cover_the_serialized_parameter_states) ... ok
+test_source_pins_and_checkpoint_digests_identify_actual_bytes (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_source_pins_and_checkpoint_digests_identify_actual_bytes) ... ok
+test_worker_failure_reports_only_code_and_stderr_digest (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_worker_failure_reports_only_code_and_stderr_digest) ... ok
+test_worker_launch_failure_hides_private_path (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_worker_launch_failure_hides_private_path) ... ok
+test_worker_timeout_does_not_expose_script_paths_or_stderr (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_worker_timeout_does_not_expose_script_paths_or_stderr) ... ok
+test_worker_writes_utf8_bytes_when_redirected_text_stream_is_ascii (examples.dios_nous.test_unified_state_models.NativeStateModelTests.test_worker_writes_utf8_bytes_when_redirected_text_stream_is_ascii) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.168s
+
+OK

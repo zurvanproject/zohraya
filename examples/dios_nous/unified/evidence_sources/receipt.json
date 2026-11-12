@@ -1,0 +1,21 @@
+{
+  "schema": "nasuraya.desktop-web-shortcuts.v1",
+  "scope": "Two Common Desktop web shortcuts only; not native AI apps or local model installation",
+  "job_commit": "f4f2aa661f5f375a86efce02c566b7483960ccb1",
+  "job_sha256": "a7dc681351041516763637ffd19a8b1de97f1080bf47b1889fcff874bb864f22",
+  "request_comment_id": 6811700877,
+  "receipt_comment_id": 6811703306,
+  "receipt_url": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6811703306",
+  "receipt_utc": "2026-11-12T01:30:50Z",
+  "observed_receipt": "OK DESKTOP=CREATED;CHAT=OK;IMAGES=OK;LOGIN=USER_REQUIRED;MODEL=WEB;API_CALLS=0",
+  "shortcuts": {
+    "Nasuraya - Chat.url": "https://chatgpt.com/",
+    "Nasuraya - Images.url": "https://chatgpt.com/images/"
+  },
+  "requires_interactive_login": true,
+  "browser_compatibility_verified": false,
+  "authenticated_chat_or_image_generation_tested": false,
+  "paid_api_calls": 0,
+  "rollback": "Delete these two exact URL shortcut files from Common Desktop; no service or startup task was created.",
+  "verification": "Source fetched back from pinned GitHub commit; local temporary-directory create/idempotency/conflict check passed; separate code review found no blocker. Server receipt reports exact file creation. No remote screenshot or interactive login observed."
+}

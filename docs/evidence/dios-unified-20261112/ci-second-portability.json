@@ -1,0 +1,22 @@
+{
+  "run_id": 43142150093,
+  "head_sha": "2f8fe937a2c37b7abf009000960f05a9d0b9b6e5",
+  "linux": {
+    "job_id": 130931407506,
+    "conclusion": "success",
+    "tests": 176,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "recovery_regression_checks": 132001
+  },
+  "windows": {
+    "job_id": 130931407181,
+    "conclusion": "failure",
+    "tests_run": 162,
+    "errors": 4,
+    "skipped": 5,
+    "detail": "legacy genome source uses default-encoding Path.read_text; source-pinned worker needs explicit UTF-8 interpreter mode"
+  },
+  "raw_stderr_published": false
+}

@@ -1,0 +1,16 @@
+{
+  "run_id": 43141312738,
+  "head_sha": "da11fecc71cb1988ca662e1851e794931bcaad44",
+  "job_id": 130928698094,
+  "platform": "windows",
+  "status": "failure",
+  "summary_lines": [
+    "2026-11-12T02:25:52.2106205Z ERROR: test_actual_composition_and_durable_output (test_unified_coordinator.CoordinatorTests.test_actual_composition_and_durable_output)\r",
+    "2026-11-12T02:25:52.2174981Z ERROR: test_fixed_state_models_ignore_caller_modules_and_pythonpath (test_unified_independent.UnifiedIndependentTests.test_fixed_state_models_ignore_caller_modules_and_pythonpath)\r",
+    "2026-11-12T02:25:52.2236756Z ERROR: test_summary_reads_neither_advance_cognition_nor_write_snapshots (test_unified_independent.UnifiedIndependentTests.test_summary_reads_neither_advance_cognition_nor_write_snapshots)\r",
+    "2026-11-12T02:25:52.2306743Z ERROR: setUpClass (test_unified_state_models.NativeStateModelTests)\r",
+    "2026-11-12T02:25:52.2401017Z Ran 162 tests in 5.606s\r",
+    "2026-11-12T02:25:52.2401458Z FAILED (errors=4, skipped=5)\r"
+  ],
+  "notes": "Worker stderr was not surfaced; CalledProcessError exposed the fixed script. Encoding diagnosis must be reproduced."
+}

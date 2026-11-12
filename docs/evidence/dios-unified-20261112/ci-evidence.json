@@ -1,0 +1,78 @@
+{
+  "schema": "dios.unified.ci-evidence.v1",
+  "verified_code_head": "7972309fe52fddceb268f42d62c5fe8807c973f9",
+  "run_id": 43142670365,
+  "url": "https://github.com/zurvanproject/zohraya/actions/runs/43142670365",
+  "conclusion": "success",
+  "platforms": [
+    {
+      "os": "linux",
+      "job_id": 130933108540,
+      "discovered": 177,
+      "passed": 177,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "native_readout_and_composition": "success"
+    },
+    {
+      "os": "windows",
+      "job_id": 130933108883,
+      "discovered": 177,
+      "passed": 172,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 5,
+      "recorded_native_export_composition": "success",
+      "skip_reason": "native runtime uses Linux fcntl; portable JSON import tested"
+    }
+  ],
+  "regression_checks": {
+    "recovery_dev": 39601,
+    "recovery_heldout": 132001,
+    "cognition_dev": 574,
+    "cognition_heldout": 2606
+  },
+  "log_evidence": [
+    {
+      "job_id": 130933108540,
+      "name": "unittest (ubuntu-latest)",
+      "conclusion": "success",
+      "lines": [
+        "2026-11-12T02:37:20.4743409Z Ran 177 tests in 3.257s",
+        "2026-11-12T02:37:22.2697875Z {\"checks\": {\"failed\": 0, \"passed\": 39601, \"total\": 39601}, \"episodes\": 120, \"output\": \"/home/runner/work/_temp/unified-dev.json\", \"passed\": true, \"split\": \"dev\"}",
+        "2026-11-12T02:37:23.2460913Z {\"checks\": {\"failed\": 0, \"passed\": 132001, \"total\": 132001}, \"episodes\": 400, \"output\": \"/home/runner/work/_temp/unified-heldout.json\", \"passed\": true, \"split\": \"holdout\"}",
+        "2026-11-12T02:37:24.7988312Z {\"checks\": {\"failed\": 0, \"passed\": 574, \"total\": 574}, \"output\": \"/home/runner/work/_temp/dios-dev.json\", \"passed\": true, \"split\": \"dev\"}",
+        "2026-11-12T02:37:28.7193904Z {\"checks\": {\"failed\": 0, \"passed\": 2606, \"total\": 2606}, \"output\": \"/home/runner/work/_temp/dios-holdout.json\", \"passed\": true, \"split\": \"holdout\"}"
+      ]
+    },
+    {
+      "job_id": 130933108883,
+      "name": "unittest (windows-latest)",
+      "conclusion": "success",
+      "lines": [
+        "2026-11-12T02:37:32.4481447Z Ran 177 tests in 4.127s\r",
+        "2026-11-12T02:37:32.4482009Z OK (skipped=5)\r",
+        "2026-11-12T02:37:35.3152461Z {\"checks\": {\"failed\": 0, \"passed\": 39601, \"total\": 39601}, \"episodes\": 120, \"output\": \"D:\\\\a\\\\_temp\\\\unified-dev.json\", \"passed\": true, \"split\": \"dev\"}\r",
+        "2026-11-12T02:37:36.2698441Z {\"checks\": {\"failed\": 0, \"passed\": 132001, \"total\": 132001}, \"episodes\": 400, \"output\": \"D:\\\\a\\\\_temp\\\\unified-heldout.json\", \"passed\": true, \"split\": \"holdout\"}\r",
+        "2026-11-12T02:37:44.4154651Z {\"checks\": {\"failed\": 0, \"passed\": 574, \"total\": 574}, \"output\": \"D:\\\\a\\\\_temp\\\\dios-dev.json\", \"passed\": true, \"split\": \"dev\"}\r",
+        "2026-11-12T02:38:21.8095539Z {\"checks\": {\"failed\": 0, \"passed\": 2606, \"total\": 2606}, \"output\": \"D:\\\\a\\\\_temp\\\\dios-holdout.json\", \"passed\": true, \"split\": \"holdout\"}\r"
+      ]
+    }
+  ],
+  "preserved_prior_runs": [
+    {
+      "id": 43141312738,
+      "head": "da11fecc71cb1988ca662e1851e794931bcaad44",
+      "conclusion": "failure"
+    },
+    {
+      "id": 43142150093,
+      "head": "2f8fe937a2c37b7abf009000960f05a9d0b9b6e5",
+      "linux": "success",
+      "windows": "failure"
+    }
+  ],
+  "repeated_heldout_is_regression": true,
+  "independent_human_evaluation": false
+}

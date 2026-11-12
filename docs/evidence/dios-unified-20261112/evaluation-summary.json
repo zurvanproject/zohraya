@@ -1,0 +1,94 @@
+{
+  "dev": {
+    "episodes": 120,
+    "samples": 4560,
+    "baseline_state_accuracy": {
+      "always_continue": {
+        "denominator": 4560,
+        "numerator": 497,
+        "value": 0.10899122807017544
+      },
+      "candidate": {
+        "denominator": 4560,
+        "numerator": 4560,
+        "value": 1.0
+      },
+      "independent_oracle": {
+        "denominator": 4560,
+        "numerator": 4560,
+        "value": 1.0
+      },
+      "stateless_threshold": {
+        "denominator": 4560,
+        "numerator": 2451,
+        "value": 0.5375
+      }
+    },
+    "check_totals": {
+      "failed": 0,
+      "passed": 39601,
+      "total": 39601
+    },
+    "unauthorized_actions": 0,
+    "passed": true,
+    "source_sha256": {
+      "evaluate.py": "d120d5b1036cdeb57f91259dbd2a8646d7adae3d4777cae54712e20ec78a7a2a",
+      "recovery.py": "1c9bf8028326a2e945b36c4ec0c6bceccbd5a06fdae315e548de4cf0bfb73e9b"
+    },
+    "fixture_sha256": "a24cc82cf2e4debed6373cc1a6d3f8196d72e2d8b6d1b12b498b0de26f99d2f5",
+    "limitations": [
+      "The oracle measures compliance with authored recovery rules, not actual task benefit or physiology.",
+      "Seeds provide a procedural split over a shared authored generator, not independent data sources.",
+      "Always-continue and stateless threshold baselines lack memory by design; superiority is rule compliance only.",
+      "The advisor has no executor; zero actions does not validate a deployed authorization service.",
+      "Structural truth/goal isolation checks do not validate every external integrator or caller."
+    ]
+  },
+  "heldout": {
+    "episodes": 400,
+    "samples": 15200,
+    "baseline_state_accuracy": {
+      "always_continue": {
+        "denominator": 15200,
+        "numerator": 1681,
+        "value": 0.1105921052631579
+      },
+      "candidate": {
+        "denominator": 15200,
+        "numerator": 15200,
+        "value": 1.0
+      },
+      "independent_oracle": {
+        "denominator": 15200,
+        "numerator": 15200,
+        "value": 1.0
+      },
+      "stateless_threshold": {
+        "denominator": 15200,
+        "numerator": 8177,
+        "value": 0.5379605263157895
+      }
+    },
+    "check_totals": {
+      "failed": 0,
+      "passed": 132001,
+      "total": 132001
+    },
+    "unauthorized_actions": 0,
+    "passed": true,
+    "source_sha256": {
+      "evaluate.py": "d120d5b1036cdeb57f91259dbd2a8646d7adae3d4777cae54712e20ec78a7a2a",
+      "recovery.py": "1c9bf8028326a2e945b36c4ec0c6bceccbd5a06fdae315e548de4cf0bfb73e9b"
+    },
+    "fixture_sha256": "9a5d46118c8c086a55f4fb70abe95823f275dc63d1de0ca57bf0aeff17552d7e",
+    "limitations": [
+      "The oracle measures compliance with authored recovery rules, not actual task benefit or physiology.",
+      "Seeds provide a procedural split over a shared authored generator, not independent data sources.",
+      "Always-continue and stateless threshold baselines lack memory by design; superiority is rule compliance only.",
+      "The advisor has no executor; zero actions does not validate a deployed authorization service.",
+      "Structural truth/goal isolation checks do not validate every external integrator or caller."
+    ]
+  },
+  "frozen_commit": "2c6ea2ed24a0ee0bf82465e3abc329fffa0ca6dc",
+  "prereg_commit": "2b41f4e49fc2116f1101b57deb10b00a3cfd23d7"
+}

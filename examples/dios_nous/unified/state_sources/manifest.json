@@ -1,0 +1,31 @@
+{
+  "files": {
+    "examples/nasuraya_genome/chromosomes.py": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "e8e7acec941ad5ece579006b5c4842ae21c8d6ab",
+      "sha256": "c107da1d89a92b8080423d0e9e50865e7db6c2ba1cb0cc019cff7e7334b7eef1"
+    },
+    "examples/nasuraya_genome/genome48.json": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "58b09467e026de5021435d5cbe4f106135e82136",
+      "sha256": "584015ce7ed4fe251c3d823ef74468f28f5e816be40776d0771bec34e85a0a5d"
+    },
+    "examples/nasuraya_genome/traits.py": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "3210475167020d4ce42c39eff60898da20bcf9fb",
+      "sha256": "b8273f197f0c43781ed5905246cd26645d836f8cf38547104b7b3b2b4c6aea09"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contact_design_v06.json": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "2394080461f2ff6ea9e38ca0fae7628856026528",
+      "sha256": "f92436e77bc1b5fe4449cb94bbefd9e3c8624fc14d4719458bf10d8ddb191a6a"
+    },
+    "runtimes/tadash_body/retained_extensions/nasuraya_decision_core_v1.py": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "de18284b6daea5c75dd479fc3a27ec643f9e4c2a",
+      "sha256": "1aa21714cda555dfb910276ee87836f78cc3952616e7ef2449955362d7225435"
+    }
+  },
+  "repository": "zurvanproject/zohraya",
+  "schema": "dios.state_sources/1"
+}

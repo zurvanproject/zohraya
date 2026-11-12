@@ -25,7 +25,34 @@ def main():
     sub.add_parser("dissent-stats", help="show counts of locally recorded dissent cases")
     cognitive = sub.add_parser("cognitive-demo", help="offline synthetic evidence, dissent, correction and goal episode")
     cognitive.add_argument("--output-dir", type=Path, help="empty directory for inspectable research state")
+    unified = sub.add_parser("unified-demo", help="offline composition with pinned body and public evidence")
+    unified.add_argument("--output-dir", type=Path, help="empty directory for inspectable state and snapshot")
+    unified.add_argument("--now-utc", default="2026-11-12T08:00:00Z", help="explicit evaluation clock for frozen reports")
+    unified.add_argument("--native-export", type=Path, help="bounded exported simulation observation JSON")
+    unified.add_argument("--simulated-now", type=float, help="current simulated seconds for the export")
+    sub.add_parser("unified-catalogue", help="print parameter definitions with units, sources and missing connections")
     args = parser.parse_args()
+    if args.command == "unified-catalogue":
+        from .unified.coordinator import catalogue
+        print(json.dumps(catalogue(), ensure_ascii=False, indent=2, allow_nan=False))
+        return
+    if args.command == "unified-demo":
+        from .unified.coordinator import run_demo, summary
+        if (args.native_export is None) != (args.simulated_now is None):
+            parser.error("--native-export and --simulated-now must be provided together")
+        native = None
+        if args.native_export is not None:
+            if args.native_export.stat().st_size > 16384:
+                parser.error("native export exceeds16KiB")
+            native = json.loads(args.native_export.read_text(encoding="utf-8"))
+        options = dict(now_utc=args.now_utc, native_export=native, now_s=args.simulated_now)
+        if args.output_dir is not None:
+            result = run_demo(args.output_dir, **options)
+        else:
+            with tempfile.TemporaryDirectory(prefix="dios-unified-") as td:
+                result = run_demo(Path(td), **options)
+        print(json.dumps(summary(result), ensure_ascii=False, indent=2, allow_nan=False))
+        return
     if args.command == "cognitive-demo":
         from .integration import demo
         if args.output_dir is not None:

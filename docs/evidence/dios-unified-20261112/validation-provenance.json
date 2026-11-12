@@ -1,0 +1,26 @@
+{
+  "schema": "dios.unified.validation-provenance.v1",
+  "prereg_commit": "2b41f4e49fc2116f1101b57deb10b00a3cfd23d7",
+  "evaluation_freeze_commit": "2c6ea2ed24a0ee0bf82465e3abc329fffa0ca6dc",
+  "latest_code_commit": "7972309fe52fddceb268f42d62c5fe8807c973f9",
+  "recovery_code_checks": {
+    "examples/dios_nous/unified/evaluate.py": {
+      "git_blob": "fc8559828a5e831cac096800f2e6c1a9b8dd6b4b",
+      "frozen_git_blob": "fc8559828a5e831cac096800f2e6c1a9b8dd6b4b",
+      "unchanged_since_first_evaluation": true
+    },
+    "examples/dios_nous/unified/recovery.py": {
+      "git_blob": "596bfb529e1a2a982614296c511c9dbc61a3ed98",
+      "frozen_git_blob": "596bfb529e1a2a982614296c511c9dbc61a3ed98",
+      "unchanged_since_first_evaluation": true
+    }
+  },
+  "evaluation_type": "authored procedural split; not independent human data",
+  "first_heldout_sha256": "fc742f7dc1fbce0f726bf18aefce7dd7aabc6337aa6dcdcb92b9a247bc175b73",
+  "first_heldout_was_not_replaced": true,
+  "fixture_outputs_are_historical_run_records": true,
+  "native_models_results_recorded_before_portability_fixes": true,
+  "same_information_rule_oracle_ties_candidate": true,
+  "deployment_performed": false,
+  "paid_model_api_calls": 0
+}
