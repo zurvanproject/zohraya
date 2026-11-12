@@ -15,6 +15,10 @@
       "bytes": 2466,
       "sha256": "a638527ec3947f7e93254e3f68b118bfe0045512b1233230817b02d47a7f9366"
     },
+    "combined-session-test.txt": {
+      "bytes": 302,
+      "sha256": "5581ac6d56e36105e60ed419f386b7e63fdd144e39793e8c2b847b54dd9fae21"
+    },
     "development-observer.jsonl.gz": {
       "bytes": 215801,
       "sha256": "cd691ae9d532b5b205f7f3012b8945403921a8386bdd0cb3832e9ef466395a70"
@@ -103,7 +107,7 @@
     "dios_pass": 177,
     "interoception_pass": 33,
     "native_body_pass": 25,
-    "shared_runtime_pass": 33,
-    "total_pass": 318
+    "shared_runtime_pass": 34,
+    "total_pass": 319
   }
 }

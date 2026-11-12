@@ -194,6 +194,25 @@ class NativeReconsiderationTests(unittest.TestCase):
 @unittest.skipUnless((ROOT/'docs/evidence/nasuraya-stage2-v01/frozen-models.json.gz').exists(),
                      'continuous model has not yet been frozen')
 class ContinuousRuntimeTests(unittest.TestCase):
+    @unittest.skipUnless(sys.platform=='linux','native owner requires Linux')
+    def test_continuous_decoder_and_native_retry_share_one_resumed_session(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'combined'
+            session=Session.create(path,backend='native',fixture='transient_pain',
+                decoder_version='continuous_v1',reconsideration=True,max_actions=8)
+            receipts=[]
+            try:
+                for index in range(8):
+                    if index==3:
+                        before=session.snapshot();session.close();session=Session(path)
+                        self.assertEqual(before,session.snapshot())
+                    receipts.append(session.step('e'+str(index),demo_frames(index,0),expected_revision=index))
+                self.assertEqual(sum(r['outcome']['executed']=='walk' for r in receipts),5)
+                self.assertEqual(sum(r['reconsideration'].get('retry_permitted',False) for r in receipts),1)
+                self.assertTrue(all(r['model_sha']==decoder('continuous_v1').fingerprint() for r in receipts))
+                self.assertEqual(session.snapshot()['dios']['action_reviews']['walk']['evidence_review']['decision'],'A')
+            finally:session.close()
+
     def test_selected_model_is_used_and_preserved(self):
         with tempfile.TemporaryDirectory() as tmp:
             path=Path(tmp)/'session'
