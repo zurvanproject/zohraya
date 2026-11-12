@@ -1,0 +1,42 @@
+Run: https://github.com/zurvanproject/zohraya/actions/runs/43200525942
+Head: 2fa633025af9bf72a6387caab03b058b94574c43
+Job: 131122436494
+Verified log excerpts (setup/token output omitted):
+2026-11-12T10:27:43.6027246Z ERROR: test_crash_after_commit_reconciles_without_reexecution (examples.nasuraya_runtime.test_session.SessionTests.test_crash_after_commit_reconciles_without_reexecution)
+2026-11-12T10:27:43.6075775Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6081916Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6083012Z ERROR: test_creation_never_resets_existing_directory (examples.nasuraya_runtime.test_session.SessionTests.test_creation_never_resets_existing_directory)
+2026-11-12T10:27:43.6090643Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6091447Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6093170Z ERROR: test_duplicate_conflict_stale_writer_and_budget (examples.nasuraya_runtime.test_session.SessionTests.test_duplicate_conflict_stale_writer_and_budget)
+2026-11-12T10:27:43.6100776Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6101542Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6102703Z ERROR: test_event_corruption_and_published_projection_corruption_fail_closed (examples.nasuraya_runtime.test_session.SessionTests.test_event_corruption_and_published_projection_corruption_fail_closed)
+2026-11-12T10:27:43.6110278Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6111062Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6112050Z ERROR: test_fresh_process_resume_matches_uninterrupted (examples.nasuraya_runtime.test_session.SessionTests.test_fresh_process_resume_matches_uninterrupted)
+2026-11-12T10:27:43.6119087Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6119820Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6120725Z ERROR: test_invalid_frames_do_not_advance_state (examples.nasuraya_runtime.test_session.SessionTests.test_invalid_frames_do_not_advance_state)
+2026-11-12T10:27:43.6127865Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6128660Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6129723Z ERROR: test_process_death_during_legacy_projection_is_recoverable (examples.nasuraya_runtime.test_session.SessionTests.test_process_death_during_legacy_projection_is_recoverable)
+2026-11-12T10:27:43.6136616Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6137391Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6138416Z ERROR: test_projection_failure_before_action_does_not_commit (examples.nasuraya_runtime.test_session.SessionTests.test_projection_failure_before_action_does_not_commit)
+2026-11-12T10:27:43.6145216Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6146046Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6147388Z ERROR: test_source_and_model_pins_fail_closed (examples.nasuraya_runtime.test_session.SessionTests.test_source_and_model_pins_fail_closed)
+2026-11-12T10:27:43.6154659Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6155477Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6156416Z ERROR: test_state_changes_behavior_without_labels (examples.nasuraya_runtime.test_session.SessionTests.test_state_changes_behavior_without_labels)
+2026-11-12T10:27:43.6163269Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6164054Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6165053Z ERROR: test_stop_persists_even_before_first_observation (examples.nasuraya_runtime.test_session.SessionTests.test_stop_persists_even_before_first_observation)
+2026-11-12T10:27:43.6172313Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6173126Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6174334Z ERROR: test_visual_executes_and_unconnected_components_stay_explicit (examples.nasuraya_runtime.test_session.SessionTests.test_visual_executes_and_unconnected_components_stay_explicit)
+2026-11-12T10:27:43.6181710Z ##[error]    raise ValueError('recovered manifest mismatch')
+2026-11-12T10:27:43.6182657Z ValueError: recovered manifest mismatch
+2026-11-12T10:27:43.6183285Z Ran 17 tests in 0.020s
+2026-11-12T10:27:43.6183517Z FAILED (errors=12, skipped=5)

@@ -22,6 +22,10 @@ The initial failed assumptions were not discarded:
 6. Review exposed a scope error: success of observe must not clear walk's veto.
    Separate action claims and verify continuing deferral after successful observe
    and reopening.
+7. First GitHub Windows CI stopped before execution: Git changed line endings
+   in the pinned native manifest. Mark the imported native tree `-text` so Git
+   preserves its exact bytes. Keep all checksum checks; do not normalize or
+   regenerate pinned hashes to bypass this failure.
 
 These are integration fixtures, not another held-out sensory experiment.
 Existing PR195 accuracy/calibration results are unchanged and should not be
