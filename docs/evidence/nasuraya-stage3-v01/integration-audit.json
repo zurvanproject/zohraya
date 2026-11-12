@@ -1,0 +1,73 @@
+{
+  "current_body": {
+    "authority": {
+      "commit": "f1c93810abf83bea894ceda2801c3771716c5b30",
+      "git_blob_sha1": "74bf13c34fd5408ecd48fc379d935b2f23e7fad5",
+      "sha256": "bbf02e64edaac743433baf800571a920c7c35712edac2f899c98e7dd18dc81e6"
+    },
+    "historical_default_allowed": false,
+    "historical_model": "tadash_legacy_195kg",
+    "model_id": "tadash_reduced_78kg_v1",
+    "morphology": {
+      "aesthetic_contract": "feminine silhouette; strength bounded by internal load paths",
+      "feet": 2,
+      "fingers_per_hand": 5,
+      "ground_to_crown_cm": 170,
+      "ground_to_horn_tip_cm": 192,
+      "hands": 2,
+      "horn_count": 2,
+      "mass_kg": 78,
+      "tail_centerline_cm": 85,
+      "tail_vertebrae_design_count_unvalidated": 18,
+      "toes_per_digitigrade_foot": 3
+    },
+    "physics": "reduced_parameterized_engineering_fixture_not_empirical_calibration",
+    "reference_pools": {
+      "fuel_J": 1600000.0,
+      "heat_capacity_J_K": 273000,
+      "reserve_J": 24000.0,
+      "water_L": 44.0
+    },
+    "schema": "nasuraya.current-body/1",
+    "sha256": "2af81bedafeb914562daa0d8b32e5d0a5b72584c97f03399fe18c2a84c615135"
+  },
+  "current_entrypoint": "python -m examples.nasuraya_runtime",
+  "external_actions": 0,
+  "historical_entries": {
+    "python -m examples.nasuraya_body_loop": "historical standalone research interface; not current morphology",
+    "runtimes/tadash_body": "immutable source archive used for reproducible derivation",
+    "tadash_legacy_195kg": "available in current interface only with --legacy-body"
+  },
+  "historical_native_sources_verified": 70,
+  "implemented_connections": {
+    "body_to_decision": "native owned export -> workload -> Rolyel -> native final veto",
+    "decision_to_memory": "matched actual local receipt -> action-scoped CognitiveSession",
+    "genome": "fixed fixture only; no mutation/application to physics",
+    "goal_continuity": "original AdvisoryGoalPlanner; persistent stop and budget",
+    "memory_to_decision": "DIOS dissent and bounded evidence-based reconsideration",
+    "ritual_server_moltbook_desktop": "historical references; no live/authenticated coupling",
+    "sensation": "numeric frames -> persistent state and signed trace -> hypothesis and action pressure",
+    "visual": "source-pinned text planning; no rendering"
+  },
+  "native_cycles_executed_by_this_audit": 0,
+  "native_defaults": {
+    "body": "tadash_reduced_78kg_v1",
+    "decoder": "legacy",
+    "reconsideration": false
+  },
+  "noise_candidate": {
+    "explicit_option": "--decoder noise_candidate",
+    "frozen_sha": "13ca6fbbf202fc6c73012a17e9fd337fb63f411721a22eb190f9e1e190ebd78b",
+    "model_sha": "2469dbdcc3738fee188e113d3bc345e4020ed56a6c43155177cadabd0cbbfbcc",
+    "promoted_to_default": false,
+    "validation_accepted": false
+  },
+  "schema": "nasuraya.integration-audit/1",
+  "subjective_experience_established": false,
+  "unresolved": [
+    "physiological calibration and independent foot/skeletal geometry",
+    "noisy/novel detection qualification; rejected candidate retained",
+    "explicit migration of old sessions; bounded replay cost",
+    "live authenticated external ingress and provider execution"
+  ]
+}

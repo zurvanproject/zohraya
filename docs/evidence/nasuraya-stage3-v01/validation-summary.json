@@ -1,0 +1,71 @@
+{
+  "development_fixes": [
+    {
+      "effect": "Walk could be selected without any physical shift",
+      "fix": "Scale absolute gas/fuel guards with their reference pools; preserve dimensionless limits",
+      "issue": "Healthy resized oxygen store compared with old 2 L pending-rest threshold"
+    },
+    {
+      "effect": "Owner alternated walk and breath before touchdown",
+      "fix": "Scale geometric normalization and unloading thresholds; retain native forecast cost and veto",
+      "issue": "Balance score used old 10 cm normalization after geometric scaling"
+    },
+    {
+      "effect": "4 x 1.6 s did not complete a touchdown even in legacy model",
+      "fix": "Separate physical outcome in receipts and measure 6 x 1.6 s; both bodies complete one touchdown",
+      "issue": "Selected walk conflated with completed contact in a too-short development test"
+    },
+    {
+      "effect": "Correction rejected despite aggregate improvement",
+      "fix": "No promotion; keep research candidate explicit and frozen rollback available",
+      "issue": "Noisy validation false positives 28/266 exceed prespecified 10%"
+    }
+  ],
+  "errors": {
+    "novel": {
+      "candidate": {
+        "false_negative": 97,
+        "false_positive": 5
+      },
+      "stage2": {
+        "false_negative": 25,
+        "false_positive": 286
+      }
+    },
+    "shift": {
+      "candidate": {
+        "false_negative": 223,
+        "false_positive": 155
+      },
+      "stage2": {
+        "false_negative": 6,
+        "false_positive": 698
+      }
+    },
+    "test": {
+      "candidate": {
+        "false_negative": 350,
+        "false_positive": 64
+      },
+      "stage2": {
+        "false_negative": 111,
+        "false_positive": 778
+      }
+    }
+  },
+  "frozen_commit": "66d904fb59af636141fc134a94d19d0a51156fe9",
+  "frozen_tree": "4e97c4ae7ad36c132d655f0d5fcddaff74bfb841",
+  "holdout_first_execution": true,
+  "holdout_parameter_updates": 0,
+  "local_successful_tests": 330,
+  "observer": {
+    "observer_events": 12560,
+    "predictions": 6280,
+    "strict_errors": 1347,
+    "tail_sha256": "e098c9ffc946e31346a94822b233fbc2645d71bd1ede8ee66e601f17e0abaf52"
+  },
+  "optional_sdk_skipped": 10,
+  "promoted_to_default": false,
+  "python": "3.12.14",
+  "validation_accepted": false
+}
