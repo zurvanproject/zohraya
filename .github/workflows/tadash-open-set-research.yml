@@ -1,0 +1,45 @@
+name: Tadash Open Set (research only)
+on:
+  push:
+    paths:
+      - 'examples/tadash_open_set/**'
+      - '.github/workflows/tadash-open-set-research.yml'
+  pull_request:
+    paths:
+      - 'examples/tadash_open_set/**'
+      - '.github/workflows/tadash-open-set-research.yml'
+jobs:
+  offline-replay:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    permissions:
+      contents: read
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.13'
+      - run: python -m unittest examples.tadash_open_set.test_open_set -v
+      - run: python -m examples.tadash_open_set.experiment calibrate --output open-set-fit
+      - run: python -m examples.tadash_open_set.experiment evaluate --calibration open-set-fit/calibration.json --output open-set-holdout
+      - name: Publish synthetic-only evidence
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: open-set-${{ matrix.os }}-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            open-set-fit/calibration.json
+            open-set-fit/known_validation.json
+            open-set-holdout/summary.json
+            open-set-holdout/events.jsonl
+            open-set-holdout/predictions.json
