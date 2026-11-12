@@ -167,7 +167,9 @@ class DissentLedger:
         self.conn.close()
 
     def record(self, result: Mapping[str, Any]) -> str:
-        if result.get("schema") != SCHEMA or result.get("decision_origin") not in ORIGINS:
+        if (result.get("schema") != SCHEMA
+                or type(result.get("decision_origin")) is not str
+                or result.get("decision_origin") not in ORIGINS):
             raise ValueError("invalid dissent review")
         if result.get("operational_override_allowed") is not False or result.get("override_performed") is not False:
             raise ValueError("operational override is unsupported")
@@ -180,9 +182,9 @@ class DissentLedger:
             raise ValueError("invalid decision digest")
         codes = result.get("reason_codes")
         sources = result.get("observations_claimed_provenance")
-        if not isinstance(codes, list) or any(c not in CONCERNS for c in codes):
+        if not isinstance(codes, list) or any(type(c) is not str or c not in CONCERNS for c in codes):
             raise ValueError("invalid concerns")
-        if not isinstance(sources, list) or any(s not in PROVENANCES for s in sources):
+        if not isinstance(sources, list) or any(type(s) is not str or s not in PROVENANCES for s in sources):
             raise ValueError("invalid provenance")
         requested = result.get("requested_override")
         if type(requested) is not bool:
