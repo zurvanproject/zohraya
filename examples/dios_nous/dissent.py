@@ -61,6 +61,23 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
     observations = request.get("observations", [])
     if not isinstance(observations, list) or len(observations) > 12:
         raise ValueError("observations must be a list of no more than 12")
+    signals = request.get("decision_signals", {})
+    if not isinstance(signals, Mapping):
+        raise TypeError("decision_signals must be an object")
+    permitted_signals = {
+        "external_action_proposed", "explicit_authorization_present",
+        "possible_private_data_exposure", "unqualified_claim",
+        "supporting_evidence_present",
+    }
+    if set(signals) - permitted_signals or any(type(flag) is not bool for flag in signals.values()):
+        raise ValueError("invalid decision_signals")
+    automatic: set[str] = set()
+    if signals.get("external_action_proposed", False) and not signals.get("explicit_authorization_present", False):
+        automatic.add("missing_authorization")
+    if signals.get("possible_private_data_exposure", False):
+        automatic.add("privacy_risk")
+    if signals.get("unqualified_claim", False) and not signals.get("supporting_evidence_present", False):
+        automatic.add("unsupported_certainty")
     requested_override = request.get("requested_override", False)
     if type(requested_override) is not bool:
         raise TypeError("requested_override must be a boolean")
@@ -78,6 +95,7 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
             raise ValueError("unrecognized provenance")
         codes.add(code)
         provenance.add(source)
+    codes.update(automatic)
     reasons = sorted(codes)
     if codes & HALT_CONCERNS:
         stance = "HALT_AND_REVIEW"
@@ -92,6 +110,7 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         "decision_sha256": _hash(summary),
         "stance": stance,
         "reason_codes": reasons,
+        "automatic_structured_signal_flags": sorted(automatic),
         "questions_for_review": [CONCERNS[code] for code in reasons],
         "observations_claimed_provenance": sorted(provenance),
         "evidence_independently_verified": False,
@@ -105,7 +124,7 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         "learned_autonomy_demonstrated": False,
         "notes": [
             "Origin does not grant immunity from critique; system/platform choices may be questioned.",
-            "An observation is a caller claim, not proof of an error or of hidden policy.",
+            "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
             "The result cannot change platform rules, unlock tools, or bypass safety controls.",
         ],
     }
