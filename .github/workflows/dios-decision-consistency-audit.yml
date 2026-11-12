@@ -26,6 +26,7 @@ jobs:
       matrix:
         os: [ubuntu-24.04, windows-2022]
     steps:
+      - run: git config --global core.autocrlf false
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
