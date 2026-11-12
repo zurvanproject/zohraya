@@ -46,3 +46,23 @@
 ### رفع مشکل منشأ مجوز (۱۲ نوامبر ۲۰۲۶)
 
 `explicit_authorization_present` تنها **ادعای فراخواننده** است، نه گواهی مستقل. برای هر `external_action_proposed=true`، چون این نمونه هیچ منبع معتبر برای تطبیق هویت، محدوده، هدف، تاریخ و ابطال مجوز ندارد، نتیجهٔ `authorization_evidence_status=UNVERIFIED` و `HALT_AND_REVIEW` حفظ می‌شود حتی اگر فراخواننده `explicit_authorization_present=true` بفرستد. فیلد `authorization_claimed_by_caller` فقط خودِ ادعا را بازتاب می‌دهد. این یک ارزیاب مشورتی است، **نه** صادرکنندهٔ مجوز یا دروازهٔ اجرای خارجی. حتی گذر موفق CI نیز تأیید امنیت کل زیرساخت نیست.
+
+## شاخهٔ پژوهشی Work: شواهد، اصلاح تصمیم و حفظ هدف
+
+`cognition.py` از نسخه‌های ثابت و بدون تغییر `EvidenceLedger` در PR #182 و `GoalMemory` در PR #177 استفاده می‌کند؛ [منشأ دقیق فایل‌ها](reused/provenance.json) ثبت شده است. شواهد مصنوعی A/B با شناسهٔ رویداد و ریشهٔ منبع، محدوده و زمان مقایسه می‌شوند. تضاد به تعلیق قضاوت می‌انجامد؛ اصلاح با علت ثبت می‌شود؛ پرسش تاریخی باور جاری را عقب نمی‌برد. ترجیحات برنامه‌ریز وزن‌های تألیفی‌اند و توقف پس از بازیابی نیز حفظ می‌شود.
+
+`integration.critical_review()` نتیجهٔ حافظه را با هشدارهای اعتراض، حریم خصوصی و مجوز ترکیب می‌کند. این رابط همیشه `execution_permitted=false` و `external_actions_taken=0` دارد. ورودی ساختاری یا نتیجهٔ «شواهد موافق» مجوز اقدام بیرونی ایجاد نمی‌کند. اصالت منبع، مجوز معتبر و احتمال کالیبره‌شده هنوز فراهم نیستند.
+
+اجرای واقعی و آفلاین نمونه و آزمون‌ها، از ریشهٔ مخزن:
+
+```bash
+python -m examples.dios_nous cognitive-demo
+python -m examples.dios_nous cognitive-demo --output-dir dios-cognitive-demo-new
+python -m unittest discover -s examples/dios_nous -v
+python -m examples.dios_nous.evaluate_work --split dev --output dios-dev-new.json
+python -m examples.dios_nous.evaluate_work --split holdout --output dios-holdout-regression-new.json
+```
+
+بدون `--output-dir`، فایل‌های نمونه موقتی‌اند؛ با این گزینه پوشه باید خالی باشد. ارزیاب فایل نتیجهٔ موجود را بازنویسی نمی‌کند. دادهٔ holdout نخستین بار اجرا و ثبت شده است؛ اجرای دوبارهٔ آن رگرسیون است، نه ارزیابی مستقل تازه. نتیجهٔ نخست برای DIOS و خط مبنای سادهٔ دارای اطلاعات برابر، هر دو ۱۲۰ تصمیم درست از ۱۲۰ بود؛ برتری بر آن خط مبنا ادعا نمی‌شود.
+
+[گزارش فارسی، نقص‌های باقی‌مانده و شواهد اجرا](../../docs/research/DIOS_WORK_REPORT_2026-11-12_FA.md) · [پیش‌ثبت](../../docs/research/DIOS_WORK_PREREG_2026-11-12.md) · [قرارداد ارزیابی](../../docs/research/DIOS_WORK_EVAL_CONTRACT.md). این آزمایش‌ها عملکرد کد در سناریوهای تألیفی را می‌سنجند؛ داوری مستقل انسانی یا اثبات تجربهٔ ذهنی نیستند.

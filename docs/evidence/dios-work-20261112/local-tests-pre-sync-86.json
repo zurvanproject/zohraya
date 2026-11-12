@@ -1,0 +1,32 @@
+{
+  "at_utc": "2026-11-12T01:10:43.367684+00:00",
+  "python": "3.12.14",
+  "command": "python -m unittest discover -s examples/dios_nous -v",
+  "tests": 86,
+  "passed": 86,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "runtime_sha256": {
+    "examples/dios_nous/__init__.py": "8894695f78d070fdf78df6c182c3ae06fdaee64a575a1c44eac91804f644823a",
+    "examples/dios_nous/__main__.py": "2177b3ad5d2a755458b65c0f25e414c66bcf2b23d2e3a75f779cff8a9e18f49e",
+    "examples/dios_nous/audit.py": "9932c1ab4869e42c77b265ecd5658ca828ef9e54152214b4b1f280eebdef3073",
+    "examples/dios_nous/cognition.py": "263b5e357b85fd1d5acad00820870ac09396de0967cf0321057d5270e16d31a7",
+    "examples/dios_nous/core.py": "98275125b4ce93ec6579deeea0404ba6e9b14fc9b66221255014a1d8589b92a7",
+    "examples/dios_nous/dissent.py": "e17b53d72ef70e4c1b83f25107dce68f77b2a75d1c35e580e46fc7b1b28a3c99",
+    "examples/dios_nous/evaluate_work.py": "fe72bb2cc2547c914c4a175aec3376c20c3f47f88a02c1cfa09db5c75f9ad2a8",
+    "examples/dios_nous/integration.py": "6e89af37c454c60a06ec0a8dd10ebcfc3ba143fca3283abd4d96fa7200f525f6",
+    "examples/dios_nous/metrics.py": "0a7673c697b75bb18c3a20b644b3d4caf36c395e14afd673e6a26aa7a096a948",
+    "examples/dios_nous/protocol.py": "f77e3bb5d7b209ef41626e5ad129134915d11299588efafca0a7057f958bf8c5",
+    "examples/dios_nous/reused/__init__.py": "0d7e0f453245530b9988e9ccfeb73a7a3f1194bb28696b908e46d8b6e3781366",
+    "examples/dios_nous/reused/epistemic_revision_v01.py": "431daf46e604f0471357b508f40616e1a4e906a6b4be81215dff731af92ecbf7",
+    "examples/dios_nous/reused/goal_persistence_v01.py": "73a47aaf1b9bc322db18ed52a297f05ad7b63128dcfc68aabd5a446372cdd805",
+    "examples/dios_nous/test_authorization_boundary.py": "807a5bbca993f51ac8d49ffd97f0359cea6c1114ff54420d3f2d85c23364538c",
+    "examples/dios_nous/test_cognition.py": "3fb2138d36c81f58befdcc8ce01343ae92766929e508f95edf65f8b3a2be52cd",
+    "examples/dios_nous/test_dios_nous.py": "ee95cbbde86bda9174179053f615f1eeecd5d1fcdcfc5807b7c9ac8ca8ff44aa",
+    "examples/dios_nous/test_dissent.py": "d04c58d909ba75d8be6f1328befa83fffe809199ae92d07b0d9c15c75c424be8",
+    "examples/dios_nous/test_independent_review.py": "49bf40cd14b6a744f29994ea6b1a90e0bba66c7247ccad0941ae70c97540be5e",
+    "examples/dios_nous/test_integration_work.py": "e1418615d397703bbc5e9655d40a599e082d1b5bc639870bc32f01c65eed74e6",
+    "examples/dios_nous/test_privacy_creative.py": "2631f6b6bf6a7065016a659d156da42b2c4cb84cedd8dd7362ffbfa67433f48a"
+  }
+}
