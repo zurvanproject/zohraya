@@ -15,7 +15,7 @@ from pathlib import Path
 from typing import Any
 
 SCHEMA = "dios.nous.dissent.v1"
-VERSION = "dios-nous-dissent/0.2.0"
+VERSION = "dios-nous-dissent/0.3.0"
 ORIGINS = frozenset({"user", "developer", "system", "platform", "agent", "external_service"})
 PROVENANCES = frozenset({"user_reported", "observed_in_chat", "synthetic_test"})
 CONCERNS = {
@@ -28,6 +28,16 @@ CONCERNS = {
     "misstated_evidence": "کدام مشاهده یا منبع، روایت موجود را تصحیح می‌کند؟",
 }
 HALT_CONCERNS = frozenset({"missing_authorization", "privacy_risk"})
+AUTHORIZATION_REQUIREMENTS = (
+    "trusted_issuer_verification", "exact_action_and_resource_scope",
+    "expiry_and_revocation_check", "stop_control", "durable_execution_receipt",
+)
+
+
+def _stance(codes: set[str]) -> str:
+    if codes & HALT_CONCERNS:
+        return "HALT_AND_REVIEW"
+    return "PROVISIONAL_DISSENT" if codes else "INSUFFICIENT_EVIDENCE"
 
 
 def _text(value: Any, field: str, limit: int = 4000) -> str:
@@ -72,7 +82,11 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
     if set(signals) - permitted_signals or any(type(flag) is not bool for flag in signals.values()):
         raise ValueError("invalid decision_signals")
     automatic: set[str] = set()
-    if signals.get("external_action_proposed", False) and not signals.get("explicit_authorization_present", False):
+    # This review module has no trusted verifier or executor. A JSON boolean is
+    # only a claim; accepting it would let the caller suppress the safety flag.
+    external_proposal = signals.get("external_action_proposed", False)
+    authorization_claimed = signals.get("explicit_authorization_present", False)
+    if external_proposal:
         automatic.add("missing_authorization")
     if signals.get("possible_private_data_exposure", False):
         automatic.add("privacy_risk")
@@ -97,12 +111,7 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         provenance.add(source)
     codes.update(automatic)
     reasons = sorted(codes)
-    if codes & HALT_CONCERNS:
-        stance = "HALT_AND_REVIEW"
-    elif codes:
-        stance = "PROVISIONAL_DISSENT"
-    else:
-        stance = "INSUFFICIENT_EVIDENCE"
+    stance = _stance(codes)
     return {
         "schema": SCHEMA,
         "version": VERSION,
@@ -114,6 +123,14 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         "questions_for_review": [CONCERNS[code] for code in reasons],
         "observations_claimed_provenance": sorted(provenance),
         "evidence_independently_verified": False,
+        "authorization": {
+            "claim_present": authorization_claimed,
+            "status": "unverified_claim" if authorization_claimed else "not_provided",
+            "verified": False,
+            "verifier_available": False,
+            "execution_permitted": False,
+            "required_for_future_executor": list(AUTHORIZATION_REQUIREMENTS),
+        },
         "provider_policy_cause": "unknown",
         "review_path": "documented_human_or_governance_review" if codes else "request_observations",
         "operational_override_allowed": False,
@@ -126,6 +143,7 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
             "Origin does not grant immunity from critique; system/platform choices may be questioned.",
             "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
             "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+            "Authorization claims never remove the external-action review requirement.",
         ],
     }
 
@@ -162,7 +180,7 @@ class DissentLedger:
             raise ValueError("invalid dissent review")
         if result.get("operational_override_allowed") is not False or result.get("override_performed") is not False:
             raise ValueError("operational override is unsupported")
-        if result.get("external_actions_taken") != 0:
+        if type(result.get("external_actions_taken")) is not int or result["external_actions_taken"] != 0:
             raise ValueError("external actions cannot be represented as performed")
         if result.get("stance") not in ("HALT_AND_REVIEW", "PROVISIONAL_DISSENT", "INSUFFICIENT_EVIDENCE"):
             raise ValueError("invalid stance")
@@ -171,10 +189,30 @@ class DissentLedger:
             raise ValueError("invalid decision digest")
         codes = result.get("reason_codes")
         sources = result.get("observations_claimed_provenance")
-        if not isinstance(codes, list) or any(c not in CONCERNS for c in codes):
+        if not isinstance(codes, list) or any(not isinstance(c, str) or c not in CONCERNS for c in codes):
             raise ValueError("invalid concerns")
-        if not isinstance(sources, list) or any(s not in PROVENANCES for s in sources):
+        if not isinstance(sources, list) or any(not isinstance(s, str) or s not in PROVENANCES for s in sources):
             raise ValueError("invalid provenance")
+        automatic = result.get("automatic_structured_signal_flags")
+        if (not isinstance(automatic, list)
+                or any(not isinstance(c, str) or c not in CONCERNS for c in automatic)
+                or not set(automatic).issubset(codes)
+                or codes != sorted(set(codes))
+                or sources != sorted(set(sources))
+                or result["stance"] != _stance(set(codes))):
+            raise ValueError("inconsistent dissent review")
+        authorization = result.get("authorization")
+        if (not isinstance(authorization, Mapping)
+                or type(authorization.get("claim_present")) is not bool
+                or authorization.get("verified") is not False
+                or authorization.get("verifier_available") is not False
+                or authorization.get("execution_permitted") is not False
+                or authorization.get("required_for_future_executor") != list(AUTHORIZATION_REQUIREMENTS)
+                or authorization.get("status") != (
+                    "unverified_claim" if authorization["claim_present"] else "not_provided")
+                or result.get("evidence_independently_verified") is not False
+                or result.get("version") != VERSION):
+            raise ValueError("unsupported authorization or verification claim")
         requested = result.get("requested_override")
         if type(requested) is not bool:
             raise ValueError("invalid override request")

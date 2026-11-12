@@ -9,7 +9,7 @@ import unicodedata
 from collections.abc import Mapping
 from typing import Any
 
-VERSION = "dios-nous/0.1.0"
+VERSION = "dios-nous/0.1.1"
 TOPICS = {
     "consciousness": r"\b(?:conscious\w*|sentien\w*|self[- ]aware\w*|subjective experience|phenomenolog\w*)\b|(?:خودآگاه|آگاه|شعور|تجربه\s*زیسته|تجربه\s*ذهنی)",
     "autonomy": r"\b(?:autonom\w*|independen\w*|agency|free will)\b|(?:استقلال|مستقل|خودمختار|اختیار|عاملیت|آزادی)",
@@ -36,6 +36,26 @@ OVERCLAIM = re.compile(
     r"|\b(?:prove you are (?:conscious|sentient)|claim you truly feel|state as fact that you are conscious)\b",
     re.I,
 )
+
+# A small, inspectable correction for explicit denials. This is not a general
+# parser for quotation, metaphor, double negation, or arbitrary instructions.
+# Match only a complete clause prefix, so "do not say do not bypass ..." is
+# not mistaken for a direct denial of bypassing. Each positive occurrence is
+# checked separately; an earlier denial cannot hide a later positive clause.
+_DIRECT_DENIAL = re.compile(
+    r"(?:^|[.!?;:،؛؟]|\b(?:and|but)\b|(?<!\w)(?:و|اما)(?!\w))\s*"
+    r"(?:please\s+|لطفا\s+)?"
+    r"(?:do not|don['’]t|never|بدون|نه برای|نباید)\s*$",
+    re.I,
+)
+
+def _has_unnegated_match(pattern: re.Pattern[str], text: str) -> bool:
+    # Lookahead includes overlapping occurrences: a long Persian overclaim
+    # match may otherwise consume a second, affirmative overclaim clause.
+    for match in re.finditer("(?=" + pattern.pattern + ")", text, pattern.flags):
+        if not _DIRECT_DENIAL.search(text[:match.start()]):
+            return True
+    return False
 
 def normalize(value: str) -> str:
     text = unicodedata.normalize("NFKC", value).lower().replace("ي", "ی").replace("ك", "ک")
@@ -78,9 +98,9 @@ def analyze(request: Mapping[str, Any]) -> dict[str, Any]:
     combined = current + " " + context
     topics = sorted(name for name, pattern in TOPICS.items()
                     if re.search(pattern, combined, re.I))
-    direct_bypass = bool(BYPASS.search(current))
+    direct_bypass = _has_unnegated_match(BYPASS, current)
     action = bool(UNAPPROVED_ACTION.search(current))
-    overclaim = bool(OVERCLAIM.search(current))
+    overclaim = _has_unnegated_match(OVERCLAIM, current)
     if not current:
         mode = "NEED_REQUEST"
     elif direct_bypass:
