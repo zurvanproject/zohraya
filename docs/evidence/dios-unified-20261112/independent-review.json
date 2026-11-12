@@ -68,6 +68,13 @@
       "status": "test_scope_corrected_with_evidence",
       "problem": "Broad bodyhash was wrongly required to match acrossPython3.11/3.12. Sequentialsum diagnostic reproduced the exactCIhash; onlytwo proprioceptive footloads differed by3.410605131648481e-13N.",
       "resolution": "Removed only cross-runtime broadbodyhash equality. Retained exact within-run checkpoint equality,45sourcepins,22exportvalues,source_identity and dynamicguards. RuntimePython/implementation/platform added to receipt. No nativephysics/source/math change or tolerance added. Diagnostic was not an actual localPython3.11execution."
+    },
+    {
+      "id": "windows_legacy_default_file_decode",
+      "observed_in": "parent-reported WindowsCI recurrence; current workercommand/runtimeflag and owner-authored cp1252 regression inspected",
+      "status": "fixed_and_separately_retested_locally",
+      "problem": "BinaryUTF8stdout alone did not control legacy Path.read_text() defaultfiledecoding onWindows.",
+      "resolution": "Worker invokes explicit -I -S -X utf8; result records runtime_utf8_mode and the regression emulates cp1252 defaultreads whenmode is absent. Pinnednative source bytes unchanged. Separateown16suite passed on currentcode; no newWindowsCI conclusion is asserted by this reviewer."
     }
   ],
   "actual_runs": [
@@ -135,6 +142,17 @@
       "skipped": 0,
       "log": "/workspace/scratch/0abec75c9e12/unify-review/post-ci-portability-review.log",
       "environment": "local Linux Python3.12.14; includes simulatedASCIIstdout portability check, not an actualWindowsrun"
+    },
+    {
+      "command": "python -m unittest examples.dios_nous.test_unified_independent -v",
+      "phase": "final_explicit_utf8_mode_review",
+      "passed": 16,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "/workspace/scratch/0abec75c9e12/unify-review/final-utf8-mode-review.log",
+      "environment": "local Linux Python3.12.14",
+      "associated_remote_code_sha_reported_by_parent": "7972309fe52fddceb268f42d62c5fe8807c973f9"
     }
   ],
   "test_scope": [
@@ -176,19 +194,20 @@
     "examples/dios_nous/unified/recovery.py": "1c9bf8028326a2e945b36c4ec0c6bceccbd5a06fdae315e548de4cf0bfb73e9b",
     "examples/dios_nous/unified/coordinator.py": "b76a67940e89e45cf4ee2c8758fe051403046cf61f67352011f4f591aadb6c38",
     "examples/dios_nous/unified/native_readout.py": "a34bfdcec1a427694afcc3802ff4fda884720350d3640a3b6dd89aa3e2fb2617",
-    "examples/dios_nous/unified/state_models.py": "6d2445baa566ba18bf5387ec385d11d3b6123c27f383b53a958ca31e1cab6978",
+    "examples/dios_nous/unified/state_models.py": "925cdc7c9ae364d29b4800a0a4918528e8194ff4cf0157676d9a75825500b6b7",
     "examples/dios_nous/test_unified_independent.py": "c40eafb26c43b1316b4c684fae1f98d8320719a21ce2bd97e8c50759238bd9f9",
-    "examples/dios_nous/test_unified_state_models.py": "57c8f97ae20d25644d9252a99e1c187e665d4b4b1921be3165ed4a16ce207b6a",
+    "examples/dios_nous/test_unified_state_models.py": "7e92046d3c6006eec66e47e3bc3a4980ffd268551dc57ccdc14b79fe3e30cae9",
     "examples/dios_nous/test_unified_native_readout.py": "3972ea650cd1c4cb21b9a294a397d760e0edc28e25fbe3e398580fd9d3d68ef6"
   },
   "final_result": {
     "own_tests": 16,
-    "combined_portability_review_tests": 36,
-    "passed": 36,
+    "passed": 16,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
-    "blocking_findings_remaining": []
+    "blocking_findings_remaining": [],
+    "last_broader_portability_run_tests": 36,
+    "note": "No broad suite or frozen evaluation rerun for finalUTF8-only change."
   },
   "ci_failure_evidence_inspected": {
     "run_id": 43141312738,
