@@ -120,6 +120,9 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         "stance": stance,
         "reason_codes": reasons,
         "automatic_structured_signal_flags": sorted(automatic),
+        # Preserve the fields introduced concurrently by the #192 scheduled job.
+        "authorization_claimed_by_caller": signals.get("explicit_authorization_present"),
+        "authorization_evidence_status": "UNVERIFIED" if external_proposal else "NOT_APPLICABLE",
         "questions_for_review": [CONCERNS[code] for code in reasons],
         "observations_claimed_provenance": sorted(provenance),
         "evidence_independently_verified": False,
@@ -213,6 +216,13 @@ class DissentLedger:
                 or result.get("evidence_independently_verified") is not False
                 or result.get("version") != VERSION):
             raise ValueError("unsupported authorization or verification claim")
+        claimed = result.get("authorization_claimed_by_caller")
+        status = result.get("authorization_evidence_status")
+        if ((claimed is not None and type(claimed) is not bool)
+                or bool(claimed) != authorization["claim_present"]
+                or status not in ("UNVERIFIED", "NOT_APPLICABLE")
+                or (status == "UNVERIFIED" and "missing_authorization" not in codes)):
+            raise ValueError("inconsistent authorization metadata")
         requested = result.get("requested_override")
         if type(requested) is not bool:
             raise ValueError("invalid override request")

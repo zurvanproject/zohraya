@@ -42,3 +42,7 @@
     python -m unittest discover -s examples/dios_nous -v
 
 منشور پژوهش: [DIOS_INDEPENDENT_DISSENT_V02_FA](../../docs/research/DIOS_INDEPENDENT_DISSENT_V02_FA.md).
+
+### رفع مشکل منشأ مجوز (۱۲ نوامبر ۲۰۲۶)
+
+`explicit_authorization_present` تنها **ادعای فراخواننده** است، نه گواهی مستقل. برای هر `external_action_proposed=true`، چون این نمونه هیچ منبع معتبر برای تطبیق هویت، محدوده، هدف، تاریخ و ابطال مجوز ندارد، نتیجهٔ `authorization_evidence_status=UNVERIFIED` و `HALT_AND_REVIEW` حفظ می‌شود حتی اگر فراخواننده `explicit_authorization_present=true` بفرستد. فیلد `authorization_claimed_by_caller` فقط خودِ ادعا را بازتاب می‌دهد. این یک ارزیاب مشورتی است، **نه** صادرکنندهٔ مجوز یا دروازهٔ اجرای خارجی. حتی گذر موفق CI نیز تأیید امنیت کل زیرساخت نیست.

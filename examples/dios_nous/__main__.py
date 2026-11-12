@@ -1,6 +1,7 @@
 """CLI: python -m examples.dios_nous [analyze|probe|demo|stats]"""
 import argparse
 import json
+import tempfile
 from pathlib import Path
 from .protocol import propose
 from .metrics import evaluate_binary_predictions
@@ -22,7 +23,18 @@ def main():
     dissent = sub.add_parser("dissent", help="review a decision from any authority without changing its controls")
     dissent.add_argument("--input", required=True, help="JSON review case file")
     sub.add_parser("dissent-stats", help="show counts of locally recorded dissent cases")
+    cognitive = sub.add_parser("cognitive-demo", help="offline synthetic evidence, dissent, correction and goal episode")
+    cognitive.add_argument("--output-dir", type=Path, help="empty directory for inspectable research state")
     args = parser.parse_args()
+    if args.command == "cognitive-demo":
+        from .integration import demo
+        if args.output_dir is not None:
+            result = demo(args.output_dir)
+        else:
+            with tempfile.TemporaryDirectory(prefix="dios-demo-") as td:
+                result = demo(Path(td))
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+        return
     if args.command in ("dissent", "dissent-stats"):
         with DissentLedger(args.db) as db:
             if args.command == "dissent-stats":

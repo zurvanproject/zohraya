@@ -1,0 +1,42 @@
+{
+  "schema": "dios.dissent.overnight.evidence.v1",
+  "date": "2026-11-12",
+  "run": 1,
+  "repo": "zurvanproject/zohraya",
+  "branch": "research/dios-independent-dissent-v02-20261112",
+  "pr": 192,
+  "base_pr": 176,
+  "baseline_head": "0a1a5cc3c1dfa94ecb838418137a56308a59f5db",
+  "pre_registered_worklog_commit": "e6848a3719a955cde673ccce5c64a07d263f833d",
+  "code_commit": "693f1205ab2d7f931f5b7f25aca2bcf5005528fa",
+  "changes": [
+    "examples/dios_nous/dissent.py",
+    "examples/dios_nous/test_dissent.py",
+    "examples/dios_nous/README.md"
+  ],
+  "ci": {
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/43132102537",
+    "run_id": 43132102537,
+    "job_id": 130898462528,
+    "head_sha": "693f1205ab2d7f931f5b7f25aca2bcf5005528fa",
+    "status": "completed",
+    "conclusion": "success",
+    "runner": "ubuntu-latest",
+    "python": "3.11",
+    "unit_command": "python -m unittest discover -s examples/dios_nous -v",
+    "unit_tests": 50,
+    "passed": 50,
+    "failed": 0,
+    "skipped_reported": 0,
+    "demo_command": "python -m examples.dios_nous --db /tmp/dios-nous-demo.sqlite demo",
+    "demo_status": "success"
+  },
+  "outcome": "Untrusted authorization claim no longer suppresses missing_authorization review hold when external_action_proposed is true.",
+  "limitations": [
+    "Caller-supplied external_action_proposed could be false or omitted",
+    "No independently verified authorization",
+    "No live execution or independent behavioral evaluation",
+    "No change to platform safety controls"
+  ],
+  "next": "Adversarial input validation and contradiction tests while keeping the module advisory and non-executing."
+}
