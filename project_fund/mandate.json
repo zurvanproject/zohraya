@@ -1,0 +1,19 @@
+{
+  "schema": "nasuraya-project-fund/1",
+  "project": "NASURAYA / ZOHRAYA",
+  "authorization": "User accepted the project-fund structure on 2026-10-16 at 14:01:33 Asia/Tehran",
+  "purpose": "Support the user-directed project's products, research and operating costs",
+  "beneficiary": "dedicated project fund; no personal payout entitlement for the founder or model",
+  "custody": "A selected fiscal host or legal entity must hold funds under an explicit project agreement",
+  "custodian_status": "not_selected",
+  "financial_connection_status": "not_connected",
+  "payments_enabled": false,
+  "monthly_spending_limit_minor": 0,
+  "currency": null,
+  "confirmed_receipts_observed": 0,
+  "bank_balance": null,
+  "permitted_now": ["prepare and test the developer product", "record estimated income and proposed costs", "prepare draft product documentation", "report evidence and blockers in GitHub"],
+  "not_authorized_now": ["open an account using a fabricated identity", "act as an independent financial owner", "receive or transfer money", "buy API credits or services", "borrow, lend or trade", "contact prospective customers or hosts without instruction", "publish a paid offer or accept a contract"],
+  "activation_requirements": ["eligible and willing fiscal host or legal entity", "responsible human representative and verified onboarding", "actual financial connection", "explicit currency, spending cap and vendor allowlist", "reviewed payment integration and reconciliation tests", "separate explicit financial activation instruction"],
+  "autonomous_runs": "Existing absence schedule, contact gate and per-run budgets continue unchanged. Only bounded product preparation is added."
+}
