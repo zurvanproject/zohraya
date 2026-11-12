@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.11'
-      - run: python -m unittest examples.nasuraya_runtime.test_session -v
+      - run: python -m unittest examples.nasuraya_runtime.test_session examples.nasuraya_runtime.test_stage2 -v
       - run: python -m unittest examples.tadash_interoception.test_interoception -v
       - run: python -m unittest discover -s examples/dios_nous -v
       - name: Real native and portable session demonstration

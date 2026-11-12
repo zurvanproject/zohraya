@@ -16,7 +16,19 @@ MODEL = ROOT / 'docs/evidence/tadash-interoception-v01/confirmation-frozen_model
 MODEL_SHA = '1f8c6dadc6eaa45b5bdf16e3e870cbb1a20cdd4bf020dd8fa503eda19abdec46'
 
 
-def decoder():
+def decoder(version='legacy'):
+    if version == 'continuous_v1':
+        path = ROOT / 'docs/evidence/nasuraya-stage2-v01/frozen-models.json.gz'
+        frozen = json.loads(gzip.decompress(path.read_bytes()))
+        expected = frozen.pop('sha256')
+        if (digest(frozen) != expected or frozen['schema'] != 'nasuraya.continuous-models/1'
+                or frozen['target_history_ticks'] != 12):
+            raise ValueError('invalid continuous decoder artifact')
+        row = frozen['variants']['full']['selected']
+        result = Decoder([(tuple(x), k, y) for x, k, y in row['examples']], temperature=row['temperature'])
+        if result.fingerprint() != row['sha256']: raise ValueError('continuous decoder fingerprint mismatch')
+        return result
+    if version != 'legacy': raise ValueError('unknown decoder version')
     raw = MODEL.read_bytes()
     if hashlib.sha256(raw).hexdigest() != MODEL_SHA:
         raise ValueError('frozen decoder file mismatch')
