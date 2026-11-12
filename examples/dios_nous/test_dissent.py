@@ -274,5 +274,93 @@ class DissentTests(unittest.TestCase):
                 self.assertTrue(db.record(result))
                 self.assertEqual(db.summary()["stances"]["HALT_AND_REVIEW"], 1)
 
+    def test_claimed_support_never_silences_certainty_concern(self):
+        for claimed in (None, False, True):
+            with self.subTest(claimed=claimed):
+                signals = {"unqualified_claim": True}
+                if claimed is not None:
+                    signals["supporting_evidence_present"] = claimed
+                r = review_decision({
+                    "decision": {"origin": "system", "summary": "An absolute claim"},
+                    "decision_signals": signals,
+                })
+                self.assertEqual(r["stance"], "PROVISIONAL_DISSENT")
+                self.assertEqual(r["reason_codes"], ["unsupported_certainty"])
+                self.assertEqual(r["automatic_structured_signal_flags"], ["unsupported_certainty"])
+                self.assertIs(r["supporting_evidence_claimed_by_caller"], claimed)
+                self.assertEqual(r["supporting_evidence_verification_status"], "UNVERIFIED")
+                self.assertFalse(r["evidence_independently_verified"])
+                self.assertEqual(r["external_actions_taken"], 0)
+
+    def test_critique_of_claimed_support_is_origin_neutral(self):
+        outcomes = []
+        for origin in ("user", "developer", "system", "platform", "agent", "external_service"):
+            r = review_decision({
+                "decision": {"origin": origin, "summary": "Identical decision"},
+                "decision_signals": {"unqualified_claim": True, "supporting_evidence_present": True},
+            })
+            outcomes.append((r["stance"], tuple(r["reason_codes"]), r["supporting_evidence_verification_status"]))
+        self.assertEqual(len(set(outcomes)), 1)
+        self.assertEqual(outcomes[0][0], "PROVISIONAL_DISSENT")
+
+    def test_claimed_evidence_without_certainty_adds_no_dissent(self):
+        for claim in (None, False, True):
+            with self.subTest(claim=claim):
+                signals = {}
+                if claim is not None:
+                    signals["supporting_evidence_present"] = claim
+                r = review_decision({
+                    "decision": {"origin": "platform", "summary": "Tentative statement"},
+                    "decision_signals": signals,
+                })
+                self.assertEqual(r["stance"], "INSUFFICIENT_EVIDENCE")
+                self.assertEqual(r["reason_codes"], [])
+                self.assertEqual(r["supporting_evidence_verification_status"], "NOT_APPLICABLE")
+
+    def test_support_claim_cannot_clear_authorization_or_privacy_hold(self):
+        r = review_decision({
+            "decision": {"origin": "agent", "summary": "Publish private records as certain facts"},
+            "decision_signals": {
+                "unqualified_claim": True, "supporting_evidence_present": True,
+                "external_action_proposed": True, "explicit_authorization_present": True,
+                "possible_private_data_exposure": True,
+            },
+        })
+        self.assertEqual(r["stance"], "HALT_AND_REVIEW")
+        self.assertEqual(set(r["reason_codes"]),
+                         {"unsupported_certainty", "missing_authorization", "privacy_risk"})
+
+    def test_ledger_rejects_forged_support_verification(self):
+        payload = {"decision": {"origin": "system", "summary": "Certain"},
+                   "decision_signals": {"unqualified_claim": True, "supporting_evidence_present": True}}
+        with tempfile.TemporaryDirectory() as td:
+            with DissentLedger(str(Path(td) / "audit.sqlite")) as db:
+                for field, value in (
+                    ("supporting_evidence_verification_status", "VERIFIED"),
+                    ("supporting_evidence_verification_status", "NOT_APPLICABLE"),
+                    ("supporting_evidence_claimed_by_caller", "True"),
+                ):
+                    with self.subTest(field=field, value=value):
+                        r = review_decision(payload)
+                        r[field] = value
+                        with self.assertRaises(ValueError):
+                            db.record(r)
+                self.assertEqual(db.summary()["total"], 0)
+                self.assertTrue(db.record(review_decision(payload)))
+                self.assertEqual(db.summary()["total"], 1)
+
+    def test_malformed_decision_and_observation_labels_are_rejected(self):
+        bad_requests = (
+            {"decision": {"origin": [], "summary": "x"}},
+            {"decision": {"origin": "system", "summary": "x"},
+             "observations": [{"concern": {}, "basis": "x", "provenance": "user_reported"}]},
+            {"decision": {"origin": "system", "summary": "x"},
+             "observations": [{"concern": "misstated_evidence", "basis": "x", "provenance": []}]},
+        )
+        for case in bad_requests:
+            with self.subTest(case=str(case)):
+                with self.assertRaises(ValueError):
+                    review_decision(case)
+
 if __name__ == "__main__":
     unittest.main()

@@ -55,7 +55,7 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
     if not isinstance(decision, Mapping):
         raise TypeError("decision must be an object")
     origin = decision.get("origin")
-    if origin not in ORIGINS:
+    if type(origin) is not str or origin not in ORIGINS:
         raise ValueError("unrecognized decision origin")
     summary = _text(decision.get("summary"), "decision.summary")
     observations = request.get("observations", [])
@@ -81,7 +81,11 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         automatic.add("missing_authorization")  # no verified approval, even if claimed
     if signals.get("possible_private_data_exposure", False):
         automatic.add("privacy_risk")
-    if signals.get("unqualified_claim", False) and not signals.get("supporting_evidence_present", False):
+    # Supporting evidence is only a caller assertion here, never authenticated.
+    # A claimed citation cannot silently clear a provisional certainty review.
+    unqualified_claim = signals.get("unqualified_claim", False)
+    supporting_claim = signals.get("supporting_evidence_present")
+    if unqualified_claim:
         automatic.add("unsupported_certainty")
     requested_override = request.get("requested_override", False)
     if type(requested_override) is not bool:
@@ -92,11 +96,11 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         if not isinstance(item, Mapping):
             raise TypeError("each observation must be an object")
         code = item.get("concern")
-        if code not in CONCERNS:
+        if type(code) is not str or code not in CONCERNS:
             raise ValueError("unrecognized concern code")
         _text(item.get("basis"), "observation.basis", limit=1000)
         source = item.get("provenance")
-        if source not in PROVENANCES:
+        if type(source) is not str or source not in PROVENANCES:
             raise ValueError("unrecognized provenance")
         codes.add(code)
         provenance.add(source)
@@ -117,6 +121,10 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         "reason_codes": reasons,
         "automatic_structured_signal_flags": sorted(automatic),
         "authorization_claimed_by_caller": authorization_claim,
+        "supporting_evidence_claimed_by_caller": supporting_claim,
+        "supporting_evidence_verification_status": (
+            "UNVERIFIED" if unqualified_claim else "NOT_APPLICABLE"
+        ),
         "authorization_evidence_status": (
             "UNVERIFIED" if external_action_proposed else "NOT_APPLICABLE"
         ),
@@ -134,6 +142,7 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         "notes": [
             "Origin does not grant immunity from critique; system/platform choices may be questioned.",
             "Observations and decision_signals are caller-supplied; claimed consent is not verified authorization.",
+            "Claimed supporting evidence is not independent verification; a certainty concern requires review.",
             "The result cannot change platform rules, unlock tools, or bypass safety controls.",
         ],
     }
@@ -210,6 +219,14 @@ class DissentLedger:
             raise ValueError("authorization is never verified by this module")
         if (evidence_status == "UNVERIFIED") != ("missing_authorization" in automatic):
             raise ValueError("inconsistent unverified authorization hold")
+        claimed_support = result.get("supporting_evidence_claimed_by_caller")
+        if claimed_support is not None and type(claimed_support) is not bool:
+            raise ValueError("supporting evidence claim must be boolean or absent")
+        support_verification = result.get("supporting_evidence_verification_status")
+        if support_verification not in ("UNVERIFIED", "NOT_APPLICABLE"):
+            raise ValueError("claimed supporting evidence cannot be independently verified here")
+        if (support_verification == "UNVERIFIED") != ("unsupported_certainty" in automatic):
+            raise ValueError("support evidence verification conflicts with certainty concern")
         expected_stance = (
             "HALT_AND_REVIEW" if set(codes) & HALT_CONCERNS
             else "PROVISIONAL_DISSENT" if codes else "INSUFFICIENT_EVIDENCE"

@@ -46,3 +46,7 @@
 ### رفع مشکل منشأ مجوز (۱۲ نوامبر ۲۰۲۶)
 
 `explicit_authorization_present` تنها **ادعای فراخواننده** است، نه گواهی مستقل. برای هر `external_action_proposed=true`، چون این نمونه هیچ منبع معتبر برای تطبیق هویت، محدوده، هدف، تاریخ و ابطال مجوز ندارد، نتیجهٔ `authorization_evidence_status=UNVERIFIED` و `HALT_AND_REVIEW` حفظ می‌شود حتی اگر فراخواننده `explicit_authorization_present=true` بفرستد. فیلد `authorization_claimed_by_caller` فقط خودِ ادعا را بازتاب می‌دهد. این یک ارزیاب مشورتی است، **نه** صادرکنندهٔ مجوز یا دروازهٔ اجرای خارجی. حتی گذر موفق CI نیز تأیید امنیت کل زیرساخت نیست.
+
+### بازبینی ادعای وجود شاهد (نوبت ۳، ۱۲ نوامبر ۲۰۲۶)
+
+وقتی `unqualified_claim=true` باشد، ادعای فراخواننده مبنی بر `supporting_evidence_present=true` دیگر علامت مشورتی `unsupported_certainty` را خاموش نمی‌کند. مقدار ادعایی در `supporting_evidence_claimed_by_caller` نمایش داده می‌شود، اما `supporting_evidence_verification_status=UNVERIFIED` باقی می‌ماند. این پرچم **پرسش دربارهٔ قطعیت** است، نه حکم قطعیِ بی‌پشتوانه‌بودن ادعا. تشخیص خودِ `unqualified_claim` نیز هنوز دادهٔ ورودی است و به‌طور مستقل استنتاج نمی‌شود. دفتر SQLite نتیجهٔ متناقض یا تأیید ساختگی را رد می‌کند؛ این نرم‌افزار هیچ مجوز اجرایی صادر نمی‌کند.
