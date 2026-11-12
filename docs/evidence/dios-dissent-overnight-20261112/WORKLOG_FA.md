@@ -53,3 +53,14 @@
 
 ### نتیجه
 پیش از پیاده‌سازی ثبت شد. در پایان فقط نتیجه‌های واقعی با SHA و CI به این بخش افزوده شوند.
+
+### نتایج واقعی نوبت ۲
+- پیش‌ثبت معیار روی SHA [`7fe3971c4093200bee20f1e17ea1cb0eb2584478`](https://github.com/zurvanproject/zohraya/commit/7fe3971c4093200bee20f1e17ea1cb0eb2584478) **پیش از** تغییر کد انجام شد.
+- اولین اجرای یکپارچهٔ اعتبارسنجی در commit [`7fcbf0ca9dd2c3f60f4597cc66a2fc1745a4b108`](https://github.com/zurvanproject/zohraya/commit/7fcbf0ca9dd2c3f60f4597cc66a2fc1745a4b108) به [شکست واقعی CI run 43145040851](https://github.com/zurvanproject/zohraya/actions/runs/43145040851) انجامید: `Ran 55 tests`، یک `ERROR`، علت `TypeError: unhashable type: 'dict'` در آزمون ورودی خراب؛ demo به‌علت شکست مرحلهٔ قبلی اجرا نشد.
+- نقص از اعتبارسنجی اولیهٔ `reason_codes` ناشی می‌شد که پیش از بررسی نوع داده، آن را داخل دیکشنری جست‌وجو می‌کرد. این مورد در commit [`c7b910b4d09e2592ef028383eb7560c2940e8aba`](https://github.com/zurvanproject/zohraya/commit/c7b910b4d09e2592ef028383eb7560c2940e8aba) با بررسی صریح `type(x) is str` برای برچسب‌ها و منشأ تصمیم اصلاح شد.
+- **CI تأییدشدهٔ نهایی کد:** [GitHub Actions run 43145105912](https://github.com/zurvanproject/zohraya/actions/runs/43145105912)، `head_sha=c7b910b4d09e2592ef028383eb7560c2940e8aba`، `completed/success`؛ job `130940987644` روی Ubuntu / Python 3.11، دستور `python -m unittest discover -s examples/dios_nous -v`، **۵۵ آزمون، ۵۵ پاس، ۰ شکست، ۰ خطا، ۰ skipped گزارش‌شده**؛ دستور `python -m examples.dios_nous --db /tmp/dios-nous-demo.sqlite demo` نیز موفق.
+- فایل‌های کد تغییرکرده فقط `examples/dios_nous/dissent.py` و `examples/dios_nous/test_dissent.py` هستند. افزودن این مرحله مجموعاً حدود ۱۰۱ خط آزمایشی/اعتبارسنجی داشت، زیر سقف ۳۰۰ خط. تغییرات ثبت‌شده بازگشت‌پذیرند، بدون merge/deploy/سرور/مدل پولی.
+- نتیجهٔ فنی: دفتر حالا **ناسازگاری داخلی** رسیدها را رد می‌کند؛ موارد سوءاستفاده شامل برچسب stance ناهماهنگ با دلیل، مقدار جعلی VERIFIED، کدهای غیرمتعارف/ناهم‌نوع، پرچم‌های خودکار ناهماهنگ، و ادعای بررسی مستقل است. در حالت معتبر، ثبت SQLite باقی مانده و متن خام ذخیره نمی‌شود.
+- **مرز صداقت:** هیچ امضای معتبر یا منبع مستقل وجود ندارد؛ یک فراخوانندهٔ نامعتبر ممکن است رکورد ظاهراً سازگار اما ساختگی بسازد. خروجی هنوز مشورتی است و برای هیچ اقدام بیرونی مجوز نمی‌دهد. `external_action_proposed=false` نیز خوداظهاری است. ۵۵ آزمون برنامه‌نویس، بازبینی مستقل علمی یا اثبات خودآگاهی نیستند.
+- شواهد ماشینی همین نوبت: [`run-02-ci-evidence.json`](./run-02-ci-evidence.json). هر commit سندیِ بعدی SHA دیگری دارد؛ **CI موفق را فقط به SHA کد c7b910b4... نسبت بده**.
+- گام بعدی پیشنهادی: آزمایش ورودی‌های متناقض و مدرک ساختگی، بدون ادعای تأیید مستقل و بدون تغییر مجوز.

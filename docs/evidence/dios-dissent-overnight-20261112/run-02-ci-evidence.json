@@ -1,0 +1,55 @@
+{
+  "schema": "dios.dissent.overnight.evidence.v1",
+  "date": "2026-11-12",
+  "run": 2,
+  "repo": "zurvanproject/zohraya",
+  "pr": 192,
+  "base_pr": 176,
+  "branch": "research/dios-independent-dissent-v02-20261112",
+  "permitted_scope": "DIOS NOUS advisory module and associated evidence only",
+  "prereg_commit": "7fe3971c4093200bee20f1e17ea1cb0eb2584478",
+  "baseline_head": "2754e499a034b5a08dbcfcb40523436165ab2f65",
+  "first_implementation_commit": "7fcbf0ca9dd2c3f60f4597cc66a2fc1745a4b108",
+  "first_ci": {
+    "run_id": 43145040851,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/43145040851",
+    "head_sha": "7fcbf0ca9dd2c3f60f4597cc66a2fc1745a4b108",
+    "status": "completed",
+    "conclusion": "failure",
+    "unit_tests": 55,
+    "errors": 1,
+    "problem": "TypeError: unhashable type: 'dict' in malformed reason_codes; negative test expected ValueError",
+    "demo_status": "skipped"
+  },
+  "correction_commit": "c7b910b4d09e2592ef028383eb7560c2940e8aba",
+  "verified_ci": {
+    "run_id": 43145105912,
+    "job_id": 130940987644,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/43145105912",
+    "head_sha": "c7b910b4d09e2592ef028383eb7560c2940e8aba",
+    "status": "completed",
+    "conclusion": "success",
+    "environment": "ubuntu-latest",
+    "python": "3.11",
+    "unit_command": "python -m unittest discover -s examples/dios_nous -v",
+    "total_tests": 55,
+    "passed": 55,
+    "failures": 0,
+    "errors": 0,
+    "skips_reported": 0,
+    "demo_command": "python -m examples.dios_nous --db /tmp/dios-nous-demo.sqlite demo",
+    "demo_status": "success"
+  },
+  "changed_code_files": [
+    "examples/dios_nous/dissent.py",
+    "examples/dios_nous/test_dissent.py"
+  ],
+  "outcome": "DissentLedger.record now rejects internally inconsistent stance, reason lists, unverified-authorization claims, invalid labels and unsupported verified/autonomy assertions; tests include negative and valid cases.",
+  "limits": {
+    "authenticity": "A consistent forgery by an untrusted caller cannot be authenticated without an independent source or bound receipt.",
+    "signals": "external_action_proposed and supporting_evidence_present are caller-supplied, not verified.",
+    "execution": "No live server, no model API, no platform override, no merge, no deployment, no background continuity claimed.",
+    "CI": "Unit tests are author-created and not independent peer review."
+  },
+  "next": "If an authorized subsequent run occurs, investigate signal contradictions and positive/negative evidence without treating caller-supplied flags as trusted signals."
+}
