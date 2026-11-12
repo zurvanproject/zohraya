@@ -1,0 +1,1900 @@
+{
+  "schema": "nasuraya-running-feedback/0.1",
+  "profiles": [
+    {
+      "name": "original_250cm_195kg",
+      "height_m": 2.5,
+      "mass_kg": 195.0,
+      "gravity": 9.81,
+      "friction": 0.6,
+      "pressure_limit_kpa": 300.0,
+      "max_vertical_bw": 4.5,
+      "max_actuator_power_w_kg": 12.0,
+      "max_compression_fraction": 0.25,
+      "max_foot_transfer_m_s": 6.0
+    },
+    {
+      "name": "lighter_250cm_165kg",
+      "height_m": 2.5,
+      "mass_kg": 165,
+      "gravity": 9.81,
+      "friction": 0.6,
+      "pressure_limit_kpa": 300.0,
+      "max_vertical_bw": 4.5,
+      "max_actuator_power_w_kg": 12.0,
+      "max_compression_fraction": 0.25,
+      "max_foot_transfer_m_s": 6.0
+    },
+    {
+      "name": "shorter_230cm_155kg",
+      "height_m": 2.3,
+      "mass_kg": 155,
+      "gravity": 9.81,
+      "friction": 0.6,
+      "pressure_limit_kpa": 300.0,
+      "max_vertical_bw": 4.5,
+      "max_actuator_power_w_kg": 12.0,
+      "max_compression_fraction": 0.25,
+      "max_foot_transfer_m_s": 6.0
+    },
+    {
+      "name": "shorter_220cm_140kg",
+      "height_m": 2.2,
+      "mass_kg": 140,
+      "gravity": 9.81,
+      "friction": 0.6,
+      "pressure_limit_kpa": 300.0,
+      "max_vertical_bw": 4.5,
+      "max_actuator_power_w_kg": 12.0,
+      "max_compression_fraction": 0.25,
+      "max_foot_transfer_m_s": 6.0
+    }
+  ],
+  "source_base": "884ae8a778bbe1d60fcf6e7b6d5263ed5945833a",
+  "scope": "3D point-mass template, exact state feedback; NOT full-body or native runtime",
+  "predeclared_selection": "At 3 m/s choose passing profile with unchanged height and lowest mass; shortening only if no unchanged-height profile passes.",
+  "selection": {
+    "name": "lighter_250cm_165kg",
+    "height_m": 2.5,
+    "mass_kg": 165,
+    "gravity": 9.81,
+    "friction": 0.6,
+    "pressure_limit_kpa": 300.0,
+    "max_vertical_bw": 4.5,
+    "max_actuator_power_w_kg": 12.0,
+    "max_compression_fraction": 0.25,
+    "max_foot_transfer_m_s": 6.0
+  },
+  "validation": {
+    "half_step_max_state_difference": 4.415665104673394e-07,
+    "zero_stiffness": {
+      "ok": false,
+      "reason": "collapse_or_no_liftoff"
+    },
+    "low_friction_rejected": true,
+    "low_friction_reason": "engineering_limit",
+    "low_friction_state_unchanged": true,
+    "actuator_energy_accounting": 1.3874455500298358e-07
+  },
+  "comparison": [
+    {
+      "profile": "original_250cm_195kg",
+      "speed": 3.0,
+      "case": "nominal",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.319450395609323e-07,
+        "vx": 2.64662547433403e-07,
+        "y": 3.1884279930866066e-07,
+        "vy": 5.131130166868836e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.2844501531270205,
+        "peak_vertical_n": 6282.988920424334,
+        "mean_patch_pressure_peak_kpa": 160.0088238147206,
+        "required_mu": 0.2641298754874341,
+        "peak_actuator_power_w": 0.0415454597823274,
+        "max_compression_m": 0.15760600768616984,
+        "work_energy_relative_error": 9.498326761470903e-07
+      }
+    },
+    {
+      "profile": "original_250cm_195kg",
+      "speed": 3.0,
+      "case": "height_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.2112710368050728e-07,
+        "vx": 2.430358110316888e-07,
+        "y": 1.050833841810539e-06,
+        "vy": 1.38082929060368e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.2844867619931644,
+        "peak_vertical_n": 6283.058951354824,
+        "mean_patch_pressure_peak_kpa": 160.01060729181415,
+        "required_mu": 0.267822812645174,
+        "peak_actuator_power_w": 129.63666009444694,
+        "max_compression_m": 0.1576082781420367,
+        "work_energy_relative_error": 3.3348236252258093e-07
+      }
+    },
+    {
+      "profile": "original_250cm_195kg",
+      "speed": 3.0,
+      "case": "height_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 6.31332628842074e-07,
+        "vx": 1.2386400158881372e-06,
+        "y": 5.568852737281027e-08,
+        "vy": 5.426001620789656e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3635227583244234,
+        "peak_vertical_n": 6434.250860536706,
+        "mean_patch_pressure_peak_kpa": 163.86101031892326,
+        "required_mu": 0.2659419631791329,
+        "peak_actuator_power_w": 129.7420706546507,
+        "max_compression_m": 0.16008876078430712,
+        "work_energy_relative_error": 2.451164551402814e-07
+      }
+    },
+    {
+      "profile": "original_250cm_195kg",
+      "speed": 3.0,
+      "case": "speed_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.3020552109009884e-07,
+        "vx": 4.5958449845784344e-07,
+        "y": 1.4471061457431433e-06,
+        "vy": 1.9634031646620365e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3966521717329714,
+        "peak_vertical_n": 6497.625771916588,
+        "mean_patch_pressure_peak_kpa": 165.47497863204458,
+        "required_mu": 0.27515786835348877,
+        "peak_actuator_power_w": 397.8499024073759,
+        "max_compression_m": 0.15760594791577898,
+        "work_energy_relative_error": 5.575523439325544e-07
+      }
+    },
+    {
+      "profile": "original_250cm_195kg",
+      "speed": 3.0,
+      "case": "speed_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.7377657401951296e-07,
+        "vx": 3.4547965688247473e-07,
+        "y": 1.1146785685277327e-06,
+        "vy": 1.16646472730908e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.4370919568368667,
+        "peak_vertical_n": 6574.985058831085,
+        "mean_patch_pressure_peak_kpa": 167.44508691444116,
+        "required_mu": 0.28072874268392184,
+        "peak_actuator_power_w": 414.9114540728357,
+        "max_compression_m": 0.15875186014407716,
+        "work_energy_relative_error": 4.059507655090224e-07
+      }
+    },
+    {
+      "profile": "original_250cm_195kg",
+      "speed": 3.0,
+      "case": "lateral_left",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.4304149870424396e-07,
+        "vx": 4.840445115839032e-07,
+        "y": 7.045315729807544e-07,
+        "vy": 1.0846938584829768e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.2859857739611846,
+        "peak_vertical_n": 6285.9264862990485,
+        "mean_patch_pressure_peak_kpa": 160.08363477912695,
+        "required_mu": 0.26468808249201115,
+        "peak_actuator_power_w": 14.115982674631766,
+        "max_compression_m": 0.15769189741295087,
+        "work_energy_relative_error": 1.1677183264205775e-06
+      }
+    },
+    {
+      "profile": "original_250cm_195kg",
+      "speed": 3.0,
+      "case": "lateral_right",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 3.744974308439453e-08,
+        "vx": 7.439686466881312e-08,
+        "y": 9.487693719105461e-07,
+        "vy": 1.1014955887678202e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.323409623249812,
+        "peak_vertical_n": 6357.516438795728,
+        "mean_patch_pressure_peak_kpa": 161.90681547242858,
+        "required_mu": 0.2744708204093292,
+        "peak_actuator_power_w": 26.613238343017084,
+        "max_compression_m": 0.1597526817018271,
+        "work_energy_relative_error": 2.035794120488137e-07
+      }
+    },
+    {
+      "profile": "original_250cm_195kg",
+      "speed": 3.0,
+      "case": "mixed_repeated",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.2932663257257957e-07,
+        "vx": 4.581862418362448e-07,
+        "y": 4.024043626746354e-06,
+        "vy": 5.057182534989879e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.5103758448206204,
+        "peak_vertical_n": 6715.173472349606,
+        "mean_patch_pressure_peak_kpa": 171.01526401385192,
+        "required_mu": 0.2819653186000205,
+        "peak_actuator_power_w": 538.1085328645734,
+        "max_compression_m": 0.15970651679751935,
+        "work_energy_relative_error": 2.576056200373927e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "nominal",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.7098227214074058e-06,
+        "vx": 3.849764879326756e-06,
+        "y": 4.978162690058574e-08,
+        "vy": 3.09739000250997e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.2844471454747435,
+        "peak_vertical_n": 5316.370372022694,
+        "mean_patch_pressure_peak_kpa": 135.39195770749959,
+        "required_mu": 0.2641295758807036,
+        "peak_actuator_power_w": 0.03555776402821725,
+        "max_compression_m": 0.1576058686754136,
+        "work_energy_relative_error": 5.403024409018006e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "height_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 6.762432911422422e-07,
+        "vx": 1.3818866428927379e-06,
+        "y": 1.6981075714843363e-06,
+        "vy": 2.9871382659640844e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.284488518153218,
+        "peak_vertical_n": 5316.437339908707,
+        "mean_patch_pressure_peak_kpa": 135.39366317806622,
+        "required_mu": 0.26782281594413104,
+        "peak_actuator_power_w": 109.69660593647748,
+        "max_compression_m": 0.15760836230267095,
+        "work_energy_relative_error": 2.1537638057129602e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "height_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.5307316725277076e-07,
+        "vx": 3.052044790230468e-07,
+        "y": 1.8436889390009703e-06,
+        "vy": 2.0615158119186017e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3635222647918024,
+        "peak_vertical_n": 5444.365313905251,
+        "mean_patch_pressure_peak_kpa": 138.65160377153856,
+        "required_mu": 0.26594196896636185,
+        "peak_actuator_power_w": 109.7741063609017,
+        "max_compression_m": 0.1600888744387865,
+        "work_energy_relative_error": 2.229533507211789e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "speed_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 3.055479989022558e-07,
+        "vx": 8.203473940149308e-07,
+        "y": 6.986579526024883e-08,
+        "vy": 1.940830421154338e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.396650143831967,
+        "peak_vertical_n": 5497.987755313614,
+        "mean_patch_pressure_peak_kpa": 140.01720601730003,
+        "required_mu": 0.27515786323288893,
+        "peak_actuator_power_w": 336.6396101873384,
+        "max_compression_m": 0.15760620318462681,
+        "work_energy_relative_error": 1.1599488534576608e-06
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "speed_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.996038910296761e-07,
+        "vx": 7.275606077605801e-07,
+        "y": 2.2540252175157205e-07,
+        "vy": 2.759552781284036e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.437091372044567,
+        "peak_vertical_n": 5563.447949359938,
+        "mean_patch_pressure_peak_kpa": 141.68428020582624,
+        "required_mu": 0.28072873908458734,
+        "peak_actuator_power_w": 351.07576840718417,
+        "max_compression_m": 0.15875190370325787,
+        "work_energy_relative_error": 1.3997378886221263e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "lateral_left",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.247368857677401e-07,
+        "vx": 4.4715119340565934e-07,
+        "y": 7.101637525333548e-07,
+        "vy": 1.0734050061855793e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.285982547260247,
+        "peak_vertical_n": 5318.8556501227995,
+        "mean_patch_pressure_peak_kpa": 135.45525026311077,
+        "required_mu": 0.2646880690125918,
+        "peak_actuator_power_w": 11.97927702304242,
+        "max_compression_m": 0.15769176064782497,
+        "work_energy_relative_error": 4.841886087575777e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "lateral_right",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 6.136507746390407e-09,
+        "vx": 1.2311775599016528e-08,
+        "y": 7.333049640845246e-07,
+        "vy": 8.738907034400167e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.323393168677593,
+        "peak_vertical_n": 5379.410352479987,
+        "mean_patch_pressure_peak_kpa": 136.9973963377484,
+        "required_mu": 0.27447049343304164,
+        "peak_actuator_power_w": 22.482771685285204,
+        "max_compression_m": 0.15975213189580573,
+        "work_energy_relative_error": 1.8439152935368415e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "mixed_repeated",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.071074181042576e-07,
+        "vx": 4.1188323640639624e-07,
+        "y": 4.16597245311498e-06,
+        "vy": 4.797194393058035e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.5103463034732187,
+        "peak_vertical_n": 5682.022044116926,
+        "mean_patch_pressure_peak_kpa": 144.70400563861907,
+        "required_mu": 0.2819653147283415,
+        "peak_actuator_power_w": 455.2846509281639,
+        "max_compression_m": 0.15970590918966643,
+        "work_energy_relative_error": 1.1291038135592854e-06
+      }
+    },
+    {
+      "profile": "shorter_230cm_155kg",
+      "speed": 3.0,
+      "case": "nominal",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.9144726959297031e-07,
+        "vx": 4.0431716730182643e-07,
+        "y": 5.398525640826213e-07,
+        "vy": 4.5640628107412873e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3306953863917412,
+        "peak_vertical_n": 5064.4888697779625,
+        "mean_patch_pressure_peak_kpa": 152.38338102034876,
+        "required_mu": 0.27140645388554857,
+        "peak_actuator_power_w": 0.03379595884434906,
+        "max_compression_m": 0.14703745314427819,
+        "work_energy_relative_error": 2.367186436914305e-07
+      }
+    },
+    {
+      "profile": "shorter_230cm_155kg",
+      "speed": 3.0,
+      "case": "height_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.6242779949114947e-08,
+        "vx": 5.583702611389185e-08,
+        "y": 7.01030558152016e-07,
+        "vy": 8.150367866999186e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3307423142279875,
+        "peak_vertical_n": 5064.560225899367,
+        "mean_patch_pressure_peak_kpa": 152.38552802616033,
+        "required_mu": 0.2753425221531626,
+        "peak_actuator_power_w": 108.83061049170848,
+        "max_compression_m": 0.14704002303457253,
+        "work_energy_relative_error": 2.5058089208768836e-07
+      }
+    },
+    {
+      "profile": "shorter_230cm_155kg",
+      "speed": 3.0,
+      "case": "height_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 9.224299581944706e-07,
+        "vx": 1.9044626071718085e-06,
+        "y": 1.1599414374181827e-06,
+        "vy": 4.832204171523191e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.416112793811718,
+        "peak_vertical_n": 5194.3703086304085,
+        "mean_patch_pressure_peak_kpa": 156.29133171251627,
+        "required_mu": 0.2734356418924038,
+        "peak_actuator_power_w": 108.8639160361263,
+        "max_compression_m": 0.14950341106829002,
+        "work_energy_relative_error": 1.205770361645112e-06
+      }
+    },
+    {
+      "profile": "shorter_230cm_155kg",
+      "speed": 3.0,
+      "case": "speed_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.671282952615428e-07,
+        "vx": 5.638646474181996e-07,
+        "y": 4.6892944245355284e-07,
+        "vy": 2.9585718924751703e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.4519928134948685,
+        "peak_vertical_n": 5248.927672559623,
+        "mean_patch_pressure_peak_kpa": 157.93288642590548,
+        "required_mu": 0.2827344978728568,
+        "peak_actuator_power_w": 334.08507151377484,
+        "max_compression_m": 0.14703701357172716,
+        "work_energy_relative_error": 1.3529362300937242e-07
+      }
+    },
+    {
+      "profile": "shorter_230cm_155kg",
+      "speed": 3.0,
+      "case": "speed_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 6.166449824096532e-07,
+        "vx": 6.108252228465005e-07,
+        "y": 4.3971634882192245e-07,
+        "vy": 2.238122599973469e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.494753769399932,
+        "peak_vertical_n": 5313.947844061067,
+        "mean_patch_pressure_peak_kpa": 159.88925237371876,
+        "required_mu": 0.288444491854025,
+        "peak_actuator_power_w": 348.48500549646053,
+        "max_compression_m": 0.1481589796481375,
+        "work_energy_relative_error": 1.4826649905823468e-07
+      }
+    },
+    {
+      "profile": "shorter_230cm_155kg",
+      "speed": 3.0,
+      "case": "lateral_left",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 8.412528473833447e-08,
+        "vx": 1.6370528310716281e-07,
+        "y": 9.495074261567371e-08,
+        "vy": 3.351699236875394e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.332215475775939,
+        "peak_vertical_n": 5066.800241691104,
+        "mean_patch_pressure_peak_kpa": 152.45292696584818,
+        "required_mu": 0.27195449014178236,
+        "peak_actuator_power_w": 11.257221753087093,
+        "max_compression_m": 0.1471159524839516,
+        "work_energy_relative_error": 2.7584815657248273e-07
+      }
+    },
+    {
+      "profile": "shorter_230cm_155kg",
+      "speed": 3.0,
+      "case": "lateral_right",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.5583428769616603e-08,
+        "vx": 3.269417048201717e-08,
+        "y": 1.0402667801716337e-06,
+        "vy": 1.2638860561742238e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3707204433736635,
+        "peak_vertical_n": 5125.3489701718245,
+        "mean_patch_pressure_peak_kpa": 154.2145762516379,
+        "required_mu": 0.2818966313826519,
+        "peak_actuator_power_w": 21.797812442663734,
+        "max_compression_m": 0.14907391085008603,
+        "work_energy_relative_error": 4.185173574926083e-07
+      }
+    },
+    {
+      "profile": "shorter_230cm_155kg",
+      "speed": 3.0,
+      "case": "mixed_repeated",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.655626777896657e-07,
+        "vx": 3.4225365563855803e-07,
+        "y": 5.676733177899934e-06,
+        "vy": 6.652412692847998e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.575510496854332,
+        "peak_vertical_n": 5436.742485991855,
+        "mean_patch_pressure_peak_kpa": 163.58397126633167,
+        "required_mu": 0.28950896328693476,
+        "peak_actuator_power_w": 452.627809585287,
+        "max_compression_m": 0.14919794908165684,
+        "work_energy_relative_error": 3.734483262383911e-07
+      }
+    },
+    {
+      "profile": "shorter_220cm_140kg",
+      "speed": 3.0,
+      "case": "nominal",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 6.153807317055282e-07,
+        "vx": 1.3830652996205117e-06,
+        "y": 3.8628176560195904e-08,
+        "vy": 7.537246093092254e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3563788982881486,
+        "peak_vertical_n": 4609.650778908944,
+        "mean_patch_pressure_peak_kpa": 151.59340911492023,
+        "required_mu": 0.2753639689252654,
+        "peak_actuator_power_w": 0.026360544304969948,
+        "max_compression_m": 0.14172813814751595,
+        "work_energy_relative_error": 1.9472605279268509e-07
+      }
+    },
+    {
+      "profile": "shorter_220cm_140kg",
+      "speed": 3.0,
+      "case": "height_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.009932165230154e-06,
+        "vx": 3.280689753637489e-06,
+        "y": 1.2064808938214155e-06,
+        "vy": 1.3126232767390889e-08
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3564318455297415,
+        "peak_vertical_n": 4609.7234966505475,
+        "mean_patch_pressure_peak_kpa": 151.5958005174107,
+        "required_mu": 0.27943296476005275,
+        "peak_actuator_power_w": 101.22390015301804,
+        "max_compression_m": 0.14173086064907991,
+        "work_energy_relative_error": 1.8516794696213493e-07
+      }
+    },
+    {
+      "profile": "shorter_220cm_140kg",
+      "speed": 3.0,
+      "case": "height_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 5.218957017660841e-07,
+        "vx": 7.763374711977633e-07,
+        "y": 9.551125202192368e-08,
+        "vy": 4.09713647936405e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.44536718113143,
+        "peak_vertical_n": 4731.867286565906,
+        "mean_patch_pressure_peak_kpa": 155.61263268183518,
+        "required_mu": 0.2775178913087288,
+        "peak_actuator_power_w": 101.22084781920981,
+        "max_compression_m": 0.14418576735049982,
+        "work_energy_relative_error": 3.5426256011283127e-07
+      }
+    },
+    {
+      "profile": "shorter_220cm_140kg",
+      "speed": 3.0,
+      "case": "speed_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.0812881900967852e-07,
+        "vx": 2.3586270314623903e-07,
+        "y": 2.817137774342726e-07,
+        "vy": 4.4689200873193613e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.482701520129048,
+        "peak_vertical_n": 4783.142267745235,
+        "mean_patch_pressure_peak_kpa": 157.29886653600096,
+        "required_mu": 0.28685145423833913,
+        "peak_actuator_power_w": 310.7474217281853,
+        "max_compression_m": 0.1417287328187069,
+        "work_energy_relative_error": 2.951556142564711e-07
+      }
+    },
+    {
+      "profile": "shorter_220cm_140kg",
+      "speed": 3.0,
+      "case": "speed_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 4.1626086133561557e-07,
+        "vx": 1.7745882732178586e-06,
+        "y": 5.039291537042856e-07,
+        "vy": 2.2444016964384694e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.5267387747584835,
+        "peak_vertical_n": 4843.623033253301,
+        "mean_patch_pressure_peak_kpa": 159.28784267952955,
+        "required_mu": 0.2926367680001472,
+        "peak_actuator_power_w": 324.1789074960545,
+        "max_compression_m": 0.14283715001868869,
+        "work_energy_relative_error": 4.140905581142218e-07
+      }
+    },
+    {
+      "profile": "shorter_220cm_140kg",
+      "speed": 3.0,
+      "case": "lateral_left",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.787765365219741e-07,
+        "vx": 9.30003519972189e-07,
+        "y": 3.5903077372223535e-08,
+        "vy": 2.5148748404590915e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.357907289932908,
+        "peak_vertical_n": 4611.749871993856,
+        "mean_patch_pressure_peak_kpa": 151.66244008755862,
+        "required_mu": 0.27590630279224665,
+        "peak_actuator_power_w": 10.231137358225304,
+        "max_compression_m": 0.1418036706303456,
+        "work_energy_relative_error": 1.5743555962262338e-06
+      }
+    },
+    {
+      "profile": "shorter_220cm_140kg",
+      "speed": 3.0,
+      "case": "lateral_right",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.8583302607844132e-07,
+        "vx": 4.0397457690133365e-07,
+        "y": 1.1201880136570141e-06,
+        "vy": 1.1573926254615508e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3969725410037346,
+        "peak_vertical_n": 4665.402087814529,
+        "mean_patch_pressure_peak_kpa": 153.42685190375056,
+        "required_mu": 0.2859359220037329,
+        "peak_actuator_power_w": 19.954671439398354,
+        "max_compression_m": 0.14370820452070876,
+        "work_energy_relative_error": 2.407685389342668e-07
+      }
+    },
+    {
+      "profile": "shorter_220cm_140kg",
+      "speed": 3.0,
+      "case": "mixed_repeated",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.6166054050970047e-08,
+        "vx": 3.851849594838086e-08,
+        "y": 6.610973999940373e-06,
+        "vy": 7.955025578626485e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.6117553083780507,
+        "peak_vertical_n": 4960.384740526415,
+        "mean_patch_pressure_peak_kpa": 163.12767916792382,
+        "required_mu": 0.2936040845309125,
+        "peak_actuator_power_w": 421.3433107095443,
+        "max_compression_m": 0.14391797633043701,
+        "work_energy_relative_error": 4.4266562297489234e-07
+      }
+    }
+  ],
+  "baseline": [
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "nominal",
+      "feedback": false,
+      "requested": 30,
+      "completed": 30,
+      "passed": false,
+      "final_errors": {
+        "z": 0.005463850405893034,
+        "vx": 0.01818563252989769,
+        "y": 0.0005733228019179012,
+        "vy": 0.0035687548857558093
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3276688684791647,
+        "peak_vertical_n": 5386.3312139638,
+        "mean_patch_pressure_peak_kpa": 137.17364985654893,
+        "required_mu": 0.2641391836839322,
+        "peak_actuator_power_w": 0.00014034631512470984,
+        "max_compression_m": 0.1596804364940274,
+        "work_energy_relative_error": 1.9219498309018053e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "height_minus",
+      "feedback": false,
+      "requested": 30,
+      "completed": 8,
+      "passed": false,
+      "final_errors": {
+        "z": 0.0845466769439922,
+        "vx": 0.23180139329878147,
+        "y": 0.12284205005180623,
+        "vy": 0.040938924698753876
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.1648374920394344,
+        "peak_vertical_n": 5122.764206489631,
+        "mean_patch_pressure_peak_kpa": 130.46139118532733,
+        "required_mu": 0.3118359046575483,
+        "peak_actuator_power_w": 0.00012665781396974755,
+        "max_compression_m": 0.15185814873314873,
+        "work_energy_relative_error": 1.0855808984402978e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "height_plus",
+      "feedback": false,
+      "requested": 30,
+      "completed": 9,
+      "passed": false,
+      "final_errors": {
+        "z": 0.14931004731192044,
+        "vx": 0.5609116095460118,
+        "y": 0.4001091456825548,
+        "vy": 0.39797549339673693
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 4.263402522091687,
+        "peak_vertical_n": 6900.95649238371,
+        "mean_patch_pressure_peak_kpa": 175.74659855811143,
+        "required_mu": 0.2644297009531281,
+        "peak_actuator_power_w": 0.00022986839585908855,
+        "max_compression_m": 0.2051028365602694,
+        "work_energy_relative_error": 1.6805552081404531e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "speed_minus",
+      "feedback": false,
+      "requested": 30,
+      "completed": 5,
+      "passed": false,
+      "final_errors": {
+        "z": 0.16232252543401482,
+        "vx": 0.7217400509156637,
+        "y": 0.007701571870958296,
+        "vy": 0.07340872475362753
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 4.196664281463493,
+        "peak_vertical_n": 6792.930639190882,
+        "mean_patch_pressure_peak_kpa": 172.99550510085948,
+        "required_mu": 0.26442902480337355,
+        "peak_actuator_power_w": 0.00022000314639853164,
+        "max_compression_m": 0.2015765856890981,
+        "work_energy_relative_error": 1.36959808071485e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "speed_plus",
+      "feedback": false,
+      "requested": 30,
+      "completed": 5,
+      "passed": false,
+      "final_errors": {
+        "z": 0.10205497290662935,
+        "vx": 0.4124852435618891,
+        "y": 0.005982992125324444,
+        "vy": 0.11477937876321394
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.2704178754705784,
+        "peak_vertical_n": 5293.661894130452,
+        "mean_patch_pressure_peak_kpa": 134.81364109988178,
+        "required_mu": 0.33119820084944424,
+        "peak_actuator_power_w": 0.0001369920601218593,
+        "max_compression_m": 0.15693629030359113,
+        "work_energy_relative_error": 1.990273525205024e-08
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "lateral_left",
+      "feedback": false,
+      "requested": 30,
+      "completed": 12,
+      "passed": false,
+      "final_errors": {
+        "z": 0.11920337986523033,
+        "vx": 0.03130554274611708,
+        "y": 1.4625144013772056,
+        "vy": 1.2696685616382932
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.284433139220121,
+        "peak_vertical_n": 5316.347700798649,
+        "mean_patch_pressure_peak_kpa": 135.3913803396354,
+        "required_mu": 0.39029246733228407,
+        "peak_actuator_power_w": 0.0001367588924290704,
+        "max_compression_m": 0.1576051934611975,
+        "work_energy_relative_error": 1.4887252163822585e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "lateral_right",
+      "feedback": false,
+      "requested": 30,
+      "completed": 12,
+      "passed": false,
+      "final_errors": {
+        "z": 0.07454792905689489,
+        "vx": 0.017227862566824736,
+        "y": 1.5502767550206438,
+        "vy": 1.4867220577285591
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.313794234378122,
+        "peak_vertical_n": 5363.873037476147,
+        "mean_patch_pressure_peak_kpa": 136.6017076726098,
+        "required_mu": 0.34423258493805764,
+        "peak_actuator_power_w": 0.00013980604747735516,
+        "max_compression_m": 0.15922338656783896,
+        "work_energy_relative_error": 2.2375929931837505e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "mixed_repeated",
+      "feedback": false,
+      "requested": 30,
+      "completed": 10,
+      "passed": false,
+      "final_errors": {
+        "z": 0.1096355366536983,
+        "vx": 0.38594445657915033,
+        "y": 0.5859910948668904,
+        "vy": 0.5089428072812341
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.3669506857893716,
+        "peak_vertical_n": 5449.914727552967,
+        "mean_patch_pressure_peak_kpa": 138.79293064030728,
+        "required_mu": 0.35659753588353693,
+        "peak_actuator_power_w": 0.0001457763433639804,
+        "max_compression_m": 0.16171365725871034,
+        "work_energy_relative_error": 1.3874455500298358e-07
+      }
+    }
+  ],
+  "speed_validation": [
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 2.0,
+      "case": "nominal",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.1479980637219e-06,
+        "vx": 2.862886572252421e-08,
+        "y": 7.543892287520393e-07,
+        "vy": 2.414189247956777e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 2.9477655813883,
+        "peak_vertical_n": 4771.400758314172,
+        "mean_patch_pressure_peak_kpa": 121.51322132762165,
+        "required_mu": 0.20278505271953634,
+        "peak_actuator_power_w": 0.03231738353463758,
+        "max_compression_m": 0.14145847933401834,
+        "work_energy_relative_error": 6.72748741634288e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 2.0,
+      "case": "height_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.0318595694845953e-08,
+        "vx": 3.3536670107636724e-08,
+        "y": 2.637968672322688e-08,
+        "vy": 5.4485149281191525e-08
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 2.9478067100059664,
+        "peak_vertical_n": 4771.467331151158,
+        "mean_patch_pressure_peak_kpa": 121.51491673747819,
+        "required_mu": 0.20703176109133567,
+        "peak_actuator_power_w": 100.58938399727138,
+        "max_compression_m": 0.141460927954689,
+        "work_energy_relative_error": 6.729931547719662e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 2.0,
+      "case": "height_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.7506817151513587e-06,
+        "vx": 1.2116751375579327e-06,
+        "y": 3.258266705156998e-07,
+        "vy": 1.5899666099272736e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.03093113880831,
+        "peak_vertical_n": 4906.0166878320715,
+        "mean_patch_pressure_peak_kpa": 124.9414840257882,
+        "required_mu": 0.20399265444457743,
+        "peak_actuator_power_w": 101.05865515974502,
+        "max_compression_m": 0.14409664390689603,
+        "work_energy_relative_error": 6.726282853338946e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 2.0,
+      "case": "speed_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.454607839208478e-07,
+        "vx": 4.1178590781676405e-07,
+        "y": 2.1675783411570504e-07,
+        "vy": 5.390866385512894e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.0142209084695644,
+        "peak_vertical_n": 4878.968673494261,
+        "mean_patch_pressure_peak_kpa": 124.2526524815135,
+        "required_mu": 0.2150834074494621,
+        "peak_actuator_power_w": 203.3735907080378,
+        "max_compression_m": 0.14145840103497442,
+        "work_energy_relative_error": 6.977754900259411e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 2.0,
+      "case": "speed_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 7.356618498821632e-07,
+        "vx": 1.2069717179041817e-06,
+        "y": 8.799969590175816e-08,
+        "vy": 7.177343158137894e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.050135735576122,
+        "peak_vertical_n": 4937.10220839029,
+        "mean_patch_pressure_peak_kpa": 125.73313870562058,
+        "required_mu": 0.22149164946155162,
+        "peak_actuator_power_w": 215.76940605499118,
+        "max_compression_m": 0.1424610805869324,
+        "work_energy_relative_error": 6.718052927357032e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 2.0,
+      "case": "lateral_left",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 9.835146586034682e-07,
+        "vx": 4.238624593533302e-07,
+        "y": 2.153089670789421e-07,
+        "vy": 9.172387872846688e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 2.9494676268519564,
+        "peak_vertical_n": 4774.1557742039195,
+        "mean_patch_pressure_peak_kpa": 121.58338329315949,
+        "required_mu": 0.2035709443076946,
+        "peak_actuator_power_w": 10.961956692739195,
+        "max_compression_m": 0.14155062192326606,
+        "work_energy_relative_error": 6.656238866785393e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 2.0,
+      "case": "lateral_right",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.2115583762083446e-06,
+        "vx": 7.185796566666625e-07,
+        "y": 1.4898982164460173e-06,
+        "vy": 4.485610032578524e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 2.9911654269630246,
+        "peak_vertical_n": 4841.6499183537,
+        "mean_patch_pressure_peak_kpa": 123.30225607115861,
+        "required_mu": 0.21633064413612704,
+        "peak_actuator_power_w": 20.699179939403752,
+        "max_compression_m": 0.14378828936973798,
+        "work_energy_relative_error": 6.619160630075976e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 2.0,
+      "case": "mixed_repeated",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.2043946195916533e-07,
+        "vx": 2.0142745094098302e-07,
+        "y": 4.8216110614465735e-06,
+        "vy": 5.652190825378156e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.1252538556462204,
+        "peak_vertical_n": 5058.692153441755,
+        "mean_patch_pressure_peak_kpa": 128.82966877145228,
+        "required_mu": 0.2243157831802136,
+        "peak_actuator_power_w": 311.6498315964842,
+        "max_compression_m": 0.1434255490123244,
+        "work_energy_relative_error": 6.556589557632575e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 4.0,
+      "case": "nominal",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 3.119935267914542e-07,
+        "vx": 5.201668091814327e-07,
+        "y": 7.463405419898261e-07,
+        "vy": 8.525951247784214e-08
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.659873193563879,
+        "peak_vertical_n": 5924.053744762173,
+        "mean_patch_pressure_peak_kpa": 150.86782483941863,
+        "required_mu": 0.31840643049243006,
+        "peak_actuator_power_w": 0.04093544593117226,
+        "max_compression_m": 0.17560272270625887,
+        "work_energy_relative_error": 2.5455226999664415e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 4.0,
+      "case": "height_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 7.430724924262222e-08,
+        "vx": 1.6238880418129042e-07,
+        "y": 6.816309734355985e-07,
+        "vy": 8.828225061541239e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.659911545010568,
+        "peak_vertical_n": 5924.115822331356,
+        "mean_patch_pressure_peak_kpa": 150.8694057683294,
+        "required_mu": 0.3214053798057009,
+        "peak_actuator_power_w": 119.23634503664181,
+        "max_compression_m": 0.1756051036516979,
+        "work_energy_relative_error": 4.5571645606140625e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 4.0,
+      "case": "height_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 2.89866763258928e-07,
+        "vx": 7.228608596143715e-07,
+        "y": 8.868336025258383e-08,
+        "vy": 1.4683036933249571e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.7360314535013956,
+        "peak_vertical_n": 6047.3273122100345,
+        "mean_patch_pressure_peak_kpa": 154.00723170207547,
+        "required_mu": 0.32060044559053325,
+        "peak_actuator_power_w": 119.05364701004002,
+        "max_compression_m": 0.17800178205519313,
+        "work_energy_relative_error": 3.139510578840471e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 4.0,
+      "case": "speed_minus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 3.2523010262686114e-07,
+        "vx": 1.4966766936908016e-06,
+        "y": 1.1640908010798756e-07,
+        "vy": 3.035350623820099e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.811960156139337,
+        "peak_vertical_n": 6170.229306734938,
+        "mean_patch_pressure_peak_kpa": 157.1371757203573,
+        "required_mu": 0.32808605914827027,
+        "peak_actuator_power_w": 489.63502879469314,
+        "max_compression_m": 0.17560246903149657,
+        "work_energy_relative_error": 2.1292016833842773e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 4.0,
+      "case": "speed_plus",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 3.752212474061878e-08,
+        "vx": 7.997308415497173e-08,
+        "y": 4.513361557857698e-07,
+        "vy": 5.092232110981421e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.854511754537859,
+        "peak_vertical_n": 6239.105451482706,
+        "mean_patch_pressure_peak_kpa": 158.89124389548283,
+        "required_mu": 0.3330872621577867,
+        "peak_actuator_power_w": 505.9614133079202,
+        "max_compression_m": 0.17682429394578225,
+        "work_energy_relative_error": 2.405628484238062e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 4.0,
+      "case": "lateral_left",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.6449482509450775e-07,
+        "vx": 3.5850337543053e-07,
+        "y": 1.078713650237706e-06,
+        "vy": 1.1509346871940718e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.66128818104589,
+        "peak_vertical_n": 5926.3441142499305,
+        "mean_patch_pressure_peak_kpa": 150.92615365910603,
+        "required_mu": 0.3188520105790154,
+        "peak_actuator_power_w": 12.961597567860423,
+        "max_compression_m": 0.1756846196874915,
+        "work_energy_relative_error": 2.3898785958774755e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 4.0,
+      "case": "lateral_right",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.047948327448367e-06,
+        "vx": 3.5268396323395734e-06,
+        "y": 4.1883713171320114e-08,
+        "vy": 7.575112422608665e-07
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.695423443058243,
+        "peak_vertical_n": 5981.597156106225,
+        "mean_patch_pressure_peak_kpa": 152.3332823921954,
+        "required_mu": 0.32706478040382364,
+        "peak_actuator_power_w": 24.38111244225779,
+        "max_compression_m": 0.17761605500701516,
+        "work_energy_relative_error": 8.685232387500154e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 4.0,
+      "case": "mixed_repeated",
+      "feedback": true,
+      "requested": 30,
+      "completed": 30,
+      "passed": true,
+      "final_errors": {
+        "z": 1.4598450670533225e-08,
+        "vx": 3.16074855177817e-08,
+        "y": 3.7713064741998203e-06,
+        "vy": 4.514534712313223e-06
+      },
+      "tolerances": {
+        "z": 0.002,
+        "vx": 0.01,
+        "y": 0.01,
+        "vy": 0.02
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.92528232106424,
+        "peak_vertical_n": 6353.658228990632,
+        "mean_patch_pressure_peak_kpa": 161.8085584771095,
+        "required_mu": 0.33349013319582743,
+        "peak_actuator_power_w": 618.2420796177603,
+        "max_compression_m": 0.1777918629589983,
+        "work_energy_relative_error": 3.0422479393720975e-07
+      }
+    }
+  ],
+  "holdout": [
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "stiffness_minus_5pct",
+      "feedback": true,
+      "requested": 50,
+      "completed": 50,
+      "passed": true,
+      "final_errors": {
+        "z": 0.011316196829482816,
+        "vx": 0.03668158840573588,
+        "y": 1.0612254773070817e-06,
+        "vy": 0.0007094979233098764
+      },
+      "tolerances": {
+        "z": 0.02,
+        "vx": 0.08,
+        "y": 0.02,
+        "vy": 0.04
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.2113721844515224,
+        "peak_vertical_n": 5198.087586362457,
+        "mean_patch_pressure_peak_kpa": 132.37965104092268,
+        "required_mu": 0.2804052184699439,
+        "peak_actuator_power_w": 0.2509328342481972,
+        "max_compression_m": 0.16221441055360297,
+        "work_energy_relative_error": 3.3104535801596613e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "stiffness_plus_5pct",
+      "feedback": true,
+      "requested": 50,
+      "completed": 50,
+      "passed": true,
+      "final_errors": {
+        "z": 0.010561353749541258,
+        "vx": 0.03463473208351653,
+        "y": 1.9145895647845745e-06,
+        "vy": 0.0008229089035736714
+      },
+      "tolerances": {
+        "z": 0.02,
+        "vx": 0.08,
+        "y": 0.02,
+        "vy": 0.04
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.4051855777401423,
+        "peak_vertical_n": 5511.803635409082,
+        "mean_patch_pressure_peak_kpa": 140.36905491470213,
+        "required_mu": 0.2641662182474199,
+        "peak_actuator_power_w": 0.22246493768689088,
+        "max_compression_m": 0.1556028425732343,
+        "work_energy_relative_error": 3.719221888072374e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "unseen_lateral_position",
+      "feedback": true,
+      "requested": 50,
+      "completed": 50,
+      "passed": true,
+      "final_errors": {
+        "z": 6.598645496680433e-08,
+        "vx": 1.3068089810275296e-07,
+        "y": 1.1927694965815916e-06,
+        "vy": 1.366538774916215e-06
+      },
+      "tolerances": {
+        "z": 0.02,
+        "vx": 0.08,
+        "y": 0.02,
+        "vy": 0.04
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.286428177763646,
+        "peak_vertical_n": 5319.576969937126,
+        "mean_patch_pressure_peak_kpa": 135.47362010850546,
+        "required_mu": 0.2648320801959313,
+        "peak_actuator_power_w": 9.32125968699515,
+        "max_compression_m": 0.15771405268136895,
+        "work_energy_relative_error": 2.1345770142398976e-07
+      }
+    },
+    {
+      "profile": "lighter_250cm_165kg",
+      "speed": 3.0,
+      "case": "unseen_mixed_timing",
+      "feedback": true,
+      "requested": 50,
+      "completed": 50,
+      "passed": true,
+      "final_errors": {
+        "z": 2.195959529771585e-07,
+        "vx": 1.4084304988948304e-06,
+        "y": 2.0810763960397993e-06,
+        "vy": 3.4006960365207117e-06
+      },
+      "tolerances": {
+        "z": 0.02,
+        "vx": 0.08,
+        "y": 0.02,
+        "vy": 0.04
+      },
+      "peak_metrics": {
+        "peak_vertical_bw": 3.5926271697459224,
+        "peak_vertical_n": 5815.2059683092375,
+        "mean_patch_pressure_peak_kpa": 148.0957994696993,
+        "required_mu": 0.3006112724627397,
+        "peak_actuator_power_w": 571.4709965426958,
+        "max_compression_m": 0.16304455460663791,
+        "work_energy_relative_error": 2.8528595317145405e-07
+      }
+    }
+  ],
+  "unit_tests": {
+    "count": 5,
+    "passed": 5,
+    "command": "python -m unittest examples.nasuraya_research.test_running_balance -v"
+  },
+  "development_correction": "Relative optimizer differences near zero actuator gain produced false planner failures. Replaced by absolute central differences, kept the same acceptance bounds, and restarted the full evaluation. Initial partial run retained separately.",
+  "files_sha256": {
+    "examples/nasuraya_research/running_profile_v01.json": "df67bb9d3ae9df63cf1cc3a58be2ed15568ad896728f306a3b102b6720897c67",
+    "examples/nasuraya_research/running_balance.py": "91200d7be227b2ac7bf3f14d732e50322697414c4a6076b15fa4edf85bdf78fd",
+    "examples/nasuraya_research/requirements-running.txt": "9d2c878b9c967046c23cd7adbeddda60ccc3513886d5cb088ae4374ce13dff12",
+    "examples/nasuraya_research/test_running_balance.py": "6b3ad802f2fd894f9737bfda8ef25b710f4fad4aa353e6e8b4d5db880c374633",
+    "examples/nasuraya_research/evaluate_running.py": "afa559fa1048a28cecf9fdc3bd87d1c3c0aa5e5daddd23436ac9bfaba070b3bb"
+  }
+}
