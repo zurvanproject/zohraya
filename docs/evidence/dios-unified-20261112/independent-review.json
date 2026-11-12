@@ -1,0 +1,166 @@
+{
+  "schema": "dios.unified.separate-agent-review/1",
+  "review_kind": "separate_software_agent_adversarial_review",
+  "independent_human_evaluation": false,
+  "reserved_evaluation_seen_or_executed": false,
+  "implementation_modified_by_reviewer": false,
+  "only_repository_file_authored": "examples/dios_nous/test_unified_independent.py",
+  "source_review_findings": [
+    {
+      "id": "unobserved_initial_continue",
+      "observed_in": "initial source review before new test execution",
+      "status": "fixed",
+      "problem": "RecoveryAdvisor initially declared ACTIVE/CONTINUE before any observation.",
+      "resolution": "Parent changed initial state to UNKNOWN/REQUEST_OBSERVATION and requires two safe samples."
+    },
+    {
+      "id": "stop_coupled_to_sensor_clock",
+      "observed_in": "initial source review before new test execution",
+      "status": "fixed",
+      "problem": "A stop at an already-observed tick was treated as conflicting sample replay.",
+      "resolution": "Parent added request_stop independent of measurement ticks; sticky stop survives recovery."
+    },
+    {
+      "id": "opaque_snapshot_model_identity",
+      "observed_in": "source review before new test execution",
+      "status": "fixed_scope_label",
+      "problem": "project_native_snapshot inferred legacy195kg identity from a generic snapshot with only syntactically valid opaque hashes.",
+      "resolution": "Explicit model_id declaration now required, with model_lineage_verified:false and caller_declared_not_verified labeling. No claim of actual lineage authentication."
+    },
+    {
+      "id": "fraction_to_integer_quantization",
+      "observed_in": "coordinator source review",
+      "status": "fixed_and_inspected",
+      "problem": "round can place raw fraction0.40049 at per-mille400 or0.59951 at600. This is explicit quantization rather than continuous physiological threshold enforcement.",
+      "resolution": "Coordinator now uses ceil for pressure/fatigue and floor for energy; conservative integer projection avoids early resume from round-to-nearest."
+    },
+    {
+      "id": "coordinator_hash_coverage",
+      "observed_in": "coordinator source review",
+      "status": "fixed_and_inspected",
+      "problem": "Initial implementation_sha256 map omitted coordinator itself.",
+      "resolution": "Coordinator includes its own source SHA256 in implementation_sha256 alongside the invoked component modules."
+    },
+    {
+      "id": "isolated_mode_site_initialization",
+      "observed_in": "runtime extension source review",
+      "status": "fixed_and_executed",
+      "problem": "Python -I alone does not disable all system-site initialization, so blanket sitecustomization isolation wording was too broad.",
+      "resolution": "Both native_readout and state_models use -I -S. Actual probes with poisoned parent sys.modules and PYTHONPATH passed."
+    },
+    {
+      "id": "direct_worker_disposable_boundary",
+      "observed_in": "runtime extension source review before disposable probe",
+      "status": "fixed_and_retested",
+      "problem": "Initial hidden --worker path could call prepare_defaults in a caller-selected verified source directory. Existing generated defaults were not part of pinned-source comparison and could be overwritten.",
+      "resolution": "Final worker itself verifies and copies only the45pinned files into a new temporary directory before observation. Both normal public calls and direct hidden-worker calls leave caller defaults and extra files untouched. Retained regression now verifies successful isolated readout with original synthetic canary preserved. No actual overwrite was observed."
+    }
+  ],
+  "actual_runs": [
+    {
+      "command": "python -m unittest examples.dios_nous.test_unified_independent -v",
+      "phase": "first11checks",
+      "passed": 11,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "/workspace/scratch/0abec75c9e12/unify-review/first-run.log"
+    },
+    {
+      "command": "python -m unittest examples.dios_nous.test_unified_independent -v",
+      "phase": "after_adding2coordinator_checks",
+      "passed": 13,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "/workspace/scratch/0abec75c9e12/unify-review/coordinator-review.log"
+    },
+    {
+      "command": "python -m unittest examples.dios_nous.test_unified_independent -v",
+      "phase": "runtime_extension_first_run_sparse_checkout",
+      "passed": 14,
+      "failed": 0,
+      "errors": 1,
+      "skipped": 0,
+      "log": "/workspace/scratch/0abec75c9e12/unify-review/runtime-extension-review.log",
+      "error_reason": "Default source root lacked IMPORT_PROVENANCE.json in sparse checkout; native source preflight stopped before subprocess execution."
+    },
+    {
+      "command": "DIOS_NATIVE_SOURCE_ROOT=/workspace/scratch/0abec75c9e12/unify-audit/native-readout-source python -m unittest examples.dios_nous.test_unified_independent -v",
+      "phase": "runtime_extension_verified_alternate_source_root",
+      "passed": 15,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "/workspace/scratch/0abec75c9e12/unify-review/runtime-extension-verified-sources.log"
+    },
+    {
+      "command": "python -m unittest examples.dios_nous.test_unified_independent -v",
+      "phase": "final_with_materialized_pinned_checkout_and_worker_regression",
+      "passed": 16,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "/workspace/scratch/0abec75c9e12/unify-review/final-independent-review.log"
+    },
+    {
+      "command": "python -m unittest examples.dios_nous.test_unified_independent -v",
+      "phase": "final_worker_owns_disposable_copy",
+      "passed": 16,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "/workspace/scratch/0abec75c9e12/unify-review/final-disposable-worker-review.log"
+    }
+  ],
+  "test_scope": [
+    "Native unknown/private fields rejected even after valid outer digest is recomputed",
+    "Native bool, NaN, infinities, future sample and wrong model rejected",
+    "Signed negative valence preserved and TTL5 boundary enforced",
+    "Native model lineage never claimed verified",
+    "Modified pinned source rejected before catalogue execution",
+    "Receipt TTL300 never becomes source authentication, live execution or action authority",
+    "Forged receipt owner, extra fields, bool-as-ID and future timestamp rejected",
+    "Recovery initial unknown, passive reads nonmutating, two-safe-sample progression",
+    "Clock-independent stop persists across checkpoint restoration",
+    "Invalid workload inputs and unknown checkpoint fields rejected without state mutation",
+    "Cognitive interface catalogue passive and independently copied",
+    "Coordinator validates external input before cognitive writes",
+    "Repeated summary reads preserve every episode file byte",
+    "Fixed neural/affect/genome subprocess ignores caller sys.modules and PYTHONPATH injection, keeps synthetic fixture labels and no action authority",
+    "Real Linux fresh initial body readout ignores caller module injection, preserves all45pinned source bytes, stays at time0revision0 with no body cycles or forbidden dynamic calls",
+    "Direct hidden worker invocation isolates verified source copies and leaves a preexisting synthetic default canary untouched"
+  ],
+  "unresolved_limits": [
+    "Authored software fixtures and rule compliance do not show physiological, subjective or task-performance benefit.",
+    "Caller exports and clocks are declared inputs, not authenticated sensors or issuer attestations.",
+    "Receipt freshness is report age, never proof of active worker or current operation.",
+    "Native195kg, visual78kg and MuJoCo78kg remain separate model lineages.",
+    "Catalogue coverage does not mean neural, affect, genome, visual or ritual runtime wiring.",
+    "Checksum consistency is not protection against coordinated data-and-checksum replacement.",
+    "No external executor or trusted authorization verifier exists.",
+    "This bounded review is not a complete security audit or independent human validation.",
+    "Fresh initial simulation readout is not a live or saved user body state; no physiological progression was executed.",
+    "Local neural steps and affect transition execute authored toy models; they are not underlying LLM internals or subjective feelings.",
+    "Native tests assert same-run before/after state equality, not cross-process bit identity of opaque checkpoint hashes.",
+    "Subprocess isolated mode is process/import isolation, not a malicious-code security sandbox; pinned source review remains necessary."
+  ],
+  "reviewed_file_sha256": {
+    "examples/dios_nous/unified/body.py": "48e8e6d453de4496693afa332eba2267605f9671218aee6a849345c154e9fabc",
+    "examples/dios_nous/unified/cognitive.py": "e1299ced6c8b2bd3f68a94cbcf39126a0a96f3e70bbe2a0ccf6166965ecb4c3b",
+    "examples/dios_nous/unified/evidence.py": "8c46d7968defe718afda3723116b07045ce0fb403371f76280ac1f411f209f94",
+    "examples/dios_nous/unified/recovery.py": "1c9bf8028326a2e945b36c4ec0c6bceccbd5a06fdae315e548de4cf0bfb73e9b",
+    "examples/dios_nous/unified/coordinator.py": "b76a67940e89e45cf4ee2c8758fe051403046cf61f67352011f4f591aadb6c38",
+    "examples/dios_nous/unified/native_readout.py": "bf93c5b4a2927f7c89c6ee31b03fe18991d4eec1c4a540563f4abb992ef2f7ae",
+    "examples/dios_nous/unified/state_models.py": "e73333852406332b64a9ef64ad4ed5ff956a3558e168a91aafbabb7aa7aab00a",
+    "examples/dios_nous/test_unified_independent.py": "c40eafb26c43b1316b4c684fae1f98d8320719a21ce2bd97e8c50759238bd9f9"
+  },
+  "final_result": {
+    "tests": 16,
+    "passed": 16,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "blocking_findings_remaining": []
+  }
+}

@@ -6,9 +6,13 @@ import copy
 from datetime import datetime, timedelta, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import shutil
+import subprocess
+import sys
 import tempfile
+import types
 import unittest
 from unittest.mock import patch
 
@@ -174,6 +178,77 @@ class UnifiedIndependentTests(unittest.TestCase):
             self.assertEqual(before, after)
             self.assertFalse(one["execution_permitted"])
             self.assertFalse(one["subjective_experience_demonstrated"])
+
+    def test_fixed_state_models_ignore_caller_modules_and_pythonpath(self):
+        from examples.dios_nous.unified import state_models
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            trap = root / "CALLER_MODULE_EXECUTED"
+            (root / "neural_circuit.py").write_text(
+                "from pathlib import Path\nPath(" + repr(str(trap)) + ").write_text('bad')\n"
+                "raise RuntimeError('caller module must not execute')\n")
+            poison = types.ModuleType("neural_circuit")
+            with patch.dict(os.environ, {"PYTHONPATH": str(root)}), patch.dict(
+                    sys.modules, {"neural_circuit": poison}):
+                result = state_models.run_models(root / "models")
+            self.assertFalse(trap.exists())
+            self.assertEqual(result["models"]["neural"]["counts"]["cells"], 6)
+            self.assertEqual(result["models"]["neural"]["fixture"]["id"], "neutral_arm_current_v1")
+            self.assertEqual(result["models"]["affect"]["fixture"]["source"], "synthetic_fixture")
+            self.assertFalse(result["models"]["affect"]["subjective_feeling_claim"])
+            self.assertFalse(result["models"]["genome"]["native_apply_allowed"])
+            self.assertFalse(result["models"]["genome"]["mutation_performed"])
+            self.assertFalse(result["execution_permitted"])
+
+    @unittest.skipUnless(sys.platform.startswith("linux"), "native readout is Linux-only; JSON consumers are portable")
+    def test_native_initial_readout_ignores_caller_modules_and_preserves_sources(self):
+        from examples.dios_nous.unified import native_readout
+        checkout = Path(native_readout.__file__).resolve().parents[3]
+        source_root = Path(os.environ.get("DIOS_NATIVE_SOURCE_ROOT", str(checkout)))
+        before = native_readout._sources(source_root)
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            trap = root / "CALLER_BODY_EXECUTED"
+            (root / "unified_body_v2.py").write_text(
+                "from pathlib import Path\nPath(" + repr(str(trap)) + ").write_text('bad')\n"
+                "raise RuntimeError('caller body must not execute')\n")
+            poison = types.ModuleType("unified_body_v2")
+            with patch.dict(os.environ, {"PYTHONPATH": str(root)}), patch.dict(
+                    sys.modules, {"unified_body_v2": poison}):
+                result = native_readout.execute_native_readout(source_root)
+            self.assertFalse(trap.exists())
+        self.assertEqual(native_readout._sources(source_root), before)
+        self.assertEqual(result["execution_kind"], "executed_initial_simulation_readout")
+        self.assertEqual(result["simulated_time_s"], 0)
+        self.assertEqual(result["revision"], 0)
+        self.assertEqual(result["native_cycles_executed"], 0)
+        self.assertEqual(result["forbidden_dynamic_calls"], 0)
+        self.assertTrue(result["checkpoint_unchanged"])
+        self.assertIn("fresh_initial_state_not_live_saved_user_body", result["limitations"])
+        self.assertFalse(result["physical_sensor_connected"])
+
+    @unittest.skipUnless(sys.platform.startswith("linux"), "native readout is Linux-only")
+    def test_internal_worker_cannot_overwrite_existing_default(self):
+        from examples.dios_nous.unified import native_readout
+        checkout = Path(native_readout.__file__).resolve().parents[3]
+        source_root = Path(os.environ.get("DIOS_NATIVE_SOURCE_ROOT", str(checkout)))
+        sources = native_readout._sources(source_root)
+        with tempfile.TemporaryDirectory(prefix="dios-native-readout-") as td:
+            root = Path(td)
+            for relative, raw in sources.items():
+                target = root / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(raw)
+            sentinel = root / "runtimes/tadash_body/retained_extensions/trained_circuit.json"
+            canary = b"SYNTHETIC_EXISTING_DEFAULT_DO_NOT_OVERWRITE_671"
+            sentinel.write_bytes(canary)
+            completed = subprocess.run([sys.executable, "-I", "-S",
+                str(Path(native_readout.__file__).resolve()), "--worker", str(root)],
+                capture_output=True, text=True, timeout=30)
+            self.assertEqual(completed.returncode, 0, completed.stderr)
+            self.assertEqual(json.loads(completed.stdout)["execution_kind"],
+                             "executed_initial_simulation_readout")
+            self.assertEqual(sentinel.read_bytes(), canary)
 
 
 if __name__ == "__main__":

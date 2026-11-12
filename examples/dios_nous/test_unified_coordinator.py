@@ -28,6 +28,8 @@ class CoordinatorTests(unittest.TestCase):
             self.assertEqual(result["cognitive"]["evidence"]["self_correction"]["evidence_review"]["verdict"], "DISSENT")
             self.assertEqual(json.loads((Path(root) / "snapshot.json").read_text(encoding="utf-8")), result)
             self.assertFalse(summary(result)["execution_permitted"])
+            for model in result["native_models"]["models"].values():
+                self.assertTrue(model["checkpoint_roundtrip_equal"])
             with self.assertRaises(ValueError):
                 run_demo(Path(root), now_utc="2026-11-12T08:00:00Z")
 

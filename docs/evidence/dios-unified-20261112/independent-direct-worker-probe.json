@@ -1,0 +1,8 @@
+{
+  "disposable_copy_only": true,
+  "command": "python -I -S native_readout.py --worker <disposable pinned source copy>",
+  "returncode": 1,
+  "existing_default_preserved": true,
+  "stdout_is_receipt": false,
+  "stderr_tail": "/scratch/0abec75c9e12/zohraya/examples/dios_nous/unified/native_readout.py\", line 224, in main\n    result = _worker(args.worker) if args.worker is not None else execute_native_readout(args.source_root)\n             ^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/scratch/0abec75c9e12/zohraya/examples/dios_nous/unified/native_readout.py\", line 103, in _worker\n    raise ValueError(\"internal worker requires a fresh disposable source copy\")\nValueError: internal worker requires a fresh disposable source copy\n"
+}

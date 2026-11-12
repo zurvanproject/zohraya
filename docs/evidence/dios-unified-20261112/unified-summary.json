@@ -1,0 +1,80 @@
+{
+  "schema": "dios.unified-snapshot.v1",
+  "snapshot_sha256": "011df61c8612246e5846c69e16b66d8099dc446ff2a8a416fa22d4a05538a237",
+  "evidence_kind": "executed_offline_research_composition",
+  "body_models": [
+    {
+      "id": "tadash_legacy_195kg",
+      "mass_kg": 195,
+      "status": "retained_reduced_simulation"
+    },
+    {
+      "id": "nasuraya_visual_target_78kg",
+      "mass_kg": 78,
+      "status": "authored_visual_target"
+    },
+    {
+      "id": "nasuraya_mujoco_v03_78kg",
+      "mass_kg": 78,
+      "status": "separate_mechanical_lineage_not_imported_or_run"
+    }
+  ],
+  "catalogue_counts": {
+    "native_export_parameters": 22,
+    "phenotype_definition_leaves": 195,
+    "genome_allele_definitions": 56,
+    "affect_somatic_goal_definitions": 59,
+    "neural_field_definitions": 31,
+    "regional_proxy_definitions": 35,
+    "cognitive_interfaces": 6
+  },
+  "native_model_counts": {
+    "affect": {
+      "affect_channels": 44,
+      "episodes": 1,
+      "goal_weights": 5,
+      "history": 1,
+      "parameter_numeric_leaves": 325,
+      "relationship_records": 0,
+      "somatic_channels": 10,
+      "state_numeric_leaves": 287
+    },
+    "genome": {
+      "alleles": 56,
+      "chromosomes": 48,
+      "loci": 28,
+      "pairs": 24,
+      "state_numeric_leaves": 57
+    },
+    "neural": {
+      "cells": 6,
+      "connection_state_fields": 36,
+      "neuron_state_fields": 18,
+      "parameter_numeric_leaves": 118,
+      "plastic_synapses": 1,
+      "state_numeric_leaves": 173,
+      "synapses": 9
+    }
+  },
+  "current_advisory": {
+    "evidence_verdict": "SUPPORTED",
+    "selected_goal": null,
+    "stage": "after_persisted_stop"
+  },
+  "workload_state": "HALTED",
+  "native_observation_status": "unknown_no_observation",
+  "capabilities": {
+    "cognition_goals_memory_dissent": "executed_synthetic_episode",
+    "body_atlas": "executed_pinned_registry_builder",
+    "native_body": "no_observation",
+    "genome_neural_affect": "executed_fixed_native_fixtures_not_applied_to_body_or_llm",
+    "ritual": "imported_authored_progress_not_mastery",
+    "visual_director": "plan_only_not_rendered_or_runtime_wired",
+    "server": "imported_frozen_owner_reports_not_live_telemetry",
+    "desktop": "reported_web_shortcuts_authenticated_use_untested",
+    "workload": "executed_advisory_controller_no_measured_benefit"
+  },
+  "execution_permitted": false,
+  "external_actions_taken": 0,
+  "subjective_experience_demonstrated": false
+}

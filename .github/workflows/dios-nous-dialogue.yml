@@ -29,6 +29,21 @@ jobs:
       - run: python -m unittest discover -s examples/dios_nous -v
       - run: python -m examples.dios_nous --db "${{ runner.temp }}/dios-nous-demo.sqlite" demo
       - run: python -m examples.dios_nous cognitive-demo
+      - name: Unified offline cognitive and native-model fixtures
+        run: python -m examples.dios_nous unified-demo
+      - name: Read initial native body without cycles (Linux)
+        if: runner.os == 'Linux'
+        run: python -m examples.dios_nous.unified.native_readout --output "${{ runner.temp }}/native-receipt.json" --export-output "${{ runner.temp }}/native-export.json"
+      - name: Connect actual native export to unified workload advice (Linux)
+        if: runner.os == 'Linux'
+        run: python -m examples.dios_nous unified-demo --native-export "${{ runner.temp }}/native-export.json" --simulated-now 0 --output-dir "${{ runner.temp }}/unified-native"
+      - name: Import recorded Linux export without native runtime (Windows)
+        if: runner.os == 'Windows'
+        run: python -m examples.dios_nous unified-demo --native-export docs/evidence/dios-unified-20261112/native-export.json --simulated-now 0 --output-dir "${{ runner.temp }}/unified-imported"
+      - name: Unified recovery development regression
+        run: python -m examples.dios_nous.unified.evaluate --split dev --output "${{ runner.temp }}/unified-dev.json"
+      - name: Unified frozen recovery holdout regression
+        run: python -m examples.dios_nous.unified.evaluate --split holdout --output "${{ runner.temp }}/unified-heldout.json"
       - name: Development fixtures before frozen holdout
         run: python -m examples.dios_nous.evaluate_work --split dev --output "${{ runner.temp }}/dios-dev.json"
       - name: Frozen synthetic holdout regression

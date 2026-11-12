@@ -4,3 +4,4 @@
 # These exact upstream byte copies must not gain a trailing newline or CRLF.
 unified/body_sources/** -text
 unified/evidence_sources/** -text
+unified/state_sources/** -text

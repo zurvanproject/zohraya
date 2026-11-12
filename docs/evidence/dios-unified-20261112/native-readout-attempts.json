@@ -1,0 +1,68 @@
+{
+  "adapter_sha256": "48e8e6d453de4496693afa332eba2267605f9671218aee6a849345c154e9fabc",
+  "attempts": [
+    {
+      "detail": "Batch shell argument exceeded OS size limit; changed to exact-byte file patches; no native process started.",
+      "result": "tool_argument_limit",
+      "stage": "initial_materialization"
+    },
+    {
+      "detail": "ModuleNotFoundError: No module named 'run_balance_checks'",
+      "fix": "Fetched original pinned dependency blob38478becaa3cad833e43861626b132e9495f8b48; source set now45files; no runtime edit.",
+      "result": "import_failure",
+      "stage": "initial_readout"
+    },
+    {
+      "checkpoint_unchanged": true,
+      "result": "pass",
+      "simulation_time_s": 0,
+      "stage": "first_successful_native_probe",
+      "tool_wall_seconds": 0.12848415
+    },
+    {
+      "detail": "Full fresh checkpoint SHA differed despite unchanged observable body; diagnosed list order from a native set. Exact differing paths and values preserved in native-readout-checkpoint-diff.json.",
+      "result": "failed",
+      "stage": "fresh_process_checkpoint_identity_test",
+      "tests_failed": 1,
+      "tests_passed": 3
+    },
+    {
+      "detail": "No native code was modified and no PYTHONHASHSEED workaround used. Keep exact within-run checkpoint equality; compare across processes body_before_digest, minimum state and finite stocks. This is authored regression testing, not an independent human evaluation.",
+      "result": "explicit_limitation",
+      "stage": "criterion_correction"
+    },
+    {
+      "detail": "Direct internal --worker invocation could use caller directory. Worker now always copies only verified source bytes into its own disposable directory. Canary regression preserves both caller default files; no model dynamics.",
+      "result": "fixed",
+      "stage": "independent_worker_review"
+    },
+    {
+      "result": "pass",
+      "stage": "final_native_tests",
+      "tests_failed": 0,
+      "tests_passed": 6,
+      "tool_wall_seconds": 0.641860684,
+      "unittest_reported_seconds": 0.615
+    }
+  ],
+  "claims": {
+    "fresh_authored_native_readout_executed": true,
+    "fresh_checkpoint_bit_identity_demonstrated": false,
+    "live_user_body_loaded": false,
+    "physical_sensor_connected": false,
+    "physiology_cycles_executed": false
+  },
+  "final_receipt": {
+    "after_checkpoint_sha256": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40",
+    "before_checkpoint_sha256": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40",
+    "forbidden_dynamic_calls": 0,
+    "guarded_dynamic_entrypoints": 10,
+    "simulation_time_s": 0.0,
+    "source_files": 45
+  },
+  "platform": "linux",
+  "python_version": "3.12.14",
+  "runner_sha256": "bf93c5b4a2927f7c89c6ee31b03fe18991d4eec1c4a540563f4abb992ef2f7ae",
+  "schema": "dios.native_readout_attempts/1",
+  "source_commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35"
+}

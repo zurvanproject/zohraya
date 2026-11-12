@@ -16,6 +16,17 @@ Use a new empty directory/output filename. On Windows use an ordinary writable W
 
 `snapshot.json` contains actual synthetic cognitive results, pinned atlas output, provenance, units, parameter catalogues, frozen public reports, missing data and workload advice. The demo includes a goal-stop test, so its final goal is null and workload state HALTED. The earlier revised goal remains in historical results. Read the saved JSON to display it; rerunning the episode is a new stateful experiment, not a dashboard refresh.
 
+The same demo also executes the original six-cell/nine-synapse circuit for128ticks, a neutral learning event through the44-channel authored affect model, and the original48-chromosome genotype validator/expression code. Their native save/load roundtrips are checked in an isolated subprocess, with exact source pins checked before import. These are reduced external models and software-genome proposals; they do not change the LLM, body phenotype, truth judgement or permission. Checkpoint files and full source-labelled states are retained in `native-models/`.
+
+On Linux a real readout of a fresh authored native body can be exported without advancing its physiology:
+
+```sh
+python -m examples.dios_nous.unified.native_readout --output /tmp/native-receipt.json --export-output /tmp/native-export.json
+python -m examples.dios_nous unified-demo --native-export /tmp/native-export.json --simulated-now 0 --output-dir /tmp/dios-native-connected
+```
+
+This verifies45 original repository files, creates disposable initial state at simulated time zero, calls the existing snapshot/observer, and verifies unchanged checkpoints. It does not load a live saved body or run physical dynamics. Windows can import the bounded JSON export but cannot run the fcntl-dependent native readout. Original runtime files must exist in the checkout; no source downloads occur at execution time.
+
 The body catalogue keeps native195kg physiology, visual78kg target and separate78kg MuJoCo mechanics distinct. It includes22 normalized export fields,195 phenotype definition leaves,56 allele definitions across28 loci,59 affect/somatic/goal definitions,31 neural definitions and35 regional proxy fields. Counts overlap semantically and must not be summed as independent cognitive abilities. The pinned atlas builder enumerates12systems/97nodes; these are not97 independent physiological solvers.
 
 `body.project_native_snapshot(..., model_id=body.MODEL)` projects the existing software snapshot into a closed bounded export; `body.normalize_native(..., now_s=...)` checks its fields, digest and five-simulated-second TTL. Model identity remains caller declared. Checksums establish consistency, not trusted origin. Optional stock values are not covered by the original native observation digest. Missing/stale values remain null. See the body module's exact export contract.

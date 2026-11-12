@@ -1,0 +1,531 @@
+{
+  "action_requests_executed": 0,
+  "after_checkpoint_sha256": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40",
+  "before_after_equal": true,
+  "before_checkpoint_sha256": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40",
+  "checkpoint_unchanged": true,
+  "execution_kind": "executed_initial_simulation_readout",
+  "export": {
+    "clock_domain": "simulated_seconds",
+    "finite_stocks": {
+      "co2_store_L": 0.22,
+      "fuel_J": 4000000.0,
+      "heat_J": 0.0,
+      "reserve_J": 60000.0,
+      "usable_o2_L": 2.0,
+      "water_L": 110.0
+    },
+    "minimum_state": {
+      "HR": 60.0,
+      "RR": 11.0,
+      "arousal": 0.25,
+      "balance": 1.0,
+      "breath_depth": 1.1,
+      "energy": 1.0,
+      "fatigue": 0.0,
+      "hydration": 1.0,
+      "muscle_tone": 0.25,
+      "pain": 0.0,
+      "parasympathetic": 0.6,
+      "posture": "double_support",
+      "sleep_pressure": 0.35,
+      "sympathetic": 0.2,
+      "temperature": 37.0,
+      "valence": 0.0
+    },
+    "model_id": "tadash_legacy_195kg",
+    "native_checkpoint_sha256": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40",
+    "revision": 0,
+    "sampled_at_s": 0.0,
+    "schema": "dios.native_body_export/1",
+    "sha256": "d2c25e4a3be145f2a668837b757a1bb5908d36282b744a1964e7f916ac914f8d",
+    "source_observation_sha256": "54bf1411288dc338c4478c03ad1ee28d47ab4bca8f3ea32d06c46986ab8047e9"
+  },
+  "forbidden_dynamic_calls": 0,
+  "generated_defaults": {
+    "initial_affect.json": {
+      "sha256": "975e4e0162e5dad09ad78dc5b0d669914fc0af4ce39551eb576b6c1180baae1c",
+      "status": "fresh_authored_default_not_trained_or_user_state"
+    },
+    "trained_circuit.json": {
+      "sha256": "7b40acd0761e64e4d67e0b2751e54a07d53c8d8e3a8a5ea4e42492f33f62ac53",
+      "status": "fresh_authored_default_not_trained_or_user_state"
+    }
+  },
+  "guarded_dynamic_entrypoints": 10,
+  "initialization": "fresh_authored_defaults_without_synthetic_origin_warmup",
+  "limitations": [
+    "fresh_initial_state_not_live_saved_user_body",
+    "no_physiological_dynamics_executed",
+    "no_empirical_validation",
+    "legacy_195kg_not_calibrated_78kg",
+    "no_geometry_or_torch_execution",
+    "fresh_process_checkpoint_hash_varies_with_native_source_sequence_order"
+  ],
+  "model_api_calls": 0,
+  "native_cycles_executed": 0,
+  "native_export": {
+    "clock_domain": "simulated_seconds",
+    "finite_stocks": {
+      "co2_store_L": 0.22,
+      "fuel_J": 4000000.0,
+      "heat_J": 0.0,
+      "reserve_J": 60000.0,
+      "usable_o2_L": 2.0,
+      "water_L": 110.0
+    },
+    "minimum_state": {
+      "HR": 60.0,
+      "RR": 11.0,
+      "arousal": 0.25,
+      "balance": 1.0,
+      "breath_depth": 1.1,
+      "energy": 1.0,
+      "fatigue": 0.0,
+      "hydration": 1.0,
+      "muscle_tone": 0.25,
+      "pain": 0.0,
+      "parasympathetic": 0.6,
+      "posture": "double_support",
+      "sleep_pressure": 0.35,
+      "sympathetic": 0.2,
+      "temperature": 37.0,
+      "valence": 0.0
+    },
+    "model_id": "tadash_legacy_195kg",
+    "native_checkpoint_sha256": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40",
+    "revision": 0,
+    "sampled_at_s": 0.0,
+    "schema": "dios.native_body_export/1",
+    "sha256": "d2c25e4a3be145f2a668837b757a1bb5908d36282b744a1964e7f916ac914f8d",
+    "source_observation_sha256": "54bf1411288dc338c4478c03ad1ee28d47ab4bca8f3ea32d06c46986ab8047e9"
+  },
+  "normalized": {
+    "action_requests_executed": 0,
+    "age_s": 0.0,
+    "clock_domain": "simulated_seconds",
+    "evaluated_at_s": 0.0,
+    "export_sha256": "d2c25e4a3be145f2a668837b757a1bb5908d36282b744a1964e7f916ac914f8d",
+    "finite_stocks": {
+      "co2_store_L": {
+        "status": "caller_supplied_simulation",
+        "unit": "L",
+        "value": 0.22
+      },
+      "fuel_J": {
+        "status": "caller_supplied_simulation",
+        "unit": "J",
+        "value": 4000000.0
+      },
+      "heat_J": {
+        "status": "caller_supplied_simulation",
+        "unit": "J",
+        "value": 0.0
+      },
+      "reserve_J": {
+        "status": "caller_supplied_simulation",
+        "unit": "J",
+        "value": 60000.0
+      },
+      "usable_o2_L": {
+        "status": "caller_supplied_simulation",
+        "unit": "L",
+        "value": 2.0
+      },
+      "water_L": {
+        "status": "caller_supplied_simulation",
+        "unit": "L",
+        "value": 110.0
+      }
+    },
+    "integrity_verified": true,
+    "minimum_state": {
+      "HR": {
+        "status": "caller_supplied_simulation",
+        "unit": "beats/min",
+        "value": 60.0
+      },
+      "RR": {
+        "status": "caller_supplied_simulation",
+        "unit": "breaths/min",
+        "value": 11.0
+      },
+      "arousal": {
+        "status": "caller_supplied_simulation",
+        "unit": "index",
+        "value": 0.25
+      },
+      "balance": {
+        "status": "caller_supplied_simulation",
+        "unit": "index",
+        "value": 1.0
+      },
+      "breath_depth": {
+        "status": "caller_supplied_simulation",
+        "unit": "L",
+        "value": 1.1
+      },
+      "energy": {
+        "status": "caller_supplied_simulation",
+        "unit": "fraction",
+        "value": 1.0
+      },
+      "fatigue": {
+        "status": "caller_supplied_simulation",
+        "unit": "index",
+        "value": 0.0
+      },
+      "hydration": {
+        "status": "caller_supplied_simulation",
+        "unit": "fraction",
+        "value": 1.0
+      },
+      "muscle_tone": {
+        "status": "caller_supplied_simulation",
+        "unit": "index",
+        "value": 0.25
+      },
+      "pain": {
+        "status": "caller_supplied_simulation",
+        "unit": "index",
+        "value": 0.0
+      },
+      "parasympathetic": {
+        "status": "caller_supplied_simulation",
+        "unit": "index",
+        "value": 0.6
+      },
+      "posture": {
+        "status": "caller_supplied_simulation",
+        "unit": "phase",
+        "value": "double_support"
+      },
+      "sleep_pressure": {
+        "status": "caller_supplied_simulation",
+        "unit": "index",
+        "value": 0.35
+      },
+      "sympathetic": {
+        "status": "caller_supplied_simulation",
+        "unit": "index",
+        "value": 0.2
+      },
+      "temperature": {
+        "status": "caller_supplied_simulation",
+        "unit": "degC_design_proxy",
+        "value": 37.0
+      },
+      "valence": {
+        "status": "caller_supplied_simulation",
+        "unit": "signed_index",
+        "value": 0.0
+      }
+    },
+    "model_id": "tadash_legacy_195kg",
+    "model_id_status": "caller_declared_not_verified",
+    "model_lineage_verified": false,
+    "native_checkpoint_sha256": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40",
+    "native_cycles_executed": 0,
+    "physical_sensor_connected": false,
+    "revision": 0,
+    "sampled_at_s": 0.0,
+    "schema": "dios.normalized_body/1",
+    "source_authenticated": false,
+    "source_kind": "caller_supplied_software_export",
+    "source_observation_sha256": "54bf1411288dc338c4478c03ad1ee28d47ab4bca8f3ea32d06c46986ab8047e9",
+    "status": "fresh",
+    "stock_provenance": "caller_supplied_not_bound_to_native_snapshot_digest",
+    "ttl_s": 5.0
+  },
+  "observation": {
+    "audit": {
+      "age_s": 0.0,
+      "available_sensory_channels": [],
+      "body_revision": 0,
+      "body_state_fresh": true,
+      "body_time_s": 0.0,
+      "empirical_validation": false,
+      "evaluation_time_s": 0.0,
+      "expired_sensory_channels": [],
+      "kind": "readout_of_saved_simulation",
+      "recent_prediction_errors": [],
+      "request_new_evidence": false,
+      "saved_minimum_state": {
+        "HR": 60.0,
+        "RR": 11.0,
+        "arousal": 0.25,
+        "balance": 1.0,
+        "breath_depth": 1.1,
+        "energy": 1.0,
+        "fatigue": 0.0,
+        "hydration": 1.0,
+        "muscle_tone": 0.25,
+        "pain": 0.0,
+        "parasympathetic": 0.6,
+        "posture": "double_support",
+        "sleep_pressure": 0.35,
+        "sympathetic": 0.2,
+        "temperature": 37.0,
+        "valence": 0.0
+      },
+      "schema": "nasuraya-audited-self-model/1.0",
+      "subjective_experience_probability": null,
+      "uncertainty": 0.0,
+      "uncertainty_is": "engineering_index_not_calibrated_probability",
+      "unified_parameter_learning_demonstrated": false,
+      "unknown": [
+        "empirical_calibration",
+        "arterial_gases",
+        "independent_3d_organ_geometry",
+        "physical_sensor_attachment",
+        "external_world_without_supplied_observation",
+        "sensory_channel:vision",
+        "sensory_channel:hearing",
+        "sensory_channel:smell",
+        "sensory_channel:taste",
+        "sensory_channel:touch"
+      ],
+      "upper_controller_walk_guard_allows": true,
+      "walking_restrictions": []
+    },
+    "body_before_digest": "d6638f1d28d4f43acba3c48af9ff27a21d6e56ab0abaf00884a56dfdec85d705",
+    "evidence_kind": "source_pinned_software_observation",
+    "minimum": {
+      "HR": 60.0,
+      "RR": 11.0,
+      "arousal": 0.25,
+      "balance": 1.0,
+      "breath_depth": 1.1,
+      "energy": 1.0,
+      "fatigue": 0.0,
+      "hydration": 1.0,
+      "muscle_tone": 0.25,
+      "pain": 0.0,
+      "parasympathetic": 0.6,
+      "posture": "double_support",
+      "sleep_pressure": 0.35,
+      "sympathetic": 0.2,
+      "temperature": 37.0,
+      "valence": 0.0
+    },
+    "native_sha": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40",
+    "observation_sha256": "54bf1411288dc338c4478c03ad1ee28d47ab4bca8f3ea32d06c46986ab8047e9",
+    "revision": 0,
+    "source_identity": "f682771cf76c11c684c2c7561a98ceee07bf1606c9fead48e9b975cc2df7da81",
+    "time_s": 0.0
+  },
+  "physical_sensor_connected": false,
+  "pinned_sources_unchanged": true,
+  "research_observer": {
+    "action_requests_executed": 0,
+    "mode": "read_only_research",
+    "model_api_calls": 0,
+    "native_cycles_executed": 0,
+    "sensory": {
+      "q": [
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.35,
+        1.0
+      ],
+      "source": "54bf1411288dc338c4478c03ad1ee28d47ab4bca8f3ea32d06c46986ab8047e9",
+      "v": [
+        0.196,
+        0.0,
+        0.0,
+        -0.196,
+        0.0,
+        0.0
+      ]
+    },
+    "source_checkpoint_sha256": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40"
+  },
+  "revision": 0,
+  "schema": "dios.native_readout_receipt/1",
+  "simulated_time_s": 0.0,
+  "source_commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+  "source_files": {
+    "examples/nasuraya_research/__init__.py": {
+      "git_blob_sha1": "24a6f57e8e242851a05c63079a1c594e828e1362",
+      "sha256": "3751f50f8cba02ccac182c69d7f69e3941f1495ae12f479d157dead0e8121870"
+    },
+    "examples/nasuraya_research/adapters.py": {
+      "git_blob_sha1": "7dccebd92690df190b6a297ca33c922f1283520a",
+      "sha256": "9fcf6af80ccba32e9b012972927d2aa63876ce29f8d80c1d14ecee831909502a"
+    },
+    "examples/nasuraya_research/body_observer.py": {
+      "git_blob_sha1": "cdb36b9b37d176a955c1a526d6b68b5d90026583",
+      "sha256": "df04eb6a707c43629f93f2cd0ea5541e8ada352f0a79827202de3d55a212a226"
+    },
+    "examples/nasuraya_research/integrity.py": {
+      "git_blob_sha1": "90c6667a748c5ce662bfd175fb065d3d8efc57dc",
+      "sha256": "acb2364a7620d7e10d3539350c95954e6c035b3a1e67adc78eda93596ff90ae4"
+    },
+    "examples/nasuraya_research/native_snapshot.py": {
+      "git_blob_sha1": "b469e291b8d9cddbb135af2fa12de0da046d1177",
+      "sha256": "263ba45ee7feea025780cd3a9c57ff26a0549724879fb52206be3c4e5015d09a"
+    },
+    "runtimes/tadash_body/IMPORT_PROVENANCE.json": {
+      "git_blob_sha1": "86a34318bc8556c5bd849fdd0d3ab126a147ffd6",
+      "sha256": "a42ba019e54f74c7dc45c4ea44b168fd81287463c92862b68029fc2b10eb0602"
+    },
+    "runtimes/tadash_body/PUBLIC_FILES_SHA256.json": {
+      "git_blob_sha1": "98dd4cbd32fa97f6a61505c48a02a25b92833fdf",
+      "sha256": "b3b95a88885d903f638efbc26ed693bf7a211460a5adae6dd9abfa12ac7720ef"
+    },
+    "runtimes/tadash_body/RECOVERED_FILES_SHA256.json": {
+      "git_blob_sha1": "1d4afe7247e2d3f14a1a257eec2d8d0a2df78495",
+      "sha256": "b21656bb69693cbdc0ea8d22b7339e966b94c84f4f7b50cef4d6381a72893423"
+    },
+    "runtimes/tadash_body/REFLECTION_PROVENANCE.json": {
+      "git_blob_sha1": "bae7356c22f9b22f9d7a836f52be43fbd539ac2c",
+      "sha256": "405ab5d5028718256bb065e8176e8d1c5e7d680d0a2e02698cd0f2772ef5b8a1"
+    },
+    "runtimes/tadash_body/SOURCE_PROVENANCE.json": {
+      "git_blob_sha1": "666a2199fd1bb1f42a21aaf982800eccf55bcf47",
+      "sha256": "ecf37922caf72ea9aa6cf647d957bcd0c50e9d5b67fe53b2f35e711fd141c0d1"
+    },
+    "runtimes/tadash_body/actuated_breath_v1.py": {
+      "git_blob_sha1": "9db7da6e842f24b1959e452bf4d558f73da52bbf",
+      "sha256": "e572c3d9efef4c6bff15440cbb71869d4e15235db805abfdb4d1be0174b042c1"
+    },
+    "runtimes/tadash_body/anatomy_systems_v01.json": {
+      "git_blob_sha1": "0c3bd45e78d430b2ac91ddb80a5ba8987f73a397",
+      "sha256": "f0a8f47de3b23d15f257b56767308b82cb4f41cd765232599e9343631397b64b"
+    },
+    "runtimes/tadash_body/audit_self_model.py": {
+      "git_blob_sha1": "dbde4acacd3f8306c032fd19d861d2be320db67c",
+      "sha256": "4e48afbfead5ed48f7002db26c5ee96aa1e7b874851fa2eafa531fe6d08cbd02"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/renal_audit_v09.py": {
+      "git_blob_sha1": "07506c159a10cc2f221d8c776e8ad1f639f15dbf",
+      "sha256": "5360da71cefd8b9c71e52a834e61b7a95c223f6dcf6e84d248950092170618d6"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/renal_body_v09.py": {
+      "git_blob_sha1": "c5717167c623f88237764b9c991c837b7b90746e",
+      "sha256": "e79d5a161cf1a9f5a0d218024eb628064d249f1b18fcaa977697fb29cd784dea"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/renal_coupling_v09.py": {
+      "git_blob_sha1": "094f9495afacbfb76de8ee134ab32b345e09b806",
+      "sha256": "255c464ff96330a65bb75d8ef84aca9799e2d4b5f9cf65ddb0e25dc869c9f43f"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/renal_physiology_v09.py": {
+      "git_blob_sha1": "42c43d2a256564e8ae0e3a1f746dbbe4bf1dde55",
+      "sha256": "36ad0162b54f24a5cac98fbc02f86495967c1ce22f2c815214354ddece03a66c"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/motion/sections.py": {
+      "git_blob_sha1": "9ad8c6c9162a97ecbbebeb2a978a79eb16609480",
+      "sha256": "1f10a05e6f144a5568599b37e44978c3954e48d4c8ff9d44976dcd92cc2b7141"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/pain/pain.py": {
+      "git_blob_sha1": "96008ac3311b2cb6586137853b15d685698ddb52",
+      "sha256": "d5fa304fd73d4359c02a753fa225c46112aff156d37191f91c7ed42f94b8e60a"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/pain/regions.json": {
+      "git_blob_sha1": "826e678297c96b9dc68808aa7d02008360939846",
+      "sha256": "0ddcca51b93a3c54388b9865251fd01fee9e9b432a8ffedba1e8ccad474f9dae"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/bilateral_sections.py": {
+      "git_blob_sha1": "c7736be8f1ca4da03c5a39e3117e165a991d3fc5",
+      "sha256": "e998f091615cac6ae996c0d6276da32a8a9c2a5a3e633eaa2810fb1c1519afbc"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/body_loop_v06.py": {
+      "git_blob_sha1": "947a25c3f2c5ff076d37d5fc0241be4408051673",
+      "sha256": "214f5abf09c634ed3d3935043e40711d513c8980200eb97591ca4fbb70574e2c"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/breath_motion_v06.py": {
+      "git_blob_sha1": "9459460aec7e707caf88db66c51d7ed1d401c072",
+      "sha256": "76f45f733f80fc021950395ec123079fe6f6c55d7f63e911b0d698a51dad23a1"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contact_design_v06.json": {
+      "git_blob_sha1": "2394080461f2ff6ea9e38ca0fae7628856026528",
+      "sha256": "f92436e77bc1b5fe4449cb94bbefd9e3c8624fc14d4719458bf10d8ddb191a6a"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contacts.py": {
+      "git_blob_sha1": "cb08c6c33a4670cb1ebd970a7728a7188ac6ab31",
+      "sha256": "12eda407e4718bdef844cd81259d95ad321ed87d7733746f2264666bf65646e6"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/hydraulic_table_v03.json": {
+      "git_blob_sha1": "0c39f91f3e8ed5f7b0abf0b4536b97df8fce8fc8",
+      "sha256": "97cb0945ef5f9a08f1e2ce4cfb91d08849ddb2130cc99d6cf43009a090f29c88"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/pain_resilience_v04.py": {
+      "git_blob_sha1": "c05e1dc1c7dd43edcd7a27eda2002bf5dc38238f",
+      "sha256": "6fd130ba928b1404f2b32107c6528d2c0750eb73924b9e400577ea40451ef54f"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/posture_step.py": {
+      "git_blob_sha1": "ea46f33508c4af7dc0b97616f44058b10c489a52",
+      "sha256": "02b845bc9184dd62b8ab17c4661bd17e7ea8e340e2022f4c47428ce748531c06"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/resource_audit_v06.py": {
+      "git_blob_sha1": "c6304f09b57b5ae209c241415fae07c32c7d219d",
+      "sha256": "d4dac28a30cc827f3dea90004da09f1a81ec51b4e3f2de5bb46aecdb80bd7d23"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/run_balance_checks.py": {
+      "git_blob_sha1": "38478becaa3cad833e43861626b132e9495f8b48",
+      "sha256": "707eb2f5b8bf40bf15a2dfcbe23ee62a9d8001b40527d4b865740fdf2a30086c"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/brain_body_loop_v07.py": {
+      "git_blob_sha1": "97c8d7ae863d15bbb0b7cf38a443ec544564e74a",
+      "sha256": "b0392b813f31f015d277521e06ad337ec4df82bca6f4bd891a319e815e429482"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/cognitive_workspace_v07.py": {
+      "git_blob_sha1": "60c0921fd646c5534ed77a0ff79193cfb86d8c7f",
+      "sha256": "e46fcde014022b3db61e566b259e59471c2afc9a75c9eecf39b13d2731dd8eaa"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/durable_memory_v08.py": {
+      "git_blob_sha1": "055912d9a55ffacc3631e51102b2c91e5ab3a767",
+      "sha256": "3580445893fe3bc4105bdaa235d0ce47eac3c029960911806e7d4b92ca39ca47"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/interoception_v07.py": {
+      "git_blob_sha1": "0c303c8b3542b0e30eca03254b97aa6739824914",
+      "sha256": "f4ce82b17e106819d459dc7dd09508552328feaa2bd44575b7eaa58388cf2510"
+    },
+    "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/memory_body_loop_v08.py": {
+      "git_blob_sha1": "ed3f91ef5a791e653ae27d37e00a469d08b40820",
+      "sha256": "656a082629148f29bd6a3e4531b2cb177473c7c55d20959a0a37906a1cade302"
+    },
+    "runtimes/tadash_body/decision_core.py": {
+      "git_blob_sha1": "abe1cd3c0d32e3591432345b92ab48fc49c4275b",
+      "sha256": "24d6c8784c154ad22538a19ad7176f9eda4c98524c3a948d1895055e02917c7a"
+    },
+    "runtimes/tadash_body/persistent_embodiment_v1.py": {
+      "git_blob_sha1": "db87b7b1f47f33c443d803bb31b0c5f8e63af127",
+      "sha256": "9e0f226f9fb507238ed92ebb75a2718c127c47efdc4b53c72d78ee13b40db6b6"
+    },
+    "runtimes/tadash_body/phenotype_v1.json": {
+      "git_blob_sha1": "61f61176c50379041ccbebf7a2f5d36824aa3a5a",
+      "sha256": "2dc8906c57de807f7adfeebdae21d2f3049accc75b4a65f5effafd127e6e3d37"
+    },
+    "runtimes/tadash_body/privacy_boundary.py": {
+      "git_blob_sha1": "c75f0720751937bd7f095ce10e2caaf3307e5f55",
+      "sha256": "d84411000dcad69acf4253c8d258689fb360846234fab4d5bdf51f609dd55241"
+    },
+    "runtimes/tadash_body/retained_extensions/nasuraya_affective_layer_v01.py": {
+      "git_blob_sha1": "c9ec0fe1f0474d14f6c98c93c0131aa1c784cce5",
+      "sha256": "8354b663a4df8eaf8e62b15aa07a300bb4cf91885e176fe97947d7d6ab5c909f"
+    },
+    "runtimes/tadash_body/retained_extensions/nasuraya_decision_core_v1.py": {
+      "git_blob_sha1": "de18284b6daea5c75dd479fc3a27ec643f9e4c2a",
+      "sha256": "1aa21714cda555dfb910276ee87836f78cc3952616e7ef2449955362d7225435"
+    },
+    "runtimes/tadash_body/retained_extensions/nasuraya_emotion_spectrum_v01.py": {
+      "git_blob_sha1": "2b03e762e40659f68195627793db20e04f8465cc",
+      "sha256": "d29835759d1ec0ce16555b6805fe2bf008f97245a3ad76ac3e080da60299ac91"
+    },
+    "runtimes/tadash_body/retained_extensions/neural_circuit.py": {
+      "git_blob_sha1": "2f5b50de61ff387b4217c906adc203f8a2c421ba",
+      "sha256": "bd5d3da73d403055e7c0066420d16f6e2f0ccb8d48904738c404057edcda87e0"
+    },
+    "runtimes/tadash_body/synthetic_fixture.py": {
+      "git_blob_sha1": "241f15500e9b163681232e761bf92bc119418a0f",
+      "sha256": "154d9b97a3440d86460c2c811bb37ad744debd63c886eb01ea11c52234e6f05b"
+    },
+    "runtimes/tadash_body/unified_body_v2.py": {
+      "git_blob_sha1": "7fd9a3139743c16f9bf1cc5067d8070c3facd62f",
+      "sha256": "8a6f3036fc4b68e9e6d806896e666e07c921bf1d52b467e33f1be77227b91275"
+    }
+  }
+}

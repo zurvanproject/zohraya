@@ -6,7 +6,7 @@ import json
 import math
 from pathlib import Path
 
-from . import body, cognitive, evidence, recovery
+from . import body, cognitive, evidence, recovery, state_models
 
 
 def _json(value):
@@ -20,7 +20,7 @@ def catalogue():
             "workload": recovery.describe_interfaces(),
             "complete_model_parameter_access": False,
             "limits": ["No access to underlying language-model weights or hidden states.",
-                       "Neural, affect and genome definitions are catalogued, not executed.",
+                       "This catalogue does not execute models; unified-demo separately runs fixed native-model fixtures.",
                        "Native physics constants and 78kg physiological calibration remain incomplete."]}
 
 
@@ -56,6 +56,7 @@ def summary(snapshot):
             "body_models": [{k: model[k] for k in ("id", "mass_kg", "status")}
                             for model in inventory["models"]],
             "catalogue_counts": snapshot["catalogue_counts"],
+            "native_model_counts": {name: model["counts"] for name, model in snapshot["native_models"]["models"].items()},
             "current_advisory": snapshot["cognitive"]["current_advisory"],
             "workload_state": snapshot["workload"]["after_goal_stop"]["state"],
             "native_observation_status": snapshot["body"]["dynamic"]["status"],
@@ -88,6 +89,7 @@ def run_demo(directory: Path, *, now_utc: str, native_export=None, now_s=None):
         body_state["dynamic"] = mapped["body"]
         before_stop = mapped["advice"]
     directory.mkdir(parents=True, exist_ok=True)
+    models = state_models.run_models(directory / "native-models")
     episode = cognitive.run_episode(directory / "cognitive")
     # The actual demonstrated planner stop, not body pressure, causes this halt.
     if episode["goals"]["recovered_stopped"]["reason"] != "stopped":
@@ -103,6 +105,7 @@ def run_demo(directory: Path, *, now_utc: str, native_export=None, now_s=None):
         "evidence_kind": "executed_offline_research_composition",
         "evaluated_at_utc": now_utc,
         "cognitive": episode, "body": body_state, "public_evidence": public,
+        "native_models": models,
         "workload": {"before_goal_stop": before_stop, "after_goal_stop": stopped,
                      "recovered": restored, "policy": recovery.describe_interfaces(),
                      "pressure_changes_truth_or_permission": False},
@@ -112,26 +115,27 @@ def run_demo(directory: Path, *, now_utc: str, native_export=None, now_s=None):
             "genome_allele_definitions": len(inventory["genome"]["allele_parameters"]),
             "affect_somatic_goal_definitions": len(inventory["affect_parameters"]),
             "neural_field_definitions": len(inventory["neural_parameters"]),
+            "regional_proxy_definitions": len(inventory["regional_proxy_parameters"]),
             "cognitive_interfaces": len(cognitive.describe_interfaces()["interfaces"])},
         "capabilities": {
             "cognition_goals_memory_dissent": "executed_synthetic_episode",
             "body_atlas": "executed_pinned_registry_builder",
             "native_body": body_state["dynamic"]["source_kind"],
-            "genome_neural_affect": "catalogue_only_not_runtime_wired",
+            "genome_neural_affect": "executed_fixed_native_fixtures_not_applied_to_body_or_llm",
             "ritual": "imported_authored_progress_not_mastery",
             "visual_director": "plan_only_not_rendered_or_runtime_wired",
             "server": "imported_frozen_owner_reports_not_live_telemetry",
             "desktop": "reported_web_shortcuts_authenticated_use_untested",
             "workload": "executed_advisory_controller_no_measured_benefit"},
         "implementation_sha256": {module.__name__: hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest()
-                                   for module in (body, cognitive, evidence, recovery)},
+                                   for module in (body, cognitive, evidence, recovery, state_models)},
         "execution_permitted": False, "external_actions_taken": 0,
         "model_api_calls": 0, "native_cycles_executed": 0,
         "subjective_experience_demonstrated": False,
         "complete_model_parameter_access": False,
         "limitations": [
             "A reproducible integration episode is not a continuously running agent.",
-            "Catalogued definitions are not evidence of runtime wiring or learning.",
+            "Native-model fixtures execute reduced code; they are not LLM internals or evidence of general learning.",
             "Frozen public reports and caller-supplied exports do not authenticate their issuers.",
             "No chat/image request is routed from the desktop web shortcuts through this code.",
             "No local model, physical sensor, executor or authorization verifier is attached.",

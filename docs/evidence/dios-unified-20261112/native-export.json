@@ -1,0 +1,36 @@
+{
+  "clock_domain": "simulated_seconds",
+  "finite_stocks": {
+    "co2_store_L": 0.22,
+    "fuel_J": 4000000.0,
+    "heat_J": 0.0,
+    "reserve_J": 60000.0,
+    "usable_o2_L": 2.0,
+    "water_L": 110.0
+  },
+  "minimum_state": {
+    "HR": 60.0,
+    "RR": 11.0,
+    "arousal": 0.25,
+    "balance": 1.0,
+    "breath_depth": 1.1,
+    "energy": 1.0,
+    "fatigue": 0.0,
+    "hydration": 1.0,
+    "muscle_tone": 0.25,
+    "pain": 0.0,
+    "parasympathetic": 0.6,
+    "posture": "double_support",
+    "sleep_pressure": 0.35,
+    "sympathetic": 0.2,
+    "temperature": 37.0,
+    "valence": 0.0
+  },
+  "model_id": "tadash_legacy_195kg",
+  "native_checkpoint_sha256": "ddc30c51013e5aec27f39bf22bf83e42c1ca7c5fb63a36a2677f08993ac95b40",
+  "revision": 0,
+  "sampled_at_s": 0.0,
+  "schema": "dios.native_body_export/1",
+  "sha256": "d2c25e4a3be145f2a668837b757a1bb5908d36282b744a1964e7f916ac914f8d",
+  "source_observation_sha256": "54bf1411288dc338c4478c03ad1ee28d47ab4bca8f3ea32d06c46986ab8047e9"
+}
