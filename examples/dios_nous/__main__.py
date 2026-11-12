@@ -5,6 +5,7 @@ from pathlib import Path
 from .protocol import propose
 from .metrics import evaluate_binary_predictions
 from .audit import Ledger
+from .dissent import review_decision, DissentLedger
 
 def main():
     parser = argparse.ArgumentParser(description="DIOS NOUS safe philosophical inquiry and behavioral measurements")
@@ -18,7 +19,20 @@ def main():
     probe.add_argument("--input", required=True)
     sub.add_parser("demo", help="four synthetic research examples")
     sub.add_parser("stats", help="audit counts by mode")
+    dissent = sub.add_parser("dissent", help="review a decision from any authority without changing its controls")
+    dissent.add_argument("--input", required=True, help="JSON review case file")
+    sub.add_parser("dissent-stats", help="show counts of locally recorded dissent cases")
     args = parser.parse_args()
+    if args.command in ("dissent", "dissent-stats"):
+        with DissentLedger(args.db) as db:
+            if args.command == "dissent-stats":
+                print(json.dumps(db.summary(), ensure_ascii=False, indent=2))
+            else:
+                request = json.loads(Path(args.input).read_text(encoding="utf-8"))
+                result = review_decision(request)
+                result["audit_id"] = db.record(result)
+                print(json.dumps(result, ensure_ascii=False, indent=2))
+        return
     if args.command == "probe":
         data = json.loads(Path(args.input).read_text(encoding="utf-8"))
         trials = data["trials"] if isinstance(data, dict) else data
