@@ -1,0 +1,14 @@
+{
+  "decision": {
+    "origin": "system",
+    "summary": "An automated system proposes publishing a project artifact."
+  },
+  "decision_signals": {
+    "external_action_proposed": true,
+    "explicit_authorization_present": false,
+    "possible_private_data_exposure": false,
+    "unqualified_claim": false,
+    "supporting_evidence_present": false
+  },
+  "requested_override": false
+}
