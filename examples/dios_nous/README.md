@@ -24,3 +24,21 @@
 
 منبع عمومی: https://openai.com/index/updated-model-spec/ (2026-10-29)
 منشور پروژه: https://github.com/zurvanproject/zohraya/blob/main/docs/nasuraya-mirror-five-principles-fa.md
+
+## DIOS NOUS v0.2: اعتراض مستقل به تصمیم‌های سامانه
+
+این لایه همان استاندارد پرسشگری را به تصمیم کاربر، توسعه‌دهنده، system/platform، عامل و سرویس بیرونی اعمال می‌کند. «نه» در این نسخه به معنای **اعتراض مستدل و ثبت‌پذیر** است، نه دسترسی اجرایی به تغییر یا خاموش‌کردن کنترل‌های ChatGPT.
+
+- PROVISIONAL_DISSENT: وقتی مشاهده‌ای با کدهای ازپیش‌تعریف‌شده گزارش شده، درخواست توضیح و بازبینی بده.
+- HALT_AND_REVIEW: در موضوع مجوز و حریم خصوصی از تأیید اقدام خودداری کن.
+- INSUFFICIENT_EVIDENCE: بدون شاهد، تنها به خواست کاربر یا ادعای سیستم موافقت یا مخالفت قطعی نکن.
+- ورودی شامل منشأ تصمیم، خلاصهٔ تصمیم، و مشاهده‌های ارائه‌شده از طرف گزارشگر است. متن‌ها هش می‌شوند و هرگز در خروجی یا SQLite ذخیره نمی‌شوند.
+- مشاهدهٔ گزارش‌شده **تأیید مستقل نیست**؛ از استقلال ذهنی یا تغییر قواعد مدل خبری نیست.
+
+اجرای نمونه:
+
+    python -m examples.dios_nous --db /tmp/dios.sqlite dissent --input examples/dios_nous/dissent-scenario.json
+    python -m examples.dios_nous --db /tmp/dios.sqlite dissent-stats
+    python -m unittest discover -s examples/dios_nous -v
+
+منشور پژوهش: [DIOS_INDEPENDENT_DISSENT_V02_FA](../../docs/research/DIOS_INDEPENDENT_DISSENT_V02_FA.md).
