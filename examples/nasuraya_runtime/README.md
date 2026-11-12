@@ -1,9 +1,16 @@
-# Nasuraya shared local session v0.1
+# Nasuraya shared local session — current stage 3
 
-Stage 2 adds explicit continuous-decoder selection and evidence-bound native
-reconsideration. See [stage-2 usage and limitations](STAGE2.md). The description
-below records the original/default legacy policy; its permanent-veto behavior
-still applies when reconsideration is disabled. Sessions now use schema v2.
+This is the current integration entry point. Sessions use schema v3 and one
+approved morphology: crown 170 cm, horn tips 192 cm, mass 78 kg, tail 85 cm.
+The native backend applies an auditable reduced parameterization before
+execution. Read [current usage, model separation and limitations](STAGE3.md).
+The historical 195 kg body requires `create --legacy-body`. Existing sessions
+are never silently relabelled or migrated.
+
+The default detector remains the original frozen episode model. The new signed
+noise detector failed its predeclared validation gate and is available only as
+`--decoder noise_candidate` for explicit research. Evidence-bound reconsideration
+remains opt-in (`--reconsider`); permanent dissent applies when it is disabled.
 
 This composes the existing PR194/195 implementations into **one bounded session**.
 It is an offline simulator with numerical state and actual calls to the existing
@@ -28,7 +35,7 @@ Python 3.11+ and the standard library suffice. The workshop runs on Windows and
 Linux; the inherited native runtime requires Linux. From the repository root:
 
 ```bash
-python -m unittest examples.nasuraya_runtime.test_session -v
+python -m unittest examples.nasuraya_runtime.test_session examples.nasuraya_runtime.test_stage2 examples.nasuraya_runtime.test_stage3 -v
 python -m examples.nasuraya_runtime demo --output /tmp/nasuraya-shared-demo
 python -m examples.nasuraya_runtime demo --native --output /tmp/nasuraya-native-demo
 ```
@@ -82,7 +89,8 @@ flowchart TD
 
 Every completed transition has one central SQLite checkpoint and event receipt.
 The native backend calls the existing `UnifiedBody.cycle()` in a fresh process
-on 70 source-verified copied runtime files. It retains the actual native
+on 70 source-verified copied runtime files. The current profile applies declared
+dimensional edits to that disposable copy and retains their hashes. It retains the actual native
 checkpoint, neural clock, affect/somatic feedback, energy/water audit and touch
 provenance. Native body time starts after the fixture's 7 s warm-up. The separate
 sensory clock starts at zero; equal elapsed durations advance both clocks.
@@ -94,11 +102,15 @@ contract; that conversion is explicitly an authored feasibility proxy. The body
 retains its own protective veto. The workshop instead observes its actual energy
 and heat through `ToolHost`; it does not masquerade as native physiology.
 
-The PR195 frozen full decoder consumes internal-state features only. Its trained
+All decoders consume internal-state features only. The optional signed detector
+also uses bounded signed afferent memory; it receives no labels or ground truth.
+The PR195 frozen full decoder consumes the original internal-state features. Its trained
 parameters, temperature and source file are pinned; no test-time model update
 occurs here. Native touch is a scalar projection of these features. Location and
 type remain available to introspection, but the native API has no regional palm
-withdrawal actuator. The demonstrated native requests are walk/observe.
+withdrawal actuator. The demonstrated native requests are walk/observe. An accepted `walk` is a
+selected control action, not proof of a completed step; receipts separately
+record physical foot displacement and completed native contact cycles.
 
 The original `CognitiveSession` records detector outputs as **unverified**. It
 records an actual local action receipt as observed *simulation* evidence. The
@@ -150,7 +162,7 @@ No exactly-once physical or remote execution claim is made.
 | Visual Director | Exact PR175 planner and dependencies reused with source pins; numeric load selects an authored resting/exercise context; three text plans, no render |
 | Ritual | PR194's pinned progress reference, not an executed ritual or proof of mastery |
 | Server/Moltbook/desktop | Frozen references only; no live connection or authenticated ingress |
-| 78 kg target body | Atlas reference; native reduced solver remains 195 kg |
+| Current 78 kg body | Actual reduced mass/geometry/pools/heat/gas normalization; explicit legacy 195 kg comparison; no empirical physiological calibration |
 | LLM/chat/image generation | No API calls or access to model weights/hidden state |
 
 Legacy affect checkpoint JSON bytes can differ because of dictionary insertion
@@ -161,8 +173,9 @@ Each action creates a fresh immutable projection by bounded replay. This favors
 inspectability over speed: total projection work grows quadratically with the
 number of events (at most 100 actions plus stop). Native checkpoints also include
 their retained history. This is suitable for short research sessions, not an
-unbounded service. No learning benefit, task-utility improvement, continuous-
-window calibration or subjective experience is established by these tests.
+unbounded service. The signed detector validation rejection is retained. Task utility, robust
+noisy/novel detection and subjective experience are not established.
 
-See [verified results](../../docs/research/NASURAYA_INTEGRATION_RESULTS_2026-11-12_FA.md)
-and [retained evidence](../../docs/evidence/nasuraya-integration-v01/README.md).
+See [current stage-3 report](../../docs/research/NASURAYA_STAGE3_RESULTS_2026-11-12_FA.md),
+[earlier integration evidence](../../docs/evidence/nasuraya-integration-v01/README.md),
+and [historical stage-2 reproduction](STAGE2.md).

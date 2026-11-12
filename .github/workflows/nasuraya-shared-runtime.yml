@@ -1,9 +1,9 @@
 name: Nasuraya Shared Runtime
 on:
   push:
-    paths: ['examples/nasuraya_runtime/**', 'scripts/verify_nasuraya_stage2.py', 'docs/evidence/nasuraya-stage2-v01/**', '.github/workflows/nasuraya-shared-runtime.yml']
+    paths: ['examples/nasuraya_runtime/**', 'examples/dios_nous/unified/body.py', 'scripts/verify_nasuraya_stage*.py', 'docs/evidence/nasuraya-stage*-v01/**', '.github/workflows/nasuraya-shared-runtime.yml']
   pull_request:
-    paths: ['examples/nasuraya_runtime/**', 'scripts/verify_nasuraya_stage2.py', 'docs/evidence/nasuraya-stage2-v01/**', '.github/workflows/nasuraya-shared-runtime.yml']
+    paths: ['examples/nasuraya_runtime/**', 'examples/dios_nous/unified/body.py', 'scripts/verify_nasuraya_stage*.py', 'docs/evidence/nasuraya-stage*-v01/**', '.github/workflows/nasuraya-shared-runtime.yml']
 jobs:
   integration:
     runs-on: ${{ matrix.os }}
@@ -22,12 +22,23 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.11'
-      - run: python -m unittest examples.nasuraya_runtime.test_session examples.nasuraya_runtime.test_stage2 -v
+      - run: python -m unittest examples.nasuraya_runtime.test_session examples.nasuraya_runtime.test_stage2 examples.nasuraya_runtime.test_stage3 -v
       - run: python -m unittest examples.tadash_interoception.test_interoception -v
       - run: python -m unittest discover -s examples/dios_nous -v
-      - name: Reproduce frozen continuous-stream results and observer ordering
+      - name: Check out historical stage-2 evaluator without modifying current sources
         if: runner.os == 'Linux'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 8b047811d2814e595ecd2e2f16fee8be6c229732
+          path: .stage2-history
+          persist-credentials: false
+      - name: Reproduce stage-2 results with their frozen historical evaluator
+        if: runner.os == 'Linux'
+        working-directory: .stage2-history
         run: python -m scripts.verify_nasuraya_stage2 --output "${{ runner.temp }}/stage2-regression"
+      - name: Reproduce stage-3 holdout and blind observer ordering without fitting
+        if: runner.os == 'Linux'
+        run: python -m scripts.verify_nasuraya_stage3 --output "${{ runner.temp }}/stage3-regression"
       - name: Real native and portable session demonstration
         if: runner.os == 'Linux'
         run: python -m examples.nasuraya_runtime demo --native --output "${{ runner.temp }}/shared-session-demo"

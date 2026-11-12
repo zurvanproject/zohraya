@@ -3,7 +3,7 @@
 ``normalize_native`` accepts exactly the following JSON object (all keys are
 required; minimum_state/finite_stocks may be empty or contain null values):
   schema: "dios.native_body_export/1"
-  model_id: "tadash_legacy_195kg"
+  model_id: "tadash_reduced_78kg_v1" or "tadash_legacy_195kg"
   clock_domain: "simulated_seconds"
   sampled_at_s: finite number [0, 1e12]
   revision: integer [0, 1e12]
@@ -19,6 +19,8 @@ are separately caller supplied; the native observation digest does not bind them
 Neither digest authenticates the caller or grants action authority. All clocks
 here are simulation clocks; a wall-clock epoch cannot establish freshness.
 Serialization limits are engineering bounds, not clinical or safety envelopes.
+The current profile derives numerical parameters in a disposable verified copy;
+the historical archive and its explicit model ID remain replayable.
 """
 from __future__ import annotations
 
@@ -34,6 +36,7 @@ SOURCE_ROOT = Path(__file__).with_name("body_sources")
 MANIFEST_SHA256 = "ae29ac883f66aa0753a4266ec47c8a38314719f29a9756edeaf56cebe0eca34f"
 MAIN = "a532f24a5b3eb7a31df6d200950c7287e1e96a35"
 MODEL = "tadash_legacy_195kg"
+CURRENT_MODEL = "tadash_reduced_78kg_v1"
 TTL_S = 5.0
 EXPORT_SCHEMA = "dios.native_body_export/1"
 PHASES = ("double_support", "shift", "lift", "single_support", "walk_swing",
@@ -188,6 +191,8 @@ def inventory():
     dynamic state names. Native physics constants outside this scope are a gap.
     """
     manifest, sources = _verified_sources()
+    from examples.nasuraya_runtime.profile import current
+    current_contract=current()
     atlas_path = "tools/fullbody_design_atlas.py"
     # Exact, hash-verified source, with __main__ disabled; no native runtime import.
     namespace = {"__name__": "_dios_pinned_body_atlas", "__file__": str(SOURCE_ROOT / atlas_path)}
@@ -259,14 +264,21 @@ def inventory():
         for group, fields in REGIONAL_PROXY_SPECS.items() for name, unit in fields.items()]
     result = dict(schema="dios.body_inventory/1", atlas=registry, gaps=gaps,
         atlas_builder_executed=True, native_runtime_imported=False,
-        models=[dict(id=MODEL, mass_kg=195, crown_cm=250, tail_cm=120, status="retained_reduced_simulation"),
+        current_body_contract=current_contract,
+        models=[dict(id=CURRENT_MODEL,mass_kg=current_contract['morphology']['mass_kg'],
+                     crown_cm=current_contract['morphology']['ground_to_crown_cm'],
+                     horn_tip_cm=current_contract['morphology']['ground_to_horn_tip_cm'],
+                     tail_cm=current_contract['morphology']['tail_centerline_cm'],
+                     status='current_parameterized_reduced_model',default_native=True),
+                dict(id=MODEL, mass_kg=195, crown_cm=250, tail_cm=120,
+                     status="historical_research_only",default_native=False),
                 dict(id="nasuraya_visual_target_78kg", mass_kg=78, crown_cm=170, horn_tip_cm=192, tail_cm=85, status="authored_visual_target"),
                 dict(id="nasuraya_mujoco_v03_78kg", mass_kg=78, crown_cm=170, tail_cm=85,
                      status="separate_mechanical_lineage_not_imported_or_run",
                      source=dict(commit="c6bac77802a7fab9178fb00eed28e3c4410b9482",
                                  path="assets/nasuraya_articulated_v03/nasuraya.xml",
                                  git_blob_sha1="b7177c1a43715a8eb27e1f837c7c72bbbcee932e"))],
-        phenotype=dict(parameters=list(_static_leaves(phenotype)),
+        phenotype=dict(status='historical_catalogue_not_current_morphology',parameters=list(_static_leaves(phenotype)),
                        source=_source("runtimes/tadash_body/phenotype_v1.json", manifest)),
         native_parameters=native, genome=dict(chromosomes=48, loci=28, allele_parameters=genome,
             native_apply_allowed=False, status="catalog_only_not_applied"),
@@ -300,7 +312,7 @@ def _dynamic(minimum=None, stocks=None, *, stale=False):
 
 def default_snapshot():
     return dict(schema="dios.body_snapshot/1", inventory=inventory(),
-                dynamic=dict(schema="dios.normalized_body/1", model_id=MODEL,
+                dynamic=dict(schema="dios.normalized_body/1", model_id=CURRENT_MODEL,
                     status="unknown_no_observation", source_kind="no_observation",
                     sampled_at_s=None, age_s=None, clock_domain="simulated_seconds",
                     source_authenticated=False, physical_sensor_connected=False,
@@ -310,7 +322,7 @@ def default_snapshot():
 
 def normalize_native(record, *, now_s):
     _closed(record, EXPORT_KEYS, "native export")
-    if record["schema"] != EXPORT_SCHEMA or record["model_id"] != MODEL or record["clock_domain"] != "simulated_seconds":
+    if record["schema"] != EXPORT_SCHEMA or record["model_id"] not in (MODEL, CURRENT_MODEL) or record["clock_domain"] != "simulated_seconds":
         raise ValueError("schema, model or simulation clock mismatch")
     sampled = _number(record["sampled_at_s"], "sampled_at_s")
     now = _number(now_s, "now_s")
@@ -326,7 +338,7 @@ def normalize_native(record, *, now_s):
     if _digest({k: v for k, v in record.items() if k != "sha256"}) != record["sha256"]:
         raise ValueError("export digest mismatch")
     age = now - sampled
-    result = dict(schema="dios.normalized_body/1", model_id=MODEL,
+    result = dict(schema="dios.normalized_body/1", model_id=record['model_id'],
         status="stale" if age > TTL_S else "fresh", source_kind="caller_supplied_software_export",
         source_authenticated=False, integrity_verified=True,
         model_lineage_verified=False, model_id_status="caller_declared_not_verified",
@@ -392,7 +404,7 @@ def project_native_snapshot(snapshot, *, model_id, finite_stocks=None):
     ``finite_stocks`` is an optional separately supplied numeric ledger projection,
     not a claim that native_snapshot's observation hash covers the ledger values.
     """
-    if model_id != MODEL:
+    if model_id not in (MODEL, CURRENT_MODEL):
         raise ValueError("unsupported declared native model")
     _closed(snapshot, {"native_sha", "revision", "time_s", "minimum", "audit",
                       "body_before_digest", "source_identity", "evidence_kind", "observation_sha256"},
@@ -408,7 +420,7 @@ def project_native_snapshot(snapshot, *, model_id, finite_stocks=None):
     _validate_audit(snapshot["audit"], snapshot)
     if _digest({k: v for k, v in snapshot.items() if k != "observation_sha256"}) != snapshot["observation_sha256"]:
         raise ValueError("native observation digest mismatch")
-    result = dict(schema=EXPORT_SCHEMA, model_id=MODEL, clock_domain="simulated_seconds",
+    result = dict(schema=EXPORT_SCHEMA, model_id=model_id, clock_domain="simulated_seconds",
         sampled_at_s=snapshot["time_s"], revision=snapshot["revision"],
         native_checkpoint_sha256=snapshot["native_sha"],
         source_observation_sha256=snapshot["observation_sha256"],

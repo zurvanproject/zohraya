@@ -66,7 +66,10 @@ class UnifiedBodyTests(unittest.TestCase):
 
     def test_legacy_target_and_mechanical_lineages_remain_distinct(self):
         models = {m["id"]: m for m in body.inventory()["models"]}
-        self.assertEqual(len(models), 3)
+        self.assertEqual(len(models), 4)
+        self.assertEqual(models[body.CURRENT_MODEL]['mass_kg'],78)
+        self.assertTrue(models[body.CURRENT_MODEL]['default_native'])
+        self.assertFalse(models[body.MODEL]['default_native'])
         self.assertEqual(models[body.MODEL]["mass_kg"], 195)
         self.assertEqual(models["nasuraya_visual_target_78kg"]["mass_kg"], 78)
         self.assertEqual(models["nasuraya_mujoco_v03_78kg"]["status"], "separate_mechanical_lineage_not_imported_or_run")

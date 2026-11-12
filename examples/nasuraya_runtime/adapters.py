@@ -17,6 +17,12 @@ MODEL_SHA = '1f8c6dadc6eaa45b5bdf16e3e870cbb1a20cdd4bf020dd8fa503eda19abdec46'
 
 
 def decoder(version='legacy'):
+    if version in ('noise_candidate','noise_v1'):
+        from .noise_study import load_model
+        frozen,model,_=load_model(ROOT/'docs/evidence/nasuraya-stage3-v01/frozen-model.json')
+        if version=='noise_v1' and not frozen['validation_accepted']:
+            raise ValueError('noise candidate rejected on validation; explicit research version only')
+        return model
     if version == 'continuous_v1':
         path = ROOT / 'docs/evidence/nasuraya-stage2-v01/frozen-models.json.gz'
         frozen = json.loads(gzip.decompress(path.read_bytes()))

@@ -1,4 +1,16 @@
-# Stage 2: continuous streams and bounded reconsideration
+# Historical stage 2: continuous streams and bounded reconsideration
+
+These commands and body specifications describe PR197 at
+`8b047811d2814e595ecd2e2f16fee8be6c229732`, not the current default.
+For current code use [stage 3](STAGE3.md). Reproduce the frozen stage-2 evaluator
+in its own checkout, because its source hashes intentionally reject newer code:
+
+```bash
+git worktree add --detach /tmp/nasuraya-stage2-source 8b047811d2814e595ecd2e2f16fee8be6c229732
+cd /tmp/nasuraya-stage2-source
+```
+
+Run the commands below there; no retuning or source-hash bypass is needed.
 
 Stacked on the shared session in PR196. Read the
 [first holdout results](../../docs/research/NASURAYA_STAGE2_RESULTS_2026-11-12_FA.md)

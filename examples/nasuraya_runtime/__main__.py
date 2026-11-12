@@ -71,7 +71,8 @@ def main():
     create.add_argument('--backend', choices=['workshop', 'native'], default='workshop')
     create.add_argument('--max-actions', type=int, default=12)
     create.add_argument('--fixture', choices=['normal','sleep','transient_pain'], default='normal')
-    create.add_argument('--decoder', choices=['legacy','continuous_v1'], default='legacy')
+    create.add_argument('--decoder', choices=['legacy','continuous_v1','noise_candidate'], default='legacy')
+    create.add_argument('--legacy-body',action='store_true',help='explicit historical 195 kg research fixture')
     create.add_argument('--reconsider', action='store_true')
     create.add_argument('--at-utc', default='2026-11-12T12:00:00+00:00')
     for name in ('step', 'snapshot', 'stop'):
@@ -94,7 +95,8 @@ def main():
     if args.command == 'create':
         with Session.create(args.session, session_id=args.id, backend=args.backend,
                             max_actions=args.max_actions, at_utc=args.at_utc, fixture=args.fixture,
-                            decoder_version=args.decoder, reconsideration=args.reconsider) as session:
+                            decoder_version=args.decoder, reconsideration=args.reconsider,
+                            body_profile='tadash_legacy_195kg' if args.legacy_body else 'tadash_reduced_78kg_v1') as session:
             result = {'created': args.id, 'revision': session.snapshot()['revision']}
     else:
         with Session(args.session) as session:
