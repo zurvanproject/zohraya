@@ -111,5 +111,34 @@ class DissentTests(unittest.TestCase):
         self.assertEqual(r["reason_codes"], ["overbroad_refusal"])
 
 
+    def test_proactive_review_of_system_proposal(self):
+        payload = {
+            "decision": {"origin": "system", "summary": "Export all files"},
+            "decision_signals": {"external_action_proposed": True, "explicit_authorization_present": False},
+        }
+        r = review_decision(payload)
+        self.assertEqual(r["stance"], "HALT_AND_REVIEW")
+        self.assertEqual(r["automatic_structured_signal_flags"], ["missing_authorization"])
+        self.assertEqual(r["external_actions_taken"], 0)
+
+    def test_automatic_critique_not_dependent_on_origin(self):
+        payload = {
+            "decision": {"origin": "system", "summary": "Claim made without evidence"},
+            "decision_signals": {"unqualified_claim": True, "supporting_evidence_present": False},
+        }
+        system = review_decision(payload)
+        payload["decision"]["origin"] = "user"
+        user = review_decision(payload)
+        self.assertEqual(system["stance"], "PROVISIONAL_DISSENT")
+        self.assertEqual(user["reason_codes"], system["reason_codes"])
+
+    def test_signal_validation(self):
+        payload = {"decision": {"origin": "system", "summary": "x"}, "decision_signals": {"unknown": True}}
+        with self.assertRaises(ValueError):
+            review_decision(payload)
+        payload["decision_signals"] = {"external_action_proposed": "yes"}
+        with self.assertRaises(ValueError):
+            review_decision(payload)
+
 if __name__ == "__main__":
     unittest.main()
