@@ -1,0 +1,22 @@
+test_native_continues_identically_in_fresh_process (examples.nasuraya_runtime.test_session.NativeTests.test_native_continues_identically_in_fresh_process) ... ok
+test_native_palm_neural_affect_feedback_and_resume (examples.nasuraya_runtime.test_session.NativeTests.test_native_palm_neural_affect_feedback_and_resume) ... ok
+test_native_protective_veto_revises_next_decision (examples.nasuraya_runtime.test_session.NativeTests.test_native_protective_veto_revises_next_decision) ... ok
+test_native_worker_failure_rolls_back_and_can_retry (examples.nasuraya_runtime.test_session.NativeTests.test_native_worker_failure_rolls_back_and_can_retry) ... ok
+test_stale_native_workload_cannot_enable_motion (examples.nasuraya_runtime.test_session.NativeTests.test_stale_native_workload_cannot_enable_motion) ... ok
+test_crash_after_commit_reconciles_without_reexecution (examples.nasuraya_runtime.test_session.SessionTests.test_crash_after_commit_reconciles_without_reexecution) ... ok
+test_creation_never_resets_existing_directory (examples.nasuraya_runtime.test_session.SessionTests.test_creation_never_resets_existing_directory) ... ok
+test_duplicate_conflict_stale_writer_and_budget (examples.nasuraya_runtime.test_session.SessionTests.test_duplicate_conflict_stale_writer_and_budget) ... ok
+test_event_corruption_and_published_projection_corruption_fail_closed (examples.nasuraya_runtime.test_session.SessionTests.test_event_corruption_and_published_projection_corruption_fail_closed) ... ok
+test_fresh_process_resume_matches_uninterrupted (examples.nasuraya_runtime.test_session.SessionTests.test_fresh_process_resume_matches_uninterrupted) ... ok
+test_invalid_frames_do_not_advance_state (examples.nasuraya_runtime.test_session.SessionTests.test_invalid_frames_do_not_advance_state) ... ok
+test_process_death_during_legacy_projection_is_recoverable (examples.nasuraya_runtime.test_session.SessionTests.test_process_death_during_legacy_projection_is_recoverable) ... ok
+test_projection_failure_before_action_does_not_commit (examples.nasuraya_runtime.test_session.SessionTests.test_projection_failure_before_action_does_not_commit) ... ok
+test_source_and_model_pins_fail_closed (examples.nasuraya_runtime.test_session.SessionTests.test_source_and_model_pins_fail_closed) ... ok
+test_state_changes_behavior_without_labels (examples.nasuraya_runtime.test_session.SessionTests.test_state_changes_behavior_without_labels) ... ok
+test_stop_persists_even_before_first_observation (examples.nasuraya_runtime.test_session.SessionTests.test_stop_persists_even_before_first_observation) ... ok
+test_visual_executes_and_unconnected_components_stay_explicit (examples.nasuraya_runtime.test_session.SessionTests.test_visual_executes_and_unconnected_components_stay_explicit) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 26.123s
+
+OK

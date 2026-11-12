@@ -44,3 +44,12 @@ Deliver one CLI/API and report with component availability, current state,
 uncertainty, action, outcome and next unmet connection. Components that remain
 unconnected must not be silently reported as integrated. Paid LLM/image APIs and
 authenticated live server ingress are not part of this offline session.
+
+## Completed checkpoint
+
+All four local integration stages are implemented in `examples/nasuraya_runtime`.
+The 17 new contracts passed, as did 285 inherited tests (10 optional SDK skips).
+Three four-window sessions demonstrated ordinary sensory adaptation, native
+protective veto, action-specific DIOS correction, restart and sticky stop.
+Raw failures and corrected results are retained in `docs/evidence/nasuraya-integration-v01`.
+The detailed report explicitly lists the remaining live-service and model limits.
