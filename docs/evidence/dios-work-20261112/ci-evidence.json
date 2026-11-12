@@ -1,0 +1,91 @@
+{
+  "schema": "dios.work.ci-evidence.v1",
+  "tested_head": "39e212e546dc460db47baf57d5c3eb131b66f0a7",
+  "runtime_candidate": "f53fe2293b573ec5e8e67eda7ed96ae67d3ec331",
+  "runtime_changes_after_first_holdout": false,
+  "successful_run": {
+    "id": 43133468967,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/43133468967",
+    "event": "push",
+    "conclusion": "success",
+    "head_checkout": "39e212e546dc460db47baf57d5c3eb131b66f0a7",
+    "jobs": [
+      {
+        "id": 130902992208,
+        "os": "windows-latest",
+        "conclusion": "success",
+        "unit_tests": {
+          "passed": 91,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "development_checks": {
+          "passed": 574,
+          "failed": 0
+        },
+        "holdout_checks": {
+          "passed": 2606,
+          "failed": 0
+        },
+        "cli_demos": "success",
+        "log_excerpt": [
+          "2026-11-12T01:17:40.6345539Z Ran 91 tests in 2.501s",
+          "2026-11-12T01:17:40.6345993Z OK",
+          "2026-11-12T01:17:51.3573429Z {\"checks\": {\"failed\": 0, \"passed\": 574, \"total\": 574}, \"output\": \"D:\\\\a\\\\_temp\\\\dios-dev.json\", \"passed\": true, \"split\": \"dev\"}",
+          "2026-11-12T01:18:37.2730178Z {\"checks\": {\"failed\": 0, \"passed\": 2606, \"total\": 2606}, \"output\": \"D:\\\\a\\\\_temp\\\\dios-holdout.json\", \"passed\": true, \"split\": \"holdout\"}"
+        ]
+      },
+      {
+        "id": 130902992588,
+        "os": "ubuntu-latest",
+        "conclusion": "success",
+        "unit_tests": {
+          "passed": 91,
+          "failed": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "development_checks": {
+          "passed": 574,
+          "failed": 0
+        },
+        "holdout_checks": {
+          "passed": 2606,
+          "failed": 0
+        },
+        "cli_demos": "success",
+        "log_excerpt": [
+          "2026-11-12T01:17:27.0590629Z Ran 91 tests in 0.298s",
+          "2026-11-12T01:17:27.0591608Z OK",
+          "2026-11-12T01:17:28.6725927Z {\"checks\": {\"failed\": 0, \"passed\": 574, \"total\": 574}, \"output\": \"/home/runner/work/_temp/dios-dev.json\", \"passed\": true, \"split\": \"dev\"}",
+          "2026-11-12T01:17:33.3064887Z {\"checks\": {\"failed\": 0, \"passed\": 2606, \"total\": 2606}, \"output\": \"/home/runner/work/_temp/dios-holdout.json\", \"passed\": true, \"split\": \"holdout\"}"
+        ]
+      }
+    ]
+  },
+  "preserved_failure": {
+    "run_id": 43133296888,
+    "url": "https://github.com/zurvanproject/zohraya/actions/runs/43133296888",
+    "head_sha": "a68988d2f253b72c2558ba6b6bd83de89a5ccfec",
+    "conclusion": "failure",
+    "ubuntu": {
+      "passed": 91,
+      "errors": 0,
+      "dev_checks": 574,
+      "holdout_checks": 2606
+    },
+    "windows": {
+      "passed": 90,
+      "errors": 1,
+      "total": 91,
+      "error": "WinError32 during TemporaryDirectory cleanup: test-only sqlite3.connect context manager did not close the handle"
+    },
+    "repair_commit": "39e212e546dc460db47baf57d5c3eb131b66f0a7",
+    "repair": "Explicitly close test handle; UTF-8 for Persian CLI logs"
+  },
+  "limits": [
+    "CI holdout repetition is regression, not new independent data.",
+    "No paid API, VPS deployment, or external executor."
+  ]
+}

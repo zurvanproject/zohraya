@@ -1,0 +1,132 @@
+{
+  "schema": "dios.work.separate-agent-review/1",
+  "date": "2026-11-12",
+  "reviewer": "separate_agent_independent_review",
+  "independent_human_review": false,
+  "scope": [
+    "Read-only adversarial review of dissent.py authorization warnings and ledger validation",
+    "Read-only review of core.py scoped negation and audit.py retention boundary",
+    "Adversarial review of cognition.py temporal views, type boundary, goal persistence and stop",
+    "Read-only review of integration.py critical_review wrapper and its five existing tests"
+  ],
+  "heldout_seen_or_executed_by_reviewer": false,
+  "implementation_modified_by_reviewer": false,
+  "test_file_authored": "examples/dios_nous/test_independent_review.py",
+  "findings": [
+    {
+      "id": "historical_query_rewinds_live_view",
+      "status": "fixed_and_retested",
+      "first_observation": "Standalone reproduction: append A at epoch1 and B at epoch2; assess at2 then at1. Historical assess returned revised=true, previous_decision=B, decision=A, revision_reason=new_observed_evidence and inserted a new live view despite no new event.",
+      "fix": "Record as_of frontier; older queries return historical_query=true and revised=false without rewriting current belief. An unchanged later assessment advances the frontier.",
+      "regressions": [
+        "test_historical_query_does_not_rewrite_current_belief",
+        "test_equal_view_at_later_time_still_advances_live_frontier"
+      ]
+    },
+    {
+      "id": "duck_typed_event_private_text_injection",
+      "status": "fixed_and_retested",
+      "first_observation": "An arbitrary object exposing evidence() returned reused Evidence with private string IDs. append returned new and SQLite dump contained the synthetic canary. First retained test failed.",
+      "fix": "Require exact EvidenceEvent before converting validated numeric fields.",
+      "regressions": [
+        "test_duck_typed_event_cannot_bypass_private_text_boundary"
+      ]
+    },
+    {
+      "id": "arbitrary_preference_dataclass_private_field",
+      "status": "fixed_and_retested",
+      "first_observation": "A caller-built dataclass with benefit_weight, effort_weight and an extra synthetic private field name was accepted and persisted. First retained test failed.",
+      "fix": "Require exact PreferenceProfile and GoalOption types and tuple container before serialization.",
+      "regressions": [
+        "test_unrecognized_preference_fields_cannot_be_persisted"
+      ]
+    },
+    {
+      "id": "stop_without_candidates",
+      "status": "fixed_and_retested",
+      "first_observation": "Standalone reproduction showed stop=True with empty options rejected before stop could be recorded.",
+      "fix": "Allow empty candidates for stop; keep halted state across checkpoint recovery.",
+      "regressions": [
+        "test_stop_with_no_candidates_survives_restart"
+      ]
+    },
+    {
+      "id": "goal_persistence_reuse",
+      "status": "corrected_and_inspected",
+      "first_observation": "Early adapter instantiated GoalMemory but replaced persistence with custom save/load.",
+      "fix": "Current adapter calls original GoalMemory.save/load. Recomputed Git blob SHA1 for both reused modules matches pinned source."
+    },
+    {
+      "id": "exact_event_traceability",
+      "status": "added_and_inspected",
+      "first_observation": "Early output contained source-root IDs without exact event IDs.",
+      "fix": "Current assess output includes supporting_event_ids and opposing_event_ids."
+    }
+  ],
+  "executed_checks": [
+    {
+      "command": "python -m unittest examples.dios_nous.test_independent_review -v",
+      "phase": "first_retained_run",
+      "tests": 5,
+      "passed": 3,
+      "failures": 2,
+      "errors": 0,
+      "skipped": 0,
+      "failed_tests": [
+        "test_duck_typed_event_cannot_bypass_private_text_boundary",
+        "test_unrecognized_preference_fields_cannot_be_persisted"
+      ]
+    },
+    {
+      "command": "python -m unittest examples.dios_nous.test_independent_review -v",
+      "phase": "after_fixes",
+      "tests": 5,
+      "passed": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "command": "python -m unittest examples.dios_nous.test_integration_work examples.dios_nous.test_independent_review -v",
+      "phase": "final_wrapper_review",
+      "tests": 10,
+      "passed": 10,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "command": "git diff --check",
+      "phase": "review",
+      "exit_code": 0
+    }
+  ],
+  "wrapper_review": {
+    "blocking_findings": [],
+    "observed": "Malformed dissent signals are validated before memory mutation; supporting evidence cannot remove external-action halt; contradiction causes source-independent provisional dissent; conflict/missing evidence abstains; execution_permitted remains false."
+  },
+  "limitations": [
+    "A separate AI agent is not an independent human evaluator.",
+    "The reviewer did not inspect or execute the reserved heldout evaluator.",
+    "The same-information simple reducer can match the candidate by construction; categorical performance is not generalized reasoning or consciousness evidence.",
+    "Latest-epoch precedence and source trust labels remain authored synthetic policies.",
+    "Integrity anchors detect changed data only if the separate anchor remains trusted; coordinated data and anchor replacement is outside the protection.",
+    "No real source authentication, authorization verifier or external-action executor exists.",
+    "Goal planner supports stop and reconsideration but has no dedicated trusted authorization-revocation control.",
+    "Unknown or indirect negation/metaphor cases remain outside the bounded creative correction.",
+    "Passing these checks is not a complete security audit or production readiness claim."
+  ],
+  "reviewed_sha256": {
+    "examples/dios_nous/cognition.py": "263b5e357b85fd1d5acad00820870ac09396de0967cf0321057d5270e16d31a7",
+    "examples/dios_nous/integration.py": "6e89af37c454c60a06ec0a8dd10ebcfc3ba143fca3283abd4d96fa7200f525f6",
+    "examples/dios_nous/dissent.py": "e17b53d72ef70e4c1b83f25107dce68f77b2a75d1c35e580e46fc7b1b28a3c99",
+    "examples/dios_nous/core.py": "98275125b4ce93ec6579deeea0404ba6e9b14fc9b66221255014a1d8589b92a7",
+    "examples/dios_nous/audit.py": "9932c1ab4869e42c77b265ecd5658ca828ef9e54152214b4b1f280eebdef3073",
+    "examples/dios_nous/test_independent_review.py": "49bf40cd14b6a744f29994ea6b1a90e0bba66c7247ccad0941ae70c97540be5e",
+    "examples/dios_nous/test_integration_work.py": "e1418615d397703bbc5e9655d40a599e082d1b5bc639870bc32f01c65eed74e6"
+  },
+  "reuse_verified_git_blobs": {
+    "examples/dios_nous/reused/epistemic_revision_v01.py": "eaae3765c53eab12ee948158263b3f28763168bd",
+    "examples/dios_nous/reused/goal_persistence_v01.py": "0c270b25b5f6d0f3ec9c6d35126df613a9bf099f"
+  }
+}

@@ -1,0 +1,3 @@
+# Keep exact reused source-byte pins reproducible on Windows and Linux.
+*.py text eol=lf
+*.json text eol=lf

@@ -1,0 +1,11 @@
+{
+  "prereg_commit": "37b8a1afcb146f4f310405ebabf0f7abdc77ac58",
+  "evaluator_freeze_commit": "009259d822d93e9a99ce2fee631f585b221c7e62",
+  "candidate_commit": "f53fe2293b573ec5e8e67eda7ed96ae67d3ec331",
+  "first_holdout_sha256": "3414c441c6146b5b1ee13844f1024862e0cd5e09eb5e4c1a5013dee5d0d82346",
+  "source_match": "All 13 runtime Python Git blob IDs matched candidate tree before first-holdout report",
+  "base_initial": "0a1a5cc3c1dfa94ecb838418137a56308a59f5db",
+  "upstream_synced": "2754e499a034b5a08dbcfcb40523436165ab2f65",
+  "holdout_reused_as_regression_after_first_run": true,
+  "independent_human_evaluation": false
+}

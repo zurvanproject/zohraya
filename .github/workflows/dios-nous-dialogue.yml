@@ -10,11 +10,28 @@ on:
       - '.github/workflows/dios-nous-dialogue.yml'
 jobs:
   unittest:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    env:
+      PYTHONUTF8: '1'
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.11'
       - run: python -m unittest discover -s examples/dios_nous -v
-      - run: python -m examples.dios_nous --db /tmp/dios-nous-demo.sqlite demo
+      - run: python -m examples.dios_nous --db "${{ runner.temp }}/dios-nous-demo.sqlite" demo
+      - run: python -m examples.dios_nous cognitive-demo
+      - name: Development fixtures before frozen holdout
+        run: python -m examples.dios_nous.evaluate_work --split dev --output "${{ runner.temp }}/dios-dev.json"
+      - name: Frozen synthetic holdout regression
+        run: python -m examples.dios_nous.evaluate_work --split holdout --output "${{ runner.temp }}/dios-holdout.json"
+      - name: Report same-information baseline and limits
+        run: python -c "import json; d=json.load(open(r'${{ runner.temp }}/dios-holdout.json')); print(json.dumps({k:d[k] for k in ['metrics','check_totals','acceptance','uncertainty_calibration','source_authentication']}))"
