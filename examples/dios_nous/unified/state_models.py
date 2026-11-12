@@ -53,7 +53,9 @@ def _sources() -> tuple[dict, dict]:
 
 
 # A fixed worker isolates legacy bare imports from the caller's sys.modules and
-# ignores PYTHONPATH/site customization via Python's -I -S flags. Its inputs are
+# ignores PYTHONPATH/site customization via Python's -I -S flags. Explicit
+# -X utf8 also covers legacy Path.read_text() calls with no encoding on Windows.
+# Its inputs are
 # source and output directories plus a source-manifest digest, not user events.
 _WORKER = r'''
 import hashlib
@@ -235,7 +237,7 @@ for path, info in pins.items():
     if hashlib.sha256((root / path).read_bytes()).hexdigest() != info['sha256']:
         raise ValueError('native model changed pinned source bytes')
 result = {'models': {'neural': neural_result, 'affect': affect_result, 'genome': genome_result},
-          'source_bytes_unchanged': True}
+          'source_bytes_unchanged': True, 'runtime_utf8_mode': sys.flags.utf8_mode}
 # The redirected Windows text stream may be cp1252 even in isolated mode.
 # Encode once and write bytes; the parent always receives UTF-8 JSON.
 sys.stdout.buffer.write(canonical(result) + b'\n')
@@ -267,7 +269,7 @@ def run_models(directory: Path) -> dict:
         (staging / "pins.json").write_bytes(encoded_pins)
         try:
             completed = subprocess.run(
-                [sys.executable, "-I", "-S", "-c", _WORKER, str(staging), str(directory.resolve()),
+                [sys.executable, "-I", "-S", "-X", "utf8", "-c", _WORKER, str(staging), str(directory.resolve()),
                  hashlib.sha256(encoded_pins).hexdigest()],
                 check=False, capture_output=True, timeout=30,
             )

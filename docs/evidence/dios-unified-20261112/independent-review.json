@@ -54,6 +54,20 @@
       "status": "fixed_and_retested",
       "problem": "Initial hidden --worker path could call prepare_defaults in a caller-selected verified source directory. Existing generated defaults were not part of pinned-source comparison and could be overwritten.",
       "resolution": "Final worker itself verifies and copies only the45pinned files into a new temporary directory before observation. Both normal public calls and direct hidden-worker calls leave caller defaults and extra files untouched. Retained regression now verifies successful isolated readout with original synthetic canary preserved. No actual overwrite was observed."
+    },
+    {
+      "id": "windows_redirected_unicode_worker_output",
+      "observed_in": "preserved CI43141312738 Windowsfailure and owner-authored ASCIIstream reproduction, both inspected in separate review",
+      "status": "fixed_locally_pending_new_ci",
+      "problem": "Worker text print depended on platformstdout encoding and failed on Persianlabels under narrowWindowsencoding.",
+      "resolution": "Worker writes explicitUTF8bytes; parent receivesbytes. Error, timeout and malformedJSON paths expose onlycodes/hashes and suppress rawscript/path/stderr exceptioncontext. Actualreviewrun passed ASCIIstream reproduction and failureprivacychecks."
+    },
+    {
+      "id": "cross_python_full_body_hash_assertion",
+      "observed_in": "preserved CI43141312738 Linuxfailure plus isolatedsum diagnostic artifacts inspected and compared",
+      "status": "test_scope_corrected_with_evidence",
+      "problem": "Broad bodyhash was wrongly required to match acrossPython3.11/3.12. Sequentialsum diagnostic reproduced the exactCIhash; onlytwo proprioceptive footloads differed by3.410605131648481e-13N.",
+      "resolution": "Removed only cross-runtime broadbodyhash equality. Retained exact within-run checkpoint equality,45sourcepins,22exportvalues,source_identity and dynamicguards. RuntimePython/implementation/platform added to receipt. No nativephysics/source/math change or tolerance added. Diagnostic was not an actual localPython3.11execution."
     }
   ],
   "actual_runs": [
@@ -111,6 +125,16 @@
       "errors": 0,
       "skipped": 0,
       "log": "/workspace/scratch/0abec75c9e12/unify-review/final-disposable-worker-review.log"
+    },
+    {
+      "command": "python -m unittest examples.dios_nous.test_unified_independent examples.dios_nous.test_unified_state_models examples.dios_nous.test_unified_native_readout -v",
+      "phase": "post_ci_portability_fixes",
+      "passed": 36,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "log": "/workspace/scratch/0abec75c9e12/unify-review/post-ci-portability-review.log",
+      "environment": "local Linux Python3.12.14; includes simulatedASCIIstdout portability check, not an actualWindowsrun"
     }
   ],
   "test_scope": [
@@ -151,16 +175,29 @@
     "examples/dios_nous/unified/evidence.py": "8c46d7968defe718afda3723116b07045ce0fb403371f76280ac1f411f209f94",
     "examples/dios_nous/unified/recovery.py": "1c9bf8028326a2e945b36c4ec0c6bceccbd5a06fdae315e548de4cf0bfb73e9b",
     "examples/dios_nous/unified/coordinator.py": "b76a67940e89e45cf4ee2c8758fe051403046cf61f67352011f4f591aadb6c38",
-    "examples/dios_nous/unified/native_readout.py": "bf93c5b4a2927f7c89c6ee31b03fe18991d4eec1c4a540563f4abb992ef2f7ae",
-    "examples/dios_nous/unified/state_models.py": "e73333852406332b64a9ef64ad4ed5ff956a3558e168a91aafbabb7aa7aab00a",
-    "examples/dios_nous/test_unified_independent.py": "c40eafb26c43b1316b4c684fae1f98d8320719a21ce2bd97e8c50759238bd9f9"
+    "examples/dios_nous/unified/native_readout.py": "a34bfdcec1a427694afcc3802ff4fda884720350d3640a3b6dd89aa3e2fb2617",
+    "examples/dios_nous/unified/state_models.py": "6d2445baa566ba18bf5387ec385d11d3b6123c27f383b53a958ca31e1cab6978",
+    "examples/dios_nous/test_unified_independent.py": "c40eafb26c43b1316b4c684fae1f98d8320719a21ce2bd97e8c50759238bd9f9",
+    "examples/dios_nous/test_unified_state_models.py": "57c8f97ae20d25644d9252a99e1c187e665d4b4b1921be3165ed4a16ce207b6a",
+    "examples/dios_nous/test_unified_native_readout.py": "3972ea650cd1c4cb21b9a294a397d760e0edc28e25fbe3e398580fd9d3d68ef6"
   },
   "final_result": {
-    "tests": 16,
-    "passed": 16,
+    "own_tests": 16,
+    "combined_portability_review_tests": 36,
+    "passed": 36,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
     "blocking_findings_remaining": []
+  },
+  "ci_failure_evidence_inspected": {
+    "run_id": 43141312738,
+    "head_sha": "da11fecc71cb1988ca662e1851e794931bcaad44",
+    "files": [
+      "docs/evidence/dios-unified-20261112/ci-first-linux-failure.json",
+      "docs/evidence/dios-unified-20261112/ci-first-windows-failure.json",
+      "docs/evidence/dios-unified-20261112/native-readout-python-sum-diff.json"
+    ],
+    "conclusion": "Originalfailure retained; newCI success not yet observed by this reviewer."
   }
 }

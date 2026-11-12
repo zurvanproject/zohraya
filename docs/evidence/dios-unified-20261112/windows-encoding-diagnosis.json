@@ -16,5 +16,18 @@
     "failed": 0,
     "windows_ci_rerun_required": true
   },
-  "raw_private_stderr_retained": false
+  "raw_private_stderr_retained": false,
+  "second_issue": {
+    "probe": "real worker with default Path.read_text cp1252 emulation",
+    "returncode": 1,
+    "error": "UnicodeDecodeError",
+    "public_source_trace": [
+      "traits.py:54",
+      "chromosomes.py:14",
+      "pathlib.py:1028",
+      "cp1252.py:23"
+    ],
+    "fix": "explicit interpreter -X utf8, actual sys.flags.utf8_mode == 1",
+    "local_targeted_tests": 15
+  }
 }

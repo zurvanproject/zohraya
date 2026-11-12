@@ -127,6 +127,7 @@ class NativeStateModelTests(unittest.TestCase):
         self.assertEqual(result["external_actions_taken"], 0)
         self.assertEqual(result["network_calls"], 0)
         self.assertEqual(result["model_api_calls"], 0)
+        self.assertEqual(result["runtime_utf8_mode"], 1)
         self.assertEqual(result["models"]["affect"]["units"]["confidence"],
                          "authored_appraisal_multiplier_not_epistemic_confidence")
 
@@ -170,6 +171,25 @@ class NativeStateModelTests(unittest.TestCase):
         self.assertEqual(result["models"]["affect"]["parameters"]["profiles"]["love"][0], "دوست داشتن")
         self.assertTrue(all(model["checkpoint_roundtrip_equal"] for model in result["models"].values()))
         canonical(result)
+
+    def test_worker_explicit_utf8_mode_covers_legacy_default_file_reads(self):
+        # Emulate Windows' default file codec while respecting explicit UTF-8
+        # mode. Omitting -X utf8 must fail even on a UTF-8 Linux host.
+        injection = """_real_read_text = Path.read_text
+def _windows_default_read_text(self, *args, **kwargs):
+    if not args and kwargs.get('encoding') is None:
+        kwargs['encoding'] = 'utf-8' if sys.flags.utf8_mode else 'cp1252'
+    return _real_read_text(self, *args, **kwargs)
+Path.read_text = _windows_default_read_text
+"""
+        worker = state_models._WORKER.replace(
+            "sys.dont_write_bytecode = True", injection + "\nsys.dont_write_bytecode = True", 1)
+        self.assertNotEqual(worker, state_models._WORKER)
+        with tempfile.TemporaryDirectory() as name, patch.object(state_models, "_WORKER", worker):
+            result = state_models.run_models(Path(name))
+        self.assertEqual(result["runtime_utf8_mode"], 1)
+        self.assertTrue(result["models"]["genome"]["contract_source_comparison_equal"])
+        self.assertEqual(result["models"]["genome"]["counts"]["chromosomes"], 48)
 
     def test_worker_failure_reports_only_code_and_stderr_digest(self):
         secret = b"PRIVATE_ERROR_CANARY\xff/private/output/path"
