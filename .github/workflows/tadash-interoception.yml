@@ -1,0 +1,42 @@
+name: Tadash Artificial Interoception
+on:
+  push:
+    paths: ['examples/tadash_interoception/**', '.github/workflows/tadash-interoception.yml']
+  pull_request:
+    paths: ['examples/tadash_interoception/**', '.github/workflows/tadash-interoception.yml']
+jobs:
+  tests:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11'
+      - run: python -m unittest examples.tadash_interoception.test_interoception -v
+      - run: python -m unittest discover -s examples/dios_nous -v
+      - run: python -m unittest discover -s examples/nasuraya_agent_loop/tests -v
+      - run: python -m examples.tadash_interoception.demo --output "${{ runner.temp }}/interoception-demo"
+  regression:
+    needs: tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11'
+      - run: python -m examples.tadash_interoception.evaluate --include-test --output "${{ runner.temp }}/interoception-regression"
+      - run: python -m examples.tadash_interoception.demo --native --output "${{ runner.temp }}/interoception-native"
