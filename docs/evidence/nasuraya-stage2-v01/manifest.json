@@ -1,0 +1,113 @@
+{
+  "base_pr196_commit": "349860caa796ea388baaf0d3d420361316756818",
+  "commands": [
+    "python -m unittest examples.nasuraya_runtime.test_session examples.nasuraya_runtime.test_stage2 -v",
+    "python -m unittest examples.tadash_interoception.test_interoception -v",
+    "python -m unittest discover -s examples/dios_nous -v",
+    "python -m unittest discover -s examples/nasuraya_agent_loop/tests -v",
+    "python -m examples.nasuraya_body_loop test",
+    "python -m scripts.verify_nasuraya_stage2 --output NEW_DIRECTORY",
+    "python -m examples.nasuraya_runtime.reconsideration_demo --output NEW_DIRECTORY"
+  ],
+  "date_utc": "2026-11-12",
+  "files": {
+    "README.md": {
+      "bytes": 2466,
+      "sha256": "a638527ec3947f7e93254e3f68b118bfe0045512b1233230817b02d47a7f9366"
+    },
+    "combined-session-test.txt": {
+      "bytes": 302,
+      "sha256": "5581ac6d56e36105e60ed419f386b7e63fdd144e39793e8c2b847b54dd9fae21"
+    },
+    "development-observer.jsonl.gz": {
+      "bytes": 215801,
+      "sha256": "cd691ae9d532b5b205f7f3012b8945403921a8386bdd0cb3832e9ef466395a70"
+    },
+    "development-tests.txt": {
+      "bytes": 5454,
+      "sha256": "818c282de5a4e3cafb10ad9a1130c7803c7bc33f77809f1a4796430204431c74"
+    },
+    "development.json": {
+      "bytes": 15487,
+      "sha256": "456d380bcb3c450b845abf60e01500fb4a3e47dd948516cc91d55cf0b5bacbec"
+    },
+    "frozen-ci.json": {
+      "bytes": 318,
+      "sha256": "cdea5116c149c29076bfda55056d4fb36a8d0ad5870af6b888cd1a0e101d5dc3"
+    },
+    "frozen-models.json.gz": {
+      "bytes": 271038,
+      "sha256": "39a76afa223d37034de82d27311a2d24cd38a05ec3e80eba77b1b3db540b3bd3"
+    },
+    "incorrect-native-test-command.txt": {
+      "bytes": 1141,
+      "sha256": "bfe09c967a45ddde9791cc3579953d854c2e3dadaa2bd7c20e45a4cf9a3bbd42"
+    },
+    "inherited-agent-tests.txt": {
+      "bytes": 9075,
+      "sha256": "e837d904931613cf42bdcbfb67161632fde30f5df2d502241c87f50627a6a210"
+    },
+    "inherited-dios-tests.txt": {
+      "bytes": 25266,
+      "sha256": "2e080e9bfdae9bf0c787b1b4aba3e285221c2bdcfc542b23d15b600553b80a0b"
+    },
+    "inherited-interoception-tests.txt": {
+      "bytes": 4926,
+      "sha256": "ec0190cdd24cb3c94d5101ecacedaacfe7e62b95e01c482d65331cb46c143707"
+    },
+    "inherited-native-body-tests.txt": {
+      "bytes": 4458,
+      "sha256": "0e35bf9e083e1a80e0a09c3f6c86f39a9870e460d37e633bbf0e2c4fd85873fa"
+    },
+    "initial-regression-harness-failure.txt": {
+      "bytes": 1058,
+      "sha256": "f9cfcb2395c703b5dfec58e5244f6b7d75710b3100f5656aff585c72d6b15e5d"
+    },
+    "observer.jsonl.gz": {
+      "bytes": 911825,
+      "sha256": "0d900c53f0697cafd8b315ccaf42784a9761075b98b2c8e235a4ae50944fc1b8"
+    },
+    "predictions.json.gz": {
+      "bytes": 863295,
+      "sha256": "6fc14f88f0e3439c27d0d7eccb4d31d0097b57acc93e96db179d9b6b72b7d0cd"
+    },
+    "reconsideration.json.gz": {
+      "bytes": 24473,
+      "sha256": "930a1b1235f13f0197ada11ef132ec985cf1520817f0e3141652442a27e11cc3"
+    },
+    "regression.txt": {
+      "bytes": 718,
+      "sha256": "6d98c6fa2a4a36c0c784c9118a26c188670264bad9a3269fc7e6009e9d00a124"
+    },
+    "report.json": {
+      "bytes": 29425,
+      "sha256": "293baa9d1a6e288bc079161492a9b6673cdc613564dba39da0c3380acd5be523"
+    },
+    "runtime-tests.txt": {
+      "bytes": 5538,
+      "sha256": "46b206c55701f7143b046a2514d3ebd4c1588bc696f4936c235820fd5823ef3a"
+    },
+    "verification.json": {
+      "bytes": 681,
+      "sha256": "6161e1bfae3d6c17527122196edcf2a7292159dd14d30398722016fcf78f4091"
+    }
+  },
+  "frozen_inner_sha256": "c6670272e5b475cdff3648374d0c45ac23d421c4b0961264d1a152ee3635be27",
+  "frozen_source_model_commit": "984d8704c379819514dd57a33c680489d3adef32",
+  "later_regression_is_not_new_test": true,
+  "models_changed_after_test": false,
+  "platform": "Linux",
+  "prospective_test_runs": 1,
+  "protocol_commit": "08297cb1e974f18ff82167fedc8ca20292b47683",
+  "python": "3.12.14",
+  "schema": "nasuraya.stage2-evidence/1",
+  "tests": {
+    "agent_optional_sdk_skip": 10,
+    "agent_pass": 50,
+    "dios_pass": 177,
+    "interoception_pass": 33,
+    "native_body_pass": 25,
+    "shared_runtime_pass": 34,
+    "total_pass": 319
+  }
+}

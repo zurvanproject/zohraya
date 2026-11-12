@@ -1,5 +1,10 @@
 # Nasuraya shared local session v0.1
 
+Stage 2 adds explicit continuous-decoder selection and evidence-bound native
+reconsideration. See [stage-2 usage and limitations](STAGE2.md). The description
+below records the original/default legacy policy; its permanent-veto behavior
+still applies when reconsideration is disabled. Sessions now use schema v2.
+
 This composes the existing PR194/195 implementations into **one bounded session**.
 It is an offline simulator with numerical state and actual calls to the existing
 DIOS, goal, memory, Rolyel, ToolHost and optional native body code. No language

@@ -1,9 +1,9 @@
 name: Nasuraya Shared Runtime
 on:
   push:
-    paths: ['examples/nasuraya_runtime/**', '.github/workflows/nasuraya-shared-runtime.yml']
+    paths: ['examples/nasuraya_runtime/**', 'scripts/verify_nasuraya_stage2.py', 'docs/evidence/nasuraya-stage2-v01/**', '.github/workflows/nasuraya-shared-runtime.yml']
   pull_request:
-    paths: ['examples/nasuraya_runtime/**', '.github/workflows/nasuraya-shared-runtime.yml']
+    paths: ['examples/nasuraya_runtime/**', 'scripts/verify_nasuraya_stage2.py', 'docs/evidence/nasuraya-stage2-v01/**', '.github/workflows/nasuraya-shared-runtime.yml']
 jobs:
   integration:
     runs-on: ${{ matrix.os }}
@@ -22,9 +22,12 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.11'
-      - run: python -m unittest examples.nasuraya_runtime.test_session -v
+      - run: python -m unittest examples.nasuraya_runtime.test_session examples.nasuraya_runtime.test_stage2 -v
       - run: python -m unittest examples.tadash_interoception.test_interoception -v
       - run: python -m unittest discover -s examples/dios_nous -v
+      - name: Reproduce frozen continuous-stream results and observer ordering
+        if: runner.os == 'Linux'
+        run: python -m scripts.verify_nasuraya_stage2 --output "${{ runner.temp }}/stage2-regression"
       - name: Real native and portable session demonstration
         if: runner.os == 'Linux'
         run: python -m examples.nasuraya_runtime demo --native --output "${{ runner.temp }}/shared-session-demo"

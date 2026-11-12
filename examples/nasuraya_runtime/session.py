@@ -27,8 +27,9 @@ from examples.tadash_interoception.integration import action_pressure, select_ro
 from examples.tadash_interoception.sensory import AfferentFrame
 from examples.tadash_interoception.state import InternalState, canonical, digest
 from .adapters import decoder, native_call, source_identity, visual_plan, fixture_summary
+from . import reconsider
 
-SCHEMA = 'nasuraya.shared-session/1'
+SCHEMA = 'nasuraya.shared-session/2'
 EMPTY = '0' * 64
 ACTION_CLAIMS = {'process_job': 2, 'recover': 3, 'walk': 4, 'observe': 5}
 
@@ -58,8 +59,8 @@ class Session:
         self.db = sqlite3.connect(path, timeout=10, isolation_level=None)
         try:
             self.db.execute('PRAGMA synchronous=FULL')
-            self.model = decoder()
             self.config = _unseal(json.loads(self.db.execute('SELECT value FROM config').fetchone()[0]))
+            self.model = decoder(self.config.get('decoder_version', 'legacy'))
             if self.config['schema'] != SCHEMA or self.config['source_identity'] != source_identity():
                 raise ValueError('session implementation changed; explicit migration required')
             if self.config['model_sha'] != self.model.fingerprint():
@@ -75,15 +76,17 @@ class Session:
 
     @classmethod
     def create(cls, directory, *, session_id='nasuraya', backend='workshop',
-               fixture='normal', max_actions=12, at_utc='2026-11-12T12:00:00+00:00'):
+               fixture='normal', max_actions=12, at_utc='2026-11-12T12:00:00+00:00',
+               decoder_version='legacy', reconsideration=False):
         _identifier(session_id)
-        if backend not in ('workshop', 'native') or fixture not in ('normal', 'sleep'):
+        if backend not in ('workshop', 'native') or fixture not in ('normal', 'sleep', 'transient_pain'):
             raise ValueError('known local backend and fixture required')
         if backend == 'workshop' and fixture != 'normal':
             raise ValueError('sleep fixture belongs to native backend')
         if type(max_actions) is not int or not 0 <= max_actions <= 100:
             raise ValueError('persistent action budget must be 0..100')
-        identity, model = source_identity(), decoder()
+        if type(reconsideration) is not bool: raise ValueError('explicit reconsideration boolean required')
+        identity, model = source_identity(), decoder(decoder_version)
         public = evidence.snapshot(now_utc=at_utc)
         native = native_call({'checkpoint': None, 'fixture': fixture}) if backend == 'native' else None
         directory = Path(directory)
@@ -93,11 +96,13 @@ class Session:
         (directory / 'fixed-models-report.json').write_text(canonical(models), encoding='utf-8')
         config = {'schema': SCHEMA, 'session_id': session_id, 'backend': backend,
                   'fixture': fixture, 'max_actions': max_actions, 'source_identity': identity,
+                  'decoder_version': decoder_version, 'reconsideration': reconsideration,
                   'model_sha': model.fingerprint(), 'at_utc': at_utc,
                   'public_evidence': public, 'fixed_models': models}
         state = {'revision': 0, 'actions_used': 0, 'stopped': False,
                  'sensory': InternalState().checkpoint(), 'workshop': asdict(State(70, 30, 4)),
                  'workload': RecoveryAdvisor().checkpoint(), 'native': native,
+                 'retry_blocks': {},
                  'prediction': None, 'last_receipt': None}
         # sqlite3's own context manager commits/rolls back but does not close.
         # Explicit close is essential for Windows rename/removal and failure paths.
@@ -238,6 +243,8 @@ class Session:
                 if not math.isclose(frame.timestamp - sensory.time, .1, abs_tol=1e-8):
                     raise ValueError('frames must continue the session at 0.1 second intervals')
                 sensory.step(frame)
+            if self.config['decoder_version'] == 'continuous_v1' and len(sensory.trace) < 12:
+                raise ValueError('continuous decoder needs twelve observed ticks before the first decision')
             prediction = asdict(self.model.predict(sensory.features()))
             pressure = action_pressure(sensory)
             advisor = RecoveryAdvisor.restore(state['workload'])
@@ -271,8 +278,23 @@ class Session:
             # may instead name the same disagreement PROVISIONAL_DISSENT.
             candidate_review = projection['action_reviews'][candidate]
             dissent = candidate_review['evidence_review']['verdict'] == 'DISSENT'
+            retry = {'eligible_for_native_preflight': False, 'reason': 'no_action_dissent', 'retry_permitted': False}
             if dissent:
                 requested = 'recover' if native is None else 'observe'
+                if native is not None and candidate == 'walk':
+                    saved, retry = reconsider.assess(state['retry_blocks'].get('walk'), native,
+                                                     enabled=self.config['reconsideration'])
+                    state['retry_blocks']['walk'] = saved
+                    retry['retry_permitted'] = False
+                    if retry['eligible_for_native_preflight']:
+                        preflight = native_call({'checkpoint': native['checkpoint'], 'fixture': self.config['fixture'],
+                            'duration': round(sensory.time-start,8), 'touch': min(1.,max(sensory.features())),
+                            'event_id': 'preview-'+event_id, 'requested': 'walk', 'mode': 'preflight'})
+                        if preflight['origin_checkpoint_sha'] != native['checkpoint']['sha256']:
+                            raise ValueError('counterfactual preflight is from a different owner state')
+                        retry['preflight'] = preflight
+                        retry['retry_permitted'] = preflight['selected'] == 'walk'
+                        if retry['retry_permitted']: requested = 'walk'
             if native is None:
                 journal = Journal()
                 host = ToolHost(State(**state['workshop']), journal, max_actions=1)
@@ -282,11 +304,15 @@ class Session:
                            'before': state['workshop'], 'after': asdict(host.state), 'journal': journal.events}
                 state['workshop'] = asdict(host.state)
             else:
+                before_native = native
                 native = native_call({'checkpoint': native['checkpoint'], 'fixture': self.config['fixture'],
                     'duration': round(sensory.time - start, 8), 'touch': min(1., max(sensory.features())),
                     'event_id': event_id, 'requested': requested})
                 state['native'] = native
                 outcome = native['receipt']
+                if requested == 'walk':
+                    if outcome['executed'] != 'walk': state['retry_blocks']['walk'] = reconsider.block(before_native)
+                    else: state['retry_blocks'].pop('walk', None)
             receipt = {'event_id': event_id, 'revision': state['revision'] + 1,
                        'prediction': prediction, 'state_sha': sensory.checkpoint()['sha256'],
                        'model_sha': self.model.fingerprint(), 'pressure': pressure,
@@ -294,6 +320,7 @@ class Session:
                        'routing_observation': routing_observation,
                        'candidate_outcome_dissent': dissent, 'candidate_requested': candidate,
                        'candidate_review': candidate_review, 'goal': 1,
+                       'reconsideration': retry,
                        'rotation': asdict(rotation), 'requested': requested, 'outcome': outcome,
                        'outcome_matches_request': outcome['executed'] == requested,
                        'local_simulation_only': True}
@@ -338,9 +365,13 @@ class Session:
             output = {'schema': SCHEMA, 'session_id': self.config['session_id'],
                 'revision': state['revision'], 'event_tail': tail, 'stopped': state['stopped'],
                 'backend': self.config['backend'], 'actions_used': state['actions_used'],
+                'decoder_version': self.config['decoder_version'], 'reconsideration_enabled': self.config['reconsideration'],
+                'retry_blocks': state['retry_blocks'],
                 'actions_remaining': self.config['max_actions'] - state['actions_used'],
                 'sensory': asdict(sensory), 'prediction': state['prediction'],
-                'uncertainty_scope': 'Frozen detection calibration from independent-window PR195; continuous-session calibration unmeasured',
+                'uncertainty_scope': ('synthetic last-12-tick detection; stream-level held-out calibration only'
+                    if self.config['decoder_version']=='continuous_v1' else
+                    'Frozen detection calibration from independent-window PR195; continuous-session calibration unmeasured'),
                 'workshop': state['workshop'], 'workload': RecoveryAdvisor.restore(state['workload']).read(),
                 'dios': projection, 'last_receipt': state['last_receipt'],
                 'body': None if native is None else {k: native[k] for k in (

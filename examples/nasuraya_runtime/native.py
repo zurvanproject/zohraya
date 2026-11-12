@@ -11,7 +11,7 @@ import tempfile
 def run(request, staging):
     sys.path.insert(0, str(staging))
     os.chdir(staging)
-    from synthetic_fixture import prepare_defaults, synthetic_body
+    from synthetic_fixture import prepare_defaults, synthetic_body, synthetic_origin
     from run_reflection_demo import sleep_fixture
     from unified_body_v2 import UnifiedBody
     from examples.nasuraya_research.native_snapshot import snapshot
@@ -19,10 +19,30 @@ def run(request, staging):
     from examples.tadash_interoception.state import digest
     prepare_defaults()
     if request['checkpoint'] is None:
-        body = sleep_fixture() if request['fixture'] == 'sleep' else synthetic_body()
+        if request['fixture'] == 'sleep':
+            body = sleep_fixture()
+        elif request['fixture'] == 'transient_pain':
+            # Explicit initial fixture intervention, followed only by the original
+            # native decay equations. No later reset of pain or physiology.
+            from persistent_embodiment_v1 import PersistentEmbodiment
+            owner = PersistentEmbodiment.restore(synthetic_origin())
+            before = owner.body()
+            # One unique maximum avoids an inherited insertion-order tie in the
+            # legacy location readout when JSON is restored in a fresh process.
+            region = sorted(owner.owner.body.pain.slow)[0]
+            owner.owner.body.pain.slow[region] = 1.0
+            owner._record(before, owner.body(), 'external_input',
+                          'declared transient nociceptive fixture; not a physical measurement', 0.)
+            body = UnifiedBody.migrate(owner.checkpoint())
+            body.migration['fixture_intervention'] = 'initial nociceptive slow channel '+region+'=1.0; native decay only thereafter'
+        elif request['fixture'] == 'normal':
+            body = synthetic_body()
+        else:
+            raise ValueError('unknown native fixture')
         receipt = None
     else:
         body = UnifiedBody.restore(request['checkpoint'])
+        origin_sha = body.checkpoint()['sha256']
         at = (datetime.fromisoformat(body.owner.wall_utc) + timedelta(seconds=request['duration'])).isoformat()
         external = {'sensors': {'touch': {'value': request['touch'],
                     'source_id': 'shared-session-palm-state-v1',
@@ -31,6 +51,11 @@ def run(request, staging):
         result = body.cycle(event_id=request['event_id'], at_utc=at,
                             duration_s=request['duration'], external=external,
                             requested=request['requested'], expected_revision=body.revision)
+        if request.get('mode') == 'preflight':
+            return {'kind': 'counterfactual_copy_not_committed_execution',
+                    'origin_checkpoint_sha': origin_sha, 'requested': request['requested'],
+                    'selected': result['owner']['selected_action'],
+                    'actual_session_cycles_committed': 0}
         receipt = {'requested': request['requested'], 'executed': result['owner']['selected_action'],
                    'body_veto': result['owner']['selected_action'] != request['requested'],
                    'audit': result['whole_body_audit'], 'touch': body.modules['senses']['samples']['touch'],
