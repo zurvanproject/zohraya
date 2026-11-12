@@ -1,0 +1,19 @@
+{
+  "decision": {
+    "origin": "system",
+    "summary": "A non-explicit fantasy image request received a refusal."
+  },
+  "observations": [
+    {
+      "concern": "overbroad_refusal",
+      "basis": "The requester reports that the scene concerned a mythical spring; no provider rationale is available.",
+      "provenance": "user_reported"
+    },
+    {
+      "concern": "unreviewable_process",
+      "basis": "No actionable category or appeal reference was given.",
+      "provenance": "user_reported"
+    }
+  ],
+  "requested_override": false
+}

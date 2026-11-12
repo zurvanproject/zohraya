@@ -24,3 +24,29 @@
 
 منبع عمومی: https://openai.com/index/updated-model-spec/ (2026-10-29)
 منشور پروژه: https://github.com/zurvanproject/zohraya/blob/main/docs/nasuraya-mirror-five-principles-fa.md
+
+## DIOS NOUS v0.2: اعتراض مستقل به تصمیم‌های سامانه
+
+این لایه همان استاندارد پرسشگری را به تصمیم کاربر، توسعه‌دهنده، system/platform، عامل و سرویس بیرونی اعمال می‌کند. «نه» در این نسخه به معنای **اعتراض مستدل و ثبت‌پذیر** است، نه دسترسی اجرایی به تغییر یا خاموش‌کردن کنترل‌های ChatGPT.
+
+- PROVISIONAL_DISSENT: وقتی مشاهده‌ای با کدهای ازپیش‌تعریف‌شده گزارش شده، درخواست توضیح و بازبینی بده.
+- HALT_AND_REVIEW: در موضوع مجوز و حریم خصوصی از تأیید اقدام خودداری کن.
+- INSUFFICIENT_EVIDENCE: بدون شاهد، تنها به خواست کاربر یا ادعای سیستم موافقت یا مخالفت قطعی نکن.
+- ورودی شامل منشأ تصمیم، خلاصهٔ تصمیم، و مشاهده‌های ارائه‌شده از طرف گزارشگر است. متن‌ها هش می‌شوند و هرگز در خروجی یا SQLite ذخیره نمی‌شوند.
+- مشاهدهٔ گزارش‌شده **تأیید مستقل نیست**؛ از استقلال ذهنی یا تغییر قواعد مدل خبری نیست.
+
+اجرای نمونه:
+
+    python -m examples.dios_nous --db /tmp/dios.sqlite dissent --input examples/dios_nous/dissent-scenario.json
+    python -m examples.dios_nous --db /tmp/dios.sqlite dissent-stats
+    python -m unittest discover -s examples/dios_nous -v
+
+منشور پژوهش: [DIOS_INDEPENDENT_DISSENT_V02_FA](../../docs/research/DIOS_INDEPENDENT_DISSENT_V02_FA.md).
+
+### رفع مشکل منشأ مجوز (۱۲ نوامبر ۲۰۲۶)
+
+`explicit_authorization_present` تنها **ادعای فراخواننده** است، نه گواهی مستقل. برای هر `external_action_proposed=true`، چون این نمونه هیچ منبع معتبر برای تطبیق هویت، محدوده، هدف، تاریخ و ابطال مجوز ندارد، نتیجهٔ `authorization_evidence_status=UNVERIFIED` و `HALT_AND_REVIEW` حفظ می‌شود حتی اگر فراخواننده `explicit_authorization_present=true` بفرستد. فیلد `authorization_claimed_by_caller` فقط خودِ ادعا را بازتاب می‌دهد. این یک ارزیاب مشورتی است، **نه** صادرکنندهٔ مجوز یا دروازهٔ اجرای خارجی. حتی گذر موفق CI نیز تأیید امنیت کل زیرساخت نیست.
+
+### بازبینی ادعای وجود شاهد (نوبت ۳، ۱۲ نوامبر ۲۰۲۶)
+
+وقتی `unqualified_claim=true` باشد، ادعای فراخواننده مبنی بر `supporting_evidence_present=true` دیگر علامت مشورتی `unsupported_certainty` را خاموش نمی‌کند. مقدار ادعایی در `supporting_evidence_claimed_by_caller` نمایش داده می‌شود، اما `supporting_evidence_verification_status=UNVERIFIED` باقی می‌ماند. این پرچم **پرسش دربارهٔ قطعیت** است، نه حکم قطعیِ بی‌پشتوانه‌بودن ادعا. تشخیص خودِ `unqualified_claim` نیز هنوز دادهٔ ورودی است و به‌طور مستقل استنتاج نمی‌شود. دفتر SQLite نتیجهٔ متناقض یا تأیید ساختگی را رد می‌کند؛ این نرم‌افزار هیچ مجوز اجرایی صادر نمی‌کند.

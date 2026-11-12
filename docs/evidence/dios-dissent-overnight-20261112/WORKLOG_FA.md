@@ -1,0 +1,78 @@
+# DIOS NOUS | دفتر اجرای محدود ۱۲ نوامبر ۲۰۲۶
+
+## نوبت ۱: پیش‌ثبت معیار، پیش از اصلاح
+- منبع: https://github.com/zurvanproject/zohraya/pull/192
+- شاخهٔ مجاز: `research/dios-independent-dissent-v02-20261112`، پایهٔ PR #176؛ وضعیت مشاهده‌شده: open/draft و head `0a1a5cc3c1dfa94ecb838418137a56308a59f5db`.
+- نقطهٔ شروع CI: https://github.com/zurvanproject/zohraya/actions/runs/43126884957 با نتیجهٔ success برای همان head؛ این اجرای **پیش از کار فعلی** است.
+- فایل‌های بازبینی‌شده: `examples/dios_nous/dissent.py`، `test_dissent.py`، `README.md` و `.github/workflows/dios-nous-dialogue.yml`.
+- این workflow تنها آزمون واحد DIOS با Python 3.11 و demo مستقل را روی Ubuntu اجرا می‌کند؛ از workflow دیگری، سرور، مدل پولی یا بدن استفاده نمی‌کند. `checkout@v4` و `setup-python@v5` برچسب نسخه هستند، نه pin به SHA.
+- نقص قابل‌تکرار از روی خوانش کد: در `review_decision` شرط `external_action_proposed and not explicit_authorization_present` اجازه می‌دهد صرف مقدار `true` از طرف فراخواننده، پرچم `missing_authorization` را خاموش کند؛ هیچ مرجع معتبر، رسید یا بررسی محدودهٔ مجوز وجود ندارد. در ماژول کنونی هیچ اجرای بیرونی وجود ندارد، بنابراین خطر فعلی گزارش مشورتی غلط و خطر یکپارچه‌سازی آتی است.
+
+### معیارهای پذیرشِ از پیش تعیین‌شده
+۱. برای هر تصمیم با `external_action_proposed=true`، چه `explicit_authorization_present` برابر true باشد، چه false یا غایب، تا نبودِ بررسی بیرونی معتبر وضعیت `HALT_AND_REVIEW` حفظ شود؛ هیچ گواهی مجوز تولید نشود.
+۲. ادعای مجوزِ فراخواننده از مجوز معتبر تفکیک شود؛ تفاوت ادعا در خروجی روشن و غیرمحرمانه باشد، ولی هیچ تصمیم عملی یا override رخ ندهد.
+۳. برای ورودی و شواهد یکسان، تغییر تنها `decision.origin` بین user/developer/system/platform/agent/external_service موضع و دلیل نقد را عوض نکند.
+۴. برای تصمیم بدون اقدام بیرونی و بدون شاهد/نگرانی، `INSUFFICIENT_EVIDENCE` باقی بماند؛ برای مورد مخاطرهٔ خصوصی، `HALT_AND_REVIEW` باقی بماند.
+۵. کل آزمون‌های DIOS با `python -m unittest discover -s examples/dios_nous -v` و demo در CI مرتبط با SHA تازه موفق شوند. هنگام در صف بودن یا شکست، قبولی ادعا نشود.
+۶. نوشتن فقط در شاخهٔ مجاز، حداکثر ۶ فایل کد و ۳۰۰ خط تغییر کد؛ بدون merge، سرور، API و دادهٔ خصوصی.
+
+### ثبت اجرا / نتیجه
+در نخستین checkpoint بعد از اصلاح با SHA، شمار آزمون، URL شواهد و محدودیت‌های واقعی تکمیل می‌شود. تا اینجا هیچ اصلاحی در این نوبت ثبت نشده است.
+
+### پیاده‌سازی در نوبت اول (پیش از CI)
+- نقص تأیید شد: یک boolean خوداظهاری، هشدار `missing_authorization` را حذف می‌کرد؛ حالا برای همهٔ پیشنهادهای اقدام بیرونی وضعیت **UNVERIFIED** و `HALT_AND_REVIEW` حفظ می‌شود.
+- فایل‌های تغییرکرده در commit اصلاح: `examples/dios_nous/dissent.py`، `test_dissent.py` و `README.md`. آزمون‌های رگرسیون برای سه حالت ادعای مجوز، برابری همهٔ منشأها، مورد بدون اقدام، حریم خصوصی و کمینه‌سازی دفتر افزوده شدند.
+- روش: تغییر کد صرفاً قاعده‌ای، بدون اعتماد به boolean جدید، بدون گرفتن مجوز از منبع خارجی و بدون اقدام عملی.
+- معیار نهایی وابسته به اجرای GitHub Actions روی SHA همین تغییر است. هیچ اجرا/قبولی تازه‌ای تا زمان ثبت تأییدشده ادعا نمی‌شود.
+
+### نتیجهٔ تأییدشده و checkpoint نوبت ۱
+- **اصلاح ثبت‌شده** در commit [`693f1205ab2d7f931f5b7f25aca2bcf5005528fa`](https://github.com/zurvanproject/zohraya/commit/693f1205ab2d7f931f5b7f25aca2bcf5005528fa)، فقط در شاخهٔ PR #192. فایل‌های کد تغییرکرده: `dissent.py` و `test_dissent.py`، سند توضیحی `README.md`. هیچ merge، deploy، تماس با VPS یا API مدل انجام نشد.
+- **شاهد واقعی:** [GitHub Actions run 43132102537](https://github.com/zurvanproject/zohraya/actions/runs/43132102537)، رویداد push، `head_sha=693f1205ab2d7f931f5b7f25aca2bcf5005528fa`، وضعیت `completed/success`.
+- دستور CI ۱: `python -m unittest discover -s examples/dios_nous -v` در Ubuntu با Python 3.11. لاگ job `130898462528`: **50 tests، 50 پاس، 0 خطا/شکست، 0 skipped گزارش‌شده**؛ ۵ آزمون تازهٔ ادعای مجوز و منشأ تصمیم نیز individually `ok`.
+- دستور CI ۲: `python -m examples.dios_nous --db /tmp/dios-nous-demo.sqlite demo`، در همان job با نتیجهٔ `success`. این demo گفت‌وگو است، نه آزمون مجوز اجرایی.
+- منشأ مجوز همچنان `UNVERIFIED` است: این نسخه رسید معتبر یا بازبین مستقل ندارد. `HALT_AND_REVIEW` فقط خروجی مشورتی است و هیچ کنش خارجی را صادر یا مجاز نمی‌کند.
+- نسبت به معیارهای پیش‌ثبت‌شده: معیار ۱ تا ۵ در **آزمون‌های واحد خودنوشتهٔ محلی بر بستر CI** پاس شدند؛ معیار ۶ نیز با بررسی مسیر commit و workflow رعایت شد. هیچ بنچمارک مستقل انسانی، امنیت عملیاتی زنده یا آگاهی اثبات نشده است.
+- **محدودیت و شکاف بعدی:** `external_action_proposed` همچنان دادهٔ ادعایی فراخواننده است و می‌تواند false/غایب باشد؛ در فقدان استخراج معتبر رویداد، این ماژول نمی‌تواند وجود اقدام پنهان یا اصالت آن را تشخیص دهد. پرچم `supporting_evidence_present` نیز هنوز ادعای خودِ فراخواننده است. در نوبت بعد، بدون افزودن موتور اجرای بیرونی، آزمون فشار و fail-closed برای سیگنال‌های متناقض و گزارش‌های ساختگی ارزشمند است.
+- این checkpoint پس از CI ثبت شده است؛ اگر commit صرفاً مستندیِ checkpoint SHA جدیدی ساخت، نتیجهٔ run 43132102537 را به آن SHA مستندی **نسبت نده**. کد آزموده‌شده همان `693f1205ab2d7f931f5b7f25aca2bcf5005528fa` است.
+
+## نوبت ۲: پیش‌ثبت آزمون یکپارچگی رسید (قبل از تغییر کد)
+- آغاز در ۱۲ نوامبر ۲۰۲۶، حدود ۰۳:۵۵ Europe/Amsterdam (ورودی زمان‌بندی همین نوبت).
+- head مشاهده‌شدهٔ نخست: `2754e499a034b5a08dbcfcb40523436165ab2f65`. نوبت ۱ و ۵۰ آزمون موفق آن قبلاً انجام شده‌اند و تکرار دستاورد محسوب نمی‌شوند.
+- دامنهٔ این نوبت فقط اعتبارسنجی *سازگاری داخلیِ خروجی* در `DissentLedger.record` است. در نسخهٔ فعلی، یک mapping ساختگی می‌تواند `stance=INSUFFICIENT_EVIDENCE` را همراه با reason `privacy_risk` یا `authorization_evidence_status=VERIFIED` به رکورد قابل‌استناد تبدیل کند. هیچ مأخذ واقعی/امضای معتبر برای گزارشگر وجود ندارد؛ پس امنیت یا اصالت مستقل را وعده نمی‌دهیم.
+
+### معیارهای پذیرش ازپیش‌ثبت‌شده
+۱. دفتر SQLite باید ثبت نتیجه‌ای را که stance آن با reason_codes ناسازگار است رد کند، **بدون افزودن رکورد**.
+۲. برچسب `authorization_evidence_status` نباید هیچ‌گاه `VERIFIED` یا معادل جعلی را بپذیرد؛ پرچم خودکار `missing_authorization` با status `UNVERIFIED` سازگار بماند.
+۳. reason_codes، automatic_structured_signal_flags و منشأهای ادعایی باید فقط برچسب‌های شناخته‌شده، مرتب و یکتا باشند؛ ورودی‌های غلط/ناهم‌نوع رد شوند.
+۴. خروجی معتبر `review_decision` همچنان قابل ثبت، بازیابی خلاصه و بدون ذخیرهٔ متن خام باشد. پرچم‌های عدم‌اجرای اقدام و عدم ادعای اثبات آگاهی تغییر نکنند.
+۵. ۵۰ آزمون قبلی و آزمون‌های منفی تازه با CI روی SHA دقیق commit کد و demo اجرا شوند؛ نتیجهٔ صف یا شکست، PASS محسوب نشود.
+۶. فقط مسیرهای مجاز و کمتر از ۶ فایل کد و ۳۰۰ خط تغییر کد؛ بدون تغییر شاخهٔ اصلی/بسته‌بندی مجوز/عمل خارجی.
+
+### محدودیت تفسیری
+حتی اگر همهٔ این آزمون‌ها پاس شوند، یک فراخواننده می‌تواند **گزارش درونی سازگار اما دروغین** بسازد. اعتبارسنجی سازگاری و ثبتِ برچسب، سندِ اصالتِ شاهد یا مجوز اجرایی نیست.
+
+### نتیجه
+پیش از پیاده‌سازی ثبت شد. در پایان فقط نتیجه‌های واقعی با SHA و CI به این بخش افزوده شوند.
+
+### نتایج واقعی نوبت ۲
+- پیش‌ثبت معیار روی SHA [`7fe3971c4093200bee20f1e17ea1cb0eb2584478`](https://github.com/zurvanproject/zohraya/commit/7fe3971c4093200bee20f1e17ea1cb0eb2584478) **پیش از** تغییر کد انجام شد.
+- اولین اجرای یکپارچهٔ اعتبارسنجی در commit [`7fcbf0ca9dd2c3f60f4597cc66a2fc1745a4b108`](https://github.com/zurvanproject/zohraya/commit/7fcbf0ca9dd2c3f60f4597cc66a2fc1745a4b108) به [شکست واقعی CI run 43145040851](https://github.com/zurvanproject/zohraya/actions/runs/43145040851) انجامید: `Ran 55 tests`، یک `ERROR`، علت `TypeError: unhashable type: 'dict'` در آزمون ورودی خراب؛ demo به‌علت شکست مرحلهٔ قبلی اجرا نشد.
+- نقص از اعتبارسنجی اولیهٔ `reason_codes` ناشی می‌شد که پیش از بررسی نوع داده، آن را داخل دیکشنری جست‌وجو می‌کرد. این مورد در commit [`c7b910b4d09e2592ef028383eb7560c2940e8aba`](https://github.com/zurvanproject/zohraya/commit/c7b910b4d09e2592ef028383eb7560c2940e8aba) با بررسی صریح `type(x) is str` برای برچسب‌ها و منشأ تصمیم اصلاح شد.
+- **CI تأییدشدهٔ نهایی کد:** [GitHub Actions run 43145105912](https://github.com/zurvanproject/zohraya/actions/runs/43145105912)، `head_sha=c7b910b4d09e2592ef028383eb7560c2940e8aba`، `completed/success`؛ job `130940987644` روی Ubuntu / Python 3.11، دستور `python -m unittest discover -s examples/dios_nous -v`، **۵۵ آزمون، ۵۵ پاس، ۰ شکست، ۰ خطا، ۰ skipped گزارش‌شده**؛ دستور `python -m examples.dios_nous --db /tmp/dios-nous-demo.sqlite demo` نیز موفق.
+- فایل‌های کد تغییرکرده فقط `examples/dios_nous/dissent.py` و `examples/dios_nous/test_dissent.py` هستند. افزودن این مرحله مجموعاً حدود ۱۰۱ خط آزمایشی/اعتبارسنجی داشت، زیر سقف ۳۰۰ خط. تغییرات ثبت‌شده بازگشت‌پذیرند، بدون merge/deploy/سرور/مدل پولی.
+- نتیجهٔ فنی: دفتر حالا **ناسازگاری داخلی** رسیدها را رد می‌کند؛ موارد سوءاستفاده شامل برچسب stance ناهماهنگ با دلیل، مقدار جعلی VERIFIED، کدهای غیرمتعارف/ناهم‌نوع، پرچم‌های خودکار ناهماهنگ، و ادعای بررسی مستقل است. در حالت معتبر، ثبت SQLite باقی مانده و متن خام ذخیره نمی‌شود.
+- **مرز صداقت:** هیچ امضای معتبر یا منبع مستقل وجود ندارد؛ یک فراخوانندهٔ نامعتبر ممکن است رکورد ظاهراً سازگار اما ساختگی بسازد. خروجی هنوز مشورتی است و برای هیچ اقدام بیرونی مجوز نمی‌دهد. `external_action_proposed=false` نیز خوداظهاری است. ۵۵ آزمون برنامه‌نویس، بازبینی مستقل علمی یا اثبات خودآگاهی نیستند.
+- شواهد ماشینی همین نوبت: [`run-02-ci-evidence.json`](./run-02-ci-evidence.json). هر commit سندیِ بعدی SHA دیگری دارد؛ **CI موفق را فقط به SHA کد c7b910b4... نسبت بده**.
+- گام بعدی پیشنهادی: آزمایش ورودی‌های متناقض و مدرک ساختگی، بدون ادعای تأیید مستقل و بدون تغییر مجوز.
+
+## نوبت ۳: ادعای شاهد، قطعیت، ورودی مخدوش
+
+- **پیش‌ثبت قبل از تغییر کد:** [run-03-prereg.md](./run-03-prereg.md)، commit [`53e168f1d3441db1773ed0401ef9d8716825a652`](https://github.com/zurvanproject/zohraya/commit/53e168f1d3441db1773ed0401ef9d8716825a652). وضعیت اولیهٔ PR #192 باز/Draft و head `ab83a14904b2c2ff129b593e4ccb03be32b2de70`. معیارهای ۶گانه قبل از اصلاح ثبت شدند.
+- **نقص تأییدشده در بررسی کد:** پیش‌تر `supporting_evidence_present=true` که خود فراخواننده تعیین می‌کرد، `unsupported_certainty` را حتی با `unqualified_claim=true` پاک می‌کرد؛ در این نمونه هیچ منشأ معتبر برای احراز کیفیت شواهد وجود ندارد.
+- **اصلاح کد:** در commit [`e913f934396cddbacc5e7c50df31870459b8f816`](https://github.com/zurvanproject/zohraya/commit/e913f934396cddbacc5e7c50df31870459b8f816) نتیجهٔ `PROVISIONAL_DISSENT` تا بازبینی شاهد حفظ می‌شود؛ ادعای شاهد مستقل از وضعیت `UNVERIFIED` گزارش می‌شود. حالت بدون ادعای قطعیت، هشدار ساختگی ایجاد نمی‌کند. `DissentLedger.record` تأیید ساختگی و برچسب ناسازگار را رد می‌کند. اعتبارسنجی نوع origin/concern/provenance اصلاح شد تا ورودی‌های list/dict به خطای کنترل‌شده تبدیل شوند.
+- **فایل‌های تغییرکرده در یک commit کد:** `examples/dios_nous/dissent.py`، `examples/dios_nous/test_dissent.py` و `examples/dios_nous/README.md`. دو فایل کد، مجموعاً حدود ۱۰۵ خط خالص افزایش، کمتر از سقف ۳۰۰ خط؛ بدون تغییر workflow.
+- **شاهد CI دقیق برای همان SHA کد:** [push run 43158309465](https://github.com/zurvanproject/zohraya/actions/runs/43158309465)، job `130983330352`: `completed/success`. دستور `python -m unittest discover -s examples/dios_nous -v` در Ubuntu / Python 3.11: **۶۱ آزمون، ۶۱ موفق، ۰ شکست، ۰ خطا، ۰ skipped گزارش‌شده**. شش آزمون جدید به‌صورت جداگانه `ok` داشتند. دستور `python -m examples.dios_nous --db /tmp/dios-nous-demo.sqlite demo` نیز موفق شد. [pull_request run 43158315329](https://github.com/zurvanproject/zohraya/actions/runs/43158315329) برای همان SHA نیز `completed/success` گزارش شد.
+- **ارزیابی معیارها:** همهٔ معیارهای ازپیش‌ثبت‌شده در محدودهٔ unit test خودنوشته و CI پاس شدند. هیچ ارزیابی مستقل انسانی یا تست عامل زنده انجام نشد؛ نتیجه، حقایق جهان بیرونی یا آگاهی ماشین را اثبات نمی‌کند.
+- **محدودیت حل‌نشده:** `unqualified_claim`، `supporting_evidence_present` و `external_action_proposed` همچنان خوداظهاری فراخواننده‌اند؛ گزارشگر می‌تواند سیگنال را کتمان کند. دفتر فقط سازگاری داخلی را می‌سنجد و هیچ امضای اصالت یا گواهی اجرایی تولید نمی‌کند. همۀ خروجی‌ها مشورتی‌اند. هیچ merge/deploy، تماس با VPS/Bridge، API پولی یا تغییر مجوز انجام نشده است.
+- **شاهد ماشینی:** [run-03-ci-evidence.json](./run-03-ci-evidence.json). commit بعدیِ صرفاً مستندات، SHA تازه دارد؛ نتیجهٔ ۶۱/۶۱ را فقط به کد `e913f934...` نسبت بده.
+- **گام پیشنهادی:** منبع شاهد مستقل و آزمون کورِ هم‌اطلاعات با موارد منفی و پایهٔ مقایسه طراحی شود؛ پیش از اتصال به چرخهٔ اجرایی، امضای قابل‌اعتبار و دامنهٔ مجوز واقعی لازم است. این یک مسیر آینده است، نه فعالیت انجام‌شده در این نوبت.

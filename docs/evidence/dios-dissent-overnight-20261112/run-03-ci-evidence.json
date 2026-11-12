@@ -1,0 +1,68 @@
+{
+  "schema": "dios.dissent.overnight.evidence.v1",
+  "date": "2026-11-12",
+  "run": 3,
+  "repo": "zurvanproject/zohraya",
+  "pr": 192,
+  "base_pr": 176,
+  "branch": "research/dios-independent-dissent-v02-20261112",
+  "scope": "Offline, advisory DIOS NOUS review and evidence only",
+  "baseline_head": "ab83a14904b2c2ff129b593e4ccb03be32b2de70",
+  "prereg_commit": "53e168f1d3441db1773ed0401ef9d8716825a652",
+  "source_commit": "e913f934396cddbacc5e7c50df31870459b8f816",
+  "changed_code_files": [
+    "examples/dios_nous/dissent.py",
+    "examples/dios_nous/test_dissent.py"
+  ],
+  "changed_docs": [
+    "examples/dios_nous/README.md",
+    "docs/evidence/dios-dissent-overnight-20261112/run-03-prereg.md"
+  ],
+  "approximate_net_code_lines_added": 105,
+  "verified_ci": {
+    "push": {
+      "run_id": 43158309465,
+      "job_id": 130983330352,
+      "url": "https://github.com/zurvanproject/zohraya/actions/runs/43158309465",
+      "head_sha": "e913f934396cddbacc5e7c50df31870459b8f816",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "pull_request": {
+      "run_id": 43158315329,
+      "url": "https://github.com/zurvanproject/zohraya/actions/runs/43158315329",
+      "head_sha": "e913f934396cddbacc5e7c50df31870459b8f816",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    "os": "ubuntu-latest",
+    "python": "3.11",
+    "unit_command": "python -m unittest discover -s examples/dios_nous -v",
+    "unit_count": 61,
+    "passed": 61,
+    "failures": 0,
+    "errors": 0,
+    "skips_reported": 0,
+    "demo_command": "python -m examples.dios_nous --db /tmp/dios-nous-demo.sqlite demo",
+    "demo_status": "success",
+    "log_observed": "Ran 61 tests in 0.075s / OK; six new test functions showed ok"
+  },
+  "acceptance": {
+    "caller_support_does_not_suppress_certainty_review": "PASS in author tests",
+    "support_claim_and_verification_distinct": "PASS in author tests",
+    "absence_of_unqualified_claim_does_not_invent_dissent": "PASS in author tests",
+    "origin_neutrality": "PASS in author tests",
+    "authorization_privacy_hold_unchanged": "PASS in author tests",
+    "malformed_labels_and_forged_verification_rejected": "PASS in author tests",
+    "no_external_execution": "Code inspection and CI scope only"
+  },
+  "limitations": [
+    "unqualified_claim and supporting_evidence_present remain caller-controlled and are not independently authenticated",
+    "a caller can omit or falsify unqualified_claim; model cannot independently discover hidden decision signals",
+    "provisional dissent is a request for review, not proof the claim is factually unsupported",
+    "ledger checks internal consistency only; no authenticated provenance, binding, or cryptographic attestations",
+    "unittest is author-created synthetic regression, not independent review or cognitive autonomy evidence",
+    "no VPS work, no model API, no permission changes, no merge or deployment"
+  ],
+  "next_step": "Independent evidence provenance and paired blinded evaluation with held-out cases; no autonomous operational gate until validated trusted receipts."
+}
