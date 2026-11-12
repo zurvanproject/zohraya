@@ -26,6 +26,10 @@ The initial failed assumptions were not discarded:
    in the pinned native manifest. Mark the imported native tree `-text` so Git
    preserves its exact bytes. Keep all checksum checks; do not normalize or
    regenerate pinned hashes to bypass this failure.
+8. The next Windows run passed the contracts but exposed retained SQLite handles
+   during cleanup. SQLite's transaction context does not close its connection.
+   Explicitly close the creation connection and cover decoder-validation failures
+   with the constructor's close path; close the test's corruption connection too.
 
 These are integration fixtures, not another held-out sensory experiment.
 Existing PR195 accuracy/calibration results are unchanged and should not be

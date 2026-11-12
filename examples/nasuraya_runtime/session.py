@@ -6,6 +6,7 @@ An interrupted simulation can be recomputed: no physical or remote effect occurs
 This is deliberately not a general external-action exactly-once executor.
 """
 from dataclasses import asdict
+from contextlib import closing
 import json
 import math
 import os
@@ -55,9 +56,9 @@ class Session:
         if not path.is_file() or path.is_symlink():
             raise ValueError('existing session required; use create')
         self.db = sqlite3.connect(path, timeout=10, isolation_level=None)
-        self.db.execute('PRAGMA synchronous=FULL')
-        self.model = decoder()
         try:
+            self.db.execute('PRAGMA synchronous=FULL')
+            self.model = decoder()
             self.config = _unseal(json.loads(self.db.execute('SELECT value FROM config').fetchone()[0]))
             if self.config['schema'] != SCHEMA or self.config['source_identity'] != source_identity():
                 raise ValueError('session implementation changed; explicit migration required')
@@ -98,7 +99,9 @@ class Session:
                  'sensory': InternalState().checkpoint(), 'workshop': asdict(State(70, 30, 4)),
                  'workload': RecoveryAdvisor().checkpoint(), 'native': native,
                  'prediction': None, 'last_receipt': None}
-        with sqlite3.connect(directory / 'session.sqlite') as db:
+        # sqlite3's own context manager commits/rolls back but does not close.
+        # Explicit close is essential for Windows rename/removal and failure paths.
+        with closing(sqlite3.connect(directory / 'session.sqlite')) as db, db:
             db.executescript('CREATE TABLE config(value TEXT NOT NULL);'
                              'CREATE TABLE initial(value TEXT NOT NULL);'
                              'CREATE TABLE head(value TEXT NOT NULL);'

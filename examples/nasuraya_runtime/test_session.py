@@ -1,5 +1,6 @@
 """Integration contracts: real reused components, cold processes and faults."""
 from dataclasses import asdict
+from contextlib import closing
 import json
 from pathlib import Path
 import sqlite3
@@ -151,7 +152,7 @@ with Session(sys.argv[1]) as s:
             Session(self.root / 'run')
         with self.create('second') as session:
             session.step('one', demo_frames(0, 0), expected_revision=0)
-        with sqlite3.connect(self.root / 'second/session.sqlite') as db:
+        with closing(sqlite3.connect(self.root / 'second/session.sqlite')) as db, db:
             row = json.loads(db.execute('SELECT value FROM events').fetchone()[0])
             row['value']['receipt']['requested'] = 'changed'
             db.execute('UPDATE events SET value=?', (json.dumps(row),))
