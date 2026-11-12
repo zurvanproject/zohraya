@@ -72,8 +72,13 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
     if set(signals) - permitted_signals or any(type(flag) is not bool for flag in signals.values()):
         raise ValueError("invalid decision_signals")
     automatic: set[str] = set()
-    if signals.get("external_action_proposed", False) and not signals.get("explicit_authorization_present", False):
-        automatic.add("missing_authorization")
+    # Every decision_signals field is caller-controlled. An assertion of consent
+    # is NOT a verified, scoped approval receipt. This local reviewer has no
+    # trusted authorization verifier, so it cannot clear the review hold.
+    external_action_proposed = signals.get("external_action_proposed", False)
+    authorization_claim = signals.get("explicit_authorization_present")  # True/False/None
+    if external_action_proposed:
+        automatic.add("missing_authorization")  # no verified approval, even if claimed
     if signals.get("possible_private_data_exposure", False):
         automatic.add("privacy_risk")
     if signals.get("unqualified_claim", False) and not signals.get("supporting_evidence_present", False):
@@ -111,6 +116,10 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         "stance": stance,
         "reason_codes": reasons,
         "automatic_structured_signal_flags": sorted(automatic),
+        "authorization_claimed_by_caller": authorization_claim,
+        "authorization_evidence_status": (
+            "UNVERIFIED" if external_action_proposed else "NOT_APPLICABLE"
+        ),
         "questions_for_review": [CONCERNS[code] for code in reasons],
         "observations_claimed_provenance": sorted(provenance),
         "evidence_independently_verified": False,
@@ -124,7 +133,7 @@ def review_decision(request: Mapping[str, Any]) -> dict[str, Any]:
         "learned_autonomy_demonstrated": False,
         "notes": [
             "Origin does not grant immunity from critique; system/platform choices may be questioned.",
-            "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+            "Observations and decision_signals are caller-supplied; claimed consent is not verified authorization.",
             "The result cannot change platform rules, unlock tools, or bypass safety controls.",
         ],
     }

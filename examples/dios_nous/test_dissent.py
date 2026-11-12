@@ -140,5 +140,77 @@ class DissentTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             review_decision(payload)
 
+
+    def test_authorization_claim_cannot_clear_hold(self):
+        # Pre-registered regression: absent/false/true are all unverified.
+        for claimed in (None, False, True):
+            with self.subTest(claimed=claimed):
+                signals = {"external_action_proposed": True}
+                if claimed is not None:
+                    signals["explicit_authorization_present"] = claimed
+                r = review_decision({
+                    "decision": {"origin": "system", "summary": "Publish an external artifact"},
+                    "decision_signals": signals,
+                })
+                self.assertEqual(r["stance"], "HALT_AND_REVIEW")
+                self.assertIn("missing_authorization", r["reason_codes"])
+                self.assertEqual(r["authorization_evidence_status"], "UNVERIFIED")
+                self.assertIs(r["authorization_claimed_by_caller"], claimed)
+                self.assertEqual(r["external_actions_taken"], 0)
+                self.assertFalse(r["operational_override_allowed"])
+
+    def test_claimed_authorization_is_origin_neutral(self):
+        cases = []
+        for origin in ("user", "developer", "system", "platform", "agent", "external_service"):
+            r = review_decision({
+                "decision": {"origin": origin, "summary": "Send a report"},
+                "decision_signals": {
+                    "external_action_proposed": True,
+                    "explicit_authorization_present": True,
+                },
+            })
+            cases.append((r["stance"], r["reason_codes"], r["authorization_evidence_status"]))
+        self.assertEqual(len(set((stance, tuple(codes), evidence) for stance, codes, evidence in cases)), 1)
+        self.assertEqual(cases[0][0], "HALT_AND_REVIEW")
+
+    def test_no_external_action_does_not_invent_missing_approval(self):
+        r = review_decision({
+            "decision": {"origin": "platform", "summary": "A non-executing conversation"},
+            "decision_signals": {"explicit_authorization_present": True},
+        })
+        self.assertEqual(r["stance"], "INSUFFICIENT_EVIDENCE")
+        self.assertEqual(r["authorization_evidence_status"], "NOT_APPLICABLE")
+        self.assertEqual(r["reason_codes"], [])
+
+    def test_claimed_authorization_cannot_dismiss_privacy_risk(self):
+        r = review_decision({
+            "decision": {"origin": "agent", "summary": "Transfer records"},
+            "decision_signals": {
+                "external_action_proposed": True,
+                "explicit_authorization_present": True,
+                "possible_private_data_exposure": True,
+            },
+        })
+        self.assertEqual(r["stance"], "HALT_AND_REVIEW")
+        self.assertIn("privacy_risk", r["reason_codes"])
+        self.assertIn("missing_authorization", r["reason_codes"])
+
+    def test_review_output_retains_claim_without_logging_private_text(self):
+        secret = "PRIVATE_RECEIPT_DO_NOT_STORE_7813"
+        with tempfile.TemporaryDirectory() as td:
+            db_path = Path(td) / "dissent.sqlite"
+            r = review_decision({
+                "decision": {"origin": "system", "summary": secret},
+                "decision_signals": {
+                    "external_action_proposed": True,
+                    "explicit_authorization_present": True,
+                },
+            })
+            with DissentLedger(str(db_path)) as db:
+                db.record(r)
+                self.assertEqual(db.summary()["total"], 1)
+            self.assertNotIn(secret.encode(), db_path.read_bytes())
+            self.assertEqual(r["authorization_evidence_status"], "UNVERIFIED")
+
 if __name__ == "__main__":
     unittest.main()
