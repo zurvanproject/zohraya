@@ -1,0 +1,39 @@
+name: DIOS decision consistency audit
+on:
+  push:
+    branches: ['research/dios-decision-consistency-audit-v01-20261112']
+    paths:
+      - 'tools/dios_decision_consistency_audit.py'
+      - 'tools/nasu_integration_cycle.py'
+      - 'tests/test_dios_decision_consistency_audit.py'
+      - 'tests/test_nasu_integration_cycle.py'
+      - '.github/workflows/dios-decision-consistency-audit.yml'
+  pull_request:
+    paths:
+      - 'tools/dios_decision_consistency_audit.py'
+      - 'tools/nasu_integration_cycle.py'
+      - 'tests/test_dios_decision_consistency_audit.py'
+      - 'tests/test_nasu_integration_cycle.py'
+      - '.github/workflows/dios-decision-consistency-audit.yml'
+permissions:
+  contents: read
+jobs:
+  decision-audit:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Adversarial post-decision contract tests
+        run: python -m unittest discover -s tests -p 'test_dios_decision_consistency_audit.py' -v
+      - name: Existing memory-decision cycle regression
+        run: python -m unittest discover -s tests -p 'test_nasu_integration_cycle.py' -v
