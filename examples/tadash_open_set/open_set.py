@@ -22,6 +22,18 @@ HISTORICAL_SEEDS = (range(710000, 710280), range(720000, 720140), range(750000, 
 
 
 def frozen_decoder():
+    # PR196 owns the byte-pinned frozen artifact: load it directly on full checkouts.
+    # Reconstruct only in a minimal standalone research archive lacking PR196.
+    try:
+        from examples.nasuraya_runtime.adapters import decoder as pinned_decoder
+    except ModuleNotFoundError as exc:
+        if exc.name not in ('examples.nasuraya_runtime', 'examples.nasuraya_runtime.adapters'):
+            raise
+    else:
+        result = pinned_decoder()
+        if result.fingerprint() != MODEL_SHA:
+            raise ValueError('PR196 pinned PR195 decoder fingerprint mismatch')
+        return result
     examples = []
     for seeds, training in ((HISTORICAL_SEEDS[0], True), (HISTORICAL_SEEDS[1], False)):
         for seed in seeds:
