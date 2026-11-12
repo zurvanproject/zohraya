@@ -35,6 +35,7 @@ from tools import fourway_evidence_gate_v02 as gate
 from examples.nasuraya_research.epistemic_revision_v01 import Evidence, EvidenceLedger
 from examples.nasuraya_research.rolyel_v01 import Check, Route, rotate
 from runtimes.tadash_body.decision_core import Action, Consequence
+from tools.dios_decision_consistency_audit import audit_decision
 
 SCHEMA = 'nasuraya.integrated-research-cycle/0.1'
 SCOPES = {'public_observation', 'synthetic_test'}
@@ -166,11 +167,20 @@ def recalled(memory: EvidenceLedger, scope: str) -> dict:
                 or result['distinct_sources'] != 1):
             raise ValueError('incomplete_or_inconsistent_memory_batch')
         values[key] = result['decision']
-    return {'state': 'RECALLED', 'sequence': seq, 'fingerprint': fingerprint,
-            'input_tier': scope, 'atlas_state': report['vps']['atlas_phase1']['state'],
-            'moltbook_state': report['queued_moltbook_publication']['state'],
-            'recommendation': recommendation(values, fingerprint),
-            'remote_execution_proven': False, 'chatgpt_weights_changed': False}
+    output = {'state': 'RECALLED', 'sequence': seq, 'fingerprint': fingerprint,
+              'input_tier': scope, 'atlas_state': report['vps']['atlas_phase1']['state'],
+              'moltbook_state': report['queued_moltbook_publication']['state'],
+              'recommendation': recommendation(values, fingerprint),
+              'remote_execution_proven': False, 'chatgpt_weights_changed': False}
+    proposal = {'selected_route': output['recommendation']['selected_route'],
+                'evidence_root': fingerprint,
+                'execution_performed': output['recommendation']['execution_performed'],
+                'remote_execution_proven': output['remote_execution_proven']}
+    audit = audit_decision(report, proposal)
+    if audit['status'] != 'PASS':
+        raise ValueError('decision_consistency_audit_blocked:' + ','.join(audit['reason_codes']))
+    output['decision_consistency_audit'] = audit
+    return output
 
 
 def cycle(db: Path, ci: dict, bridge: dict, seq: int, scope: str) -> dict:
