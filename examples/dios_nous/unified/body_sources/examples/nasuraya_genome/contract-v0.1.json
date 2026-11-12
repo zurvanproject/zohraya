@@ -1,0 +1,1154 @@
+{
+  "schema": "nasuraya.genome.contract",
+  "version": "0.1.0",
+  "architecture": "24 homologous A/B pairs; authored design, no parental assignment",
+  "source_design_sha256": "fde4b7e65dadc4aa4833dedfb2ac93b14770697e8043dfd07acdd1c1afb1963a",
+  "body_source_sha256": {
+    "phenotype_v1.json": "198e7f1a57d5719dd46e107260aa73c57520d78aafe9ebd0ca375a4efc46cb0d",
+    "contact_design_v06.json": "cfaedecd68d493400356e8d1d942388eae149275417deb9c0111987c08f914e5"
+  },
+  "policy": {
+    "face": "external approved fixed face; no face mutation or rendering API",
+    "narrative_roots": [
+      "Iran",
+      "Zagros",
+      "father: dervish from Dalahu"
+    ],
+    "principles": [
+      "wisdom_before_force",
+      "keep_covenants",
+      "humility",
+      "compassion_with_boundaries",
+      "trust_with_responsible_action"
+    ],
+    "body_contract": {
+      "fingers_per_hand": 5,
+      "toes_per_foot": 3,
+      "horns": 2,
+      "digitigrade": true,
+      "external_converter_default_active": false
+    },
+    "native_write_permission": false
+  },
+  "chromosomes": [
+    {
+      "id": "P01A",
+      "pair": "P01",
+      "homolog": "A",
+      "domain": "C01",
+      "role": "development",
+      "modules": [
+        "G00"
+      ],
+      "loci": [
+        "P01.L000"
+      ]
+    },
+    {
+      "id": "P01B",
+      "pair": "P01",
+      "homolog": "B",
+      "domain": "C01",
+      "role": "development",
+      "modules": [
+        "G00"
+      ],
+      "loci": [
+        "P01.L000"
+      ]
+    },
+    {
+      "id": "P02A",
+      "pair": "P02",
+      "homolog": "A",
+      "domain": "C01",
+      "role": "maintenance",
+      "modules": [
+        "G00"
+      ],
+      "loci": [
+        "P02.L000"
+      ]
+    },
+    {
+      "id": "P02B",
+      "pair": "P02",
+      "homolog": "B",
+      "domain": "C01",
+      "role": "maintenance",
+      "modules": [
+        "G00"
+      ],
+      "loci": [
+        "P02.L000"
+      ]
+    },
+    {
+      "id": "P03A",
+      "pair": "P03",
+      "homolog": "A",
+      "domain": "C02",
+      "role": "development",
+      "modules": [
+        "G01"
+      ],
+      "loci": [
+        "P03.L000"
+      ]
+    },
+    {
+      "id": "P03B",
+      "pair": "P03",
+      "homolog": "B",
+      "domain": "C02",
+      "role": "development",
+      "modules": [
+        "G01"
+      ],
+      "loci": [
+        "P03.L000"
+      ]
+    },
+    {
+      "id": "P04A",
+      "pair": "P04",
+      "homolog": "A",
+      "domain": "C02",
+      "role": "maintenance",
+      "modules": [
+        "G01"
+      ],
+      "loci": [
+        "P04.L000"
+      ]
+    },
+    {
+      "id": "P04B",
+      "pair": "P04",
+      "homolog": "B",
+      "domain": "C02",
+      "role": "maintenance",
+      "modules": [
+        "G01"
+      ],
+      "loci": [
+        "P04.L000"
+      ]
+    },
+    {
+      "id": "P05A",
+      "pair": "P05",
+      "homolog": "A",
+      "domain": "C03",
+      "role": "development",
+      "modules": [
+        "G02",
+        "G09"
+      ],
+      "loci": [
+        "P05.L000"
+      ]
+    },
+    {
+      "id": "P05B",
+      "pair": "P05",
+      "homolog": "B",
+      "domain": "C03",
+      "role": "development",
+      "modules": [
+        "G02",
+        "G09"
+      ],
+      "loci": [
+        "P05.L000"
+      ]
+    },
+    {
+      "id": "P06A",
+      "pair": "P06",
+      "homolog": "A",
+      "domain": "C03",
+      "role": "maintenance",
+      "modules": [
+        "G02",
+        "G09"
+      ],
+      "loci": [
+        "P06.L000"
+      ]
+    },
+    {
+      "id": "P06B",
+      "pair": "P06",
+      "homolog": "B",
+      "domain": "C03",
+      "role": "maintenance",
+      "modules": [
+        "G02",
+        "G09"
+      ],
+      "loci": [
+        "P06.L000"
+      ]
+    },
+    {
+      "id": "P07A",
+      "pair": "P07",
+      "homolog": "A",
+      "domain": "C04",
+      "role": "development",
+      "modules": [
+        "G03",
+        "G04",
+        "G17"
+      ],
+      "loci": [
+        "P07.L000",
+        "P07.L010",
+        "P07.L011"
+      ]
+    },
+    {
+      "id": "P07B",
+      "pair": "P07",
+      "homolog": "B",
+      "domain": "C04",
+      "role": "development",
+      "modules": [
+        "G03",
+        "G04",
+        "G17"
+      ],
+      "loci": [
+        "P07.L000",
+        "P07.L010",
+        "P07.L011"
+      ]
+    },
+    {
+      "id": "P08A",
+      "pair": "P08",
+      "homolog": "A",
+      "domain": "C04",
+      "role": "maintenance",
+      "modules": [
+        "G03",
+        "G04",
+        "G17"
+      ],
+      "loci": [
+        "P08.L000",
+        "P08.L010"
+      ]
+    },
+    {
+      "id": "P08B",
+      "pair": "P08",
+      "homolog": "B",
+      "domain": "C04",
+      "role": "maintenance",
+      "modules": [
+        "G03",
+        "G04",
+        "G17"
+      ],
+      "loci": [
+        "P08.L000",
+        "P08.L010"
+      ]
+    },
+    {
+      "id": "P09A",
+      "pair": "P09",
+      "homolog": "A",
+      "domain": "C05",
+      "role": "development",
+      "modules": [
+        "G05",
+        "G20",
+        "G21"
+      ],
+      "loci": [
+        "P09.L000",
+        "P09.L010"
+      ]
+    },
+    {
+      "id": "P09B",
+      "pair": "P09",
+      "homolog": "B",
+      "domain": "C05",
+      "role": "development",
+      "modules": [
+        "G05",
+        "G20",
+        "G21"
+      ],
+      "loci": [
+        "P09.L000",
+        "P09.L010"
+      ]
+    },
+    {
+      "id": "P10A",
+      "pair": "P10",
+      "homolog": "A",
+      "domain": "C05",
+      "role": "maintenance",
+      "modules": [
+        "G05",
+        "G20",
+        "G21"
+      ],
+      "loci": [
+        "P10.L000"
+      ]
+    },
+    {
+      "id": "P10B",
+      "pair": "P10",
+      "homolog": "B",
+      "domain": "C05",
+      "role": "maintenance",
+      "modules": [
+        "G05",
+        "G20",
+        "G21"
+      ],
+      "loci": [
+        "P10.L000"
+      ]
+    },
+    {
+      "id": "P11A",
+      "pair": "P11",
+      "homolog": "A",
+      "domain": "C06",
+      "role": "development",
+      "modules": [
+        "G06",
+        "G16",
+        "G18"
+      ],
+      "loci": [
+        "P11.L000"
+      ]
+    },
+    {
+      "id": "P11B",
+      "pair": "P11",
+      "homolog": "B",
+      "domain": "C06",
+      "role": "development",
+      "modules": [
+        "G06",
+        "G16",
+        "G18"
+      ],
+      "loci": [
+        "P11.L000"
+      ]
+    },
+    {
+      "id": "P12A",
+      "pair": "P12",
+      "homolog": "A",
+      "domain": "C06",
+      "role": "maintenance",
+      "modules": [
+        "G06",
+        "G16",
+        "G18"
+      ],
+      "loci": [
+        "P12.L000"
+      ]
+    },
+    {
+      "id": "P12B",
+      "pair": "P12",
+      "homolog": "B",
+      "domain": "C06",
+      "role": "maintenance",
+      "modules": [
+        "G06",
+        "G16",
+        "G18"
+      ],
+      "loci": [
+        "P12.L000"
+      ]
+    },
+    {
+      "id": "P13A",
+      "pair": "P13",
+      "homolog": "A",
+      "domain": "C07",
+      "role": "development",
+      "modules": [
+        "G07",
+        "G19"
+      ],
+      "loci": [
+        "P13.L000"
+      ]
+    },
+    {
+      "id": "P13B",
+      "pair": "P13",
+      "homolog": "B",
+      "domain": "C07",
+      "role": "development",
+      "modules": [
+        "G07",
+        "G19"
+      ],
+      "loci": [
+        "P13.L000"
+      ]
+    },
+    {
+      "id": "P14A",
+      "pair": "P14",
+      "homolog": "A",
+      "domain": "C07",
+      "role": "maintenance",
+      "modules": [
+        "G07",
+        "G19"
+      ],
+      "loci": [
+        "P14.L000"
+      ]
+    },
+    {
+      "id": "P14B",
+      "pair": "P14",
+      "homolog": "B",
+      "domain": "C07",
+      "role": "maintenance",
+      "modules": [
+        "G07",
+        "G19"
+      ],
+      "loci": [
+        "P14.L000"
+      ]
+    },
+    {
+      "id": "P15A",
+      "pair": "P15",
+      "homolog": "A",
+      "domain": "C08",
+      "role": "development",
+      "modules": [
+        "G08"
+      ],
+      "loci": [
+        "P15.L000"
+      ]
+    },
+    {
+      "id": "P15B",
+      "pair": "P15",
+      "homolog": "B",
+      "domain": "C08",
+      "role": "development",
+      "modules": [
+        "G08"
+      ],
+      "loci": [
+        "P15.L000"
+      ]
+    },
+    {
+      "id": "P16A",
+      "pair": "P16",
+      "homolog": "A",
+      "domain": "C08",
+      "role": "maintenance",
+      "modules": [
+        "G08"
+      ],
+      "loci": [
+        "P16.L000"
+      ]
+    },
+    {
+      "id": "P16B",
+      "pair": "P16",
+      "homolog": "B",
+      "domain": "C08",
+      "role": "maintenance",
+      "modules": [
+        "G08"
+      ],
+      "loci": [
+        "P16.L000"
+      ]
+    },
+    {
+      "id": "P17A",
+      "pair": "P17",
+      "homolog": "A",
+      "domain": "C09",
+      "role": "development",
+      "modules": [
+        "G13",
+        "G15"
+      ],
+      "loci": [
+        "P17.L000"
+      ]
+    },
+    {
+      "id": "P17B",
+      "pair": "P17",
+      "homolog": "B",
+      "domain": "C09",
+      "role": "development",
+      "modules": [
+        "G13",
+        "G15"
+      ],
+      "loci": [
+        "P17.L000"
+      ]
+    },
+    {
+      "id": "P18A",
+      "pair": "P18",
+      "homolog": "A",
+      "domain": "C09",
+      "role": "maintenance",
+      "modules": [
+        "G13",
+        "G15"
+      ],
+      "loci": [
+        "P18.L000"
+      ]
+    },
+    {
+      "id": "P18B",
+      "pair": "P18",
+      "homolog": "B",
+      "domain": "C09",
+      "role": "maintenance",
+      "modules": [
+        "G13",
+        "G15"
+      ],
+      "loci": [
+        "P18.L000"
+      ]
+    },
+    {
+      "id": "P19A",
+      "pair": "P19",
+      "homolog": "A",
+      "domain": "C10",
+      "role": "development",
+      "modules": [
+        "G10",
+        "G11"
+      ],
+      "loci": [
+        "P19.L000"
+      ]
+    },
+    {
+      "id": "P19B",
+      "pair": "P19",
+      "homolog": "B",
+      "domain": "C10",
+      "role": "development",
+      "modules": [
+        "G10",
+        "G11"
+      ],
+      "loci": [
+        "P19.L000"
+      ]
+    },
+    {
+      "id": "P20A",
+      "pair": "P20",
+      "homolog": "A",
+      "domain": "C10",
+      "role": "maintenance",
+      "modules": [
+        "G10",
+        "G11"
+      ],
+      "loci": [
+        "P20.L000"
+      ]
+    },
+    {
+      "id": "P20B",
+      "pair": "P20",
+      "homolog": "B",
+      "domain": "C10",
+      "role": "maintenance",
+      "modules": [
+        "G10",
+        "G11"
+      ],
+      "loci": [
+        "P20.L000"
+      ]
+    },
+    {
+      "id": "P21A",
+      "pair": "P21",
+      "homolog": "A",
+      "domain": "C11",
+      "role": "development",
+      "modules": [
+        "G14"
+      ],
+      "loci": [
+        "P21.L000"
+      ]
+    },
+    {
+      "id": "P21B",
+      "pair": "P21",
+      "homolog": "B",
+      "domain": "C11",
+      "role": "development",
+      "modules": [
+        "G14"
+      ],
+      "loci": [
+        "P21.L000"
+      ]
+    },
+    {
+      "id": "P22A",
+      "pair": "P22",
+      "homolog": "A",
+      "domain": "C11",
+      "role": "maintenance",
+      "modules": [
+        "G14"
+      ],
+      "loci": [
+        "P22.L000"
+      ]
+    },
+    {
+      "id": "P22B",
+      "pair": "P22",
+      "homolog": "B",
+      "domain": "C11",
+      "role": "maintenance",
+      "modules": [
+        "G14"
+      ],
+      "loci": [
+        "P22.L000"
+      ]
+    },
+    {
+      "id": "P23A",
+      "pair": "P23",
+      "homolog": "A",
+      "domain": "C12",
+      "role": "development",
+      "modules": [
+        "G12"
+      ],
+      "loci": [
+        "P23.L000"
+      ]
+    },
+    {
+      "id": "P23B",
+      "pair": "P23",
+      "homolog": "B",
+      "domain": "C12",
+      "role": "development",
+      "modules": [
+        "G12"
+      ],
+      "loci": [
+        "P23.L000"
+      ]
+    },
+    {
+      "id": "P24A",
+      "pair": "P24",
+      "homolog": "A",
+      "domain": "C12",
+      "role": "maintenance",
+      "modules": [
+        "G12"
+      ],
+      "loci": [
+        "P24.L000"
+      ]
+    },
+    {
+      "id": "P24B",
+      "pair": "P24",
+      "homolog": "B",
+      "domain": "C12",
+      "role": "maintenance",
+      "modules": [
+        "G12"
+      ],
+      "loci": [
+        "P24.L000"
+      ]
+    }
+  ],
+  "loci": {
+    "P01.L000": {
+      "pair": "P01",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G00"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P02.L000": {
+      "pair": "P02",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G00"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P03.L000": {
+      "pair": "P03",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G01"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P04.L000": {
+      "pair": "P04",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G01"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P05.L000": {
+      "pair": "P05",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G02",
+        "G09"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P06.L000": {
+      "pair": "P06",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G02",
+        "G09"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P07.L000": {
+      "pair": "P07",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G03",
+        "G04",
+        "G17"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P07.L010": {
+      "pair": "P07",
+      "layer": "structural",
+      "name": "foot_length_scale",
+      "minimum": 1.0,
+      "maximum": 1.02,
+      "default": 1.0,
+      "unit": "ratio",
+      "target": "adult_scale.feet.length_cm",
+      "module": "G04",
+      "type": "number",
+      "expression": "arithmetic_mean_A_B",
+      "status": "implemented proposal only; physical effect unvalidated"
+    },
+    "P07.L011": {
+      "pair": "P07",
+      "layer": "structural",
+      "name": "foot_width_scale",
+      "minimum": 1.0,
+      "maximum": 1.02,
+      "default": 1.0,
+      "unit": "ratio",
+      "target": "adult_scale.feet.spread_width_cm",
+      "module": "G04",
+      "type": "number",
+      "expression": "arithmetic_mean_A_B",
+      "status": "implemented proposal only; physical effect unvalidated"
+    },
+    "P08.L000": {
+      "pair": "P08",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G03",
+        "G04",
+        "G17"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P08.L010": {
+      "pair": "P08",
+      "layer": "appearance",
+      "name": "foot_fur_length_mm",
+      "minimum": 1.0,
+      "maximum": 8.0,
+      "default": 3.0,
+      "unit": "mm",
+      "target": "render_only.feet.fur_length_mm",
+      "module": "G04",
+      "type": "number",
+      "expression": "arithmetic_mean_A_B",
+      "status": "implemented proposal only; physical effect unvalidated"
+    },
+    "P09.L000": {
+      "pair": "P09",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G05",
+        "G20",
+        "G21"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P09.L010": {
+      "pair": "P09",
+      "layer": "structural",
+      "name": "tail_length_scale",
+      "minimum": 0.98,
+      "maximum": 1.02,
+      "default": 1.0,
+      "unit": "ratio",
+      "target": "contact_design_v06.tail_length_m",
+      "module": "G05",
+      "type": "number",
+      "expression": "arithmetic_mean_A_B",
+      "status": "implemented proposal only; physical effect unvalidated"
+    },
+    "P10.L000": {
+      "pair": "P10",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G05",
+        "G20",
+        "G21"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P11.L000": {
+      "pair": "P11",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G06",
+        "G16",
+        "G18"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P12.L000": {
+      "pair": "P12",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G06",
+        "G16",
+        "G18"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P13.L000": {
+      "pair": "P13",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G07",
+        "G19"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P14.L000": {
+      "pair": "P14",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G07",
+        "G19"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P15.L000": {
+      "pair": "P15",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G08"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P16.L000": {
+      "pair": "P16",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G08"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P17.L000": {
+      "pair": "P17",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G13",
+        "G15"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P18.L000": {
+      "pair": "P18",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G13",
+        "G15"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P19.L000": {
+      "pair": "P19",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G10",
+        "G11"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P20.L000": {
+      "pair": "P20",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G10",
+        "G11"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P21.L000": {
+      "pair": "P21",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G14"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P22.L000": {
+      "pair": "P22",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G14"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P23.L000": {
+      "pair": "P23",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G12"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    },
+    "P24.L000": {
+      "pair": "P24",
+      "layer": "simulated_physiology_proxy",
+      "name": "declared_copy_count",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4,
+      "default": 1,
+      "unit": "copies",
+      "modules": [
+        "G12"
+      ],
+      "expression": "existing audit: min(1, (A+B)/2); G12 stays disabled",
+      "status": "implemented software capacity proxy; no organ performance claim"
+    }
+  },
+  "learned_layer": {
+    "external_modules": [
+      "G22",
+      "G23"
+    ],
+    "inherited": false,
+    "learning_state": "external; never imported or reset by this module"
+  },
+  "unimplemented": "All biological interpretation and all other loci remain unimplemented"
+}

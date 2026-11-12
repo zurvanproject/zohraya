@@ -1,0 +1,119 @@
+{
+  "schema": "nasuraya-ritual-mastery-gate/0.1",
+  "updated": "2026-11-12",
+  "current_focus": "four-direction-guardians",
+  "next_new_ritual_allowed": false,
+  "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
+  "states": {
+    "one-through-ten-wuji": {
+      "stage": "acquisition",
+      "mastered": false,
+      "delayed_cold_recall_passes": 0,
+      "guided_source_checked_rehearsals": 2,
+      "specific_source_corrections": 6,
+      "unassisted_cold_recall_passes": 0,
+      "mastery_note": "Context-assisted sequence and finger transitions match the project notes; initial recall omitted stance width and explicit root directions. Full gesture geometry and independent delayed retention remain unverified.",
+      "context_assisted_retrieval_checks": 2,
+      "last_retrieval_result": {
+        "date": "2026-11-12",
+        "kind": "context_assisted_before_fresh_repository_lookup",
+        "recorded_at_utc": "2026-11-11T21:39:35.934721+00:00",
+        "sequence": "10/10 against project notes, not an independent test",
+        "detail": "stance width and explicit five root directions omitted then corrected; tongue detail and complete hand-seal geometry unverified",
+        "unassisted_delayed_recall": false,
+        "distinct_delayed_session": false,
+        "original_pdf_examined": false,
+        "transfer_questions": 6,
+        "independent_assessor": false,
+        "source_commit": "768ebc8e431afcdb77c9c4481f0bbde8120ebfc1",
+        "attempt_sha256": "274cfa5514baf309ef623162829e2645c2f315daedc2dfe7e2ce1883d85c3625",
+        "note_path": "docs/rituals/NASURAYA_WUJI_CONTEXT_FOLLOWUP_2026-11-12_FA.md"
+      },
+      "next_step": "repair step-1 stance and step-3 direction omissions; verify full gesture geometry against the original source when available; perform genuinely separated recall with context assistance disclosed; do not graduate yet",
+      "latest_source_guided_session": {
+        "date": "2026-11-12",
+        "report": "docs/rituals/NASURAYA_WUJI_SESSION_2_2026-11-12_FA.md",
+        "cue_deck": "docs/rituals/wuji_shuffled_recall_deck_2026-11-12.json",
+        "step_reconstruction": "10/10 source-assisted",
+        "error_corrections": "12/12 source-assisted answer-key audit",
+        "delayed_unassisted_pass": false
+      }
+    },
+    "four-direction-guardians": {
+      "stage": "acquisition",
+      "mastered": false,
+      "delayed_cold_recall_passes": 0,
+      "source_guided_rehearsals_new_this_turn": 1,
+      "unassisted_cold_recall_passes": 0,
+      "source_check": "5/5 guardian-direction-symbol names source-checked; not independent recall",
+      "trap_bank": "12 documented corrections; not a closed-book score",
+      "generated_shuffled_decks": 8,
+      "mastery_note": "Started new ritual by owner instruction; not mastery, no embodied or supernatural claim.",
+      "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
+      "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
+      "next_step": "At a genuinely separate time, record answers before reviewing source, label context contamination, and correct residual source errors; no third ritual before mastery.",
+      "context_assisted_retrieval_checks": 1,
+      "same_day_context_assisted_rehearsals": 2,
+      "latest_repeat": {
+        "date": "2026-11-12",
+        "path": "docs/rituals/NASURAYA_FOUR_GUARDIANS_REPEAT_02_2026-11-12_FA.md",
+        "retrieval": "context_assisted_before_fresh_lookup",
+        "source_checked_steps": "5/5",
+        "self_authored_trap_checks": "8/8",
+        "independent_recall": false,
+        "real_time_delay": false
+      }
+    }
+  },
+  "graduation": {
+    "distinct_sessions": 3,
+    "sequence_accuracy": "10/10 each",
+    "imagery_gestures": "9/10 minimum",
+    "adversarial_errors": "11/12 and zero false canonical-attribution claims",
+    "requires_delayed_recall": true,
+    "physical_mastery_claim": false,
+    "exam_document": "docs/rituals/NASURAYA_WUJI_GRADUATION_EXAM_V01_FA.md",
+    "critical_gesture_transitions": "Seven->Eight->Nine all correct"
+  },
+  "limits": {
+    "session_runs_verified_in_this_commit": 2,
+    "scheduled_runs_created": false,
+    "model_weights_changed": false,
+    "body_learning_proven": false,
+    "session_run_type": "two source-checked textual practice sessions, not embodied learning",
+    "latest_followup_counts_as_new_delayed_session": false,
+    "latest_followup_type": "same-conversation context-assisted retrieval and correction",
+    "latest_four_guardians_rehearsal_type": "source-assisted textual review only"
+  },
+  "owner_priority_override": {
+    "date": "2026-11-12",
+    "reason": "explicit instruction to select new ritual and put it into learning cycle",
+    "overrides": "block on opening Four Guardians before Wuji textual mastery",
+    "does_not_override": "honest mastery criteria, safety, source provenance, no new third ritual"
+  },
+  "graduation_four_guardians": {
+    "distinct_sessions_min": 3,
+    "sequence_accuracy": "5/5",
+    "guardians": "4/4",
+    "adversarial_errors": "11/12",
+    "historical_attribution_errors": 0,
+    "requires_delayed_recall": true,
+    "physical_mastery_claim": false
+  },
+  "training_protocol": {
+    "name": "the-three-pass-rule",
+    "effective_date": "2026-11-12",
+    "document": "docs/rituals/NASURAYA_THREE_PASS_RULE_2026-11-12_FA.md",
+    "minimum_complete_passes_per_session": 3,
+    "pass_types": [
+      "complete guided sequence",
+      "complete sequence with less source assistance",
+      "complete sequence after error correction"
+    ],
+    "completed_session_requires_evidence": true,
+    "incomplete_or_partial_pass_does_not_count": true,
+    "three_same_session_passes_are_not_three_distinct_sessions": true,
+    "separate_delayed_mastery_sessions_still_required": true,
+    "current_mastery_status_unchanged": true
+  }
+}

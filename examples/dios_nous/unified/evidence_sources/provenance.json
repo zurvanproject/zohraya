@@ -1,0 +1,63 @@
+{
+  "schema": "nasuraya.unified-evidence-sources.v1",
+  "repository": "zurvanproject/zohraya",
+  "sources": [
+    {
+      "local_path": "fourway_evidence_gate_v02.py",
+      "source_path": "tools/fourway_evidence_gate_v02.py",
+      "commit": "2429cdbfbceca102a162f05095aad9c01e69fd8a",
+      "git_blob_sha1": "6e7006d888da9a435d7c4eac337e3f20a3771954",
+      "pr": 183,
+      "reused_functions": [
+        "parse_summary_fields",
+        "owner_comment",
+        "REPLY_RE"
+      ],
+      "unchanged": true
+    },
+    {
+      "local_path": "public_ci_witness.py",
+      "source_path": "tools/public_ci_witness.py",
+      "commit": "2429cdbfbceca102a162f05095aad9c01e69fd8a",
+      "git_blob_sha1": "deb45948d97a0fa1fcacc56bfaacc762d5c5d6fc",
+      "pr": 183,
+      "purpose": "unchanged import dependency; CI is not server liveness",
+      "unchanged": true
+    },
+    {
+      "local_path": "ritual_mastery_status_v01.json",
+      "source_path": "docs/rituals/ritual_mastery_status_v01.json",
+      "commit": "8e93fdca0c210612e5d4ec56307adbceacc4c495",
+      "git_blob_sha1": "34b40272d8744f60bff1b0d97d747e99ed9e655b",
+      "pr": 191,
+      "unchanged": true
+    },
+    {
+      "local_path": "visual_director.py",
+      "source_path": "examples/nasuraya_image_preflight/visual_director.py",
+      "commit": "2ab05d2f760ce309396de316027ee76a48441d6f",
+      "git_blob_sha1": "7613ce294eb24782a93a6cbab660e4e125c4768d",
+      "pr": 175,
+      "purpose": "reference source only; not imported or rendered by adapter",
+      "unchanged": true
+    },
+    {
+      "local_path": "receipt.json",
+      "source_path": "docs/evidence/desktop-ai-20261112/receipt.json",
+      "commit": "e23c2e34bd73746c815b4d8ac45778a5b9e0e0e0",
+      "git_blob_sha1": "13b83ca5d6e5ab50988ecbe9f03f1f9a88b25a57",
+      "unchanged": true
+    },
+    {
+      "local_path": "receipts.json",
+      "source_url": "https://api.github.com/repos/zurvanproject/zohraya/issues/149/comments",
+      "purpose": "sanitized fixed request/reply metadata and bounded public job summaries; not server signatures or executable requests",
+      "unchanged": false
+    }
+  ],
+  "caveats": [
+    "Source hashes establish local byte consistency, not remote authentication.",
+    "No new network read, server job, model call, or permission grant is provided.",
+    "A supplied owner login is only a data field; identity is not authenticated."
+  ]
+}

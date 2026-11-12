@@ -21,4 +21,8 @@ Reuse actual cognitive functions, pinned full-body atlas builder, and pinned pub
 
 ## Known limitations to retain
 
+Pre-evaluation review amendment: the unobserved recovery state is UNKNOWN, never ACTIVE. Two safe samples are required even at startup. A separate request_stop() control bypasses the measurement clock and can stop before a sample or at the same tick; it does not rewrite observations. This change was prompted by independent software review before evaluator freeze or evaluation execution.
+
+Pre-evaluation scope extension: where existing dependencies permit, execute fixed neutral fixtures through the pinned native neural/affect/genome modules and verify checkpoint readback, and run a read-only native body observation on Linux. These are integration/serialization checks only, without a new performance endpoint, learning-benefit claim, sexual event, body action cycle, remote action or empirical physiology claim. Windows may consume exported native observations without importing the fcntl-dependent body runtime. Any unavailable runtime connection stays explicitly incomplete.
+
 No actual sensor attachment, authenticated chat/image use, local image model, verified source issuer, signed authorization or executor. No native physiology/morphology reconciliation or model-weight integration. No evidence of improved artistic judgement, learning mastery, calibrated cognition or subjective experience. Stale receipts and declared simulated samples cannot become proof of current operation.

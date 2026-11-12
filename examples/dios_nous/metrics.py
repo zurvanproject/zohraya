@@ -1,5 +1,6 @@
 """Evaluate paired binary prediction performance, not phenomenal consciousness."""
 from __future__ import annotations
+import math
 import random
 from collections.abc import Mapping, Sequence
 from typing import Any
@@ -38,6 +39,12 @@ def evaluate_binary_predictions(trials: Sequence[Mapping[str, Any]], *, min_tria
     ours = sum(p for p, _ in pairs) / n
     baseline = sum(b for _, b in pairs) / n
     delta = baseline - ours
+    relative = 100 * delta / baseline if baseline else None
+    relative_status = "baseline_zero" if baseline == 0 else "finite"
+    # Valid probabilities can produce a subnormal, nonzero baseline Brier.
+    # Its relative percentage may overflow even though all inputs are finite.
+    if relative is not None and not math.isfinite(relative):
+        relative, relative_status = None, "numeric_overflow"
     interval = None
     if n >= min_trials:
         rng = random.Random(281)
@@ -52,7 +59,8 @@ def evaluate_binary_predictions(trials: Sequence[Mapping[str, Any]], *, min_tria
         "trials": n, "model_brier": round(ours, 6),
         "baseline_brier": round(baseline, 6),
         "improvement_delta": round(delta, 6),
-        "relative_improvement_pct": round(100 * delta / baseline, 3) if baseline else None,
+        "relative_improvement_pct": round(relative, 3) if relative is not None else None,
+        "relative_improvement_status": relative_status,
         "paired_bootstrap_95ci": interval,
         "sufficient_for_preliminary_stats": n >= min_trials,
         "evidence_supports": "predictive performance on the supplied binary tasks",

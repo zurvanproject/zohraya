@@ -1,0 +1,41 @@
+{
+  "files": {
+    "examples/nasuraya_genome/contract-v0.1.json": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "969cee0424bbbed8cb33821b082746be0c9611fc",
+      "sha256": "45376c0bb2e8db568d7ed39c7cefc87fda9ed555e282c195c63aa1d44bb1fcbd"
+    },
+    "runtimes/tadash_body/anatomy_systems_v01.json": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "0c3bd45e78d430b2ac91ddb80a5ba8987f73a397",
+      "sha256": "f0a8f47de3b23d15f257b56767308b82cb4f41cd765232599e9343631397b64b"
+    },
+    "runtimes/tadash_body/phenotype_v1.json": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "61f61176c50379041ccbebf7a2f5d36824aa3a5a",
+      "sha256": "2dc8906c57de807f7adfeebdae21d2f3049accc75b4a65f5effafd127e6e3d37"
+    },
+    "runtimes/tadash_body/retained_extensions/nasuraya_affective_layer_v01.py": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "c9ec0fe1f0474d14f6c98c93c0131aa1c784cce5",
+      "sha256": "8354b663a4df8eaf8e62b15aa07a300bb4cf91885e176fe97947d7d6ab5c909f"
+    },
+    "runtimes/tadash_body/retained_extensions/nasuraya_emotion_spectrum_v01.py": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "2b03e762e40659f68195627793db20e04f8465cc",
+      "sha256": "d29835759d1ec0ce16555b6805fe2bf008f97245a3ad76ac3e080da60299ac91"
+    },
+    "runtimes/tadash_body/retained_extensions/neural_circuit.py": {
+      "commit": "a532f24a5b3eb7a31df6d200950c7287e1e96a35",
+      "git_blob_sha1": "2f5b50de61ff387b4217c906adc203f8a2c421ba",
+      "sha256": "bd5d3da73d403055e7c0066420d16f6e2f0ccb8d48904738c404057edcda87e0"
+    },
+    "tools/fullbody_design_atlas.py": {
+      "commit": "f1c93810abf83bea894ceda2801c3771716c5b30",
+      "git_blob_sha1": "74bf13c34fd5408ecd48fc379d935b2f23e7fad5",
+      "sha256": "bbf02e64edaac743433baf800571a920c7c35712edac2f899c98e7dd18dc81e6"
+    }
+  },
+  "repository": "zurvanproject/zohraya",
+  "schema": "dios.body_sources/1"
+}
