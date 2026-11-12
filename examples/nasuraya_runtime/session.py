@@ -28,8 +28,10 @@ from examples.tadash_interoception.sensory import AfferentFrame
 from examples.tadash_interoception.state import InternalState, canonical, digest
 from .adapters import decoder, native_call, source_identity, visual_plan, fixture_summary
 from . import reconsider
+from .profile import CURRENT, LEGACY, current as current_profile
+from .perception import SignedTrace
 
-SCHEMA = 'nasuraya.shared-session/2'
+SCHEMA = 'nasuraya.shared-session/3'
 EMPTY = '0' * 64
 ACTION_CLAIMS = {'process_job': 2, 'recover': 3, 'walk': 4, 'observe': 5}
 
@@ -65,6 +67,8 @@ class Session:
                 raise ValueError('session implementation changed; explicit migration required')
             if self.config['model_sha'] != self.model.fingerprint():
                 raise ValueError('session decoder changed')
+            if self.config['body_profile_sha'] != current_profile()['sha256']:
+                raise ValueError('current body contract changed; explicit migration required')
             self.db.execute('BEGIN IMMEDIATE')
             state, rows, tail = self._read()
             self._project(state, rows, tail)
@@ -77,7 +81,7 @@ class Session:
     @classmethod
     def create(cls, directory, *, session_id='nasuraya', backend='workshop',
                fixture='normal', max_actions=12, at_utc='2026-11-12T12:00:00+00:00',
-               decoder_version='legacy', reconsideration=False):
+               decoder_version='legacy', reconsideration=False, body_profile=CURRENT):
         _identifier(session_id)
         if backend not in ('workshop', 'native') or fixture not in ('normal', 'sleep', 'transient_pain'):
             raise ValueError('known local backend and fixture required')
@@ -86,9 +90,10 @@ class Session:
         if type(max_actions) is not int or not 0 <= max_actions <= 100:
             raise ValueError('persistent action budget must be 0..100')
         if type(reconsideration) is not bool: raise ValueError('explicit reconsideration boolean required')
+        if body_profile not in (CURRENT,LEGACY): raise ValueError('known body profile required')
         identity, model = source_identity(), decoder(decoder_version)
         public = evidence.snapshot(now_utc=at_utc)
-        native = native_call({'checkpoint': None, 'fixture': fixture}) if backend == 'native' else None
+        native = native_call({'checkpoint': None, 'fixture': fixture, 'body_profile':body_profile}) if backend == 'native' else None
         directory = Path(directory)
         directory.mkdir(parents=True, exist_ok=False)
         # A failed initialization leaves an inspectable directory; never reset it.
@@ -97,10 +102,12 @@ class Session:
         config = {'schema': SCHEMA, 'session_id': session_id, 'backend': backend,
                   'fixture': fixture, 'max_actions': max_actions, 'source_identity': identity,
                   'decoder_version': decoder_version, 'reconsideration': reconsideration,
+                  'body_profile':body_profile,'body_profile_sha':current_profile()['sha256'],
                   'model_sha': model.fingerprint(), 'at_utc': at_utc,
                   'public_evidence': public, 'fixed_models': models}
         state = {'revision': 0, 'actions_used': 0, 'stopped': False,
                  'sensory': InternalState().checkpoint(), 'workshop': asdict(State(70, 30, 4)),
+                 'signed_trace':SignedTrace().checkpoint(),
                  'workload': RecoveryAdvisor().checkpoint(), 'native': native,
                  'retry_blocks': {},
                  'prediction': None, 'last_receipt': None}
@@ -136,6 +143,9 @@ class Session:
         if head != {'state': state, 'tail': tail}:
             raise ValueError('head does not match event chain')
         InternalState.restore(state['sensory'])
+        signed=SignedTrace.restore(state['signed_trace'])
+        if signed.time!=state['sensory']['state']['time']:
+            raise ValueError('sensory clocks disagree')
         RecoveryAdvisor.restore(state['workload'])
         State(**state['workshop'])
         if not 0 <= state['actions_used'] <= self.config['max_actions']:
@@ -238,15 +248,25 @@ class Session:
             projection = self._project(state, rows, tail)
             if projection['goal']['selected_goal'] != 1: raise ValueError('no active goal')
             sensory = InternalState.restore(state['sensory'])
+            signed=SignedTrace.restore(state['signed_trace'])
             start = sensory.time
             for frame in frames:
                 if not math.isclose(frame.timestamp - sensory.time, .1, abs_tol=1e-8):
                     raise ValueError('frames must continue the session at 0.1 second intervals')
                 sensory.step(frame)
+                signed.step(frame)
             if self.config['decoder_version'] == 'continuous_v1' and len(sensory.trace) < 12:
                 raise ValueError('continuous decoder needs twelve observed ticks before the first decision')
-            prediction = asdict(self.model.predict(sensory.features()))
+            noise_aware=getattr(self.model,'requires_signed_trace',False)
+            if noise_aware and len(signed.values)<12:
+                raise ValueError('signed decoder needs twelve observed ticks before the first decision')
+            prediction = asdict(self.model.predict(sensory.features(),signed.features()) if noise_aware
+                                else self.model.predict(sensory.features()))
             pressure = action_pressure(sensory)
+            touch=min(1.,max(sensory.features()))
+            if noise_aware:
+                pressure*=prediction['probability'];touch*=prediction['probability']
+                if prediction['occurred'] and prediction['novelty_uncertain']:pressure=max(.3,pressure)
             advisor = RecoveryAdvisor.restore(state['workload'])
             native = state['native']
             if native is None:
@@ -288,7 +308,9 @@ class Session:
                     retry['retry_permitted'] = False
                     if retry['eligible_for_native_preflight']:
                         preflight = native_call({'checkpoint': native['checkpoint'], 'fixture': self.config['fixture'],
-                            'duration': round(sensory.time-start,8), 'touch': min(1.,max(sensory.features())),
+                            'body_profile':self.config['body_profile'],
+                            'duration': round(sensory.time-start,8), 'touch': touch,
+                            'touch_source':'shared-session-noise-candidate' if noise_aware else 'shared-session-palm-state-v1',
                             'event_id': 'preview-'+event_id, 'requested': 'walk', 'mode': 'preflight'})
                         if preflight['origin_checkpoint_sha'] != native['checkpoint']['sha256']:
                             raise ValueError('counterfactual preflight is from a different owner state')
@@ -306,7 +328,9 @@ class Session:
             else:
                 before_native = native
                 native = native_call({'checkpoint': native['checkpoint'], 'fixture': self.config['fixture'],
-                    'duration': round(sensory.time - start, 8), 'touch': min(1., max(sensory.features())),
+                    'body_profile':self.config['body_profile'],
+                    'duration': round(sensory.time - start, 8), 'touch': touch,
+                    'touch_source':'shared-session-noise-candidate' if noise_aware else 'shared-session-palm-state-v1',
                     'event_id': event_id, 'requested': requested})
                 state['native'] = native
                 outcome = native['receipt']
@@ -324,7 +348,7 @@ class Session:
                        'rotation': asdict(rotation), 'requested': requested, 'outcome': outcome,
                        'outcome_matches_request': outcome['executed'] == requested,
                        'local_simulation_only': True}
-            state.update(sensory=sensory.checkpoint(), prediction=prediction,
+            state.update(sensory=sensory.checkpoint(), signed_trace=signed.checkpoint(),prediction=prediction,
                          workload=advisor.checkpoint(), last_receipt=receipt,
                          actions_used=state['actions_used'] + 1)
             return self._record(event_id, request, 'step', state, receipt, tail)
@@ -365,17 +389,23 @@ class Session:
             output = {'schema': SCHEMA, 'session_id': self.config['session_id'],
                 'revision': state['revision'], 'event_tail': tail, 'stopped': state['stopped'],
                 'backend': self.config['backend'], 'actions_used': state['actions_used'],
+                'current_body_contract':current_profile(),'body_profile':self.config['body_profile'],
                 'decoder_version': self.config['decoder_version'], 'reconsideration_enabled': self.config['reconsideration'],
                 'retry_blocks': state['retry_blocks'],
                 'actions_remaining': self.config['max_actions'] - state['actions_used'],
                 'sensory': asdict(sensory), 'prediction': state['prediction'],
-                'uncertainty_scope': ('synthetic last-12-tick detection; stream-level held-out calibration only'
+                'signed_sensory_memory':state['signed_trace'],
+                'perception_quality':'research_only; continuous noisy absence discrimination not qualified',
+                'uncertainty_scope': ('signed-memory research candidate; validation gate rejected; no promotion'
+                    if self.config['decoder_version']=='noise_candidate' else
+                    'synthetic last-12-tick detection; stream-level held-out calibration only'
                     if self.config['decoder_version']=='continuous_v1' else
                     'Frozen detection calibration from independent-window PR195; continuous-session calibration unmeasured'),
                 'workshop': state['workshop'], 'workload': RecoveryAdvisor.restore(state['workload']).read(),
                 'dios': projection, 'last_receipt': state['last_receipt'],
                 'body': None if native is None else {k: native[k] for k in (
-                    'export', 'clock', 'model', 'neural_ticks', 'affect', 'somatic_feedback', 'affect_state_sha')},
+                    'export', 'clock', 'model', 'neural_ticks', 'affect', 'somatic_feedback', 'affect_state_sha',
+                    'physical_parameters','profile_receipt')},
                 'capabilities': {
                     'interoception_attention_memory': 'coupled_each_event',
                     'goals_evidence_revision_dissent_rolyel': 'coupled_each_event',
@@ -384,7 +414,8 @@ class Session:
                     'visual_director': 'executed_text_plan_only_no_generator',
                     'ritual': 'frozen_progress_reference_not_executed',
                     'server_moltbook_desktop': 'frozen_reference_no_live_connection',
-                    'target_78kg_body': 'atlas_reference_not_native_physics',
+                    'target_78kg_body': ('parameterized_reduced_native_simulation_not_empirical_calibration'
+                        if native and self.config['body_profile']==CURRENT else 'current_morphology_reference'),
                     'llm': 'not_connected'},
                 'fixed_models': fixture_summary(self.config['fixed_models']), 'public_evidence': self.config['public_evidence'],
                 'visual_plan': visual_plan(recovery=state['stopped'] or action_pressure(sensory) >= .15),

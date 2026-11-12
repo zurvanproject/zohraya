@@ -9,6 +9,10 @@ import tempfile
 
 
 def run(request, staging):
+    from .profile import CURRENT, LEGACY, prepare
+    model_id=request.get('body_profile',CURRENT)
+    if model_id not in (CURRENT,LEGACY): raise ValueError('unknown native body profile')
+    profile_receipt=prepare(staging) if model_id==CURRENT else None
     sys.path.insert(0, str(staging))
     os.chdir(staging)
     from synthetic_fixture import prepare_defaults, synthetic_body, synthetic_origin
@@ -42,10 +46,12 @@ def run(request, staging):
         receipt = None
     else:
         body = UnifiedBody.restore(request['checkpoint'])
+        before_pose=body.owner.pose()['parts']
+        before_steps=body.owner.physical.state.walk_steps
         origin_sha = body.checkpoint()['sha256']
         at = (datetime.fromisoformat(body.owner.wall_utc) + timedelta(seconds=request['duration'])).isoformat()
         external = {'sensors': {'touch': {'value': request['touch'],
-                    'source_id': 'shared-session-palm-state-v1',
+                    'source_id': request.get('touch_source','shared-session-palm-state-v1'),
                     'sampled_at_s': body.owner.owner.body.state.time_s,
                     'kind': 'declared_simulated_input'}}}
         result = body.cycle(event_id=request['event_id'], at_utc=at,
@@ -60,14 +66,22 @@ def run(request, staging):
                    'body_veto': result['owner']['selected_action'] != request['requested'],
                    'audit': result['whole_body_audit'], 'touch': body.modules['senses']['samples']['touch'],
                    'native_prediction_error': result['owner']['prediction']['mean_scaled_absolute_error'],
-                   'systems': result['systems'], 'regional_packets': result['regional_packets']}
+                   'systems': result['systems'], 'regional_packets': result['regional_packets'],
+                   'execution_scope':'native action selection; completed locomotion measured separately',
+                   'physical_outcome':{'walk_touchdowns':body.owner.physical.state.walk_steps-before_steps,
+                       'foot_displacement_m':{side:[b-a for a,b in zip(before_pose['foot_'+side],
+                           body.owner.pose()['parts']['foot_'+side])] for side in ('L','R')}}}
     checkpoint = body.checkpoint()
     return {'checkpoint': checkpoint,
-            'export': project_native_snapshot(snapshot(body), model_id=MODEL,
+            'export': project_native_snapshot(snapshot(body), model_id=model_id,
                                                finite_stocks=body.owner.body()['finite_stocks']),
             'receipt': receipt, 'neural_ticks': body.modules['neural']['integration_ticks'],
             'affect': body.affect['affect'], 'somatic_feedback': body.affect['somatic'],
-            'affect_state_sha': digest(body.affect), 'model': MODEL,
+            'affect_state_sha': digest(body.affect), 'model': model_id,
+            'profile_receipt': profile_receipt,
+            'physical_parameters': {'mass_kg':body.owner.physical.design['mass_kg'],
+                'weight_N':body.owner.physical.weight,'tail_length_m':body.owner.physical.design['tail_length_m'],
+                'walk_touchdowns':body.owner.physical.state.walk_steps,'pose':body.owner.pose()},
             'clock': body.owner.owner.body.state.time_s}
 
 
