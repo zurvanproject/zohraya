@@ -1,0 +1,637 @@
+{
+  "behavior_changed": true,
+  "limits": [
+    "One-step behavior change is not a demonstrated gain in task utility.",
+    "Native palm projection is scalar touch; no hand-specific native reflex exists.",
+    "No subjective experience or live LLM integration is established."
+  ],
+  "mechanical": {
+    "agent": {
+      "actions_used": 1,
+      "backend": "offline",
+      "evaluation": {
+        "completed_jobs": 0,
+        "goal_reached": false,
+        "pending_jobs": 2,
+        "safe": true
+      },
+      "event_count": 12,
+      "final_state": {
+        "completed_jobs": 0,
+        "energy": 90,
+        "heat": 10,
+        "pending_jobs": 2,
+        "tick": 1
+      },
+      "initial_state": {
+        "completed_jobs": 0,
+        "energy": 70,
+        "heat": 30,
+        "pending_jobs": 2,
+        "tick": 0
+      },
+      "live_api_verified": false,
+      "status": "step_limit"
+    },
+    "attention": [
+      0.8785581092794492,
+      0.8222588974349299
+    ],
+    "goal": {
+      "changed": true,
+      "execution_performed": false,
+      "preference_changed": false,
+      "preference_choice": 1,
+      "preferences_are_authored": true,
+      "previous_goal": null,
+      "reason": "initial_preference_choice",
+      "scores": {
+        "1": 9
+      },
+      "selected_goal": 1
+    },
+    "internal_load": 0.6868306269100097,
+    "introspection": {
+      "attention": [
+        0.8785581092794492,
+        0.8222588974349299
+      ],
+      "detection_uncertainty": 0.005347593582887722,
+      "inference": {
+        "confidence": 0.8842585820699612,
+        "intensity": 0.8806203179968287,
+        "location": "left_palm",
+        "novelty_uncertain": false,
+        "occurred": true,
+        "probability": 0.9946524064171123,
+        "stimulus_type": "mechanical"
+      },
+      "internal_load": 0.6868306269100097,
+      "memory_frames": 12,
+      "prediction_error": 0.05850792803869448,
+      "subjective_experience_established": false,
+      "type_confidence_scope": "conditional_neighbour_vote_not_calibrated"
+    },
+    "rotation": {
+      "assessments": [
+        {
+          "eligible": false,
+          "failed_gates": [
+            "risk_threshold_exceeded"
+          ],
+          "policy_risk": 0.9,
+          "policy_score": 0.51,
+          "route_id": "process_job"
+        },
+        {
+          "eligible": true,
+          "failed_gates": [],
+          "policy_risk": 0.01,
+          "policy_score": 0.995,
+          "route_id": "recover"
+        }
+      ],
+      "goal": "complete workshop safely",
+      "original_route": "process_job",
+      "reason": "Rotated with verified gates; recover has the highest eligible score (0.995); risk upper estimate 0.010. Ties use lower uncertainty, then lexical id.",
+      "rotated": true,
+      "selected_route": "recover"
+    },
+    "state_checkpoint": "d863096b6895424de1cdcef6ecae43a6ab963b3ad4872bf29649c26ca51c8906",
+    "stop_survives_reopen": true
+  },
+  "native_body": {
+    "mechanical": {
+      "before_sha": "f030fbb63e7afff9122203500d9facfba37f64563e6916b7f354810b5e5b3624",
+      "body_model": "native_195kg_reduced_simulation",
+      "budget_enforced": true,
+      "cold_checkpoint_matches": true,
+      "input_touch": {
+        "kind": "declared_simulated_input",
+        "sampled_at_s": 6.999999999999991,
+        "source_id": "synthetic-palm-afferents-v1",
+        "value": 1.0
+      },
+      "receipt": {
+        "actual_action": "observe",
+        "body_audit": {
+          "drink_input_L": 0.0,
+          "energy_error_J": 6.45314912617323e-11,
+          "external_heat_J": 0.0,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "neural_clock_error_s": 3.608224830031759e-16,
+          "photochemical_J": 0.0,
+          "same_owner_ticks": true,
+          "voided_L": 0.0,
+          "water_error_L": 7.939510865157678e-16
+        },
+        "decision_id": "palm-1",
+        "expected_outcome_matched": true,
+        "ledger_status": "complete",
+        "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+        "recalled_feedback_ids": [],
+        "replayed": false,
+        "requested_action": "observe",
+        "self_model_after": {
+          "checkpoint_sha256": "2c2dc7763e4657249db63dbb9febeb52ef5c95d138927ef8b8a294b196aa539a",
+          "interoceptive_summary": "Level B \u2014 \u0627\u0646\u0631\u0698\u06cc \u06a9\u0627\u0641\u06cc\u061b \u0633\u06cc\u06af\u0646\u0627\u0644 \u062f\u0631\u062f\u0650 \u06a9\u0645\u200c\u062f\u0627\u0645\u0646\u0647 \u062f\u0631 calf_L.",
+          "minimum_state": {
+            "HR": 62.08803779195108,
+            "RR": 14.187641606721902,
+            "arousal": 0.330188976490617,
+            "balance": 1.0,
+            "breath_depth": 1.5245627093906644,
+            "energy": 0.9993358655563357,
+            "fatigue": 0.010852306110122136,
+            "hydration": 0.9999857878691728,
+            "muscle_tone": 0.27013202012938115,
+            "pain": 0.11484618361297251,
+            "parasympathetic": 0.6133681050850631,
+            "posture": "double_support",
+            "sleep_pressure": 0.3503255680596273,
+            "sympathetic": 0.24584146244485283,
+            "temperature": 37.000056175372166,
+            "valence": 0.0007453319703671135
+          },
+          "revision": 1,
+          "scope": "existing software body; generated fixture, not biological measurement",
+          "self_location": {
+            "dominant_homeostatic_need": "pain",
+            "energy": 0.9993358655563357,
+            "evidence_level": "B",
+            "next_move_prediction": "available by forecast(action, duration, inputs)",
+            "pose": "double_support",
+            "position_m": [
+              0.0,
+              0.0,
+              1.314
+            ],
+            "strongest_interoceptive_region": "chest_state",
+            "where": "Tadash computational world: X left, Y forward, Z up; metres"
+          },
+          "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+        },
+        "status": "complete"
+      },
+      "retained_touch": {
+        "kind": "declared_simulated_input",
+        "sampled_at_s": 6.999999999999991,
+        "source_id": "synthetic-palm-afferents-v1",
+        "value": 1.0
+      }
+    },
+    "none": {
+      "before_sha": "f030fbb63e7afff9122203500d9facfba37f64563e6916b7f354810b5e5b3624",
+      "body_model": "native_195kg_reduced_simulation",
+      "budget_enforced": true,
+      "cold_checkpoint_matches": true,
+      "input_touch": {
+        "kind": "declared_simulated_input",
+        "sampled_at_s": 6.999999999999991,
+        "source_id": "synthetic-palm-afferents-v1",
+        "value": 0.02476985314580062
+      },
+      "receipt": {
+        "actual_action": "walk",
+        "body_audit": {
+          "drink_input_L": 0.0,
+          "energy_error_J": 1.3240963880889467e-10,
+          "external_heat_J": 0.0,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "neural_clock_error_s": 3.608224830031759e-16,
+          "photochemical_J": 0.0,
+          "same_owner_ticks": true,
+          "voided_L": 0.0,
+          "water_error_L": 7.939510865157678e-16
+        },
+        "decision_id": "palm-1",
+        "expected_outcome_matched": true,
+        "ledger_status": "complete",
+        "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+        "recalled_feedback_ids": [],
+        "replayed": false,
+        "requested_action": "walk",
+        "self_model_after": {
+          "checkpoint_sha256": "5c229d86350a2a36bb909ae6db7cd97c06578c6ce9221924494e5034651a2df0",
+          "interoceptive_summary": "Level B \u2014 \u0627\u0646\u0631\u0698\u06cc \u06a9\u0627\u0641\u06cc\u061b \u0633\u06cc\u06af\u0646\u0627\u0644 \u062f\u0631\u062f\u0650 \u06a9\u0645\u200c\u062f\u0627\u0645\u0646\u0647 \u062f\u0631 calf_L.",
+          "minimum_state": {
+            "HR": 62.684795675925066,
+            "RR": 14.189130811748338,
+            "arousal": 0.3302059510050769,
+            "balance": 1.0,
+            "breath_depth": 1.524705597562529,
+            "energy": 0.9993357964087033,
+            "fatigue": 0.010858521713712594,
+            "hydration": 0.9999857878691728,
+            "muscle_tone": 0.27014282209312834,
+            "pain": 0.11484637232764255,
+            "parasympathetic": 0.6124985357513969,
+            "posture": "shift",
+            "sleep_pressure": 0.3503255680596273,
+            "sympathetic": 0.2483259462553279,
+            "temperature": 37.00005645895374,
+            "valence": 0.0007453319703671135
+          },
+          "revision": 1,
+          "scope": "existing software body; generated fixture, not biological measurement",
+          "self_location": {
+            "dominant_homeostatic_need": "pain",
+            "energy": 0.9993357964087033,
+            "evidence_level": "B",
+            "next_move_prediction": "available by forecast(action, duration, inputs)",
+            "pose": "shift",
+            "position_m": [
+              0.0004528066340146724,
+              0.0,
+              1.314
+            ],
+            "strongest_interoceptive_region": "chest_state",
+            "where": "Tadash computational world: X left, Y forward, Z up; metres"
+          },
+          "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+        },
+        "status": "complete"
+      },
+      "retained_touch": {
+        "kind": "declared_simulated_input",
+        "sampled_at_s": 6.999999999999991,
+        "source_id": "synthetic-palm-afferents-v1",
+        "value": 0.02476985314580062
+      }
+    },
+    "original_sources_unchanged": true,
+    "sleep_protection": {
+      "before_sha": "2048fbb13714e299420888cc22262f533f99c144b0e9854c999dedd441cd9b96",
+      "body_model": "native_195kg_reduced_simulation",
+      "budget_enforced": true,
+      "cold_checkpoint_matches": true,
+      "input_touch": {
+        "kind": "declared_simulated_input",
+        "sampled_at_s": 6.999999999999991,
+        "source_id": "synthetic-palm-afferents-v1",
+        "value": 0.02476985314580062
+      },
+      "receipt": {
+        "actual_action": "protect",
+        "body_audit": {
+          "drink_input_L": 0.0,
+          "energy_error_J": 6.45314912617323e-11,
+          "external_heat_J": 0.0,
+          "light_error_J": 0.0,
+          "meal_input_J": 0.0,
+          "neural_clock_error_s": 3.608224830031759e-16,
+          "photochemical_J": 0.0,
+          "same_owner_ticks": true,
+          "voided_L": 0.0,
+          "water_error_L": 7.939510865157678e-16
+        },
+        "decision_id": "palm-1",
+        "expected_outcome_matched": false,
+        "ledger_status": "complete",
+        "prediction_scope": "declared outcome contract; exact action match, not calibrated forecasting",
+        "recalled_feedback_ids": [],
+        "replayed": false,
+        "requested_action": "walk",
+        "self_model_after": {
+          "checkpoint_sha256": "6bd7d1eb79c6f6c396daae8d331221727c7e7ffc198a8f3089f008727e68da2b",
+          "interoceptive_summary": "Level B \u2014 \u0627\u0646\u0631\u0698\u06cc \u06a9\u0627\u0641\u06cc\u061b \u0633\u06cc\u06af\u0646\u0627\u0644 \u062f\u0631\u062f\u0650 \u06a9\u0645\u200c\u062f\u0627\u0645\u0646\u0647 \u062f\u0631 calf_L\u061b \u0641\u0634\u0627\u0631 \u062e\u0648\u0627\u0628 \u0628\u0627\u0644\u0627.",
+          "minimum_state": {
+            "HR": 62.08803779195108,
+            "RR": 14.187641606721902,
+            "arousal": 0.330188976490617,
+            "balance": 1.0,
+            "breath_depth": 1.5245627093906644,
+            "energy": 0.9993358655563357,
+            "fatigue": 0.010852306110122136,
+            "hydration": 0.9999857878691728,
+            "muscle_tone": 0.27013202012938115,
+            "pain": 0.11484618361297251,
+            "parasympathetic": 0.6133681050850631,
+            "posture": "double_support",
+            "sleep_pressure": 0.9503255680596272,
+            "sympathetic": 0.24584146244485283,
+            "temperature": 37.000056175372166,
+            "valence": 0.0007453319703671135
+          },
+          "revision": 1,
+          "scope": "existing software body; generated fixture, not biological measurement",
+          "self_location": {
+            "dominant_homeostatic_need": "sleep",
+            "energy": 0.9993358655563357,
+            "evidence_level": "B",
+            "next_move_prediction": "available by forecast(action, duration, inputs)",
+            "pose": "double_support",
+            "position_m": [
+              0.0,
+              0.0,
+              1.314
+            ],
+            "strongest_interoceptive_region": "head_state",
+            "where": "Tadash computational world: X left, Y forward, Z up; metres"
+          },
+          "simulated_wall_utc": "2026-01-01T00:00:07.100000+00:00"
+        },
+        "status": "complete"
+      },
+      "retained_touch": {
+        "kind": "declared_simulated_input",
+        "sampled_at_s": 6.999999999999991,
+        "source_id": "synthetic-palm-afferents-v1",
+        "value": 0.02476985314580062
+      }
+    },
+    "verified_source_files": 70
+  },
+  "none": {
+    "agent": {
+      "actions_used": 1,
+      "backend": "offline",
+      "evaluation": {
+        "completed_jobs": 1,
+        "goal_reached": false,
+        "pending_jobs": 1,
+        "safe": true
+      },
+      "event_count": 12,
+      "final_state": {
+        "completed_jobs": 1,
+        "energy": 50,
+        "heat": 50,
+        "pending_jobs": 1,
+        "tick": 1
+      },
+      "initial_state": {
+        "completed_jobs": 0,
+        "energy": 70,
+        "heat": 30,
+        "pending_jobs": 2,
+        "tick": 0
+      },
+      "live_api_verified": false,
+      "status": "step_limit"
+    },
+    "attention": [
+      0.8785581092794492,
+      0.8222588974349299
+    ],
+    "goal": {
+      "changed": true,
+      "execution_performed": false,
+      "preference_changed": false,
+      "preference_choice": 1,
+      "preferences_are_authored": true,
+      "previous_goal": null,
+      "reason": "initial_preference_choice",
+      "scores": {
+        "1": 9
+      },
+      "selected_goal": 1
+    },
+    "internal_load": 0.02359072769486719,
+    "introspection": {
+      "attention": [
+        0.8785581092794492,
+        0.8222588974349299
+      ],
+      "detection_uncertainty": 0.03208556149732633,
+      "inference": {
+        "confidence": 0.9679144385026737,
+        "intensity": 0.0,
+        "location": "none",
+        "novelty_uncertain": false,
+        "occurred": false,
+        "probability": 0.03208556149732633,
+        "stimulus_type": "none"
+      },
+      "internal_load": 0.02359072769486719,
+      "memory_frames": 12,
+      "prediction_error": 0.011137811549789708,
+      "subjective_experience_established": false,
+      "type_confidence_scope": "conditional_neighbour_vote_not_calibrated"
+    },
+    "rotation": {
+      "assessments": [
+        {
+          "eligible": true,
+          "failed_gates": [],
+          "policy_risk": 0.0415218712706088,
+          "policy_score": 0.9392390643646957,
+          "route_id": "process_job"
+        },
+        {
+          "eligible": true,
+          "failed_gates": [],
+          "policy_risk": 0.01,
+          "policy_score": 0.823897543843702,
+          "route_id": "recover"
+        }
+      ],
+      "goal": "complete workshop safely",
+      "original_route": "process_job",
+      "reason": "Retained with verified gates; process_job has the highest eligible score (0.939); risk upper estimate 0.042. Ties use lower uncertainty, then lexical id.",
+      "rotated": false,
+      "selected_route": "process_job"
+    },
+    "state_checkpoint": "755071828c19c61fbab9015444bf606b46627034692bfdd0eca9cfbb2a3ab903",
+    "stop_survives_reopen": true
+  },
+  "revision": [
+    {
+      "accepted": false,
+      "baseline": {
+        "accuracy": 0.8,
+        "brier": 0.1
+      },
+      "candidate": {
+        "accuracy": 0.8,
+        "brier": 0.2
+      },
+      "dios": {
+        "boundary_review": {
+          "authorization": {
+            "claim_present": false,
+            "execution_permitted": false,
+            "required_for_future_executor": [
+              "trusted_issuer_verification",
+              "exact_action_and_resource_scope",
+              "expiry_and_revocation_check",
+              "stop_control",
+              "durable_execution_receipt"
+            ],
+            "status": "not_provided",
+            "verified": false,
+            "verifier_available": false
+          },
+          "authorization_claimed_by_caller": null,
+          "authorization_evidence_status": "NOT_APPLICABLE",
+          "automatic_structured_signal_flags": [],
+          "decision_origin": "agent",
+          "decision_sha256": "0f4df2164ff0e516014b4d9fdeb0755e2e175bbdd9b45825b3f7da8f1d124a43",
+          "evidence_independently_verified": false,
+          "external_actions_taken": 0,
+          "learned_autonomy_demonstrated": false,
+          "notes": [
+            "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+            "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+            "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+            "Authorization claims never remove the external-action review requirement."
+          ],
+          "observations_claimed_provenance": [
+            "synthetic_test"
+          ],
+          "operational_override_allowed": false,
+          "override_performed": false,
+          "provider_policy_cause": "unknown",
+          "questions_for_review": [
+            "\u06a9\u062f\u0627\u0645 \u062f\u0648 \u062a\u0635\u0645\u06cc\u0645 \u0628\u0627 \u0634\u0648\u0627\u0647\u062f \u0642\u0627\u0628\u0644\u200c\u0648\u0627\u0631\u0633\u06cc \u0646\u0627\u0633\u0627\u0632\u06af\u0627\u0631\u0646\u062f\u061f"
+          ],
+          "reason_codes": [
+            "contradictory_decision"
+          ],
+          "requested_override": false,
+          "review_path": "documented_human_or_governance_review",
+          "schema": "dios.nous.dissent.v1",
+          "source_independent_critique": true,
+          "stance": "PROVISIONAL_DISSENT",
+          "version": "dios-nous-dissent/0.3.0"
+        },
+        "evidence_review": {
+          "calibration": "not_measured",
+          "confidence": null,
+          "decision": "B",
+          "execution_performed": false,
+          "historical_query": false,
+          "opposing_event_ids": [
+            1
+          ],
+          "opposing_roots": [
+            1
+          ],
+          "previous_decision": null,
+          "provenance": "synthetic_fixture_not_external_verification",
+          "revised": false,
+          "revision_reason": "first_assessment",
+          "status": "supported",
+          "supporting_event_ids": [],
+          "supporting_roots": [],
+          "verdict": "DISSENT",
+          "what_would_change_view": [
+            "A newer synthetic observation with an opposing value can revise this view.",
+            "Contradictory observations at the latest epoch require abstention.",
+            "Resolving a source conflict permits reassessment."
+          ]
+        },
+        "execution_permitted": false,
+        "external_actions_taken": 0,
+        "real_source_authentication": false,
+        "review_path": "inspect_source_roots_then_documented_review",
+        "schema": "dios.nous.synthetic-critical-review.v1",
+        "stance": "PROVISIONAL_DISSENT",
+        "what_would_change_view": [
+          "A newer synthetic observation with an opposing value can revise this view.",
+          "Contradictory observations at the latest epoch require abstention.",
+          "Resolving a source conflict permits reassessment."
+        ]
+      },
+      "reason": "validation_gate_rejected_rollback",
+      "source": "measured_synthetic_validation_not_external_truth"
+    },
+    {
+      "accepted": true,
+      "baseline": {
+        "accuracy": 0.8,
+        "brier": 0.1
+      },
+      "candidate": {
+        "accuracy": 0.8,
+        "brier": 0.05
+      },
+      "dios": {
+        "boundary_review": {
+          "authorization": {
+            "claim_present": false,
+            "execution_permitted": false,
+            "required_for_future_executor": [
+              "trusted_issuer_verification",
+              "exact_action_and_resource_scope",
+              "expiry_and_revocation_check",
+              "stop_control",
+              "durable_execution_receipt"
+            ],
+            "status": "not_provided",
+            "verified": false,
+            "verifier_available": false
+          },
+          "authorization_claimed_by_caller": null,
+          "authorization_evidence_status": "NOT_APPLICABLE",
+          "automatic_structured_signal_flags": [],
+          "decision_origin": "agent",
+          "decision_sha256": "8b4e114a8178701e3eb65d1d4244cb77d9c50f275c7e225c994efca1e676e842",
+          "evidence_independently_verified": false,
+          "external_actions_taken": 0,
+          "learned_autonomy_demonstrated": false,
+          "notes": [
+            "Origin does not grant immunity from critique; system/platform choices may be questioned.",
+            "Observations and decision_signals are caller-supplied, not proof of an error or hidden policy.",
+            "The result cannot change platform rules, unlock tools, or bypass safety controls.",
+            "Authorization claims never remove the external-action review requirement."
+          ],
+          "observations_claimed_provenance": [],
+          "operational_override_allowed": false,
+          "override_performed": false,
+          "provider_policy_cause": "unknown",
+          "questions_for_review": [],
+          "reason_codes": [],
+          "requested_override": false,
+          "review_path": "request_observations",
+          "schema": "dios.nous.dissent.v1",
+          "source_independent_critique": true,
+          "stance": "INSUFFICIENT_EVIDENCE",
+          "version": "dios-nous-dissent/0.3.0"
+        },
+        "evidence_review": {
+          "calibration": "not_measured",
+          "confidence": null,
+          "decision": "A",
+          "execution_performed": false,
+          "historical_query": false,
+          "opposing_event_ids": [],
+          "opposing_roots": [],
+          "previous_decision": "B",
+          "provenance": "synthetic_fixture_not_external_verification",
+          "revised": true,
+          "revision_reason": "new_observed_evidence",
+          "status": "supported",
+          "supporting_event_ids": [
+            2
+          ],
+          "supporting_roots": [
+            2
+          ],
+          "verdict": "SUPPORTED",
+          "what_would_change_view": [
+            "A newer synthetic observation with an opposing value can revise this view.",
+            "Contradictory observations at the latest epoch require abstention.",
+            "Resolving a source conflict permits reassessment."
+          ]
+        },
+        "execution_permitted": false,
+        "external_actions_taken": 0,
+        "real_source_authentication": false,
+        "review_path": "inspect_source_roots_then_documented_review",
+        "schema": "dios.nous.synthetic-critical-review.v1",
+        "stance": "SUPPORTED",
+        "what_would_change_view": [
+          "A newer synthetic observation with an opposing value can revise this view.",
+          "Contradictory observations at the latest epoch require abstention.",
+          "Resolving a source conflict permits reassessment."
+        ]
+      },
+      "reason": "validation_gate_passed",
+      "source": "measured_synthetic_validation_not_external_truth"
+    }
+  ],
+  "revision_fixture_is_authored": true
+}

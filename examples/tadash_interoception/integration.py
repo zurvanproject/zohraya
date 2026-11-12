@@ -127,6 +127,19 @@ class SensoryPolicy:
     def stop(self):
         self.plan = self.planner.plan((), PreferenceProfile(), stop=True)
 
+    def introspect(self, decoder):
+        """Agent-facing numeric report; no stimulus metadata or narrative template."""
+        from .model import Decoder
+        if type(decoder) is not Decoder:
+            raise ValueError('numeric Decoder required')
+        prediction = decoder.predict(self.state.features())
+        return {'internal_load': self.state.load, 'attention': self.state.attention.copy(),
+                'prediction_error': self.state.prediction_error,
+                'memory_frames': len(self.state.trace), 'inference': asdict(prediction),
+                'detection_uncertainty': 1 - max(prediction.probability, 1-prediction.probability),
+                'type_confidence_scope': 'conditional_neighbour_vote_not_calibrated',
+                'subjective_experience_established': False}
+
     def native_preference(self):
         """Native API has walk/observe preferences, not a hand withdrawal actuator."""
         return 'observe' if action_pressure(self.state) >= .15 else 'walk'

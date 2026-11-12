@@ -13,7 +13,8 @@ from examples.nasuraya_body_loop.__main__ import ROOT, SOURCE, verified_sources
 from .sensory import Stimulus, transduce
 from .state import observe
 from .integration import SensoryPolicy, correction_gate
-from .evaluate import write_json
+from .evaluate import write_json, dataset, training_rows
+from .model import Decoder
 
 
 def native_demo(directory):
@@ -45,6 +46,7 @@ def run(directory, *, native=False):
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
     results = {}
+    decoder = Decoder(training_rows(dataset('train', seeds=range(2000, 2080))))
     for name, intensity in (('none', 0.), ('mechanical', .95)):
         stimulus = Stimulus('left_palm', intensity, .8, 12., name, .025, .2)
         state = observe(transduce(stimulus, seed=183))
@@ -57,7 +59,7 @@ def run(directory, *, native=False):
         results[name] = {'internal_load': state.load, 'attention': state.attention,
                          'state_checkpoint': state.checkpoint()['sha256'],
                          'agent': output, 'rotation': policy.last_rotation,
-                         'goal': policy.plan}
+                         'goal': policy.plan, 'introspection': policy.introspect(decoder)}
         policy.stop()
         restored = SensoryPolicy(state, directory / name)
         results[name]['stop_survives_reopen'] = restored.plan['selected_goal'] is None

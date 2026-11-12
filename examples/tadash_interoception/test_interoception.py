@@ -12,7 +12,7 @@ from .sensory import Stimulus, AfferentFrame, transduce, trial
 from .state import InternalState, observe, digest
 from .model import Decoder
 from .integration import DiosObserver, SensoryPolicy, correction_gate, action_pressure
-from .evaluate import dataset, training_rows, metrics, predict_rows, SPLITS, baseline_prediction
+from .evaluate import dataset, training_rows, metrics, predict_rows, SPLITS, baseline_prediction, known_only
 
 
 def sample(kind='mechanical', intensity=.8, noise=.025):
@@ -139,6 +139,21 @@ class DecoderTests(unittest.TestCase):
         self.assertLess(len(entries), len(rows))
         self.assertTrue(all('compound' not in label for _, label, _ in entries))
 
+    def test_novel_excluded_from_calibration_and_acceptance(self):
+        rows = dataset('diagnosis', seeds=range(500, 550))
+        predictions = [baseline_prediction(r, 'oracle') for r in rows]
+        filtered, aligned = known_only(rows, predictions)
+        self.assertEqual(len(filtered), 40)
+        self.assertEqual(len(aligned), 40)
+        self.assertTrue(all(r['truth']['type'] != 'compound' for r in filtered))
+        self.assertEqual(filtered, known_only(rows))
+
+    def test_loadable_rollback_restores_exact_model(self):
+        raw = json.loads(json.dumps({'examples': self.model.examples, 'temperature': self.model.temperature}))
+        restored = Decoder([(tuple(f), k, v) for f, k, v in raw['examples']], temperature=raw['temperature'])
+        self.assertEqual(restored.fingerprint(), self.model.fingerprint())
+        self.assertEqual(restored.predict(self.rows[0]['features']), self.model.predict(self.rows[0]['features']))
+
     def test_splits_disjoint(self):
         keys = list(SPLITS)
         for i, a in enumerate(keys):
@@ -206,6 +221,16 @@ class IntegrationTests(unittest.TestCase):
         self.assertNotEqual(states[0], states[1])
         self.assertEqual(states[0]['completed_jobs'], 1)
         self.assertEqual(states[1]['completed_jobs'], 0)
+
+    def test_agent_reports_internal_uncertainty(self):
+        state = observe(transduce(sample(), seed=12))
+        policy = SensoryPolicy(state, self.path)
+        model = Decoder(training_rows(dataset('train', seeds=range(2000, 2040))))
+        report = policy.introspect(model)
+        self.assertEqual(report['inference'], asdict(model.predict(state.features())))
+        self.assertTrue(0 <= report['detection_uncertainty'] <= .5)
+        self.assertEqual(report['memory_frames'], 12)
+        self.assertNotIn('truth', report)
 
     def test_sticky_stop_and_observe_only_host(self):
         state = observe(transduce(sample(), seed=1))

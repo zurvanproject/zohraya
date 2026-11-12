@@ -16,7 +16,7 @@ from .model import CLASSES, Decoder, Prediction
 from .integration import DiosObserver, correction_gate, action_pressure, select_route
 
 SPLITS = {'train': range(710000, 710280), 'diagnosis': range(720000, 720140),
-          'validation': range(730000, 730140), 'test': range(740000, 740500)}
+          'validation': range(730000, 730140), 'test': range(750000, 750500)}
 
 
 def dataset(split, *, memory=True, attention=True, seeds=None):
@@ -45,6 +45,14 @@ def training_rows(rows):
     return [(r['features'], 'none' if not r['truth']['occurred'] else
              r['truth']['location'] + ':' + r['truth']['type'], r['truth']['intensity'])
             for r in rows if r['truth']['type'] != 'compound']
+
+
+def known_only(rows, predictions=None):
+    """Evaluator-only novelty firewall for every fitting/selection operation."""
+    if predictions is None:
+        return [r for r in rows if r['truth']['type'] != 'compound']
+    pairs = [(r, p) for r, p in zip(rows, predictions) if r['truth']['type'] != 'compound']
+    return [r for r, _ in pairs], [p for _, p in pairs]
 
 
 def metrics(rows, predictions):
@@ -116,27 +124,33 @@ def develop(directory, observer, *, memory=True, attention=True, prefix='full', 
                   causes_are_hypotheses=True, errors=len(errors))
     candidate = Decoder(training_rows(train + diagnosis))
     # Select confidence on prior committed predictions, never on test outcomes.
+    calibration_rows, calibration_predictions = known_only(diagnosis, diagnosed)
     temperatures = (.5, 1., 2., 4.)
     scores = []
     for temperature in temperatures:
         adjusted = []
-        for p in diagnosed:
+        for p in calibration_predictions:
             probability = 1 / (1 + math.exp(-math.log(p.probability/(1-p.probability))/temperature))
             adjusted.append(Prediction(p.occurred, probability, p.location, p.stimulus_type,
                                        p.intensity, p.confidence, p.novelty_uncertain))
-        scores.append((metrics(diagnosis, adjusted)['brier'], temperature))
+        scores.append((metrics(calibration_rows, adjusted)['brier'], temperature))
     candidate = candidate.with_temperature(min(scores)[1])
     observer.emit('execute', run=2, variant=prefix, candidate_sha=candidate.fingerprint())
     base_val, _ = predict_rows(baseline, validation, observer=observer, prefix=prefix + '/validation_base')
     cand_val, _ = predict_rows(candidate, validation, observer=observer, prefix=prefix + '/validation_candidate')
-    gate = correction_gate(directory / prefix, metrics(validation, base_val), metrics(validation, cand_val))
+    gate_rows, base_gate = known_only(validation, base_val)
+    _, cand_gate = known_only(validation, cand_val)
+    gate = correction_gate(directory / prefix, metrics(gate_rows, base_gate), metrics(gate_rows, cand_gate))
     selected = candidate if gate['accepted'] else baseline
     observer.emit('self_correct', run=2, variant=prefix, baseline_sha=baseline.fingerprint(),
                   candidate_sha=candidate.fingerprint(), selected_sha=selected.fingerprint(), gate=gate)
     record = {'diagnosis': diagnosed_metrics, 'errors': errors, 'temperature_trials': scores,
               'gate': gate, 'old_sha': baseline.fingerprint(), 'candidate_sha': candidate.fingerprint(),
               'selected_sha': selected.fingerprint(), 'rollback_available': True,
-              'train_count': len(baseline.examples), 'candidate_count': len(candidate.examples)}
+              'train_count': len(baseline.examples), 'candidate_count': len(candidate.examples),
+              'calibration_seeds': [r['seed'] for r in calibration_rows],
+              'acceptance_seeds': [r['seed'] for r in gate_rows],
+              'novel_cases_used_for_fitting_or_selection': 0}
     return baseline, selected, record
 
 
@@ -182,19 +196,21 @@ def run(directory, *, include_test=False):
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=False)
     observer = DiosObserver(directory / 'observer.jsonl')
-    models, records = {}, {}
+    models, records, rollbacks = {}, {}, {}
     for name, memory, attention in (('full', True, True), ('no_memory', False, True), ('no_attention', True, False)):
         base, selected, record = develop(directory, observer, memory=memory, attention=attention, prefix=name)
         models[name] = selected
+        rollbacks[name] = {'examples': base.examples, 'temperature': base.temperature, 'sha256': base.fingerprint()}
         records[name] = record
         if name == 'full': models['no_correction'] = base
     # Frozen before dataset('test') can be called. Contains rollback model data.
     frozen = {name: {'examples': model.examples, 'temperature': model.temperature,
                      'sha256': model.fingerprint()} for name, model in models.items()}
     write_json(directory / 'frozen_models.json', frozen)
+    write_json(directory / 'rollback_models.json', rollbacks)
     observer.emit('models_frozen', sha256=digest(frozen))
     report = {'schema': 'tadash.interoception.experiment.v1', 'python': platform.python_version(),
-              'protocol': 'TADASH_INTEROCEPTION_PROTOCOL_2026-11-12.md',
+              'protocol': 'TADASH_INTEROCEPTION_CONFIRMATION_2026-11-12.md',
               'split_ranges': {key: [r.start, r.stop-1] for key, r in SPLITS.items()},
               'corrections': records, 'test_executed': include_test,
               'frozen_model_sha': digest(frozen), 'subjective_experience_established': False}

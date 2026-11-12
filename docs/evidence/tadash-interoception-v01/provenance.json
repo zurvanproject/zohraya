@@ -1,0 +1,62 @@
+{
+  "algorithm_source_sha256": {
+    "examples/tadash_interoception/__init__.py": "3e967495656f21545cf572624e469632bc7383d1a21261024badc8ec832af5d2",
+    "examples/tadash_interoception/demo.py": "510d0f989c022db54adb4acbf0f7e848c5f8084934b726ce00f67398614c1b1d",
+    "examples/tadash_interoception/evaluate.py": "17e6152dd31aed3d6aba0fa30526b354ef4c75b996af3e8374ca4c5e51cf2a4a",
+    "examples/tadash_interoception/integration.py": "7c0c73abf919fbe6b27d462b6fa70ba6362a0022301caa9c633053f7034fa113",
+    "examples/tadash_interoception/model.py": "7e2b5027ee2d67bd1cd5456dcbc1f795e4db8183d6035e7bb8077f8c41da2c61",
+    "examples/tadash_interoception/native_worker.py": "eb937fa076404f06891a461317ce96178563c27192a73517818a51133d13dbc4",
+    "examples/tadash_interoception/sensory.py": "25fbd2081f5461631aedd45cea804b0a5fbede9a634975f69dd275c2b6369c47",
+    "examples/tadash_interoception/state.py": "1c6cab973e2671dd150d4a53e231fef219eb25d8ed1cd5850b49e9defba35e6c",
+    "examples/tadash_interoception/test_interoception.py": "5d40bc7fb6ba5e77bc12089a40b6a05966b0fa87da5b98ee5ef858ec6352dc20"
+  },
+  "confirmation_addendum_commit": "5edf7a6",
+  "confirmation_code_commit": "05d6a7dcfeaa2e6527d090a0ab06cbd2f9ba918a",
+  "files": {
+    "agent-regression.log": "18225207fc188cb3e6907cef57fe69eab0b4511985b7b5baae25cd6292f2011b",
+    "baseline-dios.log": "cc1e811c16ad396f90c021f9d2998d3a73bef0f6c81b3e79a1549ba6821fee7c",
+    "confirmation-frozen_models.json.gz": "1f8c6dadc6eaa45b5bdf16e3e870cbb1a20cdd4bf020dd8fa503eda19abdec46",
+    "confirmation-observer.jsonl.gz": "29a85950bcce7e970ad6690e7688cd4ec7c63fc66497f7634770f136527b85c3",
+    "confirmation-report.json.gz": "cd30f595aedffb6e71fd0ba071acb3bcbd00be31cd27c541c4f62daf3297b90d",
+    "confirmation-rollback_models.json.gz": "8bd9cceedd3568885137895e16c8a4edbc23142312ae1e65726d5a3551f93d0e",
+    "confirmation-summary.json": "9902e519566488fc9dafb66378c88d13f31b4e9e48065fb6719d2b82d24746b7",
+    "connected-demo.json": "5cc391b9acc68ce11f8a065f3a1c8119fb90789a6991374e847148840559b0dd",
+    "development-first.json": "a3d459e1720ea9fc9605be5c25fdac9843d3e4ec7e9719e9c7d17e8e001724f1",
+    "dios-regression.log": "d22fc400cdeb4ec74a79a381b2a9a4f422bd40c9812aef38b36c31b413cde228",
+    "first-frozen_models.json.gz": "1f8c6dadc6eaa45b5bdf16e3e870cbb1a20cdd4bf020dd8fa503eda19abdec46",
+    "first-observer.jsonl.gz": "5795cbeb4eb4c9e8454fb9aa588b86c25995de0b5c2aff9251891b96fba0ee56",
+    "first-report.json.gz": "e5b4f970000438752ec5aa11f329944fadc812319fda29b795ea8dcf54af9891",
+    "first-summary.json": "7b2eddaac945b3804ae838bd5a81d6e039355acf742e8057a088351ff467bd6b",
+    "local-commit-history.json": "0c69a42f2c6dfd09a2b882beb9598520868ff35889e488cb54ab06c957496a4b",
+    "local-first-commits.json": "ba42e21bd9fd526eb58280bdebf131af293194e74462eadd1241a1bc01cac3f9",
+    "native-body-regression.log": "ebba2a284e761ce9dc4bd26d9691ff1a73ba423f276d94d33f2bf869373ba69f",
+    "unit-final.log": "ae255dd8b49219555b7c3ae225fb85174d3344ce50a9ba49b39f5d0dcc95cd24",
+    "unit-first.log": "07169aa0e035ebac5d02931937f6c331858623db28719cccda43a92445ae0724"
+  },
+  "first_code_commit": "f40bdca",
+  "first_run_protocol_violation": "novel binary outcomes entered calibration and acceptance; retained and corrected before fresh 750000 test",
+  "local_preregistration_before_execution": true,
+  "original_base": "6fa94d012cd5265dc407e946ef47dbe7d700a367",
+  "public_preregistration": false,
+  "regression_reexecution_is_not_new_holdout": true,
+  "runtime_source_files_verified": 70,
+  "tests": {
+    "agent": {
+      "passed": 50,
+      "run": 60,
+      "skipped_optional_sdk": 10
+    },
+    "dios": {
+      "passed": 177,
+      "run": 177
+    },
+    "interoception": {
+      "passed": 31,
+      "run": 31
+    },
+    "native_body": {
+      "passed": 25,
+      "run": 25
+    }
+  }
+}
