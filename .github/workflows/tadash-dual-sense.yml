@@ -28,10 +28,14 @@ jobs:
         run: python -m unittest experiments.test_tadash_dual_sense -v
       - name: Run development two-modal challenge
         run: python -m experiments.tadash_dual_sense_benchmark --split dev --output "$RUNNER_TEMP/tadash-dual-sense-dev.json"
+      - name: Run frozen, untouched holdout two-modal challenge
+        run: python -m experiments.tadash_dual_sense_benchmark --split holdout --output "$RUNNER_TEMP/tadash-dual-sense-holdout.json"
       - name: Archive evidence, including any failed benchmark
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: tadash-dual-sense-dev
-          path: ${{ runner.temp }}/tadash-dual-sense-dev.json
+          path: |
+            ${{ runner.temp }}/tadash-dual-sense-dev.json
+            ${{ runner.temp }}/tadash-dual-sense-holdout.json
           if-no-files-found: warn
