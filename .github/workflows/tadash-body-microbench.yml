@@ -1,0 +1,28 @@
+name: Tadash three unfinished body gates (offline microbench)
+on:
+  pull_request:
+    paths:
+      - "experiments/tadash_body_microbench.py"
+      - "experiments/test_tadash_body_microbench.py"
+      - "docs/research/TADASH_BODY_PENDING_GATES_2026-11-14_FA.md"
+      - ".github/workflows/tadash-body-microbench.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-microbench:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run 11 local invariants without paid APIs
+        run: python -m unittest experiments.test_tadash_body_microbench -v
+      - name: Print honest, source-labeled synthetic receipt
+        run: python -m experiments.tadash_body_microbench
