@@ -19,6 +19,9 @@ PERSISTENCE_THRESHOLD = 0.065
 PERSISTENCE_MIN_FRAMES = 7
 PERSISTENCE_MIN_CHANNELS = 2
 MAX_JAGGEDNESS = 1.35
+LARGE_SMOOTH_EXCURSION = 0.25
+LARGE_SMOOTH_MAX_JAGGEDNESS = 0.85
+LARGE_SMOOTH_MIN_SIGN_FRAMES = 4
 
 
 def _normalized_residual(prediction, actual, key):
@@ -35,13 +38,20 @@ def _temporal_features(residuals):
     differences = [residuals[i] - residuals[i-1] for i in range(1, len(residuals))]
     second = [differences[i] - differences[i-1] for i in range(1, len(differences))]
     jaggedness = sum(abs(v) for v in second) / max(1e-9, sum(abs(v) for v in differences))
+    max_abs = max(abs(v) for v in residuals)
+    persistent_small = (sign_persistence >= PERSISTENCE_MIN_FRAMES and
+                        jaggedness <= MAX_JAGGEDNESS)
+    smooth_large = (max_abs >= LARGE_SMOOTH_EXCURSION and
+                    sign_persistence >= LARGE_SMOOTH_MIN_SIGN_FRAMES and
+                    jaggedness <= LARGE_SMOOTH_MAX_JAGGEDNESS)
     return {
         "sign_persistence": sign_persistence,
         "median_normalized_residual": median(residuals),
-        "max_abs_normalized_residual": max(abs(v) for v in residuals),
+        "max_abs_normalized_residual": max_abs,
         "jaggedness": jaggedness,
-        "temporally_supported": (sign_persistence >= PERSISTENCE_MIN_FRAMES and
-                                  jaggedness <= MAX_JAGGEDNESS),
+        "persistent_small": persistent_small,
+        "smooth_large_excursion": smooth_large,
+        "temporally_supported": persistent_small or smooth_large,
     }
 
 
