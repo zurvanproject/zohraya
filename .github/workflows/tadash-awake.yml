@@ -1,4 +1,4 @@
-name: Tadash Awake offline contracts
+name: Tadash Awake - source pinned DIOS sensory goal integration
 on:
   pull_request:
     paths: ['tadash_awake/**', '.github/workflows/tadash-awake.yml']
@@ -7,9 +7,13 @@ on:
 permissions:
   contents: read
 jobs:
-  offline:
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
+  offline-integration:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
@@ -17,6 +21,11 @@ jobs:
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.11'
-      - run: python -m unittest tadash_awake.test_wake -v
-      - run: python -m tadash_awake init --root /tmp/nasuraya-awake-ci
-      - run: python -m tadash_awake status --root /tmp/nasuraya-awake-ci
+      - run: python -m unittest tadash_awake.test_wake tadash_awake.test_bridge -v
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec
+          path: pinned-source
+          persist-credentials: false
+      - name: Real offline source-pinned session (sensory DIOS goal) to Awake cold memory
+        run: python -m tadash_awake.integration_smoke --source-root pinned-source
