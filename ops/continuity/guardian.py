@@ -48,8 +48,11 @@ def check_sqlite(path):
     """Check disk-format integrity without changing the backed-up database."""
     import urllib.parse
     uri = "file:" + urllib.parse.quote(Path(path).resolve().as_posix(), safe="/:") + "?mode=ro"
-    with sqlite3.connect(uri, uri=True, timeout=10) as conn:
+    conn = sqlite3.connect(uri, uri=True, timeout=10)
+    try:
         result = conn.execute("PRAGMA integrity_check").fetchall()
+    finally:
+        conn.close()
     if result != [("ok",)]:
         raise ValueError("sqlite_integrity_check_failed")
 
@@ -79,9 +82,15 @@ def snapshot(source_paths, dest_root):
                 raise ValueError("duplicate_target")
             import urllib.parse
             uri = "file:" + urllib.parse.quote(src.as_posix(), safe="/:") + "?mode=ro"
-            with sqlite3.connect(uri, uri=True, timeout=10) as live:
-                with sqlite3.connect(str(target), timeout=10) as copy:
-                    live.backup(copy, pages=100, sleep=0.01)
+            live = sqlite3.connect(uri, uri=True, timeout=10)
+            copy = None
+            try:
+                copy = sqlite3.connect(str(target), timeout=10)
+                live.backup(copy, pages=100, sleep=0.01)
+            finally:
+                if copy is not None:
+                    copy.close()
+                live.close()
             check_sqlite(target)
             if os.name != "nt":
                 target.chmod(0o600)
