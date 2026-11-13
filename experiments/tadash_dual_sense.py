@@ -19,6 +19,7 @@ from experiments.tadash_temporal_proprioception import (
 
 POSE_WEIGHTS = {
     "torso_yaw": 1.0,
+    "head_yaw": 1.0,
     "tail_4_x": 2.0,
     "tail_4_y": 2.0,
     "head_x": 2.0,
@@ -77,9 +78,11 @@ def capture_paired(model, mujoco, np, source, command_nm=0., external_torque_nm=
             "foot_left_n": ground["L"], "foot_right_n": ground["R"],
         }
         torso_matrix = data.xmat[ids["torso"]]
+        head_matrix = data.xmat[ids["head"]]
         pose = {
             "t_s": float(data.time),
             "torso_yaw": math.atan2(float(torso_matrix[3]), float(torso_matrix[0])),
+            "head_yaw": math.atan2(float(head_matrix[3]), float(head_matrix[0])),
             "tail_4_x": float(data.xpos[ids["tail_4"], 0]),
             "tail_4_y": float(data.xpos[ids["tail_4"], 1]),
             "head_x": float(data.xpos[ids["head"], 0]),
