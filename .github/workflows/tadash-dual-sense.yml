@@ -4,6 +4,8 @@ on:
     paths:
       - "experiments/tadash_dual_sense.py"
       - "experiments/test_tadash_dual_sense.py"
+      - "experiments/tadash_dual_episode_memory.py"
+      - "experiments/test_tadash_dual_episode_memory.py"
       - "experiments/tadash_dual_sense_benchmark.py"
       - "assets/nasuraya_articulated_v03/nasuraya.xml"
       - ".github/workflows/tadash-dual-sense.yml"
@@ -25,7 +27,7 @@ jobs:
       - name: Install frozen CPU MuJoCo
         run: python -m pip install -r examples/nasuraya_research/articulated/requirements-trial.txt
       - name: Evaluate world-frame virtual pose and fault-injection controls
-        run: python -m unittest experiments.test_tadash_dual_sense -v
+        run: python -m unittest experiments.test_tadash_dual_sense experiments.test_tadash_dual_episode_memory -v
       - name: Run development two-modal challenge
         run: python -m experiments.tadash_dual_sense_benchmark --split dev --output "$RUNNER_TEMP/tadash-dual-sense-dev.json"
       - name: Run frozen, untouched holdout two-modal challenge
