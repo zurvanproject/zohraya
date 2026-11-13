@@ -1,0 +1,35 @@
+name: Tadash embodied origin v0.1
+on:
+  pull_request:
+    paths:
+      - "experiments/tadash_embodied_origin.py"
+      - "experiments/test_tadash_embodied_origin.py"
+      - "assets/nasuraya_articulated_v03/nasuraya.xml"
+      - ".github/workflows/tadash-embodied-origin.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-origin:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned CPU MuJoCo
+        run: python -m pip install -r examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Failure-injection tests and native five-case lab
+        run: python -m unittest experiments.test_tadash_embodied_origin -v
+      - name: Record source-pinned native efference-afference result
+        run: python -m experiments.tadash_embodied_origin --output "$RUNNER_TEMP/tadash-embodied-origin.json"
+      - name: Archive result without changing live body
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-embodied-origin-v01
+          path: ${{ runner.temp }}/tadash-embodied-origin.json
+          if-no-files-found: warn
