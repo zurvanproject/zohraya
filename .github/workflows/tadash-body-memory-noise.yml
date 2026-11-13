@@ -1,0 +1,40 @@
+name: Tadash temporal proprioception and local memory
+on:
+  pull_request:
+    paths:
+      - "experiments/tadash_temporal_proprioception.py"
+      - "experiments/tadash_body_episode_memory.py"
+      - "experiments/tadash_proprio_noise_benchmark.py"
+      - "experiments/test_tadash_temporal_proprioception.py"
+      - "experiments/test_tadash_body_episode_memory.py"
+      - "experiments/tadash_embodied_origin.py"
+      - "assets/nasuraya_articulated_v03/nasuraya.xml"
+      - ".github/workflows/tadash-body-memory-noise.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  native-temporal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pinned CPU MuJoCo and numerical runtime
+        run: python -m pip install -r examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Source-verified bodily attribution and persistent memory contracts
+        run: python -m unittest experiments.test_tadash_temporal_proprioception experiments.test_tadash_body_episode_memory -v
+      - name: Run preregistered development sensor-noise replays
+        run: python -m experiments.tadash_proprio_noise_benchmark --split dev --output "$RUNNER_TEMP/tadash-body-noise-dev.json"
+      - name: Preserve benchmark receipt for independent review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-body-noise-dev
+          path: \${{ runner.temp }}/tadash-body-noise-dev.json
+          if-no-files-found: warn
