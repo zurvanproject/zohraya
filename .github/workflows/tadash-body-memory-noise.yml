@@ -31,10 +31,14 @@ jobs:
         run: python -m unittest experiments.test_tadash_temporal_proprioception experiments.test_tadash_body_episode_memory -v
       - name: Run preregistered development sensor-noise replays
         run: python -m experiments.tadash_proprio_noise_benchmark --split dev --output "$RUNNER_TEMP/tadash-body-noise-dev.json"
+      - name: Run untouched reserved holdout (seed 951113)
+        run: python -m experiments.tadash_proprio_noise_benchmark --split holdout --output "$RUNNER_TEMP/tadash-body-noise-holdout.json"
       - name: Preserve benchmark receipt for independent review
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: tadash-body-noise-dev
-          path: ${{ runner.temp }}/tadash-body-noise-dev.json
+          path: |
+            ${{ runner.temp }}/tadash-body-noise-dev.json
+            ${{ runner.temp }}/tadash-body-noise-holdout.json
           if-no-files-found: warn
