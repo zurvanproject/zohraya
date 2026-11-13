@@ -1,0 +1,17 @@
+[Unit]
+Description=Nasuraya daily local SQLite snapshot (OFFLINE, UNENCRYPTED)
+Documentation=https://github.com/zurvanproject/zohraya/pull/210
+ConditionPathExists=/var/lib/nasuraya/awake/awake.sqlite3
+
+[Service]
+Type=oneshot
+User=nasuraya
+Group=nasuraya
+WorkingDirectory=/opt/nasuraya/zohraya
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+PrivateNetwork=yes
+ExecStart=/usr/bin/python3 -m ops.continuity.guardian backup --db /var/lib/nasuraya/awake/awake.sqlite3 --dest /mnt/nasuraya-backups
+# Install ONLY after confirming Python, data path and backup volume ownership.
+# Do NOT mistake these local UNENCRYPTED snapshots for off-provider disaster recovery.
