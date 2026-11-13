@@ -27,7 +27,7 @@ def fixture(command=0., primary_shift=0., pose_shift=0., source="fixture"):
             "source_sha256": source, "quality": POSE_QUALITY,
             "command_nm": float(command),
             "frames": [{
-                "t_s": .02*(i+1), "torso_yaw": pose_shift,
+                "t_s": .02*(i+1), "torso_yaw": pose_shift, "head_yaw": pose_shift,
                 "tail_4_x": pose_shift, "tail_4_y": pose_shift,
                 "head_x": 0., "head_y": 0.,
             } for i in range(n)]
