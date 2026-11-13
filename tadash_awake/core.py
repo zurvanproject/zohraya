@@ -67,7 +67,8 @@ def connect(root):
 
 def checked(item, now):
     required = {"event_id", "topic", "source_ref", "observed_at", "value", "confidence"}
-    if not isinstance(item, dict) or set(item) != required:
+    optional = {"sample_time"}
+    if not isinstance(item, dict) or not required.issubset(item) or set(item) - required - optional:
         raise ValueError("invalid evidence fields")
     e = dict(item)
     if not isinstance(e["event_id"], str) or not re.fullmatch(r"[A-Za-z0-9._:-]{1,96}", e["event_id"]):
@@ -93,6 +94,11 @@ def checked(item, now):
         raise ValueError("future evidence")
     e["observed_at"] = iso(observed)
     e["confidence"] = float(e["confidence"])
+    if "sample_time" in e:
+        sample = e["sample_time"]
+        if type(sample) not in (int, float) or not math.isfinite(sample) or not 0 <= sample <= 1000000:
+            raise ValueError("invalid simulated sample clock")
+        e["sample_time"] = float(sample)
     return e
 
 
@@ -146,11 +152,29 @@ def set_paused(root, paused, now=None):
 
 
 def propose(topic, events):
+    """Distinguish simultaneous disagreement from sequential sensory change."""
     sources = {e["source_ref"] for e in events}
     values = {encode(e["value"]) for e in events}
-    if len(sources) > 1 and len(values) > 1:
-        kind, rank = "discrepancy", 4
-        question = "چرا شواهد دربارهٔ «" + topic + "» متفاوت‌اند؟"
+    with_clock = ["sample_time" in e for e in events]
+    compatible = all(with_clock) or not any(with_clock)
+    times = ([float(e["sample_time"]) for e in events] if all(with_clock)
+             else [clock(e["observed_at"]).timestamp() for e in events])
+    window = .11 if all(with_clock) else 60.
+    conflict = compatible and any(
+        events[i]["source_ref"] != events[j]["source_ref"]
+        and encode(events[i]["value"]) != encode(events[j]["value"])
+        and abs(times[i] - times[j]) <= window
+        for i in range(len(events)) for j in range(i + 1, len(events)))
+    change = compatible and len(values) > 1 and max(times) - min(times) > window
+    if not compatible and len(values) > 1:
+        kind, rank = "time_scope_uncertain", 5
+        question = "چگونه دامنهٔ زمانی شواهد «" + topic + "» را یکسان کنم؟"
+    elif conflict:
+        kind, rank = "discrepancy", 5
+        question = "چرا دو شاهد هم‌زمان دربارهٔ «" + topic + "» متفاوت‌اند؟"
+    elif change:
+        kind, rank = "temporal_change", 4
+        question = "آیا تغییر «" + topic + "» در طول زمان واقعی است یا خطای حسگر؟"
     elif len(sources) < 2:
         kind, rank = "independent_check", 3
         question = "چه شاهد مستقلی نتیجهٔ «" + topic + "» را می‌آزماید؟"
