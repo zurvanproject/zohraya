@@ -37,7 +37,7 @@ class Tests(unittest.TestCase):
                                             at=T + timedelta(minutes=15))], T + timedelta(minutes=15))
         later = core.tick(self.root, T + timedelta(minutes=15))
         self.assertEqual((later["status"], later["kind"], later["revision"]),
-                         ("question_revised", "discrepancy", 2))
+                         ("question_revised", "temporal_change", 2))
         self.assertEqual(first["question_id"], later["question_id"])
         self.assertEqual(core.status(self.root)["counts"]["questions"], 1)
         self.assertEqual(core.tick(self.root, T + timedelta(minutes=30))["status"], "idle_no_new_evidence")
@@ -49,6 +49,37 @@ class Tests(unittest.TestCase):
             observation("c", "bbb_topic", 1, "tadash://fixture/b")], T)
         core.set_paused(self.root, False, T)
         self.assertEqual(core.tick(self.root, T)["topic"], "bbb_topic")
+
+    def test_same_time_two_sources_is_contradiction(self):
+        core.ingest(self.root, [
+            observation("a", "time_topic", 0, "tadash://fixture/a"),
+            observation("b", "time_topic", 1, "tadash://fixture/b")], T)
+        core.set_paused(self.root, False, T)
+        self.assertEqual(core.tick(self.root, T)["kind"], "discrepancy")
+
+    def test_same_source_sequential_change_is_not_contradiction(self):
+        a = observation("a", "time_topic", 0)
+        b = observation("b", "time_topic", 1)
+        a["sample_time"] = 1.6
+        b["sample_time"] = 3.2
+        core.ingest(self.root, [a, b], T)
+        core.set_paused(self.root, False, T)
+        self.assertEqual(core.tick(self.root, T)["kind"], "temporal_change")
+
+    def test_mixed_clock_domain_needs_review(self):
+        a = observation("a", "time_topic", 0)
+        b = observation("b", "time_topic", 1)
+        a["sample_time"] = 1.6
+        core.ingest(self.root, [a, b], T)
+        core.set_paused(self.root, False, T)
+        self.assertEqual(core.tick(self.root, T)["kind"], "time_scope_uncertain")
+
+    def test_invalid_sample_clock(self):
+        for bad in (float("nan"), -1, "1.6", 1000001):
+            item = observation()
+            item["sample_time"] = bad
+            with self.assertRaises(ValueError):
+                core.ingest(self.root, [item], T)
 
     def test_event_deduplication_and_atomic_rejection(self):
         self.assertEqual(core.ingest(self.root, [observation()], T)["added"], 1)
