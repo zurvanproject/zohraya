@@ -116,5 +116,40 @@ class BodyEventLedgerTests(unittest.TestCase):
         self.assertEqual(self.store.snapshot("trialB")["count"], 1)
 
 
+    def test_native_full_loop_persists_actual_mujoco_episodes(self):
+        try:
+            import mujoco
+            import numpy as np
+            from experiments.tadash_embodied_origin import MODEL, capture_native
+        except ImportError:
+            self.skipTest("native MuJoCo is required by CI")
+        identity = source_identity(MODEL)
+        model = mujoco.MjModel.from_xml_path(str(MODEL))
+        rest = capture_native(model, mujoco, np, identity)
+        commanded = capture_native(model, mujoco, np, identity, command_nm=8.)
+        disturbed = capture_native(model, mujoco, np, identity, external_torque_nm=35.)
+        both = capture_native(model, mujoco, np, identity, command_nm=8.,
+                              external_torque_nm=35.)
+        a = self.store.append("nativeBody", "rest", 1, 0., rest, rest, rest)
+        b = self.store.append("nativeBody", "move", 2, 8., rest, commanded, commanded)
+        d = self.store.append("nativeBody", "disturb", 3, 0., rest, rest, disturbed)
+        e = self.store.append("nativeBody", "mixed", 4, 8., rest, commanded, both)
+        self.assertEqual([a["assessment_state"], b["assessment_state"],
+                          d["assessment_state"], e["assessment_state"]],
+                         ["no_detectable_change", "command_consistent",
+                          "unexplained_change", "command_outcome_mismatch"])
+        self.store.close()
+        self.store = BodyEventLedger(self.db_path)
+        output = self.store.snapshot("nativeBody")
+        self.assertEqual(output["count"], 4)
+        self.assertEqual(output["head"], e["event_hash"])
+        for item in output["events"]:
+            payload = item["payload"]
+            self.assertEqual(payload["source_sha256"], identity["sha256"])
+            self.assertEqual(payload["source_kind"], "pinned_native_mujoco_simulation")
+            self.assertEqual(set(payload["trace_digests"]),
+                             {"reference", "prediction", "observation"})
+
+
 if __name__ == "__main__":
     unittest.main()
