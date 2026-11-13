@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
-  "updated": "2026-11-12",
+  "updated": "2026-11-13",
   "current_focus": "four-direction-guardians",
   "next_new_ritual_allowed": false,
   "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
@@ -48,11 +48,11 @@
       "source_check": "5/5 guardian-direction-symbol names source-checked; not independent recall",
       "trap_bank": "12 documented corrections; not a closed-book score",
       "generated_shuffled_decks": 8,
-      "mastery_note": "Started new ritual by owner instruction; not mastery, no embodied or supernatural claim.",
+      "mastery_note": "First fully evidenced same-session three-pass textual session on 2026-11-13; retained context assistance, no independent delayed recall or mastery.",
       "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
       "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
-      "next_step": "At a genuinely separate time, record answers before reviewing source, label context contamination, and correct residual source errors; no third ritual before mastery.",
-      "context_assisted_retrieval_checks": 1,
+      "next_step": "Novel adversarial traps with answer-before-lookup and genuine delayed or assessor-independent recall across separate occasions; new third ritual still blocked.",
+      "context_assisted_retrieval_checks": 2,
       "same_day_context_assisted_rehearsals": 2,
       "latest_repeat": {
         "date": "2026-11-12",
@@ -62,6 +62,22 @@
         "self_authored_trap_checks": "8/8",
         "independent_recall": false,
         "real_time_delay": false
+      },
+      "completed_three_pass_textual_sessions": 1,
+      "latest_session": {
+        "date": "2026-11-13",
+        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-13_1921_FA.md",
+        "machine_record": "docs/rituals/four_guardians_session_2026-11-13_1921.json",
+        "counted_three_passes": 3,
+        "each_pass_full_sequence": "5/5",
+        "guardians": "4/4 source aligned",
+        "adversarial_traps": "12/12 self-authored answers matched existing source bank; not independently assessed",
+        "original_source_rechecked": true,
+        "recall_mode": "context_assisted; first two passes committed before fresh lookup, not blind",
+        "session_complete_under_three_pass_rule": true,
+        "independent_delayed_recall": false,
+        "independent_assessor": false,
+        "textual_mastery": false
       }
     }
   },
@@ -83,7 +99,10 @@
     "session_run_type": "two source-checked textual practice sessions, not embodied learning",
     "latest_followup_counts_as_new_delayed_session": false,
     "latest_followup_type": "same-conversation context-assisted retrieval and correction",
-    "latest_four_guardians_rehearsal_type": "source-assisted textual review only"
+    "latest_four_guardians_rehearsal_type": "three full context-assisted text passes across one session, source-checked; not independent delayed mastery",
+    "latest_four_guardians_session_complete_under_three_pass_rule": true,
+    "latest_four_guardians_session_date": "2026-11-13",
+    "latest_four_guardians_delayed_recall_verified": false
   },
   "owner_priority_override": {
     "date": "2026-11-12",
