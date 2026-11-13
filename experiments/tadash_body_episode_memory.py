@@ -117,6 +117,39 @@ class BodyEventLedger:
         return {"session_id": session_id, "head": head,
                 "events": output, "count": len(output)}
 
+    def self_model(self, session_id):
+        """Verified, descriptive history of *simulated* bodily predictions.
+
+        This is a summary over ledger evidence. It is not a subjective self,
+        an independent source of sensory data or a generator of goals.
+        """
+        snapshot = self.snapshot(session_id)
+        records = [item["payload"] for item in snapshot["events"]]
+        counts = {name: sum(p["assessment_state"] == name for p in records)
+                  for name in sorted(ACCEPTED_STATES)}
+        commanded = sum(abs(p["command_nm"]) > 1e-9 for p in records)
+        errors = [p["residual"] for p in records]
+        last = records[-1] if records else None
+        result = {
+            "kind": "descriptive_simulated_body_history_v0.2",
+            "session_id": session_id,
+            "episode_count": len(records),
+            "commanded_episodes": commanded,
+            "episode_states": counts,
+            "last_episode_state": last["assessment_state"] if last else None,
+            "last_command_nm": last["command_nm"] if last else None,
+            "last_source_sha256": last["source_sha256"] if last else None,
+            "maximum_prediction_residual": max(errors) if errors else None,
+            "uncertainty_fraction": (
+                (counts["uncertain_noise_or_weak_signal"] + counts["unverified"])
+                / len(records) if records else None
+            ),
+            "verified_ledger_head": snapshot["head"],
+            "read_only": True,
+        }
+        result["summary_sha256"] = digest(canonical(result))
+        return result
+
     def append(self, session_id, event_id, ordinal, intent_nm,
                reference, prediction, actual):
         if not valid_identifier(session_id) or not valid_identifier(event_id):
