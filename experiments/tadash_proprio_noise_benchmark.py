@@ -17,7 +17,9 @@ from experiments.tadash_embodied_origin import (
     MODEL, _validated, capture_native, interpret, source_identity,
 )
 from experiments.tadash_temporal_proprioception import (
-    MAX_JAGGEDNESS, PERSISTENCE_MIN_CHANNELS, PERSISTENCE_MIN_FRAMES,
+    LARGE_SMOOTH_EXCURSION, LARGE_SMOOTH_MAX_JAGGEDNESS,
+    LARGE_SMOOTH_MIN_SIGN_FRAMES, MAX_JAGGEDNESS,
+    PERSISTENCE_MIN_CHANNELS, PERSISTENCE_MIN_FRAMES,
     PERSISTENCE_THRESHOLD, PROPRIO_KEYS, WEIGHTS, classify_temporal,
 )
 
@@ -168,6 +170,9 @@ def run_benchmark(split="dev"):
             "min_frames": PERSISTENCE_MIN_FRAMES,
             "min_channels": PERSISTENCE_MIN_CHANNELS,
             "max_jaggedness": MAX_JAGGEDNESS,
+            "large_smooth_excursion": LARGE_SMOOTH_EXCURSION,
+            "large_smooth_max_jaggedness": LARGE_SMOOTH_MAX_JAGGEDNESS,
+            "large_smooth_min_sign_frames": LARGE_SMOOTH_MIN_SIGN_FRAMES,
         },
         "episode_counts": GROUP_SIZES,
         "total_episode_replays": len(cases),
