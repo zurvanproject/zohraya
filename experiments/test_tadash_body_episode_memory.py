@@ -151,5 +151,29 @@ class BodyEventLedgerTests(unittest.TestCase):
                              {"reference", "prediction", "observation"})
 
 
+    def test_self_model_summary_is_reproducible_and_descriptive(self):
+        self.record()
+        changed = fixture(source=self.source, tail=[.03*i for i in range(12)],
+                          pelvis=[.03*i for i in range(12)])
+        self.record("two", 2, actual=changed)
+        before = self.store.self_model("trialA")
+        self.assertEqual(before["episode_count"], 2)
+        self.assertEqual(before["commanded_episodes"], 0)
+        self.assertEqual(before["episode_states"]["unexplained_change"], 1)
+        self.assertEqual(before["episode_states"]["no_detectable_change"], 1)
+        self.assertTrue(before["read_only"])
+        self.assertEqual(len(before["summary_sha256"]), 64)
+        self.store.close()
+        self.store = BodyEventLedger(self.db_path)
+        after = self.store.self_model("trialA")
+        self.assertEqual(after, before)
+
+    def test_empty_self_model_reports_no_experience_not_fake_confidence(self):
+        result = self.store.self_model("empty")
+        self.assertEqual(result["episode_count"], 0)
+        self.assertIsNone(result["uncertainty_fraction"])
+        self.assertIsNone(result["last_episode_state"])
+
+
 if __name__ == "__main__":
     unittest.main()
