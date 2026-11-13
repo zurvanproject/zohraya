@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Nasuraya SQLite backup while network is unavailable
+
+[Timer]
+OnCalendar=*-*-* 03:15:00
+Persistent=true
+RandomizedDelaySec=10m
+Unit=nasuraya-backup.service
+
+[Install]
+WantedBy=timers.target
