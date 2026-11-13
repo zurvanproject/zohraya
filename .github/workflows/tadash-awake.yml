@@ -33,6 +33,8 @@ jobs:
         run: python -m tadash_awake.ingress_smoke --source-root pinned-source
       - name: Verify isolated Bridge installer jobs syntax and compute exact SHA256
         run: python -c "import ast,hashlib,pathlib; fs=sorted(pathlib.Path('tools/bridge_jobs').glob('nasu_awake_*.py')); [(ast.parse(p.read_bytes()),print('AWAKE_JOB_SHA256:'+p.name+':'+hashlib.sha256(p.read_bytes()).hexdigest())) for p in fs]"
+      - name: Download and verify all 595 pinned PR198 source blobs in disposable directory
+        run: python tools/bridge_jobs/nasu_awake_ingress_install.py --self-test
       - name: Read-only preflight on CI host
         run: python tools/bridge_jobs/nasu_awake_preflight.py
       - name: Download and verify six exact Git blobs, then run packaged offline regressions
