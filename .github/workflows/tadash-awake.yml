@@ -1,7 +1,7 @@
 name: Tadash Awake - source pinned DIOS sensory goal integration
 on:
   pull_request:
-    paths: ['tadash_awake/**', '.github/workflows/tadash-awake.yml']
+    paths: ['tadash_awake/**', 'tools/bridge_jobs/nasu_awake_*.py', '.github/workflows/tadash-awake.yml']
   push:
     paths: ['tadash_awake/**', '.github/workflows/tadash-awake.yml']
 permissions:
@@ -29,3 +29,7 @@ jobs:
           persist-credentials: false
       - name: Real offline source-pinned session (sensory DIOS goal) to Awake cold memory
         run: python -m tadash_awake.integration_smoke --source-root pinned-source
+      - name: Verify isolated Bridge installer jobs syntax and compute exact SHA256
+        run: python -c "import ast,hashlib,pathlib; fs=sorted(pathlib.Path('tools/bridge_jobs').glob('nasu_awake_*.py')); [(ast.parse(p.read_bytes()),print('AWAKE_JOB_SHA256:'+p.name+':'+hashlib.sha256(p.read_bytes()).hexdigest())) for p in fs]"
+      - name: Read-only preflight on CI host
+        run: python tools/bridge_jobs/nasu_awake_preflight.py
