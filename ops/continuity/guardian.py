@@ -7,6 +7,7 @@ It does not call any LLM, network service, external command, or actuator.
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -21,6 +22,17 @@ import uuid
 SCHEMA = "nasuraya-continuity-snapshot/1"
 BACKUP_PREFIX = "snapshot-"
 MIN_FREE_BYTES = 5 * 1024**3
+
+@contextmanager
+def sqlite_transaction(path):
+    """Commit or rollback and ALWAYS close SQLite handles, including on Windows."""
+    conn = sqlite3.connect(str(path), timeout=10)
+    try:
+        with conn:
+            yield conn
+    finally:
+        conn.close()
+
 
 
 def utc_now():
@@ -233,16 +245,16 @@ def simulate_90_days(days=90):
         root = Path(folder)
         live_db = root / "awake.sqlite3"
         dst = root / "backups"
-        with sqlite3.connect(live_db) as db:
+        with sqlite_transaction(live_db) as db:
             db.execute("CREATE TABLE ticks (seq INTEGER PRIMARY KEY, day INTEGER)")
         receipts = []
         for day in range(1, days + 1):
-            with sqlite3.connect(live_db) as db:
+            with sqlite_transaction(live_db) as db:
                 db.execute("INSERT INTO ticks(day) VALUES (?)", (day,))
             if day == 1 or day % 30 == 0 or day == days:
                 backup = snapshot([live_db], dst)
                 receipt = restore_drill(backup["snapshot"])
-                with sqlite3.connect(Path(backup["snapshot"]) / "awake.sqlite3") as db:
+                with sqlite_transaction(Path(backup["snapshot"]) / "awake.sqlite3") as db:
                     count = db.execute("SELECT COUNT(*) FROM ticks").fetchone()[0]
                 if count != day or not receipt["restored_in_disposable_dir"]:
                     raise ValueError("offline_checkpoint_restore_failed")
