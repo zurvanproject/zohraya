@@ -1,0 +1,35 @@
+name: Tadash v03 anatomical-connection audit
+on:
+  pull_request:
+    paths:
+      - "experiments/tadash_connection_audit.py"
+      - "experiments/test_tadash_connection_audit.py"
+      - ".github/workflows/tadash-connection-audit.yml"
+      - "assets/nasuraya_articulated_v03/nasuraya.xml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  v03-connectivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pin CPU MuJoCo and numerical environment
+        run: python -m pip install -r examples/nasuraya_research/articulated/requirements-trial.txt
+      - name: Topology, motor, seam and injected-breakage tests
+        run: python -m unittest experiments.test_tadash_connection_audit -v
+      - name: Compile native v03 and audit kinematic responses
+        run: python -m experiments.tadash_connection_audit --native --receipt "$RUNNER_TEMP/tadash-v03-connection-receipt.json"
+      - name: Archive machine-readable receipt for independent review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tadash-v03-connection-audit
+          path: ${{ runner.temp }}/tadash-v03-connection-receipt.json
+          if-no-files-found: warn
