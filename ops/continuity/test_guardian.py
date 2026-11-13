@@ -1,5 +1,6 @@
 """Cross-platform, offline recovery contracts for 90-day continuity kit."""
 import json
+from ops.continuity.guardian import sqlite_transaction
 import os
 from pathlib import Path
 import sqlite3
@@ -18,7 +19,7 @@ class ContinuitySafetyTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.db = self.root / "awake.sqlite3"
         self.snapshots = self.root / "backup-root"
-        with sqlite3.connect(self.db) as conn:
+        with sqlite_transaction(self.db) as conn:
             conn.execute("PRAGMA journal_mode=WAL")
             conn.execute("CREATE TABLE ticks (seq INTEGER PRIMARY KEY, value TEXT)")
             conn.execute("INSERT INTO ticks(value) VALUES ('first')")
@@ -33,24 +34,24 @@ class ContinuitySafetyTests(unittest.TestCase):
         result = self.backup()
         self.assertTrue(result["verified"])
         copy = Path(result["snapshot"]) / "awake.sqlite3"
-        with sqlite3.connect(copy) as conn:
+        with sqlite_transaction(copy) as conn:
             row = conn.execute("SELECT value FROM ticks").fetchone()
         self.assertEqual(row, ("first",))
         self.assertEqual(verify(result["snapshot"])["files"], 1)
 
     def test_backup_snapshot_is_stable_against_future_live_writes(self):
         first = self.backup()
-        with sqlite3.connect(self.db) as conn:
+        with sqlite_transaction(self.db) as conn:
             conn.execute("INSERT INTO ticks(value) VALUES ('second')")
-        with sqlite3.connect(Path(first["snapshot"]) / "awake.sqlite3") as db:
+        with sqlite_transaction(Path(first["snapshot"]) / "awake.sqlite3") as db:
             self.assertEqual(db.execute("SELECT COUNT(*) FROM ticks").fetchone()[0], 1)
         second = self.backup()
-        with sqlite3.connect(Path(second["snapshot"]) / "awake.sqlite3") as db:
+        with sqlite_transaction(Path(second["snapshot"]) / "awake.sqlite3") as db:
             self.assertEqual(db.execute("SELECT COUNT(*) FROM ticks").fetchone()[0], 2)
 
     def test_restore_drill_never_overwrites_live_database(self):
         backed = self.backup()
-        with sqlite3.connect(self.db) as db:
+        with sqlite_transaction(self.db) as db:
             db.execute("INSERT INTO ticks(value) VALUES ('after backup')")
         prior = self.db.read_bytes()
         result = restore_drill(backed["snapshot"])
