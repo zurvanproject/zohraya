@@ -1,0 +1,27 @@
+name: Nasuraya 90-day offline recovery checks
+on:
+  pull_request:
+    paths:
+      - "ops/continuity/**"
+      - "docs/OPS_NASURAYA_90DAY_SURVIVAL_FA.md"
+      - ".github/workflows/nasuraya-90day-continuity.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  backup-restore:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Standard-library SQLite WAL snapshot, corruption, restore and survival tests
+        run: python -m unittest ops.continuity.test_guardian -v
+      - name: Explicit 90-day disconnected synthetic ledger rehearsal
+        run: python -m ops.continuity.guardian simulate-90-days --days 90
