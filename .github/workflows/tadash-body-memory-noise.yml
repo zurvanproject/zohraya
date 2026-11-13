@@ -36,5 +36,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: tadash-body-noise-dev
-          path: \${{ runner.temp }}/tadash-body-noise-dev.json
+          path: ${{ runner.temp }}/tadash-body-noise-dev.json
           if-no-files-found: warn
