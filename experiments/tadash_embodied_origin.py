@@ -30,7 +30,7 @@ SAMPLE_EVERY = 20
 
 
 def git_blob_sha(data: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
 
 
 def source_identity(path=MODEL):
@@ -237,7 +237,7 @@ def main():
         report = run_experiment()
     except Exception as exc:
         report = {"pass": False, "error": type(exc).__name__ + ":" + str(exc)}
-    rendered = json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2) + "\\n"
+    rendered = json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2) + "\n"
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(rendered, encoding="utf-8")
