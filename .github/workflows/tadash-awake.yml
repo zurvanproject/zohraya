@@ -33,3 +33,5 @@ jobs:
         run: python -c "import ast,hashlib,pathlib; fs=sorted(pathlib.Path('tools/bridge_jobs').glob('nasu_awake_*.py')); [(ast.parse(p.read_bytes()),print('AWAKE_JOB_SHA256:'+p.name+':'+hashlib.sha256(p.read_bytes()).hexdigest())) for p in fs]"
       - name: Read-only preflight on CI host
         run: python tools/bridge_jobs/nasu_awake_preflight.py
+      - name: Download and verify six exact Git blobs, then run packaged offline regressions
+        run: python tools/bridge_jobs/nasu_awake_install.py --self-test
