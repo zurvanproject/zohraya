@@ -28,7 +28,12 @@ def main():
         raise ValueError("original snapshot hash differs")
     if report.get("paused") is not True:
         raise ValueError("import status must indicate paused")
-    with sqlite3.connect(STATE) as db:
+    working=Path(report.get("working_db") or STATE)
+    if (working!=STATE and working.parent.parent!=HOME/"migration"/"working"):
+        raise ValueError("untrusted current working database path")
+    if not working.is_file() or working.is_symlink():
+        raise ValueError("working database missing")
+    with sqlite3.connect(working) as db:
         integrity=db.execute("PRAGMA integrity_check").fetchone()[0]
         counts=[db.execute("SELECT COUNT(*) FROM "+tbl).fetchone()[0]
                 for tbl in ("evidence","questions","ticks","ledger")]
