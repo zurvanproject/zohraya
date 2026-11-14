@@ -1,0 +1,27 @@
+name: Atmosphere Gate checks
+on:
+  pull_request:
+    paths:
+      - "tools/atmosphere_guard.py"
+      - "tools/nasuraya_linux_bridge.py"
+      - "tools/install_nasuraya_linux_bridge.sh"
+      - "tests/test_atmosphere_guard.py"
+      - ".github/workflows/atmosphere-gate.yml"
+  push:
+    paths:
+      - "tools/atmosphere_guard.py"
+      - "tests/test_atmosphere_guard.py"
+      - ".github/workflows/atmosphere-gate.yml"
+permissions:
+  contents: read
+jobs:
+  offline-security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          python -m py_compile tools/atmosphere_guard.py tools/nasuraya_linux_bridge.py
+          python -m unittest discover -s tests -p "test_atmosphere_guard.py" -v

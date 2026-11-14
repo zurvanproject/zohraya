@@ -21,7 +21,7 @@ HOME = pathlib.Path("/var/lib/nasuraya")
 TOKEN_PATH = HOME / "github-token"
 SEEN_PATH = HOME / "seen.json"
 PROJECT = HOME / "zohraya"
-COMMAND_RE = re.compile(r"(?m)^\s*nasu-linux:\s*(status|disk|python|repo|sync|test|offline|awake-stage|awake-status|awake-activate|help)\s*$", re.I)
+from atmosphere_guard import AtmosphereGate, parse_command
 RESULT_RE = re.compile(r"(?m)^nasu-linux-result request_id=(\d+)\b")
 
 def api(method, path, data=None):
@@ -118,14 +118,22 @@ def poll():
         if item.get("user", {}).get("login") != OWNER:
             continue
         body = item.get("body", "")
-        match = COMMAND_RE.search(body)
-        if not match:
+        action = parse_command(body)
+        if action is None:
             continue
         request_id = str(item["id"])
         if request_id in completed or request_id in seen:
             continue
-        action = match.group(1).lower()
-        result = dispatch(action)
+        gate = AtmosphereGate(HOME / "atmosphere")
+        decision = gate.begin(request_id, OWNER, body)
+        if decision.execute:
+            try:
+                result = dispatch(decision.action)
+            except Exception as exc:
+                result = "Execution error: " + type(exc).__name__
+            result = gate.finish(request_id, result)
+        else:
+            result = decision.receipt
         receipt = (
             f"nasu-linux-result request_id={request_id}\n"
             f"action={action}; utc={datetime.datetime.now(datetime.timezone.utc).isoformat()}\n"
