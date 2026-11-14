@@ -40,7 +40,11 @@ def digest(path):
     with open(path,'rb') as fp:
         for chunk in iter(lambda:fp.read(1024*1024),b''):h.update(chunk)
     return h.hexdigest()
-for name,source in {'continuity.sqlite3':ledger,'awake.sqlite3':state}.items():
+sources={'continuity.sqlite3':ledger,'awake.sqlite3':state}
+research=base/'local-research'/'research.sqlite3'
+if research.is_file():
+    sources['research.sqlite3']=research
+for name,source in sources.items():
     if not source.is_file() or source.is_symlink():
         raise SystemExit('Missing or symlinked source: '+name)
     dest=stage/name
@@ -77,17 +81,27 @@ if model.is_file():
     if digest(model_copy)!=expected:raise SystemExit('Model changed during snapshot')
     entries[model_copy.name]=expected
     model_present=True
+    runtime=Path('/opt/nasuraya-local-llm/llama.cpp/build/bin')
+    if not runtime.is_dir():
+        raise SystemExit('Model exists but offline runtime binaries are missing')
+    if any(p.is_symlink() for p in runtime.rglob('*')):
+        raise SystemExit('Symlinked runtime binaries must be reviewed')
+    runtime_tar=stage/'llama-runtime.tar.gz'
+    with tarfile.open(runtime_tar,'w:gz') as tar:
+        tar.add(runtime,arcname='llama-bin',recursive=True)
+    entries[runtime_tar.name]=digest(runtime_tar)
 manifest={
   'schema':'nasuraya-restic-offsite/2',
   'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
   'files_sha256':entries,
   'model_present':model_present,
   'workload_archives_present':archive_root.is_dir(),
+  'research_journal_present':research.is_file(),
   'credentials_included':False,
   'warning':'Restored snapshots must not overwrite running production databases'
 }
 (stage/'manifest.json').write_text(json.dumps(manifest,sort_keys=True)+'\n',encoding='utf-8')
-print('SQLITE_SNAPSHOT=PASS;DB_COUNT=2;MODEL_PRESENT='+str(model_present).lower()+
+print('SQLITE_SNAPSHOT=PASS;DB_COUNT='+str(len(sources))+';MODEL_PRESENT='+str(model_present).lower()+
       ';WORKLOAD_ARCHIVES_PRESENT='+str(archive_root.is_dir()).lower())
 PY
 restic snapshots >/dev/null
