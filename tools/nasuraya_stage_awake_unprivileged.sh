@@ -23,11 +23,11 @@ python3 -m unittest tadash_awake.test_wake tadash_awake.test_bridge -q
 if [[ ! -e "$state/awake.sqlite3" ]]; then
     python3 -m tadash_awake init --root "$state"
 fi
-python3 -m tadash_awake status --root "$state"
+python3 -m tadash_awake status --root "$state" | python3 -c 'import json,sys; d=json.load(sys.stdin); c=d["counts"]; print("AWAKE_STATE=PAUSED:"+str(int(d["paused"]))+";EV="+str(c["evidence"])+";Q="+str(c["questions"])+";T="+str(c["ticks"])+";L="+str(c["ledger"]))'
 echo 'AWAKE_STAGE_READY; ORIGINAL_WINDOWS_STATE_NOT_MIGRATED; NO_DUPLICATE_TICKS'
 
 # One-time migration recipient key; never prints or uploads private key.
-python3 /var/lib/nasuraya/zohraya/tools/nasu_migration_recipient_key.py
+python3 /var/lib/nasuraya/zohraya/tools/nasu_migration_recipient_key.py | python3 -c 'import json,sys; d=json.load(sys.stdin); print("MIGRATION_RSA=READY;FINGERPRINT="+d["fingerprint_sha256"])'
 
 python3 /var/lib/nasuraya/zohraya/tools/nasu_import_encrypted_awake.py
 

@@ -269,5 +269,7 @@ if __name__=="__main__":
             "inconsistent archive metadata":"INCONSISTENT_ARCHIVE",
         }
         detail=labels.get(str(exc),"UNKNOWN")
+        if isinstance(exc, sqlite3.OperationalError):
+            detail="SQLITE_LOCKED" if str(exc)=="database is locked" else "SQLITE_OPERATIONAL"
         status="IMPORT=BLOCKED;CAUSE="+type(exc).__name__+";DETAIL="+detail
     print(status)
