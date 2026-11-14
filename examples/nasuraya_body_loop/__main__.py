@@ -31,7 +31,8 @@ def main(argv=None):
     p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status',
         'experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-test', 'experience-demo',
         'self-knowledge-eval', 'instinct-enable', 'instinct-step', 'instinct-status',
-        'instinct-disable', 'instinct-test', 'instinct-demo'])
+        'instinct-disable', 'instinct-test', 'instinct-demo', 'body-drive-test',
+        'recovery-enable', 'recovery-step', 'recovery-status', 'recovery-disable'])
     p.add_argument('--session', type=Path)
     p.add_argument('--event-json', type=Path, help='explicit local JSON event for instinct-step')
     p.add_argument('--output-dir', type=Path)
@@ -50,7 +51,7 @@ def main(argv=None):
     p.add_argument('--max-calls', type=int, default=40)
     p.add_argument('--timeout-seconds', type=float, default=30)
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval', 'instinct-test', 'instinct-demo'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval', 'instinct-test', 'instinct-demo', 'body-drive-test'] and args.session is None:
         p.error('--session required')
     if args.command in ('demo', 'experience-demo', 'self-knowledge-eval', 'instinct-demo') and args.output_dir is None:
         p.error('--output-dir required')
