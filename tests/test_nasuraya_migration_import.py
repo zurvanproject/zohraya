@@ -3,6 +3,7 @@ import base64
 import importlib.util
 import hashlib
 from pathlib import Path
+import sqlite3
 import subprocess
 import tempfile
 import unittest
