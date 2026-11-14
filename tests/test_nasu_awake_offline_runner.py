@@ -3,11 +3,15 @@ import datetime as dt
 import hashlib
 import importlib.util
 import json
+import os
+import shutil
 import sqlite3
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 PATH=Path(__file__).resolve().parents[1]/"tools/nasu_awake_offline_runner.py"
 spec=importlib.util.spec_from_file_location("awake_runner_under_test",PATH)
@@ -62,7 +66,7 @@ class RunnerTests(unittest.TestCase):
         with sqlite3.connect(self.state/"awake.sqlite3") as db:
             db.execute("CREATE TABLE test(value INTEGER)")
             db.execute("INSERT INTO test VALUES(7)")
-        with patch.object(runner,"STATE",self.state),patch.object(runner,"BACKUPS",self.state/"backups"):
+        with patch.object(runner,"HOME",Path(self.temp.name)),patch.object(runner,"STATE",self.state),patch.object(runner,"BACKUPS",self.state/"backups"):
             result=runner.sqlite_backup(self.clock)
             repeat=runner.sqlite_backup(self.clock)
         self.assertEqual(result["status"],"created")
@@ -94,5 +98,80 @@ class RunnerTests(unittest.TestCase):
         with patch.object(runner,"CONTROL",Path(self.temp.name)/"no-gate"):
             self.assertFalse(runner.gate()["enabled"])
 
+    @unittest.skipIf(os.geteuid()==0,"permission reproduction needs a non-root process")
+    def test_wal_reader_needs_sidecars_but_keeps_ledger_unchanged(self):
+        self.add_record()
+        with sqlite3.connect(self.ledger) as db:
+            db.execute("PRAGMA journal_mode=WAL")
+        db.close()
+        before=self.ledger.read_bytes()
+        home=Path(self.temp.name)
+        self.ledger.chmod(0o444)
+        home.chmod(0o555)
+        try:
+            with patch.object(runner,"LEDGER",self.ledger):
+                with self.assertRaises(sqlite3.OperationalError) as caught:
+                    runner.observations(self.clock)
+            self.assertEqual(caught.exception.sqlite_errorcode & 255,sqlite3.SQLITE_READONLY)
+        finally:
+            home.chmod(0o700)
+            self.ledger.chmod(0o600)
+        with patch.object(runner,"LEDGER",self.ledger):
+            self.assertEqual(len(runner.observations(self.clock)),3)
+        self.assertEqual(self.ledger.read_bytes(),before)
+
+    def test_telemetry_failure_does_not_resume_or_write_awake(self):
+        (self.state/"awake.sqlite3").touch()
+        core=Mock()
+        with patch.object(runner.os,"geteuid",return_value=1000), \
+             patch.object(runner,"locked_source",return_value=core), \
+             patch.object(runner,"gate",return_value={"enabled":True}), \
+             patch.object(runner,"awake_state_dir",return_value=self.state), \
+             patch.object(runner,"observations",side_effect=sqlite3.OperationalError("readonly")):
+            with self.assertRaises(sqlite3.OperationalError):
+                runner.run(self.clock)
+        core.status.assert_not_called()
+        core.set_paused.assert_not_called()
+        core.ingest.assert_not_called()
+        core.tick.assert_not_called()
+
+    @unittest.skipUnless(shutil.which('unshare') and shutil.which('mount'),'requires Linux mount namespaces')
+    def test_readonly_mount_wal_failure_and_writable_recovery(self):
+        supported=subprocess.run(['unshare','-Ur','-m','true'],capture_output=True)
+        if supported.returncode:
+            self.skipTest('user mount namespaces unavailable')
+        self.add_record()
+        db=sqlite3.connect(self.ledger)
+        db.execute('PRAGMA journal_mode=WAL')
+        db.close()
+        before=self.ledger.read_bytes()
+        code='''import sqlite3,sys
+try:
+    db=sqlite3.connect('file:'+sys.argv[1]+'?mode=ro',uri=True)
+    db.execute('PRAGMA query_only=ON')
+    db.execute('PRAGMA quick_check').fetchone()
+    db.close()
+except sqlite3.Error as exc:
+    print(exc.sqlite_errorcode & 255)
+    raise SystemExit(42)
+'''
+        shell='mount --bind "$1" "$1" && mount -o remount,bind,ro "$1" && "$3" -c "$2" "$1/continuity.sqlite3"'
+        result=subprocess.run(['unshare','-Ur','-m','bash','-c',shell,'probe',self.temp.name,code,sys.executable],
+                              capture_output=True,text=True)
+        self.assertEqual(result.returncode,42,result.stderr)
+        self.assertIn(int(result.stdout.strip()),(sqlite3.SQLITE_READONLY,sqlite3.SQLITE_CANTOPEN))
+        with patch.object(runner,'LEDGER',self.ledger):
+            self.assertEqual(len(runner.observations(self.clock)),3)
+        self.assertEqual(self.ledger.read_bytes(),before)
+
+    def test_sandbox_permits_wal_sidecars_without_removing_confinement(self):
+        installer=(Path(__file__).resolve().parents[1]/
+                   "tools/install_nasu_awake_offline.sh").read_text()
+        writable=next(x for x in installer.splitlines() if x.startswith("ReadWritePaths="))
+        self.assertIn("/var/lib/nasuraya/continuity",writable.split("=",1)[1].split())
+        self.assertIn("ProtectSystem=strict",installer)
+        self.assertIn("RestrictAddressFamilies=AF_UNIX",installer)
+
 if __name__=="__main__":
     unittest.main()
+

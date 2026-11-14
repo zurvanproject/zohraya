@@ -65,6 +65,7 @@ def first_daily_reading(now):
         raise RuntimeError("offline continuity ledger missing")
     connection=sqlite3.connect("file:"+str(LEDGER)+"?mode=ro",uri=True,timeout=5)
     try:
+        connection.execute("PRAGMA query_only=ON")
         if connection.execute("PRAGMA quick_check").fetchone()[0]!="ok":
             raise ValueError("monitor SQLite integrity failure")
         rows=connection.execute(
@@ -144,10 +145,12 @@ def run(now=None):
         raise RuntimeError("Awake state is missing")
     if not data["enabled"]:
         return {"status":"standby","enabled":False,"backup":sqlite_backup(now)}
+    # Validate the source before changing the imported state's pause flag.
+    # WAL readers can need writable sidecars even with mode=ro.
+    sample=observations(now)
     status=core.status(state_dir)
     if status["paused"]:
         core.set_paused(state_dir,False,now)
-    sample=observations(now)
     if sample:
         with sqlite3.connect(state_dir/"awake.sqlite3",timeout=10) as db:
             existing={row[0] for row in db.execute(
@@ -171,5 +174,9 @@ if __name__=="__main__":
         result=run()
         print(json.dumps(result,ensure_ascii=False,sort_keys=True))
     except BaseException as exc:
-        print(json.dumps({"status":"failed","error_class":type(exc).__name__}))
+        result={"status":"failed","error_class":type(exc).__name__}
+        if isinstance(exc,sqlite3.Error):
+            result["sqlite_code"]=getattr(exc,"sqlite_errorcode",None)
+        print(json.dumps(result))
         raise SystemExit(2)
+
