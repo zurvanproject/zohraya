@@ -1,0 +1,45 @@
+name: Iran offline model and restic recovery preflight
+on:
+  push:
+    paths:
+      - "tools/nasu_install_local_llm.sh"
+      - "tools/nasu_offsite_restore_drill.sh"
+      - "tests/test_nasu_offline_readiness.py"
+      - "tests/test_nasu_offline_research_queue.py"
+      - "tools/nasu_offline_research_queue.py"
+      - "tools/install_nasu_offline_research.sh"
+      - "tools/install_nasu_offsite_backup_timer.sh"
+      - "tools/nasu_verify_restored_snapshot.py"
+      - "tools/nasu_recovered_model_smoke.py"
+      - "tests/test_nasu_recovered_model_smoke.py"
+      - "docs/nasuraya_offline_research_seeds_v1.json"
+      - "docs/IR_OFFLINE_MODEL_AND_OFFSITE_RESTORE.md"
+      - ".github/workflows/nasuraya-offline-recovery-preflight.yml"
+  pull_request:
+    paths:
+      - "tools/nasu_install_local_llm.sh"
+      - "tools/nasu_offsite_restore_drill.sh"
+      - "tests/test_nasu_offline_readiness.py"
+      - "tests/test_nasu_offline_research_queue.py"
+      - "tools/nasu_offline_research_queue.py"
+      - "tools/install_nasu_offline_research.sh"
+      - "tools/install_nasu_offsite_backup_timer.sh"
+      - "tools/nasu_verify_restored_snapshot.py"
+      - "tools/nasu_recovered_model_smoke.py"
+      - "tests/test_nasu_recovered_model_smoke.py"
+      - "docs/nasuraya_offline_research_seeds_v1.json"
+      - "docs/IR_OFFLINE_MODEL_AND_OFFSITE_RESTORE.md"
+      - ".github/workflows/nasuraya-offline-recovery-preflight.yml"
+permissions:
+  contents: read
+jobs:
+  synthetic-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate offline scripts and tamper detection without network or real credentials
+        run: |
+          python3 -m unittest discover -s tests -p test_nasu_offline_readiness.py -v
+          python3 -m unittest discover -s tests -p test_nasu_offline_research_queue.py -v
+          python3 -m unittest discover -s tests -p test_nasu_recovered_model_smoke.py -v
