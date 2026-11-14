@@ -6,6 +6,10 @@ on:
       - "tools/install_nasuraya_offline_continuity.sh"
       - "tools/nasuraya_linux_bridge.py"
       - "tools/nasuraya_stage_awake_unprivileged.sh"
+      - "tools/nasu_awake_offline_runner.py"
+      - "tools/nasu_awake_activate.py"
+      - "tools/install_nasu_awake_offline.sh"
+      - "tests/test_nasu_awake_offline_runner.py"
       - "tests/test_nasuraya_offline_continuity.py"
       - ".github/workflows/nasuraya-offline-continuity.yml"
   pull_request:
@@ -14,6 +18,10 @@ on:
       - "tools/install_nasuraya_offline_continuity.sh"
       - "tools/nasuraya_linux_bridge.py"
       - "tools/nasuraya_stage_awake_unprivileged.sh"
+      - "tools/nasu_awake_offline_runner.py"
+      - "tools/nasu_awake_activate.py"
+      - "tools/install_nasu_awake_offline.sh"
+      - "tests/test_nasu_awake_offline_runner.py"
       - "tests/test_nasuraya_offline_continuity.py"
       - ".github/workflows/nasuraya-offline-continuity.yml"
   workflow_dispatch:
@@ -30,3 +38,6 @@ jobs:
           python3 -m unittest discover -s tests -p test_nasuraya_offline_continuity.py -v
           bash -n tools/install_nasuraya_offline_continuity.sh
           bash -n tools/nasuraya_stage_awake_unprivileged.sh
+          bash -n tools/install_nasu_awake_offline.sh
+          python3 -m py_compile tools/nasu_awake_offline_runner.py tools/nasu_awake_activate.py
+          python3 -m unittest discover -s tests -p test_nasu_awake_offline_runner.py -v
