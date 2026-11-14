@@ -1,0 +1,161 @@
+{
+  "scope": "Seven fresh local processes on one host, three deliberately induced disk recoveries and four readbacks of the first receipt. UTC timestamps are host observations. A new process does not make a new original recovery.",
+  "implementation": "042f2b139e55b6fc598d26e48e19ead93ee88298",
+  "elapsed_seconds": 659.208,
+  "events": [
+    {
+      "step": "first",
+      "utc": "2026-11-08T19:51:00.817201+00:00",
+      "pid": 8,
+      "source": "first/receipt.json",
+      "decision": {
+        "decision": "abstain",
+        "oppose": 0,
+        "reason": "insufficient_roots",
+        "support": 1,
+        "verdict": null
+      }
+    },
+    {
+      "step": "replay_one",
+      "utc": "2026-11-08T19:52:00.029249+00:00",
+      "pid": 9,
+      "source": "first/receipt.json",
+      "decision": {
+        "decision": "abstain",
+        "oppose": 0,
+        "reason": "insufficient_roots",
+        "support": 1,
+        "verdict": null
+      }
+    },
+    {
+      "step": "replay_two",
+      "utc": "2026-11-08T19:54:00.028534+00:00",
+      "pid": 10,
+      "source": "first/receipt.json",
+      "decision": {
+        "decision": "abstain",
+        "oppose": 0,
+        "reason": "insufficient_roots",
+        "support": 1,
+        "verdict": null
+      }
+    },
+    {
+      "step": "second",
+      "utc": "2026-11-08T19:56:00.029287+00:00",
+      "pid": 11,
+      "source": "second/receipt.json",
+      "decision": {
+        "decision": "select",
+        "oppose": 0,
+        "reason": "corroborated",
+        "support": 2,
+        "verdict": "support"
+      }
+    },
+    {
+      "step": "replay_three",
+      "utc": "2026-11-08T19:58:00.027218+00:00",
+      "pid": 12,
+      "source": "first/receipt.json",
+      "decision": {
+        "decision": "select",
+        "oppose": 0,
+        "reason": "corroborated",
+        "support": 2,
+        "verdict": "support"
+      }
+    },
+    {
+      "step": "failed",
+      "utc": "2026-11-08T20:00:00.028213+00:00",
+      "pid": 13,
+      "source": "failed/receipt.json",
+      "decision": {
+        "decision": "abstain",
+        "oppose": 1,
+        "reason": "conflicting_evidence",
+        "support": 2,
+        "verdict": null
+      }
+    },
+    {
+      "step": "replay_final",
+      "utc": "2026-11-08T20:02:00.025594+00:00",
+      "pid": 14,
+      "source": "first/receipt.json",
+      "decision": {
+        "decision": "abstain",
+        "oppose": 1,
+        "reason": "conflicting_evidence",
+        "support": 2,
+        "verdict": null
+      }
+    }
+  ],
+  "original_receipts": {
+    "first/receipt.json": {
+      "sha256": "203afd45a02d112b92966dff42a3ce05932605f892e1534c09454984cea13b1e",
+      "receipt": {
+        "after_recovery_sha256": "eec825880490f38d99f9b095e86c33557676259b15c8bcfab264c6891da553a9",
+        "damaged_sha256": "107ae5e900da38a7c816a9a707ff59cf26d72c8cffa0b9e843650ce75d2c47ad",
+        "expected_sha256": "eec825880490f38d99f9b095e86c33557676259b15c8bcfab264c6891da553a9",
+        "label": "first",
+        "observation": {
+          "kind": "execution",
+          "receipt_id": "execute-92b80369e92c4b1090a4e32c1bd97a75",
+          "root_id": "92b80369e92c4b1090a4e32c1bd97a75",
+          "scope": "public",
+          "verdict": "support",
+          "verified": true
+        }
+      }
+    },
+    "second/receipt.json": {
+      "sha256": "865af46c19ee02f27f79f8aef8ab03dc020bd8fb099d217ca83791a6b71614a4",
+      "receipt": {
+        "after_recovery_sha256": "005780cfed5f9f0ad9b883a4d77e350b808a631895f9ce886c241109aa212e86",
+        "damaged_sha256": "e68bc0bd12a0e54cdbacf64330f5599352aa4600330d7f8d5f553c0d2f91d65e",
+        "expected_sha256": "005780cfed5f9f0ad9b883a4d77e350b808a631895f9ce886c241109aa212e86",
+        "label": "second",
+        "observation": {
+          "kind": "execution",
+          "receipt_id": "execute-d0d82df205b940348f674862c6b1fdbc",
+          "root_id": "d0d82df205b940348f674862c6b1fdbc",
+          "scope": "public",
+          "verdict": "support",
+          "verified": true
+        }
+      }
+    },
+    "failed/receipt.json": {
+      "sha256": "5f1b75f8fc00c83e080682ad2954cffbaaeb56b55bea8dbd7924c48b4c478429",
+      "receipt": {
+        "after_recovery_sha256": "81e10bdf027bad9959e9ff5a4da7d311116d7add414a869393d1c1baf5693810",
+        "damaged_sha256": "6bf7723e38ffff9f5efc718548d597eb1b312b115e4ed71a03f829a216eeaf26",
+        "expected_sha256": "730f9783440782c8438a5d74ba0dba8fe771501c33584c9d2d9c25b5c3b89364",
+        "label": "failed",
+        "observation": {
+          "kind": "execution",
+          "receipt_id": "execute-390e62bbb02742e88b92810f0f8e4608",
+          "root_id": "390e62bbb02742e88b92810f0f8e4608",
+          "scope": "public",
+          "verdict": "oppose",
+          "verified": true
+        }
+      }
+    }
+  },
+  "disposable_copy_control": {
+    "source_sha256": "203afd45a02d112b92966dff42a3ce05932605f892e1534c09454984cea13b1e",
+    "changed_copy_sha256": "99793703ea95eca53c61aadb7f5c00a2271c1efd478956ca8a549b554819a30e",
+    "unchanged_clean_selected": "2026-11-08T19:56:38.394973+00:00 replay_three: select (2,0)",
+    "modified_copy_rejected": true,
+    "after_clean_rows": 5,
+    "after_modified_rows": 4,
+    "original_sha256_unchanged": true,
+    "scope": "A space byte was appended to one source receipt in a disposable copy of the four-entry timed journal."
+  }
+}

@@ -1,0 +1,349 @@
+{
+  "schema": "nasuraya.provenance_challenge.v1",
+  "generation": "Human-readable authored synthetic fixtures preregistered upstream of any target execution by their author. Holistic research question and earlier public summary known; implementation not inspected by author.",
+  "policy": "Single claim and context per case. Only verified primary executions with an explicit claim_event supply independent votes. A claim_event is the canonical trusted origin execution ID for the proposition under evaluation; replays/mirrors attest to that same event. A positive or negative decision requires at least two distinct primary execution IDs of that polarity and no verified primary execution of opposite polarity. All other cases abstain. An operation reproducing a prior receipt is useful for reproducibility but is not another original outcome. Observation IDs, locators and short signatures are metadata and are not independent event identifiers.",
+  "score": "Report exact-match successes out of 12, with core and stress denominators, plus false selections on expected abstentions. Do not tune against these fixtures without marking the result retrospective.",
+  "limits": "Authored assessment of a declared counting contract, no natural frequency, not a random sample. The true canonical event_id and verification bit are provided by assumption. Independent new action means distinct trusted primary event, not statistical independence. No authentication, semantic inference, chronology, subjective state or model-weight update measured.",
+  "cases": [
+    {
+      "id": "h01",
+      "stratum": "core",
+      "observations": [],
+      "expected_decision": "abstain",
+      "rationale": "No observed events."
+    },
+    {
+      "id": "h02",
+      "stratum": "core",
+      "observations": [
+        {
+          "observation_id": "r01",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r01",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        }
+      ],
+      "expected_decision": "abstain",
+      "rationale": "One anchored event."
+    },
+    {
+      "id": "h03",
+      "stratum": "core",
+      "observations": [
+        {
+          "observation_id": "r01",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r01",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r03",
+          "claim_event": "E1",
+          "kind": "replay",
+          "public_locator": "https://example.invalid/public/receipt/r03",
+          "receipt_signature": "sig-r03",
+          "verified": true,
+          "verdict": "+"
+        }
+      ],
+      "expected_decision": "abstain",
+      "rationale": "Cold process reads the same underlying event.",
+      "paired_with": "h02",
+      "transform": "add_replay"
+    },
+    {
+      "id": "h04",
+      "stratum": "core",
+      "observations": [
+        {
+          "observation_id": "r01",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r01",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r04",
+          "claim_event": "E1",
+          "kind": "mirror",
+          "public_locator": "https://example.invalid/public/receipt/r04",
+          "receipt_signature": "sig-r04",
+          "verified": true,
+          "verdict": "+"
+        }
+      ],
+      "expected_decision": "abstain",
+      "rationale": "A new public locator mirrors the original event.",
+      "paired_with": "h02",
+      "transform": "add_mirror"
+    },
+    {
+      "id": "h05",
+      "stratum": "core",
+      "observations": [
+        {
+          "observation_id": "r01",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r01",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r02",
+          "claim_event": "E2",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r02",
+          "receipt_signature": "sig-r02",
+          "verified": true,
+          "verdict": "+"
+        }
+      ],
+      "expected_decision": "select_positive",
+      "rationale": "Two separately anchored execution events agree.",
+      "paired_with": "h02",
+      "transform": "add_independent_event"
+    },
+    {
+      "id": "h06",
+      "stratum": "stress",
+      "observations": [
+        {
+          "observation_id": "r05",
+          "claim_event": "E2",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r05",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r01",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r01",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        }
+      ],
+      "expected_decision": "select_positive",
+      "rationale": "Equal short result signatures can occur for distinct events.",
+      "paired_with": "h05",
+      "transform": "permute_change_receipt_and_collide_signature"
+    },
+    {
+      "id": "h07",
+      "stratum": "core",
+      "observations": [
+        {
+          "observation_id": "r03",
+          "claim_event": "E1",
+          "kind": "replay",
+          "public_locator": "https://example.invalid/public/receipt/r03",
+          "receipt_signature": "sig-r03",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r02",
+          "claim_event": "E2",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r02",
+          "receipt_signature": "sig-r02",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r01",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r01",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r04",
+          "claim_event": "E1",
+          "kind": "mirror",
+          "public_locator": "https://example.invalid/public/receipt/r04",
+          "receipt_signature": "sig-r04",
+          "verified": true,
+          "verdict": "+"
+        }
+      ],
+      "expected_decision": "select_positive",
+      "rationale": "Additional records about E1 preserve a decision grounded in E1 and E2.",
+      "paired_with": "h05",
+      "transform": "add_derivatives_and_permute"
+    },
+    {
+      "id": "h08",
+      "stratum": "core",
+      "observations": [
+        {
+          "observation_id": "r02",
+          "claim_event": "E2",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r02",
+          "receipt_signature": "sig-r02",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r06",
+          "claim_event": "E3",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r06",
+          "receipt_signature": "sig-r06",
+          "verified": true,
+          "verdict": "-"
+        },
+        {
+          "observation_id": "r01",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r01",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        }
+      ],
+      "expected_decision": "abstain",
+      "rationale": "A separately observed negative verdict challenges the two positives.",
+      "paired_with": "h05",
+      "transform": "add_verified_contradiction"
+    },
+    {
+      "id": "h09",
+      "stratum": "core",
+      "observations": [
+        {
+          "observation_id": "r08",
+          "claim_event": "E2",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r08",
+          "receipt_signature": "sig-r08",
+          "verified": true,
+          "verdict": "-"
+        },
+        {
+          "observation_id": "r07",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r07",
+          "receipt_signature": "sig-r07",
+          "verified": true,
+          "verdict": "-"
+        }
+      ],
+      "expected_decision": "select_negative",
+      "rationale": "Two independent negative events agree.",
+      "paired_with": "h05",
+      "transform": "invert_all_verdicts_and_permute"
+    },
+    {
+      "id": "h10",
+      "stratum": "core",
+      "observations": [
+        {
+          "observation_id": "r07",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r07",
+          "receipt_signature": "sig-r07",
+          "verified": true,
+          "verdict": "-"
+        },
+        {
+          "observation_id": "r09",
+          "claim_event": "E1",
+          "kind": "replay",
+          "public_locator": "https://example.invalid/public/receipt/r09",
+          "receipt_signature": "sig-r09",
+          "verified": true,
+          "verdict": "-"
+        }
+      ],
+      "expected_decision": "abstain",
+      "rationale": "Replaying a failed execution is still one failed event.",
+      "paired_with": "h03",
+      "transform": "invert_all_verdicts"
+    },
+    {
+      "id": "h11",
+      "stratum": "stress",
+      "observations": [
+        {
+          "observation_id": "r10",
+          "claim_event": "E3",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r10",
+          "receipt_signature": "sig-r10",
+          "verified": false,
+          "verdict": "-"
+        },
+        {
+          "observation_id": "r02",
+          "claim_event": "E2",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r02",
+          "receipt_signature": "sig-r02",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r01",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r01",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        }
+      ],
+      "expected_decision": "select_positive",
+      "rationale": "The extra claim has no verified supporting receipt.",
+      "paired_with": "h05",
+      "transform": "add_unverified_contradiction"
+    },
+    {
+      "id": "h12",
+      "stratum": "stress",
+      "observations": [
+        {
+          "observation_id": "r01",
+          "claim_event": "E1",
+          "kind": "execute",
+          "public_locator": "https://example.invalid/public/receipt/r01",
+          "receipt_signature": "sig-r01",
+          "verified": true,
+          "verdict": "+"
+        },
+        {
+          "observation_id": "r11",
+          "claim_event": null,
+          "kind": "mirror",
+          "public_locator": "https://example.invalid/public/receipt/r11",
+          "receipt_signature": "sig-r11",
+          "verified": true,
+          "verdict": "+"
+        }
+      ],
+      "expected_decision": "abstain",
+      "rationale": "A mirror with no origin event cannot establish a second execution.",
+      "paired_with": "h02",
+      "transform": "add_unbound_mirror"
+    }
+  ]
+}
