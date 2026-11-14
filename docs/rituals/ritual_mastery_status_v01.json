@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
-  "updated": "2026-11-13",
+  "updated": "2026-11-14",
   "current_focus": "four-direction-guardians",
   "next_new_ritual_allowed": false,
   "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
@@ -48,11 +48,11 @@
       "source_check": "5/5 guardian-direction-symbol names source-checked; not independent recall",
       "trap_bank": "12 documented corrections; not a closed-book score",
       "generated_shuffled_decks": 8,
-      "mastery_note": "First fully evidenced same-session three-pass textual session on 2026-11-13; retained context assistance, no independent delayed recall or mastery.",
+      "mastery_note": "2026-11-14: second separate-calendar-day three-pass textual session recorded, but prior chat content contaminated recall; all traps self-authored. No independent delayed mastery.",
       "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
       "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
-      "next_step": "Novel adversarial traps with answer-before-lookup and genuine delayed or assessor-independent recall across separate occasions; new third ritual still blocked.",
-      "context_assisted_retrieval_checks": 2,
+      "next_step": "External examiner-generated unfamiliar true/false and transfer questions, with answer committed before source lookup and genuinely isolated delayed recall if feasible; no third ritual.",
+      "context_assisted_retrieval_checks": 3,
       "same_day_context_assisted_rehearsals": 2,
       "latest_repeat": {
         "date": "2026-11-12",
@@ -63,21 +63,22 @@
         "independent_recall": false,
         "real_time_delay": false
       },
-      "completed_three_pass_textual_sessions": 1,
+      "completed_three_pass_textual_sessions": 2,
       "latest_session": {
-        "date": "2026-11-13",
-        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-13_1921_FA.md",
-        "machine_record": "docs/rituals/four_guardians_session_2026-11-13_1921.json",
-        "counted_three_passes": 3,
+        "date": "2026-11-14",
+        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-14_1929_FA.md",
+        "machine_record": "docs/rituals/four_guardians_session_2026-11-14_1929.json",
+        "full_passes_completed": 3,
         "each_pass_full_sequence": "5/5",
-        "guardians": "4/4 source aligned",
-        "adversarial_traps": "12/12 self-authored answers matched existing source bank; not independently assessed",
-        "original_source_rechecked": true,
-        "recall_mode": "context_assisted; first two passes committed before fresh lookup, not blind",
-        "session_complete_under_three_pass_rule": true,
-        "independent_delayed_recall": false,
+        "guardian_pairs": "4/4",
+        "mixed_traps": "12/12 self-authored, 4 true and 8 false",
         "independent_assessor": false,
-        "textual_mastery": false
+        "original_pdf_checked": true,
+        "prelookup_commit": "f390b7bc41ea63dd21e898ae6405ffc0b30348a5",
+        "recall_mode": "CONTEXT_ASSISTED_PRE_LOOKUP",
+        "independent_delayed_recall": false,
+        "textual_mastery": false,
+        "session_complete_under_three_pass_rule": true
       }
     }
   },
@@ -99,9 +100,9 @@
     "session_run_type": "two source-checked textual practice sessions, not embodied learning",
     "latest_followup_counts_as_new_delayed_session": false,
     "latest_followup_type": "same-conversation context-assisted retrieval and correction",
-    "latest_four_guardians_rehearsal_type": "three full context-assisted text passes across one session, source-checked; not independent delayed mastery",
+    "latest_four_guardians_rehearsal_type": "three source-checked text passes; context assisted; four positive and eight negative self-authored traps; no independent delayed test",
     "latest_four_guardians_session_complete_under_three_pass_rule": true,
-    "latest_four_guardians_session_date": "2026-11-13",
+    "latest_four_guardians_session_date": "2026-11-14",
     "latest_four_guardians_delayed_recall_verified": false
   },
   "owner_priority_override": {
