@@ -1,0 +1,20 @@
+name: DIOS NOUS Dialogue Research
+on:
+  push:
+    paths:
+      - 'examples/dios_nous/**'
+      - '.github/workflows/dios-nous-dialogue.yml'
+  pull_request:
+    paths:
+      - 'examples/dios_nous/**'
+      - '.github/workflows/dios-nous-dialogue.yml'
+jobs:
+  unittest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m unittest discover -s examples/dios_nous -v
+      - run: python -m examples.dios_nous --db /tmp/dios-nous-demo.sqlite demo
