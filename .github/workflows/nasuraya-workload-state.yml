@@ -30,3 +30,20 @@ jobs:
       - run: python3 -m unittest discover -s tests -p test_nasu_awake_health.py -v
       - run: python3 -m py_compile tools/bridge_jobs/nasu_workload_export.py tools/nasu_workload_import.py tools/nasuraya_linux_bridge.py
       - run: bash -n tools/install_nasu_workload_state.sh
+  windows-large-encryption:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - shell: python
+        run: |
+          import importlib.util, os
+          spec=importlib.util.spec_from_file_location('exporter','tools/bridge_jobs/nasu_workload_export.py')
+          exporter=importlib.util.module_from_spec(spec);spec.loader.exec_module(exporter)
+          raw=os.urandom(3*1024*1024)
+          cipher=exporter.encrypt_aes(raw,os.urandom(32),os.urandom(16))
+          assert len(cipher)==len(raw)+16
+          print('WINDOWS_POWERSHELL_LARGE_ENCRYPTION=OK')

@@ -52,14 +52,16 @@ def wrap_key(raw,xml):
 
 PS_ENCRYPT=r'''
 $ErrorActionPreference='Stop'
-$v=ConvertFrom-Json ([Console]::In.ReadToEnd())
+$keyLine=[Console]::In.ReadLine()
+$ivLine=[Console]::In.ReadLine()
+$data=[Console]::In.ReadToEnd()
 $a=[System.Security.Cryptography.Aes]::Create()
 try {
-  $a.Key=[Convert]::FromBase64String($v.key)
-  $a.IV=[Convert]::FromBase64String($v.iv)
+  $a.Key=[Convert]::FromBase64String($keyLine)
+  $a.IV=[Convert]::FromBase64String($ivLine)
   $a.Mode=[System.Security.Cryptography.CipherMode]::CBC
   $a.Padding=[System.Security.Cryptography.PaddingMode]::PKCS7
-  $bytes=[Convert]::FromBase64String($v.data)
+  $bytes=[Convert]::FromBase64String($data)
   $e=$a.CreateEncryptor()
   try { $cipher=$e.TransformFinalBlock($bytes,0,$bytes.Length) }
   finally { $e.Dispose() }
@@ -71,10 +73,14 @@ def powershell(script,payload,timeout=25,executable=None):
     exe=executable or str(Path(os.environ.get('SystemRoot',r'C:\Windows'))/'System32/WindowsPowerShell/v1.0/powershell.exe')
     encoded=b64(script.encode('utf-16le'))
     return subprocess.run([exe,'-NoLogo','-NoProfile','-NonInteractive','-EncodedCommand',encoded],
-                          input=canonical(payload),capture_output=True,timeout=timeout,check=False)
+                          input=payload if isinstance(payload,bytes) else canonical(payload),
+                          capture_output=True,timeout=timeout,check=False)
 
 def encrypt_aes(raw,key,iv,executable=None):
-    result=powershell(PS_ENCRYPT,{'key':b64(key),'iv':b64(iv),'data':b64(raw)},executable=executable)
+    # Windows PowerShell 4 ConvertFrom-Json has a small serializer limit.
+    # Keep large data out of that parser; keys still travel only via stdin.
+    payload=('\n'.join((b64(key),b64(iv),b64(raw)))).encode('ascii')
+    result=powershell(PS_ENCRYPT,payload,executable=executable)
     if result.returncode:raise RuntimeError('local encryption failed')
     cipher=base64.b64decode(result.stdout.strip(),validate=True)
     if not len(raw)<len(cipher)<=len(raw)+16 or len(cipher)%16:raise ValueError('cipher length')

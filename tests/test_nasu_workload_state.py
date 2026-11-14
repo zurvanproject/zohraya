@@ -141,4 +141,12 @@ class StateMigrationTests(unittest.TestCase):
         meta,cipher=exporter.seal(raw,'awake_workshop',counts,encrypt=encrypt,keys=self.keys)
         self.assertEqual(importer.unwrap(meta,cipher,self.key),raw)
 
+    @unittest.skipUnless(os.environ.get('NASU_TEST_POWERSHELL'),'PowerShell integration runs in CI')
+    def test_large_payload_bypasses_legacy_powershell_json_limit(self):
+        raw=os.urandom(3*1024*1024)
+        counts={'files':1,'sqlite_snapshots':0,'excluded':0}
+        encrypt=lambda value,key,iv:exporter.encrypt_aes(value,key,iv,os.environ['NASU_TEST_POWERSHELL'])
+        meta,cipher=exporter.seal(raw,'model_worker',counts,encrypt=encrypt,keys=self.keys)
+        self.assertEqual(importer.unwrap(meta,cipher,self.key),raw)
+
 if __name__=='__main__':unittest.main()
