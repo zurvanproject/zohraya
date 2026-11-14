@@ -1,0 +1,41 @@
+name: Nasuraya retained Ubuntu workshop validation
+on:
+  push:
+    paths:
+      - 'tools/nasu_linux_ingress.py'
+      - 'tools/install_nasu_linux_ingress.sh'
+      - 'tools/bridge_jobs/nasu_workshop_readiness.py'
+      - 'tests/test_nasu_linux_ingress.py'
+      - '.github/workflows/nasuraya-linux-ingress.yml'
+  pull_request:
+    paths:
+      - 'tools/nasu_linux_ingress.py'
+      - 'tools/install_nasu_linux_ingress.sh'
+      - 'tools/bridge_jobs/nasu_workshop_readiness.py'
+      - 'tests/test_nasu_linux_ingress.py'
+      - '.github/workflows/nasuraya-linux-ingress.yml'
+permissions:
+  contents: read
+jobs:
+  retained-history:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the two exact public source archives
+        run: |
+          python3 -B - <<'PY'
+          import os, sys
+          from pathlib import Path
+          sys.path.insert(0,'tools')
+          import nasu_workload_sources as source
+          home=Path(os.environ['RUNNER_TEMP'])/'ingress-sources';home.mkdir()
+          for item in source.catalog(Path('tools/nasu_workload_catalog.json')):
+              if item['id'] in ('runtime_78kg','awake_ingress'):print(source.stage(item,home))
+          PY
+      - name: Continue synthetic history and preserve completed goals
+        run: python3 -B -m unittest discover -s tests -p test_nasu_linux_ingress.py -v
+        env:
+          NASU_INGRESS_SOURCES: ${{ runner.temp }}/ingress-sources
+      - run: bash -n tools/install_nasu_linux_ingress.sh
+      - run: python3 -m py_compile tools/nasu_linux_ingress.py tools/bridge_jobs/nasu_workshop_readiness.py tools/nasuraya_linux_bridge.py
