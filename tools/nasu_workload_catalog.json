@@ -1,0 +1,97 @@
+{
+  "schema": "nasuraya-workload-sources/1",
+  "repository": "zurvanproject/zohraya",
+  "observed_at": "2026-11-14",
+  "components": [
+    {
+      "id": "runtime_78kg",
+      "commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec",
+      "tree": "6ba874c28bd8eec67dde94d6e66b0acc2c87223f",
+      "title": "Shared 78 kg simulated body / DIOS runtime",
+      "readiness": "awaiting_windows_workshop_state",
+      "blob_count": 595,
+      "total_bytes": 15701499
+    },
+    {
+      "id": "awake_ingress",
+      "commit": "320ce8adcc789f11f8966ca2c7251fd860fa44f6",
+      "tree": "cbb9679c272b982a941bd93b818ac4e2914b5130",
+      "title": "Pinned simulated evidence ingress",
+      "readiness": "awaiting_windows_workshop_state",
+      "blob_count": 341,
+      "total_bytes": 4472540
+    },
+    {
+      "id": "moltbook_gateway",
+      "commit": "62033249133ffb12fac1a787ff0abf037e51c3f9",
+      "tree": "631b268f3e66283f893968cdc1420f7a302c8cc2",
+      "title": "Moltbook gateway",
+      "readiness": "awaiting_private_state_and_credential",
+      "blob_count": 339,
+      "total_bytes": 4470866
+    },
+    {
+      "id": "public_memory",
+      "commit": "1987da5fc5ebed18cb43372b6ea776b0b4804629",
+      "tree": "a4887de92350c64c187c548161d0d07b89198956",
+      "title": "Public discussion memory and reflection tools",
+      "readiness": "awaiting_windows_memory_archive",
+      "blob_count": 342,
+      "total_bytes": 4538631
+    },
+    {
+      "id": "body_atlas",
+      "commit": "84d2092da057f033139034ef9a554b61350a0be8",
+      "tree": "0f6ab42154519ad52f901dd5baadfd09ee0a3517",
+      "title": "Whole-body atlas source",
+      "readiness": "awaiting_original_results",
+      "blob_count": 329,
+      "total_bytes": 4419859
+    },
+    {
+      "id": "research_24h",
+      "commit": "f9ae14e28cacb1e21313ec4ba9b8cd1247e458fa",
+      "tree": "99aee945450292f1c1acc2b7992ef453f72ad77f",
+      "title": "Completed 96-cycle study source",
+      "readiness": "awaiting_original_results_do_not_replay",
+      "blob_count": 329,
+      "total_bytes": 4407818
+    },
+    {
+      "id": "research_rolyel",
+      "commit": "4de2f1e0ff2a72a9d0cd0688acca62d52f1f8654",
+      "tree": "cd10fa5f211747493469fe10603c8cc057b3e454",
+      "title": "Rolyel study dependency",
+      "readiness": "historical_source_only",
+      "blob_count": 329,
+      "total_bytes": 4410421
+    },
+    {
+      "id": "legacy_tadash",
+      "commit": "33c669113f08da032c75d4eaf2f778d515d7669f",
+      "tree": "47178446794651b61ec22b85f2f92074891d6009",
+      "title": "Legacy 195 kg native runtime bundle",
+      "readiness": "historical_archive_not_current_body",
+      "blob_count": 368,
+      "total_bytes": 4993618
+    },
+    {
+      "id": "model_worker",
+      "commit": "df08e5cb113991e5a22bedabe2ea7ba984d79f9a",
+      "tree": "63043a18c470399d0cce01a618f4e3e1e4925142",
+      "title": "Windows model-worker bundle",
+      "readiness": "awaiting_private_state_credential_and_linux_port",
+      "blob_count": 397,
+      "total_bytes": 5592742
+    },
+    {
+      "id": "windows_bridge",
+      "commit": "65a5828a115e5471abd517ccfc1f499cad1380d3",
+      "tree": "237772111d7d241f3c2c7d8730c06457ac65af28",
+      "title": "Original Windows Bridge v2",
+      "readiness": "historical_source_only",
+      "blob_count": 339,
+      "total_bytes": 4455234
+    }
+  ]
+}
