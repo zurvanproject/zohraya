@@ -4,6 +4,7 @@ on:
     paths:
       - 'tools/bridge_jobs/nasu_migration_inventory.py'
       - 'tools/nasu_workload*'
+      - 'tools/validate_nasu_workload_archives.py'
       - 'tools/install_nasu_workloads.sh'
       - 'tools/nasuraya_linux_bridge.py'
       - 'tools/nasu_migration_bridge_recovery.ps1'
@@ -13,6 +14,7 @@ on:
     paths:
       - 'tools/bridge_jobs/nasu_migration_inventory.py'
       - 'tools/nasu_workload*'
+      - 'tools/validate_nasu_workload_archives.py'
       - 'tools/install_nasu_workloads.sh'
       - 'tools/nasuraya_linux_bridge.py'
       - 'tools/nasu_migration_bridge_recovery.ps1'
@@ -35,3 +37,12 @@ jobs:
           $errors = $null
           $null = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'tools/nasu_migration_bridge_recovery.ps1'), [ref]$tokens, [ref]$errors)
           if ($errors.Count -gt 0) { $errors | ForEach-Object { Write-Error $_.Message }; exit 1 }
+  public-archive-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify actual immutable public archives without executing workloads
+        run: python3 tools/validate_nasu_workload_archives.py

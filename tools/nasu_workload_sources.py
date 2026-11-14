@@ -96,7 +96,13 @@ def unpack(raw,component,files,destination):
                 continue
             relative(name)
             if name not in files or name in seen:raise ValueError('unexpected or duplicate file')
-            if not stat.S_ISREG(entry.external_attr>>16):raise ValueError('archive symlink or special file')
+            # Some codeload archives omit Unix mode metadata entirely. The Git
+            # tree is authoritative: only 100644/100755 blobs reach this point,
+            # and we create plain files ourselves after verifying their hashes.
+            # Still reject explicit symlink/device types and the DOS dir flag.
+            file_type=stat.S_IFMT(entry.external_attr>>16)
+            if file_type not in (0,stat.S_IFREG) or entry.external_attr&0x10:
+                raise ValueError('archive symlink or special file')
             if entry.file_size!=files[name]['size']:raise ValueError('file size differs')
             total+=entry.file_size
             if total>MAX_RAW:raise ValueError('unpacked bound')
@@ -215,8 +221,27 @@ def main():
             if args.action=='stage-next' and result.get('source')!='verified_existing':break
     finally:lock.unlink()
 
+def failure_summary(exc):
+    # Only fixed public validation labels may leave this process. Unexpected
+    # network/OS messages can contain paths or URLs and are never published.
+    labels={
+        'archive symlink or special file':'ARCHIVE_FILE_TYPE',
+        'archive prefix':'ARCHIVE_PREFIX',
+        'unsafe archive path':'ARCHIVE_PATH',
+        'Git blob mismatch':'BLOB_HASH',
+        'tree identity or completeness':'TREE_IDENTITY',
+        'source counts differ':'TREE_COUNTS',
+        'file size differs':'FILE_SIZE',
+        'unexpected or duplicate file':'ARCHIVE_FILE_SET',
+        'missing archive files':'ARCHIVE_INCOMPLETE',
+        'staged source changed':'EXISTING_SOURCE_CHANGED',
+        'source file set changed':'EXISTING_FILE_SET_CHANGED',
+    }
+    code=labels.get(str(exc),'UNCLASSIFIED') if isinstance(exc,ValueError) else 'UNCLASSIFIED'
+    return 'WORKLOAD_SOURCES=BLOCKED;CAUSE='+type(exc).__name__+';CHECK='+code
+
 if __name__=='__main__':
     try:main()
     except Exception as exc:
-        print('WORKLOAD_SOURCES=BLOCKED;CAUSE='+type(exc).__name__,flush=True)
+        print(failure_summary(exc),flush=True)
         raise SystemExit(2)

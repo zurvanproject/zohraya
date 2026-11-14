@@ -107,3 +107,28 @@ and distinct source/runtime statuses. CI also checks Bash/Python syntax and
 parses the PowerShell recovery without executing it. These checks do not
 prove production installation or Windows task recovery. Only subsequent
 matched server receipts can establish those outcomes.
+
+## First production source-staging failure and correction
+
+The user's Ubuntu installation output confirms `WORKLOAD_TOOLS=INSTALLED`
+and all 13 initial unit tests passing, followed by `CAUSE=ValueError` before
+any source receipt. All ten components remained missing. The subsequent
+matched Awake health receipt still reports 57 events, 8 questions, 27 ticks,
+28 ledger records, and last service success:
+https://github.com/zurvanproject/zohraya/issues/212#issuecomment-6877263464
+
+An independent download of the actual first codeload archive reproduced the
+format mismatch: all 595 file entries have `external_attr == 0`, with no Unix
+file type. The old validator incorrectly required an explicit regular-file
+type. The corrected validator permits an omitted type only alongside the
+existing pinned regular Git blob mode, path, size, and content-hash checks.
+It still rejects explicit symlinks, devices, and DOS directory flags, and
+creates regular files itself with permissions derived from the Git tree.
+
+Five regression tests cover the zero-metadata archive, permissions-only
+metadata, explicit special files, DOS directory flags, and sanitized error
+labels. An explicit integration check downloads all ten actual immutable
+archives into a temporary directory, verifies their contents, and executes
+none of the downloaded workloads. CI now runs that integration check as a
+separate job. This corrects the source-staging tool; original Windows state
+and workload activation remain separate migration steps.
