@@ -226,5 +226,25 @@ def run():
 
 if __name__=="__main__":
     try:status=run()
-    except BaseException as exc:status="IMPORT=BLOCKED;CAUSE="+type(exc).__name__
+    except BaseException as exc:
+        labels={
+            "previous imported source receipt missing":"OLD_RECEIPT",
+            "local state differs from previous import":"LOCAL_DRIFT",
+            "stage is nonempty and differs":"NONEMPTY_STAGE",
+            "new snapshot has fewer records":"NONMONOTONIC",
+            "history changed or missing in candidate":"HISTORY_MISMATCH",
+            "earlier question continuity invalid":"QUESTION_MISMATCH",
+            "stage sqlite sidecar exists; refusing overwrite":"SIDECAR",
+            "old stage backup conflict":"OLD_BACKUP",
+            "old migration receipt ID invalid":"RECEIPT_ID",
+            "old backup integrity failure":"OLD_BACKUP_INTEGRITY",
+            "interrupted previous stage backup":"INCOMPLETE_BACKUP",
+            "unreviewed imported staging file":"INCOMING_EXISTS",
+            "source schema/count invalid":"SCHEMA",
+            "original snapshot hash differs":"HASH",
+            "cannot overwrite an activated Awake state":"ALREADY_ACTIVE",
+            "inconsistent archive metadata":"INCONSISTENT_ARCHIVE",
+        }
+        detail=labels.get(str(exc),"UNKNOWN")
+        status="IMPORT=BLOCKED;CAUSE="+type(exc).__name__+";DETAIL="+detail
     print(status)
