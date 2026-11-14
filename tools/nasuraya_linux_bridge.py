@@ -21,7 +21,7 @@ HOME = pathlib.Path("/var/lib/nasuraya")
 TOKEN_PATH = HOME / "github-token"
 SEEN_PATH = HOME / "seen.json"
 PROJECT = HOME / "zohraya"
-COMMAND_RE = re.compile(r"(?m)^\s*nasu-linux:\s*(status|disk|python|repo|sync|test|help)\s*$", re.I)
+COMMAND_RE = re.compile(r"(?m)^\s*nasu-linux:\s*(status|disk|python|repo|sync|test|offline|awake-stage|awake-status|help)\s*$", re.I)
 RESULT_RE = re.compile(r"(?m)^nasu-linux-result request_id=(\d+)\b")
 
 def api(method, path, data=None):
@@ -40,9 +40,9 @@ def api(method, path, data=None):
         raw = resp.read(500_000)
         return json.loads(raw.decode("utf-8"))
 
-def command(argv, timeout=30):
+def command(argv, timeout=30, cwd=PROJECT):
     try:
-        result = subprocess.run(argv, cwd=str(PROJECT), capture_output=True, text=True,
+        result = subprocess.run(argv, cwd=str(cwd), capture_output=True, text=True,
                                 timeout=timeout, check=False, env={
                                     "PATH": "/usr/local/bin:/usr/bin:/bin",
                                     "HOME": str(HOME), "LANG": "C.UTF-8",
@@ -69,7 +69,15 @@ def dispatch(action):
     if action == "test":
         return command(["/usr/bin/python3", "-m", "unittest", "discover",
                         "-s", "examples/nasuraya_agent_loop/tests", "-v"], timeout=120)
-    return "Allowed: status, disk, python, repo, sync, test, help. Arbitrary shell is DISABLED."
+    if action == "offline":
+        return command(["/usr/bin/python3", "/usr/local/lib/nasuraya/continuity.py", "status"]) + "\n" + command(
+            ["/usr/bin/python3", "/usr/local/lib/nasuraya/continuity.py", "verify"])
+    if action == "awake-stage":
+        return command(["/usr/bin/bash", str(PROJECT / "tools/nasuraya_stage_awake_unprivileged.sh")], timeout=180)
+    if action == "awake-status":
+        return command(["/usr/bin/python3", "-m", "tadash_awake", "status", "--root",
+                        str(HOME / "awake-stage")], cwd=HOME / "awake-src")
+    return "Allowed: status, disk, python, repo, sync, test, offline, awake-stage, awake-status, help. No arbitrary shell."
 
 def all_comments():
     comments = []
