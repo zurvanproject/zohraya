@@ -30,7 +30,7 @@ class OfflineContinuityTests(unittest.TestCase):
         self.assertEqual(module.verify(self.db)["records"], 1)
 
     def test_tampering_fails_hash_chain(self):
-        with patch.object(module, "observe", return_value={}):
+        with patch.object(module, "observe", return_value={"cpu": 1}):
             module.tick(self.db, self.path, self.now)
         self.db.execute("UPDATE observations SET metrics='{}'")
         with self.assertRaisesRegex(RuntimeError, "hash chain"):
