@@ -103,6 +103,9 @@ def seed(db, path):
             raise ValueError("Seed revision changed; human review required")
         db.execute("INSERT OR IGNORE INTO metadata VALUES ('seed_sha',?)", (fingerprint,))
         for pos, item in enumerate(tasks):
+            existing = db.execute("SELECT ordinal,question FROM tasks WHERE id=?", (item["id"],)).fetchone()
+            if existing and existing != (pos, item["question"]):
+                raise ValueError("Curated question content changed; review required")
             db.execute("INSERT OR IGNORE INTO tasks(id,ordinal,question) VALUES (?,?,?)",
                        (item["id"], pos, item["question"]))
         db.commit()
@@ -136,6 +139,8 @@ def run(db, source, now=None, infer=None):
     if now.tzinfo is None or now.utcoffset() != dt.timedelta(0):
         raise ValueError("UTC required")
     version = seed(db, source)
+    if infer is None and (not MODEL.is_file() or not BIN.is_file()):
+        return {"status": "blocked_model_missing", "provenance": "no_new_evidence"}
     at = now.isoformat(timespec="seconds")
     db.execute("BEGIN IMMEDIATE")
     try:
@@ -204,6 +209,10 @@ def run(db, source, now=None, infer=None):
 
 
 def verify(db):
+    if db.execute("SELECT COUNT(*) FROM tasks").fetchone()[0] != 26:
+        raise ValueError("Research queue not initialized or modified")
+    if not db.execute("SELECT 1 FROM metadata WHERE key='seed_sha'").fetchone():
+        raise ValueError("Research seed hash missing")
     if db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
         raise ValueError("Corrupt research SQLite")
     prev = ZERO
