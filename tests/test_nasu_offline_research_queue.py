@@ -7,6 +7,7 @@ import sqlite3
 import subprocess
 import tempfile
 import unittest
+from unittest import mock
 
 ROOT=Path(__file__).resolve().parents[1]
 MOD=ROOT/"tools"/"nasu_offline_research_queue.py"
@@ -45,7 +46,7 @@ class ResearchQueueTests(unittest.TestCase):
         self.assertEqual(labels,[("UNVERIFIED_DRAFT",)])
 
     def test_missing_local_model_does_not_spend_attempts(self):
-        with unittest.mock.patch.object(queue,"MODEL",self.base/"does-not-exist.gguf"):
+        with mock.patch.object(queue,"MODEL",self.base/"does-not-exist.gguf"):
             result=queue.run(self.db,SEEDS,T0)
         self.assertEqual(result["status"],"blocked_model_missing")
         self.assertEqual(self.db.execute("SELECT SUM(attempts) FROM tasks").fetchone()[0],0)
@@ -70,8 +71,6 @@ class ResearchQueueTests(unittest.TestCase):
         self.db.execute("UPDATE tasks SET question='HACKED' WHERE ordinal=0")
         with self.assertRaises(ValueError):
             queue.seed(self.db,SEEDS)
-        self.db.execute("UPDATE tasks SET question=(SELECT json_extract(value,'$.question') FROM json_each('{}')) "
-                        "WHERE 0") if False else None
         raw=json.loads(SEEDS.read_text())
         raw["tasks"][0]["question"]="New question must be explicitly reviewed before continuation."
         test_seed=self.base/"mutated.json"
