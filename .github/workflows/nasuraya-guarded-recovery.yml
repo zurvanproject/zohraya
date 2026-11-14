@@ -1,0 +1,38 @@
+name: Nasuraya guarded recovery (offline preflight)
+on:
+  pull_request:
+    paths:
+      - 'tools/nasuraya_bridge_v2_guarded_recovery.ps1'
+      - '.github/workflows/nasuraya-guarded-recovery.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  parse:
+    runs-on: windows-2022
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse using Windows PowerShell 5.1 without executing server operations
+        shell: powershell
+        run: |
+          $tokens = $null
+          $errors = $null
+          $path = 'tools/nasuraya_bridge_v2_guarded_recovery.ps1'
+          [void][System.Management.Automation.Language.Parser]::ParseFile(
+            (Resolve-Path $path).Path, [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) {
+            $errors | ForEach-Object { Write-Error $_.Message }
+            exit 1
+          }
+          Write-Host 'PARSE=OK;ACTUAL_VPS_NOT_TESTED'
+      - name: Verify no edits to bridge and explicitly guarded restart
+        shell: powershell
+        run: |
+          $text = [IO.File]::ReadAllText('tools/nasuraya_bridge_v2_guarded_recovery.ps1')
+          $startCalls = ([regex]::Matches($text, '(?m)^\s*Start-ScheduledTask\s')).Count
+          $stopCalls = ([regex]::Matches($text, '(?m)^\s*Stop-ScheduledTask\s')).Count
+          if ($startCalls -ne 1 -or $stopCalls -ne 0) { throw 'Unexpected task mutation sites' }
+          if ($text -notmatch 'param\(\[switch\]\$RecoverIfSafe\)') { throw 'Missing explicit recovery switch' }
+          if ($text -notmatch 'JournalContinuityNotProven') { throw 'Missing journal safety check' }
+          Write-Host 'MUTATION_SCOPE=START_EXISTING_TASK_ONLY'
