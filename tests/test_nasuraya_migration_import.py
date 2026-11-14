@@ -53,5 +53,47 @@ class TransferTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"two-recipient"):
             reader.archive(["NSAB1_DONE ID="+"a"*32+" EV=1 Q=0 T=0 L=0"])
 
+
+class RefreshTests(unittest.TestCase):
+    def make_db(self,path,extra=False,alter=False):
+        with sqlite3.connect(path) as db:
+            db.executescript("""
+            CREATE TABLE control(name TEXT PRIMARY KEY,value TEXT);
+            INSERT INTO control VALUES('schema','tadash-awake/1');
+            INSERT INTO control VALUES('paused','1');
+            CREATE TABLE evidence(id TEXT PRIMARY KEY,topic TEXT,payload TEXT);
+            CREATE TABLE questions(topic TEXT PRIMARY KEY,id TEXT,kind TEXT,question TEXT,
+                evidence_hash TEXT,revision INTEGER,created_at TEXT,updated_at TEXT);
+            CREATE TABLE ticks(seq INTEGER PRIMARY KEY,at TEXT,status TEXT,topic TEXT);
+            CREATE TABLE ledger(seq INTEGER PRIMARY KEY,at TEXT,action TEXT,detail TEXT);
+            INSERT INTO evidence VALUES('ev1','topic1','{"score":1}');
+            INSERT INTO ticks VALUES(1,'t','tick','topic1');
+            INSERT INTO ledger VALUES(1,'t','ingest','ok');
+            INSERT INTO questions VALUES('topic1','qid1','check','why','hash',1,'t','t');
+            """)
+            if alter: db.execute("UPDATE evidence SET payload='wrong' WHERE id='ev1'")
+            if extra:
+                db.execute("INSERT INTO evidence VALUES('ev2','topic1','second')")
+                db.execute("INSERT INTO ticks VALUES(2,'t2','tick','topic1')")
+                db.execute("INSERT INTO ledger VALUES(2,'t2','ingest','ok')")
+                db.execute("UPDATE questions SET revision=2,updated_at='t2'")
+
+    def test_history_forward_only(self):
+        with tempfile.TemporaryDirectory() as td:
+            old=Path(td)/"old.sqlite3"
+            new=Path(td)/"new.sqlite3"
+            self.make_db(old)
+            self.make_db(new,extra=True)
+            reader.verify_superset(old,new,[1,1,1,1],[2,1,2,2])
+
+    def test_history_tampering_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            old=Path(td)/"old.sqlite3"
+            new=Path(td)/"new.sqlite3"
+            self.make_db(old)
+            self.make_db(new,extra=True,alter=True)
+            with self.assertRaisesRegex(ValueError,"history changed"):
+                reader.verify_superset(old,new,[1,1,1,1],[2,1,2,2])
+
 if __name__=="__main__":
     unittest.main()
