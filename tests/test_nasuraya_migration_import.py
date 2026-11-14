@@ -81,6 +81,23 @@ class RefreshTests(unittest.TestCase):
                 db.execute("INSERT INTO ledger VALUES(2,'t2','ingest','ok')")
                 db.execute("UPDATE questions SET revision=2,updated_at='t2'")
 
+    def test_idle_sqlite_wal_checkpoint_before_swap(self):
+        with tempfile.TemporaryDirectory() as td:
+            dbfile=Path(td)/"stage.sqlite3"
+            self.make_db(dbfile)
+            db=sqlite3.connect(dbfile)
+            try:
+                db.execute("PRAGMA journal_mode=WAL")
+                db.execute("UPDATE control SET value='1' WHERE name='paused'")
+                db.commit()
+            finally:
+                db.close()
+            reader.checkpoint_idle_stage(dbfile)
+            with sqlite3.connect(dbfile) as db:
+                self.assertEqual(db.execute("PRAGMA journal_mode").fetchone()[0],"delete")
+            self.assertFalse(Path(str(dbfile)+"-wal").exists())
+            self.assertFalse(Path(str(dbfile)+"-shm").exists())
+
     def test_history_forward_only(self):
         with tempfile.TemporaryDirectory() as td:
             old=Path(td)/"old.sqlite3"
