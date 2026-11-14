@@ -141,6 +141,21 @@ def verify_superset(older_path, newer_path, previous_counts, new_counts):
             if row is None or row[0]!=ident or row[1]<revision or row[2]!=created:
                 raise ValueError("earlier question continuity invalid")
 
+def checkpoint_idle_stage(stage):
+    """Safely finalize an idle, paused SQLite WAL before a verified state swap."""
+    with sqlite3.connect(stage,timeout=15) as db:
+        if db.execute("SELECT value FROM control WHERE name='paused'").fetchone()!=("1",):
+            raise ValueError("stage must be paused to checkpoint")
+        row=db.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
+        if row is None or row[0]!=0:
+            raise ValueError("stage SQLite WAL is busy")
+        mode=db.execute("PRAGMA journal_mode=DELETE").fetchone()[0]
+        if mode.lower()!="delete":
+            raise ValueError("could not seal idle SQLite WAL")
+    for suffix in ("-wal","-shm"):
+        if (stage.parent/(stage.name+suffix)).exists():
+            raise ValueError("stage sqlite sidecar exists; refusing overwrite")
+
 def backup_old_stage(stage, original_dir, old_report):
     ident=old_report.get("id")
     if not ID_RE.fullmatch(str(ident)):
@@ -201,9 +216,7 @@ def run():
                 if previous.get("raw_sha256")==meta["RAW"] and current==expected:
                     return "IMPORT=ALREADY;EV="+str(counts[0])+";Q="+str(counts[1])+";T="+str(counts[2])+";L="+str(counts[3])
                 verify_superset(STAGE,rawfile,current,expected)
-            for suffix in ("-wal","-shm"):
-                if (STAGE.parent/(STAGE.name+suffix)).exists():
-                    raise ValueError("stage sqlite sidecar exists; refusing overwrite")
+            checkpoint_idle_stage(STAGE)
             if current!=[0,0,0,0]:
                 backup_old_stage(STAGE,ORIGINAL,previous)
         incoming=STAGE.parent/("awake-"+archive_id+".sqlite3")
@@ -235,6 +248,9 @@ if __name__=="__main__":
             "history changed or missing in candidate":"HISTORY_MISMATCH",
             "earlier question continuity invalid":"QUESTION_MISMATCH",
             "stage sqlite sidecar exists; refusing overwrite":"SIDECAR",
+            "stage SQLite WAL is busy":"WAL_BUSY",
+            "stage must be paused to checkpoint":"STAGE_ACTIVE",
+            "could not seal idle SQLite WAL":"WAL_SEAL",
             "old stage backup conflict":"OLD_BACKUP",
             "old migration receipt ID invalid":"RECEIPT_ID",
             "old backup integrity failure":"OLD_BACKUP_INTEGRITY",
