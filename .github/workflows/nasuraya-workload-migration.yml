@@ -5,6 +5,8 @@ on:
       - 'tools/bridge_jobs/nasu_migration_inventory.py'
       - 'tools/nasu_workload*'
       - 'tools/install_nasu_workloads.sh'
+      - 'tools/nasuraya_linux_bridge.py'
+      - 'tools/nasu_migration_bridge_recovery.ps1'
       - 'tests/test_nasu_workload*'
       - '.github/workflows/nasuraya-workload-migration.yml'
   pull_request:
@@ -12,6 +14,8 @@ on:
       - 'tools/bridge_jobs/nasu_migration_inventory.py'
       - 'tools/nasu_workload*'
       - 'tools/install_nasu_workloads.sh'
+      - 'tools/nasuraya_linux_bridge.py'
+      - 'tools/nasu_migration_bridge_recovery.ps1'
       - 'tests/test_nasu_workload*'
       - '.github/workflows/nasuraya-workload-migration.yml'
 jobs:
@@ -22,3 +26,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 -m unittest discover -s tests -p 'test_nasu_workload*.py' -v
+      - run: python3 -m py_compile tools/nasu_workload_sources.py tools/nasuraya_linux_bridge.py tools/bridge_jobs/nasu_migration_inventory.py
+      - run: bash -n tools/install_nasu_workloads.sh
+      - name: Parse guarded recovery without executing it
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $errors = $null
+          $null = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'tools/nasu_migration_bridge_recovery.ps1'), [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) { $errors | ForEach-Object { Write-Error $_.Message }; exit 1 }
