@@ -204,43 +204,64 @@ def run():
         rawfile=ORIGINAL/("windows-awake-"+meta["RAW"][:16]+".sqlite3")
         if not rawfile.exists():candidate.replace(rawfile)
         elif digest(rawfile.read_bytes())!=meta["RAW"]:raise ValueError("old original backup conflict")
-        if STAGE.exists():
-            current=inspect_db(STAGE)
-            previous_report_path=ORIGINAL/"latest-import.json"
-            if (ORIGINAL/"awake-control.json").exists():
-                raise ValueError("unexpected activation path")
-            control=ROOT/"awake-control.json"
-            if control.exists():
-                gate=json.loads(control.read_text())
-                if gate.get("enabled"):
-                    raise ValueError("cannot overwrite an activated Awake state")
-            if current!=[0,0,0,0]:
-                if not previous_report_path.is_file():
-                    raise ValueError("previous imported source receipt missing")
-                previous=json.loads(previous_report_path.read_text(encoding="utf-8"))
-                if previous.get("counts")!=current or previous.get("paused") is not True:
-                    raise ValueError("local state differs from previous import")
-                if previous.get("raw_sha256")==meta["RAW"] and current==expected:
-                    return "IMPORT=ALREADY;EV="+str(counts[0])+";Q="+str(counts[1])+";T="+str(counts[2])+";L="+str(counts[3])
-                verify_superset(STAGE,rawfile,current,expected)
-            checkpoint_idle_stage(STAGE)
-            if current!=[0,0,0,0]:
-                backup_old_stage(STAGE,ORIGINAL,previous)
-        incoming=STAGE.parent/("awake-"+archive_id+".sqlite3")
-        if incoming.exists():raise ValueError("unreviewed imported staging file")
-        incoming.write_bytes(raw)
-        with sqlite3.connect(incoming) as db:
-            db.execute("UPDATE control SET value='1' WHERE name='paused'")
-            db.commit()
-            db.execute("PRAGMA wal_checkpoint(TRUNCATE)")
-            db.execute("PRAGMA journal_mode=DELETE")
-        if inspect_db(incoming)!=expected:raise ValueError("working copy was corrupted")
-        incoming.replace(STAGE)
+        receipt_path=ORIGINAL/"latest-import.json"
+        control=ROOT/"awake-control.json"
+        if control.exists():
+            gate=json.loads(control.read_text(encoding="utf-8"))
+            if gate.get("enabled"):
+                raise ValueError("cannot overwrite an activated Awake state")
+        previous=json.loads(receipt_path.read_text(encoding="utf-8")) if receipt_path.exists() else None
+        if previous is not None:
+            old_path=Path(previous.get("working_db") or STAGE)
+            allowed=(old_path==STAGE or old_path.parent.parent==ORIGINAL/"working")
+            if not allowed or not old_path.is_file() or old_path.is_symlink():
+                raise ValueError("old working database reference is invalid")
+            current=inspect_db(old_path)
+            if current!=previous.get("counts") or previous.get("paused") is not True:
+                raise ValueError("local state differs from previous import")
+            if previous.get("raw_sha256")==meta["RAW"] and current==expected:
+                return "IMPORT=ALREADY;EV="+str(counts[0])+";Q="+str(counts[1])+";T="+str(counts[2])+";L="+str(counts[3])
+            verify_superset(old_path,rawfile,current,expected)
+        elif STAGE.exists():
+            if inspect_db(STAGE)!=[0,0,0,0]:
+                raise ValueError("unverified original working state")
+        # Each import gets a NEW dedicated directory; the previous WAL database
+        # and its -wal/-shm companions remain entirely untouched.
+        working=ORIGINAL/"working"/archive_id/"awake.sqlite3"
+        working.parent.mkdir(parents=True,mode=0o700,exist_ok=True)
+        if working.exists():
+            if working.is_symlink() or inspect_db(working)!=expected:
+                raise ValueError("existing versioned working copy conflict")
+            with sqlite3.connect(working) as db:
+                if db.execute("SELECT value FROM control WHERE name='paused'").fetchone()!=("1",):
+                    raise ValueError("existing versioned working copy is active")
+        else:
+            incoming=working.parent/"awake.sqlite3.new"
+            if incoming.exists():
+                raise ValueError("unreviewed versioned staging file")
+            incoming.write_bytes(raw)
+            db=sqlite3.connect(incoming,timeout=15)
+            try:
+                mode=db.execute("PRAGMA journal_mode=DELETE").fetchone()[0]
+                if mode.lower()!="delete":
+                    raise ValueError("versioned SQLite journal not sealed")
+                db.execute("UPDATE control SET value='1' WHERE name='paused'")
+                db.commit()
+            finally:
+                db.close()
+            if inspect_db(incoming)!=expected:
+                raise ValueError("versioned working copy corrupted")
+            incoming.replace(working)
         report={"id":archive_id,"raw_sha256":meta["RAW"],"counts":expected,
                 "offsite_cipher_sha256":data["offsite"][0]["ENC"],
-                "paused":True,"local_original":str(rawfile)}
-        (ORIGINAL/"latest-import.json").write_text(json.dumps(report,sort_keys=True))
-        return "IMPORT=OK;EV="+str(counts[0])+";Q="+str(counts[1])+";T="+str(counts[2])+";L="+str(counts[3])+";PAUSED=1;OFFSITE=YES"
+                "paused":True,"local_original":str(rawfile),"working_db":str(working)}
+        new_receipt=ORIGINAL/"latest-import.json.new"
+        if new_receipt.exists():
+            raise ValueError("interrupted previous import receipt")
+        new_receipt.write_text(json.dumps(report,sort_keys=True),encoding="utf-8")
+        os.chmod(new_receipt,0o600)
+        new_receipt.replace(receipt_path)
+        return "IMPORT=OK;EV="+str(counts[0])+";Q="+str(counts[1])+";T="+str(counts[2])+";L="+str(counts[3])+";PAUSED=1;VERSIONED=YES;OFFSITE=YES"
     finally:
         if candidate.exists():candidate.unlink()
 
