@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
-  "updated": "2026-11-14",
+  "updated": "2026-11-15",
   "current_focus": "four-direction-guardians",
   "next_new_ritual_allowed": false,
   "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
@@ -135,5 +135,23 @@
     "three_same_session_passes_are_not_three_distinct_sessions": true,
     "separate_delayed_mastery_sessions_still_required": true,
     "current_mastery_status_unchanged": true
+  },
+  "supplementary_study_modules": {
+    "marefat-kavakeb-three-looks-v01": {
+      "active": true,
+      "role": "three-look manuscript observation unit at the end of a textual Four Guardians practice; not a new ritual and not a mastery credit",
+      "protocol": "docs/rituals/kavakeb_three_looks_v01.json",
+      "study_notes": "docs/rituals/KAVAKEB_THREE_LOOKS_2026-11-15_FA.md",
+      "latest_session": "docs/rituals/kavakeb_three_looks_session_2026-11-15.json",
+      "source": "owner-provided 66-page manuscript scan, PDF pages 43 and 46; 154-page new educational guide, PDF pp.80-88",
+      "latest_session_status": "three documented context/source-assisted textual passes, no timed/embodied performance",
+      "latest_session_complete_under_three_pass_rule": true,
+      "distinct_delayed_recall": false,
+      "independent_assessor": false,
+      "mastery_credit": false,
+      "third_ritual_allowed": false,
+      "vps_or_scheduled_execution_verified": false,
+      "next_action": "three full observation/geometry/revision passes on original PDF page 46 with distinct evidence and delayed follow-up"
+    }
   }
 }
