@@ -32,3 +32,5 @@ python3 /var/lib/nasuraya/zohraya/tools/nasu_migration_recipient_key.py
 python3 /var/lib/nasuraya/zohraya/tools/nasu_import_encrypted_awake.py
 
 python3 /var/lib/nasuraya/zohraya/tools/nasu_scheduler_probe.py
+
+python3 /var/lib/nasuraya/zohraya/tools/nasu_cron_awake_install.py
