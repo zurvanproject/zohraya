@@ -1,0 +1,24 @@
+name: Nasuraya workload migration validation
+on:
+  push:
+    paths:
+      - 'tools/bridge_jobs/nasu_migration_inventory.py'
+      - 'tools/nasu_workload*'
+      - 'tools/install_nasu_workloads.sh'
+      - 'tests/test_nasu_workload*'
+      - '.github/workflows/nasuraya-workload-migration.yml'
+  pull_request:
+    paths:
+      - 'tools/bridge_jobs/nasu_migration_inventory.py'
+      - 'tools/nasu_workload*'
+      - 'tools/install_nasu_workloads.sh'
+      - 'tests/test_nasu_workload*'
+      - '.github/workflows/nasuraya-workload-migration.yml'
+jobs:
+  inventory-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s tests -p 'test_nasu_workload*.py' -v
