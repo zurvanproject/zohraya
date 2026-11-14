@@ -59,6 +59,7 @@ class OfflineReadinessTests(unittest.TestCase):
                     cx.execute("INSERT INTO evidence VALUES (?)", (value,))
             db(home / "continuity" / "continuity.sqlite3", "synthetic-monitor")
             db(home / "awake-stage" / "awake.sqlite3", "stale")
+            db(home / "local-research" / "research.sqlite3", "synthetic research")
             current = home / "migration" / "working" / ("a"*32) / "awake.sqlite3"
             db(current, "current")
             (home / "migration" / "latest-import.json").write_text(
@@ -77,6 +78,8 @@ class OfflineReadinessTests(unittest.TestCase):
             self.assertEqual(manifest["schema"], "nasuraya-restic-offsite/2")
             self.assertFalse(manifest["model_present"])
             self.assertTrue(manifest["workload_archives_present"])
+            self.assertTrue(manifest["research_journal_present"])
+            self.assertIn("research.sqlite3", manifest["files_sha256"])
             self.assertIn("zohraya.bundle", manifest["files_sha256"])
             with tarfile.open(stage / "workload-imports.tar.gz") as tar:
                 self.assertIn("imports/memory/synthetic.txt", tar.getnames())
