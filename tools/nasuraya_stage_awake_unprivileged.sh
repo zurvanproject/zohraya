@@ -30,6 +30,8 @@ echo 'AWAKE_STAGE_READY; ORIGINAL_WINDOWS_STATE_NOT_MIGRATED; NO_DUPLICATE_TICKS
 python3 /var/lib/nasuraya/zohraya/tools/nasu_migration_recipient_key.py | python3 -c 'import json,sys; d=json.load(sys.stdin); print("MIGRATION_RSA=READY;FINGERPRINT="+d["fingerprint_sha256"])'
 
 python3 /var/lib/nasuraya/zohraya/tools/nasu_import_encrypted_awake.py
+current_state="$(python3 -c 'from pathlib import Path; import json; p=Path("/var/lib/nasuraya/migration/latest-import.json"); r=json.loads(p.read_text()) if p.exists() else {}; print(Path(r.get("working_db") or "/var/lib/nasuraya/awake-stage/awake.sqlite3").parent)')"
+python3 -m tadash_awake status --root "$current_state" | python3 -c 'import json,sys; d=json.load(sys.stdin); c=d["counts"]; print("AWAKE_CURRENT=PAUSED:"+str(int(d["paused"]))+";EV="+str(c["evidence"])+";Q="+str(c["questions"])+";T="+str(c["ticks"])+";L="+str(c["ledger"]))'
 
 python3 /var/lib/nasuraya/zohraya/tools/nasu_scheduler_probe.py
 

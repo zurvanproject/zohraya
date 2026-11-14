@@ -71,6 +71,18 @@ class RunnerTests(unittest.TestCase):
         with sqlite3.connect(path) as db:
             self.assertEqual(db.execute("SELECT value FROM test").fetchone()[0],7)
 
+    def test_current_state_uses_versioned_receipt(self):
+        with tempfile.TemporaryDirectory() as td:
+            home=Path(td)
+            path=home/"migration"/"working"/("a"*32)/"awake.sqlite3"
+            path.parent.mkdir(parents=True)
+            with sqlite3.connect(path) as db:
+                db.execute("CREATE TABLE proof(a INTEGER)")
+            report=home/"migration"/"latest-import.json"
+            report.write_text(json.dumps({"working_db":str(path)}))
+            with patch.object(runner,"HOME",home):
+                self.assertEqual(runner.awake_state_dir(),path.parent)
+
     def test_no_activation_without_gate(self):
         with patch.object(runner,"CONTROL",Path(self.temp.name)/"no-gate"):
             self.assertFalse(runner.gate()["enabled"])

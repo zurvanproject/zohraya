@@ -26,6 +26,19 @@ PIN="90692bde9f1e4b5b7f311162b7c83127715df710"
 ZERO="0"*64
 TOPICS=(("load","server.load"),("mem","server.memory_available"),("disk","server.disk_available"))
 
+def awake_state_dir():
+    report_path=HOME/"migration"/"latest-import.json"
+    if not report_path.exists():
+        return STATE
+    report=json.loads(report_path.read_text(encoding="utf-8"))
+    path=Path(report.get("working_db") or (STATE/"awake.sqlite3"))
+    if (path!=STATE/"awake.sqlite3" and
+        path.parent.parent!=HOME/"migration"/"working"):
+        raise ValueError("untrusted Awake working database path")
+    if path.is_symlink() or not path.is_file():
+        raise ValueError("Awake working database unavailable")
+    return path.parent
+
 def locked_source():
     p=subprocess.run(["/usr/bin/git","-C",str(SRC),"rev-parse","HEAD"],
                      capture_output=True,text=True,timeout=8,check=False)
@@ -102,7 +115,7 @@ def sqlite_backup(now):
         return {"status":"existing","file":name}
     temp=BACKUPS/(name+".tmp")
     if temp.exists(): raise ValueError("unreviewed incomplete backup")
-    with sqlite3.connect(STATE/"awake.sqlite3",timeout=10) as original:
+    with sqlite3.connect(awake_state_dir()/"awake.sqlite3",timeout=10) as original:
         with sqlite3.connect(temp,timeout=10) as copy:
             original.backup(copy)
             if copy.execute("PRAGMA integrity_check").fetchone()[0]!="ok":
@@ -126,28 +139,29 @@ def run(now=None):
         raise ValueError("UTC time required")
     core=locked_source()
     data=gate()
-    if not (STATE/"awake.sqlite3").exists():
+    state_dir=awake_state_dir()
+    if not (state_dir/"awake.sqlite3").exists():
         raise RuntimeError("Awake state is missing")
     if not data["enabled"]:
         return {"status":"standby","enabled":False,"backup":sqlite_backup(now)}
-    status=core.status(STATE)
+    status=core.status(state_dir)
     if status["paused"]:
-        core.set_paused(STATE,False,now)
+        core.set_paused(state_dir,False,now)
     sample=observations(now)
     if sample:
-        with sqlite3.connect(STATE/"awake.sqlite3",timeout=10) as db:
+        with sqlite3.connect(state_dir/"awake.sqlite3",timeout=10) as db:
             existing={row[0] for row in db.execute(
                 "SELECT id FROM evidence WHERE id IN (?,?,?)",
                 tuple(x["event_id"] for x in sample))}
         if len(existing)<len(sample):
-            ingestion=core.ingest(STATE,sample,now=now)
+            ingestion=core.ingest(state_dir,sample,now=now)
         else:
             ingestion={"status":"already_ingested"}
     else:
         ingestion={"status":"no_telemetry"}
-    tick=core.tick(STATE,now)
+    tick=core.tick(state_dir,now)
     backup=sqlite_backup(now)
-    after=core.status(STATE)
+    after=core.status(state_dir)
     return {"status":"active","ingest":ingestion["status"],"tick":tick.get("status"),
             "counts":after["counts"],"backup":backup["status"],"source":"linux_telemetry",
             "network":False,"model_calls":0}
