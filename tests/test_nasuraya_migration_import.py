@@ -85,9 +85,13 @@ class RefreshTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td:
             dbfile=Path(td)/"stage.sqlite3"
             self.make_db(dbfile)
-            with sqlite3.connect(dbfile) as db:
+            db=sqlite3.connect(dbfile)
+            try:
                 db.execute("PRAGMA journal_mode=WAL")
                 db.execute("UPDATE control SET value='1' WHERE name='paused'")
+                db.commit()
+            finally:
+                db.close()
             reader.checkpoint_idle_stage(dbfile)
             with sqlite3.connect(dbfile) as db:
                 self.assertEqual(db.execute("PRAGMA journal_mode").fetchone()[0],"delete")
