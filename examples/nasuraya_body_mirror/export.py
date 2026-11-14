@@ -88,6 +88,7 @@ def main():
     parser.add_argument('--runs', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--generate', action='store_true')
+    parser.add_argument('--tail-foot-analysis-dir', type=Path, help='optional separate 170/78/85 analytical bridge report, never alters V06 frames')
     args = parser.parse_args()
     if args.generate:
         for fixture in ('normal', 'sleep'):
@@ -96,7 +97,13 @@ def main():
                 '--duration-s', '1', '--output-dir', str((args.runs / fixture).resolve())],
                 cwd=ROOT, check=True, stdout=subprocess.DEVNULL)
     data = export(args.runs, args.output)
-    print(json.dumps({'schema': data['schema'], 'frames': sum(len(s['frames']) for s in data['scenarios'].values())}))
+    if args.tail_foot_analysis_dir is not None:
+        # Read-only analytical layer; the new character geometry is NEVER
+        # substituted into the 195 kg native checkpoint or the V06 frames.
+        from .tail_foot_bridge import save
+        save(args.tail_foot_analysis_dir, native_mirror=args.output)
+    print(json.dumps({'schema': data['schema'], 'frames': sum(len(s['frames']) for s in data['scenarios'].values()),
+                      'optional_tail_foot_report': args.tail_foot_analysis_dir is not None}))
 
 
 if __name__ == '__main__':
