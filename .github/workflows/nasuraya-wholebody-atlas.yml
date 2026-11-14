@@ -1,0 +1,43 @@
+name: Nasuraya whole-body atlas inventory (offline)
+on:
+  push:
+    branches: ['nasuraya/wholebody-atlas-v01-20261110']
+    paths:
+      - 'tools/fullbody_design_atlas.py'
+      - 'tools/bridge_jobs/nasu_wholebody_phase1.py'
+      - 'tests/test_fullbody_design_atlas.py'
+      - 'tests/test_nasu_wholebody_phase1.py'
+      - '.github/workflows/nasuraya-wholebody-atlas.yml'
+  pull_request:
+    paths:
+      - 'tools/fullbody_design_atlas.py'
+      - 'tools/bridge_jobs/nasu_wholebody_phase1.py'
+      - 'tests/test_fullbody_design_atlas.py'
+      - 'tests/test_nasu_wholebody_phase1.py'
+      - '.github/workflows/nasuraya-wholebody-atlas.yml'
+permissions:
+  contents: read
+jobs:
+  inventory:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 6
+    steps:
+      - name: Preserve repository file hashes on Windows
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Offline Python tests
+        run: |
+          python -m py_compile tools/fullbody_design_atlas.py
+          python -m unittest discover -s tests -p 'test_fullbody_design_atlas.py' -v
+          python -m unittest discover -s tests -p 'test_nasu_wholebody_phase1.py' -v
+      - name: Offline inventory no native body import
+        run: python tools/fullbody_design_atlas.py
