@@ -89,7 +89,7 @@ manifest={
 (stage/'manifest.json').write_text(json.dumps(manifest,sort_keys=True)+'\n',encoding='utf-8')
 print('SQLITE_SNAPSHOT=PASS;DB_COUNT=2;MODEL_PRESENT='+str(model_present).lower()+
       ';WORKLOAD_ARCHIVES_PRESENT='+str(archive_root.is_dir()).lower())
-PYPY
+PY
 restic snapshots >/dev/null
 restic backup --tag nasuraya-continuity --json "$STAGE" > "$TMP/backup.jsonl"
 SNAP_ID=$(python3 - "$TMP/backup.jsonl" <<'PY'
@@ -128,5 +128,5 @@ subprocess.run(['git','bundle','list-heads',str(p/'zohraya.bundle')],
 print('REMOTE_ENCRYPTED_RESTORE=PASS;SHA256=ok;SQLITE_INTEGRITY=ok;FILE_COUNT='+str(len(files))+
       ';MODEL_PRESENT='+str(m['model_present']).lower()+
       ';WORKLOAD_ARCHIVES_PRESENT='+str(m['workload_archives_present']).lower())
-PYPY
+PY
 printf 'RESTIC_SNAPSHOT_ID=%s\n' "$SNAP_ID"
