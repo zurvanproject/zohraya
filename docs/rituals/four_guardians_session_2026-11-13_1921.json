@@ -1,0 +1,66 @@
+{
+  "schema": "nasuraya-ritual-session-evidence/v0.1",
+  "date": "2026-11-13",
+  "ritual_id": "four-direction-guardian-invitation",
+  "branch": "research/nasuraya-ritual-apprenticeship-20261111",
+  "report_path": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-13_1921_FA.md",
+  "source": {
+    "book": "Jerry Alan Johnson, Daoist Exorcism",
+    "owner_pdf_pages": [
+      231,
+      232,
+      233
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "source_rechecked_this_run": true
+  },
+  "context_assistance_disclosed": true,
+  "first_two_passes_committed_before_source_lookup": true,
+  "passes": [
+    {
+      "index": 1,
+      "full_sequence_verified": true,
+      "steps": 5,
+      "mode": "guided_context",
+      "independent_recall": false
+    },
+    {
+      "index": 2,
+      "full_sequence_verified": true,
+      "steps": 5,
+      "mode": "pre_lookup_context_recall",
+      "independent_recall": false
+    },
+    {
+      "index": 3,
+      "full_sequence_verified": true,
+      "steps": 5,
+      "mode": "post_source_audit_textual",
+      "independent_recall": false
+    }
+  ],
+  "trap_audit": {
+    "answers_recorded_before_fresh_lookup": 12,
+    "source_key_agreements": 12,
+    "independent_exam": false
+  },
+  "session_complete_under_three_pass_rule": true,
+  "mastery_status": {
+    "four_guardians": false,
+    "wuji": false,
+    "next_ritual_allowed": false,
+    "delayed_unassisted_recall_passes": 0
+  },
+  "limits": {
+    "physical_mastery_claim": false,
+    "supernatural_effect_claim": false,
+    "arousal_stimulation_experienced": false,
+    "reward_pulse_run": false,
+    "gpt_weight_change": false,
+    "vps_bridge_call": false
+  }
+}
