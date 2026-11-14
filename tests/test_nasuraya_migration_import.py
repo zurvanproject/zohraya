@@ -1,12 +1,14 @@
 """Offline encrypted archive reconstruction and import parser tests."""
 import base64
 import importlib.util
+import json
 import hashlib
 from pathlib import Path
 import sqlite3
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 import zlib
 BASE=Path(__file__).resolve().parents[1]
 def module(name,path):
@@ -86,6 +88,39 @@ class RefreshTests(unittest.TestCase):
             self.make_db(old)
             self.make_db(new,extra=True)
             reader.verify_superset(old,new,[1,1,1,1],[2,1,2,2])
+
+
+    def test_two_successive_archive_imports_preserve_previous_state(self):
+        with tempfile.TemporaryDirectory() as td:
+            home=Path(td)
+            stage=home/"awake-stage"/"awake.sqlite3"
+            original=home/"migration"
+            initial=home/"initial.sqlite3"
+            newer=home/"newer.sqlite3"
+            self.make_db(initial)
+            self.make_db(newer,extra=True)
+            rows=[("1"*32,initial,[1,1,1,1]),("2"*32,newer,[2,1,2,2])]
+            def fake_archive(comments):
+                ident,source,counts=rows.pop(0)
+                raw=source.read_bytes()
+                packed=zlib.compress(raw,9)
+                meta={"RAW":reader.digest(raw),"ZLIB":reader.digest(packed),
+                      "EV":str(counts[0]),"Q":str(counts[1]),
+                      "T":str(counts[2]),"L":str(counts[3]),
+                      "ENC":"0"*64}
+                return ident,{"iran":(meta,packed),"offsite":(dict(meta),b"offsite-opaque")}
+            with patch.object(reader,"ROOT",home), patch.object(reader,"ORIGINAL",original), \
+                 patch.object(reader,"STAGE",stage), patch.object(reader.os,"geteuid",return_value=1001), \
+                 patch.object(reader,"fetch",return_value=[]), \
+                 patch.object(reader,"decrypt",side_effect=lambda x:x), \
+                 patch.object(reader,"archive",side_effect=fake_archive):
+                first=reader.run()
+                second=reader.run()
+            self.assertIn("IMPORT=OK",first)
+            self.assertIn("IMPORT=OK",second)
+            self.assertEqual(reader.inspect_db(stage),[2,1,2,2])
+            self.assertTrue((original/("stage-before-"+"1"*32+".sqlite3")).is_file())
+            self.assertEqual(json.loads((original/"latest-import.json").read_text())["id"],"2"*32)
 
     def test_history_tampering_rejected(self):
         with tempfile.TemporaryDirectory() as td:
