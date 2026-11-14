@@ -200,7 +200,7 @@ def run():
                     raise ValueError("local state differs from previous import")
                 if previous.get("raw_sha256")==meta["RAW"] and current==expected:
                     return "IMPORT=ALREADY;EV="+str(counts[0])+";Q="+str(counts[1])+";T="+str(counts[2])+";L="+str(counts[3])
-                verify_superset(STAGE,candidate,current,expected)
+                verify_superset(STAGE,rawfile,current,expected)
             for suffix in ("-wal","-shm"):
                 if (STAGE.parent/(STAGE.name+suffix)).exists():
                     raise ValueError("stage sqlite sidecar exists; refusing overwrite")
