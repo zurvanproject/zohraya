@@ -6,6 +6,7 @@ on:
       - "tools/nasuraya_linux_bridge.py"
       - "tools/install_nasuraya_linux_bridge.sh"
       - "tests/test_atmosphere_guard.py"
+      - "tests/test_atmosphere_bridge_integration.py"
       - ".github/workflows/atmosphere-gate.yml"
   push:
     paths:
@@ -24,4 +25,4 @@ jobs:
           python-version: "3.12"
       - run: |
           python -m py_compile tools/atmosphere_guard.py tools/nasuraya_linux_bridge.py
-          python -m unittest discover -s tests -p "test_atmosphere_guard.py" -v
+          python -m unittest discover -s tests -p "test_atmosphere*.py" -v

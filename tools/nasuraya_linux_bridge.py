@@ -125,7 +125,7 @@ def poll():
         if request_id in completed or request_id in seen:
             continue
         gate = AtmosphereGate(HOME / "atmosphere")
-        decision = gate.begin(request_id, OWNER, body)
+        decision = gate.begin(request_id, item["user"]["login"], body)
         if decision.execute:
             try:
                 result = dispatch(decision.action)

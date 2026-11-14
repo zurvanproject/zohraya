@@ -96,6 +96,8 @@ class AtmosphereGate:
         if now.tzinfo is None:
             raise ValueError("UTC time required")
         now = now.astimezone(dt.timezone.utc)
+        if actor != OWNER:
+            return Decision(action, False, "ATMOSPHERE DENY: actor-not-verified")
         with closing(self._db()) as db:
             db.execute("BEGIN IMMEDIATE")
             try:
