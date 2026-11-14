@@ -205,8 +205,10 @@ def run():
     home.mkdir(exist_ok=True)
     if linked(home):raise ValueError('export home link')
     # Bridge already serializes jobs; keep a separate lock for manual invocations.
-    lock=home/'export.lock'
-    with lock.open('x') as stream:stream.write(str(os.getpid()))
+    lock_path=home/'export-lock.sqlite3'
+    if lock_path.is_symlink():raise ValueError('lock link')
+    lock=sqlite3.connect(lock_path,timeout=0,isolation_level=None)
+    lock.execute('BEGIN EXCLUSIVE')
     try:
         for component in COMPONENTS:
             receipt=home/(component+'.json');sealed=home/(component+'.sealed')
@@ -236,7 +238,7 @@ def run():
             return ('WORKLOAD_EXPORT='+status+';C='+component+';FILES='+str(meta['header']['files'])+
                     ';MSG='+str(state['posted'])+'/'+str(len(all_messages))+';ID='+meta['header']['id'])
         return 'WORKLOAD_EXPORT=ALL_COMPLETE;COMPONENTS=8;PLAINTEXT_PUBLISHED=0'
-    finally:lock.unlink()
+    finally:lock.close()
 
 if __name__=='__main__':
     try:summary=run()

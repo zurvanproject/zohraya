@@ -264,8 +264,10 @@ def main():
     os.umask(0o077)
     p=argparse.ArgumentParser();p.add_argument('action',choices=('import-next','import-all','status'));args=p.parse_args()
     if args.action=='status':print(json.dumps({'workload_data':status(),'credentials':'not_imported','activation':'not_started'},sort_keys=True));return
-    prepare(HOME);lock=HOME/'data-import.lock'
-    with lock.open('x') as stream:stream.write(str(os.getpid()))
+    prepare(HOME);lock_path=HOME/'data-import-lock.sqlite3'
+    if lock_path.is_symlink():raise ValueError('lock link')
+    lock=sqlite3.connect(lock_path,timeout=0,isolation_level=None)
+    lock.execute('BEGIN EXCLUSIVE')
     try:
         incoming=archives(fetch());count=0
         current={x['component']:x for x in status()}
@@ -276,7 +278,7 @@ def main():
             print(json.dumps(install(*incoming[component]),sort_keys=True),flush=True);count+=1
             if args.action=='import-next':break
         if not count:print('WORKLOAD_DATA=NO_NEW_COMPLETED_ARCHIVE;ACTIVATION=NOT_STARTED')
-    finally:lock.unlink()
+    finally:lock.close()
 
 if __name__=='__main__':
     try:main()
