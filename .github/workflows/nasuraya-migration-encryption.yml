@@ -4,12 +4,16 @@ on:
     paths:
       - 'tools/bridge_jobs/nasu_awake_encrypted_export.py'
       - 'tools/nasu_migration_recipient_key.py'
+      - 'tools/nasu_import_encrypted_awake.py'
+      - 'tests/test_nasuraya_migration_import.py'
       - 'tests/test_nasuraya_migration_export.py'
       - '.github/workflows/nasuraya-migration-encryption.yml'
   push:
     paths:
       - 'tools/bridge_jobs/nasu_awake_encrypted_export.py'
       - 'tools/nasu_migration_recipient_key.py'
+      - 'tools/nasu_import_encrypted_awake.py'
+      - 'tests/test_nasuraya_migration_import.py'
       - 'tests/test_nasuraya_migration_export.py'
       - '.github/workflows/nasuraya-migration-encryption.yml'
   workflow_dispatch:
@@ -24,3 +28,5 @@ jobs:
         run: |
           python3 -m py_compile tools/bridge_jobs/nasu_awake_encrypted_export.py tools/nasu_migration_recipient_key.py
           python3 -m unittest discover -s tests -p 'test_nasuraya_migration_export.py' -v
+          python3 -m unittest discover -s tests -p 'test_nasuraya_migration_import.py' -v
+          bash -n tools/nasuraya_stage_awake_unprivileged.sh
