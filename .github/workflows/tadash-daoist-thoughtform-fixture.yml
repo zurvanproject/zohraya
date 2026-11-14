@@ -1,0 +1,41 @@
+name: Tadash Daoist thoughtform offline fixture
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/tadash-daoist-thoughtform-fixture.yml'
+      - 'runtimes/tadash_body/retained_extensions/daoist_thoughtform_v01.py'
+      - 'runtimes/tadash_body/tests/test_daoist_thoughtform_v01.py'
+      - 'runtimes/tadash_body/examples/daoist_thoughtform_demo.py'
+      - 'docs/daoist-thoughtform-tadash-v01-fa.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-validation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Standard library unit tests
+        run: python3 -m unittest discover -s runtimes/tadash_body/tests -p 'test_daoist_thoughtform_v01.py' -v
+      - name: Synthetic lifecycle demonstration and invariant check
+        run: |
+          python3 runtimes/tadash_body/examples/daoist_thoughtform_demo.py > /tmp/daoist-thoughtform-demo.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('/tmp/daoist-thoughtform-demo.json').read_text())
+          assert d['protocol'] == 'offline_fixture_only'
+          assert d['proposals'] == 2
+          assert d['abstentions'] == 2
+          assert d['rejections'] == 1
+          assert d['closed'] and d['close_reason'] == 'lifespan_expired'
+          assert d['work_used'] <= d['work_budget']
+          assert d['audit_events_stored'] <= d['audit_limit']
+          assert d['goal_unchanged_after_restart']
+          assert d['actual_external_effects'] == 0
+          assert not d['claims_of_consciousness']
+          print('offline-fixture invariants: PASS')
+          PY
