@@ -1,0 +1,110 @@
+{
+  "schema": "nasuraya-offline-questions/1",
+  "policy": "one unverified research draft per six or more days; no external actions",
+  "tasks": [
+    {
+      "id": "wk01",
+      "question": "How can a local agent distinguish a documented observation from an inference when both appear in the same memory note?"
+    },
+    {
+      "id": "wk02",
+      "question": "What simple calibration test would show whether independent dissent improves accuracy instead of merely increasing contradiction?"
+    },
+    {
+      "id": "wk03",
+      "question": "How should contradictory evidence update a hypothesis without erasing the audit trail or the earlier confidence estimate?"
+    },
+    {
+      "id": "wk04",
+      "question": "What failure cases expose a system that labels uncertainty correctly on known inputs but invents confidence on unseen inputs?"
+    },
+    {
+      "id": "wk05",
+      "question": "Design a falsifiable synthetic test separating no-stimulus noise from a genuinely unknown stimulus without using invented data."
+    },
+    {
+      "id": "wk06",
+      "question": "Which negative controls best detect false positives in a synthetic interoception decoder when background noise increases?"
+    },
+    {
+      "id": "wk07",
+      "question": "How can out-of-distribution abstention be evaluated separately from ordinary classification accuracy and excessive abstention?"
+    },
+    {
+      "id": "wk08",
+      "question": "What measurements would distinguish sensor detection from causal understanding in a data-only body model?"
+    },
+    {
+      "id": "wk09",
+      "question": "How should the system label imaginary body sensations versus measured server telemetry to prevent category confusion?"
+    },
+    {
+      "id": "wk10",
+      "question": "Which checks protect a versioned event chain against duplicated ticks, clock jumps and interrupted writes?"
+    },
+    {
+      "id": "wk11",
+      "question": "Design a crash-restart exercise that proves no missing offline hours are backfilled as fabricated observations."
+    },
+    {
+      "id": "wk12",
+      "question": "How can a long-lived offline memory preserve source provenance while allowing correction of a previously recorded conclusion?"
+    },
+    {
+      "id": "wk13",
+      "question": "What properties must an independent backup possess to survive loss of the entire original VPS provider?"
+    },
+    {
+      "id": "wk14",
+      "question": "How could a new machine demonstrate that encrypted backups are independently recoverable without either original server?"
+    },
+    {
+      "id": "wk15",
+      "question": "What measurable criteria should reject an offline research draft as unsupported or self-contradictory?"
+    },
+    {
+      "id": "wk16",
+      "question": "How can the research queue detect model repetition without claiming that repeated text is newly discovered evidence?"
+    },
+    {
+      "id": "wk17",
+      "question": "Which synthetic standing tests would meaningfully compare digitigrade and plantigrade foot geometry at constant body mass?"
+    },
+    {
+      "id": "wk18",
+      "question": "How could a 78 kilogram digitigrade model be evaluated for contact stability before any running advantage is claimed?"
+    },
+    {
+      "id": "wk19",
+      "question": "What confounders would invalidate a simulated running-speed comparison between three-toed and ordinary feet?"
+    },
+    {
+      "id": "wk20",
+      "question": "Which safety limits should apply to local CPU-only experiments on a 16 GiB RAM VPS sharing an Awake timer?"
+    },
+    {
+      "id": "wk21",
+      "question": "How could a locally generated hypothesis be challenged using only a bounded library of archived counterexamples?"
+    },
+    {
+      "id": "wk22",
+      "question": "Design a weekly self-critique rubric that rewards corrected predictions rather than confident but unsupported prose."
+    },
+    {
+      "id": "wk23",
+      "question": "How should a local model report that a needed document or recent external observation is unavailable during isolation?"
+    },
+    {
+      "id": "wk24",
+      "question": "What is a safe escalation path for a task needing owner consent when international connectivity has been unavailable for months?"
+    },
+    {
+      "id": "wk25",
+      "question": "How can a finite autonomous curriculum conclude cleanly without recycling finished work or silently inventing new goals?"
+    },
+    {
+      "id": "wk26",
+      "question": "Which final restoration and evidence-audit checklist best demonstrates safe continuity after six months of disconnection?"
+    }
+  ]
+}
