@@ -9,6 +9,8 @@ ROOT=/opt/nasuraya-local-llm
 MODEL_DIR=/var/lib/nasuraya/models
 MODEL="$MODEL_DIR/Qwen3-1.7B-Q8_0.gguf"
 SOURCE=https://huggingface.co/Qwen/Qwen3-1.7B-GGUF/resolve/main/Qwen3-1.7B-Q8_0.gguf
+# Published SHA-256 on the official Qwen model file page, verified 2026-11-14.
+EXPECTED_SHA=061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a
 mkdir -p "$ROOT" "$MODEL_DIR"
 apt-get update
 DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -21,8 +23,12 @@ cmake -S "$ROOT/llama.cpp" -B "$ROOT/llama.cpp/build" \
 cmake --build "$ROOT/llama.cpp/build" --config Release -j 4 --target llama-cli
 if [[ ! -s "$MODEL" ]]; then
   curl -fL --retry 3 --connect-timeout 20 -C - -o "$MODEL.download" "$SOURCE"
+  printf '%s  %s\n' "$EXPECTED_SHA" "$MODEL.download" | sha256sum -c - || {
+    echo 'Downloaded model has a checksum mismatch: refusing activation' >&2; exit 3;
+  }
   mv "$MODEL.download" "$MODEL"
 fi
+printf '%s  %s\n' "$EXPECTED_SHA" "$MODEL" | sha256sum -c -
 chmod 0644 "$MODEL"
 BIN="$ROOT/llama.cpp/build/bin/llama-cli"
 [[ -x "$BIN" && -s "$MODEL" ]]
@@ -34,10 +40,11 @@ BIN="$ROOT/llama.cpp/build/bin/llama-cli"
 } > "$ROOT/install-manifest.txt"
 set +e
 timeout 240 "$BIN" --model "$MODEL" --threads 4 --ctx-size 2048 \
-  --n-predict 80 --prompt 'Reply in one sentence: why must backups be test-restored?' \
+  --single-turn --n-predict 80 --prompt '/no_think Reply in one sentence: why must backups be test-restored?' \
   > "$ROOT/smoke-test.log" 2>&1
 RESULT=$?
 set -e
 printf 'SMOKE_TEST_EXIT=%s\n' "$RESULT"
 (( RESULT == 0 )) || { echo 'Model test FAILED; do not enable timer.' >&2; exit "$RESULT"; }
+test -s "$ROOT/smoke-test.log" || { echo 'Empty model output' >&2; exit 4; }
 echo 'LOCAL_MODEL_SMOKE_TEST=PASS;NO_AUTOMATIC_RUNTIME_ENABLED'
