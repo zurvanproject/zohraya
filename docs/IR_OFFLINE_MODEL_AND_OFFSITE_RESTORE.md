@@ -65,3 +65,32 @@ Restoring data is also not proof that all runtime OS dependencies are present; t
 The confirmed Mobinhost prepaid term is 2026-11-14 through 2027-05-13, with 3 TB total period traffic. It does not guarantee continued service or an extra six months starting on a future outage date. The backup-provider subscription must likewise be prepaid or funded for the necessary period.
 
 Current claims: synthetic tests may be green; actual Ubuntu local-model installation, network-denied generation/reboot, independent storage provisioning, independent-host decrypt/restore, and multi-day staging outage drill are still pending. Do not close Issue #233 or turn this draft PR into a production deployment based solely on CI results.
+
+## 7. Fresh-machine offline inference witness (STAGED, not executed)
+
+A file-integrity PASS does not prove the recovered binary can load the recovered
+GGUF on another machine. After the independent Restic restore, on a separate,
+locally administered **Linux** recovery host (Python 3.12+, git, Linux unshare
+and CPU libraries available), run the new test **without connectivity to any
+outside network**:
+
+```bash
+# The directory must contain manifest.json, the restored model and runtime archive.
+# Run in a reviewed root console so unshare --net can create an isolated namespace.
+python3 tools/nasu_verify_restored_snapshot.py /path/to/restored/snapshot
+python3 tools/nasu_recovered_model_smoke.py /path/to/restored/snapshot
+```
+
+The second command first checks the full manifest, hashes, SQLite, code bundle
+and archives; it extracts only a bounded, path-checked runtime and launches
+`llama-cli` **inside a new Linux network namespace** using `unshare --net`.
+It fails if the machine cannot create that namespace, the model is absent,
+the binary cannot execute, or actual CPU text generation fails. This test
+runs an executable restored from backup: use only snapshots from the trusted,
+authenticated repository. The output is only a metadata receipt and response
+hash, never the private model response or any keys.
+
+**No synthetic test or CI result proves this independent-machine exercise ran.**
+The operator must document the different physical/administrative failure domain,
+restic recovery from independently held keys, system packages and a separately
+observed successful model smoke. Keep Issue #233 blocked until that receipt exists.
