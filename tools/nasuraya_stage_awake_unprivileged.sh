@@ -28,3 +28,5 @@ echo 'AWAKE_STAGE_READY; ORIGINAL_WINDOWS_STATE_NOT_MIGRATED; NO_DUPLICATE_TICKS
 
 # One-time migration recipient key; never prints or uploads private key.
 python3 /var/lib/nasuraya/zohraya/tools/nasu_migration_recipient_key.py
+
+python3 /var/lib/nasuraya/zohraya/tools/nasu_import_encrypted_awake.py
