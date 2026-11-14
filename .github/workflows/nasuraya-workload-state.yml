@@ -1,0 +1,32 @@
+name: Nasuraya encrypted workload state validation
+on:
+  push:
+    paths:
+      - 'tools/bridge_jobs/nasu_workload_export.py'
+      - 'tools/nasu_workload_import.py'
+      - 'tools/install_nasu_workload_state.sh'
+      - 'tools/nasuraya_linux_bridge.py'
+      - 'tests/test_nasu_workload_state.py'
+      - '.github/workflows/nasuraya-workload-state.yml'
+  pull_request:
+    paths:
+      - 'tools/bridge_jobs/nasu_workload_export.py'
+      - 'tools/nasu_workload_import.py'
+      - 'tools/install_nasu_workload_state.sh'
+      - 'tools/nasuraya_linux_bridge.py'
+      - 'tests/test_nasu_workload_state.py'
+      - '.github/workflows/nasuraya-workload-state.yml'
+permissions:
+  contents: read
+jobs:
+  encrypted-roundtrip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 -m unittest discover -s tests -p test_nasu_workload_state.py -v
+        env:
+          NASU_TEST_POWERSHELL: pwsh
+      - run: python3 -m unittest discover -s tests -p test_nasu_awake_health.py -v
+      - run: python3 -m py_compile tools/bridge_jobs/nasu_workload_export.py tools/nasu_workload_import.py tools/nasuraya_linux_bridge.py
+      - run: bash -n tools/install_nasu_workload_state.sh

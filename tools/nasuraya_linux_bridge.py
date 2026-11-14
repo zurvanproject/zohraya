@@ -21,7 +21,7 @@ HOME = pathlib.Path("/var/lib/nasuraya")
 TOKEN_PATH = HOME / "github-token"
 SEEN_PATH = HOME / "seen.json"
 PROJECT = HOME / "zohraya"
-COMMAND_RE = re.compile(r"(?m)^\s*nasu-linux:\s*(status|disk|python|repo|sync|test|offline|awake-stage|awake-status|awake-activate|workload-stage|workload-status|help)\s*$", re.I)
+COMMAND_RE = re.compile(r"(?m)^\s*nasu-linux:\s*(status|disk|python|repo|sync|test|offline|awake-stage|awake-status|awake-activate|workload-stage|workload-status|workload-import|workload-data-status|help)\s*$", re.I)
 RESULT_RE = re.compile(r"(?m)^nasu-linux-result request_id=(\d+)\b")
 
 def api(method, path, data=None):
@@ -82,7 +82,11 @@ def dispatch(action):
         return command(["/usr/bin/python3", "/usr/local/lib/nasuraya/workload_sources.py", "stage-next"], timeout=180, cwd=HOME)
     if action == "workload-status":
         return command(["/usr/bin/python3", "/usr/local/lib/nasuraya/workload_sources.py", "status"], cwd=HOME)
-    return "Allowed: status, disk, python, repo, sync, test, offline, awake-stage, awake-status, awake-activate, workload-stage, workload-status, help. No arbitrary shell."
+    if action == "workload-import":
+        return command(["/usr/bin/python3", "/usr/local/lib/nasuraya/workload_import.py", "import-next"], timeout=180, cwd=HOME)
+    if action == "workload-data-status":
+        return command(["/usr/bin/python3", "/usr/local/lib/nasuraya/workload_import.py", "status"], timeout=60, cwd=HOME)
+    return "Allowed: status, disk, python, repo, sync, test, offline, awake-stage, awake-status, awake-activate, workload-stage, workload-status, workload-import, workload-data-status, help. No arbitrary shell."
 
 def all_comments():
     comments = []
