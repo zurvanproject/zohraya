@@ -1,0 +1,11 @@
+[Unit]
+Description=Observe Nasuraya/Tadash offline status every 15 minutes
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+AccuracySec=1min
+Unit=nasuraya-ritual-observer.service
+
+[Install]
+WantedBy=timers.target

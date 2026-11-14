@@ -1,0 +1,16 @@
+[Unit]
+Description=Nasuraya ritual + Tadash receipt observer (offline, no actuation)
+Documentation=https://github.com/zurvanproject/zohraya
+ConditionPathExists=%h/nasuraya/ritual/examples/nasuraya_virtual_learning/bridge.py
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/nasuraya/ritual
+ExecStart=/usr/bin/python3 -m examples.nasuraya_virtual_learning.bridge --ritual-db %h/nasuraya/state/ritual.sqlite --bridge-db %h/nasuraya/state/native-observer.sqlite --body-root %h/nasuraya/body --body-session %h/nasuraya/state/body.sqlite
+Environment=PYTHONDONTWRITEBYTECODE=1
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+UMask=0077
+TimeoutStartSec=100
+MemoryMax=1G

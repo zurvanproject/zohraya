@@ -1,0 +1,11 @@
+[Unit]
+Description=Run three bounded synthetic ritual lessons once daily (UTC)
+
+[Timer]
+OnCalendar=*-*-* 08:00:00 UTC
+Persistent=true
+AccuracySec=1min
+Unit=nasuraya-ritual-daily.service
+
+[Install]
+WantedBy=timers.target
