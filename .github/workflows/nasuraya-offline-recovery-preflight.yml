@@ -8,7 +8,10 @@ on:
       - "tests/test_nasu_offline_research_queue.py"
       - "tools/nasu_offline_research_queue.py"
       - "tools/install_nasu_offline_research.sh"
+      - "tools/install_nasu_offsite_backup_timer.sh"
+      - "tools/nasu_verify_restored_snapshot.py"
       - "docs/nasuraya_offline_research_seeds_v1.json"
+      - "docs/IR_OFFLINE_MODEL_AND_OFFSITE_RESTORE.md"
       - ".github/workflows/nasuraya-offline-recovery-preflight.yml"
   pull_request:
     paths:
@@ -18,7 +21,10 @@ on:
       - "tests/test_nasu_offline_research_queue.py"
       - "tools/nasu_offline_research_queue.py"
       - "tools/install_nasu_offline_research.sh"
+      - "tools/install_nasu_offsite_backup_timer.sh"
+      - "tools/nasu_verify_restored_snapshot.py"
       - "docs/nasuraya_offline_research_seeds_v1.json"
+      - "docs/IR_OFFLINE_MODEL_AND_OFFSITE_RESTORE.md"
       - ".github/workflows/nasuraya-offline-recovery-preflight.yml"
 permissions:
   contents: read
