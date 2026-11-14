@@ -84,8 +84,8 @@ if model.is_file():
     runtime=Path('/opt/nasuraya-local-llm/llama.cpp/build/bin')
     if not runtime.is_dir():
         raise SystemExit('Model exists but offline runtime binaries are missing')
-    if any(p.is_symlink() for p in runtime.rglob('*')):
-        raise SystemExit('Symlinked runtime binaries must be reviewed')
+    if any(p.is_symlink() and not p.resolve().is_relative_to(runtime.resolve()) for p in runtime.rglob('*')):
+        raise SystemExit('Runtime binary links escape the local build directory')
     runtime_tar=stage/'llama-runtime.tar.gz'
     with tarfile.open(runtime_tar,'w:gz') as tar:
         tar.add(runtime,arcname='llama-bin',recursive=True)
