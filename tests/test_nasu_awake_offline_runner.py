@@ -4,7 +4,10 @@ import hashlib
 import importlib.util
 import json
 import os
+import shutil
 import sqlite3
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -131,6 +134,35 @@ class RunnerTests(unittest.TestCase):
         core.set_paused.assert_not_called()
         core.ingest.assert_not_called()
         core.tick.assert_not_called()
+
+    @unittest.skipUnless(shutil.which('unshare') and shutil.which('mount'),'requires Linux mount namespaces')
+    def test_readonly_mount_wal_failure_and_writable_recovery(self):
+        supported=subprocess.run(['unshare','-Ur','-m','true'],capture_output=True)
+        if supported.returncode:
+            self.skipTest('user mount namespaces unavailable')
+        self.add_record()
+        db=sqlite3.connect(self.ledger)
+        db.execute('PRAGMA journal_mode=WAL')
+        db.close()
+        before=self.ledger.read_bytes()
+        code='''import sqlite3,sys
+try:
+    db=sqlite3.connect('file:'+sys.argv[1]+'?mode=ro',uri=True)
+    db.execute('PRAGMA query_only=ON')
+    db.execute('PRAGMA quick_check').fetchone()
+    db.close()
+except sqlite3.Error as exc:
+    print(exc.sqlite_errorcode & 255)
+    raise SystemExit(42)
+'''
+        shell='mount --bind "$1" "$1" && mount -o remount,bind,ro "$1" && "$3" -c "$2" "$1/continuity.sqlite3"'
+        result=subprocess.run(['unshare','-Ur','-m','bash','-c',shell,'probe',self.temp.name,code,sys.executable],
+                              capture_output=True,text=True)
+        self.assertEqual(result.returncode,42,result.stderr)
+        self.assertIn(int(result.stdout.strip()),(sqlite3.SQLITE_READONLY,sqlite3.SQLITE_CANTOPEN))
+        with patch.object(runner,'LEDGER',self.ledger):
+            self.assertEqual(len(runner.observations(self.clock)),3)
+        self.assertEqual(self.ledger.read_bytes(),before)
 
     def test_sandbox_permits_wal_sidecars_without_removing_confinement(self):
         installer=(Path(__file__).resolve().parents[1]/

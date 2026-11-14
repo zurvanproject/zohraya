@@ -28,10 +28,11 @@ spec.loader.exec_module(reader)
 try:
     reader.observations(dt.datetime.now(dt.timezone.utc))
 except sqlite3.Error as exc:
-    if (getattr(exc,'sqlite_errorcode',0) & 255)==sqlite3.SQLITE_READONLY:
-        print('PROBE=SQLITE_READONLY',flush=True)
+    code=getattr(exc,'sqlite_errorcode',0)
+    if (code & 255) in (sqlite3.SQLITE_READONLY,sqlite3.SQLITE_CANTOPEN):
+        print('PROBE=SQLITE_ACCESS_ERROR;CODE='+str(code),flush=True)
         raise SystemExit(42)
-    print('PROBE=OTHER_SQLITE_ERROR',flush=True)
+    print('PROBE=OTHER_SQLITE_ERROR;CODE='+str(code),flush=True)
     raise SystemExit(2)
 except Exception:
     print('PROBE=OTHER_ERROR',flush=True)
@@ -40,22 +41,37 @@ print('PROBE=OK',flush=True)
 PY
 )
 writable=$(systemctl show nasuraya-awake.service -p ReadWritePaths --value)
-set +e
-probe_output=$(systemd-run --quiet --wait --pipe --collect \
-    --property=User=nasuraya --property=Group=nasuraya \
-    --property=ProtectSystem=strict --property=ProtectHome=true \
-    --property=NoNewPrivileges=true --property=PrivateTmp=true \
-    --property=RestrictAddressFamilies=AF_UNIX --property=IPAddressDeny=any \
-    --property="ReadWritePaths=$writable" \
-    /usr/bin/python3 -c "$probe" 2>&1)
-probe_status=$?
-set -e
-if [[ "$probe_status" -ne 42 ]] || ! [[ "$probe_output" =~ (^|$'\n')PROBE=SQLITE_READONLY($|$'\n') ]]; then
-    echo 'REPAIR=BLOCKED;CAUSE=WAL_READONLY_NOT_REPRODUCED'
+run_probe() {
+    set +e
+    probe_output=$(systemd-run --quiet --wait --pipe --collect \
+        --description=Nasuraya-telemetry-read-probe \
+        --property=User=nasuraya --property=Group=nasuraya \
+        --property=ProtectSystem=strict --property=ProtectHome=true \
+        --property=NoNewPrivileges=true --property=PrivateTmp=true \
+        --property=RestrictAddressFamilies=AF_UNIX --property=IPAddressDeny=any \
+        --property="ReadWritePaths=$2" \
+        /usr/bin/python3 -c "$probe" 2>&1)
+    probe_status=$?
+    set -e
+    printf 'PROBE_%s_EXIT=%s\n' "$1" "$probe_status"
+    # The probe prints only fixed labels and numeric SQLite codes. Also retain
+    # bounded systemd launch errors instead of hiding failed diagnostics.
+    printf '%s\n' "${probe_output:0:1600}"
+}
+run_probe RESTRICTED "$writable"
+if [[ "$probe_status" -ne 42 ]] || ! [[ "$probe_output" =~ (^|$'\n')PROBE=SQLITE_ACCESS_ERROR\;CODE=[0-9]+($|$'\n') ]]; then
+    echo 'REPAIR=BLOCKED;CAUSE=SQLITE_ACCESS_FAILURE_NOT_REPRODUCED'
     journalctl -u nasuraya-awake.service -n 12 --no-pager
     exit 2
 fi
-echo 'PROBE=SQLITE_READONLY_CONFIRMED'
+# A SQLite CANTOPEN result alone is not enough to change permissions. Prove
+# that the SAME reader succeeds when ONLY its telemetry directory is writable.
+run_probe TELEMETRY_WRITABLE "$writable /var/lib/nasuraya/continuity"
+if [[ "$probe_status" -ne 0 ]] || ! [[ "$probe_output" =~ (^|$'\n')PROBE=OK($|$'\n') ]]; then
+    echo 'REPAIR=BLOCKED;CAUSE=WRITABLE_TELEMETRY_DID_NOT_FIX_READ'
+    exit 2
+fi
+echo 'PROBE=TELEMETRY_SIDECAR_ACCESS_CONFIRMED'
 
 snapshot() {
     runuser -u nasuraya -- python3 - "$1" <<'PY'
