@@ -9,6 +9,9 @@ on:
       - "tools/nasu_cron_awake_install.py"
       - "tools/nasu_awake_offline_runner.py"
       - "tools/nasu_awake_activate.py"
+      - "tools/nasu_awake_health.py"
+      - "tools/nasu_scheduler_probe.py"
+      - "tests/test_nasu_awake_health.py"
       - "tools/install_nasu_awake_offline.sh"
       - "tests/test_nasu_awake_offline_runner.py"
       - "tests/test_nasuraya_offline_continuity.py"
@@ -22,6 +25,9 @@ on:
       - "tools/nasu_cron_awake_install.py"
       - "tools/nasu_awake_offline_runner.py"
       - "tools/nasu_awake_activate.py"
+      - "tools/nasu_awake_health.py"
+      - "tools/nasu_scheduler_probe.py"
+      - "tests/test_nasu_awake_health.py"
       - "tools/install_nasu_awake_offline.sh"
       - "tests/test_nasu_awake_offline_runner.py"
       - "tests/test_nasuraya_offline_continuity.py"
@@ -43,3 +49,6 @@ jobs:
           bash -n tools/install_nasu_awake_offline.sh
           python3 -m py_compile tools/nasu_awake_offline_runner.py tools/nasu_awake_activate.py tools/nasu_cron_awake_install.py
           python3 -m unittest discover -s tests -p test_nasu_awake_offline_runner.py -v
+          python3 -m py_compile tools/nasu_awake_health.py tools/nasu_scheduler_probe.py
+          python3 -m unittest discover -s tests -p test_nasu_awake_health.py -v
+

@@ -62,7 +62,7 @@ class RunnerTests(unittest.TestCase):
         with sqlite3.connect(self.state/"awake.sqlite3") as db:
             db.execute("CREATE TABLE test(value INTEGER)")
             db.execute("INSERT INTO test VALUES(7)")
-        with patch.object(runner,"STATE",self.state),patch.object(runner,"BACKUPS",self.state/"backups"):
+        with patch.object(runner,"HOME",Path(self.temp.name)),patch.object(runner,"STATE",self.state),patch.object(runner,"BACKUPS",self.state/"backups"):
             result=runner.sqlite_backup(self.clock)
             repeat=runner.sqlite_backup(self.clock)
         self.assertEqual(result["status"],"created")
@@ -96,3 +96,4 @@ class RunnerTests(unittest.TestCase):
 
 if __name__=="__main__":
     unittest.main()
+

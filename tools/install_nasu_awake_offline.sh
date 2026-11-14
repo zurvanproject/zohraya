@@ -4,15 +4,26 @@
 set -Eeuo pipefail
 if [[ "$EUID" -ne 0 ]]; then echo "Run as root"; exit 1; fi
 cd /opt/zohraya
-[[ -f tools/nasu_awake_offline_runner.py && -f tools/nasu_awake_activate.py ]] || { echo 'Missing files; pull main first'; exit 1; }
+[[ -f tools/nasu_awake_offline_runner.py && -f tools/nasu_awake_activate.py && -f tools/nasu_awake_health.py ]] || { echo 'Missing files; update reviewed source first'; exit 1; }
 id nasuraya >/dev/null
 python3 -m unittest discover -s tests -p test_nasu_awake_offline_runner.py -v
+python3 -m unittest discover -s tests -p test_nasu_awake_health.py -v
+python3 - <<'PY'
+import json
+from pathlib import Path
+p = Path('/var/lib/nasuraya/awake-control.json')
+if p.is_symlink():
+    raise SystemExit('INSTALL=BLOCKED;CAUSE=CONTROL_SYMLINK')
+if p.exists() and json.loads(p.read_text()).get('enabled') is not False:
+    raise SystemExit('INSTALL=BLOCKED;CAUSE=ACTIVE_OR_INVALID_GATE')
+PY
 install -d -o root -g root -m 755 /usr/local/lib/nasuraya
 install -d -o nasuraya -g nasuraya -m 700 /var/lib/nasuraya/awake-backups
 install -o root -g root -m 755 tools/nasu_awake_offline_runner.py /usr/local/lib/nasuraya/awake_runner.py
 install -o root -g root -m 755 tools/nasu_awake_activate.py /usr/local/lib/nasuraya/awake_activate.py
+install -o root -g root -m 755 tools/nasu_awake_health.py /usr/local/lib/nasuraya/awake_health.py
 install -o root -g root -m 755 tools/nasuraya_linux_bridge.py /usr/local/lib/nasuraya/bridge.py
-python3 -m py_compile /usr/local/lib/nasuraya/awake_runner.py /usr/local/lib/nasuraya/awake_activate.py /usr/local/lib/nasuraya/bridge.py
+python3 -m py_compile /usr/local/lib/nasuraya/awake_runner.py /usr/local/lib/nasuraya/awake_activate.py /usr/local/lib/nasuraya/awake_health.py /usr/local/lib/nasuraya/bridge.py
 cat >/etc/systemd/system/nasuraya-awake.service <<'UNIT'
 [Unit]
 Description=Nasuraya offline Tadash evidence/revision and hourly SQLite backup
@@ -60,3 +71,5 @@ systemctl restart nasuraya-bridge.service
 echo "OFFLINE_AWAKE_INSTALLED;GATE=STANDBY;WINDOWS_UNCHANGED"
 systemctl is-active nasuraya-awake.timer
 runuser -u nasuraya -- python3 /usr/local/lib/nasuraya/awake_runner.py
+runuser -u nasuraya -- python3 /usr/local/lib/nasuraya/awake_health.py
+
