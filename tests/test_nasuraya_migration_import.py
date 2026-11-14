@@ -135,9 +135,12 @@ class RefreshTests(unittest.TestCase):
                 second=reader.run()
             self.assertIn("IMPORT=OK",first)
             self.assertIn("IMPORT=OK",second)
-            self.assertEqual(reader.inspect_db(stage),[2,1,2,2])
-            self.assertTrue((original/("stage-before-"+"1"*32+".sqlite3")).is_file())
-            self.assertEqual(json.loads((original/"latest-import.json").read_text())["id"],"2"*32)
+            self.assertFalse(stage.exists())
+            old_version=original/"working"/("1"*32)/"awake.sqlite3"
+            report=json.loads((original/"latest-import.json").read_text())
+            self.assertEqual(reader.inspect_db(old_version),[1,1,1,1])
+            self.assertEqual(reader.inspect_db(Path(report["working_db"])),[2,1,2,2])
+            self.assertEqual(report["id"],"2"*32)
 
     def test_history_tampering_rejected(self):
         with tempfile.TemporaryDirectory() as td:
