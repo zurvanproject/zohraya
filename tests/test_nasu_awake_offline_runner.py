@@ -83,6 +83,13 @@ class RunnerTests(unittest.TestCase):
             with patch.object(runner,"HOME",home):
                 self.assertEqual(runner.awake_state_dir(),path.parent)
 
+    def test_systemd_sandbox_allows_only_versioned_awake_state(self):
+        installer=(Path(__file__).resolve().parents[1]/
+                   "tools/install_nasu_awake_offline.sh").read_text()
+        self.assertIn("/var/lib/nasuraya/migration/working",installer)
+        self.assertIn("IPAddressDeny=any",installer)
+        self.assertIn("NoNewPrivileges=true",installer)
+
     def test_no_activation_without_gate(self):
         with patch.object(runner,"CONTROL",Path(self.temp.name)/"no-gate"):
             self.assertFalse(runner.gate()["enabled"])
