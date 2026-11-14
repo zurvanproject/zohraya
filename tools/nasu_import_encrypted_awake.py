@@ -143,15 +143,22 @@ def verify_superset(older_path, newer_path, previous_counts, new_counts):
 
 def checkpoint_idle_stage(stage):
     """Safely finalize an idle, paused SQLite WAL before a verified state swap."""
-    with sqlite3.connect(stage,timeout=15) as db:
-        if db.execute("SELECT value FROM control WHERE name='paused'").fetchone()!=("1",):
+    first=sqlite3.connect(stage,timeout=15)
+    try:
+        if first.execute("SELECT value FROM control WHERE name='paused'").fetchone()!=("1",):
             raise ValueError("stage must be paused to checkpoint")
-        row=db.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
+        row=first.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
         if row is None or row[0]!=0:
             raise ValueError("stage SQLite WAL is busy")
-        mode=db.execute("PRAGMA journal_mode=DELETE").fetchone()[0]
+    finally:
+        first.close()
+    second=sqlite3.connect(stage,timeout=15)
+    try:
+        mode=second.execute("PRAGMA journal_mode=DELETE").fetchone()[0]
         if mode.lower()!="delete":
             raise ValueError("could not seal idle SQLite WAL")
+    finally:
+        second.close()
     for suffix in ("-wal","-shm"):
         if (stage.parent/(stage.name+suffix)).exists():
             raise ValueError("stage sqlite sidecar exists; refusing overwrite")
