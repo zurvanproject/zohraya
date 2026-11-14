@@ -10,9 +10,11 @@ import re
 import sqlite3
 import stat
 
+from atmosphere_policy import SURFACES, authorize
+
 OWNER = "zurvanproject"
-READ_ONLY = frozenset(("status", "disk", "python", "repo", "offline", "awake-status", "help"))
-ELEVATED = frozenset(("test", "sync", "awake-stage", "awake-activate"))
+READ_ONLY = frozenset(a for a, kind in SURFACES["ubuntu_bridge"].items() if kind == "read")
+ELEVATED = frozenset(a for a, kind in SURFACES["ubuntu_bridge"].items() if kind == "privileged")
 ACTIONS = READ_ONLY | ELEVATED
 COMMAND = re.compile(
     r"\A[ \t]*nasu-linux:[ \t]*(?P<action>[a-z][a-z-]*)[ \t]*(?:\r?\n)?\Z", re.I
@@ -112,14 +114,15 @@ class AtmosphereGate:
                     else:
                         answer = Decision(action, False, "ATMOSPHERE HOLD: uncertain prior execution")
                 else:
-                    if actor != OWNER:
-                        denial = "ATMOSPHERE DENY: actor-not-verified"
-                    elif action in ELEVATED and not _approved(
-                        self.approvals_path, request_id, action, now
-                    ):
-                        denial = "ATMOSPHERE DENY: local-approval-required"
-                    else:
-                        denial = None
+                    verdict = authorize(
+                        "ubuntu_bridge", action, mode="bounded",
+                        source_verified=(actor == OWNER),
+                        elevated_approved=(
+                            _approved(self.approvals_path, request_id, action, now)
+                            if action in ELEVATED else False
+                        ),
+                    )
+                    denial = None if verdict.allowed else "ATMOSPHERE DENY: " + verdict.reason
                     state = "finished" if denial else "reserved"
                     db.execute(
                         "INSERT INTO requests(id,action,state,receipt,created_at) VALUES(?,?,?,?,?)",
