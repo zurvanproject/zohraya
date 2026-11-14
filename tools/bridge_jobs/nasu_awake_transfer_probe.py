@@ -32,5 +32,5 @@ if __name__ == "__main__":
     try:
         result = probe()
     except BaseException:
-        result = "EXPORT=BLOCKED;CAUSE=PROBE_EXCEPTION"
+        result = "EXPORT=ERROR;CAUSE=" + type(sys.exc_info()[1]).__name__
     print(json.dumps({"status":"ok","summary":result},separators=(",",":")))
