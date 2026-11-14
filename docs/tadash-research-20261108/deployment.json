@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-08",
+  "reference_deadline_utc": "2026-11-08T17:30:00Z",
+  "timezone": "Asia/Tehran",
+  "interval_minutes": 10,
+  "installation": {
+    "commit": "0b98dc6cbdc0ff82331f7d249b4a310e308a322c",
+    "job_sha256": "36dcbc8074ee3e3c6c25340c078642c975b74cd5f2fb53d047f42c122d141fa3",
+    "request": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6720203898",
+    "receipt": "https://github.com/zurvanproject/zohraya/issues/149#issuecomment-6720213576",
+    "receipt_utc": "2026-11-08T10:12:18Z",
+    "reported": "EVENING=INSTALLED;SYSTEM=1;S=1;PLAN=44;HEALTH=1;EVERY=10MIN;END=2100TEHRAN;API=0"
+  },
+  "local_verification": {
+    "research_and_continuity_tests": 8,
+    "release_checks": ["package_hash_verification", "two_actual_cohorts", "idempotent_retry", "final_report", "finite_schedule_construction", "bounded_bridge_reply"]
+  },
+  "planned_exposures_per_cohort": {"computational_body_tests": 203, "heldout_decision_encounters": 16384, "preference_reversal_trials": 128},
+  "scope": "Live verified installation and first cohort. The remaining planned cohorts require the final readback."
+}
