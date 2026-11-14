@@ -116,6 +116,10 @@ if not sid: sys.exit('Missing restic snapshot ID')
 print(sid)
 PY
 )
+if [[ "${NASU_BACKUP_ONLY:-0}" == "1" ]]; then
+  printf 'REMOTE_ENCRYPTED_BACKUP=PASS;RESTORE_SKIPPED;SNAPSHOT_ID=%s\n' "$SNAP_ID"
+  exit 0
+fi
 mkdir -m 0700 "$TMP/restore"
 restic restore "$SNAP_ID" --target "$TMP/restore" >/dev/null
 export RESTORED="$TMP/restore$STAGE"
