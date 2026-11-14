@@ -72,3 +72,4 @@ if __name__=="__main__":
     try:main()
     except BaseException as exc:
         print("SCHEDULE=BLOCKED;CAUSE="+type(exc).__name__)
+        raise SystemExit(2)
