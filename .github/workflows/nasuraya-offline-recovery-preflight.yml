@@ -1,0 +1,24 @@
+name: Iran offline model and restic recovery preflight
+on:
+  push:
+    paths:
+      - "tools/nasu_install_local_llm.sh"
+      - "tools/nasu_offsite_restore_drill.sh"
+      - "tests/test_nasu_offline_readiness.py"
+      - ".github/workflows/nasuraya-offline-recovery-preflight.yml"
+  pull_request:
+    paths:
+      - "tools/nasu_install_local_llm.sh"
+      - "tools/nasu_offsite_restore_drill.sh"
+      - "tests/test_nasu_offline_readiness.py"
+      - ".github/workflows/nasuraya-offline-recovery-preflight.yml"
+permissions:
+  contents: read
+jobs:
+  synthetic-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate offline scripts and tamper detection without network or real credentials
+        run: python3 -m unittest discover -s tests -p test_nasu_offline_readiness.py -v
