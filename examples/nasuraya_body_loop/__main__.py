@@ -30,7 +30,7 @@ def main(argv=None):
     p = argparse.ArgumentParser(description='Verified Tadash body loop; API only with explicit api command')
     p.add_argument('command', choices=['start', 'observe', 'step', 'status', 'demo', 'test', 'api', 'api-test', 'run-status',
         'experience-enable', 'experience-step', 'experience-status', 'experience-consolidate', 'experience-test', 'experience-demo',
-        'self-knowledge-eval', 'instinct-enable', 'instinct-step', 'instinct-status',
+        'self-knowledge-eval', 'workspace-enable', 'workspace-step', 'workspace-status', 'workspace-test', 'workspace-demo', 'workspace-ablation-test', 'workspace-ablation-demo', 'motivation-enable', 'motivation-step', 'motivation-status', 'motivation-test', 'motivation-demo', 'autonomic-wave-enable', 'autonomic-wave-step', 'autonomic-wave-status', 'autonomic-wave-test', 'autonomic-wave-demo', 'autonomic-peak-test', 'autonomic-peak-demo', 'neurovisceral-enable', 'neurovisceral-step', 'neurovisceral-status', 'neurovisceral-test', 'neurovisceral-demo', 'standing-test', 'standing-demo', 'instinct-enable', 'instinct-step', 'instinct-status',
         'instinct-disable', 'instinct-test', 'instinct-demo'])
     p.add_argument('--session', type=Path)
     p.add_argument('--event-json', type=Path, help='explicit local JSON event for instinct-step')
@@ -41,6 +41,7 @@ def main(argv=None):
     p.add_argument('--steps', type=int, default=3)
     p.add_argument('--decision-id')
     p.add_argument('--duration-s', type=float, default=.1)
+    p.add_argument('--desire-proxy', type=float, default=.5, help='authored numerical libido proxy; 0..1, not biological sensation')
     p.add_argument('--api-mode', choices=['observe', 'bounded'], default='observe')
     p.add_argument('--target-cycles', type=int, default=0)
     p.add_argument('--run-id', default='main')
@@ -50,9 +51,9 @@ def main(argv=None):
     p.add_argument('--max-calls', type=int, default=40)
     p.add_argument('--timeout-seconds', type=float, default=30)
     args = p.parse_args(argv)
-    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval', 'instinct-test', 'instinct-demo'] and args.session is None:
+    if args.command not in ['demo', 'test', 'api-test', 'experience-test', 'experience-demo', 'self-knowledge-eval', 'workspace-test', 'workspace-demo', 'workspace-ablation-test', 'workspace-ablation-demo', 'motivation-test', 'motivation-demo', 'autonomic-wave-test', 'autonomic-wave-demo', 'autonomic-peak-test', 'autonomic-peak-demo', 'neurovisceral-test', 'neurovisceral-demo', 'standing-test', 'standing-demo', 'instinct-test', 'instinct-demo'] and args.session is None:
         p.error('--session required')
-    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval', 'instinct-demo') and args.output_dir is None:
+    if args.command in ('demo', 'experience-demo', 'self-knowledge-eval', 'workspace-demo', 'workspace-ablation-demo', 'motivation-demo', 'autonomic-wave-demo', 'autonomic-peak-demo', 'instinct-demo') and args.output_dir is None:
         p.error('--output-dir required')
     if args.command == 'instinct-step' and args.event_json is None:
         p.error('--event-json required for instinct-step')

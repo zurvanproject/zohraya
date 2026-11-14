@@ -9,6 +9,171 @@ from .host import BodyLoop, validate_duration
 
 def main(args):
     command = args['command']
+    if command == 'standing-test':
+        from . import test_standing
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_standing)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'standing-demo':
+        from .standing_demo import demo
+        r = demo(Path(args['output_dir']))
+        print(json.dumps({
+            'schema': r['schema'], 'total_native_cycles': r['total_native_cycles'],
+            'native_action_modes': r['native_action_modes'],
+            'matched_native_standing_behavior': r['matched_native_standing_behavior'],
+            'api_calls': r['api_calls'],
+        }, ensure_ascii=False, sort_keys=True))
+        return 0 if (r['total_native_cycles'] == 6 and
+                     r['matched_native_standing_behavior']) else 1
+    if command == 'neurovisceral-test':
+        from . import test_neurovisceral, test_spinal_reflex, test_phenotype_alignment
+        suite = unittest.TestSuite(
+            unittest.defaultTestLoader.loadTestsFromModule(m)
+            for m in (test_neurovisceral, test_spinal_reflex, test_phenotype_alignment))
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'neurovisceral-demo':
+        from .neurovisceral_demo import demo
+        result = demo(Path(args['output_dir']))
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0 if result['native_cycles'] == 3 else 1
+    if command.startswith('neurovisceral-'):
+        from .experience import ExperienceController
+        with BodyLoop(args['session']) as loop:
+            c = ExperienceController(loop)
+            if command == 'neurovisceral-enable':
+                result = c.enable_neurovisceral()
+            elif command == 'neurovisceral-step':
+                if c.status()['neurovisceral_coordination'] is None:
+                    raise ValueError('enable neurovisceral coordination before step')
+                result = c.step(args['decision_id'], duration_s=args['duration_s'])
+            else:
+                result = c.status()['neurovisceral_coordination'] or {'enabled': False}
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            return 0 if (command != 'neurovisceral-step'
+                or result['native_receipt']['status'] == 'complete') else 1
+    if command == 'autonomic-peak-test':
+        from . import test_autonomic_peak
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_autonomic_peak)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'autonomic-peak-demo':
+        from .autonomic_peak import demo
+        report = demo(Path(args['output_dir']))
+        print(json.dumps(report, ensure_ascii=False, sort_keys=True))
+        return 0 if report['native_body_cycles_executed'] == 0 and report['sample_count'] == 17 else 1
+    if command == 'autonomic-wave-test':
+        from . import test_autonomic_bridge
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_autonomic_bridge)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'autonomic-wave-demo':
+        from .autonomic_bridge_demo import demo
+        result = demo(Path(args['output_dir']))
+        print(json.dumps({
+            'schema': result['schema'],
+            'total_native_software_cycles': result['total_native_software_cycles'],
+            'wave_model_samples': result['wave_model_samples'],
+            'baseline_actions': {
+                k: result['arms']['baseline'][k]
+                for k in ('native_walks', 'native_observes', 'native_protect_vetoes')},
+            'wave_actions': {
+                k: result['arms']['wave'][k]
+                for k in ('native_walks', 'native_observes', 'native_protect_vetoes')},
+            'api_calls': result['api_calls'],
+            'physical_actuation': result['physical_actuation'],
+        }, ensure_ascii=False, sort_keys=True))
+        return 0 if result['total_native_software_cycles'] == 34 else 1
+    if command.startswith('autonomic-wave-'):
+        from .experience import ExperienceController
+        with BodyLoop(args['session']) as loop:
+            c = ExperienceController(loop)
+            if command == 'autonomic-wave-enable':
+                result = c.enable_autonomic_bridge()
+            elif command == 'autonomic-wave-step':
+                if c.status()['autonomic_motivation_bridge'] is None:
+                    raise ValueError('enable source-pinned autonomic bridge first')
+                result = c.step(args['decision_id'], duration_s=args['duration_s'])
+            else:
+                result = c.status()['autonomic_motivation_bridge'] or {'enabled': False}
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            if command == 'autonomic-wave-step':
+                return 0 if result['native_receipt']['status'] == 'complete' else 1
+        return 0
+    if command == 'motivation-test':
+        from . import test_motivation
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_motivation)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'motivation-demo':
+        from .motivation_demo import demo
+        result = demo(Path(args['output_dir']))
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0 if result['total_native_software_cycles'] == 15 else 1
+    if command.startswith('motivation-'):
+        from .experience import ExperienceController
+        with BodyLoop(args['session']) as loop:
+            c = ExperienceController(loop)
+            if command == 'motivation-enable':
+                result = c.enable_motivation(desire_proxy=args['desire_proxy'])
+            elif command == 'motivation-step':
+                if c.status()['motivational_drive'] is None:
+                    raise ValueError('enable modeled motivational drive first')
+                result = c.step(args['decision_id'], duration_s=args['duration_s'])
+            else:
+                result = c.status()['motivational_drive'] or {'enabled': False}
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            if command == 'motivation-step':
+                return 0 if result['native_receipt']['status'] == 'complete' else 1
+        return 0
+    if command == 'workspace-ablation-test':
+        from . import test_workspace_ablation
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_workspace_ablation)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'workspace-ablation-demo':
+        from .workspace_ablation import run
+        result = run(Path(args['output_dir']))
+        print(json.dumps({
+            'total_native_cycles': result['total_native_cycles'],
+            'matched_preference_comparisons': result['matched_preference_comparisons'],
+            'baseline': result['baseline'],
+            'workspace': result['workspace'],
+            'api_calls': result['api_calls'],
+            'physical_actuation': result['physical_actuation'],
+        }, ensure_ascii=False, sort_keys=True))
+        return 0 if result['total_native_cycles'] == 30 else 1
+    if command == 'workspace-test':
+        from . import test_workspace
+        suite = unittest.defaultTestLoader.loadTestsFromModule(test_workspace)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        return 0 if result.wasSuccessful() else 1
+    if command == 'workspace-demo':
+        from .workspace_demo import demo
+        result = demo(Path(args['output_dir']))
+        (Path(args['output_dir']) / 'summary.json').write_text(
+            json.dumps(result, ensure_ascii=False, sort_keys=True, indent=2) + '\n',
+            encoding='utf-8')
+        print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+        return 0 if result['workspace_updated_from_native_receipts'] == 6 else 1
+    if command.startswith('workspace-'):
+        from .experience import ExperienceController
+        from . import workspace
+        with BodyLoop(args['session']) as loop:
+            controller = ExperienceController(loop)
+            if command == 'workspace-enable':
+                result = controller.enable_workspace()
+            elif command == 'workspace-step':
+                if 'workspace' not in controller.status()['state']:
+                    raise ValueError('enable integrated workspace before workspace-step')
+                result = controller.step(args['decision_id'], duration_s=args['duration_s'])
+            else:
+                state = controller.status()
+                result = state['integrated_workspace'] or {'enabled': False}
+            print(json.dumps(result, ensure_ascii=False, sort_keys=True))
+            if command == 'workspace-step':
+                return 0 if result['native_receipt']['status'] == 'complete' else 1
+        return 0
     if command == 'self-knowledge-eval':
         from .self_knowledge_eval import run_evaluation
         summary = run_evaluation(Path(args['output_dir']))
