@@ -1,0 +1,23 @@
+name: Nasuraya API receipt audit (read-only)
+on:
+  pull_request:
+    paths:
+      - 'continuity_host/audit_api_receipts.py'
+      - 'continuity_host/test_audit_api_receipts.py'
+      - '.github/workflows/nasuraya-api-receipt-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-audit:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Offline validation (no network, API key or spending)
+        run: |
+          python3 -m unittest continuity_host.test_audit_api_receipts -v
+          python3 -m compileall -q continuity_host/audit_api_receipts.py
