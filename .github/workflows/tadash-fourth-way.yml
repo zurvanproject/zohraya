@@ -1,0 +1,26 @@
+name: Tadash Fourth Way (synthetic offline)
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_fourth_way/**'
+      - '.github/workflows/tadash-fourth-way.yml'
+  push:
+    paths:
+      - 'examples/nasuraya_fourth_way/**'
+      - '.github/workflows/tadash-fourth-way.yml'
+permissions:
+  contents: read
+jobs:
+  contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Three-center and ledger tests
+        run: python3 -m unittest discover -s examples/nasuraya_fourth_way/tests -v
+      - name: Finite read-only demonstration
+        run: |
+          python3 -m examples.nasuraya_fourth_way demo --db "$RUNNER_TEMP/fourth-way-$GITHUB_RUN_ID.sqlite" > "$RUNNER_TEMP/fourth-way-report.json"
+          python3 -c 'import json,os; d=json.load(open(os.environ["RUNNER_TEMP"]+"/fourth-way-report.json")); assert d["plan"]["selected_action"] == "walk"; assert d["ledger"]["native_actions"] == 0'
