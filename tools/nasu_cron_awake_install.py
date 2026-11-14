@@ -35,11 +35,11 @@ def main():
     if len(raw)>30000 or not raw.startswith(b"#!/usr/bin/env python3"):
         raise ValueError("offline runner source invalid")
     sha=hashlib.sha256(raw).hexdigest()
-    if INSTALLED.exists():
-        existing=INSTALLED.read_bytes()
-        if existing!=raw:
-            raise ValueError("already installed runner differs; explicit version upgrade required")
-    else:
+    existing=INSTALLED.read_bytes() if INSTALLED.exists() else None
+    if existing!=raw:
+        control=HOME/"awake-control.json"
+        if control.is_file() and json.loads(control.read_text(encoding="utf-8")).get("enabled"):
+            raise ValueError("cannot change active runner source without review")
         temp=BIN/"awake_runner.tmp"
         if temp.exists():
             raise ValueError("incomplete runner install")
@@ -71,5 +71,10 @@ def main():
 if __name__=="__main__":
     try:main()
     except BaseException as exc:
-        print("SCHEDULE=BLOCKED;CAUSE="+type(exc).__name__)
+        reasons={"cannot safely read existing crontab":"READ",
+                 "cron installation failed":"WRITE",
+                 "cron service is not boot-persistent":"DAEMON",
+                 "persisted schedule verification failed":"VERIFY"}
+        print("SCHEDULE=BLOCKED;CAUSE="+type(exc).__name__+
+              ";DETAIL="+reasons.get(str(exc),"UNKNOWN"))
         raise SystemExit(2)
