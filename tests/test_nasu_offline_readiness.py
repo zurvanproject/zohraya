@@ -1,5 +1,6 @@
 """Offline-readiness preflight only. Uses synthetic data; never runs a production job."""
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -28,7 +29,7 @@ def extracted_python():
 
 class OfflineReadinessTests(unittest.TestCase):
     def test_shell_syntax_and_model_sha(self):
-        for script in (BACKUP, MODEL):
+        for script in (BACKUP, MODEL, ROOT / "tools" / "install_nasu_offsite_backup_timer.sh"):
             subprocess.run(["bash", "-n", str(script)], check=True)
         install = MODEL.read_text()
         self.assertIn(EXPECTED, install)
@@ -90,12 +91,19 @@ class OfflineReadinessTests(unittest.TestCase):
                                   text=True, capture_output=True)
             self.assertEqual(good.returncode, 0, good.stderr)
             self.assertIn("REMOTE_ENCRYPTED_RESTORE=PASS", good.stdout)
+            verifier_path=ROOT / "tools" / "nasu_verify_restored_snapshot.py"
+            spec=importlib.util.spec_from_file_location("nasu_fresh_verify",verifier_path)
+            verifier=importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(verifier)
+            self.assertEqual(verifier.verify(stage)["status"],"verified")
 
             with open(stage / "awake.sqlite3", "ab") as fh:
                 fh.write(b"tamper")
             bad = subprocess.run(["python3", "-c", verify], env=env,
                                  text=True, capture_output=True)
             self.assertNotEqual(bad.returncode, 0, "Tampering must fail closed")
+            with self.assertRaises(ValueError):
+                verifier.verify(stage)
 
 
 if __name__ == "__main__":
