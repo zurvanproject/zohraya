@@ -1,0 +1,32 @@
+name: Nasuraya offline continuity validation
+on:
+  push:
+    paths:
+      - "tools/nasuraya_offline_continuity.py"
+      - "tools/install_nasuraya_offline_continuity.sh"
+      - "tools/nasuraya_linux_bridge.py"
+      - "tools/nasuraya_stage_awake_unprivileged.sh"
+      - "tests/test_nasuraya_offline_continuity.py"
+      - ".github/workflows/nasuraya-offline-continuity.yml"
+  pull_request:
+    paths:
+      - "tools/nasuraya_offline_continuity.py"
+      - "tools/install_nasuraya_offline_continuity.sh"
+      - "tools/nasuraya_linux_bridge.py"
+      - "tools/nasuraya_stage_awake_unprivileged.sh"
+      - "tests/test_nasuraya_offline_continuity.py"
+      - ".github/workflows/nasuraya-offline-continuity.yml"
+  workflow_dispatch:
+jobs:
+  offline-tests:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile and validate offline ledger
+        run: |
+          python3 -m py_compile tools/nasuraya_offline_continuity.py tools/nasuraya_linux_bridge.py
+          python3 -m unittest discover -s tests -p test_nasuraya_offline_continuity.py -v
+          bash -n tools/install_nasuraya_offline_continuity.sh
+          bash -n tools/nasuraya_stage_awake_unprivileged.sh
