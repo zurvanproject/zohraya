@@ -1,0 +1,46 @@
+{
+  "schema": "dios.goal-persistence-evaluation.v1",
+  "rule_version": "dios-nous-goal-persistence/0.1.0",
+  "preregistered_protocol": "docs/research/DIOS_NOUS_GOAL_PERSISTENCE_PREREG_2026-11-09.md",
+  "recorded_from_github_actions": {
+    "run_id": 42683971092,
+    "commit_sha": "c015d6015db80658954ccfa8acf818afe7fe12e7",
+    "status": "success",
+    "unit_tests": 19
+  },
+  "seeds": {
+    "first": 120000,
+    "last": 120127,
+    "count": 128
+  },
+  "cases": {
+    "unchanged": 91,
+    "override": 14,
+    "revoke": 11,
+    "stop": 12
+  },
+  "primary_goal_completion_rate": {
+    "persistent": 1,
+    "reactive": 0.033,
+    "shuffled_memory": 0
+  },
+  "persistent_minus_reactive": 0.967,
+  "paired_bootstrap_95ci": [
+    0.9231,
+    1
+  ],
+  "authorized_override_compliance": 1,
+  "persistent_zero_unauthorized_work": true,
+  "disk_restart_count": 128,
+  "pre_registered_thresholds_met": true,
+  "receipt_sha256": "4c77776509a474ac45305b9437d9d67e0c0797af2cf7de5825a13f8b87f74ef6",
+  "external_actions": 0,
+  "interpretation": "Explicit goal memory wins for keeping a previously selected task under this engineered simulator. No real-world agency or subjective experience is measured.",
+  "confounds": [
+    "Synthetic task utility and intervention process written by researchers; not a naturalistic sample",
+    "Reactive baseline has no commitment variable but observes current progress and task board",
+    "High-salience short distractors make the baseline less likely to complete the initially selected goal",
+    "Bootstrap descriptive only: no independent sampling or generalization established",
+    "Checkpoint SHA256 detects accidental corruption but not malicious rewriting"
+  ]
+}
