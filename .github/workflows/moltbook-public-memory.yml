@@ -1,0 +1,38 @@
+name: Public Moltbook episodic memory
+on:
+  push:
+    branches: [nasuraya/moltbook-memory-20261108]
+  pull_request:
+    paths:
+      - tools/bridge_jobs/moltbook_memory_capture.py
+      - tools/bridge_jobs/moltbook_memory_recall.py
+      - tools/bridge_jobs/moltbook_memory_compare.py
+      - tools/bridge_jobs/moltbook_memory_report.py
+      - tools/bridge_jobs/moltbook_reflection_train.py
+      - tools/bridge_jobs/moltbook_reflection_report.py
+      - tools/bridge_jobs/moltbook_recovery_run.py
+      - tools/bridge_jobs/moltbook_recovery_report.py
+      - tools/bridge_jobs/moltbook_repair_retest.py
+      - tests/test_moltbook_repair_retest.py
+      - tests/test_moltbook_recovery.py
+      - tests/test_moltbook_native_feedback.py
+      - tests/test_moltbook_memory_decisions.py
+      - tests/test_moltbook_public_memory.py
+      - .github/workflows/moltbook-public-memory.yml
+permissions:
+  contents: read
+jobs:
+  offline:
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_moltbook_*.py' -v
