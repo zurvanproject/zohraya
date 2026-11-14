@@ -3,6 +3,9 @@ on:
   pull_request:
     paths:
       - 'tools/bridge_jobs/nasu_awake_encrypted_export.py'
+      - 'tools/bridge_jobs/nasu_awake_freeze_windows.py'
+      - 'tools/bridge_jobs/nasu_awake_resume_windows.py'
+      - 'tests/test_nasu_windows_cutover.py'
       - 'tools/nasu_migration_recipient_key.py'
       - 'tools/nasu_import_encrypted_awake.py'
       - 'tools/nasu_awake_activate.py'
@@ -12,6 +15,9 @@ on:
   push:
     paths:
       - 'tools/bridge_jobs/nasu_awake_encrypted_export.py'
+      - 'tools/bridge_jobs/nasu_awake_freeze_windows.py'
+      - 'tools/bridge_jobs/nasu_awake_resume_windows.py'
+      - 'tests/test_nasu_windows_cutover.py'
       - 'tools/nasu_migration_recipient_key.py'
       - 'tools/nasu_import_encrypted_awake.py'
       - 'tools/nasu_awake_activate.py'
@@ -32,3 +38,5 @@ jobs:
           python3 -m unittest discover -s tests -p 'test_nasuraya_migration_export.py' -v
           python3 -m unittest discover -s tests -p 'test_nasuraya_migration_import.py' -v
           bash -n tools/nasuraya_stage_awake_unprivileged.sh
+          python3 -m py_compile tools/bridge_jobs/nasu_awake_freeze_windows.py tools/bridge_jobs/nasu_awake_resume_windows.py
+          python3 -m unittest discover -s tests -p 'test_nasu_windows_cutover.py' -v
