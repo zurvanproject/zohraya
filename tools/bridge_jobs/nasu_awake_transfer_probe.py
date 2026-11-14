@@ -26,7 +26,7 @@ def probe():
     finally:
         db.close()
     crypto = int(importlib.util.find_spec("cryptography") is not None)
-    return "EXPORT=READY;DB="+str(awake.stat().st_size)+";INTEGRITY="+str(integ)+";EV="+str(evidence)+";Q="+str(questions)+";T="+str(ticks)+";L="+str(ledger)+";CRYPTO="+str(crypto)+";TOKENFILE="+str(int(token.is_file()))
+    return "EXPORT=READY;DB="+str(awake.stat().st_size)+";INTEGRITY="+str(integ)+";EV="+str(evidence)+";Q="+str(questions)+";T="+str(ticks)+";L="+str(ledger)+";CRYPTO="+str(crypto)+";KEYPRESENT="+str(int(token.is_file()))
 
 if __name__ == "__main__":
     try:
