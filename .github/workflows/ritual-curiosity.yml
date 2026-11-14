@@ -1,0 +1,47 @@
+name: Ritual curiosity paired experiment
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - research/ritual-curiosity-learning-20261115
+    paths:
+      - examples/ritual_curiosity/**
+      - docs/research/RITUAL_CURIOSITY_EXPERIMENT_2026-11-15_FA.md
+      - .github/workflows/ritual-curiosity.yml
+  pull_request:
+    paths:
+      - examples/ritual_curiosity/**
+      - docs/research/RITUAL_CURIOSITY_EXPERIMENT_2026-11-15_FA.md
+      - .github/workflows/ritual-curiosity.yml
+
+permissions:
+  contents: read
+
+jobs:
+  offline-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - name: Offline Python contract tests
+        run: python3 -m unittest discover -s examples/ritual_curiosity -p 'test_experiment.py' -v
+      - name: Reproduce 120-seed, three-arm, three-regime experiment
+        run: python3 examples/ritual_curiosity/experiment.py --seeds 120 --output curiosity_results.json > /dev/null
+      - name: Check reported directional outcomes
+        run: |
+          python3 - <<'PY'
+          import json
+          x=json.load(open('curiosity_results.json', encoding='utf-8'))['regimes']
+          def a(reg, arm): return x[reg]['arms'][arm]['8']['accuracy_pct']
+          assert a('learnable_parity', 'curiosity_only') >= a('learnable_parity', 'answer_first')
+          assert a('misspecified_nonlinear', 'curiosity_diversity') < a('misspecified_nonlinear', 'answer_first')
+          assert 40 <= a('unlearnable_random', 'curiosity_only') <= 60
+          print('Reproduction checks passed')
+          PY
+      - name: Preserve measured JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: ritual-curiosity-results-120-seeds
+          path: curiosity_results.json
+          retention-days: 30
