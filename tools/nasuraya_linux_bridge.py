@@ -119,7 +119,7 @@ def poll():
         receipt = (
             f"nasu-linux-result request_id={request_id}\n"
             f"action={action}; utc={datetime.datetime.now(datetime.timezone.utc).isoformat()}\n"
-            f"host=ubuntu-iran; result:\n\`\`\`text\n{result[:3500]}\n\`\`\`"
+            f"host=ubuntu-iran; result:\n```text\n{result[:3500]}\n```"
         )
         api("POST", f"/repos/{REPO}/issues/{ISSUE}/comments", {"body": receipt})
         seen.add(request_id)
