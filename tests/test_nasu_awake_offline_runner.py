@@ -3,11 +3,12 @@ import datetime as dt
 import hashlib
 import importlib.util
 import json
+import os
 import sqlite3
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 PATH=Path(__file__).resolve().parents[1]/"tools/nasu_awake_offline_runner.py"
 spec=importlib.util.spec_from_file_location("awake_runner_under_test",PATH)
@@ -93,6 +94,51 @@ class RunnerTests(unittest.TestCase):
     def test_no_activation_without_gate(self):
         with patch.object(runner,"CONTROL",Path(self.temp.name)/"no-gate"):
             self.assertFalse(runner.gate()["enabled"])
+
+    @unittest.skipIf(os.geteuid()==0,"permission reproduction needs a non-root process")
+    def test_wal_reader_needs_sidecars_but_keeps_ledger_unchanged(self):
+        self.add_record()
+        with sqlite3.connect(self.ledger) as db:
+            db.execute("PRAGMA journal_mode=WAL")
+        db.close()
+        before=self.ledger.read_bytes()
+        home=Path(self.temp.name)
+        self.ledger.chmod(0o444)
+        home.chmod(0o555)
+        try:
+            with patch.object(runner,"LEDGER",self.ledger):
+                with self.assertRaises(sqlite3.OperationalError) as caught:
+                    runner.observations(self.clock)
+            self.assertEqual(caught.exception.sqlite_errorcode & 255,sqlite3.SQLITE_READONLY)
+        finally:
+            home.chmod(0o700)
+            self.ledger.chmod(0o600)
+        with patch.object(runner,"LEDGER",self.ledger):
+            self.assertEqual(len(runner.observations(self.clock)),3)
+        self.assertEqual(self.ledger.read_bytes(),before)
+
+    def test_telemetry_failure_does_not_resume_or_write_awake(self):
+        (self.state/"awake.sqlite3").touch()
+        core=Mock()
+        with patch.object(runner.os,"geteuid",return_value=1000), \
+             patch.object(runner,"locked_source",return_value=core), \
+             patch.object(runner,"gate",return_value={"enabled":True}), \
+             patch.object(runner,"awake_state_dir",return_value=self.state), \
+             patch.object(runner,"observations",side_effect=sqlite3.OperationalError("readonly")):
+            with self.assertRaises(sqlite3.OperationalError):
+                runner.run(self.clock)
+        core.status.assert_not_called()
+        core.set_paused.assert_not_called()
+        core.ingest.assert_not_called()
+        core.tick.assert_not_called()
+
+    def test_sandbox_permits_wal_sidecars_without_removing_confinement(self):
+        installer=(Path(__file__).resolve().parents[1]/
+                   "tools/install_nasu_awake_offline.sh").read_text()
+        writable=next(x for x in installer.splitlines() if x.startswith("ReadWritePaths="))
+        self.assertIn("/var/lib/nasuraya/continuity",writable.split("=",1)[1].split())
+        self.assertIn("ProtectSystem=strict",installer)
+        self.assertIn("RestrictAddressFamilies=AF_UNIX",installer)
 
 if __name__=="__main__":
     unittest.main()
