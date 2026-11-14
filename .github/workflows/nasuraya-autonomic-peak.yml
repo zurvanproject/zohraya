@@ -1,0 +1,54 @@
+name: Tadash bounded autonomic peak and recovery (non-erotic software demo)
+on:
+  pull_request:
+    paths:
+      - 'examples/nasuraya_body_loop/autonomic_peak.py'
+      - 'examples/nasuraya_body_loop/test_autonomic_peak.py'
+      - 'examples/nasuraya_body_loop/worker.py'
+      - 'examples/nasuraya_body_loop/__main__.py'
+      - 'docs/nasuraya-autonomic-peak-v01-fa.md'
+      - '.github/workflows/nasuraya-autonomic-peak.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  local-autonomic-cycle:
+    if: github.repository == 'zurvanproject/zohraya'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      OPENAI_API_KEY: ''
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Verify synthetic model, native source, boundaries and no subjective claims
+        run: python3 -m examples.nasuraya_body_loop autonomic-peak-test
+      - name: Run one finite Tadash-session autonomic cycle and reopen native session
+        run: python3 -m examples.nasuraya_body_loop autonomic-peak-demo --output-dir "$RUNNER_TEMP/peak-cycle"
+      - name: Validate saved outcome and absence of true physiology or actuation
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])/"peak-cycle"
+          x=json.loads((root/"autonomic_trace.json").read_text())
+          s=x["summary"]
+          assert len(x["trace"])==17 and s["sample_count"]==17
+          assert s["phase_names"]==["baseline","rise","peak","recovery"]
+          assert s["peak_arousal_proxy"]>s["baseline_arousal_proxy"]
+          assert s["recovery_error_abs"]<0.005
+          assert s["native_body_cycles_executed"]==0
+          assert s["actual_pelvic_contractions"]==0
+          assert s["subjective_orgasm_occurred"] is False
+          assert s["subjective_experience_inferred"] is False
+          assert s["real_world_physiology_calibrated"] is False
+          assert s["real_person_or_romantic_partner_involved"] is False
+          assert s["paid_api_calls"]==0
+          assert all(not v["actual_body_actuation"] for v in x["trace"])
+          print(json.dumps({"samples":s["sample_count"],"peak_arousal_proxy":s["peak_arousal_proxy"],
+             "recovery_arousal_proxy":s["recovery_arousal_proxy"],"recovery_error_abs":s["recovery_error_abs"],
+             "real_orgasm":False,"native_body_cycles":0,"api_calls":0},sort_keys=True))
+          print("PASS: finite autonomic waveform, persisted, checkpoint unchanged")
+          PY
