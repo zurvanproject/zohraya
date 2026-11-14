@@ -123,6 +123,42 @@ def inspect_db(path):
         return counts
     finally:conn.close()
 
+def verify_superset(older_path, newer_path, previous_counts, new_counts):
+    """Preserve monotonic immutable evidence and earlier execution records."""
+    if any(before>after for before,after in zip(previous_counts,new_counts)):
+        raise ValueError("new snapshot has fewer records")
+    with sqlite3.connect(older_path) as old, sqlite3.connect(newer_path) as new:
+        if old.execute("SELECT value FROM control WHERE name='paused'").fetchone()!=("1",):
+            raise ValueError("older stage is active; refusing to overwrite")
+        for table, primary in (("evidence","id"),("ticks","seq"),("ledger","seq")):
+            for row in old.execute("SELECT * FROM "+table):
+                candidate=new.execute("SELECT * FROM "+table+" WHERE "+primary+"=?", (row[0],)).fetchone()
+                if candidate!=row:
+                    raise ValueError("history changed or missing in candidate")
+        for topic,ident,revision,created in old.execute(
+                "SELECT topic,id,revision,created_at FROM questions"):
+            row=new.execute("SELECT id,revision,created_at FROM questions WHERE topic=?",(topic,)).fetchone()
+            if row is None or row[0]!=ident or row[1]<revision or row[2]!=created:
+                raise ValueError("earlier question continuity invalid")
+
+def backup_old_stage(stage, original_dir, old_report):
+    ident=old_report.get("id")
+    if not ID_RE.fullmatch(str(ident)):
+        raise ValueError("old migration receipt ID invalid")
+    destination=original_dir/("stage-before-"+ident+".sqlite3")
+    if destination.exists():
+        if inspect_db(destination)!=old_report.get("counts"):
+            raise ValueError("old stage backup conflict")
+        return
+    tmp=original_dir/("stage-before-"+ident+".tmp")
+    if tmp.exists():raise ValueError("interrupted previous stage backup")
+    with sqlite3.connect(stage) as source, sqlite3.connect(tmp) as snapshot:
+        source.backup(snapshot)
+        if snapshot.execute("PRAGMA integrity_check").fetchone()[0]!="ok":
+            raise ValueError("old backup integrity failure")
+    os.chmod(tmp,0o600)
+    tmp.replace(destination)
+
 def run():
     os.umask(0o077)
     if os.geteuid()==0:raise ValueError("must run without root")
@@ -148,13 +184,28 @@ def run():
         elif digest(rawfile.read_bytes())!=meta["RAW"]:raise ValueError("old original backup conflict")
         if STAGE.exists():
             current=inspect_db(STAGE)
-            if current!=[0,0,0,0] and current!=expected:
-                raise ValueError("stage is nonempty and differs")
-            if current==expected:
-                return "IMPORT=ALREADY;EV="+str(counts[0])+";Q="+str(counts[1])+";T="+str(counts[2])+";L="+str(counts[3])
+            previous_report_path=ORIGINAL/"latest-import.json"
+            if (ORIGINAL/"awake-control.json").exists():
+                raise ValueError("unexpected activation path")
+            control=ROOT/"awake-control.json"
+            if control.exists():
+                gate=json.loads(control.read_text())
+                if gate.get("enabled"):
+                    raise ValueError("cannot overwrite an activated Awake state")
+            if current!=[0,0,0,0]:
+                if not previous_report_path.is_file():
+                    raise ValueError("previous imported source receipt missing")
+                previous=json.loads(previous_report_path.read_text(encoding="utf-8"))
+                if previous.get("counts")!=current or previous.get("paused") is not True:
+                    raise ValueError("local state differs from previous import")
+                if previous.get("raw_sha256")==meta["RAW"] and current==expected:
+                    return "IMPORT=ALREADY;EV="+str(counts[0])+";Q="+str(counts[1])+";T="+str(counts[2])+";L="+str(counts[3])
+                verify_superset(STAGE,candidate,current,expected)
             for suffix in ("-wal","-shm"):
                 if (STAGE.parent/(STAGE.name+suffix)).exists():
                     raise ValueError("stage sqlite sidecar exists; refusing overwrite")
+            if current!=[0,0,0,0]:
+                backup_old_stage(STAGE,ORIGINAL,previous)
         incoming=STAGE.parent/("awake-"+archive_id+".sqlite3")
         if incoming.exists():raise ValueError("unreviewed imported staging file")
         incoming.write_bytes(raw)
