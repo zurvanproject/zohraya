@@ -1,0 +1,62 @@
+{
+  "scope": "Local offline integration verification; not an independent review or GitHub Actions run",
+  "python": "3.13.5",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "unit_tests_passed": 21,
+  "unit_test_command": "python -m unittest examples.setar_practice.test_integration -v",
+  "parity_checks_passed": 6,
+  "parity_checks": {
+    "initial_state_equal": true,
+    "all_1460_events_and_waveforms_equal": true,
+    "all_sensor_results_and_commands_equal": true,
+    "final_state_equal_after_1460_accelerated_updates": true,
+    "final_120_note_holdout_equal": true,
+    "archived_final_holdout_reproduced_exactly": true
+  },
+  "parity_note_events": 1460,
+  "parity_mode": "accelerated",
+  "historical_realtime_practice_rerun": false,
+  "seed_evaluation": {
+    "notes": 120,
+    "valid_notes": 120,
+    "missing_notes": 0,
+    "pitch_cents_mae": 1.6550767774730748,
+    "pitch_cents_p95": 3.987193205417802,
+    "onset_ms_mae": 3.0030234315948614,
+    "onset_ms_p95": 7.074829931972795,
+    "attack_percent_mae": 2.3976754960593145,
+    "attack_percent_p95": 5.723150092912373
+  },
+  "cli_smoke": {
+    "episodes": 2,
+    "note_events": 36,
+    "inherited_updates": 2860,
+    "new_updates": 36,
+    "total_updates": 2896,
+    "accelerated": true,
+    "scheduled_music_seconds": 20.0,
+    "wall_clock_seconds": 0.3169168080000304,
+    "cpu_seconds": 0.311628362,
+    "ten_minutes_wall_clock_verified": false
+  },
+  "cold_process_reload_verified": true,
+  "seed_updates_unchanged": 2860,
+  "git_parent": "cccbd67b81e611096d316123be70922e21587dfe",
+  "source_archive_all_33_entries_verified": true,
+  "not_done": [
+    "full_repository_regression",
+    "independent_review",
+    "main_merge",
+    "server_deployment",
+    "body_runtime_connection",
+    "hand_physics"
+  ],
+  "source_sha256": {
+    "engine.py": "586de930c61c4900460212d9bde243d102ebd6ee105dfba18b89e817909d441d",
+    "skill.py": "dcbdb50adf1597a69a32d8a5d42c5f4683aba5145f1248246c3236083ecdfaa0",
+    "__main__.py": "e8af95134c0a7710332aa862ce4d721459ee3158a5c4d50766a2332ec1900801",
+    "test_integration.py": "1cee82a76f4640e15325d205224759580366a6f79616d2b8446456a9dd985d20",
+    "data/seed_v03.json": "01ab60d21ba34c628542ad1ae5a75d14573431dd257d4b70d8f64608f339fe31"
+  }
+}

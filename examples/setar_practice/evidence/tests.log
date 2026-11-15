@@ -1,0 +1,26 @@
+test_bundled_seed_and_count (examples.setar_practice.test_integration.SetarIntegrationTests.test_bundled_seed_and_count) ... ok
+test_cli_requires_explicit_timing (examples.setar_practice.test_integration.SetarIntegrationTests.test_cli_requires_explicit_timing) ... ok
+test_evaluation_read_only (examples.setar_practice.test_integration.SetarIntegrationTests.test_evaluation_read_only) ... ok
+test_exact_calibration_retained (examples.setar_practice.test_integration.SetarIntegrationTests.test_exact_calibration_retained) ... ok
+test_failed_observation_cannot_train (examples.setar_practice.test_integration.SetarIntegrationTests.test_failed_observation_cannot_train) ... ok
+test_holdout_update_rejected (examples.setar_practice.test_integration.SetarIntegrationTests.test_holdout_update_rejected) ... ok
+test_interruption_marked_not_completed (examples.setar_practice.test_integration.SetarIntegrationTests.test_interruption_marked_not_completed) ... ok
+test_invalid_counters_rejected (examples.setar_practice.test_integration.SetarIntegrationTests.test_invalid_counters_rejected) ... ok
+test_invalid_episode_budgets (examples.setar_practice.test_integration.SetarIntegrationTests.test_invalid_episode_budgets) ... ok
+test_known_node_and_unseen_target (examples.setar_practice.test_integration.SetarIntegrationTests.test_known_node_and_unseen_target) ... ok
+test_nan_and_out_of_range_calibration_rejected (examples.setar_practice.test_integration.SetarIntegrationTests.test_nan_and_out_of_range_calibration_rejected) ... ok
+test_no_output_overwrite (examples.setar_practice.test_integration.SetarIntegrationTests.test_no_output_overwrite) ... ok
+test_no_side_effect_on_import (examples.setar_practice.test_integration.SetarIntegrationTests.test_no_side_effect_on_import) ... ok
+test_outside_range_not_extrapolated (examples.setar_practice.test_integration.SetarIntegrationTests.test_outside_range_not_extrapolated) ... ok
+test_parent_mutation_detected_before_output (examples.setar_practice.test_integration.SetarIntegrationTests.test_parent_mutation_detected_before_output) ... ok
+test_restart_adds_counts_once (examples.setar_practice.test_integration.SetarIntegrationTests.test_restart_adds_counts_once) ... ok
+test_roundtrip_predictions (examples.setar_practice.test_integration.SetarIntegrationTests.test_roundtrip_predictions) ... ok
+test_sensor_rejects_malformed_audio (examples.setar_practice.test_integration.SetarIntegrationTests.test_sensor_rejects_malformed_audio) ... ok
+test_sensor_rejects_silence_and_noise (examples.setar_practice.test_integration.SetarIntegrationTests.test_sensor_rejects_silence_and_noise) ... ok
+test_training_excludes_holdout (examples.setar_practice.test_integration.SetarIntegrationTests.test_training_excludes_holdout) ... ok
+test_unknown_checkpoint_and_inconsistent_total (examples.setar_practice.test_integration.SetarIntegrationTests.test_unknown_checkpoint_and_inconsistent_total) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 6.147s
+
+OK

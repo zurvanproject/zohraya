@@ -1,0 +1,45 @@
+{
+  "kind": "verified_import_of_supplied_local_v03_artifact",
+  "archive_sha256": "0f9a93db19fa95f88c6ba726eba003d5f120f25f6b1daa73606df79579771835",
+  "archive_manifest_sha256": "1bf53da63c5b6c36e64f9feb5bb562ea106f5aeb33925bd571383bc8a758c2ce",
+  "archive_manifest_entries_verified": 33,
+  "manifest_mismatches": [],
+  "seed_sha256": "01ab60d21ba34c628542ad1ae5a75d14573431dd257d4b70d8f64608f339fe31",
+  "source_files_sha256": {
+    "src/legacy_v02.py": "14f663a409e3d2390664aac97cdaacb5d63f5902d52a0dedab0b0f4965e347c6",
+    "src/continuation.py": "7151d701287b2bbf92e13e9d32fb58d4e249f8e25b6ca55632da2ffd16c292fc",
+    "session/controller_checkpoint.json": "afd7c087b633f61d21ef81f2c3bac082b05a5687fd43d766c2994a5a483fcd1e",
+    "session/note_log.jsonl": "75efada9519095b2cdc2cda4d470376595a3f18bb4dba4c8a3b4d8c8b22d82a2",
+    "session/summary.json": "97bc96c1df730e56ace6008f890ce1ef799ab98d8af1d4a54499a027a23d3f24"
+  },
+  "imported_total_updates": 2860,
+  "imported_prior_updates": 1400,
+  "imported_v03_updates": 1460,
+  "kernel_migration": {
+    "legacy_functions": [
+      "audio_sensor",
+      "hz",
+      "key",
+      "metrics",
+      "modal_pluck",
+      "write_audio"
+    ],
+    "v03_symbols": [
+      "Controller",
+      "evaluate",
+      "exercise",
+      "make_event",
+      "mix_stem",
+      "periodicity_frequency",
+      "render_observe",
+      "sensor"
+    ],
+    "changes": [
+      "Flatten helper module namespace",
+      "Reject malformed/nonfinite sensor input",
+      "New unseeded controllers inherit zero updates"
+    ]
+  },
+  "original_archive_uploaded_to_github": false,
+  "scope": "Hashes establish consistency with supplied files, not an independent wall-clock attestation. Historical 600-second sessions were NOT rerun during integration."
+}
