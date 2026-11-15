@@ -1,0 +1,147 @@
+# Nasuraya Bridge v2 installer. One-time activation by the server owner.
+# No new GitHub token or Windows password required; preserves existing Task Scheduler identity.
+$ErrorActionPreference = 'Stop'
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+$root = 'C:\NasurayaBridge'
+$target = Join-Path $root 'bridge.ps1'
+$agent = Join-Path $root 'bridge_v2.py'
+$backup = Join-Path $root ('bridge_backup_' + [Guid]::NewGuid().ToString('N') + '.ps1')
+$task = 'NasurayaBridge'
+$expectedSha256 = '9d42e61d4751d713daeac1eb4ce3569b90c2a90716e69b0b6c3f4d9c8cc5a93e'
+$source = 'https://raw.githubusercontent.com/zurvanproject/zohraya/b6d5469180c0e66f3bf6fb67639c17fe4c752bcc/tools/bridge_v2.py'
+
+if (-not (Test-Path -LiteralPath $target)) { throw 'Existing bridge.ps1 not found; nothing changed.' }
+if (-not (Test-Path -LiteralPath (Join-Path $env:ProgramData 'NasurayaBridge\github_token.dpapi'))) {
+    throw 'Encrypted GitHub token not found; nothing changed.'
+}
+$identity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = New-Object System.Security.Principal.WindowsPrincipal($identity)
+if (-not $principal.IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)) {
+    throw 'Run in the existing Administrator PowerShell window.'
+}
+$existingTask = Get-ScheduledTask -TaskName $task -ErrorAction Stop
+
+# Refresh PATH because an interactive PowerShell may have started before
+# Python was installed. Check typical Python 3.12 locations and the registry.
+$env:Path = [Environment]::GetEnvironmentVariable('Path', 'Machine') + ';' + [Environment]::GetEnvironmentVariable('Path', 'User')
+$candidates = @()
+$located = Get-Command python.exe -ErrorAction SilentlyContinue
+if ($null -ne $located) { $candidates += $located.Source }
+$candidates += @(
+    (Join-Path $env:LOCALAPPDATA 'Programs\Python\Python312\python.exe'),
+    (Join-Path $env:LOCALAPPDATA 'Programs\Python\Python313\python.exe'),
+    'C:\Python312\python.exe',
+    'C:\Program Files\Python312\python.exe',
+    'C:\Program Files (x86)\Python312\python.exe'
+)
+foreach ($registryRoot in @('HKCU:\Software\Python\PythonCore','HKLM:\Software\Python\PythonCore')) {
+    if (-not (Test-Path $registryRoot)) { continue }
+    foreach ($key in (Get-ChildItem $registryRoot -ErrorAction SilentlyContinue)) {
+        $path = Join-Path $key.PSPath 'InstallPath'
+        if (-not (Test-Path $path)) { continue }
+        $regKey = Get-Item $path -ErrorAction SilentlyContinue
+        if ($null -eq $regKey) { continue }
+        $candidate = $regKey.GetValue('ExecutablePath')
+        if (-not $candidate) {
+            $folder = $regKey.GetValue('')
+            if ($folder) { $candidate = Join-Path $folder 'python.exe' }
+        }
+        if ($candidate) { $candidates += [string]$candidate }
+    }
+}
+$python = $null
+$version = $null
+foreach ($candidate in ($candidates | Select-Object -Unique)) {
+    if (-not $candidate -or -not (Test-Path -LiteralPath $candidate -PathType Leaf)) { continue }
+    try {
+        $v = (& $candidate --version 2>&1 | Out-String).Trim()
+        if ($LASTEXITCODE -eq 0 -and $v -match '^Python 3\.(1[2-9]|[2-9][0-9])\.') {
+            $python = $candidate
+            $version = $v
+            break
+        }
+    } catch { continue }
+}
+if (-not $python) { throw 'Python 3.12+ not found; existing v1 bridge unchanged.' }
+Write-Host ('FOUND_PYTHON: ' + $version)
+
+$tmpAgent = $agent + '.new'
+Invoke-WebRequest -UseBasicParsing -Uri $source -OutFile $tmpAgent -ErrorAction Stop
+$actualHash = (Get-FileHash -LiteralPath $tmpAgent -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($actualHash -ne $expectedSha256) {
+    Remove-Item -LiteralPath $tmpAgent -Force -ErrorAction SilentlyContinue
+    throw 'Agent SHA256 verification failed; existing bridge unchanged.'
+}
+& $python -I -c 'import ast,pathlib,sys; ast.parse(pathlib.Path(sys.argv[1]).read_bytes())' $tmpAgent
+if ($LASTEXITCODE -ne 0) { throw 'Python syntax preflight failed; existing bridge unchanged.' }
+
+$wrapper = @'
+# Nasuraya Bridge v2 Windows scheduled-task wrapper. PowerShell 4 compatible.
+$ErrorActionPreference = 'Stop'
+$root = 'C:\NasurayaBridge'
+$protected = Join-Path $env:ProgramData 'NasurayaBridge\github_token.dpapi'
+$secure = ConvertTo-SecureString ((Get-Content -LiteralPath $protected -Raw).Trim())
+$ptr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
+try { $env:NASURAYA_GH_TOKEN = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($ptr) }
+finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($ptr) }
+try {
+    $exe = '__NASURAYA_PYTHON_EXE__'
+    & $exe -I -u (Join-Path $root 'bridge_v2.py') 2>&1 | Out-File -Append -Encoding UTF8 -FilePath (Join-Path $env:ProgramData 'NasurayaBridge\bridge_v2.log')
+    if ($LASTEXITCODE -ne 0) { throw 'Nasuraya Python bridge stopped unexpectedly.' }
+} finally {
+    Remove-Item Env:\NASURAYA_GH_TOKEN -ErrorAction SilentlyContinue
+}
+'@
+$wrapper = $wrapper.Replace('__NASURAYA_PYTHON_EXE__', $python.Replace("'", "''"))
+$tokens = $null; $parseErrors = $null
+[void][System.Management.Automation.Language.Parser]::ParseInput($wrapper, [ref]$tokens, [ref]$parseErrors)
+if ($parseErrors.Count -ne 0) { throw 'Wrapper PowerShell parse failed; existing bridge unchanged.' }
+
+# All preflight checks have passed. Only now replace the scheduled-task target.
+$rollbackNeeded = $false
+$agentBackup = $backup + '.py'
+$hadAgent = Test-Path -LiteralPath $agent
+$wasRunning = $existingTask.State.ToString() -eq 'Running'
+try {
+    # Backups finish before stopping or changing the existing service.
+    Copy-Item -LiteralPath $target -Destination $backup -Force
+    Export-ScheduledTask -TaskName $task | Set-Content -LiteralPath ($backup + '.task.xml') -Encoding UTF8
+    if ($hadAgent) { Copy-Item -LiteralPath $agent -Destination $agentBackup -Force }
+    $rollbackNeeded = $true
+    Stop-ScheduledTask -TaskName $task -ErrorAction Stop
+    Move-Item -LiteralPath $tmpAgent -Destination $agent -Force
+    Set-Content -LiteralPath $target -Value $wrapper -Encoding ASCII
+    # Casting an ISO timestamp ending in Z converts it to the server's local
+    # zone in Windows PowerShell. Subtracting those local ticks from UtcNow
+    # can move this threshold hours into the future and cause false rollback.
+    $startedEpoch = ([DateTime]::UtcNow.Ticks / 10000000.0) - 62135596800.0
+    Start-ScheduledTask -TaskName $task -ErrorAction Stop
+    # Running alone is insufficient: require a fresh successful authenticated poll.
+    $healthy = $false
+    $healthPath = Join-Path $env:ProgramData 'NasurayaBridge\v2_health.json'
+    for ($attempt = 0; $attempt -lt 11; $attempt++) {
+        Start-Sleep -Seconds 4
+        if (Test-Path -LiteralPath $healthPath) {
+            try {
+                $health = Get-Content -LiteralPath $healthPath -Raw | ConvertFrom-Json
+                if ($health.poll_ok -eq $true -and $health.utc_epoch -ge $startedEpoch) {
+                    $healthy = $true
+                    break
+                }
+            } catch { }
+        }
+    }
+    $state = (Get-ScheduledTask -TaskName $task).State.ToString()
+    if ($state -ne 'Running' -or -not $healthy) { throw 'Bridge did not complete an authenticated poll; rolling back.' }
+    Write-Host ('NASURAYA_V2_CONNECTED; Python=' + $version + '; Task=' + $state)
+    Write-Host 'NEXT: Future bounded jobs will be submitted through GitHub, without more server pastes.'
+} catch {
+    if ($rollbackNeeded -and (Test-Path -LiteralPath $backup)) {
+        Stop-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue
+        Copy-Item -LiteralPath $backup -Destination $target -Force
+        if ($hadAgent) { Copy-Item -LiteralPath $agentBackup -Destination $agent -Force }
+        elseif (Test-Path -LiteralPath $agent) { Remove-Item -LiteralPath $agent -Force }
+        if ($wasRunning) { Start-ScheduledTask -TaskName $task -ErrorAction SilentlyContinue }
+    }
+    throw
+}

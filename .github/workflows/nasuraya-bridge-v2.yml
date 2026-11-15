@@ -1,0 +1,64 @@
+name: Nasuraya Bridge v2 checks
+on:
+  pull_request:
+    paths:
+      - 'tools/bridge_v2.py'
+      - 'tools/install_bridge_v2.ps1'
+      - 'tools/bridge_jobs/**'
+      - 'tests/test_bridge_v2.py'
+      - 'tests/test_moltbook_first_reply.py'
+      - 'tests/test_moltbook_verify_first.py'
+      - 'tests/test_bridge_v2_installer.ps1'
+      - '.github/workflows/nasuraya-bridge-v2.yml'
+  push:
+    branches: ['nasuraya/bridge-control-v2']
+    paths:
+      - 'tools/bridge_v2.py'
+      - 'tools/install_bridge_v2.ps1'
+      - 'tools/bridge_jobs/**'
+      - 'tests/test_bridge_v2.py'
+      - 'tests/test_moltbook_first_reply.py'
+      - 'tests/test_moltbook_verify_first.py'
+      - 'tests/test_bridge_v2_installer.ps1'
+      - '.github/workflows/nasuraya-bridge-v2.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Syntax and offline regression
+        run: |
+          python -m py_compile tools/bridge_v2.py tools/bridge_jobs/runtime_probe.py
+          python -m unittest discover -s tests -p 'test_bridge_v2.py' -v
+          python -m unittest discover -s tests -p 'test_moltbook_first_reply.py' -v
+          python -m unittest discover -s tests -p 'test_moltbook_verify_first.py' -v
+
+  parse-windows:
+    runs-on: windows-2022
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Parse Windows PowerShell installer (no execution)
+        shell: powershell
+        run: |
+          $tokens = $null
+          $errors = $null
+          [void][System.Management.Automation.Language.Parser]::ParseFile("tools/install_bridge_v2.ps1", [ref]$tokens, [ref]$errors)
+          if ($errors.Count -gt 0) { $errors | ForEach-Object { Write-Error $_.Message }; exit 1 }
+          Write-Host "PowerShell installer syntax valid"
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Installer backup, health check, and rollback (mock tasks, no credentials)
+        shell: powershell
+        run: ./tests/test_bridge_v2_installer.ps1
