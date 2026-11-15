@@ -1,0 +1,31 @@
+name: Nasuraya full-body online stage0 (offline contract tests)
+on:
+  pull_request:
+    paths:
+      - 'tools/fullbody_online_stage0.py'
+      - 'tests/test_fullbody_online_stage0.py'
+      - 'docs/TADASH_BODY_ONLINE_STAGE0_FA.md'
+      - '.github/workflows/nasuraya-fullbody-online-stage0.yml'
+  push:
+    branches: ['research/fullbody-online-stage0-20261115']
+permissions:
+  contents: read
+jobs:
+  stage0:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Run offline contract tests without source downloads or tokens
+        run: python -m unittest discover -s tests -p test_fullbody_online_stage0.py -v
+      - name: Offline inventory smoke
+        run: python tools/fullbody_online_stage0.py --output-dir stage0-ci-report
