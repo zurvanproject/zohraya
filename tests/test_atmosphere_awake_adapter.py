@@ -4,6 +4,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 import hashlib
 import json
+from contextlib import closing
 import os
 import sqlite3
 import tempfile
@@ -74,6 +75,7 @@ class StubCore:
                 else:
                     db.execute("INSERT INTO evidence VALUES(?,?,?)", (row["event_id"], row["topic"], encoded))
                     added += 1
+        db.close()
         return {"status": "ingested", "added": added, "duplicate": duplicates}
 
 
@@ -114,6 +116,19 @@ class AdapterTests(unittest.TestCase):
         receipt = self.adapter.deliver_pending(root=self.root, now=NOW)
         self.assertEqual((receipt["added"], receipt["duplicate"]), (0, 6))
         self.assertEqual(self.adapter.outbox.stats()["delivered"], 6)
+
+    def test_preexisting_world_writable_awake_dir_is_rejected(self):
+        self.stage()
+        self.adapter.awake_root.mkdir(mode=0o777)
+        self.adapter.awake_root.chmod(0o777)
+        with self.assertRaisesRegex(ValueError, "awake-directory-permissions-insecure"):
+            self.adapter.deliver_pending(root=self.root, now=NOW)
+        self.assertEqual(self.adapter.outbox.stats()["pending"], 6)
+
+    def test_awake_dir_created_with_restricted_permissions(self):
+        self.stage()
+        self.adapter.deliver_pending(root=self.root, now=NOW)
+        self.assertEqual(self.adapter.awake_root.stat().st_mode & 0o077, 0)
 
     def test_unsigned_prepare_has_no_database_side_effects(self):
         _, status = self.adapter.prepare_unsigned(self.snapshot, stream="demo", observed_at=NOW)
