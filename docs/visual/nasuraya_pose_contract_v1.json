@@ -1,0 +1,154 @@
+{
+  "schema": "nasuraya.visual-anatomy-pose/1",
+  "scope": "Illustration reference only; not validated inverse dynamics or a replacement for adult-scale variants",
+  "canonical_provenance": [
+    "runtimes/tadash_body/anatomy_systems_v01.json G02 G03 G04 G05",
+    "runtimes/tadash_body/phenotype_v1.json phenotype_contract"
+  ],
+  "anatomy": {
+    "horns": 2,
+    "feet": 2,
+    "toes_per_foot": 3,
+    "hands": 2,
+    "fingers_per_hand": 5,
+    "gait": "digitigrade",
+    "chain": [
+      "hip",
+      "knee",
+      "hock",
+      "metatarsal_head",
+      "toe_tip"
+    ],
+    "tail_root": "sacrum",
+    "notes": "Knees forward, true ankle/hocks back, long metatarsals, no human heel contact in standing"
+  },
+  "horn_points_head_local_m": {
+    "left": [
+      [
+        -0.1,
+        0,
+        0
+      ],
+      [
+        -0.13,
+        -0.01,
+        0.09
+      ],
+      [
+        -0.2,
+        -0.02,
+        0.19
+      ],
+      [
+        -0.18,
+        -0.03,
+        0.3
+      ],
+      [
+        -0.11,
+        -0.01,
+        0.34
+      ]
+    ],
+    "right": [
+      [
+        0.1,
+        0,
+        0
+      ],
+      [
+        0.13,
+        -0.01,
+        0.09
+      ],
+      [
+        0.2,
+        -0.02,
+        0.19
+      ],
+      [
+        0.18,
+        -0.03,
+        0.3
+      ],
+      [
+        0.11,
+        -0.01,
+        0.34
+      ]
+    ]
+  },
+  "lateral_poses_m": {
+    "standing": {
+      "hip": [
+        0,
+        1.16
+      ],
+      "knee": [
+        0.27,
+        0.76
+      ],
+      "hock": [
+        -0.04,
+        0.34
+      ],
+      "metatarsal_head": [
+        0.2,
+        0.1
+      ],
+      "toe_tip": [
+        0.38,
+        0.04
+      ],
+      "support": "toe-pads on ground"
+    },
+    "sitting": {
+      "hip": [
+        0,
+        0.78
+      ],
+      "knee": [
+        0.43,
+        0.56
+      ],
+      "hock": [
+        0.14,
+        0.12
+      ],
+      "metatarsal_head": [
+        0.47,
+        0.06
+      ],
+      "toe_tip": [
+        0.66,
+        0.047
+      ],
+      "support": "pelvis on low bench, toe-pads on ground"
+    }
+  },
+  "foot_toes_front_m": [
+    {
+      "id": "medial",
+      "x": -0.075,
+      "y": 0.18
+    },
+    {
+      "id": "central",
+      "x": 0,
+      "y": 0.22
+    },
+    {
+      "id": "lateral",
+      "x": 0.075,
+      "y": 0.18
+    }
+  ],
+  "image_gate": [
+    "First verify standing front-view paired roots and matching horn arcs; asymmetrical angle is permissible only from perspective",
+    "Every leg must show hip→forward knee→rear hock (true ankle)→long metatarsals→three toes",
+    "In sitting, preserve bone segment lengths and pelvis support. Do not substitute a human cross-legged pose",
+    "Three distinctly articulated digits per foot on toe pads; five fingers per hand",
+    "Tail joins sacrum; expose knee, hock, metatarsals and toes. No robes, smoke, magic circle, or camera crop may hide anatomical uncertainty",
+    "Reject the image if joint chain cannot be visually traced or if toe/horn counts are wrong; simplify to neutral anatomical drawing and retry before adding decoration"
+  ]
+}
