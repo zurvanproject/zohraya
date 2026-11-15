@@ -41,3 +41,13 @@ Compact reusable render brief:
 `python -m unittest discover -s tests -p 'test_nasuraya_visual_anatomy.py' -v`
 
 This checks the stored geometry, **not rendered pixels**. The illustrated final image must still pass an explicit visual review. Passing six scripted tests does not mean a text-to-image model will always obey the pose contract. For true mechanical validity, a collision-aware 3D skeleton and motion simulation would be necessary. No existing VPS service, Awake record, Qwen timer, or body runtime is changed.
+
+## Failure found in the user's generated Body Test Suite poster (2026-11-15)
+
+The reference skeleton tests **passed** but the external generative image did not obey them. The cropped **underside paw has FOUR separate distal digital pads/claws**, not the canonical three. The ritual panel uses an unsupported human lotus/cross-legged pose, with the hocks and metatarsal chains occluded by robes/fire. The poster's green checks and speed/endurance metrics have **no instrumented backing** and must not be repeated as observed performance.
+
+The failed poster SHA-256 is `d31664145371b441ac4a4b78a2d075eb3928d8c61ce1110c72c1f9e2f5bda37b`. Its annotated failure is retained in `evidence/rejected_body_suite_20261115.json`.
+
+A simpler three-panel revision with **three** front claws on each foot and exactly **three** distal plantar pads plus **one** larger central pad was generated (SHA-256 `ceb43d45768aecf473dda860730596f915ba84bd21e0bff8defa8e7afb0cea70`). It removes the human cross-leg and seats the pelvis on a bench. **However, the hock-to-metatarsal chain remains insufficiently apparent from the chosen camera angle**, so it is a **partial visual improvement, not a completed biomechanical pass**. See `evidence/revised_three_toes_seated_pose_partial_20261115.json`.
+
+The independent manual-annotation review CLI lives at `tools/nasu_visual_image_audit.py`. It rejects four-toe paws and faulty sitting in *any* inset, and distinguishes plantar pad observations (only possible in the underside view) from unseen pads in dorsal views. It does **not** count pixels autonomously: the viewer must inspect the actual rendered image and record truthful observations before using the CLI.
