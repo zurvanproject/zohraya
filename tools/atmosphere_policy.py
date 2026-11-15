@@ -6,7 +6,7 @@ performs no IO, has no shell, networking, or secret dependency.
 """
 from dataclasses import dataclass
 
-POLICY_VERSION = "atmosphere-policy/0.2"
+POLICY_VERSION = "atmosphere-policy/0.3"
 
 # Classification of exact tool names. A sigil cannot mint a capability.
 SURFACES = {
@@ -23,6 +23,11 @@ SURFACES = {
     "synthetic_body_api": {
         "observe_body": "read", "evaluate_body": "read",
         "request_body_action": "bounded",
+    },
+    # Literary recitation is observational only; no symbols can grant execution.
+    "poetic_ritual": {
+        "read_verse": "read", "rehearse_symbolic": "read",
+        "review_uncertainty": "read",
     },
     "kavakeb_study": {
         "observe_page": "read", "compare_geometry": "read",
