@@ -281,8 +281,30 @@ class CoolAdvisoryTests(unittest.TestCase):
 
     def test_prior_review_unverified_not_cleared(self):
         report=cool.evaluate(s(),now=NOW,previous=previous_state("REVIEW_REQUIRED"))
-        self.assertEqual(report["mode"],"OBSERVE_ONLY")
+        self.assertEqual(report["mode"],"REVIEW_REQUIRED")
         self.assertIn("previous-review-not-cleared",report["reasons"])
+
+    def test_unverified_gap_cannot_clear_previous_cooling(self):
+        state=previous_state("COOL_ADVISED")
+        report=cool.evaluate(s(),now=NOW,source_verified=False,previous=state)
+        self.assertEqual(report["mode"],"COOL_ADVISED")
+        self.assertIn("cooling-not-cleared",report["reasons"])
+        self.assertFalse(report["source_verified"])
+        future=NOW+timedelta(minutes=1)
+        future_clean=s(sampled_at=cool.iso(future))
+        next_report=cool.evaluate(future_clean,now=future,source_verified=True,
+                                  previous=cool.next_state(report))
+        self.assertEqual(next_report["mode"],"COOL_ADVISED")
+        self.assertEqual(next_report["healthy_streak"],1)
+
+    def test_unverified_gap_cannot_clear_previous_review(self):
+        state=previous_state("REVIEW_REQUIRED")
+        unverified=cool.evaluate(s(),now=NOW,source_verified=False,previous=state)
+        self.assertEqual(unverified["mode"],"REVIEW_REQUIRED")
+        future=NOW+timedelta(minutes=1)
+        later=cool.evaluate(s(sampled_at=cool.iso(future)),now=future,
+                            source_verified=True,previous=cool.next_state(unverified))
+        self.assertEqual(later["mode"],"REVIEW_REQUIRED")
 
     def test_stale_metrics_cannot_clear_cooling(self):
         sample=s(sampled_at=cool.iso(NOW-timedelta(minutes=6)))
