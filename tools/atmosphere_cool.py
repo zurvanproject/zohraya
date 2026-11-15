@@ -140,9 +140,15 @@ def evaluate(sample: dict, *, now: datetime, source_verified: bool = False,
     mode = "MONITOR"
     streak = 0
     if not source_verified:
-        mode, reasons = "OBSERVE_ONLY", ["source-not-independently-verified"]
+        reasons = ["source-not-independently-verified"]
         if previous is not None and previous["mode"] == "REVIEW_REQUIRED":
+            mode = "REVIEW_REQUIRED"
             reasons.append("previous-review-not-cleared")
+        elif previous is not None and previous["mode"] == "COOL_ADVISED":
+            mode = "COOL_ADVISED"
+            reasons.append("cooling-not-cleared")
+        else:
+            mode = "OBSERVE_ONLY"
     elif delta < -15:
         mode, reasons = "REVIEW_REQUIRED", ["clock-is-ahead"]
     elif delta > FRESHNESS_LIMIT_SECONDS:
@@ -219,6 +225,7 @@ def evaluate(sample: dict, *, now: datetime, source_verified: bool = False,
     }
     return {
         "cooling_plan": guidance,
+        "source_verified": source_verified,
         "schema": REPORT_SCHEMA, "mode": mode, "reasons": reasons,
         "recommended_only": recommendations[mode],
         "sample_digest_sha256": _digest(s), "sampled_at": s["sampled_at"],
