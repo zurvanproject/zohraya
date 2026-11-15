@@ -56,3 +56,9 @@ SQLite محلی پیش از dispatch، درخواست را رزرو می‌کن�
     python3 -m examples.nasuraya_body_loop api-test
 
 هیچ سرویس عمومی یا VPS با اضافه‌شدن این فایل‌ها خودکار تغییر نمی‌کند. شاخهٔ feature/atmosphere-gate-v01-20261115 تا تأیید عملیاتی، Draft باقی می‌ماند.
+
+## اتمسفرِ شاهنامه‌ای | لایهٔ ادبی هم‌زمان (پیشنهادی)
+
+هفت‌خان رستم اکنون به‌صورت [متن مرجع کامل و دست‌نخوردهٔ روایی](rituals/sources/shahnameh_haft_khan_ganjoor_full.md) و [برنامهٔ هم‌زمان‌سازی ۲۱ گذر شعر/حرکت/شاهد/اختیار](rituals/ATMOSPHERE_HAFT_KHAN_SYNC_V01_FA.md) در همین شاخه موجود است. `tools/atmosphere_poetic_ritual.py` یک برنامهٔ خواندن آفلاین می‌سازد، نه اجرای جسمی یا فرمان Bridge. سطح `poetic_ritual` در `atmosphere_policy.py` فقط سه فعل read دارد و مجوزهای اجرایی Ubuntu/بدن را تغییر نمی‌دهد. اجرای نمونه: `python3 tools/atmosphere_poetic_ritual.py --khan 3`؛ آزمون: `python3 -m unittest discover -s tests -p "test_atmosphere*.py" -v`.
+
+شعر، سیگیل و تفسیر همگی **دادهٔ بی‌اختیار** هستند. خروجی این ماژول `execution=NOT_RUN` دارد. تسلط ریچوال، تأثیر ماورایی یا استقرار روی VPS با این الحاقیه اثبات نمی‌شوند.
