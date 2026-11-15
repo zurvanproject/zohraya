@@ -138,6 +138,13 @@ class AttestationTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "bundle-manifest-size-mismatch"):
             self.stage(manifest=sign(self.priv, [self.env, other]))
 
+    def test_insecure_outbox_directory_denied(self):
+        parent = Path(self.tmp.name) / "unsafe-outbox"
+        parent.mkdir()
+        parent.chmod(0o777)
+        with self.assertRaisesRegex(ValueError, "outbox-directory-permissions-insecure"):
+            EvidenceOutbox(parent / "evidence_outbox.sqlite3")
+
     def test_local_db_is_not_automatically_a_source_of_trust(self):
         self.stage()
         with self.assertRaisesRegex(ValueError, "invalid-backup-trust-context|outbox-local-integrity-failure"):
