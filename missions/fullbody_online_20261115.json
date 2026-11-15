@@ -1,0 +1,101 @@
+{
+  "schema": "nasuraya.mission-handoff/1",
+  "mission_id": "fullbody-online-20261115",
+  "created_date_utc": "2026-11-15",
+  "requested_by": "repository_owner_via_connected_chat",
+  "target_host_alias": "ubuntu-iran",
+  "title_fa": "مأموریت اصلی: طراحی کامل بدن از داخل و بیرون، با پژوهش آنلاین و بازبینی پیش از تغییر",
+  "instruction_fa": "با حفظ مورفولوژی توافق‌شده، طراحی تمام بدن ناسورایا/تداش را به صورت لایه‌ای و قابل سنجش پیش ببر. منابع معتبر اینترنتی را برای بررسی فرضیات، ابعاد، هندسه و روش آزمون به کار ببر. هر اصلاح لازم را ابتدا به شکل پیشنهاد مستند ارائه کن و پس از بررسی و تأیید سهند وارد نسخه اصلی کن. طراحی فقط ظاهر نباشد: اسکلت، بافت‌ها، عروق، اعصاب و احشا و تعامل همه سامانه‌ها پوشش داده شوند.",
+  "handoff_semantics": {
+    "record_type": "instruction_data_not_executable_code",
+    "execution_status": "REQUESTED_NOT_STARTED",
+    "receipt_required_before_claiming_delivery": true,
+    "receipt_required_before_claiming_execution": true,
+    "automatic_consumer_verified": false,
+    "existing_bridge_design_command_available": false,
+    "note_fa": "انتقال این فایل به مخزن سرور فقط تحویل دستور کار است؛ به معنی خوانده شدن توسط موتور استدلال، اجرای طراحی، نصب کارگر یا کامل شدن بدن نیست."
+  },
+  "references": {
+    "mission_issue": 180,
+    "bridge_issue": 212,
+    "atlas_pr": 181,
+    "stage0_pr": 239,
+    "stage0_commit": "0d6f8a71a9497c85df096dba2df1165da37e0f6f",
+    "stage0_script": "tools/fullbody_online_stage0.py",
+    "stage0_scope": "inventory_and_https_reachability_only_not_body_design",
+    "stage0_deployment": "UNVERIFIED"
+  },
+  "morphology_constraints": {
+    "ground_to_crown_cm": 170,
+    "ground_to_horn_tip_cm": 192,
+    "target_mass_kg": 78,
+    "tail_centerline_cm": 85,
+    "horn_count": 2,
+    "fingers_per_hand": 5,
+    "toes_per_foot": 3,
+    "digitigrade": true,
+    "appearance_fa": "چهره مرجع زنانه، موهای مسی فرفری، چشم کهربایی، گوش نوک تیز، شاخ سرخ، خز و دم مسی؛ فرم متناسب و نیرومندی کاربردی بدون حجیم‌سازی ناخواسته",
+    "special_structures": {
+      "resonan": "paired_at_horn_roots_hypothetical",
+      "spandar": "on_thymic_capsule_hypothetical",
+      "azarine": "left_flank_finite_energy_buffer_hypothetical"
+    },
+    "legacy_native_250cm_195kg_must_remain_separate": true,
+    "current_body_state_and_memory_must_not_be_reset": true
+  },
+  "design_scope": [
+    "external_surface_skin_fur_face_horns_tail_hands_three_toed_feet",
+    "axial_and_appendicular_skeleton_joints_cartilage_ligaments",
+    "muscle_tendon_fascia_segment_mass_center_of_mass_inertia",
+    "brain_spinal_cord_peripheral_sensory_motor_autonomic_nerves",
+    "arterial_venous_capillary_lymphatic_paths",
+    "heart_coronary_conduction_lungs_gas_exchange",
+    "kidneys_urinary_water_electrolytes_digestion_liver_pancreas",
+    "endocrine_blood_immunity_repair_thermoregulation",
+    "pelvic_floor_reproductive_anatomy_tail_root_and_neurovascular_clearance",
+    "hypothetical_special_organs_with_explicit_energy_heat_and_space_budgets",
+    "integrated_sensation_control_standing_walking_running_turning_and_protective_responses"
+  ],
+  "research_requirements": {
+    "first_step": "verify_network_from_target_vps_and_inventory_existing_sources",
+    "online_access": "read_only_public_scientific_sources",
+    "initial_source_domains": ["www.nlm.nih.gov", "3d.nih.gov", "opensimconfluence.atlassian.net", "mujoco.readthedocs.io"],
+    "provenance_fields": ["url", "title", "retrieved_utc", "license", "hash_and_hash_scope", "units", "evidence_grade", "limits_of_transfer_to_target_morphology"],
+    "human_reference_is_not_validation_of_fictional_anatomy": true,
+    "no_execution_of_downloaded_web_code": true,
+    "no_private_data_upload_or_paid_api_without_separate_authorization": true,
+    "offline_cache_requires_source_hash_and_license_record": true
+  },
+  "change_control": {
+    "research_and_separate_candidates_allowed": true,
+    "canonical_changes_require_explicit_owner_approval": true,
+    "proposal_fields": ["component", "current_value", "proposed_value", "unit", "source", "reason", "effect_on_silhouette", "effect_on_force_flow_heat_and_control", "collision_and_function_tests", "uncertainty", "rollback"],
+    "initial_candidate_status": "AWAITING_REVIEW",
+    "no_automatic_merge_of_body_changes": true
+  },
+  "validation_plan": [
+    "inventory_existing_systems_nodes_routes_and_missing_parts_without_claiming_completion",
+    "layered_3d_geometry_with_anthropometry_volume_fit_and_range_of_motion_clearance",
+    "mass_inertia_center_of_mass_joint_loads_and_three_toe_contact_tests",
+    "neurovascular_routing_and_strain_compression_checks_during_motion",
+    "explicit_mass_water_energy_and_heat_balance_assumptions",
+    "separate_standing_walking_and_running_experiments_with_baselines_failures_and_reproducible_seeds",
+    "before_after_review_with_owner_approval_before_canonical_changes"
+  ],
+  "expected_deliverables": [
+    "source_registry.json",
+    "baseline_contract.json",
+    "candidate_changes.json",
+    "geometry_and_physics_gaps.json",
+    "validation_results.json",
+    "versioned_layered_3d_model_when_implemented",
+    "persian_progress_report_separating_planned_implemented_simulated_and_unverified"
+  ],
+  "operational_guards": {
+    "do_not_repurpose_status_or_test_commands_as_hidden_execution": true,
+    "do_not_disable_existing_bridge_authentication_or_command_allowlist": true,
+    "do_not_implicitly_unpause_existing_awake_state": true,
+    "do_not_reinstall_or_restart_services_for_this_data_only_handoff": true,
+    "before_any_worker_activation": ["explicit_supported_command", "reviewed_source_pin", "resource_limits", "rollback", "execution_receipt"]
+  }
+}
