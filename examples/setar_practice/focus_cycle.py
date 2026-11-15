@@ -118,14 +118,22 @@ def build_report(lesson_dir, ritual_audit=None):
         if not raw_line.strip():
             raise ValueError("empty event line")
         event = _json_bytes(raw_line)
-        if not isinstance(event, dict) or type(event.get("event_index")) is not int:
-            raise ValueError("event missing stable index")
-        i = event["event_index"]
+        if not isinstance(event, dict):
+            raise ValueError("invalid event")
         if event.get("kind") == "note":
-            if i in notes or not isinstance(event.get("event"), dict):
-                raise ValueError("duplicate or invalid note")
+            # The v0.5 renderer stores the note index inside event, whereas
+            # delayed feedback stores the event_index at the top level.
+            if not isinstance(event.get("event"), dict) or \
+                    type(event["event"].get("index")) is not int:
+                raise ValueError("note missing stable index")
+            i = event["event"]["index"]
+            if i in notes:
+                raise ValueError("duplicate note")
             notes[i] = event
         elif event.get("kind") == "feedback":
+            if type(event.get("event_index")) is not int:
+                raise ValueError("feedback missing stable index")
+            i = event["event_index"]
             if i in feedback or not isinstance(event.get("measurement"), dict):
                 raise ValueError("duplicate or invalid feedback")
             if type(event.get("sample")) is not int or type(event.get("rendered_at_sample")) is not int \
