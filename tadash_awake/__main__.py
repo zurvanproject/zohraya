@@ -7,7 +7,7 @@ from . import core
 
 def main(argv=None):
     p = argparse.ArgumentParser()
-    p.add_argument("command", choices=["init", "ingest", "tick", "status", "pause", "resume"])
+    p.add_argument("command", choices=["init", "ingest", "tick", "status", "pause", "resume", "cool-status"])
     p.add_argument("--root", required=True)
     p.add_argument("--file")
     args = p.parse_args(argv)
@@ -27,6 +27,10 @@ def main(argv=None):
             result = core.tick(args.root)
         elif args.command == "status":
             result = core.status(args.root)
+        elif args.command == "cool-status":
+            from . import cool_bridge
+            # Operator-facing observation only; never grants runtime authority.
+            result = cool_bridge.observe(args.root, trusted_local_source=True)
         else:
             result = core.set_paused(args.root, args.command == "pause")
         print(json.dumps(result, ensure_ascii=False, sort_keys=True))
