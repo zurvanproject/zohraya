@@ -72,6 +72,14 @@ class CoreCoolingTests(unittest.TestCase):
             cool_bridge.observe(empty, now=T, resource_sample=machine())
         self.assertFalse(empty.exists())
 
+    def test_missing_host_metrics_fail_closed_across_platforms(self):
+        from unittest.mock import patch
+        with patch.object(cool_policy, "host_probe", side_effect=OSError("no proc")):
+            r = cool_bridge.observe(self.root, now=T, trusted_local_source=True)
+        self.assertEqual(r["mode"], "OBSERVE_ONLY")
+        self.assertFalse(r["advisory"]["allow_unpause"])
+        self.assertEqual(r["service_actions"], 0)
+
     def test_no_error_metric_is_not_fabricated(self):
         core.ingest(self.root, [fixture()], now=T)
         r = self.inspect()
