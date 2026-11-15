@@ -11,7 +11,7 @@ import tempfile
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['bind', 'status', 'evaluate', 'step', 'test'])
+    parser.add_argument('command', choices=['bind', 'status', 'evaluate', 'step', 'lesson', 'test'])
     parser.add_argument('--session', type=Path)
     parser.add_argument('--checkpoint', type=Path)
     parser.add_argument('--output-dir', type=Path)
@@ -24,11 +24,11 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if args.command != 'test' and args.session is None:
         parser.error('--session required')
-    if args.command == 'step' and (not args.run_id or args.output_dir is None
+    if args.command in ('step', 'lesson') and (not args.run_id or args.output_dir is None
                                   or not (args.realtime or args.accelerated)):
         parser.error('step requires --run-id, fresh --output-dir and explicit timing mode')
-    if args.command != 'step' and (args.realtime or args.accelerated or args.output_dir or args.run_id):
-        parser.error('timing, output and run-id are step-only options')
+    if args.command not in ('step', 'lesson') and (args.realtime or args.accelerated or args.output_dir or args.run_id):
+        parser.error('timing, output and run-id are step/lesson-only options')
     if args.command != 'bind' and args.checkpoint is not None:
         parser.error('--checkpoint is a bind-only option')
     # Reuse the same source manifest validation as the native body launcher.

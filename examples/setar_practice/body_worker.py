@@ -3,24 +3,26 @@ import json
 import sys
 import unittest
 from examples.nasuraya_body_loop.host import BodyLoop
-from .body_bridge import SetarBodyBridge
+from .clocked import ClockedSetarBridge
 
 
 def main(args):
     if args['command'] == 'test':
-        from . import test_body_native
-        suite = unittest.defaultTestLoader.loadTestsFromModule(test_body_native)
+        from . import test_body_native, test_clocked_native
+        suite = unittest.TestSuite(unittest.defaultTestLoader.loadTestsFromModule(module)
+                                   for module in (test_body_native, test_clocked_native))
         result = unittest.TextTestRunner(verbosity=2).run(suite)
         return 0 if result.wasSuccessful() else 1
     with BodyLoop(args['session']) as loop:
-        bridge = SetarBodyBridge(loop)
+        bridge = ClockedSetarBridge(loop)
         command = args['command']
         if command == 'bind':
             result = bridge.bind(args['checkpoint'], max_steps=args['max_steps'])
         elif command == 'evaluate':
             result = bridge.evaluate()
-        elif command == 'step':
-            result = bridge.step(args['run_id'], args['output_dir'],
+        elif command in ('step', 'lesson'):
+            action = bridge.lesson if command == 'lesson' else bridge.step
+            result = action(args['run_id'], args['output_dir'],
                                  realtime=args['realtime'], seed=args['seed'])
         else:
             result = bridge.status()
