@@ -199,6 +199,9 @@ class EvidenceOutbox:
         if self.path.is_symlink():
             raise ValueError("db-symlink")
         self.path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
+        if (self.path.parent.is_symlink() or not self.path.parent.is_dir()
+                or self.path.parent.stat().st_mode & 0o077):
+            raise ValueError("outbox-directory-permissions-insecure")
         with closing(self._db()) as db:
             db.execute("""CREATE TABLE IF NOT EXISTS events(
                 id TEXT PRIMARY KEY, digest TEXT NOT NULL, body TEXT NOT NULL,
