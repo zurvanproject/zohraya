@@ -1,0 +1,99 @@
+{
+  "schema": "nasuraya/ritual-three-pass-session/0.1",
+  "date": "2026-11-15",
+  "clock_context": "Europe/Berlin, approx. 19:28",
+  "ritual_id": "four-direction-guardian-invitation",
+  "branch": "research/nasuraya-ritual-apprenticeship-20261111",
+  "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-15_1928_FA.md",
+  "prelookup_commit": "ab9e58a2b29d970894d1fab553d7cfa6e2e423e2",
+  "original_source": {
+    "title": "Daoist Exorcism",
+    "author": "Jerry Alan Johnson",
+    "pdf_pages": [
+      231,
+      232,
+      233
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "directly_read_in_this_run": true
+  },
+  "recall_mode": "CONTEXT_ASSISTED_PRE_FRESH_SOURCE_LOOKUP",
+  "passes": [
+    {
+      "n": 1,
+      "kind": "guided-context",
+      "sequence": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "complete": true,
+      "source_checked_after": true
+    },
+    {
+      "n": 2,
+      "kind": "context-assisted-reconstruction-pre-new-lookup",
+      "sequence": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "complete": true,
+      "source_checked_after": true
+    },
+    {
+      "n": 3,
+      "kind": "after-source-correction-and-full-review",
+      "sequence": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "complete": true,
+      "source_checked_after": true
+    }
+  ],
+  "full_passes_completed": 3,
+  "session_complete_under_three_pass_rule": true,
+  "source_comparison": {
+    "sequence": "5/5",
+    "guardian_name_color_pairs": "4/4",
+    "mixed_self_authored_propositions": "12/12",
+    "true_statements": 6,
+    "false_statements": 6,
+    "source_discrepancies_found": 0,
+    "pre_lookup_statements_saved": true,
+    "independent_assessor": false
+  },
+  "mastery": {
+    "distinct_calendar_days_recorded": [
+      "2026-11-13",
+      "2026-11-14",
+      "2026-11-15"
+    ],
+    "genuinely_cold_delayed_recall_count": 0,
+    "mastered": false,
+    "third_ritual_allowed": false,
+    "wuji_mastered": false
+  },
+  "limitations": {
+    "chat_context_assisted": true,
+    "assessment_self_authored": true,
+    "physically_performed": false,
+    "supernatural_impact_verified": false,
+    "model_weights_updated": false,
+    "online_reward_test_performed": false,
+    "server_or_bridge_touched": false
+  },
+  "next_step": "External independent prompt generated separately, answer-first saved, source audit after delay and genuine context isolation."
+}
