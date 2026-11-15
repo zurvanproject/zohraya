@@ -42,12 +42,24 @@ def audit(review: dict) -> list[str]:
             if fid not in ('left', 'right') or fid in ids:
                 errors.append(label + 'invalid_foot_side')
             ids.add(fid)
-            for field in ('digital_toes', 'digital_pads', 'terminal_claws'):
+            for field in ('digital_toes', 'terminal_claws'):
                 count = foot.get(field)
                 if type(count) is not int or count != 3:
-                    errors.append(label + fid + '_' + field)
-            if kind == 'sole' and foot.get('central_metatarsal_pad') != 1:
-                errors.append(label + fid + '_central_pad')
+                    errors.append(label + str(fid) + '_' + field)
+            # Plantar pads cannot be counted from an upper/dorsal image.
+            # Reject a reviewer who fills invisible data with assumed '3'.
+            view = foot.get('view')
+            if view not in ('dorsal', 'plantar', 'lateral'):
+                errors.append(label + str(fid) + '_view_unknown')
+            if view == 'plantar':
+                if foot.get('digital_pads') != 3:
+                    errors.append(label + str(fid) + '_digital_pads')
+                if foot.get('central_metatarsal_pad') != 1:
+                    errors.append(label + str(fid) + '_central_pad')
+            elif foot.get('digital_pads') is not None or foot.get('central_metatarsal_pad') is not None:
+                errors.append(label + str(fid) + '_inferred_invisible_pads')
+            if kind == 'sole' and view != 'plantar':
+                errors.append(label + str(fid) + '_sole_must_be_plantar')
             if foot.get('visible') is not True:
                 errors.append(label + fid + '_not_visible')
         req = FEET_REQUIRED.get(kind, 0)
