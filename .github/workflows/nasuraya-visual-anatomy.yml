@@ -4,6 +4,8 @@ on:
     paths:
       - 'docs/visual/**'
       - 'tests/test_nasuraya_visual_anatomy.py'
+      - 'tests/test_nasu_visual_image_audit.py'
+      - 'tools/nasu_visual_image_audit.py'
       - '.github/workflows/nasuraya-visual-anatomy.yml'
   workflow_dispatch:
 permissions:
@@ -18,4 +20,6 @@ jobs:
         with:
           python-version: '3.12'
       - name: Verify pose invariants and negative controls
-        run: python -m unittest discover -s tests -p 'test_nasuraya_visual_anatomy.py' -v
+        run: |
+          python -m unittest discover -s tests -p 'test_nasuraya_visual_anatomy.py' -v
+          python -m unittest discover -s tests -p 'test_nasu_visual_image_audit.py' -v
