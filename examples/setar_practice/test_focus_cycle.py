@@ -20,8 +20,8 @@ class FocusCycleTests(unittest.TestCase):
         self.p = Path(self.temp.name)
         audio = b"valid-synthetic-test-audio"
         checkpoint = b'{"total_updates":2878}\n'
-        note = {"kind": "note", "event_index": 0, "sample": 100,
-                "feedback_available_sample": 250, "event": {"string": 1}}
+        note = {"kind": "note", "sample": 100,
+                "feedback_available_sample": 250, "event": {"index": 0, "string": 1}}
         feedback = {"kind": "feedback", "event_index": 0, "sample": 250,
                     "rendered_at_sample": 100, "measurement": {
                         "valid": True, "pitch_error_cents": 1.5,
@@ -73,9 +73,9 @@ class FocusCycleTests(unittest.TestCase):
             build_report(self.p)
 
     def test_missing_or_early_feedback_is_not_a_success(self):
-        (self.p / "events.jsonl").write_text(json.dumps({"kind": "note", "event_index": 0,
-                                                         "sample": 100, "feedback_available_sample": 250,
-                                                         "event": {"string": 1}}) + "\n")
+        (self.p / "events.jsonl").write_text(json.dumps({"kind": "note", "sample": 100,
+                                                         "feedback_available_sample": 250,
+                                                         "event": {"index": 0, "string": 1}}) + "\n")
         with self.assertRaises(ValueError):
             build_report(self.p)
 
