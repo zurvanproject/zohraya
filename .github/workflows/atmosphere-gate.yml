@@ -4,6 +4,10 @@ on:
     paths:
       - "tools/atmosphere_guard.py"
       - "tools/atmosphere_policy.py"
+      - "tools/atmosphere_poetic_ritual.py"
+      - "tests/test_atmosphere_poetic_ritual.py"
+      - "docs/rituals/sources/shahnameh_haft_khan_ganjoor_full.md"
+      - "docs/rituals/ATMOSPHERE_HAFT_KHAN_SYNC_V01_FA.md"
       - "examples/nasuraya_agent_loop/local.py"
       - "examples/nasuraya_body_loop/api_host.py"
       - "tests/test_atmosphere_policy_integration.py"
@@ -28,7 +32,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: |
-          python -m py_compile tools/atmosphere_guard.py tools/atmosphere_policy.py tools/nasuraya_linux_bridge.py
+          python -m py_compile tools/atmosphere_guard.py tools/atmosphere_policy.py tools/atmosphere_poetic_ritual.py tools/nasuraya_linux_bridge.py
           python -m unittest discover -s tests -p "test_atmosphere*.py" -v
           python -m unittest discover -s examples/nasuraya_agent_loop/tests -p "test_loop.py" -v
           python -m examples.nasuraya_body_loop api-test
