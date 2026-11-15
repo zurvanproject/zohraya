@@ -92,8 +92,20 @@ def observe(root, *, now=None, trusted_local_source=False,
     at = cool_policy.utc(cool_policy.iso(now or datetime.now(timezone.utc)))
     with closing(_db_readonly(root)) as db:
         stats = _read_health(db, at)
-    host = (cool_policy.host_probe(now=at) if resource_sample is None
-            else cool_policy.checked(resource_sample))
+    if resource_sample is None:
+        try:
+            host = cool_policy.host_probe(now=at)
+        except (OSError, ValueError):
+            # On Windows/unavailable /proc, unknown != healthy.
+            host = cool_policy.checked({
+                "schema": cool_policy.SCHEMA,
+                "sampled_at": cool_policy.iso(at),
+                "cpu_load_per_core": None, "ram_used_pct": None,
+                "error_burst_5m": None, "duplicate_ratio_5m": None,
+                "evidence_age_seconds": None, "awake_paused": None,
+            })
+    else:
+        host = cool_policy.checked(resource_sample)
     if host["sampled_at"] != cool_policy.iso(at):
         raise ValueError("host-sample-time-mismatch")
     sample = {
