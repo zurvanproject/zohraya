@@ -7,6 +7,7 @@ This module is deliberately NOT wired to any VPS daemon or the existing Bridge.
 from __future__ import annotations
 from pathlib import Path
 import hashlib
+import stat
 
 from atmosphere_attestation import EvidenceOutbox, envelope_for, time_now
 
@@ -73,6 +74,14 @@ class ControlledAwakeAdapter:
             return {"status": "IDLE", "delivered": 0, "model_calls": 0}
         rows = [{k: body[k] for k in ("event_id", "topic", "source_ref", "observed_at",
                                           "sample_time", "confidence", "value")} for body in pending]
+        # A private directory prevents other local identities from reaching
+        # Awake's SQLite file even if upstream creates a 0644 DB in that dir.
+        if self.awake_root.is_symlink():
+            raise ValueError("awake-directory-symlink")
+        self.awake_root.mkdir(parents=True, exist_ok=True, mode=0o700)
+        if (not self.awake_root.is_dir() or self.awake_root.stat().st_mode & 0o077
+                or (self.awake_root / "awake.sqlite3").is_symlink()):
+            raise ValueError("awake-directory-permissions-insecure")
         # Strictly one-way: only core.ingest, never core.tick or DIOS writes.
         result = core.ingest(self.awake_root, rows, now=now)
         if result.get("status") != "ingested" or result.get("added", 0) + result.get("duplicate", 0) != len(rows):
