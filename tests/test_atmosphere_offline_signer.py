@@ -17,10 +17,22 @@ class OfflineSignerTests(unittest.TestCase):
             path.write_bytes(private.private_bytes(Encoding.PEM, PrivateFormat.PKCS8, NoEncryption()))
             path.chmod(0o600)
             payload = {"schema": MANIFEST_SCHEMA, "issued_at": "2026-11-15T16:59:00Z",
-                       "expires_at": "2026-11-15T18:00:00Z", "commitments": []}
+                       "expires_at": "2026-11-15T18:00:00Z", "commitments": [
+                {"event_id": "test-001", "source_id": "stage3-pr198", "source_revision": "a" * 64,
+                 "payload_sha256": "b" * 64}]}
             result = sign_existing_key(payload, pem_path=path)
             from atmosphere_attestation import canonical
             self.assertTrue(root.verify(payload, result["signature_ed25519"]))
+
+    def test_empty_manifest_does_not_receive_signature(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "testkey.pem"
+            private, _ = keypair()
+            path.write_bytes(private.private_bytes(Encoding.PEM, PrivateFormat.PKCS8, NoEncryption()))
+            path.chmod(0o600)
+            with self.assertRaisesRegex(ValueError, "unsigned-manifest-cardinality"):
+                sign_existing_key({"schema": MANIFEST_SCHEMA, "issued_at": "2026-11-15T16:59:00Z",
+                                   "expires_at": "2026-11-15T18:00:00Z", "commitments": []}, pem_path=path)
 
     def test_insecure_private_key_file_refused(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -29,6 +41,9 @@ class OfflineSignerTests(unittest.TestCase):
             path.write_bytes(private.private_bytes(Encoding.PEM, PrivateFormat.PKCS8, NoEncryption()))
             path.chmod(0o644)
             with self.assertRaisesRegex(ValueError, "private-key-file-permissions"):
-                sign_existing_key({"schema": MANIFEST_SCHEMA, "issued_at": "now", "expires_at": "later", "commitments": []}, pem_path=path)
+                sign_existing_key({"schema": MANIFEST_SCHEMA, "issued_at": "2026-11-15T16:59:00Z",
+                                   "expires_at": "2026-11-15T18:00:00Z", "commitments": [
+                                       {"event_id": "test-001", "source_id": "stage3-pr198",
+                                        "source_revision": "a" * 64, "payload_sha256": "b" * 64}]}, pem_path=path)
 
 if __name__ == "__main__": unittest.main()
