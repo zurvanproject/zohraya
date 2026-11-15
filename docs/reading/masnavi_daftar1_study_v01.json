@@ -7,7 +7,7 @@
   "file_pdf_pages": 192,
   "source_location": "owner_upload_in_conversation_not_published",
   "source_type": "Persian text with two-column pages and legacy font encoding; page visual priority over extraction",
-  "scan_scope": "192-page page/heading survey and selected-page close reading; not an attestation of full line-by-line critical reading",
+  "scan_scope": "192-page structural/layout scan, targeted inspection of rendered pages (including 2, 14, 22, 45, 168, 179), and textual verification of named narrative openings; no claim of line-by-line reading of every verse",
   "interpretation_notice": "Applications to Nasuraya, Atmosphere and DIOS are modern hypotheses, not instructions by Rumi.",
   "training_status": {
     "model_weights_changed": false,
@@ -53,7 +53,7 @@
       "title": "پادشاه و کنیزک",
       "pdf_pages": [
         3,
-        12
+        13
       ],
       "topic": "علت پنهان، فروتنی دانشی، اخلاق نتیجه",
       "source_observation": "حکیم در روایت میان علامت ظاهری و رنج پنهان فرق می‌گذارد؛ پایان داستان پرسش اخلاقی مهمی دربارهٔ آسیب رساندن دارد.",
@@ -76,7 +76,8 @@
           "stage": "revise",
           "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
         }
-      ]
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
     },
     {
       "id": "parrot_grocer",
@@ -136,7 +137,8 @@
           "stage": "revise",
           "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
         }
-      ]
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
     },
     {
       "id": "effort_trust",
@@ -202,8 +204,8 @@
       "id": "omar_envoy",
       "title": "رسول روم و عمر",
       "pdf_pages": [
-        70,
-        78
+        69,
+        76
       ],
       "topic": "هیبت، سادگی، ظاهر و باطن",
       "source_observation": "فرستاده، شکوه قدرت را جست‌وجو می‌کند اما با شکل دیگری از بزرگی و سادگی روبه‌رو می‌شود.",
@@ -226,14 +228,15 @@
           "stage": "revise",
           "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
         }
-      ]
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
     },
     {
       "id": "merchant_parrot",
       "title": "بازرگان و طوطی",
       "pdf_pages": [
-        79,
-        92
+        77,
+        94
       ],
       "topic": "آزادی، خاموشی، بازآفرینی",
       "source_observation": "طوطیِ بازرگان از پیام طوطیان هند به راه رهایی از قفس می‌رسد؛ مرگِ نمایشی تصویر روایی است.",
@@ -256,14 +259,15 @@
           "stage": "revise",
           "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
         }
-      ]
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
     },
     {
       "id": "harp_player",
       "title": "پیر چنگ‌زن",
       "pdf_pages": [
-        102,
-        109
+        94,
+        108
       ],
       "topic": "هنر، نیاز، دگرگونی توجه",
       "source_observation": "داستان مطرب پیر و عمر، وابستگی به پاداش و تغییر جهت امید را می‌کاود.",
@@ -286,7 +290,8 @@
           "stage": "revise",
           "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
         }
-      ]
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
     },
     {
       "id": "bedouin_gift",
@@ -316,14 +321,15 @@
           "stage": "revise",
           "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
         }
-      ]
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
     },
     {
       "id": "yusuf_mirror",
       "title": "هدیهٔ آینه به یوسف",
       "pdf_pages": [
-        155,
-        157
+        153,
+        156
       ],
       "topic": "آینه، انعکاس، شناختِ محدود",
       "source_observation": "هدیهٔ آینه با ایدهٔ مشاهدهٔ چهره و درنگ در تصویر مرتبط می‌شود.",
@@ -346,7 +352,8 @@
           "stage": "revise",
           "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
         }
-      ]
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
     },
     {
       "id": "rome_china",
@@ -412,7 +419,7 @@
       "id": "closure",
       "title": "خاتمهٔ دفتر اول",
       "pdf_pages": [
-        191,
+        192,
         192
       ],
       "topic": "ناتمامی، بازگشت، تواضع در فهم",
@@ -436,7 +443,16 @@
           "stage": "revise",
           "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
         }
-      ]
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
     }
-  ]
+  ],
+  "audit_date": "2026-11-15",
+  "audit_method": "PyMuPDF parsed text + page-level headings + rendered PDF contact sheet for visual spot checks",
+  "three_pass_definitions": {
+    "pass1": "record source and page without applying to AI",
+    "pass2": "form a counter-reading and note ethically uncomfortable claims",
+    "pass3": "derive testable AI design hypothesis with explicit uncertainty; no permission or capacity implications"
+  },
+  "application_status": "proposed design principles in a draft research branch, not a changed model, runtime, or independent consciousness"
 }
