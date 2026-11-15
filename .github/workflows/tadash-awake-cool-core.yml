@@ -1,0 +1,27 @@
+name: Tadash Awake COOL core integration
+on:
+  pull_request:
+    paths:
+      - 'tadash_awake/cool_policy.py'
+      - 'tadash_awake/cool_bridge.py'
+      - 'tadash_awake/__main__.py'
+      - 'tadash_awake/test_cool_bridge.py'
+      - '.github/workflows/tadash-awake-cool-core.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - run: python -m compileall -q tadash_awake
+      - name: Real Awake and COOL unit and integration contracts
+        run: python -m unittest tadash_awake.test_cool_bridge tadash_awake.test_wake tadash_awake.test_bridge -v
+      - name: No-write COOL demo
+        run: python -m tadash_awake.cool_policy --demo
