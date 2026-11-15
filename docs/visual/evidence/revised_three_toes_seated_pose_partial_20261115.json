@@ -15,17 +15,19 @@
           "side": "left",
           "visible": true,
           "digital_toes": 3,
-          "digital_pads": 3,
+          "digital_pads": null,
           "terminal_claws": 3,
-          "central_metatarsal_pad": 1
+          "central_metatarsal_pad": null,
+          "view": "dorsal"
         },
         {
           "side": "right",
           "visible": true,
           "digital_toes": 3,
-          "digital_pads": 3,
+          "digital_pads": null,
           "terminal_claws": 3,
-          "central_metatarsal_pad": 1
+          "central_metatarsal_pad": null,
+          "view": "dorsal"
         }
       ],
       "knee_hock_metatarsal_chain_visible": true,
@@ -40,17 +42,19 @@
           "side": "left",
           "visible": true,
           "digital_toes": 3,
-          "digital_pads": 3,
+          "digital_pads": null,
           "terminal_claws": 3,
-          "central_metatarsal_pad": 1
+          "central_metatarsal_pad": null,
+          "view": "dorsal"
         },
         {
           "side": "right",
           "visible": true,
           "digital_toes": 3,
-          "digital_pads": 3,
+          "digital_pads": null,
           "terminal_claws": 3,
-          "central_metatarsal_pad": 1
+          "central_metatarsal_pad": null,
+          "view": "dorsal"
         }
       ],
       "human_lotus_or_crossleg_pose": false,
@@ -70,7 +74,8 @@
           "digital_toes": 3,
           "digital_pads": 3,
           "terminal_claws": 3,
-          "central_metatarsal_pad": 1
+          "central_metatarsal_pad": 1,
+          "view": "plantar"
         }
       ],
       "performance_claims_present": false,
