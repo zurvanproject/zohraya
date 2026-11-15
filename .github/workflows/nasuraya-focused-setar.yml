@@ -1,0 +1,31 @@
+name: Nasuraya focused Setar evidence link
+on:
+  pull_request:
+    paths:
+      - 'examples/setar_practice/**'
+      - '.github/workflows/nasuraya-focused-setar.yml'
+  workflow_dispatch:
+jobs:
+  bounded-focus-contract:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install native audio dependencies
+        run: python -m pip install -r examples/setar_practice/requirements.txt
+      - name: Verify independent focus contracts
+        run: python -m unittest examples.setar_practice.test_focus_cycle -v
+      - name: Execute one source-verified native body lesson and its evidence review
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m examples.nasuraya_body_loop start --session "$RUNNER_TEMP/focus-native.sqlite" --fixture normal --max-actions 12
+          python -m examples.setar_practice.body_cli bind --session "$RUNNER_TEMP/focus-native.sqlite" --max-steps 1
+          python -m examples.setar_practice.focus_cycle run --session "$RUNNER_TEMP/focus-native.sqlite" --run-id ci-focus-001 --output-dir "$RUNNER_TEMP/focus-lesson-001" --accelerated
+          python -m examples.setar_practice.focus_cycle report --output-dir "$RUNNER_TEMP/focus-lesson-001"
+          python -m examples.setar_practice.body_cli status --session "$RUNNER_TEMP/focus-native.sqlite"
