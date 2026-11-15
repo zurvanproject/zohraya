@@ -1,0 +1,47 @@
+{
+  "schema": "nasuraya.visual-manual-image-audit/1",
+  "image_sha256": "d31664145371b441ac4a4b78a2d075eb3928d8c61ce1110c72c1f9e2f5bda37b",
+  "image_description": "Generated composite Nasuraya Body Test Suite v1.0, 1536x1024 pixels",
+  "reviewed_by": "assistant manual visual inspection of exact raster crops; not an ML detector",
+  "date": "2026-11-15",
+  "overall_decision": "REJECT",
+  "all_panels_reviewed": false,
+  "panels": [
+    {
+      "name": "bottom-row-left-sole-closeup",
+      "kind": "sole",
+      "feet": [
+        {
+          "side": "left",
+          "visible": true,
+          "digital_toes": 4,
+          "digital_pads": 4,
+          "terminal_claws": 4,
+          "central_metatarsal_pad": 1
+        }
+      ],
+      "performance_claims_present": false,
+      "note": "Four small separate distal pads and four nail tips around a larger central pad; canonical is three small digital pads."
+    },
+    {
+      "name": "top-row-rightmost-ritual-lotus",
+      "kind": "ritual",
+      "feet": [],
+      "human_lotus_or_crossleg_pose": true,
+      "pelvis_supported": false,
+      "knee_hock_metatarsal_chain_visible": false,
+      "toe_pads_grounded": false,
+      "performance_claims_present": false,
+      "note": "Traditional human lotus-style arrangement with paw claws appended; two identifiable knee-hock-metatarsal chains are not visible, and foot-ground contacts are hidden by flame."
+    },
+    {
+      "name": "bottom-row-performance-metrics",
+      "kind": "portrait",
+      "feet": [],
+      "performance_claims_present": true,
+      "performance_evidence_ref": "",
+      "note": "Decorative metric panel contains e.g. running speed and balance percentages with no actual experiment or citation."
+    }
+  ],
+  "remarks": "Only failing/critical panels were counted; this record intentionally does NOT claim exhaustive full-image review, so fail-closed for collage acceptance."
+}
