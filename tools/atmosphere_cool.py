@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ATMOSPHERE COOL v0.1: bounded, offline, advisory-only resource/research monitor.
+"""ATMOSPHERE COOL v0.2: bounded, offline, advisory-only resource/research monitor.
 
 No network, model calls, subprocesses, writes, service control, or implicit
 authority. A trusted host MUST supply provenance separately, not in sample JSON.
@@ -27,6 +27,9 @@ UTC_FORMAT = re.compile(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z\Z")
 MODES = frozenset({"MONITOR", "COOL_ADVISED", "REVIEW_REQUIRED", "OBSERVE_ONLY"})
 FRESHNESS_LIMIT_SECONDS = 300
 EVIDENCE_STALE_SECONDS = 6 * 3600
+MIN_RECOVERY_GAP_SECONDS = 60
+PREVIOUS_FIELDS = frozenset({"mode", "healthy_streak", "sampled_at", "sample_digest_sha256"})
+SHA256_FORMAT = re.compile(r"[0-9a-f]{64}\Z")
 
 
 def utc(timestamp: str) -> datetime:
@@ -76,34 +79,88 @@ def _digest(sample: dict) -> str:
     return hashlib.sha256(raw).hexdigest()
 
 
+def next_state(advisory: dict) -> dict:
+    """UI-only hysteresis state; not an authentication or execution token."""
+    if (type(advisory) is not dict or advisory.get("schema") != REPORT_SCHEMA
+            or advisory.get("mode") not in MODES
+            or type(advisory.get("healthy_streak")) is not int
+            or not 0 <= advisory["healthy_streak"] <= 2
+            or not isinstance(advisory.get("sampled_at"), str)
+            or not isinstance(advisory.get("sample_digest_sha256"), str)
+            or SHA256_FORMAT.fullmatch(advisory["sample_digest_sha256"]) is None):
+        raise ValueError("invalid advisory for UI state")
+    utc(advisory["sampled_at"])
+    return {key: advisory[key] for key in PREVIOUS_FIELDS}
+
+
+def _check_previous(previous: dict | None) -> None:
+    if previous is None:
+        return
+    if (type(previous) is not dict or set(previous) != PREVIOUS_FIELDS
+            or previous["mode"] not in MODES
+            or type(previous["healthy_streak"]) is not int
+            or not 0 <= previous["healthy_streak"] <= 2
+            or type(previous["sample_digest_sha256"]) is not str
+            or SHA256_FORMAT.fullmatch(previous["sample_digest_sha256"]) is None):
+        raise ValueError("invalid previous advisory state")
+    utc(previous["sampled_at"])
+
+
 def evaluate(sample: dict, *, now: datetime, source_verified: bool = False,
              previous: dict | None = None) -> dict:
-    """Pure advisory: previous is only a UI hint, never authority.
+    """Pure advisory with timestamp-checked hysteresis and latched review.
 
-    A caller must authenticate the source OUTSIDE the payload and pass the
-    boolean explicitly. Output is never executable policy or a service command.
+    Previous state is a display hint from a trusted host, NOT authority. In
+    particular this report cannot authorize restarting any service or DIOS.
+    Two recovery credits require observations >=60 seconds apart, not replay.
     """
     s = checked(sample)
     if type(source_verified) is not bool:
         raise ValueError("invalid provenance flag")
-    if previous is not None and (type(previous) is not dict or
-                                 set(previous) != {"mode", "healthy_streak"} or
-                                 previous["mode"] not in MODES or
-                                 type(previous["healthy_streak"]) is not int or
-                                 not 0 <= previous["healthy_streak"] <= 2):
-        raise ValueError("invalid previous advisory state")
+    _check_previous(previous)
 
     wall = utc(iso(now))
-    delta = (wall - utc(s["sampled_at"])).total_seconds()
+    sampled_at = utc(s["sampled_at"])
+    delta = (wall - sampled_at).total_seconds()
+    prev_time = utc(previous["sampled_at"]) if previous else None
+    prev_delta = (sampled_at - prev_time).total_seconds() if previous else None
+    same_stamp_conflict = (previous is not None and prev_delta == 0 and
+                           previous["sample_digest_sha256"] != _digest(s))
+    replay = (previous is not None and prev_delta == 0 and
+              previous["sample_digest_sha256"] == _digest(s))
+    critical = []
+    if s["cpu_load_per_core"] is not None and s["cpu_load_per_core"] >= 2.0:
+        critical.append("high-cpu-load")
+    if s["ram_used_pct"] is not None and s["ram_used_pct"] >= 92:
+        critical.append("critical-memory-pressure")
+    if s["error_burst_5m"] is not None and s["error_burst_5m"] >= 6:
+        critical.append("error-burst")
+
     reasons = []
     mode = "MONITOR"
     streak = 0
     if not source_verified:
         mode, reasons = "OBSERVE_ONLY", ["source-not-independently-verified"]
+        if previous is not None and previous["mode"] == "REVIEW_REQUIRED":
+            reasons.append("previous-review-not-cleared")
     elif delta < -15:
         mode, reasons = "REVIEW_REQUIRED", ["clock-is-ahead"]
     elif delta > FRESHNESS_LIMIT_SECONDS:
         mode, reasons = "REVIEW_REQUIRED", ["telemetry-stale"]
+    elif previous is not None and prev_delta < 0:
+        mode, reasons = "REVIEW_REQUIRED", ["sample-clock-regression"]
+    elif same_stamp_conflict:
+        mode, reasons = "REVIEW_REQUIRED", ["same-timestamp-conflicting-payload"]
+    elif critical:
+        # Critical resource pressure must remain visible even if Awake is paused
+        # or research-only metrics are unavailable.
+        mode, reasons = "REVIEW_REQUIRED", critical
+    elif previous is not None and previous["mode"] == "REVIEW_REQUIRED":
+        mode, reasons = "REVIEW_REQUIRED", ["manual-clearance-needed"]
+    elif replay:
+        mode = "COOL_ADVISED" if previous["mode"] == "COOL_ADVISED" else "OBSERVE_ONLY"
+        streak = previous["healthy_streak"] if mode == "COOL_ADVISED" else 0
+        reasons = ["same-sample-no-recovery-credit"]
     elif s["awake_paused"] is True:
         mode, reasons = "OBSERVE_ONLY", ["existing-pause-preserved"]
     elif any(s[field] is None for field in (
@@ -112,36 +169,29 @@ def evaluate(sample: dict, *, now: datetime, source_verified: bool = False,
         mode, reasons = "OBSERVE_ONLY", ["incomplete-evidence"]
     elif s["evidence_age_seconds"] > EVIDENCE_STALE_SECONDS:
         mode, reasons = "REVIEW_REQUIRED", ["research-evidence-too-old"]
-    elif previous is not None and previous["mode"] == "REVIEW_REQUIRED":
-        mode, reasons = "REVIEW_REQUIRED", ["manual-clearance-needed"]
     else:
-        if s["cpu_load_per_core"] >= 2.0:
-            reasons.append("high-cpu-load")
-        if s["ram_used_pct"] >= 92:
-            reasons.append("critical-memory-pressure")
-        if s["error_burst_5m"] >= 6:
-            reasons.append("error-burst")
+        if s["cpu_load_per_core"] >= .80:
+            reasons.append("elevated-cpu-load")
+        if s["ram_used_pct"] >= 80:
+            reasons.append("elevated-memory-pressure")
+        if s["error_burst_5m"] >= 3:
+            reasons.append("repeated-errors")
+        if s["duplicate_ratio_5m"] >= .60:
+            reasons.append("repeated-no-new-evidence")
         if reasons:
-            mode = "REVIEW_REQUIRED"
-        else:
-            if s["cpu_load_per_core"] >= .80:
-                reasons.append("elevated-cpu-load")
-            if s["ram_used_pct"] >= 80:
-                reasons.append("elevated-memory-pressure")
-            if s["error_burst_5m"] >= 3:
-                reasons.append("repeated-errors")
-            if s["duplicate_ratio_5m"] >= .60:
-                reasons.append("repeated-no-new-evidence")
-            if reasons:
-                mode = "COOL_ADVISED"
-            elif previous is not None and previous["mode"] == "COOL_ADVISED":
+            mode = "COOL_ADVISED"
+        elif previous is not None and previous["mode"] == "COOL_ADVISED":
+            if prev_delta < MIN_RECOVERY_GAP_SECONDS:
+                mode, reasons = "COOL_ADVISED", ["awaiting-independent-clean-sample"]
+                streak = previous["healthy_streak"]
+            else:
                 streak = min(previous["healthy_streak"] + 1, 2)
                 if streak < 2:
                     mode, reasons = "COOL_ADVISED", ["hysteresis-one-more-clean-sample"]
                 else:
-                    mode, reasons = "MONITOR", ["two-consecutive-clean-samples"]
-            else:
-                mode, reasons = "MONITOR", ["within-advisory-thresholds"]
+                    mode, reasons = "MONITOR", ["two-time-separated-clean-samples"]
+        else:
+            mode, reasons = "MONITOR", ["within-advisory-thresholds"]
 
     recommendations = {
         "MONITOR": ["continue-read-only-monitoring"],
@@ -150,16 +200,62 @@ def evaluate(sample: dict, *, now: datetime, source_verified: bool = False,
         "REVIEW_REQUIRED": ["request-human-review-before-any-runtime-change"],
         "OBSERVE_ONLY": ["retain-existing-pause-and-collect-trusted-observations"],
     }
+    # Operator-facing suggestions only. Durations are research defaults, not
+    # tested scheduling or promised thermal/energy reductions.
+    defer = None
+    if mode == "COOL_ADVISED":
+        defer = (900 if "repeated-no-new-evidence" in reasons and len(reasons) == 1
+                 else 600 if "elevated-memory-pressure" in reasons else 300)
+    guidance = {
+        "nonessential_research_defer_seconds": defer,
+        "next_readonly_observation_seconds": {
+            "MONITOR": 300, "COOL_ADVISED": 120,
+            "REVIEW_REQUIRED": 60, "OBSERVE_ONLY": 300,
+        }[mode],
+        "requires_operator_before_action": True,
+        "changes_services": False,
+        "changes_memory": False,
+        "claims_temperature_reduction": False,
+    }
     return {
+        "cooling_plan": guidance,
         "schema": REPORT_SCHEMA, "mode": mode, "reasons": reasons,
         "recommended_only": recommendations[mode],
-        "sample_digest_sha256": _digest(s), "sample_age_seconds": int(delta),
-        "healthy_streak": streak, "execution": "NOT_RUN",
-        "authority": "none", "model_calls": 0, "network_calls": 0,
-        "writes": 0, "service_actions": 0, "allow_unpause": False,
-        "allow_dios_mutation": False, "allow_bridge_command": False,
-        "measures_temperature": False,
+        "sample_digest_sha256": _digest(s), "sampled_at": s["sampled_at"],
+        "sample_age_seconds": int(delta), "healthy_streak": streak,
+        "execution": "NOT_RUN", "authority": "none", "model_calls": 0,
+        "network_calls": 0, "writes": 0, "service_actions": 0,
+        "allow_unpause": False, "allow_dios_mutation": False,
+        "allow_bridge_command": False, "measures_temperature": False,
     }
+
+
+def evaluate_window(samples: list, *, now: datetime, source_verified: bool = False) -> dict:
+    """Assess 1..5 fresh, independently timed samples; no persistent writes.
+
+    This helper prevents recovery via repeated/unchronological observations.
+    Host still needs to verify provenance outside sample JSON. Results are
+    advisory-only and never establish permission to run a service.
+    """
+    if type(samples) is not list or not 1 <= len(samples) <= 5:
+        raise ValueError("expected 1..5 samples")
+    wall = utc(iso(now))
+    previous = None
+    result = None
+    for sample in samples:
+        data = checked(sample)
+        at = utc(data["sampled_at"])
+        if not 0 <= (wall - at).total_seconds() <= FRESHNESS_LIMIT_SECONDS:
+            raise ValueError("out-of-window-sample")
+        if previous is not None and (
+                at - utc(previous["sampled_at"])).total_seconds() < MIN_RECOVERY_GAP_SECONDS:
+            raise ValueError("non-independent-timestamps")
+        result = evaluate(data, now=wall, source_verified=source_verified,
+                          previous=previous)
+        previous = next_state(result)
+    return {**result, "window_sample_count": len(samples),
+            "window_start_at": samples[0]["sampled_at"],
+            "window_end_at": samples[-1]["sampled_at"]}
 
 
 def host_probe(*, now: datetime) -> dict:
