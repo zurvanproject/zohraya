@@ -1,0 +1,27 @@
+name: Chrysalis 24-hour presence gate (synthetic offline contracts)
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_chrysalis.py'
+      - 'tools/install_nasu_chrysalis.sh'
+      - 'tests/test_nasu_chrysalis.py'
+      - 'docs/NASURAYA_CHRYSALIS_24H_FA.md'
+      - '.github/workflows/nasuraya-chrysalis.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  gate-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Validate installer syntax
+        run: bash -n tools/install_nasu_chrysalis.sh
+      - name: Exercise 24-hour gate and lifecycle on synthetic data
+        run: python -m unittest discover -s tests -p 'test_nasu_chrysalis.py' -v
+      - name: Check pre-existing bounded mission contracts
+        run: python -m unittest discover -s tests -p 'test_nasu_offline_missions.py' -v
