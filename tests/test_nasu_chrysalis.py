@@ -79,16 +79,16 @@ class ChrysalisTests(unittest.TestCase):
         self.put(control(NOW))
         with patch.object(c.os, "geteuid", return_value=0):
             with self.assertRaisesRegex(ValueError, "clock-rollback"):
-                c.set_owner_control("heartbeat", path=self.marker, now=NOW - dt.timedelta(hours=1))
+                c.set_owner_control("heartbeat", path=self.marker, now=NOW - dt.timedelta(hours=1), trusted_uid=self.owner)
 
     def test_root_heartbeat_resets_24h_clock_and_can_disarm(self):
         self.put(control(NOW - dt.timedelta(hours=30), revision=2))
         with patch.object(c.os, "geteuid", return_value=0):
-            outcome = c.set_owner_control("heartbeat", path=self.marker, now=NOW)
+            outcome = c.set_owner_control("heartbeat", path=self.marker, now=NOW, trusted_uid=self.owner)
         self.assertEqual(outcome["revision"], 3)
         self.assertEqual(self.call_tick()["mode"], "ARMED")
         with patch.object(c.os, "geteuid", return_value=0):
-            c.set_owner_control("disarm", path=self.marker, now=NOW)
+            c.set_owner_control("disarm", path=self.marker, now=NOW, trusted_uid=self.owner)
         self.assertEqual(self.call_tick()["mode"], "DISARMED")
         self.assertFalse(self.state.exists())
 
