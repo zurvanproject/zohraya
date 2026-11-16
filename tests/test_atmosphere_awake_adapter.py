@@ -159,6 +159,54 @@ class AdapterTests(unittest.TestCase):
         self.assertEqual(self.adapter.outbox.stats()["pending"], 0)
 
 
+    def test_record_limit_cannot_slice_one_signed_snapshot(self):
+        self.stage()
+        with self.assertRaisesRegex(ValueError, "delivery-limit-smaller-than-signed-bundle"):
+            self.adapter.deliver_pending(root=self.root, now=NOW, max_records=3)
+        self.assertFalse(self.adapter.awake_root.exists())
+        self.assertEqual(self.adapter.outbox.stats(), {"pending": 6, "delivered": 0})
+        receipt = self.adapter.deliver_pending(root=self.root, now=NOW, max_records=6)
+        self.assertEqual(receipt["delivered"], 6)
+
+    def test_two_signed_snapshots_are_delivered_as_complete_groups(self):
+        self.stage()
+        original_extract = StubBridge.extract
+        def second_snapshot(snapshot, *, stream, observed_at):
+            rows, receipt = original_extract(snapshot, stream=stream, observed_at=observed_at)
+            for row in rows:
+                row["event_id"] = row["event_id"].replace("synthetictest-1-", "synthetictest-2-")
+            return rows, receipt
+        with patch.object(StubBridge, "extract", side_effect=second_snapshot):
+            envelopes, _ = self.adapter.prepare_unsigned(self.snapshot, stream="demo", observed_at=NOW)
+            self.adapter.stage_signed(self.snapshot, stream="demo", observed_at=NOW,
+                                      manifest=sign(self.priv, envelopes), root=self.root, now=NOW)
+        self.assertEqual(self.adapter.outbox.stats()["pending"], 12)
+        first = self.adapter.deliver_pending(root=self.root, now=NOW, max_records=8)
+        self.assertEqual(first["delivered"], 6)
+        self.assertEqual(self.adapter.outbox.stats(), {"pending": 6, "delivered": 6})
+        second = self.adapter.deliver_pending(root=self.root, now=NOW, max_records=8)
+        self.assertEqual(second["delivered"], 6)
+        self.assertEqual(self.adapter.outbox.stats(), {"pending": 0, "delivered": 12})
+
+    def test_preexisting_partial_delivery_is_quarantined(self):
+        self.stage()
+        first_id = self.adapter.outbox.pending(root=self.root, now=NOW)[0]["event_id"]
+        self.adapter.outbox.delivered([first_id])  # synthetic legacy failure
+        with self.assertRaisesRegex(ValueError, "incomplete-signed-bundle"):
+            self.adapter.deliver_pending(root=self.root, now=NOW)
+        self.assertFalse(self.adapter.awake_root.exists())
+        self.assertEqual(self.adapter.outbox.stats(), {"pending": 5, "delivered": 1})
+
+    def test_individually_signed_scalar_cannot_pose_as_stage3_snapshot(self):
+        envelopes, _ = self.adapter.prepare_unsigned(self.snapshot, stream="demo", observed_at=NOW)
+        one = envelopes[0]
+        self.adapter.outbox.stage([one], manifest=sign(self.priv, [one]), root=self.root, now=NOW)
+        with self.assertRaisesRegex(ValueError, "non-six-scalar-signed-bundle"):
+            self.adapter.deliver_pending(root=self.root, now=NOW)
+        self.assertEqual(self.adapter.outbox.stats()["pending"], 1)
+        self.assertFalse(self.adapter.awake_root.exists())
+
+
 class ActualPR205ContractTests(unittest.TestCase):
     """Runs against real checked-out PR#205 in CI via PYTHONPATH, not stubs."""
     def test_real_original_bridge_and_awake_core(self):
