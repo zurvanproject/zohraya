@@ -5,6 +5,7 @@ on:
       - "tools/nasu_install_local_llm.sh"
       - "tools/nasu_offsite_restore_drill.sh"
       - "tests/test_nasu_offline_readiness.py"
+      - "tests/test_nasu_offsite_roundtrip_e2e.py"
       - "tests/test_nasu_offline_research_queue.py"
       - "tools/nasu_offline_research_queue.py"
       - "tools/install_nasu_offline_research.sh"
@@ -20,6 +21,7 @@ on:
       - "tools/nasu_install_local_llm.sh"
       - "tools/nasu_offsite_restore_drill.sh"
       - "tests/test_nasu_offline_readiness.py"
+      - "tests/test_nasu_offsite_roundtrip_e2e.py"
       - "tests/test_nasu_offline_research_queue.py"
       - "tools/nasu_offline_research_queue.py"
       - "tools/install_nasu_offline_research.sh"
@@ -41,5 +43,6 @@ jobs:
       - name: Validate offline scripts and tamper detection without network or real credentials
         run: |
           python3 -m unittest discover -s tests -p test_nasu_offline_readiness.py -v
+          python3 -m unittest discover -s tests -p test_nasu_offsite_roundtrip_e2e.py -v
           python3 -m unittest discover -s tests -p test_nasu_offline_research_queue.py -v
           python3 -m unittest discover -s tests -p test_nasu_recovered_model_smoke.py -v
