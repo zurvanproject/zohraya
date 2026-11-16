@@ -1,0 +1,37 @@
+name: ATMOSPHERE trust and Awake contract (offline tests)
+on:
+  pull_request:
+    paths:
+      - "tools/atmosphere_attestation.py"
+      - "tools/atmosphere_awake_adapter.py"
+      - "tools/atmosphere_recovery.py"
+      - "tools/atmosphere_offline_signer.py"
+      - "tools/atmosphere_mythos.py"
+      - "docs/atmosphere/mythos_canon_v1.json"
+      - "docs/ATMOSPHERE_MYTHOS_CANON_2026-11-16_FA.md"
+      - "tests/test_atmosphere_*.py"
+      - ".github/workflows/atmosphere-trust.yml"
+permissions:
+  contents: read
+jobs:
+  offline-contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install local verification library for CI only
+        run: python -m pip install 'cryptography>=42,<47'
+      - name: Download pinned independent Awake PR205 source for contract testing
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: 90692bde9f1e4b5b7f311162b7c83127715df710
+          path: pinned-awake
+          persist-credentials: false
+      - name: Test offline trust, backup, and real pinned Awake integration
+        env:
+          PYTHONPATH: ".:tools:tests:pinned-awake"
+        run: python -m unittest discover -s tests -p 'test_atmosphere_*.py' -v
