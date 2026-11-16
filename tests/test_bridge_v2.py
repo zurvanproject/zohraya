@@ -70,6 +70,12 @@ class BridgeV2Contracts(TestCase):
             self.assertEqual(x['tls'],'NOT_CHECKED')
             self.assertFalse(x['anatomy_measured'])
 
+    def test_dry_run_syntax_validation_has_no_pycache_side_effect(self):
+        installer = (ROOT/'tools/bridge_v2/install.sh').read_text(encoding='utf-8')
+        self.assertIn('ast.parse(', installer)
+        self.assertNotIn('py_compile', installer)
+        self.assertIn("mode=\"${1:---dry-run}\"", installer)
+
     def test_source_list_is_fixed(self):
         self.assertEqual(len(worker.SOURCES),4)
         self.assertEqual(set(worker.SOURCES), {'nlm_vhp','nih_3d','opensim','mujoco'})
