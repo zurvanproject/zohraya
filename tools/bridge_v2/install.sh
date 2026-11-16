@@ -20,7 +20,14 @@ printf '%s  %s\n' \
   'c2daaa2a4a51af30ecccb5c66319ee6267d578904fde198071d1927af7cbf258' "$HERE/worker.py" \
   '9cd2ed56ca96dcef7ff18f0e40e38075ba7fd3dac930e4423058ff699c7ee86b' "$HERE/patch_bridge.py" | sha256sum -c -
 # Only locally supplied and tested files, no URL fetch or pip during installation.
-python3 -B -m py_compile "$HERE/worker.py" "$HERE/patch_bridge.py"
+# AST parsing validates syntax without creating __pycache__ beside staged code.
+python3 -B - "$HERE/worker.py" "$HERE/patch_bridge.py" <<'PYCODE'
+import ast
+import pathlib
+import sys
+for filename in sys.argv[1:]:
+    ast.parse(pathlib.Path(filename).read_text(encoding='utf-8'), filename=filename)
+PYCODE
 TMP="$(mktemp -d /tmp/nasu-bridge-v2-patch.XXXXXXXX)"
 BACKUP=''
 APPLIED=0
