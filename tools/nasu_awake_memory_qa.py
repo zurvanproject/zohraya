@@ -85,18 +85,41 @@ def norm(s):
 
 
 def select(entries, query, count=3):
-    terms = [t for t in re.findall(r'[^\W_]+', norm(query), re.UNICODE) if len(t) >= 3 and t not in STOP]
-    wants_question = any(w in norm(query) for w in ('سؤال', 'سوال', 'پرسش', 'question'))
-    wants_evidence = any(w in norm(query) for w in ('خاطره', 'شاهد', 'شواهد', 'evidence'))
-    ranked = []
-    for index, entry in enumerate(entries):
-        txt = norm(entry['text'])
-        match = sum(2 for t in set(terms) if t in txt)
-        kind_bonus = (3 if wants_question and entry['kind'] == 'question' else 0) + (2 if wants_evidence and entry['kind'] == 'evidence' else 0)
-        ranked.append((match + kind_bonus, match, -index, entry))
-    ranked.sort(key=lambda x: (x[0], x[1], x[2]), reverse=True)
-    return [r[3] for r in ranked[:count]]
+    """Choose matching *records of the requested kind*, never substitute questions for evidence."""
+    q = norm(query)
+    wants_evidence = any(w in q for w in ('شواهد', 'شاهد', 'مشاهدات', 'مشاهده', 'evidence'))
+    wants_question = any(w in q for w in ('سؤال', 'سوال', 'پرسش', 'question'))
+    if wants_evidence:
+        candidates = [e for e in entries if e['kind'] == 'evidence']
+    elif wants_question:
+        candidates = [e for e in entries if e['kind'] == 'question']
+    else:
+        candidates = entries
 
+    generic = STOP | {'شواهد', 'شاهد', 'مشاهدات', 'مشاهده', 'خاطره', 'خاطرات',
+                      'مربوط', 'مرتبط', 'ثبت', 'شده', 'هستند', 'چیست', 'کدامند',
+                      'سؤال', 'سوال', 'پرسش', 'اطلاعات', 'نتایج', 'نتیجه'}
+    terms = {t for t in re.findall(r'[^\\W_]+', q, re.UNICODE)
+             if len(t) >= 3 and t not in generic}
+    synonyms = {
+        'حسگر': ('sensor', 'sensory', 'سنسور', 'حسی'),
+        'حسی': ('sensory', 'sensor', 'حسگر'),
+        'سنسور': ('sensor', 'sensory', 'حسگر'),
+        'پیشبینی': ('prediction', 'predict', 'پیش بینی'),
+        'خطا': ('error', 'fault'),
+        'تعادل': ('balance',),
+    }
+    expansions = [forms for key, forms in synonyms.items() if key in q]
+    ranked = []
+    for index, entry in enumerate(candidates):
+        txt = norm(entry['text'])
+        score = sum(3 for t in terms if t in txt)
+        score += sum(3 for forms in expansions if any(norm(a) in txt for a in forms))
+        if (terms or expansions) and score == 0:
+            continue
+        ranked.append((score, index, entry))
+    ranked.sort(key=lambda x: (x[0], x[1]), reverse=True)
+    return [r[2] for r in ranked[:count]]
 
 def build_messages(query, selected):
     excerpts = '\n'.join('[' + r['ref'] + '] ' + r['text'][:330] for r in selected)
@@ -149,14 +172,18 @@ def main(argv=None):
         selected = select(entries, args.question)
         sources = [x['ref'] for x in selected]
         if args.action == 'preview':
-            result = {'status': 'preview_only', 'sources': sources,
+            result = {'status': 'preview_only' if selected else 'no_relevant_memory',
+                      'sources': sources,
                       'excerpts': [x['text'][:330] for x in selected]}
         else:
             if not selected:
-                raise ValueError('No Awake memory records available')
-            result = {'status': 'local_answer', 'answer': answer_local(build_messages(args.question, selected)),
-                      'source_candidates': sources,
-                      'warning': 'Model text is an interpretation, not verified fact.'}
+                result = {'status': 'no_relevant_memory',
+                          'answer': 'اطلاعات مرتبطی در حافظه پیدا نشد.',
+                          'source_candidates': []}
+            else:
+                result = {'status': 'local_answer', 'answer': answer_local(build_messages(args.question, selected)),
+                          'source_candidates': sources,
+                          'warning': 'Model text is an interpretation, not verified fact.'}
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 
