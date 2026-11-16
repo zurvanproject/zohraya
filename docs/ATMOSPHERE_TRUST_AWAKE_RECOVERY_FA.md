@@ -101,3 +101,15 @@ This is an *API example* using deliberately undefined operator inputs; it is not
 - The existing PR205 source is a research branch. CI direct-source tests and manual review are mandatory before any promotion; mode default remains paused.
 
 **Acceptance criterion for future authorized deployment:** direct PR205 integration green, root fingerprint verified out of band, external signer independently trusted, external backup and restore tested, full fault-injection, old/runtime compatibility, permission audit, system rollback plan and explicit owner signoff. Otherwise fail closed.
+
+
+## اصلاح ۱۶ نوامبر ۲۰۲۶: تحویل اتمیِ بستهٔ امضاشده
+
+در کد پیشین، `deliver_pending(max_records=N)` فهرست رخدادهای امضاشده را در حد `N` می‌برید. وقتی `N<6` یا چند بسته در صف بودند، بخشی از شش اسکالر یک snapshot به Awake می‌رسید و باقی در صف می‌ماند؛ در حالی که آن شش مقدار برای یک مشاهدهٔ منبع‌دار واحد طراحی شده‌اند.
+
+اکنون `EvidenceOutbox.pending_bundles` پس از بازبینی امضا، اثر انگشت کلید، تمامیت داده و تازگی، رخدادها را برحسب شناسهٔ **manifest امضاشده** گروه‌بندی می‌کند. هر گروه تنها وقتی آمادهٔ انتقال است که *تمام* شناسه‌های امضاشدهٔ آن در وضعیت pending باشند. آداپتور Awake به‌طور مشخص بسته‌های **دقیقاً شش‌تایی** را می‌پذیرد، تعداد کل را به سقف `max_records` محدود می‌کند و بسته‌ای را نصف نمی‌کند. در صورت سقف کمتر از شش یا بستهٔ ناقص باقی‌مانده از اجرای قدیمی، پیش از هر نوشتن به Awake متوقف می‌شود؛ ترمیم چنین موردی نیازمند بازبینی انسانی است.
+
+چهار آزمون جدید، برش عمدی به سه رخداد، دو بسته در صف با سقف هشت، بستهٔ نیمه‌تحویل‌شدهٔ قدیمی، و گواهی تک‌اسکالری را پوشش می‌دهند. تمام آزمون‌ها با snapshot مصنوعی و کلید آزمایشی در GitHub Actions اجرا می‌شوند. این اصلاح **نه** اجرا روی VPS است، **نه** تأیید صحت حسگر فیزیکی، **نه** جایگزین تأیید بیرونیِ امضا، و **نه** ادعای بازیابی مستقل از دیتاسنتر.
+
+**اصل معماری:** تاریکی در زبان نمادین اتمسفر به معنی حقِ گفتنِ «نمی‌دانم» است؛ هیچ دادهٔ ناقصی فقط برای ساختنِ تصویرِ قطعی وارد حافظه نمی‌شود. این تعبیر، مجوز اجرای ابزار یا ادعای تجربی نیست.
+
