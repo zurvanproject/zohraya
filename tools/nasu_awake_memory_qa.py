@@ -99,7 +99,7 @@ def select(entries, query, count=3):
     generic = STOP | {'شواهد', 'شاهد', 'مشاهدات', 'مشاهده', 'خاطره', 'خاطرات',
                       'مربوط', 'مرتبط', 'ثبت', 'شده', 'هستند', 'چیست', 'کدامند',
                       'سؤال', 'سوال', 'پرسش', 'اطلاعات', 'نتایج', 'نتیجه'}
-    terms = {t for t in re.findall(r'[^\\W_]+', q, re.UNICODE)
+    terms = {t for t in re.findall(r'[^\W_]+', q, re.UNICODE)
              if len(t) >= 3 and t not in generic}
     synonyms = {
         'حسگر': ('sensor', 'sensory', 'سنسور', 'حسی'),
@@ -115,7 +115,9 @@ def select(entries, query, count=3):
         txt = norm(entry['text'])
         score = sum(3 for t in terms if t in txt)
         score += sum(3 for forms in expansions if any(norm(a) in txt for a in forms))
-        if (terms or expansions) and score == 0:
+        if entry['kind'] == 'evidence' and not wants_question:
+            score += 1  # Prefer actual evidence when keyword relevance is equal.
+        if (terms or expansions) and score <= 1:
             continue
         ranked.append((score, index, entry))
     ranked.sort(key=lambda x: (x[0], x[1]), reverse=True)
