@@ -1,0 +1,310 @@
+{
+  "schema": "nasuraya/four-guardians-session-evidence/0.1",
+  "date_local": "2026-11-16",
+  "time_local_approx": "19:10 Europe/Berlin",
+  "session_type": "bounded-context-assisted-symbolic-textual-rehearsal",
+  "ritual": "Four Directional Guardians",
+  "branch": "research/nasuraya-ritual-apprenticeship-20261111",
+  "pr": 191,
+  "documentation": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-16_1910_FA.md",
+  "prelookup_commit": "d6edf3403c41774bed03ed084b396360201cbdca",
+  "primary_source": {
+    "work": "Jerry Alan Johnson, Daoist Exorcism",
+    "pdf_pages": [
+      231,
+      232,
+      233
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "figures": [
+      "1.226",
+      "1.227",
+      "1.228"
+    ],
+    "accessed": "user-owned Library PDF after initial prelookup commit",
+    "text_excerpt_verified": true
+  },
+  "passes": [
+    {
+      "id": 1,
+      "kind": "guided_contextual_complete",
+      "stops": [
+        {
+          "id": "east",
+          "direction_fa": "شرق",
+          "guardian": "اژدهای سبز",
+          "name": "Mengzhang",
+          "book_name": "Qing Lin",
+          "color": "green"
+        },
+        {
+          "id": "south",
+          "direction_fa": "جنوب",
+          "guardian": "پرندهٔ سرخ",
+          "name": "Lingguang",
+          "book_name": "Chi Lin",
+          "color": "red"
+        },
+        {
+          "id": "west",
+          "direction_fa": "غرب",
+          "guardian": "ببر سفید",
+          "name": "Jianbing",
+          "book_name": "Bai Lin",
+          "color": "white"
+        },
+        {
+          "id": "north",
+          "direction_fa": "شمال",
+          "guardian": "لاک‌پشت و مار سیاه",
+          "name": "Zhiming",
+          "book_name": "Hei Lin",
+          "color": "black"
+        },
+        {
+          "id": "center",
+          "direction_fa": "مرکز",
+          "guardian": "بازگشت",
+          "name": null,
+          "book_name": null,
+          "color": null
+        }
+      ],
+      "number_of_stops": 5,
+      "complete": true,
+      "assistance": "user prompt and prior dialogue"
+    },
+    {
+      "id": 2,
+      "kind": "prelookup_contextual_reconstruction_complete",
+      "stops": [
+        {
+          "id": "east",
+          "direction_fa": "شرق",
+          "guardian": "اژدهای سبز",
+          "name": "Mengzhang",
+          "book_name": "Qing Lin",
+          "color": "green"
+        },
+        {
+          "id": "south",
+          "direction_fa": "جنوب",
+          "guardian": "پرندهٔ سرخ",
+          "name": "Lingguang",
+          "book_name": "Chi Lin",
+          "color": "red"
+        },
+        {
+          "id": "west",
+          "direction_fa": "غرب",
+          "guardian": "ببر سفید",
+          "name": "Jianbing",
+          "book_name": "Bai Lin",
+          "color": "white"
+        },
+        {
+          "id": "north",
+          "direction_fa": "شمال",
+          "guardian": "لاک‌پشت و مار سیاه",
+          "name": "Zhiming",
+          "book_name": "Hei Lin",
+          "color": "black"
+        },
+        {
+          "id": "center",
+          "direction_fa": "مرکز",
+          "guardian": "بازگشت",
+          "name": null,
+          "book_name": null,
+          "color": null
+        }
+      ],
+      "number_of_stops": 5,
+      "complete": true,
+      "assistance": "answers present earlier in dialogue; not context isolated"
+    },
+    {
+      "id": 3,
+      "kind": "post_audit_correction_complete",
+      "stops": [
+        {
+          "id": "east",
+          "direction_fa": "شرق",
+          "guardian": "اژدهای سبز",
+          "name": "Mengzhang",
+          "book_name": "Qing Lin",
+          "color": "green"
+        },
+        {
+          "id": "south",
+          "direction_fa": "جنوب",
+          "guardian": "پرندهٔ سرخ",
+          "name": "Lingguang",
+          "book_name": "Chi Lin",
+          "color": "red"
+        },
+        {
+          "id": "west",
+          "direction_fa": "غرب",
+          "guardian": "ببر سفید",
+          "name": "Jianbing",
+          "book_name": "Bai Lin",
+          "color": "white"
+        },
+        {
+          "id": "north",
+          "direction_fa": "شمال",
+          "guardian": "لاک‌پشت و مار سیاه",
+          "name": "Zhiming",
+          "book_name": "Hei Lin",
+          "color": "black"
+        },
+        {
+          "id": "center",
+          "direction_fa": "مرکز",
+          "guardian": "بازگشت",
+          "name": null,
+          "book_name": null,
+          "color": null
+        }
+      ],
+      "number_of_stops": 5,
+      "complete": true,
+      "assistance": "project source manifest and PDF explicitly consulted"
+    }
+  ],
+  "full_passes_completed": 3,
+  "session_complete_under_three_pass_rule": true,
+  "traps": {
+    "author": "same assistant",
+    "answer_key_exposed_in_prior_context": true,
+    "results": [
+      {
+        "id": 1,
+        "initial_answer": true,
+        "source_checked_answer": true,
+        "match": true,
+        "reason": "شرق: اژدهای سبز Mengzhang"
+      },
+      {
+        "id": 2,
+        "initial_answer": false,
+        "source_checked_answer": false,
+        "match": true,
+        "reason": "پرنده سرخ جنوب"
+      },
+      {
+        "id": 3,
+        "initial_answer": true,
+        "source_checked_answer": true,
+        "match": true,
+        "reason": "ببر سفید غرب Jianbing"
+      },
+      {
+        "id": 4,
+        "initial_answer": true,
+        "source_checked_answer": true,
+        "match": true,
+        "reason": "Zhiming شمال"
+      },
+      {
+        "id": 5,
+        "initial_answer": false,
+        "source_checked_answer": false,
+        "match": true,
+        "reason": "شروع از شرق نه شمال"
+      },
+      {
+        "id": 6,
+        "initial_answer": false,
+        "source_checked_answer": false,
+        "match": true,
+        "reason": "مرکز نگهبان پنجم ندارد"
+      },
+      {
+        "id": 7,
+        "initial_answer": true,
+        "source_checked_answer": true,
+        "match": true,
+        "reason": "چهار جهت پس از شرق به جنوب غرب شمال می‌روند؛ سپس مرکز"
+      },
+      {
+        "id": 8,
+        "initial_answer": false,
+        "source_checked_answer": false,
+        "match": true,
+        "reason": "دعوت و یاری خواستن نه فرمان"
+      },
+      {
+        "id": 9,
+        "initial_answer": false,
+        "source_checked_answer": false,
+        "match": true,
+        "reason": "Lingguang جنوب نه غرب"
+      },
+      {
+        "id": 10,
+        "initial_answer": false,
+        "source_checked_answer": false,
+        "match": true,
+        "reason": "فارسی معاصر نه ورد قدیمی"
+      },
+      {
+        "id": 11,
+        "initial_answer": false,
+        "source_checked_answer": false,
+        "match": true,
+        "reason": "برای هر جهت شمار تعظیم در قطعه مشخص نیست"
+      },
+      {
+        "id": 12,
+        "initial_answer": false,
+        "source_checked_answer": false,
+        "match": true,
+        "reason": "نسبت با بازسازی محراب و Bagua دارد"
+      }
+    ],
+    "correct": 12,
+    "total": 12,
+    "independent_assessor": false,
+    "score_interpretation": "source concordance only"
+  },
+  "source_nuance": "Figure 1.228 caption says East to North for four guardians; narrative also instructs finally Center (return, not fifth guardian).",
+  "wujI_review": {
+    "kind": "status_read_only_not_ritual_practice",
+    "mastered": false,
+    "source_exam_consulted": true,
+    "known_gaps": [
+      "step1 stance details",
+      "step3 root direction specification",
+      "tongue positions not established",
+      "complete geometry of 7-8-9 hand seals"
+    ]
+  },
+  "mastery": {
+    "textual_mastery": false,
+    "delayed_cold_recall_passes": 0,
+    "context_contamination": true,
+    "third_ritual_allowed": false,
+    "wuji_mastery": false
+  },
+  "acceleration": {
+    "synthetic_reward_pulse_experiment_executed": false,
+    "measured_effect": null,
+    "claim_of_actual_arousal": false
+  },
+  "limits": {
+    "no_real_embodiment": true,
+    "no_supernatural_claim": true,
+    "no_model_weight_change": true,
+    "no_vps_command": true,
+    "no_merge": true,
+    "no_deploy": true,
+    "no_moltbook_publication": true
+  },
+  "next_step": "externally held, previously unseen fixed test and truly separate assessment context if available; label contamination if not"
+}
