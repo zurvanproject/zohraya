@@ -6,6 +6,9 @@ on:
       - "tools/atmosphere_awake_adapter.py"
       - "tools/atmosphere_recovery.py"
       - "tools/atmosphere_offline_signer.py"
+      - "tools/atmosphere_mythos.py"
+      - "docs/atmosphere/mythos_canon_v1.json"
+      - "docs/ATMOSPHERE_MYTHOS_CANON_2026-11-16_FA.md"
       - "tests/test_atmosphere_*.py"
       - ".github/workflows/atmosphere-trust.yml"
 permissions:
