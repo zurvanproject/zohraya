@@ -150,6 +150,41 @@ class ChrysalisTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "nonregular-chrysalis-control"):
             c.read_control(self.marker, required_uid=self.owner)
 
+    def test_state_directory_symlink_rejected_before_lock_file(self):
+        self.put(control(NOW - dt.timedelta(hours=25)))
+        elsewhere = self.base / "outside-state"
+        elsewhere.mkdir()
+        self.state.symlink_to(elsewhere)
+        with self.assertRaisesRegex(ValueError, "symlinked-chrysalis-state-directory"):
+            self.call_tick()
+        self.assertFalse((elsewhere / "runner.lock").exists())
+
+    def test_symlinked_sqlite_ledger_is_not_opened(self):
+        self.put(control(NOW - dt.timedelta(hours=25)))
+        self.state.mkdir(mode=0o700)
+        target = self.base / "foreign.sqlite3"
+        target.write_bytes(b"not a database")
+        (self.state / "runs.sqlite3").symlink_to(target)
+        with self.assertRaisesRegex(ValueError, "symlinked-chrysalis-ledger"):
+            self.call_tick()
+        self.assertEqual(target.read_bytes(), b"not a database")
+
+    def test_public_message_cannot_claim_owner_presence(self):
+        forged = control(NOW - dt.timedelta(hours=27))
+        forged["last_chatgpt_message"] = c.stamp(NOW)
+        self.put(forged)
+        with self.assertRaisesRegex(ValueError, "invalid-chrysalis-control"):
+            self.call_tick()
+
+    def test_non_root_worker_and_root_only_heartbeat(self):
+        self.put(control(NOW - dt.timedelta(hours=25)))
+        with patch.object(c.os, "geteuid", return_value=0):
+            with self.assertRaisesRegex(PermissionError, "chrysalis-worker-refuses-root"):
+                c.tick(now=NOW, control_path=self.marker, state_dir=self.state)
+        with patch.object(c.os, "geteuid", return_value=10001):
+            with self.assertRaisesRegex(PermissionError, "root-console-required"):
+                c.set_owner_control("heartbeat", path=self.marker, now=NOW, trusted_uid=self.owner)
+
 
 if __name__ == "__main__":
     unittest.main()
