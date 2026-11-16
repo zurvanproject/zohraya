@@ -257,8 +257,12 @@ class EvidenceOutbox:
                 db.execute("ROLLBACK")
                 raise
 
-    def pending(self, *, root, now):
-        """Recheck signed provenance after restart, before *every* Awake write."""
+    def _verified_pending(self, *, root, now):
+        """Read and authenticate pending evidence together with signed group IDs.
+
+        The manifest identity travels with each record so no delivery caller
+        can accidentally interpret part of one signed snapshot as a full one.
+        """
         with closing(self._db()) as db:
             rows = db.execute("SELECT id,digest,body,root_fingerprint,signed_manifest_sha256,signed_manifest FROM events WHERE state='pending' ORDER BY id").fetchall()
         records = []
@@ -274,8 +278,34 @@ class EvidenceOutbox:
                 raise ValueError("outbox-manifest-tamper")
             signatures = check_manifest(manifest, root, now)
             checked_envelope({**body, "payload_sha256": digest}, signatures, now)
-            records.append(body)
+            records.append((body, manifest_hash, frozenset(signatures)))
         return records
+
+    def pending(self, *, root, now):
+        """Verified raw events for read-only review (not an atomic delivery API)."""
+        return [body for body, _, _ in self._verified_pending(root=root, now=now)]
+
+    def pending_bundles(self, *, root, now):
+        """Only complete, signed batches are eligible for downstream ingestion.
+
+        If some rows of a manifest have already been marked delivered, refuse
+        the remaining fragment. A human must reconcile legacy partial deliveries
+        instead of silently splitting an attested observation.
+        """
+        groups = {}
+        for body, manifest_hash, ids in self._verified_pending(root=root, now=now):
+            group = groups.setdefault(manifest_hash, {"committed_ids": ids, "rows": []})
+            if group["committed_ids"] != ids:
+                raise ValueError("inconsistent-signed-bundle")
+            group["rows"].append(body)
+        completed = []
+        for group in groups.values():
+            members = group["rows"]
+            actual = {item["event_id"] for item in members}
+            if len(actual) != len(members) or actual != group["committed_ids"]:
+                raise ValueError("incomplete-signed-bundle")
+            completed.append(sorted(members, key=lambda item: item["event_id"]))
+        return sorted(completed, key=lambda members: members[0]["event_id"])
 
     def delivered(self, ids):
         if not isinstance(ids, list) or not ids or len(set(ids)) != len(ids):
