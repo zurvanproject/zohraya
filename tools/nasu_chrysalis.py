@@ -92,7 +92,7 @@ def evaluate(control, now):
             "remaining_seconds": max(0, int((ABSENCE - gap).total_seconds()))}
 
 
-def set_owner_control(action, *, path=CONTROL, now=None):
+def set_owner_control(action, *, path=CONTROL, now=None, trusted_uid=0):
     """One-time arming and owner presence, from root-controlled console only."""
     if os.geteuid() != 0:
         raise PermissionError("root-console-required-for-heartbeat")
@@ -105,9 +105,9 @@ def set_owner_control(action, *, path=CONTROL, now=None):
         raise ValueError("control-parent-link")
     path.parent.mkdir(parents=True, exist_ok=True, mode=0o755)
     parent = path.parent.lstat()
-    if parent.st_uid != 0 or parent.st_mode & 0o022:
+    if parent.st_uid != trusted_uid or parent.st_mode & 0o022:
         raise ValueError("insecure-control-parent")
-    previous = read_control(path)
+    previous = read_control(path, required_uid=trusted_uid)
     if action == "heartbeat" and (previous is None or not previous["armed"]):
         raise ValueError("must-arm-before-heartbeat")
     if previous and parse_stamp(timestamp) < parse_stamp(previous["last_seen_utc"]):
