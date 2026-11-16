@@ -152,8 +152,14 @@ def _db(state):
     state.mkdir(parents=True, exist_ok=True, mode=0o700)
     if (state.is_symlink() or not state.is_dir() or state.stat().st_mode & 0o077):
         raise ValueError("insecure-chrysalis-state-directory")
-    db = sqlite3.connect(state / "runs.sqlite3", timeout=20)
+    db_path = state / "runs.sqlite3"
+    if db_path.is_symlink():
+        raise ValueError("symlinked-chrysalis-ledger")
+    db = sqlite3.connect(db_path, timeout=20)
     db.execute("PRAGMA synchronous=FULL")
+    if db.execute("PRAGMA quick_check").fetchone()[0] != "ok":
+        db.close()
+        raise ValueError("corrupt-chrysalis-ledger")
     db.execute("CREATE TABLE IF NOT EXISTS runs("
                "day TEXT PRIMARY KEY, state TEXT NOT NULL, started_at TEXT NOT NULL,"
                "heartbeat_revision INT NOT NULL, outcome_sha256 TEXT)")
@@ -194,7 +200,11 @@ def tick(*, now=None, control_path=CONTROL, state_dir=STATE, mission_path=MISSIO
     if not verify_mission(mission_path, required_uid=mission_uid):
         return {"mode": "HOLD", "cause": "reviewed-local-mission-not-installed"}
     state_dir = Path(state_dir)
+    if state_dir.is_symlink():
+        raise ValueError("symlinked-chrysalis-state-directory")
     state_dir.mkdir(mode=0o700, parents=True, exist_ok=True)
+    if not state_dir.is_dir() or state_dir.stat().st_mode & 0o077:
+        raise ValueError("insecure-chrysalis-state-directory")
     lock_path = state_dir / "runner.lock"
     if lock_path.is_symlink():
         raise ValueError("symlinked-run-lock")
