@@ -69,9 +69,20 @@ class ControlledAwakeAdapter:
         if type(max_records) is not int or not 1 <= max_records <= 50:
             raise ValueError("bounded-delivery-limit")
         core, _ = self._modules()
-        pending = self.outbox.pending(root=root, now=now)[:max_records]
-        if not pending:
+        # A signed Stage3 observation is six scalars, not six independent tasks.
+        # Slicing raw pending rows could silently deliver a partial signed snapshot.
+        groups = self.outbox.pending_bundles(root=root, now=now)
+        if not groups:
             return {"status": "IDLE", "delivered": 0, "model_calls": 0}
+        if any(len(group) != 6 for group in groups):
+            raise ValueError("non-six-scalar-signed-bundle")
+        if max_records < 6:
+            raise ValueError("delivery-limit-smaller-than-signed-bundle")
+        pending = []
+        for group in groups:
+            if len(pending) + len(group) > max_records:
+                break
+            pending.extend(group)
         rows = [{k: body[k] for k in ("event_id", "topic", "source_ref", "observed_at",
                                           "sample_time", "confidence", "value")} for body in pending]
         # A private directory prevents other local identities from reaching
