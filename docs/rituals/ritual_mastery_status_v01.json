@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
-  "updated": "2026-11-15",
+  "updated": "2026-11-16",
   "current_focus": "four-direction-guardians",
   "next_new_ritual_allowed": false,
   "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
@@ -48,11 +48,11 @@
       "source_check": "5/5 guardian-direction-symbol names source-checked; not independent recall",
       "trap_bank": "12 documented corrections; not a closed-book score",
       "generated_shuffled_decks": 8,
-      "mastery_note": "2026-11-15: third separate-calendar-day three-pass textual session recorded, 12/12 self-authored checks; however dialogue context supplied all associations, so delayed independent mastery remains unverified.",
+      "mastery_note": "2026-11-16: fourth separate calendar day's three-pass source-aligned textual session. All answers context-assisted and self-authored; no isolated delayed recall. Figure/caption vs narrative distinction recorded.",
       "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
       "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
-      "next_step": "Test genuinely context-isolated delayed reconstruction using externally prepared unfamiliar trap questions; first commit answers before source lookup. Do not treat third calendar day as cold-recall evidence.",
-      "context_assisted_retrieval_checks": 4,
+      "next_step": "Require externally fixed unseen assessment and genuinely context-isolated delayed recall; absent this, continue as context-assisted, do not claim mastery.",
+      "context_assisted_retrieval_checks": 5,
       "same_day_context_assisted_rehearsals": 2,
       "latest_repeat": {
         "date": "2026-11-12",
@@ -63,22 +63,25 @@
         "independent_recall": false,
         "real_time_delay": false
       },
-      "completed_three_pass_textual_sessions": 3,
+      "completed_three_pass_textual_sessions": 4,
       "latest_session": {
-        "date": "2026-11-15",
-        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-15_1928_FA.md",
-        "machine_record": "docs/rituals/four_guardians_session_2026-11-15_1928.json",
+        "date": "2026-11-16",
+        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-16_1910_FA.md",
+        "machine_record": "docs/rituals/four_guardians_session_2026-11-16_1910.json",
+        "prelookup_commit": "d6edf3403c41774bed03ed084b396360201cbdca",
         "full_passes_completed": 3,
         "each_pass_full_sequence": "5/5",
         "guardian_pairs": "4/4",
-        "mixed_traps": "12/12 self-authored; 6 true and 6 false",
+        "mixed_traps": "12/12 self-authored 4 true 8 false",
         "original_pdf_checked": true,
-        "prelookup_commit": "ab9e58a2b29d970894d1fab553d7cfa6e2e423e2",
+        "source_nuance": "Figure 1.228 East-to-North four guardian circuit vs narrative finally Center",
         "recall_mode": "CONTEXT_ASSISTED_PRE_LOOKUP",
         "independent_assessor": false,
         "independent_delayed_recall": false,
         "textual_mastery": false,
-        "session_complete_under_three_pass_rule": true
+        "session_complete_under_three_pass_rule": true,
+        "synthetic_reward_pulse_experiment_executed": false,
+        "wujI_status_review_only": true
       }
     }
   },
@@ -100,10 +103,11 @@
     "session_run_type": "two source-checked textual practice sessions, not embodied learning",
     "latest_followup_counts_as_new_delayed_session": false,
     "latest_followup_type": "same-conversation context-assisted retrieval and correction",
-    "latest_four_guardians_rehearsal_type": "Three full context-assisted textual passes on 2026-11-15, not independently delayed",
+    "latest_four_guardians_rehearsal_type": "Three complete context-assisted textual passes with 12 self-authored source-checked statements on 2026-11-16",
     "latest_four_guardians_session_complete_under_three_pass_rule": true,
-    "latest_four_guardians_session_date": "2026-11-14",
-    "latest_four_guardians_delayed_recall_verified": false
+    "latest_four_guardians_session_date": "2026-11-16",
+    "latest_four_guardians_delayed_recall_verified": false,
+    "latest_wuji_review_type": "read-only review of exam criteria and known defects, not three-pass Wuji training"
   },
   "owner_priority_override": {
     "date": "2026-11-12",
