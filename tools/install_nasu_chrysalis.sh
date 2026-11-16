@@ -8,7 +8,7 @@ for binary in python3 sha256sum systemctl id cmp runuser; do
     command -v "$binary" >/dev/null || { echo "MISSING_$binary" >&2; exit 2; }
 done
 id nasuraya >/dev/null
-SRC="$(cd "$(dirname "\${BASH_SOURCE[0]}")" && pwd)/nasu_chrysalis.py"
+SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/nasu_chrysalis.py"
 [[ -f "$SRC" && ! -L "$SRC" ]] || { echo 'SOURCE_MISSING_OR_SYMLINK' >&2; exit 2; }
 MISSION=/usr/local/lib/nasuraya/nasu_offline_missions.py
 PIN=4dc38346ec79aaadd793ce83e3db41012b4cf1b52b94b553a5bae17f9300c9ea
