@@ -127,6 +127,12 @@ def set_owner_control(action, *, path=CONTROL, now=None, trusted_uid=0):
             os.fsync(stream.fileno())
         os.chmod(temp, 0o644)
         os.replace(temp, path)
+        # The owner heartbeat must survive a sudden power loss.
+        directory_fd = os.open(path.parent, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(directory_fd)
+        finally:
+            os.close(directory_fd)
     finally:
         if temp.exists():
             temp.unlink()
@@ -191,6 +197,7 @@ def tick(*, now=None, control_path=CONTROL, state_dir=STATE, mission_path=MISSIO
     """Exactly one bounded mission attempt per UTC day, only after owner-arm."""
     if os.geteuid() == 0:
         raise PermissionError("chrysalis-worker-refuses-root")
+    os.umask(0o077)
     now = now or dt.datetime.now(dt.timezone.utc)
     stamp(now)
     control = read_control(control_path, required_uid=marker_uid)
