@@ -67,12 +67,12 @@ def read_control(path=CONTROL, *, required_uid=0):
     if not path.exists() and not path.is_symlink():
         return None
     parent = path.parent
+    if not stat.S_ISDIR(parent.lstat().st_mode) or not stat.S_ISREG(path.lstat().st_mode):
+        raise ValueError("nonregular-chrysalis-control")
     for item in (parent, path):
         st = item.lstat()
         if st.st_uid != required_uid or st.st_mode & 0o022:
             raise ValueError("insecure-chrysalis-control-ownership")
-    if not stat.S_ISDIR(parent.lstat().st_mode) or not stat.S_ISREG(path.lstat().st_mode):
-        raise ValueError("nonregular-chrysalis-control")
     if path.stat().st_size > 2048:
         raise ValueError("oversized-chrysalis-control")
     return validate_control(json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=_pairs))
