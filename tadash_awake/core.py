@@ -184,10 +184,31 @@ def propose(topic, events):
     else:
         kind, rank = "falsification", 1
         question = "چه آزمایشی برداشت فعلی از «" + topic + "» را رد می‌کند؟"
-    return {"topic": topic, "kind": kind, "rank": rank, "question": question,
-            "hash": fingerprint(sorted(e["event_id"] for e in events)),
-            "latest": max(e["observed_at"] for e in events),
-            "evidence_count": len(events)}
+    proposal = {"topic": topic, "kind": kind, "rank": rank, "question": question,
+                "hash": fingerprint(sorted(e["event_id"] for e in events)),
+                "latest": max(e["observed_at"] for e in events),
+                "evidence_count": len(events)}
+    # Interpretation only: do not change kind, rank, question, persistence or scheduling.
+    # Distinct sources observed at distinct times cannot establish within-source change.
+    if kind == "temporal_change" and len(sources) > 1:
+        by_source = defaultdict(list)
+        for event, sample_clock in zip(events, times):
+            by_source[event["source_ref"]].append(
+                (sample_clock, encode(event["value"])))
+        has_within_source_change = False
+        for samples in by_source.values():
+            # Only the clock extrema need comparing: any separated unequal pair
+            # implies an unequal pair against at least one extreme.
+            earliest = min(samples, key=lambda x: x[0])
+            latest = max(samples, key=lambda x: x[0])
+            if any((t - earliest[0] > window and value != earliest[1])
+                   or (latest[0] - t > window and value != latest[1])
+                   for t, value in samples):
+                has_within_source_change = True
+                break
+        if not has_within_source_change:
+            proposal["interpretation"] = "cross_source_temporal_ambiguity"
+    return proposal
 
 
 def tick(root, now=None):

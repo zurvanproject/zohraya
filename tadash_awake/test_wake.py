@@ -120,5 +120,148 @@ class Tests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "schema mismatch"):
             core.status(self.root)
 
+
+class TemporalSourceProposeRegressionTests(unittest.TestCase):
+    """Synthetic fixtures only; each fixture passes the real ingestion validator."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = self.temp.name
+
+    @staticmethod
+    def sample(event_id, value, source="tadash://fixture/a",
+               sample_time=None, at=T):
+        item = observation(event_id, "time_topic", value, source, at=at)
+        if sample_time is not None:
+            item["sample_time"] = sample_time
+        return core.checked(item, T + timedelta(hours=1))
+
+    def test_pinned_propose_baseline_matrix(self):
+        a = "tadash://fixture/a"
+        b = "tadash://fixture/b"
+        cases = [
+            ("one_source_sequential", [
+                self.sample("a1", 0, a, 1),
+                self.sample("a2", 1, a, 2)], ("temporal_change", 4)),
+            ("two_sources_sequential", [
+                self.sample("a1", 0, a, 1),
+                self.sample("b1", 1, b, 2)], ("temporal_change", 4)),
+            ("two_sources_simultaneous", [
+                self.sample("a1", 0, a, 1),
+                self.sample("b1", 1, b, 1.05)], ("discrepancy", 5)),
+            ("mixed_clock_domain", [
+                self.sample("a1", 0, a, 1),
+                self.sample("b1", 1, b)], ("time_scope_uncertain", 5)),
+            ("one_source_sequential_utc", [
+                self.sample("a1", 0, a, at=T),
+                self.sample("a2", 1, a, at=T + timedelta(minutes=15))],
+             ("temporal_change", 4)),
+            ("two_sources_sequential_utc", [
+                self.sample("a1", 0, a, at=T),
+                self.sample("b1", 1, b, at=T + timedelta(minutes=15))],
+             ("temporal_change", 4)),
+            ("stable_source_plus_second_source", [
+                self.sample("a1", 0, a, 1),
+                self.sample("a2", 0, a, 1.5),
+                self.sample("b1", 1, b, 2)], ("temporal_change", 4)),
+            ("within_source_change_plus_second_source", [
+                self.sample("a1", 0, a, 1),
+                self.sample("a2", 1, a, 2),
+                self.sample("b1", 1, b, 3)], ("temporal_change", 4)),
+            ("cross_source_equal_value", [
+                self.sample("a1", 0, a, 1),
+                self.sample("b1", 0, b, 1.05)], ("falsification", 1)),
+            ("one_source_same_time_difference", [
+                self.sample("a1", 0, a, 1),
+                self.sample("a2", 1, a, 1)], ("independent_check", 3))
+        ]
+        ambiguous = {"two_sources_sequential", "two_sources_sequential_utc",
+                     "stable_source_plus_second_source"}
+        for case, events, expected in cases:
+            with self.subTest(case=case):
+                p = core.propose("time_topic", events)
+                print("AWAKE_SYNTHETIC_REGRESSION " + core.encode({
+                    "case": case, "kind": p["kind"], "rank": p["rank"],
+                    "interpretation": p.get("interpretation")}), flush=True)
+                self.assertEqual((p["kind"], p["rank"]), expected)
+                self.assertEqual(
+                    p.get("interpretation"),
+                    "cross_source_temporal_ambiguity" if case in ambiguous else None)
+                self.assertEqual(p["evidence_count"], len(events))
+                self.assertEqual(p["topic"], "time_topic")
+
+    def test_invalid_sample_times_rejected_by_ingestion_validator(self):
+        for bad in (float("nan"), float("inf"), -1, "1", 1000001, True):
+            with self.subTest(bad=repr(bad)):
+                e = observation("bad", "time_topic", 0)
+                e["sample_time"] = bad
+                with self.assertRaises(ValueError):
+                    core.checked(e, T + timedelta(hours=1))
+
+    def test_invalid_observed_at_rejected_by_ingestion_validator(self):
+        for bad in ("2026-11-13T12:00:00", "invalid-clock"):
+            with self.subTest(bad=bad):
+                e = observation("bad", "time_topic", 0)
+                e["observed_at"] = bad
+                with self.assertRaises(ValueError):
+                    core.checked(e, T + timedelta(hours=1))
+
+    def test_discrepancy_precedes_temporal_interpretation(self):
+        a = "tadash://fixture/a"
+        b = "tadash://fixture/b"
+        events = [self.sample("a1", 0, a, 1),
+                  self.sample("a2", 1, a, 2),
+                  self.sample("b1", 1, b, 1.05)]
+        p = core.propose("time_topic", events)
+        self.assertEqual((p["kind"], p["rank"]), ("discrepancy", 5))
+        self.assertNotIn("interpretation", p)
+
+    def test_within_source_middle_change_with_equal_extrema(self):
+        a = "tadash://fixture/a"
+        b = "tadash://fixture/b"
+        events = [self.sample("a1", 0, a, 1),
+                  self.sample("a2", 1, a, 2),
+                  self.sample("a3", 0, a, 3),
+                  self.sample("b1", 0, b, 4)]
+        p = core.propose("time_topic", events)
+        self.assertEqual((p["kind"], p["rank"]), ("temporal_change", 4))
+        self.assertNotIn("interpretation", p)
+
+    def test_many_stable_source_samples_do_not_claim_temporal_change(self):
+        a = "tadash://fixture/a"
+        b = "tadash://fixture/b"
+        events = [self.sample("a" + str(i), 0, a, i)
+                  for i in range(500)]
+        events.append(self.sample("b1", 1, b, 501))
+        p = core.propose("time_topic", events)
+        self.assertEqual((p["kind"], p["rank"]), ("temporal_change", 4))
+        self.assertEqual(p.get("interpretation"), "cross_source_temporal_ambiguity")
+        self.assertEqual(p["evidence_count"], 501)
+
+    def test_tick_persistence_and_priority_unchanged_for_ambiguous_sources(self):
+        a = "tadash://fixture/a"
+        b = "tadash://fixture/b"
+        events = [self.sample("a1", 0, a, 1),
+                  self.sample("b1", 1, b, 2)]
+        proposed = core.propose("time_topic", events)
+        self.assertEqual(proposed["interpretation"], "cross_source_temporal_ambiguity")
+        core.ingest(self.root, events, T + timedelta(hours=1))
+        core.set_paused(self.root, False, T + timedelta(hours=1))
+        outcome = core.tick(self.root, T + timedelta(hours=1))
+        self.assertEqual(outcome["kind"], "temporal_change")
+        self.assertNotIn("interpretation", outcome)
+        stored = core.status(self.root)
+        self.assertEqual(stored["schema"], core.SCHEMA)
+        self.assertEqual(stored["questions"][0]["kind"], "temporal_change")
+        self.assertNotIn("interpretation", stored["questions"][0])
+
+    def test_propose_order_invariant(self):
+        events = [self.sample("a1", 0, sample_time=1),
+                  self.sample("b1", 1, source="tadash://fixture/b", sample_time=2)]
+        normal = core.propose("time_topic", events)
+        reverse = core.propose("time_topic", list(reversed(events)))
+        self.assertEqual(normal, reverse)
+
 if __name__ == "__main__":
     unittest.main()
