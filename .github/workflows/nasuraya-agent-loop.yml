@@ -38,9 +38,9 @@ jobs:
           import os, unittest
           suite = unittest.defaultTestLoader.discover('examples/nasuraya_agent_loop/tests')
           result = unittest.TextTestRunner(verbosity=2).run(suite)
-          expected_skips = 0 if os.environ['TEST_ENVIRONMENT'] == 'sdk' else 10
+          expected_skips = 1 if os.environ['TEST_ENVIRONMENT'] == 'sdk' else 11
           assert result.wasSuccessful()
-          assert result.testsRun == 60, result.testsRun
+          assert result.testsRun == 63, result.testsRun
           assert len(result.skipped) == expected_skips, result.skipped
           PY
       - name: Run synthetic demo and state grid
