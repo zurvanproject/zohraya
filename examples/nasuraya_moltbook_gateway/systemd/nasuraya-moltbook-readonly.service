@@ -1,0 +1,15 @@
+[Unit]
+Description=Nasuraya read-only Moltbook to Tadash public observation bridge
+Documentation=https://github.com/zurvanproject/zohraya/pull/145
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/zohraya/examples/nasuraya_moltbook_gateway
+ExecStart=/usr/bin/python3 %h/zohraya/examples/nasuraya_moltbook_gateway/sync_readonly.py
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+# Never add a publishing command or private Tadash runtime state here.
