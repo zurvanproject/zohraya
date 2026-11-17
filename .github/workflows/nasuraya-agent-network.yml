@@ -1,0 +1,63 @@
+name: Nasuraya Agent Network
+on:
+  pull_request:
+    paths: ['nasuraya_agent_network/**', '.github/workflows/nasuraya-agent-network.yml']
+  push:
+    branches: [main]
+    paths: ['nasuraya_agent_network/**', '.github/workflows/nasuraya-agent-network.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nasuraya-network-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+jobs:
+  bounded-network:
+    if: github.repository == 'zurvanproject/zohraya' && github.event.repository.private == false
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Test durable claims, crash recovery, concurrency, and network denial
+        run: python3 -m unittest nasuraya_agent_network.tests -v 2>&1 | tee "$RUNNER_TEMP/network-tests.log"
+      - name: Run four real repository specialists with two concurrent slots
+        run: |
+          python3 -m nasuraya_agent_network run \
+            --workspace "$RUNNER_TEMP/nasuraya-network" \
+            --run-id "ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --max-workers 2 > "$RUNNER_TEMP/network-first.json"
+      - name: Cold replay must be identical and must not execute workers again
+        run: |
+          python3 -m nasuraya_agent_network run \
+            --workspace "$RUNNER_TEMP/nasuraya-network" \
+            --run-id "ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            --max-workers 2 > "$RUNNER_TEMP/network-replay.json"
+          cmp "$RUNNER_TEMP/network-first.json" "$RUNNER_TEMP/network-replay.json"
+      - name: Verify canonical checkout was not changed
+        if: always()
+        run: |
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
+      - name: Publish Persian run summary
+        if: always()
+        run: |
+          report="$RUNNER_TEMP/nasuraya-network/ci-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}/REPORT_FA.md"
+          if [ -f "$report" ]; then cat "$report" >> "$GITHUB_STEP_SUMMARY"; fi
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: nasuraya-network-${{ github.run_id }}-${{ github.run_attempt }}
+          retention-days: 7
+          if-no-files-found: warn
+          path: |
+            ${{ runner.temp }}/nasuraya-network/ledger.sqlite*
+            ${{ runner.temp }}/nasuraya-network/ci-${{ github.run_id }}-${{ github.run_attempt }}/
+            ${{ runner.temp }}/network-*.json
+            ${{ runner.temp }}/network-tests.log
