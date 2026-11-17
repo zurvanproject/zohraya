@@ -1,0 +1,424 @@
+--- a/tools/atmosphere_attestation.py
++++ b/tools/atmosphere_attestation.py
+@@ -142,6 +142,31 @@
+             return False
+ 
+ 
++class TrustedRoots:
++    """Out-of-band pinned rotation policy: active signer, legacy verifiers, revoked keys.
++
++    The caller MUST independently obtain this policy. Never construct it from
++    the event database, a manifest, or an untrusted document.
++    """
++    def __init__(self, *, active, historical=(), revoked=()):
++        if not isinstance(active, PinnedRoot) or any(not isinstance(k, PinnedRoot) for k in historical):
++            raise ValueError("invalid-trust-root-policy")
++        if not isinstance(revoked, (set, frozenset, tuple)) or any(not isinstance(p, str) or not HEX64.fullmatch(p) for p in revoked):
++            raise ValueError("invalid-revocation-policy")
++        self.revoked = frozenset(revoked)
++        self.roots = {key.fingerprint: key for key in (*historical, active)}
++        if active.fingerprint in self.revoked:
++            raise ValueError("revoked-active-root")
++        self.active = active
++
++    def verification_root(self, fingerprint):
++        if fingerprint in self.revoked:
++            raise ValueError("revoked-evidence-root")
++        if fingerprint not in self.roots:
++            raise ValueError("untrusted-evidence-root")
++        return self.roots[fingerprint]
++
++
+ def check_manifest(manifest, root, now):
+     now = time_now(now)
+     if not isinstance(root, PinnedRoot) or type(manifest) is not dict or set(manifest) != MANIFEST_FIELDS:
+@@ -219,7 +244,10 @@
+ 
+     def stage(self, envelopes, *, manifest, root, now):
+         """Atomic bundle. Reject ALL if one scalar is not signed and fresh."""
+-        signed = check_manifest(manifest, root, now)
++        if not isinstance(root, TrustedRoots):
++            raise ValueError("out-of-band-root-policy-required")
++        signing_root = root.active
++        signed = check_manifest(manifest, signing_root, now)
+         if not isinstance(envelopes, list) or not 1 <= len(envelopes) <= 50:
+             raise ValueError("bundle-cardinality")
+         if len(envelopes) != len(signed):
+@@ -248,7 +276,7 @@
+                             raise ValueError("outbox-capacity")
+                         db.execute("INSERT INTO events VALUES (?,?,?,?,?,?,?)",
+                                    (body["event_id"], env["payload_sha256"], canonical(body).decode(),
+-                                    root.fingerprint, sha_manifest, canonical(manifest).decode(), "pending"))
++                                    signing_root.fingerprint, sha_manifest, canonical(manifest).decode(), "pending"))
+                         added += 1
+                 db.execute("COMMIT")
+                 return {"status": "STAGED_FOR_REVIEW", "added": added, "duplicate": duplicated,
+@@ -265,18 +293,20 @@
+         """
+         with closing(self._db()) as db:
+             rows = db.execute("SELECT id,digest,body,root_fingerprint,signed_manifest_sha256,signed_manifest FROM events WHERE state='pending' ORDER BY id").fetchall()
++        if not isinstance(root, TrustedRoots):
++            raise ValueError("out-of-band-root-policy-required")
+         records = []
+         for event_id, digest, raw, pin, manifest_hash, manifest_raw in rows:
+             body = json.loads(raw)
+             payload_valid(body)
+-            if (not isinstance(root, PinnedRoot) or pin != root.fingerprint
+-                    or not hmac.compare_digest(sha(canonical(body)), digest)
++            verifier = root.verification_root(pin)
++            if (not hmac.compare_digest(sha(canonical(body)), digest)
+                     or body["event_id"] != event_id):
+                 raise ValueError("outbox-local-integrity-failure")
+             manifest = json.loads(manifest_raw)
+             if not hmac.compare_digest(sha(canonical(manifest)), manifest_hash):
+                 raise ValueError("outbox-manifest-tamper")
+-            signatures = check_manifest(manifest, root, now)
++            signatures = check_manifest(manifest, verifier, now)
+             checked_envelope({**body, "payload_sha256": digest}, signatures, now)
+             records.append((body, manifest_hash, frozenset(signatures)))
+         return records
+@@ -285,7 +315,7 @@
+         """Verified raw events for read-only review (not an atomic delivery API)."""
+         return [body for body, _, _ in self._verified_pending(root=root, now=now)]
+ 
+-    def pending_bundles(self, *, root, now):
++    def pending_bundles(self, *, root, now, include_manifest_sha256=False):
+         """Only complete, signed batches are eligible for downstream ingestion.
+ 
+         If some rows of a manifest have already been marked delivered, refuse
+@@ -299,13 +329,16 @@
+                 raise ValueError("inconsistent-signed-bundle")
+             group["rows"].append(body)
+         completed = []
+-        for group in groups.values():
++        for manifest_sha, group in groups.items():
+             members = group["rows"]
+             actual = {item["event_id"] for item in members}
+             if len(actual) != len(members) or actual != group["committed_ids"]:
+                 raise ValueError("incomplete-signed-bundle")
+-            completed.append(sorted(members, key=lambda item: item["event_id"]))
+-        return sorted(completed, key=lambda members: members[0]["event_id"])
++            completed.append((manifest_sha, sorted(members, key=lambda item: item["event_id"])))
++        completed.sort(key=lambda group: group[1][0]["event_id"])
++        if include_manifest_sha256:
++            return completed
++        return [members for _, members in completed]
+ 
+     def delivered(self, ids):
+         if not isinstance(ids, list) or not ids or len(set(ids)) != len(ids):
+--- a/tools/atmosphere_awake_adapter.py
++++ b/tools/atmosphere_awake_adapter.py
+@@ -9,7 +9,7 @@
+ import hashlib
+ import stat
+ 
+-from atmosphere_attestation import EvidenceOutbox, envelope_for, time_now
++from atmosphere_attestation import EvidenceOutbox, envelope_for, time_now, HEX64
+ 
+ 
+ class ControlledAwakeAdapter:
+@@ -60,7 +60,7 @@
+         envelopes, _ = self.prepare_unsigned(snapshot, stream=stream, observed_at=observed_at)
+         return self.outbox.stage(envelopes, manifest=manifest, root=root, now=now)
+ 
+-    def deliver_pending(self, *, root, now, max_records=50):
++    def deliver_pending(self, *, root, now, max_records=50, approved_manifest_sha256=None):
+         """At-least-once safe replay via Awake's stable event IDs.
+ 
+         A crash after core.ingest but before outbox.delivered leads to a
+@@ -71,9 +71,20 @@
+         core, _ = self._modules()
+         # A signed Stage3 observation is six scalars, not six independent tasks.
+         # Slicing raw pending rows could silently deliver a partial signed snapshot.
+-        groups = self.outbox.pending_bundles(root=root, now=now)
+-        if not groups:
++        signed_groups = self.outbox.pending_bundles(root=root, now=now,
++                                                     include_manifest_sha256=True)
++        if not signed_groups:
+             return {"status": "IDLE", "delivered": 0, "model_calls": 0}
++        # Approval MUST come from a separate trusted review channel, never
++        # copied automatically from the untrusted outbox. A valid signing key
++        # alone is not an authorization to import claimed observations.
++        if (not isinstance(approved_manifest_sha256, frozenset)
++                or any(not isinstance(x, str) or not HEX64.fullmatch(x)
++                       for x in approved_manifest_sha256)):
++            raise ValueError("independent-delivery-approval-required")
++        if any(digest not in approved_manifest_sha256 for digest, _ in signed_groups):
++            raise ValueError("unapproved-signed-manifest")
++        groups = [rows for _, rows in signed_groups]
+         if any(len(group) != 6 for group in groups):
+             raise ValueError("non-six-scalar-signed-bundle")
+         if max_records < 6:
+--- a/tools/atmosphere_recovery.py
++++ b/tools/atmosphere_recovery.py
+@@ -9,6 +9,8 @@
+ import hashlib
+ import hmac
+ import json
++import ctypes
++import errno
+ import os
+ import shutil
+ import sqlite3
+@@ -82,6 +84,25 @@
+     os.chmod(dest, 0o600)
+ 
+ 
++def _publish_directory_noreplace(staging, dest):
++    """Atomic no-clobber directory publication on Linux; fail closed elsewhere.
++
++    Publication is atomic for process crashes, not a proof of power-loss durability.
++    """
++    if os.name != "posix":
++        raise RuntimeError("atomic-no-clobber-rename-unavailable")
++    libc = ctypes.CDLL(None, use_errno=True)
++    fn = getattr(libc, "renameat2", None)
++    if fn is None:
++        raise RuntimeError("atomic-no-clobber-rename-unavailable")
++    fn.argtypes = (ctypes.c_int, ctypes.c_char_p, ctypes.c_int,
++                   ctypes.c_char_p, ctypes.c_uint)
++    fn.restype = ctypes.c_int
++    if fn(-100, os.fsencode(staging), -100, os.fsencode(dest), 1) != 0:
++        code = ctypes.get_errno()
++        raise OSError(code, os.strerror(code), str(dest))
++
++
+ def create_snapshot(*, awake_db, outbox_db, archive_dir, now):
+     """Create an unsigned snapshot. Seal its receipt with an OFFLINE signer.
+ 
+@@ -108,10 +129,8 @@
+         receipt = {"schema": SCHEMA, "created_at": iso(now), "files": sorted(files, key=lambda f: f["name"])}
+         (staging / "UNSIGNED_RECEIPT.json").write_bytes(canonical(receipt))
+         os.chmod(staging / "UNSIGNED_RECEIPT.json", 0o600)
+-        # Atomic folder publish; source files are left untouched.
+-        os.mkdir(dest, mode=0o700)
+-        for name in [*sources, "UNSIGNED_RECEIPT.json"]:
+-            os.replace(staging / name, dest / name)
++        # Publish all three files as one directory, never expose a partial archive.
++        _publish_directory_noreplace(staging, dest)
+     return receipt
+ 
+ 
+@@ -167,8 +186,6 @@
+         # Revalidate the archive right before publication; single-host, no writer-lock guarantee.
+         verify_sealed_backup(archive_dir, sealed_receipt, root=root,
+                              expected_receipt_sha256=expected_receipt_sha256)
+-        os.mkdir(target, mode=0o700)
+-        for name in REQUIRED:
+-            os.replace(staging / name, target / name)
++        _publish_directory_noreplace(staging, target)
+     return {"status": "RESTORED_FOR_OFFLINE_REVIEW", "target": str(target),
+             "authority": "none", "live_activated": False}
+--- /dev/null
++++ b/tests/test_atmosphere_security_regression.py
+@@ -0,0 +1,210 @@
++"""CI regression: explicit trust policy, independent approvals, and atomic backup publication.
++
++Synthetic keys / SQLite only. Linux SIGKILL fault injection.
++"""
++from datetime import datetime, timezone, timedelta
++from pathlib import Path
++import hashlib
++import json
++import os
++import sqlite3
++import tempfile
++import unittest
++from unittest.mock import patch
++
++from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
++from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
++
++from atmosphere_attestation import (EvidenceOutbox, PinnedRoot, TrustedRoots, sha, MANIFEST_SCHEMA,
++                                     envelope_for, commitment, canonical, iso)
++from atmosphere_awake_adapter import ControlledAwakeAdapter
++from atmosphere_recovery import create_snapshot, restore_to_new_directory, verify_sealed_backup
++
++NOW = datetime(2026, 11, 17, 10, 0, tzinfo=timezone.utc)
++METRICS = ("sensory_load", "prediction_error", "sensory_occurrence",
++           "goal_selected", "dios_sensory_stance", "action_matches")
++VALUES = (.4, .6, True, 1, "needs_review", True)
++COMMIT = "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
++
++
++def keypair():
++    private = Ed25519PrivateKey.generate()
++    raw = private.public_key().public_bytes(Encoding.Raw, PublicFormat.Raw)
++    return private, PinnedRoot(raw.hex(), hashlib.sha256(raw).hexdigest())
++
++
++def batch(prefix="synthetic", overrides=None):
++    overrides = overrides or {}
++    rows = []
++    for topic, value in zip(METRICS, VALUES):
++        row = {"event_id": f"{prefix}-1-{topic}", "topic": f"shared.demo.{topic}",
++               "source_ref": f"https://github.com/zurvanproject/zohraya/commit/{COMMIT}",
++               "observed_at": "2026-11-17T09:00:00Z", "sample_time": 1.6,
++               "confidence": 0.7, "value": overrides.get(topic, value)}
++        rows.append(envelope_for(row, source_id="stage3-pr198", source_revision="a" * 64))
++    return rows
++
++
++def sign(priv, env):
++    unsigned = {"schema": MANIFEST_SCHEMA, "issued_at": iso(NOW-timedelta(minutes=1)),
++                "expires_at": iso(NOW+timedelta(hours=2)),
++                "commitments": [commitment(e) for e in env]}
++    return {**unsigned, "signature_ed25519": priv.sign(canonical(unsigned)).hex()}
++
++
++class FakeCore:
++    """Durable idempotent stand-in for pinned Awake core; no model, DIOS, or network."""
++    @staticmethod
++    def ingest(root, rows, *, now):
++        p = Path(root)
++        p.mkdir(parents=True, exist_ok=True)
++        added, dup = 0, 0
++        with sqlite3.connect(p / 'awake.sqlite3') as db:
++            db.execute("CREATE TABLE IF NOT EXISTS evidence(id TEXT PRIMARY KEY,payload TEXT NOT NULL)")
++            for row in rows:
++                payload = {**row, 'sample_time': float(row['sample_time']),
++                           'confidence': float(row['confidence'])}
++                raw = json.dumps(payload, sort_keys=True)
++                old = db.execute('SELECT payload FROM evidence WHERE id=?', (row['event_id'],)).fetchone()
++                if old:
++                    if json.loads(old[0]) != payload:
++                        raise ValueError('conflicting-awake-evidence')
++                    dup += 1
++                else:
++                    db.execute('INSERT INTO evidence VALUES (?,?)', (row['event_id'], raw))
++                    added += 1
++        return {'status':'ingested', 'added':added, 'duplicate':dup}
++
++
++class DummyBridge:
++    pass
++
++
++def die_in_child(fn):
++    pid = os.fork()
++    if pid == 0:
++        try:
++            fn()
++        except BaseException as exc:
++            print('CHILD_EXC', repr(exc), flush=True)
++            os._exit(31)
++        os._exit(32)  # should have been killed by deliberate fault
++    _, status = os.waitpid(pid, 0)
++    return os.waitstatus_to_exitcode(status)
++
++
++
++class HardenedRegression(unittest.TestCase):
++    def setUp(self):
++        self.tmp = tempfile.TemporaryDirectory()
++        self.addCleanup(self.tmp.cleanup)
++        self.base = Path(self.tmp.name)
++        self.key_a, self.root_a = keypair()
++        self.policy_a = TrustedRoots(active=self.root_a)
++        self.outbox = EvidenceOutbox(self.base / 'outbox' / 'events.sqlite3')
++
++    def stage(self, env, key, policy):
++        manifest = sign(key, env)
++        self.outbox.stage(env, manifest=manifest, root=policy, now=NOW)
++        return manifest
++
++    def test_valid_signer_alone_cannot_deliver_without_independent_pin(self):
++        forged = batch('forged', overrides={'goal_selected':999})
++        manifest = self.stage(forged, self.key_a, self.policy_a)
++        adapter = ControlledAwakeAdapter(outbox_path=self.outbox.path,
++                                         awake_root=self.base / 'awake',
++                                         trusted_core_sha256='1'*64,
++                                         trusted_bridge_sha256='2'*64)
++        with patch.object(ControlledAwakeAdapter,'_modules',return_value=(FakeCore,DummyBridge)):
++            with self.assertRaisesRegex(ValueError,'independent-delivery-approval-required'):
++                adapter.deliver_pending(root=self.policy_a,now=NOW)
++            with self.assertRaisesRegex(ValueError,'unapproved-signed-manifest'):
++                adapter.deliver_pending(root=self.policy_a,now=NOW,
++                                        approved_manifest_sha256=frozenset({'0'*64}))
++            self.assertFalse((self.base / 'awake' / 'awake.sqlite3').exists())
++            # Manual authorization is a second, explicit trust input; no claim it proves truth.
++            approval = frozenset({sha(canonical(manifest))})
++            receipt = adapter.deliver_pending(root=self.policy_a,now=NOW,
++                                            approved_manifest_sha256=approval)
++        self.assertEqual(receipt['delivered'],6)
++
++    def test_rotation_with_old_and_new_roots_pending(self):
++        self.stage(batch('old'), self.key_a, self.policy_a)
++        key_b, root_b = keypair()
++        policy_b = TrustedRoots(active=root_b, historical=(self.root_a,))
++        self.stage(batch('new'), key_b, policy_b)
++        groups = self.outbox.pending_bundles(root=policy_b,now=NOW)
++        self.assertEqual(len(groups),2)
++        self.assertEqual(sorted(len(g) for g in groups),[6,6])
++        policy_revoked_a = TrustedRoots(active=root_b, historical=(self.root_a,),
++                                        revoked=(self.root_a.fingerprint,))
++        with self.assertRaisesRegex(ValueError,'revoked-evidence-root'):
++            self.outbox.pending_bundles(root=policy_revoked_a,now=NOW)
++        with self.assertRaisesRegex(ValueError,'invalid-signature'):
++            self.outbox.stage(batch('old-after'),manifest=sign(self.key_a,batch('old-after')),
++                              root=policy_revoked_a,now=NOW)
++        self.assertEqual(self.outbox.stats(),{'pending':12,'delivered':0})
++
++    def make_backup(self):
++        awake_db = self.base / 'live-awake' / 'awake.sqlite3'
++        awake_db.parent.mkdir()
++        with sqlite3.connect(awake_db) as db:
++            for name in ('control','evidence','questions','ticks','ledger'):
++                db.execute(f'CREATE TABLE {name}(id TEXT PRIMARY KEY)')
++        archive = self.base / 'archive' / 'snap'
++        return awake_db,archive
++
++    def test_kill_before_publish_leaves_no_partial_target(self):
++        awake,archive = self.make_backup()
++        def child():
++            import atmosphere_recovery as r
++            with patch.object(r,'_publish_directory_noreplace',side_effect=lambda *_:os._exit(77)):
++                create_snapshot(awake_db=awake,outbox_db=self.outbox.path,
++                                archive_dir=archive,now=NOW)
++        self.assertEqual(die_in_child(child),77)
++        self.assertFalse(archive.exists())
++        receipt = create_snapshot(awake_db=awake,outbox_db=self.outbox.path,
++                                  archive_dir=archive,now=NOW)
++        self.assertEqual({p.name for p in archive.iterdir()},
++                         {'awake.sqlite3','evidence_outbox.sqlite3','UNSIGNED_RECEIPT.json'})
++
++    def test_kill_after_publish_leaves_complete_target(self):
++        awake,archive = self.make_backup()
++        def child():
++            import atmosphere_recovery as r
++            old = r._publish_directory_noreplace
++            def killed(src,dst):
++                old(src,dst)
++                os._exit(78)
++            with patch.object(r,'_publish_directory_noreplace',side_effect=killed):
++                create_snapshot(awake_db=awake,outbox_db=self.outbox.path,
++                                archive_dir=archive,now=NOW)
++        self.assertEqual(die_in_child(child),78)
++        self.assertEqual({p.name for p in archive.iterdir()},
++                         {'awake.sqlite3','evidence_outbox.sqlite3','UNSIGNED_RECEIPT.json'})
++        with self.assertRaises(FileExistsError):
++            create_snapshot(awake_db=awake,outbox_db=self.outbox.path,
++                            archive_dir=archive,now=NOW)
++
++    def test_restore_kill_and_retry_stays_non_destructive(self):
++        awake,archive = self.make_backup()
++        receipt = create_snapshot(awake_db=awake,outbox_db=self.outbox.path,
++                                  archive_dir=archive,now=NOW)
++        sealed = {**receipt,'signature_ed25519':self.key_a.sign(canonical(receipt)).hex()}
++        pin = sha(canonical(sealed))
++        target = self.base / 'restore' / 'new'
++        def child():
++            import atmosphere_recovery as r
++            with patch.object(r,'_publish_directory_noreplace',side_effect=lambda *_:os._exit(79)):
++                restore_to_new_directory(archive,target,sealed,
++                                         root=self.root_a,expected_receipt_sha256=pin)
++        self.assertEqual(die_in_child(child),79)
++        self.assertFalse(target.exists())
++        ret = restore_to_new_directory(archive,target,sealed,
++                                       root=self.root_a,expected_receipt_sha256=pin)
++        self.assertFalse(ret['live_activated'])
++        self.assertTrue(awake.exists())
++        self.assertEqual({p.name for p in target.iterdir()},
++                         {'awake.sqlite3','evidence_outbox.sqlite3'})
++
++if __name__=='__main__':unittest.main()
