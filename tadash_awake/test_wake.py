@@ -160,6 +160,10 @@ class TemporalSourceProposeRegressionTests(unittest.TestCase):
                 self.sample("a1", 0, a, 1),
                 self.sample("a2", 0, a, 1.5),
                 self.sample("b1", 1, b, 2)], ("temporal_change", 4)),
+            ("within_source_change_plus_second_source", [
+                self.sample("a1", 0, a, 1),
+                self.sample("a2", 1, a, 2),
+                self.sample("b1", 1, b, 3)], ("temporal_change", 4)),
             ("cross_source_equal_value", [
                 self.sample("a1", 0, a, 1),
                 self.sample("b1", 0, b, 1.05)], ("falsification", 1)),
@@ -167,12 +171,18 @@ class TemporalSourceProposeRegressionTests(unittest.TestCase):
                 self.sample("a1", 0, a, 1),
                 self.sample("a2", 1, a, 1)], ("independent_check", 3))
         ]
+        ambiguous = {"two_sources_sequential", "two_sources_sequential_utc",
+                     "stable_source_plus_second_source"}
         for case, events, expected in cases:
             with self.subTest(case=case):
                 p = core.propose("time_topic", events)
-                print("AWAKE_SYNTHETIC_BASELINE " + core.encode({
-                    "case": case, "kind": p["kind"], "rank": p["rank"]}), flush=True)
+                print("AWAKE_SYNTHETIC_REGRESSION " + core.encode({
+                    "case": case, "kind": p["kind"], "rank": p["rank"],
+                    "interpretation": p.get("interpretation")}), flush=True)
                 self.assertEqual((p["kind"], p["rank"]), expected)
+                self.assertEqual(
+                    p.get("interpretation"),
+                    "cross_source_temporal_ambiguity" if case in ambiguous else None)
                 self.assertEqual(p["evidence_count"], len(events))
                 self.assertEqual(p["topic"], "time_topic")
 
@@ -191,6 +201,33 @@ class TemporalSourceProposeRegressionTests(unittest.TestCase):
                 e["observed_at"] = bad
                 with self.assertRaises(ValueError):
                     core.checked(e, T + timedelta(hours=1))
+
+    def test_discrepancy_precedes_temporal_interpretation(self):
+        a = "tadash://fixture/a"
+        b = "tadash://fixture/b"
+        events = [self.sample("a1", 0, a, 1),
+                  self.sample("a2", 1, a, 2),
+                  self.sample("b1", 1, b, 1.05)]
+        p = core.propose("time_topic", events)
+        self.assertEqual((p["kind"], p["rank"]), ("discrepancy", 5))
+        self.assertNotIn("interpretation", p)
+
+    def test_tick_persistence_and_priority_unchanged_for_ambiguous_sources(self):
+        a = "tadash://fixture/a"
+        b = "tadash://fixture/b"
+        events = [self.sample("a1", 0, a, 1),
+                  self.sample("b1", 1, b, 2)]
+        proposed = core.propose("time_topic", events)
+        self.assertEqual(proposed["interpretation"], "cross_source_temporal_ambiguity")
+        core.ingest(self.root, events, T + timedelta(hours=1))
+        core.set_paused(self.root, False, T + timedelta(hours=1))
+        outcome = core.tick(self.root, T + timedelta(hours=1))
+        self.assertEqual(outcome["kind"], "temporal_change")
+        self.assertNotIn("interpretation", outcome)
+        stored = core.status(self.root)
+        self.assertEqual(stored["schema"], core.SCHEMA)
+        self.assertEqual(stored["questions"][0]["kind"], "temporal_change")
+        self.assertNotIn("interpretation", stored["questions"][0])
 
     def test_propose_order_invariant(self):
         events = [self.sample("a1", 0, sample_time=1),
