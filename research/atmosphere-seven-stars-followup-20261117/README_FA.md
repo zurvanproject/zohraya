@@ -11,10 +11,17 @@
 - `REPORT_FA.md`: full Persian audit, observed behaviours, threat model, caveats, rollback and outstanding controls. The report predates this GitHub archival commit; its statement that no branch/PR was changed describes the *original audit execution*.
 - `hardening.patch`: **proposal, not applied**. Addresses multi-root verification/revocation policy, explicit second approval before delivery, and atomic directory publishing.
 - `test_atmosphere_security_regression.py`: a review copy of the new regression test introduced by the patch. It is **not runnable against unpatched code**.
+- `test_additional_threats.py`: exact six synthetic baseline probes against the **unpatched** PR #257 implementation; 6/6 passed locally. The tests intentionally document observable security gaps rather than proving production compromise.
 
 ## Test on a disposable clone only
 
-From repo root at the specified PR #257 commit, after review:
+Run the baseline threat probes from this audit branch in a disposable working copy:
+
+```bash
+PYTHONPATH=tools python -m unittest discover -s research/atmosphere-seven-stars-followup-20261117 -p 'test_additional_threats.py' -v
+```
+
+To test the candidate hardening patch, start from the specified PR #257 implementation on a separate disposable clone, after review:
 
 ```bash
 git apply --check research/atmosphere-seven-stars-followup-20261117/hardening.patch
