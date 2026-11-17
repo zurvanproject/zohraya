@@ -184,10 +184,21 @@ def propose(topic, events):
     else:
         kind, rank = "falsification", 1
         question = "چه آزمایشی برداشت فعلی از «" + topic + "» را رد می‌کند؟"
-    return {"topic": topic, "kind": kind, "rank": rank, "question": question,
-            "hash": fingerprint(sorted(e["event_id"] for e in events)),
-            "latest": max(e["observed_at"] for e in events),
-            "evidence_count": len(events)}
+    proposal = {"topic": topic, "kind": kind, "rank": rank, "question": question,
+                "hash": fingerprint(sorted(e["event_id"] for e in events)),
+                "latest": max(e["observed_at"] for e in events),
+                "evidence_count": len(events)}
+    # Interpretation only: do not change kind, rank, question, persistence or scheduling.
+    # Distinct sources observed at distinct times cannot establish within-source change.
+    if kind == "temporal_change" and len(sources) > 1:
+        has_within_source_change = any(
+            events[i]["source_ref"] == events[j]["source_ref"]
+            and encode(events[i]["value"]) != encode(events[j]["value"])
+            and abs(times[i] - times[j]) > window
+            for i in range(len(events)) for j in range(i + 1, len(events)))
+        if not has_within_source_change:
+            proposal["interpretation"] = "cross_source_temporal_ambiguity"
+    return proposal
 
 
 def tick(root, now=None):
