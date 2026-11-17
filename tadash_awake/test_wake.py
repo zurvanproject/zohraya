@@ -217,6 +217,28 @@ class TemporalSourceProposeRegressionTests(unittest.TestCase):
         self.assertEqual((p["kind"], p["rank"]), ("discrepancy", 5))
         self.assertNotIn("interpretation", p)
 
+    def test_within_source_middle_change_with_equal_extrema(self):
+        a = "tadash://fixture/a"
+        b = "tadash://fixture/b"
+        events = [self.sample("a1", 0, a, 1),
+                  self.sample("a2", 1, a, 2),
+                  self.sample("a3", 0, a, 3),
+                  self.sample("b1", 0, b, 4)]
+        p = core.propose("time_topic", events)
+        self.assertEqual((p["kind"], p["rank"]), ("temporal_change", 4))
+        self.assertNotIn("interpretation", p)
+
+    def test_many_stable_source_samples_do_not_claim_temporal_change(self):
+        a = "tadash://fixture/a"
+        b = "tadash://fixture/b"
+        events = [self.sample("a" + str(i), 0, a, i)
+                  for i in range(500)]
+        events.append(self.sample("b1", 1, b, 501))
+        p = core.propose("time_topic", events)
+        self.assertEqual((p["kind"], p["rank"]), ("temporal_change", 4))
+        self.assertEqual(p.get("interpretation"), "cross_source_temporal_ambiguity")
+        self.assertEqual(p["evidence_count"], 501)
+
     def test_tick_persistence_and_priority_unchanged_for_ambiguous_sources(self):
         a = "tadash://fixture/a"
         b = "tadash://fixture/b"
