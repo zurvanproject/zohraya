@@ -20,6 +20,12 @@ memory_kib=$(awk '/^MemTotal:/ {print $2}' /proc/meminfo)
 disk_kib=$(df -Pk / | awk 'NR==2 {print $4}')
 [ "${disk_kib:-0}" -ge 10485760 ] || fail 'need at least 10 GiB free disk'
 
+if ! command -v ollama >/dev/null 2>&1 && ! command -v zstd >/dev/null 2>&1; then
+  command -v apt-get >/dev/null 2>&1 || fail 'zstd needed for Ollama package'
+  DEBIAN_FRONTEND=noninteractive apt-get update -qq
+  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends zstd
+fi
+
 if ! command -v ollama >/dev/null 2>&1; then
   tmpdir=$(mktemp -d)
   trap 'rm -rf "$tmpdir"' EXIT
@@ -27,7 +33,7 @@ if ! command -v ollama >/dev/null 2>&1; then
     --connect-timeout 15 --retry 2 --max-time 180 \
     "$URL" -o "$tmpdir/install-ollama.sh"
   sh -n "$tmpdir/install-ollama.sh" || fail 'vendor installer syntax invalid'
-  printf 'Verified HTTPS vendor installer (SHA256 audit): '
+  printf 'HTTPS-fetched vendor installer SHA256 (unpinned, audit only): '
   sha256sum "$tmpdir/install-ollama.sh"
   # Installer is from the official Ollama distribution. Do not substitute URLs.
   sh "$tmpdir/install-ollama.sh"
