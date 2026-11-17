@@ -124,6 +124,11 @@ class Tests(unittest.TestCase):
 class TemporalSourceProposeRegressionTests(unittest.TestCase):
     """Synthetic fixtures only; each fixture passes the real ingestion validator."""
 
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.root = self.temp.name
+
     @staticmethod
     def sample(event_id, value, source="tadash://fixture/a",
                sample_time=None, at=T):
