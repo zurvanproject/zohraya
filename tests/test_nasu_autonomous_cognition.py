@@ -139,7 +139,7 @@ class GrowthTests(unittest.TestCase):
         for topic in growth.TOPICS:
             p = root / growth.TOPICS[topic][0]
             p.parent.mkdir(parents=True, exist_ok=True)
-            p.write_text("value = 1\\n")
+            p.write_text("value = 1\n")
         topics = []
         start = dt.datetime(2026, 11, 1, tzinfo=dt.timezone.utc)
         for i in range(15):
