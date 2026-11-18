@@ -18,7 +18,7 @@ STAGE="$TMP/snapshot"
 mkdir -m 0700 "$STAGE"
 export STAGE
 python3 - <<'PY'
-import datetime, hashlib, json, os, shutil, sqlite3, subprocess, tarfile
+import datetime, hashlib, json, os, shutil, sqlite3, subprocess, sys, tarfile
 from pathlib import Path
 
 base=Path('/var/lib/nasuraya')
@@ -93,15 +93,32 @@ if model.is_file():
     with tarfile.open(runtime_tar,'w:gz') as tar:
         tar.add(runtime,arcname='llama-bin',recursive=True)
     entries[runtime_tar.name]=digest(runtime_tar)
+# Explicitly opt in to packaging the live 4B model; absence must FAIL, never
+# downgrade to a misleadingly successful data-only backup.
+opt_in=os.environ.get('NASU_BUNDLE_OLLAMA_QWEN3_4B','0')
+if opt_in not in ('0','1'):
+    raise SystemExit('NASU_BUNDLE_OLLAMA_QWEN3_4B must be 0 or 1')
+ollama_archived=(opt_in=='1')
+if ollama_archived:
+    tool=source_repo/'tools'/'nasu_ollama_4b_recovery.py'
+    cmd=[sys.executable,str(tool),'stage',str(stage),
+         '--models-dir',os.environ.get('NASU_OLLAMA_MODELS_DIR','/usr/share/ollama/.ollama/models'),
+         '--ollama-bin',os.environ.get('NASU_OLLAMA_BIN',shutil.which('ollama') or '/usr/bin/ollama'),
+         '--ollama-lib',os.environ.get('NASU_OLLAMA_LIB_DIR','/usr/lib/ollama')]
+    subprocess.run(cmd,check=True,capture_output=True,timeout=3600)
+    for name in ('ollama-qwen3-4b-models.tar.gz','ollama-qwen3-4b-runtime.tar.gz',
+                 'ollama-qwen3-4b-info.json'):
+        entries[name]=digest(stage/name)
 manifest={
-  'schema':'nasuraya-restic-offsite/2',
+  'schema':'nasuraya-restic-offsite/3' if ollama_archived else 'nasuraya-restic-offsite/2',
   'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
   'files_sha256':entries,
   'model_present':model_present,
   'workload_archives_present':archive_root.is_dir(),
   'research_journal_present':research.is_file(),
   'cognitive_journal_present':cognitive.exists(),
-  'ollama_qwen3_4b_recoverable':False,
+  'ollama_qwen3_4b_recoverable':ollama_archived,  # assets only; not a smoke PASS
+  'ollama_qwen3_4b_independent_smoke_pass':False,
   'credentials_included':False,
   'warning':'Restored snapshots must not overwrite running production databases'
 }
@@ -109,7 +126,8 @@ manifest={
 print('SQLITE_SNAPSHOT=PASS;DB_COUNT='+str(len(sources))+';MODEL_PRESENT='+str(model_present).lower()+
       ';WORKLOAD_ARCHIVES_PRESENT='+str(archive_root.is_dir()).lower()+
       ';COGNITIVE_JOURNAL_PRESENT='+str(cognitive.exists()).lower()+
-      ';OLLAMA_QWEN3_4B_RECOVERABLE=false')
+      ';OLLAMA_QWEN3_4B_ASSETS_ARCHIVED='+str(ollama_archived).lower()+
+      ';INDEPENDENT_OFFLINE_SMOKE=NOT_TESTED')
 PY
 restic snapshots >/dev/null
 restic backup --tag nasuraya-continuity --json "$STAGE" > "$TMP/backup.jsonl"
@@ -151,11 +169,14 @@ def check_cognitive_chain(path):
             last=row[-1]
 p=Path(os.environ['RESTORED'])
 m=json.loads((p/'manifest.json').read_text())
-assert m['schema']=='nasuraya-restic-offsite/2'
+assert m['schema'] in ('nasuraya-restic-offsite/2','nasuraya-restic-offsite/3')
 files=m['files_sha256']
 assert {'awake.sqlite3','continuity.sqlite3','zohraya.bundle'}.issubset(files)
 assert m['credentials_included'] is False
-assert m.get('ollama_qwen3_4b_recoverable') is False  # not archived by this drill
+archived=m.get('ollama_qwen3_4b_recoverable') is True
+assert type(m.get('ollama_qwen3_4b_recoverable')) is bool
+assert (m['schema']=='nasuraya-restic-offsite/3') == archived
+assert m.get('ollama_qwen3_4b_independent_smoke_pass',False) is False
 if m.get('cognitive_journal_present'):
     assert 'cognitive-growth.sqlite3' in files
 for name,sha in files.items():
@@ -169,12 +190,19 @@ for name,sha in files.items():
             assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
 if m.get('cognitive_journal_present'):
     check_cognitive_chain(p/'cognitive-growth.sqlite3')
+if archived:
+    for filename in ('ollama-qwen3-4b-models.tar.gz','ollama-qwen3-4b-runtime.tar.gz',
+                     'ollama-qwen3-4b-info.json'):
+        assert filename in files, 'Ollama recovery asset not listed'
+    subprocess.run(['python3','/opt/zohraya/tools/nasu_ollama_4b_recovery.py',
+                    'verify',str(p)],check=True,stdout=subprocess.DEVNULL,timeout=3600)
 subprocess.run(['git','bundle','list-heads',str(p/'zohraya.bundle')],
                check=True,capture_output=True)
 print('REMOTE_ENCRYPTED_RESTORE=PASS;SHA256=ok;SQLITE_INTEGRITY=ok;FILE_COUNT='+str(len(files))+
       ';MODEL_PRESENT='+str(m['model_present']).lower()+
       ';WORKLOAD_ARCHIVES_PRESENT='+str(m['workload_archives_present']).lower()+
       ';COGNITIVE_JOURNAL_PRESENT='+str(m.get('cognitive_journal_present',False)).lower()+
-      ';OLLAMA_QWEN3_4B_RECOVERABLE=false')
+      ';OLLAMA_QWEN3_4B_ASSETS_ARCHIVED='+str(archived).lower()+
+      ';INDEPENDENT_OFFLINE_SMOKE=NOT_TESTED')
 PY
 printf 'RESTIC_SNAPSHOT_ID=%s\n' "$SNAP_ID"

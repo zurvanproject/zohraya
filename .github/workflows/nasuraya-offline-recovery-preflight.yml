@@ -13,6 +13,10 @@ on:
       - "tools/nasu_verify_restored_snapshot.py"
       - "tools/nasu_recovered_model_smoke.py"
       - "tests/test_nasu_recovered_model_smoke.py"
+      - "tools/nasu_ollama_4b_recovery.py"
+      - "tests/test_nasu_ollama_4b_recovery.py"
+      - "tests/test_nasu_ollama_4b_backup_contract.py"
+      - "docs/OLLAMA_4B_OFFLINE_RECOVERY.md"
       - "docs/nasuraya_offline_research_seeds_v1.json"
       - "docs/IR_OFFLINE_MODEL_AND_OFFSITE_RESTORE.md"
       - ".github/workflows/nasuraya-offline-recovery-preflight.yml"
@@ -29,6 +33,10 @@ on:
       - "tools/nasu_verify_restored_snapshot.py"
       - "tools/nasu_recovered_model_smoke.py"
       - "tests/test_nasu_recovered_model_smoke.py"
+      - "tools/nasu_ollama_4b_recovery.py"
+      - "tests/test_nasu_ollama_4b_recovery.py"
+      - "tests/test_nasu_ollama_4b_backup_contract.py"
+      - "docs/OLLAMA_4B_OFFLINE_RECOVERY.md"
       - "docs/nasuraya_offline_research_seeds_v1.json"
       - "docs/IR_OFFLINE_MODEL_AND_OFFSITE_RESTORE.md"
       - ".github/workflows/nasuraya-offline-recovery-preflight.yml"
@@ -46,3 +54,5 @@ jobs:
           python3 -m unittest discover -s tests -p test_nasu_offsite_roundtrip_e2e.py -v
           python3 -m unittest discover -s tests -p test_nasu_offline_research_queue.py -v
           python3 -m unittest discover -s tests -p test_nasu_recovered_model_smoke.py -v
+          python3 -m unittest discover -s tests -p test_nasu_ollama_4b_recovery.py -v
+          python3 -m unittest discover -s tests -p test_nasu_ollama_4b_backup_contract.py -v

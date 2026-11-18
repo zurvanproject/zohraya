@@ -51,7 +51,7 @@ def verify(root):
     if not manifest_path.is_file() or manifest_path.is_symlink():
         raise ValueError("Missing trusted restic manifest")
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    if manifest.get("schema") != "nasuraya-restic-offsite/2":
+    if manifest.get("schema") not in ("nasuraya-restic-offsite/2", "nasuraya-restic-offsite/3"):
         raise ValueError("Unexpected backup schema")
     files = manifest.get("files_sha256")
     required = {"awake.sqlite3", "continuity.sqlite3", "zohraya.bundle"}
@@ -94,8 +94,18 @@ def verify(root):
         verify_cognitive_chain(root / "cognitive-growth.sqlite3")
     elif "cognitive-growth.sqlite3" in files:
         raise ValueError("Cognitive growth manifest flag missing")
-    if manifest.get("ollama_qwen3_4b_recoverable") is not False:
-        raise ValueError("Ollama 4B recovery status must be explicit; not yet packaged")
+    flag = manifest.get("ollama_qwen3_4b_recoverable")
+    if type(flag) is not bool or (manifest["schema"].endswith("/3")) != flag:
+        raise ValueError("Inconsistent Ollama model recovery manifest")
+    if manifest.get("ollama_qwen3_4b_independent_smoke_pass", False) is not False:
+        raise ValueError("Only a witnessed independent test can claim offline inference")
+    from nasu_ollama_4b_recovery import ARTIFACTS, verify_bundle
+    if flag:
+        if not set(ARTIFACTS).issubset(files):
+            raise ValueError("4B model or runtime missing from backup manifest")
+        verify_bundle(root)
+    elif set(ARTIFACTS).intersection(files):
+        raise ValueError("Ollama assets present but manifest flag is false")
     result = subprocess.run(["git", "bundle", "list-heads", str(root / "zohraya.bundle")],
                             capture_output=True, check=False, timeout=15)
     if result.returncode or not result.stdout:
@@ -105,7 +115,8 @@ def verify(root):
             "workload_archives_present": bool(manifest.get("workload_archives_present")),
             "research_journal_present": bool(manifest.get("research_journal_present")),
             "cognitive_journal_present": bool(manifest.get("cognitive_journal_present")),
-            "ollama_qwen3_4b_recoverable": False,
+            "ollama_qwen3_4b_recoverable": bool(flag),
+            "independent_offline_smoke_pass": False,
             "sqlite_files": sum(name.endswith(".sqlite3") for name in files),
             "independent_host": "must_be_confirmed_by_operator"}
 
