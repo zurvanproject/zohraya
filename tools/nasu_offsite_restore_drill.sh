@@ -42,8 +42,11 @@ def digest(path):
     return h.hexdigest()
 sources={'continuity.sqlite3':ledger,'awake.sqlite3':state}
 research=base/'local-research'/'research.sqlite3'
-if research.is_file():
+if research.is_file() or research.is_symlink():
     sources['research.sqlite3']=research
+cognitive=base/'cognitive-growth'/'cycles.sqlite3'
+if cognitive.exists() or cognitive.is_symlink():
+    sources['cognitive-growth.sqlite3']=cognitive
 for name,source in sources.items():
     if not source.is_file() or source.is_symlink():
         raise SystemExit('Missing or symlinked source: '+name)
@@ -97,12 +100,16 @@ manifest={
   'model_present':model_present,
   'workload_archives_present':archive_root.is_dir(),
   'research_journal_present':research.is_file(),
+  'cognitive_journal_present':cognitive.exists(),
+  'ollama_qwen3_4b_recoverable':False,
   'credentials_included':False,
   'warning':'Restored snapshots must not overwrite running production databases'
 }
 (stage/'manifest.json').write_text(json.dumps(manifest,sort_keys=True)+'\n',encoding='utf-8')
 print('SQLITE_SNAPSHOT=PASS;DB_COUNT='+str(len(sources))+';MODEL_PRESENT='+str(model_present).lower()+
-      ';WORKLOAD_ARCHIVES_PRESENT='+str(archive_root.is_dir()).lower())
+      ';WORKLOAD_ARCHIVES_PRESENT='+str(archive_root.is_dir()).lower()+
+      ';COGNITIVE_JOURNAL_PRESENT='+str(cognitive.exists()).lower()+
+      ';OLLAMA_QWEN3_4B_RECOVERABLE=false')
 PY
 restic snapshots >/dev/null
 restic backup --tag nasuraya-continuity --json "$STAGE" > "$TMP/backup.jsonl"
@@ -126,12 +133,31 @@ export RESTORED="$TMP/restore$STAGE"
 python3 - <<'PY'
 import hashlib,json,os,sqlite3,subprocess
 from pathlib import Path
+
+def check_cognitive_chain(path):
+    keys=('slot','stamp','topic','source_path','source_sha','fixed_result',
+          'model_status','proposal','next_topic','previous_sha')
+    with sqlite3.connect(f'file:{path}?mode=ro',uri=True) as db:
+        rows=db.execute("""SELECT slot,stamp,topic,source_path,source_sha,
+          fixed_result,model_status,proposal,next_topic,previous_sha,receipt_sha
+          FROM cycles WHERE state='completed' ORDER BY slot""").fetchall()
+        last='0'*64
+        for row in rows:
+            body=dict(zip(keys,row[:-1]))
+            digest=hashlib.sha256(json.dumps(body,sort_keys=True,ensure_ascii=False,
+                          separators=(',',':')).encode('utf-8')).hexdigest()
+            if row[-2]!=last or row[-1]!=digest:
+                raise ValueError('Modified cognitive receipt')
+            last=row[-1]
 p=Path(os.environ['RESTORED'])
 m=json.loads((p/'manifest.json').read_text())
 assert m['schema']=='nasuraya-restic-offsite/2'
 files=m['files_sha256']
 assert {'awake.sqlite3','continuity.sqlite3','zohraya.bundle'}.issubset(files)
 assert m['credentials_included'] is False
+assert m.get('ollama_qwen3_4b_recoverable') is False  # not archived by this drill
+if m.get('cognitive_journal_present'):
+    assert 'cognitive-growth.sqlite3' in files
 for name,sha in files.items():
     assert Path(name).name==name, 'Unsafe manifest name'
     h=hashlib.sha256()
@@ -141,10 +167,14 @@ for name,sha in files.items():
     if name.endswith('.sqlite3'):
         with sqlite3.connect(f'file:{p/name}?mode=ro',uri=True) as db:
             assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+if m.get('cognitive_journal_present'):
+    check_cognitive_chain(p/'cognitive-growth.sqlite3')
 subprocess.run(['git','bundle','list-heads',str(p/'zohraya.bundle')],
                check=True,capture_output=True)
 print('REMOTE_ENCRYPTED_RESTORE=PASS;SHA256=ok;SQLITE_INTEGRITY=ok;FILE_COUNT='+str(len(files))+
       ';MODEL_PRESENT='+str(m['model_present']).lower()+
-      ';WORKLOAD_ARCHIVES_PRESENT='+str(m['workload_archives_present']).lower())
+      ';WORKLOAD_ARCHIVES_PRESENT='+str(m['workload_archives_present']).lower()+
+      ';COGNITIVE_JOURNAL_PRESENT='+str(m.get('cognitive_journal_present',False)).lower()+
+      ';OLLAMA_QWEN3_4B_RECOVERABLE=false')
 PY
 printf 'RESTIC_SNAPSHOT_ID=%s\n' "$SNAP_ID"
