@@ -94,3 +94,29 @@ hash, never the private model response or any keys.
 The operator must document the different physical/administrative failure domain,
 restic recovery from independently held keys, system packages and a separately
 observed successful model smoke. Keep Issue #233 blocked until that receipt exists.
+
+## 8. Integration update: active Ollama Qwen3 4B loop (2026-11-18)
+
+A separate Ubuntu service, `nasuraya-cognitive-growth.timer`, has now been
+installed and its first locally generated unverified research proposal reported
+`completed=1`, `incomplete=0`. The source journal is
+`/var/lib/nasuraya/cognitive-growth/cycles.sqlite3`.
+
+The staged restic drill in this PR now includes this database when present
+(`cognitive-growth.sqlite3`) and the independent-host verifier rechecks the
+completed-receipt SHA chain, not merely SQLite's `integrity_check`.
+The synthetic end-to-end test checks that a changed SQLite value with a
+recomputed file manifest still fails the original receipt-chain validation.
+
+**Important remaining gap:** the model actually powering this live loop is
+Ollama `qwen3:4b-instruct`, **not** the Qwen3-1.7B llama.cpp GGUF that
+this PR optionally archives. The new manifest therefore explicitly sets
+`ollama_qwen3_4b_recoverable=false`, and status receipts report it.
+A successful DB/restic round trip must not be described as a recoverable
+offline cognition service until Ollama model blobs/manifest, runtime,
+dependencies and cold-start inference have been restored on a different host.
+
+The earlier locally created Restic archive/snapshot on the original VPS is
+**not** a remote backup or an independently recovered machine. Neither
+this code change nor passing CI transfers that private archive off the VPS.
+Store private restoration credentials out of band; never commit them here.
