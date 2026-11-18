@@ -1,0 +1,27 @@
+name: Nasuraya offline feedback learning contracts
+
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_feedback_learning.py'
+      - 'tests/test_nasu_feedback_learning.py'
+      - 'docs/NASURAYA_FEEDBACK_LEARNING_FA.md'
+      - '.github/workflows/nasuraya-feedback-learning.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  feedback-learning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Compile and run offline synthetic contracts
+        run: |
+          python -m py_compile tools/nasu_feedback_learning.py
+          python -B -m unittest discover -s tests -p test_nasu_feedback_learning.py -v
