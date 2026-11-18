@@ -21,7 +21,23 @@
       "1.228"
     ],
     "section": "From Taiji to the Four Directions",
-    "independent_corroboration": "https://en.daoinfo.org/index.php?title=The_Four_Numinous_Animals_and_Twenty-Eight_Constellations"
+    "independent_corroboration": "https://en.daoinfo.org/index.php?title=The_Four_Numinous_Animals_and_Twenty-Eight_Constellations",
+    "visual_audit_2026_11_18": {
+      "original_pdf_540_pages": true,
+      "original_pdf_rendered_pages_1based": [
+        232,
+        233
+      ],
+      "verified_figures": [
+        "1.227",
+        "1.228"
+      ],
+      "figure_1_228_caption": "Start at the East and end at the North",
+      "figure_1_228_actual_drawing": "Also labels Center and shows dashed connections; not a figure lacking a center",
+      "figure_1_228_prose": "East, South, West, North, and finally Center",
+      "interpretation": "Four guardian directions and center-return; center is not a fifth guardian",
+      "distinguish_guardian_orders_from_practitioner_orders": "Figure 1.227 says Jianbing commands celestial soldiers. The practitioner's request to four guardians is explicitly not commanding or binding the guardians."
+    }
   },
   "status": {
     "stage": "acquisition",
@@ -31,7 +47,9 @@
     "owner_exception": "explicit owner authorization 2026-11-12 to begin second ritual before Wuji mastery",
     "next_third_ritual_allowed": false,
     "three_pass_rule_applied_to_future_sessions": true,
-    "no_retroactive_credit": true
+    "no_retroactive_credit": true,
+    "latest_source_correction": "2026-11-18 visual inspection repaired oversimplification: fig 1.228 itself shows center; its caption stops at North and surrounding prose explicitly adds finally Center",
+    "last_three_pass_session": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-18_R05_FA.md"
   },
   "safety": {
     "symbolic_only": true,
