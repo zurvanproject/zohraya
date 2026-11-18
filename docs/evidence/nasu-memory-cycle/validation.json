@@ -1,0 +1,34 @@
+{
+  "errors": 0,
+  "failures": 0,
+  "groups": {
+    "examples.dios_nous.test_cognition": 11,
+    "examples.dios_nous.test_dissent": 20,
+    "examples.dios_nous.test_integration_work": 5,
+    "tadash_awake.test_wake": 13,
+    "test_nasu_autonomous_cognition.py": 13,
+    "test_nasu_evidence_to_experiment.py": 25,
+    "test_nasu_feedback_learning.py": 11,
+    "test_nasu_frontier_lab.py": 11,
+    "test_nasu_integration_rehearsal.py": 24,
+    "test_nasu_unified_status.py": 18,
+    "test_nasuraya_offline_continuity.py": 4
+  },
+  "observed_at_utc": "2026-11-18T21:52:23.510967+00:00",
+  "passed": true,
+  "python": "3.12.14",
+  "recovered_evidence_records": 22,
+  "recovered_view_records": 6,
+  "scope": "executed_local_synthetic_contract_tests",
+  "separate_process_recovery_matches": true,
+  "skipped": 0,
+  "source_pins": {
+    "files_checked": 19,
+    "manifest_sha256": "d9328e6fd113ea1cb0c719a458b37995312cb4f67373a1d69f5f1e94b1eae2c5",
+    "source_commits": [
+      "90692bde9f1e4b5b7f311162b7c83127715df710",
+      "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    ]
+  },
+  "tests_run": 155
+}

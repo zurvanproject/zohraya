@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""Nasuraya unified OFFLINE read-only status. No commands, LLM, or state writes.
+"""Nasuraya unified OFFLINE status. No commands, LLM, or SQL writes.
 
 This is an observability adapter, NOT a merger of independent SQLite ledgers,
 a security attestation, a deployer, or evidence of autonomous cognition.
+SQLite may create or update WAL/SHM coordination files while reading a WAL
+database; read-only SQL does not promise a filesystem with no changes.
 """
 from __future__ import annotations
 
@@ -51,7 +53,7 @@ def _guard(home, path):
     while True:
         if current.is_symlink():
             raise ValueError("symlinked_source")
-        if current == home:
+        if current.parent == current:
             break
         current = current.parent
     return path
@@ -70,6 +72,9 @@ def _read(home, path, inspector):
         db = sqlite3.connect(target.as_uri() + "?mode=ro", uri=True, timeout=3)
         try:
             db.execute("PRAGMA query_only=ON")
+            # Hold one SQLite read snapshot for verification and projection.
+            # Do not use immutable=1: that can ignore uncheckpointed WAL data.
+            db.execute("BEGIN")
             if db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
                 raise ValueError("sqlite_integrity_failed")
             return inspector(db)
@@ -84,6 +89,8 @@ def _read(home, path, inspector):
 
 def _continuity(db):
     r = continuity.verify(db)
+    if r["last_hour"] is not None:
+        _checked_time(r["last_hour"], "%Y-%m-%dT%H:00Z")
     return {"status": "verified_history" if r["records"] else "empty",
             "records": r["records"], "last_hour": r["last_hour"],
             "evidence": "local_sqlite_integrity_and_hash_chain"}
@@ -105,9 +112,32 @@ def _cognition(db):
               "incomplete": r["incomplete"],
               "evidence": "local_sqlite_integrity_and_hash_chain"}
     if last:
+        _checked_time(last[0], "%Y-%m-%dT%H")
+        if not isinstance(last[1], str) or last[1] not in cognition.TOPICS:
+            raise ValueError("unknown_cognition_topic")
         result["latest"] = {"slot": last[0], "topic": last[1],
-                            "model_status": last[2]}
+                            "model_status": _model_state(last[2])}
     return result
+
+
+def _checked_time(value, pattern):
+    """Do not publish arbitrary ledger text through a timestamp field."""
+    if not isinstance(value, str) or len(value) > 32:
+        raise ValueError("invalid_summary_timestamp")
+    parsed = dt.datetime.strptime(value, pattern)
+    if parsed.strftime(pattern) != value:
+        raise ValueError("noncanonical_summary_timestamp")
+
+
+def _model_state(value):
+    """Project a finite classification, never an arbitrary exception suffix."""
+    if value == "UNVERIFIED_DRAFT":
+        return value
+    if isinstance(value, str):
+        for state in ("source_unavailable", "test_unavailable", "model_unavailable"):
+            if value.startswith(state + ":"):
+                return state
+    raise ValueError("unknown_cognition_model_status")
 
 
 def _feedback(db):
@@ -142,6 +172,8 @@ def _awake_path(home):
     if not manifest.is_file() or manifest.stat().st_size > 65536:
         raise ValueError("unsafe_migration_manifest")
     data = json.loads(manifest.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError("invalid_migration_manifest_object")
     working = data.get("working_db")
     if not isinstance(working, str):
         raise ValueError("missing_working_db")
@@ -185,7 +217,9 @@ def collect(home=HOME, now=None):
         "unverified_gates": list(UNVERIFIED_GATES),
         "priority": priority,
         "note": "Local hash chains are not independent tamper authentication; "
-                "an available SQLite file does not prove its service is running.",
+                "an available SQLite file does not prove its service is running. "
+                "Read-only SQL may create or update SQLite WAL/SHM coordination "
+                "files; it is not a filesystem-nonmutation guarantee.",
     }
 
 

@@ -46,7 +46,7 @@ cd /opt/zohraya
 python3 -B -m tools.nasu_evidence_to_experiment --pretty
 ```
 
-بدون کلید API، اینترنت بین‌الملل یا تغییر state. استفادهٔ اختیاری از Qwen فقط با فرمان زیر و کاربر غیر root امکان دارد:
+بدون کلید API، اینترنت بین‌الملل یا نوشتن رکورد در دفترها. آداپتور وضعیت ممکن است فایل‌های هماهنگی SQLite WAL/SHM را برای خواندن شواهد جاری ایجاد کند. استفادهٔ اختیاری از Qwen فقط با فرمان زیر و کاربر غیر root امکان دارد:
 
 ```bash
 python3 -B -m tools.nasu_evidence_to_experiment --ask-local-qwen --pretty

@@ -8,6 +8,7 @@ localhost-only Qwen produces an untrusted draft, not a decision or command.
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import hashlib
 import json
 import os
@@ -77,7 +78,9 @@ def checked_states(snapshot):
     states = {}
     for key in COMPONENTS:
         item = items[key]
-        if not isinstance(item, dict) or item.get("status") not in STATES:
+        if (not isinstance(item, dict) or
+                not isinstance(item.get("status"), str) or
+                item["status"] not in STATES):
             raise ValueError("unknown_status")
         states[key] = item["status"]
     if states["awake"] in ("verified_history", "empty"):
@@ -108,6 +111,9 @@ def plan(snapshot):
     stamp = snapshot.get("generated_at_utc")
     if not isinstance(stamp, str) or len(stamp) > 48:
         raise ValueError("invalid_snapshot_timestamp")
+    parsed = dt.datetime.fromisoformat(stamp)
+    if parsed.tzinfo is None or parsed.utcoffset() != dt.timedelta(0):
+        raise ValueError("non_utc_snapshot_timestamp")
     attested = {"schema": hub.SCHEMA, "generated_at_utc": stamp,
                 "component_states": states}
     return {
@@ -150,9 +156,17 @@ def validate_draft(value):
     return value
 
 
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        # Even a redirect from localhost must not forward the prompt elsewhere.
+        fp.close()
+        raise ValueError("local_model_redirect_blocked")
+
+
 def local_question(packet, *, opener=None):
     """Explicit opt-in Qwen call, proxy-free localhost; never execute its text."""
-    assert packet["state"] == "PROPOSAL_NOT_EXECUTED"
+    if packet.get("state") != "PROPOSAL_NOT_EXECUTED":
+        raise ValueError("invalid_proposal_state")
     public = {"task_id": packet["selected"]["id"],
               "target": packet["selected"]["affected_components"],
               "observe": packet["three_passes"]["observe"],
@@ -174,18 +188,19 @@ def local_question(packet, *, opener=None):
                                     "temperature": 0.1}}).encode("utf-8"),
         headers={"Content-Type": "application/json"})
     client = opener or urllib.request.build_opener(
-        urllib.request.ProxyHandler({})).open
+        urllib.request.ProxyHandler({}), _NoRedirect()).open
     with client(req, timeout=80) as response:
         raw = response.read(MAX_BYTES + 1)
     if len(raw) > MAX_BYTES:
         raise ValueError("oversized_response")
     reply = json.loads(raw)
-    if reply.get("done") is not True or not isinstance(reply.get("response"), str):
+    if (not isinstance(reply, dict) or reply.get("done") is not True or
+            not isinstance(reply.get("response"), str)):
         raise ValueError("incomplete_response")
     return validate_draft(json.loads(reply["response"].strip()))
 
 
-def run(home=hub.HOME, *, ask_local_qwen=False, infer=local_question):
+def run(home=hub.HOME, *, ask_local_qwen=False, infer=None):
     packet = plan(hub.collect(home=home))
     if ask_local_qwen:
         # Do not send damaged/missing provenance to a model as trusted context.
@@ -193,6 +208,8 @@ def run(home=hub.HOME, *, ask_local_qwen=False, infer=local_question):
             packet["model"] = {"state": "BLOCKED_BY_EVIDENCE_GATE"}
         else:
             try:
+                if infer is None:
+                    infer = local_question
                 draft = validate_draft(infer(packet))
                 packet["model"] = {"state": "UNVERIFIED_DRAFT",
                                    "proposal": draft,
