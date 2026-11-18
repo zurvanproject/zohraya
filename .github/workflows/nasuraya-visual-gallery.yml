@@ -1,0 +1,56 @@
+name: Nasuraya visual gallery smoke test
+on:
+  pull_request:
+    paths:
+      - "tools/nasuraya_visual_gallery.py"
+      - "tests/test_nasuraya_visual_gallery.py"
+      - "tools/nasuraya_image_provider.py"
+      - "tests/test_nasuraya_image_provider.py"
+      - "tools/nasuraya_visual_review.py"
+      - "tests/test_nasuraya_visual_review.py"
+      - ".github/workflows/nasuraya-visual-gallery.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-visual-contract:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test gallery / safety / provenance
+        run: python -m unittest discover -s tests -p "test_nasuraya_visual_gallery.py" -v
+      - name: Test optional image API adapter with fake transport (never call API)
+        run: python -m unittest discover -s tests -p "test_nasuraya_image_provider.py" -v
+      - name: Test manual visual review and honest sample statistics
+        run: python -m unittest discover -s tests -p "test_nasuraya_visual_review.py" -v
+      - name: Confirm provider default is no-network dry-run
+        run: python tools/nasuraya_image_provider.py
+      - name: Render offline demonstration
+        run: python tools/nasuraya_visual_gallery.py --out visual-preview
+      - name: Inspect generated files
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          root = Path("visual-preview")
+          assert (root / "index.html").is_file()
+          assert (root / "nasuraya.svg").is_file()
+          m = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+          assert m["published"] is False
+          assert m["image_model_invoked"] is False
+      - name: Archive offline gallery for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: nasuraya-gallery-${{ matrix.os }}
+          path: visual-preview/
+          if-no-files-found: error
+          retention-days: 14
