@@ -1,6 +1,10 @@
 """Offline cognitive-growth contracts. No Ollama or server connection needed."""
 import datetime as dt
 import importlib.util
+import io
+import json
+import os
+from unittest import mock
 from pathlib import Path
 import sqlite3
 import tempfile
@@ -129,6 +133,60 @@ class GrowthTests(unittest.TestCase):
             growth.run(db, now=self.clock(1), root=root,
                        infer=delete_reservation, tester=lambda *args: "PASS")
         self.assertEqual(growth.verify(db)["completed"], 0)
+
+    def test_fair_rotation_covers_all_five_topics_despite_repetitive_proposals(self):
+        root, db = self.fixture()
+        for topic in growth.TOPICS:
+            p = root / growth.TOPICS[topic][0]
+            p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text("value = 1\\n")
+        topics = []
+        start = dt.datetime(2026, 11, 1, tzinfo=dt.timezone.utc)
+        for i in range(15):
+            result = growth.run(
+                db, now=start + dt.timedelta(hours=6 * i), root=root,
+                infer=lambda *args: dict(DRAFT, next_topic="frontier"),
+                tester=lambda *args: "PASS")
+            topics.append(result["topic"])
+            self.assertEqual(result["outcome"], "drafted")
+        for start_index in range(0, 11):
+            self.assertEqual(set(topics[start_index:start_index + 5]),
+                             set(growth.TOPICS))
+        self.assertEqual(growth.verify(db)["completed"], 15)
+
+    def test_loopback_request_ignores_environment_proxy(self):
+        reply = json.dumps({"done": True, "response": json.dumps(DRAFT)}).encode()
+        requested = []
+        class LocalOpener:
+            def open(self, request, *, timeout):
+                requested.append((request.full_url, timeout))
+                return io.BytesIO(reply)
+
+        with mock.patch.object(growth.urllib.request, "build_opener",
+                               return_value=LocalOpener()) as build:
+            with mock.patch.object(growth.urllib.request, "urlopen",
+                                   side_effect=AssertionError("default proxy path used")):
+                with mock.patch.dict(os.environ,
+                                     {"HTTP_PROXY": "http://proxy.invalid:8888",
+                                      "http_proxy": "http://proxy.invalid:8888",
+                                      "NO_PROXY": "", "no_proxy": ""}):
+                    response = growth.local_llm(
+                        "continuity", {"path": "code.py", "sha256": "fake",
+                                       "excerpt": "x = 1"}, {}, "PASS")
+        self.assertEqual(response, DRAFT)
+        self.assertEqual(requested, [(growth.URL, 145)])
+        build.assert_called_once()
+        handler = build.call_args.args[0]
+        self.assertIsInstance(handler, growth.urllib.request.ProxyHandler)
+        self.assertEqual(handler.proxies, {})
+
+    def test_local_model_response_size_is_bounded(self):
+        def oversized(*args, **kwargs):
+            return io.BytesIO(b"x" * 65537)
+        with self.assertRaisesRegex(ValueError, "too large"):
+            growth.local_llm(
+                "continuity", {"path": "code.py", "sha256": "fake",
+                               "excerpt": "x = 1"}, {}, "PASS", opener=oversized)
 
     def test_post_write_change_is_detected(self):
         root, db = self.fixture()
