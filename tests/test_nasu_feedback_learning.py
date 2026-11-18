@@ -66,6 +66,26 @@ class LearningTests(unittest.TestCase):
         self.assertEqual(c["task"], "integrity")
         self.assertEqual(feedback.verify(self.db)["completed"], 2)
 
+    def test_verified_failure_rule_reused_six_days_later(self):
+        observed = []
+        def infer(question, rules):
+            observed.append((question, list(rules)))
+            # First source question is incorrect on purpose and stores its rule.
+            return answer("YES")
+        for day in range(18, 25):
+            result = feedback.run(
+                self.db,
+                now=dt.datetime(2026, 11, day, 12, tzinfo=dt.timezone.utc),
+                infer=infer)
+        self.assertEqual(result["task"], "source")
+        self.assertGreaterEqual(result["rules_used"], 1)
+        self.assertTrue(any(
+            "Temporal change for a particular source" in rule
+            for question, rules in observed
+            if question.startswith("Two calibrated readings")
+            for rule in rules))
+        self.assertEqual(feedback.verify(self.db)["completed"], 7)
+
     def test_model_failure_is_not_reported_as_learning(self):
         def fail(*args):
             raise TimeoutError()
