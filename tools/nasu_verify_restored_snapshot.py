@@ -24,6 +24,25 @@ def digest(path):
     return h.hexdigest()
 
 
+def verify_cognitive_chain(path):
+    """Independently recalculate every completed growth receipt's hash chain."""
+    columns = ("slot", "stamp", "topic", "source_path", "source_sha",
+               "fixed_result", "model_status", "proposal", "next_topic", "previous_sha")
+    last = "0" * 64
+    with sqlite3.connect(f"file:{path}?mode=ro", uri=True) as db:
+        rows = db.execute("""SELECT slot,stamp,topic,source_path,source_sha,
+            fixed_result,model_status,proposal,next_topic,previous_sha,receipt_sha
+            FROM cycles WHERE state='completed' ORDER BY slot""").fetchall()
+        for row in rows:
+            body = dict(zip(columns, row[:-1]))
+            digest = hashlib.sha256(json.dumps(body, sort_keys=True,
+                   ensure_ascii=False, separators=(",", ":")).encode("utf-8")).hexdigest()
+            if row[-2] != last or row[-1] != digest:
+                raise ValueError("Modified cognitive growth receipt")
+            last = row[-1]
+    return len(rows)
+
+
 def verify(root):
     root = Path(root)
     if not root.is_dir() or root.is_symlink():
@@ -69,6 +88,14 @@ def verify(root):
         raise ValueError("Historical imports missing")
     if manifest.get("research_journal_present") and "research.sqlite3" not in files:
         raise ValueError("Offline research journal missing")
+    if manifest.get("cognitive_journal_present"):
+        if "cognitive-growth.sqlite3" not in files:
+            raise ValueError("Cognitive growth journal missing")
+        verify_cognitive_chain(root / "cognitive-growth.sqlite3")
+    elif "cognitive-growth.sqlite3" in files:
+        raise ValueError("Cognitive growth manifest flag missing")
+    if manifest.get("ollama_qwen3_4b_recoverable") is not False:
+        raise ValueError("Ollama 4B recovery status must be explicit; not yet packaged")
     result = subprocess.run(["git", "bundle", "list-heads", str(root / "zohraya.bundle")],
                             capture_output=True, check=False, timeout=15)
     if result.returncode or not result.stdout:
@@ -77,6 +104,8 @@ def verify(root):
             "model_present": bool(manifest.get("model_present")),
             "workload_archives_present": bool(manifest.get("workload_archives_present")),
             "research_journal_present": bool(manifest.get("research_journal_present")),
+            "cognitive_journal_present": bool(manifest.get("cognitive_journal_present")),
+            "ollama_qwen3_4b_recoverable": False,
             "sqlite_files": sum(name.endswith(".sqlite3") for name in files),
             "independent_host": "must_be_confirmed_by_operator"}
 
