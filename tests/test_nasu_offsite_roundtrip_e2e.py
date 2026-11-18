@@ -5,6 +5,7 @@ inside a disposable copy. A fake restic command performs local copy/restore;
 nothing reaches a network, source VPS, production database or remote provider.
 Passing these tests does NOT attest independent offsite recovery.
 """
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -82,6 +83,26 @@ class OffsiteRoundTripE2E(unittest.TestCase):
 
         make_db(self.base / "continuity" / "continuity.sqlite3", "monitor")
         make_db(self.base / "awake-stage" / "awake.sqlite3", "stale")
+        # A valid local Qwen growth receipt must survive the independent backup.
+        cognitive = self.base / "cognitive-growth" / "cycles.sqlite3"
+        cognitive.parent.mkdir(parents=True)
+        receipt = {
+            "slot": "2026-11-18T06", "stamp": "2026-11-18T06:00:00+00:00",
+            "topic": "continuity", "source_path": "tools/continuity.py",
+            "source_sha": "a" * 64, "fixed_result": "PASS",
+            "model_status": "UNVERIFIED_DRAFT", "proposal": "{}",
+            "next_topic": "frontier", "previous_sha": "0" * 64,
+        }
+        stamp = hashlib.sha256(json.dumps(receipt, sort_keys=True,
+                    ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
+        with sqlite3.connect(cognitive) as db:
+            db.execute("""CREATE TABLE cycles (
+                slot TEXT PRIMARY KEY, stamp TEXT, topic TEXT, source_path TEXT,
+                source_sha TEXT, fixed_result TEXT, model_status TEXT,
+                proposal TEXT, next_topic TEXT, previous_sha TEXT,
+                receipt_sha TEXT, state TEXT)""")
+            db.execute("INSERT INTO cycles VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+                       (*receipt.values(), stamp, "completed"))
         self.current = self.base / "migration" / "working" / ("b" * 32) / "awake.sqlite3"
         make_db(self.current, "active")
         (self.base / "migration" / "latest-import.json").write_text(
@@ -136,10 +157,31 @@ class OffsiteRoundTripE2E(unittest.TestCase):
         snapshot = self.store / "stored"
         manifest = json.loads((snapshot / "manifest.json").read_text())
         self.assertFalse(manifest["model_present"])
+        self.assertTrue(manifest["cognitive_journal_present"])
+        self.assertFalse(manifest["ollama_qwen3_4b_recoverable"])
+        self.assertIn("cognitive-growth.sqlite3", manifest["files_sha256"])
         self.assertTrue(manifest["workload_archives_present"])
         self.assertEqual(manifest["schema"], "nasuraya-restic-offsite/2")
         with sqlite3.connect(snapshot / "awake.sqlite3") as db:
             self.assertEqual(db.execute("SELECT value FROM evidence").fetchone()[0], "active")
+
+    def test_cognitive_chain_tamper_is_detected_even_if_manifest_is_rehashed(self):
+        proc = self.run_drill()
+        self.assertEqual(proc.returncode, 0, proc.stderr)
+        snapshot = self.store / "stored"
+        db_path = snapshot / "cognitive-growth.sqlite3"
+        with sqlite3.connect(db_path) as db:
+            db.execute("UPDATE cycles SET model_status='FORGED' WHERE state='completed'")
+            self.assertEqual(db.execute("PRAGMA integrity_check").fetchone()[0], "ok")
+        manifest = json.loads((snapshot / "manifest.json").read_text())
+        manifest["files_sha256"]["cognitive-growth.sqlite3"] = hashlib.sha256(
+            db_path.read_bytes()).hexdigest()
+        (snapshot / "manifest.json").write_text(json.dumps(manifest))
+        verifier = ROOT / "tools" / "nasu_verify_restored_snapshot.py"
+        checked = subprocess.run(["python3", str(verifier), str(snapshot)],
+                                 capture_output=True, text=True, timeout=15)
+        self.assertNotEqual(checked.returncode, 0)
+        self.assertIn('"status": "failed"', checked.stderr)
 
     def test_backup_only_does_not_restore(self):
         proc = self.run_drill(NASU_BACKUP_ONLY="1")
