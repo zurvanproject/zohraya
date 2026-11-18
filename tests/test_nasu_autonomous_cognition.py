@@ -82,6 +82,54 @@ class GrowthTests(unittest.TestCase):
         self.assertEqual(row, "{}")
         self.assertEqual(growth.verify(db)["completed"], 1)
 
+    def test_missing_source_records_failure_and_continues_next_slot(self):
+        root, db = self.fixture()
+        (root / growth.TOPICS["continuity"][0]).unlink()
+
+        def should_not_run(*args):
+            raise AssertionError("No inference/test on missing source")
+
+        failed = growth.run(db, now=self.clock(1), root=root,
+                            infer=should_not_run, tester=should_not_run)
+        self.assertEqual(failed["model"], "source_unavailable:ValueError")
+        self.assertEqual(failed["fixed_test"], "NOT_RUN")
+        self.assertEqual(failed["outcome"], "failed_safe")
+        self.assertEqual(growth.verify(db)["incomplete"], 0)
+        self.assertEqual(growth.verify(db)["completed"], 1)
+        # A failed snapshot is never promoted to a model claim, but it also
+        # does not prevent the next scheduled topic from being evaluated.
+        next_cycle = growth.run(db, now=self.clock(8), root=root,
+                                infer=lambda *args: dict(DRAFT),
+                                tester=lambda *args: "PASS")
+        self.assertEqual(next_cycle["topic"], "frontier")
+        self.assertEqual(next_cycle["outcome"], "drafted")
+        self.assertEqual(growth.verify(db)["completed"], 2)
+
+    def test_fixed_test_exception_is_recorded_without_inference(self):
+        root, db = self.fixture()
+        def bad_test(*args):
+            raise TimeoutError("simulated test timeout")
+        def should_not_infer(*args):
+            raise AssertionError("Unverified test must not reach model")
+
+        report = growth.run(db, now=self.clock(1), root=root,
+                            infer=should_not_infer, tester=bad_test)
+        self.assertEqual(report["model"], "test_unavailable:TimeoutError")
+        self.assertEqual(report["fixed_test"], "NOT_RUN")
+        self.assertEqual(report["outcome"], "failed_safe")
+        self.assertEqual(growth.verify(db)["completed"], 1)
+        self.assertEqual(growth.verify(db)["incomplete"], 0)
+
+    def test_deleted_reservation_is_not_reported_as_completed(self):
+        root, db = self.fixture()
+        def delete_reservation(*args):
+            db.execute("DELETE FROM cycles WHERE state='reserved'")
+            return dict(DRAFT)
+        with self.assertRaisesRegex(ValueError, "Reservation changed"):
+            growth.run(db, now=self.clock(1), root=root,
+                       infer=delete_reservation, tester=lambda *args: "PASS")
+        self.assertEqual(growth.verify(db)["completed"], 0)
+
     def test_post_write_change_is_detected(self):
         root, db = self.fixture()
         growth.run(db, now=self.clock(1), root=root,
