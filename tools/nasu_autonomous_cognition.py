@@ -156,26 +156,51 @@ def run(db, *, now=None, root=ROOT, infer=local_llm, tester=fixed_test):
     except BaseException:
         db.rollback()
         raise
-    evidence = source(topic,root)
-    result = tester(topic,root)
-    status = "UNVERIFIED_DRAFT"
+    # A missing/invalid source or a failed fixed test must not orphan a six-hour
+    # reservation. Preserve a verifiable *failed* receipt; never invoke the model
+    # on unverified inputs. The next scheduled slot can make progress on its own.
+    evidence = {"path": TOPICS[topic][0], "sha256": "", "excerpt": ""}
+    result = "NOT_RUN"
+    proposal = {}
     try:
-        proposal = validate(infer(topic,evidence,prior,result))
-    except (OSError, ValueError, TypeError, TimeoutError) as ex:
-        proposal = {}
-        status = "model_unavailable:"+type(ex).__name__
+        evidence = source(topic, root)
+    except (OSError, ValueError, SyntaxError, UnicodeError) as ex:
+        status = "source_unavailable:" + type(ex).__name__
+    else:
+        try:
+            result = tester(topic, root)
+        except (OSError, TimeoutError, subprocess.SubprocessError) as ex:
+            status = "test_unavailable:" + type(ex).__name__
+        else:
+            status = "UNVERIFIED_DRAFT"
+            try:
+                proposal = validate(infer(topic, evidence, prior, result))
+            except (OSError, ValueError, TypeError, TimeoutError) as ex:
+                status = "model_unavailable:" + type(ex).__name__
     body = {"slot":key,"stamp":now.isoformat(),"topic":topic,
             "source_path":evidence["path"],"source_sha":evidence["sha256"],
             "fixed_result":result,"model_status":status,
             "proposal":canon(proposal),"next_topic":proposal.get("next_topic",""),
             "previous_sha":parent}
-    db.execute("UPDATE cycles SET source_path=?,source_sha=?,fixed_result=?,model_status=?,"
-               "proposal=?,next_topic=?,receipt_sha=?,state='completed'"
-               " WHERE slot=? AND state='reserved'",
-               (body["source_path"],body["source_sha"],result,status,body["proposal"],
-                body["next_topic"],sha(body),key))
+    # Finalization is atomic, and cannot claim success if the reservation was
+    # removed or modified by another writer during model inference.
+    db.execute("BEGIN IMMEDIATE")
+    try:
+        updated = db.execute(
+            "UPDATE cycles SET source_path=?,source_sha=?,fixed_result=?,model_status=?,"
+            "proposal=?,next_topic=?,receipt_sha=?,state='completed'"
+            " WHERE slot=? AND state='reserved'",
+            (body["source_path"],body["source_sha"],result,status,body["proposal"],
+             body["next_topic"],sha(body),key)).rowcount
+        if updated != 1:
+            raise ValueError("Reservation changed")
+        db.commit()
+    except BaseException:
+        db.rollback()
+        raise
     return {"status":"completed","slot":key,"topic":topic,"fixed_test":result,
-            "model":status,"next_topic":body["next_topic"]}
+            "model":status,"next_topic":body["next_topic"],
+            "outcome":"drafted" if status == "UNVERIFIED_DRAFT" else "failed_safe"}
 
 def main(args):
     if len(args)!=1 or args[0] not in ("run","status"):
