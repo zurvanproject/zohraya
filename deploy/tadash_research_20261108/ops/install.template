@@ -1,0 +1,185 @@
+"""Install only the bounded owner-requested Tadash research session on 2026-11-08."""
+import base64
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import ssl
+import subprocess
+import sys
+import time
+from email.utils import parsedate_to_datetime
+from urllib.request import build_opener, Request, HTTPSHandler, HTTPRedirectHandler, ProxyHandler
+import uuid
+import zlib
+
+PACK = "_PACKAGE_"
+HASHES = _HASHES_
+SCHEMA = "tadash-research-20261108/1"
+DEADLINE = 1794159000
+PREFIX = "NasurayaResearch20261108"
+WORKER = "runtime-e747ee5d4aaa642c"
+MANIFEST_SHA = "e8558cf14cb7ed1f6273a7dcfe75ba287d7a44ec39b3a2feb730d816072f909b"
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def read(path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def emit(path, data):
+    tmp=path.with_suffix(".tmp")
+    tmp.write_bytes(data)
+    os.replace(tmp, path)
+
+
+def emit_json(path, data):
+    emit(path, json.dumps(data,sort_keys=True,allow_nan=False).encode())
+
+
+def quote(text):
+    return "'" + str(text).replace("'", "''") + "'"
+
+
+def ps(command):
+    result = subprocess.run(["powershell.exe", "-NoProfile", "-NonInteractive", "-Command",
+                             "$ErrorActionPreference='Stop';" + command],
+                            capture_output=True, timeout=22)
+    if result.returncode:
+        text = result.stderr.decode("utf-8","replace")
+        err = re.search(r"FullyQualifiedErrorId\s*:\s*([A-Za-z0-9_.,]+)", text)
+        raise RuntimeError(("ps_" + err.group(1).split(",")[0][:35]) if err else "ps_error")
+    return result.stdout.decode("utf-8","replace").strip()
+
+
+class NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self,*args,**kwargs):
+        return None
+
+
+def reference(runtime):
+    manifest = (runtime/"FILES_SHA256.json").read_bytes()
+    ca = runtime/"cacert.pem"
+    if sha(manifest)!=MANIFEST_SHA or sha(ca.read_bytes())!=json.loads(manifest)["cacert.pem"]:
+        raise ValueError("clock_ca_pin")
+    op=build_opener(ProxyHandler({}),NoRedirect(),HTTPSHandler(context=ssl.create_default_context(cafile=str(ca))))
+    url=("https://api.github.com/repos/zurvanproject/zohraya/commits/"
+         "64a7f40d57c06705ef8e692c4048f5b6c5cf36a1?evening="+uuid.uuid4().hex)
+    begin=time.time()
+    req=Request(url,method="HEAD",headers={"User-Agent":"NasurayaEveningResearch/1","Cache-Control":"no-cache"})
+    with op.open(req,timeout=8) as response:
+        server=parsedate_to_datetime(response.headers["Date"]).timestamp()
+        if float(response.headers.get("Age","0"))>10:
+            raise ValueError("stale_clock")
+    end=time.time()
+    if not 1794096000<=server<DEADLINE-90 or end-begin>10:
+        raise ValueError("outside_window")
+    return (begin+end)/2-server
+
+
+def register(root, cfg):
+    exe=quote(sys.executable)
+    routine=root/"evening_run.py"
+    deadline=cfg["deadline"]
+    start=cfg["started"]+603
+    parts=["$created=@();$ep=[DateTime]::SpecifyKind([DateTime]'1970-01-01',[DateTimeKind]::Utc);",
+           "$who=New-ScheduledTaskPrincipal -UserId SYSTEM -LogonType ServiceAccount -RunLevel Highest;",
+           "$settings=New-ScheduledTaskSettingsSet -ExecutionTimeLimit (New-TimeSpan -Minutes 4) "
+           "-MultipleInstances IgnoreNew -StartWhenAvailable;try{"]
+    for mode in ("sample","final"):
+        name=quote(PREFIX+mode.capitalize())
+        args=quote('-I -X utf8 "'+str(routine)+'" '+mode)
+        begin=start if mode=="sample" else deadline+2
+        trigger = "$at=$ep.AddSeconds("+str(begin)+").ToLocalTime();$t=New-ScheduledTaskTrigger -Once -At $at"
+        if mode=="sample" and deadline>start:
+            trigger+=" -RepetitionInterval (New-TimeSpan -Minutes 10) -RepetitionDuration (New-TimeSpan -Seconds "+str(max(1,deadline-start))+")"
+        # An installation shortly before the deadline gets only the explicit
+        # initial sample and finalizer; the later trigger still enforces cutoff.
+        parts.extend(["$old=Get-ScheduledTask -TaskName "+name+" -ErrorAction SilentlyContinue;",
+          "if(-not $old){"+trigger+";$a=New-ScheduledTaskAction -Execute "+exe+" -Argument "+args+
+          " -WorkingDirectory "+quote(root)+";Register-ScheduledTask -TaskName "+name+
+          " -Action $a -Trigger $t -Principal $who -Settings $settings "
+          "-Description 'Finite Tadash research to 21:00 Tehran, 2026-11-08'|Out-Null;$created+="+name+"};",
+          "$k=Get-ScheduledTask -TaskName "+name+";if($k.Principal.UserId -notin @('SYSTEM','S-1-5-18') "
+          "-or $k.Actions[0].Execute -ne "+exe+" -or $k.Actions[0].Arguments -ne "+args+
+          " -or -not $k.Settings.Enabled){throw 'TaskMismatch'};",
+          "$x=[xml](Export-ScheduledTask -TaskName "+name+");"
+          "$b=$x.SelectSingleNode(\"//*[local-name()='TimeTrigger']/*[local-name()='StartBoundary']\");"
+          "if(($null -eq $b) -or [Math]::Abs((([DateTimeOffset]::Parse($b.InnerText)).UtcDateTime-$ep).TotalSeconds-"+
+          str(begin)+") -gt 1){throw 'TaskBoundary'};"])
+        if mode=="sample" and deadline>start:
+            parts.append("$n=$x.SelectSingleNode(\"//*[local-name()='Repetition']/*[local-name()='Interval']\");"
+                         "if(($null -eq $n) -or [Xml.XmlConvert]::ToTimeSpan($n.InnerText).TotalSeconds -ne 600)"
+                         "{throw 'TaskInterval'};")
+    parts.extend(["Start-ScheduledTask -TaskName "+quote(PREFIX+"Sample")+";",
+                  "}catch{foreach($n in $created){Unregister-ScheduledTask -TaskName $n -Confirm:$false "
+                  "-ErrorAction SilentlyContinue};throw};'VERIFIED'"])
+    if ps("".join(parts))!="VERIFIED":
+        raise RuntimeError("schedule_verification")
+
+
+def main():
+    if os.name!="nt" or sys.version_info < (3,12):
+        raise ValueError("host_requirement")
+    worker=Path(os.environ["PROGRAMDATA"])/"NasurayaModelWorker"
+    if worker.is_symlink() or worker.is_junction() or read(worker/"owner.json")!={"schema":"nasuraya-model-worker/1"}:
+        raise ValueError("worker_owner")
+    root=worker/"research-20261108"
+    owner=root/"owner.json"
+    if root.exists() and (root.is_symlink() or root.is_junction() or not owner.is_file() or read(owner)!={"schema":SCHEMA}):
+        raise ValueError("session_owner")
+    root.mkdir(exist_ok=True)
+    # The protected worker tree grants access to SYSTEM and administrators.
+    acl=ps("$bad=@();foreach($p in @("+quote(worker)+","+quote(root)+")){"
+           "$rules=(Get-Acl -LiteralPath $p).GetAccessRules($true,$true,[Security.Principal.SecurityIdentifier]);"
+           "foreach($r in $rules){if($r.AccessControlType -eq 'Allow' -and "
+           "$r.IdentityReference.Value -notin @('S-1-5-18','S-1-5-32-544')){$bad+='acl'}}};$bad")
+    if acl:
+        raise ValueError("private_acl_required")
+    if not owner.exists():
+        emit_json(owner,{"schema":SCHEMA})
+    data=json.loads(zlib.decompress(base64.b85decode(PACK)))
+    if set(data)!=set(HASHES):
+        raise ValueError("package_manifest")
+    for name, code in data.items():
+        raw=code.encode("utf-8")
+        path=root/name
+        if sha(raw)!=HASHES[name] or (path.exists() and (path.is_symlink() or path.read_bytes()!=raw)):
+            raise ValueError("source_conflict")
+        if not path.exists():
+            emit(path,raw)
+    config=root/"config.json"
+    if config.exists():
+        cfg=read(config)
+        if cfg["schema"]!=SCHEMA or cfg["hashes"]!=HASHES or cfg["reference_deadline"]!=DEADLINE:
+            raise ValueError("config_conflict")
+        if time.time()>=cfg["deadline"]:
+            return "EVENING=WINDOW_CLOSED;END=2100TEHRAN"
+    else:
+        offset=reference(worker/WORKER)
+        cfg={"schema":SCHEMA,"started":int(time.time()),"deadline":int(round(DEADLINE+offset)),
+             "reference_deadline":DEADLINE,"offset":offset,"hashes":HASHES}
+        emit_json(config,cfg)
+    register(root,cfg)
+    until=time.monotonic()+12
+    while time.monotonic()<until:
+        if (root/"progress.json").is_file():
+            r=read(root/"progress.json")
+            return ("EVENING=INSTALLED;SYSTEM=1;S="+str(r["slots"])+";PLAN="+str(r["expected"])+
+                    ";HEALTH="+str(r["health_ok"])+";EVERY=10MIN;END=2100TEHRAN;API=0")
+        time.sleep(.5)
+    return "EVENING=SCHEDULED;TASKS=2;SYSTEM=1;FIRST=PENDING;END=2100TEHRAN"
+
+
+if __name__=="__main__":
+    try:
+        summary=main()
+    except Exception as exc:
+        msg=str(exc)
+        detail=msg if isinstance(exc,(ValueError,RuntimeError)) and re.fullmatch(r"[A-Za-z0-9_]{1,60}",msg) else type(exc).__name__
+        summary="EVENING=INSTALL_FAILED;ERROR="+detail
+    print(json.dumps({"status":"ok","summary":summary},separators=(",",":")))
