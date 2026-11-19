@@ -1,0 +1,29 @@
+name: Tadash Kavakeb three-gazes educational contracts
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_kavakeb_three_gazes.py'
+      - 'tests/test_nasu_kavakeb_three_gazes.py'
+      - 'docs/rituals/MAREFAT_KAVAKEB_THREE_GAZES_V1_FA.md'
+      - '.github/workflows/nasuraya-kavakeb-three-gazes.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Syntax and source-grounding contracts
+        run: |
+          python -B -m py_compile tools/nasu_kavakeb_three_gazes.py tests/test_nasu_kavakeb_three_gazes.py
+          python -B -m unittest discover -s tests -p test_nasu_kavakeb_three_gazes.py -v
+          python tools/nasu_kavakeb_three_gazes.py plan | grep -q PLAN_NOT_PERFORMED
+          python tools/nasu_kavakeb_three_gazes.py demo-square | grep -q MATHEMATICAL_FIXTURE_NOT_A_BOOK_IMAGE_OBSERVATION
