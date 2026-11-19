@@ -1,0 +1,27 @@
+name: Tadash Zurvan world lab contracts
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_zurvan_world_lab.py'
+      - 'tests/test_nasu_zurvan_world_lab.py'
+      - 'docs/tadash/ZURVANISM_WORLD_CANON_V1_FA.md'
+      - '.github/workflows/nasuraya-zurvan-world-lab.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  world-lab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        python-version: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Syntax and bounded fake-inference tests only
+        run: |
+          python -m py_compile tools/nasu_zurvan_world_lab.py tests/test_nasu_zurvan_world_lab.py
+          python -B -m unittest discover -s tests -p test_nasu_zurvan_world_lab.py -v
