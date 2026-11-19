@@ -1,0 +1,40 @@
+name: Nasuraya server agent deployment contracts
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_live_integration.py'
+      - 'tools/nasu_agent_diagnostics.py'
+      - 'tools/install_nasu_server_agent.py'
+      - 'tools/nasu_autonomous_cognition.py'
+      - 'tools/nasu_unified_status.py'
+      - 'tools/nasu_evidence_to_experiment.py'
+      - 'tests/test_nasu_live_integration.py'
+      - 'tests/test_nasu_agent_diagnostics.py'
+      - 'tests/test_install_nasu_server_agent.py'
+      - 'tests/test_nasu_autonomous_cognition.py'
+      - '.github/workflows/nasuraya-server-agent.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Existing cognition and adapters
+        run: |
+          python -B -m unittest discover -s tests -p test_nasu_autonomous_cognition.py -v
+          python -B -m unittest discover -s tests -p test_nasu_unified_status.py -v
+          python -B -m unittest discover -s tests -p test_nasu_evidence_to_experiment.py -v
+      - name: Live runtime, private diagnostics and reversible installation contracts
+        run: |
+          python -B -m unittest discover -s tests -p test_nasu_live_integration.py -v
+          python -B -m unittest discover -s tests -p test_nasu_agent_diagnostics.py -v
+          python -B -m unittest discover -s tests -p test_install_nasu_server_agent.py -v
+      - name: Compile deployment modules
+        run: python -m py_compile tools/nasu_live_integration.py tools/nasu_agent_diagnostics.py tools/install_nasu_server_agent.py
+

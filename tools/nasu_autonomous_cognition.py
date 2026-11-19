@@ -11,7 +11,11 @@ import subprocess
 import sys
 import urllib.request
 
-ROOT = Path("/opt/zohraya")
+# An administrator-managed systemd drop-in can pin source/tests to an immutable
+# release without modifying a divergent /opt checkout or the live journal.
+ROOT = Path(os.environ.get("NASU_COGNITION_SOURCE_ROOT", "/opt/zohraya"))
+if not ROOT.is_absolute():
+    raise ValueError("Cognition source root must be absolute")
 STATE = Path("/var/lib/nasuraya/cognitive-growth")
 MODEL = "qwen3:4b-instruct"
 URL = "http://127.0.0.1:11434/api/generate"
@@ -248,3 +252,4 @@ def main(args):
 
 if __name__ == "__main__":
     main(sys.argv[1:])
+

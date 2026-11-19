@@ -202,5 +202,24 @@ class GrowthTests(unittest.TestCase):
         with self.assertRaises(SyntaxError):
             growth.source("continuity",root)
 
+    def test_installed_runtime_reads_source_from_pinned_release(self):
+        import runpy
+        with tempfile.TemporaryDirectory() as folder:
+            release = Path(folder)
+            expected = release / growth.TOPICS["continuity"][0]
+            expected.parent.mkdir(parents=True)
+            expected.write_text("PINNED_RELEASE_SOURCE = True\n")
+            with mock.patch.dict(os.environ, {"NASU_COGNITION_SOURCE_ROOT": str(release)}):
+                deployed = runpy.run_path(str(Path(growth.__file__)))
+            evidence = deployed["source"]("continuity")
+            self.assertEqual(evidence["excerpt"], "PINNED_RELEASE_SOURCE = True\n")
+
+    def test_relative_deployment_source_is_rejected(self):
+        import runpy
+        with mock.patch.dict(os.environ, {"NASU_COGNITION_SOURCE_ROOT": "relative/release"}):
+            with self.assertRaisesRegex(ValueError, "absolute"):
+                runpy.run_path(str(Path(growth.__file__)))
+
 if __name__ == "__main__":
     unittest.main()
+
