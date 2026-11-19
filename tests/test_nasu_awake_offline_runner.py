@@ -19,6 +19,11 @@ class RunnerTests(unittest.TestCase):
         self.temp=tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
         home=Path(self.temp.name)
+        # Isolate HOME as well as STATE: a production migration manifest must
+        # never redirect a test backup to the live Awake database.
+        home_patch=patch.object(runner,"HOME",home)
+        home_patch.start()
+        self.addCleanup(home_patch.stop)
         self.state=home/"awake-stage"
         self.state.mkdir()
         self.ledger=home/"continuity.sqlite3"
