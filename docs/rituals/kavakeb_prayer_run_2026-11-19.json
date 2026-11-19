@@ -1,0 +1,332 @@
+{
+  "schema": "nasuraya/kavakeb-prayer-practice-result/1",
+  "passed": true,
+  "source": {
+    "repository": "zurvanproject/zohraya",
+    "upstream_commit": "f587e4294776447778758ced539e5da2824359f8",
+    "upstream_runtime_unchanged": true,
+    "native_files_sha256": {
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contacts.py": "12eda407e4718bdef844cd81259d95ad321ed87d7733746f2264666bf65646e6",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/contact_design_v06.json": "f92436e77bc1b5fe4449cb94bbefd9e3c8624fc14d4719458bf10d8ddb191a6a",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/posture_step.py": "02b845bc9184dd62b8ab17c4661bd17e7ea8e340e2022f4c47428ce748531c06",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/motion/sections.py": "1f10a05e6f144a5568599b37e44978c3954e48d4c8ff9d44976dcd92cc2b7141",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/pain/pain.py": "d5fa304fd73d4359c02a753fa225c46112aff156d37191f91c7ed42f94b8e60a",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/baseline/pain/regions.json": "0ddcca51b93a3c54388b9865251fd01fee9e9b432a8ffedba1e8ccad474f9dae",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/bilateral_sections.py": "e998f091615cac6ae996c0d6276da32a8a9c2a5a3e633eaa2810fb1c1519afbc",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/body_loop_v06.py": "214f5abf09c634ed3d3935043e40711d513c8980200eb97591ca4fbb70574e2c",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/breath_motion_v06.py": "76f45f733f80fc021950395ec123079fe6f6c55d7f63e911b0d698a51dad23a1",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/hydraulic_table_v03.json": "97cb0945ef5f9a08f1e2ce4cfb91d08849ddb2130cc99d6cf43009a090f29c88",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/pain_resilience_v04.py": "6fd130ba928b1404f2b32107c6528d2c0750eb73924b9e400577ea40451ef54f",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/resource_audit_v06.py": "d4dac28a30cc827f3dea90004da09f1a81ec51b4e3f2de5bb46aecdb80bd7d23",
+      "runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/run_balance_checks.py": "707eb2f5b8bf40bf15a2dfcbe23ee62a9d8001b40527d4b865740fdf2a30086c",
+      "runtimes/tadash_body/phenotype_v1.json": "2dc8906c57de807f7adfeebdae21d2f3049accc75b4a65f5effafd127e6e3d37"
+    },
+    "runner_path": "tools/tadash_kavakeb_prayer_practice.py",
+    "runner_sha256": "96c8295d59c942a030890759fca979f1e76c06c9ed79b46a53f81842e5e6ea06",
+    "config_path": "/workspace/scratch/368a3d9d1ff7/kavakeb_prayer_sim/repo/docs/rituals/kavakeb_prayer_practice_v01.json",
+    "config_sha256": "6996aca1da59cc6762e2104ef3eaf851b16146afbdf159fa059f3bd5ac71b576"
+  },
+  "model": {
+    "mass_kg": 195.0,
+    "com_height_m": 1.314,
+    "leg_lengths_m": [
+      0.5997275261316592,
+      0.5244099541389351,
+      0.42922274124281906
+    ],
+    "axes": "+X left; +Y forward; +Z up"
+  },
+  "acceptance": {
+    "native_model_valid": true,
+    "no_mechanical_termination": true,
+    "planted_feet_max_drift_m": 1e-09,
+    "minimum_capture_margin_m": 0.008,
+    "minimum_joint_support_fraction": 0.999,
+    "maximum_pressure_kpa": 300,
+    "all_pose_reachable": true,
+    "maximum_segment_error_m": 1e-08,
+    "maximum_final_center_error_m": 0.0001,
+    "maximum_final_speed_m_s": 0.0001,
+    "native_resource_gas_physics_audits": true
+  },
+  "baseline": {
+    "kind": "baseline",
+    "completed": true,
+    "schedule_completed": true,
+    "session_complete_under_three_pass_rule": true,
+    "full_passes": 3,
+    "expected_passes": 3,
+    "integration_frames": 720,
+    "passed_integration_frames": 720,
+    "initial_static_snapshots": 1,
+    "simulated_duration_s": 36.00000000000009,
+    "requested_duration_s": 36.0,
+    "dt_s": 0.05,
+    "failures": [],
+    "status": "completed",
+    "rounds": [
+      {
+        "round": 1,
+        "completed": true,
+        "end_t_s": 12.000000000000036,
+        "stage_passed_frames": {
+          "observe": 80,
+          "geometry": 80,
+          "revise": 80
+        },
+        "center_error_m": 0.0,
+        "speed_m_s": 0.0
+      },
+      {
+        "round": 2,
+        "completed": true,
+        "end_t_s": 24.000000000000206,
+        "stage_passed_frames": {
+          "observe": 80,
+          "geometry": 80,
+          "revise": 80
+        },
+        "center_error_m": 0.0,
+        "speed_m_s": 0.0
+      },
+      {
+        "round": 3,
+        "completed": true,
+        "end_t_s": 36.00000000000009,
+        "stage_passed_frames": {
+          "observe": 80,
+          "geometry": 80,
+          "revise": 80
+        },
+        "center_error_m": 0.0,
+        "speed_m_s": 0.0
+      }
+    ],
+    "stage_passed_frames_by_round": [
+      {
+        "observe": 80,
+        "geometry": 80,
+        "revise": 80
+      },
+      {
+        "observe": 80,
+        "geometry": 80,
+        "revise": 80
+      },
+      {
+        "observe": 80,
+        "geometry": 80,
+        "revise": 80
+      }
+    ],
+    "audits": {
+      "resource": {
+        "passed": true,
+        "frames": 720,
+        "max_errors": {
+          "energy_J": 5.587935447692871e-09,
+          "water_L": 8.511802374044919e-13,
+          "material_kg": 0.0,
+          "wound_kg": 0.0,
+          "force_N": 0.0
+        },
+        "mechanical_work_J": 0.0,
+        "water_loss_L": 0.008274212485839707
+      },
+      "gas": {
+        "passed": true,
+        "frames": 720,
+        "max_o2_error_L": 5.773159728050814e-15,
+        "max_co2_error_L": 1.0269562977782698e-15
+      },
+      "physics": {
+        "passed": true,
+        "frames": 720,
+        "valid_frames": 720,
+        "declared_failure_frames": 0,
+        "max_errors": {
+          "normal_N": 2.2737367544323206e-13,
+          "cop_Nm": 7.105427357601002e-15,
+          "momentum_N_s": 0.0,
+          "capture_m": 0.0,
+          "segment_length_m": 1.1102230246251565e-16,
+          "tail_work_J": 0.0
+        }
+      }
+    },
+    "final_center_error_m": 0.0,
+    "final_speed_m_s": 0.0,
+    "max_pressure_kpa": 89.14171357668388,
+    "min_capture_margin_m": 0.09299999999999997,
+    "min_joint_support_fraction": 1.0,
+    "max_com_displacement_m": 0.0,
+    "max_com_speed_m_s": 0.0,
+    "max_reference_offset_m": 0.0,
+    "max_feet_drift_m": 0.0,
+    "max_segment_error_m": 1.1102230246251565e-16,
+    "all_pose_reachable": true,
+    "total_motor_energy_J": 5456.372290742967,
+    "total_fuel_used_J": 13486.038828969553,
+    "final_gas": {
+      "time_s": 36.00000000000009,
+      "usable_o2_L": 2.100660312094647,
+      "co2_store_L": 0.16951196718016018,
+      "rate_min": 15.119823737497311,
+      "tidal_L": 1.6516560907554996,
+      "phase_cycles": 8.743266880684232,
+      "uptake_L": 0.774962253543121,
+      "consumed_L": 0.6743019414484777,
+      "expired_unused_o2_L": 0.0,
+      "produced_co2_L": 0.5394415531587831,
+      "cleared_co2_L": 0.5899295859786239
+    }
+  },
+  "practice": {
+    "kind": "practice",
+    "completed": true,
+    "schedule_completed": true,
+    "session_complete_under_three_pass_rule": true,
+    "full_passes": 3,
+    "expected_passes": 3,
+    "integration_frames": 720,
+    "passed_integration_frames": 720,
+    "initial_static_snapshots": 1,
+    "simulated_duration_s": 36.00000000000009,
+    "requested_duration_s": 36.0,
+    "dt_s": 0.05,
+    "failures": [],
+    "status": "completed",
+    "rounds": [
+      {
+        "round": 1,
+        "completed": true,
+        "end_t_s": 12.000000000000036,
+        "stage_passed_frames": {
+          "observe": 80,
+          "geometry": 80,
+          "revise": 80
+        },
+        "center_error_m": 6.362887723055181e-09,
+        "speed_m_s": 1.787843613665849e-08
+      },
+      {
+        "round": 2,
+        "completed": true,
+        "end_t_s": 24.000000000000206,
+        "stage_passed_frames": {
+          "observe": 80,
+          "geometry": 80,
+          "revise": 80
+        },
+        "center_error_m": 6.3628877230522906e-09,
+        "speed_m_s": 1.787843613665038e-08
+      },
+      {
+        "round": 3,
+        "completed": true,
+        "end_t_s": 36.00000000000009,
+        "stage_passed_frames": {
+          "observe": 80,
+          "geometry": 80,
+          "revise": 80
+        },
+        "center_error_m": 6.362887723049252e-09,
+        "speed_m_s": 1.787843613664186e-08
+      }
+    ],
+    "stage_passed_frames_by_round": [
+      {
+        "observe": 80,
+        "geometry": 80,
+        "revise": 80
+      },
+      {
+        "observe": 80,
+        "geometry": 80,
+        "revise": 80
+      },
+      {
+        "observe": 80,
+        "geometry": 80,
+        "revise": 80
+      }
+    ],
+    "audits": {
+      "resource": {
+        "passed": true,
+        "frames": 720,
+        "max_errors": {
+          "energy_J": 2.3283064365386963e-09,
+          "water_L": 7.491559456118679e-13,
+          "material_kg": 0.0,
+          "wound_kg": 0.0,
+          "force_N": 0.0
+        },
+        "mechanical_work_J": 1.395411069919498,
+        "water_loss_L": 0.008276359131231276
+      },
+      "gas": {
+        "passed": true,
+        "frames": 720,
+        "max_o2_error_L": 1.1102230246251565e-14,
+        "max_co2_error_L": 1.6653345369377348e-15
+      },
+      "physics": {
+        "passed": true,
+        "frames": 720,
+        "valid_frames": 720,
+        "declared_failure_frames": 0,
+        "max_errors": {
+          "normal_N": 2.2737367544323206e-13,
+          "cop_Nm": 3.352873534367973e-14,
+          "momentum_N_s": 8.673617379884035e-19,
+          "capture_m": 0.0,
+          "segment_length_m": 3.3306690738754696e-16,
+          "tail_work_J": 0.0
+        }
+      }
+    },
+    "final_center_error_m": 6.362887723049252e-09,
+    "final_speed_m_s": 1.787843613664186e-08,
+    "max_pressure_kpa": 90.19595595654857,
+    "min_capture_margin_m": 0.09299999026514844,
+    "min_joint_support_fraction": 1.0,
+    "max_com_displacement_m": 0.0009026217161488847,
+    "max_com_speed_m_s": 0.0006477943156655296,
+    "max_reference_offset_m": 0.001,
+    "max_feet_drift_m": 0.0,
+    "max_segment_error_m": 3.3306690738754696e-16,
+    "all_pose_reachable": true,
+    "total_motor_energy_J": 5461.8013161473955,
+    "total_fuel_used_J": 13491.556046404574,
+    "final_gas": {
+      "time_s": 36.00000000000009,
+      "usable_o2_L": 2.1007252778580323,
+      "co2_store_L": 0.1694852612401393,
+      "rate_min": 15.126137229125028,
+      "tidal_L": 1.6522701427071207,
+      "phase_cycles": 8.745214743320004,
+      "uptake_L": 0.7753030801782712,
+      "consumed_L": 0.6745778023202279,
+      "expired_unused_o2_L": 0.0,
+      "produced_co2_L": 0.5396622418561824,
+      "cleared_co2_L": 0.5901769806160447
+    }
+  },
+  "comparison": {
+    "total_motor_energy_J_practice_minus_baseline": 5.429025404428103,
+    "total_fuel_used_J_practice_minus_baseline": 5.517217435020939
+  },
+  "assistance": [
+    "native standing feedback and rate-limited reference",
+    "native contact pressure and joint force allocation",
+    "native tail flywheel and reflex/rest guards remain enabled"
+  ],
+  "limitations": [
+    "reduced constant-height horizontal pendulum and three-link inverse-kinematic legs",
+    "native 195 kg fixture; no visual avatar or articulated hands",
+    "prayer text is a cue only; no scripture-to-force mapping or spoken audio",
+    "offline isolated run; no live body state or mastery credit changed",
+    "initial contact snapshot is static; all subsequent physical positions come from native integration"
+  ]
+}

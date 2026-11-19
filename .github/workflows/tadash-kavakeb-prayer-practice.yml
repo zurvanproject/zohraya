@@ -1,0 +1,36 @@
+name: Tadash Kavakeb prayer practice (offline)
+
+on:
+  pull_request:
+    paths:
+      - 'tools/tadash_kavakeb_prayer_practice.py'
+      - 'tests/test_tadash_kavakeb_prayer_practice.py'
+      - 'docs/rituals/kavakeb_prayer_practice_v01.json'
+      - 'runtimes/tadash_body/base_v09/tadash_renal_v09/retained_v08/body_v06/**'
+      - '.github/workflows/tadash-kavakeb-prayer-practice.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'tools/tadash_kavakeb_prayer_practice.py'
+      - 'tests/test_tadash_kavakeb_prayer_practice.py'
+      - 'docs/rituals/kavakeb_prayer_practice_v01.json'
+      - '.github/workflows/tadash-kavakeb-prayer-practice.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  practice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Check adapter boundaries and stop behavior
+        run: python3 -B -m unittest discover -s tests -p 'test_tadash_kavakeb_prayer_practice.py' -v
+      - name: Execute three complete rounds and matched standing baseline
+        run: python3 -B -m tools.tadash_kavakeb_prayer_practice --output /tmp/kavakeb-prayer-practice --audit
+

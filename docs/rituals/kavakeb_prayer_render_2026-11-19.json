@@ -1,0 +1,50 @@
+{
+  "source_sha256": "3302b079baab39b6e8b491310aa38bf7ecff1d590710c8441f3343b98d038af7",
+  "renderer_sha256": "7c815d8d6a5a8170389a0bc9827e7ac5072282eaf93cb88853ef7ddee1b18b33",
+  "source_schema": "nasuraya/kavakeb-prayer-practice-trace/1",
+  "source_dt_s": 0.05,
+  "source_states": 721,
+  "source_start_s": 0.0,
+  "source_terminal_s": 36.00000000000009,
+  "video_fps": 10,
+  "video_frames": 360,
+  "video_duration_s": 36.0,
+  "video_sampling": "Every second source state at t_start + n/10; terminal state is not held for an extra frame.",
+  "interpolation": false,
+  "loops": false,
+  "audio_track": false,
+  "preview_source_index": 360,
+  "preview_source_time_s": 18.00000000000012,
+  "resolution": [
+    1280,
+    720
+  ],
+  "contact_rendering": "Exactly three toe disks and one ball/pad disk per foot; disks preserve supplied area.",
+  "kinematics_rendering": "Fixed oblique linear projection of supplied hip/knee/ankle/foot_anchor coordinates, equal scale.",
+  "persian_shaping": {
+    "libraqm": true,
+    "font": "/usr/share/fonts/truetype/noto/NotoSansArabic-Regular.ttf"
+  },
+  "min_capture_margin_mm": 92.99999026514844,
+  "max_pressure_kpa": 90.19595595654857,
+  "max_com_speed_mm_s": 0.6477943156655296,
+  "failed_source_states": 0,
+  "rendered_video": true,
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "pix_fmt": "yuv420p",
+        "avg_frame_rate": "10/1",
+        "nb_frames": "360"
+      }
+    ],
+    "format": {
+      "duration": "36.000000"
+    }
+  }
+}
