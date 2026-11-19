@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 from typing import Protocol
 
+from tools.atmosphere_policy import authorize
+
 
 @dataclass(frozen=True)
 class State:
@@ -110,6 +112,12 @@ class ToolHost:
             elif arguments:
                 raise ToolRejected("tool accepts no arguments")
             mutating = name in ("recover", "process_job")
+            # The host controls mode/provenance; model-supplied arguments cannot
+            # promote their own authority. Keep existing budget/state guards.
+            verdict = authorize("agent_workshop", name, mode=self.mode,
+                                source_verified=True)
+            if not verdict.allowed:
+                raise ToolRejected("atmosphere: " + verdict.reason)
             if mutating:
                 if not self.observed:
                     raise ToolRejected("observe_state required before acting")

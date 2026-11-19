@@ -10,6 +10,12 @@ fi
 install -d -o nasuraya -g nasuraya -m 700 /var/lib/nasuraya
 install -d -o root -g root -m 755 /usr/local/lib/nasuraya
 install -o root -g root -m 755 "$SRC" /usr/local/lib/nasuraya/bridge.py
+GUARD_SRC="/opt/zohraya/tools/atmosphere_guard.py"
+if [[ ! -f "$GUARD_SRC" ]]; then echo "Missing Atmosphere guard; refusing unguarded install"; exit 1; fi
+POLICY_SRC="/opt/zohraya/tools/atmosphere_policy.py"
+if [[ ! -f "$POLICY_SRC" ]]; then echo "Missing Atmosphere shared policy; refusing incomplete install"; exit 1; fi
+install -o root -g root -m 644 "$POLICY_SRC" /usr/local/lib/nasuraya/atmosphere_policy.py
+install -o root -g root -m 644 "$GUARD_SRC" /usr/local/lib/nasuraya/atmosphere_guard.py
 if [[ ! -d /var/lib/nasuraya/zohraya/.git ]]; then
   runuser -u nasuraya -- git clone --depth 1 https://github.com/zurvanproject/zohraya.git /var/lib/nasuraya/zohraya
 fi
