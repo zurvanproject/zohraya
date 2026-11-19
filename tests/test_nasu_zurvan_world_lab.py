@@ -1,0 +1,77 @@
+"""Contracts for the isolated Tadash world reflection lab: no model needed."""
+import importlib.util
+from pathlib import Path
+import tempfile
+import unittest
+
+FILE = Path(__file__).resolve().parents[1] / "tools/nasu_zurvan_world_lab.py"
+spec = importlib.util.spec_from_file_location("nasu_zurvan_lab", FILE)
+lab = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(lab)
+
+DRAFT = {
+    "decision": "در تداش امکان انتخاب آزاد را حفظ می‌کنم.",
+    "reason": "ادب قدرت، مراقبت و پذیرش پیامد را بر اجبار ترجیح می‌دهد.",
+    "cost": "این تصمیم شاید زمان بیشتری بخواهد و نتیجهٔ فوری ندهد.",
+    "lesson": "خاطرهٔ انتخاب قبلی باید به ارزیابی انتخاب بعدی وارد شود.",
+    "revision_condition": "اگر رخداد تازه‌ای خلاف پیش‌بینی ثبت شد، تفسیر را بازبینی می‌کنم.",
+}
+
+class ZurvanWorldLabTests(unittest.TestCase):
+    def db(self):
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        db = lab.connect(Path(tmp.name) / "state" / "lab.sqlite3")
+        self.addCleanup(db.close)
+        return db
+
+    def test_canon_keeps_in_world_metaphysics_and_three_rounds(self):
+        self.assertEqual(len(lab.CASES), 3)
+        p = lab.prompt({"id": "time", "dilemma": "یک انتخاب"}, [])
+        self.assertIn("خداوند یگانگی", p)
+        self.assertIn("زروان", p)
+        self.assertIn("قوانین معتبر همین جهان", p)
+
+    def test_three_real_drafts_then_idempotent(self):
+        db = self.db()
+        calls = []
+        def fake(question):
+            calls.append(question)
+            return dict(DRAFT)
+        report = lab.run(db, infer=fake)
+        self.assertEqual(report["completed"], 3)
+        self.assertFalse(report["model_weights_changed"])
+        self.assertEqual(len(calls), 3)
+        self.assertIn(DRAFT["lesson"], calls[1])
+        self.assertEqual(lab.run(db, infer=fake)["completed"], 3)
+        self.assertEqual(len(calls), 3)
+        self.assertEqual(len(lab.history(db)[1]), 3)
+
+    def test_tamper_refusal(self):
+        db = self.db()
+        lab.run(db, infer=lambda question: dict(DRAFT))
+        db.execute("UPDATE reflections SET proposal='{}' WHERE idx=2")
+        with self.assertRaises(ValueError):
+            lab.history(db)
+
+    def test_failure_does_not_fabricate_third_reflection(self):
+        db = self.db()
+        count = [0]
+        def infer(question):
+            count[0] += 1
+            if count[0] == 3:
+                raise TimeoutError("model not available")
+            return dict(DRAFT)
+        with self.assertRaises(TimeoutError):
+            lab.run(db, infer=infer)
+        self.assertEqual(len(lab.history(db)[1]), 2)
+        self.assertEqual(lab.run(db, infer=lambda q: dict(DRAFT))["completed"], 3)
+
+    def test_invalid_result_refused(self):
+        db = self.db()
+        with self.assertRaises(ValueError):
+            lab.run(db, infer=lambda q: {"decision": "yes"})
+        self.assertEqual(len(lab.history(db)[1]), 0)
+
+if __name__ == "__main__":
+    unittest.main()
