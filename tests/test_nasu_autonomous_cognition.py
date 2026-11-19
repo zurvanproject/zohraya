@@ -245,6 +245,54 @@ class GrowthTests(unittest.TestCase):
                                    side_effect=ValueError("CHANGED_RECEIPT")):
                 self.assertIsNone(growth._identity_for_prompt())
 
+    def test_verified_growth_memory_shapes_next_decision_and_survives_restarts(self):
+        root, db = self.fixture()
+        observed = []
+        def infer(topic, evidence, previous, fixed):
+            observed.append(previous)
+            return dict(DRAFT)
+        growth.run(db, now=self.clock(1), root=root, infer=infer,
+                   tester=lambda *args: "PASS")
+        growth.run(db, now=self.clock(8), root=root, infer=infer,
+                   tester=lambda *args: "PASS")
+        self.assertEqual(observed[0]["recent_growth_memory"], [])
+        prior = observed[1]
+        self.assertEqual(prior["last_draft"]["hypothesis"], DRAFT["hypothesis"])
+        self.assertEqual(len(prior["recent_growth_memory"]), 1)
+        history = prior["recent_growth_memory"][0]
+        self.assertEqual(history["topic"], "continuity")
+        self.assertEqual(history["hypothesis"], DRAFT["hypothesis"])
+        self.assertEqual(history["model_status"], "UNVERIFIED_DRAFT")
+        self.assertEqual(len(history["receipt_sha"]), 64)
+        db.close()
+        reopened = growth.connect(root / "journal" / "cycles.sqlite3")
+        self.addCleanup(reopened.close)
+        self.assertEqual(len(growth.recent_growth_memory(reopened)), 2)
+
+    def test_tampered_growth_history_is_never_used(self):
+        root, db = self.fixture()
+        growth.run(db, now=self.clock(1), root=root,
+                   infer=lambda *args: dict(DRAFT), tester=lambda *args: "PASS")
+        db.execute("UPDATE cycles SET proposal='{}'")
+        with self.assertRaises(ValueError):
+            growth.recent_growth_memory(db)
+
+    def test_growth_memory_reaches_local_prompt_without_claiming_success(self):
+        reply = json.dumps({"done": True, "response": json.dumps(DRAFT)}).encode()
+        requests = []
+        def fake(request, *, timeout):
+            requests.append(json.loads(request.data))
+            return io.BytesIO(reply)
+        previous = {"last_draft": dict(DRAFT),
+                    "recent_growth_memory": [{"topic": "continuity",
+                        "model_status": "UNVERIFIED_DRAFT",
+                        "limitation": "A past suggestion was not deployed."}]}
+        growth.local_llm("continuity",
+                         {"path": "x", "sha256": "digest", "excerpt": "x=1"},
+                         previous, "PASS", opener=fake)
+        self.assertIn("A past suggestion was not deployed.", requests[0]["prompt"])
+        self.assertIn("NOT proof", requests[0]["prompt"])
+
     def test_post_write_change_is_detected(self):
         root, db = self.fixture()
         growth.run(db, now=self.clock(1), root=root,
