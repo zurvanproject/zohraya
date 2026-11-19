@@ -1,5 +1,7 @@
 """Contracts for the isolated Tadash world reflection lab: no model needed."""
 import importlib.util
+import io
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -61,6 +63,32 @@ class ZurvanWorldLabTests(unittest.TestCase):
         self.assertEqual(len(lab.history(db)[1]), 6)
         self.assertEqual(lab.run(db, infer=infer, episode="2026-11-20")["total_reflections"], 6)
         self.assertEqual(len(calls), 6)
+
+    def test_truncated_json_retries_once_with_bounded_generation(self):
+        responses = [
+            json.dumps({"done": True, "response": '{"decision": "unfinished'}).encode(),
+            json.dumps({"done": True, "response": json.dumps(DRAFT, ensure_ascii=False)}).encode(),
+        ]
+        requests = []
+        def local(request, *, timeout):
+            requests.append(json.loads(request.data))
+            self.assertEqual(timeout, 145)
+            return io.BytesIO(responses.pop(0))
+        self.assertEqual(lab.qwen_once("تداش", opener=local), DRAFT)
+        self.assertEqual(len(requests), 2)
+        self.assertTrue(all(r["format"] == "json" for r in requests))
+        self.assertEqual(requests[0]["options"]["num_predict"], 1100)
+        self.assertEqual(requests[1]["options"]["num_predict"], 1500)
+
+    def test_twice_truncated_json_fails_after_two_calls(self):
+        count = [0]
+        def local(request, *, timeout):
+            count[0] += 1
+            return io.BytesIO(json.dumps(
+                {"done": True, "response": '{"decision": "unfinished'}).encode())
+        with self.assertRaisesRegex(ValueError, "INVALID_MODEL_JSON_AFTER_BOUNDED_RETRY"):
+            lab.qwen_once("تداش", opener=local)
+        self.assertEqual(count[0], 2)
 
     def test_tamper_refusal(self):
         db = self.db()
