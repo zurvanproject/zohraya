@@ -1,0 +1,136 @@
+{
+  "schema": "nasuraya.public-ci-witness.snapshot.v1",
+  "source_kind": "observed_public_github_actions_metadata",
+  "captured_date_utc": "2026-11-10",
+  "limitations": [
+    "Provider-reported public GitHub metadata, not cryptographically attested.",
+    "Small hand-picked sample, not an independently sampled real-world benchmark.",
+    "A successful CI workflow is not a confirmed deploy or VPS execution."
+  ],
+  "repository": "zurvanproject/zohraya",
+  "runs": [
+    {
+      "run_id": 42861153251,
+      "workflow": "DIOS NOUS v0.2 equal-information falsification",
+      "head_sha": "d745d1e38a7166784babf8c92e10bd90c58bb00a",
+      "run_status": "completed",
+      "run_conclusion": "failure",
+      "jobs": [
+        {
+          "job_id": 129987312914,
+          "name": "dev (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "job_id": 129987313381,
+          "name": "dev (windows-2022)",
+          "status": "completed",
+          "conclusion": "failure"
+        },
+        {
+          "job_id": 129987977383,
+          "name": "heldout",
+          "status": "completed",
+          "conclusion": "skipped"
+        }
+      ]
+    },
+    {
+      "run_id": 42861516737,
+      "workflow": "DIOS NOUS v0.2 equal-information falsification",
+      "head_sha": "d78e5272300c28729c54c4a61a52593f297b055d",
+      "run_status": "completed",
+      "run_conclusion": "success",
+      "jobs": [
+        {
+          "job_id": 129988592259,
+          "name": "dev (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "job_id": 129988592893,
+          "name": "dev (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "job_id": 129989020409,
+          "name": "heldout",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 42850849443,
+      "workflow": "DIOS NOUS source-aware temporal revision (no network)",
+      "head_sha": "fc748536c56aa5023bf7d7e2691ffa70fcb6bf10",
+      "run_status": "completed",
+      "run_conclusion": "success",
+      "jobs": [
+        {
+          "job_id": 129950783409,
+          "name": "development (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "job_id": 129950783805,
+          "name": "development (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "job_id": 129951080370,
+          "name": "holdout",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 42846878619,
+      "workflow": "Nasuraya whole-body atlas inventory (offline)",
+      "head_sha": "f1c93810abf83bea894ceda2801c3771716c5b30",
+      "run_status": "completed",
+      "run_conclusion": "success",
+      "jobs": [
+        {
+          "job_id": 129936616187,
+          "name": "inventory (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "job_id": 129936616452,
+          "name": "inventory (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "run_id": 42841363043,
+      "workflow": "Nasuraya four-way coordination safety checks",
+      "head_sha": "2ad3f35be9a11207d637675931e59de8bcd5fed0",
+      "run_status": "completed",
+      "run_conclusion": "success",
+      "jobs": [
+        {
+          "job_id": 129917138761,
+          "name": "offline (windows-2022)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "job_id": 129917139347,
+          "name": "offline (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}
