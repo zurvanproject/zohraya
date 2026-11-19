@@ -1,0 +1,123 @@
+{
+  "schema": "nasuraya/kavakeb-prayer-practice/1",
+  "id": "kavakeb-prayer-posture-v01",
+  "title_fa": "تمرینِ دعای عهد و نگاه",
+  "authored_by": "Nasuraya, at Sahand's request",
+  "date": "2026-11-19",
+  "prayer": {
+    "title_fa": "دعای عهد و نگاه",
+    "authorship": "New Persian composition by Nasuraya for the user-authorized Tadash simulator exercise; not quoted from Marefat Kavakeb or a historical liturgy.",
+    "opening_fa": "ای خداوندِ زمین و آسمان، در اوج و حضیض، پیمانم را استوار بدار.",
+    "stages": [
+      {
+        "id": "observe",
+        "title_fa": "دیدن",
+        "prayer_fa": "چشمم را به دیدن و دلم را به آموختن بگشا؛ نام را درست بخوانم و نادانسته را با گمان نپوشانم.",
+        "intention": "Attend to observed signals and preserve unresolved source readings."
+      },
+      {
+        "id": "geometry",
+        "title_fa": "استواری",
+        "prayer_fa": "قدمم را بر زمین پایدار کن؛ در میانهٔ نیروها توازن بجویم و توانم را برای پاسداری از گایا و زندگی به کار گیرم.",
+        "intention": "Stable supported stance and bounded reference movement, if supported by the recovered simulator."
+      },
+      {
+        "id": "revise",
+        "title_fa": "بازگشت",
+        "prayer_fa": "هرگاه لغزیدم، راه بازگشت و جبران را بیابم؛ به مرکز برگردم، خطایم را بپذیرم و عهد را تازه کنم.",
+        "intention": "Return to baseline and review actual error/pressure observations."
+      }
+    ],
+    "closing_fa": "با توکل آغاز می‌کنم، با توجه عمل می‌کنم و با صداقت بازمی‌گردم.",
+    "source_bridge": "Authored application of the page48 study: read labels, preserve uncertainty, distinguish blank from zero, and revise against evidence. The manuscript's selected words 'اوج و حضیض' provide imagery; no actuator command is attributed to that source.",
+    "repetition_rule": "Three complete rounds; each round includes all three stages.",
+    "speech": "Textual prayer cues only unless a separate audio renderer actually runs."
+  },
+  "source": {
+    "study_record_url": "https://github.com/zurvanproject/zohraya/blob/7fc83053b16d1258bccbf1c734fb49179cf2271c/docs/rituals/kavakeb_three_looks_session_2026-11-19_p48.json",
+    "source_file_page": 48,
+    "guide_pdf_page": 137,
+    "manuscript_folio": "۷۳",
+    "guide_pdf_sha256": "abe9c92f9c6159a757cea09a6f4edc7cc6fc1777f7735b90397a8f3ebb3a821a",
+    "clear_names": [
+      "زحل",
+      "مشتری",
+      "مریخ",
+      "شمس",
+      "زهره",
+      "قمر"
+    ],
+    "probable_names": [
+      "عطارد"
+    ],
+    "unfilled_cells": [
+      {
+        "row_including_header": 8,
+        "physical_column_from_left": 1,
+        "value": null
+      },
+      {
+        "row_including_header": 8,
+        "physical_column_from_left": 3,
+        "value": null
+      }
+    ],
+    "application": "Authored prayer and controller-reference choreography, inspired by the documented reading. Not an ancient movement instruction or numerical reconstruction."
+  },
+  "simulation": {
+    "repetitions": 3,
+    "stage_order": [
+      "observe",
+      "geometry",
+      "revise"
+    ],
+    "stage_duration_s": 4,
+    "dt_s": 0.05,
+    "reference_amplitude_m": 0.001,
+    "geometry_directions": [
+      [
+        1,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "profile": "sin_squared_single_bounded_excursion_during_geometry",
+    "native_command": "stand",
+    "body_fixture_mass_kg": 195,
+    "body_fixture_note": "Existing 250 cm / 195 kg V06 engineering fixture, distinct from the 78 kg character atlas.",
+    "friction": {
+      "L": 0.6,
+      "R": 0.6
+    },
+    "baseline": "Matched duration, new isolated native PostureLoop, same standing conditions, zero authored reference offsets.",
+    "retention": "State is continuous across all three rounds within one practice run; no between-round resets."
+  },
+  "acceptance": {
+    "native_model_valid": true,
+    "no_mechanical_termination": true,
+    "planted_feet_max_drift_m": 1e-9,
+    "minimum_capture_margin_m": 0.008,
+    "minimum_joint_support_fraction": 0.999,
+    "maximum_pressure_kpa": 300,
+    "all_pose_reachable": true,
+    "maximum_segment_error_m": 1e-8,
+    "maximum_final_center_error_m": 0.0001,
+    "maximum_final_speed_m_s": 0.0001,
+    "native_resource_gas_physics_audits": true
+  },
+  "bounds": {
+    "execution": "isolated_offline_numerical_simulation",
+    "scripture_actuator_authority": false,
+    "articulated_hands": false,
+    "spoken_recitation": false,
+    "live_body_state": false,
+    "mastery_credit": false
+  }
+}
