@@ -1,0 +1,21 @@
+name: Nasuraya Local Brain contracts
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_local_brain.py'
+      - 'tests/test_nasu_local_brain.py'
+      - '.github/workflows/nasu-local-brain.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  standalone-local-brain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Validate offline report contracts without live Ollama
+        run: python -m unittest discover -s tests -p test_nasu_local_brain.py -v
