@@ -1,0 +1,25 @@
+name: Nasuraya independent metacognition holdout
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_metacognition_holdout.py'
+      - 'tests/test_nasu_metacognition_holdout.py'
+      - 'docs/NASURAYA_METACOGNITION_HOLDOUT_V03_FA.md'
+      - '.github/workflows/nasuraya-metacognition-holdout.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Validate fixed bank and HTTP safety contracts
+        run: |
+          python -m py_compile tools/nasu_metacognition_holdout.py
+          python -B -m unittest discover -s tests -p test_nasu_metacognition_holdout.py -v
+          python -B -m tools.nasu_metacognition_holdout manifest
