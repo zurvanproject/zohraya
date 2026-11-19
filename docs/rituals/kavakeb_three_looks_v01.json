@@ -16,7 +16,8 @@
     },
     "original_pdf_pages": [
       43,
-      46
+      46,
+      47
     ],
     "illustrated_guide": {
       "title": "معرفت کواکب؛ از نسخهٔ کهن تا آموزش مصور",
@@ -34,7 +35,13 @@
         87,
         88
       ],
-      "provenance": "new didactic interpretation, not a quoted ancient ritual"
+      "provenance": "new didactic interpretation, not a quoted ancient ritual",
+      "verified_reproduction_for_scan_page_47": {
+        "guide_pdf_page": 136,
+        "seen_in_chat": "2026-11-19",
+        "original_pdf_hash_rechecked": false,
+        "label": "image of scan page 47 in user-confirmed illustrated book"
+      }
     }
   },
   "stages_per_full_pass": [
@@ -65,5 +72,7 @@
     "autonomous_vps_deployment": false,
     "third_ritual_allowed": false
   },
-  "next_page_after_43": 46
+  "next_page_after_43": 46,
+  "next_page_after_46": 47,
+  "next_page_after_47": 48
 }
