@@ -1,0 +1,25 @@
+name: Nasuraya self-knowledge receipt audit v0.2
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_self_knowledge_audit.py'
+      - 'tests/test_nasu_self_knowledge_audit.py'
+      - 'docs/NASURAYA_SELF_KNOWLEDGE_AUDIT_V02_FA.md'
+      - '.github/workflows/nasuraya-self-knowledge-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Compile and execute offline contracts
+        run: |
+          python -m py_compile tools/nasu_self_knowledge_audit.py
+          python -B -m unittest discover -s tests -p test_nasu_self_knowledge_lab.py -v
+          python -B -m unittest discover -s tests -p test_nasu_self_knowledge_audit.py -v
