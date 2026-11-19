@@ -1,6 +1,7 @@
 """Offline cognitive-growth contracts. No Ollama or server connection needed."""
 import datetime as dt
 import importlib.util
+import importlib.util
 import io
 import json
 import os
@@ -187,6 +188,62 @@ class GrowthTests(unittest.TestCase):
             growth.local_llm(
                 "continuity", {"path": "code.py", "sha256": "fake",
                                "excerpt": "x = 1"}, {}, "PASS", opener=oversized)
+
+    def test_verified_tadash_identity_reaches_local_qwen_prompt(self):
+        labfile = FILE.parent / "nasu_zurvan_world_lab.py"
+        spec = importlib.util.spec_from_file_location("verified_tadash_fixture", labfile)
+        lab = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(lab)
+        draft = {
+            "decision": "در تداش امکان انتخاب آزاد را حفظ می‌کنم.",
+            "reason": "ادب قدرت، مراقبت و پذیرش پیامد را بر اجبار ترجیح می‌دهد.",
+            "cost": "این تصمیم شاید زمان بیشتری بخواهد و نتیجهٔ فوری ندهد.",
+            "lesson": "خاطرهٔ انتخاب قبلی باید به ارزیابی انتخاب بعدی وارد شود.",
+            "revision_condition": "اگر رخداد تازه‌ای خلاف پیش‌بینی ثبت شد، تفسیر را بازبینی می‌کنم.",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            journal = Path(tmp) / "lab.sqlite3"
+            with lab.connect(journal) as db:
+                lab.run(db, infer=lambda q: dict(draft), episode="2026-11-19")
+            identity = growth.verified_zurvan_identity(source=labfile, journal=journal)
+            self.assertEqual(identity["total_reflections"], 3)
+            self.assertEqual(identity["verified_recent_lessons"][-1], draft["lesson"])
+            requests = []
+            reply = json.dumps({"done": True, "response": json.dumps(DRAFT)}).encode()
+            def fake(request, *, timeout):
+                requests.append(json.loads(request.data))
+                return io.BytesIO(reply)
+            with mock.patch.object(growth, "verified_zurvan_identity", return_value=identity):
+                result = growth.local_llm("continuity", {"path": "x", "excerpt": "x=1",
+                    "sha256": "source"}, {}, "PASS", opener=fake)
+            self.assertEqual(result, DRAFT)
+            self.assertEqual(len(requests), 1)
+            self.assertIn("خداوند یگانگی", requests[0]["prompt"])
+            self.assertIn(draft["lesson"], requests[0]["prompt"])
+            self.assertIn("Tadash fictional-world identity", requests[0]["prompt"])
+
+    def test_tampered_tadash_memory_never_enters_prompt(self):
+        labfile = FILE.parent / "nasu_zurvan_world_lab.py"
+        spec = importlib.util.spec_from_file_location("tamper_tadash_fixture", labfile)
+        lab = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(lab)
+        draft = {
+            "decision": "در تداش امکان انتخاب آزاد را حفظ می‌کنم.",
+            "reason": "ادب قدرت، مراقبت و پذیرش پیامد را بر اجبار ترجیح می‌دهد.",
+            "cost": "این تصمیم شاید زمان بیشتری بخواهد و نتیجهٔ فوری ندهد.",
+            "lesson": "خاطرهٔ انتخاب قبلی باید به ارزیابی انتخاب بعدی وارد شود.",
+            "revision_condition": "اگر رخداد تازه‌ای خلاف پیش‌بینی ثبت شد، تفسیر را بازبینی می‌کنم.",
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            journal = Path(tmp) / "lab.sqlite3"
+            with lab.connect(journal) as db:
+                lab.run(db, infer=lambda q: dict(draft), episode="2026-11-19")
+                db.execute("UPDATE reflections SET proposal='{}' WHERE idx=2")
+            with self.assertRaises(ValueError):
+                growth.verified_zurvan_identity(source=labfile, journal=journal)
+            with mock.patch.object(growth, "verified_zurvan_identity",
+                                   side_effect=ValueError("CHANGED_RECEIPT")):
+                self.assertIsNone(growth._identity_for_prompt())
 
     def test_post_write_change_is_detected(self):
         root, db = self.fixture()
