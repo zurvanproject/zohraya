@@ -1,0 +1,22 @@
+{
+  "id": "synthetic_setar_controller",
+  "version": "0.3.1",
+  "entrypoint": "examples.setar_practice.skill:SetarSkill",
+  "cli": "python -m examples.setar_practice",
+  "default_checkpoint": "data/seed_v03.json",
+  "default_checkpoint_sha256": "01ab60d21ba34c628542ad1ae5a75d14573431dd257d4b70d8f64608f339fe31",
+  "actions": [
+    "status",
+    "evaluate",
+    "practice"
+  ],
+  "execution": "explicit_local_only",
+  "default_enabled": false,
+  "network_required": false,
+  "paid_api": false,
+  "training_requires_explicit_timing_mode": true,
+  "body_runtime_connected": false,
+  "physical_hand_control": false,
+  "memory_scope": "dedicated_skill_checkpoint_only",
+  "proof": "evidence/integration_validation.json"
+}

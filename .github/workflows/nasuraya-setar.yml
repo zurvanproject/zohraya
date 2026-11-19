@@ -1,0 +1,35 @@
+name: Nasuraya setar body bridge
+on:
+  pull_request:
+    paths:
+      - 'examples/setar_practice/**'
+      - 'examples/nasuraya_body_loop/**'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-setar.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'examples/setar_practice/**'
+      - 'examples/nasuraya_body_loop/**'
+      - 'runtimes/tadash_body/**'
+      - '.github/workflows/nasuraya-setar.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-setar-body:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Install audio computation dependency
+        run: python -m pip install -r examples/setar_practice/requirements.txt
+      - name: Existing skill regressions and explicit bridge contract tests
+        run: python -m unittest examples.setar_practice.test_integration examples.setar_practice.test_body_bridge examples.setar_practice.test_clocked -v
+      - name: Actual source-verified native body and cold checkpoint integration
+        run: python -m examples.setar_practice.body_cli test
+      - name: Existing bounded body regressions
+        run: python -m examples.nasuraya_body_loop test
