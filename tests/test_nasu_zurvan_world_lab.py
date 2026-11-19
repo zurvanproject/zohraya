@@ -38,18 +38,33 @@ class ZurvanWorldLabTests(unittest.TestCase):
         def fake(question):
             calls.append(question)
             return dict(DRAFT)
-        report = lab.run(db, infer=fake)
-        self.assertEqual(report["completed"], 3)
+        report = lab.run(db, infer=fake, episode='2026-11-19')
+        self.assertEqual(report["completed_today"], 3)
         self.assertFalse(report["model_weights_changed"])
         self.assertEqual(len(calls), 3)
         self.assertIn(DRAFT["lesson"], calls[1])
-        self.assertEqual(lab.run(db, infer=fake)["completed"], 3)
+        self.assertEqual(lab.run(db, infer=fake, episode="2026-11-19")["completed_today"], 3)
         self.assertEqual(len(calls), 3)
         self.assertEqual(len(lab.history(db)[1]), 3)
 
+    def test_next_day_reuses_prior_lessons_without_replaying(self):
+        db = self.db()
+        calls = []
+        def infer(question):
+            calls.append(question)
+            return dict(DRAFT)
+        lab.run(db, infer=infer, episode="2026-11-19")
+        second = lab.run(db, infer=infer, episode="2026-11-20")
+        self.assertEqual(second["total_reflections"], 6)
+        self.assertEqual(len(calls), 6)
+        self.assertIn(DRAFT["lesson"], calls[3])
+        self.assertEqual(len(lab.history(db)[1]), 6)
+        self.assertEqual(lab.run(db, infer=infer, episode="2026-11-20")["total_reflections"], 6)
+        self.assertEqual(len(calls), 6)
+
     def test_tamper_refusal(self):
         db = self.db()
-        lab.run(db, infer=lambda question: dict(DRAFT))
+        lab.run(db, infer=lambda question: dict(DRAFT), episode='2026-11-19')
         db.execute("UPDATE reflections SET proposal='{}' WHERE idx=2")
         with self.assertRaises(ValueError):
             lab.history(db)
@@ -63,14 +78,14 @@ class ZurvanWorldLabTests(unittest.TestCase):
                 raise TimeoutError("model not available")
             return dict(DRAFT)
         with self.assertRaises(TimeoutError):
-            lab.run(db, infer=infer)
+            lab.run(db, infer=infer, episode='2026-11-19')
         self.assertEqual(len(lab.history(db)[1]), 2)
-        self.assertEqual(lab.run(db, infer=lambda q: dict(DRAFT))["completed"], 3)
+        self.assertEqual(lab.run(db, infer=lambda q: dict(DRAFT), episode="2026-11-19")["completed_today"], 3)
 
     def test_invalid_result_refused(self):
         db = self.db()
         with self.assertRaises(ValueError):
-            lab.run(db, infer=lambda q: {"decision": "yes"})
+            lab.run(db, infer=lambda q: {"decision": "yes"}, episode='2026-11-19')
         self.assertEqual(len(lab.history(db)[1]), 0)
 
 if __name__ == "__main__":
