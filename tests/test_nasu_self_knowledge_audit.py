@@ -49,8 +49,12 @@ class AuditContracts(unittest.TestCase):
 
     def test_probe_provides_narrow_inference_evidence(self):
         items = self.pair() + [receipt(3, "06:03:00", "probe")]
-        self.assertEqual(m.audit(items, NOW)["capabilities"]["inference"],
+        fresh_time = NOW - dt.timedelta(minutes=20)
+        self.assertEqual(m.audit(items, fresh_time)["capabilities"]["inference"],
                          "RECENT_FIXED_PROBE")
+        # A past success is not proof of *current* readiness after 30 minutes.
+        self.assertEqual(m.audit(items, NOW)["capabilities"]["inference"],
+                         "NOT_RECENTLY_CONFIRMED")
 
     def test_stale_receipts_cannot_claim_current_running(self):
         x = m.audit(self.pair(), NOW + dt.timedelta(hours=3))
