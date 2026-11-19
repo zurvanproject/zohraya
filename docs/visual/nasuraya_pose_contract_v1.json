@@ -1,0 +1,205 @@
+{
+  "schema": "nasuraya.visual-anatomy-pose/1",
+  "scope": "Illustration reference only; not validated inverse dynamics or a replacement for adult-scale variants",
+  "canonical_provenance": [
+    "runtimes/tadash_body/anatomy_systems_v01.json G02 G03 G04 G05",
+    "runtimes/tadash_body/phenotype_v1.json phenotype_contract"
+  ],
+  "anatomy": {
+    "horns": 2,
+    "feet": 2,
+    "toes_per_foot": 3,
+    "hands": 2,
+    "fingers_per_hand": 5,
+    "gait": "digitigrade",
+    "chain": [
+      "hip",
+      "knee",
+      "hock",
+      "metatarsal_head",
+      "toe_tip"
+    ],
+    "tail_root": "sacrum",
+    "notes": "Knees forward, true ankle/hocks back, long metatarsals, no human heel contact in standing"
+  },
+  "horn_points_head_local_m": {
+    "left": [
+      [
+        -0.1,
+        0,
+        0
+      ],
+      [
+        -0.13,
+        -0.01,
+        0.09
+      ],
+      [
+        -0.2,
+        -0.02,
+        0.19
+      ],
+      [
+        -0.18,
+        -0.03,
+        0.3
+      ],
+      [
+        -0.11,
+        -0.01,
+        0.34
+      ]
+    ],
+    "right": [
+      [
+        0.1,
+        0,
+        0
+      ],
+      [
+        0.13,
+        -0.01,
+        0.09
+      ],
+      [
+        0.2,
+        -0.02,
+        0.19
+      ],
+      [
+        0.18,
+        -0.03,
+        0.3
+      ],
+      [
+        0.11,
+        -0.01,
+        0.34
+      ]
+    ]
+  },
+  "lateral_poses_m": {
+    "standing": {
+      "hip": [
+        0,
+        1.16
+      ],
+      "knee": [
+        0.27,
+        0.76
+      ],
+      "hock": [
+        -0.04,
+        0.34
+      ],
+      "metatarsal_head": [
+        0.2,
+        0.1
+      ],
+      "toe_tip": [
+        0.38,
+        0.04
+      ],
+      "support": "toe-pads on ground"
+    },
+    "sitting": {
+      "hip": [
+        0,
+        0.78
+      ],
+      "knee": [
+        0.43,
+        0.56
+      ],
+      "hock": [
+        0.14,
+        0.12
+      ],
+      "metatarsal_head": [
+        0.47,
+        0.06
+      ],
+      "toe_tip": [
+        0.66,
+        0.047
+      ],
+      "support": "pelvis on low bench, toe-pads on ground"
+    }
+  },
+  "foot_toes_front_m": [
+    {
+      "id": "medial",
+      "x": -0.075,
+      "y": 0.18
+    },
+    {
+      "id": "central",
+      "x": 0,
+      "y": 0.22
+    },
+    {
+      "id": "lateral",
+      "x": 0.075,
+      "y": 0.18
+    }
+  ],
+  "image_gate": [
+    "First verify standing front-view paired roots and matching horn arcs; asymmetrical angle is permissible only from perspective",
+    "Every leg must show hip→forward knee→rear hock (true ankle)→long metatarsals→three toes",
+    "In sitting, preserve bone segment lengths and pelvis support. Do not substitute a human cross-legged pose",
+    "Three distinctly articulated digits per foot on toe pads; five fingers per hand",
+    "Tail joins sacrum; expose knee, hock, metatarsals and toes. No robes, smoke, magic circle, or camera crop may hide anatomical uncertainty",
+    "Reject the image if joint chain cannot be visually traced or if toe/horn counts are wrong; simplify to neutral anatomical drawing and retry before adding decoration",
+    "When any plantar/sole view is included, require exactly 3 distal digital pads and exactly 3 claw-bearing digits (the single large proximal/metatarsal pad is distinct and not a toe). Verify each foot separately, in every inset.",
+    "A final collage or infographic cannot inherit a PASS from source geometry; count toes, pads and horns and trace seated joint topology in EVERY PANEL, including tiny bottom-row details.",
+    "For ritual sitting, never use lotus/cross-legged human knees and attach paws. Use the verified low-bench pelvis-supported joint chain, visible grounded three-toe feet and hocks.",
+    "Never invent green checkmarks or speed/endurance/accuracy statistics as if a pixel rendering itself were a biomechanical test."
+  ],
+  "foot_ventral_contract": {
+    "per_foot_digital_ray_count": 3,
+    "per_foot_digital_pads": 3,
+    "per_foot_terminal_claws": 3,
+    "per_foot_central_metatarsal_pad": 1,
+    "counting_rule": "Count small separate distal pads and the individual claw-bearing digits. The larger proximal central pad is NOT a fourth toe; do not allow a fourth small digital pad or claw.",
+    "view_consistency": "For the same left/right foot, the dorsal, frontal, side and plantar/ventral views must all correspond to the same three articulated toes and the same three digital pads."
+  },
+  "sitting_contract": {
+    "recommended_pose": "pelvis supported on a low solid bench; hips flexed, knees forward, hocks farther back and low; elongated metatarsals extend from hocks to the three grounded toe pads; feet not crossed",
+    "joint_visibility": [
+      "left_knee",
+      "right_knee",
+      "left_hock",
+      "right_hock",
+      "left_metatarsals",
+      "right_metatarsals",
+      "left_three_toes",
+      "right_three_toes"
+    ],
+    "reject": [
+      "human lotus/cross-legged pose with paws glued onto human ankles",
+      "knees turning directly into toes",
+      "hock hidden underneath a robe or overlaid fire",
+      "feet floating, occluded, or visually disconnected from the shins",
+      "any foot drawn with four or more distal pads or terminal claws"
+    ],
+    "require_contact": "visible physical seat support at pelvis AND toe-pads touching a grounded surface; if toes cannot be counted, panel is NOT VERIFIED."
+  },
+  "composite_image_review": {
+    "rule": "A poster is accepted ONLY when every depiction of the same character in every panel separately passes the visible-image audit. One incorrect closeup invalidates the whole poster.",
+    "audit_targets": [
+      "standing",
+      "walking",
+      "running",
+      "crouching",
+      "sitting",
+      "ritual",
+      "joint closeups",
+      "dorsal paws",
+      "sole/plantar pads",
+      "anatomical diagrams"
+    ],
+    "test_status": "Do not draw performance numbers, green checkmarks, VALIDATED labels, simulated speeds, balances or endurance unless backed by a named actual calculation and evidence reference, never as decoration.",
+    "if_view_obscured": "Mark NOT ASSESSABLE and reject final poster until rendered in a clear anatomy-first view.",
+    "automated_unit_tests_limit": "Passing JSON landmark or audit-schema unit tests does not prove raster toe count or model biomechanics. Pixel inspection is still required."
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "nasuraya.visual-manual-image-audit/1",
+  "image_sha256": "ceb43d45768aecf473dda860730596f915ba84bd21e0bff8defa8e7afb0cea70",
+  "image_description": "Anatomy-first revised triptych (standing, seated on a bench, plantar paw macro), 1536x1024 pixels",
+  "reviewed_by": "assistant inspection of raster and cropped details; no automatic pixel/pose detector",
+  "date": "2026-11-15",
+  "overall_decision": "PARTIAL: THREE TOE COUNT FIXED, SITTING HOCK NOT VERIFIED",
+  "all_panels_reviewed": true,
+  "panels": [
+    {
+      "name": "standing",
+      "kind": "standing",
+      "feet": [
+        {
+          "side": "left",
+          "visible": true,
+          "digital_toes": 3,
+          "digital_pads": null,
+          "terminal_claws": 3,
+          "central_metatarsal_pad": null,
+          "view": "dorsal"
+        },
+        {
+          "side": "right",
+          "visible": true,
+          "digital_toes": 3,
+          "digital_pads": null,
+          "terminal_claws": 3,
+          "central_metatarsal_pad": null,
+          "view": "dorsal"
+        }
+      ],
+      "knee_hock_metatarsal_chain_visible": true,
+      "performance_claims_present": false,
+      "note": "Both feet show three front toes/claws. Plantar pads cannot be seen; this field refers to canonical counts and must not be treated as actual direct visual proof of each pad."
+    },
+    {
+      "name": "sitting-on-bench",
+      "kind": "sitting",
+      "feet": [
+        {
+          "side": "left",
+          "visible": true,
+          "digital_toes": 3,
+          "digital_pads": null,
+          "terminal_claws": 3,
+          "central_metatarsal_pad": null,
+          "view": "dorsal"
+        },
+        {
+          "side": "right",
+          "visible": true,
+          "digital_toes": 3,
+          "digital_pads": null,
+          "terminal_claws": 3,
+          "central_metatarsal_pad": null,
+          "view": "dorsal"
+        }
+      ],
+      "human_lotus_or_crossleg_pose": false,
+      "pelvis_supported": true,
+      "knee_hock_metatarsal_chain_visible": false,
+      "toe_pads_grounded": true,
+      "performance_claims_present": false,
+      "note": "Human cross-legged pose eliminated. All three toes on both feet visible; ankle/hock-to-metatarsal kink still insufficiently readable from front three-quarter camera angle, so pose remains unverified."
+    },
+    {
+      "name": "plantar-closeup",
+      "kind": "sole",
+      "feet": [
+        {
+          "side": "left",
+          "visible": true,
+          "digital_toes": 3,
+          "digital_pads": 3,
+          "terminal_claws": 3,
+          "central_metatarsal_pad": 1,
+          "view": "plantar"
+        }
+      ],
+      "performance_claims_present": false,
+      "note": "Exactly three separately visible small distal pads bearing one claw each, and one larger proximal pad"
+    }
+  ],
+  "remarks": "Counts for plantar pads in non-plantar standing/sitting views are inferred from shared character rather than pixels; do NOT call this a full pixel PASS. The explicit seated joint-chain failure forces REJECT until a truly inspectable side view is drawn."
+}
