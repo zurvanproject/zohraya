@@ -1,0 +1,140 @@
+{
+  "files": [
+    {
+      "bytes": 347,
+      "git_blob_sha": "fc752fe8ae6ab12e4d8985c8f125bb0459395f0c",
+      "path": "examples/dios_nous/__init__.py",
+      "sha256": "8894695f78d070fdf78df6c182c3ae06fdaee64a575a1c44eac91804f644823a",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 7124,
+      "git_blob_sha": "d762226d9e26ddbe606eb146b7ea93e456e6e99e",
+      "path": "examples/dios_nous/core.py",
+      "sha256": "98275125b4ce93ec6579deeea0404ba6e9b14fc9b66221255014a1d8589b92a7",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 6480,
+      "git_blob_sha": "5da2fdde7cbee88f4819475f8a3cdc7630466990",
+      "path": "examples/dios_nous/protocol.py",
+      "sha256": "f77e3bb5d7b209ef41626e5ad129134915d11299588efafca0a7057f958bf8c5",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 3357,
+      "git_blob_sha": "a598206ee9b413e31bd21a905e5afd8429823a87",
+      "path": "examples/dios_nous/metrics.py",
+      "sha256": "91d16b5587d8bab8672258f1c9d3d9da7a4ef49d5a2c70447f625f03e04c248f",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 5145,
+      "git_blob_sha": "e344f750d28ecf5ba058244b116cb00f381d9c25",
+      "path": "examples/dios_nous/audit.py",
+      "sha256": "9932c1ab4869e42c77b265ecd5658ca828ef9e54152214b4b1f280eebdef3073",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 12543,
+      "git_blob_sha": "5b8694bda06b2942a114d366206f9dadd4cc593f",
+      "path": "examples/dios_nous/dissent.py",
+      "sha256": "83106b220620aec0834216da866da082234ec83274e6f43ba595ac51a2fe8b33",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 13304,
+      "git_blob_sha": "52752ae59390fd8a73ea6567a34b5277474b44d6",
+      "path": "examples/dios_nous/cognition.py",
+      "sha256": "263b5e357b85fd1d5acad00820870ac09396de0967cf0321057d5270e16d31a7",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 3709,
+      "git_blob_sha": "356a9a2e5861994390c52f90e95b3efa4e6f7fb9",
+      "path": "examples/dios_nous/integration.py",
+      "sha256": "6e89af37c454c60a06ec0a8dd10ebcfc3ba143fca3283abd4d96fa7200f525f6",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 61,
+      "git_blob_sha": "51a9b567a4f5b06346c1454fe54dd5dbff38978c",
+      "path": "examples/dios_nous/reused/__init__.py",
+      "sha256": "0d7e0f453245530b9988e9ccfeb73a7a3f1194bb28696b908e46d8b6e3781366",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 12448,
+      "git_blob_sha": "eaae3765c53eab12ee948158263b3f28763168bd",
+      "path": "examples/dios_nous/reused/epistemic_revision_v01.py",
+      "sha256": "431daf46e604f0471357b508f40616e1a4e906a6b4be81215dff731af92ecbf7",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 17374,
+      "git_blob_sha": "0c270b25b5f6d0f3ec9c6d35126df613a9bf099f",
+      "path": "examples/dios_nous/reused/goal_persistence_v01.py",
+      "sha256": "73a47aaf1b9bc322db18ed52a297f05ad7b63128dcfc68aabd5a446372cdd805",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 1278,
+      "git_blob_sha": "0e225adaa86bed76b14f25f002be9ec7a9736af7",
+      "path": "examples/dios_nous/reused/provenance.json",
+      "sha256": "4b54a2cb561cad57e86c050e38c132e9d3ac3cb0c91fa8c9022b9bebbd8580f3",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 280,
+      "git_blob_sha": "10013a5f7c94be7d6447eba89dd676b3680806e9",
+      "path": "examples/dios_nous/.gitattributes",
+      "sha256": "b9ee936aa66989d55c4f4ff2dbb948e6e642eac0002528350b93133f0b69209f",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 8148,
+      "git_blob_sha": "68a55b2f59b54c842b96e389570cf9a79e934cd6",
+      "path": "examples/dios_nous/test_cognition.py",
+      "sha256": "f4f3e38c8de51722458be831204c71cbdfc53fbcf39c9028773e25cb80f4281f",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 3894,
+      "git_blob_sha": "590b97e5e6d0b317b7db8e3193b574e4ae99e431",
+      "path": "examples/dios_nous/test_integration_work.py",
+      "sha256": "e1418615d397703bbc5e9655d40a599e082d1b5bc639870bc32f01c65eed74e6",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 10421,
+      "git_blob_sha": "100ae23efd611b6a4dbc2eb14e10d8582c1ea8ff",
+      "path": "examples/dios_nous/test_dissent.py",
+      "sha256": "3aad4583986e54a2ae191eb2d5e649970fc45170eea833627f46afa07f23b940",
+      "source_commit": "d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec"
+    },
+    {
+      "bytes": 46,
+      "git_blob_sha": "cda0c399c941cece1ae031c1b6642a1e3516dd41",
+      "path": "tadash_awake/__init__.py",
+      "sha256": "f3999d2a51db558d5cad985d39da2c5a87200fa109ecf96c36cd346abb534b92",
+      "source_commit": "90692bde9f1e4b5b7f311162b7c83127715df710"
+    },
+    {
+      "bytes": 13044,
+      "git_blob_sha": "70552587b9849fd014b41c057b2ccd625c1df2b7",
+      "path": "tadash_awake/core.py",
+      "sha256": "74f0b52639fda3fdd39dc301606f5039e8e4d1ac69983b496598984aaabe183f",
+      "source_commit": "90692bde9f1e4b5b7f311162b7c83127715df710"
+    },
+    {
+      "bytes": 6105,
+      "git_blob_sha": "a59ffa3b9947ecce78336122462ce2e6bd18ff45",
+      "path": "tadash_awake/test_wake.py",
+      "sha256": "a50a89440b84fd25e8e04555e705d7989bb1e181b4b67c81ff52909818be7ecd",
+      "source_commit": "90692bde9f1e4b5b7f311162b7c83127715df710"
+    }
+  ],
+  "modifications": "None; exact original Git blob bytes. DIOS is extracted from PR198; Awake from PR205. This is selected-module reuse, not a merge of either branch.",
+  "repository": "zurvanproject/zohraya",
+  "schema": "nasuraya.rehearsal-source-pins/1"
+}

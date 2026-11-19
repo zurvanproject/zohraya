@@ -1,0 +1,29 @@
+{
+  "schema": "dios.pinned-project-reuse/1",
+  "repository": "zurvanproject/zohraya",
+  "modifications": "None; exact source bytes preserved. Only import package location differs.",
+  "modules": [
+    {
+      "local_path": "epistemic_revision_v01.py",
+      "source_path": "examples/nasuraya_research/epistemic_revision_v01.py",
+      "source_commit": "d78e5272300c28729c54c4a61a52593f297b055d",
+      "git_blob_sha1": "eaae3765c53eab12ee948158263b3f28763168bd",
+      "pull_request": 182,
+      "used_api": ["Evidence", "EvidenceLedger"]
+    },
+    {
+      "local_path": "goal_persistence_v01.py",
+      "source_path": "examples/nasuraya_research/goal_persistence_v01.py",
+      "source_commit": "bef3f9bb42f2365688e3bee3fc5e158881f40510",
+      "git_blob_sha1": "0c270b25b5f6d0f3ec9c6d35126df613a9bf099f",
+      "pull_request": 177,
+      "used_api": ["Goal", "GoalMemory", "Scenario"]
+    }
+  ],
+  "limits": [
+    "Observation labels are synthetic and cannot verify real provenance or authorize actions.",
+    "The latest-epoch rule is inherited; it is not a general evidence-strength estimator.",
+    "Adaptive commitment v0.2 and the broad PR185 integration are audited but not imported.",
+    "No production runtime, model, executor or external service is changed."
+  ]
+}

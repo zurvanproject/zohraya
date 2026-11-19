@@ -1,0 +1,48 @@
+name: Nasuraya executed memory cycle
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_integration_rehearsal.py'
+      - 'tools/nasu_unified_status.py'
+      - 'tools/nasu_evidence_to_experiment.py'
+      - 'tools/nasu_autonomous_cognition.py'
+      - 'tools/nasuraya_offline_continuity.py'
+      - 'tools/nasu_frontier_lab.py'
+      - 'tools/nasu_feedback_learning.py'
+      - 'tests/test_nasu*'
+      - 'examples/dios_nous/**'
+      - 'tadash_awake/**'
+      - 'docs/evidence/nasu-memory-cycle/**'
+      - 'docs/NASURAYA_EXECUTED_MEMORY_CYCLE_FA.md'
+      - '.github/workflows/nasuraya-memory-cycle.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-memory-cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Verify extracted source byte pins
+        run: python -B -c 'from tools.nasu_integration_rehearsal import source_pins; print(source_pins())'
+      - name: Existing source writers and hardened adapters
+        run: |
+          python -B -m unittest discover -s tests -p test_nasu_unified_status.py -v
+          python -B -m unittest discover -s tests -p test_nasu_evidence_to_experiment.py -v
+          python -B -m unittest discover -s tests -p test_nasuraya_offline_continuity.py -v
+          python -B -m unittest discover -s tests -p test_nasu_frontier_lab.py -v
+          python -B -m unittest discover -s tests -p test_nasu_autonomous_cognition.py -v
+          python -B -m unittest discover -s tests -p test_nasu_feedback_learning.py -v
+      - name: Original DIOS and Awake contracts
+        run: |
+          python -B -m unittest examples.dios_nous.test_cognition examples.dios_nous.test_integration_work examples.dios_nous.test_dissent tadash_awake.test_wake -v
+      - name: Executed integration and cold-process recovery
+        run: python -B -m unittest discover -s tests -p test_nasu_integration_rehearsal.py -v
+      - name: Rehearse then recover in separate interpreters
+        run: |
+          python -B -m tools.nasu_integration_rehearsal --output "$RUNNER_TEMP/nasu-memory-cycle" > "$RUNNER_TEMP/nasu-rehearsal.json"
+          python -B -m tools.nasu_integration_rehearsal --recover "$RUNNER_TEMP/nasu-memory-cycle" --pretty

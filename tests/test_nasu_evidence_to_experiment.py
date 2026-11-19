@@ -1,9 +1,11 @@
 """Phase-2 integration tests: synthetic-only, no live VPS or account data."""
 import datetime as dt
+from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from pathlib import Path
 import sqlite3
 import tempfile
+import threading
 import unittest
 from unittest import mock
 import urllib.request
@@ -70,6 +72,26 @@ class ExperimentPlanTests(unittest.TestCase):
             with self.subTest(sample=sample):
                 with self.assertRaises(ValueError):
                     phase.plan(sample)
+
+    def test_unhashable_or_nontext_status_fails_closed(self):
+        for value in ([], {}, None, True, 1):
+            with self.subTest(value=value):
+                with self.assertRaises(ValueError):
+                    phase.plan(snapshot(continuity=value))
+
+    def test_timestamp_is_a_utc_datetime_not_arbitrary_text(self):
+        for stamp in ("", "PRIVATE_STAMP", "2026-11-19T00:00:00",
+                      "2026-11-19T00:00:00+03:30", "2026-02-31T00:00:00+00:00"):
+            with self.subTest(stamp=stamp):
+                with self.assertRaises(ValueError):
+                    phase.plan({**snapshot(), "generated_at_utc": stamp})
+
+    def test_plan_does_not_alias_input_metadata(self):
+        source = snapshot()
+        packet = phase.plan(source)
+        source["components"]["awake"]["status"] = "invalid"
+        self.assertEqual(packet["evidence"]["component_states"]["awake"],
+                         "structural_only")
 
     def test_wrong_components_fail_closed(self):
         s = snapshot()
@@ -175,6 +197,56 @@ class ExperimentPlanTests(unittest.TestCase):
             phase.local_question(phase.plan(snapshot()),
                                  opener=lambda req, timeout: Response())
 
+    def test_nonobject_model_json_fails_closed(self):
+        class Response:
+            def __init__(self, value):
+                self.raw = json.dumps(value).encode()
+            def __enter__(self):
+                return self
+            def __exit__(self, *args):
+                return False
+            def read(self, _):
+                return self.raw
+        for value in ([], None, "PRIVATE_MODEL_REPLY", 1):
+            with self.subTest(value=value):
+                with self.assertRaises(ValueError):
+                    phase.local_question(phase.plan(snapshot()),
+                        opener=lambda req, timeout: Response(value))
+
+    def test_local_model_redirect_never_follows_second_request(self):
+        paths = []
+        proposed = {"hypothesis": "A synthetic hypothesis still unexecuted",
+                    "test": "A bounded synthetic test still unexecuted",
+                    "failure_condition": "A mismatch falsifies the synthetic claim"}
+        class RedirectServer(BaseHTTPRequestHandler):
+            def do_POST(self):
+                paths.append(self.path)
+                self.rfile.read(int(self.headers.get("Content-Length", 0)))
+                self.send_response(302)
+                self.send_header("Location", "/escaped")
+                self.end_headers()
+            def do_GET(self):
+                paths.append(self.path)
+                self.send_response(200)
+                self.end_headers()
+                self.wfile.write(json.dumps({"done": True,
+                    "response": json.dumps(proposed)}).encode())
+            def log_message(self, *_args):
+                pass
+        server = HTTPServer(("127.0.0.1", 0), RedirectServer)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            local_url = "http://127.0.0.1:%s/api/generate" % server.server_port
+            with mock.patch.object(phase, "LOCAL_URL", local_url):
+                with self.assertRaisesRegex(ValueError, "local_model_redirect_blocked"):
+                    phase.local_question(phase.plan(snapshot()))
+            self.assertEqual(paths, ["/api/generate"])
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=2)
+
     def test_local_model_uses_proxy_disabled_opener(self):
         class Response:
             def __enter__(self):
@@ -190,9 +262,11 @@ class ExperimentPlanTests(unittest.TestCase):
                                return_value=Built()) as build:
             with self.assertRaises(ValueError):
                 phase.local_question(phase.plan(snapshot()))
-        self.assertEqual(len(build.call_args.args), 1)
+        self.assertEqual(len(build.call_args.args), 2)
         self.assertIsInstance(build.call_args.args[0],
                               urllib.request.ProxyHandler)
+        self.assertEqual(build.call_args.args[0].proxies, {})
+        self.assertIsInstance(build.call_args.args[1], phase._NoRedirect)
 
     def test_real_hub_missing_data_does_not_create_sqlite(self):
         with tempfile.TemporaryDirectory() as folder:
