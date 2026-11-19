@@ -75,8 +75,7 @@ def dispatch(action):
     if action == "awake-stage":
         return command(["/usr/bin/bash", str(PROJECT / "tools/nasuraya_stage_awake_unprivileged.sh")], timeout=180)
     if action == "awake-status":
-        return command(["/usr/bin/python3", "-m", "tadash_awake", "status", "--root",
-                        str(HOME / "awake-stage")], cwd=HOME / "awake-src")
+        return command(["/usr/bin/python3", "/usr/local/lib/nasuraya/awake_health.py"], cwd=HOME)
     if action == "awake-activate":
         return command(["/usr/bin/python3", "/usr/local/lib/nasuraya/awake_activate.py"], timeout=20)
     return "Allowed: status, disk, python, repo, sync, test, offline, awake-stage, awake-status, awake-activate, help. No arbitrary shell."
@@ -153,3 +152,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

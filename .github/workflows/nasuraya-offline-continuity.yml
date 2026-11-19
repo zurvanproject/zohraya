@@ -9,7 +9,11 @@ on:
       - "tools/nasu_cron_awake_install.py"
       - "tools/nasu_awake_offline_runner.py"
       - "tools/nasu_awake_activate.py"
+      - "tools/nasu_awake_health.py"
+      - "tools/nasu_scheduler_probe.py"
+      - "tests/test_nasu_awake_health.py"
       - "tools/install_nasu_awake_offline.sh"
+      - "tools/repair_nasu_awake_wal.sh"
       - "tests/test_nasu_awake_offline_runner.py"
       - "tests/test_nasuraya_offline_continuity.py"
       - ".github/workflows/nasuraya-offline-continuity.yml"
@@ -22,7 +26,11 @@ on:
       - "tools/nasu_cron_awake_install.py"
       - "tools/nasu_awake_offline_runner.py"
       - "tools/nasu_awake_activate.py"
+      - "tools/nasu_awake_health.py"
+      - "tools/nasu_scheduler_probe.py"
+      - "tests/test_nasu_awake_health.py"
       - "tools/install_nasu_awake_offline.sh"
+      - "tools/repair_nasu_awake_wal.sh"
       - "tests/test_nasu_awake_offline_runner.py"
       - "tests/test_nasuraya_offline_continuity.py"
       - ".github/workflows/nasuraya-offline-continuity.yml"
@@ -41,5 +49,9 @@ jobs:
           bash -n tools/install_nasuraya_offline_continuity.sh
           bash -n tools/nasuraya_stage_awake_unprivileged.sh
           bash -n tools/install_nasu_awake_offline.sh
+          bash -n tools/repair_nasu_awake_wal.sh
           python3 -m py_compile tools/nasu_awake_offline_runner.py tools/nasu_awake_activate.py tools/nasu_cron_awake_install.py
           python3 -m unittest discover -s tests -p test_nasu_awake_offline_runner.py -v
+          python3 -m py_compile tools/nasu_awake_health.py tools/nasu_scheduler_probe.py
+          python3 -m unittest discover -s tests -p test_nasu_awake_health.py -v
+
