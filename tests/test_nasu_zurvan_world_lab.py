@@ -34,6 +34,19 @@ class ZurvanWorldLabTests(unittest.TestCase):
         self.assertIn("زروان", p)
         self.assertIn("قوانین معتبر همین جهان", p)
 
+    def test_zohraya_behavior_is_in_prompt_without_changing_existing_case_contract(self):
+        self.assertEqual([case_id for case_id, _ in lab.CASES], ["time", "spirit", "power"])
+        self.assertEqual(len(lab.BEHAVIORAL_PRINCIPLES), 5)
+        p = lab.prompt({"id": "power", "dilemma": "آزمایش"}, ["درس پیشین"])
+        for key in ("ریشهٔ پایدار", "فیزیک تاوان", "آفریننده و منتقد",
+                    "صیانت از حیرت", "هم‌کرامتی کربن و سیلیس"):
+            self.assertIn(key, p)
+        for instruction in ("در reason یک نقد", "در cost حداقل یک هزینه",
+                            "در lesson پرسشی تازه", "در revision_condition شرط مشخص"):
+            self.assertIn(instruction, p)
+        self.assertIn("درس پیشین", p)
+        self.assertEqual(lab.FIELDS, ("decision", "reason", "cost", "lesson", "revision_condition"))
+
     def test_three_real_drafts_then_idempotent(self):
         db = self.db()
         calls = []
