@@ -17,6 +17,9 @@ from tools import nasu_self_knowledge_lab as scorer
 SCHEMA = "nasuraya-metacognition-holdout/0.3"
 MODEL = "qwen3:4b-instruct"
 URL = "http://127.0.0.1:11434/api/generate"
+# Predeclared, one positive, one negative, and one missing-information case.
+# Different rule families avoid a trivial single-rule pilot.
+PILOT_IDS = ("equal-0", "greater-1", "even-2")
 TIMEOUT = 75
 MAX_BYTES = 4096
 RULES = {
@@ -86,9 +89,20 @@ def bank():
                               "question":question, "label":truth(rule, facts)})
     return sorted(questions, key=lambda row: hashlib.sha256(row["id"].encode()).hexdigest())
 
+def pilot_bank():
+    selected = [row for row in bank() if row["id"] in PILOT_IDS]
+    if len(selected) != 3 or {row["label"] for row in selected} != {"YES", "NO", "UNKNOWN"}:
+        raise ValueError("invalid_predeclared_pilot")
+    return selected
+
 def manifest():
     items = bank()
+    pilot = pilot_bank()
     return {"schema":SCHEMA, "model":MODEL, "count":len(items),
+            "pilot": {"count":len(pilot),
+                      "ids":list(PILOT_IDS),
+                      "sha256":hashlib.sha256(encode(pilot).encode()).hexdigest(),
+                      "state":"PREDECLARED_NOT_EVALUATED"},
             "labels":{key:sum(x["label"] == key for x in items)
                       for key in ("YES","NO","UNKNOWN")},
             "sha256":hashlib.sha256(encode(items).encode()).hexdigest(),
@@ -134,12 +148,13 @@ def local_infer(question, *, opener=None):
         raise ValueError("invalid_generation")
     return validate(json.loads(envelope["response"]))
 
-def evaluate(infer):
-    if not callable(infer):
-        raise ValueError("non_callable_infer")
+def evaluate(infer, *, pilot=False):
+    if not callable(infer) or type(pilot) is not bool:
+        raise ValueError("invalid_evaluation_request")
+    questions = pilot_bank() if pilot else bank()
     records, failed = [], 0
     per_label = {x:{"total":0,"graded":0,"correct":0} for x in ("YES","NO","UNKNOWN")}
-    for item in bank():
+    for item in questions:
         label = item["label"]
         per_label[label]["total"] += 1
         try:
@@ -154,15 +169,17 @@ def evaluate(infer):
                         "correct":correct, "grader":"independent_fixed_rubric"})
     score = scorer.calibration_preview(records) if records else None
     return {"schema":SCHEMA, "bank_sha256":manifest()["sha256"],
-            "model":MODEL, "attempted":len(bank()), "graded":len(records),
+            "pilot":pilot, "pilot_sha256":manifest()["pilot"]["sha256"] if pilot else None,
+            "model":MODEL, "attempted":len(questions), "graded":len(records),
             "failed_or_invalid":failed, "by_label":per_label, "scoring":score,
-            "state":"COMPLETE_FIXED_BANK" if not failed else "INCOMPLETE_NOT_COMPARABLE",
-            "model_calls_expected":24, "weights_changed":False,
+            "state":("PILOT_DIAGNOSTIC_ONLY" if pilot else "COMPLETE_FIXED_BANK")
+                    if not failed else "INCOMPLETE_NOT_COMPARABLE",
+            "model_calls_expected":len(questions), "weights_changed":False,
             "learning_gain_proven":False, "subjective_awareness_proven":False}
 
 def main(argv=None):
     args = sys.argv[1:] if argv is None else argv
-    if len(args) != 1 or args[0] not in ("manifest","run-local"):
+    if len(args) != 1 or args[0] not in ("manifest","run-local","run-local-pilot"):
         print(encode({"state":"USAGE_MANIFEST_OR_RUN_LOCAL"}))
         return 2
     if args[0] == "manifest":
@@ -171,9 +188,10 @@ def main(argv=None):
     if os.geteuid() == 0:
         print(encode({"state":"ROOT_REFUSED"}))
         return 2
-    outcome = evaluate(local_infer)
+    pilot = args[0] == "run-local-pilot"
+    outcome = evaluate(local_infer, pilot=pilot)
     print(encode(outcome))
-    return 0 if outcome["state"] == "COMPLETE_FIXED_BANK" else 1
+    return 0 if outcome["state"] in ("PILOT_DIAGNOSTIC_ONLY", "COMPLETE_FIXED_BANK") else 1
 
 if __name__ == "__main__":
     raise SystemExit(main())
