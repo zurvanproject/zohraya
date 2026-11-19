@@ -5,9 +5,11 @@ No production service, model-weight, body, Bridge or canon modifications.
 """
 from __future__ import annotations
 
+import datetime as dt
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import sqlite3
 import sys
@@ -15,7 +17,9 @@ import urllib.request
 
 MODEL = "qwen3:4b-instruct"
 URL = "http://127.0.0.1:11434/api/generate"
-STATE = Path.home() / ".local/state/nasuraya/zurvan-world-lab.sqlite3"
+STATE = Path(os.environ.get("NASU_ZURVAN_STATE", str(Path.home() / ".local/state/nasuraya/zurvan-world-lab.sqlite3")))
+if not STATE.is_absolute():
+    raise ValueError("STATE_MUST_BE_ABSOLUTE")
 ZERO = "0" * 64
 FIELDS = ("decision", "reason", "cost", "lesson", "revision_condition")
 CANON = (
@@ -84,42 +88,72 @@ def connect(path):
     path.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
     db = sqlite3.connect(path, isolation_level=None)
     db.execute("""CREATE TABLE IF NOT EXISTS reflections (
-        idx INTEGER PRIMARY KEY, case_id TEXT UNIQUE NOT NULL,
-        proposal TEXT NOT NULL, previous_sha TEXT NOT NULL,
-        receipt_sha TEXT NOT NULL)""")
+        idx INTEGER PRIMARY KEY, episode TEXT NOT NULL,
+        case_id TEXT NOT NULL, proposal TEXT NOT NULL,
+        previous_sha TEXT NOT NULL, receipt_sha TEXT NOT NULL,
+        UNIQUE(episode, case_id))""")
     return db
 
 def history(db):
     if db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":
         raise ValueError("CORRUPT_DB")
-    rows = db.execute("SELECT idx,case_id,proposal,previous_sha,receipt_sha "
+    rows = db.execute("SELECT idx,episode,case_id,proposal,previous_sha,receipt_sha "
                       "FROM reflections ORDER BY idx").fetchall()
-    prev, lessons = ZERO, []
-    for idx, case_id, raw, prior, receipt in rows:
-        if idx != len(lessons) + 1 or idx > len(CASES) or case_id != CASES[idx - 1][0]:
+    prev, lessons, previous_episode = ZERO, [], None
+    for idx, episode, case_id, raw, prior, receipt in rows:
+        if not isinstance(episode, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", episode):
+            raise ValueError("INVALID_EPISODE")
+        try:
+            if dt.date.fromisoformat(episode).isoformat() != episode:
+                raise ValueError("INVALID_EPISODE")
+        except ValueError as exc:
+            raise ValueError("INVALID_EPISODE") from exc
+        case_index = (idx - 1) % len(CASES)
+        if (idx != len(lessons) + 1 or case_id != CASES[case_index][0]
+                or (previous_episode is not None and (episode < previous_episode
+                    or (episode != previous_episode and case_index != 0)
+                    or (episode == previous_episode and case_index == 0)))):
             raise ValueError("INVALID_SEQUENCE")
         proposal = validate(json.loads(raw))
-        if prior != prev or receipt != digest({"idx": idx, "case_id": case_id,
+        if prior != prev or receipt != digest({"idx": idx, "episode": episode, "case_id": case_id,
                                                "proposal": proposal, "previous_sha": prior}):
             raise ValueError("CHANGED_RECEIPT")
         lessons.append(proposal["lesson"])
-        prev = receipt
+        prev, previous_episode = receipt, episode
     return prev, lessons
 
-def run(db, infer=qwen_once):
+def run(db, infer=qwen_once, *, episode=None):
+    episode = episode or dt.datetime.now(dt.timezone.utc).date().isoformat()
+    if not isinstance(episode, str) or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", episode):
+        raise ValueError("INVALID_EPISODE")
+    try:
+        if dt.date.fromisoformat(episode).isoformat() != episode:
+            raise ValueError("INVALID_EPISODE")
+    except ValueError as exc:
+        raise ValueError("INVALID_EPISODE") from exc
     previous, lessons = history(db)
-    for idx, (case_id, dilemma) in enumerate(CASES, 1):
-        if idx <= len(lessons):
-            continue
-        proposal = validate(infer(prompt({"id": case_id, "dilemma": dilemma}, lessons)))
-        receipt = digest({"idx": idx, "case_id": case_id,
+    latest = db.execute("SELECT episode FROM reflections ORDER BY idx DESC LIMIT 1").fetchone()
+    if latest is not None:
+        latest_episode = latest[0]
+        if episode < latest_episode:
+            raise ValueError("RETROACTIVE_EPISODE")
+        if episode > latest_episode and len(lessons) % len(CASES):
+            raise ValueError("UNFINISHED_PREVIOUS_EPISODE")
+    completed_today = db.execute(
+        "SELECT COUNT(*) FROM reflections WHERE episode=?", (episode,)).fetchone()[0]
+    for case_id, dilemma in CASES[completed_today:]:
+        idx = len(lessons) + 1
+        proposal = validate(infer(prompt(
+            {"id": case_id, "dilemma": dilemma, "episode": episode}, lessons[-6:])))
+        receipt = digest({"idx": idx, "episode": episode, "case_id": case_id,
                           "proposal": proposal, "previous_sha": previous})
-        db.execute("INSERT INTO reflections VALUES (?,?,?,?,?)",
-                   (idx, case_id, canonical(proposal), previous, receipt))
+        db.execute("INSERT INTO reflections VALUES (?,?,?,?,?,?)",
+                   (idx, episode, case_id, canonical(proposal), previous, receipt))
         previous, lessons = history(db)
-    return {"state": "PROVISIONAL_IN_WORLD_REFLECTION", "completed": len(lessons),
-            "expected": len(CASES), "last_receipt_sha": previous,
-            "model_weights_changed": False, "live_service_changed": False}
+    return {"state": "PROVISIONAL_IN_WORLD_REFLECTION",
+            "completed_today": len(CASES), "total_reflections": len(lessons),
+            "last_receipt_sha": previous,
+            "model_weights_changed": False, "live_cognition_service_changed": False}
 
 def main(argv):
     if argv not in (["status"], ["run-local"]):
@@ -130,8 +164,8 @@ def main(argv):
     with connect(STATE) as db:
         if argv == ["status"]:
             last, lessons = history(db)
-            result = {"state": "PROVISIONAL_IN_WORLD_REFLECTION", "completed": len(lessons),
-                      "expected": len(CASES), "last_receipt_sha": last}
+            result = {"state": "PROVISIONAL_IN_WORLD_REFLECTION",
+                      "total_reflections": len(lessons), "last_receipt_sha": last}
         else:
             result = run(db)
     print(canonical(result))
