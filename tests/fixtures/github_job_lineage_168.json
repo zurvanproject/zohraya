@@ -1,0 +1,54 @@
+{
+  "sources": [
+    "https://api.github.com/repos/zurvanproject/zohraya/actions/runs/42475628332",
+    "https://api.github.com/repos/zurvanproject/zohraya/actions/runs/42475628332/jobs"
+  ],
+  "run": {
+    "id": 42475628332,
+    "run_attempt": 1,
+    "head_sha": "405f7665b8c4372d0a308c0310768a5fcd4b4aa0",
+    "path": ".github/workflows/nasuraya-visual-gallery.yml",
+    "html_url": "https://github.com/zurvanproject/zohraya/actions/runs/42475628332",
+    "url": "https://api.github.com/repos/zurvanproject/zohraya/actions/runs/42475628332",
+    "status": "completed",
+    "repository": {
+      "full_name": "zurvanproject/zohraya",
+      "html_url": "https://github.com/zurvanproject/zohraya",
+      "private": false
+    }
+  },
+  "jobs": [
+    {
+      "id": 128716237109,
+      "run_id": 42475628332,
+      "run_attempt": 1,
+      "head_sha": "405f7665b8c4372d0a308c0310768a5fcd4b4aa0",
+      "name": "offline-visual-contract (ubuntu-latest)",
+      "html_url": "https://github.com/zurvanproject/zohraya/actions/runs/42475628332/job/128716237109",
+      "url": "https://api.github.com/repos/zurvanproject/zohraya/actions/jobs/128716237109",
+      "status": "completed",
+      "conclusion": "success",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "started_at": "2026-11-08T11:24:48Z",
+      "completed_at": "2026-11-08T11:24:56Z"
+    },
+    {
+      "id": 128716237259,
+      "run_id": 42475628332,
+      "run_attempt": 1,
+      "head_sha": "405f7665b8c4372d0a308c0310768a5fcd4b4aa0",
+      "name": "offline-visual-contract (windows-latest)",
+      "html_url": "https://github.com/zurvanproject/zohraya/actions/runs/42475628332/job/128716237259",
+      "url": "https://api.github.com/repos/zurvanproject/zohraya/actions/jobs/128716237259",
+      "status": "completed",
+      "conclusion": "success",
+      "labels": [
+        "windows-latest"
+      ],
+      "started_at": "2026-11-08T11:24:48Z",
+      "completed_at": "2026-11-08T11:25:05Z"
+    }
+  ]
+}

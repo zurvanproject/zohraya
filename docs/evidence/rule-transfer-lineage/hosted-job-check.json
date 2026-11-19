@@ -1,0 +1,48 @@
+{
+  "sha": "042f2b139e55b6fc598d26e48e19ead93ee88298",
+  "run": 42516900686,
+  "jobs": [
+    {
+      "id": 128841793383,
+      "name": "evidence-contract (windows-latest)",
+      "completed_at": "2026-11-08T19:49:02Z",
+      "conclusion": "success",
+      "html_url": "https://github.com/zurvanproject/zohraya/actions/runs/42516900686/job/128841793383"
+    },
+    {
+      "id": 128841793481,
+      "name": "evidence-contract (ubuntu-latest)",
+      "completed_at": "2026-11-08T19:48:55Z",
+      "conclusion": "success",
+      "html_url": "https://github.com/zurvanproject/zohraya/actions/runs/42516900686/job/128841793481"
+    }
+  ],
+  "same_job_seen_twice": {
+    "decision": "abstain",
+    "verdict": null,
+    "support": 1,
+    "oppose": 0,
+    "reason": "insufficient_roots"
+  },
+  "both_jobs_seen_twice": {
+    "decision": "select",
+    "verdict": "support",
+    "support": 2,
+    "oppose": 0,
+    "reason": "corroborated"
+  },
+  "protocol": "job-protocol.txt",
+  "head_event": "push",
+  "run_attempt": 1,
+  "workflow_path": ".github/workflows/nasuraya-rule-transfer-v01.yml",
+  "sources": [
+    "https://api.github.com/repos/zurvanproject/zohraya/actions/runs/42516900686",
+    "https://api.github.com/repos/zurvanproject/zohraya/actions/runs/42516900686/jobs",
+    "https://api.github.com/repos/zurvanproject/zohraya/actions/runs/42516900686/attempts/1/jobs"
+  ],
+  "tests_per_job": {
+    "rule_bank": 24,
+    "lineage": 16
+  },
+  "scope": "The two jobs ran the same code on different hosted OSes. Reading the same job in another endpoint does not establish another job execution."
+}

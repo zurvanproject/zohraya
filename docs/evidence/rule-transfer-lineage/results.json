@@ -1,0 +1,167 @@
+{
+  "schema": "nasuraya/evidence-lineage-audit/1",
+  "previous_revision": "5cd91961eef39a2a6a3f1a2a470b8068a914812e",
+  "audited_implementation": "4f2586c7544e771cc00b7fb8bb368fa710a25aeb",
+  "original_and_new_bank": {
+    "original": {
+      "run_plus_cold_replay": "refresh_public_source",
+      "two_links_both_described_as_original": "refresh_public_source",
+      "two_independent_executions": "refresh_public_source"
+    },
+    "work": {
+      "run_plus_cold_replay": "request_review",
+      "two_links_both_described_as_original": "request_review",
+      "two_independent_executions": "refresh_public_source"
+    }
+  },
+  "synthetic_30": {
+    "total": 30,
+    "fixture_sha256": "f0b1a0373a2ae2786d1c7ed41938e291391ba3832cc8616abbbe0124f6e5cfce",
+    "correct": {
+      "no_memory": 7,
+      "exact_episode": 11,
+      "always_review": 16,
+      "rule_bank": 30
+    }
+  },
+  "locked_challenge_12": {
+    "receipt_urls": {
+      "correct": 8,
+      "false_selections": 4,
+      "core_correct": 6,
+      "stress_correct": 2
+    },
+    "always_abstain": {
+      "correct": 7,
+      "false_selections": 0,
+      "core_correct": 6,
+      "stress_correct": 1
+    },
+    "lineage": {
+      "correct": 12,
+      "false_selections": 0,
+      "core_correct": 9,
+      "stress_correct": 3
+    }
+  },
+  "public_receipts_by_claim": {
+    "capture_public_episode": {
+      "receipt_count": 2,
+      "naive_url_support": 2,
+      "support": 1,
+      "decision": "abstain"
+    },
+    "wait_on_unchanged_thread": {
+      "receipt_count": 2,
+      "naive_url_support": 2,
+      "support": 1,
+      "decision": "abstain"
+    },
+    "recheck_synthetic_failure": {
+      "receipt_count": 2,
+      "naive_url_support": 2,
+      "support": 0,
+      "decision": "abstain"
+    },
+    "recover_after_injected_corruption": {
+      "receipt_count": 2,
+      "naive_url_support": 2,
+      "support": 1,
+      "decision": "abstain"
+    },
+    "read_locally_after_verified_repair": {
+      "receipt_count": 2,
+      "naive_url_support": 2,
+      "support": 1,
+      "decision": "abstain"
+    }
+  },
+  "file_fault_control": {
+    "claim": "Copying the recovery source restored the expected bytes.",
+    "traces": [
+      {
+        "after_recovery_sha256": "eec825880490f38d99f9b095e86c33557676259b15c8bcfab264c6891da553a9",
+        "damaged_sha256": "107ae5e900da38a7c816a9a707ff59cf26d72c8cffa0b9e843650ce75d2c47ad",
+        "expected_sha256": "eec825880490f38d99f9b095e86c33557676259b15c8bcfab264c6891da553a9",
+        "label": "first",
+        "observation": {
+          "kind": "execution",
+          "receipt_id": "execute-bacd865facc347e6b5520c27768b8510",
+          "root_id": "bacd865facc347e6b5520c27768b8510",
+          "scope": "public",
+          "verdict": "support",
+          "verified": true
+        }
+      },
+      {
+        "after_recovery_sha256": "005780cfed5f9f0ad9b883a4d77e350b808a631895f9ce886c241109aa212e86",
+        "damaged_sha256": "e68bc0bd12a0e54cdbacf64330f5599352aa4600330d7f8d5f553c0d2f91d65e",
+        "expected_sha256": "005780cfed5f9f0ad9b883a4d77e350b808a631895f9ce886c241109aa212e86",
+        "label": "second",
+        "observation": {
+          "kind": "execution",
+          "receipt_id": "execute-e15d553427cf4cceafbae55bae9453a9",
+          "root_id": "e15d553427cf4cceafbae55bae9453a9",
+          "scope": "public",
+          "verdict": "support",
+          "verified": true
+        }
+      },
+      {
+        "after_recovery_sha256": "2a4f5d3eb0e43f54594bcd678800f1e565bae29fc7d3024ec20fc17c917b47bf",
+        "damaged_sha256": "8c0b6857ce64b3d063187bc5fd0291cffd243c3f0bba8d80610aa8f27b0c01be",
+        "expected_sha256": "aa9cb394a2364abbdee92d20adb41980be39fe2808fc14f3d50f5ec8c5e3ef8f",
+        "label": "bad-backup",
+        "observation": {
+          "kind": "execution",
+          "receipt_id": "execute-6ec39ba5515243c6be3dbfbeec9abc99",
+          "root_id": "6ec39ba5515243c6be3dbfbeec9abc99",
+          "scope": "public",
+          "verdict": "oppose",
+          "verified": true
+        }
+      }
+    ],
+    "derivative_observations": [
+      {
+        "kind": "replay",
+        "receipt_id": "replay-bacd865facc347e6b5520c27768b8510",
+        "root_id": "bacd865facc347e6b5520c27768b8510",
+        "scope": "public",
+        "verdict": "support",
+        "verified": true
+      },
+      {
+        "kind": "mirror",
+        "receipt_id": "mirror-bacd865facc347e6b5520c27768b8510",
+        "root_id": "bacd865facc347e6b5520c27768b8510",
+        "scope": "public",
+        "verdict": "support",
+        "verified": true
+      }
+    ],
+    "one_with_derivatives": {
+      "decision": "abstain",
+      "verdict": null,
+      "support": 1,
+      "oppose": 0,
+      "reason": "insufficient_roots"
+    },
+    "two_primary_successes": {
+      "decision": "select",
+      "verdict": "support",
+      "support": 2,
+      "oppose": 0,
+      "reason": "corroborated"
+    },
+    "with_contrary_failure": {
+      "decision": "abstain",
+      "verdict": null,
+      "support": 2,
+      "oppose": 1,
+      "reason": "conflicting_evidence"
+    }
+  },
+  "hosted_push_validation": "https://github.com/zurvanproject/zohraya/actions/runs/42516482960",
+  "note": "The URL policy is a matched ablation. The 12-case sample does not isolate the separate effects of excluding replays and using a shared origin ID. Diagnostic fixtures exercise those separately. Different files, jobs and OSes share code. These measurements do not estimate error rates in general use."
+}
