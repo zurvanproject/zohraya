@@ -1,0 +1,130 @@
+{
+  "schema": "nasuraya/ritual-session-evidence/v0.3",
+  "date": "2026-11-19",
+  "ritual": "four-direction-guardian-invitation",
+  "branch": "research/nasuraya-ritual-apprenticeship-20261111",
+  "work_type": "separate-date text-only rehearsal with context-assisted prelookup",
+  "label": "CONTEXT_ASSISTED_PRELOOKUP_AND_SOURCE_AUDIT",
+  "evidence": {
+    "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-19_PRELOOKUP_FA.md",
+    "prelookup_commit": "5ea40d568e28aea6e21ae992172b1e2a3318ee5e",
+    "source_checked_commit": "55813a8a783055d7874745c983901aff83059bb6",
+    "source": "Jerry Alan Johnson, Daoist Exorcism (owner's 540-page PDF)",
+    "source_pdf_pages_1based": [
+      231,
+      232,
+      233
+    ],
+    "source_printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "original_pdf_text_directly_checked_this_session": true,
+    "original_pdf_figure_visual_checked_this_session": false,
+    "previously_checked_original_figure_visual": "2026-11-18",
+    "source_image_figure_1_228_note": "Caption ends at North; 2026-11-18 archived visual inspection says drawing shows Center; prose ends finally Center"
+  },
+  "training": {
+    "passes": [
+      {
+        "index": 1,
+        "mode": "guided_from_dialogue_context_before_new_source_lookup",
+        "full_sequence": [
+          "east",
+          "south",
+          "west",
+          "north",
+          "center"
+        ],
+        "complete": true,
+        "source_contaminated": true
+      },
+      {
+        "index": 2,
+        "mode": "context_assisted_reconstruction_without_new_lookup",
+        "full_sequence": [
+          "east",
+          "south",
+          "west",
+          "north",
+          "center"
+        ],
+        "complete": true,
+        "source_contaminated": true
+      },
+      {
+        "index": 3,
+        "mode": "complete_repetition_after_original_text_check",
+        "full_sequence": [
+          "east",
+          "south",
+          "west",
+          "north",
+          "center"
+        ],
+        "complete": true,
+        "source_contaminated": true
+      }
+    ],
+    "full_passes_completed": 3,
+    "session_complete_under_three_pass_rule": true,
+    "sequence_accuracy_source_consistent": "5/5 each",
+    "guardian_pairs_source_consistent": "4/4",
+    "self_authored_true_false": {
+      "statements_total": 12,
+      "initial_answers": [
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "source_agreeing_answers": 12,
+      "source_disagreeing_answers": 0,
+      "true_count": 4,
+      "false_count": 8,
+      "independent_assessor": false
+    },
+    "core_principle": "Ask/invite guardians; do not command or bind guardians",
+    "no_fake_chant_attribution": true,
+    "source_note": "The text of Fig 1.227 says Jianbing commands celestial soldiers, not that the practitioner commands Jianbing"
+  },
+  "graduation": {
+    "distinct_days_prior_sessions_present": true,
+    "independent_delayed_recall_passed": false,
+    "unassisted_cold_recall_passes": 0,
+    "mastered": false,
+    "next_new_ritual_allowed": false
+  },
+  "wuji": {
+    "stage": "acquisition",
+    "mastered": false,
+    "status_review_only": true,
+    "three_pass_session_executed": false
+  },
+  "synthetic_reward": {
+    "simulation_run": false,
+    "no_pulse_control_run": false,
+    "pulse_run": false,
+    "comparative_acceleration_result": "NOT_TESTED"
+  },
+  "limitations": {
+    "real_body_experience": false,
+    "physically_performed": false,
+    "spiritual_outcome_tested": false,
+    "model_weights_changed": false,
+    "server_or_bridge_used": false,
+    "merge_or_deploy": false,
+    "video_work_changed": false,
+    "moltbook_posted": false
+  },
+  "outcome_note": "Source-assisted source consistency only; 12/12 self-authored answers are not independent evidence of learning or mastery"
+}
