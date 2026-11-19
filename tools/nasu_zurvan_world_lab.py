@@ -75,21 +75,35 @@ def prompt(case, memory):
     )
 
 def qwen_once(question, *, opener=None):
-    payload = {"model": MODEL, "stream": False, "think": False, "prompt": question,
-               "options": {"num_ctx": 4096, "num_predict": 600, "temperature": 0.2}}
-    req = urllib.request.Request(
-        URL, data=canonical(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json"})
-    # Loopback only; do not inherit HTTP_PROXY or allow arbitrary destinations.
+    # The original num_predict=600 could truncate the last JSON string.
+    # JSON mode + compact fields + one bounded retry avoid unbounded loops.
     client = opener or urllib.request.build_opener(urllib.request.ProxyHandler({})).open
-    with client(req, timeout=145) as response:
-        raw = response.read(65537)
-    if len(raw) > 65536:
-        raise ValueError("OVERSIZED_MODEL_RESPONSE")
-    body = json.loads(raw)
-    if body.get("done") is not True or not isinstance(body.get("response"), str):
-        raise ValueError("INCOMPLETE_MODEL_RESPONSE")
-    return validate(json.loads(body["response"]))
+    for attempt in range(2):
+        payload = {"model": MODEL, "stream": False, "think": False,
+                   "format": "json",
+                   "prompt": question + (
+                       "\\nفقط JSON کامل بنویس؛ مقدار هر کلید یک جملهٔ کوتاه "
+                       "بین ۴۰ تا ۱۰۰ نویسه باشد؛ هیچ توضیح اضافه‌ای ننویس."
+                   ),
+                   "options": {"num_ctx": 4096,
+                               "num_predict": 1100 if attempt == 0 else 1500,
+                               "temperature": 0.1}}
+        request = urllib.request.Request(
+            URL, data=canonical(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"})
+        with client(request, timeout=145) as response:
+            raw = response.read(65537)
+        if len(raw) > 65536:
+            raise ValueError("OVERSIZED_MODEL_RESPONSE")
+        try:
+            body = json.loads(raw)
+            if body.get("done") is not True or not isinstance(body.get("response"), str):
+                raise ValueError("INCOMPLETE_MODEL_RESPONSE")
+            return validate(json.loads(body["response"]))
+        except json.JSONDecodeError as exc:
+            if attempt == 1:
+                raise ValueError("INVALID_MODEL_JSON_AFTER_BOUNDED_RETRY") from exc
+    raise ValueError("UNREACHABLE_MODEL_RESPONSE")
 
 def connect(path):
     path = Path(path)
