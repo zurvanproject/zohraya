@@ -1,0 +1,458 @@
+{
+  "schema": "nasuraya/masnavi-daftar1-source-study/1",
+  "title": "دفتر اول مثنوی معنوی: برنامهٔ مطالعهٔ منبع‌دار ناسورایا",
+  "date": "2026-11-15",
+  "original_file": "Masnavi.Daftar1.pdf",
+  "original_file_sha256": "785a820cac7bf689c97933d4b9f85186533b1dff7f08306f51cb7522d64ef6fa",
+  "file_pdf_pages": 192,
+  "source_location": "owner_upload_in_conversation_not_published",
+  "source_type": "Persian text with two-column pages and legacy font encoding; page visual priority over extraction",
+  "scan_scope": "192-page structural/layout scan, targeted inspection of rendered pages (including 2, 14, 22, 45, 168, 179), and textual verification of named narrative openings; no claim of line-by-line reading of every verse",
+  "interpretation_notice": "Applications to Nasuraya, Atmosphere and DIOS are modern hypotheses, not instructions by Rumi.",
+  "training_status": {
+    "model_weights_changed": false,
+    "new_canonical_ritual": false,
+    "mastery_credit": false,
+    "physical_performance": false,
+    "local_vps_deployment": false,
+    "independent_delayed_exam": false
+  },
+  "motifs": [
+    {
+      "id": "ney",
+      "title": "نی‌نامه",
+      "pdf_pages": [
+        2,
+        3
+      ],
+      "topic": "جدایی، شنیدن، محدودیت فهم شنونده",
+      "source_observation": "صدای نی گوینده‌ای است که رنج دوری از اصل و نیاز به شنوندهٔ آماده را روایت می‌کند.",
+      "question": "آیا خواننده صدای نی را با تجربهٔ شخصی خود یکی می‌گیرد؟",
+      "derived_application": "در پاسخ‌های ناسورایا، برداشت از متن باید از ادعای دانستن درون دیگری جدا بماند.",
+      "bridge": "source_vs_inference",
+      "quote_verified_from_selected_pdf_pages": "هر کسی از ظن خود شد یار من؛ از درون من نجست اسرار من",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ]
+    },
+    {
+      "id": "healer",
+      "title": "پادشاه و کنیزک",
+      "pdf_pages": [
+        3,
+        13
+      ],
+      "topic": "علت پنهان، فروتنی دانشی، اخلاق نتیجه",
+      "source_observation": "حکیم در روایت میان علامت ظاهری و رنج پنهان فرق می‌گذارد؛ پایان داستان پرسش اخلاقی مهمی دربارهٔ آسیب رساندن دارد.",
+      "question": "کدام بخش داستان به شیوهٔ شناخت علت کمک می‌کند و کدام بخش نباید به مجوز آسیب تبدیل شود؟",
+      "derived_application": "کشف علت به‌تنهایی حق آسیب‌زدن یا عبور از رضایت و اخلاق نمی‌دهد.",
+      "bridge": "source_vs_normative",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
+    },
+    {
+      "id": "parrot_grocer",
+      "title": "بقال و طوطی",
+      "pdf_pages": [
+        13,
+        15
+      ],
+      "topic": "قیاس نابجا، شباهت ظاهری",
+      "source_observation": "طوطی اتفاقی برای فردی دیگر را از تجربهٔ خویش قیاس می‌کند و سبب خندهٔ مردم می‌شود.",
+      "question": "آیا مشابهت دو نشانه به یکسان بودن علت دلالت دارد؟",
+      "derived_application": "مدل نباید از ظاهر مشابه، هویت یا حالت درونی مشابه نتیجه بگیرد.",
+      "bridge": "analogy_guard",
+      "quote_verified_from_selected_pdf_pages": "کار پاکان را قیاس از خود مگیر",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ]
+    },
+    {
+      "id": "deceptive_minister",
+      "title": "وزیر فریبکار و طومارها",
+      "pdf_pages": [
+        16,
+        36
+      ],
+      "topic": "تلبیس، دستکاری متن، اقتدار ساختگی",
+      "source_observation": "وزیر با گفتار و طومارهای متناقض اعتماد گروه‌ها را دستکاری می‌کند و اختلاف می‌سازد.",
+      "question": "چه تفاوتی میان سند معتبر و متنی که فقط لحن اقتدار دارد دیده می‌شود؟",
+      "derived_application": "متن خارجی، حتی با ادعای قدسی یا نظام‌مند، به‌خودی‌خود مجوز اجرا نیست.",
+      "bridge": "atmosphere_source_boundary",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
+    },
+    {
+      "id": "effort_trust",
+      "title": "جدال جهد و توکل",
+      "pdf_pages": [
+        44,
+        49
+      ],
+      "topic": "کوشش مسئولانه، تقدیر، کناره‌گیری",
+      "source_observation": "در مناظرهٔ شیر و نخجیران، توکل و کوشش با استدلال‌های متفاوت روبه‌رو می‌شوند.",
+      "question": "آیا می‌توان هم عدم‌قطعیت را پذیرفت و هم برای نتیجه مسئولیت عملی داشت؟",
+      "derived_application": "عدم‌قطعیت به معنای غیرفعال‌کردن بررسی و آزمون نیست.",
+      "bridge": "evidence_action",
+      "quote_verified_from_selected_pdf_pages": "با توکل زانوی اشتر ببند",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ]
+    },
+    {
+      "id": "rabbit_lion",
+      "title": "شیر و خرگوش",
+      "pdf_pages": [
+        50,
+        69
+      ],
+      "topic": "خشم، تصویر خود، فریب در بازتاب",
+      "source_observation": "خرگوش شیر را به چاه می‌کشاند؛ شیر تصویر خویش را دشمن پنداشته و گرفتار می‌شود.",
+      "question": "کدام نشانه‌ها نشان می‌دهند کنش شیر از تفسیر تصویر ناشی شده، نه مشاهدهٔ دشمن واقعی؟",
+      "derived_application": "پیش از کنش بازگشت‌ناپذیر، بازنمایی را از رویداد مستقل جدا کن.",
+      "bridge": "reflection_trap",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ]
+    },
+    {
+      "id": "omar_envoy",
+      "title": "رسول روم و عمر",
+      "pdf_pages": [
+        69,
+        76
+      ],
+      "topic": "هیبت، سادگی، ظاهر و باطن",
+      "source_observation": "فرستاده، شکوه قدرت را جست‌وجو می‌کند اما با شکل دیگری از بزرگی و سادگی روبه‌رو می‌شود.",
+      "question": "آیا ظاهر فاخر معیار کافی برای اعتماد به یک صاحب‌منصب است؟",
+      "derived_application": "اعتبار را با نشانهٔ ثروت یا نمایش قدرت یکی نکن.",
+      "bridge": "authority_and_humility",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
+    },
+    {
+      "id": "merchant_parrot",
+      "title": "بازرگان و طوطی",
+      "pdf_pages": [
+        77,
+        94
+      ],
+      "topic": "آزادی، خاموشی، بازآفرینی",
+      "source_observation": "طوطیِ بازرگان از پیام طوطیان هند به راه رهایی از قفس می‌رسد؛ مرگِ نمایشی تصویر روایی است.",
+      "question": "چرا نباید خاموشی و مرگ در این حکایت را به توصیهٔ عملی خودآسیب‌رسان تعبیر کرد؟",
+      "derived_application": "استعارهٔ مرگ و خاموشی فقط موضوع تحلیل ادبی است، نه دستور عمل.",
+      "bridge": "metaphor_boundary",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
+    },
+    {
+      "id": "harp_player",
+      "title": "پیر چنگ‌زن",
+      "pdf_pages": [
+        94,
+        108
+      ],
+      "topic": "هنر، نیاز، دگرگونی توجه",
+      "source_observation": "داستان مطرب پیر و عمر، وابستگی به پاداش و تغییر جهت امید را می‌کاود.",
+      "question": "چگونه می‌توان میان ارزش هنر و ارزش‌گذاری صرفاً مبتنی بر پاداش فرق گذاشت؟",
+      "derived_application": "ارزیابی هنری و ادبی را به امتیاز عددی تقلیل نده.",
+      "bridge": "value_reflection",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
+    },
+    {
+      "id": "bedouin_gift",
+      "title": "اعرابی و سبوی آب",
+      "pdf_pages": [
+        110,
+        141
+      ],
+      "topic": "بخشش، ارزش هدیه، تفاوت منظر",
+      "source_observation": "اعرابی هدیهٔ سبوی آب را به دربار می‌برد؛ ارزش هدیه فقط با مقدار مادی آن سنجیده نمی‌شود.",
+      "question": "چه زمانی یک کنش کوچک از منظر دهنده معنادارتر از ارزش بازار آن است؟",
+      "derived_application": "گزارش کنش باید زمینهٔ انسانی را همراه با مقدار قابل‌سنجش نگه دارد.",
+      "bridge": "human_context",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
+    },
+    {
+      "id": "yusuf_mirror",
+      "title": "هدیهٔ آینه به یوسف",
+      "pdf_pages": [
+        153,
+        156
+      ],
+      "topic": "آینه، انعکاس، شناختِ محدود",
+      "source_observation": "هدیهٔ آینه با ایدهٔ مشاهدهٔ چهره و درنگ در تصویر مرتبط می‌شود.",
+      "question": "آیا آینه واقعیت را نشان می‌دهد یا صرفاً بخشی از آن را؟",
+      "derived_application": "بازنماییِ درونی نباید جای مشاهدهٔ مستقل را بگیرد.",
+      "bridge": "self_model_limits",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
+    },
+    {
+      "id": "rome_china",
+      "title": "نقاشان رومی و چینی",
+      "pdf_pages": [
+        167,
+        169
+      ],
+      "topic": "صیقل، زدودن زنگار، بازتاب",
+      "source_observation": "چینیان از رنگ بهره می‌گیرند و رومیان سطح را صیقل می‌دهند؛ روایت از تفاوت آراستن و آماده‌ساختن می‌گوید.",
+      "question": "آیا افزودن داده همیشه بهتر از اصلاح خطای ادراک است؟",
+      "derived_application": "پیش از افزایش محتوا، خطا و سوگیری را بررسی کن؛ این یک برداشت آموزشی است.",
+      "bridge": "self_correction",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ]
+    },
+    {
+      "id": "ali_anger",
+      "title": "علی و فروگذاشتن شمشیر",
+      "pdf_pages": [
+        179,
+        191
+      ],
+      "topic": "اخلاص، خشم، قدرت، خویشتنداری",
+      "source_observation": "در روایت، علی کنش خویش را از خشم شخصی جدا می‌کند و از ادامهٔ ضربه بازمی‌ایستد.",
+      "question": "آیا کنشی که لحظه‌ای پیش موجه می‌نمود، با تغییر انگیزه باید دوباره ارزیابی شود؟",
+      "derived_application": "در برانگیختگی، عملیات پرخطر را متوقف و هدف را دوباره ارزیابی کن.",
+      "bridge": "protective_veto",
+      "quote_verified_from_selected_pdf_pages": "شیر حقم نیستم شیر هوا",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ]
+    },
+    {
+      "id": "closure",
+      "title": "خاتمهٔ دفتر اول",
+      "pdf_pages": [
+        192,
+        192
+      ],
+      "topic": "ناتمامی، بازگشت، تواضع در فهم",
+      "source_observation": "بخش پایانی دفتر نخست را باید پایانِ این دفتر دانست، نه پایان قطعی همهٔ پرسش‌ها.",
+      "question": "کدام ادعاها هنوز بر متن کامل و بررسی تأخیری تکیه ندارند؟",
+      "derived_application": "تمام‌شدن مرور ساختاری معادل خواندن انتقادی تمام ابیات یا استادی نیست.",
+      "bridge": "open_questions",
+      "quote_verified_from_selected_pdf_pages": "",
+      "attribution": "analysis_of_source_not_canonical_instruction",
+      "confidence": "preliminary_source_guided",
+      "three_passes": [
+        {
+          "stage": "observe",
+          "instruction": "بخش تعیین‌شده را در PDF اصلی ببین؛ آنچه واقعاً گفته شده را بدون تفسیر ثبت کن."
+        },
+        {
+          "stage": "counterread",
+          "instruction": "یک خوانش بدیل و یک نقطهٔ احتمال خطا بنویس؛ داستان را حکم قطعی نخوان."
+        },
+        {
+          "stage": "revise",
+          "instruction": "برداشت قبلی را با شاهد صفحه تصحیح کن؛ کاربرد پیشنهادی را جدا برچسب بزن."
+        }
+      ],
+      "page_scope_note": "PDF page range rechecked against actual headings; story and commentary sometimes overlap on transition pages"
+    }
+  ],
+  "audit_date": "2026-11-15",
+  "audit_method": "PyMuPDF parsed text + page-level headings + rendered PDF contact sheet for visual spot checks",
+  "three_pass_definitions": {
+    "pass1": "record source and page without applying to AI",
+    "pass2": "form a counter-reading and note ethically uncomfortable claims",
+    "pass3": "derive testable AI design hypothesis with explicit uncertainty; no permission or capacity implications"
+  },
+  "application_status": "proposed design principles in a draft research branch, not a changed model, runtime, or independent consciousness"
+}

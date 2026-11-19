@@ -1,0 +1,23 @@
+name: Nasuraya Masnavi source-study gate
+on:
+  pull_request:
+    paths:
+      - "docs/reading/masnavi_daftar1_study_v01.json"
+      - "tools/masnavi_study.py"
+      - "tests/test_masnavi_study.py"
+      - ".github/workflows/masnavi-study.yml"
+permissions:
+  contents: read
+jobs:
+  source-study:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check offline study and source attribution
+        run: |
+          python3 -m py_compile tools/masnavi_study.py
+          python3 -m unittest discover -s tests -p "test_masnavi_study.py" -v
+          python3 tools/masnavi_study.py --lesson ney
