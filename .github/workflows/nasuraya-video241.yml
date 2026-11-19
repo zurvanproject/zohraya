@@ -1,0 +1,34 @@
+name: Nasuraya video241 portable tools
+on:
+  pull_request:
+    paths:
+      - 'tools/bridge_jobs/*video241*'
+      - '.github/workflows/nasuraya-video241.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tools/bridge_jobs -p test_video241_install.py -v
+      - name: Windows encode and decode with pinned portable FFmpeg
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $env:PROGRAMDATA = Join-Path $env:RUNNER_TEMP 'video241-ci'
+          python tools/bridge_jobs/nasu_video241_install.py
+          $receipt = Join-Path $env:PROGRAMDATA 'NasurayaBridge/video241_v1/receipt.json'
+          if (!(Test-Path $receipt)) { throw 'Installer did not produce a verified receipt' }
+          $data = Get-Content $receipt -Raw | ConvertFrom-Json
+          if (!$data.installed -or !$data.smoke_encoded_and_decoded) { throw 'Smoke check failed' }
+          Get-Content $receipt
