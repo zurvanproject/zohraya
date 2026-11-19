@@ -1,0 +1,51 @@
+name: DIOS NOUS v0.2 equal-information falsification
+on:
+  push:
+    branches: ['research/epistemic-revision-v01-20261110']
+    paths:
+      - 'examples/nasuraya_research/equal_information_v02.py'
+      - 'tests/test_equal_information_v02.py'
+      - 'docs/research/DIOS_NOUS_EQUAL_INFORMATION_PREREG_2026-11-10.md'
+      - '.github/workflows/dios-nous-equal-info.yml'
+  pull_request:
+    paths:
+      - 'examples/nasuraya_research/equal_information_v02.py'
+      - 'tests/test_equal_information_v02.py'
+      - 'docs/research/DIOS_NOUS_EQUAL_INFORMATION_PREREG_2026-11-10.md'
+      - '.github/workflows/dios-nous-equal-info.yml'
+permissions:
+  contents: read
+jobs:
+  dev:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 6
+    steps:
+      - run: git config --global core.autocrlf false
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Local-only development controls, no held-out seeds
+        run: |
+          python -m py_compile examples/nasuraya_research/equal_information_v02.py
+          python -m unittest discover -s tests -p 'test_equal_information_v02.py' -v
+          python -m examples.nasuraya_research.equal_information_v02 --dev
+  heldout:
+    needs: dev
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Registered 160-case equal-information test
+        run: python -m examples.nasuraya_research.equal_information_v02 --holdout
