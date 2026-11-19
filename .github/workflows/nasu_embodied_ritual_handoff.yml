@@ -1,0 +1,40 @@
+name: Nasuraya embodied-ritual handoff contracts
+on:
+  push:
+    branches:
+      - integration/nasuraya-embodied-ritual-handoff-20261119
+  pull_request:
+    paths:
+      - 'tools/nasu_embodied_ritual_handoff.py'
+      - 'tests/test_nasu_embodied_ritual_handoff.py'
+      - 'tools/atmosphere_ritual_posture_v03.py'
+      - '.github/workflows/nasu_embodied_ritual_handoff.yml'
+  workflow_dispatch:
+
+jobs:
+  bounded-research:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: New fail-closed handoff contracts
+        run: python3 -B -m unittest discover -s tests -p 'test_nasu_embodied_ritual_handoff.py' -v
+      - name: Original static-contact ritual contracts
+        run: python3 -B -m unittest discover -s tests -p 'test_atmosphere_ritual_posture_v03.py' -v
+      - name: Real source modules, missing journal must hold
+        run: |
+          python3 -B - <<'PY'
+          from tools import atmosphere_ritual_posture_v03 as posture
+          from tools import nasu_embodied_ritual_handoff as handoff
+          report = handoff.compose({"status": "missing"}, posture.round_trip(), posture.stress())
+          assert report["decision"] == "HOLD_EVIDENCE"
+          assert report["body_ritual"]["static_checks"] == 27
+          assert report["body_ritual"]["negative_checks"] == 18
+          assert report["body_actuation"] is False
+          print("handoff=HOLD_EVIDENCE; static_checks=27; negative_checks=18; actuation=0")
+          PY
