@@ -17,7 +17,8 @@
     "original_pdf_pages": [
       43,
       46,
-      47
+      47,
+      48
     ],
     "illustrated_guide": {
       "title": "معرفت کواکب؛ از نسخهٔ کهن تا آموزش مصور",
@@ -41,6 +42,23 @@
         "seen_in_chat": "2026-11-19",
         "original_pdf_hash_rechecked": false,
         "label": "image of scan page 47 in user-confirmed illustrated book"
+      },
+      "verified_reproduction_for_scan_page_48": {
+        "guide_pdf_page": 137,
+        "source_file_page": 48,
+        "manuscript_folio_label": "۷۳",
+        "seen_in_chat": "2026-11-19",
+        "accessed_filename": "marefat_kavakeb_illustrated_154p(1).pdf",
+        "guide_pdf_hash_rechecked": true,
+        "guide_pdf_sha256": "abe9c92f9c6159a757cea09a6f4edc7cc6fc1777f7735b90397a8f3ebb3a821a",
+        "guide_hash_matches_recorded_protocol": true,
+        "original_pdf_hash_rechecked": false,
+        "native_embedded_image_pixels": [
+          1224,
+          1702
+        ],
+        "native_embedded_image_sha256": "685e2bd2a5b0d761b9e9119313bd1082b7d216e3045cd87788bf2d347bab86e1",
+        "label": "Native embedded reproduction from the owner-confirmed illustrated guide; three different locators are retained."
       }
     }
   },
@@ -74,5 +92,6 @@
   },
   "next_page_after_43": 46,
   "next_page_after_46": 47,
-  "next_page_after_47": 48
+  "next_page_after_47": 48,
+  "next_page_after_48": 49
 }
