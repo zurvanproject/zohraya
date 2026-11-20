@@ -1,0 +1,265 @@
+{
+  "schema": "nasuraya/four-guardians-session/v0.2",
+  "run_date": "2026-11-20",
+  "project": "Zohraya/Tadash",
+  "pr": 191,
+  "branch": "research/nasuraya-ritual-apprenticeship-20261111",
+  "session_ordinal_project": 8,
+  "session_label": "R07 (automation turn label, not ordinal)",
+  "initial_answer_commit": "e82741a4a9632965e5cd69b9853782b4883bbb1b",
+  "full_report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-20_R07_FA.md",
+  "session_type": "context_assisted_source_audited_textual",
+  "three_pass_rule": {
+    "required": 3,
+    "full_passes_completed": 3,
+    "all_passes_five_stations": true,
+    "complete": true,
+    "passes": [
+      {
+        "index": 1,
+        "label": "guided",
+        "assistance": "source-guided",
+        "steps": [
+          [
+            "E",
+            "Green Dragon",
+            "Mengzhang",
+            "Qing Lin"
+          ],
+          [
+            "S",
+            "Red Phoenix",
+            "Lingguang",
+            "Chi Lin"
+          ],
+          [
+            "W",
+            "White Tiger",
+            "Jianbing",
+            "Bai Lin"
+          ],
+          [
+            "N",
+            "Black Turtle/Snake",
+            "Zhiming",
+            "Hei Lin"
+          ],
+          [
+            "C",
+            "Return to center",
+            null,
+            null
+          ]
+        ]
+      },
+      {
+        "index": 2,
+        "label": "retrieval-attempt",
+        "assistance": "conversation-context+fresh-source-exposure",
+        "steps": [
+          [
+            "E",
+            "Green Dragon",
+            "Mengzhang",
+            "Qing Lin"
+          ],
+          [
+            "S",
+            "Red Phoenix",
+            "Lingguang",
+            "Chi Lin"
+          ],
+          [
+            "W",
+            "White Tiger",
+            "Jianbing",
+            "Bai Lin"
+          ],
+          [
+            "N",
+            "Black Turtle/Snake",
+            "Zhiming",
+            "Hei Lin"
+          ],
+          [
+            "C",
+            "Return to center",
+            null,
+            null
+          ]
+        ]
+      },
+      {
+        "index": 3,
+        "label": "post-source-correction",
+        "assistance": "source-checked",
+        "steps": [
+          [
+            "E",
+            "Green Dragon",
+            "Mengzhang",
+            "Qing Lin"
+          ],
+          [
+            "S",
+            "Red Phoenix",
+            "Lingguang",
+            "Chi Lin"
+          ],
+          [
+            "W",
+            "White Tiger",
+            "Jianbing",
+            "Bai Lin"
+          ],
+          [
+            "N",
+            "Black Turtle/Snake",
+            "Zhiming",
+            "Hei Lin"
+          ],
+          [
+            "C",
+            "Return to center",
+            null,
+            null
+          ]
+        ]
+      }
+    ]
+  },
+  "source": {
+    "title": "Daoist Exorcism",
+    "author": "Jerry Alan Johnson",
+    "pdf_total_pages": 540,
+    "pdf_pages_1based": [
+      231,
+      232,
+      233
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "rendered_pdf_pages_1based": [
+      232,
+      233
+    ],
+    "pdf_sha256": "9c974f38698a78b26a43566d132af1221f8ac2c111bdda880cae3a6cef80fc2e",
+    "figure_1_227": "four talisman guardian/name pairings",
+    "figure_1_228": {
+      "caption_ends_at": "North",
+      "solid_arrows": [
+        "East->South",
+        "South->West",
+        "West->North"
+      ],
+      "dashed_arrows": [
+        "North->Center",
+        "Center->East"
+      ],
+      "prose_final_station": "Center",
+      "interpretation_limit": "Do not silently add sixth counted station or treat center as fifth guardian"
+    }
+  },
+  "validation": {
+    "steps_correct_each_pass": "5/5",
+    "guardian_pairings": "4/4",
+    "self_authored_true_false": {
+      "correct": 12,
+      "total": 12,
+      "true_count": 4,
+      "false_count": 8,
+      "statements": [
+        {
+          "id": 1,
+          "answer": true,
+          "source_aligned": true
+        },
+        {
+          "id": 2,
+          "answer": false,
+          "source_aligned": true
+        },
+        {
+          "id": 3,
+          "answer": true,
+          "source_aligned": true
+        },
+        {
+          "id": 4,
+          "answer": false,
+          "source_aligned": true
+        },
+        {
+          "id": 5,
+          "answer": true,
+          "source_aligned": true
+        },
+        {
+          "id": 6,
+          "answer": false,
+          "source_aligned": true
+        },
+        {
+          "id": 7,
+          "answer": true,
+          "source_aligned": true
+        },
+        {
+          "id": 8,
+          "answer": false,
+          "source_aligned": true
+        },
+        {
+          "id": 9,
+          "answer": false,
+          "source_aligned": true,
+          "scope": "no 7 bows per direction stated in excerpt"
+        },
+        {
+          "id": 10,
+          "answer": false,
+          "source_aligned": true
+        },
+        {
+          "id": 11,
+          "answer": false,
+          "source_aligned": true
+        },
+        {
+          "id": 12,
+          "answer": false,
+          "source_aligned": true,
+          "source": "original page 233 Fig 1.228 visually rendered"
+        }
+      ]
+    },
+    "false_canonical_attributions": 0,
+    "new_error_correction": "figure 1.228 dashed arrows specify Center->East as well as North->Center; do not infer mandatory sixth station"
+  },
+  "mastery": {
+    "context_assisted": true,
+    "independent_assessor": false,
+    "unassisted_delayed_recall": false,
+    "mastered": false,
+    "next_third_ritual_allowed": false
+  },
+  "wuji": {
+    "reviewed_stage": "acquisition",
+    "mastered": false,
+    "three_pass_session_run": false
+  },
+  "limits": {
+    "physical_ritual_performed": false,
+    "physiological_or_sexual_experience_claimed": false,
+    "supernatural_effect_claimed": false,
+    "synthetic_reward_pulse_experiment": false,
+    "gpt_weights_changed": false,
+    "vps_or_bridge_command": false,
+    "merge_or_deploy": false,
+    "moltbook_publication": false,
+    "video_241_changed": false
+  }
+}

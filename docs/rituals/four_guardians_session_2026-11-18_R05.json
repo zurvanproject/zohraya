@@ -1,0 +1,130 @@
+{
+  "schema": "nasuraya/ritual-session-evidence/v0.2",
+  "date_local": "2026-11-18",
+  "ritual": "four-direction-guardians",
+  "repo_pr": 191,
+  "branch": "research/nasuraya-ritual-apprenticeship-20261111",
+  "source": {
+    "title": "Daoist Exorcism",
+    "author": "Jerry Alan Johnson",
+    "user_library_original_pdf": true,
+    "original_pdf_pages_1based": [
+      231,
+      232,
+      233,
+      234
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234,
+      235
+    ],
+    "visual_pages_checked_1based": [
+      232,
+      233
+    ],
+    "figures_visually_checked": [
+      "1.227",
+      "1.228"
+    ],
+    "evidence": "direct page render + extracted text"
+  },
+  "status": {
+    "stage": "acquisition",
+    "textual_mastery": false,
+    "wuji_mastered": false,
+    "third_ritual_allowed": false,
+    "full_passes_completed": 3,
+    "session_complete_under_three_pass_rule": true,
+    "independent_assessor": false,
+    "independent_delayed_recall": false,
+    "conversational_context_contamination": true,
+    "reward_pulse_executed": false,
+    "real_body_execution": false,
+    "supernatural_effect_claim": false
+  },
+  "prelookup_commit": "27ebd92422988c7b6f0a400fd63ef57a820197e3",
+  "report_path": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-18_R05_FA.md",
+  "passes": [
+    {
+      "pass": 1,
+      "kind": "guided_full_sequence_using_conversation_context",
+      "sequence": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "pairings": [
+        "Mengzhang/Qing Lin/green dragon",
+        "Lingguang/Chi Lin/red phoenix",
+        "Jianbing/Bai Lin/white tiger",
+        "Zhiming/Hei Lin/black tortoise-snake"
+      ],
+      "source_opened_before_pass": false,
+      "complete": true,
+      "notes": "Guidance from prior conversational context, not current PDF"
+    },
+    {
+      "pass": 2,
+      "kind": "attempted_recall_full_sequence",
+      "sequence": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "pairings": [
+        "Mengzhang/Qing Lin/green dragon",
+        "Lingguang/Chi Lin/red phoenix",
+        "Jianbing/Bai Lin/white tiger",
+        "Zhiming/Hei Lin/black tortoise-snake"
+      ],
+      "source_opened_before_pass": false,
+      "complete": true,
+      "notes": "Context contamination explicitly present; not cold recall; pre-lookup committed"
+    },
+    {
+      "pass": 3,
+      "kind": "full_sequence_post_source_visual_audit",
+      "sequence": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "pairings": [
+        "Mengzhang/Qing Lin/green dragon",
+        "Lingguang/Chi Lin/red phoenix",
+        "Jianbing/Bai Lin/white tiger",
+        "Zhiming/Hei Lin/black tortoise-snake"
+      ],
+      "source_opened_before_pass": true,
+      "complete": true,
+      "notes": "Fig 1.228 includes center with dashed paths despite caption ending North; prose explicitly says finally Center"
+    }
+  ],
+  "trap_test": {
+    "count": 12,
+    "prelookup_answered": 12,
+    "fully_supported_after_source": 11,
+    "partially_correct_and_revised": 1,
+    "revision_id": 9,
+    "revision": "The caption says start East, end North, but the actual fig 1.228 draws Center and dashed connections; prose explicitly says finally Center.",
+    "independent_test": false
+  },
+  "new_contrast": {
+    "guardian_orders_celestial_soldiers_in_caption": true,
+    "practitioner_must_not_command_guardian_in_prose": true
+  },
+  "safety": {
+    "no_merge_deploy": true,
+    "no_vps_bridge_actions": true,
+    "no_moltbook_publishing": true,
+    "third_ritual_unopened": true
+  }
+}

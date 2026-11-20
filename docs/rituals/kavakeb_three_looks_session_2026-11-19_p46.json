@@ -1,0 +1,121 @@
+{
+  "schema": "nasuraya/kavakeb-three-looks-session/1",
+  "protocol_id": "marefat-kavakeb-three-looks-v01",
+  "session_id": "kavakeb-2026-11-19-p46-illustrated-reproduction",
+  "date": "2026-11-19",
+  "source_page": 46,
+  "source_access": "The owner-confirmed 154-page illustrated educational PDF was visually inspected at PDF page 135, which reproduces original scan PDF page 46. The original 66-page PDF was not independently byte/hash verified this turn. PDF page 134 (reproduction of scan page 45) was also visually inspected for a limited layout comparison. The guide's three-look teaching pages 80–88 were read directly. Context assistance disclosed.",
+  "mastered": false,
+  "embodied_or_supernatural_verified": false,
+  "independent_delayed_recall_proven": false,
+  "passes": [
+    {
+      "number": 1,
+      "mode": "source_guided",
+      "independent_assessor": false,
+      "measured_duration_seconds": null,
+      "stages": {
+        "observe": {
+          "observations": [
+            "در بازنمایی برگ ۴۶، یک جدول چهارضلعی با خطوط متعدد افقی و عمودی در نیمهٔ پایین صفحه دیده می‌شود.",
+            "بالای شبکهٔ ریز، بخش جداگانه‌ای داخل کادر با نوشتار تیره قرار دارد.",
+            "ردیف‌ها و خانه‌های زیادی دیده می‌شوند ولی بعضی حروف بسیار ریز و ناخوانا هستند."
+          ],
+          "unknowns": [
+            "شمار دقیق خانه‌ها و خوانش حروف و سطر عنوان از این نسخهٔ تصویری قطعی نیست."
+          ]
+        },
+        "geometry": {
+          "geometric_relations": [
+            "مرز بیرونی کادر تقریباً مستطیلی است؛ خطوط عمودی و افقی، خانه‌های کوچک هم‌راستا می‌سازند.",
+            "ردیف‌ها در بخش پایین متراکم‌تر از فضای بالای کادر هستند."
+          ],
+          "hypotheses": [
+            "ممکن است جدایی بخش فوقانی و شبکهٔ تحتانی، جدایی عنوان از اطلاعات جدول باشد؛ از تصویر به‌تنهایی ثابت نیست."
+          ]
+        },
+        "revise": {
+          "supported_findings": [
+            "وجود شبکهٔ راست‌گوشه و یک ناحیهٔ فوقانی جداشده در تصویر مستند است؛ هیچ انتساب کارکردیِ غیبی از آن به دست نمی‌آید."
+          ],
+          "uncertainties": [
+            "مرز دقیق تک‌تک ستون‌ها و جهت درست خواندن خطوط هنوز بررسی مستقل و قابل اتکا ندارد."
+          ]
+        }
+      }
+    },
+    {
+      "number": 2,
+      "mode": "source_guided",
+      "independent_assessor": false,
+      "measured_duration_seconds": null,
+      "stages": {
+        "observe": {
+          "observations": [
+            "در حاشیهٔ راستِ بخش جدول، نوشته‌ها در ناحیه‌ای نسبتاً پهن‌تر از چند خانهٔ باریکِ سمت چپ دیده می‌شوند.",
+            "بعضی خطوط و حروف در مجاورت یکدیگر به سبب تراکمِ مرکب به‌سختی تفکیک می‌شوند.",
+            "بازنمایی برگ ۴۵ در صفحهٔ ۱۳۴ نیز جدولی مستطیلی دارد، اما چینش آن و حاشیه‌هایش با برگ ۴۶ یکسان نیست."
+          ],
+          "unknowns": [
+            "برچسب بودن حاشیهٔ راست و معنای هر سطر از این تصویر ثابت نشده است."
+          ]
+        },
+        "geometry": {
+          "geometric_relations": [
+            "پهنای همهٔ خانه‌ها یکسان به نظر نمی‌رسد و ناحیهٔ سمت راست را نمی‌توان بی‌دلیل هم‌ارز ستون‌های باریک داخل شبکه گرفت.",
+            "مقایسهٔ دو تصویرِ پیاپی فقط تفاوت آرایش سطرها، ستون‌ها و ناحیهٔ عنوان را نشان می‌دهد."
+          ],
+          "hypotheses": [
+            "شاید ناحیهٔ راست برای نام‌گذاری ردیف‌ها باشد؛ بدون خوانش معتبر متن، فرضیه است."
+          ]
+        },
+        "revise": {
+          "supported_findings": [
+            "تعبیر سریعِ کل جدول به‌عنوان خانه‌های هم‌اندازه اصلاح شد: دست‌کم بخشی از جدول پهنای متفاوت دارد.",
+            "وجود ترتیب ظاهری در جدول به معنی کشف جهت خواندن یا معنای نشانه‌ها نیست."
+          ],
+          "uncertainties": [
+            "پهنای خانه‌ها شاید به کیفیت اسکن یا ساخت اصلی جدول مرتبط باشد؛ بررسی دقیق‌تر منبع لازم است."
+          ]
+        }
+      }
+    },
+    {
+      "number": 3,
+      "mode": "source_guided",
+      "independent_assessor": false,
+      "measured_duration_seconds": null,
+      "stages": {
+        "observe": {
+          "observations": [
+            "در بازخوانی سوم، شکل کلی جدول و اختلاف بخش بالایی با شبکهٔ زیرین همچنان قابل مشاهده است.",
+            "نشانه‌های خرد همچنان مبهم‌اند؛ هیچ خوانش جدید قطعی از حروف به‌دست نیامده است."
+          ],
+          "unknowns": [
+            "نام و کارکرد جدول، تعداد قطعی ستون‌ها، قواعد عددی و مقصد عملی آن روشن نیست."
+          ]
+        },
+        "geometry": {
+          "geometric_relations": [
+            "در مقایسه با برگ ۴۳ِ گزارش‌شده در دفتر قبلی، برگ ۴۶ شبکهٔ راست‌گوشه دارد؛ این مقایسه صرفاً هندسی است و برگ ۴۳ در این نوبت بازگشایی نشده است.",
+            "ترکیب عنوان/حاشیه و شبکهٔ متراکم نیازمند نقشهٔ اجزای دقیق‌تر است، نه نام‌گذاریِ دلخواهِ هر نماد."
+          ],
+          "hypotheses": [
+            "ممکن است سرستون‌ها یا حاشیه‌ها کلید دسته‌بندی باشند؛ تا خوانش سند روشن‌تر نشود نتیجه قطعی نیست."
+          ]
+        },
+        "revise": {
+          "supported_findings": [
+            "نتیجهٔ محدود و معتبر: برگ ۴۶ حاوی یک شبکهٔ چندستونی و چندردیفی با ناحیهٔ فوقانی و حاشیهٔ راست متمایز است.",
+            "تمایز مشاهده، فرضیه و مجهول حفظ شد؛ نه اثر ماورایی، نه پیش‌گویی و نه استادی ریچوال از شکل ادعا نشده است."
+          ],
+          "uncertainties": [
+            "برای تشخیص نام و کارکرد نوشته‌های بالا/راست به اسکن خواناتر، بازخوانی متن در سیاق و احتمالاً مقابله با نسخهٔ دیگر نیاز است.",
+            "مرور تأخیری با ارزیاب مستقل هنوز انجام نشده است."
+          ]
+        }
+      }
+    }
+  ],
+  "limitations": "Three complete source-guided/context-assisted textual passes during one conversation; each consists of observation, geometry, and revision. The scanned source was seen only as a page-135 reproduction inside the 154-page guide; original 66-page PDF bytes/hash were not rechecked. No real clock-time measurement, independent delayed test, body movement, supernatural effect, model training, VPS execution or mastery claim."
+}
