@@ -1,0 +1,21 @@
+name: Pinned cognitive runtime update contracts
+on:
+  pull_request:
+    paths:
+      - 'tools/apply_nasu_cognition_292.py'
+      - 'tests/test_apply_nasu_cognition_292.py'
+      - '.github/workflows/nasuraya-cognition-pr292-rollout.yml'
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - run: python -B -m unittest discover -s tests -p test_apply_nasu_cognition_292.py -v
