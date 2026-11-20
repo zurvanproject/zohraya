@@ -99,6 +99,39 @@ class DiagnosticsTests(unittest.TestCase):
         db.execute("UPDATE cycles SET state='some_new_state'")
         self.assertEqual(diag.cognitive_status(self.home), {"state": "invalid"})
 
+    def test_known_failure_reasons_are_safe_and_legacy_rows_unchanged(self):
+        db = self.database()
+        cases = [(reason, reason) for reason in cognition.MODEL_RESPONSE_FAILURES]
+        cases += [("TimeoutError", "timeout"), ("URLError", "transport_error"),
+                  ("ConnectionRefusedError", "connection_refused"), ("HTTPError", "http_error"),
+                  ("ValueError", None), (SECRET, None), ("invalid_envelope:" + SECRET, None)]
+        for suffix, expected in cases:
+            with self.subTest(suffix=suffix):
+                db.execute("DELETE FROM cycles")
+                self.record(db, "2026-11-19T00", "model_unavailable:" + suffix)
+                before = db.execute("SELECT * FROM cycles").fetchall()
+                result = diag.cognitive_status(self.home)
+                self.assertEqual(result["latest"].get("failure_reason"), expected)
+                self.assertEqual((result["drafts"], result["failed"], result["incomplete"]), (0, 1, 0))
+                self.assertEqual(db.execute("SELECT * FROM cycles").fetchall(), before)
+                self.assertNotIn(SECRET, json.dumps(result))
+                encoded = diag.compact(diag.collect(home=self.home, now=NOW, runner=self.runner))
+                self.assertLessEqual(len(encoded), diag.MAX_OUTPUT)
+                self.assertIn("cognition", json.loads(encoded))
+
+    def test_actual_rejected_response_reaches_diagnostics_as_failed_receipt(self):
+        db = self.database()
+        source = self.home / cognition.TOPICS["continuity"][0]
+        source.parent.mkdir(parents=True)
+        source.write_text("value = 1\n")
+        def infer(*args):
+            return cognition.local_llm(*args, opener=lambda *a, **k: io.BytesIO(b"[]"))
+        cognition.run(db, now=NOW, root=self.home, infer=infer, tester=lambda *a: "PASS")
+        result = diag.cognitive_status(self.home)
+        self.assertEqual(result["latest"]["failure_reason"], "invalid_envelope")
+        self.assertEqual((result["drafts"], result["failed"], result["incomplete"]), (0, 1, 0))
+        self.assertIsNone(result["last_successful_slot"])
+
     def test_symlink_database_and_sidecar_are_rejected(self):
         db = self.database()
         self.record(db, "2026-11-19T00")

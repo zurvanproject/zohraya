@@ -87,6 +87,111 @@ class GrowthTests(unittest.TestCase):
         self.assertEqual(row, "{}")
         self.assertEqual(growth.verify(db)["completed"], 1)
 
+    def test_malformed_model_responses_finalize_failed_receipts(self):
+        secret = "PRIVATE_RESPONSE_MUST_NOT_ENTER_FAILED_RECEIPT"
+        def envelope(response, **extra):
+            return json.dumps(dict(done=True, response=response, **extra)).encode()
+        cases = [
+            (b"[]", "invalid_envelope"),
+            (b"null", "invalid_envelope"),
+            (b"true", "invalid_envelope"),
+            (b"17", "invalid_envelope"),
+            (json.dumps(secret).encode(), "invalid_envelope"),
+            (b"{}", "invalid_envelope"),
+            (envelope(None), "invalid_envelope"),
+            (envelope([]), "invalid_envelope"),
+            (secret.encode(), "invalid_response_json"),
+            (b"\xff", "invalid_response_json"),
+            # Parser recursion limits vary; both paths must finish the receipt.
+            (b"[" * 2000 + b"]" * 2000, ("invalid_response_json", "invalid_envelope")),
+            (json.dumps({"done": False, "response": secret}).encode(), "incomplete_generation"),
+            (json.dumps({"done": 1, "response": secret}).encode(), "incomplete_generation"),
+            (envelope(json.dumps(DRAFT), done_reason="length"), "incomplete_generation"),
+            (envelope("```json\n" + secret + "\n```"), "invalid_draft_json"),
+            (envelope("[" * 2000 + "]" * 2000), ("invalid_draft_json", "invalid_draft")),
+            (envelope("null"), "invalid_draft"),
+            (envelope("[]"), "invalid_draft"),
+            (envelope(json.dumps(dict(DRAFT, token=secret))), "invalid_draft"),
+            (envelope(json.dumps(dict(DRAFT, next_topic=secret))), "invalid_draft"),
+            (envelope(json.dumps(dict(DRAFT, metric="short"))), "invalid_draft"),
+            (envelope(json.dumps(dict(DRAFT, metric=" " * 20))), "invalid_draft"),
+            (envelope(json.dumps(dict(DRAFT, metric="x" * 751))), "invalid_draft"),
+            (envelope(json.dumps(dict(DRAFT, metric=secret + "\ud800"))), "invalid_draft"),
+            (b"x" * 65537, "response_too_large"),
+        ]
+        for raw, reason in cases:
+            with self.subTest(reason=reason, prefix=raw[:20]):
+                root, db = self.fixture()
+                def infer(*args):
+                    return growth.local_llm(*args, opener=lambda *a, **k: io.BytesIO(raw))
+                result = growth.run(db, now=self.clock(1), root=root,
+                                    infer=infer, tester=lambda *args: "PASS")
+                self.assertEqual(result["outcome"], "failed_safe")
+                reasons = (reason,) if isinstance(reason, str) else reason
+                self.assertIn(result["model"], {"model_unavailable:" + item for item in reasons})
+                self.assertEqual(growth.verify(db)["incomplete"], 0)
+                self.assertEqual(growth.verify(db)["completed"], 1)
+                row = db.execute("SELECT * FROM cycles").fetchone()
+                self.assertEqual(db.execute("SELECT proposal FROM cycles").fetchone()[0], "{}")
+                self.assertNotIn(secret, json.dumps(row))
+
+    def test_response_failure_recovers_after_reopen_and_next_slot(self):
+        root, db = self.fixture()
+        def invalid(*args):
+            return growth.local_llm(*args, opener=lambda *a, **k: io.BytesIO(b"[]"))
+        growth.run(db, now=self.clock(1), root=root, infer=invalid,
+                   tester=lambda *args: "PASS")
+        old_row = db.execute("SELECT * FROM cycles").fetchone()
+        db.close()
+        reopened = growth.connect(root / "journal" / "cycles.sqlite3")
+        self.addCleanup(reopened.close)
+        self.assertEqual(growth.verify(reopened)["incomplete"], 0)
+        repeated = growth.run(reopened, now=self.clock(2), root=root,
+                              infer=mock.Mock(side_effect=AssertionError("repeated request")))
+        self.assertEqual(repeated["status"], "already_attempted")
+        reply = json.dumps({"done": True, "response": json.dumps(DRAFT)}).encode()
+        def valid(*args):
+            return growth.local_llm(*args, opener=lambda *a, **k: io.BytesIO(reply))
+        result = growth.run(reopened, now=self.clock(8), root=root,
+                            infer=valid, tester=lambda *args: "PASS")
+        self.assertEqual(result["outcome"], "drafted")
+        self.assertEqual(growth.verify(reopened)["completed"], 2)
+        self.assertEqual(growth.verify(reopened)["incomplete"], 0)
+        self.assertEqual(reopened.execute("SELECT * FROM cycles ORDER BY slot LIMIT 1").fetchone(), old_row)
+
+    def test_one_bounded_request_uses_structured_output_and_validates_result(self):
+        calls = []
+        def opener(request, *, timeout):
+            calls.append((request, timeout))
+            return io.BytesIO(json.dumps({"done": True, "response": json.dumps(DRAFT)}).encode())
+        result = growth.local_llm("continuity", {}, {}, "PASS", opener=opener)
+        self.assertEqual(result, DRAFT)
+        self.assertEqual(len(calls), 1)
+        request, timeout = calls[0]
+        payload = json.loads(request.data)
+        self.assertEqual((request.full_url, timeout), (growth.URL, 145))
+        self.assertEqual(payload["model"], growth.MODEL)
+        self.assertFalse(payload["stream"])
+        self.assertFalse(payload["think"])
+        self.assertEqual(payload["options"]["num_predict"], 500)
+        schema = payload["format"]
+        self.assertEqual(schema["type"], "object")
+        self.assertEqual(set(schema["required"]), set(DRAFT))
+        self.assertFalse(schema["additionalProperties"])
+        self.assertEqual(set(schema["properties"]["next_topic"]["enum"]), set(growth.TOPICS))
+
+    def test_transport_timeout_remains_distinct_and_private(self):
+        root, db = self.fixture()
+        def timeout(*args, **kwargs):
+            raise TimeoutError("PRIVATE_TRANSPORT_DETAIL")
+        def infer(*args):
+            return growth.local_llm(*args, opener=timeout)
+        result = growth.run(db, now=self.clock(1), root=root, infer=infer,
+                            tester=lambda *args: "PASS")
+        self.assertEqual(result["model"], "model_unavailable:TimeoutError")
+        self.assertEqual(growth.verify(db)["incomplete"], 0)
+        self.assertNotIn("PRIVATE_TRANSPORT_DETAIL", json.dumps(db.execute("SELECT * FROM cycles").fetchall()))
+
     def test_missing_source_records_failure_and_continues_next_slot(self):
         root, db = self.fixture()
         (root / growth.TOPICS["continuity"][0]).unlink()
