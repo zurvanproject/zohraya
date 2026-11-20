@@ -31,6 +31,28 @@ TOPICS = {
 }
 FIELDS = ("hypothesis", "test", "metric", "next_topic", "limitation")
 ZERO = "0" * 64
+MODEL_RESPONSE_FAILURES = frozenset((
+    "response_too_large", "invalid_response_json", "invalid_envelope",
+    "incomplete_generation", "invalid_draft_json", "invalid_draft",
+))
+
+
+class ModelResponseError(ValueError):
+    """A fixed reason code; never include private model or transport text."""
+    def __init__(self, reason):
+        if reason not in MODEL_RESPONSE_FAILURES:
+            raise ValueError("Unknown model response failure")
+        self.reason = reason
+        super().__init__(reason.replace("_", " "))
+
+
+def draft_format():
+    """Ask Ollama to constrain generation; validate() remains authoritative."""
+    properties = {name: {"type": "string", "minLength": 12, "maxLength": 750}
+                  for name in FIELDS if name != "next_topic"}
+    properties["next_topic"] = {"type": "string", "enum": list(TOPICS)}
+    return {"type": "object", "properties": properties,
+            "required": list(FIELDS), "additionalProperties": False}
 
 def canon(o):
     return json.dumps(o, sort_keys=True, ensure_ascii=False, separators=(",", ":"))
@@ -79,6 +101,8 @@ def validate(result):
         v = result[name]
         if not isinstance(v, str) or (name != "next_topic" and not 12 <= len(v.strip()) <= 750):
             raise ValueError("Invalid draft")
+        # JSON may decode lone surrogates, which cannot enter a UTF-8 receipt.
+        v.encode("utf-8")
     if result["next_topic"] not in TOPICS:
         raise ValueError("Unexpected topic")
     return result
@@ -142,7 +166,7 @@ def local_llm(topic, evidence, previous, tested, *, opener=None):
         canon({"topic": topic, "source": evidence, "fixed_test": tested,
                "previous_draft": previous, "in_world_identity": _identity_for_prompt()}))
     payload = {"model": MODEL, "stream": False, "think": False,
-               "prompt": prompt, "keep_alive": "5m",
+               "prompt": prompt, "keep_alive": "5m", "format": draft_format(),
                "options": {"num_ctx": 4096, "num_predict": 500, "temperature": 0.2}}
     request = urllib.request.Request(URL, data=canon(payload).encode(),
                                      headers={"Content-Type": "application/json"})
@@ -152,13 +176,25 @@ def local_llm(topic, evidence, previous, tested, *, opener=None):
     with client(request, timeout=145) as response:
         raw = response.read(65537)
     if len(raw) > 65536:
-        raise ValueError("Local model response too large")
-    body = json.loads(raw)
-    if body.get("done") is not True or not isinstance(body.get("response"), str):
-        raise ValueError("Incomplete local generation")
+        raise ModelResponseError("response_too_large")
+    try:
+        body = json.loads(raw)
+    except (ValueError, RecursionError):
+        raise ModelResponseError("invalid_response_json") from None
+    if not isinstance(body, dict) or not isinstance(body.get("response"), str):
+        raise ModelResponseError("invalid_envelope")
+    if body.get("done") is not True or body.get("done_reason") == "length":
+        raise ModelResponseError("incomplete_generation")
     answer = body["response"].strip()
     # Accept pure JSON only; malformed output stays a failed draft.
-    return validate(json.loads(answer))
+    try:
+        proposal = json.loads(answer)
+    except (ValueError, RecursionError):
+        raise ModelResponseError("invalid_draft_json") from None
+    try:
+        return validate(proposal)
+    except (ValueError, TypeError):
+        raise ModelResponseError("invalid_draft") from None
 
 def _identity_for_prompt():
     try:
@@ -290,6 +326,8 @@ def run(db, *, now=None, root=ROOT, infer=local_llm, tester=fixed_test):
             status = "UNVERIFIED_DRAFT"
             try:
                 proposal = validate(infer(topic, evidence, prior, result))
+            except ModelResponseError as ex:
+                status = "model_unavailable:" + ex.reason
             except (OSError, ValueError, TypeError, TimeoutError) as ex:
                 status = "model_unavailable:" + type(ex).__name__
     body = {"slot":key,"stamp":now.isoformat(),"topic":topic,

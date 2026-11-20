@@ -79,6 +79,18 @@ def _model_status(value):
     raise ValueError("unknown_model_status")
 
 
+def _failure_reason(value):
+    """Project known metadata only; legacy/unknown exception text stays private."""
+    if not isinstance(value, str) or not value.startswith("model_unavailable:"):
+        return None
+    reason = value.partition(":")[2]
+    if reason in cognition.MODEL_RESPONSE_FAILURES:
+        return reason
+    return {"TimeoutError": "timeout", "URLError": "transport_error",
+            "ConnectionRefusedError": "connection_refused",
+            "HTTPError": "http_error"}.get(reason)
+
+
 def cognitive_status(home=HOME):
     """Verify and project a single existing SQLite read snapshot, never init."""
     try:
@@ -109,8 +121,11 @@ def cognitive_status(home=HOME):
             last_successful = None
             latest = None
             for slot, model_status in rows:
+                reason = _failure_reason(model_status)
                 slot, model_status = _slot(slot), _model_status(model_status)
                 latest = {"slot": slot, "model": model_status}
+                if reason is not None:
+                    latest["failure_reason"] = reason
                 if model_status == "UNVERIFIED_DRAFT":
                     drafts += 1
                     last_successful = slot
