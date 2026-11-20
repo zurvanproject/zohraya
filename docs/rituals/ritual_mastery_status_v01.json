@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
-  "updated": "2026-11-19",
+  "updated": "2026-11-20",
   "current_focus": "four-direction-guardians",
   "next_new_ritual_allowed": false,
   "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
@@ -48,11 +48,11 @@
       "source_check": "5/5 guardian-direction-symbol names source-checked; not independent recall",
       "trap_bank": "12 documented corrections; not a closed-book score",
       "generated_shuffled_decks": 8,
-      "mastery_note": "2026-11-19: seventh three-pass context-assisted textual session. Five steps and four guardian pairs aligned with original text; 12/12 self-authored statements source-consistent, NOT independently assessed. No unassisted delayed recall; mastery remains unverified.",
+      "mastery_note": "2026-11-20: eighth three-pass textual session complete with self-authored questions and context assistance; source PDF text and Figs 1.227,1.228 were directly audited, revealing dashed Center->East arrow as well as North->Center. No independent delayed cold recall; NOT mastered.",
       "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
       "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
-      "next_step": "Use independently generated unseen prompts in truly context-isolated delayed assessment; no third ritual until real mastery evidence.",
-      "context_assisted_retrieval_checks": 8,
+      "next_step": "Run truly context-isolated delayed recall with independent prompts and assessor; retain three full textual passes per session. Keep third ritual blocked until mastery.",
+      "context_assisted_retrieval_checks": 9,
       "same_day_context_assisted_rehearsals": 2,
       "latest_repeat": {
         "date": "2026-11-12",
@@ -63,19 +63,20 @@
         "independent_recall": false,
         "real_time_delay": false
       },
-      "completed_three_pass_textual_sessions": 7,
+      "completed_three_pass_textual_sessions": 8,
       "latest_session": {
-        "date": "2026-11-19",
-        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-19_PRELOOKUP_FA.md",
-        "machine_record": "docs/rituals/four_guardians_session_2026-11-19_R06.json",
-        "prelookup_commit": "5ea40d568e28aea6e21ae992172b1e2a3318ee5e",
+        "date": "2026-11-20",
+        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-20_R07_FA.md",
+        "machine_record": "docs/rituals/four_guardians_session_2026-11-20_R07.json",
+        "prelookup_commit": "e82741a4a9632965e5cd69b9853782b4883bbb1b",
         "full_passes_completed": 3,
         "each_pass_full_sequence": "5/5",
         "guardian_pairs": "4/4",
-        "mixed_traps": "12/12 source consistent, self-authored; 4 true and 8 false",
+        "mixed_traps": "12/12 self-authored source consistent (4 true, 8 false)",
         "original_pdf_text_checked": true,
-        "original_pdf_visual_checked_this_session": false,
-        "recall_mode": "CONTEXT_ASSISTED_PRELOOKUP_AND_SOURCE_AUDIT",
+        "original_pdf_visual_checked_this_session": true,
+        "source_visual_refinement": "Fig 1.228 solid E->S->W->N and dashed N->C->E, prose ends Center, caption North",
+        "recall_mode": "CONTEXT_ASSISTED_PRELOOKUP_THEN_SOURCE_AUDIT",
         "independent_assessor": false,
         "independent_delayed_recall": false,
         "textual_mastery": false,
@@ -83,7 +84,7 @@
         "synthetic_reward_pulse_experiment_executed": false,
         "wuji_status_review_only": true,
         "new_source_corrections": 0,
-        "important_note": "Caption of Fig 1.228 ends North, drawing Center previously audited on 2026-11-18, prose returns finally Center; no contradiction in correct answers"
+        "new_source_geometry_detail": 1
       }
     }
   },
@@ -105,11 +106,11 @@
     "session_run_type": "two source-checked textual practice sessions, not embodied learning",
     "latest_followup_counts_as_new_delayed_session": false,
     "latest_followup_type": "same-conversation context-assisted retrieval and correction",
-    "latest_four_guardians_rehearsal_type": "Three complete context-assisted textual passages, original PDF text verification, 12 self-authored source-consistent truth judgments; no fresh PDF image review",
+    "latest_four_guardians_rehearsal_type": "2026-11-20: three complete context-assisted narrative passes plus original PDF text and freshly rendered figure validation; independent delayed recall still absent",
     "latest_four_guardians_session_complete_under_three_pass_rule": true,
-    "latest_four_guardians_session_date": "2026-11-19",
+    "latest_four_guardians_session_date": "2026-11-20",
     "latest_four_guardians_delayed_recall_verified": false,
-    "latest_wuji_review_type": "Status only, Wuji not-mastered; no new three-pass Wuji session"
+    "latest_wuji_review_type": "Status-only read; Wuji not mastered. No full three-pass Wuji training in this session."
   },
   "owner_priority_override": {
     "date": "2026-11-12",
