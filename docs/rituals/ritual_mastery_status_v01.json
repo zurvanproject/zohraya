@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
-  "updated": "2026-11-20",
+  "updated": "2026-11-21",
   "current_focus": "four-direction-guardians",
   "next_new_ritual_allowed": false,
   "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
@@ -48,11 +48,11 @@
       "source_check": "5/5 guardian-direction-symbol names source-checked; not independent recall",
       "trap_bank": "12 documented corrections; not a closed-book score",
       "generated_shuffled_decks": 8,
-      "mastery_note": "2026-11-20: eighth three-pass textual session complete with self-authored questions and context assistance; source PDF text and Figs 1.227,1.228 were directly audited, revealing dashed Center->East arrow as well as North->Center. No independent delayed cold recall; NOT mastered.",
+      "mastery_note": "2026-11-21: ninth three-pass source-assisted textual session completed; book-specific Qing Lin / Chi Lin / Bai Lin / Hei Lin titles restored after initial generic-symbol naming; original PDF pp231-233 rechecked including Figs 1.227-1.228. 12/12 source-audited corrections, not independent tests; no unassisted delayed recall; NOT mastered.",
       "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
       "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
-      "next_step": "Run truly context-isolated delayed recall with independent prompts and assessor; retain three full textual passes per session. Keep third ritual blocked until mastery.",
-      "context_assisted_retrieval_checks": 9,
+      "next_step": "True delayed recall in context-isolated setting, questions and assessor independent of the exposed source/answers, with 5/5 sequence and 4/4 pairs, >=11/12 error discrimination, 0 fake historical chant attributions. Third ritual remains closed.",
+      "context_assisted_retrieval_checks": 10,
       "same_day_context_assisted_rehearsals": 2,
       "latest_repeat": {
         "date": "2026-11-12",
@@ -63,28 +63,33 @@
         "independent_recall": false,
         "real_time_delay": false
       },
-      "completed_three_pass_textual_sessions": 8,
+      "completed_three_pass_textual_sessions": 9,
       "latest_session": {
-        "date": "2026-11-20",
-        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-20_R07_FA.md",
-        "machine_record": "docs/rituals/four_guardians_session_2026-11-20_R07.json",
-        "prelookup_commit": "e82741a4a9632965e5cd69b9853782b4883bbb1b",
+        "date": "2026-11-21",
+        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-21_R08_FA.md",
+        "machine_record": "docs/rituals/four_guardians_session_2026-11-21_R08.json",
+        "prelookup_commit": "13845752c633ae556d62acde144f9ba51a6e6b66",
         "full_passes_completed": 3,
         "each_pass_full_sequence": "5/5",
         "guardian_pairs": "4/4",
-        "mixed_traps": "12/12 self-authored source consistent (4 true, 8 false)",
+        "trap_audit": "12/12 corrections matched source after exposure to answer key; no independent score",
         "original_pdf_text_checked": true,
         "original_pdf_visual_checked_this_session": true,
-        "source_visual_refinement": "Fig 1.228 solid E->S->W->N and dashed N->C->E, prose ends Center, caption North",
-        "recall_mode": "CONTEXT_ASSISTED_PRELOOKUP_THEN_SOURCE_AUDIT",
+        "original_pdf_sha256": "9c974f38698a78b26a43566d132af1221f8ac2c111bdda880cae3a6cef80fc2e",
+        "source_specific_title_correction": [
+          "Qing Lin",
+          "Chi Lin",
+          "Bai Lin",
+          "Hei Lin"
+        ],
+        "recall_mode": "CONTEXT_ASSISTED_PRELOOKUP_THEN_SAME_SESSION_SOURCE_ASSISTED_AUDIT",
         "independent_assessor": false,
         "independent_delayed_recall": false,
         "textual_mastery": false,
         "session_complete_under_three_pass_rule": true,
         "synthetic_reward_pulse_experiment_executed": false,
         "wuji_status_review_only": true,
-        "new_source_corrections": 0,
-        "new_source_geometry_detail": 1
+        "new_source_corrections": 1
       }
     }
   },
