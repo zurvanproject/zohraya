@@ -6,6 +6,7 @@ Supply the exact directory containing the restored manifest.json.
 """
 import argparse
 import hashlib
+import importlib.util
 import json
 from pathlib import Path, PurePosixPath
 import sqlite3
@@ -99,7 +100,12 @@ def verify(root):
         raise ValueError("Inconsistent Ollama model recovery manifest")
     if manifest.get("ollama_qwen3_4b_independent_smoke_pass", False) is not False:
         raise ValueError("Only a witnessed independent test can claim offline inference")
-    from nasu_ollama_4b_recovery import ARTIFACTS, verify_bundle
+    spec = importlib.util.spec_from_file_location(
+        "nasu_ollama_4b_recovery",
+        Path(__file__).with_name("nasu_ollama_4b_recovery.py"))
+    recovery = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(recovery)
+    ARTIFACTS, verify_bundle = recovery.ARTIFACTS, recovery.verify_bundle
     if flag:
         if not set(ARTIFACTS).issubset(files):
             raise ValueError("4B model or runtime missing from backup manifest")
