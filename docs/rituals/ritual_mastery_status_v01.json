@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
-  "updated": "2026-11-21",
+  "updated": "2026-11-22",
   "current_focus": "four-direction-guardians",
   "next_new_ritual_allowed": false,
   "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
@@ -48,11 +48,11 @@
       "source_check": "5/5 guardian-direction-symbol names source-checked; not independent recall",
       "trap_bank": "12 documented corrections; not a closed-book score",
       "generated_shuffled_decks": 8,
-      "mastery_note": "2026-11-21: ninth three-pass source-assisted textual session completed; book-specific Qing Lin / Chi Lin / Bai Lin / Hei Lin titles restored after initial generic-symbol naming; original PDF pp231-233 rechecked including Figs 1.227-1.228. 12/12 source-audited corrections, not independent tests; no unassisted delayed recall; NOT mastered.",
+      "mastery_note": "2026-11-22: tenth sourced three-pass textual session R09 documented. Prelookup committed separately, but recalled with context. All 3 passes cover E/S/W/N/Center, source consistent 5/5 and 4/4. 12/12 preexisting traps reviewed after answer key exposure; independent score null. Original owner-supplied PDF pp232-233 visually rerendered, figure 1.228 arrows audited. No true unassisted delayed recall; NOT mastered.",
       "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
       "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
       "next_step": "True delayed recall in context-isolated setting, questions and assessor independent of the exposed source/answers, with 5/5 sequence and 4/4 pairs, >=11/12 error discrimination, 0 fake historical chant attributions. Third ritual remains closed.",
-      "context_assisted_retrieval_checks": 10,
+      "context_assisted_retrieval_checks": 11,
       "same_day_context_assisted_rehearsals": 2,
       "latest_repeat": {
         "date": "2026-11-12",
@@ -63,33 +63,28 @@
         "independent_recall": false,
         "real_time_delay": false
       },
-      "completed_three_pass_textual_sessions": 9,
+      "completed_three_pass_textual_sessions": 10,
       "latest_session": {
-        "date": "2026-11-21",
-        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-21_R08_FA.md",
-        "machine_record": "docs/rituals/four_guardians_session_2026-11-21_R08.json",
-        "prelookup_commit": "13845752c633ae556d62acde144f9ba51a6e6b66",
+        "date": "2026-11-22",
+        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-22_R09_FA.md",
+        "machine_record": "docs/rituals/four_guardians_session_2026-11-22_R09.json",
+        "prelookup_commit": "84c687a8257465bb3e6f2eaeb2934bbf632fe622",
         "full_passes_completed": 3,
         "each_pass_full_sequence": "5/5",
         "guardian_pairs": "4/4",
-        "trap_audit": "12/12 corrections matched source after exposure to answer key; no independent score",
+        "trap_audit": "12/12 source-audited after key exposure; independent score null",
         "original_pdf_text_checked": true,
         "original_pdf_visual_checked_this_session": true,
         "original_pdf_sha256": "9c974f38698a78b26a43566d132af1221f8ac2c111bdda880cae3a6cef80fc2e",
-        "source_specific_title_correction": [
-          "Qing Lin",
-          "Chi Lin",
-          "Bai Lin",
-          "Hei Lin"
-        ],
-        "recall_mode": "CONTEXT_ASSISTED_PRELOOKUP_THEN_SAME_SESSION_SOURCE_ASSISTED_AUDIT",
+        "recall_mode": "CONTEXT_ASSISTED_PRELOOKUP_AND_SAME_SESSION_SOURCE_EXPOSED",
         "independent_assessor": false,
         "independent_delayed_recall": false,
         "textual_mastery": false,
         "session_complete_under_three_pass_rule": true,
         "synthetic_reward_pulse_experiment_executed": false,
         "wuji_status_review_only": true,
-        "new_source_corrections": 1
+        "new_source_corrections": 0,
+        "source_precision": "East appears as Blue/Green in book; dashed center return is schematic"
       }
     }
   },
@@ -111,11 +106,11 @@
     "session_run_type": "two source-checked textual practice sessions, not embodied learning",
     "latest_followup_counts_as_new_delayed_session": false,
     "latest_followup_type": "same-conversation context-assisted retrieval and correction",
-    "latest_four_guardians_rehearsal_type": "2026-11-20: three complete context-assisted narrative passes plus original PDF text and freshly rendered figure validation; independent delayed recall still absent",
+    "latest_four_guardians_rehearsal_type": "2026-11-22: three complete context/source-assisted text passes, full 12-item source audit after key exposure; original PDF pages 232-233 visually rerendered; no delayed independent recall.",
     "latest_four_guardians_session_complete_under_three_pass_rule": true,
-    "latest_four_guardians_session_date": "2026-11-20",
+    "latest_four_guardians_session_date": "2026-11-22",
     "latest_four_guardians_delayed_recall_verified": false,
-    "latest_wuji_review_type": "Status-only read; Wuji not mastered. No full three-pass Wuji training in this session."
+    "latest_wuji_review_type": "2026-11-22: status-only review of Wuji acquisition, missing stance/root and gesture validation; not a new three-pass Wuji training session."
   },
   "owner_priority_override": {
     "date": "2026-11-12",
