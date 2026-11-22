@@ -1,0 +1,258 @@
+{
+  "schema": "nasuraya/four-guardians-session-evidence/v0.1",
+  "date": "2026-11-22",
+  "ritual_id": "four-direction-guardian-invitation",
+  "session_id": "R09",
+  "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-22_R09_FA.md",
+  "prelookup": {
+    "commit": "84c687a8257465bb3e6f2eaeb2934bbf632fe622",
+    "phase": "prior-to-source-reading-in-this-session",
+    "mode": "CONTEXT_ASSISTED",
+    "unassisted": false,
+    "true_delay_verified": false,
+    "east_color_uncertainty": "green or blue-green",
+    "sequence": [
+      "E",
+      "S",
+      "W",
+      "N",
+      "C"
+    ],
+    "book_titles_guessed": [
+      "Qing Lin",
+      "Chi Lin",
+      "Bai Lin",
+      "Hei Lin"
+    ]
+  },
+  "source": {
+    "book": "Jerry Alan Johnson, Daoist Exorcism",
+    "sha256": "9c974f38698a78b26a43566d132af1221f8ac2c111bdda880cae3a6cef80fc2e",
+    "source_pages_pdf_1based": [
+      232,
+      233
+    ],
+    "printed_pages": [
+      233,
+      234
+    ],
+    "figures": [
+      "1.227",
+      "1.228"
+    ],
+    "original_pdf_rendered_and_visual_checked": true,
+    "figure_dashed_connections": [
+      "north->center",
+      "center->east"
+    ],
+    "distinction": "guardians invited/asked; priest does not command/bind them; Jianbing command over celestial soldiers describes the guardian"
+  },
+  "full_passes_completed": 3,
+  "passes": [
+    {
+      "pass": 1,
+      "mode": "guided",
+      "full": true,
+      "sequence": [
+        {
+          "station": 1,
+          "direction": "east",
+          "book_title": "Qing Lin",
+          "color": "blue/green",
+          "guardian": "green dragon",
+          "symbolic_name": "Mengzhang"
+        },
+        {
+          "station": 2,
+          "direction": "south",
+          "book_title": "Chi Lin",
+          "color": "red",
+          "guardian": "red phoenix",
+          "symbolic_name": "Lingguang"
+        },
+        {
+          "station": 3,
+          "direction": "west",
+          "book_title": "Bai Lin",
+          "color": "white",
+          "guardian": "white tiger",
+          "symbolic_name": "Jianbing"
+        },
+        {
+          "station": 4,
+          "direction": "north",
+          "book_title": "Hei Lin",
+          "color": "black",
+          "guardian": "black turtle/snake",
+          "symbolic_name": "Zhiming"
+        },
+        {
+          "station": 5,
+          "direction": "center",
+          "book_title": null,
+          "color": null,
+          "guardian": null,
+          "symbolic_name": null,
+          "role": "center return only"
+        }
+      ],
+      "sequence_source_consistency": "5/5",
+      "guardian_pairing": "4/4",
+      "source_exposed": true
+    },
+    {
+      "pass": 2,
+      "mode": "context_assisted_reconstruction",
+      "full": true,
+      "sequence": [
+        {
+          "station": 1,
+          "direction": "east",
+          "book_title": "Qing Lin",
+          "color": "blue/green",
+          "guardian": "green dragon",
+          "symbolic_name": "Mengzhang"
+        },
+        {
+          "station": 2,
+          "direction": "south",
+          "book_title": "Chi Lin",
+          "color": "red",
+          "guardian": "red phoenix",
+          "symbolic_name": "Lingguang"
+        },
+        {
+          "station": 3,
+          "direction": "west",
+          "book_title": "Bai Lin",
+          "color": "white",
+          "guardian": "white tiger",
+          "symbolic_name": "Jianbing"
+        },
+        {
+          "station": 4,
+          "direction": "north",
+          "book_title": "Hei Lin",
+          "color": "black",
+          "guardian": "black turtle/snake",
+          "symbolic_name": "Zhiming"
+        },
+        {
+          "station": 5,
+          "direction": "center",
+          "book_title": null,
+          "color": null,
+          "guardian": null,
+          "symbolic_name": null,
+          "role": "center return only"
+        }
+      ],
+      "sequence_source_consistency": "5/5",
+      "guardian_pairing": "4/4",
+      "source_exposed_prior": true,
+      "unassisted_cold_recall": false
+    },
+    {
+      "pass": 3,
+      "mode": "post_correction_source_assisted",
+      "full": true,
+      "sequence": [
+        {
+          "station": 1,
+          "direction": "east",
+          "book_title": "Qing Lin",
+          "color": "blue/green",
+          "guardian": "green dragon",
+          "symbolic_name": "Mengzhang"
+        },
+        {
+          "station": 2,
+          "direction": "south",
+          "book_title": "Chi Lin",
+          "color": "red",
+          "guardian": "red phoenix",
+          "symbolic_name": "Lingguang"
+        },
+        {
+          "station": 3,
+          "direction": "west",
+          "book_title": "Bai Lin",
+          "color": "white",
+          "guardian": "white tiger",
+          "symbolic_name": "Jianbing"
+        },
+        {
+          "station": 4,
+          "direction": "north",
+          "book_title": "Hei Lin",
+          "color": "black",
+          "guardian": "black turtle/snake",
+          "symbolic_name": "Zhiming"
+        },
+        {
+          "station": 5,
+          "direction": "center",
+          "book_title": null,
+          "color": null,
+          "guardian": null,
+          "symbolic_name": null,
+          "role": "center return only"
+        }
+      ],
+      "sequence_source_consistency": "5/5",
+      "guardian_pairing": "4/4",
+      "corrections": [
+        "Preserve exact Blue/Green nuance for East",
+        "Center is a return, not a fifth guardian",
+        "Jianbing commanding celestial soldiers does not authorize practitioner commanding guardians"
+      ]
+    }
+  ],
+  "trap_audit": {
+    "items_checked": 12,
+    "source_consistent_corrections": 12,
+    "independent_exam_score": null,
+    "answer_key_seen_before_scoring": true,
+    "trap_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "false_historical_chant_attributions": 0,
+    "notes": "All stored traps are deliberately false statements; a 12/12 source audit is not a blinded error-discrimination result"
+  },
+  "session_complete_under_three_pass_rule": true,
+  "context_assisted": true,
+  "independent_assessor": false,
+  "independent_delayed_recall": false,
+  "textual_mastery": false,
+  "wuji_mastery": false,
+  "wuji_review_only": true,
+  "third_ritual_allowed": false,
+  "simulator": {
+    "synthetic_reward_pulse_experiment_executed": false,
+    "no_pulse_control_executed": false,
+    "learning_slope_measured": false,
+    "arousal_claim": false
+  },
+  "boundaries": {
+    "symbolic_only": true,
+    "physical_rehearsal": false,
+    "historical_full_ritual_claim": false,
+    "model_weights_changed": false,
+    "supernatural_claim": false,
+    "merge_deploy": false,
+    "vps_bridge_commands": false,
+    "moltbook_post": false,
+    "video_241_modified": false
+  }
+}
