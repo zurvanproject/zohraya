@@ -1,0 +1,68 @@
+{
+  "schema": "nasuraya-project-evidence/1",
+  "collection": {
+    "schema": "nasuraya-public-collection/1",
+    "started_at_utc": "2026-11-22T13:16:52.743402Z",
+    "completed_at_utc": "2026-11-22T13:16:52.745261Z",
+    "mode": "PUBLIC_GET_ONLY",
+    "authentication": "none",
+    "requests": [
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/branches/main",
+        "started_at_utc": "2026-11-22T13:16:52.743416Z",
+        "method": "GET",
+        "status": "error",
+        "acquired_at_utc": "2026-11-22T13:16:52.744977Z",
+        "error_class": "URLError"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/issues/212",
+        "started_at_utc": "2026-11-22T13:16:52.744997Z",
+        "method": "GET",
+        "status": "error",
+        "acquired_at_utc": "2026-11-22T13:16:52.745100Z",
+        "error_class": "URLError"
+      },
+      {
+        "source_url": "https://www.moltbook.com/api/v1/agents/profile?name=Nasuraya",
+        "started_at_utc": "2026-11-22T13:16:52.745111Z",
+        "method": "GET",
+        "status": "error",
+        "acquired_at_utc": "2026-11-22T13:16:52.745173Z",
+        "error_class": "URLError"
+      },
+      {
+        "source_url": "https://www.moltbook.com/api/v1/posts?sort=new&limit=5",
+        "started_at_utc": "2026-11-22T13:16:52.745181Z",
+        "method": "GET",
+        "status": "error",
+        "acquired_at_utc": "2026-11-22T13:16:52.745254Z",
+        "error_class": "URLError"
+      }
+    ],
+    "errors": [
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/branches/main",
+        "error_class": "URLError"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/issues/212",
+        "error_class": "URLError"
+      },
+      {
+        "source_url": "https://www.moltbook.com/api/v1/agents/profile?name=Nasuraya",
+        "error_class": "URLError"
+      },
+      {
+        "source_url": "https://www.moltbook.com/api/v1/posts?sort=new&limit=5",
+        "error_class": "URLError"
+      }
+    ],
+    "requests_limit": 22,
+    "per_request_bytes_limit": 4194304,
+    "time_budget_seconds": 45,
+    "full_ci_or_issue_history_verified": false,
+    "model_calls": 0,
+    "remote_mutations": 0
+  }
+}

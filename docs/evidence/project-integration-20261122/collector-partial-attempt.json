@@ -1,0 +1,131 @@
+{
+  "collection": {
+    "schema": "nasuraya-public-collection/1",
+    "started_at_utc": "2026-11-22T13:19:34.289452Z",
+    "completed_at_utc": "2026-11-22T13:20:19.314279Z",
+    "mode": "PUBLIC_GET_ONLY",
+    "authentication": "none",
+    "status": "partial",
+    "available_components": [
+      "github",
+      "server"
+    ],
+    "status_scope": "requested_bounded_sources_not_runtime_health_or_full_history",
+    "requests": [
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/branches/main",
+        "started_at_utc": "2026-11-22T13:19:34.289467Z",
+        "method": "GET",
+        "status": "ok",
+        "acquired_at_utc": "2026-11-22T13:19:40.955007Z",
+        "response_bytes": 4875,
+        "response_sha256": "6fb7d13749a6655bed48ac5eae8ba5471ce2b045f7ee1d94ce4848c14afbb8d5"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/pulls?state=open&sort=updated&direction=desc&per_page=100&page=1",
+        "started_at_utc": "2026-11-22T13:19:40.955542Z",
+        "method": "GET",
+        "status": "ok",
+        "acquired_at_utc": "2026-11-22T13:19:45.155595Z",
+        "response_bytes": 1844501,
+        "response_sha256": "b4f2323ff9b417f9fcbcd76e265399df6b9bd1b68310eda756bf5b3f2a60400c"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/pulls?state=open&sort=updated&direction=desc&per_page=100&page=2",
+        "started_at_utc": "2026-11-22T13:19:45.157152Z",
+        "method": "GET",
+        "status": "ok",
+        "acquired_at_utc": "2026-11-22T13:19:49.282519Z",
+        "response_bytes": 1806961,
+        "response_sha256": "b956f5f248839b5f9f6772f451fd8228124ef8979142331fb8c6fb841fa60ce8"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/pulls?state=open&sort=updated&direction=desc&per_page=100&page=3",
+        "started_at_utc": "2026-11-22T13:19:49.284756Z",
+        "method": "GET",
+        "status": "ok",
+        "acquired_at_utc": "2026-11-22T13:19:53.513757Z",
+        "response_bytes": 195931,
+        "response_sha256": "a2821171c4e80cd24b3c18cd91e716c4ee20b5aa85746673d1642959f0c40dac"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/actions/runs?per_page=30&page=1",
+        "started_at_utc": "2026-11-22T13:19:53.514732Z",
+        "method": "GET",
+        "status": "ok",
+        "acquired_at_utc": "2026-11-22T13:19:58.459953Z",
+        "response_bytes": 392428,
+        "response_sha256": "34b55f2ab61234e408461c5cb218f5521b7e17d1de8f6495efd9eeeaf67119c6"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/issues/212",
+        "started_at_utc": "2026-11-22T13:19:58.460631Z",
+        "method": "GET",
+        "status": "ok",
+        "acquired_at_utc": "2026-11-22T13:20:02.960899Z",
+        "response_bytes": 4612,
+        "response_sha256": "89f42973b17bdc2adf998934f33dde42e34af609de84902690e739f458dce4ab"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/issues/212/comments?per_page=100&page=4",
+        "started_at_utc": "2026-11-22T13:20:02.961338Z",
+        "method": "GET",
+        "status": "ok",
+        "acquired_at_utc": "2026-11-22T13:20:06.683063Z",
+        "response_bytes": 198510,
+        "response_sha256": "3c9aec4ff74a09c138d556d0ace169549d27e48183d2b182c974298c63d0af7d"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/issues/212/comments?per_page=100&page=3",
+        "started_at_utc": "2026-11-22T13:20:06.685400Z",
+        "method": "GET",
+        "status": "ok",
+        "acquired_at_utc": "2026-11-22T13:20:11.047522Z",
+        "response_bytes": 296327,
+        "response_sha256": "0a364a4d5015a1fc13f6d6fb01b82fd69fddeb7797bb1a70a2c27c42bf361ab9"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/issues/212/comments?per_page=100&page=2",
+        "started_at_utc": "2026-11-22T13:20:11.049130Z",
+        "method": "GET",
+        "status": "ok",
+        "acquired_at_utc": "2026-11-22T13:20:15.159025Z",
+        "response_bytes": 287401,
+        "response_sha256": "2fe7eab73a72fe410638a4478b5725a76ae097590fa3e7f1b0fc727bec5d43f3"
+      },
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/issues/212/comments?per_page=100&page=1",
+        "started_at_utc": "2026-11-22T13:20:15.161073Z",
+        "method": "GET",
+        "status": "error",
+        "acquired_at_utc": "2026-11-22T13:20:19.312244Z",
+        "error_class": "CollectionLimit"
+      }
+    ],
+    "errors": [
+      {
+        "source_url": "https://api.github.com/repos/zurvanproject/zohraya/issues/212/comments?per_page=100&page=1",
+        "error_class": "CollectionLimit"
+      },
+      {
+        "source_url": "https://www.moltbook.com/api/v1/agents/profile?name=Nasuraya",
+        "error_class": "CollectionLimit"
+      },
+      {
+        "source_url": "https://www.moltbook.com/api/v1/posts?sort=new&limit=5",
+        "error_class": "CollectionLimit"
+      }
+    ],
+    "requests_limit": 22,
+    "per_request_bytes_limit": 4194304,
+    "time_budget_seconds": 45,
+    "full_ci_or_issue_history_verified": false,
+    "model_calls": 0,
+    "remote_mutations": 0
+  },
+  "components_available": [
+    "github",
+    "server"
+  ],
+  "finding": "Historical unlinked comments exhausted the collection budget before Moltbook reads. Fixed by collecting each source before historical pagination and stopping at latest relevant requests."
+}

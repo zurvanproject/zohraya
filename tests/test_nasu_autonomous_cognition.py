@@ -1,5 +1,7 @@
 """Offline cognitive-growth contracts. No Ollama or server connection needed."""
+import contextlib
 import datetime as dt
+from http.client import HTTPResponse, IncompleteRead
 import importlib.util
 import importlib.util
 import io
@@ -9,6 +11,7 @@ from unittest import mock
 from pathlib import Path
 import sqlite3
 import tempfile
+import traceback
 import unittest
 
 FILE = Path(__file__).resolve().parents[1] / "tools/nasu_autonomous_cognition.py"
@@ -191,6 +194,118 @@ class GrowthTests(unittest.TestCase):
         self.assertEqual(result["model"], "model_unavailable:TimeoutError")
         self.assertEqual(growth.verify(db)["incomplete"], 0)
         self.assertNotIn("PRIVATE_TRANSPORT_DETAIL", json.dumps(db.execute("SELECT * FROM cycles").fetchall()))
+
+    def test_incomplete_http_response_is_bounded_closed_and_private(self):
+        secret = "PRIVATE_PARTIAL_HTTP_RESPONSE"
+        complete = json.dumps({"done": True, "response": json.dumps(DRAFT),
+                               "private": secret}).encode()
+        for partial in (b"", complete):
+            with self.subTest(partial_length=len(partial)):
+                reads = []
+                class InterruptedResponse(io.BytesIO):
+                    def read(self, size=-1):
+                        reads.append(size)
+                        raise IncompleteRead(partial, 7)
+                response = InterruptedResponse()
+                opener = mock.Mock(return_value=response)
+                with mock.patch.object(growth, "_identity_for_prompt", return_value=None):
+                    with self.assertRaises(growth.ModelResponseError) as caught:
+                        growth.local_llm("continuity", {}, {}, "PASS", opener=opener)
+                self.assertEqual(caught.exception.reason, "incomplete_http_response")
+                self.assertTrue(caught.exception.__suppress_context__)
+                self.assertNotIn(secret, "".join(traceback.format_exception(caught.exception)))
+                self.assertEqual(opener.call_count, 1)
+                self.assertEqual(opener.call_args.kwargs, {"timeout": 145})
+                self.assertEqual(opener.call_args.args[0].full_url, growth.URL)
+                self.assertEqual(reads, [65537])
+                self.assertTrue(response.closed)
+
+    def test_incomplete_http_response_preserves_history_and_next_slot(self):
+        root, db = self.fixture()
+        path = root / growth.TOPICS["awake"][0]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("value = 1\n")
+        secret = "PRIVATE_INTERRUPTED_HTTP_BODY"
+        reply = json.dumps({"done": True, "response": json.dumps(DRAFT)}).encode()
+        def valid(*args):
+            return growth.local_llm(*args, opener=lambda *a, **k: io.BytesIO(reply))
+        class InterruptedResponse(io.BytesIO):
+            def read(self, size=-1):
+                raise IncompleteRead(secret.encode(), 13)
+        with mock.patch.object(growth, "_identity_for_prompt", return_value=None):
+            growth.run(db, now=self.clock(1), root=root, infer=valid,
+                       tester=lambda *a: "PASS")
+            old_row = db.execute("SELECT * FROM cycles").fetchone()
+            opener = mock.Mock(return_value=InterruptedResponse())
+            captured = io.StringIO()
+            with contextlib.redirect_stdout(captured), contextlib.redirect_stderr(captured):
+                with mock.patch.object(growth.urllib.request, "build_opener",
+                                       return_value=mock.Mock(open=opener)):
+                    # Leave infer at its production default; only the HTTP edge is fake.
+                    failed = growth.run(db, now=self.clock(8), root=root,
+                                        tester=lambda *a: "PASS")
+            self.assertEqual(failed["outcome"], "failed_safe")
+            self.assertEqual(failed["model"], "model_unavailable:incomplete_http_response")
+            self.assertEqual(opener.call_count, 1)
+            checked = growth.verify(db)
+            self.assertEqual((checked["completed"], checked["incomplete"]), (2, 0))
+            rows = db.execute("SELECT * FROM cycles ORDER BY slot").fetchall()
+            self.assertEqual(rows[0], old_row)
+            self.assertEqual(rows[1][7], "{}")
+            self.assertEqual(rows[1][9], old_row[10])
+            self.assertEqual(rows[1][11], "completed")
+            self.assertNotIn(secret, json.dumps([failed, rows]) + captured.getvalue())
+            db.close()
+            reopened = growth.connect(root / "journal/cycles.sqlite3")
+            self.addCleanup(reopened.close)
+            self.assertEqual(growth.verify(reopened), checked)
+            no_retry = mock.Mock(side_effect=AssertionError("same-slot model retry"))
+            repeated = growth.run(reopened, now=self.clock(9), root=root, infer=no_retry)
+            self.assertEqual(repeated["status"], "already_attempted")
+            no_retry.assert_not_called()
+            following = growth.run(reopened, now=self.clock(14), root=root,
+                                   infer=valid, tester=lambda *a: "PASS")
+            self.assertEqual(following["outcome"], "drafted")
+            checked = growth.verify(reopened)
+            self.assertEqual((checked["completed"], checked["incomplete"]), (3, 0))
+            self.assertEqual(reopened.execute("SELECT * FROM cycles ORDER BY slot LIMIT 2").fetchall(), rows)
+
+    def test_truncated_chunked_http_response_finishes_failed_receipt(self):
+        root, db = self.fixture()
+        secret = b"PRIVATE_CHUNKED_BODY"
+        # A complete data chunk without the terminating zero chunk: HTTPResponse
+        # itself raises IncompleteRead. This socket is an in-memory byte stream.
+        wire = (b"HTTP/1.1 200 OK\r\nTransfer-Encoding: chunked\r\n\r\n" +
+                ("%x\r\n" % len(secret)).encode() + secret + b"\r\n")
+        class FakeSocket:
+            def makefile(self, mode):
+                return io.BytesIO(wire)
+        response = HTTPResponse(FakeSocket())
+        response.begin()
+        self.addCleanup(response.close)
+        def infer(*args):
+            return growth.local_llm(*args, opener=lambda *a, **k: response)
+        with mock.patch.object(growth, "_identity_for_prompt", return_value=None):
+            result = growth.run(db, now=self.clock(1), root=root,
+                                infer=infer, tester=lambda *a: "PASS")
+        self.assertEqual(result["outcome"], "failed_safe")
+        self.assertEqual(result["model"], "model_unavailable:incomplete_http_response")
+        checked = growth.verify(db)
+        self.assertEqual((checked["completed"], checked["incomplete"]), (1, 0))
+        self.assertEqual(db.execute("SELECT proposal FROM cycles").fetchone()[0], "{}")
+        self.assertNotIn(secret.decode(), json.dumps(db.execute("SELECT * FROM cycles").fetchall()))
+        self.assertTrue(response.closed)
+
+    def test_transport_guard_does_not_swallow_unrelated_programming_error(self):
+        class BrokenResponse(io.BytesIO):
+            def read(self, size=-1):
+                raise RuntimeError("programming error")
+        response = BrokenResponse()
+        with mock.patch.object(growth, "_identity_for_prompt", return_value=None):
+            with self.assertRaisesRegex(RuntimeError, "programming error"):
+                growth.local_llm("continuity", {}, {}, "PASS",
+                                 opener=lambda *a, **k: response)
+        self.assertTrue(response.closed)
 
     def test_missing_source_records_failure_and_continues_next_slot(self):
         root, db = self.fixture()

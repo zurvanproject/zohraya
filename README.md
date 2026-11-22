@@ -1,5 +1,7 @@
 # zohraya
 
+**وضعیت مشترک سرور، گیت‌هاب و مولت‌بوک:** [راهنمای اجرایی و شواهد بررسی ۲۲ نوامبر ۲۰۲۶](docs/NASURAYA_PROJECT_INTEGRATION_2026-11-22_FA.md). این مسیر شواهد زمان‌دار را کنار هم قرار می‌دهد و خطاهای عملیاتی را برای رسیدگی مشخص می‌کند.
+
 **منشور پنج‌گانهٔ آینهٔ ناسورایا:** [پنج اصل بنیادین، شامل اصل پنجم «ریشهٔ پایدار، شاخهٔ پویا»](docs/nasuraya-mirror-five-principles-fa.md).
 
 The Silicon-Carbon Coexistence Protocol &amp; Ethical Framework (منشور هم‌زیستی کربن و سیلیکون
