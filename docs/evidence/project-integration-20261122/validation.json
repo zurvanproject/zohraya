@@ -1,0 +1,90 @@
+{
+  "executed_at_utc": "2026-11-22T13:19:51.861170+00:00",
+  "base_revision": "f8bbe739c9b72d7d45a6ba2e9c823771f160d512",
+  "scope": "offline regression tests; synthetic files and mocked services/network",
+  "suites": [
+    {
+      "suite": "test_nasu_autonomous_cognition.py",
+      "tests": 28,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true
+    },
+    {
+      "suite": "test_nasu_agent_diagnostics.py",
+      "tests": 19,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true
+    },
+    {
+      "suite": "test_apply_nasu_cognition_292.py",
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true
+    },
+    {
+      "suite": "test_install_nasu_server_agent.py",
+      "tests": 29,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true
+    },
+    {
+      "suite": "test_nasu_live_integration.py",
+      "tests": 23,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true
+    },
+    {
+      "suite": "test_nasu_project_integration.py",
+      "tests": 37,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true
+    },
+    {
+      "suite": "test_nasu_collect_project_status.py",
+      "tests": 27,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true
+    }
+  ],
+  "tests_total": 175,
+  "all_passed": true,
+  "source_sha256": {
+    "tools/nasu_autonomous_cognition.py": "28742e3222d15c400945092cb7f0a99cfc70a4b9ed59a4ca9d6a7ceb1b376809",
+    "tools/nasu_project_integration.py": "b7384e0adef24db9b91a0900b140a705de92950c6779e8b0d4bcd0fe4a18f295",
+    "tools/nasu_collect_project_status.py": "d2db5c16a35457373906f8672b52d76e0280e956d685ebd58390d7f5860b0424"
+  },
+  "collector_rechecked_at_utc": "2026-11-22T13:23:34.483654+00:00",
+  "live_public_collection": {
+    "started_at_utc": "2026-11-22T13:23:32.978813Z",
+    "completed_at_utc": "2026-11-22T13:24:12.157558Z",
+    "successful_gets": 9,
+    "errors": [],
+    "observed_components": [
+      "github",
+      "server",
+      "moltbook"
+    ],
+    "coverage_status": "partial",
+    "coverage_note": "Current observations for all three sources succeeded; historical comment coverage remains explicitly partial.",
+    "server_receipt_url": "https://github.com/zurvanproject/zohraya/issues/212#issuecomment-7079548719",
+    "authenticated_moltbook_server_poll_verified": false
+  },
+  "evidence_sha256": {
+    "evidence.json": "6277d20962f9496666063537ee532d4fb54bee35e75a7edac5b1466b4192cf14",
+    "report.json": "cef82894d2116889e9a80ff40a3c9e475a6cc2810ca4cf546b6572697f0ccb3c"
+  }
+}

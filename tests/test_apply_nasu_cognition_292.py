@@ -17,7 +17,9 @@ from tools import install_nasu_server_agent as support
 ROOT = Path(__file__).resolve().parents[1]
 OLD = subprocess.check_output(['git', '-C', str(ROOT), 'show',
                               'a0e87a07e357ee10698949aa99a7fa1bcb7a6fde:tools/nasu_autonomous_cognition.py'])
-NEW = (ROOT / 'tools/nasu_autonomous_cognition.py').read_bytes()
+# This historical updater installs its immutable release, not the current HEAD.
+NEW = subprocess.check_output(['git', '-C', str(ROOT), 'show',
+                              update.REVISION + ':tools/nasu_autonomous_cognition.py'])
 
 
 class UpdateTests(unittest.TestCase):
@@ -166,6 +168,16 @@ class UpdateTests(unittest.TestCase):
         with self.assertRaises(support.DeployError):
             update.apply_runtime(dep, NEW)
         self.assertEqual(actual.read_bytes(), OLD)
+
+    def test_new_worktree_runtime_is_rejected_without_side_effects(self):
+        candidate = (ROOT / 'tools/nasu_autonomous_cognition.py').read_bytes()
+        self.assertNotEqual(support.digest(candidate), update.AFTER)
+        dep = self.fixture()
+        with self.assertRaisesRegex(support.DeployError, 'UNREVIEWED_REPLACEMENT'):
+            update.apply_runtime(dep, candidate)
+        self.assertEqual(dep.COGNITION.read_bytes(), OLD)
+        self.assertEqual(self.transitions, [])
+        self.assertFalse(dep.BACKUPS.exists())
 
     def test_cli_requires_admin_and_explicit_apply_without_loading_code(self):
         for uid,args in ((1000,['--apply']), (0,[]), (0,['--anything'])):

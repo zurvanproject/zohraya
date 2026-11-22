@@ -3,6 +3,7 @@
 import ast
 import datetime as dt
 import hashlib
+from http.client import IncompleteRead
 import importlib.util
 import json
 import os
@@ -34,6 +35,7 @@ ZERO = "0" * 64
 MODEL_RESPONSE_FAILURES = frozenset((
     "response_too_large", "invalid_response_json", "invalid_envelope",
     "incomplete_generation", "invalid_draft_json", "invalid_draft",
+    "incomplete_http_response",
 ))
 
 
@@ -173,8 +175,12 @@ def local_llm(topic, evidence, previous, tested, *, opener=None):
     # An offline loopback request must never inherit an HTTP_PROXY setting.
     # Cap the response bytes to keep a misbehaving local server bounded.
     client = opener or urllib.request.build_opener(urllib.request.ProxyHandler({})).open
-    with client(request, timeout=145) as response:
-        raw = response.read(65537)
+    try:
+        with client(request, timeout=145) as response:
+            raw = response.read(65537)
+    except IncompleteRead:
+        # Discard partial bytes and record only the fixed failure reason.
+        raise ModelResponseError("incomplete_http_response") from None
     if len(raw) > 65536:
         raise ModelResponseError("response_too_large")
     try:

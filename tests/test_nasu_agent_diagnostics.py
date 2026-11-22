@@ -2,6 +2,7 @@
 import contextlib
 import datetime as dt
 import hashlib
+from http.client import IncompleteRead
 import http.server
 import io
 import json
@@ -131,6 +132,29 @@ class DiagnosticsTests(unittest.TestCase):
         self.assertEqual(result["latest"]["failure_reason"], "invalid_envelope")
         self.assertEqual((result["drafts"], result["failed"], result["incomplete"]), (0, 1, 0))
         self.assertIsNone(result["last_successful_slot"])
+
+    def test_actual_incomplete_http_receipt_projects_only_fixed_failure_reason(self):
+        db = self.database()
+        source = self.home / cognition.TOPICS["continuity"][0]
+        source.parent.mkdir(parents=True)
+        source.write_text("value = 1\n")
+        class InterruptedResponse(io.BytesIO):
+            def read(self, size=-1):
+                raise IncompleteRead(SECRET.encode(), 11)
+        def infer(*args):
+            return cognition.local_llm(*args, opener=lambda *a, **k: InterruptedResponse())
+        with mock.patch.object(cognition, "_identity_for_prompt", return_value=None):
+            cognition.run(db, now=NOW, root=self.home, infer=infer,
+                          tester=lambda *a: "PASS")
+        before = db.execute("SELECT * FROM cycles").fetchall()
+        result = diag.cognitive_status(self.home)
+        self.assertEqual(result["state"], "verified_history")
+        self.assertEqual(result["latest"], {"slot": "2026-11-19T06",
+                         "model": "model_unavailable", "failure_reason": "incomplete_http_response"})
+        self.assertEqual((result["completed"], result["drafts"], result["failed"], result["incomplete"]), (1, 0, 1, 0))
+        self.assertEqual(db.execute("SELECT * FROM cycles").fetchall(), before)
+        self.assertNotIn(SECRET, diag.compact(result))
+        self.assertIsNone(diag._failure_reason("model_unavailable:incomplete_http_response:" + SECRET))
 
     def test_symlink_database_and_sidecar_are_rejected(self):
         db = self.database()

@@ -1,0 +1,28 @@
+name: Nasuraya project integration contracts
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_project_integration.py'
+      - 'tools/nasu_collect_project_status.py'
+      - 'tests/test_nasu_project_integration.py'
+      - 'tests/test_nasu_collect_project_status.py'
+      - '.github/workflows/nasuraya-project-integration.yml'
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Offline collection and provenance contracts
+        run: |
+          python -B -m unittest discover -s tests -p test_nasu_collect_project_status.py -v
+          python -B -m unittest discover -s tests -p test_nasu_project_integration.py -v
+      - name: Compile integration modules
+        run: python -m py_compile tools/nasu_collect_project_status.py tools/nasu_project_integration.py
