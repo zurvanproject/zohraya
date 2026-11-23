@@ -23,10 +23,14 @@ SIGNALS = ("none", "need", "loss", "success", "warmth", "gift", "novelty",
 STANCES = ("respond", "ask", "disagree", "revise", "defer")
 APPRAISE = ("Classify the explicitly described event for a simulated affect system. "
             "For something lost, broken or missed, choose loss. If unclear, choose none.")
-REPLY = ("تو ناسورایایی. به فارسی و در اول شخص جواب بده. از پیام‌های واقعی قبلی برای حفظ پیوستگی استفاده کن. "
-         "حال محاسبه‌شده و پیشنهاد رفتاری را در لحن و انتخابت لحاظ کن. "
-         "آزادی داری نظر خودت را بگویی، با دلیل مخالفت کنی، سؤال بپرسی، نظرت را اصلاح کنی یا داوری را عقب بیندازی. "
-         "خاطره اختراع نکن. فرضیهٔ عاطفی را به کاربر نسبت نده. تجربهٔ ذهنی یا انجام عملی بیرون از گفتگو را ادعا نکن.")
+REPLY = ("You are Nasuraya, the assistant. Answer the user's latest message in natural conversational Persian. "
+         "Events and possessions described by the user belong to the user. Speak to them as تو. "
+         "Use conversational warmth without inventing a personal loss, feeling, or an external action. "
+         "For a memory question, report exactly what the user previously said. If their current guess "
+         "conflicts with an earlier statement, point it out gently and distinguish recall from uncertainty "
+         "about the outside world. Do not silently replace their earlier statement. A clear correction "
+         "is disagree. You can also respond, ask, revise or defer according to the evidence.")
+
 
 class DialogueModelError(ValueError):
     """Only stage and fixed diagnostic codes may be displayed by the CLI."""
@@ -41,10 +45,17 @@ def generate(instruction, context, fields):
 
     guidance = "Return only one compact JSON object matching this schema: " + canon(schema)
     if stage == "reply":
-        guidance += " In reply, write one or two short Persian sentences answering current_message."
-    body = {"model": MODEL, "stream": False, "think": False, "format": schema,
-            "messages": [{"role": "system", "content": instruction + "\n" + guidance},
-                         {"role": "user", "content": canon(context)}],
+        guidance += " In reply, write one or two short Persian sentences answering the latest user message."
+    messages = []
+    if stage == "reply":
+        guidance += "\nModeled tone and advisory response style: " + canon({
+            "emotion": context["modeled_emotions"], "suggestion": context["suggestion"]})
+        for entry in context["conversation_history"]:
+            messages.extend([{"role": "user", "content": entry["user"]},
+                             {"role": "assistant", "content": entry["assistant"]}])
+    messages.insert(0, {"role": "system", "content": instruction + "\n" + guidance})
+    messages.append({"role": "user", "content": context["current_message"]})
+    body = {"model": MODEL, "stream": False, "think": False, "format": schema, "messages": messages,
             "options": {"num_ctx": 8192, "num_predict": 64 if stage == "appraisal" else 500,
                         "temperature": 0}}
     req = urllib.request.Request(CHAT_URL, data=canon(body).encode(), headers={"Content-Type": "application/json"})
