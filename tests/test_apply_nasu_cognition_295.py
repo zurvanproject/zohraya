@@ -29,6 +29,7 @@ class PilotTests(unittest.TestCase):
         new=b"new_source"
         self.new=new
         original_digest=support.digest
+        owner_uid=os.geteuid()
         def digest(raw):
             return pilot.BEFORE if raw==b"old_source" else original_digest(raw)
         dep=types.SimpleNamespace(
@@ -36,8 +37,8 @@ class PilotTests(unittest.TestCase):
             COGNITIVE_SERVICE=support.COGNITIVE_SERVICE,
             COGNITIVE_TIMER=support.COGNITIVE_TIMER,
             BRIDGE_SERVICE=support.BRIDGE_SERVICE,
-            digest=digest, read_file=lambda p: support.read_file(p,owner=os.geteuid()),
-            guarded=lambda p,**kw:support.guarded(p,owner=os.geteuid(),**{k:v for k,v in kw.items() if k!="owner"}),
+            digest=digest, read_file=lambda p: support.read_file(p,owner=owner_uid),
+            guarded=lambda p,**kw:support.guarded(p,owner=owner_uid,**{k:v for k,v in kw.items() if k!="owner"}),
             require=support.require,DeployError=support.DeployError,
             Snapshot=partial(support.Snapshot,owner=os.geteuid(),group=os.getegid()))
         def unit_state(name):
