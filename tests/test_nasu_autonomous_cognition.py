@@ -183,6 +183,45 @@ class GrowthTests(unittest.TestCase):
         self.assertFalse(schema["additionalProperties"])
         self.assertEqual(set(schema["properties"]["next_topic"]["enum"]), set(growth.TOPICS))
 
+    def test_http_timeout_opt_in_is_bounded_and_backward_compatible(self):
+        with mock.patch.dict(os.environ, {"NASU_COGNITION_HTTP_TIMEOUT_SECONDS": "145"}):
+            self.assertEqual(growth.inference_timeout_seconds(), 145)
+        with mock.patch.dict(os.environ, {"NASU_COGNITION_HTTP_TIMEOUT_SECONDS": "300"}):
+            self.assertEqual(growth.inference_timeout_seconds(), 300)
+        with mock.patch.dict(os.environ, {"NASU_COGNITION_HTTP_TIMEOUT_SECONDS": "360"}):
+            with self.assertRaisesRegex(ValueError, "unsupported_cognitive_http_timeout"):
+                growth.inference_timeout_seconds()
+        with mock.patch.dict(os.environ, {"NASU_COGNITION_HTTP_TIMEOUT_SECONDS": "no-limit"}):
+            with self.assertRaises(ValueError):
+                growth.inference_timeout_seconds()
+
+    def test_extended_http_timeout_uses_one_bounded_request(self):
+        reply = json.dumps({"done": True, "response": json.dumps(DRAFT)}).encode()
+        seen = []
+        def fake_open(request, *, timeout):
+            seen.append((request.full_url, timeout))
+            return io.BytesIO(reply)
+        with mock.patch.dict(os.environ, {"NASU_COGNITION_HTTP_TIMEOUT_SECONDS": "300"}):
+            with mock.patch.object(growth, "_identity_for_prompt", return_value=None):
+                result = growth.local_llm("continuity", {}, {}, "PASS", opener=fake_open)
+        self.assertEqual(result, DRAFT)
+        self.assertEqual(seen, [(growth.URL, 300)])
+
+    def test_extended_http_timeout_fails_closed_without_private_response(self):
+        root, db = self.fixture()
+        def stalled(*args, **kwargs):
+            raise TimeoutError("SECRET_PRIVATE_SOCKET_TIMEOUT")
+        def infer(*args):
+            return growth.local_llm(*args, opener=stalled)
+        with mock.patch.dict(os.environ, {"NASU_COGNITION_HTTP_TIMEOUT_SECONDS": "300"}):
+            result = growth.run(db, now=self.clock(1), root=root,
+                                infer=infer, tester=lambda *args: "PASS")
+        self.assertEqual(result["model"], "model_unavailable:TimeoutError")
+        self.assertEqual(result["outcome"], "failed_safe")
+        self.assertEqual(growth.verify(db)["incomplete"], 0)
+        self.assertEqual(growth.verify(db)["completed"], 1)
+        self.assertNotIn("SECRET_PRIVATE_SOCKET_TIMEOUT", repr(db.execute("SELECT * FROM cycles").fetchall()))
+
     def test_transport_timeout_remains_distinct_and_private(self):
         root, db = self.fixture()
         def timeout(*args, **kwargs):

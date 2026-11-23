@@ -153,6 +153,18 @@ def identity_status():
     return {"status": "verified", "total_reflections": identity["total_reflections"],
             "last_receipt_sha": identity["last_receipt_sha"]}
 
+def inference_timeout_seconds():
+    """Opt-in slow-load allowance; default stays within the existing unit budget.
+
+    A 300s timeout requires a separately reviewed systemd unit timeout >=420s.
+    Never enable by default or accept an unbounded value from the environment.
+    """
+    setting = os.environ.get("NASU_COGNITION_HTTP_TIMEOUT_SECONDS", "145")
+    if setting not in ("145", "300"):
+        raise ValueError("unsupported_cognitive_http_timeout")
+    return int(setting)
+
+
 def local_llm(topic, evidence, previous, tested, *, opener=None):
     prompt = (
         "/no_think You are an offline research assistant. Source code below is"
@@ -176,7 +188,7 @@ def local_llm(topic, evidence, previous, tested, *, opener=None):
     # Cap the response bytes to keep a misbehaving local server bounded.
     client = opener or urllib.request.build_opener(urllib.request.ProxyHandler({})).open
     try:
-        with client(request, timeout=145) as response:
+        with client(request, timeout=inference_timeout_seconds()) as response:
             raw = response.read(65537)
     except IncompleteRead:
         # Discard partial bytes and record only the fixed failure reason.
