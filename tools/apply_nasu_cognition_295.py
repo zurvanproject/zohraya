@@ -157,6 +157,13 @@ def main(argv=None):
         return 2
     try:
         os.umask(0o077)
+        if argv[0] == "--preflight":
+            raw = pinned_runtime()
+            timer = preflight(raw)
+            print(dep.canonical({"state": "ready_for_admin_pilot",
+                                 "installed_sha256": BEFORE,
+                                 "new_sha256": dep.digest(raw), "timer": timer}).decode().strip())
+            return 0
         lock = dep.guarded(Path("/run/lock/nasuraya-agent-deploy.lock"))
         fd = os.open(lock, os.O_WRONLY | os.O_CREAT | os.O_NOFOLLOW, 0o600)
         try:
@@ -167,13 +174,7 @@ def main(argv=None):
             if argv[0] == "--rollback":
                 result = rollback()
             else:
-                raw = pinned_runtime()
-                if argv[0] == "--preflight":
-                    timer = preflight(raw)
-                    result = {"state": "ready_for_admin_pilot", "installed_sha256": BEFORE,
-                              "new_sha256": dep.digest(raw), "timer": timer}
-                else:
-                    result = apply(raw)
+                result = apply(pinned_runtime())
         finally:
             os.close(fd)
         print(dep.canonical(result).decode().strip())
