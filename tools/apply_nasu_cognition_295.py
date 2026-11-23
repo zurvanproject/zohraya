@@ -30,11 +30,15 @@ PATH = "tools/nasu_autonomous_cognition.py"
 
 def pinned_runtime():
     # Source is an immutable reviewed commit and exact Git blob, never working-tree bytes.
-    raw = dep.git_blob(REVISION, PATH)
-    blob = subprocess.run(
-        ["/usr/bin/git", "-C", str(dep.PROJECT), "hash-object", "--stdin"],
-        input=raw, capture_output=True, check=True, timeout=10,
-        env=dict(dep.ENV)).stdout.decode().strip()
+    base = ["/usr/bin/git", "-c", "safe.directory=" + str(dep.PROJECT),
+            "-C", str(dep.PROJECT)]
+    env = dict(dep.ENV, GIT_NO_REPLACE_OBJECTS="1")
+    raw = subprocess.run(base + ["show", REVISION + ":" + PATH],
+                         capture_output=True, check=True, timeout=20, env=env).stdout
+    dep.require(0 < len(raw) <= 1024 * 1024, "INVALID_RELEASE_BLOB")
+    blob = subprocess.run(base + ["hash-object", "--stdin"],
+                          input=raw, capture_output=True, check=True, timeout=10,
+                          env=env).stdout.decode().strip()
     dep.require(blob == EXPECTED_BLOB, "RELEASE_BLOB_CHANGED")
     compile(raw, PATH, "exec")
     return raw
