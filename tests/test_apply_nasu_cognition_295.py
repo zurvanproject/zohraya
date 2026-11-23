@@ -78,6 +78,14 @@ class PilotTests(unittest.TestCase):
                 with self.assertRaisesRegex(support.DeployError,"EXISTING_QWEN"):
                     pilot.preflight(new)
 
+    def test_exact_effective_timeout_assignment(self):
+        key = "NASU_COGNITION_HTTP_TIMEOUT_SECONDS"
+        for env in (key + "=3000", "OTHER=" + key + "=300", key + "=300 " + key + "=145"):
+            with self.subTest(env=env), mock.patch.object(pilot, "get_effective", return_value={
+                    "TimeoutStartUSec": "7min", "Environment": env}):
+                with self.assertRaisesRegex(support.DeployError, "EFFECTIVE_PILOT_UNIT_MISMATCH"):
+                    pilot.pilot_effective()
+
     def test_atomic_install_and_explicit_rollback(self):
         dep,installed,dropin,backup,new,effective=self.fixture()
         with mock.patch.object(pilot,"dep",dep),mock.patch.object(pilot,"DROPIN",dropin),mock.patch.object(pilot,"BACKUP",backup):
