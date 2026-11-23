@@ -1,0 +1,32 @@
+name: Cognitive Qwen timeout guard contracts
+on:
+  pull_request:
+    paths:
+      - 'tools/nasu_autonomous_cognition.py'
+      - 'tests/test_nasu_autonomous_cognition.py'
+      - 'docs/QWEN_TIMEOUT_2026-11-23_FA.md'
+      - '.github/workflows/nasu-qwen-timeout-guard.yml'
+permissions:
+  contents: read
+jobs:
+  offline-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Offline cognition and diagnostics regressions
+        run: |
+          python3 -B -m unittest discover -s tests -p test_nasu_autonomous_cognition.py -v
+          python3 -B -m unittest discover -s tests -p test_nasu_agent_diagnostics.py -v
+      - name: Syntax verification without persistent bytecode
+        run: |
+          python3 -B - <<'PY'
+          import ast, pathlib
+          for path in ('tools/nasu_autonomous_cognition.py', 'tests/test_nasu_autonomous_cognition.py'):
+              ast.parse(pathlib.Path(path).read_text(encoding='utf-8'), filename=path)
+          PY
