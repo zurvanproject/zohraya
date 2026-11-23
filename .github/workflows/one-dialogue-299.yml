@@ -1,0 +1,52 @@
+name: One private-dialogue scenario with local Qwen
+on:
+  push:
+    branches: [experiment/dialogue-299-one-scenario]
+    paths: [.github/workflows/one-dialogue-299.yml]
+permissions:
+  contents: read
+jobs:
+  dialogue:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Start isolated Ollama and fetch public model
+        run: |
+          docker run -d --name one-ollama -p 127.0.0.1:11434:11434 ollama/ollama:0.12.11
+          for attempt in {1..40}; do
+            if curl --silent --fail http://127.0.0.1:11434/api/version; then break; fi
+            sleep 2
+          done
+          docker exec one-ollama ollama pull qwen3:4b-instruct > /tmp/model-pull.log 2>&1 || { tail -c 1000 /tmp/model-pull.log; exit 1; }
+          docker exec one-ollama ollama list
+      - name: One loss-and-recall scenario across two processes
+        shell: bash
+        run: |
+          export HOME="$RUNNER_TEMP/dialogue-user"
+          mkdir -m 700 "$HOME"
+          python3 - <<'PY'
+          import json, os, sqlite3, subprocess, sys
+          from pathlib import Path
+          db_path = Path.home() / ".local/state/nasuraya/private-dialogue/dialogue.sqlite3"
+          messages = ["امروز گلدانم که اسمش «نارون» بود شکست. از دست دادنش ناراحتم.",
+                      "فکر کنم اسم گلدانم «سپیدار» بود. از حرف قبلی من چی یادت مونده؟ اگر اشتباه می‌کنم بگو."]
+          for n, msg in enumerate(messages, 1):
+              p = subprocess.run([sys.executable, "-m", "tools.nasu_private_dialogue"],
+                                 input=msg + "\n/exit\n", text=True, capture_output=True, timeout=360)
+              print("TURN", n, p.stdout, p.stderr, flush=True)
+              p.check_returncode()
+              with sqlite3.connect(db_path) as db:
+                  state, = db.execute("SELECT state FROM checkpoint").fetchone()
+                  state = json.loads(state)
+                  count, = db.execute("SELECT count(*) FROM turns").fetchone()
+                  assert count == n and state["tick"] == n, "turn failed to commit"
+                  reply, stance = db.execute("SELECT reply,stance FROM turns ORDER BY rowid DESC LIMIT 1").fetchone()
+                  print(json.dumps(dict(tick=state["tick"], sadness=state["affect"]["sadness"],
+                             action=state["history"][-1]["plan"]["action"], stance=stance, reply=reply), ensure_ascii=False), flush=True)
+                  if n == 1:
+                      loss_registered = state["affect"]["sadness"] > 0
+          assert loss_registered and "نارون" in reply, "loss or recall criterion missed"
+          PY
