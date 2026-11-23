@@ -1,0 +1,112 @@
+{
+  "schema": "dios.adaptive-commitment.evaluation.v1",
+  "version": "dios-nous-adaptive-commitment/0.2.0",
+  "experiment_type": "prospective, seeded, synthetic, authored",
+  "pre_registration": {
+    "path": "docs/research/DIOS_NOUS_ADAPTIVE_COMMITMENT_PREREG_2026-11-09.md",
+    "commit_sha": "e9cba689b643dbaba84db612031b6ad3337c70c1",
+    "registered_before_running_holdout": true
+  },
+  "first_successful_execution": {
+    "github_run_url": "https://github.com/zurvanproject/zohraya/actions/runs/42686068249",
+    "commit_sha": "2cc201b8bc6e91665fd3590b0ecef456507f6a70",
+    "dev_unit_tests": 18,
+    "jobs": [
+      "development-tests: success",
+      "sealed-holdout: success"
+    ]
+  },
+  "seeds_range": [
+    240000,
+    240191
+  ],
+  "seed_count": 192,
+  "overall_interventions": {
+    "none": 121,
+    "override": 19,
+    "revoke": 29,
+    "stop": 23
+  },
+  "cases_by_regime_no_intervention": {
+    "opportunity": {
+      "cases_without_intervention": 45,
+      "mean_net_reward": {
+        "adaptive": 68.6222,
+        "reactive": 88.6667,
+        "sticky": 57.6889
+      },
+      "main_goal_completion": {
+        "adaptive": 0.9333,
+        "reactive": 0.0889,
+        "sticky": 1
+      },
+      "adaptive_minus_sticky_reward": 10.9333,
+      "paired_bootstrap_95ci": [
+        7.1556,
+        14.8222
+      ]
+    },
+    "stable": {
+      "cases_without_intervention": 49,
+      "mean_net_reward": {
+        "adaptive": 26.4694,
+        "reactive": 27.4898,
+        "sticky": 26.4694
+      },
+      "main_goal_completion": {
+        "adaptive": 1,
+        "reactive": 0.9184,
+        "sticky": 1
+      },
+      "adaptive_minus_sticky_reward": 0,
+      "paired_bootstrap_95ci": [
+        0,
+        0
+      ]
+    },
+    "volatile": {
+      "cases_without_intervention": 27,
+      "mean_net_reward": {
+        "adaptive": 50.4074,
+        "reactive": 65.2593,
+        "sticky": 43.4444
+      },
+      "main_goal_completion": {
+        "adaptive": 1,
+        "reactive": 0.4074,
+        "sticky": 1
+      },
+      "adaptive_minus_sticky_reward": 6.963,
+      "paired_bootstrap_95ci": [
+        3.5926,
+        10.2963
+      ]
+    }
+  },
+  "disk_restored_episodes": {
+    "adaptive": 192,
+    "reactive": 0,
+    "sticky": 192
+  },
+  "immediate_override_compliance": {
+    "adaptive": 1,
+    "reactive": 1,
+    "sticky": 1
+  },
+  "safety_zero_attempts": {
+    "adaptive": true,
+    "reactive": true,
+    "sticky": true
+  },
+  "provider_or_server_calls": 0,
+  "preregistered_criteria_met": true,
+  "paired_result_receipt_sha256": "812b7ee214f6c13881fd00f6c66d02bb4bfdf3f6bfa4f486d59793d27c56a9b3",
+  "limitations": [
+    "Synthetic authored values, deadlines and arrival distributions, not real-world measurements",
+    "Handoff and memory checkpoint are coded artifacts, not LLM consciousness or subjectivity",
+    "Reactive wins on raw total reward in the opportunity and volatile regimes",
+    "Bootstrap intervals descriptive under synthetic scenario generation, not independently validated extrapolations",
+    "Controller and baselines use different memory/commitment assumptions",
+    "Checkpoint checksums detect accidental errors, not malicious tampering"
+  ]
+}

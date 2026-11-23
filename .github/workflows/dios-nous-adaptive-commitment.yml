@@ -1,0 +1,32 @@
+name: DIOS-NOUS Adaptive Commitment v0.2
+on:
+  push:
+    paths:
+      - 'examples/nasuraya_research/adaptive_commitment_v02.py'
+      - 'examples/nasuraya_research/test_adaptive_commitment_v02.py'
+      - 'docs/research/DIOS_NOUS_ADAPTIVE_COMMITMENT_PREREG_2026-11-09.md'
+      - '.github/workflows/dios-nous-adaptive-commitment.yml'
+  pull_request:
+    paths:
+      - 'examples/nasuraya_research/adaptive_commitment_v02.py'
+      - 'examples/nasuraya_research/test_adaptive_commitment_v02.py'
+      - 'docs/research/DIOS_NOUS_ADAPTIVE_COMMITMENT_PREREG_2026-11-09.md'
+      - '.github/workflows/dios-nous-adaptive-commitment.yml'
+jobs:
+  development-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: Development-only tests, no held-out data
+        run: python -m unittest examples.nasuraya_research.test_adaptive_commitment_v02 -v
+  sealed-holdout:
+    needs: development-tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: Fixed 192-seed preregistered prospective comparison
+        run: python -m examples.nasuraya_research.adaptive_commitment_v02
