@@ -1,0 +1,41 @@
+name: Tadash Awake - source pinned DIOS sensory goal integration
+on:
+  pull_request:
+    paths: ['tadash_awake/**', 'tools/bridge_jobs/nasu_awake_*.py', '.github/workflows/tadash-awake.yml']
+  push:
+    paths: ['tadash_awake/**', '.github/workflows/tadash-awake.yml']
+permissions:
+  contents: read
+jobs:
+  offline-integration:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11'
+      - run: python -m unittest tadash_awake.test_wake tadash_awake.test_bridge -v
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: d86750d8d26d4ea6a3fe595f9e1ee81e95d81fec
+          path: pinned-source
+          persist-credentials: false
+      - name: Real offline source-pinned session (sensory DIOS goal) to Awake cold memory
+        run: python -m tadash_awake.integration_smoke --source-root pinned-source
+      - name: Run genuine pinned Stage3 sensor DIOS replay into hourly Awake (cold resume and tamper guard)
+        run: python -m tadash_awake.ingress_smoke --source-root pinned-source
+      - name: Verify isolated Bridge installer jobs syntax and compute exact SHA256
+        run: python -c "import ast,hashlib,pathlib; fs=sorted(pathlib.Path('tools/bridge_jobs').glob('nasu_awake_*.py')); [(ast.parse(p.read_bytes()),print('AWAKE_JOB_SHA256:'+p.name+':'+hashlib.sha256(p.read_bytes()).hexdigest())) for p in fs]"
+      - name: Download and verify all 595 pinned PR198 source blobs in disposable directory
+        run: python tools/bridge_jobs/nasu_awake_ingress_install.py --self-test
+      - name: Read-only preflight on CI host
+        run: python tools/bridge_jobs/nasu_awake_preflight.py
+      - name: Download and verify six exact Git blobs, then run packaged offline regressions
+        run: python tools/bridge_jobs/nasu_awake_install.py --self-test
