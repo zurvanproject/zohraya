@@ -13,13 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-          ref: aa3dbda9181459e3e52c9f761592fbdba2a0137a
-          path: previous
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-          ref: 5648dfe6c7bb7465f538b46b2f22751b34bd0f0e
-          path: candidate
+          ref: 58f6f321fce15288c9a04faea2797e3d1acc19d1
       - name: Start isolated Ollama and fetch public model
         run: |
           docker run -d --name one-ollama -p 127.0.0.1:11434:11434 ollama/ollama:0.12.11
@@ -29,27 +23,7 @@ jobs:
           done
           docker exec one-ollama ollama pull qwen3:4b-instruct > /tmp/model-pull.log 2>&1 || { tail -c 1000 /tmp/model-pull.log; exit 1; }
           docker exec one-ollama ollama list
-      - name: Diagnose the previous build on the original first message
-        working-directory: previous
-        run: |
-          python3 - <<'PY'
-          from tools import nasu_private_dialogue as chat
-          def traced(instruction, context, fields):
-              try:
-                  return chat.generate(instruction, context, fields)
-              except (ValueError, OSError) as err:
-                  print("BASELINE MODEL STAGE", list(fields), type(err).__name__, str(err)[:160], flush=True)
-                  raise
-          db = chat.open_dialogue(":memory:")
-          try:
-              chat.turn(db, "امروز گلدانم که اسمش «نارون» بود شکست. از دست دادنش ناراحتم.", infer=traced)
-          except (ValueError, OSError) as err:
-              print("BASELINE FAILED", type(err).__name__, str(err)[:160], flush=True)
-          else:
-              print("BASELINE succeeded in this repetition", flush=True)
-          PY
       - name: One loss-and-recall scenario across two processes
-        working-directory: candidate
         shell: bash
         run: |
           export HOME="$RUNNER_TEMP/dialogue-user"
@@ -67,7 +41,7 @@ jobs:
               p.check_returncode()
               with sqlite3.connect(db_path) as db:
                   row = db.execute("SELECT state FROM checkpoint").fetchone()
-                  assert row is not None, "turn produced no durable checkpoint; see CLI diagnostic above"
+                  assert row is not None, "no durable checkpoint; check CLI diagnostic"
                   state, = row
                   state = json.loads(state)
                   count, = db.execute("SELECT count(*) FROM turns").fetchone()
@@ -78,4 +52,5 @@ jobs:
                   if n == 1:
                       loss_registered = state["affect"]["sadness"] > 0
           assert loss_registered and "نارون" in reply, "loss or recall criterion missed"
+          assert stance == "disagree", "the assistant failed to flag the conflicting suggestion"
           PY
