@@ -41,19 +41,29 @@ class DialogueTests(unittest.TestCase):
     def test_ollama_wire_contract_and_invalid_stance(self):
         def respond(req, timeout):
             payload = json.loads(req.data)
-            self.assertEqual(req.full_url, chat.URL)
+            self.assertEqual(req.full_url, chat.CHAT_URL)
             self.assertEqual(payload["model"], chat.MODEL)
             self.assertFalse(payload["stream"])
+            self.assertEqual([msg["role"] for msg in payload["messages"]], ["system", "user"])
+            self.assertIn(chat.canon(payload["format"]), payload["messages"][0]["content"])
             fields = payload["format"]["properties"]
             choice = {"signal": "loss"} if "signal" in fields else {"reply": "سلام", "stance": "invalid"}
-            return io.BytesIO(json.dumps({"done": True, "response": json.dumps(choice)}).encode())
+            return io.BytesIO(json.dumps({"done": True, "message": {"content": json.dumps(choice)}}).encode())
 
         with patch.object(chat.urllib.request, "build_opener") as opener:
             opener.return_value.open.side_effect = respond
-            with self.assertRaisesRegex(ValueError, "invalid model choice"):
+            with self.assertRaisesRegex(chat.DialogueModelError, "reply: invalid_choice"):
                 chat.turn(self.db, "فقدان")
         self.assertEqual(opener.return_value.open.call_count, 2)
         self.assertIsNone(self.db.execute("SELECT state FROM checkpoint").fetchone())
+
+    def test_token_exhaustion_reports_stage_and_leaves_no_partial_turn(self):
+        envelope = {"done": True, "done_reason": "length", "message": {"content": "private fragment"}}
+        with patch.object(chat.urllib.request, "build_opener") as opener:
+            opener.return_value.open.return_value = io.BytesIO(json.dumps(envelope).encode())
+            with self.assertRaisesRegex(chat.DialogueModelError, "^appraisal: generation_token_limit$"):
+                chat.turn(self.db, "فقدان")
+        self.assertEqual(self.db.execute("SELECT count(*) FROM turns").fetchone()[0], 0)
 
     def test_failed_reply_rolls_back_both_records(self):
         def fail(instruction, context, fields):
