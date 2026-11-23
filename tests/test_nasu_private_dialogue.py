@@ -57,6 +57,23 @@ class DialogueTests(unittest.TestCase):
         self.assertEqual(opener.return_value.open.call_count, 2)
         self.assertIsNone(self.db.execute("SELECT state FROM checkpoint").fetchone())
 
+    def test_existing_memory_is_sent_with_original_speaker_roles(self):
+        chat.turn(self.db, "از فانوس گفتم", self.infer)
+        def respond(req, timeout):
+            body = json.loads(req.data)
+            if "signal" in body["format"]["properties"]:
+                choice = {"signal": "none"}
+            else:
+                self.assertEqual(body["messages"][1:], [
+                    {"role": "user", "content": "از فانوس گفتم"},
+                    {"role": "assistant", "content": "من با این برداشت موافق نیستم."},
+                    {"role": "user", "content": "از چی گفتم؟"}])
+                choice = {"stance": "respond", "reply": "از فانوس گفتی."}
+            return io.BytesIO(json.dumps({"done": True, "message": {"content": json.dumps(choice)}}).encode())
+        with patch.object(chat.urllib.request, "build_opener") as opener:
+            opener.return_value.open.side_effect = respond
+            self.assertEqual(chat.turn(self.db, "از چی گفتم؟"), "از فانوس گفتی.")
+
     def test_token_exhaustion_reports_stage_and_leaves_no_partial_turn(self):
         envelope = {"done": True, "done_reason": "length", "message": {"content": "private fragment"}}
         with patch.object(chat.urllib.request, "build_opener") as opener:
