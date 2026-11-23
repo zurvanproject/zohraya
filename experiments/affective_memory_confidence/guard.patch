@@ -1,0 +1,11 @@
+--- a/nasuraya_affective_layer_v01.py
++++ b/nasuraya_affective_layer_v01.py
+@@ -171,7 +171,7 @@
+ 
+ def remember(state: dict, event: dict) -> None:
+     partner, f, c = event.get("partner"), event["signals"], event["confidence"]
+-    if partner and (f["warmth"] > 0 or f["betrayal"] > 0 or f["reliability"] > 0):
++    if partner and c > 0 and (f["warmth"] > 0 or f["betrayal"] > 0 or f["reliability"] > 0):
+         rel = state["relationships"].setdefault(partner, {"trust": .3, "value": .2, "episodes": 0})
+         # An illustrative update from supplied positive encounters, never a diagnosis.
+         rel["trust"] = max(0., min(1., rel["trust"] + .15*c*f["warmth"] + .15*c*f["reliability"] - .5*c*f["betrayal"]))
