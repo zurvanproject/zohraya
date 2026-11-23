@@ -74,10 +74,12 @@ def get_effective():
 def pilot_effective():
     info = get_effective()
     limit = info.get("TimeoutStartUSec", "")
+    key = "NASU_COGNITION_HTTP_TIMEOUT_SECONDS"
+    assignments = [item for item in shlex.split(info.get("Environment", ""))
+                   if item.partition("=")[0] == key]
     # systemctl normally renders 7min; accept a few equivalent fixed forms.
     dep.require(limit in ("7min", "7min 0s", "420s", "420000000us")
-                and "NASU_COGNITION_HTTP_TIMEOUT_SECONDS=300"
-                in info.get("Environment", ""), "EFFECTIVE_PILOT_UNIT_MISMATCH")
+                and assignments == [key + "=300"], "EFFECTIVE_PILOT_UNIT_MISMATCH")
 
 
 def preflight(raw):
