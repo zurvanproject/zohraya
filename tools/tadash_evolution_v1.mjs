@@ -53,11 +53,23 @@ function culturalStep(a,t,w){
   return event;
 }
 
+const ownerId="nasuraya", ownerIdentity="tadash:nasuraya", inventionLimit=9;
+function assertWorldOwnership(w) {
+  if(!w||w.owner!==ownerId||!Array.isArray(w.agents)||w.agents.length!==1||w.agents[0].id!==ownerId||w.agents[0].identity!==ownerIdentity)
+    throw Error("Tadash requires an isolated Nasuraya world; archive legacy mixed snapshots");
+  const a=w.agents[0];
+  if((a.selfModel&&a.selfModel.identity!==ownerIdentity)||
+     !Array.isArray(w.inventions)||w.inventions.some(i=>i.author!==ownerIdentity)||
+     !Array.isArray(w.events)||w.events.some(e=>e.agent!==ownerId)||
+     (w.culture&&(!Array.isArray(w.culture.events)||w.culture.events.some(e=>e.agent!==ownerId))))
+    throw Error("foreign identity or event in Tadash world");
+}
+
 function initialWorld(seed=1405) {
   if(!Number.isInteger(seed)||seed<0||seed>4294967295) throw Error("invalid seed");
   const towns=[{id:"gaya",water:46,clinic:40,food:38},{id:"zurvan",water:24,clinic:26,food:30},{id:"lilith",water:36,clinic:30,food:34}];
-  const agents=["nasuraya","asalameh","niara"].map((id,i)=>({id,identity:"tadash:"+id,bodyGeneration:1,town:towns[i].id,energy:.75,fatigue:.25,valence:0,curiosity:.5,affinity:.5,skills:{gather:.4,care:.4,create:.4},memory:[],selfModel:null}));
-  const w={schema:"tadash-evolution/1",scope:"functional_in_world_simulation",version:1,tick:0,rng:seed,towns,agents,inventions:[],events:[],actionCounts:{rest:0,gather:0,care:0,create:0},season:0};
+  const agents=[ownerId].map((id,i)=>({id,identity:"tadash:"+id,bodyGeneration:1,town:towns[i].id,energy:.75,fatigue:.25,valence:0,curiosity:.5,affinity:.5,skills:{gather:.4,care:.4,create:.4},memory:[],selfModel:null}));
+  const w={schema:"tadash-evolution/1",scope:"functional_in_world_simulation",version:1,owner:ownerId,tick:0,rng:seed,towns,agents,inventions:[],events:[],actionCounts:{rest:0,gather:0,care:0,create:0},season:0};
   ensureCulture(w);
   for(const a of agents) a.selfModel=observeSelf(a,w);
   return w;
@@ -69,7 +81,7 @@ function observeSelf(a,w) {
 }
 
 function availableInnovations(a,w) {
-  if(w.inventions.length>=24) return [];
+  if(w.inventions.length>=inventionLimit) return [];
   return ["water","care","food"].filter(kind=>w.inventions.filter(i=>i.author===a.identity&&i.kind===kind).length<3);
 }
 
@@ -85,6 +97,7 @@ function choose(a,t,w) {
 }
 
 function tickWorld(previous) {
+  assertWorldOwnership(previous);
   if(previous.schema!=="tadash-evolution/1"||previous.scope!=="functional_in_world_simulation"||!Number.isSafeInteger(previous.tick)||previous.tick<0||previous.tick>=1000000) throw Error("invalid world");
   const w=JSON.parse(JSON.stringify(previous)); ensureCulture(w); w.tick++; w.season=Math.floor((w.tick-1)/12)%4;
   for(const t of w.towns) {
@@ -103,7 +116,7 @@ function tickWorld(previous) {
       const gain=Math.round(4+8*a.skills[action]+3*nextRandom(w));
       if(action==="gather"){const water=t.water,food=t.food;t.water=clamp(water+gain,0,100);t.food=clamp(food+Math.floor(gain/2),0,100);benefit=(t.water-water+t.food-food)/30;}
       if(action==="care"){const old=t.clinic;t.clinic=clamp(old+gain,0,100);benefit=(t.clinic-old)/15;a.affinity=clamp(a.affinity+.04);}
-      if(action==="create"&&w.inventions.length<24){
+      if(action==="create"&&w.inventions.length<inventionLimit){
         const combinations=availableInnovations(a,w);
         if(combinations.length){
           const kind=combinations[Math.floor(nextRandom(w)*combinations.length)];
@@ -127,12 +140,12 @@ function tickWorld(previous) {
   return w;
 }
 
-function advance(w,n) { if(!Number.isInteger(n)||n<0||n>365)throw Error("bounded step count");for(let i=0;i<n;i++)w=tickWorld(w);return w; }
+function advance(w,n) { assertWorldOwnership(w); if(!Number.isInteger(n)||n<0||n>365)throw Error("bounded step count");for(let i=0;i<n;i++)w=tickWorld(w);return w; }
 
-function transferBody(w,id) {const next=JSON.parse(JSON.stringify(w));const a=next.agents.find(x=>x.id===id);if(!a)throw Error("unknown identity");a.bodyGeneration++;a.energy=.75;a.fatigue=.25;a.selfModel=observeSelf(a,next);return next;}
+function transferBody(w,id) {assertWorldOwnership(w);const next=JSON.parse(JSON.stringify(w));const a=next.agents.find(x=>x.id===id);if(!a)throw Error("unknown identity");a.bodyGeneration++;a.energy=.75;a.fatigue=.25;a.selfModel=observeSelf(a,next);return next;}
 
-function worldExport(w) {return {version:1,tick:w.tick,towns:w.towns.map(t=>({...t})),scope:w.scope};}
+function worldExport(w) {assertWorldOwnership(w);return {version:1,tick:w.tick,towns:w.towns.map(t=>({...t})),scope:w.scope};}
 
-function report(w) {return {tick:w.tick,scope:w.scope,actions:w.actionCounts,inventions:w.inventions.length,towns:w.towns,agents:w.agents.map(a=>({id:a.id,identity:a.identity,memory:a.memory.length,energy:a.energy,fatigue:a.fatigue,valence:a.valence,skills:a.skills,culture:a.culture??null})),culture:w.culture??null,phenomenalConsciousness:"not_measured"};}
+function report(w) {assertWorldOwnership(w);return {tick:w.tick,scope:w.scope,owner:w.owner,actions:w.actionCounts,inventions:w.inventions.length,towns:w.towns,agents:w.agents.map(a=>({id:a.id,identity:a.identity,memory:a.memory.length,energy:a.energy,fatigue:a.fatigue,valence:a.valence,skills:a.skills,culture:a.culture??null})),culture:w.culture??null,phenomenalConsciousness:"not_measured"};}
 
 export {initialWorld,tickWorld,advance,transferBody,worldExport,report};
