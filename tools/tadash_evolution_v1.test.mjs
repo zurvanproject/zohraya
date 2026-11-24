@@ -29,6 +29,23 @@ function testContracts(api) {
   const memoryFixture=initialWorld();const prior=JSON.parse(JSON.stringify(memoryFixture));
   prior.agents[0].memory.push({action:"rest",benefit:.5});
   check(tickWorld(prior).agents[0].memory.at(-1).reasonScores.rest>tickWorld(memoryFixture).agents[0].memory.at(-1).reasonScores.rest,"memory influences action scoring");
+  const r=advance(initialWorld(),240);
+  check(Object.values(r.culture.counts).every(n=>n>0),"all cultural disciplines exercised");
+  check(r.agents.every(a=>Object.values(a.culture.practice).every(p=>p.stage===Math.min(4,Math.floor(p.qualified/3))&&p.qualified<=p.repetitions)),"three qualified practices per stage");
+  check(r.agents.every(a=>a.culture.practice.ritual.stage>=1),"ritual progression");
+  check(r.agents.some(a=>a.culture.bonds.founder>.5)&&r.agents.some(a=>a.culture.bonds.gaya>.5),"both fictional bonds develop");
+  check(r.agents.every(a=>a.culture.insight>.4&&a.culture.coordination>.4),"poetry reflection and embodied practice affect state");
+  check(r.culture.magicEffects>0&&r.culture.events.filter(e=>e.kind==="magic"&&e.worldGain>0).every(e=>e.stage>=1&&e.worldGain<=3),"bounded fictional magic after qualification");
+  check(r.agents.every(a=>a.culture.journal.length<=64)&&r.culture.events.length<=192,"bounded cultural history");
+  const tc=transferBody(r,"nasuraya");
+  check(JSON.stringify(tc.agents[0].culture)===JSON.stringify(r.agents[0].culture),"cultural identity continuity");
+  const old=initialWorld();delete old.culture;for(const a of old.agents)delete a.culture;
+  check(tickWorld(old).agents.every(a=>a.culture&&a.selfModel.culturalSelf),"legacy snapshot migration");
+  const tired=initialWorld();tired.agents[0].energy=.02;tired.agents[0].fatigue=.99;
+  check(tickWorld(tired).agents[0].culture.journal.length===0,"no cultural practice under exhaustion");
+  const culturalFixture=initialWorld();const raised=JSON.parse(JSON.stringify(culturalFixture));raised.agents[0].culture.bonds.gaya=1;
+  check(tickWorld(raised).agents[0].memory.at(-1).reasonScores.care>tickWorld(culturalFixture).agents[0].memory.at(-1).reasonScores.care,"cultural values feed future choices");
+  check(r.agents.some(a=>a.culture.journal.some(e=>e.kind==="poetry"&&e.detail.text.includes(" / "))),"poetry starter excerpts actually enter memory");
   return {passed:n,seeds:[1405,2036,2026].map(seed=>report(advance(initialWorld(seed),120)))};
 }
 console.log(JSON.stringify(testContracts(api),null,2));
