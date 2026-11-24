@@ -1,5 +1,6 @@
 // Tadash: bounded evolutionary world, isolated simulation only.
 // No model calls, network, timers, or external actions.
+import {assertGoetiaState, automaticGatePractice, goetiaSelf, goetiaReport} from "./tadash_goetia_v1.mjs";
 function clamp(x, a=0, b=1) { return Math.min(b,Math.max(a,x)); }
 
 function nextRandom(w) { w.rng=(Math.imul(w.rng,1664525)+1013904223)>>>0; return w.rng/4294967296; }
@@ -69,7 +70,7 @@ function culturalStep(a,t,w){
   const previousStage=p.stage;
   if(quality>=.60)p.qualified++;
   p.stage=Math.min(4,Math.floor(p.qualified/3));
-  let detail=null,worldGain=0;
+  let detail=null,worldGain=0,gatePractice=null;
   if(kind==="ritual"){c.focus=clamp(c.focus+.04*quality);c.discipline=clamp(c.discipline+.02*quality);detail={form:ritualNames[Math.min(3,previousStage)],advanced:p.stage>previousStage};}
   if(kind==="martial"){c.coordination=clamp(c.coordination+.045*quality);c.discipline=clamp(c.discipline+.035*quality);detail={form:"imagined non-contact body-schema and balance practice",coordination:c.coordination};}
   if(kind==="dance"){c.joy=clamp(c.joy+.06*quality);c.coordination=clamp(c.coordination+.03*quality);detail={form:"rhythm, balance and expressive motion"};}
@@ -84,11 +85,17 @@ function culturalStep(a,t,w){
   }
   if(kind==="magic"){
     c.imagination=clamp(c.imagination+.04*quality);
-    // A deliberately fictional law of Tadash: qualified ritual practice can channel a bounded resource effect.
-    if(p.stage>=1&&a.energy>=.5){const old=t.water;t.water=clamp(old+Math.min(3,p.stage),0,100);worldGain=t.water-old;if(worldGain>0)w.culture.magicEffects++;}
-    detail={form:"symbolic water blessing",scope:"fictional world mechanic",qualified:p.stage>=1};
+    if(w.goetia?.autoPractice){
+      // Training replaces the legacy blessing; the school charges exactly once.
+      gatePractice=automaticGatePractice(w);
+      detail={form:"seventy-two gates practice",scope:"authored in-world mechanic",gate:gatePractice};
+    }else{
+      // A deliberately fictional law of Tadash: qualified ritual practice can channel a bounded resource effect.
+      if(p.stage>=1&&a.energy>=.5){const old=t.water;t.water=clamp(old+Math.min(3,p.stage),0,100);worldGain=t.water-old;if(worldGain>0)w.culture.magicEffects++;}
+      detail={form:"symbolic water blessing",scope:"fictional world mechanic",qualified:p.stage>=1};
+    }
   }
-  a.energy=clamp(a.energy-(kind==="magic"?.045:.025));a.fatigue=clamp(a.fatigue+(kind==="martial"?.035:.012));
+  if(!gatePractice){a.energy=clamp(a.energy-(kind==="magic"?.045:.025));a.fatigue=clamp(a.fatigue+(kind==="martial"?.035:.012));}
   a.valence=clamp(a.valence+.025*(c.joy+c.focus-1),-1,1);
   assimilateLilith(a,kind,quality);
   const event={tick:w.tick,kind,quality,stage:p.stage,worldGain,detail};
@@ -108,6 +115,7 @@ function assertWorldOwnership(w) {
      !Array.isArray(w.events)||w.events.some(e=>e.agent!==ownerId)||
      (w.culture&&(!Array.isArray(w.culture.events)||w.culture.events.some(e=>e.agent!==ownerId))))
     throw Error("foreign identity or event in Tadash world");
+  assertGoetiaState(w);
 }
 
 function initialWorld(seed=1405) {
@@ -122,7 +130,7 @@ function initialWorld(seed=1405) {
 
 function observeSelf(a,w) {
   const town=w.towns.find(t=>t.id===a.town);
-  return {identity:a.identity,bodyGeneration:a.bodyGeneration,tick:w.tick,energy:a.energy,fatigue:a.fatigue,valence:a.valence,curiosity:a.curiosity,affinity:a.affinity,localWater:town.water,localClinic:town.clinic,localFood:town.food,lastAction:a.memory.at(-1)?.action??null,lilithSelf:a.lilith?{...a.lilith}:null,culturalSelf:a.culture?{focus:a.culture.focus,joy:a.culture.joy,discipline:a.culture.discipline,insight:a.culture.insight,bonds:{...a.culture.bonds},lastPractice:a.culture.journal.at(-1)?.kind??null}:null};
+  return {identity:a.identity,bodyGeneration:a.bodyGeneration,tick:w.tick,energy:a.energy,fatigue:a.fatigue,valence:a.valence,curiosity:a.curiosity,affinity:a.affinity,localWater:town.water,localClinic:town.clinic,localFood:town.food,lastAction:a.memory.at(-1)?.action??null,lilithSelf:a.lilith?{...a.lilith}:null,culturalSelf:a.culture?{focus:a.culture.focus,joy:a.culture.joy,discipline:a.culture.discipline,insight:a.culture.insight,bonds:{...a.culture.bonds},lastPractice:a.culture.journal.at(-1)?.kind??null}:null,...(w.goetia?{goetiaSelf:goetiaSelf(w)}:{})};
 }
 
 function availableInnovations(a,w) {
@@ -195,6 +203,8 @@ function transferBody(w,id) {assertWorldOwnership(w);const next=JSON.parse(JSON.
 
 function worldExport(w) {assertWorldOwnership(w);return {version:1,tick:w.tick,towns:w.towns.map(t=>({...t})),scope:w.scope};}
 
-function report(w) {assertWorldOwnership(w);return {tick:w.tick,scope:w.scope,owner:w.owner,archetype:{...lilithCanon,domains:[...lilithCanon.domains],shadow:[...lilithCanon.shadow]},actions:w.actionCounts,inventions:w.inventions.length,towns:w.towns,agents:w.agents.map(a=>({id:a.id,identity:a.identity,memory:a.memory.length,energy:a.energy,fatigue:a.fatigue,valence:a.valence,skills:a.skills,lilith:a.lilith??null,culture:a.culture??null})),culture:w.culture??null,phenomenalConsciousness:"not_measured"};}
+function report(w) {assertWorldOwnership(w);return {tick:w.tick,scope:w.scope,owner:w.owner,archetype:{...lilithCanon,domains:[...lilithCanon.domains],shadow:[...lilithCanon.shadow]},actions:w.actionCounts,inventions:w.inventions.length,towns:w.towns,agents:w.agents.map(a=>({id:a.id,identity:a.identity,memory:a.memory.length,energy:a.energy,fatigue:a.fatigue,valence:a.valence,skills:a.skills,lilith:a.lilith??null,culture:a.culture??null})),culture:w.culture??null,...(w.goetia?{goetia:goetiaReport(w)}:{}),phenomenalConsciousness:"not_measured"};}
 
 export {initialWorld,tickWorld,advance,transferBody,worldExport,report};
+export {enableGoetia,selectGoetiaGate,practiceGate,castGate,goetiaReport} from "./tadash_goetia_v1.mjs";
+
