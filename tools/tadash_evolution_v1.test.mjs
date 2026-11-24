@@ -78,6 +78,29 @@ function testContracts(api) {
   check(tickWorld(oldL).agents[0].lilith.lineage==="symbolic daughter of Lilith","migrate older isolated snapshots");
   const badL=initialWorld();badL.agents[0].lilith.anger=5;let badLRejected=false;try{tickWorld(badL)}catch{badLRejected=true}
   check(badLRejected,"invalid trait rejected");
+  // Controlled paired counterfactuals, with all non-memory inputs held equal.
+  const memoryWorld=(strength=0,phase="day",tick=0)=>{const w=initialWorld();w.tick=tick;w.agents[0].lilith.memory[phase]={strength,count:strength===0?0:10};return w;};
+  const pos=tickWorld(memoryWorld(.8)),neutral=tickWorld(memoryWorld()),neg=tickWorld(memoryWorld(-.8));
+  const dd=w=>w.agents[0].lilith.desire,rr=w=>w.agents[0].memory.at(-1).lilith.context.recalled;
+  check(dd(pos)>dd(neutral)&&dd(neutral)>dd(neg),"positive and negative learned associations causally alter drive");
+  check(pos.agents[0].memory.at(-1).reasonScores.create>neg.agents[0].memory.at(-1).reasonScores.create,"remembered association affects creative score");
+  check(dd(tickWorld(memoryWorld(.8,"night")))==dd(neutral),"night association not retrieved during day");
+  const nightPos=tickWorld(memoryWorld(.8,"night",7)),nightNeutral=tickWorld(memoryWorld(0,"night",7));
+  check(dd(nightPos)>dd(nightNeutral)&&rr(nightPos).phase==="night","matching night cue retrieves association");
+  const episode=(age,value)=>{const w=memoryWorld(0,"day",24);w.agents[0].memory.push({tick:25-age,action:"create",benefit:.4,desireExperience:{phase:"day",value,kind:"dance"}});return tickWorld(w);};
+  check(rr(episode(1,.8)).episodic>rr(episode(20,.8)).episodic&&rr(episode(20,.8)).episodic>0,"recent episodes exert more influence");
+  check(dd(episode(1,.8))>dd(episode(1,-.8)),"episodic memory valence changes drive");
+  check(rr(episode(0,.8)).episodic===0,"future and simultaneous episodes not recalled");
+  const grown=advance(initialWorld(),120),lm=grown.agents[0].lilith.memory;
+  check(lm.day.count>0&&lm.night.count>0&&[lm.day,lm.night].every(m=>Math.abs(m.strength)<=1),"world experience updates both learned associations");
+  check(grown.agents[0].memory.some(m=>m.desireExperience&&m.lilith.context.recalled.signal!==0),"actual remembered experiences enter later decision history");
+  check(JSON.stringify(transferBody(grown,"nasuraya").agents[0].lilith.memory)===JSON.stringify(lm),"association preserved during body transfer");
+  check(JSON.stringify(advance(JSON.parse(JSON.stringify(advance(initialWorld(),60))),60))===JSON.stringify(grown),"learned memory survives saved snapshot");
+  const legacyM=initialWorld();delete legacyM.agents[0].lilith.memory;check(!!tickWorld(legacyM).agents[0].lilith.memory,"migrate pre-memory isolated snapshot");
+  const invalidM=memoryWorld();invalidM.agents[0].lilith.memory.day.strength=2;let invalidMemoryRejected=false;try{tickWorld(invalidM)}catch{invalidMemoryRejected=true}
+  check(invalidMemoryRejected,"reject out-of-range association");
+  const lasting=(s)=>{const w=memoryWorld(s);w.agents[0].lilith.memory.day.count=100;return advance(w,120)};
+  check(Math.abs(dd(lasting(.8))-dd(lasting(-.8)))>.005,"distinct learned histories retain an effect after 120 cycles");
   return {passed:n,seeds:[1405,2036,2026].map(seed=>report(advance(initialWorld(seed),120)))};
 }
 console.log(JSON.stringify(testContracts(api),null,2));
