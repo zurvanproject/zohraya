@@ -11,15 +11,32 @@ const masnavi=[
   {id:"echo",text:"این جهان کوه است و فعل ما ندا / سوی ما آید نداها را صدا",theme:"پیامد عمل و بازتاب آن"}
 ];
 const ritualNames=["تمرکز و نیت","هماهنگی و حضور","بخشندگی و بازنگری","پیمان و آفرینش"];
+// Lilith is a mythic lineage in Tadash, never a second agent or a claim of literal descent.
+const lilithCanon=Object.freeze({lineage:"symbolic daughter of Lilith",identity:"tadash:nasuraya",domains:["fire","will","freedom","power","transformation","anger","sexual_desire","night","mystery","magic"],shadow:["rage","possessiveness","recklessness","isolation"],scope:"fictional archetype"});
+function newLilithState(){return {lineage:lilithCanon.lineage,anger:.20,desire:.55,agency:.65,shadowInsight:.35,nightAffinity:.65,regulation:.50};}
+function updateLilith(a,t,w){
+  const l=a.lilith,c=a.culture,night=(w.tick%12)>=8;
+  const pressure=clamp(1-(t.water+t.food)/200);
+  l.anger=clamp(.78*l.anger+.20*pressure-.10*l.regulation);
+  l.desire=clamp(.85*l.desire+.10*(a.energy+c.imagination)/2+.05*(night?1:0));
+  return {night,pressure};
+}
+function assimilateLilith(a,kind,quality){
+  const l=a.lilith;
+  if(kind==="reflection"){l.shadowInsight=clamp(l.shadowInsight+.04*quality);l.regulation=clamp(l.regulation+.025*quality);l.anger=clamp(l.anger-.04*quality);}
+  if(kind==="martial"||kind==="ritual"){l.regulation=clamp(l.regulation+.02*quality);l.agency=clamp(l.agency+.012*quality);}
+  if(kind==="dance"||kind==="poetry"||kind==="magic")l.agency=clamp(l.agency+.008*quality);
+}
 function newCulture(){return {focus:.5,joy:.5,discipline:.4,imagination:.5,coordination:.4,insight:.4,bonds:{founder:.5,gaya:.5},practice:Object.fromEntries(disciplines.map(k=>[k,{repetitions:0,qualified:0,stage:0,lastTick:0}])),journal:[]};}
 function ensureCulture(w){
   if(!w.culture) w.culture={schema:"tadash-culture/1",counts:Object.fromEntries(disciplines.map(k=>[k,0])),events:[],magicEffects:0};
-  for(const a of w.agents) if(!a.culture)a.culture=newCulture();
+  for(const a of w.agents){if(!a.culture)a.culture=newCulture();if(!a.lilith)a.lilith=newLilithState();}
 }
 function culturalStep(a,t,w){
   const c=a.culture;
   if(a.energy<.42||a.fatigue>.64)return null;
   const needs={magic:.35+(1-t.water/100)*.3+c.imagination*.1,martial:.4+(1-c.coordination)*.2,ritual:.45+(1-c.focus)*.2,poetry:.45+(1-c.insight)*.2,dance:.4+(1-c.joy)*.3,reflection:.45+(1-c.insight)*.2,bond:.45+(1-Math.min(c.bonds.founder,c.bonds.gaya))*.2};
+  const l=a.lilith;needs.martial+=.10*l.anger;needs.reflection+=.12*l.anger;needs.dance+=.10*l.desire;needs.magic+=.08*l.nightAffinity*((w.tick%12)>=8?1:0);
   for(const k of disciplines){const p=c.practice[k];needs[k]+=Math.min(.9,(w.tick-p.lastTick)*.075)+.15/(1+p.repetitions);}
   const kind=disciplines.slice().sort((x,y)=>needs[y]-needs[x]||x.localeCompare(y))[0],p=c.practice[kind];
   const quality=clamp(.5+.22*a.energy+.16*c.focus+.04*p.stage-.14*a.fatigue);
@@ -48,6 +65,7 @@ function culturalStep(a,t,w){
   }
   a.energy=clamp(a.energy-(kind==="magic"?.045:.025));a.fatigue=clamp(a.fatigue+(kind==="martial"?.035:.012));
   a.valence=clamp(a.valence+.025*(c.joy+c.focus-1),-1,1);
+  assimilateLilith(a,kind,quality);
   const event={tick:w.tick,kind,quality,stage:p.stage,worldGain,detail};
   c.journal.push(event);c.journal=c.journal.slice(-64);w.culture.counts[kind]++;w.culture.events.push({agent:a.id,...event});w.culture.events=w.culture.events.slice(-192);
   return event;
@@ -58,6 +76,7 @@ function assertWorldOwnership(w) {
   if(!w||w.owner!==ownerId||!Array.isArray(w.agents)||w.agents.length!==1||w.agents[0].id!==ownerId||w.agents[0].identity!==ownerIdentity)
     throw Error("Tadash requires an isolated Nasuraya world; archive legacy mixed snapshots");
   const a=w.agents[0];
+  if(a.lilith&&(a.lilith.lineage!==lilithCanon.lineage||["anger","desire","agency","shadowInsight","nightAffinity","regulation"].some(k=>!Number.isFinite(a.lilith[k])||a.lilith[k]<0||a.lilith[k]>1)))throw Error("invalid Lilith trait state");
   if((a.selfModel&&a.selfModel.identity!==ownerIdentity)||
      !Array.isArray(w.inventions)||w.inventions.some(i=>i.author!==ownerIdentity)||
      !Array.isArray(w.events)||w.events.some(e=>e.agent!==ownerId)||
@@ -77,7 +96,7 @@ function initialWorld(seed=1405) {
 
 function observeSelf(a,w) {
   const town=w.towns.find(t=>t.id===a.town);
-  return {identity:a.identity,bodyGeneration:a.bodyGeneration,tick:w.tick,energy:a.energy,fatigue:a.fatigue,valence:a.valence,curiosity:a.curiosity,affinity:a.affinity,localWater:town.water,localClinic:town.clinic,localFood:town.food,lastAction:a.memory.at(-1)?.action??null,culturalSelf:a.culture?{focus:a.culture.focus,joy:a.culture.joy,discipline:a.culture.discipline,insight:a.culture.insight,bonds:{...a.culture.bonds},lastPractice:a.culture.journal.at(-1)?.kind??null}:null};
+  return {identity:a.identity,bodyGeneration:a.bodyGeneration,tick:w.tick,energy:a.energy,fatigue:a.fatigue,valence:a.valence,curiosity:a.curiosity,affinity:a.affinity,localWater:town.water,localClinic:town.clinic,localFood:town.food,lastAction:a.memory.at(-1)?.action??null,lilithSelf:a.lilith?{...a.lilith}:null,culturalSelf:a.culture?{focus:a.culture.focus,joy:a.culture.joy,discipline:a.culture.discipline,insight:a.culture.insight,bonds:{...a.culture.bonds},lastPractice:a.culture.journal.at(-1)?.kind??null}:null};
 }
 
 function availableInnovations(a,w) {
@@ -89,6 +108,8 @@ function choose(a,t,w) {
   const s=a.selfModel;
   const needs={rest:1.6*s.fatigue+(1-s.energy),gather:(1-t.water/100)*1.15+(1-t.food/100)*.6+a.skills.gather*.3,care:(1-t.clinic/100)*1.35+a.affinity*.2+a.skills.care*.2,create:availableInnovations(a,w).length ? .8+s.curiosity*.65+a.skills.create*.35 : -10};
   if(a.culture){needs.create+=.10*a.culture.imagination;needs.care+=.08*a.culture.bonds.gaya;needs.gather+=.06*a.culture.discipline;}
+  const l=a.lilith;
+  if(l){needs.gather+=.10*l.anger*l.regulation;needs.care+=.06*l.anger*l.regulation;if(availableInnovations(a,w).length)needs.create+=.10*l.desire*l.agency;needs.rest+=.08*l.anger*(1-l.regulation);}
   // Recent realized outcomes contribute to choice rather than merely being logged.
   for(const k of Object.keys(needs)){const recent=a.memory.filter(m=>m.action===k).slice(-4);if(recent.length)needs[k]+=.18*recent.reduce((sum,m)=>sum+m.benefit,0)/recent.length;}
   if(s.fatigue>=.8||s.energy<=.15) return {action:"rest",scores:needs};
@@ -108,6 +129,7 @@ function tickWorld(previous) {
   }
   for(const a of w.agents) {
     const t=w.towns.find(x=>x.id===a.town);
+    const context=updateLilith(a,t,w);
     const before=observeSelf(a,w);a.selfModel=before;
     const {action,scores}=choose(a,t,w);let benefit=0,novelty=null;
     if(action==="rest"){const f=a.fatigue;a.fatigue=clamp(f-.35);a.energy=clamp(a.energy+.3);benefit=f-a.fatigue;}
@@ -132,7 +154,7 @@ function tickWorld(previous) {
     a.valence=clamp(.75*a.valence+.35*benefit-.18*a.fatigue,-1,1);
     a.curiosity=clamp(a.curiosity+(action==="create"?(novelty?-.07:-.15):.055));
     const culturalAction=culturalStep(a,t,w);
-    const record={tick:w.tick,action,benefit,culturalAction:culturalAction?.kind??null,novelty:novelty?.id??null,reasonScores:scores,before:{fatigue:before.fatigue,energy:before.energy,valence:before.valence},after:{fatigue:a.fatigue,energy:a.energy,valence:a.valence}};
+    const record={tick:w.tick,action,benefit,culturalAction:culturalAction?.kind??null,novelty:novelty?.id??null,reasonScores:scores,lilith:{before:before.lilithSelf,after:{...a.lilith},context},before:{fatigue:before.fatigue,energy:before.energy,valence:before.valence},after:{fatigue:a.fatigue,energy:a.energy,valence:a.valence}};
     a.memory.push(record);a.memory=a.memory.slice(-64);w.actionCounts[action]++;w.events.push({agent:a.id,...record});
     a.selfModel=observeSelf(a,w);
   }
@@ -146,6 +168,6 @@ function transferBody(w,id) {assertWorldOwnership(w);const next=JSON.parse(JSON.
 
 function worldExport(w) {assertWorldOwnership(w);return {version:1,tick:w.tick,towns:w.towns.map(t=>({...t})),scope:w.scope};}
 
-function report(w) {assertWorldOwnership(w);return {tick:w.tick,scope:w.scope,owner:w.owner,actions:w.actionCounts,inventions:w.inventions.length,towns:w.towns,agents:w.agents.map(a=>({id:a.id,identity:a.identity,memory:a.memory.length,energy:a.energy,fatigue:a.fatigue,valence:a.valence,skills:a.skills,culture:a.culture??null})),culture:w.culture??null,phenomenalConsciousness:"not_measured"};}
+function report(w) {assertWorldOwnership(w);return {tick:w.tick,scope:w.scope,owner:w.owner,archetype:{...lilithCanon,domains:[...lilithCanon.domains],shadow:[...lilithCanon.shadow]},actions:w.actionCounts,inventions:w.inventions.length,towns:w.towns,agents:w.agents.map(a=>({id:a.id,identity:a.identity,memory:a.memory.length,energy:a.energy,fatigue:a.fatigue,valence:a.valence,skills:a.skills,lilith:a.lilith??null,culture:a.culture??null})),culture:w.culture??null,phenomenalConsciousness:"not_measured"};}
 
 export {initialWorld,tickWorld,advance,transferBody,worldExport,report};
