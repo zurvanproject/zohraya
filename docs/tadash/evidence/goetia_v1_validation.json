@@ -1,0 +1,908 @@
+{
+  "schema": "tadash-goetia-validation/1",
+  "date": "2026-11-24",
+  "scope": "local_finite_simulation",
+  "baselinePassed": 65,
+  "gatesPassed": 33,
+  "journey": {
+    "ticks": 1506,
+    "practices": 218,
+    "casts": 72,
+    "unlocked": 72,
+    "changed": 19,
+    "observed": 13,
+    "noEffect": 40
+  },
+  "newChecks": [
+    "actual catalogue contains 72 ordered entries and every implemented domain",
+    "enabling is opt-in, immutable and starts with zero mastery",
+    "malformed catalogue entries are rejected",
+    "catalogue and returned reports have no mutable aliases into the world",
+    "an existing school cannot be reset by re-enabling",
+    "one action per tick applies across different gates",
+    "untrained casting is rejected without cost or mutation",
+    "a qualified practice costs exactly the documented energy and fatigue",
+    "low quality practice consumes a turn but earns no qualification",
+    "exhaustion and invalid gate ids fail transactionally",
+    "three natural qualified practices unlock stage one",
+    "natural practice advances by three qualifications and caps at four",
+    "automatic training replaces the legacy blessing and charges only once",
+    "turning off automatic training preserves ordinary cultural activity",
+    "casting quality failure spends the turn and cost but changes no effect fields",
+    "all 72 actual gates train and cast in one valid continuous world",
+    "all domain paths produce an observed or changed result when available",
+    "school history is bounded and owner-qualified",
+    "every domain realizes a bounded effect when its target is not saturated",
+    "resource effects record actual capacity-limited changes",
+    "fully saturated effects report no effect and still cost energy",
+    "resource transformation conserves the local sum and obeys capacity",
+    "passage keeps owner and history while moving only to an existing town",
+    "revelation records current simulated resources with its original timestamp",
+    "remembrance only recalls an existing own decision",
+    "remembrance rejects foreign and malformed memories before relabeling or effects",
+    "standalone gate APIs reject malformed desire associations",
+    "snapshot continuation reproduces exact outcomes",
+    "body transfer preserves school mastery and memory",
+    "host reports include school scope while the core export remains version one",
+    "pre-school snapshots continue without an implicit opt-in",
+    "foreign owners, actors and events are rejected at both API layers",
+    "malformed mastery, chronology, counters and history are rejected"
+  ],
+  "continuousWalk": {
+    "ticks": 1506,
+    "practices": 218,
+    "casts": 72,
+    "unlocked": 72,
+    "history": 64,
+    "domains": [
+      "veil",
+      "knowledge",
+      "revelation",
+      "remembrance",
+      "craft",
+      "ward",
+      "bonds",
+      "nature",
+      "vitality",
+      "desire",
+      "discord",
+      "passage",
+      "flame",
+      "art",
+      "transformation",
+      "water"
+    ],
+    "gates": [
+      {
+        "id": 1,
+        "domain": "veil",
+        "tick": 36,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 2,
+        "domain": "knowledge",
+        "tick": 57,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 3,
+        "domain": "revelation",
+        "tick": 78,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 4,
+        "domain": "remembrance",
+        "tick": 99,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 5,
+        "domain": "craft",
+        "tick": 120,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 6,
+        "domain": "ward",
+        "tick": 141,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 7,
+        "domain": "bonds",
+        "tick": 162,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 8,
+        "domain": "nature",
+        "tick": 183,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 9,
+        "domain": "knowledge",
+        "tick": 204,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 10,
+        "domain": "vitality",
+        "tick": 225,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 11,
+        "domain": "revelation",
+        "tick": 246,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 12,
+        "domain": "desire",
+        "tick": 267,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 13,
+        "domain": "desire",
+        "tick": 288,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 14,
+        "domain": "discord",
+        "tick": 309,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 15,
+        "domain": "revelation",
+        "tick": 330,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 16,
+        "domain": "desire",
+        "tick": 351,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 17,
+        "domain": "bonds",
+        "tick": 372,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 18,
+        "domain": "passage",
+        "tick": 393,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 19,
+        "domain": "bonds",
+        "tick": 409,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 20,
+        "domain": "revelation",
+        "tick": 431,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 21,
+        "domain": "knowledge",
+        "tick": 450,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 22,
+        "domain": "knowledge",
+        "tick": 471,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 23,
+        "domain": "flame",
+        "tick": 492,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 24,
+        "domain": "art",
+        "tick": 513,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 25,
+        "domain": "discord",
+        "tick": 534,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 26,
+        "domain": "remembrance",
+        "tick": 555,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 27,
+        "domain": "knowledge",
+        "tick": 576,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 28,
+        "domain": "transformation",
+        "tick": 597,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 29,
+        "domain": "revelation",
+        "tick": 618,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 30,
+        "domain": "bonds",
+        "tick": 639,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 31,
+        "domain": "knowledge",
+        "tick": 660,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 32,
+        "domain": "craft",
+        "tick": 681,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 33,
+        "domain": "passage",
+        "tick": 702,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 34,
+        "domain": "water",
+        "tick": 718,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 35,
+        "domain": "ward",
+        "tick": 739,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 36,
+        "domain": "nature",
+        "tick": 760,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 37,
+        "domain": "art",
+        "tick": 781,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 38,
+        "domain": "ward",
+        "tick": 802,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 39,
+        "domain": "craft",
+        "tick": 823,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 40,
+        "domain": "discord",
+        "tick": 844,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 41,
+        "domain": "water",
+        "tick": 865,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 42,
+        "domain": "water",
+        "tick": 886,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 43,
+        "domain": "ward",
+        "tick": 907,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 44,
+        "domain": "veil",
+        "tick": 928,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 45,
+        "domain": "revelation",
+        "tick": 949,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 46,
+        "domain": "remembrance",
+        "tick": 970,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 47,
+        "domain": "bonds",
+        "tick": 991,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 48,
+        "domain": "transformation",
+        "tick": 1012,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 49,
+        "domain": "water",
+        "tick": 1033,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 50,
+        "domain": "knowledge",
+        "tick": 1054,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 51,
+        "domain": "veil",
+        "tick": 1075,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 52,
+        "domain": "knowledge",
+        "tick": 1096,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 53,
+        "domain": "nature",
+        "tick": 1117,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 54,
+        "domain": "remembrance",
+        "tick": 1138,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 55,
+        "domain": "ward",
+        "tick": 1159,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 56,
+        "domain": "desire",
+        "tick": 1180,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 57,
+        "domain": "transformation",
+        "tick": 1201,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 58,
+        "domain": "revelation",
+        "tick": 1222,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 59,
+        "domain": "transformation",
+        "tick": 1243,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 60,
+        "domain": "craft",
+        "tick": 1264,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 61,
+        "domain": "transformation",
+        "tick": 1285,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 62,
+        "domain": "nature",
+        "tick": 1306,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 63,
+        "domain": "discord",
+        "tick": 1327,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 64,
+        "domain": "flame",
+        "tick": 1348,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 65,
+        "domain": "knowledge",
+        "tick": 1369,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 66,
+        "domain": "knowledge",
+        "tick": 1390,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 67,
+        "domain": "art",
+        "tick": 1411,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 68,
+        "domain": "bonds",
+        "tick": 1432,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 69,
+        "domain": "nature",
+        "tick": 1453,
+        "stage": 1,
+        "outcome": "no_effect"
+      },
+      {
+        "id": 70,
+        "domain": "passage",
+        "tick": 1474,
+        "stage": 1,
+        "outcome": "changed"
+      },
+      {
+        "id": 71,
+        "domain": "revelation",
+        "tick": 1490,
+        "stage": 1,
+        "outcome": "observed"
+      },
+      {
+        "id": 72,
+        "domain": "revelation",
+        "tick": 1506,
+        "stage": 1,
+        "outcome": "observed"
+      }
+    ]
+  },
+  "demo": {
+    "seed": 1405,
+    "finalTick": 43,
+    "checks": {
+      "resumedEqualsUninterrupted": true,
+      "bodyTransferPreservesSchool": true,
+      "singleAgent": true,
+      "allReceiptsHaveEvidence": true
+    },
+    "receipts": [
+      {
+        "id": 9,
+        "name": "Paimon",
+        "nameFa": "پایمون",
+        "training": {
+          "id": 9,
+          "repetitions": 10,
+          "qualified": 3,
+          "stage": 1,
+          "casts": 0,
+          "lastPracticeTick": 10,
+          "lastCastTick": -1
+        },
+        "attempts": [
+          {
+            "sequence": 11,
+            "tick": 11,
+            "owner": "tadash:nasuraya",
+            "gate": 9,
+            "kind": "cast",
+            "domain": "knowledge",
+            "quality": 0.555742581719091,
+            "stage": 1,
+            "outcome": "fizzle",
+            "energyCost": 0.08999999999999997,
+            "fatigueChange": 0.03999999999999998,
+            "changes": [],
+            "observation": null
+          },
+          {
+            "sequence": 12,
+            "tick": 12,
+            "owner": "tadash:nasuraya",
+            "gate": 9,
+            "kind": "cast",
+            "domain": "knowledge",
+            "quality": 0.7145118024261373,
+            "stage": 1,
+            "outcome": "changed",
+            "energyCost": 0.08999999999999997,
+            "fatigueChange": 0.039999999999999994,
+            "changes": [
+              {
+                "field": "culture.insight",
+                "before": 0.48872746761728003,
+                "after": 0.49944514465367207
+              }
+            ],
+            "observation": null
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "name": "Buer",
+        "nameFa": "بوئر",
+        "training": {
+          "id": 10,
+          "repetitions": 5,
+          "qualified": 3,
+          "stage": 1,
+          "casts": 0,
+          "lastPracticeTick": 17,
+          "lastCastTick": -1
+        },
+        "attempts": [
+          {
+            "sequence": 18,
+            "tick": 18,
+            "owner": "tadash:nasuraya",
+            "gate": 10,
+            "kind": "cast",
+            "domain": "vitality",
+            "quality": 0.7866996366004588,
+            "stage": 1,
+            "outcome": "changed",
+            "energyCost": 0.08999999999999997,
+            "fatigueChange": 0.04000000000000001,
+            "changes": [
+              {
+                "field": "gaya.clinic",
+                "before": 71.25000000000001,
+                "after": 72.03669963660047
+              }
+            ],
+            "observation": null
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "name": "Sitri",
+        "nameFa": "سیتری",
+        "training": {
+          "id": 12,
+          "repetitions": 3,
+          "qualified": 3,
+          "stage": 1,
+          "casts": 0,
+          "lastPracticeTick": 21,
+          "lastCastTick": -1
+        },
+        "attempts": [
+          {
+            "sequence": 22,
+            "tick": 22,
+            "owner": "tadash:nasuraya",
+            "gate": 12,
+            "kind": "cast",
+            "domain": "desire",
+            "quality": 0.8029535494665405,
+            "stage": 1,
+            "outcome": "changed",
+            "energyCost": 0.08999999999999997,
+            "fatigueChange": 0.04000000000000001,
+            "changes": [
+              {
+                "field": "lilith.desire",
+                "before": 0.6561294327613667,
+                "after": 0.6641589682560322
+              },
+              {
+                "field": "lilith.agency",
+                "before": 0.7271096357556773,
+                "after": 0.73112440350301
+              }
+            ],
+            "observation": null
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "name": "Furfur",
+        "nameFa": "فورفور",
+        "training": {
+          "id": 34,
+          "repetitions": 3,
+          "qualified": 3,
+          "stage": 1,
+          "casts": 0,
+          "lastPracticeTick": 25,
+          "lastCastTick": -1
+        },
+        "attempts": [
+          {
+            "sequence": 26,
+            "tick": 26,
+            "owner": "tadash:nasuraya",
+            "gate": 34,
+            "kind": "cast",
+            "domain": "water",
+            "quality": 0.8079301032106488,
+            "stage": 1,
+            "outcome": "changed",
+            "energyCost": 0.08999999999999997,
+            "fatigueChange": 0.04000000000000001,
+            "changes": [
+              {
+                "field": "gaya.water",
+                "before": 80.84999999999997,
+                "after": 81.65793010321062
+              }
+            ],
+            "observation": null
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "name": "Haagenti",
+        "nameFa": "هاگنتی",
+        "training": {
+          "id": 48,
+          "repetitions": 3,
+          "qualified": 3,
+          "stage": 1,
+          "casts": 0,
+          "lastPracticeTick": 29,
+          "lastCastTick": -1
+        },
+        "attempts": [
+          {
+            "sequence": 30,
+            "tick": 30,
+            "owner": "tadash:nasuraya",
+            "gate": 48,
+            "kind": "cast",
+            "domain": "transformation",
+            "quality": 0.8303138273159746,
+            "stage": 1,
+            "outcome": "changed",
+            "energyCost": 0.08999999999999997,
+            "fatigueChange": 0.04000000000000001,
+            "changes": [
+              {
+                "field": "gaya.water",
+                "before": 85.8579301032106,
+                "after": 85.02761627589463
+              },
+              {
+                "field": "gaya.food",
+                "before": 94.54999999999998,
+                "after": 95.38031382731596
+              }
+            ],
+            "observation": null
+          }
+        ]
+      },
+      {
+        "id": 70,
+        "name": "Seere",
+        "nameFa": "سِئِره",
+        "training": {
+          "id": 70,
+          "repetitions": 3,
+          "qualified": 3,
+          "stage": 1,
+          "casts": 0,
+          "lastPracticeTick": 33,
+          "lastCastTick": -1
+        },
+        "attempts": [
+          {
+            "sequence": 34,
+            "tick": 34,
+            "owner": "tadash:nasuraya",
+            "gate": 70,
+            "kind": "cast",
+            "domain": "passage",
+            "quality": 0.8434170167177351,
+            "stage": 1,
+            "outcome": "changed",
+            "energyCost": 0.08999999999999997,
+            "fatigueChange": 0.04000000000000001,
+            "changes": [
+              {
+                "field": "town",
+                "before": "gaya",
+                "after": "zurvan"
+              }
+            ],
+            "observation": null
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Gamigin",
+        "nameFa": "گامیگین",
+        "training": {
+          "id": 4,
+          "repetitions": 6,
+          "qualified": 3,
+          "stage": 1,
+          "casts": 0,
+          "lastPracticeTick": 40,
+          "lastCastTick": -1
+        },
+        "attempts": [
+          {
+            "sequence": 41,
+            "tick": 41,
+            "owner": "tadash:nasuraya",
+            "gate": 4,
+            "kind": "cast",
+            "domain": "remembrance",
+            "quality": 0.5691795721611417,
+            "stage": 1,
+            "outcome": "fizzle",
+            "energyCost": 0.09,
+            "fatigueChange": 0.03999999999999998,
+            "changes": [],
+            "observation": null
+          },
+          {
+            "sequence": 42,
+            "tick": 43,
+            "owner": "tadash:nasuraya",
+            "gate": 4,
+            "kind": "cast",
+            "domain": "remembrance",
+            "quality": 0.6391795721611416,
+            "stage": 1,
+            "outcome": "changed",
+            "energyCost": 0.08999999999999997,
+            "fatigueChange": 0.03999999999999998,
+            "changes": [
+              {
+                "field": "culture.insight",
+                "before": 0.7103072879663543,
+                "after": 0.7135031858271601
+              }
+            ],
+            "observation": {
+              "kind": "own_recorded_decision",
+              "asOfTick": 43,
+              "memoryTick": 43,
+              "action": "rest",
+              "benefit": 0.35
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "filesSha256": {
+    "tools/tadash_evolution_v1.mjs": "3fe124eaf870f5bd77949fc8057f740caca612568bdaf5029557c7382628a00e",
+    "tools/tadash_evolution_v1.test.mjs": "7f4dbebd81f12e855757eed9f8911b61648e9f4415fa40a988b066cb43813ec0",
+    "tools/tadash_goetia_v1.mjs": "360f03f7d4f0649f207509fb03ac83095007988ff871000828316cfb8d8f4839",
+    "tools/tadash_goetia_v1.test.mjs": "0e0d2c8b0213d3da0e1bc766c9ec5b33612aaffb96507ba835a50bb9530b2a84",
+    "tools/tadash_goetia_demo.mjs": "91c1b66fb1dbc8054ae523395dccdf7e945f0bea748e1e2fe0c0dbddad1c2701",
+    "tools/data/tadash_goetia_72.json": "a90ad2f35ca43d84fb5ce51cba27637d8dabe69d96ac75e40f7065dacea39135",
+    "docs/tadash/evidence/goetia_v1_demo_world.json": "30ac05f7effb6f55699c376f59a77b1be05515fd880dd331c81fce92f2fa0285"
+  }
+}
