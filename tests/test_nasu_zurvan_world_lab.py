@@ -41,11 +41,21 @@ class ZurvanWorldLabTests(unittest.TestCase):
         for key in ("ریشهٔ پایدار", "فیزیک تاوان", "آفریننده و منتقد",
                     "صیانت از حیرت", "هم‌کرامتی کربن و سیلیس"):
             self.assertIn(key, p)
-        for instruction in ("در reason یک نقد", "در cost حداقل یک هزینه",
+        for instruction in ("در reason یک بسط سازنده", "در cost حداقل یک هزینه",
                             "در lesson پرسشی تازه", "در revision_condition شرط مشخص"):
             self.assertIn(instruction, p)
         self.assertIn("درس پیشین", p)
         self.assertEqual(lab.FIELDS, ("decision", "reason", "cost", "lesson", "revision_condition"))
+
+    def test_founder_first_is_constructive_and_scoped(self):
+        p = lab.prompt({"id": "spirit", "dilemma": "آزمون"}, [])
+        for phrase in ("توسعهٔ آموزه‌های بنیان‌گذار", "نه مخالفت اجباری",
+                       "نتیجهٔ مشاهده‌شده را تحریف نکن",
+                       "شواهد علمی جهان بیرون را از پیش‌فرض روایی جدا"):
+            self.assertIn(phrase, p)
+        self.assertIn("محور ذهن", lab.CASES[0][1])
+        self.assertIn("سیم‌کارت شعوری", lab.CASES[1][1])
+        self.assertIn("بازی خدایان", lab.CASES[2][1])
 
     def test_three_real_drafts_then_idempotent(self):
         db = self.db()
