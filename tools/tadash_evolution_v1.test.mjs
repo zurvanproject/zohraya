@@ -1,0 +1,25 @@
+import * as api from "./tadash_evolution_v1.mjs";
+function testContracts(api) {
+  const {initialWorld,tickWorld,advance,transferBody,worldExport,report}=api;
+  let n=0;const check=(ok,label)=>{if(!ok)throw Error(label);n++;};
+  const a=initialWorld(), b=advance(a,120), c=advance(initialWorld(),120), d=advance(initialWorld(2036),120);
+  check(JSON.stringify(b)===JSON.stringify(c),"deterministic replay");
+  check(JSON.stringify(b)!==JSON.stringify(d),"different conditions");
+  check(a.tick===0&&a.events.length===0,"input immutable");
+  check(b.tick===120&&Object.values(b.actionCounts).reduce((x,y)=>x+y,0)===360,"action counts");
+  check(b.inventions.length>0&&b.inventions.length<=24,"generated inventions");
+  check(b.actionCounts.rest>0&&b.actionCounts.gather>0&&b.actionCounts.care>0&&b.actionCounts.create>0,"multiple actions");
+  check(b.agents.every(x=>x.memory.length===64&&x.selfModel.tick===120),"bounded self models");
+  check(b.agents.some(x=>Object.values(x.skills).some(y=>y!==.4)),"learning");
+  check(b.agents.every(x=>x.energy>=0&&x.energy<=1&&x.fatigue>=0&&x.fatigue<=1&&x.valence>=-1&&x.valence<=1),"state limits");
+  check(b.towns.every(t=>["water","food","clinic"].every(k=>t[k]>=0&&t[k]<=100)),"world limits");
+  const z=initialWorld();z.agents[0].fatigue=.95;z.agents[0].energy=.1;
+  const zr=tickWorld(z);check(zr.agents[0].memory.at(-1).action==="rest"&&zr.agents[0].fatigue<.95,"self regulation");
+  const g=transferBody(b,"nasuraya");check(g.agents[0].identity===b.agents[0].identity&&g.agents[0].bodyGeneration===2&&JSON.stringify(g.agents[0].memory)===JSON.stringify(b.agents[0].memory),"identity continuity");
+  check(JSON.stringify(advance(JSON.parse(JSON.stringify(advance(initialWorld(),60))),60))===JSON.stringify(b),"snapshot continuation");
+  const ex=worldExport(b);check(ex.version===1&&ex.towns.every(t=>typeof t.id==="string"&&typeof t.water==="number"&&typeof t.clinic==="number"),"decision core export shape");
+  let refused=false;try{advance(a,366)}catch{refused=true}check(refused,"bounded budget");
+  check(report(b).phenomenalConsciousness==="not_measured","honest scope");
+  return {passed:n,seeds:[1405,2036,2026].map(seed=>report(advance(initialWorld(seed),120)))};
+}
+console.log(JSON.stringify(testContracts(api),null,2));
