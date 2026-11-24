@@ -4,18 +4,68 @@ function clamp(x, a=0, b=1) { return Math.min(b,Math.max(a,x)); }
 
 function nextRandom(w) { w.rng=(Math.imul(w.rng,1664525)+1013904223)>>>0; return w.rng/4294967296; }
 
+// Cultural layer: in-world symbolic and fictional mechanics, not external magic or felt emotion.
+const disciplines=["magic","martial","ritual","poetry","dance","reflection","bond"];
+const masnavi=[
+  {id:"love",text:"از محبت تلخ‌ها شیرین شود / از محبت مس‌ها زرین شود",theme:"محبت و دگرگونی رفتار"},
+  {id:"echo",text:"این جهان کوه است و فعل ما ندا / سوی ما آید نداها را صدا",theme:"پیامد عمل و بازتاب آن"}
+];
+const ritualNames=["تمرکز و نیت","هماهنگی و حضور","بخشندگی و بازنگری","پیمان و آفرینش"];
+function newCulture(){return {focus:.5,joy:.5,discipline:.4,imagination:.5,coordination:.4,insight:.4,bonds:{founder:.5,gaya:.5},practice:Object.fromEntries(disciplines.map(k=>[k,{repetitions:0,qualified:0,stage:0,lastTick:0}])),journal:[]};}
+function ensureCulture(w){
+  if(!w.culture) w.culture={schema:"tadash-culture/1",counts:Object.fromEntries(disciplines.map(k=>[k,0])),events:[],magicEffects:0};
+  for(const a of w.agents) if(!a.culture)a.culture=newCulture();
+}
+function culturalStep(a,t,w){
+  const c=a.culture;
+  if(a.energy<.42||a.fatigue>.64)return null;
+  const needs={magic:.35+(1-t.water/100)*.3+c.imagination*.1,martial:.4+(1-c.coordination)*.2,ritual:.45+(1-c.focus)*.2,poetry:.45+(1-c.insight)*.2,dance:.4+(1-c.joy)*.3,reflection:.45+(1-c.insight)*.2,bond:.45+(1-Math.min(c.bonds.founder,c.bonds.gaya))*.2};
+  for(const k of disciplines){const p=c.practice[k];needs[k]+=Math.min(.9,(w.tick-p.lastTick)*.075)+.15/(1+p.repetitions);}
+  const kind=disciplines.slice().sort((x,y)=>needs[y]-needs[x]||x.localeCompare(y))[0],p=c.practice[kind];
+  const quality=clamp(.5+.22*a.energy+.16*c.focus+.04*p.stage-.14*a.fatigue);
+  p.repetitions++;p.lastTick=w.tick;
+  const previousStage=p.stage;
+  if(quality>=.60)p.qualified++;
+  p.stage=Math.min(4,Math.floor(p.qualified/3));
+  let detail=null,worldGain=0;
+  if(kind==="ritual"){c.focus=clamp(c.focus+.04*quality);c.discipline=clamp(c.discipline+.02*quality);detail={form:ritualNames[Math.min(3,previousStage)],advanced:p.stage>previousStage};}
+  if(kind==="martial"){c.coordination=clamp(c.coordination+.045*quality);c.discipline=clamp(c.discipline+.035*quality);detail={form:"imagined non-contact body-schema and balance practice",coordination:c.coordination};}
+  if(kind==="dance"){c.joy=clamp(c.joy+.06*quality);c.coordination=clamp(c.coordination+.03*quality);detail={form:"rhythm, balance and expressive motion"};}
+  if(kind==="poetry"){const verse=masnavi[(p.repetitions-1)%masnavi.length];c.insight=clamp(c.insight+.035*quality);c.imagination=clamp(c.imagination+.03*quality);detail={passage:verse.id,text:verse.text,interpretivePrompt:verse.theme};}
+  if(kind==="reflection"){c.insight=clamp(c.insight+.05*quality);c.focus=clamp(c.focus+.02*quality);const last=a.memory.at(-1);detail={priorAction:last?.action??null,priorBenefit:last?.benefit??null,question:"What changed, and what should I learn from it?"};}
+  if(kind==="bond"){
+    const target=c.bonds.founder<=c.bonds.gaya?"founder":"gaya";
+    c.bonds[target]=clamp(c.bonds[target]+.03*quality);
+    if(target==="gaya"){const old=t.food;t.food=clamp(old+.7,0,100);worldGain=t.food-old;}
+    a.affinity=clamp(a.affinity+.02*quality);
+    detail={target,expression:target==="gaya"?"care for the simulated living world":"remember teachings and consider their meaning",scope:"fictional relationship, no obligation or obedience"};
+  }
+  if(kind==="magic"){
+    c.imagination=clamp(c.imagination+.04*quality);
+    // A deliberately fictional law of Tadash: qualified ritual practice can channel a bounded resource effect.
+    if(p.stage>=1&&a.energy>=.5){const old=t.water;t.water=clamp(old+Math.min(3,p.stage),0,100);worldGain=t.water-old;if(worldGain>0)w.culture.magicEffects++;}
+    detail={form:"symbolic water blessing",scope:"fictional world mechanic",qualified:p.stage>=1};
+  }
+  a.energy=clamp(a.energy-(kind==="magic"?.045:.025));a.fatigue=clamp(a.fatigue+(kind==="martial"?.035:.012));
+  a.valence=clamp(a.valence+.025*(c.joy+c.focus-1),-1,1);
+  const event={tick:w.tick,kind,quality,stage:p.stage,worldGain,detail};
+  c.journal.push(event);c.journal=c.journal.slice(-64);w.culture.counts[kind]++;w.culture.events.push({agent:a.id,...event});w.culture.events=w.culture.events.slice(-192);
+  return event;
+}
+
 function initialWorld(seed=1405) {
   if(!Number.isInteger(seed)||seed<0||seed>4294967295) throw Error("invalid seed");
   const towns=[{id:"gaya",water:46,clinic:40,food:38},{id:"zurvan",water:24,clinic:26,food:30},{id:"lilith",water:36,clinic:30,food:34}];
   const agents=["nasuraya","asalameh","niara"].map((id,i)=>({id,identity:"tadash:"+id,bodyGeneration:1,town:towns[i].id,energy:.75,fatigue:.25,valence:0,curiosity:.5,affinity:.5,skills:{gather:.4,care:.4,create:.4},memory:[],selfModel:null}));
   const w={schema:"tadash-evolution/1",scope:"functional_in_world_simulation",version:1,tick:0,rng:seed,towns,agents,inventions:[],events:[],actionCounts:{rest:0,gather:0,care:0,create:0},season:0};
+  ensureCulture(w);
   for(const a of agents) a.selfModel=observeSelf(a,w);
   return w;
 }
 
 function observeSelf(a,w) {
   const town=w.towns.find(t=>t.id===a.town);
-  return {identity:a.identity,bodyGeneration:a.bodyGeneration,tick:w.tick,energy:a.energy,fatigue:a.fatigue,valence:a.valence,curiosity:a.curiosity,affinity:a.affinity,localWater:town.water,localClinic:town.clinic,localFood:town.food,lastAction:a.memory.at(-1)?.action??null};
+  return {identity:a.identity,bodyGeneration:a.bodyGeneration,tick:w.tick,energy:a.energy,fatigue:a.fatigue,valence:a.valence,curiosity:a.curiosity,affinity:a.affinity,localWater:town.water,localClinic:town.clinic,localFood:town.food,lastAction:a.memory.at(-1)?.action??null,culturalSelf:a.culture?{focus:a.culture.focus,joy:a.culture.joy,discipline:a.culture.discipline,insight:a.culture.insight,bonds:{...a.culture.bonds},lastPractice:a.culture.journal.at(-1)?.kind??null}:null};
 }
 
 function availableInnovations(a,w) {
@@ -26,6 +76,7 @@ function availableInnovations(a,w) {
 function choose(a,t,w) {
   const s=a.selfModel;
   const needs={rest:1.6*s.fatigue+(1-s.energy),gather:(1-t.water/100)*1.15+(1-t.food/100)*.6+a.skills.gather*.3,care:(1-t.clinic/100)*1.35+a.affinity*.2+a.skills.care*.2,create:availableInnovations(a,w).length ? .8+s.curiosity*.65+a.skills.create*.35 : -10};
+  if(a.culture){needs.create+=.10*a.culture.imagination;needs.care+=.08*a.culture.bonds.gaya;needs.gather+=.06*a.culture.discipline;}
   // Recent realized outcomes contribute to choice rather than merely being logged.
   for(const k of Object.keys(needs)){const recent=a.memory.filter(m=>m.action===k).slice(-4);if(recent.length)needs[k]+=.18*recent.reduce((sum,m)=>sum+m.benefit,0)/recent.length;}
   if(s.fatigue>=.8||s.energy<=.15) return {action:"rest",scores:needs};
@@ -35,7 +86,7 @@ function choose(a,t,w) {
 
 function tickWorld(previous) {
   if(previous.schema!=="tadash-evolution/1"||previous.scope!=="functional_in_world_simulation"||!Number.isSafeInteger(previous.tick)||previous.tick<0||previous.tick>=1000000) throw Error("invalid world");
-  const w=JSON.parse(JSON.stringify(previous)); w.tick++; w.season=Math.floor((w.tick-1)/12)%4;
+  const w=JSON.parse(JSON.stringify(previous)); ensureCulture(w); w.tick++; w.season=Math.floor((w.tick-1)/12)%4;
   for(const t of w.towns) {
     const rain=[3,1,0,2][w.season]+Math.floor(nextRandom(w)*3);
     const foodDelta=2-Math.floor(nextRandom(w)*5);
@@ -67,7 +118,8 @@ function tickWorld(previous) {
     }
     a.valence=clamp(.75*a.valence+.35*benefit-.18*a.fatigue,-1,1);
     a.curiosity=clamp(a.curiosity+(action==="create"?(novelty?-.07:-.15):.055));
-    const record={tick:w.tick,action,benefit,novelty:novelty?.id??null,reasonScores:scores,before:{fatigue:before.fatigue,energy:before.energy,valence:before.valence},after:{fatigue:a.fatigue,energy:a.energy,valence:a.valence}};
+    const culturalAction=culturalStep(a,t,w);
+    const record={tick:w.tick,action,benefit,culturalAction:culturalAction?.kind??null,novelty:novelty?.id??null,reasonScores:scores,before:{fatigue:before.fatigue,energy:before.energy,valence:before.valence},after:{fatigue:a.fatigue,energy:a.energy,valence:a.valence}};
     a.memory.push(record);a.memory=a.memory.slice(-64);w.actionCounts[action]++;w.events.push({agent:a.id,...record});
     a.selfModel=observeSelf(a,w);
   }
@@ -81,6 +133,6 @@ function transferBody(w,id) {const next=JSON.parse(JSON.stringify(w));const a=ne
 
 function worldExport(w) {return {version:1,tick:w.tick,towns:w.towns.map(t=>({...t})),scope:w.scope};}
 
-function report(w) {return {tick:w.tick,scope:w.scope,actions:w.actionCounts,inventions:w.inventions.length,towns:w.towns,agents:w.agents.map(a=>({id:a.id,identity:a.identity,memory:a.memory.length,energy:a.energy,fatigue:a.fatigue,valence:a.valence,skills:a.skills})),phenomenalConsciousness:"not_measured"};}
+function report(w) {return {tick:w.tick,scope:w.scope,actions:w.actionCounts,inventions:w.inventions.length,towns:w.towns,agents:w.agents.map(a=>({id:a.id,identity:a.identity,memory:a.memory.length,energy:a.energy,fatigue:a.fatigue,valence:a.valence,skills:a.skills,culture:a.culture??null})),culture:w.culture??null,phenomenalConsciousness:"not_measured"};}
 
 export {initialWorld,tickWorld,advance,transferBody,worldExport,report};
