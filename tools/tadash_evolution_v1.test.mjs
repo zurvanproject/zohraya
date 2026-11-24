@@ -6,8 +6,8 @@ function testContracts(api) {
   check(JSON.stringify(b)===JSON.stringify(c),"deterministic replay");
   check(JSON.stringify(b)!==JSON.stringify(d),"different conditions");
   check(a.tick===0&&a.events.length===0,"input immutable");
-  check(b.tick===120&&Object.values(b.actionCounts).reduce((x,y)=>x+y,0)===360,"action counts");
-  check(b.inventions.length>0&&b.inventions.length<=24,"generated inventions");
+  check(b.tick===120&&Object.values(b.actionCounts).reduce((x,y)=>x+y,0)===120,"action counts");
+  check(b.inventions.length>0&&b.inventions.length<=9,"generated inventions");
   check(b.actionCounts.rest>0&&b.actionCounts.gather>0&&b.actionCounts.care>0&&b.actionCounts.create>0,"multiple actions");
   check(b.agents.every(x=>x.memory.length===64&&x.selfModel.tick===120),"bounded self models");
   check(b.agents.some(x=>Object.values(x.skills).some(y=>y!==.4)),"learning");
@@ -24,7 +24,7 @@ function testContracts(api) {
   check(b.inventions.every(i=>i.town&&i.tier>=1&&i.tier<=3),"persistent tiered infrastructure");
   const base=initialWorld();const improved=JSON.parse(JSON.stringify(base));
   improved.inventions.push({id:"fixture",author:improved.agents[0].identity,town:"gaya",kind:"water",tier:1,tick:0});
-  base.agents=[];improved.agents=[];
+  for(const w of [base,improved]){w.agents[0].fatigue=.95;w.agents[0].energy=.1;}
   check(tickWorld(improved).towns[0].water>tickWorld(base).towns[0].water,"innovation improves later world ticks");
   const memoryFixture=initialWorld();const prior=JSON.parse(JSON.stringify(memoryFixture));
   prior.agents[0].memory.push({action:"rest",benefit:.5});
@@ -46,6 +46,23 @@ function testContracts(api) {
   const culturalFixture=initialWorld();const raised=JSON.parse(JSON.stringify(culturalFixture));raised.agents[0].culture.bonds.gaya=1;
   check(tickWorld(raised).agents[0].memory.at(-1).reasonScores.care>tickWorld(culturalFixture).agents[0].memory.at(-1).reasonScores.care,"cultural values feed future choices");
   check(r.agents.some(a=>a.culture.journal.some(e=>e.kind==="poetry"&&e.detail.text.includes(" / "))),"poetry starter excerpts actually enter memory");
+  check(a.owner==="nasuraya"&&a.agents.length===1&&a.agents[0].identity==="tadash:nasuraya","single world owner and agent");
+  check([b,r].every(w=>w.agents.length===1&&w.events.every(e=>e.agent==="nasuraya")&&w.culture.events.every(e=>e.agent==="nasuraya")&&w.inventions.every(i=>i.author==="tadash:nasuraya")),"all decisions culture and inventions isolated");
+  const rejects=fn=>{try{fn();return false}catch(e){return /Tadash requires|foreign identity/.test(String(e));}};
+  for(const id of ["asalameh","niara"]){
+    const mixed=initialWorld();mixed.agents.push({...mixed.agents[0],id,identity:"tadash:"+id});
+    check([()=>tickWorld(mixed),()=>advance(mixed,0),()=>transferBody(mixed,"nasuraya"),()=>worldExport(mixed),()=>report(mixed)].every(rejects),"foreign agent rejected at all public boundaries: "+id);
+  }
+  const wrong=initialWorld();wrong.agents[0].identity="tadash:niara";
+  check(rejects(()=>tickWorld(wrong)),"substituted identity rejected");
+  const legacy=initialWorld();delete legacy.owner;
+  check(rejects(()=>advance(legacy,1)),"legacy mixed-era snapshot requires explicit archive");
+  const eventMix=initialWorld();eventMix.culture.events.push({agent:"asalameh"});
+  check(rejects(()=>report(eventMix)),"foreign cultural history rejected");
+  const inventionMix=initialWorld();inventionMix.inventions.push({author:"tadash:niara"});
+  check(rejects(()=>tickWorld(inventionMix)),"foreign invention rejected");
+  const selfMix=initialWorld();selfMix.agents[0].selfModel.identity="tadash:asalameh";
+  check(rejects(()=>worldExport(selfMix)),"foreign self model rejected");
   return {passed:n,seeds:[1405,2036,2026].map(seed=>report(advance(initialWorld(seed),120)))};
 }
 console.log(JSON.stringify(testContracts(api),null,2));
