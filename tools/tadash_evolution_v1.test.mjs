@@ -63,6 +63,21 @@ function testContracts(api) {
   check(rejects(()=>tickWorld(inventionMix)),"foreign invention rejected");
   const selfMix=initialWorld();selfMix.agents[0].selfModel.identity="tadash:asalameh";
   check(rejects(()=>worldExport(selfMix)),"foreign self model rejected");
+  const lr=report(r),la=r.agents[0].lilith;
+  check(lr.archetype.domains.includes("anger")&&lr.archetype.domains.includes("sexual_desire")&&lr.archetype.identity==="tadash:nasuraya","Lilith domains and separate identity");
+  check(lr.archetype.lineage==="symbolic daughter of Lilith"&&r.agents.length===1,"symbolic ancestry not another agent");
+  check(["anger","desire","agency","shadowInsight","nightAffinity","regulation"].every(k=>la[k]>=0&&la[k]<=1),"bounded Lilith traits");
+  check(la.shadowInsight>.35&&la.regulation>.5&&la.agency>.65,"ritual and reflection develop archetype");
+  check(r.agents[0].memory.every(m=>m.lilith.before&&m.lilith.after),"trait evolution in decision history");
+  const hot=initialWorld(),cool=initialWorld();hot.agents[0].lilith.anger=.95;cool.agents[0].lilith.anger=.05;
+  check(tickWorld(hot).agents[0].memory.at(-1).reasonScores.gather>tickWorld(cool).agents[0].memory.at(-1).reasonScores.gather,"anger influences constructive response");
+  const drive=initialWorld(),flat=initialWorld();drive.agents[0].lilith.desire=.95;flat.agents[0].lilith.desire=.05;
+  check(tickWorld(drive).agents[0].memory.at(-1).reasonScores.create>tickWorld(flat).agents[0].memory.at(-1).reasonScores.create,"desire influences creative drive");
+  check(JSON.stringify(transferBody(r,"nasuraya").agents[0].lilith)===JSON.stringify(la),"Lilith heritage preserved across body transfer");
+  const oldL=initialWorld();delete oldL.agents[0].lilith;
+  check(tickWorld(oldL).agents[0].lilith.lineage==="symbolic daughter of Lilith","migrate older isolated snapshots");
+  const badL=initialWorld();badL.agents[0].lilith.anger=5;let badLRejected=false;try{tickWorld(badL)}catch{badLRejected=true}
+  check(badLRejected,"invalid trait rejected");
   return {passed:n,seeds:[1405,2036,2026].map(seed=>report(advance(initialWorld(seed),120)))};
 }
 console.log(JSON.stringify(testContracts(api),null,2));
