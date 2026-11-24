@@ -1,0 +1,212 @@
+{
+  "schema": "nasuraya/four-guardians-session/v0.1",
+  "date": "2026-11-24",
+  "session": "R11",
+  "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-24_R11_FA.md",
+  "prelookup_commit": "b5779aa6193b1a78d0faf10af81effd1e4e2bad9",
+  "prelookup": {
+    "context_assisted": true,
+    "sequence": 5,
+    "book_title_direction_color_animal": 4,
+    "personal_names_explicit": 0,
+    "composite_pairing_criterion_met": false,
+    "independent_score": null
+  },
+  "source": {
+    "book": "Jerry Alan Johnson, Daoist Exorcism",
+    "file_pages": [
+      231,
+      232,
+      233
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "original_text_checked": true,
+    "visual_checked_this_session": false,
+    "sha256_recomputed": false
+  },
+  "full_passes_completed": 3,
+  "passes_evidence": [
+    {
+      "pass": 1,
+      "mode": "guided",
+      "sequence": [
+        "E Qing Lin Mengzhang Blue/Green",
+        "S Chi Lin Lingguang Red",
+        "W Bai Lin Jianbing White",
+        "N Hei Lin Zhiming Black",
+        "C return"
+      ],
+      "complete": true,
+      "independent": false
+    },
+    {
+      "pass": 2,
+      "mode": "recall_attempt_after_key_exposure",
+      "sequence": [
+        "E Mengzhang Qing Lin Blue/Green",
+        "S Lingguang Chi Lin Red",
+        "W Jianbing Bai Lin White",
+        "N Zhiming Hei Lin Black",
+        "C return"
+      ],
+      "complete": true,
+      "independent": false
+    },
+    {
+      "pass": 3,
+      "mode": "corrected",
+      "sequence": [
+        "E Qing Lin Mengzhang Green Dragon Blue/Green",
+        "S Chi Lin Lingguang Red Phoenix",
+        "W Bai Lin Jianbing White Tiger",
+        "N Hei Lin Zhiming Black Turtle/Snake",
+        "C return"
+      ],
+      "complete": true,
+      "independent": false
+    }
+  ],
+  "trap_items_source_audited": 12,
+  "independent_trap_score": null,
+  "false_historical_attributions": 0,
+  "session_complete_under_three_pass_rule": true,
+  "independent_delayed_recall": false,
+  "mastered": false,
+  "wuji_mastered": false,
+  "third_ritual_allowed": false,
+  "synthetic_reward_experiment": {
+    "executed": true,
+    "empirical": false,
+    "paired_seeds": 1000,
+    "seed_start": 116000,
+    "sessions": 8,
+    "passes_per_session": 3,
+    "base_lr": 0.035,
+    "difficulty": [
+      0.45,
+      0.45,
+      0.45,
+      0.55,
+      0.4
+    ],
+    "pulses": [
+      0.2,
+      0.6,
+      1,
+      0.6,
+      0.2
+    ],
+    "parameters": {
+      "null": {
+        "c": 0,
+        "d": 0
+      },
+      "facilitation": {
+        "c": 0.9,
+        "d": 0.05
+      },
+      "interference": {
+        "c": -0.45,
+        "d": 0.45
+      }
+    },
+    "results": {
+      "null": {
+        "curves": {
+          "A": [
+            0.3000532702205415,
+            0.3253404842378569,
+            0.3512494026959223,
+            0.37755386459064266,
+            0.40419526189448507,
+            0.4309243653694707,
+            0.4575713415705475,
+            0.48396826012112154
+          ],
+          "B": [
+            0.3000532702205415,
+            0.3253404842378569,
+            0.3512494026959223,
+            0.37755386459064266,
+            0.40419526189448507,
+            0.4309243653694707,
+            0.4575713415705475,
+            0.48396826012112154
+          ]
+        },
+        "gainA": 0.18391498990058003,
+        "gainB": 0.18391498990058003,
+        "delta": 0
+      },
+      "facilitation": {
+        "curves": {
+          "A": [
+            0.3000532702205415,
+            0.3253404842378569,
+            0.3512494026959223,
+            0.37755386459064266,
+            0.40419526189448507,
+            0.4309243653694707,
+            0.4575713415705475,
+            0.48396826012112154
+          ],
+          "B": [
+            0.31200224366241697,
+            0.3500384340218881,
+            0.3890415036306958,
+            0.42829680854482244,
+            0.4673899581020657,
+            0.5056827332319539,
+            0.5427276390540976,
+            0.5781794144808613
+          ]
+        },
+        "gainA": 0.18391498990058003,
+        "gainB": 0.26617717081844433,
+        "delta": 0.0822621809178643
+      },
+      "interference": {
+        "curves": {
+          "A": [
+            0.3000532702205415,
+            0.3253404842378569,
+            0.3512494026959223,
+            0.37755386459064266,
+            0.40419526189448507,
+            0.4309243653694707,
+            0.4575713415705475,
+            0.48396826012112154
+          ],
+          "B": [
+            0.29472103311300746,
+            0.31443055597611,
+            0.3345907004491215,
+            0.35509959222711535,
+            0.3759053974399608,
+            0.3968922890036704,
+            0.41796250710120747,
+            0.43902482427527895
+          ]
+        },
+        "gainA": 0.18391498990058003,
+        "gainB": 0.1443037911622715,
+        "delta": -0.03961119873830854
+      }
+    },
+    "null_control_passed": true,
+    "actual_historical_control_data_available": false,
+    "reproduction_js": "const cases={\"null\":{\"c\":0,\"d\":0},\"facilitation\":{\"c\":0.9,\"d\":0.05},\"interference\":{\"c\":-0.45,\"d\":0.45}},difficulty=[0.45,0.45,0.45,0.55,0.4],pulses=[0.2,0.6,1,0.6,0.2],sig=x=>1/(1+Math.exp(-x));\nfunction traj(seed,arm,{c,d}){let s=seed>>>0;const rng=()=>((s=(Math.imul(s,1664525)+1013904223)>>>0)/4294967296);let skills=difficulty.map(()=>-.5+(rng()-.5)*.32),curve=[];for(let t=0;t<8;t++){for(let pass=0;pass<3;pass++)for(let j=0;j<5;j++){const pulse=arm===\"B\"?pulses[j]:0,p=sig(skills[j]-difficulty[j]-pulse*d),correct=rng()<p;skills[j]+=.035*(1+c*pulse)*(.65+.6*(1-p))*(correct?1:1.08)}curve.push(skills.reduce((sum,x,j)=>sum+sig(x-difficulty[j]),0)/5)}return curve}\nfunction run(){let output={};for(const [name,cfg] of Object.entries(cases)){let means={A:Array(8).fill(0),B:Array(8).fill(0)};for(let seed=116000;seed<117000;seed++)for(const arm of [\"A\",\"B\"]){const v=traj(seed,arm,cfg);v.forEach((x,j)=>means[arm][j]+=x/1000)}const gainA=means.A[7]-means.A[0],gainB=means.B[7]-means.B[0];output[name]={curves:means,gainA,gainB,delta:gainB-gainA}}if(output.null.curves.A.some((v,j)=>v!==output.null.curves.B[j]))throw Error(\"null control failed\");return output}\nconsole.log(JSON.stringify(run()));"
+  },
+  "operations": {
+    "merge": false,
+    "deploy": false,
+    "vps": false,
+    "bridge": false,
+    "moltbook": false,
+    "video_241_changed": false
+  }
+}
