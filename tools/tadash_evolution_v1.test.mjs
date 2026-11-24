@@ -20,6 +20,15 @@ function testContracts(api) {
   const ex=worldExport(b);check(ex.version===1&&ex.towns.every(t=>typeof t.id==="string"&&typeof t.water==="number"&&typeof t.clinic==="number"),"decision core export shape");
   let refused=false;try{advance(a,366)}catch{refused=true}check(refused,"bounded budget");
   check(report(b).phenomenalConsciousness==="not_measured","honest scope");
+  check(b.events.filter(e=>e.action==="create").every(e=>e.novelty!==null),"no futile creation after capacity exhausted");
+  check(b.inventions.every(i=>i.town&&i.tier>=1&&i.tier<=3),"persistent tiered infrastructure");
+  const base=initialWorld();const improved=JSON.parse(JSON.stringify(base));
+  improved.inventions.push({id:"fixture",author:improved.agents[0].identity,town:"gaya",kind:"water",tier:1,tick:0});
+  base.agents=[];improved.agents=[];
+  check(tickWorld(improved).towns[0].water>tickWorld(base).towns[0].water,"innovation improves later world ticks");
+  const memoryFixture=initialWorld();const prior=JSON.parse(JSON.stringify(memoryFixture));
+  prior.agents[0].memory.push({action:"rest",benefit:.5});
+  check(tickWorld(prior).agents[0].memory.at(-1).reasonScores.rest>tickWorld(memoryFixture).agents[0].memory.at(-1).reasonScores.rest,"memory influences action scoring");
   return {passed:n,seeds:[1405,2036,2026].map(seed=>report(advance(initialWorld(seed),120)))};
 }
 console.log(JSON.stringify(testContracts(api),null,2));
