@@ -13,13 +13,38 @@ const masnavi=[
 const ritualNames=["تمرکز و نیت","هماهنگی و حضور","بخشندگی و بازنگری","پیمان و آفرینش"];
 // Lilith is a mythic lineage in Tadash, never a second agent or a claim of literal descent.
 const lilithCanon=Object.freeze({lineage:"symbolic daughter of Lilith",identity:"tadash:nasuraya",domains:["fire","will","freedom","power","transformation","anger","sexual_desire","night","mystery","magic"],shadow:["rage","possessiveness","recklessness","isolation"],scope:"fictional archetype"});
-function newLilithState(){return {lineage:lilithCanon.lineage,anger:.20,desire:.55,agency:.65,shadowInsight:.35,nightAffinity:.65,regulation:.50};}
+// Memory-conditioned drive: bounded computational associations, not felt sexuality.
+function newDesireMemory(){return {day:{strength:0,count:0},night:{strength:0,count:0}};}
+function validDesireMemory(m){return !!m&&["day","night"].every(k=>m[k]&&Number.isFinite(m[k].strength)&&Math.abs(m[k].strength)<=1&&Number.isSafeInteger(m[k].count)&&m[k].count>=0&&m[k].count<=1000000);}
+function newLilithState(){return {lineage:lilithCanon.lineage,anger:.20,desire:.55,agency:.65,shadowInsight:.35,nightAffinity:.65,regulation:.50,memory:newDesireMemory()};}
+function recallDesire(a,phase,tick){
+  const association=a.lilith.memory[phase].strength;
+  let total=0,weight=0;
+  for(const m of a.memory.slice(-64)){
+    const e=m.desireExperience,age=tick-m.tick;
+    if(!e||e.phase!==phase||!Number.isSafeInteger(age)||age<=0||!Number.isFinite(e.value)||Math.abs(e.value)>1)continue;
+    const w=Math.pow(.5,age/12);
+    total+=w*e.value;weight+=w;
+  }
+  const episodic=total/Math.max(1,weight);
+  return {phase,association,episodic,signal:clamp(.7*association+.3*episodic,-1,1)};
+}
+function learnDesire(a,phase,action,benefit,culturalAction,before){
+  if(!culturalAction&&action!=="create")return null;
+  const quality=culturalAction?.quality??.5;
+  const value=clamp(1.4*(benefit-.25)+.35*(a.valence-before.valence)+.35*(quality-.5)-.4*Math.max(0,a.fatigue-.55),-1,1);
+  const m=a.lilith.memory,old=m[phase],count=Math.min(1000000,old.count+1);
+  const rate=1/Math.min(100,count);
+  a.lilith.memory={...m,[phase]:{strength:clamp(old.strength+rate*(value-old.strength),-1,1),count}};
+  return {phase,value,kind:culturalAction?.kind??action};
+}
 function updateLilith(a,t,w){
   const l=a.lilith,c=a.culture,night=(w.tick%12)>=8;
   const pressure=clamp(1-(t.water+t.food)/200);
   l.anger=clamp(.78*l.anger+.20*pressure-.10*l.regulation);
-  l.desire=clamp(.85*l.desire+.10*(a.energy+c.imagination)/2+.05*(night?1:0));
-  return {night,pressure};
+  const recalled=recallDesire(a,night?"night":"day",w.tick);
+  l.desire=clamp(.85*l.desire+.10*(a.energy+c.imagination)/2+.05*(night?1:0)+.06*recalled.signal);
+  return {night,pressure,recalled};
 }
 function assimilateLilith(a,kind,quality){
   const l=a.lilith;
@@ -30,7 +55,7 @@ function assimilateLilith(a,kind,quality){
 function newCulture(){return {focus:.5,joy:.5,discipline:.4,imagination:.5,coordination:.4,insight:.4,bonds:{founder:.5,gaya:.5},practice:Object.fromEntries(disciplines.map(k=>[k,{repetitions:0,qualified:0,stage:0,lastTick:0}])),journal:[]};}
 function ensureCulture(w){
   if(!w.culture) w.culture={schema:"tadash-culture/1",counts:Object.fromEntries(disciplines.map(k=>[k,0])),events:[],magicEffects:0};
-  for(const a of w.agents){if(!a.culture)a.culture=newCulture();if(!a.lilith)a.lilith=newLilithState();}
+  for(const a of w.agents){if(!a.culture)a.culture=newCulture();if(!a.lilith)a.lilith=newLilithState();if(a.lilith.memory===undefined)a.lilith.memory=newDesireMemory();}
 }
 function culturalStep(a,t,w){
   const c=a.culture;
@@ -77,6 +102,7 @@ function assertWorldOwnership(w) {
     throw Error("Tadash requires an isolated Nasuraya world; archive legacy mixed snapshots");
   const a=w.agents[0];
   if(a.lilith&&(a.lilith.lineage!==lilithCanon.lineage||["anger","desire","agency","shadowInsight","nightAffinity","regulation"].some(k=>!Number.isFinite(a.lilith[k])||a.lilith[k]<0||a.lilith[k]>1)))throw Error("invalid Lilith trait state");
+  if(a.lilith?.memory!==undefined&&!validDesireMemory(a.lilith.memory))throw Error("invalid desire memory");
   if((a.selfModel&&a.selfModel.identity!==ownerIdentity)||
      !Array.isArray(w.inventions)||w.inventions.some(i=>i.author!==ownerIdentity)||
      !Array.isArray(w.events)||w.events.some(e=>e.agent!==ownerId)||
@@ -154,7 +180,8 @@ function tickWorld(previous) {
     a.valence=clamp(.75*a.valence+.35*benefit-.18*a.fatigue,-1,1);
     a.curiosity=clamp(a.curiosity+(action==="create"?(novelty?-.07:-.15):.055));
     const culturalAction=culturalStep(a,t,w);
-    const record={tick:w.tick,action,benefit,culturalAction:culturalAction?.kind??null,novelty:novelty?.id??null,reasonScores:scores,lilith:{before:before.lilithSelf,after:{...a.lilith},context},before:{fatigue:before.fatigue,energy:before.energy,valence:before.valence},after:{fatigue:a.fatigue,energy:a.energy,valence:a.valence}};
+    const desireExperience=learnDesire(a,context.recalled.phase,action,benefit,culturalAction,before);
+    const record={tick:w.tick,action,benefit,desireExperience,culturalAction:culturalAction?.kind??null,novelty:novelty?.id??null,reasonScores:scores,lilith:{before:before.lilithSelf,after:{...a.lilith},context},before:{fatigue:before.fatigue,energy:before.energy,valence:before.valence},after:{fatigue:a.fatigue,energy:a.energy,valence:a.valence}};
     a.memory.push(record);a.memory=a.memory.slice(-64);w.actionCounts[action]++;w.events.push({agent:a.id,...record});
     a.selfModel=observeSelf(a,w);
   }
