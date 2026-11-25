@@ -1,0 +1,33 @@
+{
+  "sha256": "e26aee06586863305a7dc50e9d6e9d70286cabf76ac4ebb58c8d7c7ced9fe912",
+  "value": {
+    "case_id": "combined-margin",
+    "checkpoint_sha256": "64b05d8d0dc26b84bdcd3a69a963c776637b9d35b06f1e2346b67cd8dc1adf84",
+    "native_records_before": 0,
+    "native_request_sha256": "15ddfe6ac40fa9746a66d8ec5f26696de519e6056c064776d5da5032f6b5b933",
+    "plan_sha256": "09d98cdc1caf89921c6e49e6d9551f21cd9e6ca79c0fe34583319b9f1c81c591",
+    "prediction": {
+      "calibrated_confidence": 0.875,
+      "correction": -0.125,
+      "correction_active": true,
+      "domain": {
+        "action": "walk",
+        "duration_s": 0.1,
+        "restrictions": []
+      },
+      "empirical_validation": false,
+      "max_correction": 0.25,
+      "minimum_samples": 2,
+      "outcome": null,
+      "outcome_source": null,
+      "prior_kind": "caller_declared_not_empirically_established",
+      "raw_confidence": 0.75,
+      "role": "report_only_no_decision_or_authority_writeback",
+      "samples": 2,
+      "schema": "nasuraya-outcome-calibration/1",
+      "shrinkage_samples": 2,
+      "target": "preferred_action_executed_by_native_body"
+    },
+    "training_sha256": "8b7a869761ab4f516abfb968e28b42d7428278115a609ef2dfd2d0cb2b5a876a"
+  }
+}

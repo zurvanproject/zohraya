@@ -1,0 +1,19 @@
+{
+  "sha256": "7c5572e027c3a4e28c920a43dde4d6d274680adb754ab983d22b754fc27c06b5",
+  "value": {
+    "analysis_timing": "added after the primary protocol completed; exploratory",
+    "empirical_validation": false,
+    "frozen_transfer_mean_brier": 0.11979166666666667,
+    "general_improvement_demonstrated": false,
+    "imputed_zero_cases": [
+      "change-after-forecast"
+    ],
+    "interpretation": "guard-blocked attempt counts as nonexecution of preferred action",
+    "native_labelled_cases": 8,
+    "original_primary_result_modified": false,
+    "production_labels_written": 0,
+    "raw_mean_brier": 0.11805555555555555,
+    "schema": "nasuraya-transfer-posthoc-sensitivity/1",
+    "total_scored": 9
+  }
+}

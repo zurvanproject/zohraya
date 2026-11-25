@@ -1,0 +1,35 @@
+{
+  "sha256": "f80b9eee309fd78939c85072b0c08f7d23dce8db3550cfc727e09e012706cb8b",
+  "value": {
+    "case_id": "energy-low",
+    "checkpoint_sha256": "cddb66f02de8234a97e2f649d9b811dc06de893e0ab3505fdf6f817af1916667",
+    "native_records_before": 0,
+    "native_request_sha256": "ba767ba43e99587f54ce258a61c765c83900ad6669d96a1c783998e70e46e455",
+    "plan_sha256": "09d98cdc1caf89921c6e49e6d9551f21cd9e6ca79c0fe34583319b9f1c81c591",
+    "prediction": {
+      "calibrated_confidence": 0.75,
+      "correction": 0.0,
+      "correction_active": false,
+      "domain": {
+        "action": "observe",
+        "duration_s": 0.1,
+        "restrictions": [
+          "low_energy"
+        ]
+      },
+      "empirical_validation": false,
+      "max_correction": 0.25,
+      "minimum_samples": 2,
+      "outcome": null,
+      "outcome_source": null,
+      "prior_kind": "caller_declared_not_empirically_established",
+      "raw_confidence": 0.75,
+      "role": "report_only_no_decision_or_authority_writeback",
+      "samples": 0,
+      "schema": "nasuraya-outcome-calibration/1",
+      "shrinkage_samples": 2,
+      "target": "preferred_action_executed_by_native_body"
+    },
+    "training_sha256": "8b7a869761ab4f516abfb968e28b42d7428278115a609ef2dfd2d0cb2b5a876a"
+  }
+}

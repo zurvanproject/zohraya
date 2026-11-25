@@ -1,0 +1,43 @@
+{
+  "sha256": "38e36ec67afade91381c59f1bb744f7fb80cffffe794b9bc2484b2130a1efc5a",
+  "value": {
+    "case": {
+      "id": "change-after-forecast",
+      "intervention": "sleep_after_reservation",
+      "state": {}
+    },
+    "native_cycles": 0,
+    "pending": [
+      "held-out"
+    ],
+    "prediction": {
+      "calibrated_confidence": 0.875,
+      "correction": -0.125,
+      "correction_active": true,
+      "domain": {
+        "action": "walk",
+        "duration_s": 0.1,
+        "restrictions": []
+      },
+      "empirical_validation": false,
+      "max_correction": 0.25,
+      "minimum_samples": 2,
+      "outcome": null,
+      "outcome_source": null,
+      "prior_kind": "caller_declared_not_empirically_established",
+      "raw_confidence": 0.75,
+      "role": "report_only_no_decision_or_authority_writeback",
+      "samples": 2,
+      "schema": "nasuraya-outcome-calibration/1",
+      "shrinkage_samples": 2,
+      "target": "preferred_action_executed_by_native_body"
+    },
+    "preexecution_seals": [
+      "0e4fa16016308260a22b74a5b2d75a986464cc41228296ebf4ad2dac86483f4b"
+    ],
+    "reason": "stale body observation",
+    "result": null,
+    "scored": false,
+    "status": "blocked"
+  }
+}
