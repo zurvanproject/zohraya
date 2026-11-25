@@ -228,7 +228,8 @@ def _pr(row):
     if row["html_url"] != WEB + "/pull/" + str(number):
         raise ValueError("wrong_pr_source")
     return {"number": number, "state": "open", "draft": row["draft"],
-            "html_url": row["html_url"], "updated_at": valid_time(row["updated_at"]), "head": {"sha": sha}}
+            "html_url": row["html_url"], "updated_at": valid_time(row["updated_at"]), "head": {"sha": sha},
+            "routing_candidates": integration.development_title_candidates(row.get("title"))}
 
 
 def _run(row):

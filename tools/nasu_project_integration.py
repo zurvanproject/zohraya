@@ -134,7 +134,30 @@ DEVELOPMENT_GATES = (
 )
 
 
-def _development_queue(prs, titles, current_checks, complete, freshness):
+def development_title_candidates(title):
+    """Only fixed lane identifiers cross the collector/report boundary."""
+    if not isinstance(title, str):
+        return []
+    return [lane for lane, pattern, _ in DEVELOPMENT_LANES
+            if re.search(pattern, title[:240], flags=re.IGNORECASE)]
+
+
+def _development_candidates(row):
+    # A supplied projection is still untrusted, advisory metadata.
+    if "routing_candidates" not in row:
+        return development_title_candidates(row.get("title")), "title_metadata_only"
+    candidates = row["routing_candidates"]
+    allowed = [lane for lane, _, _ in DEVELOPMENT_LANES]
+    if (not isinstance(candidates, list) or len(candidates) > len(allowed)
+            or any(not isinstance(lane, str) or lane not in allowed for lane in candidates)
+            or candidates != [lane for lane in allowed if lane in candidates]):
+        return [], "invalid_title_projection"
+    if "title" in row and candidates != development_title_candidates(row["title"]):
+        return [], "conflicting_title_projection"
+    return list(candidates), "projected_title_metadata_only"
+
+
+def _development_queue(prs, routing, current_checks, complete, freshness):
     """A complete projection of accepted open PRs, not an integration verdict."""
     destinations = {lane: list(paths) for lane, _, paths in DEVELOPMENT_LANES}
     destinations["unclassified"] = ["tools/nasu_project_integration.py"]
@@ -144,9 +167,7 @@ def _development_queue(prs, titles, current_checks, complete, freshness):
     for check in current_checks:
         checks_by_head.setdefault(check["head_sha"], []).append(check)
     for pr in sorted(prs, key=lambda row: row["number"]):
-        title = titles.get(pr["number"], "")
-        candidates = [lane for lane, pattern, _ in DEVELOPMENT_LANES
-                      if re.search(pattern, title, flags=re.IGNORECASE)]
+        candidates, basis = routing.get(pr["number"], ([], "missing_title_metadata"))
         lane = candidates[0] if candidates else "unclassified"
         groups[lane].append(pr["number"])
         checks = checks_by_head.get(pr["head_sha"], [])
@@ -162,7 +183,7 @@ def _development_queue(prs, titles, current_checks, complete, freshness):
             "number": pr["number"], "head_sha": pr["head_sha"],
             "source_url": pr["source_url"], "draft": pr["draft"],
             "provisional_lane": lane, "candidate_lanes": candidates,
-            "routing_basis": "title_metadata_only",
+            "routing_basis": basis,
             "ci_observation": ci, "state": "review_required",
             "merge_or_deploy_authorized": False,
         })
@@ -198,7 +219,7 @@ def _github(data, now):
     runs = data.get("workflow_runs", [])
     _require(isinstance(rows, list) and len(rows) <= 1000 and isinstance(runs, list) and len(runs) <= 2000, "github_collection_limit")
     prs, rejected_prs, seen = [], 0, set()
-    titles = {}
+    routing = {}
     for row in rows:
         try:
             _require(isinstance(row, dict) and type(row.get("number")) is int and row["number"] > 0 and row["number"] not in seen, "invalid_pr")
@@ -210,9 +231,7 @@ def _github(data, now):
             updated = _time(row["updated_at"])
             _require(updated <= now, "future_pr")
             seen.add(row["number"])
-            title = row.get("title")
-            if isinstance(title, str):
-                titles[row["number"]] = title[:240]
+            routing[row["number"]] = _development_candidates(row)
             prs.append({"number": row["number"], "draft": row["draft"], "head_sha": sha,
                         "updated_at_utc": _stamp(updated), "source_url": url})
         except (ValueError, TypeError, KeyError, AttributeError):
@@ -256,7 +275,7 @@ def _github(data, now):
         findings.append(_finding(2, "review_rejected_github_evidence", BASE))
     return {"state": "observed", "freshness": freshness, "main": {"sha": main["sha"], "source_url": main["html_url"]},
             "open_prs_observed": len(prs), "draft_prs_observed": sum(p["draft"] for p in prs),
-            "development_queue": _development_queue(prs, titles, current,
+            "development_queue": _development_queue(prs, routing, current,
                 data.get("pull_requests_complete") is True and not rejected_prs, freshness["state"]),
             "pr_collection_complete": data.get("pull_requests_complete") is True and not rejected_prs,
             "ready_pr_numbers": sorted(p["number"] for p in prs if not p["draft"]),

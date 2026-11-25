@@ -451,11 +451,22 @@ class DevelopmentClosureTests(unittest.TestCase):
         other = dict(pr, number=2, head_sha="b" * 40)
         checks = [{"head_sha": HEAD, "status": "completed", "conclusion": "success"},
                   {"head_sha": HEAD, "status": "completed", "conclusion": "failure"}]
-        result = hub._development_queue([pr, other], {1: "memory", 2: "body"}, checks, False, "stale")
+        result = hub._development_queue([pr, other], {1: (["memory"], "title_metadata_only"),
+                                                            2: (["body"], "title_metadata_only")}, checks, False, "stale")
         self.assertEqual([x["ci_observation"] for x in result["queue"]],
                          ["failure_observed", "unknown_or_no_success_observed"])
         self.assertEqual(result["collection_freshness"], "stale")
         self.assertTrue(all(not x["merge_or_deploy_authorized"] for x in result["queue"]))
+
+    def test_projected_candidates_are_bounded_and_conflicts_fail_closed(self):
+        for value in (["unknown"], ["memory", "memory"], ["body", "security"], [None], SECRET):
+            candidates, reason = hub._development_candidates({"routing_candidates": value})
+            self.assertEqual(candidates, [])
+            self.assertEqual(reason, "invalid_title_projection")
+        self.assertEqual(hub._development_candidates({"title": "memory",
+            "routing_candidates": ["body"]}), ([], "conflicting_title_projection"))
+        self.assertEqual(hub._development_candidates({"routing_candidates": ["memory", "body"]}),
+                         (["memory", "body"], "projected_title_metadata_only"))
 
     def test_candidate_destinations_exist_in_checkout(self):
         root = Path(__file__).resolve().parents[1]
