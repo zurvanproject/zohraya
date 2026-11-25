@@ -76,6 +76,21 @@ class IntegrationRehearsalTests(unittest.TestCase):
         with self.assertRaises((ValueError, FileExistsError)):
             rehearsal.rehearse_dialogue(self.output)
 
+    def test_dialogue_persian_older_recall_is_required_by_dios(self):
+        from tools import nasu_private_dialogue as dialogue
+
+        # Disable only lexical old-turn retrieval. Recent context, SQLite
+        # persistence and affect still work; this must not yield DIOS support.
+        with mock.patch.object(dialogue, "recall_query", return_value=""):
+            with self.assertRaisesRegex(ValueError, "dialogue_handoff_contract_failed"):
+                rehearsal.rehearse_dialogue(self.output)
+        report = json.loads((self.output / "report.json").read_text())
+        self.assertTrue(report["checks"]["checkpoint_paired"])
+        self.assertTrue(report["checks"]["failure_atomic"])
+        self.assertFalse(report["checks"]["cold_recall"])
+        self.assertEqual(report["dios_review"]["stance"], "PROVISIONAL_DISSENT")
+        self.assertEqual(report["recovered_decision"], "B")
+
     def test_dialogue_awake_persisted_false_overrides_local_true(self):
         # The producer still observes five true checks. Change ONLY the
         # records delivered to the original Awake writer, on both ingests.
