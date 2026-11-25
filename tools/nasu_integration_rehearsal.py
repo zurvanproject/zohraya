@@ -524,6 +524,46 @@ def rehearse_dialogue(directory):
         else:
             checks["failure_atomic"] = False
 
+    # Exercise the actual Persian lexical recall path from #303, on the
+    # SAME durable dialogue journal. The earlier check alone covered only
+    # the three most recent messages and could not detect retrieval regressions.
+    primary = "نام چراغ كيان است"
+    decoys = ("synthetic distractor one", "synthetic distractor two")
+    fillers = ("synthetic recent one", "synthetic recent two", "synthetic recent three")
+    query = "کیان"
+
+    def recall_fixture(instruction, context, fields):
+        if "signal" in fields:
+            return {"signal": "none"}
+        contexts.append(context)
+        return {"stance": "disagree",
+                "reply": "کیان کیان کیان" if context["current_message"] in decoys
+                else "synthetic fixture reply"}
+
+    with closing(dialogue.open_dialogue(private)) as db:
+        for message in (primary, *decoys, *fillers):
+            dialogue.turn(db, message, recall_fixture, now=lambda: 1003.)
+    with closing(dialogue.open_dialogue(private)) as db:
+        dialogue.turn(db, query, recall_fixture, now=lambda: 1004.)
+        recalled = contexts[-1]["conversation_history"]
+        # At most one assistant-only match can fill the remaining old slot.
+        # A Persian query must recall the Arabic-spelled user statement first.
+        older = [entry for entry in recalled if entry["turn"] < 6]
+        primary_rows = [entry for entry in older if entry["user"] == primary]
+        checks["cold_recall"] = (
+            checks["cold_recall"] and len(recalled) == 5 and len(older) == 2
+            and len(primary_rows) == 1
+            and primary_rows[0]["assistant"] == "synthetic fixture reply"
+            and len({entry["turn"] for entry in recalled}) == 5
+            and [entry["user"] for entry in recalled[-3:]] == list(fillers)
+            and sum(entry["user"] in decoys for entry in older) == 1)
+        checks["stance_retained"] = (
+            checks["stance_retained"] and len(primary_rows) == 1
+            and primary_rows[0]["stance"] == "disagree")
+        checks["checkpoint_paired"] = (
+            checks["checkpoint_paired"] and
+            dialogue.integration_contract(db) == {"paired": True, "nonempty": True})
+
     # Only named boolean contract observations cross the private-data boundary.
     # One fixture observer, not independent corroboration or subjective affect.
     events = [{"event_id": "fixture.dialogue." + key, "topic": "fixture.dialogue." + key,
