@@ -76,6 +76,123 @@ class IntegrationRehearsalTests(unittest.TestCase):
         with self.assertRaises((ValueError, FileExistsError)):
             rehearsal.rehearse_dialogue(self.output)
 
+    def test_dialogue_awake_persisted_false_overrides_local_true(self):
+        # The producer still observes five true checks. Change ONLY the
+        # records delivered to the original Awake writer, on both ingests.
+        real_ingest = rehearsal.awake.ingest
+
+        def observed_false(root, events, now=None):
+            return real_ingest(root, [
+                {**event, "value": False} if event["topic"].endswith("cold_recall")
+                else event for event in events], now=now)
+
+        with mock.patch.object(rehearsal.awake, "ingest", side_effect=observed_false):
+            with self.assertRaisesRegex(ValueError, "dialogue_handoff_contract_failed"):
+                rehearsal.rehearse_dialogue(self.output)
+        report = json.loads((self.output / "report.json").read_text())
+        self.assertTrue(report["checks"]["cold_recall"])
+        self.assertEqual(report["dios_review"]["stance"], "PROVISIONAL_DISSENT")
+        self.assertEqual(report["recovered_decision"], "B")
+
+    def test_dialogue_awake_missing_or_conflicting_evidence_abstains(self):
+        real_ingest = rehearsal.awake.ingest
+        for mode in ("missing", "conflict"):
+            with self.subTest(mode=mode):
+                output = self.parent / mode
+
+                def change(root, events, now=None):
+                    target = next(e for e in events if e["topic"].endswith("cold_recall"))
+                    if mode == "missing":
+                        changed = [e for e in events if e != target]
+                    else:
+                        changed = [*events, {**target, "event_id": target["event_id"] + ".counter",
+                                             "value": False}]
+                    return real_ingest(root, changed, now=now)
+
+                with mock.patch.object(rehearsal.awake, "ingest", side_effect=change):
+                    with self.assertRaisesRegex(ValueError, "dialogue_handoff_contract_failed"):
+                        rehearsal.rehearse_dialogue(output)
+                report = json.loads((output / "report.json").read_text())
+                handoff = report["awake_handoff"]
+                self.assertTrue(report["checks"]["cold_recall"])
+                self.assertEqual(report["dios_review"]["stance"], "ABSTAIN")
+                self.assertIsNone(report["recovered_decision"])
+                self.assertEqual(handoff["missing"], ["cold_recall"] if mode == "missing" else [])
+                self.assertEqual(handoff["conflicting"], ["cold_recall"] if mode == "conflict" else [])
+                self.assertEqual(handoff["aggregate_event_ids"], [] if mode == "missing" else [1, 2])
+
+    def test_dialogue_replay_provenance_and_cold_interpreter(self):
+        report = rehearsal.rehearse_dialogue(self.output)
+        handoff = report["awake_handoff"]
+        self.assertEqual(handoff["counts"], {"evidence_records": 6, "view_records": 1})
+        self.assertEqual(report["recovered_counts"], handoff["counts"])
+        self.assertEqual(handoff["independent_observers"], 1)
+        self.assertFalse(handoff["source_authentication"])
+        with closing(sqlite3.connect(self.output / "awake-stage/awake.sqlite3")) as db:
+            payloads = {row[0]: json.loads(row[1]) for row in db.execute("SELECT id,payload FROM evidence")}
+        for link in handoff["provenance"]:
+            self.assertEqual(link["payload_sha256"],
+                             rehearsal.awake.fingerprint(payloads[link["awake_event_id"]]))
+            self.assertEqual(link["dios_root"], 1)
+        script = ("import json,sys; from pathlib import Path; "
+                  "from tools.nasu_integration_rehearsal import review_dialogue_awake; "
+                  "print(json.dumps(review_dialogue_awake(Path(sys.argv[1]))))")
+        process = subprocess.run([sys.executable, "-B", "-c", script, str(self.output)],
+                                 cwd=Path(__file__).resolve().parents[1],
+                                 capture_output=True, text=True, check=True, timeout=20)
+        cold = json.loads(process.stdout)
+        self.assertEqual(cold["review"]["evidence_review"]["decision"], "A")
+        self.assertEqual(cold["counts"], handoff["counts"])
+        self.assertEqual(cold["provenance"], handoff["provenance"])
+        sentinel = b"SYNTHETIC_DIALOGUE_PRIVATE_SENTINEL"
+        self.assertIn(sentinel, (self.output / "dialogue.sqlite3").read_bytes())
+        for name in ("awake-stage/awake.sqlite3", "memory.sqlite", "memory.anchor", "report.json"):
+            self.assertNotIn(sentinel, (self.output / name).read_bytes())
+        self.assertEqual(report["model_calls"], 0)
+        self.assertEqual(report["external_actions_taken"], 0)
+
+    def test_dialogue_awake_late_counter_changes_existing_dios_view(self):
+        rehearsal.rehearse_dialogue(self.output)
+        root = self.output / "awake-stage"
+        with closing(sqlite3.connect(root / "awake.sqlite3")) as db:
+            row = db.execute("SELECT payload FROM evidence WHERE id='fixture.dialogue.cold_recall'").fetchone()
+        event = json.loads(row[0])
+        counter = {**event, "event_id": event["event_id"] + ".counter", "value": False}
+        first = rehearsal.awake.ingest(root, [counter], now=rehearsal.FIXTURE_TIME)
+        replay = rehearsal.awake.ingest(root, [counter], now=rehearsal.FIXTURE_TIME)
+        self.assertEqual((first["added"], replay["duplicate"]), (1, 1))
+        new = rehearsal.review_dialogue_awake(self.output)
+        self.assertEqual(new["review"]["stance"], "ABSTAIN")
+        self.assertTrue(new["review"]["evidence_review"]["revised"])
+        self.assertEqual(new["counts"], {"evidence_records": 8, "view_records": 2})
+        self.assertEqual(rehearsal.review_dialogue_awake(self.output)["counts"], new["counts"])
+
+    def test_dialogue_awake_deleted_record_cannot_reuse_cached_support(self):
+        rehearsal.rehearse_dialogue(self.output)
+        with closing(sqlite3.connect(self.output / "awake-stage/awake.sqlite3")) as db:
+            with db:
+                db.execute("DELETE FROM evidence WHERE id='fixture.dialogue.cold_recall'")
+        before = self.counts()
+        with self.assertRaisesRegex(ValueError, "awake_projection_changed_or_missing"):
+            rehearsal.review_dialogue_awake(self.output)
+        self.assertEqual(self.counts(), before)
+
+    def test_dialogue_awake_rejects_untrusted_payload_before_dios(self):
+        rehearsal.rehearse_dialogue(self.output)
+        dbpath = self.output / "awake-stage/awake.sqlite3"
+        before = self.counts()
+        with closing(sqlite3.connect(dbpath)) as db:
+            row = db.execute("SELECT id,payload FROM evidence LIMIT 1").fetchone()
+            event = json.loads(row[1])
+            event["value"] = "PRIVATE_TEST_SHOULD_NOT_CROSS"
+            with db:
+                db.execute("UPDATE evidence SET payload=? WHERE id=?",
+                           (rehearsal.awake.encode(event), row[0]))
+        with self.assertRaisesRegex(ValueError, "invalid_dialogue_evidence_contract"):
+            rehearsal.review_dialogue_awake(self.output)
+        self.assertEqual(self.counts(), before)
+        self.assertNotIn(b"PRIVATE_TEST_SHOULD_NOT_CROSS", self.memory_path().read_bytes())
+
     def test_existing_empty_directory_is_not_initialized(self):
         self.output.mkdir()
         with self.assertRaises((ValueError, FileExistsError)):

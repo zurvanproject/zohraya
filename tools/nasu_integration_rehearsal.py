@@ -350,6 +350,122 @@ def recover(directory):
             "external_actions_taken": 0}
 
 
+# Fixed fixture vocabulary: never promote free-form text or caller-supplied
+# source labels to DIOS observations. These are five checks by ONE observer.
+DIALOGUE_KEYS = ("checkpoint_paired", "cold_recall", "failure_atomic",
+                 "modeled_affect_retained", "stance_retained")
+DIALOGUE_SOURCE = "tadash://rehearsal/dialogue-contract"
+DIALOGUE_MARKER = {"schema": SCHEMA, "dialogue_fixtures_only": True}
+
+
+def review_dialogue_awake(directory):
+    """Re-read a bounded, read-only Awake snapshot, then use existing DIOS.
+
+    Awake owns boolean observations; DIOS owns derived A/B review history.
+    Fixed numeric IDs are reversible through the report's provenance mapping.
+    This is a single-writer synthetic contract, not source authentication.
+    No local dialogue checks, private strings, or prior report are inputs.
+    """
+    from contextlib import closing
+
+    root = _path(directory)
+    _require(json.loads(_file(root, "fixture.json").read_text(encoding="utf-8"))
+             == DIALOGUE_MARKER, "not_a_dialogue_fixture")
+    path = _file(root, "awake-stage/awake.sqlite3")
+    _require_quiescent_database(path)
+    allowed = {}
+    for i, key in enumerate(DIALOGUE_KEYS):
+        topic = "fixture.dialogue." + key
+        allowed[topic] = (key, topic, 100 + 2 * i, 2 + i)
+        allowed[topic + ".counter"] = (key, topic, 101 + 2 * i, 2 + i)
+
+    with closing(sqlite3.connect(path.as_uri() + "?mode=ro", uri=True, timeout=5)) as db:
+        db.execute("PRAGMA query_only=ON")
+        db.execute("BEGIN")
+        _require(db.execute("SELECT value FROM control WHERE name='schema'").fetchone()
+                 == (awake.SCHEMA,), "awake_schema_mismatch")
+        _require(db.execute("SELECT value FROM control WHERE name='paused'").fetchone()
+                 == ("1",), "awake_not_paused")
+        rows = db.execute("SELECT id,topic,payload FROM evidence ORDER BY id LIMIT ?",
+                          (len(allowed) + 1,)).fetchall()
+    _require(len(rows) <= len(allowed), "dialogue_evidence_limit")
+
+    by_key = {key: set() for key in DIALOGUE_KEYS}
+    primary_keys = set()
+    projections = []
+    provenance = []
+    for event_id, topic, raw in rows:
+        _require(event_id in allowed, "unexpected_dialogue_evidence_id")
+        key, expected_topic, dios_id, claim = allowed[event_id]
+        _require(topic == expected_topic and len(raw) <= 1024,
+                 "invalid_dialogue_evidence_row")
+        try:
+            payload = json.loads(raw)
+            checked = awake.checked(payload, FIXTURE_TIME)
+        except (ValueError, TypeError, KeyError, OverflowError):
+            raise ValueError("invalid_dialogue_evidence_payload") from None
+        _require(set(checked) == {"event_id", "topic", "source_ref", "observed_at",
+                                 "value", "confidence"}
+                 and checked["event_id"] == event_id and checked["topic"] == topic
+                 and checked["source_ref"] == DIALOGUE_SOURCE
+                 and checked["observed_at"] == awake.iso(FIXTURE_TIME)
+                 and type(checked["value"]) is bool and checked["confidence"] == 1.0
+                 and raw == awake.encode(checked), "invalid_dialogue_evidence_contract")
+        if event_id == expected_topic:
+            primary_keys.add(key)
+        value = checked["value"]
+        by_key[key].add(value)
+        projections.append(EvidenceEvent(dios_id, 1, claim, "A" if value else "B", 1, 1))
+        provenance.append({"awake_event_id": event_id, "topic": topic,
+                           "source_ref": DIALOGUE_SOURCE,
+                           "observed_at": checked["observed_at"],
+                           "payload_sha256": awake.fingerprint(checked),
+                           "dios_event_id": dios_id, "dios_claim": claim,
+                           "dios_root": 1})
+
+    missing = sorted(set(DIALOGUE_KEYS) - primary_keys)
+    conflicting = sorted(key for key, values in by_key.items() if len(values) > 1)
+    # Claim 1 is the conjunction of the five persisted observations, not a
+    # second observer. Incomplete => no aggregate evidence; contradictory
+    # => both A and B at the same epoch/root, so DIOS itself abstains.
+    aggregate = []
+    if not missing:
+        aggregate = (["A", "B"] if conflicting else
+                     ["A" if all(values == {True} for values in by_key.values()) else "B"])
+    for value in aggregate:
+        projections.append(EvidenceEvent(1 if value == "A" else 2, 1, 1, value, 1, 1))
+
+    memory_path, anchor = root / "memory.sqlite", root / "memory.anchor"
+    for target in (memory_path, anchor):
+        _require(not target.is_symlink(), "symlinked_dialogue_memory")
+        if target.exists():
+            _file(root, target.name)
+    _require_quiescent_database(memory_path)
+    with CognitiveSession(memory_path, anchor) as memory:
+        expected = {("fixture:" + str(e.event_id), "fixture:" + str(e.scope),
+                     "fixture:" + str(e.claim), e.value, e.epoch,
+                     "fixture:" + str(e.root), "owner_observation", 1)
+                    for e in projections}
+        existing = set(memory.memory.conn.execute(
+            "SELECT event_id,scope,claim_key,value,epoch,source_root,source_kind,"
+            "verified_by_caller FROM evidence LIMIT ?", (len(expected) + 1,)))
+        # A disappeared or rewritten source must not allow a stale A to leak
+        # from the existing DIOS ledger. Fail closed; never delete history.
+        _require(existing <= expected, "awake_projection_changed_or_missing")
+        ids = {row[0] for row in existing}
+        for event in projections:
+            if "fixture:" + str(event.event_id) not in ids:
+                memory.append(event)
+        review = critical_review(memory, scope=1, claim=1, as_of=1, proposal="A")
+        counts = _counts(memory)
+    return {"review": review, "counts": counts, "awake_count": len(rows),
+            "missing": missing, "conflicting": conflicting,
+            "provenance": provenance, "aggregate_event_ids":
+            [1 if value == "A" else 2 for value in aggregate],
+            "independent_observers": 1 if rows else 0,
+            "source_authentication": False}
+
+
 def rehearse_dialogue(directory):
     """Exercise Qwen dialogue/affect -> Awake -> DIOS on authored fixtures only.
 
@@ -364,7 +480,7 @@ def rehearse_dialogue(directory):
     root = _path(directory)
     _require(root.parent.is_dir(), "output_parent_must_exist")
     root.mkdir(mode=0o700, exist_ok=False)
-    _write_json(root / "fixture.json", {"schema": SCHEMA, "dialogue_fixtures_only": True})
+    _write_json(root / "fixture.json", DIALOGUE_MARKER)
     private = root / "dialogue.sqlite3"
     remembered = "SYNTHETIC_DIALOGUE_PRIVATE_SENTINEL"
     contexts = []
@@ -411,27 +527,27 @@ def rehearse_dialogue(directory):
     # Only named boolean contract observations cross the private-data boundary.
     # One fixture observer, not independent corroboration or subjective affect.
     events = [{"event_id": "fixture.dialogue." + key, "topic": "fixture.dialogue." + key,
-               "source_ref": "tadash://rehearsal/dialogue-contract",
+               "source_ref": DIALOGUE_SOURCE,
                "observed_at": FIXTURE_TIME.isoformat(), "value": bool(value),
                "confidence": 1.0} for key, value in sorted(checks.items())]
     awake_root = root / "awake-stage"
     initial = awake.ingest(awake_root, events, now=FIXTURE_TIME)
     replay = awake.ingest(awake_root, events, now=FIXTURE_TIME)
-    with closing(sqlite3.connect(awake_root / "awake.sqlite3")) as db:
-        paused = db.execute("SELECT value FROM control WHERE name='paused'").fetchone() == ("1",)
-        retained = [json.loads(row[0]) for row in db.execute("SELECT payload FROM evidence")]
+    handoff = review_dialogue_awake(root)
+    # Roundtrip telemetry is not an input to DIOS.
     checks["awake_roundtrip"] = (
         initial["added"] == len(events) and replay["duplicate"] == len(events)
-        and len(retained) == len(events) and all(
-            type(e["value"]) is bool and e["value"] for e in retained) and paused)
-    with CognitiveSession(root / "memory.sqlite", root / "memory.anchor") as memory:
-        memory.append(EvidenceEvent(1, 1, 1, "A" if all(checks.values()) else "B", 1, 1))
-        review = critical_review(memory, scope=1, claim=1, as_of=1, proposal="A")
-    with CognitiveSession(root / "memory.sqlite", root / "memory.anchor") as recovered:
-        decision = recovered.memory.resolve("fixture:1", "fixture:1", 1)["decision"]
+        and handoff["awake_count"] == len(events))
+    review = handoff["review"]
+    recovered = review_dialogue_awake(root)
+    decision = recovered["review"]["evidence_review"]["decision"]
+    _require(handoff["counts"] == recovered["counts"]
+             and handoff["provenance"] == recovered["provenance"],
+             "dialogue_recovery_changed_projection")
     report = {"schema": SCHEMA, "kind": "synthetic_dialogue_handoff",
               "source_pins": pins, "checks": checks, "awake_ingest": initial,
               "awake_replay": replay, "dios_review": review, "recovered_decision": decision,
+              "awake_handoff": handoff, "recovered_counts": recovered["counts"],
               "model_calls": 0, "external_actions_taken": 0,
               "live_deployment_verified": False}
     _require(remembered not in _canonical(report), "private_fixture_text_escaped")
