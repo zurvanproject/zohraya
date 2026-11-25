@@ -407,7 +407,9 @@ class ProjectIntegrationTests(unittest.TestCase):
 class DevelopmentClosureTests(unittest.TestCase):
     def test_all_observed_open_prs_have_exactly_one_provisional_lane(self):
         data = bundle()
-        template = data["github"]["pull_requests"][0]
+        template = {"number": 1, "state": "open", "draft": True,
+                    "head": {"sha": HEAD}, "html_url": hub.BASE + "/pull/1",
+                    "updated_at": "2026-11-22T13:00:00Z"}
         data["github"]["pull_requests"] = []
         for n in range(1, 214):
             row = copy.deepcopy(template)
@@ -427,7 +429,9 @@ class DevelopmentClosureTests(unittest.TestCase):
 
     def test_ambiguous_and_unclassified_titles_are_preserved_without_raw_text(self):
         data = bundle()
-        original = data["github"]["pull_requests"][0]
+        original = {"number": 1, "state": "open", "draft": True,
+                    "head": {"sha": HEAD}, "html_url": hub.BASE + "/pull/1",
+                    "updated_at": "2026-11-22T13:00:00Z"}
         rows = []
         for n, title in ((11, "ritual affect memory " + SECRET), (12, SECRET), (13, None)):
             row = copy.deepcopy(original)
