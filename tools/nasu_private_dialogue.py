@@ -111,6 +111,27 @@ def memories(db, message):
                            "ORDER BY rank LIMIT 2", (query, recent[-1][0])).fetchall()
     return [dict(turn=n, user=u[:450], assistant=a[:450], stance=s) for n,u,a,s in sorted(recent + older)]
 
+def integration_contract(db):
+    """Local structural projection only; never export text or affect values.
+
+    Caller owns the connection and read transaction. This does not authenticate
+    content, certify a model answer, publish an event or write to another DB.
+    """
+    count = db.execute("SELECT count(*) FROM turns").fetchone()[0]
+    checkpoint = db.execute("SELECT state FROM checkpoint WHERE id=1").fetchone()
+    latest = db.execute("SELECT stance FROM turns ORDER BY rowid DESC LIMIT 1").fetchone()
+    if count == 0:
+        return {"paired": checkpoint is None and latest is None, "nonempty": False}
+    try:
+        state = json.loads(checkpoint[0]) if checkpoint else None
+        paired = (isinstance(state, dict) and type(state.get("tick")) is int
+                  and state["tick"] == count and isinstance(state.get("affect"), dict)
+                  and latest is not None and latest[0] in STANCES)
+    except (ValueError, TypeError, IndexError):
+        paired = False
+    return {"paired": bool(paired), "nonempty": True}
+
+
 def turn(db, message, infer=generate, now=time.time):
     if not message.strip() or len(message) > 2000:
         raise ValueError("message must be 1–2000 characters")
