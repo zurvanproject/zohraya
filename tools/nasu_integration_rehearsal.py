@@ -350,14 +350,109 @@ def recover(directory):
             "external_actions_taken": 0}
 
 
+def rehearse_dialogue(directory):
+    """Exercise Qwen dialogue/affect -> Awake -> DIOS on authored fixtures only.
+
+    An injected scripted responder tests interfaces, not real model quality.
+    No private/live database is accepted; no model call, tick, or service action.
+    The existing core modules remain authoritative for their respective state.
+    """
+    from contextlib import closing
+    from tools import nasu_private_dialogue as dialogue
+
+    pins = source_pins()
+    root = _path(directory)
+    _require(root.parent.is_dir(), "output_parent_must_exist")
+    root.mkdir(mode=0o700, exist_ok=False)
+    _write_json(root / "fixture.json", {"schema": SCHEMA, "dialogue_fixtures_only": True})
+    private = root / "dialogue.sqlite3"
+    remembered = "SYNTHETIC_DIALOGUE_PRIVATE_SENTINEL"
+    contexts = []
+
+    def scripted(instruction, context, fields):
+        if "signal" in fields:
+            return {"signal": "loss" if context["current_message"] == remembered else "none"}
+        contexts.append(context)
+        return {"stance": "disagree", "reply": "synthetic fixture reply"}
+
+    with closing(dialogue.open_dialogue(private)) as db:
+        dialogue.turn(db, remembered, scripted, now=lambda: 1000.)
+        _require(dialogue.integration_contract(db) == {"paired": True, "nonempty": True},
+                 "dialogue_first_checkpoint_invalid")
+
+    with closing(dialogue.open_dialogue(private)) as db:
+        dialogue.turn(db, "synthetic recall", scripted, now=lambda: 1001.)
+        recalled = contexts[-1]["conversation_history"]
+        state = json.loads(db.execute("SELECT state FROM checkpoint WHERE id=1").fetchone()[0])
+        contract = dialogue.integration_contract(db)
+        checks = {
+            "checkpoint_paired": contract == {"paired": True, "nonempty": True},
+            "cold_recall": len(recalled) == 1 and recalled[0]["user"] == remembered
+                           and recalled[0]["assistant"] == "synthetic fixture reply",
+            "modeled_affect_retained": state["affect"]["sadness"] > 0,
+            "stance_retained": recalled[0]["stance"] == "disagree" if recalled else False,
+        }
+        before = db.execute("SELECT state FROM checkpoint WHERE id=1").fetchone()[0]
+
+        def interrupted(instruction, context, fields):
+            if "signal" in fields:
+                return {"signal": "success"}
+            raise TimeoutError("synthetic interruption")
+
+        try:
+            dialogue.turn(db, "synthetic interrupted turn", interrupted, now=lambda: 1002.)
+        except TimeoutError:
+            checks["failure_atomic"] = (
+                db.execute("SELECT count(*) FROM turns").fetchone()[0] == 2
+                and db.execute("SELECT state FROM checkpoint WHERE id=1").fetchone()[0] == before)
+        else:
+            checks["failure_atomic"] = False
+
+    # Only named boolean contract observations cross the private-data boundary.
+    # One fixture observer, not independent corroboration or subjective affect.
+    events = [{"event_id": "fixture.dialogue." + key, "topic": "fixture.dialogue." + key,
+               "source_ref": "tadash://rehearsal/dialogue-contract",
+               "observed_at": FIXTURE_TIME.isoformat(), "value": bool(value),
+               "confidence": 1.0} for key, value in sorted(checks.items())]
+    awake_root = root / "awake-stage"
+    initial = awake.ingest(awake_root, events, now=FIXTURE_TIME)
+    replay = awake.ingest(awake_root, events, now=FIXTURE_TIME)
+    with closing(sqlite3.connect(awake_root / "awake.sqlite3")) as db:
+        paused = db.execute("SELECT value FROM control WHERE name='paused'").fetchone() == ("1",)
+        retained = [json.loads(row[0]) for row in db.execute("SELECT payload FROM evidence")]
+    checks["awake_roundtrip"] = (
+        initial["added"] == len(events) and replay["duplicate"] == len(events)
+        and len(retained) == len(events) and all(
+            type(e["value"]) is bool and e["value"] for e in retained) and paused)
+    with CognitiveSession(root / "memory.sqlite", root / "memory.anchor") as memory:
+        memory.append(EvidenceEvent(1, 1, 1, "A" if all(checks.values()) else "B", 1, 1))
+        review = critical_review(memory, scope=1, claim=1, as_of=1, proposal="A")
+    with CognitiveSession(root / "memory.sqlite", root / "memory.anchor") as recovered:
+        decision = recovered.memory.resolve("fixture:1", "fixture:1", 1)["decision"]
+    report = {"schema": SCHEMA, "kind": "synthetic_dialogue_handoff",
+              "source_pins": pins, "checks": checks, "awake_ingest": initial,
+              "awake_replay": replay, "dios_review": review, "recovered_decision": decision,
+              "model_calls": 0, "external_actions_taken": 0,
+              "live_deployment_verified": False}
+    _require(remembered not in _canonical(report), "private_fixture_text_escaped")
+    _write_json(root / "report.json", report)
+    _require(all(checks.values()) and review["stance"] == "SUPPORTED" and decision == "A",
+             "dialogue_handoff_contract_failed")
+    return report
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--output", type=Path, help="new synthetic fixture directory")
     mode.add_argument("--recover", type=Path, help="verify and reopen an existing rehearsal")
+    mode.add_argument("--dialogue-output", type=Path, help="new synthetic dialogue/Awake/DIOS fixture directory")
     parser.add_argument("--pretty", action="store_true")
     args = parser.parse_args(argv)
-    result = rehearse(args.output) if args.output is not None else recover(args.recover)
+    if args.dialogue_output is not None:
+        result = rehearse_dialogue(args.dialogue_output)
+    else:
+        result = rehearse(args.output) if args.output is not None else recover(args.recover)
     print(json.dumps(result, sort_keys=True, ensure_ascii=False,
                      indent=2 if args.pretty else None, allow_nan=False))
 
