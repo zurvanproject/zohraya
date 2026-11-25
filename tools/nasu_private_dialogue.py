@@ -101,15 +101,32 @@ def open_dialogue(path):
     """)
     return db
 
+def recall_query(message):
+    words = list(dict.fromkeys(re.findall(r"[^\W_]{2,}", message)))[:16]
+    variants = dict.fromkeys(
+        word.translate(str.maketrans({"ی": y, "ي": y, "ک": k, "ك": k}))
+        for word in words for y in ("ی", "ي") for k in ("ک", "ك")
+    )
+    return " OR ".join('"' + word + '"' for word in variants)
+
+
 def memories(db, message):
     recent = db.execute("SELECT rowid,message,reply,stance FROM turns ORDER BY rowid DESC LIMIT 3").fetchall()
-    words = list(dict.fromkeys(re.findall(r"[^\W_]{2,}", message)))[:16]
+    query = recall_query(message)
     older = []
-    if recent and words:
-        query = " OR ".join('"' + word + '"' for word in words)
-        older = db.execute("SELECT rowid,message,reply,stance FROM turns WHERE turns MATCH ? AND rowid < ? "
-                           "ORDER BY rank LIMIT 2", (query, recent[-1][0])).fetchall()
+    if recent and query:
+        # A user statement is primary recall evidence; assistant-only matches
+        # fill remaining slots but must never crowd out a matching user turn.
+        select = ("SELECT rowid,message,reply,stance FROM turns WHERE turns MATCH ? AND rowid < ? ")
+        cutoff = recent[-1][0]
+        older = db.execute(select + "ORDER BY rank, rowid DESC LIMIT 2",
+                           ("message : (" + query + ")", cutoff)).fetchall()
+        if len(older) < 2:
+            excluded = " AND rowid != ?" if older else ""
+            params = ("reply : (" + query + ")", cutoff) + ((older[0][0],) if older else ()) + (2 - len(older),)
+            older += db.execute(select + excluded + " ORDER BY rank, rowid DESC LIMIT ?", params).fetchall()
     return [dict(turn=n, user=u[:450], assistant=a[:450], stance=s) for n,u,a,s in sorted(recent + older)]
+
 
 def integration_contract(db):
     """Local structural projection only; never export text or affect values.
