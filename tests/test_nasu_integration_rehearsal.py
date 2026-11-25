@@ -58,6 +58,24 @@ class IntegrationRehearsalTests(unittest.TestCase):
         self.assertIsInstance(result, dict)
         self.assertIsInstance(recovered, dict)
 
+    def test_dialogue_affect_awake_dios_handoff(self):
+        with mock.patch.object(urllib.request.OpenerDirector, "open", side_effect=AssertionError("network")):
+            result = rehearsal.rehearse_dialogue(self.output)
+        self.assertTrue(all(result["checks"].values()))
+        self.assertEqual(result["dios_review"]["stance"], "SUPPORTED")
+        self.assertEqual(result["recovered_decision"], "A")
+        self.assertEqual(result["model_calls"], 0)
+        self.assertEqual(result["external_actions_taken"], 0)
+        self.assertFalse(result["live_deployment_verified"])
+        self.assertNotIn("SYNTHETIC_DIALOGUE_PRIVATE_SENTINEL", json.dumps(result))
+        with closing(sqlite3.connect(self.output / "awake-stage/awake.sqlite3")) as db:
+            payloads = [json.loads(row[0]) for row in db.execute("SELECT payload FROM evidence")]
+            self.assertEqual(len(payloads), 5)
+            self.assertTrue(all(type(row["value"]) is bool for row in payloads))
+            self.assertNotIn("SYNTHETIC_DIALOGUE_PRIVATE_SENTINEL", json.dumps(payloads))
+        with self.assertRaises((ValueError, FileExistsError)):
+            rehearsal.rehearse_dialogue(self.output)
+
     def test_existing_empty_directory_is_not_initialized(self):
         self.output.mkdir()
         with self.assertRaises((ValueError, FileExistsError)):

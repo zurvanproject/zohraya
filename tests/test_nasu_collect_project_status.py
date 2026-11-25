@@ -208,6 +208,22 @@ class CollectionTests(unittest.TestCase):
         self.assertEqual(output["components"]["moltbook"]["runtime_linkage"], "UNKNOWN")
         self.assertEqual(output["components"]["moltbook"]["profile"]["activity_freshness"]["state"], "stale")
 
+    def test_collector_routes_titles_without_exporting_raw_title_or_extra_requests(self):
+        data = fixtures()
+        baseline = self.collect()
+        data[collector.pr_url(1)][0]["title"] = "Tadash memory ritual " + SECRET
+        bundle = self.collect(data)
+        pr_row = bundle["github"]["pull_requests"][0]
+        self.assertNotIn("title", pr_row)
+        self.assertNotIn(SECRET, json.dumps(bundle))
+        self.assertEqual(pr_row["routing_candidates"], ["ritual_and_learning", "memory"])
+        self.assertEqual(len(bundle["collection"]["requests"]), len(baseline["collection"]["requests"]))
+        q = integration.assemble(bundle, now=NOW)["components"]["github"]["development_queue"]
+        self.assertEqual(q["groups"]["ritual_and_learning"], [1])
+        self.assertEqual(q["multi_lane_numbers"], [1])
+        self.assertEqual(q["queue"][0]["routing_basis"], "projected_title_metadata_only")
+        self.assertFalse(q["queue"][0]["merge_or_deploy_authorized"])
+
     def test_moltbook_is_prefetched_once_before_pagination(self):
         bundle = self.collect()
         urls = [r["source_url"] for r in bundle["collection"]["requests"]]
