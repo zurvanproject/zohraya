@@ -403,5 +403,62 @@ class ProjectIntegrationTests(unittest.TestCase):
             hub.assemble(bundle(), now=NOW.replace(tzinfo=None))
 
 
+
+class DevelopmentClosureTests(unittest.TestCase):
+    def test_all_observed_open_prs_have_exactly_one_provisional_lane(self):
+        data = bundle()
+        template = data["github"]["pull_requests"][0]
+        data["github"]["pull_requests"] = []
+        for n in range(1, 214):
+            row = copy.deepcopy(template)
+            row.update(number=n, html_url=hub.BASE + "/pull/" + str(n),
+                       title="Tadash memory ritual" if n % 2 else "Qwen server")
+            data["github"]["pull_requests"].append(row)
+        data["github"]["pull_requests_complete"] = True
+        github = hub.assemble(data, now=NOW)["components"]["github"]
+        q = github["development_queue"]
+        self.assertEqual(q["observed_count"], 213)
+        self.assertEqual(len(github["recent_prs"]), 20)
+        self.assertEqual(sorted(n for group in q["groups"].values() for n in group),
+                         list(range(1, 214)))
+        self.assertTrue(q["collection_complete"])
+        self.assertFalse(q["atomic_snapshot"])
+        self.assertTrue(all(not p["merge_or_deploy_authorized"] for p in q["queue"]))
+
+    def test_ambiguous_and_unclassified_titles_are_preserved_without_raw_text(self):
+        data = bundle()
+        original = data["github"]["pull_requests"][0]
+        rows = []
+        for n, title in ((11, "ritual affect memory " + SECRET), (12, SECRET), (13, None)):
+            row = copy.deepcopy(original)
+            row.update(number=n, html_url=hub.BASE + "/pull/" + str(n), title=title)
+            rows.append(row)
+        data["github"]["pull_requests"] = rows
+        data["github"]["pull_requests_complete"] = False
+        q = hub.assemble(data, now=NOW)["components"]["github"]["development_queue"]
+        self.assertFalse(q["collection_complete"])
+        self.assertIn(11, q["multi_lane_numbers"])
+        self.assertEqual(q["unclassified_numbers"], [12, 13])
+        self.assertNotIn(SECRET, json.dumps(q))
+        self.assertTrue(all(p["state"] == "review_required" for p in q["queue"]))
+
+    def test_observed_failure_beats_success_and_unknown_never_means_ready(self):
+        pr = {"number": 1, "head_sha": HEAD, "source_url": hub.BASE + "/pull/1", "draft": False}
+        other = dict(pr, number=2, head_sha="b" * 40)
+        checks = [{"head_sha": HEAD, "status": "completed", "conclusion": "success"},
+                  {"head_sha": HEAD, "status": "completed", "conclusion": "failure"}]
+        result = hub._development_queue([pr, other], {1: "memory", 2: "body"}, checks, False, "stale")
+        self.assertEqual([x["ci_observation"] for x in result["queue"]],
+                         ["failure_observed", "unknown_or_no_success_observed"])
+        self.assertEqual(result["collection_freshness"], "stale")
+        self.assertTrue(all(not x["merge_or_deploy_authorized"] for x in result["queue"]))
+
+    def test_candidate_destinations_exist_in_checkout(self):
+        root = Path(__file__).resolve().parents[1]
+        for _, _, paths in hub.DEVELOPMENT_LANES:
+            for path in paths:
+                self.assertTrue((root / path).is_file(), path)
+
+
 if __name__ == "__main__":
     unittest.main()

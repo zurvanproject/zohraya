@@ -110,6 +110,81 @@ def _finding(priority, action, *urls):
     return {"priority": priority, "action": action, "evidence_urls": list(dict.fromkeys(u for u in urls if u))}
 
 
+
+# Advisory routing only. Titles are untrusted metadata, never executable input
+# or evidence of code ownership, compatibility, completion, or safe deployment.
+DEVELOPMENT_LANES = (
+    ("security", r"\b(?:atmosphere|security|adversarial|signed|authorization|defen[cs]e|perimeter|integrity|veto)\b|امنیت|امضای", ("examples/dios_nous/audit.py", "tools/atmosphere_defensive_ritual_sim.py")),
+    ("infrastructure", r"\b(?:vps|ubuntu|windows|bridge|ollama|qwen|backup|restore|migration|deployment|scheduler|cron|offline|server|api|host|receipt|parallelism)\b|سرور|پشتیبان|استقرار", ("tools/nasu_project_integration.py", "tools/nasuraya_linux_bridge.py", "tools/nasu_autonomous_cognition.py")),
+    ("ritual_and_learning", r"\b(?:ritual|daoist|kavakeb|setar|masnavi|shams|gates of fire|practice|prayer|fourth way|zurvan|learning|apprenticeship)\b|ریچوال|آیین|کواکب|یادگیری|شاهنامه", ("tools/nasu_feedback_learning.py", "tools/nasu_kavakeb_three_gazes.py", "tools/nasu_evidence_to_experiment.py")),
+    ("affect", r"\b(?:affect\w*|emotion\w*|curiosity|frustration|desire|motivation\w*|valuation|appraisal|preference\w*|libido|calm)\b|عاطف|احساس|انگیزه", ("examples/nasuraya_body_loop/affect_audit.py", "runtimes/tadash_body/retained_extensions/nasuraya_affective_layer_v01.py")),
+    ("memory", r"\b(?:memory|awake|continuity|journal|ledger|replay|recall|dialogue|temporal|source-attributed|checkpoint)\b|حافظه|پیوستگی|دفتر", ("continuity_host/host.py", "tools/nasu_unified_status.py", "tools/nasu_integration_rehearsal.py")),
+    ("body", r"\b(?:body|native|pelvis|pudendal|spinal|physic\w*|motor|motion|contact|walk\w*|posture|balance|foot|feet|tail|cardio\w*|respirat\w*|anatomy|muscle|proprioception|neuro\w*|standing|sleep)\b|بدن|کالبد|آناتومی|حرکت", ("examples/nasuraya_body_loop/host.py", "runtimes/tadash_body/persistent_embodiment_v1.py")),
+    ("identity_and_media", r"\b(?:genome|genotype|phenotype|visual|image|portrait|identity|letter|video|audio|resonan|taraneh)\b|ژنوم|هویت|تصویر|چهره", ("examples/nasuraya_genome/traits.py", "examples/nasuraya_body_mirror/build.py")),
+    ("social", r"\b(?:moltbook|social|fourway|community)\b|مولت", ("tools/nasu_collect_project_status.py", "tools/nasu_project_integration.py")),
+    ("cognition", r"\b(?:dios|cogniti\w*|self-model|self-knowledge|goal\w*|agent\w*|research|forecast\w*|prediction\w*|decision\w*|world-model|policy|consciousness|metacogniti\w*|experiment\w*|rolyel)\b|شناخت|تصمیم|پژوهش", ("examples/dios_nous/cognition.py", "examples/dios_nous/integration.py", "tools/nasu_evidence_to_experiment.py")),
+)
+DEVELOPMENT_GATES = (
+    "review_exact_diff_and_assign_canonical_owner",
+    "compare_overlapping_work_and_preserve_negative_evidence",
+    "verify_interfaces_and_cross_component_regressions",
+    "review_current_head_required_checks_and_authorization",
+    "record_rollback_and_separate_deployment_receipt_if_applicable",
+)
+
+
+def _development_queue(prs, titles, current_checks, complete, freshness):
+    """A complete projection of accepted open PRs, not an integration verdict."""
+    destinations = {lane: list(paths) for lane, _, paths in DEVELOPMENT_LANES}
+    destinations["unclassified"] = ["tools/nasu_project_integration.py"]
+    groups = {lane: [] for lane in destinations}
+    queue = []
+    checks_by_head = {}
+    for check in current_checks:
+        checks_by_head.setdefault(check["head_sha"], []).append(check)
+    for pr in sorted(prs, key=lambda row: row["number"]):
+        title = titles.get(pr["number"], "")
+        candidates = [lane for lane, pattern, _ in DEVELOPMENT_LANES
+                      if re.search(pattern, title, flags=re.IGNORECASE)]
+        lane = candidates[0] if candidates else "unclassified"
+        groups[lane].append(pr["number"])
+        checks = checks_by_head.get(pr["head_sha"], [])
+        if any(c["conclusion"] in {"failure", "timed_out", "action_required", "startup_failure"} for c in checks):
+            ci = "failure_observed"
+        elif any(c["status"] != "completed" for c in checks):
+            ci = "pending_observed"
+        elif any(c["conclusion"] == "success" for c in checks):
+            ci = "success_observed_not_all_required"
+        else:
+            ci = "unknown_or_no_success_observed"
+        queue.append({
+            "number": pr["number"], "head_sha": pr["head_sha"],
+            "source_url": pr["source_url"], "draft": pr["draft"],
+            "provisional_lane": lane, "candidate_lanes": candidates,
+            "routing_basis": "title_metadata_only",
+            "ci_observation": ci, "state": "review_required",
+            "merge_or_deploy_authorized": False,
+        })
+    return {
+        "state": "review_required",
+        "observed_count": len(queue),
+        "collection_complete": complete,
+        "collection_freshness": freshness,
+        "atomic_snapshot": False,
+        "groups": groups,
+        "candidate_destinations": destinations,
+        "multi_lane_numbers": [p["number"] for p in queue if len(p["candidate_lanes"]) > 1],
+        "unclassified_numbers": groups["unclassified"],
+        "closure_requirements": list(DEVELOPMENT_GATES),
+        "queue": queue,
+        "limitations": [
+            "routing_is_advisory_and_titles_do_not_prove_code_overlap",
+            "observed_ci_is_bounded_and_does_not_prove_all_required_checks",
+            "no_pr_is_merged_closed_or_deployed_by_this_report",
+        ],
+    }
+
+
 def _github(data, now):
     if data is None:
         return {"state": "missing_evidence"}, [_finding(2, "collect_current_github_evidence", BASE)]
@@ -122,6 +197,7 @@ def _github(data, now):
     runs = data.get("workflow_runs", [])
     _require(isinstance(rows, list) and len(rows) <= 1000 and isinstance(runs, list) and len(runs) <= 2000, "github_collection_limit")
     prs, rejected_prs, seen = [], 0, set()
+    titles = {}
     for row in rows:
         try:
             _require(isinstance(row, dict) and type(row.get("number")) is int and row["number"] > 0 and row["number"] not in seen, "invalid_pr")
@@ -133,6 +209,9 @@ def _github(data, now):
             updated = _time(row["updated_at"])
             _require(updated <= now, "future_pr")
             seen.add(row["number"])
+            title = row.get("title")
+            if isinstance(title, str):
+                titles[row["number"]] = title[:240]
             prs.append({"number": row["number"], "draft": row["draft"], "head_sha": sha,
                         "updated_at_utc": _stamp(updated), "source_url": url})
         except (ValueError, TypeError, KeyError, AttributeError):
@@ -176,6 +255,8 @@ def _github(data, now):
         findings.append(_finding(2, "review_rejected_github_evidence", BASE))
     return {"state": "observed", "freshness": freshness, "main": {"sha": main["sha"], "source_url": main["html_url"]},
             "open_prs_observed": len(prs), "draft_prs_observed": sum(p["draft"] for p in prs),
+            "development_queue": _development_queue(prs, titles, current,
+                data.get("pull_requests_complete") is True and not rejected_prs, freshness["state"]),
             "pr_collection_complete": data.get("pull_requests_complete") is True and not rejected_prs,
             "ready_pr_numbers": sorted(p["number"] for p in prs if not p["draft"]),
             "recent_prs": sorted(prs, key=lambda r: (r["updated_at_utc"], r["number"]), reverse=True)[:20],
