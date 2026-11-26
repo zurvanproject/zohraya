@@ -1,5 +1,6 @@
 """Offline contract tests; all mail identities/content are fictional fixtures."""
 import copy
+from contextlib import closing
 import importlib.util
 import json
 import os
@@ -323,7 +324,7 @@ class IntakeTests(unittest.TestCase):
         second = feedback.export_awake(state, receipt["record_key"], root, now=NOW)
         self.assertEqual(first, {"status": "ingested", "added": 1, "duplicate": 0})
         self.assertEqual(second, {"status": "ingested", "added": 0, "duplicate": 1})
-        with sqlite3.connect(root / "awake.sqlite3") as db:
+        with closing(sqlite3.connect(root / "awake.sqlite3")) as db:
             self.assertEqual(db.execute("SELECT value FROM control WHERE name='paused'").fetchone()[0], "1")
             raw = db.execute("SELECT payload FROM evidence").fetchone()[0]
             self.assertNotIn("example.net", raw)
