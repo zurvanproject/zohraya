@@ -9,6 +9,7 @@ on:
       - 'tools/nasuraya_offline_continuity.py'
       - 'tools/nasu_frontier_lab.py'
       - 'tools/nasu_feedback_learning.py'
+      - 'tools/nasu_email_feedback.py'
       - 'tests/test_nasu*'
       - 'examples/dios_nous/**'
       - 'tadash_awake/**'
@@ -40,9 +41,21 @@ jobs:
       - name: Original DIOS and Awake contracts
         run: |
           python -B -m unittest examples.dios_nous.test_cognition examples.dios_nous.test_integration_work examples.dios_nous.test_dissent tadash_awake.test_wake -v
+      - name: Email feedback intake and real Awake receipt contracts
+        run: python -B -m unittest discover -s tests -p test_nasu_email_feedback.py -v
       - name: Executed integration and cold-process recovery
         run: python -B -m unittest discover -s tests -p test_nasu_integration_rehearsal.py -v
       - name: Rehearse then recover in separate interpreters
         run: |
           python -B -m tools.nasu_integration_rehearsal --output "$RUNNER_TEMP/nasu-memory-cycle" > "$RUNNER_TEMP/nasu-rehearsal.json"
           python -B -m tools.nasu_integration_rehearsal --recover "$RUNNER_TEMP/nasu-memory-cycle" --pretty
+  email-feedback-windows:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.12'
+      - name: Email feedback persistence and Awake receipt contracts on Windows
+        run: python -B -m unittest discover -s tests -p test_nasu_email_feedback.py -v
