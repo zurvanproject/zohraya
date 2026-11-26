@@ -4,6 +4,7 @@ import json
 import re
 
 from examples.nasuraya_agent_loop.local import Journal, ToolRejected
+from tools.atmosphere_policy import authorize
 from reflection_cycle import canonical
 from .host import validate_duration, executed_body
 
@@ -152,6 +153,11 @@ class BodyAPIHost:
                     'checkpoint_sha256': receipt['self_model_after']['checkpoint_sha256']}
 
     def _validate(self, name, args):
+        # A body API request cannot extend its host-created capabilities.
+        verdict = authorize("synthetic_body_api", name, mode=self.mode,
+                            source_verified=True)
+        if not verdict.allowed:
+            raise ToolRejected('atmosphere: ' + verdict.reason)
         if name not in {tool['name'] for tool in self.definitions()}:
             raise ToolRejected('body tool unavailable')
         if type(args) is not dict:
