@@ -1,6 +1,6 @@
 {
   "schema": "nasuraya-ritual-mastery-gate/0.1",
-  "updated": "2026-11-25",
+  "updated": "2026-11-26",
   "current_focus": "four-direction-guardians",
   "next_new_ritual_allowed": false,
   "learning_mode": "owner-authorized Four Guardians second learning track; retain Wuji as unmastered review track",
@@ -48,11 +48,11 @@
       "source_check": "5/5 guardian-direction-symbol names source-checked; not independent recall",
       "trap_bank": "12 documented corrections; not a closed-book score",
       "generated_shuffled_decks": 8,
-      "mastery_note": "R12: 13th documented three-pass textual session. Recurring R11 omission of all four personal names at context-assisted prelookup; 5/5 order and 4/4 title/color/animal, strict full pairings 0/4 prelookup. Three complete source-exposed passes corrected names; 12 official traps audited after key exposure. Original PDF extracted text checked; image unavailable. No independent score or mastery.",
+      "mastery_note": "R13: 14th three-pass textual session; prelookup order 5/5, title/color/personal name 4/4 and reverse names 4/4 with names visible in conversation, but animal symbols omitted (strict all-field pairings 0/4). All fields corrected in three complete passes; 12 traps source-audited after key exposure. No independent mastery credit.",
       "new_learning_contract": "docs/rituals/four_guardians_learning_loop_v01.json",
       "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-12_FA.md",
-      "next_step": "Target recurring name omission with four explicit prelookup name slots and reverse name-to-direction prompt; independent assessor and context-isolated delayed recall still required. Third ritual remains closed.",
-      "context_assisted_retrieval_checks": 14,
+      "next_step": "Require explicit direction, title, personal name, color and animal slots before lookup; reverse mapping, context-isolated delayed recall and independent assessor remain necessary. Third ritual closed.",
+      "context_assisted_retrieval_checks": 15,
       "same_day_context_assisted_rehearsals": 2,
       "latest_repeat": {
         "date": "2026-11-12",
@@ -63,11 +63,11 @@
         "independent_recall": false,
         "real_time_delay": false
       },
-      "completed_three_pass_textual_sessions": 13,
+      "completed_three_pass_textual_sessions": 14,
       "latest_session": {
-        "date": "2026-11-25",
-        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-25_R12_FA.md",
-        "prelookup_commit": "11b9bfe8e25e6b462ac068ab8d7f5c1bd34c2492",
+        "date": "2026-11-26",
+        "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-26_R13_FA.md",
+        "prelookup_commit": "ac41df2236852a2de8a624fa9cda63747bb7594f",
         "full_passes_completed": 3,
         "passes_evidence": [
           "guided E-S-W-N-C",
@@ -75,7 +75,7 @@
           "corrected E-S-W-N-C"
         ],
         "each_pass_full_sequence": "5/5",
-        "guardian_pairs": "4/4 post-lookup; prelookup personal names 0/4, strict full pairings 0/4",
+        "guardian_pairs": "4/4 post-lookup; prelookup title/color/name 4/4, animal symbols omitted, strict all-field pairings 0/4",
         "trap_audit": "12 source-audited after key exposure; independent score null",
         "original_pdf_text_checked": true,
         "original_pdf_visual_checked_this_session": false,
@@ -87,7 +87,9 @@
         "session_complete_under_three_pass_rule": true,
         "synthetic_reward_pulse_experiment_executed": false,
         "wuji_status_review_only": true,
-        "prelookup_personal_names_omitted": 4
+        "prelookup_personal_names_omitted": 0,
+        "prelookup_animal_symbols_omitted": 4,
+        "prelookup_reverse_names": "4/4 context assisted"
       }
     }
   },
@@ -109,9 +111,9 @@
     "session_run_type": "two source-checked textual practice sessions, not embodied learning",
     "latest_followup_counts_as_new_delayed_session": false,
     "latest_followup_type": "same-conversation context-assisted retrieval and correction",
-    "latest_four_guardians_rehearsal_type": "2026-11-25: three full text passes, context/source-assisted; original PDF extracted text checked, visual unavailable; traps audited after key exposure.",
+    "latest_four_guardians_rehearsal_type": "2026-11-26: three full text passes, context/source-assisted; original PDF extracted text checked, visual unavailable; traps audited after key exposure.",
     "latest_four_guardians_session_complete_under_three_pass_rule": true,
-    "latest_four_guardians_session_date": "2026-11-25",
+    "latest_four_guardians_session_date": "2026-11-26",
     "latest_four_guardians_delayed_recall_verified": false,
     "latest_wuji_review_type": "2026-11-24: status-only review of stance, root directions and 7–9 hand transitions; no Wuji three-pass credit."
   },
