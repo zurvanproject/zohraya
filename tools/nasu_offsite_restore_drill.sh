@@ -1,0 +1,208 @@
+#!/usr/bin/env bash
+# Manual encrypted backup and read-only restore test, with independent restic target.
+set -Eeuo pipefail
+umask 077
+if [[ -z "$(printenv RESTIC_REPOSITORY || true)" || -z "$(printenv RESTIC_PASSWORD_FILE || true)" ]]; then
+  echo 'Configure RESTIC_REPOSITORY + RESTIC_PASSWORD_FILE out of band.' >&2; exit 2
+fi
+case "$RESTIC_REPOSITORY" in
+  sftp:*|s3:*|rest:*|rclone:*|azure:*|gs:*) ;;
+  *) echo 'Refusing a same-host local restic repository' >&2; exit 2;;
+esac
+[[ -f "$RESTIC_PASSWORD_FILE" ]] || { echo 'Password file missing' >&2; exit 2; }
+command -v restic >/dev/null || { echo 'Please install restic first' >&2; exit 2; }
+command -v python3 >/dev/null
+TMP=$(mktemp -d -t nasu-restore-drill.XXXXXXXX)
+trap 'rm -rf -- "$TMP"' EXIT
+STAGE="$TMP/snapshot"
+mkdir -m 0700 "$STAGE"
+export STAGE
+python3 - <<'PY'
+import datetime, hashlib, json, os, shutil, sqlite3, subprocess, sys, tarfile
+from pathlib import Path
+
+base=Path('/var/lib/nasuraya')
+ledger=base/'continuity'/'continuity.sqlite3'
+state=base/'awake-stage'/'awake.sqlite3'
+report=base/'migration'/'latest-import.json'
+if report.is_file():
+    work=json.loads(report.read_text()).get('working_db')
+    if work:
+        candidate=Path(work)
+        allowed=(base/'migration'/'working').resolve()
+        if candidate.resolve().parent.parent != allowed:
+            raise SystemExit('Untrusted Awake DB path')
+        state=candidate
+stage=Path(os.environ['STAGE'])
+entries={}
+def digest(path):
+    h=hashlib.sha256()
+    with open(path,'rb') as fp:
+        for chunk in iter(lambda:fp.read(1024*1024),b''):h.update(chunk)
+    return h.hexdigest()
+sources={'continuity.sqlite3':ledger,'awake.sqlite3':state}
+research=base/'local-research'/'research.sqlite3'
+if research.is_file() or research.is_symlink():
+    sources['research.sqlite3']=research
+cognitive=base/'cognitive-growth'/'cycles.sqlite3'
+if cognitive.exists() or cognitive.is_symlink():
+    sources['cognitive-growth.sqlite3']=cognitive
+for name,source in sources.items():
+    if not source.is_file() or source.is_symlink():
+        raise SystemExit('Missing or symlinked source: '+name)
+    dest=stage/name
+    with sqlite3.connect(f'file:{source}?mode=ro',uri=True,timeout=15) as db:
+        with sqlite3.connect(dest) as copy:
+            db.backup(copy)
+            assert copy.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+    entries[name]=digest(dest)
+
+source_repo=Path('/opt/zohraya')
+if not (source_repo/'.git').exists():
+    raise SystemExit('Project checkout missing: cannot create offline repo bundle')
+repo_bundle=stage/'zohraya.bundle'
+subprocess.run(['git','-C',str(source_repo),'bundle','create',str(repo_bundle),'--all'],
+               check=True,stdout=subprocess.DEVNULL)
+entries[repo_bundle.name]=digest(repo_bundle)
+
+archive_root=base/'workloads'/'imports'
+if archive_root.is_dir():
+    if any(p.is_symlink() for p in archive_root.rglob('*')):
+        raise SystemExit('Unexpected symlink in immutable workloads archive')
+    tarball=stage/'workload-imports.tar.gz'
+    with tarfile.open(tarball,'w:gz') as tar:
+        tar.add(archive_root,arcname='imports',recursive=True)
+    entries[tarball.name]=digest(tarball)
+model=base/'models'/'Qwen3-1.7B-Q8_0.gguf'
+model_present=False
+if model.is_file():
+    if model.is_symlink(): raise SystemExit('Symlinked model not accepted')
+    expected='061b54daade076b5d3362dac252678d17da8c68f07560be70818cace6590cb1a'
+    if digest(model)!=expected:raise SystemExit('Official Qwen model checksum mismatch')
+    model_copy=stage/model.name
+    shutil.copyfile(model,model_copy)
+    if digest(model_copy)!=expected:raise SystemExit('Model changed during snapshot')
+    entries[model_copy.name]=expected
+    model_present=True
+    runtime=Path('/opt/nasuraya-local-llm/llama.cpp/build/bin')
+    if not runtime.is_dir():
+        raise SystemExit('Model exists but offline runtime binaries are missing')
+    if any(p.is_symlink() and not p.resolve().is_relative_to(runtime.resolve()) for p in runtime.rglob('*')):
+        raise SystemExit('Runtime binary links escape the local build directory')
+    runtime_tar=stage/'llama-runtime.tar.gz'
+    with tarfile.open(runtime_tar,'w:gz') as tar:
+        tar.add(runtime,arcname='llama-bin',recursive=True)
+    entries[runtime_tar.name]=digest(runtime_tar)
+# Explicitly opt in to packaging the live 4B model; absence must FAIL, never
+# downgrade to a misleadingly successful data-only backup.
+opt_in=os.environ.get('NASU_BUNDLE_OLLAMA_QWEN3_4B','0')
+if opt_in not in ('0','1'):
+    raise SystemExit('NASU_BUNDLE_OLLAMA_QWEN3_4B must be 0 or 1')
+ollama_archived=(opt_in=='1')
+if ollama_archived:
+    tool=source_repo/'tools'/'nasu_ollama_4b_recovery.py'
+    cmd=[sys.executable,str(tool),'stage',str(stage),
+         '--models-dir',os.environ.get('NASU_OLLAMA_MODELS_DIR','/usr/share/ollama/.ollama/models'),
+         '--ollama-bin',os.environ.get('NASU_OLLAMA_BIN',shutil.which('ollama') or '/usr/bin/ollama'),
+         '--ollama-lib',os.environ.get('NASU_OLLAMA_LIB_DIR','/usr/lib/ollama')]
+    subprocess.run(cmd,check=True,capture_output=True,timeout=3600)
+    for name in ('ollama-qwen3-4b-models.tar.gz','ollama-qwen3-4b-runtime.tar.gz',
+                 'ollama-qwen3-4b-info.json'):
+        entries[name]=digest(stage/name)
+manifest={
+  'schema':'nasuraya-restic-offsite/3' if ollama_archived else 'nasuraya-restic-offsite/2',
+  'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+  'files_sha256':entries,
+  'model_present':model_present,
+  'workload_archives_present':archive_root.is_dir(),
+  'research_journal_present':research.is_file(),
+  'cognitive_journal_present':cognitive.exists(),
+  'ollama_qwen3_4b_recoverable':ollama_archived,  # assets only; not a smoke PASS
+  'ollama_qwen3_4b_independent_smoke_pass':False,
+  'credentials_included':False,
+  'warning':'Restored snapshots must not overwrite running production databases'
+}
+(stage/'manifest.json').write_text(json.dumps(manifest,sort_keys=True)+'\n',encoding='utf-8')
+print('SQLITE_SNAPSHOT=PASS;DB_COUNT='+str(len(sources))+';MODEL_PRESENT='+str(model_present).lower()+
+      ';WORKLOAD_ARCHIVES_PRESENT='+str(archive_root.is_dir()).lower()+
+      ';COGNITIVE_JOURNAL_PRESENT='+str(cognitive.exists()).lower()+
+      ';OLLAMA_QWEN3_4B_ASSETS_ARCHIVED='+str(ollama_archived).lower()+
+      ';INDEPENDENT_OFFLINE_SMOKE=NOT_TESTED')
+PY
+restic snapshots >/dev/null
+restic backup --tag nasuraya-continuity --json "$STAGE" > "$TMP/backup.jsonl"
+SNAP_ID=$(python3 - "$TMP/backup.jsonl" <<'PY'
+import json,sys
+sid=None
+for line in open(sys.argv[1]):
+    obj=json.loads(line)
+    if obj.get('message_type')=='summary': sid=obj.get('snapshot_id')
+if not sid: sys.exit('Missing restic snapshot ID')
+print(sid)
+PY
+)
+if [[ "${NASU_BACKUP_ONLY:-0}" == "1" ]]; then
+  printf 'REMOTE_ENCRYPTED_BACKUP=PASS;RESTORE_SKIPPED;SNAPSHOT_ID=%s\n' "$SNAP_ID"
+  exit 0
+fi
+mkdir -m 0700 "$TMP/restore"
+restic restore "$SNAP_ID" --target "$TMP/restore" >/dev/null
+export RESTORED="$TMP/restore$STAGE"
+python3 - <<'PY'
+import hashlib,json,os,sqlite3,subprocess
+from pathlib import Path
+
+def check_cognitive_chain(path):
+    keys=('slot','stamp','topic','source_path','source_sha','fixed_result',
+          'model_status','proposal','next_topic','previous_sha')
+    with sqlite3.connect(f'file:{path}?mode=ro',uri=True) as db:
+        rows=db.execute("""SELECT slot,stamp,topic,source_path,source_sha,
+          fixed_result,model_status,proposal,next_topic,previous_sha,receipt_sha
+          FROM cycles WHERE state='completed' ORDER BY slot""").fetchall()
+        last='0'*64
+        for row in rows:
+            body=dict(zip(keys,row[:-1]))
+            digest=hashlib.sha256(json.dumps(body,sort_keys=True,ensure_ascii=False,
+                          separators=(',',':')).encode('utf-8')).hexdigest()
+            if row[-2]!=last or row[-1]!=digest:
+                raise ValueError('Modified cognitive receipt')
+            last=row[-1]
+p=Path(os.environ['RESTORED'])
+m=json.loads((p/'manifest.json').read_text())
+assert m['schema'] in ('nasuraya-restic-offsite/2','nasuraya-restic-offsite/3')
+files=m['files_sha256']
+assert {'awake.sqlite3','continuity.sqlite3','zohraya.bundle'}.issubset(files)
+assert m['credentials_included'] is False
+archived=m.get('ollama_qwen3_4b_recoverable') is True
+assert type(m.get('ollama_qwen3_4b_recoverable')) is bool
+assert (m['schema']=='nasuraya-restic-offsite/3') == archived
+assert m.get('ollama_qwen3_4b_independent_smoke_pass',False) is False
+if m.get('cognitive_journal_present'):
+    assert 'cognitive-growth.sqlite3' in files
+for name,sha in files.items():
+    assert Path(name).name==name, 'Unsafe manifest name'
+    h=hashlib.sha256()
+    with open(p/name,'rb') as fh:
+        for b in iter(lambda:fh.read(1024*1024),b''):h.update(b)
+    assert h.hexdigest()==sha, 'Checksum mismatch: '+name
+    if name.endswith('.sqlite3'):
+        with sqlite3.connect(f'file:{p/name}?mode=ro',uri=True) as db:
+            assert db.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
+if m.get('cognitive_journal_present'):
+    check_cognitive_chain(p/'cognitive-growth.sqlite3')
+if archived:
+    for filename in ('ollama-qwen3-4b-models.tar.gz','ollama-qwen3-4b-runtime.tar.gz',
+                     'ollama-qwen3-4b-info.json'):
+        assert filename in files, 'Ollama recovery asset not listed'
+    subprocess.run(['python3','/opt/zohraya/tools/nasu_ollama_4b_recovery.py',
+                    'verify',str(p)],check=True,stdout=subprocess.DEVNULL,timeout=3600)
+subprocess.run(['git','bundle','list-heads',str(p/'zohraya.bundle')],
+               check=True,capture_output=True)
+print('REMOTE_ENCRYPTED_RESTORE=PASS;SHA256=ok;SQLITE_INTEGRITY=ok;FILE_COUNT='+str(len(files))+
+      ';MODEL_PRESENT='+str(m['model_present']).lower()+
+      ';WORKLOAD_ARCHIVES_PRESENT='+str(m['workload_archives_present']).lower()+
+      ';COGNITIVE_JOURNAL_PRESENT='+str(m.get('cognitive_journal_present',False)).lower()+
+      ';OLLAMA_QWEN3_4B_ASSETS_ARCHIVED='+str(archived).lower()+
+      ';INDEPENDENT_OFFLINE_SMOKE=NOT_TESTED')
+PY
+printf 'RESTIC_SNAPSHOT_ID=%s\n' "$SNAP_ID"
