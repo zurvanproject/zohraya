@@ -91,6 +91,72 @@ class IntegrationRehearsalTests(unittest.TestCase):
         self.assertEqual(report["dios_review"]["stance"], "PROVISIONAL_DISSENT")
         self.assertEqual(report["recovered_decision"], "B")
 
+    def test_dialogue_rejects_swapped_older_turns(self):
+        from tools import nasu_private_dialogue as dialogue
+
+        original = dialogue.memories
+
+        def swap_older(db, message):
+            rows = original(db, message)
+            if message == "کیان" and len(rows) == 5:
+                return [rows[1], rows[0], *rows[2:]]
+            return rows
+
+        with mock.patch.object(dialogue, "memories", side_effect=swap_older):
+            with self.assertRaisesRegex(ValueError, "dialogue_handoff_contract_failed"):
+                rehearsal.rehearse_dialogue(self.output)
+        report = json.loads((self.output / "report.json").read_text())
+        self.assertFalse(report["checks"]["cold_recall"])
+        self.assertTrue(report["checks"]["stance_retained"])
+        self.assertEqual(report["recovered_decision"], "B")
+
+    def test_fixed_answers_cannot_pass_the_persian_planning_probe(self):
+        from tools import nasu_correction_to_plan as probe
+
+        def fixed_answer(instruction, context, fields):
+            if "signal" in fields:
+                return {"signal": "none"}
+            question = context["current_message"]
+            if "خانه" in question:
+                answer = "سرو"
+            elif "گوینده" in question:
+                answer = "دستیار"
+            else:
+                answer = "شنبه"
+            return {"stance": "respond", "reply": answer}
+
+        with mock.patch.object(probe.dialogue, "generate", side_effect=fixed_answer):
+            report = probe.experiment(self.parent, live=True)
+        self.assertEqual(report["errors"], 0)
+        self.assertEqual(report["evidence_passed"], 18)
+        self.assertEqual(report["correct"], {"day": 3, "source": 2, "plan": 3})
+
+    def test_cited_booking_checks_reference_and_day_before_writing(self):
+        from tools import nasu_cited_booking as booking
+
+        texts = {"U2": "تمرین به چهارشنبه منتقل شد.", "A2": "یادداشت شد."}
+        with closing(sqlite3.connect(":memory:")) as db:
+            db.execute("CREATE TABLE booking (day TEXT)")
+            for ref, day in (("U9", booking.WED), ("A2", booking.WED), ("U2", booking.SUN)):
+                result = booking.book(db, {"witness": ref, "day": day}, texts, cited=True)
+                self.assertEqual(result, "unsupported")
+            self.assertEqual(db.execute("SELECT count(*) FROM booking").fetchone()[0], 0)
+            self.assertEqual(booking.book(db, {"witness": "U2", "day": booking.WED}, texts, True), "booked")
+            self.assertEqual(db.execute("SELECT day FROM booking").fetchall(), [(booking.WED,)])
+
+    def test_always_withholding_does_not_pass_cited_booking(self):
+        from tools import nasu_cited_booking as booking
+
+        def always_wait(instruction, context, fields):
+            if "witness" in fields:
+                return {"witness": "NONE", "day": booking.WAIT}
+            return {"day": booking.WAIT}
+
+        report = booking.run(self.parent, always_wait)
+        self.assertEqual(report["gold_visible"], 8)
+        self.assertEqual(report["correct_bookings_or_withholds"], {"day_only": 3, "cited": 3})
+        self.assertEqual(report["correct_witness_and_outcome"], 0)
+
     def test_dialogue_awake_persisted_false_overrides_local_true(self):
         # The producer still observes five true checks. Change ONLY the
         # records delivered to the original Awake writer, on both ingests.

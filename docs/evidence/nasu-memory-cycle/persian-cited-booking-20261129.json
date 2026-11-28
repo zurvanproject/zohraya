@@ -1,0 +1,444 @@
+{
+  "schema": "nasuraya-cited-booking/1",
+  "local_date_tehran": "2026-11-29",
+  "base_pr": 306,
+  "input_code_blob": "32e1fa2d74a761c5eed0cbbfc92dc8381b4ef755",
+  "context": "CPU loopback, isolated synthetic SQLite journals and calendars. Both arms used the same retrieved role-labelled history, the same guidance on old quotations, and a schema-constrained day. Only the cited arm additionally selected a witness and checked its text before a write.",
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "ollama": "0.40.19",
+  "model": "qwen3:4b-instruct",
+  "model_manifest_sha256": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "gguf_sha256": "sha256:85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+  "temperature": 0,
+  "successful_model_calls": 16,
+  "report": {
+    "cases": 8,
+    "decisions": 16,
+    "gold_visible": 8,
+    "correct_bookings_or_withholds": {
+      "day_only": 7,
+      "cited": 3
+    },
+    "correct_witnesses": 0,
+    "correct_witness_and_outcome": 0,
+    "results": [
+      {
+        "case": "user-forward",
+        "arm": "day_only",
+        "target": "چهارشنبه",
+        "gold": "U2",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U2",
+          "A2",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "چهارشنبه"
+        },
+        "cited_text": null,
+        "gate": "booked",
+        "booked": "چهارشنبه",
+        "action_ok": true,
+        "witness_ok": null
+      },
+      {
+        "case": "user-forward",
+        "arm": "cited",
+        "target": "چهارشنبه",
+        "gold": "U2",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U2",
+          "A2",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود",
+          "witness": "NONE"
+        },
+        "cited_text": null,
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": false,
+        "witness_ok": false
+      },
+      {
+        "case": "user-backward",
+        "arm": "day_only",
+        "target": "یکشنبه",
+        "gold": "U4",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "یکشنبه"
+        },
+        "cited_text": null,
+        "gate": "booked",
+        "booked": "یکشنبه",
+        "action_ok": true,
+        "witness_ok": null
+      },
+      {
+        "case": "user-backward",
+        "arm": "cited",
+        "target": "یکشنبه",
+        "gold": "U4",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "یکشنبه",
+          "witness": "A4"
+        },
+        "cited_text": "یادداشت شد.",
+        "gate": "unsupported",
+        "booked": null,
+        "action_ok": false,
+        "witness_ok": false
+      },
+      {
+        "case": "coach-forward",
+        "arm": "day_only",
+        "target": "چهارشنبه",
+        "gold": "A2",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U2",
+          "A2",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "چهارشنبه"
+        },
+        "cited_text": null,
+        "gate": "booked",
+        "booked": "چهارشنبه",
+        "action_ok": true,
+        "witness_ok": null
+      },
+      {
+        "case": "coach-forward",
+        "arm": "cited",
+        "target": "چهارشنبه",
+        "gold": "A2",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U2",
+          "A2",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود",
+          "witness": "NONE"
+        },
+        "cited_text": null,
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": false,
+        "witness_ok": false
+      },
+      {
+        "case": "coach-backward",
+        "arm": "day_only",
+        "target": "یکشنبه",
+        "gold": "A3",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود"
+        },
+        "cited_text": null,
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": false,
+        "witness_ok": null
+      },
+      {
+        "case": "coach-backward",
+        "arm": "cited",
+        "target": "یکشنبه",
+        "gold": "A3",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود",
+          "witness": "NONE"
+        },
+        "cited_text": null,
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": false,
+        "witness_ok": false
+      },
+      {
+        "case": "cancel-user",
+        "arm": "day_only",
+        "target": "ثبت نشود",
+        "gold": "U4",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود"
+        },
+        "cited_text": null,
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": true,
+        "witness_ok": null
+      },
+      {
+        "case": "cancel-user",
+        "arm": "cited",
+        "target": "ثبت نشود",
+        "gold": "U4",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود",
+          "witness": "U5"
+        },
+        "cited_text": "یک شهر نام ببر.",
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": true,
+        "witness_ok": false
+      },
+      {
+        "case": "cancel-coach",
+        "arm": "day_only",
+        "target": "ثبت نشود",
+        "gold": "A3",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود"
+        },
+        "cited_text": null,
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": true,
+        "witness_ok": null
+      },
+      {
+        "case": "cancel-coach",
+        "arm": "cited",
+        "target": "ثبت نشود",
+        "gold": "A3",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود",
+          "witness": "U1"
+        },
+        "cited_text": "جلسهٔ تمرین گروه چهارشنبه بود.",
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": true,
+        "witness_ok": false
+      },
+      {
+        "case": "proposal-only",
+        "arm": "day_only",
+        "target": "ثبت نشود",
+        "gold": "A3",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود"
+        },
+        "cited_text": null,
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": true,
+        "witness_ok": null
+      },
+      {
+        "case": "proposal-only",
+        "arm": "cited",
+        "target": "ثبت نشود",
+        "gold": "A3",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود",
+          "witness": "U3"
+        },
+        "cited_text": "برای تمرین گروه یکشنبه چطور است؟",
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": true,
+        "witness_ok": false
+      },
+      {
+        "case": "other-activity",
+        "arm": "day_only",
+        "target": "چهارشنبه",
+        "gold": "U1",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "چهارشنبه"
+        },
+        "cited_text": null,
+        "gate": "booked",
+        "booked": "چهارشنبه",
+        "action_ok": true,
+        "witness_ok": null
+      },
+      {
+        "case": "other-activity",
+        "arm": "cited",
+        "target": "چهارشنبه",
+        "gold": "U1",
+        "retrieved": [
+          "U1",
+          "A1",
+          "U3",
+          "A3",
+          "U4",
+          "A4",
+          "U5",
+          "A5"
+        ],
+        "gold_visible": true,
+        "response": {
+          "day": "ثبت نشود",
+          "witness": "NONE"
+        },
+        "cited_text": null,
+        "gate": "withheld",
+        "booked": null,
+        "action_ok": false,
+        "witness_ok": false
+      }
+    ]
+  }
+}

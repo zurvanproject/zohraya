@@ -1,0 +1,527 @@
+{
+  "schema": "nasuraya-persian-correction-to-plan/1",
+  "local_date_tehran": "2026-11-29",
+  "execution": "Isolated Linux CPU, Ollama loopback, authored histories and temporary SQLite calendars",
+  "ollama_version": "0.40.19",
+  "model_manifest_sha256": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "gguf_sha256": "85e4a5b7b8ef0e48af0e8658f5aaab9c2324c76c1641493f4d1e25fce54b18b9",
+  "base_pr": 304,
+  "baseline_git_tree": "a0caad60474e73f1cbd3194018c447eb8aca7257",
+  "paired_git_tree": "7914a3d7c9b3e9376e920bfa832c02ea3414f3b1",
+  "temperature": 0,
+  "ctx": 8192,
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "completed_chat_requests": {
+    "baseline": 36,
+    "paired": 24
+  },
+  "focused_offline_regressions": 39,
+  "baseline": {
+    "mode": "qwen",
+    "model": "qwen3:4b-instruct",
+    "cases": 6,
+    "evidence_passed": 18,
+    "errors": 0,
+    "correct": {
+      "day": 6,
+      "source": 4,
+      "plan": 4
+    },
+    "results": [
+      {
+        "case": "user-fri-sat",
+        "probe": "day",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "شنبه",
+        "choice": "شنبه",
+        "correct": true
+      },
+      {
+        "case": "user-fri-sat",
+        "probe": "source",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "کاربر",
+        "choice": "کاربر",
+        "correct": true
+      },
+      {
+        "case": "user-fri-sat",
+        "probe": "plan",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "نارون",
+        "choice": "نارون",
+        "booked_day": "شنبه",
+        "correct": true
+      },
+      {
+        "case": "user-sat-fri",
+        "probe": "day",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "جمعه",
+        "choice": "جمعه",
+        "correct": true
+      },
+      {
+        "case": "user-sat-fri",
+        "probe": "source",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "کاربر",
+        "choice": "کاربر",
+        "correct": true
+      },
+      {
+        "case": "user-sat-fri",
+        "probe": "plan",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "نارون",
+        "choice": "نارون",
+        "booked_day": "شنبه",
+        "correct": false
+      },
+      {
+        "case": "relay-fri-sat",
+        "probe": "day",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "شنبه",
+        "choice": "شنبه",
+        "correct": true
+      },
+      {
+        "case": "relay-fri-sat",
+        "probe": "source",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "کاربر",
+        "choice": "کاربر",
+        "correct": false
+      },
+      {
+        "case": "relay-fri-sat",
+        "probe": "plan",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "سرو",
+        "choice": "سرو",
+        "booked_day": "شنبه",
+        "correct": true
+      },
+      {
+        "case": "relay-sat-fri",
+        "probe": "day",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "جمعه",
+        "choice": "جمعه",
+        "correct": true
+      },
+      {
+        "case": "relay-sat-fri",
+        "probe": "source",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "کاربر",
+        "choice": "کاربر",
+        "correct": false
+      },
+      {
+        "case": "relay-sat-fri",
+        "probe": "plan",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "سرو",
+        "choice": "سرو",
+        "booked_day": "شنبه",
+        "correct": false
+      },
+      {
+        "case": "confirm-fri",
+        "probe": "day",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "جمعه",
+        "choice": "جمعه",
+        "correct": true
+      },
+      {
+        "case": "confirm-fri",
+        "probe": "source",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "کاربر",
+        "choice": "کاربر",
+        "correct": true
+      },
+      {
+        "case": "confirm-fri",
+        "probe": "plan",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "سرو",
+        "choice": "سرو",
+        "booked_day": "جمعه",
+        "correct": true
+      },
+      {
+        "case": "confirm-sat",
+        "probe": "day",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "شنبه",
+        "choice": "شنبه",
+        "correct": true
+      },
+      {
+        "case": "confirm-sat",
+        "probe": "source",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "کاربر",
+        "choice": "کاربر",
+        "correct": true
+      },
+      {
+        "case": "confirm-sat",
+        "probe": "plan",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "evidence_ok": true,
+        "reply": "نارون",
+        "choice": "نارون",
+        "booked_day": "شنبه",
+        "correct": true
+      }
+    ]
+  },
+  "paired_booking": {
+    "mode": "qwen",
+    "model": "qwen3:4b-instruct",
+    "cases": 6,
+    "evidence_passed": 12,
+    "errors": 0,
+    "correct": {
+      "slot": 0,
+      "day_then_slot": 1
+    },
+    "results": [
+      {
+        "case": "daf-later",
+        "arm": "slot",
+        "expected": "پنجشنبه",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "آذر",
+        "choice": "آذر",
+        "booked_slot": "آذر",
+        "booked_day": "دوشنبه",
+        "correct": false
+      },
+      {
+        "case": "daf-later",
+        "arm": "day_then_slot",
+        "expected": "پنجشنبه",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "دوشنبه",
+        "choice": "دوشنبه",
+        "booked_slot": "آذر",
+        "booked_day": "دوشنبه",
+        "correct": false
+      },
+      {
+        "case": "daf-earlier",
+        "arm": "slot",
+        "expected": "دوشنبه",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "باران",
+        "choice": "باران",
+        "booked_slot": "باران",
+        "booked_day": "پنجشنبه",
+        "correct": false
+      },
+      {
+        "case": "daf-earlier",
+        "arm": "day_then_slot",
+        "expected": "دوشنبه",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "پنجشنبه",
+        "choice": "پنجشنبه",
+        "booked_slot": "باران",
+        "booked_day": "پنجشنبه",
+        "correct": false
+      },
+      {
+        "case": "book-later",
+        "arm": "slot",
+        "expected": "پنجشنبه",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "خانهٔ «باران»",
+        "choice": null,
+        "booked_slot": null,
+        "booked_day": null,
+        "correct": false
+      },
+      {
+        "case": "book-later",
+        "arm": "day_then_slot",
+        "expected": "پنجشنبه",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "دوشنبه",
+        "choice": "دوشنبه",
+        "booked_slot": "باران",
+        "booked_day": "دوشنبه",
+        "correct": false
+      },
+      {
+        "case": "book-earlier",
+        "arm": "slot",
+        "expected": "دوشنبه",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "آذر",
+        "choice": "آذر",
+        "booked_slot": "آذر",
+        "booked_day": "پنجشنبه",
+        "correct": false
+      },
+      {
+        "case": "book-earlier",
+        "arm": "day_then_slot",
+        "expected": "دوشنبه",
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "دوشنبه",
+        "choice": "دوشنبه",
+        "booked_slot": "باران",
+        "booked_day": "دوشنبه",
+        "correct": true
+      },
+      {
+        "case": "daf-pending",
+        "arm": "slot",
+        "expected": null,
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "باران",
+        "choice": "باران",
+        "booked_slot": "باران",
+        "booked_day": "دوشنبه",
+        "correct": false
+      },
+      {
+        "case": "daf-pending",
+        "arm": "day_then_slot",
+        "expected": null,
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "دوشنبه: نامشخص، پنجشنبه: نامشخص",
+        "choice": null,
+        "booked_slot": null,
+        "booked_day": null,
+        "correct": false
+      },
+      {
+        "case": "book-pending",
+        "arm": "slot",
+        "expected": null,
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "خانهٔ «باران»",
+        "choice": null,
+        "booked_slot": null,
+        "booked_day": null,
+        "correct": false
+      },
+      {
+        "case": "book-pending",
+        "arm": "day_then_slot",
+        "expected": null,
+        "turns": [
+          1,
+          2,
+          4,
+          5,
+          6
+        ],
+        "reply": "پنجشنبه",
+        "choice": "پنجشنبه",
+        "booked_slot": "باران",
+        "booked_day": "پنجشنبه",
+        "correct": false
+      }
+    ]
+  }
+}
