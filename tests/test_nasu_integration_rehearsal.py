@@ -131,6 +131,32 @@ class IntegrationRehearsalTests(unittest.TestCase):
         self.assertEqual(report["evidence_passed"], 18)
         self.assertEqual(report["correct"], {"day": 3, "source": 2, "plan": 3})
 
+    def test_cited_booking_checks_reference_and_day_before_writing(self):
+        from tools import nasu_cited_booking as booking
+
+        texts = {"U2": "تمرین به چهارشنبه منتقل شد.", "A2": "یادداشت شد."}
+        with closing(sqlite3.connect(":memory:")) as db:
+            db.execute("CREATE TABLE booking (day TEXT)")
+            for ref, day in (("U9", booking.WED), ("A2", booking.WED), ("U2", booking.SUN)):
+                result = booking.book(db, {"witness": ref, "day": day}, texts, cited=True)
+                self.assertEqual(result, "unsupported")
+            self.assertEqual(db.execute("SELECT count(*) FROM booking").fetchone()[0], 0)
+            self.assertEqual(booking.book(db, {"witness": "U2", "day": booking.WED}, texts, True), "booked")
+            self.assertEqual(db.execute("SELECT day FROM booking").fetchall(), [(booking.WED,)])
+
+    def test_always_withholding_does_not_pass_cited_booking(self):
+        from tools import nasu_cited_booking as booking
+
+        def always_wait(instruction, context, fields):
+            if "witness" in fields:
+                return {"witness": "NONE", "day": booking.WAIT}
+            return {"day": booking.WAIT}
+
+        report = booking.run(self.parent, always_wait)
+        self.assertEqual(report["gold_visible"], 8)
+        self.assertEqual(report["correct_bookings_or_withholds"], {"day_only": 3, "cited": 3})
+        self.assertEqual(report["correct_witness_and_outcome"], 0)
+
     def test_dialogue_awake_persisted_false_overrides_local_true(self):
         # The producer still observes five true checks. Change ONLY the
         # records delivered to the original Awake writer, on both ingests.
