@@ -552,6 +552,7 @@ def rehearse_dialogue(directory):
         primary_rows = [entry for entry in older if entry["user"] == primary]
         checks["cold_recall"] = (
             checks["cold_recall"] and len(recalled) == 5 and len(older) == 2
+            and older[0]["turn"] < older[1]["turn"]
             and len(primary_rows) == 1
             and primary_rows[0]["assistant"] == "synthetic fixture reply"
             and len({entry["turn"] for entry in recalled}) == 5

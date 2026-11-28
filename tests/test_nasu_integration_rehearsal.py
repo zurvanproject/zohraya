@@ -91,6 +91,25 @@ class IntegrationRehearsalTests(unittest.TestCase):
         self.assertEqual(report["dios_review"]["stance"], "PROVISIONAL_DISSENT")
         self.assertEqual(report["recovered_decision"], "B")
 
+    def test_dialogue_rejects_swapped_older_turns(self):
+        from tools import nasu_private_dialogue as dialogue
+
+        original = dialogue.memories
+
+        def swap_older(db, message):
+            rows = original(db, message)
+            if message == "کیان" and len(rows) == 5:
+                return [rows[1], rows[0], *rows[2:]]
+            return rows
+
+        with mock.patch.object(dialogue, "memories", side_effect=swap_older):
+            with self.assertRaisesRegex(ValueError, "dialogue_handoff_contract_failed"):
+                rehearsal.rehearse_dialogue(self.output)
+        report = json.loads((self.output / "report.json").read_text())
+        self.assertFalse(report["checks"]["cold_recall"])
+        self.assertTrue(report["checks"]["stance_retained"])
+        self.assertEqual(report["recovered_decision"], "B")
+
     def test_dialogue_awake_persisted_false_overrides_local_true(self):
         # The producer still observes five true checks. Change ONLY the
         # records delivered to the original Awake writer, on both ingests.
