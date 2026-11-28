@@ -1,0 +1,97 @@
+{
+  "schema": "nasuraya/kavakeb-ritual-adjunct/1",
+  "id": "marefat-kavakeb-three-looks-v01",
+  "title_fa": "معرفت کواکب: سه نگاه، سه گذر کامل",
+  "date": "2026-11-15",
+  "ritual_role": "active supplementary study segment after the current Four Guardians textual practice; not a new canonical rite and not a change to Wuji/Four Guardians graduation",
+  "ritual_mastery_status_path": "docs/rituals/ritual_mastery_status_v01.json",
+  "minimum_complete_passes_per_session": 3,
+  "source": {
+    "original_pdf": {
+      "title": "معرفت کواکب (اسکن ارائه‌شده توسط مالک)",
+      "filename": "marefate kavakeb.pdf",
+      "pages": 66,
+      "sha256": "3d0fc35a66ad61e3a048ce24b2ccbe985188ec70a541212acf6559bf66a0f4bc",
+      "representation": "historic manuscript scan; not a full critical transcription"
+    },
+    "original_pdf_pages": [
+      43,
+      46,
+      47,
+      48
+    ],
+    "illustrated_guide": {
+      "title": "معرفت کواکب؛ از نسخهٔ کهن تا آموزش مصور",
+      "filename": "marefat_kavakeb_illustrated_154p.pdf",
+      "pages": 154,
+      "sha256": "abe9c92f9c6159a757cea09a6f4edc7cc6fc1777f7735b90397a8f3ebb3a821a",
+      "teaching_pages": [
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88
+      ],
+      "provenance": "new didactic interpretation, not a quoted ancient ritual",
+      "verified_reproduction_for_scan_page_47": {
+        "guide_pdf_page": 136,
+        "seen_in_chat": "2026-11-19",
+        "original_pdf_hash_rechecked": false,
+        "label": "image of scan page 47 in user-confirmed illustrated book"
+      },
+      "verified_reproduction_for_scan_page_48": {
+        "guide_pdf_page": 137,
+        "source_file_page": 48,
+        "manuscript_folio_label": "۷۳",
+        "seen_in_chat": "2026-11-19",
+        "accessed_filename": "marefat_kavakeb_illustrated_154p(1).pdf",
+        "guide_pdf_hash_rechecked": true,
+        "guide_pdf_sha256": "abe9c92f9c6159a757cea09a6f4edc7cc6fc1777f7735b90397a8f3ebb3a821a",
+        "guide_hash_matches_recorded_protocol": true,
+        "original_pdf_hash_rechecked": false,
+        "native_embedded_image_pixels": [
+          1224,
+          1702
+        ],
+        "native_embedded_image_sha256": "685e2bd2a5b0d761b9e9119313bd1082b7d216e3045cd87788bf2d347bab86e1",
+        "label": "Native embedded reproduction from the owner-confirmed illustrated guide; three different locators are retained."
+      }
+    }
+  },
+  "stages_per_full_pass": [
+    {
+      "id": "observe",
+      "fa": "دیدن",
+      "prompt": "فقط طرح ظاهری، حلقه‌ها، خطوط و خانه‌ها را ثبت کن؛ نشانهٔ ناخوانا را مجهول بگذار."
+    },
+    {
+      "id": "geometry",
+      "fa": "هندسه",
+      "prompt": "رابطهٔ فضایی و نظم شکلی را بررسی کن؛ نام‌گذاری رمزها و معنا را بدون سند انجام نده."
+    },
+    {
+      "id": "revise",
+      "fa": "بازبینی",
+      "prompt": "دانسته، حدس و نامعلوم را جدا کن؛ احتمال خطا و سؤال آزمون‌پذیر بنویس."
+    }
+  ],
+  "pass_rule": "Each of three full passes must repeat ALL THREE stages; three distinct stages performed once count as one full pass, not three.",
+  "completion": "Three documented complete textual passes only; not mastery, an independent delayed recall test, or an embodied ritual.",
+  "boundedness": {
+    "textual_and_symbolic_only": true,
+    "natural_breathing": true,
+    "fire_or_incense": false,
+    "ritual_power_claim": false,
+    "network_api": false,
+    "autonomous_vps_deployment": false,
+    "third_ritual_allowed": false
+  },
+  "next_page_after_43": 46,
+  "next_page_after_46": 47,
+  "next_page_after_47": 48,
+  "next_page_after_48": 49
+}

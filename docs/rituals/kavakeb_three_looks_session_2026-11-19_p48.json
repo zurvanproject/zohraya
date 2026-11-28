@@ -1,0 +1,389 @@
+{
+  "schema": "nasuraya/kavakeb-three-looks-session/1",
+  "protocol_id": "marefat-kavakeb-three-looks-v01",
+  "session_id": "kavakeb-2026-11-19-p48-native-reproduction",
+  "date": "2026-11-19",
+  "source_page": 48,
+  "source_access": "Source-guided visual study of user-confirmed marefat_kavakeb_illustrated_154p(1).pdf. Guide PDF p137 labels the reproduction as source-file p48; the embedded manuscript bears folio 73. Pass1 used the 512x512 conversation preview. Pass2 used the unchanged native 1224x1702 embedded JPEG and selected crops. Pass3 rechecked the native image and reconciled a separate same-task AI visual review; guide p136 / source-file p47 was also viewed for a limited layout correction. Teaching pp82-85 were read. The full guide was freshly SHA256-verified; the raw 66-page manuscript PDF was not reopened. All passes are source/context-assisted and untimed.",
+  "mastered": false,
+  "embodied_or_supernatural_verified": false,
+  "independent_delayed_recall_proven": false,
+  "source_evidence": {
+    "illustrated_guide": {
+      "filename": "marefat_kavakeb_illustrated_154p(1).pdf",
+      "pages": 154,
+      "pdf_page": 137,
+      "sha256": "abe9c92f9c6159a757cea09a6f4edc7cc6fc1777f7735b90397a8f3ebb3a821a",
+      "freshly_hash_verified": true,
+      "hash_matches_protocol": true,
+      "source_file_page_label": 48,
+      "manuscript_folio_label": "۷۳"
+    },
+    "native_image": {
+      "pdf_xref": 691,
+      "width_px": 1224,
+      "height_px": 1702,
+      "sha256": "685e2bd2a5b0d761b9e9119313bd1082b7d216e3045cd87788bf2d347bab86e1"
+    },
+    "initial_preview": {
+      "width_px": 512,
+      "height_px": 512,
+      "sha256": "974d8e0d91949a858aaa612c92bd53485bdd78bb49b8d370be927916c86c3478"
+    },
+    "original_66_page_scan_hash_rechecked": false,
+    "coordinates": "Native-image pixel coordinates, origin top-left; bounding boxes are [left,top,right,bottom), columns are physical left-to-right and row1 includes the header.",
+    "inspected_crops": [
+      {
+        "name": "table",
+        "bbox": [
+          790,
+          193,
+          1112,
+          990
+        ],
+        "display": "2x nearest-neighbour for inspection; unchanged source retained"
+      },
+      {
+        "name": "header",
+        "bbox": [
+          798,
+          199,
+          1110,
+          351
+        ],
+        "display": "90-degree counterclockwise rotation and 3x nearest-neighbour for inspection"
+      },
+      {
+        "name": "prose_top",
+        "bbox": [
+          190,
+          130,
+          815,
+          635
+        ]
+      },
+      {
+        "name": "prose_lower",
+        "bbox": [
+          170,
+          925,
+          821,
+          1333
+        ]
+      },
+      {
+        "name": "folio",
+        "bbox": [
+          550,
+          1350,
+          660,
+          1410
+        ]
+      }
+    ],
+    "comparison": {
+      "source_file_page": 47,
+      "guide_pdf_page": 136,
+      "native_image_sha256": "58e4e1b5d1c54ff2c43e9ed8a74c71daf33ea6666ed7b746e095e2a3a3c9158d",
+      "scope": "Title is inside a merged top table cell; this clarifies the earlier report's ambiguous 'separate writing above'."
+    }
+  },
+  "passes": [
+    {
+      "number": 1,
+      "mode": "source_guided",
+      "independent_assessor": false,
+      "measured_duration_seconds": null,
+      "stages": {
+        "observe": {
+          "observations": [
+            "در تصویر کوچکِ برگ ۴۸، جدول در بالای سمت راست است؛ نثر در سمت چپ و زیر لبهٔ پایینی جدول ادامه پیدا می‌کند.",
+            "نوشتارِ خانه‌های پایین نسبت به چند ردیف بالا کم‌تراکم‌تر به نظر می‌رسد."
+          ],
+          "unknowns": [
+            "شمار قطعی ردیف‌ها و ستون‌ها و خوانش نام‌ها در این مرحله از تصویر کوچک تثبیت نشد."
+          ]
+        },
+        "geometry": {
+          "geometric_relations": [
+            "صفحه آرایش نامتقارن دارد: جدول راست، متن چپ و پایین؛ تصویر یک شبکهٔ تمام‌صفحه نیست.",
+            "نوار بالای جدول از برخی ردیف‌های پایین بلندتر است؛ هنوز آن را جدا از ردیف‌های داده می‌شمارم."
+          ],
+          "hypotheses": [
+            "ممکن است نوار بالایی عنوان ستون‌ها باشد؛ برای تثبیت نیاز به تصویر اصلیِ تعبیه‌شده در PDF است."
+          ]
+        },
+        "revise": {
+          "supported_findings": [
+            "توصیف قبلیِ «متن در چپ جدول» کامل نبود: متن زیر جدول نیز ادامه دارد.",
+            "از تصویر کوچک فقط چیدمان کلی ثبت شد؛ برای محتوای خانه‌ها به پیکسل‌های با وضوح اصلی برگشتم."
+          ],
+          "uncertainties": [
+            "عنوان‌ها، ترتیب ردیف‌ها و علت کم‌نویسیِ ردیف آخر در این گذر هنوز باز بودند."
+          ]
+        }
+      }
+    },
+    {
+      "number": 2,
+      "mode": "source_guided",
+      "independent_assessor": false,
+      "measured_duration_seconds": null,
+      "stages": {
+        "observe": {
+          "observations": [
+            "تصویر اصلیِ تعبیه‌شده در PDF، ۱۲۲۴ در ۱۷۰۲ پیکسل دارد؛ شمارهٔ پایین برگ ۷۳ است و برچسب کتاب آن را برگ ۴۸ / صفحهٔ ۱۳۷ معرفی می‌کند.",
+            "در ستون راست، نام‌های زحل، مشتری، مریخ، شمس، زهره و قمر روشن‌اند؛ خوانش عطارد برای ردیف میان زهره و قمر محتمل است.",
+            "در دو خانهٔ ردیف پایانی، ستون‌های فیزیکی ۱ و ۳ از چپ، نویسهٔ خوانای مشخص دیده نمی‌شود."
+          ],
+          "unknowns": [
+            "رونویسی کاملِ همهٔ خانه‌ها، صورت دقیقِ بعضی سرستون‌ها و علتِ دو خانهٔ بی‌نویسه هنوز تعیین نشده است."
+          ]
+        },
+        "geometry": {
+          "geometric_relations": [
+            "چهار خط جداکنندهٔ عمودی، پنج ستون می‌سازند؛ هفت جداکنندهٔ افقی، هشت ردیف شامل یک سطر عنوان و هفت سطر بدنه می‌سازند.",
+            "شمار هندسیِ خانه‌ها با احتساب عنوان ۴۰ است؛ ردیف عنوان را دادهٔ هشتم حساب نمی‌کنم.",
+            "ستون راست برچسب‌های ردیف را در خود دارد؛ دو خانهٔ بی‌نویسهٔ ردیف قمر با دو ستونِ عنوان‌دارِ «درجات» هم‌راستا هستند."
+          ],
+          "hypotheses": [
+            "کارکرد کلیِ جدول با بحث اوج و حضیض در نثرِ مجاور سازگار است؛ تفسیر دقیق هر مقدار به رونویسی بیشتر نیاز دارد."
+          ]
+        },
+        "revise": {
+          "supported_findings": [
+            "ابهام شمارِ شبکه با مراجعه به وضوح اصلی رفع شد: پنج ستون و هشت ردیف با احتساب عنوان.",
+            "سه ارجاع مستقل حفظ شد: برگ ۴۸ فایل، شمارهٔ ۷۳ روی نسخه، صفحهٔ ۱۳۷ کتاب مصور.",
+            "دو خانهٔ بدون نویسه به صفر یا مقدار محاسباتی تبدیل نشدند؛ خالی‌بودن ظاهری با معنای عددی یکی نیست."
+          ],
+          "uncertainties": [
+            "عطارد همچنان probable است؛ برای آن ادعای خوانش قطعی نمی‌کنم.",
+            "علتِ خالی‌بودن دو خانه و قرائت کاملِ داده‌های جدول باز مانده است."
+          ]
+        }
+      }
+    },
+    {
+      "number": 3,
+      "mode": "source_guided",
+      "independent_assessor": false,
+      "measured_duration_seconds": null,
+      "stages": {
+        "observe": {
+          "observations": [
+            "با بازگشت به تصویر اصلی و تطبیق بازبینی دوم، پنج ستون، هشت ردیف، شمارهٔ ۷۳ و جای دو خانهٔ بی‌نویسه تأیید شد.",
+            "عبارتِ کوتاه «در اوج و حضیض ستارگان» در سطر بالایی و «فصل ۲۳ در احوال بروج» در آغاز بخش پایین خوانده شد؛ باقی متن به‌صورت کامل رونویسی نشده است.",
+            "در تصویر برگ ۴۷، عنوان بالای جدول درون یک خانهٔ پهنِ همان قاب قرار دارد؛ نثرِ مستقلِ بیرون جدول نیست."
+          ],
+          "unknowns": [
+            "بازبینی دوم نیز ردیف عطارد را محتمل دانست؛ این مورد به خوانش روشن ارتقا داده نشد."
+          ]
+        },
+        "geometry": {
+          "geometric_relations": [
+            "سطر عنوان، هفت سطرِ داده و ستونِ نام‌ها نقش‌های متمایز دارند؛ شمار خانه‌ها فقط ساختار را بیان می‌کند.",
+            "برگ ۴۷ عنوانی در یک خانهٔ ادغام‌شده دارد، در حالی که برگ ۴۸ جدول کوچک و نثرِ بیرونی در چپ و پایین دارد.",
+            "دو خانهٔ مورد سؤال در سطر قمر و ستون‌های فیزیکی ۱ و ۳ باقی می‌مانند؛ داده‌ای برای پرکردن آن‌ها ساخته نشد."
+          ],
+          "hypotheses": [
+            "خواندن ادامهٔ بحث و یک شاهد روشن‌تر می‌تواند علت خانه‌های بی‌نویسه را روشن کند؛ صرف ترتیب صفحه‌ها پاسخ آن نیست."
+          ]
+        },
+        "revise": {
+          "supported_findings": [
+            "بازخوانیِ واژه‌های منتخب اکنون از مشاهدهٔ شکل کلی فراتر رفته، اما فقط شش نامِ روشن، یک نامِ محتمل و چند عبارت کوتاه را پوشش می‌دهد.",
+            "در گزارش برگ ۴۷، تعبیرِ مبهمِ «نوشته‌ای جدا در بالا» با یک الحاقیهٔ تاریخ‌دار روشن می‌شود: جدایی از شبکهٔ بدنه، درون همان قابِ عنوان.",
+            "درسِ تألیفیِ ثبت‌شده برای مطالعهٔ بعد: پیش از تعبیر جدول، جای سند، ردیف عنوان، نام ردیف‌ها و وضعیت خانه‌های بی‌نویسه را مشخص کن."
+          ],
+          "uncertainties": [
+            "فهرست کاملِ سرستون‌ها و همهٔ رشته‌های حروف/اعداد هنوز رونویسی و مقابله نشده‌اند.",
+            "سه گذرِ همین گفتگو و بازبینی همکارِ هوش مصنوعی، آزمونِ حافظهٔ مستقلِ تأخیری نیستند."
+          ]
+        }
+      }
+    }
+  ],
+  "selected_visual_readings": {
+    "coverage": "Selected manual source readings only; no OCR engine and no full diplomatic or normalized transcription.",
+    "row_labels_rightmost_column": [
+      {
+        "row_including_header": 2,
+        "text": "زحل",
+        "status": "clear",
+        "bbox": [
+          1027,
+          350,
+          1097,
+          442
+        ]
+      },
+      {
+        "row_including_header": 3,
+        "text": "مشتری",
+        "status": "clear",
+        "bbox": [
+          1023,
+          445,
+          1095,
+          536
+        ]
+      },
+      {
+        "row_including_header": 4,
+        "text": "مریخ",
+        "status": "clear",
+        "bbox": [
+          1019,
+          537,
+          1091,
+          627
+        ]
+      },
+      {
+        "row_including_header": 5,
+        "text": "شمس",
+        "status": "clear",
+        "bbox": [
+          1016,
+          630,
+          1089,
+          721
+        ]
+      },
+      {
+        "row_including_header": 6,
+        "text": "زهره",
+        "status": "clear",
+        "bbox": [
+          1013,
+          724,
+          1086,
+          809
+        ]
+      },
+      {
+        "row_including_header": 7,
+        "text": "عطارد",
+        "status": "probable",
+        "bbox": [
+          1010,
+          812,
+          1085,
+          891
+        ],
+        "reason": "Compressed glyphs across two heights; full connection less clear than the other six names."
+      },
+      {
+        "row_including_header": 8,
+        "text": "قمر",
+        "status": "clear",
+        "bbox": [
+          1009,
+          895,
+          1081,
+          970
+        ]
+      }
+    ],
+    "short_prose": [
+      {
+        "text": "در اوج و حضیض ستارگان",
+        "status": "clear",
+        "bbox": [
+          425,
+          145,
+          738,
+          242
+        ]
+      },
+      {
+        "text": "فصل ۲۳ در احوال بروج",
+        "status": "clear",
+        "bbox": [
+          566,
+          970,
+          803,
+          1047
+        ]
+      }
+    ],
+    "partial_headers": [
+      {
+        "physical_column_left_to_right": 1,
+        "text": "درجات",
+        "status": "clear"
+      },
+      {
+        "physical_column_left_to_right": 3,
+        "text": "درجات",
+        "status": "clear"
+      },
+      {
+        "physical_column_left_to_right": 4,
+        "text": "اوجات",
+        "status": "clear"
+      },
+      {
+        "physical_column_left_to_right": 2,
+        "text": "حضیضات",
+        "status": "probable",
+        "clear_fragment": "حضیض",
+        "unresolved": "Complete suffix; حضیضات retained only as a probable full reading."
+      },
+      {
+        "physical_column_left_to_right": 5,
+        "text": null,
+        "status": "unresolved",
+        "clear_fragment": "کواکب",
+        "unresolved": "Following wording not established."
+      }
+    ]
+  },
+  "grid_inventory": {
+    "columns": 5,
+    "rows_including_header": 8,
+    "header_rows": 1,
+    "body_rows": 7,
+    "geometric_cells_including_header": 40,
+    "no_legible_character": [
+      {
+        "row_including_header": 8,
+        "physical_column_left_to_right": 1,
+        "bbox": [
+          804,
+          885,
+          846,
+          953
+        ],
+        "value": null
+      },
+      {
+        "row_including_header": 8,
+        "physical_column_left_to_right": 3,
+        "bbox": [
+          909,
+          892,
+          948,
+          957
+        ],
+        "value": null
+      }
+    ],
+    "blank_cell_semantics": "Unresolved: no zero, missing number, or reconstructed value inferred.",
+    "full_value_matrix_transcribed": false
+  },
+  "review": {
+    "kind": "Separate source-guided AI visual cross-check in the same task; not human assessment or delayed recall.",
+    "agreement": [
+      "5 columns and 8 rows including header",
+      "7 body rows",
+      "folio label 73",
+      "two visually blank cells in final row at physical columns1 and3",
+      "six clear row names; seventh probable"
+    ],
+    "changed_from_initial_reading": "The initial loose collective wording about seven names was narrowed to six clear readings plus probable عطارد."
+  },
+  "authored_study_lesson": "در دیدن جدول، نخست جای سند، عنوان، نام ردیف‌ها و وضعیتِ خانه‌های بی‌نویسه را روشن می‌کنم؛ بعد به تفسیر داده‌ها می‌رسم. این دستورِ مطالعاتیِ تازه، تألیف ناسورایا بر پایهٔ همین بازبینی است.",
+  "next_action": "Continue source-file page49 / illustrated-guide p138 with three complete source-guided passes if actual pixels are accessible; retain unresolved p48 headings, probable عطارد and blank-cell meaning.",
+  "limitations": "One source/context-assisted textual session with three full observe→geometry→revise passes, all untimed. Full illustrated-guide hash verified; original 66-page scan hash not rechecked. Selected manual readings only. No independent delayed recall, mastery, body performance, runtime deployment, or external effect measured."
+}

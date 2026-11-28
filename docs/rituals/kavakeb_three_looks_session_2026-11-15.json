@@ -1,0 +1,113 @@
+{
+  "schema": "nasuraya/kavakeb-three-looks-session/1",
+  "protocol_id": "marefat-kavakeb-three-looks-v01",
+  "session_id": "kavakeb-2026-11-15-p43-textual",
+  "date": "2026-11-15",
+  "source_page": 43,
+  "source_access": "Original scanned PDF p.43 and illustrated guide pp.80–88 visually inspected in conversation; source PDF is not uploaded to public GitHub",
+  "mastered": false,
+  "embodied_or_supernatural_verified": false,
+  "independent_delayed_recall_proven": false,
+  "passes": [
+    {
+      "number": 1,
+      "mode": "source_guided",
+      "independent_assessor": false,
+      "measured_duration_seconds": null,
+      "stages": {
+        "observe": {
+          "observations": [
+            "نیم‌دایرهٔ بزرگی با چند نوار قوسی و خانه‌های کوچک در سمت چپ تصویر دیده می‌شود.",
+            "در فضای داخلی قوس چند سطر متن دست‌نویس وجود دارد."
+          ],
+          "unknowns": [
+            "همهٔ حروفِ ریز خوانا نیستند."
+          ]
+        },
+        "geometry": {
+          "geometric_relations": [
+            "نوارهای بخش‌بندی‌شده تقریباً هم‌مرکز هستند و خطوط شعاعی از میان آن‌ها می‌گذرند."
+          ],
+          "hypotheses": [
+            "شاید جدول برای پیمایشِ مرحله‌ای طراحی شده باشد؛ جهت آن معلوم نیست."
+          ]
+        },
+        "revise": {
+          "supported_findings": [
+            "قوس و خطوط قابل مشاهده‌اند؛ کارکرد آن‌ها هنوز از تصویر اثبات نشده است."
+          ],
+          "uncertainties": [
+            "جهت درست خواندن خانه‌ها روشن نیست."
+          ]
+        }
+      }
+    },
+    {
+      "number": 2,
+      "mode": "context_assisted_textual",
+      "independent_assessor": false,
+      "measured_duration_seconds": null,
+      "stages": {
+        "observe": {
+          "observations": [
+            "در سمت راستِ قوس نشانه‌های بزرگ‌تری کنار نوارهای متراکم دیده می‌شود.",
+            "خانه‌های نزدیکِ پایین اسکن لکه‌دار و کم‌خواناترند."
+          ],
+          "unknowns": [
+            "نام و نقش نشانه‌های بزرگ از این بازبینی قطعی نیست."
+          ]
+        },
+        "geometry": {
+          "geometric_relations": [
+            "محدودهٔ متن درونی با نوارهای خمیده محصور است."
+          ],
+          "hypotheses": [
+            "شاید علامت‌های بیرونی برای دسته‌بندی نوارها باشند؛ فرضیهٔ تأییدنشده است."
+          ]
+        },
+        "revise": {
+          "supported_findings": [
+            "در این اسکن ممکن است لکه با حرف اشتباه شود؛ شمار قطعی خانه‌ها معتبر نیست."
+          ],
+          "uncertainties": [
+            "شمار دقیق ردیف‌ها و خانه‌ها نیازمند بررسی دقیق‌تر است."
+          ]
+        }
+      }
+    },
+    {
+      "number": 3,
+      "mode": "source_guided",
+      "independent_assessor": false,
+      "measured_duration_seconds": null,
+      "stages": {
+        "observe": {
+          "observations": [
+            "برگ ۴۳ چینش قوسیِ خانه‌بندی‌شده دارد.",
+            "برگ ۴۶ جدول بزرگ با ردیف و ستون‌های مستقیم است."
+          ],
+          "unknowns": [
+            "تطبیق قطعی معنا یا ترجمهٔ حروف در این نوبت انجام نشده است."
+          ]
+        },
+        "geometry": {
+          "geometric_relations": [
+            "برگ ۴۳ تقسیمات شعاعی/خمیده و برگ ۴۶ شبکهٔ چهارضلعیِ راست‌گوشه دارد."
+          ],
+          "hypotheses": [
+            "ممکن است دو تنظیم برای دو نوع داده باشند؛ بدون شاهد متن، فقط حدس است."
+          ]
+        },
+        "revise": {
+          "supported_findings": [
+            "تفاوت هندسی دو شکل مستند است؛ از آن نمی‌توان اثر ماورایی یا معنای قطعی علائم را استخراج کرد."
+          ],
+          "uncertainties": [
+            "برای کاربرد هر جدول باید عنوان/سطرهای پیرامونی از اصل بهتر خوانده شود."
+          ]
+        }
+      }
+    }
+  ],
+  "limitations": "Three source/context-assisted textual passes authored during one conversation. No measured timed physical performance, independent delayed exam, or live VPS job."
+}

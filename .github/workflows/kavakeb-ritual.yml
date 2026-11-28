@@ -1,0 +1,32 @@
+name: Kavakeb three-look ritual study (offline)
+
+on:
+  pull_request:
+    paths:
+      - 'tools/kavakeb_ritual.py'
+      - 'tests/test_kavakeb_ritual.py'
+      - 'docs/rituals/kavakeb_*'
+      - '.github/workflows/kavakeb-ritual.yml'
+  push:
+    branches:
+      - 'research/nasuraya-ritual-apprenticeship-20261111'
+    paths:
+      - 'tools/kavakeb_ritual.py'
+      - 'tests/test_kavakeb_ritual.py'
+      - 'docs/rituals/kavakeb_*'
+      - '.github/workflows/kavakeb-ritual.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run six local-only tests
+        run: python3 -m unittest discover -s tests -p 'test_kavakeb_ritual.py' -v
+      - name: Validate source-labelled recorded session
+        run: |
+          python3 tools/kavakeb_ritual.py check --session docs/rituals/kavakeb_three_looks_session_2026-11-15.json

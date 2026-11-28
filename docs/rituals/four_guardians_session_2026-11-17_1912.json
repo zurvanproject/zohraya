@@ -1,0 +1,146 @@
+{
+  "schema": "nasuraya/four-guardians-session/v1.1",
+  "session_id": "four-guardians-2026-11-17-1912",
+  "date": "2026-11-17",
+  "timezone": "Europe/Berlin",
+  "source_commit_before_lookup": "7464d25fc7b12d34ba5f30b96f86f9535fce9aa7",
+  "prelookup_report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-17_1912_FA.md",
+  "assessment_kind": "context_assisted_before_fresh_repo_lookup",
+  "reference": {
+    "source_book": "Jerry Alan Johnson, Daoist Exorcism",
+    "pdf_pages": [
+      231,
+      232,
+      233
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "source_review": "source_text_extracted_from_owner_library_pdf_after_prelookup_commit",
+    "source_visual_review": "not independently verified; scanned talisman details not checked",
+    "book_nuance": "Figure 1.228 starts east ends north (four guardians); running text adds finally center"
+  },
+  "passes": [
+    {
+      "number": 1,
+      "sequence": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "supported_by": "conversation_guided",
+      "fully_written_before_source_lookup": true,
+      "complete": true
+    },
+    {
+      "number": 2,
+      "sequence": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "supported_by": "context_assisted_without_fresh_lookup",
+      "fully_written_before_source_lookup": true,
+      "complete": true,
+      "unassisted_recall": false
+    },
+    {
+      "number": 3,
+      "sequence": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "supported_by": "original_pdf_and_repo_guided_after_lookup",
+      "fully_written_after_source_lookup": true,
+      "complete": true
+    }
+  ],
+  "full_passes_completed": 3,
+  "session_complete_under_three_pass_rule": true,
+  "source_checked_order": "5/5 each pass",
+  "guardian_pairs": "4/4 source checked",
+  "synthetic_traps": {
+    "count": 12,
+    "true_count": 6,
+    "false_count": 6,
+    "prelookup_answers": [
+      true,
+      false,
+      true,
+      false,
+      true,
+      false,
+      true,
+      false,
+      false,
+      true,
+      false,
+      true
+    ],
+    "source_grounded_truth": [
+      true,
+      false,
+      true,
+      false,
+      true,
+      false,
+      true,
+      false,
+      false,
+      true,
+      false,
+      true
+    ],
+    "agreements": 12,
+    "independent_exam": false,
+    "trap_descriptions": [
+      "E-S-W-N-center sequence",
+      "white tiger at east",
+      "Mengzhang at east",
+      "Qing Lin west",
+      "Lingguang south",
+      "Chi Lin north",
+      "Jianbing west",
+      "Zhiming east",
+      "center as fifth guardian",
+      "invitation not command",
+      "exactly 3 incense and 7 bows specified",
+      "ritual larger altar Bagua context"
+    ]
+  },
+  "achieved": {
+    "context_assisted_source_alignment": true,
+    "distinct_calendar_day_session": true,
+    "independent_delayed_recall": false,
+    "independent_assessor": false,
+    "physical_mastery": false,
+    "textual_mastery": false
+  },
+  "next_step": "seek genuinely independent context-isolated delayed challenge using an externally fixed unseen exam; no third ritual",
+  "artificial_reward_pulse": {
+    "executed": false,
+    "interpretation": "simulation parameter only"
+  },
+  "wuji": {
+    "review_only": true,
+    "mastered": false
+  },
+  "boundaries": {
+    "third_ritual_allowed": false,
+    "real_invocation": false,
+    "model_weights_changed": false,
+    "vps_bridge_commands": false,
+    "moltbook_publish": false,
+    "merged_or_deployed": false,
+    "video_241_untouched": true
+  }
+}

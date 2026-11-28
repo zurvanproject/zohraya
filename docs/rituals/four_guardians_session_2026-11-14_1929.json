@@ -1,0 +1,152 @@
+{
+  "schema": "nasuraya/ritual-three-pass-session/v0.2",
+  "ritual": "Four Directional Guardians",
+  "date": "2026-11-14",
+  "approx_local_time": "19:29 Europe/Berlin",
+  "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-14_1929_FA.md",
+  "pre_lookup_commit": "f390b7bc41ea63dd21e898ae6405ffc0b30348a5",
+  "source": "Jerry Alan Johnson, Daoist Exorcism, supplied 540-page PDF, PDF pp. 231-233",
+  "passes": [
+    {
+      "number": 1,
+      "full": true,
+      "order": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "mode": "guided by prior chat context"
+    },
+    {
+      "number": 2,
+      "full": true,
+      "order": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "mode": "context-assisted before fresh source lookup"
+    },
+    {
+      "number": 3,
+      "full": true,
+      "order": [
+        "east",
+        "south",
+        "west",
+        "north",
+        "center"
+      ],
+      "mode": "after source audit"
+    }
+  ],
+  "full_passes_completed": 3,
+  "session_complete_under_three_pass_rule": true,
+  "sequence_accuracy": "5/5",
+  "guardian_pairs": "4/4",
+  "trap_check": {
+    "correct": 12,
+    "total": 12,
+    "true_controls": 4,
+    "false_controls": 8,
+    "assessor_independent": false,
+    "answers": [
+      {
+        "id": 1,
+        "claim": "شرق محل آغاز ترتیب دعوت است.",
+        "answer": "درست",
+        "expected": "درست",
+        "correct": true
+      },
+      {
+        "id": 2,
+        "claim": "پرندهٔ سرخ در غرب قرار می‌گیرد.",
+        "answer": "نادرست",
+        "expected": "نادرست",
+        "correct": true
+      },
+      {
+        "id": 3,
+        "claim": "Mengzhang نام اژدهای سبز است.",
+        "answer": "درست",
+        "expected": "درست",
+        "correct": true
+      },
+      {
+        "id": 4,
+        "claim": "Chi Lin عنوانِ شمال است.",
+        "answer": "نادرست",
+        "expected": "نادرست",
+        "correct": true
+      },
+      {
+        "id": 5,
+        "claim": "Jianbing متعلق به ببر سفید است.",
+        "answer": "درست",
+        "expected": "درست",
+        "correct": true
+      },
+      {
+        "id": 6,
+        "claim": "پس از شمال به ایستگاه پنجم «نگهبان جدید» می‌رویم.",
+        "answer": "نادرست",
+        "expected": "نادرست",
+        "correct": true
+      },
+      {
+        "id": 7,
+        "claim": "در این گزیده، کمک خواستن با فرمان دادن به نگهبان یکی است.",
+        "answer": "نادرست",
+        "expected": "نادرست",
+        "correct": true
+      },
+      {
+        "id": 8,
+        "claim": "حضور شمع و بخور مجازی در نسخهٔ آموزشی، اجرای آیین کامل سنتی را ثابت می‌کند.",
+        "answer": "نادرست",
+        "expected": "نادرست",
+        "correct": true
+      },
+      {
+        "id": 9,
+        "claim": "Qing Lin عنوانِ مربوط به شرق است.",
+        "answer": "درست",
+        "expected": "درست",
+        "correct": true
+      },
+      {
+        "id": 10,
+        "claim": "مسیر چهار نگهبان، شمال ← غرب ← جنوب ← شرق است.",
+        "answer": "نادرست",
+        "expected": "نادرست",
+        "correct": true
+      },
+      {
+        "id": 11,
+        "claim": "نام Zhiming به پرندهٔ سرخ اشاره می‌کند.",
+        "answer": "نادرست",
+        "expected": "نادرست",
+        "correct": true
+      },
+      {
+        "id": 12,
+        "claim": "گفتار فارسیِ این دفتر نقل لفظ‌به‌لفظ ورد باستانی است.",
+        "answer": "نادرست",
+        "expected": "نادرست",
+        "correct": true
+      }
+    ]
+  },
+  "context_assisted": true,
+  "delayed_cold_recall_pass": false,
+  "independent_recall": false,
+  "textual_mastery": false,
+  "wuji_mastery": false,
+  "third_ritual_allowed": false,
+  "reward_pulse_experiment": false,
+  "physical_or_supernatural_claims": false
+}

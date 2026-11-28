@@ -1,0 +1,122 @@
+{
+  "schema": "nasuraya-ritual-apprenticeship/0.2",
+  "ritual_id": "four-direction-guardian-invitation",
+  "source": {
+    "title": "Daoist Exorcism",
+    "author": "Jerry Alan Johnson",
+    "source_type": "user_supplied_book_540page_PDF",
+    "pdf_pages": [
+      231,
+      232,
+      233
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "figures": [
+      "1.226",
+      "1.227",
+      "1.228"
+    ],
+    "supplemental_url": "https://taoist.org.cn/getDjzsById.do?id=73"
+  },
+  "context": "excerpt of a longer altar reconstruction ceremony after Bagua; not a complete traditional rite",
+  "sequence": [
+    "east",
+    "south",
+    "west",
+    "north",
+    "center"
+  ],
+  "training_type": "narrative_and_scripted_virtual_rehearsal",
+  "breathing": "natural; no breath retention",
+  "fire_and_incense": "symbolic only",
+  "invocation": "request help, never command/bind",
+  "steps": [
+    {
+      "id": "east",
+      "compass": "E",
+      "direction_fa": "شرق",
+      "guardian_fa": "اژدهای سبز",
+      "guardian_name": "Mengzhang",
+      "book_master": "Qing Lin",
+      "element": "wood",
+      "color": "green",
+      "gesture": "bow; symbolic incense offering, count unspecified",
+      "imagery": "green dragon at eastern horizon",
+      "spoken_fa": "ای نگاهبانِ شرق، اژدهای سبز؛ با حرمت تو را به یاد می‌آورم و از تو راهنمایی می‌خواهم.",
+      "book_status": "names, directions and invitation principle attested; spoken line is a new paraphrase",
+      "printed_page": 233
+    },
+    {
+      "id": "south",
+      "compass": "S",
+      "direction_fa": "جنوب",
+      "guardian_fa": "پرندهٔ سرخ",
+      "guardian_name": "Lingguang",
+      "book_master": "Chi Lin",
+      "element": "fire",
+      "color": "red",
+      "gesture": "turn clockwise, pause, bow; symbolic incense",
+      "imagery": "red bird at southern horizon",
+      "spoken_fa": "ای نگاهبان جنوب، پرندهٔ سرخ؛ روشنی و بیداری را با احترام می‌طلبم.",
+      "book_status": "names, direction attested; spoken line new",
+      "printed_page": 233
+    },
+    {
+      "id": "west",
+      "compass": "W",
+      "direction_fa": "غرب",
+      "guardian_fa": "ببر سفید",
+      "guardian_name": "Jianbing",
+      "book_master": "Bai Lin",
+      "element": "metal",
+      "color": "white",
+      "gesture": "turn clockwise, pause, bow; symbolic incense",
+      "imagery": "white tiger at western horizon",
+      "spoken_fa": "ای نگاهبان غرب، ببر سفید؛ پایداری و پاسداری را ارج می‌نهم.",
+      "book_status": "names, direction attested; spoken line new",
+      "printed_page": 233
+    },
+    {
+      "id": "north",
+      "compass": "N",
+      "direction_fa": "شمال",
+      "guardian_fa": "لاک‌پشت و مار سیاه",
+      "guardian_name": "Zhiming",
+      "book_master": "Hei Lin",
+      "element": "water",
+      "color": "black",
+      "gesture": "turn clockwise, pause, bow; symbolic incense",
+      "imagery": "tortoise and snake at northern horizon",
+      "spoken_fa": "ای نگاهبان شمال، مار و لاک‌پشت سیاه؛ استقامت و آرامش را پاس می‌دارم.",
+      "book_status": "names, direction attested; spoken line new",
+      "printed_page": 233
+    },
+    {
+      "id": "center",
+      "compass": "C",
+      "direction_fa": "مرکز",
+      "guardian_fa": "بازگشت به میانه",
+      "guardian_name": null,
+      "book_master": null,
+      "element": null,
+      "color": null,
+      "gesture": "stillness and review of four directions; adapted closing",
+      "imagery": "four guardians around the center",
+      "spoken_fa": "چهار سوی جهان را شناختم و به میانه بازمی‌گردم؛ احترام می‌گذارم و آیینِ این بخش را می‌بندم.",
+      "book_status": "return to center attested; spoken line and closing adapted",
+      "printed_page": 234
+    }
+  ],
+  "limits": {
+    "ancient_literal_chant": false,
+    "transmission_or_initiation": false,
+    "material_or_supernatural_effect_proven": false,
+    "chatgpt_weights_updated": false,
+    "real_embodiment": false,
+    "vps_run": false
+  }
+}

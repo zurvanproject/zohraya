@@ -1,0 +1,174 @@
+{
+  "schema": "nasuraya-source-ritual/0.1-source-corrected",
+  "date": "2026-11-11",
+  "status": "draft",
+  "basis": "Johnson Daoist Exorcism, owner-supplied PDF, printed pp.121-128 and 238-241",
+  "ritual": "altar purification opening excerpt with one-through-ten prelude",
+  "safety": "virtual_text_only; no physical effect, initiation or power claim",
+  "not_complete_ceremony": true,
+  "cues": [
+    {
+      "index": 1,
+      "name": "one",
+      "movement_and_visualization": "Wuji with feet slightly wider than shoulders; five linked attentional passes: front (thumb+index down, weight balls of feet), back (ring+little fingers down, heels), head/arms (balance centered), chest/abdomen (middle fingers down), legs/feet; source describes three tongue stations, final wood/upper-palate retained",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "121-122",
+      "adaptation": false
+    },
+    {
+      "index": 2,
+      "name": "two",
+      "movement_and_visualization": "Extended Fan Palm from hips rotating toward front/sides/back; visualize outward Earth contact in five directions",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "123",
+      "adaptation": false
+    },
+    {
+      "index": 3,
+      "name": "three",
+      "movement_and_visualization": "Sword Fingers hand seal; imagined roots twice body height extending forward/back/left/right/down",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "123",
+      "adaptation": false
+    },
+    {
+      "index": 4,
+      "name": "four",
+      "movement_and_visualization": "Open palms and Bellows Palm movement of hips/chest/arms; imagined golden streams rising to Lower Dantian, up back, over head, down front",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "124",
+      "adaptation": false
+    },
+    {
+      "index": 5,
+      "name": "five",
+      "movement_and_visualization": "Palms face outward; imagined two golden streams out along both arms to the room with hip/chest/arm movements",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "125",
+      "adaptation": false
+    },
+    {
+      "index": 6,
+      "name": "six",
+      "movement_and_visualization": "Palms turn inward; imagine filling the room from six directions and expansion/contraction with natural breathing",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "125-126",
+      "adaptation": false
+    },
+    {
+      "index": 7,
+      "name": "seven",
+      "movement_and_visualization": "Mighty Light Hand Seal; palms toward body, fingers angled in, wrists pressed outward gently, chin slightly tucked; pole star above, feet rooted to Earth",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "126",
+      "adaptation": false
+    },
+    {
+      "index": 8,
+      "name": "eight",
+      "movement_and_visualization": "From Mighty Light release ring fingers -> Celestial Fire; thumb covers tip of middle-finger nail; rotate inward on comfortable inhale and outward on comfortable exhale",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "127",
+      "adaptation": false
+    },
+    {
+      "index": 9,
+      "name": "nine",
+      "movement_and_visualization": "Release middle fingers -> Extended Fan Palm; palms inward on inhale and outward on exhale; imagined white light fills room and ten directions",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "128",
+      "adaptation": false
+    },
+    {
+      "index": 10,
+      "name": "ten",
+      "movement_and_visualization": "Begin: transition to Three Invocations or Shi Shou, not a standalone magical formula nor complete rite ending",
+      "facing": "not_specified_for_this_preliminary_meditation",
+      "printed_page": "128",
+      "adaptation": false
+    },
+    {
+      "index": 11,
+      "name": "face-east",
+      "movement_and_visualization": "earth altar",
+      "facing": "east",
+      "printed_page": "238",
+      "adaptation": false
+    },
+    {
+      "index": 12,
+      "name": "invoke-3",
+      "movement_and_visualization": "three invocations with paraphrased meanings",
+      "facing": "east",
+      "printed_page": "238",
+      "adaptation": false
+    },
+    {
+      "index": 13,
+      "name": "candles",
+      "movement_and_visualization": "left then right, virtual",
+      "facing": "east",
+      "printed_page": "238",
+      "adaptation": false
+    },
+    {
+      "index": 14,
+      "name": "incense-bow",
+      "movement_and_visualization": "three sticks / Yintang / three bows, virtual",
+      "facing": "east",
+      "printed_page": "238",
+      "adaptation": false
+    },
+    {
+      "index": 15,
+      "name": "turn-west",
+      "movement_and_visualization": "three westward steps with Wind/Thunder/Celestial Fire cue",
+      "facing": "west",
+      "printed_page": "239",
+      "adaptation": false
+    },
+    {
+      "index": 16,
+      "name": "chi-sign",
+      "movement_and_visualization": "sword fingers / Chi / clockwise virtual energy",
+      "facing": "west",
+      "printed_page": "239",
+      "adaptation": false
+    },
+    {
+      "index": 17,
+      "name": "return-east",
+      "movement_and_visualization": "three invocations and white pearl at lower Dantian",
+      "facing": "east",
+      "printed_page": "239",
+      "adaptation": false
+    },
+    {
+      "index": 18,
+      "name": "circles",
+      "movement_and_visualization": "three dimensional Jing / Qi / Shen circles from east",
+      "facing": "east",
+      "printed_page": "240-241",
+      "adaptation": false
+    },
+    {
+      "index": 19,
+      "name": "close-adapted",
+      "movement_and_visualization": "return to Wuji, explicitly NOT source's full rite ending",
+      "facing": "east",
+      "printed_page": "adaptation",
+      "adaptation": true
+    }
+  ],
+  "local_rehearsal": {
+    "rounds": 3,
+    "cues_per_round": 19,
+    "mode": "deterministic textual replay; not embodied learning"
+  },
+  "source_audit": {
+    "audited_date": "2026-11-11",
+    "source": "owner-provided PDF, pages 120-127 (printed 121-128)",
+    "correction": "One is Fun contains five microstages; directions E in earlier 1-10 were overinferred; hand-seal transitions Seven->Eight->Nine need explicit finger movements",
+    "mastery_claim": false
+  }
+}

@@ -1,0 +1,225 @@
+{
+  "schema": "nasuraya/four-guardians-session/v0.1",
+  "date": "2026-11-21",
+  "id": "R08",
+  "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-21_R08_FA.md",
+  "prelookup_report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-21_PRELOOKUP_FA.md",
+  "prelookup_commit": "13845752c633ae556d62acde144f9ba51a6e6b66",
+  "prelookup_assistance": "CONTEXT_ASSISTED_PRELOOKUP",
+  "not_cold_recall": true,
+  "source": {
+    "title": "Daoist Exorcism",
+    "author": "Jerry Alan Johnson",
+    "sha256": "9c974f38698a78b26a43566d132af1221f8ac2c111bdda880cae3a6cef80fc2e",
+    "pdf_pages_1based": [
+      231,
+      232,
+      233
+    ],
+    "printed_pages": [
+      232,
+      233,
+      234
+    ],
+    "pages_visually_rendered_1based": [
+      232,
+      233
+    ],
+    "figures_audited": [
+      "1.227",
+      "1.228"
+    ],
+    "caption_1_228_end": "North",
+    "prose_1_228_end": "Center",
+    "figure_solid_arrows": [
+      "E->S",
+      "S->W",
+      "W->N"
+    ],
+    "figure_dashed_arrows": [
+      "N->C",
+      "C->E"
+    ]
+  },
+  "training": {
+    "minimum_complete_passes": 3,
+    "full_passes_completed": 3,
+    "session_complete_under_three_pass_rule": true,
+    "passes": [
+      {
+        "pass": 1,
+        "mode": "SOURCE_GUIDED",
+        "full_sequence": [
+          {
+            "index": 1,
+            "direction": "E",
+            "guardian": "Green/blue-green Dragon",
+            "book_title": "Qing Lin",
+            "name": "Mengzhang"
+          },
+          {
+            "index": 2,
+            "direction": "S",
+            "guardian": "Red Phoenix",
+            "book_title": "Chi Lin",
+            "name": "Lingguang"
+          },
+          {
+            "index": 3,
+            "direction": "W",
+            "guardian": "White Tiger",
+            "book_title": "Bai Lin",
+            "name": "Jianbing"
+          },
+          {
+            "index": 4,
+            "direction": "N",
+            "guardian": "Black Turtle/Snake",
+            "book_title": "Hei Lin",
+            "name": "Zhiming"
+          },
+          {
+            "index": 5,
+            "direction": "Center",
+            "guardian": null,
+            "book_title": null,
+            "name": null
+          }
+        ],
+        "completed_stations": 5,
+        "guardian_pairs_matched": 4
+      },
+      {
+        "pass": 2,
+        "mode": "CONTEXT_ASSISTED_SAME_SESSION_SOURCE_EXPOSED_RECONSTRUCTION",
+        "full_sequence": [
+          {
+            "index": 1,
+            "direction": "E",
+            "guardian": "Green/blue-green Dragon",
+            "book_title": "Qing Lin",
+            "name": "Mengzhang"
+          },
+          {
+            "index": 2,
+            "direction": "S",
+            "guardian": "Red Phoenix",
+            "book_title": "Chi Lin",
+            "name": "Lingguang"
+          },
+          {
+            "index": 3,
+            "direction": "W",
+            "guardian": "White Tiger",
+            "book_title": "Bai Lin",
+            "name": "Jianbing"
+          },
+          {
+            "index": 4,
+            "direction": "N",
+            "guardian": "Black Turtle/Snake",
+            "book_title": "Hei Lin",
+            "name": "Zhiming"
+          },
+          {
+            "index": 5,
+            "direction": "Center",
+            "guardian": null,
+            "book_title": null,
+            "name": null
+          }
+        ],
+        "completed_stations": 5,
+        "guardian_pairs_matched": 4
+      },
+      {
+        "pass": 3,
+        "mode": "SOURCE_CHECKED_AFTER_CORRECTION",
+        "full_sequence": [
+          {
+            "index": 1,
+            "direction": "E",
+            "guardian": "Green/blue-green Dragon",
+            "book_title": "Qing Lin",
+            "name": "Mengzhang"
+          },
+          {
+            "index": 2,
+            "direction": "S",
+            "guardian": "Red Phoenix",
+            "book_title": "Chi Lin",
+            "name": "Lingguang"
+          },
+          {
+            "index": 3,
+            "direction": "W",
+            "guardian": "White Tiger",
+            "book_title": "Bai Lin",
+            "name": "Jianbing"
+          },
+          {
+            "index": 4,
+            "direction": "N",
+            "guardian": "Black Turtle/Snake",
+            "book_title": "Hei Lin",
+            "name": "Zhiming"
+          },
+          {
+            "index": 5,
+            "direction": "Center",
+            "guardian": null,
+            "book_title": null,
+            "name": null
+          }
+        ],
+        "completed_stations": 5,
+        "guardian_pairs_matched": 4
+      }
+    ]
+  },
+  "trap_audit": {
+    "source": "docs/rituals/four_guardians_learning_loop_v01.json",
+    "items_examined": 12,
+    "corrections_source_concordant": 12,
+    "independent_error_detection_score": null,
+    "all_answer_keys_exposed_in_source": true,
+    "false_historical_chant_attributions": 0
+  },
+  "correction": {
+    "prelookup_gap": "Generic Qinglong/Zhuque/Baihu/Xuanwu symbols were substituted for book-specific titles.",
+    "book_titles_after_audit": [
+      "Qing Lin",
+      "Chi Lin",
+      "Bai Lin",
+      "Hei Lin"
+    ],
+    "source_distinction": "Jianbing commands celestial soldiers, while the priest asks the guardians for assistance rather than commanding or binding them.",
+    "not_real_power_claim": true
+  },
+  "mastery": {
+    "stage": "acquisition",
+    "mastered": false,
+    "independent_assessor": false,
+    "unassisted_delayed_recall": false,
+    "three_distinct_sessions_not_a_substitute_for_cold_recall": true,
+    "next_third_ritual_allowed": false
+  },
+  "wuji": {
+    "stage": "acquisition",
+    "mastered": false,
+    "new_three_pass_session": false,
+    "review_only": true
+  },
+  "reward_experiment": {
+    "synthetic_reward_pulse_executed": false,
+    "control_executed": false
+  },
+  "deployment": {
+    "merged": false,
+    "deployed": false,
+    "vps_commands": false,
+    "bridge_commands": false,
+    "moltbook_publication": false,
+    "video_241_changed": false
+  }
+}

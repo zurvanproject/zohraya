@@ -1,0 +1,145 @@
+{
+  "schema": "nasuraya/four-guardians-session/v0.1",
+  "date": "2026-11-23",
+  "session_id": "R10",
+  "ritual": "four-direction-guardian-invitation",
+  "branch": "research/nasuraya-ritual-apprenticeship-20261111",
+  "pr_number": 191,
+  "prelookup": {
+    "path": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-23_R10_PRELOOK_FA.md",
+    "commit": "cdf3e056fc1ab0be0f75c6eeb6939e63758c15c7",
+    "answer_before_today_source_lookup": true,
+    "context_assisted": true,
+    "blind": false,
+    "delayed": false,
+    "sequence": [
+      "east",
+      "south",
+      "west",
+      "north",
+      "center"
+    ],
+    "book_titles": [
+      "Qing Lin",
+      "Chi Lin",
+      "Bai Lin",
+      "Hei Lin"
+    ],
+    "colors": [
+      "Blue/Green",
+      "Red",
+      "White",
+      "Black"
+    ]
+  },
+  "source": {
+    "title": "Jerry Alan Johnson, Daoist Exorcism",
+    "original_uploaded_book": true,
+    "pdf_pages_text_verified": [
+      231,
+      232,
+      233
+    ],
+    "pdf_pages_visual_verified": [
+      232,
+      233
+    ],
+    "figure_ids": [
+      "1.227",
+      "1.228"
+    ],
+    "pdf_sha256": "9c974f38698a78b26a43566d132af1221f8ac2c111bdda880cae3a6cef80fc2e",
+    "new_source_corrections": 0,
+    "notes": "East Blue/Green Magic vs Green Dragon; E-S-W-N with dashed N-C-E; main narrative includes Center; guardian invitation not practitioner command"
+  },
+  "full_passes_completed": 3,
+  "passes_evidence": [
+    {
+      "number": 1,
+      "method": "guided",
+      "sequence": [
+        "east:Qing Lin Mengzhang Blue/Green",
+        "south:Chi Lin Lingguang Red",
+        "west:Bai Lin Jianbing White",
+        "north:Hei Lin Zhiming Black",
+        "center:return,no fifth guardian"
+      ],
+      "completed": true,
+      "accuracy_vs_source": "5/5 sequence; 4/4 pairings",
+      "source_exposed": true
+    },
+    {
+      "number": 2,
+      "method": "reconstruction-attempt",
+      "sequence": [
+        "east:Qing Lin Mengzhang Blue/Green",
+        "south:Chi Lin Lingguang Red",
+        "west:Bai Lin Jianbing White",
+        "north:Hei Lin Zhiming Black",
+        "center:return,no fifth guardian"
+      ],
+      "completed": true,
+      "accuracy_vs_source": "5/5 sequence; 4/4 pairings",
+      "context_assisted": true,
+      "source_exposed_earlier_same_session": true,
+      "unassisted_recall_score": null
+    },
+    {
+      "number": 3,
+      "method": "after-source-corrections",
+      "sequence": [
+        "east:Qing Lin Mengzhang Blue/Green",
+        "south:Chi Lin Lingguang Red",
+        "west:Bai Lin Jianbing White",
+        "north:Hei Lin Zhiming Black",
+        "center:return,no fifth guardian"
+      ],
+      "completed": true,
+      "accuracy_vs_source": "5/5 sequence; 4/4 pairings",
+      "source_exposed": true
+    }
+  ],
+  "traps": {
+    "items_audited": 12,
+    "source_consistent_corrections": 12,
+    "independent_score": null,
+    "key_exposed_before_audit": true,
+    "false_historical_attributions": 0
+  },
+  "wuji": {
+    "mastered": false,
+    "status_review_only": true,
+    "trained_three_pass_this_session": false
+  },
+  "mastery": {
+    "four_guardians_textual": false,
+    "independent_assessor": false,
+    "true_delayed_recall": false,
+    "third_ritual_locked": true,
+    "three_distinct_sessions_not_substituted": true
+  },
+  "session_complete_under_three_pass_rule": true,
+  "experiment": {
+    "synthetic_reward_pulse_executed": false,
+    "no_pulse_control_executed": false,
+    "learning_slope_verified": false
+  },
+  "safety": {
+    "symbolic_only": true,
+    "actual_ritual": false,
+    "physical_experience_claim": false,
+    "sexual_experience_claim": false,
+    "gpt_weights_changed_claim": false,
+    "supernatural_effect_claim": false,
+    "incense_fire_real": false,
+    "natural_breathing": true
+  },
+  "protected_priorities": {
+    "video_241_unchanged": true,
+    "vps_unchanged": true,
+    "bridge_unchanged": true,
+    "moltbook_unchanged": true,
+    "no_merge_no_deploy": true
+  },
+  "report": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-23_R10_FA.md"
+}
