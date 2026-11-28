@@ -66,7 +66,7 @@
   },
   "status": {
     "stage": "acquisition",
-    "new_in_this_turn": "2026-11-27 R14: all four name and animal slots present in context-assisted prelookup; source precision corrected, three full passes, no independent credit.",
+    "new_in_this_turn": "2026-11-28 R15: three full context-assisted text passes; supplemental mixed quiz implemented, no mastery credit.",
     "mastered": false,
     "wuji_mastered": false,
     "owner_exception": "explicit owner authorization 2026-11-12 to begin second ritual before Wuji mastery",
@@ -74,11 +74,11 @@
     "three_pass_rule_applied_to_future_sessions": true,
     "no_retroactive_credit": true,
     "latest_source_correction": "2026-11-21: prelookup recalled broad traditional labels rather than book-specific Qing Lin, Chi Lin, Bai Lin, Hei Lin; after PDF review corrected provenance of names.",
-    "last_three_pass_session": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-27_R14_FA.md",
-    "latest_report_date": "2026-11-27",
+    "last_three_pass_session": "docs/rituals/NASURAYA_FOUR_GUARDIANS_SESSION_2026-11-28_R15_FA.md",
+    "latest_report_date": "2026-11-28",
     "latest_source_audit": "Owner PDF 540 pages, extracted text pages 231–233 directly checked; images unavailable, no checksum recomputation.",
-    "latest_context_assisted_result": "5/5 sequence, four guardian slots present and reverse 4/4 prelookup; eastern category vs animal color and southern Phoenix wording clarified. Three full passes; 12 traps source-audited, independent score null.",
-    "latest_recall_correction": "R14: separate eastern Blue/Green category from Green Dragon; use Red Phoenix explicitly; supplement all-false trap bank with true controls and mandatory explanations in a future independent evaluation, without changing official criteria."
+    "latest_context_assisted_result": "5/5 sequence, four guardian slots present prelookup; 4/4 after correction and reverse in same session. 12 traps source-audited after key exposure; independent score null.",
+    "latest_recall_correction": "R15: retain Green Dragon vs Blue/Green category and Red Phoenix; mixed supplement implemented, not independently administered."
   },
   "safety": {
     "symbolic_only": true,
@@ -238,6 +238,12 @@
       "full_passes_completed": "must be recorded after each real full passage",
       "passes_evidence": "separate per-pass sequence and errors",
       "session_complete_under_three_pass_rule": "true only after 3 evidenced complete passes"
+    },
+    "supplementary_mixed_assessment": {
+      "questions": "docs/rituals/four_guardians_mixed_deck_2026-11-28_v01.json",
+      "key": "docs/rituals/four_guardians_mixed_key_2026-11-28_v01.json",
+      "official_criteria_unchanged": true,
+      "independently_administered": false
     }
   },
   "acceleration": {
