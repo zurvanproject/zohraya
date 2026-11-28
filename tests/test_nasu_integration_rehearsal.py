@@ -110,6 +110,27 @@ class IntegrationRehearsalTests(unittest.TestCase):
         self.assertTrue(report["checks"]["stance_retained"])
         self.assertEqual(report["recovered_decision"], "B")
 
+    def test_fixed_answers_cannot_pass_the_persian_planning_probe(self):
+        from tools import nasu_correction_to_plan as probe
+
+        def fixed_answer(instruction, context, fields):
+            if "signal" in fields:
+                return {"signal": "none"}
+            question = context["current_message"]
+            if "خانه" in question:
+                answer = "سرو"
+            elif "گوینده" in question:
+                answer = "دستیار"
+            else:
+                answer = "شنبه"
+            return {"stance": "respond", "reply": answer}
+
+        with mock.patch.object(probe.dialogue, "generate", side_effect=fixed_answer):
+            report = probe.experiment(self.parent, live=True)
+        self.assertEqual(report["errors"], 0)
+        self.assertEqual(report["evidence_passed"], 18)
+        self.assertEqual(report["correct"], {"day": 3, "source": 2, "plan": 3})
+
     def test_dialogue_awake_persisted_false_overrides_local_true(self):
         # The producer still observes five true checks. Change ONLY the
         # records delivered to the original Awake writer, on both ingests.

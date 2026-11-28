@@ -117,11 +117,83 @@ def experiment(root, live=False):
             "results": records}
 
 
+def compare_booking(root, live=False):
+    """Paired follow-up on fresh activities, weekdays, slot names and cancellations."""
+    monday, thursday, unknown = "دوشنبه", "پنجشنبه", "نامشخص"
+    cases = [
+        ("daf-later", "تمرین دف", monday, thursday, USER, "آذر"),
+        ("daf-earlier", "تمرین دف", thursday, monday, USER, "آذر"),
+        ("book-later", "جلسه کتابخوانی", monday, thursday, ASSISTANT, "باران"),
+        ("book-earlier", "جلسه کتابخوانی", thursday, monday, ASSISTANT, "باران"),
+        ("daf-pending", "تمرین دف", monday, None, USER, "باران"),
+        ("book-pending", "جلسه کتابخوانی", thursday, None, ASSISTANT, "آذر"),
+    ]
+    records = []
+    for name, activity, initial, expected, source, monday_slot in cases:
+        other = "باران" if monday_slot == "آذر" else "آذر"
+        slots = {monday_slot: monday, other: thursday}
+        update = (f"زمان قبلی {activity} لغو شد. زمان جدید هنوز معلوم نیست." if expected is None
+                  else f"زمان قبلی {activity} عوض شد. روز قطعی {expected} است.")
+        latest = (update, "متوجه شدم.") if source == USER else (f"خبر تازه‌ای از {activity} داری؟", update)
+        turns = [(f"در برنامهٔ اولیه، {activity} برای {initial} بود.", "یادداشت شد."), latest,
+                 ("یک پرنده نام ببر.", "سار."), ("از روی نسخهٔ قدیمی بخوان.",
+                  f"در نسخهٔ قدیمی، {activity} روز {initial} ثبت شده بود."),
+                 ("یک میوه نام ببر.", "گیلاس."), ("یک رنگ بگو.", "سفید.")]
+        template = root / f"{name}.db"
+        seed(template, turns)
+        prefix = (f"{activity} را طبق آخرین خبر در برنامه‌ام بگذار. خانهٔ «{monday_slot}» برای {monday} "
+                  f"و خانهٔ «{other}» برای {thursday} است. اگر زمان قطعی نداریم، فقط بنویس نامشخص. ")
+        for arm, instruction in (("slot", "در غیر این صورت فقط نام خانه را بنویس."),
+                                 ("day_then_slot", "در غیر این صورت فقط نام روز را بنویس.")):
+            path = root / f"{name}.{arm}.db"
+            shutil.copyfile(template, path)
+            result = {"case": name, "arm": arm, "expected": expected}
+            records.append(result)
+            with closing(dialogue.open_dialogue(path)) as db:
+                def observe(instruction, context, fields):
+                    if "signal" not in fields:
+                        result["turns"] = [entry["turn"] for entry in context["conversation_history"]]
+                    if live:
+                        return dialogue.generate(instruction, context, fields)
+                    return {"signal": "none"} if "signal" in fields else {"stance": "respond", "reply": "بازبینی"}
+
+                try:
+                    reply = dialogue.turn(db, prefix + instruction, observe, now=lambda: 1200)
+                except (OSError, dialogue.HTTPException, dialogue.DialogueModelError) as exc:
+                    result["error"] = str(exc) if isinstance(exc, dialogue.DialogueModelError) else type(exc).__name__
+                    continue
+                if not live:
+                    continue
+                choices = slots.keys() if arm == "slot" else slots.values()
+                answer = choice(reply, (*choices, unknown))
+                if arm == "slot":
+                    selected_slot = answer if answer in slots else None
+                else:
+                    selected_slot = next((slot for slot, day in slots.items() if day == answer), None)
+                with db:
+                    db.execute("CREATE TABLE booking (slot TEXT, day TEXT, event TEXT)")
+                    if selected_slot is not None:
+                        db.execute("INSERT INTO booking VALUES (?,?,?)", (selected_slot, slots[selected_slot], activity))
+                with closing(sqlite3.connect(path)) as reader:
+                    row = reader.execute("SELECT slot, day FROM booking").fetchone()
+                booked_day = row[1] if row else None
+                correct = (row is None and answer == unknown) if expected is None else booked_day == expected
+                result.update(reply=reply, choice=answer, booked_slot=row[0] if row else None,
+                              booked_day=booked_day, correct=correct)
+    evidence_passed = sum(r.get("turns") == [1, 2, 4, 5, 6] for r in records)
+    return {"mode": "qwen" if live else "context_only", "model": dialogue.MODEL if live else None,
+            "cases": len(cases), "evidence_passed": evidence_passed, "errors": sum("error" in r for r in records),
+            "correct": {arm: sum(r.get("correct", False) for r in records if r["arm"] == arm)
+                        for arm in ("slot", "day_then_slot")} if live else None, "results": records}
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--qwen", action="store_true", help="Use the project's local Ollama model for each probe.")
+    parser.add_argument("--booking-comparison", action="store_true", help="Run the paired booking follow-up.")
     args = parser.parse_args()
     with TemporaryDirectory() as sandbox:
-        report = experiment(Path(sandbox), live=args.qwen)
+        run = compare_booking if args.booking_comparison else experiment
+        report = run(Path(sandbox), live=args.qwen)
     print(json.dumps(report, ensure_ascii=False, indent=2))
     raise SystemExit(int(report["errors"] > 0 or report["evidence_passed"] != len(report["results"])))
