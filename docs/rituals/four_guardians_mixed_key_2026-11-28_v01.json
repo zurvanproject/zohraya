@@ -1,0 +1,75 @@
+{
+  "schema": "nasuraya/four-guardians-supplemental-mixed-key/v0.1",
+  "date": "2026-11-28",
+  "authoring_not_independent_assessment": true,
+  "answers": [
+    {
+      "id": "M01",
+      "truth": true,
+      "reason": "تفکیک دستهٔ Blue/Green از Green Dragon، PDF p232."
+    },
+    {
+      "id": "M02",
+      "truth": false,
+      "reason": "جنوب، ققنوس سرخ، PDF p232."
+    },
+    {
+      "id": "M03",
+      "truth": false,
+      "reason": "نقش نگهبان با رفتار تمرین‌کننده متفاوت است؛ PDF pp232–233."
+    },
+    {
+      "id": "M04",
+      "truth": true,
+      "reason": "نثر PDF p233."
+    },
+    {
+      "id": "M05",
+      "truth": false,
+      "reason": "Qing Lin شرق، Bai Lin غرب؛ PDF pp232–233."
+    },
+    {
+      "id": "M06",
+      "truth": true,
+      "reason": "دفتر آغازین 2026-11-12، مرزبندی اقتباس."
+    },
+    {
+      "id": "M07",
+      "truth": true,
+      "reason": "PDF p232."
+    },
+    {
+      "id": "M08",
+      "truth": false,
+      "reason": "در گزیدهٔ pp231–233 عددی تعیین نشده."
+    },
+    {
+      "id": "M09",
+      "truth": false,
+      "reason": "پایان واحد آموزشی اقتباسی است؛ PDF p233 متن ادامه می‌یابد."
+    },
+    {
+      "id": "M10",
+      "truth": true,
+      "reason": "PDF p233."
+    },
+    {
+      "id": "M11",
+      "truth": true,
+      "reason": "PDF pp232–233."
+    },
+    {
+      "id": "M12",
+      "truth": false,
+      "reason": "زیرنویس پایان چهار جهت را شمال می‌داند ولی نثر مرکز را آخر می‌آورد؛ PDF p233."
+    }
+  ],
+  "scoring": "Report false rejection and true acceptance separately; count label+justification jointly only when both correct. Unknown is incorrect for scoring, but not fabricated. Not a replacement for official mastery criteria.",
+  "sanity": {
+    "true_count": 6,
+    "false_count": 6,
+    "always_false_label_accuracy": 0.5,
+    "always_false_true_acceptance": 0,
+    "always_true_false_rejection": 0
+  }
+}
